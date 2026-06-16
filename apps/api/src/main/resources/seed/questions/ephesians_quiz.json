@@ -9,13 +9,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Charis (χάρις) có nghĩa là \"ân điển, ơn huệ\", sự ban cho không xứng đáng của Đức Chúa Trời.",
+    "explanation": "Câu hỏi này kiểm tra ý nghĩa của từ Hy Lạp được phiên âm là 'ân điển' trong Ê-phê-sô 2:8. Đáp án đúng là 'Charis - Ân điển, ơn huệ' vì từ χάρις (charis) trong tiếng Hy Lạp Kinh Thánh tại câu này chỉ về ân sủng nhưng không-mắc-nợ mà Đức Chúa Trời ban cho để cứu rỗi, dựa trên sự ban cho nhưng không chứ không phải công đức của con người.\n\nCác đáp án sai:\n- 'Eirene - Sự bình an, hòa thuận' là sai vì 'eirene' (εἰρήνη) là từ Hy Lạp chỉ 'sự bình an', một chủ đề quan trọng nhưng không phải là từ được dùng cho 'ân điển' trong câu 8. Tuy nhiên, từ này xuất hiện trong cùng phân đoạn (câu 14, 15, 17), khiến nó trở thành một lựa chọn 'gần đúng' nhưng sai chi tiết then chốt.\n- 'Agape - Tình yêu thương, lòng nhân từ' là sai vì 'agape' (ἀγάπη) chỉ tình yêu thương, một phẩm chất của Đức Chúa Trời liên quan mật thiết đến ân điển, nhưng không phải là từ cụ thể trong câu hỏi về nguyên ngữ của 'ân điển'. Đây là một sự hiểu lầm phổ biến khi nhầm lẫn giữa các khái niệm thần học gần gũi.\n- 'Pistis - Đức tin, sự trung tín' là sai vì 'pistis' (πίστις) là từ chỉ 'đức tin', xuất hiện ngay trong cùng câu 8 ('bởi đức tin'), nên có vẻ hợp lý với ngữ cảnh. Tuy nhiên, câu hỏi đặc biệt hỏi về từ 'ân điển', không phải về 'đức tin', vì vậy đây là một chi tiết đúng trong văn bản nhưng lạc trọng tâm câu hỏi.",
     "language": "vi",
     "options": [
-      "Eleos - Lòng thương xót",
+      "Eirene - Sự bình an, hòa thuận",
       "Charis - Ân điển, ơn huệ",
-      "Agape - Tình yêu",
-      "Dikaiosune - Sự công bình"
+      "Agape - Tình yêu thương, lòng nhân từ",
+      "Pistis - Đức tin, sự trung tín"
     ],
     "tags": [
       "Ê-phê-sô",
@@ -36,12 +36,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Pale (πάλη) có nghĩa là \"vật lộn, đấu tranh\", cuộc chiến tâm linh cá nhân và nội tại.",
+    "explanation": "Trong Ê-phê-sô 6:12, từ Hy Lạp nguyên bản được dùng cho \"đánh trận\" là \"πάλη\" (pale), có nghĩa chính xác là \"vật lộn, đấu tranh, cuộc chiến tay đôi\" (Strong's G3823), nhấn mạnh tính chất cá nhân và tâm linh của cuộc chiến. ĐÁP ÁN ĐÚNG đúng vì phản ánh chính xác nghĩa này.\n\nCÁC ĐÁP ÁN SAI:\n1. \"Polemos - Chiến tranh, trận đánh\" (nearby_passage): Từ \"πόλεμος\" (polemos) thường chỉ chiến tranh vật lý, quy mô lớn, và xuất hiện trong các phân đoạn khác (ví dụ: Khải Huyền 12:7, 16:14), không phải từ được dùng trong Ê-phê-sô 6:12.\n2. \"Stratologeō - Ghi danh quân đội, tuyển mộ\" (wrong_detail): Từ \"στρατολογέω\" (stratologeō) nghĩa là tuyển mộ binh lính (2 Ti-mô-thê 2:4), liên quan đến việc chuẩn bị cho chiến tranh chứ không phải hành động chiến đấu/thể hiện bản chất cuộc chiến như câu hỏi yêu cầu.\n3. \"Machomai - Cãi nhau, tranh cãi\" (common_misconception): Từ \"μάχομαι\" (machomai) thường chỉ sự tranh cãi, cãi vã giữa người với người (ví dụ: Công vụ 7:26, Gia-cơ 4:2), đây là một hiểu lầm phổ biến khi nghĩ về \"đánh trận\" nhưng không phải nghĩa chính xác trong ngữ cảnh tâm linh của Ê-phê-sô 6:12.",
     "language": "vi",
     "options": [
-      "Polemos - Chiến tranh",
-      "Agon - Cuộc thi đấu",
-      "Machomai - Đánh nhau",
+      "Polemos - Chiến tranh, trận đánh",
+      "Stratologeō - Ghi danh quân đội, tuyển mộ",
+      "Machomai - Cãi nhau, tranh cãi",
       "Pale - Vật lộn, đấu tranh"
     ],
     "tags": [
@@ -63,14 +63,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ê-phê 2:8-9 - Vì nhờ ân điển, bởi đức tin, mà anh em được cứu. Điều này không phải tự nơi anh em, ấy là sự ban cho của Đức Chúa Trời.",
+    "explanation": "Ê-phê-sô 2:8-9 viết: 'Vả, ấy là nhờ ân điển, bởi đức tin, mà anh em được cứu, điều đó không phải đến từ anh em, bèn là sự ban cho của Đức Chúa Trời. Ấy chẳng phải bởi việc làm đâu, hầu cho không ai khoe mình.' Đáp án đúng vì cặp câu này xác định rõ ràng nguồn gốc của sự cứu rỗi là ân điển Chúa qua đức tin, chứ không đến từ việc làm của con người.\n\n- Distractor 1 ('Bởi ân điển, qua đức tin, và bởi việc làm') sai vì thêm yếu tố 'bởi việc làm', trong khi Kinh Thánh nhấn mạnh 'chẳng phải bởi việc làm đâu'. Đây là lỗi sai chi tiết then chốt, làm nó trở thành đáp án 'gần đúng'.\n- Distractor 2 ('Bởi việc làm, để nhận được ân điển') sai vì đảo ngược trật tự và mục đích, cho rằng việc làm dẫn đến ân điển, trái ngược hoàn toàn với giáo lý ân điển nhưng không của đoạn này.\n- Distractor 3 ('Bởi hiểu biết và sự khôn ngoan của chúng ta') sai vì đưa ra những yếu tố không hề được đề cập trong đoạn Kinh Thánh liên quan, dù chúng có thể đúng trong ngữ cảnh khác (như sự khôn ngoan từ Chúa), nhưng lạc đề với câu hỏi về Ê-phê-sô 2:8-9.",
     "language": "vi",
     "verseEnd": 9,
     "options": [
-      "Bởi báp-têm",
-      "Bởi việc lành",
+      "Bởi ân điển, qua đức tin, và bởi việc làm",
+      "Bởi việc làm, để nhận được ân điển",
       "Bởi ân điển, qua đức tin, không phải bởi việc làm",
-      "Bởi giữ luật pháp"
+      "Bởi hiểu biết và sự khôn ngoan của chúng ta"
     ],
     "tags": [
       "Tân Ước",
@@ -91,13 +91,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ê-phê 6:11 - Chúng ta chiến trận không phải với loài người mà với các thế lực thuộc linh ở các miền trên trời.",
+    "explanation": "Câu hỏi tham chiếu Ê-phê-sô 6:11-13. Đoạn Kinh Thánh nói rõ mục đích của khí giới là 'hầu cho anh em có thể đứng vững mà địch cùng mưu kế của ma quỷ' (câu 11), 'đặng có thể đứng vững trong ngày gian truân' và 'sau khi đã làm xong hết mọi sự, lại đứng vững mà địch' (câu 13). Do đó, đáp án đúng 'Để đứng vững chống lại mưu kế của ma quỷ' tóm lược trực tiếp mục đích chính được nêu.\n\nCác đáp án sai:\n1. 'Để được bảo vệ khỏi mọi sự chống nghịch của con người' (wrong_scope): Sai phạm vi. Mặc dù đối tượng chống nghịch có thể bao gồm con người, nhưng trọng tâm cụ thể trong đoạn là 'mưu kế của ma quỷ' và 'các thế lực thần linh dữ' (câu 12), không phải đối tượng con người là mối nguy chính.\n2. 'Để chiến thắng mười hai mưu kế của ma quỷ' (wrong_detail): Sai chi tiết. Đoạn Kinh Thánh không hề đề cập đến con số 'mười hai' mưu kế; đây là một con số bịa đặt không có trong văn bản.\n3. 'Để hiểu rõ hơn về mọi sự dạy dỗ của Chúa' (true_but_off): Đúng văn bản nhưng lạc câu hỏi. Khí giới thiêng liêng bao gồm 'Lời Đức Chúa Trời' (câu 17) có liên quan đến sự dạy dỗ, nhưng mục đích chính của việc mặc khí giới được nêu trong câu hỏi là để 'đứng vững' và 'chống lại', không phải chủ yếu để 'hiểu rõ hơn'.",
     "language": "vi",
     "verseEnd": 13,
     "options": [
-      "Để bảo vệ gia đình",
-      "Để tấn công kẻ thù",
-      "Để được mạnh mẽ",
+      "Để được bảo vệ khỏi mọi sự chống nghịch của con người",
+      "Để chiến thắng mười hai mưu kế của ma quỷ",
+      "Để hiểu rõ hơn về mọi sự dạy dỗ của Chúa",
       "Để đứng vững chống lại mưu kế của ma quỷ"
     ],
     "tags": [
@@ -119,12 +119,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Phúc lành Chúa ban là thuộc linh và đời đời, không chỉ vật chất.",
+    "explanation": "Ê-phê-sô 1:3 chép: 'Chúc tụng Đức Chúa Trời, Cha Đức Chúa Jêsus Christ chúng ta, Ngài đã xuống phước cho chúng ta trong Đấng Christ đủ mọi thứ phước thiêng liêng ở các nơi trên trời.' (BTT). ĐÁP ÁN ĐÚNG: Câu Kinh Thánh xác định rõ đây là 'phước thiêng liêng' (phúc lành thuộc linh) và vị trí là 'ở các nơi trên trời'. DISTRACTOR SAI 1 ('Mọi phúc lành thuộc linh ở các nơi dưới đất'): Sai chi tiết vị trí (Kinh Thánh nói 'trên trời', không phải 'dưới đất'). Đây là distractor gần đúng vì chỉ sai một chi tiết then chốt. DISTRACTOR SAI 2 ('Mọi phúc lành vật chất ở các nơi trên trời'): Sai phạm vi loại phúc lành (Kinh Thánh nói rõ là 'thiêng liêng' - thuộc linh, không phải vật chất). DISTRACTOR SAI 3 ('Mọi phúc lành thuộc linh và vật chất ở các nơi trên trời'): Thể hiện hiểu lầm phổ biến là mở rộng phạm vi phúc lành bao gồm cả vật chất, trong khi câu Kinh Thánh chỉ giới hạn ở 'phước thiêng liêng'.",
     "language": "vi",
     "options": [
-      "Phúc lành tài chính",
-      "Phúc lành sức khỏe",
-      "Phúc lành vật chất",
+      "Mọi phúc lành thuộc linh ở các nơi dưới đất",
+      "Mọi phúc lành vật chất ở các nơi trên trời",
+      "Mọi phúc lành thuộc linh và vật chất ở các nơi trên trời",
       "Mọi phúc lành thuộc linh ở các nơi trên trời"
     ],
     "tags": [
@@ -146,13 +146,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Được cứu không bởi việc làm nhưng ĐƯỢC CỨU ĐỂ làm việc lành.",
+    "explanation": "Ê-phê-sô 2:10 viết: 'Vì chúng ta là việc làm của Ngài, đã được dựng nên trong Đức Chúa Jêsus Christ để làm những việc lành mà Đức Chúa Trời đã sắm sẵn trước cho chúng ta làm theo.' Do đó, đáp án đúng là 'Việc lành mà Chúa đã chuẩn bị trước', nhấn mạnh rằng việc lành đã được Đức Chúa Trời định sẵn.\n\nDistractor 1 ('Việc lành mà chúng ta tự chuẩn bị trước') là gần đúng nhưng sai chi tiết then chốt: Kinh Thánh dạy việc lành là do Chúa chuẩn bị, không phải do chúng ta tự chuẩn bị.\nDistractor 2 ('Việc lành mà các thiên sứ đã chuẩn bị trước') dựa trên nhầm lẫn với các phân đoạn khác nói về thiên sứ (như Hê-bơ-rơ 1:14), không phải ý chính của câu này.\nDistractor 3 ('Sự đoán xét mà Chúa đã chuẩn bị trước') mở rộng sai phạm vi chủ đề; câu này nói về việc lành, còn sự đoán xét thường được đề cập trong các ngữ cảnh khác (như Ma-thi-ơ 25:34).",
     "language": "vi",
     "options": [
       "Việc lành mà Chúa đã chuẩn bị trước",
-      "Được cứu",
-      "Được nghỉ ngơi",
-      "Giữ luật pháp"
+      "Việc lành mà chúng ta tự chuẩn bị trước",
+      "Việc lành mà các thiên sứ đã chuẩn bị trước",
+      "Sự đoán xét mà Chúa đã chuẩn bị trước"
     ],
     "tags": [
       "Tân Ước",
@@ -201,13 +201,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Có thể giận nhưng đừng để cơn giận dẫn đến tội lỗi. Giải quyết trước khi hết ngày.",
+    "explanation": "Đáp án đúng là 'Phạm tội' (Ê-phê-sô 4:26). Câu Kinh Thánh dạy rằng sự giận dữ tự nó không phải là tội, nhưng nếu không kiểm soát, nó có thể dẫn đến tội lỗi. Distractor 'Tự kiềm chế' là một lời khuyên đạo đức chung, phản ánh hiểu lầm phổ biến rằng câu này chỉ về việc kìm nén cơn giận, trong khi trọng tâm Kinh Thánh là cảnh báo không để cơn giận dẫn đến tội. Distractor 'Làm hòa' là một nguyên tắc đúng (Ma-thi-ơ 5:24) nhưng không phải là từ cụ thể được sử dụng để hoàn thành câu trích dẫn này, nên lạc trọng tâm câu hỏi. Distractor 'Tha thứ' là một mệnh lệnh quan trọng khác trong Kinh Thánh (Cô-lô-se 3:13) nhưng sai chi tiết, vì đây không phải là từ được dùng để điền vào chỗ trống trong câu Ê-phê-sô 4:26.",
     "language": "vi",
     "options": [
-      "Nghĩ",
+      "Tự kiềm chế",
       "Phạm tội",
-      "Nói",
-      "Làm"
+      "Làm hòa",
+      "Tha thứ"
     ],
     "tags": [
       "Tân Ước",
@@ -228,13 +228,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Tha thứ cho người khác vì Chúa đã tha thứ cho chúng ta. Tha thứ là bản sao của ân điển.",
+    "explanation": "Ê-phê-sô 4:32 chép: 'Hãy ở với nhau cách nhân từ, đầy dẫy lòng thương xót, tha thứ nhau như Đức Chúa Trời đã tha thứ cho anh em trong Đấng Christ vậy.' (BTT). Đáp án đúng trích dẫn trung thành ý chính của câu Kinh Thánh: 'nhân từ, đánh đải thương xót, tha thứ như Chúa đã tha thứ anh em'.\n\nCác đáp án sai:\n1. 'Nhân từ, nghiêm khắc, tha thứ...': Sai chi tiết. Câu Kinh Thánh dạy 'đầy dẫy lòng thương xót' (BTT) hay 'đánh đải thương xót', chứ không phải 'nghiêm khắc'. Đây là distractor gần đúng vì chỉ sai một chi tiết then chốt.\n2. 'Nhân từ, đánh đập thương xót, tha thứ như nhau như anh em đã tha thứ': Nhầm passage gần. Ý 'tha thứ như nhau' có thể liên tưởng đến Ma-thi-ơ 6:14 về việc tha thứ cho người, và 'như anh em đã tha thứ' đảo ngược thứ tự so với câu Kinh Thánh (Chúa tha thứ trước).\n3. 'Chỉ tha thứ cho nhau, không cần giữ lòng nhân từ': Sai phạm vi. Câu này thu hẹp mệnh lệnh chỉ còn 'tha thứ', trong khi câu Kinh Thánh dạy đầy đủ cả ba phương diện: thái độ nhân từ, lòng thương xót và hành động tha thứ.",
     "language": "vi",
     "options": [
-      "Lạnh đạm",
-      "Công bình",
+      "Nhân từ, nghiêm khắc, tha thứ như Chúa đã tha thứ anh em",
+      "Nhân từ, đánh đập thương xót, tha thứ như nhau như anh em đã tha thứ",
       "Nhân từ, đánh đải thương xót, tha thứ như Chúa đã tha thứ anh em",
-      "Nghiêm khắc"
+      "Chỉ tha thứ cho nhau, không cần giữ lòng nhân từ"
     ],
     "tags": [
       "Tân Ước",
@@ -255,13 +255,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Tình yêu hôn nhân theo khuôn mẫu Chúa hy sinh vì Hội thánh. Yêu là cho đi không phải nhận.",
+    "explanation": "Ê-phê-sô 5:25 chép rõ: \"Hỡi người làm chồng, hãy yêu vợ mình, như Đấng Christ đã yêu Hội thánh, phó chính mình Ngài vì Hội thánh.\" Vì vậy, đáp án đúng dựa trực tiếp vào từ ngữ 'phó mình vì Hội thánh' trong Kinh Thánh. Distractor thứ nhất ('sửa dạy') tuy đúng ý về sự quan tâm nhưng sai chi tiết then chốt (hành động 'phó mình' bị thay thế). Distractor thứ hai dùng một mối quan hệ trong Cựu Ước (Đa-vít và Ba-thê-sê-ba) ở một phân đoạn gần (2 Sa-mu-ên 11) nhưng không liên quan đến giáo huấn này. Distractor thứ ba phản ánh một hiểu lầm phổ biến, đánh đồng tình yêu của 'người đời' (chung chung) với tiêu chuẩn siêu nhiên được dạy trong câu Kinh Thánh này.",
     "language": "vi",
     "options": [
       "Như Chúa Giê-su yêu Hội thánh và phối mình vì Hội thánh",
-      "Như yêu cha mẹ",
-      "Như yêu con cái",
-      "Như yêu bản thân"
+      "Như Chúa Giê-su yêu Hội thánh và sửa dạy vì Hội thánh",
+      "Như Đa-vít yêu Ba-thê-sê-ba và giữ gìn vì nàng",
+      "Như người đời yêu vợ và cùng chia sẻ mọi khó khăn"
     ],
     "tags": [
       "Tân Ước",
@@ -309,14 +309,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "6 món khí giới thuộc linh bảo vệ và tấn công. Trong đó, gươm Thánh Linh (tức Lời Chúa) là vũ khí tấn công duy nhất.",
+    "explanation": "Ê-phê-sô 6:14-17 liệt kê rõ ràng toàn bộ binh giáp của Đức Chúa Trời: \"Vậy, hãy đứng vững, thắt lưng bằng lẽ thật, mặc áo giáp công bình, đi giày sự sẵn sàng của Tin Lành bình an; trên hết, hãy cầm khiên đức tin, nhờ đó anh em có thể dập tắt những tên lửa của kẻ ác. Hãy đội mão sự cứu rỗi, cầm gươm của Đức Thánh Linh, là Lời Đức Chúa Trời.\" (BTT). Đáp án đúng sát với danh sách gốc: Đai lưng lẽ thật, áo giáp công bình, giày Phúc Âm, khiên đức tin, mũ cứu rỗi, gươm Thánh Linh.\n\n- Distractor 1 (gần đúng) sai ở chi tiết 'mão chiến sắt' (thay vì 'mũ cứu rỗi'). Mão chiến sắt ('mũ trụ') được nhắc đến trong Ê-sai 59:17 và 1 Tê-sa-lô-ni-ca 5:8 như một hình ảnh liên quan, nhưng Ê-phê-sô 6:17 chỉ định rõ là 'mão sự cứu rỗi'.\n- Distractor 2 sai vì mở rộng phạm vi sang các khái niệm Cơ Đốc khác (như lễ vật hy sinh, phục vụ) không thuộc danh sách binh giáp trong đoạn 6:14-17.\n- Distractor 3 sai do dựa trên một hiểu lầm phổ biến là trộn lẫn hay thay thế các thành phần chính xác (như 'thư giáp tình yêu', 'đai lưng hy vọng') bằng những thuật ngữ có vẻ tương tự nhưng không có trong văn bản này.",
     "language": "vi",
     "verseEnd": 17,
     "options": [
-      "Chỉ có khiên",
+      "Đai lưng lẽ thật, áo giáp công bình, giày Phúc Âm, khiên đức tin, mão chiến sắt, gươm Thánh Linh",
       "Đai lưng lẽ thật, áo giáp công bình, giày Phúc Âm, khiên đức tin, mũ cứu rỗi, gươm Thánh Linh",
-      "Chỉ có mũ",
-      "Chỉ có gươm"
+      "Lễ vật hy sinh, lời cầu nguyện, hát thánh ca, phục vụ, tiên tri, lòng khiêm nhường",
+      "Thư giáp của tình yêu, đai lưng hy vọng, mũ sự cứu rỗi, khiên đức tin, gươm lẽ thật"
     ],
     "tags": [
       "Tân Ước",
@@ -337,13 +337,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Cầu nguyện là vũ khí thuộc linh cần sử dụng liên tục, không chỉ lúc gặp nạn.",
+    "explanation": "Ê-phê-sô 6:18 chép: 'Hãy nhờ Đức Thánh Linh, thường thường làm đủ mọi thứ cầu nguyện và nài xin. Hãy dùng sự bền đỗ trọn vẹn mà tỉnh thức về điều đó, và cầu nguyện cho hết thảy các thánh đồ.' Đáp án đúng nêu bật yếu tố then chốt là 'bởi Đức Thánh Linh', đúng với câu Kinh Thánh. Distractor 1 sai vì thay 'bởi Đức Thánh Linh' bằng 'bởi lòng thành tín', một chi tiết không có trong câu này. Distractor 2 sai vì thu hẹp phạm vi cầu nguyện chỉ 'trong lúc gặp khó khăn', trong khi câu Kinh Thánh khuyên 'mọi lúc'. Distractor 3 sai vì phản ánh một hiểu lầm phổ biến rằng cầu nguyện chỉ trong 'hoàn cảnh thuận tiện', trái ngược với tinh thần 'mọi lúc' và sự tỉnh thức được nhấn mạnh.",
     "language": "vi",
     "options": [
-      "Chỉ ở nhà thờ",
+      "Mọi lúc với mọi thứ cầu nguyện và nài xin bởi lòng thành tín",
       "Mọi lúc với mọi thứ cầu nguyện và nài xin bởi Đức Thánh Linh",
-      "Chỉ buổi sáng",
-      "Chỉ khi gặp khó"
+      "Chỉ trong lúc gặp khó khăn với sự kiên nhẫn và nài xin",
+      "Với mọi lời cầu nguyện và nài xin trong mọi hoàn cảnh thuận tiện"
     ],
     "tags": [
       "Tân Ước",
@@ -364,14 +364,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Đầy dẫy Thánh Linh thay vì say rượu. Thánh Linh mang lại sự vui mừng, hát xướng và tạ ơn.",
+    "explanation": "Ê-phê-sô 5:18 chép: '... nhưng phải đầy dẫy Đức Thánh Linh'. Do đó, 'Đức Thánh Linh' là đáp án đúng.\n\nCác đáp án sai: 1) 'sự khôn ngoan' là một ân tứ của Đức Thánh Linh (Ê-phê-sô 5:15-17 nói về sự khôn ngoan ngay trước đó) nhưng không phải là đối tượng để 'đầy dẫy' trong câu này. 2) 'sự tương giao với anh em' mở rộng phạm vi ý nghĩa từ mệnh lệnh cụ thể sang một ứng dụng chung, trong khi câu hỏi chỉ hỏi về nội dung được nói đến trong câu Kinh Thánh. 3) 'lời hát thánh ca' là kết quả của việc đầy dẫy Đức Thánh Linh (câu 19) chứ không phải là chính điều phải đầy dẫy.",
     "language": "vi",
     "verseEnd": 19,
     "options": [
-      "Vui vẻ",
+      "sự khôn ngoan",
       "Đức Thánh Linh",
-      "Tri thức",
-      "Lời Chúa"
+      "sự tương giao với anh em",
+      "lời hát thánh ca"
     ],
     "tags": [
       "Tân Ước",
@@ -393,13 +393,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ê-phê-sô 1:13-14 — 'Anh em đã được đóng ấn bằng Đức Thánh Linh là Đấng Chúa đã hứa, là sự bảo đảm cho cơ nghiệp của chúng ta.'",
+    "explanation": "Ê-phê-sô 1:13-14 dạy rằng: \"Ấy lại cũng trong Ngài mà anh em... đã được đóng ấn bằng Đức Thánh Linh của lời hứa.\" (c.13). Vì vậy, đáp án đúng là 'Bằng Đức Thánh Linh hứa', nhấn mạnh Đức Thánh Linh là ấn chứng và của cầm cho sự cứu chuộc của chúng ta (c.14). Distractor 1 ('Bằng báp-tem sự ăn năn') là phương án gần đúng nhưng sai chi tiết then chốt; trong Công vụ 19:1-5 có liên hệ giữa việc nghe Tin Lành, tin và chịu báp-tem, nhưng Ê-phê-sô 1:13-14 trực tiếp nói đến việc đóng ấn bởi Đức Thánh Linh. Distractor 2 ('Bằng huyết của Chúa Giê-su') là sai phạm vi; mặc dù huyết Chúa có liên quan đến sự cứu chuộc (ví dụ Ê-phê-sô 1:7), nhưng đoạn này (c.13-14) cụ thể nói về Đức Thánh Linh. Distractor 3 ('Bằng sự sống lại của Đấng Christ') là một hiểu lầm phổ biến; sự sống lại là nền tảng của đức tin nhưng không phải là 'ấn' được nhắc đến trong câu hỏi và câu Kinh Thánh này.",
     "language": "vi",
     "options": [
-      "Bằng phép báp-têm",
-      "Bằng dấu cắt bì",
+      "Bằng báp-tem sự ăn năn",
+      "Bằng huyết của Chúa Giê-su",
       "Bằng Đức Thánh Linh hứa",
-      "Bằng việc làm tốt"
+      "Bằng sự sống lại của Đấng Christ"
     ],
     "tags": [
       "Tân Ước",
@@ -420,13 +420,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ê-phê-sô 2:8-9 — 'Vì nhờ ân điển, bởi đức tin, mà anh em được cứu, điều đó không phải đến từ anh em, bèn là sự ban cho của Đức Chúa Trời. Ấy chẳng phải bởi việc làm.'",
+    "explanation": "Ê-phê-sô 2:8-9 viết: 'Vả, ấy là nhờ ân điển, bởi đức tin, mà anh em được cứu, điều đó không phải đến từ anh em, bèn là sự ban cho của Đức Chúa Trời. Ấy chẳng phải bởi việc làm đâu, hầu cho không ai khoe mình.' Đáp án đúng vì trích dẫn chính xác nội dung: sự cứu rỗi đến bởi ân điển và tiếp nhận qua đức tin, loại trừ việc làm. Distractor 1 (gần đúng) sai vì thêm 'và bởi việc làm', trái với câu 9 khẳng định 'chẳng phải bởi việc làm'. Distractor 2 sai vì đề cập 'sự công bình và việc làm trọn luật pháp', đây là một hiểu lầm phổ biến (xem Rô-ma 3:20) nhưng không phải giáo lý trong đoạn này. Distractor 3 sai vì 'sự khôn ngoan và hiểu biết' có thể liên quan đến các chủ đề khác trong Ê-phê-sô (như 1:17) nhưng không trả lời đúng câu hỏi về phương cách cứu rỗi trong 2:8-9.",
     "language": "vi",
     "options": [
-      "Bởi việc làm",
+      "Bởi ân điển, qua đức tin — và bởi việc làm",
       "Bởi ân điển, qua đức tin — chẳng phải bởi việc làm",
-      "Bởi xuất thân",
-      "Bởi sự ăn năn liên tục"
+      "Bởi sự công bình và việc làm trọn luật pháp",
+      "Bởi sự khôn ngoan và hiểu biết lẽ thật"
     ],
     "tags": [
       "Tân Ước",
@@ -474,13 +474,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ê-phê-sô 4:11 — 'Ấy chính Ngài đã cho người này làm sứ đồ, kẻ kia làm tiên tri, người khác làm thầy giảng Tin Lành, kẻ khác nữa làm mục sư và giáo sư.'",
+    "explanation": "Ê-phê-sô 4:11 chép: 'Ấy chính Ngài đã cho người nầy làm sứ đồ, kẻ kia làm tiên tri, người khác làm thầy giảng Tin Lành, kẻ khác nữa làm mục sư và giáo sư.' Vì vậy, đáp án đúng chỉ rõ năm chức vụ cụ thể này được Đấng Christ ban cho. Distractor đầu tiên thay 'giáo sư' bằng 'người cai quản', một danh từ xuất hiện trong các bối cảnh khác (1 Ti-mô-thê 3) chứ không phải trong câu được hỏi. Distractor thứ hai dùng cụm 'nhà truyền giáo', một khái niệm liên quan nhưng không phải là từ nguyên văn, và thay thế 'giáo sư' một cách không chính xác. Distractor thứ ba liệt kê các ân tứ thuộc linh khác (như 1 Cô-rinh-tô 12), lạc đề hoàn toàn so với đoạn văn về các chức vụ trong Ê-phê-sô 4:11.",
     "language": "vi",
     "options": [
       "Sứ đồ, tiên tri, thầy giảng Tin Lành, mục sư và giáo sư",
-      "Vua, thầy tế lễ, tiên tri",
-      "Quan xét, vua, người chăn chiên",
-      "Trưởng lão, chấp sự, mục sư"
+      "Sứ đồ, tiên tri, thầy giảng Tin Lành, mục sư và người cai quản",
+      "Sứ đồ, tiên tri, thầy giảng, mục sư và nhà truyền giáo",
+      "Những người nhận các ân tứ để chữa bệnh, làm phép lạ và nói tiếng lạ"
     ],
     "tags": [
       "Tân Ước",
@@ -500,13 +500,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ê-phê-sô 5:25 — 'Hỡi người làm chồng, hãy yêu vợ mình, như Đấng Christ đã yêu Hội thánh, phó chính mình vì Hội thánh.'",
+    "explanation": "Ê-phê-sô 5:25 chép: 'Hỡi người làm chồng, hãy yêu vợ mình, như Đấng Christ đã yêu Hội thánh, phó chính mình vì Hội thánh.' (BTT).\n\nĐÁP ÁN ĐÚNG: 'Như Đấng Christ đã yêu Hội thánh và phó chính mình' là chính xác, vì Kinh Thánh dùng tình yêu hy sinh của Đấng Christ dành cho Hội thánh làm khuôn mẫu cho người chồng.\n\nDISTRACTOR SAI:\n1. 'Như Đấng Christ đã yêu chính mình và phó chính mình' - Sai chi tiết: Dù Ê-phê-sô 5:28 nói về việc yêu vợ như yêu chính thân thể mình, nhưng câu 25 cụ thể lấy mẫu mực là tình yêu Đấng Christ dành cho Hội thánh, không phải cho chính mình.\n2. 'Như mọi người nam đã yêu vợ mình' - Sai phạm vi: Mệnh lệnh này dựa trên tiêu chuẩn của Đấng Christ, không phải trên tiêu chuẩn tình cảm tự nhiên hay tập quán của con người.\n3. 'Như lời Chúa dạy về tình yêu và sự phục vụ' - Đúng văn bản nhưng lạc câu hỏi: Mô tả chung chung về tình yêu trong Kinh Thánh, nhưng không trả lời cụ thể khuôn mẫu được nêu trong câu 25 là 'Đấng Christ... Hội thánh'.",
     "language": "vi",
     "options": [
-      "Như chính cha của mình",
-      "Như anh em ruột thịt",
+      "Như Đấng Christ đã yêu chính mình và phó chính mình",
+      "Như mọi người nam đã yêu vợ mình",
       "Như Đấng Christ đã yêu Hội thánh và phó chính mình",
-      "Như bạn bè thân thiết"
+      "Như lời Chúa dạy về tình yêu và sự phục vụ"
     ],
     "tags": [
       "Tân Ước",
@@ -552,13 +552,13 @@
       2
     ],
     "content": "Theo Ê-phê-sô 1:7, chúng ta được cứu chuộc qua điều gì?",
-    "explanation": "Ê-phê-sô 1:7 — 'Ấy là trong Đấng Christ, chúng ta được cứu chuộc bởi huyết Ngài, được tha tội, theo sự dư dật của ân điển Ngài.' 'Cứu chuộc' (apolytrōsis) = chuộc lại bằng giá trả; HUYẾT = giá. 3 yếu tố: trong Christ + bởi huyết + theo ân điển.",
+    "explanation": "Ê-phê-sô 1:7 trực tiếp dạy: 'Ấy là trong Ngài, chúng ta được cứu chuộc bởi huyết Ngài, được tha tội, theo sự dư dật của ân điển Ngài.' Do đó, đáp án đúng chỉ rõ cơ sở (huyết Christ) và ân huệ (sự tha tội) theo đúng văn bản.\n\nDistractor 1 ('phục hòa') là phương án gần đúng nhưng sai chi tiết then chốt, Ê-phê-sô 1:7 đề cập 'sự tha tội', trong khi 'sự phục hòa' là một khái niệm quan trọng nhưng được nhấn mạnh ở những phân đoạn khác (như Rô-ma 5:10-11), không phải là từ ngữ chính xác tại đây.\n\nDistractor 2 ('sự vâng phục của chúng ta') dựa trên một hiểu lầm phổ biến rằng con người có thể đóng góp vào sự cứu chuộc bằng công đức riêng. Điều này trái ngược với nền tảng của ân điển được dạy trong câu này và toàn bộ Kinh Thánh.\n\nDistractor 3 ('theo lẽ thật đời đời') SAI chi tiết đặc trưng. Mặc dù đúng về huyết Đấng Christ và sự tha tội, nhưng phó từ 'theo sự dư dật của ân điển' (đặc trưng của Ê-phê-sô 1:7) đã bị thay thế bằng một cụm từ khác ('theo lẽ thật đời đời') vốn không xuất hiện trong ngữ cảnh này.",
     "language": "vi",
     "options": [
-      "Qua các công việc lành",
-      "Qua sự giữ luật pháp",
+      "Qua huyết Christ — sự phục hòa theo sự dư dật của ân điển",
+      "Qua sự vâng phục của chúng ta — sự tha tội theo sự dư dật của ân điển",
       "Qua huyết Christ — sự tha tội theo sự dư dật của ân điển",
-      "Qua sự ăn năn lâu ngày"
+      "Qua huyết Đấng Christ — sự tha tội theo lẽ thật đời đời"
     ],
     "tags": [
       "Tân Ước",
@@ -578,13 +578,13 @@
       1
     ],
     "content": "Theo Ê-phê-sô 2:13, các tín hữu dân ngoại trước kia là xa cách, nay đã được làm gì?",
-    "explanation": "Ê-phê-sô 2:13 — 'Nhưng trong Đức Chúa Jêsus Christ, anh em là kẻ ngày trước cách xa, hiện nay đã nhờ huyết Đấng Christ mà được gần rồi.' Đối lập với 2:12 'không có Đấng Christ, ngoại bang về cộng đồng Y-sơ-ra-ên'. HUYẾT = chìa khóa hòa giải dân ngoại với Đức Chúa Trời và với dân Do Thái.",
+    "explanation": "Ê-phê-sô 2:13 viết: 'Nhưng bây giờ, trong Đức Chúa Jêsus Christ, anh em là kẻ ngày trước cách xa, đã được nhờ huyết Đấng Christ mà lại gần.' Đáp án đúng vì câu Kinh Thánh chỉ rõ việc được đem lại gần là nhờ 'huyết Đấng Christ'.\n\nCác đáp án sai:\n1. 'bởi sự dạy dỗ của các sứ đồ' sai vì câu này không đề cập đến sự dạy dỗ của các sứ đồ như phương tiện đem lại gần (lỗi sai chi tiết).\n2. 'bởi phép lạ của Đấng Christ' là distractor gần đúng nhưng sai chi tiết then chốt: câu Kinh Thánh nói đến 'huyết' chứ không phải 'phép lạ' chung chung (lỗi nhầm passage gần, vì các đoạn khác có nhắc đến phép lạ).\n3. 'bởi luật pháp của Môi-se' sai vì ngữ cảnh (Ê-phê-sô 2:11-18) nhấn mạnh chính Đấng Christ, chứ không phải luật pháp cũ, đã phá đổ sự ngăn cách (lỗi hiểu lầm phổ biến về vai trò của luật pháp).",
     "language": "vi",
     "options": [
-      "Đã trở thành người Do Thái",
+      "Đã được đem lại gần bởi sự dạy dỗ của các sứ đồ",
       "Đã được đem lại gần bởi huyết Đấng Christ",
-      "Đã giữ luật pháp Môi-se",
-      "Đã chịu cắt bì"
+      "Đã được đem lại gần bởi phép lạ của Đấng Christ",
+      "Đã được đem lại gần bởi luật pháp của Môi-se"
     ],
     "tags": [
       "Tân Ước",
@@ -656,13 +656,13 @@
       2
     ],
     "content": "Theo Ê-phê-sô 5:1, các tín hữu phải bắt chước ai như con cái yêu dấu?",
-    "explanation": "Ê-phê-sô 5:1 — 'Vậy anh em hãy trở nên kẻ bắt chước Đức Chúa Trời như con cái rất yêu dấu của Ngài.' Câu kế tiếp 5:2 — 'hãy bước đi trong sự yêu thương, như Đấng Christ đã yêu thương anh em.' Bắt chước Đức Chúa Trời QUA Đấng Christ. Câu duy nhất trong Tân Ước nói 'mimic God' rõ ràng.",
+    "explanation": "Câu hỏi trích dẫn Ê-phê-sô 5:1 (BTT): 'Vậy anh em hãy trở nên kẻ bắt chước Đức Chúa Trời, như con cái yêu dấu.' Đây là mệnh lệnh trực tiếp, vì vậy đáp án đúng là phải bắt chước Đức Chúa Trời. Các đáp án sai: (1) 'Phải bắt chước Đức Thánh Linh' là gần đúng nhưng sai chi tiết then chốt. Đoạn Kinh Thánh này nói về việc bắt chước Đức Chúa Trời, không đề cập riêng lẻ Đức Thánh Linh. (2) 'Phải bắt chước sứ đồ Phao-lô' là lỗi nhầm passage gần. Mặc dù các thư tín khác của Phao-lô có khuyên bắt chước ông (như 1 Cô-rinh-tô 11:1), nhưng Ê-phê-sô 5:1 không nói điều này. (3) 'Phải bắt chước thiên sứ trên trời' là một hiểu lầm phổ biến. Mặc dù Kinh Thánh nói về các thiên sứ, nhưng mệnh lệnh cụ thể ở đây là bắt chước Đức Chúa Trời, không phải thiên sứ.",
     "language": "vi",
     "options": [
-      "Phải bắt chước Phao-lô",
-      "Phải bắt chước các tổ phụ",
+      "Phải bắt chước Đức Thánh Linh",
+      "Phải bắt chước sứ đồ Phao-lô",
       "Phải bắt chước Đức Chúa Trời",
-      "Phải bắt chước các thiên sứ"
+      "Phải bắt chước thiên sứ trên trời"
     ],
     "tags": [
       "Tân Ước",
@@ -708,12 +708,12 @@
       3
     ],
     "content": "Theo Ê-phê-sô 1:4, Đức Chúa Trời đã chọn chúng ta trong Đấng Christ trước khi nào, để chúng ta thành ra sao?",
-    "explanation": "Ê-phê-sô 1:4 — 'Trước khi sáng thế, Ngài đã chọn chúng ta trong Đấng Christ, đặng làm nên thánh không chỗ trách được trước mặt Đức Chúa Trời.' Sự chọn lựa có MỤC ĐÍCH = nên THÁNH (hagios) + KHÔNG CHỖ TRÁCH (amōmos). Ân điển không phải để buông trôi sống tùy ý.",
+    "explanation": "Ê-phê-sô 1:4 chép: 'Vì Ngài đã chọn chúng ta trong Ngài trước khi sáng thế, để chúng ta được nên thánh không chỗ trách được trước mặt Ngài.' Đáp án đúng vì trọn vẹn khớp với Kinh Thánh về *thời điểm* ('trước khi sáng thế') và *mục đích* ('để được nên thánh và không chỗ trách được trước mặt Ngài').\n\nDistractor thứ nhất sai vì nó đưa thêm chi tiết năm '4004', một niên đại cụ thể không hề được Kinh Thánh đề cập trong câu này. Distractor thứ hai sai vì thay đổi thời điểm thành 'trước khi phạm tội', đây là một khái niệm tồn tại trong giáo lý (Rô-ma 5:12-14) nhưng không nằm trong phạm vi câu Kinh Thánh này. Distractor thứ ba sai vì nó diễn giải một sự thật phổ biến (mục đích cứu rỗi) nhưng lạc câu hỏi; câu hỏi chỉ hỏi về điều Ê-phê-sô 1:4 *nói trực tiếp về mục đích của sự lựa chọn*, chứ không hỏi về kết quả chung cuộc của đức tin.",
     "language": "vi",
     "options": [
-      "Trước khi sinh ra — để giàu có",
-      "Trước khi báp-têm — để được chữa lành",
-      "Trước khi nghe Tin Lành — để được tha tội",
+      "Trước khi sáng thế năm 4004 — để được nên thánh và không chỗ trách được trước mặt Ngài",
+      "Trước khi phạm tội — để được nên thánh và không chỗ trách được trước mặt Chúa",
+      "Khi chúng ta tin nhận Đấng Christ — để được cứu rỗi và trở nên con cái Ngài",
       "Trước khi sáng thế — để được nên thánh và không chỗ trách được trước mặt Ngài"
     ],
     "tags": [
@@ -734,13 +734,13 @@
       2
     ],
     "content": "Theo Ê-phê-sô 1:5, Đức Chúa Trời đã định trước cho chúng ta điều gì qua Đức Chúa Jêsus Christ?",
-    "explanation": "Ê-phê-sô 1:5 — 'Bởi sự thương yêu của Ngài đã định trước cho chúng ta được trở nên con nuôi của Ngài bởi Đức Chúa Jêsus Christ, theo ý tốt của Ngài.' 'Con nuôi' (huiothesia) = thuật ngữ pháp lý Rô-ma — đứa trẻ nhận làm con thừa kế. Trong Cựu Ước, Y-sơ-ra-ên là 'con đầu lòng' (Xuất 4:22); trong Tân Ước, mọi tín hữu là CON.",
+    "explanation": "Ê-phê-sô 1:5 chép: 'Ngài đã định trước cho chúng ta được trở nên con nuôi của Ngài qua Đức Chúa Jêsus Christ, theo ý tốt của Ngài.' (BTT). Do đó, đáp án đúng là 'Sự được làm con nuôi của Ngài (sự nhận làm con) — theo ý tốt của Ngài', vì câu này trực tiếp trích dẫn và tóm tắt ý chính của câu Kinh Thánh.\n\nCác đáp án sai:\n1. 'Sự cứu chuộc qua huyết Ngài — theo ý tốt của Ngài': Đây là ý gần đúng nhưng sai chi tiết then chốt. Sự cứu chuộc qua huyết Đấng Christ là đề tài quan trọng (xem Ê-phê-sô 1:7), nhưng không phải điều được nói đến TRONG câu 5. Câu 5 đặc biệt nhấn mạnh 'sự được làm con nuôi'.\n2. 'Sự được làm con nuôi của Ngài — theo sự chọn lựa của chúng ta': Sai chi tiết về nguyên nhân. Câu Kinh Thánh xác định rõ điều này là 'theo ý tốt của Ngài' (tức ý muốn của Đức Chúa Trời), không phải do sự chọn lựa hay công đức của con người.\n3. 'Sự tha thứ mọi tội lỗi chúng ta — theo ý tốt của Ngài': Đây là một chân lý Kinh Thánh (xem Ê-phê-sô 1:7) và cũng là theo ý tốt Ngài, nhưng nó không trả lời đúng câu hỏi về nội dung cụ thể của câu 5. Đây là thông tin đúng nhưng lạc câu hỏi.",
     "language": "vi",
     "options": [
-      "Sự giàu có vật chất",
-      "Sự sống lâu",
+      "Sự cứu chuộc qua huyết Ngài — theo ý tốt của Ngài",
+      "Sự được làm con nuôi của Ngài — theo sự chọn lựa của chúng ta",
       "Sự được làm con nuôi của Ngài (sự nhận làm con) — theo ý tốt của Ngài",
-      "Sự bình an thế gian"
+      "Sự tha thứ mọi tội lỗi chúng ta — theo ý tốt của Ngài"
     ],
     "tags": [
       "Tân Ước",
@@ -760,12 +760,12 @@
       3
     ],
     "content": "Theo Ê-phê-sô 1:10, mầu nhiệm ý chỉ Đức Chúa Trời là gì sẽ xảy ra trong kỳ chứa hết mọi sự?",
-    "explanation": "Ê-phê-sô 1:10 — 'Đến kỳ chứa hết mọi sự, Ngài sẽ thâu tóm cả mọi loài ở trên trời và dưới đất lại trong Đấng Christ.' 'Qui tụ' (anakephalaiōsasthai) — gom mọi sự dưới MỘT đầu = Christ. Mục tiêu cuối cùng của lịch sử cứu chuộc: HOÀN TOÀN trong Christ. Khải Huyền 21-22 bày tỏ thực tế.",
+    "explanation": "Ê-phê-sô 1:10 chép: '... trong sự quản trị trọn vẹn của kỳ hạn, để qui tụ muôn vật lại trong Đấng Christ, cả những vật trên trời và những vật dưới đất.' Do đó, đáp án đúng chỉ rõ mục đích là QUI TỤ MUÔN VẬT lại trong ĐẤNG CHRIST, bao gồm cả trên trời lẫn dưới đất.\n\n- Distractor 1 (gần đúng, sai chi tiết): Sai vì thay 'Đấng Christ' bằng 'Đức Chúa Trời', trong khi bản văn xác định rõ đối tượng là 'trong Đấng Christ'.\n- Distractor 2 (sai phạm vi): Sai vì giới hạn phạm vi 'chỉ những kẻ được chọn', trong khi bản văn nói đến 'muôn vật' (mọi sự) cả trên trời và dưới đất.\n- Distractor 3 (đúng văn bản nhưng lạc câu hỏi): Sai vì dùng từ 'HOÀN TẤT' thay vì 'QUI TỤ'. Dù 'hoàn tất' là một chủ đề liên quan, nhưng câu hỏi trực tiếp hỏi về 'mầu nhiệm ý chỉ' được mô tả trong câu này là sự 'qui tụ' cụ thể.",
     "language": "vi",
     "options": [
-      "Đem các tín hữu lên trời",
-      "Tiêu diệt thế gian",
-      "Phục hồi đất Y-sơ-ra-ên",
+      "QUI TỤ MUÔN VẬT lại trong Đức Chúa Trời — cả trên trời và dưới đất",
+      "QUI TỤ MUÔN VẬT lại trong Đấng Christ — chỉ những kẻ được chọn mà thôi",
+      "HOÀN TẤT mọi sự trong Đấng Christ — cả trên trời và dưới đất",
       "QUI TỤ MUÔN VẬT lại trong Đấng Christ — cả trên trời và dưới đất"
     ],
     "tags": [
@@ -786,13 +786,13 @@
       0
     ],
     "content": "Theo Ê-phê-sô 1:18, Phao-lô cầu xin con mắt nào của tín hữu được mở ra?",
-    "explanation": "Ê-phê-sô 1:18 — 'Lại soi sáng con mắt của lòng anh em, hầu cho biết điều trông cậy về sự kêu gọi của Ngài là thể nào, sự giàu có của cơ nghiệp vinh hiển Ngài cho các thánh đồ là làm sao.' Phao-lô cầu xin tín hữu KHÔNG học thêm — họ đã có Christ — mà BIẾT (epignōsis) sâu hơn về điều mình ĐÃ CÓ.",
+    "explanation": "Ê-phê-sô 1:18 chép: 'Cầu xin Ngài soi sáng con mắt của lòng anh em, hầu cho biết ... hi vọng mà Ngài đã gọi anh em là thể nào, sự giàu có của cơ nghiệp vinh hiển Ngài cho các thánh đồ là thể nào, và quyền năng vô cùng lớn của Ngài đối với chúng ta có đức tin, là thể nào.' (BTT). Do đó, đáp án đúng là 'Con mắt của lòng' với mục đích được liệt kê đầy đủ.\n\n- Distractor 1 (gần đúng) sai vì thay cụm 'quyền năng vĩ đại' (đúng) bằng 'quyền năng của sự sống' (sai chi tiết).\n- Distractor 2 sai vì thay 'của lòng' (đúng) bằng 'của thân thể' (sai phạm vi/bộ phận).\n- Distractor 3 sai vì dùng mục đích khác ('sự khôn ngoan, sự mầu nhiệm, và ý định của Đức Chúa Trời'), mặc dù là chủ đề trong cùng phân đoạn (Ê-phê-sô 1), nhưng thuộc về câu 17 (nhầm passage gần).",
     "language": "vi",
     "options": [
       "Con mắt của lòng — để biết hi vọng kêu gọi, sản nghiệp vinh hiển, và quyền năng vĩ đại",
-      "Con mắt thuộc thể — để thấy phép lạ",
-      "Con mắt trí khôn — để giải thích Kinh Thánh",
-      "Con mắt thiêng liêng — để thấy thiên sứ"
+      "Con mắt của lòng — để biết hi vọng kêu gọi, sản nghiệp vinh hiển, và quyền năng của sự sống",
+      "Con mắt của thân thể — để biết hi vọng kêu gọi, sản nghiệp vinh hiển, và quyền năng vĩ đại",
+      "Con mắt của lòng — để biết sự khôn ngoan, sự mầu nhiệm, và ý định của Đức Chúa Trời"
     ],
     "tags": [
       "Tân Ước",
@@ -812,13 +812,13 @@
       2
     ],
     "content": "Theo Ê-phê-sô 1:19-20, quyền năng của Đức Chúa Trời ở trong các tín hữu được so với quyền năng nào?",
-    "explanation": "Ê-phê-sô 1:19-20 — 'Và biết quyền vô hạn của Ngài, đối với chúng ta có lòng tin, là lớn dường nào, y theo phép tối thượng của năng lực mình, mà Ngài đã tỏ ra trong Đấng Christ, khi khiến Đấng Christ từ kẻ chết sống lại và làm cho ngồi bên hữu mình tại các nơi trên trời.' Quyền năng PHỤC SINH ĐANG hoạt động TRONG tín hữu.",
+    "explanation": "Ê-phê-sô 1:19-20 viết: '...và sự trổi hơn của quyền phép vô hạn của Ngài đối với chúng ta có lòng tin, y theo phép tối thắng của năng lực mình, mà Ngài đã tỏ ra trong Đấng Christ, khi khiến Đấng Christ từ kẻ chết sống lại, và làm cho ngồi bên hữu mình tại các nơi trên trời...'. Đáp án đúng trực tiếp trích dẫn sự so sánh với quyền năng đã làm Christ sống lại và đặt Ngài bên hữu. Distractor 1 ('tạo dựng trời đất') là thông tin đúng Kinh Thánh nhưng thuộc các phân đoạn khác (như Sáng-thế-ký), không phải phép so sánh trong câu hỏi. Distractor 2 ('khiến Đức Chúa Jêsus chết') là gần đúng vì liên quan đến Đấng Christ, nhưng sai chi tiết then chốt: quyền năng ở đây là sự sống lại chứ không phải sự chết. Distractor 3 ('mở rộng vương quốc') tuy có thể là một biểu hiện của quyền năng Chúa, nhưng không phải là phép so sánh cụ thể được nêu trong Ê-phê-sô 1:19-20, nên lạc trọng tâm câu hỏi.",
     "language": "vi",
     "options": [
-      "Quyền năng tạo dựng vũ trụ",
-      "Quyền năng dẫn dân ra khỏi Ai-cập",
+      "Quyền năng đã tạo dựng trời đất và muôn vật trong sáu ngày",
+      "Quyền năng đã khiến Đức Chúa Jêsus chết trên cây thập tự",
       "Quyền năng đã làm Christ sống lại từ kẻ chết và đặt Ngài bên hữu",
-      "Quyền năng phá đổ thành Giê-ri-cô"
+      "Quyền năng đã mở rộng vương quốc của Đức Chúa Trời trên khắp đất"
     ],
     "tags": [
       "Tân Ước",
@@ -890,12 +890,12 @@
       3
     ],
     "content": "Theo Ê-phê-sô 2:6, Đức Chúa Trời đã làm gì cho các tín hữu cùng với Đấng Christ?",
-    "explanation": "Ê-phê-sô 2:6 — 'Đức Chúa Trời đã khiến chúng ta đồng sống lại với Đấng Christ, đồng ngồi với Ngài trong nơi trên trời, ấy là trong Đức Chúa Jêsus Christ.' 'Đồng' (syn-) = WITH Christ. Tín hữu đã ĐANG ngồi với Christ — vị thế thuộc linh HIỆN TẠI, không phải tương lai. 3 'cùng': cùng sống, cùng sống lại, cùng ngồi.",
+    "explanation": "Ê-phê-sô 2:6 viết: 'Ngài đã làm cho chúng ta đồng sống lại và đồng ngồi trong các nơi trên trời trong Christ Jesus.' Vì vậy, đáp án đúng mô tả chính xác hai hành động: làm cho sống lại và ngồi cùng trong nơi trên trời (heavenlies).\n\nDistractor 1 (gần đúng) sai vì thay từ 'ngồi' bằng 'an nghỉ', một khái niệm không được nêu trong câu này.\nDistractor 2 sai vì thay 'nơi trên trời' bằng 'nước Chúa', một khái niệm có phạm vi khác và không được đề cập trong câu.\nDistractor 3 sai vì mô tả các khái niệm (cứu chuộc, sự sống đời đời) có thể liên quan đến bối cảnh rộng hơn nhưng không trả lời trực tiếp cho câu hỏi về hành động được mô tả trong Ê-phê-sô 2:6.",
     "language": "vi",
     "options": [
-      "Đã cho ngồi tại Giê-ru-sa-lem",
-      "Đã cho ngồi cạnh Phao-lô",
-      "Đã cho lên trời sau khi chết",
+      "Đã làm cho sống lại và an nghỉ cùng trong nơi trên trời trong Christ",
+      "Đã làm cho sống lại và ngồi cùng trong nước Chúa trong Christ",
+      "Đã cứu chuộc và ban sự sống đời đời trong Christ",
       "Đã làm cho sống lại VÀ ngồi cùng trong nơi trên trời (heavenlies) trong Christ"
     ],
     "tags": [
@@ -916,13 +916,13 @@
       0
     ],
     "content": "Theo Ê-phê-sô 2:14, Christ là gì cho dân Do Thái và dân ngoại?",
-    "explanation": "Ê-phê-sô 2:14 — 'Vì, ấy chính Ngài là sự hòa hiệp của chúng ta; Ngài đã hiệp cả hai làm một, phá đổ bức tường ngăn cách.' 'Bức tường' (mesotoichon) — ám chỉ tường ngăn 'sân Israel' khỏi 'sân dân ngoại' trong đền thờ Hê-rốt; đến gần là chết. Christ ĐẬP TAN tường = mở đường vào trực tiếp.",
+    "explanation": "Ê-phê-sô 2:14 viết: 'Vì chính Ngài là sự hòa bình của chúng ta, đã làm cho cả hai thành một, và phá đổ bức tường ngăn cách.' Do đó, đáp án đúng phản ánh chính xác rằng Chúa Cứu Thế là SỰ HÒA BÌNH của chúng ta, Ngài hợp nhất dân Do Thái và dân ngoại bằng cách phá đổ bức tường ngăn cách giữa họ.\n- Distractor 'Sự TỰ DO của chúng ta' sai vì dù sự tự do khỏi tội lỗi là đề tài trong Kinh Thánh (Ga-la-ti 5:1), nó không phải là khái niệm trọng tâm được định nghĩa cụ thể cho dân Do Thái và dân ngoại trong câu hỏi này (sai phạm vi).\n- Distractor 'Sự TÌNH YÊU của chúng ta' sai vì đây là một hiểu lầm phổ biến; dù tình yêu là nền tảng (Giăng 13:34), câu Kinh Thánh này đặc biệt nhấn mạnh 'sự hòa bình' như một danh hiệu cụ thể của Chúa Cứu Thế trong bối cảnh hợp nhất (common_misconception).\n- Distractor 'Sự CỨU RỖI của chúng ta' là đáp án gần đúng nhưng sai chi tiết then chốt; Ê-phê-sô 2 nói về sự cứu rỗi bởi ân điển (câu 8) và sự hòa bình/hòa giải (câu 14-17). 'Sự cứu rỗi' đúng nhưng không phải là từ cụ thể được dùng trong câu 14 để mô tả Chúa Cứu Thế trong vai trò hợp nhất hai nhóm người này (nhầm passage gần).",
     "language": "vi",
     "options": [
       "Sự HÒA BÌNH của chúng ta — Ngài hợp cả hai làm một, phá đổ bức tường ngăn cách",
-      "Vua chiến thắng — Ngài thống trị cả hai",
-      "Tế lễ chuộc — Ngài chuộc cả hai",
-      "Vị tiên tri — Ngài dạy cả hai"
+      "Sự TỰ DO của chúng ta — Ngài giải phóng cả hai khỏi tội lỗi, mở ra con đường cứu rỗi",
+      "Sự TÌNH YÊU của chúng ta — Ngài kêu gọi cả hai yêu thương nhau, vượt qua định kiến",
+      "Sự CỨU RỖI của chúng ta — Ngài đem đến cho cả hai sự tha thứ, hủy bỏ sự thù nghịch"
     ],
     "tags": [
       "Tân Ước",
@@ -942,13 +942,13 @@
       1
     ],
     "content": "Theo Ê-phê-sô 2:19, các tín hữu dân ngoại nay không còn là khách lạ và người ngoại bang, nhưng là gì?",
-    "explanation": "Ê-phê-sô 2:19 — 'Dường ấy anh em chẳng phải là người ngoại, cũng chẳng phải là kẻ ở trọ nữa, nhưng là người đồng quốc với các thánh đồ, và là người nhà của Đức Chúa Trời.' Hai từ then chốt: CÔNG DÂN (sympolitēs) + NGƯỜI NHÀ (oikeios). KHÔNG phải khách dự lễ — là THÀNH VIÊN gia đình Đức Chúa Trời.",
+    "explanation": "Ê-phê-sô 2:19 chép: 'Vậy nên anh em chẳng phải là người ngoại bang, chẳng phải là kẻ ở trọ nữa, nhưng là người đồng quốc với các thánh và là người nhà của Đức Chúa Trời.' Đáp án đúng trung thành với cấu trúc và ý nghĩa của câu Kinh Thánh: 'công dân' (người đồng quốc) cùng các thánh đồ và 'người nhà' của Đức Chúa Trời.\n\nDistractor 1 ('Là khách lạ...') sai vì lặp lại chính những từ mà câu Kinh Thánh phủ định ('khách lạ', 'người ngoại bang'), hoàn toàn trái ngược với nội dung khẳng định của câu hỏi và phân đoạn.\nDistractor 2 ('Là công dân... và người ngoại bang') là đáp án gần đúng, đúng phần đầu nhưng sai ở chi tiết then chốt cuối: thay vì 'người nhà' lại dùng 'người ngoại bang' – là danh xưng cũ đã bị bãi bỏ theo câu Kinh Thánh.\nDistractor 3 ('Là công dân cùng các sứ đồ...') sai vì thay thế 'các thánh đồ' bằng 'các sứ đồ', một chi tiết không có trong phân đoạn này (dù xuất hiện trong các phân đoạn khác của thư Ê-phê-sô), làm thay đổi phạm vi đối tượng được nói đến.",
     "language": "vi",
     "options": [
-      "Là người Do Thái cải đạo",
+      "Là khách lạ cùng các thánh đồ và người ngoại bang của Đức Chúa Trời",
       "Là CÔNG DÂN cùng các thánh đồ và NGƯỜI NHÀ của Đức Chúa Trời",
-      "Là người có quốc tịch trên trời tạm thời",
-      "Là người chỉ được dự phần khi chết"
+      "Là công dân cùng các thánh đồ và người ngoại bang của Đức Chúa Trời",
+      "Là công dân cùng các sứ đồ và người nhà của Đức Chúa Trời"
     ],
     "tags": [
       "Tân Ước",
@@ -994,12 +994,12 @@
       3
     ],
     "content": "Theo Ê-phê-sô 3:20-21, Đức Chúa Trời có thể làm gì so với điều chúng ta cầu xin hoặc suy tưởng?",
-    "explanation": "Ê-phê-sô 3:20-21 — 'Vả, Đức Chúa Trời, bởi quyền lực cảm động trong chúng ta, có thể làm trổi hơn vô cùng mọi việc chúng ta cầu xin hoặc suy tưởng, nguyền Ngài được vinh hiển trong Hội thánh, bởi Đức Chúa Jêsus Christ.' 'Trổi hơn vô cùng' (hyperekperissou) = SUPER ABUNDANT BEYOND. Cầu nguyện không bao giờ 'quá lớn' với Đức Chúa Trời.",
+    "explanation": "Ê-phê-sô 3:20-21 chép: 'Vả, Ngài có thể làm trổi hơn vô cùng mọi điều chúng ta cầu xin hoặc suy tưởng, y theo quyền năng hành động trong chúng ta.' ĐÁP ÁN ĐÚNG vì trích đúng cụm 'trổi hơn vô cùng' và nguồn quyền năng 'đang hành động trong chúng ta'.\n\nDISTRACTOR 1 sai vì sai chi tiết về nguồn quyền năng ('từ trước vô cùng' không có trong câu này).\nDISTRACTOR 2 sai vì dùng chi tiết từ passage gần (ý 'sự khôn ngoan' xuất hiện trong các câu trước về sự mầu nhiệm của Đấng Christ, không phải trong câu 20-21).\nDISTRACTOR 3 (gần đúng) sai vì mở rộng phạm vi: câu Kinh Thánh nói 'làm trổi hơn vô cùng', nhấn mạnh sự vượt trội siêu việt, chứ không phải là 'làm được mọi điều' một cách chung chung.",
     "language": "vi",
     "options": [
-      "Ít hơn một chút",
-      "Đúng như chúng ta xin",
-      "Bằng những gì chúng ta nghĩ",
+      "TRỖI HƠN VÔ CÙNG — theo quyền năng từ trước vô cùng",
+      "TRỖI HƠN VÔ CÙNG — theo sự khôn ngoan đã được bày tỏ",
+      "LÀM ĐƯỢC MỌI ĐIỀU — theo quyền năng đang hành động trong chúng ta",
       "TRỖI HƠN VÔ CÙNG (mọi điều) — theo quyền năng đang hành động trong chúng ta"
     ],
     "tags": [
@@ -1020,13 +1020,13 @@
       1
     ],
     "content": "Theo Ê-phê-sô 4:7-8, ân điển đã được ban cho mỗi người trong chúng ta theo cái gì? Ai ban?",
-    "explanation": "Ê-phê-sô 4:7-8 — 'Nhưng, đã ban ân điển cho mỗi một người trong chúng ta theo lượng sự ban cho của Đấng Christ. Vậy nên có chép rằng: Ngài đã lên nơi cao, dẫn muôn vàn kẻ phu tù, Và ban các ơn cho loài người.' Trích Thi Thiên 68:18 — Christ là Vua chiến thắng + ban CHIẾN LỢI PHẨM (ân tứ thuộc linh) cho dân Ngài.",
+    "explanation": "Ê-phê-sô 4:7-8 ghi: \"Nhưng, đang khi mỗi người trong chúng ta đã được ban cho ân điển theo lượng sự ban cho của Đấng Christ. Cho nên có chép rằng: Ngài đã lên nơi cao, dẫn muôn vàn kẻ phu tù, và ban các ơn cho loài người.\" (BTT). Do đó, đáp án đúng xác định ân điển được ban theo 'lượng sự ban cho của Đấng Christ' và Ngài là Đấng ban. Distractor 1 (gần đúng) sai vì thay 'lượng sự ban cho của Đấng Christ' bằng 'lượng công việc mà mỗi người đã làm', đây là một chi tiết then chốt bị thay đổi từ chủ động ban cho sang thành tích cá nhân. Distractor 2 sai vì đưa ra yếu tố 'lượng đức tin', một hiểu lầm phổ biến khi áp dụng khái niệm từ phân đoạn khác (như Rô-ma 12:3,6) vào đây. Distractor 3 sai vì trích dẫn sai sự kiện ('khi Ngài xuống thế gian' thay vì 'khi lên cao') và nhầm lẫn với ý tưởng về lời hứa từ các phân đoạn gần đó, làm lệch phạm vi cụ thể của câu Kinh Thánh này.",
     "language": "vi",
     "options": [
-      "Theo công lao của ta — Đức Chúa Trời ban",
+      "Theo lượng công việc mà mỗi người đã làm — khi lên cao Ngài bắt phu tù và ban các sự ban cho cho loài người",
       "Theo lượng sự ban cho của Đấng Christ — khi lên cao Ngài bắt phu tù và ban các sự ban cho cho loài người",
-      "Theo lòng đạo đức — Đức Thánh Linh ban",
-      "Theo phẩm cấp của ta — Hội Thánh ban"
+      "Theo lượng đức tin mà mỗi người có — khi lên cao Ngài bắt phu tù và ban các sự ban cho cho loài người",
+      "Theo lời hứa của Đức Chúa Trời — khi Ngài xuống thế gian và ban các sự ban cho cho loài người"
     ],
     "tags": [
       "Tân Ước",
@@ -1046,13 +1046,13 @@
       0
     ],
     "content": "Theo Ê-phê-sô 4:13, mục tiêu của các ân tứ là gì?",
-    "explanation": "Ê-phê-sô 4:13 — 'Cho đến chừng chúng ta thảy đều hiệp một trong đức tin và trong sự hiểu biết Con Đức Chúa Trời, mà nên bậc thành nhân, được tầm thước vóc giạc trọn vẹn của Đấng Christ.' Mục tiêu: TRƯỞNG THÀNH (teleios) + UNIDADE đức tin. Khác với 'thuộc linh có vẻ' — phải hiểu biết SÂU.",
+    "explanation": "Ê-phê-sô 4:13 chép: 'Cho đến chừng chúng ta thảy đều hiệp một trong đức tin và trong sự hiểu biết Con Đức Chúa Trời, mà nên bậc thành nhân, được tầm thước vóc giạc trọn vẹn của Đấng Christ.' (BTT). Đáp án đúng trung thành với câu Kinh Thánh, nêu rõ mục tiêu tâm linh là sự hiệp nhất, trưởng thành và đạt đến hình ảnh của Đấng Christ.\n\nDistractor 1 sai vì thu hẹp phạm vi mục tiêu vào yếu tố vật chất và số lượng (cơ sở vật chất, gia tăng tín hữu), trong khi văn bản nhấn mạnh đến sự trưởng thành thuộc linh và hiệp nhất trong đức tin.\nDistractor 2 là 'gần đúng' nhưng sai một chi tiết then chốt: thay 'của Đấng Christ' bằng 'của các sứ đồ'. Mục tiêu tối hậu là đạt đến vóc giạc trọn vẹn của Đấng Christ, không phải của các sứ đồ.\nDistractor 3 phản ánh một hiểu lầm phổ biến khi cho rằng ân tứ chỉ để bày tỏ quyền năng và phép lạ ngoạn mục, trong khi bối cảnh (các câu 12-16) cho thấy mục đích chính là để gây dựng thân thể Đấng Christ và đưa đến sự trưởng thành thuộc linh.",
     "language": "vi",
     "options": [
       "Đến hiệp nhau trong đức tin và sự hiểu biết Con Đức Chúa Trời, đến trưởng thành và đến tầm thước vóc giạc trọn vẹn của Đấng Christ",
-      "Có nhiều phép lạ",
-      "Lập nhiều hội thánh",
-      "Có nhiều con số tăng trưởng"
+      "Để xây dựng Hội Thánh vững mạnh về cơ sở vật chất và gia tăng số lượng tín hữu",
+      "Đến hiệp nhau trong đức tin và sự hiểu biết Con Đức Chúa Trời, đến trưởng thành và đến tầm thước vóc giạc trọn vẹn của các sứ đồ",
+      "Nhằm bày tỏ quyền năng siêu nhiên và thực hiện các phép lạ vĩ đại"
     ],
     "tags": [
       "Tân Ước",
@@ -1072,13 +1072,13 @@
       2
     ],
     "content": "Theo Ê-phê-sô 4:15, các tín hữu phải nói LẼ THẬT trong yêu thương để làm gì?",
-    "explanation": "Ê-phê-sô 4:15 — 'Nhưng muốn cho chúng ta lấy lòng yêu thương nói ra lẽ chân thật, để trong mọi việc chúng ta đều được thêm lên trong Đấng làm đầu, tức là Đấng Christ.' 'LẼ THẬT trong YÊU THƯƠNG' (alētheuontes en agapē) = công thức cân bằng. Chỉ lẽ thật → cứng nhắc; chỉ yêu thương → mù quáng.",
+    "explanation": "Ê-phê-sô 4:15 chép: 'Nhưng muốn cho chúng ta lấy lòng yêu thương nói ra lẽ chân thật, để trong mọi việc chúng ta đều được thêm lên trong Đấng làm đầu, tức là Đấng Christ'. Vì vậy, đáp án đúng là 'Để được thêm lên (lớn lên) trong mọi sự trong Đấng làm Đầu là Christ', vì nó phản ánh chính xác mục đích là lớn lên trong mọi phương diện, với Đấng Christ là trung tâm và là Đầu. Distractor 1 sai vì thay 'Đấng Christ' bằng 'Thánh Linh', một sai lầm về chi tiết tên gọi mặc dù cấu trúc câu gần như đúng. Distractor 2 sai vì thay 'trong Đấng làm Đầu là Christ' bằng 'trong tình yêu thương', thu hẹp phạm vi và làm mất đi trọng tâm là Đấng Christ. Distractor 3 sai vì thay 'trong Đấng làm Đầu là Christ' bằng 'của Hội Thánh', phản ánh một hiểu lầm phổ biến rằng sự lớn lên chỉ là cho tổ chức hữu hình thay vì mối liên hệ với Đấng Christ.",
     "language": "vi",
     "options": [
-      "Để chiến thắng trong tranh luận",
-      "Để tách ra khỏi kẻ sai",
+      "Để được thêm lên (lớn lên) trong mọi sự trong Đấng làm Đầu là Thánh Linh",
+      "Để được thêm lên (lớn lên) trong mọi sự trong tình yêu thương",
       "Để được thêm lên (lớn lên) trong mọi sự trong Đấng làm Đầu là Christ",
-      "Để bảo vệ tổ chức"
+      "Để được thêm lên (lớn lên) trong mọi sự của Hội Thánh"
     ],
     "tags": [
       "Tân Ước",
@@ -1098,12 +1098,12 @@
       3
     ],
     "content": "Theo Ê-phê-sô 4:22-24, các tín hữu phải LỘT BỎ điều gì và MẶC LẤY điều gì?",
-    "explanation": "Ê-phê-sô 4:22-24 — 'Rằng anh em phải bỏ cách ăn nết ở ngày trước, thoát lốt người cũ là người bị hư hỏng bởi tư dục dỗ dành, mà phải làm nên mới trong tâm chí mình, và mặc lấy người mới, tức là người đã được dựng nên giống như Đức Chúa Trời, trong sự công bình và sự thánh sạch của lẽ thật.' Hình ảnh THAY ÁO (apothesthai/endysasthai). Tái tạo (anakainosis) bắt đầu từ TÂM CHÍ.",
+    "explanation": "Ê-phê-sô 4:22-24 chép: 'Hãy lột bỏ người cũ là nếp sống ngày trước đã bị hư hỏng bởi những tư dục lừa dối, và phải được đổi mới trong tâm chí mình, mặc lấy người mới là người đã được dựng nên giống như Đức Chúa Trời trong sự công bình và thánh khiết của chân lý.' Đáp án đúng mô tả chính xác đối tượng phải 'lột bỏ' (người cũ, nếp sống xưa) và 'mặc lấy' (người mới, được dựng nên giống Đức Chúa Trời).\n\n- Distractor 1 ('Lột sự dốt nát... mặc sự hiểu biết') là gần đúng nhưng sai chi tiết then chốt. Ý tưởng về sự hiểu biết xuất hiện trong ngữ cảnh rộng hơn của đoạn (ví dụ: sự đổi mới trong tâm chí mình, Ê-phê-sô 4:23), nhưng cách diễn đạt cụ thể trong câu 22-24 không phải là 'sự dốt nát' và 'sự hiểu biết', mà là 'người cũ' và 'người mới'.\n\n- Distractor 2 ('Lột những việc làm tối tăm... mặc những việc làm sáng láng') sai phạm vi. Ý này thường gặp trong Kinh Thánh (ví dụ: Rô-ma 13:12, Ê-phê-sô 5:11) nhưng không phải là ngôn từ hay phạm vi chính xác của Ê-phê-sô 4:22-24, vốn tập trung vào bản chất tổng thể của con người cũ và con người mới, chứ không chỉ vào hành vi cụ thể.\n\n- Distractor 3 ('Lột tội lỗi cá nhân — mặc sự tha thứ') dựa trên hiểu lầm phổ biến. Mặc dù sự tha thứ là một phần quan trọng trong niềm tin Cơ Đốc, điều được nhấn mạnh để 'mặc lấy' trong phân đoạn này không phải là trạng thái được tha thứ, mà là thực tại mới mẻ của một con người mới được Đức Chúa Trời tạo dựng có đặc tính công bình và thánh khiết.",
     "language": "vi",
     "options": [
-      "Lột bỏ 'áo cũ' (ẩn dụ cho lối sống cũ) và mặc 'áo mới' (ẩn dụ cho lối sống mới)",
-      "Lột thói nghèo, mặc thói giàu",
-      "Lột truyền thống, mặc đổi mới",
+      "Lột sự dốt nát (không hiểu biết về Đức Chúa Trời) — mặc sự hiểu biết (được soi sáng bởi Thánh Linh)",
+      "Lột những việc làm tối tăm — mặc những việc làm sáng láng (phù hợp với ánh sáng của Chúa)",
+      "Lột tội lỗi cá nhân — mặc sự tha thứ (được Đấng Christ ban cho)",
       "Lột người cũ (theo lối sống xưa) — mặc người mới (đã được dựng nên giống Đức Chúa Trời trong sự công bình + thánh khiết)"
     ],
     "tags": [
@@ -1124,13 +1124,13 @@
       1
     ],
     "content": "Theo Ê-phê-sô 4:30, các tín hữu phải tránh làm gì với Đức Thánh Linh?",
-    "explanation": "Ê-phê-sô 4:30 — 'Anh em chớ làm buồn cho Đức Thánh Linh của Đức Chúa Trời, vì nhờ Ngài anh em được ấn chứng đến ngày cứu chuộc.' 'Buồn' (lypeō) = đau lòng. Cho thấy Đức Thánh Linh KHÔNG phải năng lực vô ngã — mà LÀ NGÔI VỊ có cảm xúc. 'Ấn chứng' (sphragizō) = đóng dấu chủ quyền — không thể bị mất.",
+    "explanation": "Ê-phê-sô 4:30 chép: \"Chớ làm buồn Đức Thánh Linh của Đức Chúa Trời, vì nhờ Ngài anh em được ấn chứng đến ngày cứu chuộc.\" Đáp án đúng trực tiếp trích dẫn và tóm tắt ý chính này: tín hữu phải tránh làm buồn Đức Thánh Linh. Distractor 1 (gần đúng) dùng từ 'chống nghịch' — một khái niệm nghiêm trọng hơn, xuất hiện trong các phân đoạn khác (ví dụ: Công vụ 7:51), nhưng không phải là động từ được dùng trong câu này. Distractor 2 áp dụng cụm 'phạm tội cùng', thường liên quan đến tội phạm đến Đức Thánh Linh (Ma-thi-ơ 12:31-32), một khái niệm khác và không phải điều Ê-phê-sô 4:30 đang nói đến. Distractor 3 đưa ra một lời khuyên đúng ('đừng quên ân tứ') và trích dẫn một phần từ bối cảnh (Ê-phê-sô 4 về sự hiệp một), nhưng không trả lời đúng câu hỏi về hành động cụ thể phải tránh với Đức Thánh Linh theo câu 30.",
     "language": "vi",
     "options": [
-      "Phải khoe khoang Ngài",
+      "Đừng chống nghịch Đức Thánh Linh — vì bởi Ngài anh em được ấn chứng đến ngày cứu chuộc",
       "Đừng làm buồn Đức Thánh Linh — vì bởi Ngài anh em được ấn chứng đến ngày cứu chuộc",
-      "Phải tránh hỏi Ngài",
-      "Phải tránh không nghe Ngài"
+      "Đừng phạm tội cùng Đức Thánh Linh — vì bởi Ngài anh em được ấn chứng đến ngày cứu chuộc",
+      "Đừng quên ân tứ của Đức Thánh Linh — vì anh em được kêu gọi đến sự hiệp một"
     ],
     "tags": [
       "Tân Ước",
@@ -1176,12 +1176,12 @@
       3
     ],
     "content": "Theo Ê-phê-sô 5:21, các tín hữu phải LẦN LƯỢT phục tùng nhau vì cớ gì?",
-    "explanation": "Ê-phê-sô 5:21 — 'Hãy kính sợ Đấng Christ mà vâng phục nhau.' Câu CHUYỂN cho phần 5:22-6:9 (vợ chồng, cha con, chủ tớ). Phục tùng KHÔNG đồng nghĩa thấp hèn — Christ Cha trên trời cũng phục tùng Cha tự nguyện. Mọi quan hệ trong Hội Thánh có YẾU TỐ TÔI TỚ.",
+    "explanation": "Ê-phê-sô 5:21 chép: 'Hãy kính sợ Đấng Christ mà vâng phục nhau.' (BTT). Do đó, đáp án đúng là 'Vì kính sợ (kính mến) Đấng Christ', khi câu Kinh Thánh chỉ rõ đối tượng phải kính sợ là Đấng Christ.\n\nCác đáp án sai:\n1. 'Vì kính sợ (kính mến) Đức Chúa Trời Cha' là đáp án gần đúng nhưng sai chi tiết then chốt. Tuy 'kính sợ' là đúng, nhưng câu Kinh Thánh cụ thể nói 'Đấng Christ', không phải 'Đức Chúa Trời Cha', dù cả hai đều là Đức Chúa Trời.\n2. 'Vì sợ phán xét cuối cùng' phản ánh một hiểu lầm phổ biến, tách rời việc vâng phục khỏi động cơ kính sợ yêu thương để gán vào nỗi sợ hình phạt, trong khi ngữ cảnh (Ê-phê-sô 5) nói về đời sống trong Chúa.\n3. 'Vì để được khen thưởng nơi thiên đàng' đúng là một tư tưởng có trong Kinh Thánh (vd: phần thưởng trên trời), nhưng hoàn toàn lạc với mệnh lệnh cụ thể và lý do trực tiếp ('vì kính sợ Đấng Christ') được nêu trong câu 21 này.",
     "language": "vi",
     "options": [
-      "Vì Phao-lô dạy",
-      "Vì luật pháp đòi hỏi",
-      "Vì truyền thống Hội Thánh",
+      "Vì kính sợ (kính mến) Đức Chúa Trời Cha",
+      "Vì sợ phán xét cuối cùng",
+      "Vì để được khen thưởng nơi thiên đàng",
       "Vì kính sợ (kính mến) Đấng Christ"
     ],
     "tags": [
@@ -1254,12 +1254,12 @@
       3
     ],
     "content": "Theo Ê-phê-sô 1:22-23, Đức Chúa Trời đã đặt mọi sự dưới chân Christ và lập Ngài làm Đầu cho ai? Hội Thánh là gì với Christ?",
-    "explanation": "Ê-phê-sô 1:22-23 — 'Ngài đã bắt muôn vật phục dưới chân Đấng Christ, và ban cho Đấng Christ làm đầu Hội thánh, Hội thánh là thân thể của Đấng Christ, tức là sự đầy đủ của Đấng gồm tóm mọi sự trong mọi loài.' 'PLĒRŌMA' (sự đầy đủ) — Hội Thánh là chỗ Christ THỂ HIỆN sự đầy đủ Ngài; Christ và Hội Thánh là MỘT đơn vị thiêng liêng.",
+    "explanation": "Ê-phê-sô 1:22-23 chép: 'Ngài đã bắt muôn vật phục dưới chân Đấng Christ, và ban cho Đấng Christ làm đầu Hội Thánh. Hội Thánh là thân thể Ngài, tức là sự đầy đủ của Đấng làm đầy dẫy mọi sự trong mọi loài.' (BTT). Vì vậy, đáp án đúng chỉ rõ Christ là đầu cho Hội Thánh và Hội Thánh là thân thể Ngài.\n\nDistractor 1 (gần đúng) sai vì thay 'Hội Thánh' bằng 'các thiên sứ' – dù câu 21 nói về quyền phép trên mọi quyền cai trị, nhưng câu 22-23 xác định đối tượng được lập làm đầu là Hội Thánh.\nDistractor 2 sai phạm vi: mặc dù 'mọi loài thụ tạo' có thể bị phục dưới chân Christ, nhưng câu hỏi hỏi cụ thể 'lập Ngài làm Đầu cho ai?' theo phân đoạn này, và khẳng định Hội Thánh là 'đền thờ' là sai so với 'thân thể' trong câu 23.\nDistractor 3 dựa trên hiểu lầm phổ biến: hình ảnh 'cô dâu' của Hội Thánh được dùng trong Ê-phê-sô 5:22-33, không phải trong phân đoạn 1:22-23 đang được hỏi.",
     "language": "vi",
     "options": [
-      "Đầu cho dân Y-sơ-ra-ên — Hội Thánh là tôi tớ của Christ",
-      "Đầu cho thiên sứ — Hội Thánh là chi nhánh của Christ",
-      "Đầu cho các tiên tri — Hội Thánh là môn đồ của Christ",
+      "Đầu CHO CÁC THIÊN SỨ — Hội Thánh là THÂN THỂ Ngài, là sự đầy đủ của Đấng làm đầy mọi sự trong mọi loài",
+      "Đầu CHO MỌI LOÀI THỤ TẠO — Hội Thánh là ĐỀN THỜ Ngài, là sự đầy đủ của Đấng làm đầy mọi sự trong mọi loài",
+      "Đầu CHO HỘI THÁNH — Hội Thánh là CÔ DƯỚI Ngài, là sự đầy đủ của Đấng làm đầy mọi sự trong mọi loài",
       "Đầu CHO HỘI THÁNH — Hội Thánh là THÂN THỂ Ngài, là sự đầy đủ của Đấng làm đầy mọi sự trong mọi loài"
     ],
     "tags": [
@@ -1280,13 +1280,13 @@
       0
     ],
     "content": "Theo Ê-phê-sô 2:2, các tín hữu trước kia đi theo ai và sự cai trị nào?",
-    "explanation": "Ê-phê-sô 2:2 — 'Đều là những sự anh em xưa đã học đòi, theo thói quen đời nầy, vâng phục vua cầm quyền chốn không trung tức là thần hiện đang hành động trong các con bạn nghịch.' 'Vua cầm quyền chốn không trung' (archon tēs exousias tou aeros) = Sa-tan; sự cai trị KHÔNG TRUNG (giữa đất và trời) = nơi quân ma quỉ ở. 'Con bội nghịch' = ai chưa cứu rỗi.",
+    "explanation": "Ê-phê-sô 2:2 chép: '...là thuở đó anh em đã theo đời nầy, theo vua cầm quyền chốn không trung, tức là thần hiện đang hành động trong các con bạn nghịch.' Đáp án đúng vì nêu chính xác đối tượng mà tín hữu trước kia đi theo là 'thói quen đời này' và sự vâng phục 'VUA CẦM QUYỀN CHỐN KHÔNG TRUNG', được giải thích rõ là Sa-tan. Distractor 1 là 'gần đúng' nhưng sai chi tiết then chốt khi thay 'vua cầm quyền chốn không trung (Sa-tan)' bằng 'các quyền thế thế gian' (như vua chúa trần thế), một sự nhầm lẫn phổ biến khi đọc về 'các quyền thế'. Distractor 2 sai phạm vi vì đề cập đến 'các tà thần và thế lực thuộc linh' nói chung, trong khi đoạn Kinh Thánh này tập trung vào một nhân vật cụ thể là 'vua' cầm quyền. Distractor 3 phản ánh một hiểu lầm phổ biến khi liên hệ sai bối cảnh sang các giáo sư giả trong Hội thánh, một đề tài xuất hiện ở các sách khác (như 2 Phi-e-rơ), không phải trọng tâm của phân đoạn này.",
     "language": "vi",
     "options": [
       "Theo thói quen đời này, vâng phục VUA CẦM QUYỀN CHỐN KHÔNG TRUNG (Sa-tan), tức là thần đang hành động trong các con của sự bội nghịch",
-      "Chỉ theo bản tính tự nhiên",
-      "Theo các vua thế gian",
-      "Theo các tiên tri giả"
+      "Theo thói quen đời này, vâng phục các quyền thế thế gian, tức là các vua chúa và nhà cầm quyền.",
+      "Theo các tà thần và thế lực thuộc linh, tức là những điều ngăn trở con người đến với Chúa.",
+      "Theo các giáo sư giả và sự dạy dỗ sai lầm, tức là những kẻ lừa dối trong Hội thánh."
     ],
     "tags": [
       "Tân Ước",
@@ -1307,13 +1307,13 @@
       1
     ],
     "content": "Theo Ê-phê-sô 2:15-16, Đấng Christ đã hủy bỏ điều gì để tạo nên một thực tại mới nào?",
-    "explanation": "Ê-phê-sô 2:15-16 cho biết Đấng Christ 'đã hủy bỏ trong thân Ngài luật pháp của các điều răn và quy định, để từ hai dân tộc (Do Thái và Dân Ngoại) Ngài tạo nên trong chính Ngài một người mới, và qua thập tự giá khiến cả hai hòa thuận với Đức Chúa Trời trong một thân.' 'Một người mới' (kainos anthrōpos) chỉ về một nhân loại mới hợp nhất trong Đấng Christ, không phải là hai nhóm tồn tại riêng biệt.",
+    "explanation": "Ê-phê-sô 2:15-16 nói rõ: \"và hủy bỏ trong thân thể Ngài luật pháp của các điều răn và quy định, để từ hai (Do Thái và Dân Ngoại) dựng nên trong Ngài một người mới\" (câu 15), sau đó \"đem cả hai hòa thuận với Đức Chúa Trời\" (câu 16).\n\nĐÁP ÁN ĐÚNG: Trực tiếp trích dẫn khái niệm \"hủy bỏ luật pháp với các điều răn và quy định\" là điều bị hủy bỏ và \"một người mới\" là thực tại mới được tạo nên.\n\nDISTRACTOR 1 (gần đúng): Sai vì \"hủy bỏ sự thù nghịch\" là kết quả/ý nghĩa của việc hủy bỏ luật pháp (Ê-phê-sô 2:14-15, 'vì Ngài là sự hòa bình của chúng ta... để hủy diệt sự thù nghịch'), không phải là điều được nêu trực tiếp trong câu 15 là đã hủy bỏ để tạo nên người mới. Tuy nhiên, phần còn lại của đáp án hoàn toàn chính xác.\n\nDISTRACTOR 2: Sai chi tiết vì chép sai thực tại mới là \"một dân tộc mới\". Ê-phê-sô 2:15 dùng cụ thể \"một người mới\" (ἕνα καινὸν ἄνθρωπον, tiếng Hy Lạp), không phải \"một dân tộc mới\".\n\nDISTRACTOR 3: Sai vì dùng khái niệm \"ranh giới đền thờ\" dù có liên quan đến chủ đề nhưng không đúng văn bản. Ý tưởng về ranh giới/hàng rào ngăn cách (câu 14) nói đến tình trạng thù nghịch cần bị phá đổ, nhưng điều được nói là bị \"hủy bỏ\" để tạo nên người mới trong câu trả lời trực tiếp là \"luật pháp của các điều răn và quy định\".",
     "language": "vi",
     "options": [
-      "Hủy bỏ Tin Lành cũ để tạo ra một Tin Lành mới.",
+      "Hủy bỏ sự thù nghịch, để từ hai (Do Thái và Dân Ngoại) dựng nên trong Ngài một người mới, đem cả hai hòa thuận với Đức Chúa Trời.",
       "Hủy bỏ luật pháp với các điều răn và quy định, để từ hai (Do Thái và Dân Ngoại) dựng nên trong Ngài một người mới, đem cả hai hòa thuận với Đức Chúa Trời.",
-      "Hủy bỏ đền thờ Giê-ru-sa-lem để tạo ra Hội Thánh là đền thờ mới.",
-      "Hủy bỏ giao ước cũ để thiết lập giao ước mới tại núi Si-na-i."
+      "Hủy bỏ luật pháp với các điều răn và quy định, để từ hai (Do Thái và Dân Ngoại) dựng nên trong Ngài một dân tộc mới, đem cả hai hòa thuận với Đức Chúa Trời.",
+      "Hủy bỏ ranh giới đền thờ, để từ hai (Do Thái và Dân Ngoại) dựng nên trong Ngài một người mới, đem cả hai hòa thuận với Đức Chúa Trời."
     ],
     "tags": [
       "Tân Ước",
@@ -1333,13 +1333,13 @@
       2
     ],
     "content": "Theo Ê-phê-sô 2:20, Hội Thánh được dựng trên nền nào, và ai là HÒN ĐÁ GÓC NHÀ?",
-    "explanation": "Ê-phê-sô 2:20 — 'Anh em đã được dựng lên trên nền của các sứ đồ cùng các đấng tiên tri, chính Đức Chúa Jêsus Christ là đá góc nhà.' Hòn đá góc (akrogōniaios) = ĐỊNH HƯỚNG cho mọi viên đá khác. Sứ đồ + tiên tri = mặc khải nền móng (Tân + Cựu Ước); Christ = TRỌNG TÂM. Trích Ê-sai 28:16.",
+    "explanation": "Ê-phê-sô 2:20 viết: 'Anh em đã được dựng lên trên nền của các sứ đồ cùng các tiên tri, mà chính Đức Chúa Jêsus Christ là đá góc nhà.' Do đó, đáp án đúng chỉ rõ nền là các sứ đồ và các tiên tri, còn hòn đá góc là Christ. Distractor thứ nhất sai vì thay 'các tiên tri' bằng 'các môn đồ' – một chi tiết sai. Distractor thứ hai sai vì một hiểu lầm phổ biến, cho rằng Phao-lô (tác giả thư) là đá góc, trong khi Kinh Thánh luôn xác định Chúa Cứu Thế. Distractor thứ ba sai vì đưa yếu tố 'các thiên sứ' từ các đoạn Kinh Thánh gần đó (như Ê-phê-sô 3:10 nói về các bậc cầm quyền) vào, làm thay đổi phạm vi của nền tảng Hội Thánh.",
     "language": "vi",
     "options": [
-      "Trên nền Phao-lô — Phi-e-rơ là hòn đá góc",
-      "Trên nền Môi-se — Đa-vít là hòn đá góc",
+      "Trên nền các sứ đồ và các môn đồ — Christ là HÒN ĐÁ GÓC NHÀ",
+      "Trên nền các tiên tri và các sứ đồ — Phao-lô là HÒN ĐÁ GÓC NHÀ",
       "Trên nền các sứ đồ và các tiên tri — Christ là HÒN ĐÁ GÓC NHÀ",
-      "Trên nền 12 chi phái — A-rôn là hòn đá góc"
+      "Trên nền các thiên sứ và các sứ đồ — Christ là HÒN ĐÁ GÓC NHÀ"
     ],
     "tags": [
       "Tân Ước",
@@ -1359,12 +1359,12 @@
       3
     ],
     "content": "Theo Ê-phê-sô 3:8, Phao-lô tự xưng mình là gì, và được giao chức gì?",
-    "explanation": "Ê-phê-sô 3:8 — 'Phải, ân điển đó đã ban cho tôi, là kẻ hèn hơn hết mọi thánh đồ, để rao truyền cho dân ngoại sự giàu có không dò được của Đấng Christ.' 'HÈN HƠN HẾT' (elachistoteros — so sánh tuyệt cấp của 'least') = từ tự tạo, mạnh hơn 'least' bình thường. Phao-lô khiêm tốn nhất khi được giao trách nhiệm lớn nhất. 'KHÔNG DÒ XÉT ĐƯỢC' (anexichniastos) = không thể truy lùng dấu vết.",
+    "explanation": "Ê-phê-sô 3:8 chép: 'Ân điển nầy được ban cho tôi, là kẻ hèn hơn hết trong các thánh đồ, để rao giảng cho dân ngoại sự giàu có không dò xét được của Đấng Christ.' Đáp án đúng vì trích đúng từ văn bản: Phao-lô tự xem mình 'là kẻ hèn hơn hết trong các thánh đồ' và chức vụ là 'rao giảng... sự giàu có không dò xét được của Đấng Christ cho dân ngoại'.\n\nDistractor 1 (gần đúng) sai vì thay 'hèn hơn hết' thành 'cao trọng nhất', trái ngược hoàn toàn với tinh thần khiêm nhường của Phao-lô trong câu này.\nDistractor 2 sai vì thay 'rao giảng sự giàu có...' bằng 'xây dựng Hội thánh...'. Mặc dù Phao-lô có nói về việc xây dựng Hội thánh trong các phân đoạn khác (ví dụ Ê-phê-sô 2:20-22), nhưng đây không phải là chức vụ được giao trong câu 3:8.\nDistractor 3 sai vì mở rộng phạm vi đối tượng rao giảng thành 'cho cả người Do Thái lẫn dân ngoại'. Trong câu 3:8, chức vụ đặc biệt được nhấn mạnh là rao giảng 'cho dân ngoại'.",
     "language": "vi",
     "options": [
-      "Là người lớn nhất trong sứ đồ — giảng giáo lý cao siêu",
-      "Là người Do Thái thuần — bảo vệ luật Môi-se",
-      "Là người được học cao — dạy triết học",
+      "Là người cao trọng nhất trong các thánh đồ — được giao rao giảng sự giàu có không dò xét được của Đấng Christ cho dân ngoại",
+      "Là kẻ hèn hơn hết trong các thánh đồ — được giao xây dựng Hội thánh của Đấng Christ cho dân ngoại",
+      "Là kẻ hèn mọn nhất trong các thánh đồ — được giao rao giảng sự giàu có không dò xét được của Đấng Christ cho cả người Do Thái lẫn dân ngoại",
       "Là kẻ HÈN HƠN HẾT trong các thánh đồ — được giao rao giảng SỰ GIÀU CÓ KHÔNG DÒ XÉT ĐƯỢC của Đấng Christ cho dân ngoại"
     ],
     "tags": [
@@ -1385,13 +1385,13 @@
       1
     ],
     "content": "Theo Ê-phê-sô 3:10, Đức Chúa Trời tỏ ra sự KHÔN NGOAN MUÔN MÀU của Ngài qua Hội Thánh cho ai?",
-    "explanation": "Ê-phê-sô 3:10 — 'Hầu cho hiện nay nhờ Hội thánh, mà các từng quyền cai trị và các thế lực ở trên trời được biết sự khôn sáng mọi đường của Đức Chúa Trời.' 'KHÔN NGOAN MUÔN MÀU' (polypoikilos) = đa dạng nhiều màu. Hội Thánh là 'sân khấu' Đức Chúa Trời TRÌNH BÀY khôn ngoan Ngài cho thiên sứ — kể cả ác (1 Phi 1:12 thiên sứ ước ao xem).",
+    "explanation": "Kinh Thánh chép: \"hầu cho hiện nay sự khôn ngoan mọi mặt của Đức Chúa Trời bởi Hội thánh mà bày tỏ ra cho các bậc cầm quyền chốn trên trời\" (Ê-phê-sô 3:10). ĐÁP ÁN ĐÚNG: Câu này chỉ rõ đối tượng tiếp nhận sự biểu lộ đó là các thế lực, quyền cai trị thuộc linh ở trên trời (\"các bậc cầm quyền chốn trên trời\").\n\nDISTRACTOR SAI 1 (wrong_scope): Sai phạm vi đối tượng. Câu hỏi về đối tượng NHẬN sự bày tỏ, không phải chính Hội Thánh hay các tín hữu là phương tiện.\nDISTRACTOR SAI 2 (wrong_detail; almost-right): Gần đúng, vì sứ đồ và người rao giảng có liên quan đến chức vụ công bố (Ê-phê-sô 3:8-9). Tuy nhiên, câu 10 xác định rõ đối tượng tiếp nhận là các quyền lực trên trời, không phải các sứ đồ, vì thế sai một chi tiết then chốt.\nDISTRACTOR SAI 3 (nearby_passage): Đây là một ý được nhấn mạnh trong sách Ê-phê-sô (ví dụ về việc người ngoại được đồng kế tự, chương 2-3), nhưng không phải là đối tượng trực tiếp của sự bày tỏ khôn ngoan muôn mặt đề cập trong 3:10.",
     "language": "vi",
     "options": [
-      "Cho thế gian biết",
+      "Cho các tín hữu ở Hội Thánh đầu tiên (các hội thánh ở khắp nơi)",
       "Cho các quyền lực + thế lực ở trên trời (các chấp chánh và quyền lực thiêng liêng)",
-      "Cho các người Do Thái",
-      "Cho các tiên tri sau"
+      "Cho các sứ đồ và người rao giảng (những người được gọi)",
+      "Cho mọi người trên thế gian (các dân tộc và vương quốc)"
     ],
     "tags": [
       "Tân Ước",
@@ -1437,13 +1437,13 @@
       2
     ],
     "content": "Theo Ê-phê-sô 4:9-10, trước khi Christ lên cao, Ngài đã làm gì trước?",
-    "explanation": "Ê-phê-sô 4:9-10 — 'Vả, những chữ \"Ngài đã lên\" có nghĩa gì, há chẳng phải nói rằng Ngài cũng đã xuống trong các miền thấp ở dưới đất sao? Đấng đã xuống tức là Đấng đã lên trên hết các từng trời, để làm cho đầy dẫy mọi sự.' Lên cao đòi hỏi ĐÃ XUỐNG. 'Miền thấp' — có giải thích: (a) đất; (b) Hades. Phao-lô NHẤN MẠNH: Christ đã đi đến NƠI THẤP NHẤT để vượt qua TẤT CẢ.",
+    "explanation": "Ê-phê-sô 4:9-10 (BTT) ghi: 'Ngài CŨNG ĐÃ XUỐNG trong các miền thấp ở dưới đất — Đấng đã xuống tức là Đấng đã lên trên hết các từng trời để làm cho đầy dẫy mọi sự.' Đây là mô tả trực tiếp về việc Chúa Christ xuống trước khi lên cao, nên đáp án đúng.\n\n• Distractor 1 ('...đầy dẫy mọi sự đất') sai vì thừa chữ 'đất' vào cuối câu, làm sai lệch ý gốc 'mọi sự' (πάντα).\n• Distractor 2 ('...xuống thiên đàng trước...') sai vì phổ biến hiểu lầm rằng Christ xuống từ thiên đàng (đúng), nhưng câu trích lại nói Ngài 'xuống thiên đàng', không đúng với mô tả 'xuống trong các miền thấp ở dưới đất'.\n• Distractor 3 ('...đã lên cao hơn các từng trời...') sai vì thay đổi phạm vi: 'lên cao hơn các từng trời' so với nguyên văn là 'lên trên hết các từng trời', và bỏ cụm 'ở dưới đất' khỏi phần đầu, làm mất chi tiết quan trọng.",
     "language": "vi",
     "options": [
-      "Ngài chỉ ngự xuống Giê-ru-sa-lem",
-      "Ngài chỉ ngự xuống đền thờ",
+      "Ngài CŨNG ĐÃ XUỐNG trong các miền thấp ở dưới đất — Đấng đã xuống tức là Đấng đã lên trên hết các từng trời để làm cho đầy dẫy mọi sự đất",
+      "Ngài CŨNG ĐÃ XUỐNG thiên đàng trước — Đấng đã xuống tức là Đấng đã lên trên hết các từng trời để làm cho đầy dẫy mọi sự",
       "Ngài CŨNG ĐÃ XUỐNG trong các miền thấp ở dưới đất — Đấng đã xuống tức là Đấng đã lên trên hết các từng trời để làm cho đầy dẫy mọi sự",
-      "Ngài chỉ giáng sinh tại Bết-lê-hem"
+      "Ngài CŨNG ĐÃ XUỐNG trong các miền thấp — Đấng đã lên cao hơn các từng trời để làm cho đầy dẫy mọi sự"
     ],
     "tags": [
       "Tân Ước",
@@ -1463,13 +1463,13 @@
       1
     ],
     "content": "Theo Ê-phê-sô 5:14, có thể là một bài thánh ca cổ — câu nào được trích?",
-    "explanation": "Ê-phê-sô 5:14 — 'Cho nên có chép rằng: Ngươi đang ngủ, hãy thức, hãy vùng dậy từ trong đám người chết, thì Đấng Christ sẽ chiếu sáng ngươi.' Có lẽ trích từ một bài THÁNH CA BÁP-TÊM thời sơ khai — gọi tín hữu mới thoát khỏi 'đêm tối' tội (5:8). Tương tự Cô-lô-se 3:1 (sống lại với Christ → tìm các sự ở trên cao).",
+    "explanation": "Ê-phê-sô 5:14 viết: 'Hãy thức dậy, hỡi kẻ ngủ! Hãy đứng dậy từ trong kẻ chết, thì Đấng Christ sẽ chiếu sáng cho ngươi!' (BTT). Đây là câu trích dẫn có thể từ một bài thánh ca cổ. Đáp án đúng trích nguyên văn.\n\nCác đáp án sai:\n1. Sai chi tiết: Thay 'Đấng Christ' bằng 'Đức Chúa Trời', làm thay đổi chủ thể then chốt.\n2. Nhầm passage gần: Câu này trích từ Ma-thi-ơ 26:41, một lời kêu gọi tỉnh thức khác trong bối cảnh khác.\n3. Đúng văn bản nhưng lạc câu hỏi: Câu này dựa trên ý Ma-thi-ơ 5:14-16 về việc tín đồ là sự sáng, không phải là câu được trích dẫn trong Ê-phê-sô 5:14.",
     "language": "vi",
     "options": [
-      "'Hãy ăn năn vì nước Chúa gần rồi'",
+      "'Hãy thức dậy, hỡi kẻ ngủ! Hãy đứng dậy từ trong kẻ chết, thì Đức Chúa Trời sẽ chiếu sáng cho ngươi!'",
       "'Hãy thức dậy, hỡi kẻ ngủ! Hãy đứng dậy từ trong kẻ chết, thì Đấng Christ sẽ chiếu sáng cho ngươi!'",
-      "'Hãy tin Chúa Jêsus, ngươi sẽ được cứu'",
-      "'Hãy yêu Chúa hết lòng, hết linh hồn'"
+      "'Hãy tỉnh thức và cầu nguyện, kẻo các ngươi sa vào sự cám dỗ!'",
+      "'Vì chính ngươi là sự sáng cho thế gian; hãy soi sáng trước mặt mọi người!'"
     ],
     "tags": [
       "Tân Ước",
@@ -1489,12 +1489,12 @@
       3
     ],
     "content": "Theo Ê-phê-sô 5:31-32, hôn nhân (vợ chồng nên một thịt) là MẦU NHIỆM về điều gì?",
-    "explanation": "Ê-phê-sô 5:31-32 — 'Vậy nên người đàn ông phải lìa cha mẹ mà dính díu với vợ mình, hai người cùng nên một thịt. Sự mầu nhiệm ấy là LỚN, tôi nói về Đấng Christ và Hội thánh vậy.' Trích Sáng 2:24. Phao-lô tiết lộ: Đức Chúa Trời thiết kế hôn nhân từ ĐẦU như HÌNH BÓNG quan hệ Christ-Hội Thánh — không ngược lại. Đó là lý do tại sao hôn nhân thiêng liêng.",
+    "explanation": "Ê-phê-sô 5:32 viết: 'Ấy là một sự mầu nhiệm lớn, nhưng tôi nói về Đấng Christ và Hội thánh.' (BTT). Vì vậy, đáp án đúng xác định mầu nhiệm đó là về Đấng Christ và Hội Thánh.\n\nCác đáp án sai:\n1. 'Về đức tin và sự cứu rỗi' (common_misconception): Đây là những chủ đề quan trọng trong thư Ê-phê-sô (như Ê-phê-sô 2:8), nhưng không phải là mầu nhiệm cụ thể được chỉ ra trong câu 32.\n2. 'Về sự hiệp nhất giữa người Do Thái và người ngoại' (wrong_scope): Chủ đề này được đề cập rõ trong Ê-phê-sô 2:11-22, nhưng đây là một mầu nhiệm khác, không phải mầu nhiệm về hôn nhân được nói đến trong 5:31-32.\n3. 'Về ân điển và lẽ thật' (nearby_passage): Cụm từ này gần với ngôn ngữ trong Giăng 1:17, không phải là trọng tâm của phân đoạn Ê-phê-sô 5 đang xét.",
     "language": "vi",
     "options": [
-      "Mầu nhiệm về sự sáng tạo",
-      "Mầu nhiệm về Y-sơ-ra-ên + Đức Chúa Trời",
-      "Mầu nhiệm về Adam + Eva",
+      "MẦU NHIỆM lớn — về đức tin và sự cứu rỗi",
+      "MẦU NHIỆM lớn — về sự hiệp nhất giữa người Do Thái và người ngoại",
+      "MẦU NHIỆM lớn — về ân điển và lẽ thật",
       "MẦU NHIỆM lớn — về Đấng Christ và Hội Thánh"
     ],
     "tags": [
@@ -1541,13 +1541,13 @@
       2
     ],
     "content": "Theo Ê-phê-sô 6:19-20, Phao-lô cầu xin được xức dầu để rao Tin Lành mặc dù đang là gì?",
-    "explanation": "Ê-phê-sô 6:19-20 — 'Cũng hãy vì tôi mà cầu nguyện, để khi tôi mở miệng ra, Chúa ban cho tôi tự do mọi bề, bày tỏ lẽ mầu nhiệm của đạo Tin Lành, mà tôi vì đạo ấy làm sứ giả ở trong vòng xiềng xích, hầu cho tôi nói cách dạn dĩ như tôi phải nói.' 'SỨ GIẢ TRONG XIỀNG XÍCH' (presbeuō en halysei) = nghịch lý = đại sứ HOÀNG GIA bị xích — Phao-lô đại diện vương quốc Christ; xiềng La Mã KHÔNG cản nhiệm vụ.",
+    "explanation": "Ê-phê-sô 6:19-20 chép: 'Cũng hãy vì tôi mà cầu nguyện, để khi tôi mở miệng ra, Chúa ban cho tôi tự do mọi bề, bày tỏ lẽ mầu nhiệm của đạo Tin Lành, mà tôi vì đạo ấy làm sứ giả ở trong vòng xiềng xích, hầu cho tôi dạn dĩ nói đạo như tôi phải nói.' Đáp án đúng vì Phao-lô xác định mình là 'sứ giả ở trong vòng xiềng xích' (sứ thần đại sứ trong cùm).\n\nDistractor 1 (gần đúng, sai chi tiết): Sai vì Kinh Thánh không nói Phao-lô bị bệnh trong ngữ cảnh này, mà là 'trong vòng xiềng xích'.\nDistractor 2 (nhầm passage gần): Sai vì mô tả này phù hợp hơn với hoàn cảnh bị bức hại trong các sách khác (ví dụ: Công vụ), không phải là chi tiết cụ thể được nêu trong Ê-phê-sô 6:19-20.\nDistractor 3 (đúng văn bản nhưng lạc câu hỏi): Sai vì dù Phao-lô là sứ giả tự nguyện, nhưng câu hỏi hỏi về tình trạng 'đang là gì' khi ông cầu xin; câu Kinh Thánh nhấn mạnh ông đang là sứ giả trong tình trạng 'xiềng xích', không phải chỉ là 'tự nguyện'.",
     "language": "vi",
     "options": [
-      "Đang ở giữa giàu có",
-      "Đang được tôn vinh",
+      "Đang là sứ giả BỊ BỆNH — vẫn cầu xin được dạn dĩ giảng đạo",
+      "Đang là sứ giả BỊ ĐUỔI BẮT — vẫn cầu xin được dạn dĩ giảng đạo",
       "Đang là sứ giả XÍCH XIỀNG (sứ thần đại sứ trong cùm) — vẫn cầu xin được dạn dĩ giảng đạo",
-      "Đang là vua trong nước"
+      "Đang là sứ giả TỰ NGUYỆN — vẫn cầu xin được dạn dĩ giảng đạo"
     ],
     "tags": [
       "Tân Ước",
@@ -1567,13 +1567,13 @@
       1
     ],
     "content": "Theo Ê-phê-sô 6:23-24, lời chúc cuối thư là gì?",
-    "explanation": "Ê-phê-sô 6:23-24 — 'Nguyền xin anh em được sự bình an, sự yêu thương cùng đức tin ban cho bởi Đức Chúa Trời, là Cha, và bởi Đức Chúa Jêsus Christ! Nguyền xin ân điển ở với hết thảy những kẻ lấy lòng yêu thương chẳng phai mà kính mến Đức Chúa Jêsus Christ chúng ta!' 'KHÔNG MỤC NÁT' (aphtharsia) = không hư nát đời đời. Lời chúc cuối phối hợp: PEACE + LOVE + FAITH + GRACE — 4 từ trọng tâm Tin Lành.",
+    "explanation": "Ê-phê-sô 6:23-24 ghi: 'Nguyền xin sự bình an, sự yêu thương với đức tin, bởi Đức Chúa Trời, Cha và bởi Đức Chúa Jêsus Christ mà đến cho anh em! Nguyền xin ân điển ở với hết thảy những kẻ lấy lòng yêu mến không phai mà kính mến Đức Chúa Jêsus Christ chúng ta!' (BTT).\n\nĐÁP ÁN ĐÚNG: Câu trả lời đúng vì trung thành tóm tắt lời chúc trong hai câu Kinh Thánh: bình an, yêu thương với đức tin đến từ cả 'Cha và Christ', và ân điển cho 'tất cả ai yêu Chúa Jêsus với lòng không mục nát'.\n\nDISTRACTOR 1 (gần đúng, sai chi tiết): Sai vì câu Kinh Thánh nói rõ các điều ấy đến 'bởi Đức Chúa Trời, Cha và bởi Đức Chúa Jêsus Christ', không chỉ từ mình Christ.\n\nDISTRACTOR 2 (sai phạm vi): Sai vì câu Kinh Thánh giới hạn đối tượng nhận ân điển cụ thể là 'những kẻ... yêu mến Đức Chúa Jêsus Christ', không phải là 'tất cả tín hữu' một cách chung chung.\n\nDISTRACTOR 3 (hiểu lầm phổ biến): Sai vì câu Kinh Thánh nhấn mạnh tình yêu dành cho 'Đức Chúa Jêsus Christ', không phải là 'yêu mến Đức Chúa Trời' một cách chung, dù hai Đấng có liên hệ mật thiết.",
     "language": "vi",
     "options": [
-      "Bình an + ân điển từ Áp-ra-ham",
+      "BÌNH AN + YÊU THƯƠNG VỚI ĐỨC TIN từ Christ — ÂN ĐIỂN vô cùng cho tất cả ai yêu Chúa Jêsus với lòng không mục nát",
       "BÌNH AN + YÊU THƯƠNG VỚI ĐỨC TIN từ Cha và Christ — ÂN ĐIỂN vô cùng cho tất cả ai yêu Chúa Jêsus với lòng không mục nát",
-      "Sức khỏe + giàu có từ vua",
-      "Trí khôn + danh tiếng từ thầy giáo"
+      "BÌNH AN + YÊU THƯƠNG VỚI ĐỨC TIN từ Cha và Christ — ÂN ĐIỂN vô cùng cho tất cả tín hữu",
+      "BÌNH AN + YÊU THƯƠNG VỚI ĐỨC TIN từ Cha và Christ — ÂN ĐIỂN vô cùng cho tất cả ai yêu mến Đức Chúa Trời với lòng không mục nát"
     ],
     "tags": [
       "Tân Ước",

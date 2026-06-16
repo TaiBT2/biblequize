@@ -9,13 +9,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Na-hum 1:1 — 'Gánh nặng về Ni-ni-ve. Sách về sự hiện thấy của Na-hum, người Ên-cốt.' Ên-cốt có thể là một làng ở Giu-đa.",
+    "explanation": "Nahum 1:1 ghi rõ: \"Gánh nặng về Nín-ve. Sách của sự hiện thấy của Na-hum, người Ên-cốt.\" Đáp án đúng là \"Ên-cốt\", vì đây là tên quê hương của nhà tiên tri Na-hum được Kinh Thánh trực tiếp ghi lại. Distractor \"Nín-ve\" là sai vì đây là thành phố đối tượng lời tiên tri, không phải quê hương của Na-hum (nhầm passage gần). Distractor \"Ga-ba-thôn\" là sai vì đây là quê hương của tiên tri khác (tiên tri Giô-na), một chi tiết dễ nhầm lẫn (sai chi tiết tên). Distractor \"Giê-ru-sa-lem\" là sai vì đây là thủ đô Giu-đa, một địa danh quan trọng khác trong Kinh Thánh, nhưng không liên quan đến quê hương của Na-hum (sai phạm vi).",
     "language": "vi",
     "options": [
       "Ên-cốt",
-      "Bê-tên",
-      "Ti-sê-bê",
-      "Ghít-ga"
+      "Nín-ve",
+      "Ga-ba-thôn",
+      "Giê-ru-sa-lem"
     ],
     "tags": [
       "Cựu Ước",
@@ -35,13 +35,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Na-hum 1:1 — 'Gánh nặng về Ni-ni-ve.' Toàn sách loan báo sự đoán phạt của Đức Giê-hô-va nghịch cùng Ni-ni-ve, thủ đô A-si-ri.",
+    "explanation": "Đáp án đúng là 'Ni-ni-ve' vì Na-hum 1:1 mở đầu: 'Gánh nặng về Ni-ni-ve...'.\nDistractor 'Giê-ru-sa-lem' sai vì là thủ đô Giu-đa, được nhiều sách tiên tri khác đề cập (như Ê-sai, Giê-rê-mi) nhưng không phải chủ đề của sách Na-hum (nearby passage).\nDistractor 'Ba-by-lôn' sai vì là đế quốc sau này hùng mạnh và thường bị nhầm là đối tượng của các lời tiên tri hình phạt, nhưng sách Na-hum tập trung đặc biệt vào Ni-ni-ve của A-si-ri (common misconception).\nDistractor 'Đa-mách' sai vì mặc dù là thủ đô A-ram/Sy-ri và cũng bị các tiên tri (như Ê-sai, A-mốt) nói đến, nhưng không phải là thành được nêu trong câu Kinh Thánh tham chiếu này (true_but_off).",
     "language": "vi",
     "options": [
-      "Ba-by-lôn",
+      "Giê-ru-sa-lem",
       "Ni-ni-ve",
-      "Sa-ma-ri",
-      "Ty-rơ"
+      "Ba-by-lôn",
+      "Đa-mách"
     ],
     "tags": [
       "Cựu Ước",
@@ -61,13 +61,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Na-hum 1:2 — 'Giê-hô-va là Đức Chúa Trời ghen và báo thù; Đức Giê-hô-va báo thù và đầy sự thạnh nộ...' Sự ghen (qannâ') ở đây là lòng ghen thánh bảo vệ sự thánh khiết và dân Ngài.",
+    "explanation": "Đáp án đúng là 'Đức Chúa Trời ghen và báo thù', được trích trực tiếp từ Na-hum 1:2: 'Đức Giê-hô-va là Đức Chúa Trời ghen và báo thù'.\n\n- Distractor 'Đức Chúa Trời ghen và thương xót' (wrong_detail) là gần đúng nhưng sai ở chi tiết then chốt: thay từ 'báo thù' (trong câu Kinh Thánh) bằng từ 'thương xót' (không xuất hiện trong câu này).\n- Distractor 'Đức Chúa Trời nhân từ và báo thù' (nearby_passage) chứa yếu tố 'báo thù' đúng nhưng 'nhân từ' là sai; 'nhân từ' là từ xuất hiện ở Na-hum 1:7, không phải trong câu 1:2 được hỏi.\n- Distractor 'Đức Chúa Trời chậm giận và đầy quyền năng' (true_but_off) mô tả những thuộc tính đúng về Đức Chúa Trời (dựa trên Na-hum 1:3) nhưng không trả lời đúng câu hỏi về nội dung cụ thể của câu 1:2.",
     "language": "vi",
     "options": [
-      "Đức Chúa Trời chỉ nhân từ tuyệt đối",
-      "Đức Chúa Trời xa cách và vô cảm",
+      "Đức Chúa Trời ghen và thương xót",
+      "Đức Chúa Trời nhân từ và báo thù",
       "Đức Chúa Trời ghen và báo thù",
-      "Đức Chúa Trời luôn khoan dung mọi tội"
+      "Đức Chúa Trời chậm giận và đầy quyền năng"
     ],
     "tags": [
       "Cựu Ước",
@@ -87,12 +87,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Na-hum 1:3 — 'Đức Giê-hô-va chậm giận và có quyền lớn; nhưng Ngài chẳng cầm kẻ mắc tội là vô tội...' Chậm giận không có nghĩa là thờ ơ với tội ác — Ngài vẫn đầy quyền năng phán xét.",
+    "explanation": "Câu đúng (Có quyền năng lớn) dựa trên Nahum 1:3: 'Đức Giê-hô-va chậm giận và có quyền năng lớn...'. \n\nCác đáp án sai: (1) 'Có lòng thương xót lớn' là gần đúng vì lòng thương xót được nhắc đến trong nhiều câu Kinh Thánh khác (như Xuất Ê-díp-tô 34:6-7) nhưng không phải là đặc tính được nêu cụ thể trong câu này, đây là lỗi sai chi tiết. (2) 'Có sự nhẫn nại lớn' sai vì nhẫn nại có liên quan đến 'chậm giận' (được đề cập ngay trước trong câu), nhưng đây là hai ý riêng biệt; câu hỏi hỏi về đặc tính đi kèm sau 'và', đây là lỗi nhầm passage gần. (3) 'Có sự hiện diện lớn' sai vì mặc dù câu 3 có nói 'Đức Giê-hô-va... trong trận bão tố và trong cơn gió lốc', ngụ ý sự hiện diện uy nghi, nhưng đây không phải là đặc tính được nêu trực tiếp để trả lời câu hỏi, đây là lỗi đúng văn bản nhưng lạc câu hỏi.",
     "language": "vi",
     "options": [
-      "Có sự khôn ngoan",
-      "Có lòng thương xót vô hạn",
-      "Có sự phán xét thầm kín",
+      "Có lòng thương xót lớn",
+      "Có sự nhẫn nại lớn",
+      "Có sự hiện diện lớn",
       "Có quyền năng lớn"
     ],
     "tags": [
@@ -139,13 +139,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Na-hum 1:7 — 'Đức Giê-hô-va là tốt lành, là đồn lũy trong ngày hoạn nạn, và biết những kẻ ẩn núp nơi Ngài.' Cùng một vị Chúa phán xét Ni-ni-ve là nơi nương náu cho người tin cậy.",
+    "explanation": "Trong Na-hum 1:7, câu Kinh Thánh nguyên văn viết: 'Đức Giê-hô-va là tốt lành, làm đồn lũy trong ngày hoạn nạn, và biết những kẻ nào ẩn náu nơi Ngài.' Vì thế, đáp án đúng là 'Ngày hoạn nạn' vì đây là từ ngữ trực tiếp trong câu Kinh Thánh để chỉ thời điểm Chúa làm đồn lũy.\n\nCác đáp án sai:\n- 'Ngày phán xét' (gần đúng): Đây là một chủ đề chính trong sách Na-hum (sự đoán phát Ni-ni-ve), nên người đọc có thể liên tưởng, nhưng câu 1:7 trực tiếp không đề cập 'ngày phán xét' mà là 'ngày hoạn nạn'.\n- 'Ngày hòa bình': Sai phạm vi - Câu Kinh Thánh nói về sự bảo vệ của Chúa trong lúc khó khăn (hoạn nạn), không phải trong thời điểm yên bình.\n- 'Ngày chiến trận': Hiểu lầm phổ biến - Mặc dù sách nói về chiến tranh và sự hủy diệt, nhưng câu 1:7 nhấn mạnh đến sự nương náu và bảo vệ (đồn lũy) trong 'ngày hoạn nạn', một khái niệm rộng hơn chỉ riêng chiến trận.",
     "language": "vi",
     "options": [
-      "Ngày của lễ Vượt Qua",
+      "Ngày phán xét",
       "Ngày hoạn nạn",
-      "Ngày Sa-bát",
-      "Ngày đầu tháng"
+      "Ngày hòa bình",
+      "Ngày chiến trận"
     ],
     "tags": [
       "Cựu Ước",
@@ -165,13 +165,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Na-hum 1:7 — '...biết những kẻ ẩn núp nơi Ngài.' 'Biết' ở đây mang nghĩa mối tương giao thân mật — Chúa lưu tâm chăm sóc những ai nương dựa Ngài.",
+    "explanation": "Câu hỏi tham chiếu Na-hum 1:7: \"Đức Giê-hô-va là tốt, Ngài làm đồn lũy trong ngày hoạn nạn, và biết những kẻ ẩn núp nơi Ngài.\" Đáp án đúng là \"Những kẻ ẩn núp nơi Ngài\" vì câu Kinh Thánh trực tiếp xác định đối tượng Chúa biết là những người tìm nơi ẩn náo, nương dựa nơi Ngài. Các đáp án sai: (1) \"Những kẻ chống trả Ngài\" - sai chi tiết, toàn bộ sách Na-hum nói về sự đoán phạt của Chúa đối với kẻ thù, nhưng câu 7 cụ thể nói về người tìm nơi ẩn náu, không phải kẻ chống trả. (2) \"Những kẻ dâng tế lễ cho Ngài\" - đây là một chi tiết gần đúng vì thờ phượng là hành động của người tin Chúa, nhưng câu 7 không đề cập đến nghi lễ dâng tế, mà chỉ nói về trạng thái \"ẩn núp\" hay nương dựa. (3) \"Những kẻ sống ở thành Ni-ni-ve\" - thuộc đoạn gần, vì sách Na-hum chủ yếu nói về sự đoán phạt thành Ni-ni-ve, nhưng câu 7 là một tuyên bố chung về bản tính của Chúa, không giới hạn phạm vi vào cư dân một thành cụ thể.",
     "language": "vi",
     "options": [
-      "Những kẻ giàu có của xứ",
-      "Những kẻ học cao của dân",
+      "Những kẻ chống trả Ngài",
+      "Những kẻ dâng tế lễ cho Ngài",
       "Những kẻ ẩn núp nơi Ngài",
-      "Những kẻ xây cất đền thờ"
+      "Những kẻ sống ở thành Ni-ni-ve"
     ],
     "tags": [
       "Cựu Ước",
@@ -191,12 +191,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Na-hum 1:15 — 'Kìa, trên các núi, chân của kẻ đem tin lành, đã rao sự bình an đến!' Câu này gần giống Ê-sai 52:7 — loan báo tin vui giải cứu khi Ni-ni-ve bị đánh bại.",
+    "explanation": "Nahum 1:15 chép: 'Hãy xem, trên các núi, chân của người đem tin lành, rao sự bình an là tốt đẹp biết bao!'. Đáp án đúng là 'Đem tin lành và rao sự bình an' vì đây đúng nguyên văn Kinh Thánh. Distractor 1 sai vì thay 'sự bình an' (correct) bằng 'sự cứu chuộc' (wrong detail) – một khái niệm liên quan nhưng không có trong câu này. Distractor 2 sai vì đề cập đến 'sự phán xét và hủy diệt' (common misconception) – đây là chủ đề chính của sách Nahum nhưng không phải nội dung của câu 15. Distractor 3 sai vì dùng từ 'sứ điệp' và 'sự giải hòa' (true but off) – tuy ý nghĩa tương tự nhưng không phải từ ngữ chính xác trong câu Kinh Thánh được hỏi.",
     "language": "vi",
     "options": [
-      "Đem lương thực",
-      "Đem binh khí",
-      "Đem lệnh vua",
+      "Đem tin lành và rao sự cứu chuộc",
+      "Đem sự phán xét và rao sự hủy diệt",
+      "Đem sứ điệp và rao sự giải hòa",
       "Đem tin lành và rao sự bình an"
     ],
     "tags": [
@@ -217,13 +217,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Na-hum 2:1 — 'Kẻ tàn phá đã lên nghịch cùng ngươi; hãy giữ đồn lũy, canh chừng đường sá...' Người tàn phá báo trước quân Mê-đi và Ba-by-lôn sẽ đánh hạ Ni-ni-ve năm 612 TC.",
+    "explanation": "Na-hum 2:1 (BTT) ghi: 'Kìa, kẻ tàn phá đã lên nghịch cùng ngươi; hãy giữ đồn lũy, canh đường, thắt lưng và làm cho mình mạnh mẽ hết sức.' Đáp án đúng là 'Kẻ tàn phá' vì câu Kinh Thánh trực tiếp mô tả đối tượng 'lên nghịch cùng Ni-ni-ve' bằng từ này. Các đáp án sai: 1) 'Kẻ phòng thủ' sai chi tiết vì bản văn kêu gọi Ni-ni-ve 'giữ đồn lũy' (hành động phòng thủ), không phải là kẻ tấn công. 2) 'Kẻ thống lĩnh' nhầm sang passage gần/mạch văn khác (như các đoạn nói về vua hoặc người lãnh đạo), không phải là chủ thể trong câu này. 3) 'Kẻ phục hưng' là hiểu lầm phổ biến dựa trên suy diễn sai về mục đích, trong khi bản văn rõ ràng chỉ về kẻ hủy diệt.",
     "language": "vi",
     "options": [
       "Kẻ tàn phá",
-      "Một thầy tế lễ",
-      "Một vị sứ giả hòa bình",
-      "Một đoàn lái buôn"
+      "Kẻ phòng thủ",
+      "Kẻ thống lĩnh",
+      "Kẻ phục hưng"
     ],
     "tags": [
       "Cựu Ước",
@@ -269,13 +269,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Na-hum 3:1 — 'Khốn thay cho thành đổ máu! Nó đầy dối trá và cướp bóc; sự cướp giật không thôi.' Ni-ni-ve bị gọi là 'thành đổ máu' vì sự tàn bạo và bạo lực của đế quốc A-si-ri.",
+    "explanation": "Na-hum 3:1 viết: 'Khốn thay cho thành đổ máu!' nên đáp án đúng là 'Thành đổ máu'. 1) 'Thành phản loạn' là cụm từ xuất hiện ở Na-hum 3:1, nhưng nó mô tả Ni-ni-ve 'đầy dẫy sự dối trá và trộm cướp' chứ không phải tên gọi trực tiếp. 2) 'Thành bị sụp đổ' sai phạm vi vì đây là hậu quả/sự phán xét được báo trước, không phải tên gọi trong câu này. 3) 'Thành của sự dối trá' là một hiểu lầm phổ biến, dựa trên tính chất của Ni-ni-ve được nêu trong sách, nhưng không phải tên gọi cụ thể tại đây.",
     "language": "vi",
     "options": [
-      "Thành huy hoàng của các vua",
-      "Thành công bình và thịnh vượng",
+      "Thành phản loạn",
+      "Thành bị sụp đổ",
       "Thành đổ máu",
-      "Thành của các tiên tri chân thật"
+      "Thành của sự dối trá"
     ],
     "tags": [
       "Cựu Ước",
@@ -295,12 +295,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Na-hum 3:7 — '...Ni-ni-ve đã hoang vu rồi! ai sẽ than khóc nó? Ta bởi đâu tìm được kẻ an ủi cho ngươi?' Không một ai tiếc thương — vì tội ác quá lớn khiến cả thế giới thoát được.",
+    "explanation": "Nahum 3:7 chép: 'Ai sẽ than khóc về nó? Ta sẽ tìm đâu ra kẻ yên ủi ngươi?' (BTT). Câu này nằm trong lời tuyên bố về sự sụp đổ hoàn toàn và bị ruồng bỏ của thành Ni-ni-ve. Đáp án đúng là 'Không ai — chẳng tìm được kẻ an ủi' vì câu Kinh Thánh dùng câu hỏi tu từ để khẳng định sẽ chẳng có ai than khóc hay an ủi thành phố tàn ác này khi nó bị phá hủy.\n\nCác đáp án sai sai vì:\n- 'Các dân tộc lân cận' (nearby_passage): Đây là đáp án gần đúng vì các câu lân cận (câu 5-6) nói đến việc Đức Chúa Trời sẽ bày tỏ sự ô nhục của Ni-ni-ve cho các dân, nhưng câu 7 cụ thể hỏi về 'kẻ than khóc/an ủi' thì câu trả lời là 'không ai'.\n- 'Những kẻ từng bị nó áp bức' (common_misconception): Người đọc có thể suy diễn rằng những nạn nhân sẽ than khóc vì sự trừng phạt công bằng, nhưng Kinh Thánh không hề ghi nhận điều này; ngược lại, sự sụp đổ của Ni-ni-ve là hoàn toàn cô độc.\n- 'Những nhà tiên tri của Đức Chúa Trời' (true_but_off): Mặc dù nhà tiên tri Na-hum là tác giả sách này, và các nhà tiên tri khác như Giô-na cũng liên quan đến Ni-ni-ve, nhưng không có chỗ nào trong phân đoạn này hay ngữ cảnh gần nói rằng họ sẽ than khóc cho thành phố. Câu hỏi này hỏi về phản ứng khi nó sụp đổ, không phải về những người đã cảnh báo nó.",
     "language": "vi",
     "options": [
-      "Các nước đồng minh",
-      "Các vua láng giềng",
-      "Gia đình hoàng tộc",
+      "Các dân tộc lân cận",
+      "Những kẻ từng bị nó áp bức",
+      "Những nhà tiên tri của Đức Chúa Trời",
       "Không ai — chẳng tìm được kẻ an ủi"
     ],
     "tags": [
@@ -321,13 +321,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Na-hum 3:8 — 'Ngươi lại hơn No-A-môn sao? Thành ấy ở giữa các sông, có nước bao quanh...' No-A-môn là Thê-bơ (Thebes) của Ai Cập, bị A-si-ri chiếm năm 663 TC.",
+    "explanation": "Na-hum 3:8 viết: 'Ngươi có hơn gì No-A-môn, là thành ở giữa các sông, có nước chung quanh, lấy biển làm đồn lũy, lấy nước làm tường thành?' Đây là lời tiên tri cảnh báo Ni-ni-ve sẽ bị sụp đổ như No-A-môn (tức Thê-bơ, thủ đô cổ của Ai Cập) đã từng bị hủy diệt. Đáp án đúng là 'No-A-môn (Thê-bơ của Ai Cập)' vì câu Kinh Thánh trực tiếp so sánh Ni-ni-ve với thành này.\n\nCác đáp án sai: (1) 'Sô-đôm và Gô-mô-rơ' là một hiểu lầm phổ biến vì đây là những thành bị hủy diệt nổi tiếng trong Kinh Thánh, nhưng không phải là thành được nhắc đến trong câu hỏi này. (2) 'Giê-ru-sa-lem của Giu-đa' là sai chi tiết, vì Giê-ru-sa-lem dù từng bị tàn phá nhưng không phải là đối tượng so sánh trong Na-hum 3:8. (3) 'Ba-by-lôn của Canh-đê' là đáp án gần đúng (almost-right) vì Ba-by-lôn là một đế quốc hùng mạnh khác cũng bị sụp đổ và được nhắc đến trong các sách tiên tri gần đó, nhưng trong câu hỏi cụ thể này, Na-hum 3:8 chỉ nhắc đến No-A-môn.",
     "language": "vi",
     "options": [
       "No-A-môn (Thê-bơ của Ai Cập)",
-      "Ba-by-lôn",
-      "Giê-ru-sa-lem",
-      "Sô-đôm"
+      "Sô-đôm và Gô-mô-rơ",
+      "Giê-ru-sa-lem của Giu-đa",
+      "Ba-by-lôn của Canh-đê"
     ],
     "tags": [
       "Cựu Ước",
@@ -347,13 +347,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Na-hum 3:19 — '...hết thảy những kẻ nghe tin ngươi sẽ vỗ tay mừng, vì ai là kẻ đã chẳng từng chịu sự tàn bạo của ngươi?' Vỗ tay — biểu thị sự nhẹ nhõm và vui mừng vì kẻ ác đã bị đoán phạt.",
+    "explanation": "Na-hum 3:19 viết: 'Chẳng có thuốc chữa lành vết thương ngươi; nhược bằng ngươi đã bị thương rất nặng. Hết thảy những kẻ nghe tin tức về ngươi đều vỗ tay trên mình ngươi; vì ai là kẻ chưa từng bị sự hung ác ngươi làm hại luôn luôn?' (BTT). Do đó, đáp án 'Vỗ tay mừng rỡ' là chính xác, vì các dân tộc bị áp bức vui mừng trước sự sụp đổ của kẻ thù hung bạo là Ni-ni-ve. Distractor 'Than khóc thương xót' là gần đúng vì nó phản ánh cảm xúc, nhưng sai chi tiết then chốt (trong ngữ cảnh này, mọi người vui mừng chứ không thương xót). Distractor 'Lo sợ run rẩy' sai vì đây là hiểu lầm phổ biến về phản ứng trước một đế chế hùng mạnh sụp đổ; trong sách Na-hum, sự sụp đổ của Ni-ni-ve là tin vui và giải phóng. Distractor 'Cầu nguyện khẩn thiết' sai vì mặc dù cầu nguyện là hành động phổ biến trong Kinh Thánh, nhưng nó không được đề cập trong đoạn này như là phản ứng của mọi người khi nghe tin về Ni-ni-ve; câu hỏi hỏi về phản ứng trực tiếp được mô tả trong câu 19.",
     "language": "vi",
     "options": [
-      "Thương xót và than khóc",
+      "Than khóc thương xót",
       "Vỗ tay mừng rỡ",
-      "Dâng lễ tạ ơn",
-      "Cầu nguyện cho phục hồi"
+      "Lo sợ run rẩy",
+      "Cầu nguyện khẩn thiết"
     ],
     "tags": [
       "Cựu Ước",
@@ -373,13 +373,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Na-hum 1:8 — 'Nhưng Ngài dùng nước lụt hủy diệt chỗ nó, và đuổi kẻ thù nghịch mình vào sự tối tăm.' Hình ảnh nước lụt biểu thị sự hủy diệt hoàn toàn của Đức Chúa Trời.",
+    "explanation": "Na-hum 1:8 chép: \"Nhưng Ngài sẽ lấy nước lụt tràn qua mà diệt hết chỗ nó, Và đuổi kẻ thù nghịch Ngài đến nơi tối tăm.\" Vì thế, đáp án đúng là \"Nước lụt tràn qua\". \n- Distractor \"Cơn lốc dữ dội\" gần đúng vì bối cảnh đoạn này có nói đến bão tố (câu 3), nhưng không phải phương tiện tiêu diệt kẻ thù được nêu trong câu 8. \n- Distractor \"Lưỡi gươm bén\" sai chi tiết vì đây là hình ảnh thường dùng trong chiến tranh, nhưng không được nhắc đến trong phân đoạn này cho sự hủy diệt cuối cùng. \n- Distractor \"Sự ôn dịch trên đất\" bắt nguồn từ hiểu lầm phổ biến về các tai họa thường thấy trong Cựu Ước, nhưng nó không được đề cập trong sách Na-hum cho mục đích này.",
     "language": "vi",
     "options": [
-      "Lửa từ trời",
-      "Đất rung chuyển",
+      "Cơn lốc dữ dội",
+      "Lưỡi gươm bén",
       "Nước lụt tràn qua",
-      "Dịch bệnh lan tràn"
+      "Sự ôn dịch trên đất"
     ],
     "tags": [
       "Cựu Ước",
@@ -399,12 +399,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Na-hum 2:6 — 'Các cửa sông mở ra, đền đài bị chảy tan đi.' Khi nước dồn vào, cung điện hoàng gia Ni-ni-ve bị phá tan — ứng nghiệm trong cuộc sụp đổ năm 612 TC.",
+    "explanation": "Nahum 2:6 (BTT) chép: 'Các cửa sông mở ra, đền đài bị chảy tan đi.'\n\n- ĐÁP ÁN ĐÚNG ('Đền đài bị chảy tan đi') là diễn giải chính xác từ Kinh Thánh. Hình ảnh 'các cửa sông mở ra' dẫn đến hậu quả trực tiếp là 'đền đài bị chảy tan đi', mô tả sự hủy diệt của thành Ni-ni-ve.\n\n- DISTRACTOR SAI 1 ('Các cửa thành bị phá hủy') là lỗi 'wrong_detail'. Đây là đáp án 'gần đúng' vì cùng nói về sự hủy hoại công trình và ngữ cảnh gần, nhưng câu Kinh Thánh cụ thể nói 'cửa sông' (chỉ vị trí địa lý hoặc hệ thống thủy lợi/phòng thủ của Ni-ni-ve), không phải 'cửa thành'. Đây là một chi tiết then chốt bị thay đổi.\n- DISTRACTOR SAI 2 ('Cung điện bị lật đổ') là lỗi 'nearby_passage'. Ý tưởng về sự sụp đổ của cung điện xuất hiện trong ngữ cảnh tiên tri về Ni-ni-ve (xem Nahum 2:6-8, 3:18), nhưng không phải là hậu quả được nêu trực tiếp của việc 'các cửa sông mở ra' trong câu 6.\n- DISTRACTOR SAI 3 ('Dân chúng hò reo chiến thắng') là lỗi 'true_but_off'. Trong phân đoạn (Nahum 2:3-10) có nhắc đến tiếng ồn ào, kẻ cướp bóc và sự hỗn loạn, nhưng câu hỏi cụ thể về hậu quả của việc 'các cửa sông mở ra' thì đáp án này không trực tiếp và lạc trọng tâm so với mô tả trong câu 6.",
     "language": "vi",
     "options": [
-      "Chợ búa đóng cửa",
-      "Quân lính bỏ chạy",
-      "Tường thành đứng vững",
+      "Các cửa thành bị phá hủy",
+      "Cung điện bị lật đổ",
+      "Dân chúng hò reo chiến thắng",
       "Đền đài bị chảy tan đi"
     ],
     "tags": [
@@ -425,13 +425,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Na-hum 2:11-12 — 'Hang sư tử đực ở đâu? Chỗ nuôi sư tử con ấy ở đâu?... Sư tử đực xé đủ mồi cho con nó...' Sư tử là biểu tượng hoàng gia A-si-ri; nay 'hang' bị bỏ trống vì đế quốc sụp đổ.",
+    "explanation": "Na-hum 2:11 viết: 'Hang của sư tử, hang của sư tử tơ, nơi sư tử đực, sư tử cái đi lại, không hề ai làm cho kinh hãi, ở đâu?' Câu này là lời chất vấn về sự sụp đổ của Ni-ni-ve, thủ đô của đế quốc A-si-ri, vốn thường được ví như sư tử hung dữ trong Kinh Thánh (xem Na-hum 2:12-13).\n- Đáp án đúng 'A-si-ri (Ni-ni-ve)' đúng vì sách Na-hum là lời tiên tri chống lại A-si-ri và thành Ni-ni-ve, hình ảnh 'hang sư tử' ám chỉ sức mạnh và nơi ở của đế quốc này.\n- Distractor 'Giu-đa (Giê-ru-sa-lem)' là gần đúng nhưng sai chi tiết then chốt: mặc dù Giu-đa là đối tượng được an ủi trong sách Na-hum (Na-hum 1:15), nhưng 'hang sư tử' ở câu 2:11 rõ ràng chỉ về kẻ thù của họ là A-si-ri, không phải chính họ.\n- Distractor 'Ba-by-lôn' sai vì đây là một hiểu lầm phổ biến: Ba-by-lôn là đế quốc kế thừa và cũng hung bạo, nhưng trong ngữ cảnh sách Na-hum, tiên tri đang nói trực tiếp về sự hủy diệt của A-si-ri/Ni-ni-ve, không phải Ba-by-lôn.\n- Distractor 'Ai Cập' sai và lạc câu hỏi: Ai Cập là một cường quốc khác trong Kinh Thánh, nhưng không liên quan gì đến hình ảnh 'hang sư tử' trong Na-hum 2:11; đây là một thực thể đúng trong văn bản Kinh Thánh nhưng hoàn toàn không phải đối tượng của lời tiên tri này.",
     "language": "vi",
     "options": [
       "A-si-ri (Ni-ni-ve)",
-      "Ai Cập",
+      "Giu-đa (Giê-ru-sa-lem)",
       "Ba-by-lôn",
-      "Ê-đôm"
+      "Ai Cập"
     ],
     "tags": [
       "Cựu Ước",

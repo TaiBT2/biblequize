@@ -60,14 +60,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ha-ba-cúc 2:2 - Khải tượng phải được ghi lại rõ ràng để người đọc có thể đọc một cách nhanh chóng và dễ dàng.",
+    "explanation": "Câu hỏi dựa trên Ha-ba-cúc 2:2-3 (BTT). Đáp án đúng là 'Để người đọc có thể đọc một cách rõ ràng và nhanh chóng' vì Kinh Thánh ghi: 'Hãy chép lấy sự hiện thấy nầy, và ghi rõ ràng trên bảng, hầu cho người đọc có thể đọc cho mau.' (câu 2). Distractor 1 ('suy ngẫm một cách sâu sắc') là gần đúng nhưng sai chi tiết then chốt; văn bản nhấn mạnh 'đọc cho mau' (nhanh chóng), không phải 'suy ngẫm sâu sắc'. Distractor 2 ('nhớ và thuộc lòng') là hiểu lầm phổ biến về mục đích của việc ghi chép trong Kinh Thánh, nhưng đoạn này không đề cập đến việc thuộc lòng. Distractor 3 ('chép lại và phổ biến rộng rãi') tuy có thể đúng trong ngữ cảnh rộng hơn nhưng lạc câu hỏi; câu hỏi hỏi mục đích trực tiếp của việc 'viết xuống' theo câu 2, chứ không phải mục đích phổ biến sau đó.",
     "language": "vi",
     "verseEnd": 3,
     "options": [
-      "Để đọc ở đền thờ",
+      "Để người đọc có thể hiểu và suy ngẫm một cách sâu sắc",
       "Để người đọc có thể đọc một cách rõ ràng và nhanh chóng",
-      "Để dâng cho vua",
-      "Để giữ kín"
+      "Để người đọc có thể nhớ và thuộc lòng một cách dễ dàng",
+      "Để người đọc có thể chép lại và phổ biến một cách rộng rãi"
     ],
     "tags": [
       "Cựu Ước",
@@ -86,12 +86,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Sự tôn kính và yên lặng trước sự hiện diện của Chúa.",
+    "explanation": "Câu trả lời đúng là \"Nên lặng trước mặt Ngài\". Điều này trực tiếp trích dẫn Ha-ba-cúc 2:20 (BTT), khẳng định thái độ tôn kính, im lặng trước sự hiện diện thánh khiết của Đức Giê-hô-va. Distractor \"Nên ca ngợi trước mặt Ngài\" là gần đúng vì ca ngợi là phản ứng phổ biến, nhưng câu Kinh Thánh cụ thể này nhấn mạnh sự im lặng, không phải tiếng ca. Distractor \"Nên run rẩy trước mặt Ngài\" phản ánh một hiểu lầm phổ biến về sự kinh sợ, nhưng văn bản không dùng từ này; nó mô tả một thái độ thụ động (im lặng) hơn là một hành động (run rẩy). Distractor \"Hãy phục vụ trước mặt Ngài\" đúng về mặt thần học nhưng lạc đề với câu hỏi cụ thể yêu cầu điền chính xác từ ngữ trong câu Kinh Thánh này, vốn không đề cập đến phục vụ.",
     "language": "vi",
     "options": [
-      "Vui mừng",
-      "Ngợi khen",
-      "Kêu gọi",
+      "Nên ca ngợi trước mặt Ngài",
+      "Nên run rẩy trước mặt Ngài",
+      "Hãy phục vụ trước mặt Ngài",
       "Nên lặng trước mặt Ngài"
     ],
     "tags": [
@@ -136,14 +136,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Đức tin không điều kiện: vui mừng trong Chúa dù mất tất cả. Đỉnh cao của đức tin.",
+    "explanation": "Trong Ha-ba-cúc 3:17-18, dù cảnh tượng hoang tàn (vả không trổ hoa, nho không có trái, cây ô-li-ve không ra, ruộng không sanh sản vật, bầy chiên bị dứt khỏi ràn, bầy bò không có trong chuồng), tiên tri Ha-ba-cúc tuyên bố: 'thì tôi còn sẽ vui mừng trong Đức Giê-hô-va, tôi sẽ hớn hở trong Đức Chúa Trời của sự cứu rỗi tôi'. ĐÁP ÁN ĐÚNG: 'Vui mừng trong Đức Giê-hô-va' diễn đạt chính xác trọng tâm của câu Kinh Thánh. DISTRACTOR 1 (Vui mừng trong sự giàu có) SAI vì sai chi tiết then chốt — bối cảnh là mất mát mọi vật chất, nhưng ông vui mừng trong CHÚA, chứ không phải trong của cải. DISTRACTOR 2 (Khóc lóc than van) SAI do hiểu lầm phổ biến — phản ứng tự nhiên trước mất mát là than khóc, nhưng Kinh Thánh ghi lại thái độ đức tin đặc biệt là vui mừng. DISTRACTOR 3 (Kiên nhẫn chờ đợi) SAI vì đúng văn bản nhưng lạc câu hỏi — sự kiên nhẫn có thể hàm ý trong sách Ha-ba-cúc, nhưng câu hỏi cụ thể về hành động được nêu trong 3:18, đó là 'vui mừng'.",
     "language": "vi",
     "verseEnd": 18,
     "options": [
-      "Than vãn",
+      "Vui mừng trong sự giàu có",
       "Vui mừng trong Đức Giê-hô-va",
-      "Tìm nơi khác",
-      "Bỏ cuộc"
+      "Khóc lóc than van",
+      "Kiên nhẫn chờ đợi"
     ],
     "tags": [
       "Cựu Ước",
@@ -162,13 +162,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Lời hứa Chúa có thể trễ nhưng không bao giờ thất bại. Hãy kiên nhẫn đợi.",
+    "explanation": "Câu hỏi là về nội dung giáo huấn trong Ha 2:3 liên quan đến lời hứa của Chúa. ĐÁP ÁN ĐÚNG: 'Khải tượng còn đợi đến kỳ, nhưng chắc chắn sẽ đến, hãy đợi' dựa trực tiếp vào câu Kinh Thánh: 'Vì khải tượng ấy còn chỉ về kỳ đã định và chóng đưa đến cuối cùng, không phỉnh dối đâu. Nếu nó chậm trễ, hãy đợi nó, vì nó chắc sẽ đến, chẳng trễ chút nào.' (Ha 2:3, BTT). Điều này dạy rằng lời hứa (khải tượng) của Chúa chắc chắn sẽ ứng nghiệm vào thời điểm được định sẵn và cần sự kiên nhẫn chờ đợi.\n\nĐÁP ÁN SAI 1 ('Khải tượng đang ứng nghiệm và hoàn tất, không cần phải đợi'): Sai chi tiết. Câu Kinh Thánh nhấn mạnh việc khải tượng 'còn đợi đến kỳ' và kêu gọi 'hãy đợi', trái với ý nói nó 'đang ứng nghiệm và hoàn tất' và 'không cần phải đợi'.\n\nĐÁP ÁN SAI 2 ('Khải tượng chắc chắn sẽ đến một cách nhanh chóng và tức thì'): Sai phạm vi. Mặc dù khẳng định 'chắc chắn sẽ đến' là đúng yếu tố đầu của khải tượng, việc thêm 'nhanh chóng và tức thì' mâu thuẫn với ý 'đợi đến kỳ' và 'Nếu nó chậm trễ, hãy đợi nó' trong phân đoạn, sai về tính chất thời gian được mô tả.\n\nĐÁP ÁN SAI 3 ('Khải tượng là về sự đoán phạt cho những kẻ kiêu ngạo'): Nhầm đoạn gần. Điều này mô tả nội dung của câu 4 hoặc 5 trong cùng chương (Habakkuk 2), nói về sự đối lập giữa người công bình và kẻ kiêu ngạo, không phải là trọng tâm của câu 3 về bản chất thời gian và sự chắc chắn của khải tượng/lời hứa.",
     "language": "vi",
     "options": [
       "Khải tượng còn đợi đến kỳ, nhưng chắc chắn sẽ đến, hãy đợi",
-      "Không chắc",
-      "Có thể không đến",
-      "Sẽ đến ngay"
+      "Khải tượng đang ứng nghiệm và hoàn tất, không cần phải đợi",
+      "Khải tượng chắc chắn sẽ đến một cách nhanh chóng và tức thì",
+      "Khải tượng là về sự đoán phạt cho những kẻ kiêu ngạo"
     ],
     "tags": [
       "Cựu Ước",
@@ -187,13 +187,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ha-ba-cúc 1:12 - Vầng Đá (Tsur) = nơi vững chắc và ẩn náu. Chúa đời đời và không thay đổi.",
+    "explanation": "Câu hỏi hỏi về danh hiệu cụ thể Ha-ba-cúc dùng để gọi Chúa trong Ha-ba-cúc 1:12. Đáp án đúng là 'Đức Chúa Trời đời đời và Vầng Đá' (Habakkuk 1:12 BTT), trích nguyên văn từ câu Kinh Thánh. \n\nCác đáp án sai: \n1. 'Đức Chúa Trời đời đời và Nơi Ẩn Núp' sai vì đây là danh hiệu từ một phân đoạn gần đó, thường thấy trong các sách khác (như Thi Thiên), nhưng không phải là cụm từ được dùng trong Ha-ba-cúc 1:12. \n2. 'Đấng Tạo Hóa và Vầng Đá' sai vì mặc dù 'Vầng Đá' đúng, nhưng 'Đấng Tạo Hóa' là một danh hiệu chung, đúng về mặt chân lý nhưng không phải là từ ngữ cụ thể Ha-ba-cúc dùng trong câu này. \n3. 'Đức Chúa Trời vĩ đại và Vầng Đá của tôi' sai vì chi tiết 'vĩ đại' và 'của tôi' không có trong bản văn Ha-ba-cúc 1:12.",
     "language": "vi",
     "options": [
       "Đức Chúa Trời đời đời và Vầng Đá",
-      "Vua của vua",
-      "Quan án",
-      "Chiến binh"
+      "Đức Chúa Trời đời đời và Nơi Ẩn Núp",
+      "Đấng Tạo Hóa và Vầng Đá",
+      "Đức Chúa Trời vĩ đại và Vầng Đá của tôi"
     ],
     "tags": [
       "Cựu Ước",
@@ -212,14 +212,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Có năm lời 'khốn cho' (câu 6, 9, 12, 15, 19) nhằm vào những kẻ ác, cảnh báo sự phán xét của Chúa.",
+    "explanation": "Đoạn Kinh Thánh Ha-ba-cúc 2:6-20 ghi lại năm lời tuyên bố 'khốn cho' (các câu 6, 9, 12, 15, 19). Do đó, đáp án đúng là 'Năm lời'. 'Sáu lời' sai vì đếm thừa, có thể do nhầm lẫn với cấu trúc của các đoạn tiên tri khác. 'Bốn lời' là đáp án gần đúng nhưng sai vì thiếu một lời trong năm lời được liệt kê. 'Bảy lời' sai vì mở rộng phạm vi ra ngoài đoạn được tham chiếu (2:6-20), có thể do đếm cả những lời cảnh báo có tính chất tương tự trong các chương khác.",
     "language": "vi",
     "verseEnd": 20,
     "options": [
-      "Bốn lời",
-      "Năm lời",
       "Sáu lời",
-      "Ba lời"
+      "Năm lời",
+      "Bốn lời",
+      "Bảy lời"
     ],
     "tags": [
       "Cựu Ước",
@@ -264,13 +264,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ha-ba-cúc 3:16 - Ông run rẩy toàn thân nhưng quyết định yên lặng chờ đợi ngày hoạn nạn, thể hiện sự kính sợ và trông cậy nơi Chúa.",
+    "explanation": "Đáp án đúng là 'Run rẩy và quyết định yên lặng chờ đợi' vì Ha-ba-cúc 3:16 ghi: 'Tôi nghe, bụng tôi run rẩy; tiếng ấy làm cho môi tôi run lập cập; xương tôi như mục nát, và dưới chân tôi tôi run rung. Tuy vậy tôi sẽ yên lặng chờ đợi ngày hoạn nạn, là ngày dấy lên nghịch cùng dân tộc chúng tôi.'\n\nDistractor 'Run rẩy và ngay lập tức đi rao truyền cho dân chúng' là một câu trả lời gần đúng nhưng sai chi tiết then chốt: trong khi Ha-ba-cúc run rẩy, ông quyết định yên lặng chờ đợi chứ không lập tức hành động rao truyền (đây là một phản ứng có thể xuất hiện ở các tiên tri khác nhưng không phải trong passage này).\nDistractor 'Vui mừng và bắt đầu ca ngợi Chúa cách tự phát' sai vì nó mô tả một phản ứng trái ngược với văn bản: Ha-ba-cúc không vui mừng mà run rẩy vì sự kinh khiếp của sự phán xét Chúa báo trước.\nDistractor 'Bình tĩnh và tiếp tục thảo luận với Đức Chúa Trời' sai vì nó miêu tả một thái độ trầm tĩnh, trong khi văn bản cho thấy một phản ứng thể chất mãnh liệt (run rẩy), và ông không tiếp tục thảo luận mà chuyển sang thái độ yên lặng chờ đợi.",
     "language": "vi",
     "options": [
-      "Giận dữ",
+      "Run rẩy và ngay lập tức đi rao truyền cho dân chúng",
       "Run rẩy và quyết định yên lặng chờ đợi",
-      "Vui mừng",
-      "Bỏ chạy"
+      "Vui mừng và bắt đầu ca ngợi Chúa cách tự phát",
+      "Bình tĩnh và tiếp tục thảo luận với Đức Chúa Trời"
     ],
     "tags": [
       "Cựu Ước",
@@ -289,12 +289,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ha-ba-cúc 2:4 là câu Cựu Ước quan trọng nhất cho thần học Cải Cách: xưng công bình bởi đức tin, được trích 3 lần trong Tân Ước.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Rô-ma 1:17, Ga-la-ti 3:11, Hê-bơ-rơ 10:38 (cả ba). Câu Kinh Thánh Ha-ba-cúc 2:4 được trích dẫn đầy đủ và rõ ràng trong cả ba phân đoạn này của Tân Ước, nhấn mạnh nguyên tắc sống bởi đức tin.\n\nGIẢI THÍCH CÁC ĐÁP ÁN SAI:\n- Distractor 1 (Rô-ma 1:16, Ga-la-ti 3:11, Hê-bơ-rơ 10:38): Sai chi tiết. Rô-ma 1:16 nói về quyền phép của Phúc Âm, không phải là câu trích dẫn trực tiếp Ha-ba-cúc 2:4. Câu trích dẫn nằm ở Rô-ma 1:17.\n- Distractor 2 (Rô-ma 1:17, Ga-la-ti 3:11, Gia-cơ 2:24): Sai phạm vi. Gia-cơ 2:24 nói về đức tin và việc làm, hoàn toàn không trích dẫn Ha-ba-cúc 2:4. Đây là một sự nhầm lẫn phổ biến về chủ đề đức tin, nhưng không đúng với yêu cầu cụ thể của câu hỏi về trích dẫn.\n- Distractor 3 (Rô-ma 1:17, Hê-bơ-rơ 10:38): Đúng văn bản nhưng lạc câu hỏi. Mặc dù hai câu này có trích dẫn, nhưng đáp án này thiếu Ga-la-ti 3:11, trong khi câu hỏi yêu cầu tìm tất cả các nơi trích dẫn. Ga-la-ti 3:11 cũng trích dẫn rõ ràng Ha-ba-cúc 2:4.",
     "language": "vi",
     "options": [
-      "Chỉ Ga-la-ti",
-      "Không được trích",
-      "Chỉ Rô-ma",
+      "Rô-ma 1:16, Ga-la-ti 3:11, Hê-bơ-rơ 10:38",
+      "Rô-ma 1:17, Ga-la-ti 3:11, Gia-cơ 2:24",
+      "Rô-ma 1:17, Hê-bơ-rơ 10:38",
       "Rô-ma 1:17, Ga-la-ti 3:11, Hê-bơ-rơ 10:38 (cả ba)"
     ],
     "tags": [
@@ -392,13 +392,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ha-ba-cúc 2:1 — 'Ta sẽ đứng nơi vọng canh, chôn chân nơi đồn lũy, rình xem Ngài bảo ta điều gì.'",
+    "explanation": "Habakkuk 2:1 chép: 'Tôi sẽ đứng nơi vọng canh, chôn chân tại đồn lũy, rình xem Ngài sẽ phán cùng tôi điều gì, và tôi sẽ trả lời thế nào về sự than phiền mình.' Do đó, đáp án đúng là 'Trên vọng canh và đồn lũy' vì đây chính xác là địa điểm tiên tri đã nói. Distractor 1 ('Trên đỉnh núi và vách đá') gần đúng vì vọng canh có thể liên tưởng đến nơi cao, nhưng Kinh Thánh không dùng từ này. Distractor 2 ('Trong đền thờ và nơi thánh') sai phạm vi vì ngữ cảnh là chờ sự phán xét/quan sát, không phải thờ phượng nghi lễ. Distractor 3 ('Tại nhà riêng và phòng cầu nguyện') dựa trên hiểu lầm phổ biến rằng tiên tri chờ đợi trong không gian riêng tư, nhưng bản văn mô tả một vị trí canh gác công khai, biểu tượng.",
     "language": "vi",
     "options": [
       "Trên vọng canh và đồn lũy",
-      "Trong đền thờ",
-      "Trên núi Si-ôn",
-      "Bên bờ sông"
+      "Trên đỉnh núi và vách đá",
+      "Trong đền thờ và nơi thánh",
+      "Tại nhà riêng và phòng cầu nguyện"
     ],
     "tags": [
       "Cựu Ước",
@@ -418,13 +418,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ha-ba-cúc 2:14 — 'Vì sự nhận biết vinh quang Đức Giê-hô-va sẽ đầy dẫy khắp đất, như nước đầy tràn biển.'",
+    "explanation": "Đáp án đúng là 'Sự nhận biết vinh quang Đức Giê-hô-va' vì Ha-ba-cúc 2:14 chép: 'Vì sự nhận biết vinh quang Đức Giê-hô-va sẽ đầy dẫy đất, như nước đầy tràn biển'. Phần then chốt là 'sự NHẬN BIẾT (hoặc sự hiểu biết)' về vinh quang Đức Giê-hô-va.\n\nCác phương án sai:\n1. 'Sự yên nghỉ trong vinh quang Đức Giê-hô-va': Sai chi tiết từ khóa. Câu này đúng về chủ đề (vinh quang Đức Giê-hô-va) nhưng thay 'nhận biết' bằng 'yên nghỉ', là một khái niệm khác, thường gặp trong sách Hê-bơ-rơ (Hê-bơ-rơ 3-4) chứ không phải trong Ha-ba-cúc.\n2. 'Sự vinh hiển thuộc về các vương quốc': Sai phạm vi. Ý này trái với thông điệp của Ha-ba-cúc. Cả sách nhấn mạnh sự phán xét các nước kiêu ngạo và sự tôn cao duy nhất của Đức Giê-hô-va, không phải vinh hiển thuộc về các vương quốc trần gian.\n3. 'Sự kính sợ danh Đức Giê-hô-va': Hiểu lầm phổ biến. 'Kính sợ Đức Giê-hô-va' là khái niệm quan trọng trong Cựu Ước (Châm ngôn 1:7) nhưng không phải là từ ngữ chính xác trong Ha-ba-cúc 2:14; câu hỏi này yêu cầu đáp án đúng theo văn bản cụ thể.",
     "language": "vi",
     "options": [
-      "Sự bình an",
-      "Sự công bình",
+      "Sự yên nghỉ trong vinh quang Đức Giê-hô-va",
+      "Sự vinh hiển thuộc về các vương quốc",
       "Sự nhận biết vinh quang Đức Giê-hô-va",
-      "Lương thực dư dật"
+      "Sự kính sợ danh Đức Giê-hô-va"
     ],
     "tags": [
       "Cựu Ước",
@@ -444,12 +444,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ha-ba-cúc 2:19 — 'Khốn thay cho kẻ nói với gỗ rằng: Hãy tỉnh thức! và với đá câm rằng: Hãy chỗi dậy!'",
+    "explanation": "Ha-ba-cúc 2:19 viết: 'Khốn thay cho kẻ nói với khúc gỗ rằng: Hãy thức dậy! Và với hòn đá câm rằng: Hãy tỉnh dậy! Nó có thể dạy dỗ được chăng? Nầy, nó bọc vàng và bạc, song chẳng có chút hơi thở nào ở trong nó.' Đoạn này lên án sự thờ lạy thần tượng (gỗ và đá câm).\n\n- ĐÁP ÁN ĐÚNG là 'Với gỗ và đá câm (thần tượng)' vì chính xác theo văn bản (gỗ và đá câm).\n- Distractor 'Với cây cối và đá núi (thụ tạo)' là GẦN ĐÚNG (almost-right) nhưng sai chi tiết then chốt: văn bản nói 'khúc gỗ' và 'hòn đá câm' (thần tượng do con người tạo ra/tôn thờ), không phải thụ tạo tự nhiên chung chung.\n- Distractor 'Với tiên tri và thầy tế (con người)' SAI vì lạc phạm vi: toàn bộ Ha-ba-cúc 2 không lên án tiên tri hay thầy tế trong ngữ cảnh này, mà lên án sự thờ hình tượng.\n- Distractor 'Với các vì sao và mặt trăng (thiên thể)' SAI vì dựa trên hiểu lầm phổ biến về đối tượng thờ lạy ngoài Chúa; văn bản này cụ thể nói đến thần tượng bằng gỗ và đá, không phải thiên thể.",
     "language": "vi",
     "options": [
-      "Với người chết",
-      "Với mặt trời và mặt trăng",
-      "Với biển cả",
+      "Với cây cối và đá núi (thụ tạo)",
+      "Với tiên tri và thầy tế (con người)",
+      "Với các vì sao và mặt trăng (thiên thể)",
       "Với gỗ và đá câm (thần tượng)"
     ],
     "tags": [
@@ -470,13 +470,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ha-ba-cúc 3:8 — 'Có phải Đức Giê-hô-va nổi giận nghịch cùng các sông không?... Khi Ngài cỡi trên những ngựa và những xe đắc thắng của Ngài.'",
+    "explanation": "Đáp án đúng là 'Với các sông và biển', vì Ha-ba-cúc 3:8 chép: 'Có phải Ngài nổi thạnh nộ cùng các sông, hay là Ngài nổi giận cùng các biển, khi Ngài cỡi ngựa và xe đặng cứu rỗi?'\n\nCác đáp án sai:\n- 'Với các núi và đồi' (gần đúng): Sai vì mặc dù Ha-ba-cúc 3:6,10 có nhắc đến núi và đồi, nhưng câu 8 cụ thể hỏi về sông và biển.\n- 'Với các dân và nước': Sai vì đây là phạm vi quá rộng, không phải đối tượng cụ thể được hỏi trong câu này.\n- 'Với các xe và ngựa chiến': Sai vì dù câu 8 có nhắc đến 'xe' và 'ngựa', nhưng đây là phương tiện Chúa cưỡi để cứu rỗi, không phải đối tượng của cơn thạnh nộ.",
     "language": "vi",
     "options": [
-      "Với núi non",
+      "Với các núi và đồi",
       "Với các sông và biển",
-      "Với các thành phố",
-      "Với loài người"
+      "Với các dân và nước",
+      "Với các xe và ngựa chiến"
     ],
     "tags": [
       "Cựu Ước",
@@ -496,13 +496,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ha-ba-cúc 3:19 — 'Đức Giê-hô-va là Chúa, là sức mạnh của tôi, Ngài làm cho chân tôi giống như chân con hươu cái, khiến tôi đi trên các nơi cao của mình.'",
+    "explanation": "Câu trả lời đúng là 'Chân con hươu cái' dựa trên Ha-ba-cúc 3:19: 'Đức Giê-hô-va là Chúa là sức mạnh của tôi; Ngài khiến chân tôi giống như chân con hươu cái, và khiến tôi đi trên các nơi cao của tôi.'\n\nCác đáp án sai: (1) 'Chân con dê đực' là gần đúng nhưng sai chi tiết then chốt (loài vật). Trong Kinh Thánh, hình ảnh con dê đực thường xuất hiện trong các sách như Đa-ni-ên, nhưng không phải trong ngữ cảnh này. (2) 'Chân con sư tử' sai phạm vi: hình ảnh sư tử biểu trưng cho sức mạnh, uy quyền (như trong Khải Huyền 5:5), nhưng không được dùng trong Ha-ba-cúc 3:19 để miêu tả chân. (3) 'Chân con ngựa chiến' đúng văn bản nhưng lạc câu hỏi: ngựa chiến xuất hiện trong Ha-ba-cúc 1:8 ('ngựa nó nhảy hơn beo'), nhưng câu 3:19 cụ thể nói đến 'hươu cái'.",
     "language": "vi",
     "options": [
-      "Chân lạc đà",
-      "Chân ngựa chiến",
+      "Chân con dê đực",
+      "Chân con sư tử",
       "Chân con hươu cái",
-      "Chân sư tử"
+      "Chân con ngựa chiến"
     ],
     "tags": [
       "Cựu Ước",

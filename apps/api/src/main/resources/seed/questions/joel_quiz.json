@@ -9,13 +9,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giô-ên 1:1 — 'Lời của Đức Giê-hô-va phán cho Giô-ên, con trai Phê-tu-ên.' Đây là chi tiết duy nhất về thân thế tác giả trong cả sách.",
+    "explanation": "Đáp án đúng là \"Phê-tu-ên\" dựa trực tiếp vào Joel 1:1: \"Lời của Đức Giê-hô-va phán cùng Giô-ên, con trai của Phê-tu-ên.\"\n\n- **Giô-suê (sai)**: Đây là một tên phổ biến trong Kinh Thánh, gây nhầm lẫn phổ biến, nhưng không phải là tên cha của Giô-ên.\n- **Giô-tham (sai)**: Đây là tên một vị vua của Giu-đa (2 Các Vua 15:32), gần đúng vì cùng là tên người nhưng sai chi tiết cụ thể; nó không liên quan đến gia phả của Giô-ên.\n- **Ô-xe (sai)**: Đây là tên một tiên tri khác (sách Ô-sê), được chọn từ một passage gần (cùng thuộc nhóm tiên tri nhỏ) nhưng không liên quan đến câu hỏi về cha của Giô-ên.",
     "language": "vi",
     "options": [
       "Phê-tu-ên",
-      "Bê-thu-ên",
-      "A-mốt",
-      "Ma-nát-se"
+      "Giô-suê",
+      "Giô-tham",
+      "Ô-xe"
     ],
     "tags": [
       "Cựu Ước",
@@ -61,13 +61,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giô-ên 1:14 — 'Khá định sự kiêng ăn, gọi một hội đồng trọng thể, nhóm các trưởng lão và hết thảy dân cư trong đất lại nơi nhà Giê-hô-va Đức Chúa Trời các ngươi; và hãy kêu cầu Đức Giê-hô-va!'",
+    "explanation": "Giô-ên 1:14 ghi rõ: \"Hãy định sự kiêng ăn, định sự nhóm hội đồng trọng thể, hãy nhóm các trưởng lão và hết thảy dân cư trong nước lại tại nhà Giê-hô-va Đức Chúa Trời các ngươi, mà kêu cầu cùng Đức Giê-hô-va.\"\n\nĐÁP ÁN ĐÚNG: 'Định sự kiêng ăn và nhóm hội đồng trọng thể kêu cầu Chúa' trực tiếp phản ánh mệnh lệnh trong câu: định kiêng ăn, nhóm hội đồng trọng thể để kêu cầu.\n\nDISTRACTOR SAI:\n1. 'Định kỳ dâng tế lễ và mở tiệc tùng tôn vinh Chúa' (wrong_detail) – Sai chi tiết: bản văn kêu gọi kiêng ăn và nhóm hội đồng nghiêm trang, không phải dâng tế lễ hay mở tiệc tùng.\n2. 'Ra lệnh kiêng ăn và triệu tập các trưởng lão để khiển trách dân sự' (nearby_passage) – Gần đúng nhưng sai then chốt: bản văn có nhóm trưởng lão, nhưng mục đích là 'kêu cầu' Chúa, không phải 'khiển trách' dân sự.\n3. 'Tuyên bố ngày vui mừng và tổ chức lễ hội ăn mừng mùa gặt' (true_but_off) – Trái ngược hoàn toàn với ngữ cảnh: đoạn sách đang mô tả thảm họa mất mùa (câu 10-12) nên lời kêu gọi là ăn năn, không phải ăn mừng.",
     "language": "vi",
     "options": [
-      "Tập hợp quân đội chống lại châu chấu",
-      "Dâng lễ vật phong phú để cầu mưa",
+      "Định kỳ dâng tế lễ và mở tiệc tùng tôn vinh Chúa",
+      "Ra lệnh kiêng ăn và triệu tập các trưởng lão để khiển trách dân sự",
       "Định sự kiêng ăn và nhóm hội đồng trọng thể kêu cầu Chúa",
-      "Di cư sang xứ khác để tránh đói"
+      "Tuyên bố ngày vui mừng và tổ chức lễ hội ăn mừng mùa gặt"
     ],
     "tags": [
       "Cựu Ước",
@@ -113,13 +113,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giô-ên 2:1 — 'Hãy thổi kèn trong Si-ôn; hãy thổi vang ra trên núi thánh ta! Hết thảy dân cư trong đất khá đều run rẩy! Vì ngày của Đức Giê-hô-va đến, ngày ấy đã gần.'",
+    "explanation": "Câu hỏi tham chiếu Giô-ên 2:1: 'Hãy thổi kèn tại Si-ôn; hãy reo tiếng trên núi thánh ta! Hết thảy dân cư trong đất khá đều run sợ; vì ngày của Đức Giê-hô-va đến, ngày ấy đã gần!' Đáp án đúng 'Ngày của Đức Giê-hô-va đến gần' trực tiếp trích từ câu Kinh Thánh, chỉ rõ mục đích của hiệu kèn. Distractor 'Một cuộc chiến tranh sắp nổ ra' là gần đúng vì gắn với bối cảnh cảnh báo chung nhưng sai chi tiết then chốt: câu Kinh Thánh không nói cụ thể 'chiến tranh' mà là 'ngày của Đức Giê-hô-va'. Distractor 'Một tai họa đói kém sắp đến' xuất phát từ hiểu lầm phổ biến khi đọc lướt cả sách Giô-ên (có đề cập đến nạn châu chấu và đói kém ở chương 1), nhưng không phải là thông điệp của câu 2:1. Distractor 'Một cơn mưa lớn sắp đổ xuống' là sai chi tiết, bịa ra một yếu tố thời tiết không hề được nhắc đến trong ngữ cảnh này.",
     "language": "vi",
     "options": [
       "Ngày của Đức Giê-hô-va đến gần",
-      "Mùa lễ Vượt Qua sắp khởi",
-      "Quân đội Đa-vít ra trận",
-      "Đền thờ được khởi công"
+      "Một cuộc chiến tranh sắp nổ ra",
+      "Một tai họa đói kém sắp đến",
+      "Một cơn mưa lớn sắp đổ xuống"
     ],
     "tags": [
       "Cựu Ước",
@@ -139,13 +139,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giô-ên 2:12 — 'Bây giờ cũng hãy hết lòng trở về cùng ta, kiêng ăn, khóc lóc và buồn rầu.' Sự trở về thật phải từ tấm lòng, thể hiện qua kiêng ăn, khóc lóc, buồn rầu.",
+    "explanation": "Câu hỏi hỏi cụ thể về cách thức Đức Giê-hô-va phán dân Ngài phải trở lại trong Giô-ên 2:12. Đáp án đúng là 'Hết lòng trở về, kiêng ăn, khóc lóc và buồn rầu' vì câu Kinh Thánh chép: 'Đức Giê-hô-va phán: Bây giờ các ngươi hãy hết lòng trở về với ta, hãy kiêng ăn, khóc lóc và buồn rầu.' (Giô-ên 2:12).\nDistractor 1 sai vì thay 'kiêng ăn' và 'buồn rầu' bằng 'cầu nguyện' và 'vui mừng', đây là sai chi tiết then chốt so với văn bản.\nDistractor 2 là đáp án gần đúng vì có ba yếu tố đúng ('kiêng ăn, khóc lóc, buồn rầu') nhưng thêm 'dâng của lễ thiêu', một chi tiết không có trong câu này, có thể bắt nguồn từ việc đọc các phân đoạn gần nói về sự thờ phượng (sai lầm passage gần).\nDistractor 3 sai vì đưa ra các hành động có vẻ đạo đức chung chung ('xây lại bàn thờ, giữ luật pháp...'), tuy có thể áp dụng trong bối cảnh ăn năn rộng hơn nhưng không phải là câu trả lời trực tiếp và cụ thể cho câu hỏi về nội dung của Giô-ên 2:12 (đúng văn bản nhưng lạc câu hỏi).",
     "language": "vi",
     "options": [
-      "Dâng nhiều của lễ thiêu",
+      "Hết lòng trở về, cầu nguyện, dâng hiến và vui mừng",
       "Hết lòng trở về, kiêng ăn, khóc lóc và buồn rầu",
-      "Tái xây dựng đền thờ",
-      "Tập hợp để chiến đấu"
+      "Kiêng ăn, khóc lóc, buồn rầu và dâng của lễ thiêu",
+      "Xây lại bàn thờ, giữ luật pháp, tụ tập và thờ phượng"
     ],
     "tags": [
       "Cựu Ước",
@@ -165,13 +165,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giô-ên 2:13 — 'Hãy xé lòng các ngươi, và đừng xé áo các ngươi. Khá trở lại cùng Giê-hô-va Đức Chúa Trời các ngươi...' Xé áo là biểu hiện ngoài; Chúa muốn sự tan vỡ thật của tấm lòng.",
+    "explanation": "Câu hỏi hỏi về điều nên xé theo Giô-ên 2:13. Đáp án đúng là 'Xé lòng, chứ đừng xé áo', trích nguyên văn từ Giô-ên 2:13 (BTT): 'Đừng xé áo các ngươi, nhưng hãy xé lòng các ngươi'. Đây là lời kêu gọi sự ăn năn thật lòng, không chỉ hình thức bên ngoài.\n\nCác đáp án sai:\n- 'Xé áo, chứ đừng xé lòng': Sai chi tiết (wrong_detail). Đây là distractor 'gần đúng' vì cấu trúc tương tự nhưng đảo ngược hoàn toàn ý chính của câu Kinh Thánh, biến lời dạy đúng thành sai.\n- 'Xé hình tượng và xé lòng': Sai phạm vi (wrong_scope). Hành động 'xé hình tượng' có liên quan đến sự ăn năn và thờ phượng trong Cựu Ước (ví dụ: 2 Các Vua 18:4) nhưng không hề được đề cập trong Giô-ên 2:13, nên đưa vào là không đúng ngữ cảnh.\n- 'Xé tấm lòng và xé áo': Đúng văn bản nhưng lạc câu hỏi (true_but_off). Mặc dù 'xé lòng' và 'xé áo' đều là những hình ảnh liên quan, câu Kinh Thánh trong Giô-ên 2:13 nhấn mạnh sự tương phản 'đừng xé áo... hãy xé lòng', chứ không phải khuyến khích làm cả hai. Câu hỏi hỏi điều 'nên' làm để bày tỏ sự ăn năn thật, và đáp án này mâu thuẫn với mệnh lệnh 'đừng' trong câu gốc.",
     "language": "vi",
     "options": [
-      "Xé áo ngoài cho mọi người thấy",
-      "Xé cả áo lẫn tóc",
+      "Xé áo, chứ đừng xé lòng",
+      "Xé hình tượng và xé lòng",
       "Xé lòng, chứ đừng xé áo",
-      "Đốt hết của báu"
+      "Xé tấm lòng và xé áo"
     ],
     "tags": [
       "Cựu Ước",
@@ -191,12 +191,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giô-ên 2:13 — '...vì Ngài là nhân từ và hay thương xót, chậm giận và giàu ơn, đổi ý về sự tai vạ.' Câu kinh điển về tính cách của Đức Chúa Trời, lặp lại từ Xuất 34:6.",
+    "explanation": "Giô-ên 2:13 chép: \"Đức Giê-hô-va các ngươi là nhân từ, hay thương xót, chậm giận và giàu ơn, đổi ý về sự tai vạ.\" Vì vậy, đáp án đúng liệt kê chính xác bốn đức tính được mô tả.\n\nCác đáp án sai: (1) 'nghiêm khắc' thay cho 'giàu ơn' là sai một chi tiết then chốt trong câu này. (2) 'nhanh giận' thay cho 'chậm giận' là trái ngược với đặc tính được mô tả, đây là một chi tiết sai phổ biến dễ nhầm lẫn. (3) 'Thánh khiết, công bình' là những đức tính của Đức Chúa Trời nhưng không được nêu trong Giô-ên 2:13, đây là mở rộng phạm vi sai với câu hỏi cụ thể về câu Kinh Thánh này.",
     "language": "vi",
     "options": [
-      "Cứng rắn và không đổi",
-      "Chậm lời nhưng mau trừng phạt",
-      "Đầy vinh quang và quyền năng tuyệt đối",
+      "Nhân từ, hay thương xót, chậm giận và nghiêm khắc",
+      "Nhân từ, hay thương xót, nhanh giận và giàu ơn",
+      "Thánh khiết, công bình, thương xót và chậm giận",
       "Nhân từ, hay thương xót, chậm giận và giàu ơn"
     ],
     "tags": [
@@ -269,13 +269,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giô-ên 2:28 — '...các người già cả sẽ thấy chiêm bao, những trai trẻ các ngươi sẽ xem sự hiện thấy.' Cả già lẫn trẻ đều được Thánh Linh bày tỏ.",
+    "explanation": "Giô-ên 2:28 ghi: 'Các con trai, các con gái các ngươi sẽ nói tiên tri; các ngươi già cả sẽ thấy chiêm bao, và các ngươi trai trẻ sẽ xem sự hiện thấy.' (BTT). Do đó, đáp án đúng là 'Thanh niên xem sự hiện thấy, ông già thấy chiêm bao'.\n- Distractor 1 ('Ông già xem sự hiện thấy, thanh niên thấy chiêm bao') sai vì đảo ngược hai hành động (sai chi tiết then chốt).\n- Distractor 2 ('Thanh niên nói tiên tri, ông già xem sự hiện thấy') sai vì gán hành động 'nói tiên tri' (được nói đến cho con trai, con gái) và 'xem sự hiện thấy' cho ông già, lệch phạm vi đối tượng và hành động được hỏi.\n- Distractor 3 ('Ông già và thanh niên đều nói tiên tri') sai vì đây là một hiểu lầm phổ biến, tưởng rằng mọi người đều làm cùng một việc, nhưng câu Kinh Thánh phân biệt rõ ràng các hành động cho từng nhóm.",
     "language": "vi",
     "options": [
-      "Thanh niên thấy chiêm bao, ông già xem hiện thấy",
-      "Thanh niên lao động, ông già cầu nguyện",
+      "Ông già xem sự hiện thấy, thanh niên thấy chiêm bao",
+      "Thanh niên nói tiên tri, ông già xem sự hiện thấy",
       "Thanh niên xem sự hiện thấy, ông già thấy chiêm bao",
-      "Thanh niên viết sách, ông già giảng dạy"
+      "Ông già và thanh niên đều nói tiên tri"
     ],
     "tags": [
       "Cựu Ước",
@@ -321,13 +321,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giô-ên 3:10 — 'Hãy lấy lưỡi cày rèn gươm, lấy liềm rèn giáo...' Đây là sự đảo ngược của Ê-sai 2:4 — trong ngày phán xét các dân, khí cụ hòa bình thành vũ khí.",
+    "explanation": "Giô-ên 3:10 chép: 'Hãy rèn lưỡi cày của các ngươi trở nên gươm, và lưỡi hái của các ngươi trở nên giáo.' Vì thế, đáp án đúng là 'Rèn thành gươm và giáo', mô tả chính xác hành động biến công cụ nông nghiệp thành vũ khí chiến tranh. \n\n- Distractor 'Rèn thành lưỡi cày và lưỡi hái' là sai vì nó đảo ngược ý của câu Kinh Thánh; đây là trạng thái ban đầu, không phải hành động được truyền lệnh. \n- Distractor 'Nung chảy thành công cụ mới' là sai vì mặc dù 'nung chảy' liên quan đến việc rèn, nhưng cụm từ 'công cụ mới' quá mơ hồ và không trực tiếp trích dẫn văn bản, lạc khỏi chi tiết cụ thể 'gươm và giáo'. \n- Distractor 'Vứt bỏ để cầu hòa bình' là sai vì hoàn toàn trái ngược với bối cảnh và mệnh lệnh trong đoạn, vốn kêu gọi chuẩn bị cho chiến tranh, không phải hòa bình.",
     "language": "vi",
     "options": [
       "Rèn thành gươm và giáo",
-      "Dâng lên bàn thờ Chúa",
-      "Chôn xuống đất làm kho báu",
-      "Đúc lại thành chuông đền thờ"
+      "Rèn thành lưỡi cày và lưỡi hái",
+      "Nung chảy thành công cụ mới",
+      "Vứt bỏ để cầu hòa bình"
     ],
     "tags": [
       "Cựu Ước",
@@ -347,13 +347,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giô-ên 3:14 — 'Đoàn đông, đoàn đông tại trong trũng đoán định! Vì ngày Đức Giê-hô-va đã gần trong trũng đoán định.' Trũng đoán định là hình ảnh về nơi Chúa phán xét các dân.",
+    "explanation": "Giô-ên 3:14 chép: 'Đoàn đông, đoàn đông ở trong trũng đoán định; vì ngày Đức Giê-hô-va đã gần trong trũng đoán định.' Do đó, 'Trũng đoán định' là đáp án đúng, chỉ nơi phán xét sau cùng của Đức Chúa Trời.\n\nCác đáp án sai như sau:\n- 'Trũng diệt vong' là sai chi tiết (wrong_detail): Không có tên trũng này xuất hiện trong phân đoạn hoặc ngữ cảnh gần Giô-ên 3:14.\n- 'Trũng hội mưu' là sai phạm vi (wrong_scope): Mặc dù có liên quan đến sự đoán xét, từ này không xuất hiện trong sách Giô-ên và thuộc về phạm vi văn bản khác.\n- 'Trũng quyết định' là đúng văn bản nhưng lạc câu hỏi (true_but_off): Từ này đồng nghĩa về mặt ý nghĩa với 'Trũng đoán định' (cả hai đều chỉ sự phán quyết) nhưng cụm từ chính xác được Kinh Thánh sử dụng ở Giô-ên 3:14 là 'trũng đoán định', không phải 'trũng quyết định'.",
     "language": "vi",
     "options": [
-      "Trũng Giô-sa-phát của bình an",
+      "Trũng diệt vong",
       "Trũng đoán định",
-      "Trũng Hi-nôm của lửa",
-      "Trũng A-cô của sự nhục"
+      "Trũng hội mưu",
+      "Trũng quyết định"
     ],
     "tags": [
       "Cựu Ước",
@@ -373,13 +373,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giô-ên 3:17 — '...bấy giờ các ngươi sẽ biết ta là Giê-hô-va Đức Chúa Trời các ngươi, ở tại Si-ôn, là núi thánh ta. Giê-ru-sa-lem sẽ là thánh, và dân ngoại chẳng còn đi qua trong nó nữa.'",
+    "explanation": "Giô-ên 3:17 chép: 'Thì các ngươi sẽ biết ta là Giê-hô-va Đức Chúa Trời các ngươi, ngự tại Si-ôn, là núi thánh ta. Bấy giờ Giê-ru-sa-lem sẽ là thánh, và những người ngoại sẽ không đi qua đó nữa.' Đáp án đúng là 'Sẽ là thánh, không còn dân ngoại đi qua', vì câu Kinh Thánh mô tả trạng thái thánh khiết và sự ngăn cách với người ngoại.\n\nDistractor 1 ('Sẽ là thành phố, không còn người ngoại đạo ở') là gần đúng, nhưng sai chi tiết then chốt: câu gốc nhấn mạnh trạng thái 'thánh' chứ không phải loại hình 'thành phố', và dùng cụm 'dân ngoại đi qua' (chỉ sự xâm nhập, đi ngang) thay vì 'ở' (cư trú).\nDistractor 2 ('Sẽ được mở rộng, không còn kẻ thù tiến vào') sai phạm vi: ý 'mở rộng' và 'kẻ thù' không được đề cập trong ngữ cảnh này, đây là sự suy diễn ngoài văn bản.\nDistractor 3 ('Sẽ là nơi phán xét, mọi dân tộc tụ họp') lấy ý từ đoạn gần (Giô-ên 3:1-2, 12 nói về việc phán xét các dân trong trũng Giô-sa-phát), nhưng đây không phải là mô tả về Giê-ru-sa-lem khi Đức Giê-hô-va ngự tại Si-ôn trong câu 17.",
     "language": "vi",
     "options": [
-      "Sẽ được mở rộng gấp đôi",
-      "Sẽ trở thành đô thị thương mại",
+      "Sẽ là thành phố, không còn người ngoại đạo ở",
+      "Sẽ được mở rộng, không còn kẻ thù tiến vào",
       "Sẽ là thánh, không còn dân ngoại đi qua",
-      "Sẽ được cai trị bởi các dân ngoại"
+      "Sẽ là nơi phán xét, mọi dân tộc tụ họp"
     ],
     "tags": [
       "Cựu Ước",
@@ -399,11 +399,11 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giô-ên 3:18 — 'Trong ngày đó, các núi nhỏ rượu ngọt ra, sữa chảy ra từ các đồi, hết thảy các khe Giu-đa sẽ có nước chảy...' Hình ảnh về sự sung mãn trong thời phục hồi.",
+    "explanation": "Giô-ên 3:18 chép: 'Xứ sẽ sanh ra lúa mì, rượu, và dầu, các núi sẽ nhỏ ra rượu ngọt, và các đồi sẽ chảy ra sữa.' Vì vậy, đáp án đúng là 'Rượu ngọt', vì Kinh Thánh trực tiếp nói 'các núi sẽ nhỏ ra rượu ngọt'.\n\nCác đáp án sai:\n- 'Nước ngọt': Là một chi tiết gần đúng (almost-right) vì câu này nói về sự dư dật và ngọt ngào, nhưng bản văn ghi cụ thể là 'rượu ngọt', không phải 'nước ngọt' (lỗi nearby_passage, vì trong ngữ cảnh có nhắc đến sự chảy ra như sữa, có thể gây nhầm).\n- 'Sương móc': Là một chi tiết sai (wrong_detail), vì sương móc thường được nhắc đến trong các sách tiên tri như là phước hạnh (ví dụ Ô-sê 14:5), nhưng không xuất hiện trong câu Kinh Thánh cụ thể này.\n- 'Mật ong': Mặc dù mật ong là biểu tượng phổ biến của sự dư dật và ngọt ngào trong Kinh Thánh (ví dụ Xuất Ê-díp-tô Ký 3:8), và có thể hợp lý về mặt chủ đề, nhưng nó không phải là điều câu Kinh Thánh này nói các núi sẽ nhỏ ra (lỗi true_but_off, đúng ý tưởng nhưng sai văn bản cho câu hỏi cụ thể này).",
     "language": "vi",
     "options": [
-      "Dầu olive",
-      "Nước mặn",
+      "Nước ngọt",
+      "Sương móc",
       "Mật ong",
       "Rượu ngọt"
     ],

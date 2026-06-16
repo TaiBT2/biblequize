@@ -9,13 +9,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Phi-lê-môn 1:1 — 'Phao-lô, tù của Đức Chúa Jêsus Christ, và Ti-mô-thê, anh em chúng ta, gởi cho Phi-lê-môn...' Phao-lô nhấn mạnh thân phận tù nhân vì Tin Lành thay vì chức vụ sứ đồ để làm nền cho lời cầu xin.",
+    "explanation": "Philemon 1:1 chép: 'Phao-lô, kẻ tù của Đức Chúa Jêsus Christ...'. Vì vậy, đáp án đúng là 'Tù của Đức Chúa Jêsus Christ', phản ánh chính xác cách tự xưng của Phao-lô trong câu này. Distractor 'Tôi tớ của Đức Chúa Jêsus Christ' là gần đúng nhưng sai chi tiết then chốt; từ 'tôi tớ' (doulos) thường được Phao-lô dùng ở những nơi khác (như Rô-ma 1:1), nhưng ở đây ông dùng 'tù' (desmios). Distractor 'Sứ đồ của Đức Chúa Jêsus Christ' sai vì tuy Phao-lô thường xưng là sứ đồ trong các thư khác (như Rô-ma 1:1, 1 Cô-rinh-tô 1:1), nhưng trong Philemon 1:1 ông không dùng danh hiệu này. Distractor 'Người rao giảng Đức Chúa Jêsus Christ' sai vì đây là một hiểu lầm phổ biến về chức vụ của Phao-lô, nhưng không phải từ ngữ ông dùng để tự xưng trong câu mở đầu thư Phi-lê-môn.",
     "language": "vi",
     "options": [
+      "Tôi tớ của Đức Chúa Jêsus Christ",
       "Sứ đồ của Đức Chúa Jêsus Christ",
-      "Tôi tớ của Hội Thánh",
       "Tù của Đức Chúa Jêsus Christ",
-      "Trưởng lão của Rô-ma"
+      "Người rao giảng Đức Chúa Jêsus Christ"
     ],
     "tags": [
       "Tân Ước",
@@ -87,12 +87,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Phi-lê-môn 1:10 — 'Tôi vì con tôi đã sanh trong vòng xiềng xích, tức là Ô-nê-sim, mà nài xin anh.' Ô-nê-sim là nô lệ bỏ trốn của Phi-lê-môn, nay đã tin Chúa nhờ chức vụ của Phao-lô.",
+    "explanation": "Đáp án đúng là 'Ô-nê-sim' vì Phao-lô trực tiếp nói: 'tôi nài xin con vì con trai tôi mà tôi đã sinh ra trong vòng xiềng xích, tức là Ô-nê-sim' (Philemon 1:10).\n\nCác đáp án sai:\n- 'Ti-mô-thê' sai vì đây là người đồng gửi thư với Phao-lô được nhắc ngay đầu thư (câu 1), không phải đối tượng được cầu xin cho.\n- 'Ế-pháp' sai vì đây là người bạn đồng tù với Phao-lô (câu 23), không phải đối tượng được cầu xin cho trong lời thỉnh cầu chính.\n- 'Áp-phi-a' sai vì đây là một trong những người nhận thư (câu 2), không phải đối tượng được Phao-lô cầu xin cho.",
     "language": "vi",
     "options": [
       "Ti-mô-thê",
-      "Ạc-híp",
-      "Ê-pháp-ra",
+      "Ế-pháp",
+      "Áp-phi-a",
       "Ô-nê-sim"
     ],
     "tags": [
@@ -139,13 +139,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Phi-lê-môn 1:11 — 'Ngày trước người không ích gì cho anh, nhưng bây giờ sẽ ích lắm, và cũng ích cho tôi nữa...' Phao-lô chơi chữ: tên 'Ô-nê-sim' nghĩa là 'có ích'; trước khi tin Chúa, anh lại 'vô ích'.",
+    "explanation": "Đáp án đúng dựa trên Philemon 1:11: 'Người trước đã vô ích cho anh, nhưng bây giờ làm ích cho anh và cũng cho tôi nữa.' (BTT). Từ 'vô ích' (hoặc 'không ích gì') mô tả chính xác tình trạng trước đây của Ô-nê-sim đối với Phi-lê-môn.\n\nCác đáp án sai:\n- 'Rất có ích' là đáp án gần đúng nhưng sai chi tiết then chốt, vì nó đảo ngược hoàn toàn ý nghĩa của câu Kinh Thánh (đây là mô tả về hiện tại, không phải quá khứ).\n- 'Một người xa lạ' sai phạm vi vì mặc dù Ô-nê-sim có thể không thân thiết, nhưng câu Kinh Thánh cụ thể này không dùng từ đó để mô tả mối quan hệ trong quá khứ; đây là sự suy diễn ngoài phạm vi câu hỏi.\n- 'Một đầy tớ trung thành' dựa trên hiểu lầm phổ biến rằng vì Ô-nê-sim là đầy tớ nên mặc nhiên trung thành, trong khi câu chuyện và câu 11 ngụ ý điều ngược lại trong quá khứ (anh đã bỏ trốn).",
     "language": "vi",
     "options": [
       "Không ích gì (vô ích)",
-      "Người đầy tớ trung tín nhất",
-      "Quản gia tài ba",
-      "Bạn thân thiết từ thuở nhỏ"
+      "Rất có ích",
+      "Một người xa lạ",
+      "Một đầy tớ trung thành"
     ],
     "tags": [
       "Tân Ước",
@@ -165,13 +165,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Phi-lê-môn 1:16 — '...chẳng coi như tôi mọi nữa, nhưng coi hơn tôi mọi, coi như anh em yêu dấu...' Tin Lành biến đổi tương quan chủ-nô thành tương quan anh em trong Christ.",
+    "explanation": "Phi-lê-môn 1:16 ghi: \"chẳng phải như tôi mọi nữa, nhưng hơn tôi mọi, tức là một anh em rất yêu dấu\". Phao-lô xin Phi-lê-môn tiếp Ô-nê-sim \"Không phải như tôi mọi, nhưng như anh em yêu dấu\" dựa trực tiếp vào ý \"chẳng phải như tôi mọi nữa... tức là một anh em rất yêu dấu\". Distractor thứ nhất (\"Không phải như tôi mọi, nhưng hơn tôi mọi\") đúng cấu trúc và lấy ý từ cụm \"hơn tôi mọi\" trong câu, nhưng bỏ mất khái niệm then chốt là \"anh em yêu dấu\", khiến ý nghĩa thay đổi (chỉ nhấn mạng sự trổi hơn về địa vị chứ không phải mối quan hệ huynh đệ). Distractor thứ hai (\"Như anh em yêu dấu hơn chính mạng sống mình\") có vế đầu đúng nhưng thêm chi tiết \"hơn chính mạng sống mình\" không có trong phân đoạn, áp dụng sai mức độ tình cảm. Distractor thứ ba (\"Như người đầy tớ thân thương và trung tín\") có ý tích cực nhưng lạc hoàn toàn so với yêu cầu của câu hỏi, vì câu hỏi hỏi về cách tiếp nhận theo lời Phao-lô (không còn là tôi mọi/tôi tớ), trong khi đáp án này vẫn gọi là \"đầy tớ\", trái ngược với lời dạy.",
     "language": "vi",
     "options": [
-      "Như một kẻ phản bội cần trừng phạt",
-      "Như đầy tớ bình thường trở lại làm việc",
+      "Không phải như tôi mọi, nhưng hơn tôi mọi",
+      "Như anh em yêu dấu hơn chính mạng sống mình",
       "Không phải như tôi mọi, nhưng như anh em yêu dấu",
-      "Như khách lạ qua đường"
+      "Như người đầy tớ thân thương và trung tín"
     ],
     "tags": [
       "Tân Ước",
@@ -191,13 +191,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Phi-lê-môn 1:9 — '...song vì lòng yêu thương của anh, nên tôi nài xin thì hơn. Tôi, Phao-lô, đã già rồi, hiện nay lại vì Đức Chúa Jêsus Christ chịu tù nữa...' Ông không dùng uy quyền ra lệnh dù có thể (1:8), mà chọn lời cầu xin vì tình yêu thương.",
+    "explanation": "Trong Philemon 1:9, Phao-lô viết: 'Vì lòng yêu thương mà nài xin con', cho thấy ông chọn cách khuyên nhủ dựa trên tình yêu thương chứ không dùng thẩm quyền (dù ông có quyền). Đáp án sai 1 ('Dùng lời ra lệnh trực tiếp của sứ đồ') là gần đúng vì dù Phao-lô là sứ đồ có thẩm quyền (điều được ngụ ý trong đoạn), nhưng ông không chọn cách ra lệnh. Đáp án sai 2 ('Vì sự công bình mà đòi hỏi') phản ánh hiểu lầm phổ biến rằng vấn đề cần giải quyết công lý, nhưng Phao-lô không dùng lập luận này. Đáp án sai 3 ('Nêu lên vấn đề trong tinh thần trách mắng') sai phạm vi vì câu hỏi chỉ về cách đề cập chính, dù Phao-lô có thể có thái độ khác trong toàn bức thư, ông không đề cập theo cách này.",
     "language": "vi",
     "options": [
-      "Ra lệnh dùng quyền sứ đồ",
+      "Dùng lời ra lệnh trực tiếp của sứ đồ",
       "Vì lòng yêu thương mà nài xin",
-      "Dọa cắt đứt mối giao hảo",
-      "Gửi đại diện thay mặt mình"
+      "Vì sự công bình mà đòi hỏi",
+      "Nêu lên vấn đề trong tinh thần trách mắng"
     ],
     "tags": [
       "Tân Ước",
@@ -218,12 +218,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Phi-lê-môn 1:4-5 — 'Tôi cảm tạ Đức Chúa Trời tôi, hằng ghi nhớ anh trong lời cầu nguyện, vì nghe nói anh có lòng yêu thương và đức tin trong Đức Chúa Jêsus và cùng các thánh đồ.'",
+    "explanation": "Phân đoạn Philemon 1:4-5 (BTT) ghi: 'Tôi hằng cảm tạ Đức Chúa Trời tôi, mỗi khi nhớ đến anh trong lời cầu nguyện, vì nghe nói về lòng yêu thương và đức tin của anh đối với Đức Chúa Jêsus Christ và đối với hết thảy các thánh đồ.' Do đó, Phao-lô cảm tạ Đức Chúa Trời khi nghe về 'lòng yêu thương và đức tin của Phi-lê-môn'.\n\n- Distractor 1 ('Đức tin và lòng trung thành của Phi-lê-môn') sai vì Kinh Thánh đề cập đến 'lòng yêu thương và đức tin', không phải 'lòng trung thành'. Đây là sai chi tiết.\n- Distractor 2 ('Lòng yêu thương và sự hết lòng của Phi-lê-môn') sai vì tuy 'lòng yêu thương' được nhắc đến, nhưng phần thiếu là 'đức tin' và thay bằng 'sự hết lòng' - một khái niệm có thể thường bị hiểu lầm là tương tự nhưng không phải yếu tố chính trong câu Kinh văn. Đây là gần đúng nhưng sai chi tiết then chốt (thuộc loại hiểu lầm phổ biến).\n- Distractor 3 ('Sự cầu nguyện và lòng yêu thương của Phi-lê-môn') sai vì Phao-lô đề cập đến việc ông nhớ đến Phi-lê-môn trong sự cầu nguyện, còn điều ông nghe và cảm tạ là về 'lòng yêu thương và đức tin'. Đây là đúng văn bản nhưng đáp án lạc câu hỏi (true_but_off).",
     "language": "vi",
     "options": [
-      "Sự giàu có và địa vị của Phi-lê-môn",
-      "Kinh nghiệm đi tuyên giáo",
-      "Khả năng giảng dạy Kinh Thánh",
+      "Đức tin và lòng trung thành của Phi-lê-môn",
+      "Lòng yêu thương và sự hết lòng của Phi-lê-môn",
+      "Sự cầu nguyện và lòng yêu thương của Phi-lê-môn",
       "Lòng yêu thương và đức tin của Phi-lê-môn"
     ],
     "tags": [
@@ -244,13 +244,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Phi-lê-môn 1:7 — '...vì lòng của các thánh đồ được tươi tỉnh bởi anh, nên tôi được vui vẻ và yên ủi lắm.' Tình yêu của Phi-lê-môn làm mới sức anh chị em — tiền đề để Phao-lô xin ông tiếp tục bày tỏ lòng ấy với Ô-nê-sim.",
+    "explanation": "Philemon 1:7 ghi: 'Vả, tôi có sự vui mừng yên ủi lớn về lòng yêu thương của anh, vì lòng của các thánh đồ nhờ anh được yên ủi.' Cụm 'lòng... được yên ủi' (KJV: 'the hearts of the saints are refreshed') được hiểu là 'làm cho lòng họ được tươi tỉnh'. Đây là tác động trực tiếp của lòng yêu thương Phi-lê-môn.\n\n- Distractor 'Làm cho họ được nghỉ ngơi yên ổn' (gần đúng, chỉ số 0) là lỗi nearby_passage: dựa trên ý 'yên ủi' và bối cảnh chung, nhưng không đúng với từ ngữ cụ thể 'lòng... được tươi tỉnh' trong câu.\n- Distractor 'Làm cho đức tin họ được vững mạnh' là lỗi wrong_detail: đây là kết quả có thể có, nhưng câu Kinh Thánh không nói chi tiết này; nó tập trung vào cảm xúc (lòng) chứ không phải đức tin.\n- Distractor 'Làm cho tâm trí họ được bình an' là lỗi true_but_off: 'bình an' là khái niệm liên quan nhưng câu hỏi hỏi cụ thể về điều lòng Phi-lê-môn làm, và câu Kinh Thánh dùng 'lòng... được yên ủi/tươi tỉnh', không phải 'tâm trí bình an'.",
     "language": "vi",
     "options": [
       "Làm cho lòng họ được tươi tỉnh",
-      "Ban tặng nhiều tài sản",
-      "Tổ chức các hội nghị lớn",
-      "Chữa lành các bệnh tật"
+      "Làm cho họ được nghỉ ngơi yên ổn",
+      "Làm cho đức tin họ được vững mạnh",
+      "Làm cho tâm trí họ được bình an"
     ],
     "tags": [
       "Tân Ước",
@@ -296,13 +296,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Phi-lê-môn 1:19 — 'Tôi, Phao-lô, chính tay tôi viết điều nầy: sẽ trả cho anh, — còn anh mắc nợ tôi về chính mình anh thì không cần nói đến.' Phi-lê-môn đã được cứu qua chức vụ của Phao-lô — nợ ân điển lớn hơn mọi món nợ vật chất.",
+    "explanation": "Trong Philemon 1:19, Phao-lô viết: 'Chính mình Phi-lê-môn anh cũng mắc nợ Phao-lô về chính mạng sống anh nữa.' Đây là món nợ tinh thần mà Phao-lô nhắc đến. Các đáp án sai: (1) 'Chính Phao-lô cũng mắc nợ Phi-lê-môn' sai chi tiết chủ thể, đảo ngược mối quan hệ nợ. (2) 'Chính Ô-nê-sim cũng mắc nợ Phao-lô' trích từ ngữ cảnh gần (câu 18) nói về nợ vật chất của Ô-nê-sim, không phải nợ tinh thần của Phi-lê-môn. (3) 'Chính Phao-lô đã mắc nợ mọi người' mở rộng phạm vi sai, không có trong phân đoạn này.",
     "language": "vi",
     "options": [
       "Chính mình Phi-lê-môn anh cũng mắc nợ Phao-lô",
-      "Một số tiền lớn đã mượn",
-      "Lời hứa sẽ đi truyền giáo",
-      "Lòng trung thành với hội thánh"
+      "Chính Phao-lô cũng mắc nợ Phi-lê-môn",
+      "Chính Ô-nê-sim cũng mắc nợ Phao-lô",
+      "Chính Phao-lô đã mắc nợ mọi người"
     ],
     "tags": [
       "Tân Ước",
@@ -322,12 +322,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Phi-lê-môn 1:15 — 'Có lẽ người đã tạm xa cách anh, cốt để anh nhận lấy người mãi mãi.' Sự quan phòng của Chúa biến cuộc chạy trốn thành cơ hội sum họp vĩnh cửu trong Christ.",
+    "explanation": "Philemon 1:15 nêu rõ ý của Phao-lô: \"Vả, có lẽ vì thế mà Ô-nê-sim tạm lìa người trong ít lâu, hầu cho người được nhận lại người mãi mãi.\" (BTT). Đáp án đúng phản ánh chính xác mục đích 'được nhận lại người mãi mãi'. Distractor 1 sai vì thay đổi chi tiết then chốt 'mãi mãi' thành 'trong một thời gian ngắn', mặc dù ý gần đúng với cấu trúc câu. Distractor 2 sai do hiểu lầm phổ biến về hành động bỏ trốn của Ô-nê-sim, trong khi câu hỏi hỏi về lý do Phao-lô gợi ý. Distractor 3 sai vì mặc dù Phao-lô có nhận sự giúp đỡ từ Ô-nê-sim (c.13), điều này là một sự thật trong phân đoạn nhưng không trả lời cho câu hỏi về lý do Phao-lô gợi ý cho việc tạm lìa.",
     "language": "vi",
     "options": [
-      "Để học nghề ở Rô-ma",
-      "Để tránh một cuộc bắt bớ",
-      "Để phục vụ Phao-lô tạm thời",
+      "Để Phi-lê-môn nhận lại người trong một thời gian ngắn",
+      "Để Ô-nê-sim có thể trốn khỏi chủ cũ hoàn toàn",
+      "Để Phao-lô có được sự giúp đỡ từ Ô-nê-sim",
       "Để Phi-lê-môn nhận lại người mãi mãi"
     ],
     "tags": [
@@ -348,13 +348,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Phi-lê-môn 1:14 — '...hầu cho điều lành của anh làm ra, không phải như bị ép buộc, bèn là bởi ý muốn anh.' Phao-lô trân trọng sự tự nguyện — tình yêu thật không cưỡng ép.",
+    "explanation": "Philemon 1:14 ghi: 'Nhưng tôi chẳng muốn làm chi mà chưa được ý ngươi thuận, hầu cho việc lành ngươi làm chẳng phải như ép buộc, nhưng bởi lòng thành.'. Đáp án đúng 'Bị ép buộc' trực tiếp phản ánh ý 'việc lành... chẳng phải như ép buộc' trong câu Kinh Thánh, cho thấy Phao-lô muốn sự vâng lời của Phi-lê-môn xuất phát từ tự nguyện.\n\n- Distractor 'Vì sợ hãi' sai vì đây là một hiểu lầm phổ biến về động cơ, nhưng đoạn văn không đề cập đến nỗi sợ; trọng tâm là tránh sự ép buộc chứ không phải sợ hãi.\n- Distractor 'Một cách công khai' là đáp án gần đúng, dựa trên ngữ cảnh thư tín và sự gần gũi với chủ đề, nhưng câu hỏi cụ thể về 'cách thức' làm điều tốt và câu Kinh Thánh không hề nói đến tính công khai hay riêng tư.\n- Distractor 'Chỉ một lần' sai chi tiết vì câu Kinh Thánh không đưa ra bất kỳ giới hạn nào về tần suất của việc tốt; nó chỉ nói về bản chất tự nguyện của hành động.",
     "language": "vi",
     "options": [
-      "Làm âm thầm một mình",
+      "Vì sợ hãi",
       "Bị ép buộc",
-      "Công khai trước hội thánh",
-      "Qua thư từ gián tiếp"
+      "Một cách công khai",
+      "Chỉ một lần"
     ],
     "tags": [
       "Tân Ước",
@@ -374,13 +374,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Phi-lê-môn 1:22 — 'Nhân thể hãy liệu sắm nhà trọ cho tôi, vì tôi mong rằng nhờ anh em cầu nguyện, sẽ được trở về cùng anh em.' Phao-lô hy vọng được thả ra và tin lời cầu nguyện của họ là phương tiện Chúa dùng.",
+    "explanation": "Phân đoạn Philemon 1:22 ghi rõ: \"Đồng một lúc ấy, hãy sắm sẵn cho tôi một nhà trọ; vì tôi mong rằng nhờ anh em cầu nguyện, tôi sẽ được trả tự do về với anh em.\" Đáp án đúng là 'Nhà trọ cho Phao-lô khi được thả', vì đây chính xác là điều Phao-lô yêu cầu Phi-lê-môn chuẩn bị, với lý do ông mong được thả về sau khi hội thánh cầu nguyện. Distractor 1 ('Một căn phòng để hội thánh nhóm lại') là gần đúng vì cũng liên quan đến việc chuẩn bị chỗ ở, nhưng sai chi tiết then chốt về mục đích (cho hội thánh nhóm chung thay vì nhà trọ riêng cho Phao-lô). Distractor 2 ('Lễ vật để dâng cho các thánh đồ nghèo') là sai chi tiết, vì dù thư có đề cập đến sự chia sẻ và lòng hiếu khách, nhưng không có yêu cầu cụ thể này ở câu 22. Distractor 3 ('Tài liệu để tố cáo Ô-nê-xim') là hiểu lầm phổ biến, vì hoàn toàn trái ngược với tinh thần tha thứ và phục hồi mà Phao-lô đang vận động cho Ô-nê-xim trong toàn bức thư.",
     "language": "vi",
     "options": [
-      "Một tài khoản quỹ cứu trợ",
-      "Bài giảng để ông thuyết giáo",
+      "Một căn phòng để hội thánh nhóm lại",
+      "Lễ vật để dâng cho các thánh đồ nghèo",
       "Nhà trọ cho Phao-lô khi được thả",
-      "Một đội thuyền để đi truyền giáo"
+      "Tài liệu để tố cáo Ô-nê-xim"
     ],
     "tags": [
       "Tân Ước",
@@ -463,12 +463,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Phi-lê-môn 1:8-9 — 'Vậy nên, dầu trong Đấng Christ, tôi có quyền truyền dạy anh việc nên làm, song vì lòng yêu thương của anh, nên tôi nài xin thì hơn. Tôi, Phao-lô, đã già rồi, hiện nay lại vì Đức Chúa Jêsus Christ chịu tù nữa...' Ông dùng nền tảng tình yêu và thân phận già yếu, bị xiềng — không dùng quyền uy.",
+    "explanation": "Đáp án đúng: Phao-lô không dùng quyền ra lệnh vì ông dựa trên lòng yêu thương và chính hoàn cảnh của mình như một người già đang bị xiềng (Phi-lê-môn 1:8-9: 'Vì vậy, dù tôi có đủ dạn dĩ trong Đấng Christ để truyền cho anh điều phải làm, nhưng vì lòng yêu thương, tôi nài xin anh; tôi, Phao-lô, là một người già và hiện nay là tù nhân của Đấng Christ Jesus').\n\nCác đáp án sai:\n1. 'Vì ông thấy Philemon là người tốt không cần phải ra lệnh' – Mặc dù Philemon được khen là người có lòng yêu thương và đức tin (c.5-7), Phao-lô không nói việc không ra lệnh là do Philemon đã tốt, mà do chính tình yêu thương và hoàn cảnh của Phao-lô (nearby_passage).\n2. 'Vì Philemon đã được tự do và không còn phục vụ ông nữa' – Philemon vẫn là một tín hữu mà Phao-lô có ảnh hưởng, và Philemon vẫn có trách nhiệm thuộc linh, không có chi tiết nào nói ông đã tự do khỏi sự phục vụ (wrong_detail).\n3. 'Vì ông sợ tín hữu tại Cô-lô-se sẽ không tuân theo lệnh mình' – Phao-lô đã có đủ thẩm quyền trong Đấng Christ để ra lệnh (c. 8) và câu hỏi chỉ tập trung vào động cơ của Phao-lô với Philemon, không liên quan đến phản ứng của cả hội thánh (wrong_scope).",
     "language": "vi",
     "options": [
-      "Vì sợ Phi-lê-môn không vâng lời",
-      "Vì ở xa không thể trực tiếp giám sát",
-      "Vì luật Rô-ma cấm can thiệp chuyện nô lệ",
+      "Vì ông thấy Philemon là người tốt không cần phải ra lệnh",
+      "Vì Philemon đã được tự do và không còn phục vụ ông nữa",
+      "Vì ông sợ tín hữu tại Cô-lô-se sẽ không tuân theo lệnh mình",
       "Vì lòng yêu thương, và ông đã già cùng đang bị xiềng vì Christ"
     ],
     "tags": [
@@ -489,13 +489,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Phi-lê-môn 1:13 — 'Tôi vốn muốn cầm người ở lại cùng ta, đặng thế cho anh mà giúp việc tôi trong cơn vì Tin Lành chịu xiềng xích.' Ô-nê-sim đã trở thành có ích đến mức Phao-lô muốn giữ lại, nhưng không làm mà không có sự ưng thuận của chủ hợp pháp.",
+    "explanation": "Phao-lô viết: 'Tôi muốn giữ người lại với tôi, để thay cho anh mà giúp việc tôi trong cơn vấn vương vì đạo Tin Lành' (Philemon 1:13). Đáp án đúng nêu chính xác lý do Phao-lô muốn giữ Ô-nê-sim lại là 'vì Tin Lành'. Distractor 1 sai vì sửa lý do thành 'vì ông đã chạy trốn' – đây là bối cảnh nhưng không phải lý do Phao-lô nêu trong câu này. Distractor 2 sai vì đưa ra lý do 'vì tình bạn' – tuy đúng văn bản về mong muốn giữ lại và bối cảnh xiềng xích, nhưng lạc câu hỏi vì không nắm bắt được lý do cụ thể là 'vì Tin Lành'. Distractor 3 sai vì thể hiện một hiểu lầm phổ biến rằng Phao-lô làm vì 'sự bất đắc dĩ', trong khi ngữ khí thư tín là tự nguyện và vì lợi ích chung của Tin Lành.",
     "language": "vi",
     "options": [
       "Giữ Ô-nê-sim lại để phục vụ ông trong vòng xiềng xích vì Tin Lành",
-      "Gửi Ô-nê-sim đi truyền giáo ngay lập tức",
-      "Mua Ô-nê-sim làm đầy tớ riêng",
-      "Đưa Ô-nê-sim về Giê-ru-sa-lem cho các sứ đồ"
+      "Giữ Ô-nê-sim lại để phục vụ ông trong vòng xiềng xích vì ông đã chạy trốn",
+      "Giữ Ô-nê-sim lại để phục vụ ông trong vòng xiềng xích vì tình bạn",
+      "Giữ Ô-nê-sim lại để phục vụ ông trong vòng xiềng xích vì sự bất đắc dĩ"
     ],
     "tags": [
       "Tân Ước",
@@ -515,13 +515,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Phi-lê-môn 1:19 — 'Tôi, Phao-lô, chính tay tôi viết điều nầy: sẽ trả cho anh.' Chi tiết này tăng trọng lượng pháp lý của lời cam kết trả nợ — Phao-lô ký tên trách nhiệm.",
+    "explanation": "Đáp án đúng là Phi-lê-môn 1:19 vì câu này ghi rõ: 'Chính tôi, Phao-lô, viết lấy bằng tay tôi đây: Tôi sẽ trả lại.' (BTT), cho thấy sự cá nhân hóa và cam kết của Phao-lô khi ông tự tay viết phần này.\n\nCác đáp án sai:\n- 'Phi-lê-môn 1:21' (nearby_passage): Câu này nằm gần đáp án đúng nhưng nội dung là Phao-lô bày tỏ lòng tin cậy Philemon sẽ vâng lời, không đề cập việc tự tay viết.\n- 'Phi-lê-môn 1:18' (wrong_detail): Câu này đề cập đến việc Phao-lô hứa sẽ đền bù những thiệt hại Ô-nê-sim gây ra, là một cam kết tài chính, không phải chi tiết về việc tự tay viết thư.\n- 'Phi-lê-môn 1:23' (true_but_off): Câu này là lời chào cuối thư từ Ê-pháp-ra, một nhân vật có thật trong sách, nhưng hoàn toàn không liên quan đến việc Phao-lô tự tay viết một phần thư.",
     "language": "vi",
     "options": [
-      "Phi-lê-môn 1:1",
+      "Phi-lê-môn 1:21",
       "Phi-lê-môn 1:19",
-      "Phi-lê-môn 1:11",
-      "Phi-lê-môn 1:25"
+      "Phi-lê-môn 1:18",
+      "Phi-lê-môn 1:23"
     ],
     "tags": [
       "Tân Ước",

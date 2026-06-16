@@ -9,13 +9,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Sa-mu-ên 12:7 - Tiên tri Na-than dùng dụ ngôn con chiên để Đa-vít tự kết án mình, rồi tuyên bố: \"Ngươi là người đó!\"",
+    "explanation": "Đáp án đúng là Na-than. Trong 2 Sa-mu-ên 12:7, Na-than trực tiếp nói với Đa-vít: 'Ngươi là người đó!'. Ông là tiên tri đã kể ngụ ngôn và quy tội Đa-vít về vụ Bát-sê-ba. \n- Ga-la-át sai vì đây là tên một địa danh (vùng đất), không phải tên một tiên tri. \n- A-hi-gia là một tiên tri (1 Các Vua 11:29-30), nhưng ông sống và hoạt động trong thời vua Giê-rô-bô-am sau này, không phải là người đối diện Đa-vít về tội này. Đây là distractor 'gần đúng' vì đúng là một tiên tri, nhưng sai thời kỳ và sự kiện. \n- Giê-rê-mi là một tiên tri lớn, nhưng ông sống và làm việc nhiều thế kỷ sau thời Đa-vít, vì vậy không thể là người trong sự kiện này.",
     "language": "vi",
     "options": [
-      "Sa-mu-ên",
+      "Ga-la-át",
       "Na-than",
-      "Ga-át",
-      "A-sáp"
+      "A-hi-gia",
+      "Giê-rê-mi"
     ],
     "tags": [
       "Cựu Ước",
@@ -36,13 +36,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Sa 5:4-5 - Đa-vít lên ngôi lúc 30 tuổi, cai trị 7 năm tại Hếp-rôn và 33 năm tại Gie-ru-sa-lem, tổng cộng 40 năm.",
+    "explanation": "2 Samuel 5:4-5 ghi rõ: \"Đa-vít được ba mươi tuổi khi lên ngôi, và người cai trị bốn mươi năm. Người cai trị bảy năm rưỡi tại Hếp-rôn trên Giu-đa, và ba mươi ba năm tại Giê-ru-sa-lem trên cả Y-sơ-ra-ên và Giu-đa.\" Do đó, tổng thời gian trị vì của Đa-vít là 40 năm. Đáp án đúng là hợp lệ của các con số trong câu Kinh Thánh.\n\nCác đáp án sai: (1) '42 năm...' gần đúng nhưng sai chi tiết số năm tại Gie-ru-sa-lem (35 thay vì 33). (2) '33 năm...' thu hẹp phạm vi, chỉ lấy số năm tại Gie-ru-sa-lem mà bỏ qua thời gian tại Hếp-rôn. (3) '7 năm...' dựa trên hiểu lầm phổ biến rằng Đa-vít chỉ làm vua tại Hếp-rôn, không tính toàn bộ thời gian trị vì.",
     "language": "vi",
     "verseEnd": 5,
     "options": [
-      "50 năm",
-      "20 năm",
-      "30 năm",
+      "42 năm (7 năm tại Hếp-rôn, 35 năm tại Gie-ru-sa-lem)",
+      "33 năm (không phân chi tiết)",
+      "7 năm (chỉ tại Hếp-rôn, trước khi lên Gie-ru-sa-lem)",
       "40 năm (7 năm tại Hếp-rôn, 33 năm tại Gie-ru-sa-lem)"
     ],
     "tags": [
@@ -64,14 +64,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Sa 6:14 - Đa-vít nhảy múa hết sức trước mặt Chúa, không quan tâm hình ảnh vua. Thờ phượng hết lòng.",
+    "explanation": "Đoạn Kinh Thánh 2 Sa-mu-ên 6:14-15 mô tả: 'Đa-vít mặc áo ê-phót vải gai, nhảy múa hết sức trước mặt Đức Giê-hô-va... Vậy, Đa-vít và cả nhà Y-sơ-ra-ên đều rước Hòm của Đức Giê-hô-va lên, giữa tiếng reo mừng và tiếng kèn thổi.' Đáp án đúng vì văn bản trực tiếp nói Đa-vít 'nhảy múa hết sức'. Distractor 1 (Cầu nguyện tạ ơn) là gần đúng vì Đa-vít có thái độ tôn kính, nhưng hành động cụ thể được ghi lại là nhảy múa, không phải cầu nguyện tại thời điểm đó. Distractor 2 (Đứng yên trang nghiêm) là một hiểu lầm phổ biến về thái độ thờ phượng, nhưng văn bản mô tả sự nhảy múa đầy năng lượng. Distractor 3 (Dâng tế lễ thiêu) sai chi tiết; việc dâng tế lễ (như trong câu 13) xảy ra trước đó trên đường đi, không phải là hành động của Đa-vít ngay khi Hòm được rước về Giê-ru-sa-lem như câu hỏi hỏi.",
     "language": "vi",
     "verseEnd": 15,
     "options": [
       "Nhảy múa hết sức trước mặt Chúa",
-      "Đọc luật pháp",
-      "Dâng của lễ im lặng",
-      "Ngồi trên ngai"
+      "Cầu nguyện tạ ơn Chúa trước Hòm Giao Ước",
+      "Đứng yên trang nghiêm và thờ lạy",
+      "Dâng tế lễ thiêu ngay tại chỗ"
     ],
     "tags": [
       "Cựu Ước",
@@ -92,13 +92,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Sa 7:12-13 - Ngôi vua đời đời của dòng dõi Đa-vít ứng nghiệm nơi Chúa Giê-su (Lu-ca 1:32-33).",
+    "explanation": "2 Sa-mu-ên 7:12-13 ghi lại lời Đức Chúa Trời hứa với Đa-vít qua tiên tri Na-than: 'Khi ngày của ngươi đã mãn, và ngươi ngủ với các tổ phụ ngươi, thì Ta sẽ lập dòng dõi ngươi kế vị ngươi... Ta sẽ làm cho ngôi nước nó vững bền đến đời đời.' Đây là lời hứa quan trọng về một dòng vua đời đời, được ứng nghiệm tối hảo nơi Đấng Mê-si-a. \n\nĐáp án đúng đúng vì trực tiếp tóm tắt lời hứa về ngôi vua đời đời cho dòng dõi Đa-vít. \n\nDistractor 1 sai vì đó là ý định ban đầu của Đa-vít (xây đền thờ cho Đức Chúa Trời, được nói đến ở đầu đoạn 7), không phải lời hứa Đức Chúa Trời ban cho Đa-vít. \n\nDistractor 2 sai vì lời hứa về đất đai vĩnh viễn là trọng tâm của giao ước với Áp-ra-ham (Sáng 15:18) và dân Y-sơ-ra-ên, không phải là điểm chính của giao ước Đa-vít trong đoạn này. \n\nDistractor 3 (gần đúng) sai vì chỉ sai một chi tiết then chốt: lời hứa là 'đời đời' (vĩnh viễn), không phải chỉ giới hạn đến 'hết thời các quan xét' (một thời kỳ trước đó trong lịch sử Y-sơ-ra-ên).",
     "language": "vi",
     "verseEnd": 13,
     "options": [
-      "Y-so-ra-en luôn thắng trận",
-      "Đa-vít sẽ sống mãi",
-      "Đền thờ không bao giờ bị phá",
+      "Đa-vít sẽ được xây một ngôi nhà bằng gỗ tuyết tùng vững chãi",
+      "Dòng dõi Đa-vít sẽ được ban cho một vùng đất rộng lớn vĩnh viễn",
+      "Ngôi vua của dòng dõi Đa-vít sẽ kéo dài đến hết thời các quan xét",
       "Ngôi vua của dòng dõi Đa-vít sẽ còn đời đời"
     ],
     "tags": [
@@ -120,14 +120,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Sa 9:7 - Mê-phi-bô-sết bị quẹo cả hai chân nhưng được Đa-vít mời ăn đồng bàn vua suốt đời.",
+    "explanation": "Trong 2 Sa-mu-ên 9:1-7, Đa-vít hỏi: \"Có người nào thuộc về nhà Sau-lơ còn lại chăng, để ta vì cớ Giô-na-than mà lấy ơn đãi người?\" (câu 1). Tôi tớ Xíp-ba cho biết còn có một con trai của Giô-na-than tên là Mê-phi-bô-sết (câu 3). Vì vậy câu trả lời đúng là 'Mê-phi-bô-sết, con Giô-na-than'. \n\n- Distractor 'Bát-xi-la, con gái Sau-lơ' (wrong_detail) là sai vì Bát-xi-la là một trong hai con gái của Sau-lơ (2 Sa-mu-ên 21:8), không phải là người Đa-vít đối đãi trong đoạn này. \n- Distractor 'Ích-bô-sết, con trai Sau-lơ' (wrong_scope) là sai vì Ích-bô-sết là một con trai khác của Sau-lơ và đã qua đời trước sự kiện này (2 Sa-mu-ên 4), không phải là đối tượng của câu hỏi trong 9:1-7. \n- Distractor 'Si-mê-i, thuộc nhà Sau-lơ' (common_misconception) là sai vì Si-mê-i là người thuộc chi phái Bên-gia-min và nhà Sau-lơ (2 Sa-mu-ên 16:5), nhưng ông không được đề cập trong đoạn này và cũng không phải là đối tượng được đối đãi vì cớ Giô-na-than.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
-      "Áp-ne",
-      "Sau-lơ",
+      "Bát-xi-la, con gái Sau-lơ",
+      "Ích-bô-sết, con trai Sau-lơ",
       "Mê-phi-bô-sết, con Giô-na-than",
-      "Si-mê-i"
+      "Si-mê-i, thuộc nhà Sau-lơ"
     ],
     "tags": [
       "Cựu Ước",
@@ -176,14 +176,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Sa 11:15 - Đa-vít viết thư cho Giô-áp bỏ U-ri vào chỗ nguy hiểm nhất. Tội phạm tội dẫn đến tội gián tiếp giết người.",
+    "explanation": "Đoạn Kinh Thánh 2 Sa-mu-ên 11:14-17 ghi rõ: Đa-vít viết thư cho Giô-áp, truyền lệnh 'hãy đặt U-ri tại mặt trận đầu, nơi hiểm nguy nhất, rồi hãy rút lui khỏi người, để người bị đánh và chết.' (câu 15). Vì vậy, đáp án đúng là Đa-vít sắp đặt để U-ri chết trận.\n\nCác đáp án sai: (1) 'Tự mình giết chồng bà là U-ri ở nhà' là gần đúng nhưng sai chi tiết then chốt: Đa-vít không tự tay giết U-ri mà dùng mưu kế trong chiến trận (11:15, 17). (2) 'Đưa U-ri vào danh sách binh lính bị trục xuất' là sai phạm vi: điều này không xuất hiện trong đoạn gần; đoạn chỉ nói đến việc U-ri được gửi trở lại chiến trường với bức thư mật (11:14). (3) 'Thú tội công khai và cầu xin sự tha thứ' là một hiểu lầm phổ biến dựa trên sự kiện sau này (2 Sa-mu-ên 12, sau khi Na-than quở trách), nhưng không phải là hành động Đa-vít dùng để 'che giấu' tội lỗi ngay trong bối cảnh của câu hỏi (11:14-17).",
     "language": "vi",
     "verseEnd": 17,
     "options": [
-      "Gửi U-ri đi xa",
-      "Trốn khỏi Gie-ru-sa-lem",
+      "Tự mình giết chồng bà là U-ri ở nhà",
+      "Đưa U-ri vào danh sách binh lính bị trục xuất",
       "Sắp đặt cho chồng bà là U-ri chết trận",
-      "Đổi lộ cho U-ri"
+      "Thú tội công khai và cầu xin sự tha thứ"
     ],
     "tags": [
       "Cựu Ước",
@@ -204,13 +204,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Sa-mu-ên 12:23 - Đa-vít nói: 'Ta sẽ đi đến nó, nhưng nó không trở lại với ta.' Điều này bày tỏ niềm hy vọng về sự gặp lại sau cái chết.",
+    "explanation": "2 Sa-mu-ên 12:23 ghi lại lời Đa-vít: 'Ta sẽ đi đến nó, nhưng nó không trở lại với ta'. Đây là câu trả lời chính xác vì Đa-vít bày tỏ niềm hy vọng cá nhân rằng ông sẽ gặp lại con trai (sau khi chết), đồng thời thừa nhận thực tế đứa bé không thể sống lại. Các đáp án sai: 1) 'Nó sẽ sống lại, nhưng ta không gặp nó' sai vì sai chi tiết then chốt — trong Kinh Thánh, Đa-vít không nói đứa bé sẽ sống lại; 2) 'Ta sẽ đợi nó, và nó sẽ trở về với ta' lạc câu hỏi — mặc dù hợp lý về cảm xúc, nhưng không phải là lời Đa-vít thực tế đã nói; 3) 'Ta không thể đi đến nó được nữa' nhầm passage gần — điều này trái ngược với tâm trạng chấp nhận và hy vọng của Đa-vít được ghi trong ngữ cảnh.",
     "language": "vi",
     "options": [
       "Ta sẽ đi đến nó, nhưng nó không trở lại với ta",
-      "Chúa sẽ cho con khác",
-      "Tôi sẽ không buồn nữa",
-      "Tôi sẽ quên đi"
+      "Nó sẽ sống lại, nhưng ta không gặp nó",
+      "Ta sẽ đợi nó, và nó sẽ trở về với ta",
+      "Ta không thể đi đến nó được nữa"
     ],
     "tags": [
       "Cựu Ước",
@@ -231,14 +231,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Sa 15:13-14 - Áp-sa-lôm nổi loạn, Đa-vít phải trốn khỏi Gie-ru-sa-lem. Hậu quả của tội lỗi gia đình.",
+    "explanation": "2 Samuel 15:13-14 ghi lại việc sứ giả báo cáo với Đa-vít: \"Lòng của dân Y-sơ-ra-ên đã theo Áp-sa-lôm.\" và Đa-vít nói với các tôi tớ tại Giê-ru-sa-lem: \"Hãy chổi dậy, chúng ta phải trốn đi, bằng chẳng, chúng ta sẽ không thoát khỏi Áp-sa-lôm được. Hãy đi mau, e người sẽ thình lình đuổi kịp chúng ta...\" Đoạn Kinh Thánh này mô tả cuộc nổi loạn của Áp-sa-lôm, con trai Đa-vít, tự xưng làm vua.\n- Đáp án đúng 'Áp-sa-lôm' vì đây là con trai Đa-vít nổi loạn và tự xưng làm vua được mô tả trong 2 Samuel 15:13-14.\n- Distractor 'Sa-lô-môn' sai vì Sa-lô-môn là con trai Đa-vít kế vị ngôi vua một cách hợp pháp, không phải nổi loạn (đây là distractor gần đúng, chỉ sai chi tiết về bản chất sự kiện).\n- Distractor 'A-môn' sai vì A-môn là con trai Đa-vít bị anh em cùng cha khác mẹ là Áp-sa-lôm giết để báo thù việc hãm hiếp em gái, không phải là người nổi loạn tự xưng làm vua.\n- Distractor 'Giô-áp' sai vì Giô-áp là tướng chỉ huy quân đội của Đa-vít, không phải con trai của Đa-vít, nên không thể là người nổi loạn trong bối cảnh câu hỏi.",
     "language": "vi",
     "verseEnd": 14,
     "options": [
-      "A-đô-ni-gia",
-      "Am-nôn",
+      "Sa-lô-môn",
+      "A-môn",
       "Áp-sa-lôm",
-      "Sa-lô-môn"
+      "Giô-áp"
     ],
     "tags": [
       "Cựu Ước",
@@ -259,12 +259,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Sa 18:33 - Dù Áp-sa-lôm nổi loạn, Đa-vít vẫn là người cha đau khổ. Ôi Áp-sa-lôm, con tôi ơi!",
+    "explanation": "Trong 2 Sa-mu-ên 18:33 (BTT), Đa-vít khóc thảm thiết và nói: 'Áp-sa-lôm, con ơi! Áp-sa-lôm, con của cha ơi! Ước gì chính cha chết thay con! Áp-sa-lôm, con ơi! Con của cha ơi!' Đáp án đúng mô tả chính xác phản ứng này: khóc và ước chết thay con. Các đáp án sai: 1) 'Vui mừng...' sai vì Đa-vít rất đau buồn, không hề vui; đây là hiểu lầm phổ biến khi nghĩ vua sẽ hài lòng khi kẻ phản loạn chết. 2) 'Im lặng...' sai vì Kinh Thánh ghi rõ Đa-vít đã khóc và kêu lớn tiếng. 3) 'Cầu nguyện xin Chúa thương xót...' là chi tiết gần đúng (thể hiện lòng thương xót), nhưng sai chi tiết then chốt: văn bản không ghi lời cầu nguyện này mà ghi lời ước chết thay của Đa-vít; distractor này mượn ý từ các phản ứng đau buồn khác trong Kinh Thánh nhưng không phải là phản ứng được ghi tại đoạn này.",
     "language": "vi",
     "options": [
-      "Vui mừng vì hết nổi loạn",
-      "Im lặng",
-      "Giận dữ",
+      "Vui mừng vì kẻ phản nghịch đã bị trừng phạt",
+      "Im lặng và không bày tỏ cảm xúc gì",
+      "Cầu nguyện xin Chúa thương xót linh hồn con",
       "Khóc và ước mình chết thay con"
     ],
     "tags": [
@@ -286,14 +286,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Sa-mu-ên 23:5 - Đa-vít tuyên bố về giao ước đời đời, vững chắc mà Chúa đã lập với ông và dòng dõi ông.",
+    "explanation": "Đoạn Kinh Thánh 2 Sa-mu-ên 23:5 trích lời Đa-vít: 'Chẳng phải nhà ta có một giao ước đời đời với Đức Chúa Trời sao? Giao ước ấy vững chắc và có trật tự trong mọi sự và mọi cách cứu rỗi...' Câu này nhấn mạnh đặc tính 'đời đời' và 'vững chắc cho cả nhà ông' của giao ước.\n\nĐÁP ÁN ĐÚNG: 'Một giao ước đời đời, vững chắc cho cả nhà ông' — khớp với nội dung câu 5, nói đến giao ước vĩnh viễn và an toàn cho cả dòng dõi Đa-vít.\n\nDISTRACTOR SAI:\n1. 'Một giao ước vững chắc, dựa trên lòng công bình của Đa-vít' (wrong_detail): Dù câu 3-4 có nhắc đến sự công bình của người cai trị, nhưng giao ước được nhấn mạnh ở đây là dựa trên lời hứa của Đức Chúa Trời, không phải dựa trên công đức của Đa-vít.\n2. 'Một giao ước chỉ áp dụng cho bản thân Đa-vít mà thôi' (wrong_scope): Trái ngược hoàn toàn với ý 'cho cả nhà ông' trong câu 5, giao ước này được mở rộng cho cả dòng dõi ông.\n3. 'Một giao ước đảm bảo sự thịnh vượng vật chất tức thì cho dòng dõi ông' (common_misconception): Đây là một hiểu lầm phổ biến khi diễn giải các lời hứa giao ước; đoạn văn này nhấn mạnh sự cứu rỗi và ổn định thuộc linh, không nói đến phước lành vật chất ngay lập tức.",
     "language": "vi",
     "verseEnd": 5,
     "options": [
       "Một giao ước đời đời, vững chắc cho cả nhà ông",
-      "Một giao ước có điều kiện, tùy thuộc vào sự vâng lời",
-      "Một giao ước tạm thời, chỉ trong đời ông",
-      "Một giao ước đặc biệt chỉ dành cho Sa-lô-môn"
+      "Một giao ước vững chắc, dựa trên lòng công bình của Đa-vít",
+      "Một giao ước chỉ áp dụng cho bản thân Đa-vít mà thôi",
+      "Một giao ước đảm bảo sự thịnh vượng vật chất tức thì cho dòng dõi ông"
     ],
     "tags": [
       "Cựu Ước",
@@ -314,13 +314,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Sa 24:24 - Của lễ thật đòi hỏi sự hy sinh. Vua Đa-vít nói: 'Ta không muốn dâng lên Giê-hô-va Đức Chúa Trời ta những của lễ thiêu mà ta không phải trả giá.'",
+    "explanation": "Trong 2 Sa-mu-ên 24:24, Đa-vít đáp lời A-rau-na: 'Ta không muốn nhận lấy vật chi không đáng giá mà dâng cho Giê-hô-va Đức Chúa Trời ta của lễ thiêu.' (BTT). Câu này diễn đạt ý 'Ta không muốn dâng cho Chúa của lễ thiêu mà không phải trả giá.' ĐÁP ÁN ĐÚNG vì phản ánh chính xác tinh thần trả giá đầy đủ của Đa-vít.\n\nDISTRACTOR 1 ('Ta sẽ mua sân lúa này với giá rẻ để dâng cho Chúa.') SAI vì Đa-vít không mặc cả giá rẻ, ông trả đủ giá (50 siếc-lơ bạc) và nhấn mạnh việc không nhận vật không đáng giá (câu 24). Đây là distractor 'gần đúng' vì đúng ngữ cảnh mua sân nhưng sai chi tiết then chốt về thái độ trả giá đầy đủ.\n\nDISTRACTOR 2 ('Ta muốn dâng cho Chúa của lễ thiêu nhưng không muốn trả giá.') SAI vì trái ngược hoàn toàn với tinh thần của Đa-vít, người kiên quyết trả giá để dâng của lễ có ý nghĩa. Đây là hiểu lầm phổ biến về thái độ dâng hiến.\n\nDISTRACTOR 3 ('Ta không muốn dâng cho Chúa của lễ thiêu mà không phải tế lễ.') SAI vì câu hỏi hỏi về lý do khi mua sân lúa, liên quan đến việc trả giá chứ không phải hành động tế lễ. Đây là đáp án đúng văn bản (có việc dâng của lễ thiêu) nhưng lạc trọng tâm câu hỏi.",
     "language": "vi",
     "options": [
-      "Chúa đáng được tất cả",
-      "Tôi cho tất cả",
+      "Ta sẽ mua sân lúa này với giá rẻ để dâng cho Chúa.",
+      "Ta muốn dâng cho Chúa của lễ thiêu nhưng không muốn trả giá.",
       "Ta không muốn dâng cho Chúa của lễ thiêu mà không phải trả giá.",
-      "Tôi trả giá tốt nhất"
+      "Ta không muốn dâng cho Chúa của lễ thiêu mà không phải tế lễ."
     ],
     "tags": [
       "Cựu Ước",
@@ -342,13 +342,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Sa-mu-ên 1:17 — 'Đa-vít làm bài ai ca nầy về Sau-lơ và Giô-na-than, con trai Sau-lơ.'",
+    "explanation": "Đáp án đúng là 'Soạn bài ai ca than khóc cho Sau-lơ và Giô-na-than', vì 2 Sa-mu-ên 1:17 chép: 'Đa-vít làm bài ai ca nầy về Sau-lơ và Giô-na-than, con trai người'. Các đáp án sai: 1) 'Hát một bài thánh ca cảm tạ' là sai vì đoạn văn gần (1:18) chỉ nhắc Đa-vít truyền dạy bài ai ca này cho dân Giu-đa, nội dung là than khóc chứ không phải ca ngợi/cảm tạ. 2) 'Viết một bức thư khiển trách dân Giu-đa' là sai chi tiết, vì trong đoạn này Đa-vít không viết thư khiển trách ai. 3) 'Tổ chức nghi lễ tang' là sai phạm vi, việc này không được đề cập trong đoạn 1:17-27; Đa-vít chỉ than khóc qua bài ca, tang lễ thực tế đã được người Gia-be (1 Sam 31:11-13) thực hiện trước đó.",
     "language": "vi",
     "options": [
-      "Vui mừng vì làm vua",
+      "Hát một bài thánh ca cảm tạ Đức Chúa Trời",
       "Soạn bài ai ca than khóc cho Sau-lơ và Giô-na-than",
-      "Lập tức tấn công Phi-li-tin",
-      "Lên ngôi tại Hếp-rôn ngay"
+      "Viết một bức thư khiển trách dân Giu-đa",
+      "Tổ chức nghi lễ tang cho Sau-lơ và Giô-na-than"
     ],
     "tags": [
       "Cựu Ước",
@@ -368,13 +368,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Sa-mu-ên 2:4 — 'Người Giu-đa đến, xức dầu cho Đa-vít làm vua nhà Giu-đa.' Tại Hếp-rôn.",
+    "explanation": "Đáp án đúng là 'Hếp-rôn' vì 2 Sa-mu-ên 2:4 ghi rõ: 'Rồi những người Giu-đa đến tại Hếp-rôn xức dầu cho Đa-vít làm vua trên nhà Giu-đa.'\n\nCác đáp án sai:\n- 'Bết-lê-hem' là sai vì đây là quê hương của Đa-vít (1 Sa-mu-ên 17:12), nhưng không phải nơi ông được xức dầu làm vua Giu-đa, đây là lỗi nhầm với chi tiết gần.\n- 'Giê-ru-sa-lem' là sai vì đây là nơi Đa-vít sau này chiếm được và đặt làm kinh đô chung của cả Y-sơ-ra-ên (2 Sa-mu-ên 5:6-7), không phải nơi ban đầu được xức dầu làm vua Giu-đa, đây là hiểu lầm phổ biến.\n- 'Giê-ri-cô' là sai vì đây là thành nổi tiếng khác, không liên quan đến sự kiện xức dầu này, đây là lỗi sai chi tiết (tên).",
     "language": "vi",
     "options": [
       "Hếp-rôn",
       "Bết-lê-hem",
       "Giê-ru-sa-lem",
-      "Si-lô"
+      "Giê-ri-cô"
     ],
     "tags": [
       "Cựu Ước",
@@ -394,12 +394,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Sa-mu-ên 5:7 — 'Đa-vít chiếm lấy đồn lũy Si-ôn, ấy là thành Đa-vít.'",
+    "explanation": "2 Sa-mu-ên 5:7 chép: 'Nhưng Đa-vít chiếm lấy đồn Si-ôn; ấy là thành Đa-vít.' Đây là nơi Đa-vít chọn làm thủ đô, về sau được gọi là Giê-ru-sa-lem. Đáp án đúng là 'Đồn lũy Si-ôn (Giê-ru-sa-lem)' vì Kinh Thánh ghi rõ sự kiện này.\n\nCác đáp án sai:\n- 'Thành Ghi-bê-a (quê hương Sau-lơ)': Sai chi tiết. Ghi-bê-a là thành của Sau-lơ (1 Sa-mu-ên 10:26), không phải nơi Đa-vít chiếm làm thủ đô. Đây là đáp án gần đúng vì đều là thành quan trọng thời kỳ này, nhưng sai chủ thể và sự kiện then chốt.\n- 'Thành Giê-ri-cô (thành đầu tiên bị hạ)': Đúng văn bản nhưng lạc câu hỏi. Giê-ri-cô là thành bị hạ dưới thời Giô-suê (Giô-suê 6), không liên quan đến sự kiện Đa-vít đặt thủ đô.\n- 'Thành Ra-ba (thủ đô của Am-môn)': Sai phạm vi. Ra-ba là thủ đô của người Am-môn, bị Đa-vít chinh phục sau này (2 Sa-mu-ên 12:26-31), không phải nơi ông chọn làm thủ đô đầu tiên.",
     "language": "vi",
     "options": [
-      "Hếp-rôn",
-      "Bê-tên",
-      "Sa-ma-ri",
+      "Thành Ghi-bê-a (quê hương Sau-lơ)",
+      "Thành Giê-ri-cô (thành đầu tiên bị hạ)",
+      "Thành Ra-ba (thủ đô của Am-môn)",
       "Đồn lũy Si-ôn (Giê-ru-sa-lem)"
     ],
     "tags": [
@@ -421,13 +421,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Sa-mu-ên 6:6-7 — 'U-xa giơ tay nắm Hòm Đức Chúa Trời... Cơn thạnh nộ Đức Giê-hô-va nổi phừng cùng U-xa, Đức Chúa Trời hành hại người vì cớ làm như vậy; người chết tại đó.'",
+    "explanation": "Đáp án đúng là U-xa. Theo 2 Sa-mu-ên 6:6-7, U-xa đã giơ tay đỡ Hòm Giao Ước khi con bò vấp, và Đức Chúa Trời đã nổi cơn thạnh nộ với U-xa, đánh chết người tại đó. Distractor 'A-hi-ô' sai vì A-hi-ô là người đi trước Hòm Giao Ước (câu 4), không phải người chết. Distractor 'Đa-vít' sai vì Đa-vít là vua chỉ huy việc di chuyển Hòm (câu 5), không phải người chết trong sự kiện này. Distractor 'Sa-lô-môn' sai vì Sa-lô-môn là con trai Đa-vít, xuất hiện sau sự kiện này và không liên quan đến câu chuyện di chuyển Hòm trong 2 Sa-mu-ên 6.",
     "language": "vi",
     "options": [
       "A-hi-ô",
       "U-xa",
-      "Giô-áp",
-      "A-bi-na-đáp"
+      "Đa-vít",
+      "Sa-lô-môn"
     ],
     "tags": [
       "Cựu Ước",
@@ -447,12 +447,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Sa-mu-ên 13:14 — Am-nôn, con cả Đa-vít, đã hãm hiếp Ta-ma, em gái cùng cha của mình. Sự kiện dẫn đến Áp-sa-lôm trả thù Am-nôn.",
+    "explanation": "Câu hỏi hỏi về bi kịch trong gia đình Đa-vít được mô tả cụ thể trong 2 Sa-mu-ên 13. Đáp án đúng là 'Am-nôn và Ta-ma' vì toàn bộ chương 13 tập trung vào hành vi cưỡng hiếp của Am-nôn đối với em gái cùng cha khác mẹ là Ta-ma (2 Sa-mu-ên 13:1-22). Distractor 'Áp-sa-lôm và Am-nôn' là gần đúng vì Áp-sa-lôm là anh cùng mẹ với Ta-ma và sau này giết Am-nôn để báo thù, nhưng cặp đôi chính trong bi kịch là Am-nôn và Ta-ma. Distractor 'Đa-vít và Bát-sê-ba' sai phạm vi vì câu chuyện đó xảy ra ở chương 11, là một bi kịch khác. Distractor 'Giô-na-than và Ta-ma' là hiểu lầm phổ biến, vì Giô-na-than là bạn của Đa-vít, không liên quan đến bi kịch trong chương 13 này.",
     "language": "vi",
     "options": [
-      "Áp-sa-lôm và Sa-lô-môn",
-      "Mê-phi-bô-sết và Mi-canh",
-      "A-bi-sai và Giô-áp",
+      "Áp-sa-lôm và Am-nôn",
+      "Đa-vít và Bát-sê-ba",
+      "Giô-na-than và Ta-ma",
       "Am-nôn và Ta-ma"
     ],
     "tags": [
@@ -474,13 +474,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Sa-mu-ên 14:2 — 'Giô-áp sai đến Thê-cô-a tìm một người đàn bà khôn khéo, nói với nàng rằng: Hãy giả đò có tang.'",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Một người đàn bà khôn khéo ở Thê-cô-a' (2 Sa-mu-ên 14:2). Giô-áp sai người đàn bà khôn khéo ở Thê-cô-a đến gặp vua Đa-vít, dạy bà nói một câu chuyện ngụ ngôn để vua đồng ý cho Áp-sa-lôm trở về.\n\nDISTRACTOR SAI 1 ('Một người đàn bà khôn khéo ở Bết-lê-hem'): Sai chi tiết địa danh. Bết-lê-hem là quê hương của Đa-vít (1 Sa-mu-ên 16:1), nhưng người đàn bà này đến từ Thê-cô-a (2 Sa-mu-ên 14:2).\n\nDISTRACTOR SAI 2 ('Một người đàn bà khôn khéo là thân nhân của Giô-áp'): Sai phạm vi. Kinh văn không hề đề cập đến mối quan hệ họ hàng giữa người đàn bà này với Giô-áp; bà chỉ được Giô-áp mời giúp việc (2 Sa-mu-ên 14:1-2).\n\nDISTRACTOR SAI 3 ('Một người đàn bà khôn khéo được Giô-áp thuê tiền'): Hiểu lầm phổ biến về động cơ. Kinh văn không nói Giô-áp trả tiền cho bà; ông chỉ 'sai người đến Thê-cô-a, đem một người đàn bà khôn khéo ở đó về' và 'dạy bà nói' (2 Sa-mu-ên 14:2-3).",
     "language": "vi",
     "options": [
       "Một người đàn bà khôn khéo ở Thê-cô-a",
-      "Tiên tri Na-than",
-      "Bà Bát-Sê-ba",
-      "Thầy tế lễ Sa-đốc"
+      "Một người đàn bà khôn khéo ở Bết-lê-hem",
+      "Một người đàn bà khôn khéo là thân nhân của Giô-áp",
+      "Một người đàn bà khôn khéo được Giô-áp thuê tiền"
     ],
     "tags": [
       "Cựu Ước",
@@ -501,13 +501,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Sa-mu-ên 16:5-7 — 'Si-mê-i, con trai Ghê-ra... vừa đi vừa rủa sả Đa-vít.'",
+    "explanation": "Đáp án đúng là Si-mê-i, con trai Ghê-ra, dựa trên 2 Sa-mu-ên 16:5-13 mô tả Si-mê-i rủa sả và ném đá Đa-vít khi ông chạy trốn. Áp-sa-lôm là kẻ thù Đa-vít chạy trốn, nhưng không phải người rủa sả ông (sai phổ biến). Giô-áp là tướng trung thành của Đa-vít, không rủa sả ông trong đoạn này (lạc phạm vi). A-hi-tô-phe là cố vấn của Áp-sa-lôm, xuất hiện trong cùng câu chuyện nhưng không phải người rủa sả (nhầm đoạn gần).",
     "language": "vi",
     "options": [
-      "A-hi-tô-phen",
+      "Áp-sa-lôm, con trai Đa-vít",
       "Si-mê-i, con trai Ghê-ra",
-      "Hu-sai",
-      "Mê-phi-bô-sết"
+      "Giô-áp, con trai Xê-ru-gia",
+      "A-hi-tô-phe, người ghi-lô"
     ],
     "tags": [
       "Cựu Ước",
@@ -528,13 +528,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Sa-mu-ên 22:2-3 — 'Đức Giê-hô-va là vầng đá tôi, là đồn lũy tôi, là Đấng giải cứu tôi... là cái khiên, là sừng cứu rỗi tôi, là tháp cao tôi.'",
+    "explanation": "Câu hỏi hỏi cụ thể về những danh xưng Đa-vít gọi Đức Giê-hô-va trong 2 Sa-mu-ên 22:2-3. Đoạn Kinh Thánh ghi: \"Ngài là vầng đá, đồn lũy, và Đấng giải cứu tôi; Đức Chúa Trời là hòn đá tôi, nơi tôi sẽ nương náu mình; Ngài là cái khiên tôi, sừng cứu rỗi tôi, nơi ẩn náu cao của tôi\". Do đó, đáp án đúng là 'Vầng đá, đồn lũy, Đấng giải cứu, khiên, tháp cao' (với 'tháp cao' tương ứng 'nơi ẩn náu cao').\n\nCác đáp án sai: (1) '... và Đấng Chăn Chiên' là sai chi tiết, vì danh xưng 'Đấng Chăn Chiên' không xuất hiện trong đoạn này (dù phổ biến ở Thi-thiên khác). (2) '... và Đấng Toàn Năng' là nhầm passage gần, vì danh xưng 'Đấng Toàn Năng' (Ê-lô-him Sha-đai) không có trong 2 Sa-mu-ên 22:2-3. (3) 'Đấng Cứu Chuộc, Đấng Bảo Vệ, và Đấng Chỉ Dẫn' tuy có thể đúng về mặt ý nghĩa thần học nhưng lạc câu hỏi vì không phải các danh xưng được liệt kê trong đoạn văn cụ thể này.",
     "language": "vi",
     "options": [
-      "Người tạo dựng và quan xét",
-      "Vua các vua, Chúa các chúa",
+      "Vầng đá, đồn lũy, Đấng giải cứu, khiên, tháp cao, và Đấng Chăn Chiên",
+      "Vầng đá, đồn lũy, Đấng giải cứu, và Đấng Toàn Năng",
       "Vầng đá, đồn lũy, Đấng giải cứu, khiên, tháp cao",
-      "Cha và Mẹ"
+      "Đấng Cứu Chuộc, Đấng Bảo Vệ, và Đấng Chỉ Dẫn"
     ],
     "tags": [
       "Cựu Ước",

@@ -36,14 +36,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Các Vua 18:38 - Lửa của Đức Giê-hô-va từ trời giáng xuống thiêu sạch của lễ, củi, đá, bụi và nước. Dân sự sấp mặt xuống nói: Giê-hô-va là Đức Chúa Trời!",
+    "explanation": "Đáp án đúng: 1 Các Vua 18:38 chép: 'Bấy giờ lửa của Đức Giê-hô-va giáng xuống, thiêu hóa của lễ thiêu, củi, đá, bụi đất, và liếm nước ở mương.' Câu 39 cho thấy kết quả: 'Thấy vậy, cả dân sự liền sấp mặt xuống đất, và la lên rằng: Giê-hô-va là Đức Chúa Trời! Giê-hô-va là Đức Chúa Trời!'\n\nPhân tích đáp án sai:\n1. 'Lửa từ bàn thờ bùng lên thiêu của lễ' (Sai chi tiết): Lửa đến từ trời, không phải từ bàn thờ do Ê-li dựng nên (c.38).\n2. 'Một trận động đất làm rung chuyển núi' (Sai phạm vi): Trận động đất xuất hiện trong khải tượng của Ê-li ở 1 Các Vua 19:11-12, không phải trong sự kiện này.\n3. 'Các tiên tri Ba-anh xưng nhận Ê-li là tiên tri thật' (Nhầm passage gần): Dân chúng xưng nhận Đức Giê-hô-va (c.39), còn các tiên tri Ba-anh bị bắt và giết (c.40), không phải xưng nhận Ê-li.",
     "language": "vi",
     "verseEnd": 39,
     "options": [
       "Lửa từ trời rơi xuống thiêu của lễ",
-      "Gió bão nổi lên",
-      "Đất rung",
-      "Mưa rơi xuống"
+      "Lửa từ bàn thờ bùng lên thiêu của lễ",
+      "Một trận động đất làm rung chuyển núi",
+      "Các tiên tri Ba-anh xưng nhận Ê-li là tiên tri thật"
     ],
     "tags": [
       "Cựu Ước",
@@ -65,13 +65,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Các Vua 6:38 - Đền thờ được xây trong 7 năm. Một công trình hùng vĩ.",
+    "explanation": "Câu trả lời đúng là '7 năm' dựa trên 1 Các Vua 6:38: 'Xây cất đền thờ trong bảy năm'. Các đáp án sai: (1) '6 năm' là chi tiết số gần đúng nhưng sai chính xác. (2) '40 năm' là thời gian trị vì của Sa-lô-môn (1 Các Vua 11:42), không phải thời gian xây đền thờ. (3) '20 năm' có thể là sự nhầm lẫn phổ biến với thời gian xây cung điện của Sa-lô-môn (1 Các Vua 9:10).",
     "language": "vi",
     "options": [
+      "6 năm",
       "40 năm",
-      "3 năm",
       "7 năm",
-      "12 năm"
+      "20 năm"
     ],
     "tags": [
       "Cựu Ước",
@@ -92,13 +92,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Các Vua 8:27 - Sa-lô-môn hiểu rằng Chúa không bị giới hạn trong đền thờ. Ngài lớn hơn mọi công trình.",
+    "explanation": "1 Các Vua 8:27 ghi lại lời Sa-lô-môn: 'Nhưng quả thật, Đức Chúa Trời ngự trên đất này chăng? Kìa, trời, dẫu đến đỗi trời của các từng trời chẳng có thể chứa Ngài được thay, phương chi cái đền này tôi đã cất!' Câu này nhấn mạnh sự vĩ đại không thể chứa đựng của Đức Chúa Trời, vượt xa cả đền thờ vật chất. Đáp án đúng trích dẫn trung thành ý này.\n\nCác đáp án sai: (1) '...huống chi Giê-ru-sa-lem' là gần đúng nhưng sai chi tiết then chốt (thay 'đền này' bằng 'Giê-ru-sa-lem'), làm mất đi sự tương phản trực tiếp với đền thờ vừa được cất. (2) 'Chúa sẽ ngự trong đền thờ này đời đời' sai phạm vi — Sa-lô-môn cầu xin Chúa lắng nghe từ đền thờ (c.29), nhưng không tuyên bố Ngài sẽ ngự tại đó đời đời; ngược lại, c.27 nhấn mạnh Ngài không bị giới hạn trong đó. (3) 'Đây là nơi Chúa chọn để dân Y-sơ-ra-ên thờ phượng Ngài' tuy đúng với bối cảnh chung (Chúa chọn Giê-ru-sa-lem) nhưng lạc câu hỏi — câu hỏi hỏi về lời tuyên bố của Sa-lô-môn *về bản thể của Chúa* trong c.27, không phải về mục đích của đền thờ.",
     "language": "vi",
     "options": [
-      "Chúa chỉ ở trong đền",
-      "Chúa vui vẻ nhận đền",
+      "Trời của các tầng trời không chứa nổi Ngài, huống chi Giê-ru-sa-lem",
+      "Chúa sẽ ngự trong đền thờ này đời đời",
       "Trời của các tầng trời không chứa nổi Ngài, huống chi đền này",
-      "Đền này là nhà của Chúa"
+      "Đây là nơi Chúa chọn để dân Y-sơ-ra-ên thờ phượng Ngài"
     ],
     "tags": [
       "Cựu Ước",
@@ -119,14 +119,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Các Vua 10:1 - Nữ hoàng Sê-ba đến với câu hỏi khó. Bà kinh ngạc trước sự khôn ngoan và sự giàu có của Sa-lô-môn.",
+    "explanation": "Đoạn Kinh Thánh 1 Các Vua 10:1-9 ghi rõ: 'Nữ hoàng Sê-ba nghe nói về danh tiếng của Sa-lô-môn... bà đến Giê-ru-sa-lem' (câu 1). Do đó, đáp án đúng là 'Nữ hoàng xứ Sê-ba'. Distractor 1 (A-si-ri) là sai vì A-si-ri là đế quốc lân cận thường được nhắc đến trong các sách Tiên tri và Các Vua, nhưng không phải là nữ hoàng trong đoạn này. Distractor 2 (Pha-ra-ôn) là sai vì đây là một hiểu lầm phổ biến - Pha-ra-ôn là danh hiệu vua Ai Cập, không phải nữ hoàng, và trong 1 Các Vua 3:1 có nhắc đến con gái Pha-ra-ôn kết hôn với Sa-lô-môn, nhưng không phải người đến thử sự khôn ngoan. Distractor 3 (Giu-đa) là sai vì Giu-đa là vương quốc của chính Sa-lô-môn, không phải một vương quốc ngoại bang có nữ hoàng đến thăm.",
     "language": "vi",
     "verseEnd": 9,
     "options": [
       "Nữ hoàng xứ Sê-ba",
-      "Nữ hoàng Ba-tư",
-      "Nữ hoàng Ba-by-lôn",
-      "Nữ hoàng Ai-cập"
+      "Nữ hoàng xứ A-si-ri",
+      "Nữ hoàng xứ Pha-ra-ôn",
+      "Nữ hoàng xứ Giu-đa"
     ],
     "tags": [
       "Cựu Ước",
@@ -147,13 +147,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Các Vua 11:4 - Sa-lô-môn có 700 vợ và 300 hầu, họ làm lòng ông nghiêng theo thần ngoại bang.",
+    "explanation": "1 Các Vua 11:4 chép: 'Về già, các bà vợ của Sa-lô-môn dụ lòng người theo các thần khác; lòng người chẳng trọn lành với Giê-hô-va Đức Chúa Trời của người như thể lòng Đa-vít, cha người.' Vì vậy, đáp án đúng là do ảnh hưởng của các vợ ngoại bang. Distractor 1 ('Các quan cận thần') là gần đúng nhưng sai chi tiết chủ thể (gần với các mô tả về triều đình nhưng không phải nguyên nhân trong câu này). Distractor 2 sai phạm vi vì việc tích trữ vàng bạc (1 Các Vua 10:14-27) dù là sự phô trương nhưng không phải là nguyên nhân trực tiếp dẫn đến sự sa ngã thờ thần tượng. Distractor 3 là hiểu lầm phổ biến vì không có ghi chép cụ thể nào về một lời tiên tri cảnh báo trực tiếp Sa-lô-môn trước sự kiện này; lời cảnh báo của Đức Chúa Trời được ghi lại sau đó (1 Các Vua 11:9-13).",
     "language": "vi",
     "options": [
       "Các vợ ngoại bang xoay lòng ông theo các thần khác",
-      "Mất trí nhớ",
-      "Bị phản bội",
-      "Bị bệnh"
+      "Các quan cận thần xúi giục ông thờ thần tượng",
+      "Ông sa ngã vì muốn tích trữ nhiều vàng bạc",
+      "Ông bỏ lời tiên tri của Đức Chúa Trời cảnh báo trước"
     ],
     "tags": [
       "Cựu Ước",
@@ -202,14 +202,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Các Vua 17:6 - Quạ đem bánh và thịt cho Ê-li sáng và chiều. Chúa lo liệu cách lạ lùng.",
+    "explanation": "Đáp án đúng: 'Quạ và chim đem đem bánh và thịt đến' (1 Các Vua 17:4-6). Chúa phán rằng Ngài đã truyền cho quạ nuôi Ê-li tại đó, và chúng đem bánh và thịt đến cho ông mỗi sáng và mỗi chiều.\n\nGiải thích các đáp án sai:\n- 'Các thiên sứ đem bánh và thịt đến': Sai chi tiết. Đoạn Kinh Thánh này chỉ nói đến quạ, không đề cập đến thiên sứ. Đây là distractor 'gần đúng' vì thường có sự hiện diện của thiên sứ trong các phép lạ khác, nhưng không phải trong bối cảnh cụ thể này.\n- 'Dân làng gần đó đem thức ăn đến': Sai phạm vi/hoàn cảnh. Chúa truyền cho Ê-li ẩn mình bên suối Kê-rít, tách biệt khỏi con người, để được quạ nuôi dưỡng một cách siêu nhiên.\n- 'Ê-li tự tìm thấy bánh và thịt bên suối': Lạc câu hỏi. Câu hỏi hỏi 'Chúa dùng gì để nuôi Ê-li?', tập trung vào phương tiện Chúa sử dụng. Phương án này mô tả nguồn thức ăn một cách thụ động, không phải là tác nhân Chúa dùng để cung cấp.",
     "language": "vi",
     "verseEnd": 6,
     "options": [
-      "Ma-na từ trời",
-      "Người dân địa phương",
+      "Các thiên sứ đem bánh và thịt đến",
+      "Dân làng gần đó đem thức ăn đến",
       "Quạ và chim đem đem bánh và thịt đến",
-      "Trái cây rừng"
+      "Ê-li tự tìm thấy bánh và thịt bên suối"
     ],
     "tags": [
       "Cựu Ước",
@@ -258,13 +258,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Các Vua 19:4 - Ngay cả tiên tri vĩ đại nhất cũng có lúc yếu đuối. Chúa nhân từ chăm sóc Ê-li.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Sợ hãi bỏ chạy vào đồng vắng, muốn chết' (1 Các Vua 19:3-4). Sau khi được báo tin, Ê-li 'sợ hãi, chổi dậy chạy trốn' (câu 3), đi đến đồng vắng, ngồi dưới cây giếng giêng và cầu xin được chết (câu 4).\n\nGIẢI THÍCH CÁC ĐÁP ÁN SAI:\n1. 'Cầu nguyện xin Chúa giáng lửa tiêu diệt Giê-sa-bên': Gần đúng nhưng sai chi tiết then chốt. Đây là hành động Ê-li đã làm với các tiên tri của Ba-anh trên núi Cát-men (1 Các Vua 18:36-40), không phải phản ứng của ông khi nghe lời đe dọa của Giê-sa-bên.\n2. 'Vui mừng dựng lên một bàn thờ để thờ phượng Chúa': Sai phạm vi. Hành động này thuộc về sự kiện trên núi Cát-men trước đó (1 Các Vua 18:30-32), và tâm trạng lúc đó là quyết tâm, không phải là phản ứng sau lời đe dọa.\n3. 'Tiếp tục ở lại và thách thức Giê-sa-bên ra đối chất': Là hiểu lầm phổ biến dựa trên hình ảnh mạnh mẽ trước đó của Ê-li. Thực tế, Kinh Thánh ghi rõ ông đã sợ hãi và bỏ chạy ngay lập tức, không có hành động thách thức nào sau lời đe dọa.",
     "language": "vi",
     "options": [
       "Sợ hãi bỏ chạy vào đồng vắng, muốn chết",
-      "Chiến đấu tiếp",
-      "Vui mừng",
-      "Cầu nguyện thêm"
+      "Cầu nguyện xin Chúa giáng lửa tiêu diệt Giê-sa-bên",
+      "Vui mừng dựng lên một bàn thờ để thờ phượng Chúa",
+      "Tiếp tục ở lại và thách thức Giê-sa-bên ra đối chất"
     ],
     "tags": [
       "Cựu Ước",
@@ -285,14 +285,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Các Vua 19:11-12 - Chúa không ở trong gió bão, động đất hay lửa, mà phán với Ê-li trong tiếng nhỏ nhẹ.",
+    "explanation": "Câu hỏi hỏi về điều qua đó Chúa đã phán với Ê-li SAU các hiện tượng gió bão, động đất và lửa (1 Các Vua 19:11-12). Đáp án đúng là 'Tiếng nhỏ nhẹ (tiếng phảm phảm)' (câu 12).\n\n- Distractor 'Tiếng gió lớn đập vào núi' (gần đúng): Sai vì đây là hiện tượng đầu tiên xảy ra TRƯỚC khi Chúa phán, được mô tả trong câu 11. Nó là một phần của chuỗi sự kiện, nhưng không phải là phương tiện Chúa dùng để phán sau cùng.\n- Distractor 'Tiếng động đất rền vang': Sai vì đây là hiện tượng thứ hai xảy ra TRƯỚC, được mô tả trong câu 11. Chúa không ở trong động đất.\n- Distractor 'Tiếng lửa cháy rừng rực': Sai vì đây là hiện tượng thứ ba xảy ra TRƯỚC, được mô tả trong câu 12. Chúa cũng không ở trong lửa. Câu hỏi hỏi cụ thể về thứ xảy ra SAU ba hiện tượng này.",
     "language": "vi",
     "verseEnd": 12,
     "options": [
-      "Gió bão",
+      "Tiếng gió lớn đập vào núi",
       "Tiếng nhỏ nhẹ (tiếng phảm phảm)",
-      "Lửa",
-      "Động đất"
+      "Tiếng động đất rền vang",
+      "Tiếng lửa cháy rừng rực"
     ],
     "tags": [
       "Cựu Ước",
@@ -313,13 +313,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Các Vua 19:18 - 7000 người chưa quỳ gối Ba-an. Ê-li không cô đơn như ông tưởng.",
+    "explanation": "Trong 1 Các Vua 19:18, Chúa phán với Ê-li: \"Nhưng ta sẽ để lại cho ta bảy nghìn người trong Y-sơ-ra-ên, là những đầu gối chưa hề quỳ trước mặt Ba-anh, và những miệng chưa hề hôn Ba-anh.\" Vì thế, đáp án đúng là \"7000 người\".\n\n- Distractor \"700 người\" là gần đúng nhưng sai chi tiết số liệu.\n- Distractor \"70000 người\" sai phạm vi về quy mô, gấp mười lần con số đúng.\n- Distractor \"Toàn thể Ít-ra-ên chưa bao giờ quỳ gối trước Ba-an\" dựa trên hiểu lầm phổ biến rằng toàn dân trung thành, trong khi văn bản chỉ nói về một số sót lại.",
     "language": "vi",
     "options": [
-      "100 người",
-      "1000 người",
+      "700 người",
+      "70000 người",
       "7000 người",
-      "Chỉ Ê-li"
+      "Toàn thể Ít-ra-ên chưa bao giờ quỳ gối trước Ba-an"
     ],
     "tags": [
       "Cựu Ước",
@@ -340,14 +340,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Các Vua 19:19 - Áo choàng tiên tri là biểu tượng truyền chức vụ và quyền năng.",
+    "explanation": "Trong 1 Các Vua 19:19-21, Ê-li gặp Ê-li-sê đang cày ruộng, đi ngang qua và ném áo choàng của mình lên người Ê-li-sê (câu 19). Đây là một hành động biểu tượng để gọi ông làm môn đồ. Ê-li-sê hiểu ý và chạy theo Ê-li. *Đáp án đúng đúng vì nó mô tả chính xác hành động then chốt được ký thuật.*\n\nCác đáp án sai:\n1. 'Nhờ lời tiên tri từ miệng một thiên sứ': Sai vì thuộc đoạn gần (nearby passage). Trong chính phân đoạn này và ngay trước đó (câu 5-18), Ê-li có tương tác với một thiên sứ và nghe tiếng Chúa, nhưng việc gọi Ê-li-sê không liên quan đến thiên sứ nào cả.\n2. 'Mời ăn một bữa tại nhà Ê-li-sê': Sai chi tiết (wrong detail). Trong câu 21, chính Ê-li-sê giết bò và nấu thịt đãi dân, sau đó đi theo Ê-li, chứ không phải Ê-li mời ăn tại nhà Ê-li-sê như một cách để gọi ông.\n3. 'Đặt tay lên đầu và cầu nguyện': Sai do hiểu lầm phổ biến (common misconception). Hành động đặt tay thường liên quan đến sự truyền chức hay chúc phúc trong Kinh Thánh, nhưng trong bối cảnh cụ thể này, phương thức được dùng là 'ném áo choàng'. Đây là distractor 'gần đúng' vì nó liên quan đến một nghi thức gọi/chuyển giao quen thuộc, nhưng sai chi tiết then chốt về hành động.",
     "language": "vi",
     "verseEnd": 21,
     "options": [
       "Ném áo choàng mình lên Ê-li-sê",
-      "Sai người đến",
-      "Gọi tên ông",
-      "Gửi thư"
+      "Nhờ lời tiên tri từ miệng một thiên sứ",
+      "Mời ăn một bữa tại nhà Ê-li-sê",
+      "Đặt tay lên đầu và cầu nguyện"
     ],
     "tags": [
       "Cựu Ước",
@@ -368,12 +368,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Các Vua 1:39 — 'Thầy tế lễ Xa-đốc lấy sừng dầu trong trại, xức cho Sa-lô-môn. Người ta thổi kèn lên, cả dân sự đều la lên: Vua Sa-lô-môn vạn tuế!'",
+    "explanation": "Trong 1 Các Vua 1:39, Thầy tế lễ Xa-đốc đã lấy sừng dầu từ Đền tạm và xức dầu cho Sa-lô-môn, khiến dân chúng reo hò 'Vua Sa-lô-môn vạn tuế!'. Đáp án 1 (A-bi-a-tha) là sai vì, dù ông cũng là thầy tế lễ và có mặt trong đoạn này (câu 7, 25), chính Xa-đốc mới là người thực hiện nghi lễ xức dầu. Đáp án 2 (Na-than) sai vì ông là tiên tri đóng vai trò then chốt trong việc báo cho Đa-vít và ủng hộ Sa-lô-môn (câu 11-27, 32-34), nhưng không phải là người xức dầu. Đáp án 3 (Vua Đa-vít) sai vì, dù là cha và người chỉ định Sa-lô-môn làm vua (câu 30, 35), ông không trực tiếp thực hiện nghi lễ xức dầu; đây là một hiểu lầm phổ biến khi nghĩ rằng vua cha sẽ trao vương quyền trực tiếp.",
     "language": "vi",
     "options": [
-      "Tiên tri Na-than một mình",
+      "Thầy tế lễ A-bi-a-tha",
+      "Tiên tri Na-than",
       "Vua Đa-vít",
-      "Tổng tư lệnh Bê-na-gia",
       "Thầy tế lễ Xa-đốc"
     ],
     "tags": [
@@ -395,13 +395,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Các Vua 4:30 — 'Sự khôn ngoan của Sa-lô-môn trổi hơn sự khôn ngoan của mọi người Đông phương, và mọi người Ai Cập.'",
+    "explanation": "1 Các Vua 4:30 chép rõ: 'Sự khôn ngoan của Sa-lô-môn trổi hơn sự khôn ngoan của mọi người phương Đông, và hơn sự khôn ngoan của người Ê-díp-tô.' Do đó, đáp án đúng là 'Hơn mọi người Đông phương và Ai Cập'. \n\nDistractor 1 sai vì thay 'Ai Cập' (Ê-díp-tô) bằng 'Ba-by-lôn', một quốc gia khác không được đề cập trong câu này (sai chi tiết). \nDistractor 2 sai vì mở rộng phạm vi không cần thiết ('các nước lân cận') thay vì chỉ rõ 'Ai Cập' như Kinh Thánh ghi (sai phạm vi). \nDistractor 3 sai vì dù 'người Gát' có xuất hiện trong bảng kê các quan trưởng ở các câu trước (1 Các Vua 4:13-19), nhưng không liên quan đến sự so sánh về sự khôn ngoan trong câu 30 (đúng văn bản nhưng lạc câu hỏi).",
     "language": "vi",
     "options": [
-      "Hơn các tổ phụ",
+      "Hơn mọi người Đông phương và Ba-by-lôn",
       "Hơn mọi người Đông phương và Ai Cập",
-      "Hơn các vua dân ngoại lân cận",
-      "Hơn các thiên sứ"
+      "Hơn mọi người phương Đông và các nước lân cận",
+      "Hơn mọi người phương Đông và người Gát"
     ],
     "tags": [
       "Cựu Ước",
@@ -448,12 +448,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Các Vua 11:31 — 'A-hi-gia phán cùng Giê-rô-bô-am: Hãy lấy mười miếng cho ngươi, vì Đức Giê-hô-va phán: Ta sẽ xé nước khỏi tay Sa-lô-môn mà cho ngươi mười chi phái.'",
+    "explanation": "Trong 1 Các Vua 11:31, A-hi-gia nói với Giê-rô-bô-am: 'Hãy lấy cho ngươi mười miếng; vì Giê-hô-va Đức Chúa Trời của Y-sơ-ra-ên phán như vầy: Nầy, ta đoạt lấy nước khỏi tay Sa-lô-môn và ban cho ngươi mười chi phái.' Đáp án đúng là mười miếng (10 chi phái).\n\n- Distractor 'Mười một miếng (11 chi phái)' sai vì lệch 1 chi tiết số lượng so với Kinh Thánh (10 so với 11).\n- Distractor 'Mười hai miếng (2 chi phái)' sai vì phạm vi hiểu sai: tuy số 12 đúng tổng số miếng, nhưng số chi phái (2) là phạm vi dành lại cho dòng dõi Đa-vít, không phải số lượng trao cho Giê-rô-bô-am.\n- Distractor 'Một miếng (cả 12 chi phái)' sai vì thể hiện sự hiểu lầm phổ biến về động tác/hình ảnh 'xé', có thể nghĩ là trao cả một mảnh lớn đại diện cho tất cả, nhưng đoạn Kinh Thánh nói rõ chỉ trao 10 trên 12 chi phái.",
     "language": "vi",
     "options": [
-      "Một miếng",
-      "Bảy miếng",
-      "Mười hai miếng",
+      "Mười một miếng (11 chi phái)",
+      "Mười hai miếng (2 chi phái)",
+      "Một miếng (cả 12 chi phái)",
       "Mười miếng (10 chi phái)"
     ],
     "tags": [
@@ -502,12 +502,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Các Vua 14:21 — 'Rô-bô-am, con trai của Sa-lô-môn, cai trị tại Giu-đa.' Ông đóng đô tại Giê-ru-sa-lem.",
+    "explanation": "Đáp án đúng là 'Giê-ru-sa-lem (làm vua trên Giu-đa)' vì 1 Các Vua 14:21 chép: 'Rô-bô-am, con trai Sa-lô-môn, trị vì tại Giu-đa... Và mẹ người tên là Na-a-ma, người Am-môn. Người trị vì mười bảy năm tại Giê-ru-sa-lem.'\n\nCác đáp án sai: (1) 'Si-chem (làm vua trên Y-sơ-ra-ên)' - đây là nơi Giê-rô-bô-am làm vua (1 Các Vua 12:25), nhưng câu hỏi hỏi về Rô-bô-am. (2) 'Giê-ru-sa-lem (làm vua trên Y-sơ-ra-ên)' - sai chi tiết phạm vi cai trị; Rô-bô-am làm vua trên Giu-đa tại Giê-ru-sa-lem, không phải Y-sơ-ra-ên. (3) 'Bê-tên (làm vua trên Giu-đa)' - Bê-tên là một thành thuộc Y-sơ-ra-ên dưới thời Giê-rô-bô-am, không phải nơi Rô-bô-am trị vì trên Giu-đa.",
     "language": "vi",
     "options": [
-      "Sa-ma-ri",
-      "Bê-tên",
-      "Si-chem",
+      "Si-chem (làm vua trên Y-sơ-ra-ên)",
+      "Giê-ru-sa-lem (làm vua trên Y-sơ-ra-ên)",
+      "Bê-tên (làm vua trên Giu-đa)",
       "Giê-ru-sa-lem (làm vua trên Giu-đa)"
     ],
     "tags": [
@@ -529,13 +529,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Các Vua 21:13-14 — 'Họ ném đá Na-bốt; người chết.' Hoàng hậu Giê-sa-bên đã dàn xếp âm mưu này, và Vua A-háp đồng lõa bằng cách hưởng lợi từ tài sản của Na-bốt.",
+    "explanation": "Đáp án đúng là 'Na-bốt người Gít-rê-ên' vì Kinh Thánh ghi rõ trong 1 Các Vua 21:13 rằng Na-bốt bị dân chúng ném đá cho đến chết theo âm mưu của Giê-sa-bên. Distractor 'Một người giàu có trong thành' là gần đúng nhưng sai chi tiết then chốt: Na-bốt là chủ vườn nho chứ không được mô tả là 'giàu có' và đặc điểm nhận dạng chính là 'người Gít-rê-ên'. Distractor 'Ê-xê-chia, vua Giu-đa' sai chi tiết vì đây là một vị vua khác, không liên quan đến câu chuyện này. Distractor 'Vợ của Na-bốt' sai phạm vi vì trong đoạn Kinh Thánh tham chiếu, chỉ Na-bốt bị giết, vợ ông không hề được nhắc đến.",
     "language": "vi",
     "options": [
-      "Mê-phi-bô-sết",
+      "Một người giàu có trong thành",
       "Na-bốt người Gít-rê-ên",
-      "Ô-bết",
-      "Ô-vít"
+      "Ê-xê-chia, vua Giu-đa",
+      "Vợ của Na-bốt"
     ],
     "tags": [
       "Cựu Ước",

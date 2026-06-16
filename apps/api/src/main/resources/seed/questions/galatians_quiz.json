@@ -36,14 +36,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ga 5:22 - Trái Thánh Linh: yêu thương, vui mừng, bình an, nhịn nhục, nhân từ, hiền lành, trung tín, mềm mại, tiết độ.",
+    "explanation": "Đoạn Kinh Thánh Ga-la-ti 5:22-23 liệt kê rõ ràng: 'Nhưng trái của Thánh Linh, ấy là lòng yêu thương, sự vui mừng, bình an, nhịn nhục, nhân từ, hiền lành, trung tín, mềm mại, tiết độ.' Vì vậy, đáp án đúng là 'Yêu thương' vì nó được liệt kê đầu tiên trong danh sách. Các đáp án sai: 1) 'Bình an' là một trái của Thánh Linh nhưng được liệt kê thứ ba, không phải đầu tiên (nearby_passage). 2) 'Kiên nhẫn' là một phẩm chất tốt nhưng trong bản dịch này, từ chính xác là 'nhịn nhục' và nó đứng thứ tư, không phải đầu tiên (wrong_detail). 3) 'Tốt lành' là một khái niệm chung, có thể liên quan nhưng không phải là từ ngữ cụ thể được dùng để bắt đầu danh sách trong câu Kinh Thánh này (true_but_off).",
     "language": "vi",
     "verseEnd": 23,
     "options": [
       "Yêu thương",
-      "Vui mừng",
       "Bình an",
-      "Nhịn nhục"
+      "Kiên nhẫn",
+      "Tốt lành"
     ],
     "tags": [
       "Tân Ước",
@@ -64,13 +64,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Trong Chúa, mọi người đều bình đẳng và là một trong Chúa Giê-su.",
+    "explanation": "Đáp án đúng \"Do-thái hay Hy-lạp, nô lệ hay tự do, nam hay nữ\" trích trực tiếp từ Ga-la-ti 3:28 (BTT), là câu trả lời chính xác cho câu hỏi về sự không còn phân biệt trong Đấng Christ. Các đáp án sai: (1) \"Do-thái hay Hy-lạp, nô lệ hay tự do, trưởng lão hay chấp sự\" là gần đúng nhưng sai một chi tiết then chốt (thay \"nam hay nữ\" bằng chức vụ \"trưởng lão hay chấp sự\", không có trong câu Kinh Thánh này). (2) \"Người nam hay người nữ, người Cơ-đốc hay người ngoại, người giàu hay người nghèo\" mở rộng phạm vi vượt quá ba cặp phân biệt cụ thể trong câu Kinh Thánh, đưa vào các phân loại khác. (3) \"Giàu hay nghèo, trí thức hay thất học, công dân hay ngoại kiều\" dựa trên một hiểu lầm phổ biến (thường áp đặt các phân biệt xã hội hiện đại), không phải nội dung của Ga-la-ti 3:28.",
     "language": "vi",
     "options": [
-      "Học hay dốt",
-      "Trẻ hay già",
+      "Do-thái hay Hy-lạp, nô lệ hay tự do, trưởng lão hay chấp sự",
+      "Người nam hay người nữ, người Cơ-đốc hay người ngoại, người giàu hay người nghèo",
       "Do-thái hay Hy-lạp, nô lệ hay tự do, nam hay nữ",
-      "Giàu hay nghèo"
+      "Giàu hay nghèo, trí thức hay thất học, công dân hay ngoại kiều"
     ],
     "tags": [
       "Tân Ước",
@@ -91,13 +91,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ga 5:1 - Đấng Christ đã giải phóng chúng ta để chúng ta được tự do, không còn chịu ách nô lệ của luật pháp hay tội lỗi.",
+    "explanation": "Đoạn Kinh Thánh Ga-la-ti 5:1 viết: 'Đấng Christ đã giải phóng chúng ta để chúng ta được tự do. Vậy hãy đứng vững, đừng mang lấy ách nô lệ một lần nữa.' Do đó, đáp án đúng 'Được tự do, đừng chịu ách nô lệ nữa' tóm tắt chính xác mục đích của sự giải phóng. Các đáp án sai: 1) 'Được tự do, rồi chịu ách nô lệ mới' là sai vì câu Kinh Thánh dạy 'đừng' chịu ách nô lệ nữa, không phải để chịu ách mới (sai chi tiết then chốt). 2) 'Được thánh hóa, đừng sống tội lỗi nữa' là sai vì đây là ý chính của đoạn sau (ví dụ 5:13, 16-24), không phải trực tiếp trả lời câu hỏi về mục đích giải phóng trong 5:1 (sai phạm vi ý chính). 3) 'Được cứu rỗi, để hầu việc trong đền thờ' là sai vì mặc dù liên quan đến chủ đề tự do và phục vụ, nhưng việc 'hầu việc trong đền thờ' không được đề cập trong ngữ cảnh này và lạc hướng khỏi trọng tâm 'đừng chịu ách nô lệ' của câu 1 (đúng văn bản nhưng lạc câu hỏi).",
     "language": "vi",
     "options": [
-      "Làm việc nhiều hơn",
-      "Giữ luật nhiều hơn",
+      "Được tự do, rồi chịu ách nô lệ mới",
+      "Được thánh hóa, đừng sống tội lỗi nữa",
       "Được tự do, đừng chịu ách nô lệ nữa",
-      "Được giàu có"
+      "Được cứu rỗi, để hầu việc trong đền thờ"
     ],
     "tags": [
       "Tân Ước",
@@ -118,14 +118,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Xác thịt và Thánh Linh chống nhau. Hãy bước đi theo Thánh Linh để không làm theo xác thịt.",
+    "explanation": "Ga-la-ti 5:16-17 nói: \"Hãy bước đi theo Thánh Linh, chắc hẳn anh em sẽ không làm trọn những điều ước muốn của xác thịt. Vì xác thịt có những điều ước muốn trái với Thánh Linh, còn Thánh Linh có những điều ước muốn trái với xác thịt; hai bên trái nhau như vậy, nên anh em không làm được điều mình muốn.\" Đoạn Kinh Thánh này trực tiếp mô tả sự xung đột giữa 'Xác thịt và Thánh Linh'.\n\n*   **Luật pháp và ân điển** (nearby_passage): Sai. Dù đây là chủ đề trung tâm của sách Ga-la-ti, nó không phải là nội dung cụ thể của các câu 16-17. Sự xung đột được nói đến trong hai câu này là giữa hai bản chất bên trong con người, không phải giữa hai nguyên tắc cứu rỗi.\n*   **Thánh Linh và tâm linh** (common_misconception, almost-right): Sai. Phân biệt này gần với chân lý vì liên quan đến 'Thánh Linh', nhưng 'tâm linh' (phần thuộc linh của con người) không phải là đối thủ xung đột trực tiếp với Thánh Linh trong ngữ cảnh này. Đối thủ được nêu rõ là 'xác thịt' (bản chất tội lỗi, hướng về thế gian).\n*   **Ước muốn và hành động** (wrong_scope): Sai. Đây là một phạm trù quá rộng và chung chung. Mặc dù câu 17 đề cập đến 'những điều ước muốn' và việc 'không làm được', nhưng trọng tâm không phải là sự xung đột giữa ước muốn và hành động nói chung, mà là cụ thể giữa ước muốn của xác thịt và ước muốn của Thánh Linh.",
     "language": "vi",
     "verseEnd": 17,
     "options": [
       "Xác thịt và Thánh Linh",
-      "Cũ và mới",
-      "Lý trí và cảm xúc",
-      "Tốt và xấu"
+      "Luật pháp và ân điển",
+      "Thánh Linh và tâm linh",
+      "Ước muốn và hành động"
     ],
     "tags": [
       "Tân Ước",
@@ -146,12 +146,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Luật gieo gặt: hành động có hậu quả. Gieo theo xác thịt gặt hư nát, gieo theo Thánh Linh gặt sự sống.",
+    "explanation": "Đáp án đúng là \"Gặt nấy\". Lời này trích nguyên văn từ Ga-la-ti 6:7 (BTT): \"vì ai gieo gì thì sẽ gặt nấy.\" Câu này dạy nguyên tắc đồng nhất giữa hành động (gieo) và hệ quả (gặt) trong đời sống thuộc linh.\n\nCác đáp án sai:\n1. \"Gieo nấy\": Đây là đáp án gần đúng nhưng sai chi tiết then chốt. Nó đảo ngược trật tự logic của câu Kinh Thánh. Câu không nói \"gieo thì sẽ gieo nấy\" mà nói \"gieo thì sẽ gặt nấy\". Đây là lỗi nhầm lẫn với từ trong cùng phân đoạn (nearby_passage).\n2. \"Gặt khác\": Sai chi tiết từ ngữ quan trọng. Kinh Thánh nhấn mạnh sự tương ứng \"gieo gì... gặt nấy\", không phải \"gặt khác\". Từ \"nấy\" (tiếng Hy Lạp: ἐκείνου) chỉ sự đồng nhất, còn \"khác\" phá vỡ ý nghĩa đó (wrong_detail).\n3. \"Thấy nấy\": Đây là một cụm từ có cấu trúc tương tự nhưng hoàn toàn lạc với nội dung câu hỏi và phân đoạn. Không có chỗ nào trong Ga-la-ti 6:7 hoặc ngữ cảnh gần nói về \"thấy nấy\". Nó đúng văn phạm nhưng sai ngữ cảnh (true_but_off).",
     "language": "vi",
     "options": [
-      "Mất nấy",
-      "Được nấy",
-      "Thất nấy",
+      "Gieo nấy",
+      "Gặt khác",
+      "Thấy nấy",
       "Gặt nấy"
     ],
     "tags": [
@@ -200,13 +200,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Chúa Giê-su gánh chịu hình phạt của luật pháp thay cho chúng ta.",
+    "explanation": "Ga-la-ti 3:13 chép: 'Đấng Christ đã chuộc chúng ta khỏi sự rủa sả của luật pháp, bởi Ngài đã nên sự rủa sả vì chúng ta, vì có lời chép: Đáng rủa thay là kẻ bị treo trên cây.' (BTT). ĐÁP ÁN ĐÚNG: Câu trả lời chính xác vì Kinh Thánh nói rõ Đấng Christ 'đã nên sự rủa sả vì chúng ta' và trích dẫn Cựu Ước về việc 'bị treo trên cây', đây là cách Ngài chuộc chúng ta. DISTRACTOR SAI 1 ('Trở nên sự chúc phước...'): Sai chi tiết then chốt (thay 'rủa sả' bằng 'chúc phước'), nhưng cấu trúc và ý 'vì chúng ta' gần giống với đáp án đúng. DISTRACTOR SAI 2 ('Chuộc... tuân giữ...'): Thể hiện một hiểu lầm phổ biến rằng sự cứu chuộc đến từ việc tuân giữ luật pháp, trái ngược với giáo lý trong sách Ga-la-ti rằng sự cứu chuộc là bởi đức tin và sự chết thay của Đấng Christ. DISTRACTOR SAI 3 ('Làm cho luật pháp hết hiệu lực...'): Sai phạm vi - đoạn này nói về việc Đấng Christ gánh lấy sự rủa sả, chứ không phải về việc hủy bỏ hiệu lực của luật pháp (một chủ đề có thể được bàn ở các đoạn khác).",
     "language": "vi",
     "options": [
-      "Giữ luật thay",
-      "Hủy bỏ luật",
+      "Trở nên sự chúc phước vì chúng ta (ban phước cho chúng ta)",
+      "Chuộc chúng ta bằng cách tuân giữ trọn vẹn luật pháp",
       "Trở nên sự rủa sả vì chúng ta (bị treo trên cây)",
-      "Đổi luật"
+      "Làm cho luật pháp hết hiệu lực và sự rủa sả của nó"
     ],
     "tags": [
       "Tân Ước",
@@ -337,13 +337,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ga-la-ti 1:1 — 'Phao-lô, làm sứ đồ, chẳng phải bởi loài người, cũng không nhờ một người nào, bèn là bởi Đức Chúa Jêsus Christ và Đức Chúa Trời.'",
+    "explanation": "Ga-la-ti 1:1 viết: 'Phao-lô, làm sứ đồ không phải bởi loài người, cũng không nhờ một người nào, bèn là bởi Đức Chúa Jêsus Christ, và Đức Chúa Trời, là Đấng đã khiến Ngài từ kẻ chết sống lại'. Vì vậy, đáp án đúng là 'Bởi Đức Chúa Jêsus Christ và Đức Chúa Trời'. Distractor 1 sai vì thay 'Đức Chúa Trời' bằng 'Hội Thánh' – một chi tiết không có trong câu Kinh Thánh này. Distractor 2 sai vì mở rộng phạm vi nguồn gốc sang 'các sứ đồ khác', trái với ý chính của câu là khẳng định thẩm quyền sứ đồ không đến từ con người. Distractor 3 sai vì phản ánh một hiểu lầm phổ biến (nhưng không đúng với câu này) rằng thẩm quyền của Phao-lô có thể đến từ nỗ lực cá nhân, trong khi câu nhấn mạnh nguồn gốc thần thượng.",
     "language": "vi",
     "options": [
-      "Bởi hội thánh An-ti-ốt",
+      "Bởi Đức Chúa Jêsus Christ và Hội Thánh",
       "Bởi Đức Chúa Jêsus Christ và Đức Chúa Trời",
-      "Bởi mười hai sứ đồ",
-      "Bởi vua Sê-sa"
+      "Bởi các sứ đồ khác và Hội Thánh",
+      "Bởi ý muốn của con người và sự khôn ngoan riêng"
     ],
     "tags": [
       "Tân Ước",
@@ -364,12 +364,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ga-la-ti 1:8 — 'Nhưng nếu có ai, hoặc chính chúng tôi, hoặc thiên sứ trên trời, truyền cho anh em một tin lành nào khác... thì người ấy đáng bị a-na-them.'",
+    "explanation": "Ga-la-ti 1:8-9 viết: 'Nhưng nếu có ai, hoặc chính chúng tôi, hoặc thiên sứ trên trời, truyền cho anh em một tin lành nào khác với Tin Lành chúng tôi đã truyền cho anh em, thì người ấy đáng bị a-na-them!... thì người ấy đáng bị a-na-them.'\n\n- ĐÁP ÁN ĐÚNG ('Đáng bị a-na-them (rủa sả)') là chính xác vì bản văn lặp lại hai lần rằng bất kỳ ai rao giảng một tin lành khác đều 'đáng bị a-na-them', một từ gốc chỉ sự rủa sả hoặc dâng cho sự hủy diệt.\n\n- DISTRACTOR 1 ('Đáng bị loại khỏi Hội thánh') là gần đúng (almost-right) nhưng sai chi tiết then chốt. Mặc dù 'a-na-them' có thể hàm ý sự loại trừ, bản văn cụ thể dùng từ 'a-na-them' (rủa sả), một khái niệm mạnh hơn và mang tính thần học rõ rệt, không chỉ là kỷ luật Hội thánh. Đây là lỗi lấy ý từ ngữ cảnh gần (nearby_passage) về kỷ luật nhưng không đúng từ ngữ chính xác.\n\n- DISTRACTOR 2 ('Đáng bị sửa dạy lại') là sai vì nó phản ánh một hiểu lầm phổ biến (common_misconception) về cách xử lý sai lạc giáo lý. Bản văn không nói về sửa dạy hay phục hồi, mà tuyên bố một sự phán xét nghiêm khắc và dứt khoát ('a-na-them') cho việc làm sai lệch chính Tin Lành.\n\n- DISTRACTOR 3 ('Đáng được thương xót') là sai rõ ràng vì hoàn toàn trái ngược với ý nghĩa cảnh cáo nghiêm trọng của đoạn Kinh Thánh. Mặc dù lòng thương xót là một chủ đề trong Kinh Thánh, nó không hề được đề cập hay ngụ ý trong ngữ cảnh cụ thể này khi nói về việc rao giảng một tin lành khác. Đây là lỗi đưa ra một ý đúng trong toàn bộ Kinh Thánh nhưng lạc đề với câu hỏi cụ thể (true_but_off).",
     "language": "vi",
     "options": [
-      "Bị tù",
-      "Bị đánh đòn",
-      "Bị khiển trách nhẹ",
+      "Đáng bị loại khỏi Hội thánh",
+      "Đáng bị sửa dạy lại",
+      "Đáng được thương xót",
       "Đáng bị a-na-them (rủa sả)"
     ],
     "tags": [
@@ -391,13 +391,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ga-la-ti 1:12 — 'Tôi cũng không nhận và cũng không học Tin Lành ấy với một người nào, nhưng đã nhận lấy bởi sự tỏ ra của Đức Chúa Jêsus Christ.'",
+    "explanation": "Trong Ga-la-ti 1:11-12, Phao-lô tuyên bố rõ: 'Vả, hỡi anh em, tôi nói cho anh em biết Tin Lành mà tôi đã rao giảng chẳng phải thuộc về loài người đâu. Vì tôi không nhận lãnh Tin Lành ấy bởi loài người, cũng không phải được dạy dỗ, nhưng bởi sự tỏ ra của Đức Chúa Jêsus Christ.' Điều này khẳng định nguồn gốc siêu nhiên và trực tiếp từ chính Đấng Christ.\n\n- Distractor 'Bởi sự dạy dỗ của các sứ đồ trước' là gần đúng nhưng sai chi tiết then chốt: Phao-lô nhấn mạnh mình KHÔNG nhận bởi sự dạy dỗ từ người nào (câu 12).\n- Distractor 'Bởi sự mặc khải từ một thiên sứ' là hiểu lầm phổ biến: mặc dù Phao-lô từng thấy khải tượng (Công vụ 22:6-11), nhưng trong đoạn này, ông xác định rõ ràng nguồn gốc là 'bởi sự tỏ ra của Đức Chúa Jêsus Christ', không phải từ một thiên sứ trung gian.\n- Distractor 'Bởi sự nghiên cứu Kinh Thánh kỹ lưỡng' là sai phạm vi: điều này có thể mô tả kiến thức của Phao-lô (Ga-la-ti 1:14), nhưng không phải là nguồn gốc của Tin Lành ông giảng theo định nghĩa trong câu hỏi.",
     "language": "vi",
     "options": [
-      "Từ các sứ đồ tại Giê-ru-sa-lem",
+      "Bởi sự dạy dỗ của các sứ đồ trước",
       "Bởi sự tỏ ra của Đức Chúa Jêsus Christ",
-      "Từ Ga-ma-li-ên",
-      "Từ A-na-nia tại Đa-mách"
+      "Bởi sự mặc khải từ một thiên sứ",
+      "Bởi sự nghiên cứu Kinh Thánh kỹ lưỡng"
     ],
     "tags": [
       "Tân Ước",
@@ -418,12 +418,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ga-la-ti 2:11 — 'Nhưng khi Sê-pha đến thành An-ti-ốt, tôi đối mặt với người, vì người đáng quở trách.' Sê-pha là Phi-e-rơ.",
+    "explanation": "Ga-la-ti 2:11-14 ghi lại rằng, tại An-ti-ốt, sứ đồ Phao-lô đã 'đứng lên đối mặt với Sê-pha (Phi-e-rơ) ... vì người đáng bị quở trách.' (c.11). Nguyên nhân là vì trước khi có một số người từ Gia-cơ đến, Phi-e-rơ vẫn ăn chung với các tín hữu gốc ngoại bang; nhưng khi họ đến, ông 'rút lui và tự phân rẽ ra' (c.12) vì sợ những người Do Thái ủng hộ việc cắt bì, và hành động giả hình này đã khiến cả Ba-na-ba bị cuốn theo (c.13).\n\n- Đáp án đúng 'Sê-pha (Phi-e-rơ)' là chính xác vì Phao-lô đã quở trách trực tiếp Phi-e-rơ (Sê-pha) về sự giả hình của ông.\n- Distractor 'Gia-cơ' là sai vì Gia-cơ không có mặt trong sự kiện này tại An-ti-ốt; ông chỉ được nhắc đến như là nguồn gốc của 'một số người' đến sau (c.12). Đây là lỗi nhầm lẫn với một nhân vật trong đoạn văn lân cận (nearby_passage).\n- Distractor 'Ba-na-ba' là sai vì Ba-na-ba là người bị ảnh hưởng bởi sự giả hình của Phi-e-rơ (c.13), chứ không phải là đối tượng chính bị Phao-lô quở trách. Đây là lỗi sai chi tiết về nhân vật (wrong_detail).\n- Distractor 'Những người Do Thái' là sai vì mặc dù họ là nguyên nhân khiến Phi-e-rơ sợ hãi (c.12), nhưng Phao-lô không quở trách họ trong đoạn này. Đối tượng quở trách trực tiếp là Phi-e-rơ. Đây là lỗi mở rộng sai phạm vi đối tượng (wrong_scope).",
     "language": "vi",
     "options": [
-      "Ba-na-ba",
-      "Tít",
       "Gia-cơ",
+      "Ba-na-ba",
+      "Những người Do Thái",
       "Sê-pha (Phi-e-rơ)"
     ],
     "tags": [
@@ -445,13 +445,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ga-la-ti 3:7 — 'Vậy, anh em hãy nhận biết rằng những kẻ có đức tin là con cháu thật của Áp-ra-ham.'",
+    "explanation": "Ga-la-ti 3:6-7 viết: 'Áp-ra-ham tin Đức Chúa Trời, và điều đó kể là công bình cho người. Vậy anh em hãy nhận biết rằng những kẻ có đức tin là con cháu thật của Áp-ra-ham.' Đoạn Kinh Thánh xác định rõ ràng rằng tiêu chuẩn để trở thành 'con cháu thật của Áp-ra-ham' là đức tin, giống như Áp-ra-ham đã tin Chúa và được kể là công bình.\n\n- **Đáp án đúng đúng**: Vì Kinh Thánh trích dẫn trực tiếp 'những kẻ có đức tin là con cháu thật của Áp-ra-ham'.\n- **Distractor 'Những kẻ được cắt bì' sai**: Đây là một chi tiết sai then chốt. Mặc dù cắt bì là dấu hiệu của giao ước với Áp-ra-ham trong Cựu Ước (Sáng 17:10-11), Ga-la-ti 3 lập luận rằng đức tin mới là yếu tố quyết định, không phải nghi thức (xem thêm Ga-la-ti 3:8-9, 29). Đây là distractor 'gần đúng' vì liên quan đến giao ước Áp-ra-ham nhưng sai tiêu chí cốt lõi.\n- **Distractor 'Những người hậu tự tự nhiên' sai**: Đây là một hiểu lầm phổ biến, cho rằng dòng dõi theo huyết thống tự nhiên. Tuy nhiên, Kinh Thánh (Rô-ma 9:7-8 cũng làm rõ) và bối cảnh Ga-la-ti nhấn mạnh dòng dõi thuộc linh qua đức tin, không phải dòng dõi thể chất.\n- **Distractor 'Những người giữ luật pháp' sai**: Sai văn bản ở passage gần. Bối cảnh Ga-la-ti 3 (đặc biệt các câu 10-12) đối lập giữa đức tin và việc làm theo luật pháp, khẳng định không ai được xưng công bình bởi luật pháp. Distractor này lấy từ một ý lân cận (luật pháp) nhưng trái ngược với lập luận chính của phân đoạn.",
     "language": "vi",
     "options": [
       "Những kẻ có đức tin",
-      "Chỉ người Do Thái về xác thịt",
-      "Những kẻ giữ luật pháp Môi-se",
-      "Những kẻ chịu cắt bì"
+      "Những kẻ được cắt bì",
+      "Những người hậu tự tự nhiên",
+      "Những người giữ luật pháp"
     ],
     "tags": [
       "Tân Ước",
@@ -471,13 +471,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ga-la-ti 3:24 — 'Ấy vậy, luật pháp đã trở nên thầy giáo của chúng ta đặng dẫn chúng ta đến Đấng Christ, để chúng ta được xưng công bình bởi đức tin.'",
+    "explanation": "Đáp án đúng là 'Trở nên thầy giáo dẫn đến Đấng Christ' vì Ga-la-ti 3:24 viết: 'Ấy vậy, luật pháp đã như thầy giáo đặng dẫn chúng ta đến Đấng Christ' (BTT). Mỗi phương án sai giải thích như sau: (1) 'Trở nên sự rủa sả cho chúng ta' là sai chi tiết, vì Ga-la-ti 3:13 nói về Đấng Christ chuộc chúng ta khỏi sự rủa sả của luật pháp, chứ không phải luật pháp tự nó là sự rủa sả. (2) 'Trở nên án phạt dẫn đến sự đoán xét' là gần đúng nhưng sai vì đây là một hiểu lầm phổ biến; luật pháp bày tỏ tội lỗi và sự đoán phạt (Rô-ma 3:20; 6:23), nhưng chức năng chính trong ngữ cảnh này là dẫn dắt như một 'thầy giáo' đến với Đấng Christ, không phải trực tiếp 'dẫn đến sự đoán xét'. (3) 'Trở nên giao ước cũ thay thế bởi ân điển' tham chiếu đến ý tưởng gần đó (Ga-la-ti 3:17-18, 4:24 về giao ước cũ), nhưng câu hỏi cụ thể về Ga-la-ti 3:24 hỏi chức năng của luật pháp, không phải bản chất là một giao ước bị thay thế.",
     "language": "vi",
     "options": [
-      "Cứu chúng ta khỏi tội",
+      "Trở nên sự rủa sả cho chúng ta",
       "Trở nên thầy giáo dẫn đến Đấng Christ",
-      "Ban sự sống đời đời",
-      "Thay thế đức tin"
+      "Trở nên án phạt dẫn đến sự đoán xét",
+      "Trở nên giao ước cũ thay thế bởi ân điển"
     ],
     "tags": [
       "Tân Ước",
@@ -497,12 +497,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ga-la-ti 4:6 — 'Lại vì anh em là con, nên Đức Chúa Trời đã sai Thánh Linh của Con Ngài vào lòng chúng ta, kêu rằng: A-ba! Cha!'",
+    "explanation": "Ga-la-ti 4:6 chép: \"Lại vì anh em là con, nên Đức Chúa Trời đã sai Thánh Linh của Con Ngài vào lòng chúng ta, kêu rằng: A-ba! Cha!\" (BTT). Đáp án đúng 'A-ba! Cha!' là trích dẫn chính xác lời kêu lên được Thánh Linh đặt để trong lòng tín hữu. Distractor 'Lạy Chúa!' (nearby_passage) là một lời cầu nguyện phổ biến trong Kinh Thánh (ví dụ: Rô-ma 10:13) nhưng không phải là cụm từ được dùng trong câu này. Distractor 'Thánh Linh!' (common_misconception) là một sự hiểu lầm phổ biến, vì câu hỏi hỏi Thánh Linh kêu lên điều gì, chứ không phải kêu lên danh xưng của chính Ngài. Distractor 'Cha yêu thương!' (wrong_detail) tuy đúng ý nghĩa thần học nhưng sai chi tiết văn bản, vì nguyên văn chỉ ghi 'A-ba! Cha!' mà không có từ 'yêu thương' đi kèm.",
     "language": "vi",
     "options": [
-      "Halleluia!",
-      "Maranatha!",
-      "Hosanna!",
+      "Lạy Chúa!",
+      "Thánh Linh!",
+      "Cha yêu thương!",
       "A-ba! Cha!"
     ],
     "tags": [
@@ -523,13 +523,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ga-la-ti 6:14 — 'Còn về phần tôi, tôi hẳn chẳng khoe mình, trừ ra khoe về thập tự giá của Đức Chúa Jêsus Christ chúng ta.'",
+    "explanation": "Đáp án đúng: 'Thập tự giá của Đức Chúa Jêsus Christ'. Ga-la-ti 6:14 ghi rõ: 'Còn như tôi, tôi hẳn chẳng khoe mình, trừ ra khoe về thập tự giá của Đức Chúa Jêsus Christ chúng ta' (BTT). Phao-lô xác định thập tự giá là đối tượng duy nhất ông khoe mình, vì qua đó thế gian đã bị đóng đinh đối với ông và ông đối với thế gian. Các đáp án sai: 1) 'Sự sống lại của Đức Chúa Jêsus Christ' là sự kiện quan trọng và thường được nhấn mạnh (ví dụ Rô-ma 1:4, 1 Cô-rinh-tô 15), nhưng không phải là điều Phao-lô nói đến trong câu này. 2) 'Đức tin của chính mình nơi Đấng Christ' là một hiểu lầm phổ biến, vì Phao-lô luôn dạy rằng sự cứu rỗi bởi đức tin chứ không bởi việc làm, nhưng ông không khoe về đức tin cá nhân mà khoe về thập tự giá. 3) 'Những khải tượng và sự mặc khải lớn' là điều Phao-lô từng đề cập (2 Cô-rinh-tô 12:1), nhưng trong bối cảnh Ga-la-ti 6, ông không khoe về những điều đó mà chỉ khoe về thập tự giá.",
     "language": "vi",
     "options": [
       "Thập tự giá của Đức Chúa Jêsus Christ",
-      "Sự học rộng của mình",
-      "Hội thánh ông lập",
-      "Các phép lạ Chúa làm qua ông"
+      "Sự sống lại của Đức Chúa Jêsus Christ",
+      "Đức tin của chính mình nơi Đấng Christ",
+      "Những khải tượng và sự mặc khải lớn"
     ],
     "tags": [
       "Tân Ước",
@@ -549,13 +549,13 @@
       2
     ],
     "content": "Theo Ga-la-ti 1:10, Phao-lô tự hỏi mình đang tìm cách làm vui lòng ai?",
-    "explanation": "Ga-la-ti 1:10 — 'Còn bây giờ, có phải tôi mong người ta ưng chịu tôi hay là Đức Chúa Trời? Hay là tôi muốn đẹp lòng loài người chăng? Ví bằng tôi còn làm cho đẹp lòng loài người, thì tôi chẳng phải là tôi tớ của Đấng Christ.' Phao-lô bị tố là 'rao Tin Lành dễ dãi'. Phản bác: nếu sợ người, đã không lên án các giáo sư Do-thái-hóa.",
+    "explanation": "Ga-la-ti 1:10 viết: 'Vậy, bây giờ tôi muốn được người ta ưa tôi hay muốn được Đức Chúa Trời ưa tôi? Hay tôi tìm cách cho đẹp lòng loài người chăng? Ví bằng tôi còn làm cho đẹp lòng loài người, thì tôi chẳng phải là tôi tớ của Đấng Christ.'\n\n- ĐÁP ÁN ĐÚNG: Câu Kinh Thánh cho thấy Phao-lô xác định rõ ông phải tìm cách làm vui lòng Đức Chúa Trời. Ông lập luận rằng nếu còn cố làm vui lòng 'loài người' thì ông không còn là tôi tớ Đấng Christ nữa, điều này khẳng định đối tượng ông phải làm vui lòng chính là Đức Chúa Trời.\n\n- DISTRACTOR SAI 1 ('Các tín hữu Ga-la-ti'): Sai chi tiết. Mặc dù thư gửi cho Hội thánh Ga-la-ti và Phao-lô quan tâm đến họ, nhưng câu hỏi cụ thể trong câu 10 là về việc 'tìm cách làm vui lòng ai' như một nguyên tắc căn bản trong chức vụ, không phải là một nhóm người cụ thể nào.\n\n- DISTRACTOR SAI 2 ('Chính bản thân ông'): Lạc câu hỏi. Mặc dù Phao-lô phải trung tín với sứ mạng, nhưng câu Kinh Thánh này không hề đề cập việc ông làm vui lòng chính mình. Trọng tâm là sự đối lập giữa làm vui lòng Đức Chúa Trời và làm vui lòng loài người.\n\n- DISTRACTOR SAI 3 ('Con người nói chung'): Đây là distractor 'gần đúng' nhưng sai một chi tiết then chốt. Câu Kinh Thánh nói đến 'loài người' như là đối tượng mà Phao-lô KHÔNG nên tìm cách làm vui lòng, chứ không phải là đối tượng mà ông ĐANG tìm cách làm vui lòng. Đây là một sự hiểu lầm phổ biến khi đọc lướt, đảo ngược ý nghĩa của câu.",
     "language": "vi",
     "options": [
-      "Làm vui lòng các sứ đồ khác",
-      "Làm vui lòng người Do Thái",
+      "Các tín hữu Ga-la-ti (vì ông là sứ đồ đã lập nên Hội thánh đó)",
+      "Chính bản thân ông (vì ông phải giữ sự trung tín với sứ mạng đã nhận)",
       "Đức Chúa Trời (vì nếu còn làm vui lòng loài người thì ông không phải tôi tớ Đấng Christ)",
-      "Làm vui lòng vợ con"
+      "Con người nói chung (vì nếu còn làm vui lòng họ thì ông không thể thi hành chức vụ)"
     ],
     "tags": [
       "Tân Ước",
@@ -575,12 +575,12 @@
       3
     ],
     "content": "Theo Ga-la-ti 5:13, các tín hữu được kêu gọi đến TỰ DO — nhưng đừng dùng tự do để làm gì?",
-    "explanation": "Ga-la-ti 5:13 — 'Hỡi anh em, anh em đã được gọi đến sự tự do, song chớ lấy sự tự do đó làm dịp cho anh em ăn ở theo tánh xác thịt, nhưng hãy lấy lòng yêu thương làm đầy tớ lẫn nhau.' Tự do trong Christ KHÔNG phải tự do làm tội — mà tự do PHỤC VỤ. Yêu thương = sự thực hành tự do thuộc linh.",
+    "explanation": "Ga-la-ti 5:13 viết: 'Vì, hỡi anh em, anh em được gọi đến sự tự do; song chớ lấy sự tự do đó làm dịp cho xác thịt...'. Do đó, đáp án đúng trích nguyên văn 'làm dịp cho xác thịt'. Distractor 'Làm dịp cho mê đắm' gần đúng nhưng sai chi tiết then chốt vì 'mê đắm' là một biểu hiện của xác thịt (Ga-la-ti 5:19-21) nhưng không phải từ ngữ chính xác trong câu. 'Làm dịp cho sự ác' sai vì sự ác là phạm trù rộng hơn, không phải từ cụ thể trong câu này. 'Làm dịp cho sự gian dối' là hiểu lầm phổ biến về tội lỗi, nhưng không được đề cập trong ngữ cảnh này.",
     "language": "vi",
     "options": [
-      "Đừng dùng để cắt bì",
-      "Đừng dùng để giữ luật",
-      "Đừng dùng để tranh cãi",
+      "Làm dịp cho mê đắm",
+      "Làm dịp cho sự ác",
+      "Làm dịp cho sự gian dối",
       "Làm dịp cho xác thịt"
     ],
     "tags": [
@@ -601,13 +601,13 @@
       0
     ],
     "content": "Theo Ga-la-ti 6:2, các tín hữu phải làm gì đối với gánh nặng của nhau?",
-    "explanation": "Ga-la-ti 6:2 — 'Hãy mang lấy gánh nặng cho nhau, như vậy anh em sẽ làm trọn luật pháp của Đấng Christ.' 'LUẬT CHRIST' = luật yêu thương (5:14). Trớ trêu: Phao-lô vừa bài xích LUẬT (Môi-se), nay đặt 'luật Christ'. Khác biệt: luật cũ ngoại tại; luật Christ trong lòng (Hê-bơ-rơ 8:10).",
+    "explanation": "Ga-la-ti 6:2 dạy: 'Hãy mang lấy gánh nặng cho nhau, như vậy anh em sẽ làm trọn luật pháp của Đấng Christ.' Do đó, đáp án đúng là 'Mang lấy gánh nặng cho nhau'. \n\nDistractor 1 ('Mang lấy gánh nặng cho chính mình') là sai vì câu 5 quy định trách nhiệm cá nhân: 'Vì mỗi người sẽ mang gánh nặng của riêng mình.' Điều này không mâu thuẫn với câu 2, nhưng phạm vi của câu hỏi là 'đối với gánh nặng của nhau' chứ không phải của chính mình.\n\nDistractor 2 ('Chia sẻ phần mười của gánh nặng cho nhau') là sai vì nó gán một cách cụ thể hóa không có trong văn bản (phần mười) và chuyển trọng tâm từ việc hoàn toàn 'mang lấy' sang chỉ 'chia sẻ một phần', làm mất đi ý nghĩa toàn bộ của mạng lệnh.\n\nDistractor 3 ('Chuẩn bị sẵn sàng để sẽ mang gánh nặng cho nhau') là sai vì đây là một thái độ hướng đến tương lai, trong khi mạng lệnh trong câu Kinh Thánh là một hành động trực tiếp 'Hãy mang lấy' ở thì hiện tại, đòi hỏi sự thực hành cụ thể ngay.",
     "language": "vi",
     "options": [
       "Mang lấy gánh nặng cho nhau",
-      "Hãy bỏ mặc nhau",
-      "Hãy cạnh tranh với nhau",
-      "Hãy phán xét nhau"
+      "Mang lấy gánh nặng cho chính mình",
+      "Chia sẻ phần mười của gánh nặng cho nhau",
+      "Chuẩn bị sẵn sàng để sẽ mang gánh nặng cho nhau"
     ],
     "tags": [
       "Tân Ước",
@@ -627,13 +627,13 @@
       1
     ],
     "content": "Theo Ga-la-ti 6:10, các tín hữu hãy làm điều LÀNH cho ai, đặc biệt là ai?",
-    "explanation": "Ga-la-ti 6:10 — 'Vậy, đương lúc có dịp tiện, hãy làm điều thiện cho mọi người, nhứt là cho anh em chúng ta trong đức tin.' 'NGƯỜI NHÀ ĐỨC TIN' (oikeioi tēs pisteōs) = thân thuộc trong gia đình thuộc linh. Phạm vi RỘNG (mọi người) — ƯU TIÊN gần nhất (anh em). KHÔNG đối lập: yêu mọi người, nhưng yêu cụ thể hơn người trong Christ.",
+    "explanation": "Ga-la-ti 6:10 dạy: 'Vậy, đang khi có dịp tiện, hãy làm điều thiện cho mọi người, nhất là cho anh em trong gia đình của đức tin.' Đáp án đúng trích dẫn chính xác phạm vi của mệnh lệnh: 'Mọi người' (phạm vi rộng) và 'anh em trong đức tin' (trọng tâm đặc biệt).\n\n- **Distractor 1 (Anh em trong đức tin, nhất là mọi người)**: Sai vì đảo ngược thứ tự trọng tâm. Kinh văn ghi 'mọi người' trước rồi mới 'nhất là anh em trong đức tin', không phải ngược lại. Lỗi 'wrong_detail'.\n- **Distractor 2 (Người lân cận, nhất là kẻ thù nghịch)**: Sai vì đây là lời dạy khác (ví dụ: Ma-thi-ơ 5:44 về yêu kẻ thù), không phải nội dung Ga-la-ti 6:10. Lỗi 'common_misconception'.\n- **Distractor 3 (Người trong hội thánh, nhất là người ngoài)**: Đây là distractor 'gần đúng' nhưng sai phạm vi. Kinh văn nói 'mọi người' (bao gồm cả người ngoài) rồi mới đặc biệt 'anh em trong đức tin', không phải giới hạn phạm vi chính vào 'người trong hội thánh'. Lỗi 'wrong_scope'.",
     "language": "vi",
     "options": [
-      "Chỉ người nhà — đặc biệt cha mẹ",
+      "Anh em trong đức tin, nhất là mọi người",
       "Mọi người, nhất là anh em trong đức tin",
-      "Chỉ tín hữu — đặc biệt mục sư",
-      "Chỉ người nghèo — đặc biệt mẹ góa"
+      "Người lân cận, nhất là kẻ thù nghịch",
+      "Người trong hội thánh, nhất là người ngoài"
     ],
     "tags": [
       "Tân Ước",
@@ -653,13 +653,13 @@
       2
     ],
     "content": "Theo Ga-la-ti 1:13-14, đời sống Phao-lô trong Do Thái giáo trước khi được kêu gọi như thế nào?",
-    "explanation": "Ga-la-ti 1:13-14 — 'Vả, anh em đã nghe lúc trước tôi theo giáo Giu-đa, cách cư xử của tôi là thể nào, tôi bắt bớ và phá tán Hội thánh của Đức Chúa Trời quá chừng; tôi tấn tới trong giáo Giu-đa hơn nhiều người cùng tuổi cùng nước với tôi, có lòng sốt sắng quá đỗi về cưu truyền của tổ phụ tôi.' Cùng câu chuyện trong Công vụ 9, 22, 26. Phao-lô không che giấu quá khứ.",
+    "explanation": "Đoạn Kinh Thánh Ga-la-ti 1:13-14 (BTT) viết: 'Vì anh em đã nghe về đời sống của tôi trước kia trong Do Thái giáo: Tôi đã bắt bớ Hội Thánh của Đức Chúa Trời một cách quá đáng và phá tán Hội Thánh; và trong Do Thái giáo, tôi tiến bộ hơn nhiều người đồng trang lứa với tôi, bởi tôi rất nhiệt thành về truyền thống của tổ phụ tôi.' Do đó, đáp án đúng mô tả chính xác Phao-lô là người nhiệt thành bắt bớ, phá tán Hội Thánh và tiến bộ hơn nhiều người cùng tuổi.\n\nCác đáp án sai: (1) Sai chi tiết 'chậm tiến so với các bạn đồng trang lứa', vì Kinh Thánh nói rõ ông 'tiến bộ hơn'. (2) Nhầm passage gần vì đưa chi tiết 'luật pháp La Mã' không có trong ngữ cảnh; văn bản chỉ nói về 'truyền thống của tổ phụ' trong Do Thái giáo. (3) Hiểu lầm phổ biến về việc Phao-lô là một người Do Thái bình thường, trái ngược với mô tả rõ ràng về sự nhiệt thành bắt bớ của ông.",
     "language": "vi",
     "options": [
-      "Là môn sinh khiêm hạ của Ga-ma-li-ên — sống trong sạch",
-      "Là người buôn vải tại Tạt-sơ — không tham gia tôn giáo",
+      "Là người nhiệt thành bắt bớ Hội Thánh, nhưng chậm tiến so với các bạn đồng trang lứa trong Do Thái giáo.",
+      "Là người nhiệt thành bắt bớ và phá tán Hội Thánh, tiến bộ hơn nhiều người cùng tuổi trong việc học luật pháp La Mã.",
       "Là người nhiệt thành bắt bớ và phá tán Hội Thánh, tiến bộ hơn nhiều người cùng tuổi trong Do Thái giáo.",
-      "Là tù nhân chịu bị bắt vì tội"
+      "Là một tín đồ Do Thái giáo bình thường, không nổi bật và cũng không bắt bớ Hội Thánh."
     ],
     "tags": [
       "Tân Ước",
@@ -705,13 +705,13 @@
       0
     ],
     "content": "Theo Ga-la-ti 1:23, các Hội Thánh tại Giu-đê đã nói gì về Phao-lô khi nghe ông tin Christ?",
-    "explanation": "Ga-la-ti 1:23 — 'Chỉn các hội thánh đó có nghe rằng: Người đã bắt bớ chúng ta ngày trước, nay đương truyền đạo mà lúc bấy giờ người cố sức phá.' Một câu rất CẢM ĐỘNG — kẻ thù trở thành người công bố. 1:24 — họ ngợi khen Đức Chúa Trời TRONG Phao-lô. Bằng chứng phép lạ thay đổi của ân điển.",
+    "explanation": "Galatians 1:23 chép: 'Họ chỉ nghe nói rằng: Người trước kia bắt bớ chúng ta, nay đang rao truyền đức tin mà thuở trước người từng muốn tiêu diệt.'\n- ĐÁP ÁN ĐÚNG: Trích nguyên văn ý chính của câu Kinh Thánh, mô tả chính xác sự thay đổi của Phao-lô từ người bắt bớ thành người rao truyền đức tin.\n- DISTRACTOR 1 ('Người trước kia rao truyền đức tin, nay đang bắt bớ chúng ta'): Đây là lỗi sai chi tiết, đảo ngược hoàn toàn hành động 'bắt bớ' và 'rao truyền', khiến ý nghĩa trái ngược với Kinh Thánh. Đây là distractor 'gần đúng' vì chỉ sai thứ tự hành động.\n- DISTRACTOR 2 ('Người trước kia được cứu, nay đang rao truyền đức tin'): Đây thể hiện hiểu lầm phổ biến — tuy Phao-lô được cứu là đúng, nhưng câu Kinh Thánh này đặc biệt nhấn mạnh đến việc ông 'bắt bớ' chứ không phải trạng thái 'được cứu' chung chung.\n- DISTRACTOR 3 ('Người trước kia bắt bớ họ, nay đang rao truyền luật pháp'): Đây là đáp án đúng văn bản về hành động 'bắt bớ' nhưng lạc câu hỏi, vì câu hỏi hỏi về nội dung Hội Thánh Giu-đê nói, và họ nói ông rao truyền 'đức tin' chứ không phải 'luật pháp'.",
     "language": "vi",
     "options": [
       "'Người trước kia bắt bớ chúng ta, nay đang rao truyền đức tin'",
-      "'Người này luôn là kẻ thuộc về Christ'",
-      "'Người này không thật sự thay đổi'",
-      "'Người này được Hội Thánh chúng tôi nuôi dưỡng'"
+      "'Người trước kia rao truyền đức tin, nay đang bắt bớ chúng ta'",
+      "'Người trước kia được cứu, nay đang rao truyền đức tin'",
+      "'Người trước kia bắt bớ họ, nay đang rao truyền luật pháp'"
     ],
     "tags": [
       "Tân Ước",
@@ -757,13 +757,13 @@
       2
     ],
     "content": "Theo Ga-la-ti 2:9, ba người được coi là 'TRỤ CỘT' trong Hội Thánh Giê-ru-sa-lem đã làm gì với Phao-lô và Ba-na-ba?",
-    "explanation": "Ga-la-ti 2:9 — 'Là Gia-cơ, Sê-pha, và Giăng — là các người được coi như cột trụ — nhận biết ân điển đã ban cho tôi, thì trao tay hữu giao kết với chúng tôi, tức là Ba-na-ba và tôi, hầu cho chúng tôi đi đến cùng dân ngoại, còn các người ấy thì đến cùng những kẻ chịu phép cắt bì.' 3 trụ cột = Gia-cơ (em Chúa), Sê-pha (Phi-e-rơ), Giăng. CHÍNH THỨC công nhận Phao-lô.",
+    "explanation": "Kinh Thánh ghi rõ: \"Lại biết được ân điển đã ban cho tôi, thì Gia-cơ, Sê-pha, Giăng, là những người được tôn làm trụ cột, trao cho tôi và Ba-na-ba đều bắt tay hữu giao kết, để chúng tôi đi đến với dân ngoại, còn các người ấy thì đến với dân cắt bì\" (Ga-la-ti 2:9). Đáp án đúng vì mô tả chính xác hành động 'bắt tay hữu giao kết' mang tính nghi thức công nhận sự hợp tác và ủy nhiệm sứ vụ.\n\nDistractor 1 (wrong_detail) sai vì họ không 'ban quyền lãnh đạo Hội Thánh Giê-ru-sa-lem'; hành động là sự công nhận song phương chứ không phải trao quyền quản trị.\nDistractor 2 (common_misconception) sai vì trái ngược hoàn toàn với văn bản; các trụ cột đã ủng hộ, không phản đối, sứ vụ cho dân ngoại.\nDistractor 3 (true_but_off) sai vì dù có thể là lời khuyên chung trong các bối cảnh khác, nhưng không phải hành động cụ thể được ghi lại trong câu Kinh Thánh này.",
     "language": "vi",
     "options": [
-      "Đuổi họ về",
-      "Ép họ chịu cắt bì",
+      "Ban cho họ quyền lãnh đạo Hội Thánh Giê-ru-sa-lem để tiếp cận dân ngoại",
+      "Công khai phản đối sứ vụ của họ và cho rằng chỉ nên tập trung vào người Do Thái",
       "Bắt tay hữu giao kết, công nhận sứ vụ của họ cho dân ngoại",
-      "Đòi họ rửa lễ"
+      "Khuyến khích họ tiếp tục học hỏi thêm trước khi bắt đầu sứ vụ này"
     ],
     "tags": [
       "Tân Ước",
@@ -783,12 +783,12 @@
       3
     ],
     "content": "Theo Ga-la-ti 2:16, một người KHÔNG được xưng công bình bởi điều gì, nhưng bởi điều gì?",
-    "explanation": "Ga-la-ti 2:16 — 'Dầu vậy, đã biết rằng người ta được xưng công bình, chẳng phải bởi các việc luật pháp đâu, bèn là cậy đức tin trong Đức Chúa Jêsus Christ, nên chính chúng tôi đã tin Đức Chúa Jêsus Christ, để được xưng công bình bởi đức tin trong Đấng Christ, chớ chẳng phải bởi các việc luật pháp; vì chẳng có ai được xưng công bình bởi các việc luật pháp.' CÂU NỀN của Cải Cách Tin Lành — sola fide.",
+    "explanation": "Ga-la-ti 2:16 viết: '... chẳng phải bởi việc làm luật pháp mà được xưng công bình đâu, bởi chưng chẳng có ai bởi việc làm luật pháp mà sẽ được xưng công bình, mà là bởi đức tin trong Đức Chúa Jêsus Christ'. ĐÁP ÁN ĐÚNG trực tiếp trích dẫn ý này: xưng công bình không bởi việc làm luật pháp, nhưng bởi đức tin nơi Đức Chúa Jêsus Christ.\n\nDISTRACTOR 1 ('Bởi việc làm luật pháp, nhưng bởi sự vâng giữ luật pháp') GẦN ĐÚNG vì phần đầu đúng ('bởi việc làm luật pháp'), nhưng phần sau lại sai chi tiết then chốt (thay 'đức tin nơi Đức Chúa Jêsus Christ' bằng 'sự vâng giữ luật pháp'), trái ngược với mục đích của phân đoạn. Đây là lỗi 'nearby_passage' vì có thể liên tưởng đến việc nhấn mạnh luật pháp ở các phân đoạn khác.\n\nDISTRACTOR 2 ('Bởi đức tin nơi Đức Chúa Jêsus Christ, nhưng bởi việc làm luật pháp') SAI vì đảo ngược hoàn toàn trật tự và ý nghĩa của câu Kinh Thánh. Đây là lỗi 'wrong_scope' vì nó thay đổi phạm vi và trọng tâm chính của câu.\n\nDISTRACTOR 3 ('Bởi sự chọn lựa của con người, nhưng bởi ân điển của Đức Chúa Trời') SAI vì mặc dù liên quan đến thần học cứu rỗi (ân điển), nhưng không phải là cách diễn đạt trực tiếp trong Ga-la-ti 2:16 cho câu hỏi cụ thể này. Đây là lỗi 'common_misconception' từ một giáo lý phổ biến khác.",
     "language": "vi",
     "options": [
-      "Bởi luật pháp — bởi giữ luật trọn vẹn",
-      "Bởi việc lành — bởi lòng đạo đức",
-      "Bởi gia phả — bởi truyền thống",
+      "Bởi việc làm luật pháp, nhưng bởi sự vâng giữ luật pháp",
+      "Bởi đức tin nơi Đức Chúa Jêsus Christ, nhưng bởi việc làm luật pháp",
+      "Bởi sự chọn lựa của con người, nhưng bởi ân điển của Đức Chúa Trời",
       "Bởi việc làm luật pháp, nhưng bởi đức tin nơi Đức Chúa Jêsus Christ"
     ],
     "tags": [
@@ -835,13 +835,13 @@
       1
     ],
     "content": "Theo Ga-la-ti 3:2-3, Phao-lô hỏi tín hữu Ga-la-ti — anh em đã NHẬN Đức Thánh Linh thế nào, và bây giờ tìm SỰ TRỌN VẸN thế nào?",
-    "explanation": "Ga-la-ti 3:2-3 — 'Tôi chỉ hỏi anh em một câu nầy: Ấy là cậy các việc luật pháp hay là bởi nghe và tin mà anh em đã nhận được Đức Thánh Linh? Sao anh em ngu muội dường ấy? Sau khi đã khởi sự nhờ Đức Thánh Linh, nay sao lại cậy xác thịt mà làm cho trọn?' Lập luận: NẾU đã bắt đầu bởi Thánh Linh — đừng QUAY VỀ xác thịt.",
+    "explanation": "Ga-la-ti 3:2-3 hỏi: “Anh em đã nhận được Đức Thánh Linh bởi việc làm theo luật pháp hay bởi nghe và tin? Anh em lại ngu dại dường ấy sao? Sau khi đã khởi sự bởi Đức Thánh Linh, nay lại muốn cậy xác thịt mà trở nên trọn vẹn sao?” (BTT). Đáp án đúng là nhận Thánh Linh bởi NGHE ĐỨC TIN (tín nhiệm vào Tin Lành), còn bây giờ tìm sự trọn vẹn sai lầm bằng XÁC THỊT (nỗ lực bề ngoài, việc làm).\n\n*   **Distractor 1 (gần đúng, sai chi tiết then chốt):** “Nhận Thánh Linh bởi TUÂN GIỮ LUẬT PHÁP — nhưng nay điên dại tìm trọn vẹn bởi VIỆC BỀ NGOÀI”. Đây là lỗi common_misconception, vì tín đồ Ga-la-ti lầm tưởng điều này, nhưng Phao-lô đang phản bác: họ thực sự đã nhận Thánh Linh bởi ĐỨC TIN, không phải bởi luật pháp. Phần sau (việc bề ngoài) mô tả đúng “xác thịt”, nhưng phần đầu đã sai với văn bản.\n*   **Distractor 2:** “Nhận Thánh Linh bởi NGHE ĐỨC TIN — nhưng nay đang tiếp tục tìm trọn vẹn bởi THÁNH LINH”. Đây là lỗi true_but_off, vì phần đầu trích đúng câu Kinh Thánh, nhưng phần sau lạc đề: Phao-lô không nói họ đang tìm trọn vẹn bởi Thánh Linh, mà ông quở họ vì đã quay sang xác thịt sau khi khởi đầu bằng Thánh Linh.\n*   **Distractor 3:** “Nhận Thánh Linh bởi NHỮNG VIỆC LÀM — nhưng nay điên dại tìm trọn vẹn bởi LỜI HỨA”. Đây là lỗi wrong_detail, vì cả hai phần đều sai với ý chính của phân đoạn. Phao-lô chất vấn việc họ nhận Thánh Linh bởi việc làm hay bởi đức tin – và khẳng định là bởi đức tin. Tìm trọn vẹn bởi “lời hứa” không khớp với từ “xác thịt” trong câu 3.",
     "language": "vi",
     "options": [
-      "Bởi việc làm — nay tìm trọn vẹn bởi đức tin",
+      "Nhận Thánh Linh bởi TUÂN GIỮ LUẬT PHÁP — nhưng nay điên dại tìm trọn vẹn bởi VIỆC BỀ NGOÀI",
       "Nhận Thánh Linh bởi NGHE ĐỨC TIN — nhưng nay điên dại tìm trọn vẹn bởi XÁC THỊT (việc làm)",
-      "Bởi cắt bì — nay tìm trọn vẹn bởi cắt bì",
-      "Bởi báp-têm — nay tìm trọn vẹn bởi báp-têm"
+      "Nhận Thánh Linh bởi NGHE ĐỨC TIN — nhưng nay đang tiếp tục tìm trọn vẹn bởi THÁNH LINH",
+      "Nhận Thánh Linh bởi NHỮNG VIỆC LÀM — nhưng nay điên dại tìm trọn vẹn bởi LỜI HỨA"
     ],
     "tags": [
       "Tân Ước",
@@ -887,12 +887,12 @@
       3
     ],
     "content": "Theo Ga-la-ti 3:14, mục đích Christ chuộc chúng ta khỏi sự rủa sả của luật pháp là gì?",
-    "explanation": "Ga-la-ti 3:14 — 'Hầu cho phước lành ban cho Áp-ra-ham nhờ Đức Chúa Jêsus Christ mà được rải khắp trên dân ngoại, lại hầu cho chúng ta cậy đức tin mà nhận lãnh Đức Thánh Linh đã hứa cho.' 2 mục tiêu: (1) PHƯỚC Áp-ra-ham đến với dân ngoại; (2) Đức THÁNH LINH được nhận bởi ĐỨC TIN. Christ = ống dẫn của cả 2.",
+    "explanation": "CÂU TRẢ LỜI ĐÚNG: Ga-la-ti 3:14 chép rõ: 'hầu cho phước lành của Áp-ra-ham có thể đến trên dân ngoại trong Đấng Christ Jêsus, và hầu cho chúng ta bởi đức tin nhận lãnh Đức Thánh Linh đã hứa cho.' Mục đích Chúa Christ chuộc chúng ta khỏi sự rủa sả của luật pháp là để (1) phước Áp-ra-ham đến với dân ngoại (không phải chỉ dân Y-sơ-ra-ên) trong Đấng Christ, và (2) chúng ta nhận lời hứa Đức Thánh Linh bởi đức tin (không phải bởi việc làm).\n\nPHÂN TÍCH ĐÁP ÁN SAI:\n1. Distractor 1 (gần đúng, sai chi tiết): Câu này đúng 90%, nhưng sai chi tiết then chốt — thay 'lời hứa Đức Thánh Linh' bằng 'lời hứa về đất đai'. Lời hứa trong ngữ cảnh Ga-la-ti 3 là về Đức Thánh Linh, không phải đất đai (xem câu 2, 5, 14).\n2. Distractor 2 (nhầm đoạn gần): Sai ở đối tượng nhận phước — Kinh Thánh nói rõ 'đến trên dân ngoại', không phải 'dân Y-sơ-ra-ên'. Điều này trái với chủ đề chính của Ga-la-ti 3 về phước lành mở rộng cho dân ngoại qua đức tin.\n3. Distractor 3 (hiểu lầm phổ biến): Sai cơ bản về phương cách — Kinh Thánh nhấn mạnh 'bởi đức tin' chứ không phải 'bởi việc làm của luật pháp' (Ga-la-ti 3:2, 5, 10-12). Đây là sự hiểu lầm phổ biến mà sứ đồ Phao-lô đang phản bác trong cả thư tín.",
     "language": "vi",
     "options": [
-      "Để tín hữu giữ luật được",
-      "Để Y-sơ-ra-ên trở lại quyền lực",
-      "Để dân ngoại cũng được nhập đạo Do Thái",
+      "Để phước Áp-ra-ham đến trên dân ngoại trong Đấng Christ — và chúng ta nhận lời hứa về đất đai bởi đức tin",
+      "Để phước Áp-ra-ham đến trên dân Y-sơ-ra-ên trong Đấng Christ — và chúng ta nhận lời hứa Đức Thánh Linh bởi đức tin",
+      "Để chúng ta được xưng công bình bởi việc làm của luật pháp — và nhận lời hứa Đức Thánh Linh bởi đức tin",
       "Để PHƯỚC ÁP-RA-HAM đến trên dân ngoại trong Đấng Christ — và chúng ta NHẬN LỜI HỨA Đức Thánh Linh bởi đức tin"
     ],
     "tags": [
@@ -913,13 +913,13 @@
       0
     ],
     "content": "Theo Ga-la-ti 3:26, các tín hữu là gì trong Đấng Christ Jêsus?",
-    "explanation": "Ga-la-ti 3:26 — 'Vì chưng anh em bởi tin Đức Chúa Jêsus Christ, nên hết thảy đều là con trai của Đức Chúa Trời.' 'CON' (huios) = vị thế thừa kế (so với 'tê-knon' = đứa con). Trong tín ngưỡng cổ, dân ngoại không có quyền vào dòng dõi Áp-ra-ham — nay BẤT CỨ AI tin = CON THỪA KẾ trọn vẹn.",
+    "explanation": "Câu hỏi trắc nghiệm này kiểm tra sự hiểu biết chính xác về Ga-la-ti 3:26. Ga-la-ti 3:26 chép: 'Vì anh em thảy đều là con trai của Đức Chúa Trời bởi đức tin trong Đức Chúa Jêsus Christ.' (BTT). Do đó, đáp án đúng là 'LÀ CON CÁI ĐỨC CHÚA TRỜI bởi đức tin', vì nó trung thành với Kinh Thánh về cả thân phận ('con cái Đức Chúa Trời') và phương cách ('bởi đức tin').\n\nCác phương án sai được giải thích như sau:\n1. 'LÀ CON ĐƯỜNG SỰ SỐNG bởi đức tin': Đây là một nhầm lẫn với một khái niệm khác trong Kinh Thánh (ví dụ: 'Ta là đường đi, lẽ thật, và sự sống' - Giăng 14:6) và không phải là nội dung của Ga-la-ti 3:26. Phương án này thuộc loại lỗi 'nearby_passage' (nhầm passage gần).\n2. 'LÀ CON CÁI ĐỨC CHÚA TRỜI bởi việc làm': Phương án này đúng thân phận ('con cái Đức Chúa Trời') nhưng sai hoàn toàn về phương cách (bởi việc làm thay vì bởi đức tin). Sự tương phản giữa 'đức tin' và 'việc làm' là một chủ đề trọng tâm trong thư Ga-la-ti (ví dụ: Ga-la-ti 2:16, 3:2, 3:11). Phương án này thuộc loại lỗi 'wrong_detail' (sai chi tiết then chốt) và là phương án 'gần đúng' (almost-right) vì nó chỉ sai một yếu tố quan trọng.\n3. 'LÀ CON DÂN SỰ LỰA CHỌN trong Đấng Christ': Cụm từ 'con dân sự lựa chọn' thường dùng để chỉ dân Y-sơ-ra-ên hoặc Hội Thánh nói chung (ví dụ: 1 Phi-e-rơ 2:9), nhưng nó không phải là thuật ngữ chính xác được dùng trong Ga-la-ti 3:26 để mô tả thân phận cá nhân của tín hữu. Phương án này mở rộng hoặc thay đổi phạm vi ý nghĩa so với câu Kinh Thánh cụ thể, thuộc loại lỗi 'wrong_scope' (sai phạm vi).",
     "language": "vi",
     "options": [
       "LÀ CON CÁI ĐỨC CHÚA TRỜI bởi đức tin",
-      "Là tôi tớ",
-      "Là khách lạ",
-      "Là môn đồ"
+      "LÀ CON ĐƯỜNG SỰ SỐNG bởi đức tin",
+      "LÀ CON CÁI ĐỨC CHÚA TRỜI bởi việc làm",
+      "LÀ CON DÂN SỰ LỰA CHỌN trong Đấng Christ"
     ],
     "tags": [
       "Tân Ước",
@@ -939,13 +939,13 @@
       1
     ],
     "content": "Theo Ga-la-ti 3:27, ai đã chịu báp-têm trong Christ thì làm gì?",
-    "explanation": "Ga-la-ti 3:27 — 'Vả, anh em thảy đều chịu phép báp-têm trong Đấng Christ, đều mặc lấy Đấng Christ vậy.' 'MẶC LẤY' (enedysasthe) = từ 'mặc áo'. Trong văn hóa Rô-ma, đứa con trai khi trưởng thành 'mặc áo trắng' (toga virilis) thay áo trẻ con. Báp-têm = ĐÁNH DẤU vị thế con thừa kế MỚI trong Christ.",
+    "explanation": "Câu hỏi tham chiếu Ga-la-ti 3:27 (BTT): 'Vì hết thảy anh em đã chịu phép báp-têm trong Đấng Christ, đều mặc lấy Đấng Christ'. Đáp án đúng 'Đã MẶC LẤY Đấng Christ' trực tiếp trích từ câu này, mô tả hình ảnh tượng trưng về việc được kết hợp và mang lấy bản tính của Christ. Distractor 1 'Đã được giải thoát khỏi tội lỗi' là ý gần với Rô-ma 6:6-7, nói về kết quả của báp-têm nhưng không phải ý chính của Ga-la-ti 3:27. Distractor 2 'Đã được đổ đầy Đức Thánh Linh' sai chi tiết, vì việc đổ đầy Thánh Linh thường liên quan đến Công vụ 2:4, không phải là hành động được mô tả trực tiếp trong câu này. Distractor 3 'Đã trở nên con cái của Đấng Christ' là một hiểu lầm phổ biến; Ga-la-ti 3:26 nói về việc trở nên con cái Đức Chúa Trời nhờ đức tin, còn câu 27 nói về việc 'mặc lấy' Christ, đây là hai khái niệm liên quan nhưng khác biệt và câu hỏi chỉ hỏi về hành động trong câu 27.",
     "language": "vi",
     "options": [
-      "Đã trở thành thiên sứ",
+      "Đã được giải thoát khỏi tội lỗi",
       "Đã MẶC LẤY Đấng Christ",
-      "Đã được chủa cùng Áp-ra-ham",
-      "Đã được tôn vinh ngay"
+      "Đã được đổ đầy Đức Thánh Linh",
+      "Đã trở nên con cái của Đấng Christ"
     ],
     "tags": [
       "Tân Ước",
@@ -965,13 +965,13 @@
       2
     ],
     "content": "Theo Ga-la-ti 3:29, ai thuộc về Christ thì cũng là gì?",
-    "explanation": "Ga-la-ti 3:29 — 'Lại nếu anh em thuộc về Đấng Christ, thì anh em là dòng dõi của Áp-ra-ham, tức là kẻ kế tự theo lời hứa.' Lập luận khép kín: thuộc Christ → dòng dõi Áp-ra-ham → KẾ TỰ lời hứa. KHÔNG cần qua Do Thái giáo (cắt bì, luật) để vào dòng dõi — chỉ cần Christ.",
+    "explanation": "Ga-la-ti 3:29 chép: 'Lại nếu anh em thuộc về Đấng Christ, thì anh em là dòng dõi của Áp-ra-ham, tức là kẻ kế tự theo lời hứa.' Đáp án đúng vì câu Kinh Thánh xác định rõ những người thuộc về Christ là dòng dõi Áp-ra-ham và là kẻ kế tự theo LỜI HỨA (đối lập với xác thịt hay luật pháp).\n\nDistractor 1 (sai chi tiết): Sai ở cụm 'theo xác thịt'. Ga-la-ti 3-4 phân biệt rõ dòng dõi theo lời hứa (như Y-sác) với dòng dõi theo xác thịt (như Ích-ma-ên). Người thuộc về Christ là kế tự theo lời hứa, không phải theo xác thịt.\n\nDistractor 2 (hiểu lầm phổ biến): Sai ở toàn bộ ý 'người giữ luật pháp' và 'theo công đức'. Trọng tâm thư Ga-la-ti là sự xưng công bình bởi đức tin, chứ không bởi việc làm của luật pháp (Ga-la-ti 2:16). Vì vậy, người thuộc về Christ không phải là 'người giữ luật pháp' để trở nên kẻ kế tự.\n\nDistractor 3 (nhầm passage gần): Sai ở chi tiết 'con cái Sa-ra'. Mặc dù Ga-la-ti 4:22-31 có nhắc đến Sa-ra như hình bóng, nhưng câu hỏi trực tiếp tham chiếu Galatians 3:29, nơi chỉ nêu 'dòng dõi Áp-ra-ham'. Việc thay thế bằng 'con cái Sa-ra' là thu hẹp và không chính xác cho câu hỏi này.",
     "language": "vi",
     "options": [
-      "Là tôi tớ Christ",
-      "Là người Do Thái",
+      "Là DÒNG DÕI ÁP-RA-HAM, kẻ kế tự theo xác thịt",
+      "Là NGƯỜI GIỮ LUẬT PHÁP, kẻ kế tự theo công đức",
       "Là DÒNG DÕI ÁP-RA-HAM, kẻ kế tự theo lời hứa",
-      "Là chiến sĩ"
+      "Là CON CÁI SA-RA, kẻ kế tự theo lời hứa"
     ],
     "tags": [
       "Tân Ước",
@@ -991,12 +991,12 @@
       3
     ],
     "content": "Theo Ga-la-ti 4:1-3, Phao-lô ví KẺ KẾ TỰ khi còn nhỏ giống ai?",
-    "explanation": "Ga-la-ti 4:1-3 — 'Vả, tôi nói rằng người kế tự dầu là chủ của cả gia tài, mà đương còn thơ ấu, thì chẳng khác chi kẻ tôi mọi; phải ở dưới quyền kẻ bảo hộ và kẻ coi giữ, cho đến kỳ người cha đã định. Chúng ta cũng như vậy, khi còn thơ ấu, phải phục dưới các lề thói của thế gian.' 'CÁC LỀ THÓI' (stoicheia) = các nguyên tắc cơ bản của thế gian (luật + tôn giáo dân ngoại).",
+    "explanation": "Câu hỏi tham chiếu Ga-la-ti 4:1-3. Đoạn Kinh Thánh viết: 'Tôi nói rằng người kế tự dầu là chủ của mọi vật, mà đương còn thơ ấu, thì chẳng khác chi kẻ tôi mọi; phải ở dưới quyền kẻ bảo hộ và kẻ coi sóc, cho đến kỳ người cha đã định.' (câu 1-2). Do đó, đáp án đúng là 'Giống một kẻ tôi mọi, phải ở dưới quyền giám hộ' vì nó diễn đạt chính xác sự so sánh của Phao-lô: người kế tự khi còn non trẻ (thơ ấu) tuy về danh nghĩa là chủ, nhưng trên thực tế vẫn bị quản lý như đầy tớ.\n\nCác đáp án sai:\n1. 'Giống một người tự do, không cần ai quản lý' là SAI vì trái ngược hoàn toàn với ý chính của đoạn, đó là sự hạn chế và phụ thuộc của người kế tự lúc nhỏ.\n2. 'Giống người quản gia, được giao quyền quản lý tài sản' là SAI và là đáp án 'gần đúng' nhất, vì nó đúng với chức năng của 'người coi sóc' (quản gia) được nhắc đến trong câu 2, nhưng lại SAI về đối tượng được so sánh. Câu hỏi hỏi về bản thân 'kẻ kế tự', chứ không phải về những người quản lý họ.\n3. 'Giống một người con trưởng thành, đã nhận được toàn bộ cơ nghiệp' là SAI vì đây là tình trạng tương lai hoặc trái ngược mà Phao-lô muốn nói đến (câu 4-7 về sự tự do trong Đấng Christ), không phải là tình trạng 'khi còn nhỏ' mà câu hỏi đang đề cập.",
     "language": "vi",
     "options": [
-      "Giống một vị vua nhỏ tuổi đang trị vì",
-      "Giống một người tự do hoàn toàn",
-      "Giống một thiên sứ trên trời",
+      "Giống một người tự do, không cần ai quản lý",
+      "Giống người quản gia, được giao quyền quản lý tài sản",
+      "Giống một người con trưởng thành, đã nhận được toàn bộ cơ nghiệp",
       "Giống một kẻ tôi mọi, phải ở dưới quyền giám hộ"
     ],
     "tags": [
@@ -1017,13 +1017,13 @@
       1
     ],
     "content": "Theo Ga-la-ti 4:9, sau khi đã biết Đức Chúa Trời (hay đúng hơn là được Đức Chúa Trời BIẾT đến), tín hữu sao lại trở về với gì?",
-    "explanation": "Ga-la-ti 4:9-10 — 'Nhưng hiện nay anh em biết Đức Chúa Trời, lại được Đức Chúa Trời biết đến nữa, sao còn trở hướng về lề thói hèn yếu nghèo nàn đó mà suy phục nữa ư? Anh em hãy còn giữ ngày, tháng, mùa, năm ư!' 'GIỮ NGÀY THÁNG' = nghi lễ Cựu Ước (Sa-bát, lễ Vượt Qua, năm Sa-bát) bị áp đặt lại trên dân ngoại. Phao-lô coi đó là QUAY VỀ tôi mọi.",
+    "explanation": "Đáp án đúng dựa trực tiếp vào Ga-la-ti 4:9-10: '... sao còn trở về với các lề thói hèn mạt yếu đuối kia, mà muốn lại làm tôi mọi cho chúng nữa? Các ngươi còn giữ ngày, tháng, mùa, năm!' Đây là lời thánh Phao-lô chất vấn tín hữu Ga-la-ti về việc họ quay lại với các tập tục tôn giáo dưới luật pháp cũ.\n\nCác phương án sai:\n- Phương án 1 (gần đúng, sai chi tiết): Sai ở 'giữ đồ ăn thức uống'. Ga-la-ti 4 không đề cập điều này, mặc dù các quy định về đồ ăn là một phần của luật pháp Cựu Ước và được thảo luận trong các thư tín khác (như Rô-ma 14), nhưng không phải là chi tiết trong câu hỏi này.\n- Phương án 2 (đúng văn bản nhưng lạc câu hỏi): 'Chối bỏ ân điển' là một hệ quả hoặc mô tả khác về việc quay về với luật pháp, nhưng không phải là điều cụ thể được nêu trong Ga-la-ti 4:9-10 như câu hỏi yêu cầu.\n- Phương án 3 (nhầm passage gần): 'Các ngụy thuyết sai lạc' là vấn đề được nêu ở những chương khác trong Ga-la-ti (ví dụ: chương 1) hoặc trong các thư tín khác, nhưng không phải là từ ngữ dùng trong Ga-la-ti 4:9-10 để mô tả 'các lề thói'.",
     "language": "vi",
     "options": [
-      "Quay về văn hóa cũ — chấp nhận",
+      "Quay về với CÁC LỀ THÓI HÈN MẠT YẾU ĐUỐI — muốn lại làm tôi mọi cho chúng — giữ đồ ăn thức uống",
       "Quay về với CÁC LỀ THÓI HÈN MẠT YẾU ĐUỐI — muốn lại làm tôi mọi cho chúng — giữ ngày tháng, năm",
-      "Quay về luật Môi-se — đáng ca ngợi",
-      "Quay về Hội Thánh cũ — bình thường"
+      "Quay về với CÁC LỀ THÓI HÈN MẠT YẾU ĐUỐI — muốn lại làm tôi mọi cho chúng — chối bỏ ân điển",
+      "Quay về với CÁC NGỤY THUYẾT SAI LẠC — muốn lại làm tôi mọi cho chúng — giữ ngày tháng, năm"
     ],
     "tags": [
       "Tân Ước",
@@ -1043,13 +1043,13 @@
       2
     ],
     "content": "Theo Ga-la-ti 5:14, cả luật pháp được ứng nghiệm trong MỘT LỜI là gì?",
-    "explanation": "Ga-la-ti 5:14 — 'Vì cả luật pháp chỉ tóm lại trong một lời nầy: Ngươi hãy yêu kẻ lân cận như mình.' Trích Lê-vi 19:18. Cùng câu Chúa Jêsus đặt là điều răn lớn THỨ HAI (Mat 22:39). Phao-lô không bài xích luật pháp như NGUYÊN TẮC — bài xích là phương tiện CỨU RỖI. Yêu thương = THỰC HIỆN luật.",
+    "explanation": "Ga-la-ti 5:14 viết: 'Vì cả luật pháp chỉ tóm lại trong một lời nầy: Ngươi hãy yêu kẻ lân cận như mình.' (BTT). Đáp án đúng trích chính xác lời này. Distractor 1 sai chi tiết then chốt ('kẻ thù nghịch' thay vì 'láng giềng/lân cận'), dù ý 'yêu... như mình' là đúng. Distractor 2 trích một mệnh lệnh quan trọng khác (như Phục truyền 6:5) nhưng không phải là 'một lời' tóm tắt cả luật pháp trong ngữ cảnh Ga-la-ti 5:14. Distractor 3 mở rộng phạm vi sai ('mọi điều răn') thay vì tóm gọn vào một nguyên tắc yêu thương.",
     "language": "vi",
     "options": [
-      "'Hãy giữ luật Sa-bát'",
-      "'Đừng làm hại ai'",
+      "'Hãy yêu kẻ thù nghịch ngươi như mình'",
+      "'Hãy kính sợ Đức Chúa Trời ngươi trọn lòng'",
       "'Hãy YÊU LÁNG GIỀNG ngươi như mình'",
-      "'Hãy kính sợ Đức Chúa Trời'"
+      "'Hãy làm theo mọi điều răn của luật pháp'"
     ],
     "tags": [
       "Tân Ước",
@@ -1069,12 +1069,12 @@
       3
     ],
     "content": "Theo Ga-la-ti 1:18-19, sau 3 năm Phao-lô lên Giê-ru-sa-lem lần đầu, gặp ai trong 15 ngày?",
-    "explanation": "Ga-la-ti 1:18-19 — 'Kế đó, mãn ba năm, tôi lên thành Giê-ru-sa-lem, đặng làm quen với Sê-pha, và tôi ở với người mười lăm ngày; nhưng tôi không thấy một sứ đồ nào khác, trừ ra Gia-cơ là em của Chúa.' Lập luận: chỉ 15 ngày + chỉ 2 người = KHÔNG đủ để Phao-lô 'học' Tin Lành từ họ. Tin Lành ông nhận TRỰC TIẾP từ Christ.",
+    "explanation": "Galatians 1:18-19 chép: \"Sau ba năm, tôi lên thành Giê-ru-sa-lem đặng làm quen với Sê-pha, và tôi ở lại với người mười lăm ngày.\" (c.18) và \"Ngoài ra, tôi không thấy một sứ đồ nào khác, duy chỉ thấy Gia-cơ, em của Chúa.\" (c.19). Đáp án đúng vì: Phao-lô khẳng định ông lên để làm quen với Sê-pha (tức Phi-e-rơ) và ở lại 15 ngày với ông ta; ngoài ra chỉ thấy Gia-cơ, em của Chúa. Distractor 1 sai vì đảo ngược chi tiết chính: Phao-lô ở với Sê-pha 15 ngày, không phải Gia-cơ. Distractor 2 gần đúng nhưng sai phạm vi: câu Kinh Thánh chỉ nói Phao-lô \"ở lại với người [Sê-pha] mười lăm ngày\", không nói cả hai người cùng ở với Phao-lô trong 15 ngày đó. Distractor 3 sai vì hiểu lầm phổ biến: câu 19 nói rõ \"không thấy một sứ đồ nào khác\", phủ nhận việc gặp đầy đủ các sứ đồ.",
     "language": "vi",
     "options": [
-      "Gặp Phi-lát + Hê-rốt",
-      "Gặp 12 sứ đồ + 70 môn đồ",
-      "Gặp Lu-ca + Ti-mô-thê",
+      "Gặp Gia-cơ, em Chúa 15 ngày — ngoài đó chỉ thấy Sê-pha (Phi-e-rơ)",
+      "Gặp Sê-pha (Phi-e-rơ) và Gia-cơ, em Chúa 15 ngày — không thấy ai khác",
+      "Gặp Sê-pha (Phi-e-rơ) 15 ngày — ngoài đó còn thấy đầy đủ các sứ đồ khác",
       "Gặp Sê-pha (Phi-e-rơ) 15 ngày — ngoài đó chỉ thấy Gia-cơ, em Chúa"
     ],
     "tags": [
@@ -1095,13 +1095,13 @@
       0
     ],
     "content": "Theo Ga-la-ti 2:3-5, dù có 'anh em giả' xen vào ép, ai KHÔNG bị ép cắt bì tại Giê-ru-sa-lem?",
-    "explanation": "Ga-la-ti 2:3-5 — 'Dầu Tít, kẻ cùng đi với tôi, là người Gờ-réc, cũng không bị ép phải cắt bì. Chúng ta không nhường họ một giây phút nào, chối chẳng chịu thuận theo họ, hầu cho lẽ thật của Tin Lành được vững bền trong anh em.' Tít = bằng chứng trực tiếp: dân ngoại được tiếp nhận VÀO Hội Thánh KHÔNG cắt bì. So sánh: Phao-lô CẮT BÌ Ti-mô-thê (Công 16:3) — vì lý do truyền giáo, không vì cứu rỗi.",
+    "explanation": "Đáp án đúng là 'Tít — người Hy Lạp đi cùng Phao-lô, không bị ép cắt bì'. Galatians 2:3 ghi rõ: 'Nhưng Tít, người cùng tôi, là người Gờ-réc, cũng không bị ép phải chịu cắt bì.' (BTT).\n\nCác đáp án sai:\n1. 'Tít — người Hy Lạp đi cùng Phao-lô, bị ép cắt bì': Sai chi tiết then chốt. Câu Kinh Thánh nói rõ Tít 'không bị ép', đây là điểm trọng tâm của câu hỏi và phân đoạn (2:3-5).\n2. 'Ba-na-ba — người Do Thái đi cùng Phao-lô, không bị ép cắt bì': Nhầm sang nhân vật ở passage gần. Ba-na-ba được nhắc đến cùng Phao-lô trong Galatians 2:1, 9, 13, nhưng đoạn 2:3-5 chỉ nói về việc Tít không bị ép cắt bì. Câu hỏi hỏi cụ thể về người 'không bị ép' trong bối cảnh đó.\n3. 'Si-môn — người Hy Lạp được nhắc đến trong đoạn này, không bị ép cắt bì': Thông tin này đúng trong văn bản (Phao-lô gặp Si-môn Phi-e-rơ), nhưng lạc câu hỏi. Tên 'Si-môn' (chỉ Phi-e-rơ) xuất hiện từ Galatians 2:7 trở đi, không liên quan đến sự việc 'ép cắt bì' cho Tít được đề cập trong 2:3-5.",
     "language": "vi",
     "options": [
       "Tít — người Hy Lạp đi cùng Phao-lô, không bị ép cắt bì",
-      "Ti-mô-thê — Phao-lô tự tay cắt bì sau",
-      "Mác — chỉ vì là người Do Thái",
-      "Lu-ca — đại diện ngoại bang"
+      "Tít — người Hy Lạp đi cùng Phao-lô, bị ép cắt bì",
+      "Ba-na-ba — người Do Thái đi cùng Phao-lô, không bị ép cắt bì",
+      "Si-môn — người Hy Lạp được nhắc đến trong đoạn này, không bị ép cắt bì"
     ],
     "tags": [
       "Tân Ước",
@@ -1121,13 +1121,13 @@
       1
     ],
     "content": "Theo Ga-la-ti 2:21, NẾU công bình đến bởi luật pháp thì điều gì xảy ra?",
-    "explanation": "Ga-la-ti 2:21 — 'Tôi không muốn làm cho ân điển Đức Chúa Trời ra vô ích; vì nếu bởi luật pháp mà được sự công bình, thì Đấng Christ chịu chết là vô ích.' Lập luận quy nạp: Christ CHẾT cho công bình → nếu LUẬT đủ, Christ KHÔNG CẦN chết → cây thập tự THỪA. Đây là cốt lõi Cải Cách: 'sola gratia' bảo vệ giá trị thập tự.",
+    "explanation": "CÂU HỎI: Theo Ga-la-ti 2:21, NẾU công bình đến bởi luật pháp thì điều gì xảy ra?\n\nĐÁP ÁN ĐÚNG: 'Đấng Christ chết là vô ích' là câu trả lời đúng vì Kinh Thánh trong Ga-la-ti 2:21 viết: 'Tôi không muốn làm cho ân điển Đức Chúa Trời ra vô ích; vì nếu bởi luật pháp mà được sự công bình, thì Đấng Christ chết là vô ích' (BTT). Câu hỏi giả định 'NẾU công bình đến bởi luật pháp', và câu Kinh Thánh khẳng định hệ quả trực tiếp của giả định đó là sự chết của Đấng Christ trở nên vô ích.\n\nGIẢI THÍCH CÁC ĐÁP ÁN SAI:\n1. 'Tội lỗi không còn cai trị nữa' (errorType: nearby_passage): Đây là một ý đúng trong Kinh Thánh (xem Rô-ma 6:14), nhưng không phải là hệ quả được nêu trực tiếp trong Ga-la-ti 2:21 cho giả định 'công bình đến bởi luật pháp'. Đây là một chi tiết từ một phân đoạn gần về chủ đề ân điển và luật pháp, nhưng lạc với câu hỏi cụ thể này.\n2. 'Đức tin không còn cần thiết nữa' (errorType: common_misconception): Đây là một hiểu lầm phổ biến. Một số người có thể suy luận rằng nếu luật pháp đem lại sự công bình thì đức tin không còn cần, nhưng Ga-la-ti 2:21 không trực tiếp nói điều này. Câu Kinh Thánh tập trung vào sự chết của Đấng Christ, không phải vào sự cần thiết của đức tin trong giả định đó.\n3. 'Ân điển Đức Chúa Trời trở nên thừa' (errorType: true_but_off): Đây là đáp án 'gần đúng' (almost-right). Ga-la-ti 2:21 thực sự bắt đầu bằng 'Tôi không muốn làm cho ân điển Đức Chúa Trời ra vô ích'. Tuy nhiên, câu hỏi hỏi hệ quả theo câu Kinh Thánh khi giả định 'công bình đến bởi luật pháp'. Câu trả lời trực tiếp và đầy đủ trong câu đó là 'Đấng Christ chết là vô ích'. Việc nói 'ân điển... trở nên thừa' tuy cùng ý tưởng nhưng không phải là cách diễn đạt chính xác và trọn vẹn hệ quả được nêu trong phần sau của câu.",
     "language": "vi",
     "options": [
-      "Y-sơ-ra-ên đã được cứu",
+      "Tội lỗi không còn cai trị nữa",
       "Đấng Christ chết là vô ích",
-      "Áp-ra-ham không cần thiết",
-      "Tin Lành không có lý do"
+      "Đức tin không còn cần thiết nữa",
+      "Ân điển Đức Chúa Trời trở nên thừa"
     ],
     "tags": [
       "Tân Ước",
@@ -1147,13 +1147,13 @@
       2
     ],
     "content": "Theo Ga-la-ti 3:10 (trích Phục Truyền 27:26), ai cậy việc làm luật pháp thì ở dưới điều gì?",
-    "explanation": "Ga-la-ti 3:10 — 'Vả, hết thảy những kẻ cậy các việc luật pháp đều bị rủa sả, bởi có chép rằng: Đáng rủa thay là kẻ không bền đỗ trong mọi sự đã chép ở sách luật, đặng làm theo những sự ấy!' Trích Phục Truyền 27:26. 'MỌI SỰ' (pasin) = TOÀN BỘ, 100%. Vì không ai giữ TRỌN, ai cậy LUẬT đều BỊ RỦA. KHÔNG có sự giữ luật một phần.",
+    "explanation": "Đáp án đúng xác định người cậy việc làm luật pháp thì 'ở dưới sự rủa sả'. Tham chiếu Ga-la-ti 3:10 trích Phục Truyền 27:26: 'Vì mọi kẻ cậy các việc luật pháp đều bị rủa sả; bởi có chép rằng: Đáng rủa thay là kẻ không bền đỗ trong mọi sự chép trong sách luật pháp, đặng làm theo những sự ấy.' (BTT). Bản chất của sự rủa sả là hậu quả đương nhiên từ việc 'không bền đỗ... làm theo' tất cả luật pháp, chứ không phải bất cứ điều gì khác.\n\nCác đáp án sai:\n- 'Dưới sự gánh nặng': Đây là distractor 'gần đúng' vì khái niệm gánh nặng có liên hệ gần với việc giữ luật pháp (xem Công vụ 15:10, Ma-thi-ơ 23:4) và có thể được một số độc giả nhầm lẫn, nhưng Ga-la-ti 3:10 KHÔNG dùng từ này; Kinh văn chỉ rõ là 'sự rủa sả'.\n- 'Dưới sự hình phạt... điều răn của Đức Chúa Trời': Sai chi tiết. Phần trích dẫn bị thay đổi cốt yếu ('điều răn của Đức Chúa Trời') so với nguyên văn chính xác ('mọi sự chép trong sách luật pháp'). Điều này làm biến đổi phạm vi và cách diễn đạt của Kinh Thánh.\n- 'Dưới sự trừng phạt... không vâng giữ trọn vẹn luật pháp': Mặc dù ý tưởng 'không vâng giữ trọn vẹn luật pháp' có thể đúng về mặt thần học trong ngữ cảnh (Gia-cơ 2:10), điều này KHÔNG phải là phần trích dẫn chính xác từ Phục Truyền 27:26 được Ga-la-ti 3:10 trưng dẫn. Đáp án này đưa ra một ý đúng trong một bối cảnh khác nhưng lại lạc câu hỏi, vì câu hỏi yêu cầu cụ thể tham chiếu điều Ga-la-ti 3:10 (trích Phục Truyền 27:26) nói đến.",
     "language": "vi",
     "options": [
-      "Dưới ơn phước",
-      "Dưới sự bình an",
+      "Dưới sự gánh nặng — vì có chép: 'Đáng rủa thay là kẻ không bền đỗ trong mọi sự chép trong sách luật pháp đặng làm theo những sự ấy'",
+      "Dưới sự hình phạt — vì có chép: 'Đáng rủa thay là kẻ không vâng theo đầy đủ những điều răn của Đức Chúa Trời'",
       "Dưới sự rủa sả — vì có chép: 'Đáng rủa thay là kẻ không bền đỗ trong mọi sự chép trong sách luật pháp đặng làm theo những sự ấy'",
-      "Dưới sự công bình"
+      "Dưới sự trừng phạt — vì có chép: 'Đáng rủa thay là kẻ không vâng giữ trọn vẹn luật pháp'"
     ],
     "tags": [
       "Tân Ước",
@@ -1173,12 +1173,12 @@
       3
     ],
     "content": "Theo Ga-la-ti 3:15-17, giao ước với Áp-ra-ham đã được lập trước luật Môi-se bao nhiêu năm? Luật có bãi bỏ giao ước không?",
-    "explanation": "Ga-la-ti 3:17 — 'Vậy thì tôi nói rằng: Lời giao ước mà Đức Chúa Trời trước kia đã kết lập thành rồi, thì không có thể bị hủy đi, và lời hứa cũng không có thể bị bỏ đi bởi luật pháp, là sự cách sau bốn trăm ba mươi năm mới có.' Lập luận: nếu giao ước A đến TRƯỚC, hợp đồng B không thể VÔ HIỆU HÓA. Luật KHÔNG hủy lời hứa cho Áp-ra-ham. Các con cháu Áp-ra-ham (= dân ngoại tin) thừa kế qua ĐỨC TIN.",
+    "explanation": "Câu hỏi dựa trên Ga-la-ti 3:15-17. Đáp án đúng là '430 năm trước luật — luật KHÔNG thể bãi bỏ giao ước đã được Đức Chúa Trời chuẩn nhận' vì câu 17 nói rõ: 'Luật pháp khởi sau giao ước đã được Đức Chúa Trời chuẩn nhận trước 430 năm, không có thể bãi bỏ giao ước mà làm cho lời hứa ra hư không được.'\n\nCác đáp án sai:\n- Distractor 1 ('430 năm... luật CÓ THỂ bãi bỏ...'): Sai vì đây là hiểu lầm phổ biến, trái ngược với khẳng định rõ ràng trong Kinh Thánh rằng luật không thể bãi bỏ giao ước.\n- Distractor 2 ('215 năm trước luật...'): Sai chi tiết số năm, vì Kinh Thánh ghi rõ là 430 năm (Ga-la-ti 3:17).\n- Distractor 3 ('không có mốc thời gian cụ thể...'): Sai phạm vi vì câu hỏi yêu cầu số năm cụ thể dựa trên đoạn Kinh Thánh này, trong khi đoạn văn lại cung cấp con số rõ ràng.",
     "language": "vi",
     "options": [
-      "100 năm — bãi bỏ được",
-      "200 năm — chỉ thay thế",
-      "300 năm — bổ sung",
+      "430 năm trước luật — luật CÓ THỂ bãi bỏ giao ước đã được chuẩn nhận",
+      "215 năm trước luật — luật KHÔNG thể bãi bỏ giao ước đã được Đức Chúa Trời chuẩn nhận",
+      "Giao ước với Áp-ra-ham không có mốc thời gian cụ thể — luật KHÔNG thể bãi bỏ giao ước",
       "430 năm trước luật — luật KHÔNG thể bãi bỏ giao ước đã được Đức Chúa Trời chuẩn nhận"
     ],
     "tags": [
@@ -1199,13 +1199,13 @@
       0
     ],
     "content": "Theo Ga-la-ti 3:19, vậy thì LUẬT PHÁP có ích gì? Đến khi nào?",
-    "explanation": "Ga-la-ti 3:19 — 'Vậy thì làm sao có luật pháp? Luật pháp đã đặt thêm, vì cớ những sự phạm phép, cho tới chừng nào người dòng dõi đến, là người mà lời hứa đã hứa cho; luật pháp được ban ra bởi mấy thiên sứ và truyền ra bởi một người trung bảo.' 3 ý nghĩa: (1) ĐƯỢC THÊM VÀO, không phải nguyên thủy; (2) vì TỘI PHẠM (làm tội ra rõ); (3) tạm thời — đến KHI dòng dõi (Christ) đến.",
+    "explanation": "Đáp án đúng trích dẫn chính xác Ga-la-ti 3:19 (BTT): 'Vậy thì luật pháp có ích gì? ... Vì cớ tội phạm mà luật được thêm vào, cho đến khi dòng dõi đã đến, là dòng dõi đã được hứa; và luật pháp bởi các thiên sứ truyền ra, lại nhờ tay một người trung bảo mà ban cho.' Luật được thêm vì cớ tội phạm, có phạm vi thời gian 'cho đến khi dòng dõi (Christ) đến', và được ban qua thiên sứ và Môi-se.\n\n- Distractor 1 (gần đúng) sai chi tiết: Sửa 'tội phạm' thành 'sự công bình' và 'thiên sứ' thành 'Đức Chúa Trời', làm thay đổi hoàn toàn lý do và cách truyền đạt luật pháp.\n- Distractor 2 sai phạm vi: Giữ đúng lý do 'tội phạm' nhưng thay đổi mốc thời gian từ 'khi dòng dõi (Christ) đến' (lần thứ nhất) sang 'khi Đấng Christ tái lâm'.\n- Distractor 3 hiểu lầm phổ biến: Gán mục đích và phạm vi thời gian sai cho luật pháp (dẫn đến sự sống, có hiệu lực vĩnh viễn), trái với sứ điệp của phân đoạn rằng luật pháp chỉ là thầy giáo đưa chúng ta đến với Christ (câu 24).",
     "language": "vi",
     "options": [
       "Vì cớ tội phạm mà luật được thêm vào — cho đến khi dòng dõi (Christ) đến — luật do thiên sứ ban qua tay người trung bảo (Môi-se)",
-      "Để cứu người",
-      "Để dạy dỗ thiên sứ",
-      "Để thử thách Áp-ra-ham"
+      "Vì cớ sự công bình mà luật được thêm vào — cho đến khi dòng dõi (Christ) đến — luật do Đức Chúa Trời ban qua tay người trung bảo",
+      "Vì cớ tội phạm mà luật được thêm vào — cho đến khi Đấng Christ tái lâm — luật do thiên sứ ban qua tay người trung bảo",
+      "Luật được thêm vào để dẫn đến sự sống đời đời, và có hiệu lực cho đến tận thế"
     ],
     "tags": [
       "Tân Ước",
@@ -1225,13 +1225,13 @@
       2
     ],
     "content": "Theo Ga-la-ti 4:22-26, Phao-lô dùng PHÉP ẨN DỤ về ai để minh họa hai giao ước?",
-    "explanation": "Ga-la-ti 4:24-26 — 'Cả điều đó có một nghĩa bóng: hai người nữ đó tức là hai lời giao ước, một là lời giao ước tại núi Si-na-i, sanh con ra để làm tôi mọi, ấy là nàng A-ga... còn Giê-ru-sa-lem ở trên cao là tự do, và ấy là mẹ chúng ta.' Phép alegoria. A-ga = LUẬT (Si-na-i + nô lệ); Sa-ra = LỜI HỨA (tự do + thiên thượng). Áp dụng SHỐC: Y-sơ-ra-ên LUẬT = giống A-ga (đầy tớ).",
+    "explanation": "Ga-la-ti 4:22-26 rõ ràng dùng phép ẩn dụ về hai người nữ: A-ga và Sa-ra. Đáp án đúng dựa trên Ga-la-ti 4:24-26: A-ga, người đầy tớ sinh con cách xác thịt, tượng trưng cho giao ước tại núi Si-na-i và Giê-ru-sa-lem hiện tại; còn Sa-ra, người tự do sinh con bởi lời hứa, tượng trưng cho Giê-ru-sa-lem trên trời. Distractor 1 (gần đúng) sai chi tiết then chốt khi hoán đổi đặc tính (tự do/đầy tớ) và giao ước của A-ga và Sa-ra, làm đảo ngược ý nghĩa ẩn dụ. Distractor 2 sai vì dẫn nhân vật từ các phân đoạn Kinh Thánh khác (Hê-nóc và Nô-ê trong Sáng-thế Ký) không liên quan đến ngữ cảnh Ga-la-ti 4. Distractor 3 phản ánh hiểu lầm phổ biến khi đưa Môi-se và A-rôn vào, dù họ gắn với luật pháp, nhưng phân đoạn này không dùng họ làm ẩn dụ chính cho hai giao ước.",
     "language": "vi",
     "options": [
-      "Áp-ra-ham và Y-sác",
-      "Đa-vít và Sa-lô-môn",
+      "A-ga và Sa-ra — A-ga (tự do, sinh con bởi lời hứa) = giao ước Si-na-i, Giê-ru-sa-lem hiện tại; Sa-ra (đầy tớ, sinh con cách xác thịt) = Giê-ru-sa-lem trên trời, mẹ chúng ta",
+      "Hê-nóc và Nô-ê — Hê-nóc (được cất lên) = giao ước mới; Nô-ê (công bình) = giao ước cũ",
       "A-ga và Sa-ra — A-ga (đầy tớ, sinh con cách xác thịt) = giao ước Si-na-i, Giê-ru-sa-lem hiện tại; Sa-ra (tự do, sinh con bởi lời hứa) = Giê-ru-sa-lem trên trời, mẹ chúng ta",
-      "Ê-va và Ma-ri"
+      "Môi-se và A-rôn — Môi-se (luật pháp) = giao ước Si-na-i; A-rôn (thầy tế lễ) = giao ước ân điển"
     ],
     "tags": [
       "Tân Ước",
@@ -1251,13 +1251,13 @@
       1
     ],
     "content": "Theo Ga-la-ti 5:2-4, Phao-lô CẢNH CÁO mạnh điều gì với ai chịu cắt bì để được công bình?",
-    "explanation": "Ga-la-ti 5:2-4 — 'Tôi là Phao-lô nói với anh em rằng, nếu anh em chịu làm phép cắt bì, thì Đấng Christ không bổ ích chi cho anh em hết. Tôi lại rao cho mọi người chịu cắt bì rằng, họ buộc phải vâng giữ trọn cả luật pháp. Anh em thảy đều muốn cậy luật pháp cho được xưng công bình, thì đã lìa khỏi Đấng Christ, mất ân điển rồi.' Cắt bì + Christ là LOẠI TRỪ NHAU. Chọn 1.",
+    "explanation": "Ga-la-ti 5:2-4 nêu rõ: 'Nếu anh em chịu cắt bì, thì Đấng Christ chẳng ích gì cho anh em. Tôi lại rao bảo cho mọi người nào chịu cắt bì rằng họ buộc phải vâng giữ trọn cả luật pháp. Anh em thảy đều muốn cậy luật pháp cho được xưng công bình, thì đã lìa khỏi Đấng Christ, mất ân điển rồi.' (BTT). Đáp án đúng tóm tắt chính xác ba hệ quả nghiêm trọng Phao-lô cảnh báo: Đấng Christ không còn ích lợi, phải giữ trọn luật pháp, và đã rời khỏi ân điển.\n\nDistractor 1 (gần đúng, kiểu 'nearby_passage'): Sai ở chi tiết then chốt 'sẽ được tha thứ nếu chịu cắt bì trong lòng' và 'vẫn ở trong ân điển'. Đoạn Kinh Thánh không hề nói điều này; ngược lại, nó khẳng định việc cậy cắt bì để được xưng công bình sẽ khiến 'mất ân điển'.\n\nDistractor 2 (kiểu 'wrong_scope'): Sai phạm vi thông điệp. Nó hoàn toàn trái ngược với cảnh báo của Phao-lô. Phao-lô không nói Đấng Christ sẽ cứu người chịu cắt bì để được công bình, mà cảnh báo 'Đấng Christ chẳng ích gì' và họ đã 'lìa khỏi Đấng Christ'.\n\nDistractor 3 (kiểu 'common_misconception'): Thể hiện sự hiểu lầm phổ biến về giá trị của cắt bì và luật pháp mà chính thư Ga-la-ti đang phản bác. Phao-lô đang cảnh cáo chống lại quan niệm 'phải chịu cắt bì để được cứu rỗi', chứ không xác nhận nó.",
     "language": "vi",
     "options": [
-      "Sẽ trở thành người Do Thái thật",
+      "Sẽ được tha thứ nếu chịu cắt bì trong lòng — phải giữ đức tin — ngươi vẫn ở trong ân điển",
       "Đấng Christ chẳng ích gì cho ngươi nữa — phải giữ trọn luật pháp — ngươi đã xa cách Christ và rời khỏi ân điển",
-      "Sẽ được phước Áp-ra-ham",
-      "Sẽ được vào hội thánh"
+      "Đấng Christ sẽ cứu ngươi — không cần giữ luật pháp — ngươi được nhận ân điển trọn vẹn",
+      "Phải chịu cắt bì để được cứu rỗi — phải vâng giữ luật pháp — ngươi sẽ trở nên công bình"
     ],
     "tags": [
       "Tân Ước",
@@ -1277,12 +1277,12 @@
       3
     ],
     "content": "Theo Ga-la-ti 6:15, trong Christ Jêsus, ĐIỀU GÌ có giá trị thay vì cắt bì hay không cắt bì?",
-    "explanation": "Ga-la-ti 6:15 — 'Vì điều yếu cần, chẳng phải sự chịu cắt bì, hay là sự chẳng chịu cắt bì, bèn là trở nên người mới.' 'TÂN TẠO' (kainē ktisis) = sáng tạo MỚI. 2 Cô-rinh-tô 5:17 cùng cụm: 'ai trong Christ là tân tạo'. KHÔNG phải nghi lễ — mà SINH RA THỪ. Câu kết tóm tắt sách: Christ + đức tin → tân tạo, KHÔNG phải Christ + luật.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Ga-la-ti 6:15 chép rõ: 'Vì trong Đấng Christ Jêsus, không phải cắt bì hoặc không cắt bì có giá trị gì đâu, bèn là TÂN TẠO' (BTT). Câu này tóm tắt luận điểm then chốt của Phao-lô: giá trị cứu rỗi không nằm ở nghi thức bên ngoài (cắt bì) mà ở sự biến đổi bên trong bởi Đấng Christ. CÁC ĐÁP ÁN SAI: 1) 'Đức tin' là chủ đề trung tâm của thư Ga-la-ti (xem 2:16, 3:26), nhưng không phải là từ ngữ cụ thể được dùng trong 6:15. Đây là ví dụ về 'nearby_passage' — lấy một khái niệm đúng trong ngữ cảnh rộng nhưng sai ở câu cụ thể. 2) 'Giữ luật pháp' là điều Phao-lô đang phản đối trong cả thư (3:10-11), nên việc xem đó có giá trị là 'common_misconception' trái ngược với sứ điệp của sách. 3) 'Là người yêu Chúa' nghe có vẻ đúng đắn về mặt tâm linh nhưng là một khái niệm mơ hồ, không phải thuật ngữ Kinh Thánh cụ thể trong câu này; nó 'true_but_off' vì không trả lời trực tiếp câu hỏi đòi hỏi nội dung từ Ga-la-ti 6:15.",
     "language": "vi",
     "options": [
-      "Lễ truyền giáo",
-      "Sự thờ phượng",
-      "Việc làm lành",
+      "ĐỨC TIN (faith) — không phải cắt bì, không phải không cắt bì",
+      "GIỮ LUẬT PHÁP (keeping the law) — không phải cắt bì, không phải không cắt bì",
+      "LÀ NGƯỜI YÊU CHÚA (being godly) — không phải cắt bì, không phải không cắt bì",
       "TÂN TẠO (a new creation) — không phải cắt bì, không phải không cắt bì"
     ],
     "tags": [
@@ -1303,13 +1303,13 @@
       0
     ],
     "content": "Theo Ga-la-ti 6:17, Phao-lô xin từ rày về sau đừng ai làm phiền ông nữa, vì cớ ông mang gì trên thân thể?",
-    "explanation": "Ga-la-ti 6:17 — 'Ước gì từ nay về sau, chẳng ai làm khó cho tôi, vì trong mình tôi có đốt dấu vết của Đức Chúa Jêsus vậy.' 'DẤU VẾT' (stigmata) = CON DẤU NUNG. Trong văn hóa cổ, nô lệ bị nung dấu của chủ; nay Phao-lô mang DẤU CHRIST = đánh đập, đá ném (Công 14:19), 39 roi 5 lần (2 Cô 11:24). Phao-lô KHÔNG cần cắt bì — đã có dấu CHRIST.",
+    "explanation": "Galatians 6:17 (BTT) chép: 'Từ rày về sau, đừng có ai làm phiền tôi nữa, vì tôi mang trong mình mình những dấu tích của Đức Chúa Jêsus.' Đáp án đúng vì Phao-lô mô tả những dấu vết (thương tích, sẹo) từ sự chịu khổ vì Phúc Âm như là 'dấu tích của Đức Chúa Jêsus', một dấu hiệu thuộc về Ngài, giống như nô lệ mang dấu của chủ.\n\nDistractor 1 (gần đúng) sai vì dùng 'dấu ấn của sứ đồ' và 'đại sứ mang phù hiệu', mặc dù ý 'dấu ấn' gần với 'dấu vết', nhưng đây là sự nhầm lẫn với khái niệm thẩm quyền sứ đồ (được nhắc đến trong sách Ga-la-ti) chứ không phải là mô tả trực tiếp trong câu 6:17.\nDistractor 2 sai vì đây là một hiểu lầm phổ biến, giảm ý nghĩa thuộc linh của 'dấu tích' thành chỉ là 'thương tích của những lần bị đánh đòn' với hình ảnh 'người phạm tội', trong khi Phao-lô nhấn mạnh đây là dấu tích của Chúa Jêsus, biểu thị sự đồng hóa với sự chịu khổ của Đấng Christ.\nDistractor 3 sai chi tiết vì 'dấu hiệu của phép cắt bì' là một chủ đề chính trong thư Ga-la-ti (ví dụ Galatians 5:6, 6:15), nhưng không phải là điều Phao-lô đang đề cập trong câu 6:17 khi nói về thân thể mình.",
     "language": "vi",
     "options": [
       "Mang DẤU VẾT (ký hiệu, sẹo) của Đức Chúa Jêsus — như nô lệ mang dấu chủ",
-      "Mang vết thương từ chiến trận",
-      "Mang dấu cắt bì",
-      "Mang vết tích từ Pha-ri-si"
+      "Mang dấu ấn của sứ đồ — như đại sứ mang phù hiệu",
+      "Mang thương tích của những lần bị đánh đòn — như người phạm tội",
+      "Mang dấu hiệu của phép cắt bì — như người Do Thái"
     ],
     "tags": [
       "Tân Ước",

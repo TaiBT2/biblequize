@@ -9,13 +9,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Gióp 1:1 - Gióp là người trọn vẹn và ngay thẳng, kính sợ Đức Chúa Trời và lánh xa điều ác.",
+    "explanation": "Giải thích: Gióp 1:1 chép: \"Có một người ở trong xứ Út-xơ tên là Gióp; người ấy trọn vẹn và ngay thẳng, kính sợ Đức Chúa Trời, và lánh xa điều ác\". Vì vậy, đáp án đúng là mô tả chính xác từ Kinh Thánh. Distractor 1 sai vì thay thế 'kính sợ Chúa' bằng 'giàu có' (dù Gióp giàu có được đề cập sau đó, nhưng không phải là đặc tính tính cách trong câu này). Distractor 2 sai vì đưa vào tính cách 'nóng nảy' – một hiểu lầm phổ biến dựa trên cảm xúc mãnh liệt của Gióp trong các cuộc tranh luận sau này, nhưng không hề có trong mô tả ban đầu. Distractor 3 sai vì cụm 'thường xuyên thử thách' lạc đề với câu hỏi về mô tả bản tính; đây là một hành động, không phải đặc điểm tính cách, và không được nêu trong câu Kinh Thánh được hỏi.",
     "language": "vi",
     "options": [
-      "Giàu nhất",
+      "Trọn vẹn, chính trực, giàu có, lánh xa điều ác",
       "Trọn vẹn, chính trực, kính sợ Chúa, lánh xa điều ác",
-      "Khôn ngoan nhất",
-      "Mạnh nhất"
+      "Nóng nảy, chính trực, kính sợ Chúa, lánh xa điều ác",
+      "Trọn vẹn, chính trực, kính sợ Chúa, thường xuyên thử thách"
     ],
     "tags": [
       "Cựu Ước",
@@ -35,13 +35,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Gióp 1:9-11 - Sa-tan tố cáo rằng Gióp chỉ kính sợ Chúa vì được Ngài bảo vệ, ban phước dồi dào. Nếu những điều đó bị cất đi, Gióp sẽ phỉ báng Chúa. Chúa cho phép thử thách để chứng minh đức tin thật của Gióp.",
+    "explanation": "Câu hỏi yêu cầu lý do Sa-tan tố cáo Gióp. Trong Gióp 1:9-11, Sa-tan đáp: \"Có phải Gióp kính sợ Đức Chúa Trời mà không muốn lợi sao? Chúa há chẳng dựng hàng rào binh vực xung quanh nhà, cùng mọi vật thuộc về người sao? Chúa đã ban phước cho công việc của tay người, và làm cho của cải người thêm nhiều trên đất. Nhưng bây giờ hãy giơ tay Chúa ra, đụng đến hết thảy vật người có, ắt là người sẽ phỉ báng Chúa trước mặt.\" Lý do Sa-tan đưa ra rõ ràng là vì Chúa bảo vệ và ban phước cho Gióp, nên ông mới kính sợ. Đáp án đúng phản ánh chính xác điều này.\n\nDistractor 1 (Vì Chúa thử thách và làm khó ông, nên ông mới kính sợ Chúa) là 'wrong_detail': Điều này trái ngược với lời buộc tội của Sa-tan. Sa-tan nói Chúa ban phước và bảo vệ, chứ không thử thách hay làm khó Gióp trước đó. Đây là một chi tiết sai.\n\nDistractor 2 (Vì ông thấy Chúa ban phước cho kẻ ác, nên ông mới kính sợ Chúa) là 'nearby_passage': Ý tưởng về sự thịnh vượng của kẻ ác xuất hiện trong sách Gióp (ví dụ, Gióp 21:7-15), nhưng không phải trong đoạn tham chiếu (1:9-11) và không phải lý do Sa-tan đưa ra ở đây. Nó thuộc một phần văn bản gần đó nhưng không liên quan trực tiếp đến câu hỏi.\n\nDistractor 3 (Vì ông sợ Chúa sẽ cất đi của cải và con cái, nên ông mới kính sợ Chúa) là 'common_misconception' và là distractor 'gần đúng' (almostRightIndex = 2). Điều này gần với lập luận của Sa-tan, vì hắn đề nghị Chúa giơ tay ra đụng đến vật Gióp có để xem Gióp có còn kính sợ không. Tuy nhiên, đây là điều Sa-tan đề xuất để THỬ, chứ không phải lý do Sa-tan cho rằng Gióp ĐANG kính sợ Chúa. Lý do Sa-tan đưa ra là vì sự bảo vệ và ban phước hiện tại, chứ không phải nỗi sợ bị mất mát trong tương lai. Đây là một hiểu lầm phổ biến khi đọc lướt, vì người đọc có thể nhớ đến hậu quả (mất mát) mà quên mất nguyên nhân ban đầu (được ban phước).",
     "language": "vi",
     "verseEnd": 11,
     "options": [
-      "Vì Gióp muốn được khen",
-      "Vì Gióp sợ hình phạt",
-      "Vì Gióp ngu dốt",
+      "Vì Chúa thử thách và làm khó ông, nên ông mới kính sợ Chúa",
+      "Vì ông thấy Chúa ban phước cho kẻ ác, nên ông mới kính sợ Chúa",
+      "Vì ông sợ Chúa sẽ cất đi của cải và con cái, nên ông mới kính sợ Chúa",
       "Vì Chúa bảo vệ và ban phước cho ông, nên ông mới kính sợ Chúa"
     ],
     "tags": [
@@ -62,14 +62,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Gióp 2:9-10 - Vợ Gióp khuyên ông phỉ báng Đức Chúa Trời rồi chết đi. Gióp quở trách bà và khẳng định chúng ta phải nhận cả điều lành lẫn điều dữ từ Đức Chúa Trời.",
+    "explanation": "Câu hỏi hỏi về lời của vợ Gióp và lời đáp của Gióp trong Gióp 2:9-10. ĐÁP ÁN ĐÚNG: Trong Gióp 2:9, vợ Gióp nói: 'Hãy phỉ báng Đức Chúa Trời, và chết đi!'; trong câu 10, Gióp đáp: 'Ngươi nói như một người đàn bà ngu muội. Chúng ta nhận điều lành nơi Đức Chúa Trời, há chẳng nhận điều dữ sao?' (BTT). Lời đáp của Gióp bao gồm cả câu hỏi tu từ này. VÌ SAO DISTRACTORS SAI: 1) Sai chi tiết: Lời của vợ Gióp bị thay đổi thành 'Hãy trung tín với Đức Chúa Trời và Ngài sẽ thương xót', hoàn toàn trái ngược với nguyên văn. 2) Đúng văn bản nhưng lạc câu hỏi: Lời đáp của Gióp 'Tại sao tôi lại chào đời để chịu khổ như vậy?' là tâm trạng của Gióp được thể hiện sau đó (ví dụ Gióp 3), không phải lời đáp trực tiếp cho vợ trong đoạn này. 3) Hiểu lầm phổ biến: Lời khuyên 'Hãy ăn năn tội lỗi của mình' là lời khuyên mà các bạn của Gióp đưa ra sau này (ví dụ Gióp 4:7-8, 8:4-6), không phải lời của vợ ông trong Gióp 2:9.",
     "language": "vi",
     "verseEnd": 10,
     "options": [
-      "Cả hai khóc",
+      "Vợ nói: Hãy trung tín với Đức Chúa Trời và Ngài sẽ thương xót. Gióp đáp: Chúng ta nhận điều lành nơi Đức Chúa Trời, há chẳng nhận điều dữ sao?",
       "Vợ nói: Hãy phỉ báng Đức Chúa Trời và chết đi. Gióp đáp: Chúng ta nhận điều lành nơi Đức Chúa Trời, há chẳng nhận điều dữ sao?",
-      "Cả hai cầu nguyện",
-      "Cả hai bỏ cuộc"
+      "Vợ nói: Hãy phỉ báng Đức Chúa Trời và chết đi. Gióp đáp: Tại sao tôi lại chào đời để chịu khổ như vậy?",
+      "Vợ nói: Hãy ăn năn tội lỗi của mình. Gióp đáp: Chúng ta nhận điều lành nơi Đức Chúa Trời, há chẳng nhận điều dữ sao?"
     ],
     "tags": [
       "Cựu Ước",
@@ -89,13 +89,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Gióp 13:15 - Đức tin không điều kiện: tin cậy Chúa dù trong hoàn cảnh xấu nhất.",
+    "explanation": "Câu trả lời đúng là 'Dù Ngài giết tôi, tôi vẫn tin cậy Ngài' (Gióp 13:15), thể hiện đức tin kiên định của Gióp nơi Đức Chúa Trời ngay cả trong sự đau khổ cùng cực. Distractor 1 ('trách móc') sai vì thay đổi chi tiết then chốt 'tin cậy' thành thái độ tiêu cực, trái với nội dung câu Kinh Thánh. Distractor 2 ('than vãn') sai vì đây là hiểu lầm phổ biến về thái độ chung của Gióp trong sách, nhưng không phải là tuyên bố cụ thể tại 13:15. Distractor 3 ('tìm kiếm lẽ công bình') sai vì mượn ý từ những phân đoạn gần đó (như Gióp tranh luận về sự công bình), nhưng không phải là nội dung của câu được hỏi.",
     "language": "vi",
     "options": [
       "Dù Ngài giết tôi, tôi vẫn tin cậy Ngài",
-      "Tôi sẽ bỏ Chúa",
-      "Chúa bất công",
-      "Tôi vô tội"
+      "Dù Ngài giết tôi, tôi vẫn trách móc Ngài",
+      "Dù tôi chịu khổ, tôi vẫn than vãn với Ngài",
+      "Dù tôi chết, tôi vẫn tìm kiếm lẽ công bình"
     ],
     "tags": [
       "Cựu Ước",
@@ -115,14 +115,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Gióp 19:25 - Giữa khổ nạn, Gióp tuyên bố tin vào Đấng Cứu Chuộc hằng sống và sự phục sinh.",
+    "explanation": "Câu hỏi trích dẫn Gióp 19:25: \"Tôi biết rằng Đấng Cứu Chuộc tôi hằng sống\". Đáp án đúng là \"Cứu chuộc\" vì từ Hê-bơ-rơ 'go-el' trong ngữ cảnh này chỉ về Đấng bào chữa hay người bà con chuộc lại, hàm ý Đấng sẽ cứu chuộc và phục hồi Gióp. Distractor \"xét đoán\" là gần đúng nhưng sai chi tiết then chốt, vì dù ý tưởng xét đoán có xuất hiện trong các lời than của Gióp (như Gióp 9:15), từ cụ thể ở đây là \"Cứu Chuộc\", không phải \"xét đoán\". Distractor \"an ủi\" phản ánh hiểu lầm phổ biến rằng Gióp đang tìm sự an ủi, nhưng thực tế ông đang tuyên bố đức tin nơi Đấng sẽ đứng ra bênh vực ông. Distractor \"giúp đỡ\" tuy đúng là Đấng Cứu Chuộc có chức năng giúp đỡ, nhưng đây là từ quá chung chung và không nắm bắt được ý nghĩa pháp lý và thần học chính xác của từ \"Cứu Chuộc\" trong đoạn Kinh Thánh này.",
     "language": "vi",
     "verseEnd": 26,
     "options": [
       "Cứu chuộc",
-      "Bảo vệ",
-      "Sáng tạo",
-      "Phán xét"
+      "xét đoán",
+      "an ủi",
+      "giúp đỡ"
     ],
     "tags": [
       "Cựu Ước",
@@ -142,14 +142,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Gióp 38:1 - Chúa phán từ gió lốc, hỏi Gióp nhiều câu hỏi về sáng tạo để cho thấy sự khôn ngoan vô hạn của Ngài.",
+    "explanation": "Câu hỏi dựa trên Gióp 38:1. Đáp án đúng là 'Từ trong cơn gió lốc' vì Kinh Thánh ghi: 'Bấy giờ, Đức Giê-hô-va từ trong cơn gió lốc đáp cùng Gióp...' (Gióp 38:1).\n\nCác đáp án sai: 1) 'Từ trong đám mây' là gần đúng nhưng sai chi tiết then chốt; trong đoạn này, Chúa phán từ 'cơn gió lốc', không phải 'đám mây' (dù các đoạn khác như Xuất Ê-díp-tô Ký có nhắc đến đám mây). 2) 'Từ trong giấc mộng' phản ánh hiểu lầm phổ biến rằng Chúa thường hiện ra trong chiêm bao, nhưng trong ngữ cảnh Gióp 38, đây không phải là một giấc mộng. 3) 'Từ trong cơn động đất' là sai chi tiết; động đất có thể được nhắc đến trong các đoạn mô tả sự hiện ra của Chúa (như 1 Các Vua 19:11), nhưng không phải là phương tiện trong Gióp 38:1.",
     "language": "vi",
     "verseEnd": 4,
     "options": [
-      "Từ bụi gai cháy",
+      "Từ trong đám mây",
       "Từ trong cơn gió lốc",
-      "Từ đám mây",
-      "Từ trời"
+      "Từ trong giấc mộng",
+      "Từ trong cơn động đất"
     ],
     "tags": [
       "Cựu Ước",
@@ -169,14 +169,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Gióp 40:4-5 - Gióp nhận ra sự nhỏ bé của mình trước sự vĩ đại của Chúa và im lặng.",
+    "explanation": "Đáp án đúng là 'Lấy tay bịt miệng, không đáp nữa' vì Gióp 40:4-5 ghi: 'Gióp thưa cùng Đức Giê-hô-va rằng: Tôi vốn là hèn mọn, sẽ đáp lại thế nào với Chúa? Tôi lấy tay bịt miệng tôi. Tôi đã nói một lần, tôi chẳng đáp lại; phải, hai lần, nhưng tôi chẳng nói thêm chi nữa.' Điều này thể hiện sự ăn năn và im lặng của Gióp trước sự oai nghi của Chúa.\n\nCác đáp án sai:\n- 'Gục đầu xuống đất, không dám nhìn lên': Đây là phản ứng thường thấy trong các đoạn Kinh Thánh khác (ví dụ: khi gặp thiên sứ) hoặc có thể bị nhầm từ ngữ cảnh gần, nhưng không phải là hành động Gióp làm trong Gióp 40:4-5.\n- 'Lấy tro rắc lên đầu, than khóc thảm thiết': Đây là hành động Gióp đã làm ở đầu sách (Gióp 2:8,12) khi gặp hoạn nạn, nhưng không phải phản ứng cụ thể sau lời Chúa phán trong đoạn này, nên sai chi tiết bối cảnh.\n- 'Đứng dậy, lấy tay che mắt mà trả lời': Đây là một hiểu lầm phổ biến, vì người đọc có thể mường tượng ra một phản ứng tôn kính như che mặt, nhưng đoạn Kinh Thánh không mô tả Gióp đứng dậy hay che mắt, và câu trả lời cuối cùng của ông là im lặng, không phải tiếp tục đối đáp.",
     "language": "vi",
     "verseEnd": 5,
     "options": [
-      "Giận dữ",
-      "Tranh luận tiếp",
+      "Gục đầu xuống đất, không dám nhìn lên",
+      "Lấy tro rắc lên đầu, than khóc thảm thiết",
       "Lấy tay bịt miệng, không đáp nữa",
-      "Bỏ chạy"
+      "Đứng dậy, lấy tay che mắt mà trả lời"
     ],
     "tags": [
       "Cựu Ước",
@@ -196,13 +196,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Gióp 42:5 - Từ tin nghe nói đến trải nghiệm cá nhân. Khổ nạn dẫn Gióp đến sự hiểu biết sâu hơn về Chúa.",
+    "explanation": "Câu hỏi trích Gióp 42:5-6 (BTT). Đáp án đúng là 'Mắt tôi đã thấy Ngài' (câu 5b), thể hiện sự thay đổi căn bản từ nghe đồn sang trải nghiệm trực tiếp về Đức Chúa Trời. Sai: 1) 'Lòng tôi đã tin Ngài' là hiểu lầm phổ biến (dù đức tin có liên quan, nhưng câu Kinh Thánh nhấn 'thấy', không phải 'tin'). 2) 'Tai tôi đã nghe Ngài' lấy chi tiết gần từ câu 5a ('Trước tai tôi nghe đồn về Chúa'), nhưng sai vì đây là tình trạng cũ, không phải sự mới mẻ 'bây giờ'. 3) 'Tôi đã được Chúa trả lời' đúng trong phạm vi câu chuyện (Chúa trả lời Gióp từ cơn gió lốc), nhưng lạc câu hỏi vì cụm hỏi đang trích dẫn trực tiếp lời Gióp nói về việc 'thấy' Ngài.",
     "language": "vi",
     "verseEnd": 6,
     "options": [
-      "Tôi biết Ngài",
-      "Tôi tin Ngài",
-      "Tôi hiểu Ngài",
+      "Lòng tôi đã tin Ngài",
+      "Tai tôi đã nghe Ngài",
+      "Tôi đã được Chúa trả lời",
       "Mắt tôi đã thấy Ngài"
     ],
     "tags": [
@@ -223,14 +223,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Gióp 42:10, 12 - Chúa phục hồi gấp đôi tài sản (bầy chiên, lạc đà, bò, lừa cái). Về con cái, Gióp được ban lại 7 con trai và 3 con gái, số lượng bằng trước (Gióp 1:2-3; 42:13). Chúa thương người kiên nhẫn chịu đựng (Gia-cơ 5:11).",
+    "explanation": "Câu hỏi hỏi về số lượng tài sản Chúa ban cho Gióp sau cùng so với trước. Trong Gióp 42:10, 12 chép rõ: \"Đức Giê-hô-va... ban cho Gióp gấp đôi của cải mà người có trước kia\" và \"Đức Giê-hô-va ban phước cho buổi già của Gióp nhiều hơn lúc đang thì: người được mười bốn ngàn chiên, sáu ngàn lạc đà, một ngàn đôi bò, và một ngàn lừa cái.\" Các con số này thực sự gấp đôi số lượng được liệt kê trong Gióp 1:3.\n\nĐÁP ÁN ĐÚNG: \"Gấp đôi tài sản (bầy súc vật)\" vì Kinh Thánh ghi rõ Chúa ban cho Gióp gấp đôi của cải.\n\nĐÁP ÁN SAI 1 (Gấp ba tài sản): Sai chi tiết số học. Kinh Thánh nói \"gấp đôi\", không phải gấp ba. Đây là distractor 'gần đúng' vì chỉ sai một chi tiết số then chốt.\nĐÁP ÁN SAI 2 (Số tài sản bằng trước đây): Sai vì lạc câu hỏi. Mặc dù Gióp được phục hồi, nhưng câu hỏi hỏi 'bao nhiêu so với trước' và Kinh Thánh nói rõ là 'gấp đôi', không phải 'bằng'.\nĐÁP ÁN SAI 3 (Tài sản được phục hồi, nhưng không gấp đôi): Sai do hiểu lầm phổ biến. Một số độc giả nhớ rằng Gióp được Chúa ban phước trở lại nhưng có thể không nhớ chính xác là gấp đôi. Tuy nhiên, Kinh Thánh ghi chép cụ thể là gấp đôi.",
     "language": "vi",
     "verseEnd": 12,
     "options": [
-      "Gấp ba",
-      "Bằng cũ",
+      "Gấp ba tài sản (bầy súc vật)",
+      "Số tài sản bằng trước đây",
       "Gấp đôi tài sản (bầy súc vật)",
-      "Ít hơn"
+      "Tài sản được phục hồi, nhưng không gấp đôi"
     ],
     "tags": [
       "Cựu Ước",
@@ -250,13 +250,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Gióp 28:28 - Giống như Châm 1:7 và Truyền đạo 12:13. Sự khôn ngoan bắt đầu và kết thúc ở sự kính sợ Chúa.",
+    "explanation": "Gióp 28:28 (BTT) viết: 'Ngài phán với loài người rằng: Kính sợ Chúa, ấy là sự khôn ngoan; Lánh xa điều ác, ấy là sự thông sáng.' Vì vậy, đáp án đúng là 'Kính sợ Chúa và lánh xa điều ác', vì đây chính là lời tuyên bố trực tiếp và đầy đủ trong câu Kinh Thánh. Distractor 1 ('Kính sợ Chúa và từ bỏ sự kiêu ngạo') gần đúng vì giữ lại phần đầu của đáp án đúng, nhưng sai chi tiết then chốt ('từ bỏ sự kiêu ngạo' thay vì 'lánh xa điều ác'), dù kiêu ngạo thường được xem là tội lỗi nhưng không phải là từ ngữ chính xác trong câu này. Distractor 2 ('Hiểu biết các phép lạ và vâng giữ luật pháp') là sai vì lấy ý từ những đoạn Kinh Thánh khác nói về sự khôn ngoan hoặc luật pháp, không phải từ kết luận trong Gióp 28. Distractor 3 ('Yêu mến người lân cận và làm việc thiện') là sai vì đây là một hiểu lầm phổ biến, thường được liên tưởng đến điều răn quan trọng hoặc đạo đức nói chung, nhưng hoàn toàn không xuất hiện trong bối cảnh định nghĩa sự khôn ngoan thật tại Gióp 28:28.",
     "language": "vi",
     "options": [
-      "Kinh nghiệm",
+      "Kính sợ Chúa và từ bỏ sự kiêu ngạo",
       "Kính sợ Chúa và lánh xa điều ác",
-      "Tri thức",
-      "Học nhiều"
+      "Hiểu biết các phép lạ và vâng giữ luật pháp",
+      "Yêu mến người lân cận và làm việc thiện"
     ],
     "tags": [
       "Cựu Ước",
@@ -276,13 +276,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Gióp 5:17 - 'Phước thay người nào Đức Chúa Trời sửa phạt; vậy, chớ khinh sự trách phạt của Đấng Toàn Năng.' Sự trách phạt của Chúa là dấu hiệu tình yêu, không phải sự bỏ rơi (Hê 12:6).",
+    "explanation": "Gióp 5:17 nguyên văn: \"Phước thay người nào Đức Chúa Trời sửa phạt! Chớ khinh dể sự trách phạt của Đấng Toàn Năng.\" Đáp án đúng phản ánh chính xác trọn vẹn lời khuyên của Ê-li-pha về thái độ đối với sự sửa dạy từ Đức Chúa Trời.\n\nCác đáp án sai: 1) (almost-right, wrong_detail) Sai chi tiết 'Thương xót' thay vì 'sửa phạt' — thay đổi nghĩa gốc, dù phần sau đúng cấu trúc; 2) (true_but_off) Nội dung lấy từ ngữ cảnh xung quanh nhưng 'sự khốn khó Gióp chịu đựng' không phải là đối tượng trực tiếp của câu Gióp 5:17; 3) (wrong_scope) Mở rộng sai phạm vi, tập trung vào hậu quả phước hạnh chứ không phải thái độ đối với sự sửa phạt của Đấng Toàn Năng.",
     "language": "vi",
     "options": [
       "Sửa phạt, chớ khinh dể sự trách phạt của Đấng Toàn Năng",
-      "Ban phúc",
-      "Bảo vệ",
-      "Yêu thương"
+      "Thương xót, chớ khinh dể sự trách phạt của Đấng Toàn Năng",
+      "Sửa phạt, chớ khinh dể sự khốn khó Gióp chịu đựng",
+      "Sửa phạt, chớ khinh dể người được ban phước dư dật"
     ],
     "tags": [
       "Cựu Ước",
@@ -302,14 +302,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Gióp 42:7-8 - Chúa phán với Ê-li-pha rằng Ngài nổi giận với ba người bạn vì họ 'đã không nói về Ta cách chân thật như Gióp, tôi tớ Ta' (Bản Dịch 2011). Dù Gióp có than van, ông vẫn trung thực với Chúa, còn các bạn ông có những lý luận giáo lý gọn gàng nhưng lại không nói đúng về Chúa.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Họ không nói đúng về Chúa như Gióp' là chính xác vì Chúa phán trực tiếp: '... các ngươi chẳng có nói về ta cách xứng đáng như Gióp, kẻ tôi tớ ta' (Gióp 42:7, 8).\n\nDISTRACTOR SAI 1 ('Họ không nói đúng về những khổ nạn Gióp đã chịu'): Sai phạm vi. Mặc dù các bạn Gióp có bàn về nguyên nhân khổ nạn của ông, nhưng lời quở trách trực tiếp của Chúa là về việc họ 'nói về ta' (Chúa) không xứng đáng, chứ không phải về việc họ mô tả khổ nạn của Gióp.\n\nDISTRACTOR SAI 2 ('Họ không đến an ủi Gióp đúng lúc như Chúa dặn'): Sai chi tiết. Không có chi tiết nào trong Kinh Thánh cho thấy Chúa đã dặn họ đến an ủi Gióp vào một thời điểm cụ thể. Họ đã đến ngồi với Gióp bảy ngày (Gióp 2:11-13), nhưng lời quở trách sau đó không liên quan đến thời điểm an ủi.\n\nDISTRACTOR SAI 3 ('Họ không tôn trọng Gióp khi ông đang tranh luận'): Đúng văn bản nhưng lạc câu hỏi. Trong các cuộc tranh luận, thái độ của các bạn có thể thiếu tôn trọng (Gióp 12:2; 16:2), nhưng lý do Chúa quở trách được nêu rõ trong 42:7-8 là về nội dung lời nói của họ về Chúa, không phải về thái độ đối với Gióp.",
     "language": "vi",
     "verseEnd": 8,
     "options": [
       "Họ không nói đúng về Chúa như Gióp",
-      "Họ thờ tượng",
-      "Họ không cầu nguyện",
-      "Họ bỏ Gióp"
+      "Họ không nói đúng về những khổ nạn Gióp đã chịu",
+      "Họ không đến an ủi Gióp đúng lúc như Chúa dặn",
+      "Họ không tôn trọng Gióp khi ông đang tranh luận"
     ],
     "tags": [
       "Cựu Ước",
@@ -355,13 +355,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Gióp 3:1 — 'Sau việc ấy, Gióp mở miệng rủa ngày sinh mình.'",
+    "explanation": "Trong Gióp 3:1, Kinh Thánh ghi: \"Sau đó, Gióp mở miệng và nguyền rủa ngày sinh mình.\" Vì vậy, đáp án đúng là \"Ngày sinh mình\". \n\n- Distractor \"Những người bạn mình\" sai vì mặc dù các bạn của Gióp xuất hiện trong các đoạn gần đó (chương 2), nhưng trong câu 3:1 cụ thể, đối tượng bị nguyền rủa không phải là họ. \n- Distractor \"Ngày chết mình\" là đáp án gần đúng nhưng sai chi tiết then chốt. Gióp nguyền rủa ngày sinh (câu 3) và ước ao ngày chết (câu 20-21), nhưng câu hỏi hỏi cụ thể về điều ông \"nguyền rủa\" trong câu 1. \n- Distractor \"Người vợ mình\" sai vì đây là một hiểu lầm phổ biến dựa trên lời khuyên của vợ ông trong Gióp 2:9 (\"Hãy nguyền rủa Đức Chúa Trời và chết đi!\"), nhưng trong 3:1, Gióp không nguyền rủa bà.",
     "language": "vi",
     "options": [
-      "Bạn bè ông",
+      "Những người bạn mình",
       "Ngày sinh mình",
-      "Sa-tan",
-      "Vợ ông"
+      "Ngày chết mình",
+      "Người vợ mình"
     ],
     "tags": [
       "Cựu Ước",
@@ -381,13 +381,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Gióp 4:7 — 'Ông hãy suy xét lại, ai là người vô tội bị hư mất? Đâu có người ngay thẳng lại bị trừ diệt?'",
+    "explanation": "Trong Gióp 4:7, Ê-li-pha hỏi Gióp: \"Hãy nhớ lại: kẻ nào vô tội bị hư mất, và ở đâu người ngay thẳng bị trừ diệt?\" (BTT). Câu này mang hàm ý phủ định, thể hiện quan điểm của Ê-li-pha rằng người vô tội không bao giờ bị diệt vong, và ông dùng điều này để chất vấn Gióp. Do đó, đáp án đúng là \"Ê-li-pha cho rằng kẻ vô tội không hề bị diệt\".\n\nCác đáp án sai:\n1. \"Ê-li-pha cho rằng người vô tội đôi khi vẫn chyểu vì thử thách\" là gần đúng nhưng sai chi tiết then chốt: Ê-li-pha không hề đề cập đến lý do \"thử thách\" và quan điểm của ông là tuyệt đối (không hề bị diệt), không có ngoại lệ \"đôi khi\".\n2. \"Ê-li-pha cho rằng kẻ vô tội thường xuyên bị diệt\" sai hoàn toàn với ý chính của câu Kinh Thánh, nơi Ê-li-pha đưa ra một câu hỏi tu từ với kỳ vọng câu trả lời là \"không\".\n3. \"Ê-li-pha cho rằng chỉ có kẻ gian ác mới bị diệt\" là một hiểu lầm phổ biến khi suy diễn rộng ra từ quan điểm của Ê-li-pha. Mặc dù ngữ cảnh có thể gợi ý điều này, nhưng trong câu 7 cụ thể, Ê-li-pha chỉ tập trung khẳng định về số phận của người vô tội, không trực tiếp phát biểu về kẻ gian ác.",
     "language": "vi",
     "options": [
       "Ê-li-pha cho rằng kẻ vô tội không hề bị diệt",
-      "Người vô tội luôn chết sớm",
-      "Người vô tội thường bị hành hạ",
-      "Không ai vô tội cả"
+      "Ê-li-pha cho rằng người vô tội đôi khi vẫn chết yểu vì thử thách",
+      "Ê-li-pha cho rằng kẻ vô tội thường xuyên bị diệt",
+      "Ê-li-pha cho rằng chỉ có kẻ gian ác mới bị diệt"
     ],
     "tags": [
       "Cựu Ước",
@@ -407,13 +407,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Gióp 14:1 — 'Loài người bởi người nữ sanh ra, sống tạm ít ngày, bị đầy dẫy sự khốn khổ.'",
+    "explanation": "Câu hỏi hỏi về mô tả trong Gióp 14:1. Đoạn Kinh Thánh chép: 'Loài người sanh bởi đàn bà, sống tạm ít ngày, đầy dẫy sự khốn khổ.' Vì vậy, đáp án đúng mô tả chính xác: 'Sống tạm ít ngày, đầy dẫy sự khốn khổ'.\n\nCác đáp án sai:\n1. 'Sống tạm ít ngày, đầy dẫy sự vui mừng': Sai chi tiết. Câu này đúng cấu trúc 'sống tạm ít ngày' nhưng sai về trạng thái được mô tả (vui mừng thay vì khốn khổ).\n2. 'Sống lâu dài, đầy dẫy sự khốn khổ': Sai phạm vi. Mặc dù có 'đầy dẫy sự khốn khổ', nó thay đổi đặc điểm then chốt về thời gian ('lâu dài' thay vì 'tạm ít ngày'), mâu thuẫn với ý chính của câu.\n3. 'Được tạo nên hoàn hảo, không tội lỗi': Hiểu lầm phổ biến. Đây có thể là một quan niệm hoặc ý từ nơi khác, nhưng hoàn toàn không phải mô tả trong Gióp 14:1, câu này nhấn mạnh sự ngắn ngủi và khổ đau của đời người.",
     "language": "vi",
     "options": [
-      "Đầy phước hạnh",
-      "Trường thọ và bình an",
+      "Sống tạm ít ngày, đầy dẫy sự vui mừng",
+      "Sống lâu dài, đầy dẫy sự khốn khổ",
       "Sống tạm ít ngày, đầy dẫy sự khốn khổ",
-      "Mạnh mẽ và oai vệ"
+      "Được tạo nên hoàn hảo, không tội lỗi"
     ],
     "tags": [
       "Cựu Ước",
@@ -433,12 +433,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Gióp 23:10 — 'Nhưng Chúa biết con đường tôi đi; khi Ngài đã thử rèn tôi, tôi sẽ ra như vàng.'",
+    "explanation": "Gióp 23:10 chép: 'Nhưng Ngài biết đường tôi đi; Ngài thử tôi, tôi sẽ ra như vàng.' Đáp án đúng 'Sẽ ra như vàng' trực tiếp trích từ câu Kinh Thánh, mô tả kết quả tốt đẹp và tinh luyện sau khi được Đức Chúa Trời thử nghiệm.\n\nCác đáp án sai sai vì:\n- 'Sẽ tan như sương' (nearby_passage): Đây là hình ảnh về sự phù du, có thể liên tưởng đến các đoạn Kinh Thánh khác nói về đời người, nhưng không xuất hiện trong ngữ cảnh Gióp 23:10 hay mô tả kết quả của sự thử nghiệm.\n- 'Sẽ bền như đá' (common_misconception): Đây là một cách diễn đạt phổ biến về sự vững chắc, nhưng không phải là ẩn dụ Kinh Thánh dùng trong câu này để miêu tả quá trình thử luyện cá nhân của Gióp.\n- 'Sẽ sáng như bạc' (wrong_detail): Đây là đáp án gần đúng vì cũng dùng kim loại quý và quá trình luyện kim làm ẩn dụ, nhưng câu Kinh Thánh ghi chính xác là 'vàng' chứ không phải 'bạc', sai một chi tiết then chốt.",
     "language": "vi",
     "options": [
-      "Sẽ tan biến như khói",
-      "Sẽ chết yểu",
-      "Sẽ rút lui khỏi đức tin",
+      "Sẽ tan như sương",
+      "Sẽ bền như đá",
+      "Sẽ sáng như bạc",
       "Sẽ ra như vàng"
     ],
     "tags": [
@@ -459,13 +459,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Gióp 31:1 — 'Tôi đã lập giao ước với mắt tôi: Vậy, làm sao tôi còn dám nhìn người nữ đồng trinh?'",
+    "explanation": "Đáp án đúng là 'Với mắt mình' (Gióp 31:1: 'Ta đã lập ước với mắt ta...'), thể hiện lời thề kiêng cữ khỏi sự ham muốn. Distractor 'Với tâm trí mình' là gần đúng (gần với ý tưởng nội tâm) nhưng sai chi tiết then chốt vì câu Kinh Thánh trực tiếp nói đến 'mắt'. Distractor 'Với lời nói mình' dựa trên hiểu lầm phổ biến về hình thức của một giao ước (thường liên quan đến lời), nhưng không phải điều Gióp đề cập trong câu này. Distractor 'Với đôi tay mình' tuy có thể liên quan đến hành động (một phạm trù khác trong chương) nhưng lạc với câu hỏi cụ thể về Gióp 31:1.",
     "language": "vi",
     "options": [
-      "Với miệng mình",
+      "Với tâm trí mình",
       "Với mắt mình",
-      "Với chân mình",
-      "Với tay mình"
+      "Với lời nói mình",
+      "Với đôi tay mình"
     ],
     "tags": [
       "Cựu Ước",

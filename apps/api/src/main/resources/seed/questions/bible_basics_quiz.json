@@ -35,15 +35,15 @@
     "type": "multiple_choice_single",
     "content": "Theo Thi Thiên 139:7-12, đặc tính nào của Đức Chúa Trời được mô tả rõ nhất?",
     "options": [
-      "Sự toàn năng (làm được mọi sự)",
+      "Sự toàn tại (có mặt khắp nơi) và toàn năng (làm được mọi sự)",
       "Sự toàn tại (có mặt khắp nơi) và toàn tri (biết mọi sự)",
-      "Sự yêu thương và thánh khiết",
-      "Chỉ là một khái niệm tinh thần"
+      "Sự thánh khiết và công bình trong sự phán xét",
+      "Sự nhân từ và thương xót đối với dân sự Ngài"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Thi Thiên 139:7-12 mô tả rõ ràng rằng con người không thể trốn khỏi Thần của Đức Chúa Trời, dù lên trời, xuống âm phủ, hay ở nơi xa xăm tối tăm, vì Ngài hiện diện ở khắp nơi (toàn tại) và sự tối tăm cũng chẳng giấu được gì với Ngài (toàn tri).",
+    "explanation": "Đoạn Kinh Thánh Thi Thiên 139:7-12 mô tả cụ thể việc Đức Chúa Trời hiện diện khắp nơi (dưới biển, trên trời, trong Âm phủ, nơi tối tăm) và sự hiểu biết của Ngài về mọi nơi đó, làm nổi bật đặc tính toàn tại (omnipresence) và toàn tri (omniscience).\n- Đáp án đúng đúng vì nó tóm tắt chính xác hai đặc tính chính được nhấn mạnh trong đoạn văn: sự hiện diện phổ quát và sự hiểu biết trọn vẹn.\n- Distractor 1 sai vì nó thay thế 'toàn tri' (biết mọi sự) bằng 'toàn năng' (làm được mọi sự). Dù đoạn văn bao hàm quyền năng, trọng tâm chính là sự hiện diện và tri thức, không phải hành động quyền năng.\n- Distractor 2 sai vì nó đề cập đến các phẩm tính (thánh khiết, công bình) không được nhắc đến hay ngụ ý trong phạm vi câu hỏi (139:7-12). Đây là lỗi mở rộng phạm vi sang các chủ đề khác.\n- Distractor 3 sai vì nó phản ánh một hiểu lầm phổ biến khi áp dụng các đặc tính nhân từ chung của Đức Chúa Trời trong Kinh Thánh, nhưng đoạn cụ thể này không tập trung vào lòng thương xót đối với dân sự, mà vào sự hiện diện và tri thức phổ quát của Ngài.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
@@ -86,15 +86,15 @@
     "type": "multiple_choice_single",
     "content": "Chúa Jesus là ai?",
     "options": [
-      "Một nhà tiên tri vĩ đại",
-      "Một người thầy về đạo đức",
+      "Đức Chúa Trời trong ý niệm, Con Đức Chúa Trời, Đấng Cứu Thế",
+      "Đấng nhập thể của các tạo vật, Con Đức Chúa Trời, Đấng Cứu Thế",
       "Đức Chúa Trời nhập thể, Con Đức Chúa Trời, Đấng Cứu Thế",
-      "Một thiên sứ đặc biệt"
+      "Sứ giả của Đức Chúa Trời, Con Đức Chúa Trời, Đấng Cứu Thế"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Cô-lô-se 2:9 dạy: \"Vì trong Ngài có tất cả sự đầy đủ của thần tính ngự trong thân thể.\" (Bản Dịch 1925). Chúa Jesus vừa là Đức Chúa Trời thật vừa là Người thật. Ngài là Con Đức Chúa Trời, đã nhập thể làm người để cứu chuộc nhân loại.",
+    "explanation": "Đáp án đúng là 'Đức Chúa Trời nhập thể, Con Đức Chúa Trời, Đấng Cứu Thế'. Câu Cô-lô-se 2:9 viết: 'Vì sự đầy dẫy của bản thể Đức Chúa Trời thảy đều ở trong Đấng Christ như có hình thể', xác nhận Chúa Jesus là Đức Chúa Trời nhập thể và là Con Đức Chúa Trời với vai trò Cứu Thế. Distractor thứ nhất sai vì thay từ 'nhập thể' bằng 'trong ý niệm', làm mất tính thể chất thật sự của sự nhập thể. Distractor thứ hai sai vì nói 'của các tạo vật', thu hẹp phạm vi và sự cao trọng của Ngài là Đấng sáng tạo. Distractor thứ ba sai do hiểu lầm phổ biến rằng Chúa Jesus chỉ là sứ giả, đánh đồng Ngài với thiên sứ hoặc tiên tri thay vì là chính Đức Chúa Trời.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
@@ -139,15 +139,15 @@
     "type": "multiple_choice_single",
     "content": "Điều gì đã xảy ra sau khi Chúa Jesus chịu chết?",
     "options": [
-      "Các môn đồ chôn cất Ngài và Ngài ở trong mộ mãi mãi",
+      "Ngài đã sống lại từ kẻ chết vào ngày thứ nhất",
       "Ngài đã sống lại từ kẻ chết vào ngày thứ ba",
-      "Linh hồn Ngài bay về trời, thân xác ở lại",
-      "Ngài hóa thành thiên sứ"
+      "Ngài đã được tôn làm Chúa ngay sau sự chết",
+      "Ngài đã được an táng trong mộ của người giàu"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Cô-rinh-tô 15:3-4 dạy rõ: Đấng Christ chịu chết vì tội chúng ta theo lời Kinh Thánh, đã chôn, đến ngày thứ ba được sống lại. Sự phục sinh là sự kiện trung tâm của đức tin Cơ-đốc.",
+    "explanation": "Theo 1 Cô-rinh-tô 15:3-4, trọng tâm sứ điệp được truyền lại là: \"Đấng Christ chịu chết vì tội lỗi chúng ta theo lời Kinh Thánh; Ngài đã bị chôn, đến ngày thứ ba, Ngài sống lại, theo lời Kinh Thánh.\" Do đó, đáp án đúng nêu đúng sự kiện sống lại và thời điểm 'ngày thứ ba' được Kinh Thánh xác định rõ.\n\nCác đáp án sai:\n1. 'Ngài đã sống lại từ kẻ chết vào ngày thứ nhất' sai vì thời điểm sống lại là 'ngày thứ ba', không phải 'ngày thứ nhất' (sai chi tiết số).\n2. 'Ngài đã được tôn làm Chúa ngay sau sự chết' sai vì mặc dù Phao-lô nói đến việc Đấng Christ đã được tôn lên (chẳng hạn trong thư tín khác), nhưng trong đoạn Kinh Thánh tham chiếu (câu 3-4) không hề đề cập đến sự kiện này xảy ra 'ngay sau' cái chết; phạm vi câu hỏi chỉ hỏi về điều xảy ra 'sau khi Chúa Jesus chịu chết' trong ngữ cảnh trực tiếp của 1 Cô-rinh-tô 15:3-4, và đoạn này chỉ liệt kê: chịu chết, bị chôn, sống lại ngày thứ ba.\n3. 'Ngài đã được an táng trong mộ của người giàu' sai vì mặc dù đây là chi tiết đúng theo các sách Phúc Âm (như Ma-thi-ơ 27:57-60), nhưng nó không nằm trong đoạn tham chiếu 1 Cô-rinh-tô 15:3-4; đoạn này chỉ nói chung 'Ngài đã bị chôn' mà không mô tả chi tiết về ngôi mộ. Hơn nữa, sự an táng là sự kiện xảy ra trước, chứ không phải 'sau khi chịu chết' theo trình tự diễn giải của câu hỏi.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
@@ -165,15 +165,15 @@
     "type": "multiple_choice_single",
     "content": "Con người được tạo dựng như thế nào?",
     "options": [
-      "Tiến hóa từ loài vượn",
-      "Ngẫu nhiên xuất hiện",
+      "Đức Chúa Trời tạo dựng theo hình ảnh thiên thần",
+      "Con người được hình thành dần qua quá trình tiến hóa",
       "Đức Chúa Trời tạo dựng theo hình ảnh của Ngài",
-      "Do thiên sứ tạo ra"
+      "Con người là kết quả từ nỗ lực của các sinh vật tiên tổ"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng Thế Ký 1:27 dạy rằng Đức Chúa Trời đã trực tiếp tạo dựng con người theo hình ảnh của Ngài (imago Dei), khác biệt hoàn toàn với muôn loài khác.",
+    "explanation": "Câu trả lời đúng là 'Đức Chúa Trời tạo dựng theo hình ảnh của Ngài' vì Sáng thế ký 1:27 chép rõ: 'Đức Chúa Trời dựng nên loài người như hình Ngài'. Các đáp án sai: 1) 'theo hình ảnh thiên thần' là sai chi tiết quan trọng, bởi Kinh Thánh (Sáng 1:27) chỉ nói 'hình Ngài' (Đức Chúa Trời), không phải hình thiên thần. 2) 'qua quá trình tiến hóa' là một hiểu lầm phổ biến theo một thuyết tự nhiên, trái ngược với ghi chép sáng tạo trực tiếp của Kinh Thánh (Sáng 1:26-27). 3) 'từ nỗ lực của các sinh vật tiên tổ' tuy là một cách giải thích về nguồn gốc của một số thuyết, nhưng nó không tương ứng với câu hỏi trực tiếp về cách thức tạo dựng con người theo Kinh Thánh Sáng thế ký 1:27.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
@@ -218,15 +218,15 @@
     "type": "multiple_choice_single",
     "content": "Làm thế nào để được cứu rỗi?",
     "options": [
-      "Làm nhiều việc thiện",
-      "Giữ luật pháp và đi nhà thờ đều đặn",
+      "Bởi việc làm tốt và vâng giữ luật pháp",
+      "Bởi đức tin nơi Chúa Jesus và bởi việc làm",
       "Bởi đức tin nơi Chúa Jesus, không phải bởi việc làm",
-      "Phải hoàn hảo về đạo đức"
+      "Bởi sự lựa chọn và quyết định của con người"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Ê-phê-sô 2:8-9: 'Vì nhờ ân điển, bởi đức tin mà anh em được cứu, điều đó không phải đến từ anh em, bèn là sự ban cho của Đức Chúa Trời. Ấy chẳng phải bởi việc làm đâu, hầu cho không ai khoe mình.'",
+    "explanation": "Ê-phê-sô 2:8-9 dạy rõ: 'Vả, ấy là nhờ ân điển, bởi đức tin, mà anh em được cứu, điều đó không phải đến từ anh em, bèn là sự ban cho của Đức Chúa Trời. Ấy chẳng phải bởi việc làm đâu, hầu cho không ai khoe mình.' Vì vậy, đáp án đúng là 'Bởi đức tin nơi Chúa Jesus, không phải bởi việc làm', vì sự cứu rỗi là món quà của ân điển nhận được bởi đức tin, không thể do công đức con người.\n\nDistractor 1 ('Bởi việc làm tốt và vâng giữ luật pháp') SAI vì nó trái ngược với nguyên tắc 'chẳng phải bởi việc làm' trong câu 9, đây là một hiểu lầm phổ biến.\nDistractor 2 ('Bởi đức tin nơi Chúa Jesus và bởi việc làm') SAI vì nó thêm yếu tố 'việc làm' vào đức tin, làm sai lệch sự dạy dỗ rõ ràng của phân đoạn này, dù nghe có vẻ gần đúng.\nDistractor 3 ('Bởi sự lựa chọn và quyết định của con người') SAI vì nó mở rộng phạm vi ra khỏi trọng tâm của phân đoạn (ân điển và đức tin), tập trung vào nỗ lực của con người thay vì sự ban cho của Đức Chúa Trời.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",

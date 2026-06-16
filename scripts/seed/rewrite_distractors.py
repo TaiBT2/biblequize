@@ -235,7 +235,8 @@ def rewrite_one(q: dict, max_attempts: int, verify: bool = True) -> dict:
         if avoid:
             prompt += "\n\nTRÁNH các phương án sau (vì cũng đúng/đồng nghĩa với đáp án đúng): " + "; ".join(sorted(avoid))
         try:
-            obj = parse_obj(call_bedrock(prompt, 0.6 + 0.1 * attempt))
+            # Bedrock caps temperature at 1.0 — clamp so the last attempts don't error out.
+            obj = parse_obj(call_bedrock(prompt, min(1.0, 0.6 + 0.1 * attempt)))
         except (ClientError, ValueError, json.JSONDecodeError) as e:
             last = f"call/parse: {e}"
             time.sleep(1.5 * (attempt + 1))
@@ -272,17 +273,25 @@ def load_progress() -> dict:
     return {}
 
 
-def save_json(path: Path, data) -> None:
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+def _serialize(data, trailing: bool) -> str:
+    return json.dumps(data, ensure_ascii=False, indent=2) + ("\n" if trailing else "")
+
+
+def save_json(path: Path, data, trailing: bool) -> None:
+    path.write_text(_serialize(data, trailing), encoding="utf-8")
 
 
 def roundtrip_ok(path: Path, data) -> bool:
-    """True if re-serializing matches the file byte-for-byte (clean-diff guard)."""
-    return path.read_text(encoding="utf-8") == json.dumps(data, ensure_ascii=False, indent=2) + "\n"
+    """True if re-serializing matches the file (clean-diff guard). Preserves each
+    file's own trailing-newline state (some seed files have none)."""
+    orig = path.read_text(encoding="utf-8")
+    return orig == _serialize(data, orig.endswith("\n"))
 
 
 def process_file(path: Path, progress: dict, args, report: list, lock: threading.Lock) -> None:
-    data = json.loads(path.read_text(encoding="utf-8"))
+    raw = path.read_text(encoding="utf-8")
+    trailing = raw.endswith("\n")
+    data = json.loads(raw)
     if not roundtrip_ok(path, data):
         print(f"[SKIP] {path.name}: format mismatch — would dirty whole file, refusing.")
         return
@@ -323,8 +332,9 @@ def process_file(path: Path, progress: dict, args, report: list, lock: threading
             print(f"  - {entry['ref']}: {res['status']} ({res.get('note')})")
 
     if changed and not args.dry_run:
-        save_json(path, data)
-        PROGRESS_FILE.write_text(json.dumps(progress, ensure_ascii=False, indent=2), encoding="utf-8")
+        save_json(path, data, trailing)
+        with lock:
+            PROGRESS_FILE.write_text(json.dumps(progress, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"[WROTE] {path.name}: {changed} câu cập nhật.")
     elif args.dry_run:
         print(f"[DRY] {path.name}: {changed} câu sẽ cập nhật (không ghi).")
@@ -333,7 +343,8 @@ def process_file(path: Path, progress: dict, args, report: list, lock: threading
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--books", default="genesis", help="'all' hoặc list slug ngăn cách dấu phẩy (vd genesis,exodus)")
-    ap.add_argument("--workers", type=int, default=6)
+    ap.add_argument("--workers", type=int, default=6, help="question workers PER book")
+    ap.add_argument("--file-workers", type=int, default=4, help="số sách chạy song song")
     ap.add_argument("--max-attempts", type=int, default=4)
     ap.add_argument("--limit", type=int, default=0, help="chỉ N câu đầu mỗi file (smoke test)")
     ap.add_argument("--dry-run", action="store_true")
@@ -357,8 +368,17 @@ def main():
     report: list = []
     lock = threading.Lock()
     t0 = time.time()
-    for f in files:
-        process_file(f, progress, args, report, lock)
+
+    def safe_process(f):
+        try:
+            process_file(f, progress, args, report, lock)
+        except Exception as e:  # one bad file must not abort the whole run
+            print(f"[ERROR] {f.name}: {e}")
+
+    # Book-level parallelism: process several files at once, each with its own
+    # question workers. Total concurrent Bedrock calls ≈ file_workers × workers.
+    with cf.ThreadPoolExecutor(max_workers=args.file_workers) as ex:
+        list(ex.map(safe_process, files))
 
     REPORT_FILE.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     by = {}

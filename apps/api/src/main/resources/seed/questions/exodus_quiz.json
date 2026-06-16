@@ -35,15 +35,15 @@
     "type": "multiple_choice_single",
     "content": "Pha-ra-ôn ra lệnh cho hai bà mụ người Hê-bơ-rơ tên gì?",
     "options": [
-      "Ra-chên và Lê-a",
-      "Đê-bô-ra và Ra-háp",
-      "Mi-ri-am và Giốc-bết",
+      "Siếp-ra và Giê-rê-mi",
+      "Ê-li-sê-bét và A-xa-ria",
+      "Hạt-san và Mô-áp",
       "Siếp-ra và Phu-a"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 1:15 — 'Vua Ai Cập cũng nói với các bà mụ người Hê-bơ-rơ, một người tên Siếp-ra, người kia tên Phu-a.'",
+    "explanation": "Xuất Ê-díp-tô Ký 1:15-16 ghi rõ: \"Vua xứ Ê-díp-tô cũng phán cùng các bà mụ của người Hê-bơ-rơ, một người tên Siếp-ra và một người tên Phu-a\". Do đó, đáp án đúng là Siếp-ra và Phu-a.\n\n- **Siếp-ra và Giê-rê-mi** sai vì Phu-a bị thay bằng tên Giê-rê-mi, một tiên tri sống sau này.\n- **Ê-li-sê-bét và A-xa-ria** sai vì đây là tên cha mẹ của Giăng Báp-tít (Lu-ca 1:5-13), không liên quan đến đoạn Kinh Thánh này.\n- **Hạt-san và Mô-áp** sai vì đây là tên các địa điểm/dân tộc được nhắc đến trong các sách khác, không phải tên người trong câu chuyện này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -60,15 +60,15 @@
     "type": "multiple_choice_single",
     "content": "Mẹ Môi-se đặt ông vào đâu để thả trên sông Nin?",
     "options": [
-      "Một chiếc thuyền gỗ",
-      "Một chiếc hòm bằng đồng",
-      "Một tấm ván lớn",
+      "Một chiếc thuyền gỗ nhỏ có đậy nắp",
+      "Một tấm bè bằng lau sậy và bùn khô",
+      "Một chiếc nôi bằng len và da thú",
       "Một chiếc giỏ mây trát chai và nhựa thông"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 2:3 — 'Bà lấy một chiếc giỏ mây, trát chai và nhựa thông, đặt đứa bé vào rồi thả trong đám sậy ở bờ sông.'",
+    "explanation": "Xuất Ê-díp-tô Ký 2:3 chép: 'nhưng không thể giấu con mình được nữa, bèn lấy một cái mây của người, trét chai và nhựa thông, thả đứa trẻ vào trong, rồi để mây đó trong đám sậy tại trên bờ sông.' Do đó, đáp án đúng là 'Một chiếc giỏ mây trát chai và nhựa thông' vì Kinh Thánh mô tả rõ vật liệu. Distractor 1 sai vì dùng chi tiết 'thuyền gỗ' và 'đậy nắp' không có trong bản văn. Distractor 2 là 'gần đúng' vì có 'lau sậy' (liên quan đến nơi để giỏ) và 'bùn', nhưng sai vật liệu chính của chiếc giỏ. Distractor 3 sai vì là một hiểu lầm phổ biến, lẫn lộn với hình ảnh một chiếc nôi thông thường, không phù hợp với bối cảnh Kinh Thánh.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -113,15 +113,15 @@
     "type": "multiple_choice_single",
     "content": "Vợ của Môi-se tên là gì?",
     "options": [
+      "Mạc-ca",
       "Mi-ri-am",
-      "Ha-ga",
       "Sê-phô-ra",
-      "Ra-chên"
+      "Ghi-sê-pa"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 2:21 — 'Môi-se bằng lòng ở với người ấy, và Rê-u-ên gả Sê-phô-ra, con gái mình, cho Môi-se.'",
+    "explanation": "Đáp án đúng là Sê-phô-ra. Xuất Ê-díp-tô Ký 2:21 chép: 'Môi-se bằng lòng ở cùng người nầy, nên người gả Sê-phô-ra, con gái mình, cho Môi-se.' (BTT).\n\nCác đáp án sai:\n- 'Mạc-ca': Sai chi tiết. Mạc-ca là tên một thần tượng (Các Quan Xét 17-18), không liên quan đến vợ của Môi-se.\n- 'Mi-ri-am': Sai do hiểu lầm phổ biến. Mi-ri-am là chị của Môi-se (Xuất Ê-díp-tô Ký 15:20), không phải vợ ông.\n- 'Ghi-sê-pa': Sai do nhầm đoạn gần. Ghi-sê-pa là tên một người trong dòng dõi Ma-na-se (Dân Số Ký 26:32; 27:1), xuất hiện trong sách Dân Số Ký, không liên quan đến hôn nhân của Môi-se.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -139,15 +139,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Chúa Trời hiện ra với Môi-se trong hình dạng gì?",
     "options": [
-      "Cột lửa",
+      "Cột lửa giữa trời",
       "Ngọn lửa cháy trong bụi gai",
-      "Đám mây lớn",
-      "Cầu vồng trên trời"
+      "Luồng sáng chiếu từ thiên đàng",
+      "Ngọn lửa cháy trên cành cây hạnh"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 3:2 — 'Thiên sứ của Đức Giê-hô-va hiện ra cùng Môi-se trong ngọn lửa từ giữa bụi gai.'",
+    "explanation": "Đáp án đúng là 'Ngọn lửa cháy trong bụi gai' (Xuất Ê-díp-tô Ký 3:2). Sự xuất hiện này được đặc tả là 'một ngọn lửa cháy ở giữa bụi gai, nhưng bụi gai chẳng bị thiêu đốt'.\n\nDistractor 1 ('Cột lửa giữa trời') SAI: Cột lửa là hình ảnh Chúa dẫn dân Y-sơ-ra-ên sau này trong cuộc xuất hành (Xuất 13:21), không phải cách Ngài hiện ra với Môi-se tại núi Hô-rếp lúc này. Chi tiết 'giữa trời' là mở rộng sai phạm vi.\n\nDistractor 2 ('Luồng sáng chiếu từ thiên đàng') SAI: Đây là một hiểu lầm phổ biến, mô tả chung chung về sự hiển linh, nhưng không phải là cách chính xác khi Kinh Thánh mô tả sự kiện tại bụi gai cháy. Không có chi tiết 'luồng sáng' trong câu chuyện này.\n\nDistractor 3 ('Ngọn lửa cháy trên cành cây hạnh') SAI: Đây là distractor gần đúng. Chi tiết này lấy cảm hứng từ các đoạn Kinh Thánh lân cận. 'Cây hạnh' được nhắc đến trong sự hiện ra của Chúa với Giê-rê-mi (Giê-rê-mi 1:11-12), nhưng ở Xuất Ê-díp-tô Ký 3:2, vật thể liên quan là 'bụi gai', không phải 'cây hạnh'. 'Trên cành' cũng thay đổi cách mô tả chính xác 'trong bụi'.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -218,15 +218,15 @@
     "type": "multiple_choice_single",
     "content": "Khi Đức Chúa Trời hỏi Môi-se đang cầm gì, Môi-se trả lời là gì?",
     "options": [
-      "Một thanh kiếm",
+      "Một con chiên",
       "Một cây gậy",
-      "Một cuốn sách",
-      "Một chiếc kèn"
+      "Một cành cây",
+      "Một bàn tay bị phung"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 4:2 — 'Đức Giê-hô-va phán: Tay con đang cầm gì? Ông thưa: Một cây gậy.'",
+    "explanation": "Xuất Ê-díp-tô Ký 4:2-3 ghi lại: 'Đức Giê-hô-va phán rằng: Trong tay ngươi cầm vật chi? Thưa rằng: Một cây gậy.' Vì vậy, đáp án 'Một cây gậy' là chính xác. Các đáp án sai: (1) 'Một con chiên' là chi tiết sai, không xuất hiện trong đoạn này. (2) 'Một cành cây' là phương án gần đúng nhưng sai chi tiết then chốt (đối tượng là 'cây gậy' chứ không phải 'cành cây'), dựa trên sự liên tưởng gần. (3) 'Một bàn tay bị phung' là chi tiết đúng trong cùng phân đoạn (Xh 4:6) nhưng lạc câu hỏi, vì câu hỏi chỉ hỏi về vật Môi-se đang cầm lúc ban đầu.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -244,15 +244,15 @@
     "type": "multiple_choice_single",
     "content": "Khi Môi-se nói mình không giỏi ăn nói, Đức Chúa Trời sai ai đi cùng ông?",
     "options": [
-      "Hô-sê",
+      "Giô-suê",
       "A-rôn",
-      "Ca-lép",
-      "Giô-suê"
+      "Bết-sa-lê-ên",
+      "Môi-se"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 4:14 — 'Đức Giê-hô-va nổi giận với Môi-se và phán: Chẳng phải có A-rôn, người Lê-vi, là anh con sao? Ta biết nó nói giỏi.'",
+    "explanation": "Trong Xuất Ê-díp-tô Ký 4:14, Đức Giê-hô-va phán với Môi-se: 'A-rôn, anh ngươi, người Lê-vi kia, ta biết người có tài ăn nói... Kìa, người đi ra đón ngươi... ngươi sẽ nói cùng người, và mở miệng ngươi ra... Vậy, ngươi sẽ nói cùng người, và mở miệng ngươi ra, để những lời đó vào miệng người; còn ta sẽ ở cùng miệng ngươi và miệng anh ngươi, dạy các ngươi những điều gì phải làm.' (BTT). Đây là lúc Đức Chúa Trời chỉ định A-rôn làm người phát ngôn cho Môi-se, vì Môi-se than phiền mình 'chậm nói, chậm miệng'. Đáp án 'A-rôn' là đúng.\n\nCác đáp án sai:\n- 'Giô-suê': là người hầu cận và kế vị Môi-se, nhưng xuất hiện ở phần sau của sách Xuất Ê-díp-tô Ký (vd: chương 17, 24), không phải là người được chỉ định trong bối cảnh này (4:14). Đây là lỗi nhầm passage gần.\n- 'Bết-sa-lê-ên': là thợ thủ công được Đức Chúa Trời ban tài năng để xây dựng Đền Tạm (Xuất Ê-díp-tô Ký 31:1-11), hoàn toàn không liên quan đến nhiệm vụ làm phát ngôn viên trong chương 4. Đây là lỗi sai phạm vi.\n- 'Môi-se': là người đang nói chuyện với Đức Chúa Trời và nhận được sự giúp đỡ, không phải là người được sai đến để đi cùng chính mình. Đây là lỗi hiểu lầm phổ biến (nghĩ rằng Môi-se tự mình làm).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -270,15 +270,15 @@
     "type": "multiple_choice_single",
     "content": "Môi-se và A-rôn nói gì với Pha-ra-ôn?",
     "options": [
-      "Hãy cho chúng tôi vàng",
-      "Hãy thả tù nhân",
-      "Hãy giao đất cho chúng tôi",
+      "Hãy để dân ta đi thờ phượng các thần của mình",
+      "Hãy để dân ta đi tế lễ tại đồng bằng",
+      "Hãy để dân ta trở về vùng đất của mình",
       "Hãy để dân ta đi thờ phượng Đức Giê-hô-va"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 5:1 — 'Đức Giê-hô-va, Đức Chúa Trời của Y-sơ-ra-ên, phán: Hãy để cho dân Ta đi, để họ giữ lễ cho Ta trong hoang mạc.'",
+    "explanation": "Xuất Ê-díp-tô Ký 5:1 ghi: \"Môi-se và A-rôn bèn đến nói cùng Pha-ra-ôn rằng: Giê-hô-va, Đức Chúa Trời của Y-sơ-ra-ên, có phán như vầy: Hãy cho dân ta đi, đặng nó giữ một lễ cho ta tại đồng vắng.\" Do đó, đáp án đúng là \"Hãy để dân ta đi thờ phượng Đức Giê-hô-va\", tóm tắt trung thành mệnh lệnh này.\n\n- Distractor 1 (\"Hãy để dân ta đi thờ phượng các thần của mình\") SAI vì mệnh lệnh cụ thể là thờ phượng Đức Giê-hô-va, Đức Chúa Trời của Y-sơ-ra-ên, chứ không phải các thần nói chung (sai chi tiết then chốt).\n- Distractor 2 (\"Hãy để dân ta đi tế lễ tại đồng bằng\") SAI vì địa điểm được nói đến trong câu này là \"đồng vắng\" (sa mạc), không phải \"đồng bằng\" (nhầm với chi tiết từ các phân đoạn khác nói về địa lý).\n- Distractor 3 (\"Hãy để dân ta trở về vùng đất của mình\") SAI vì mục đích được nêu trong câu 1 là đi để \"giữ một lễ\" (thờ phượng) tạm thời, chứ chưa phải là trở về vùng đất Ca-na-an vĩnh viễn (đúng ý tổng thể nhưng lạc trọng tâm câu hỏi về nội dung trực tiếp).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -300,7 +300,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 5:7 — 'Các ngươi đừng cung cấp rơm cho dân chúng làm gạch như trước nữa, hãy bắt chúng tự đi kiếm rơm lấy.'",
+    "explanation": "Xuất Ê-díp-tô Ký 5:7-8 ghi lại mệnh lệnh của Pha-ra-ôn: 'Các ngươi chớ cấp rơm cho dân sự đặng làm gạch như trước nữa; họ phải tự đi kiếm lấy rơm. Nhưng số gạch trước kia họ đã làm bao nhiêu, thì bây giờ cũng cứ đòi họ y vậy; chớ trừ bớt chút nào.' Vì thế, đáp án đúng là 'Không cung cấp rơm nữa, bắt họ tự đi kiếm rơm'.\n\nCác phương án sai:\n- 'Không cung cấp rơm nữa, bắt họ tự đi kiếm củi': Sai chi tiết (wrong_detail). Câu Kinh Thánh nói rõ là 'tự đi kiếm lấy rơm', không phải củi. Đây là distractor gần đúng.\n- 'Đuổi người Y-sơ-ra-ên ra khỏi xứ Ê-díp-tô ngay lập tức': Sai phạm vi (wrong_scope). Hành động này không xảy ra trong đoạn Kinh Thánh tham chiếu; đây là hậu quả sau này.\n- 'Bắt họ phải làm gạch gấp đôi số lượng trước đây': Đúng văn bản nhưng lạc câu hỏi (true_but_off). Trong cùng đoạn, Pha-ra-ôn đòi số gạch không giảm, nhưng không phải là gấp đôi. Câu hỏi hỏi về lệnh trực tiếp sau cuộc gặp, và lệnh này không phải là 'gấp đôi'.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -311,10 +311,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Tăng số rơm phát cho họ",
+      "Không cung cấp rơm nữa, bắt họ tự đi kiếm củi",
       "Không cung cấp rơm nữa, bắt họ tự đi kiếm rơm",
-      "Tha cho họ đi thờ phượng",
-      "Thả họ về đất hứa"
+      "Đuổi người Y-sơ-ra-ên ra khỏi xứ Ê-díp-tô ngay lập tức",
+      "Bắt họ phải làm gạch gấp đôi số lượng trước đây"
     ]
   },
   {
@@ -353,15 +353,15 @@
     "type": "multiple_choice_single",
     "content": "Cha mẹ của Môi-se tên là gì?",
     "options": [
-      "Kê-hát và Mi-ri-am",
-      "Mê-ra-ri và Lê-a",
+      "Am-ram và Ê-li-sê-ba",
+      "Hếp-rôn và Giốc-bết",
       "Am-ram và Giốc-bết",
-      "Ghẹt-sôn và Sê-phô-ra"
+      "Môi-se và Sê-phô-ra"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 6:20 — 'Am-ram cưới Giốc-bết, em gái của cha mình, và nàng sinh cho ông A-rôn và Môi-se.'",
+    "explanation": "ĐÁP ÁN ĐÚNG: Xuất Ê-díp-tô Ký 6:20 chép rõ: 'Am-ram cưới Giốc-bết, là cô mình, làm vợ; nàng sanh A-rôn và Môi-se...'. Vậy cha mẹ của Môi-se là Am-ram và Giốc-bết.\n\nVÌ SAO CÁC PHƯƠNG ÁN SAI:\n- 'Am-ram và Ê-li-sê-ba': Ê-li-sê-ba là vợ của A-rôn (Xuất 6:23), không phải mẹ của Môi-se. Đây là chi tiết sai trong cùng một bối cảnh gia phả.\n- 'Hếp-rôn và Giốc-bết': Hếp-rôn là tên một thành (hoặc người khác), không phải cha của Môi-se. Tên này xuất hiện trong các sách khác, không có trong đoạn tham chiếu, gây nhầm lẫn với người đọc lướt.\n- 'Môi-se và Sê-phô-ra': Đây là chính Môi-se và vợ của ông (Xuất 2:21), không phải cha mẹ của ông. Phương án này đúng về mặt nhân vật trong Kinh Thánh nhưng hoàn toàn lạc đề so với câu hỏi hỏi về cha mẹ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -380,15 +380,15 @@
     "type": "multiple_choice_single",
     "content": "Khi A-rôn ném gậy trước mặt Pha-ra-ôn, gậy biến thành gì?",
     "options": [
-      "Một dòng nước",
-      "Một cây to lớn",
-      "Một ngọn lửa",
+      "Một con cóc",
+      "Một cây gậy khác",
+      "Một vũng nước",
       "Một con rắn"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 7:10 — 'A-rôn ném cây gậy xuống trước mặt Pha-ra-ôn và trước mặt các triều thần, gậy liền hóa ra rắn.'",
+    "explanation": "Xuất Ê-díp-tô Ký 7:10 (BTT) chép: 'A-rôn bèn ném gậy mình xuống trước mặt Pha-ra-ôn và quần thần, gậy liền hóa thành một con rắn.' Vì vậy, đáp án đúng là 'Một con rắn'. \n- Distractor 'Một con cóc' sai vì đây là tai vạ thứ hai (Xuất Ê-díp-tô Ký 8:2-3), xảy ra sau sự kiện này, thuộc passage gần nhưng không phải câu trả lời cho câu hỏi cụ thể về hành động ném gậy của A-rôn trước mặt Pha-ra-ôn. \n- Distractor 'Một cây gậy khác' sai vì chi tiết không chính xác; phép lạ là gậy biến thành một sinh vật sống (rắn), chứ không phải thành một vật thể vô tri tương tự. \n- Distractor 'Một vũng nước' sai vì mặc dù nước biến thành máu là tai vạ đầu tiên (Xuất Ê-díp-tô Ký 7:20) và có liên quan đến cây gậy, nhưng đây không phải là kết quả của hành động 'ném gậy' của A-rôn trước mặt Pha-ra-ôn được mô tả trong các câu 10-12; nó lạc khỏi câu hỏi cụ thể.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -438,7 +438,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 8:6 — 'A-rôn giơ tay trên các sông ngòi ao hồ xứ Ai Cập, ếch nhái liền tràn lên phủ khắp đất Ai Cập.'",
+    "explanation": "Kinh Thánh ghi trong Xuất Ê-díp-tô ký 8:2-6 (BTT) rằng tai vạ thứ hai là ếch nhái tràn ngập khắp xứ. Đây là tai vạ thứ hai sau tai vạ nước biến thành máu. Distractor 'Muỗi mòng tràn ngập khắp xứ' sai vì đó là tai vạ thứ ba (8:16-18). Distractor 'Nước sông biến thành máu' sai vì đó là tai vạ thứ nhất (7:20-21). Distractor 'Ruồi nhặng tràn ngập khắp xứ' gần đúng nhưng sai chi tiết then chốt: Kinh Thánh ghi là 'ruồi mòng' (8:21), không phải 'ruồi nhặng'; hơn nữa, đó là tai vạ thứ tư.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -449,10 +449,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Muỗi",
+      "Muỗi mòng tràn ngập khắp xứ",
       "Ếch nhái tràn ngập khắp xứ",
-      "Ruồi mòng",
-      "Châu chấu"
+      "Nước sông biến thành máu",
+      "Ruồi nhặng tràn ngập khắp xứ"
     ]
   },
   {
@@ -464,15 +464,15 @@
     "type": "multiple_choice_single",
     "content": "Tai vạ thứ ba giáng xuống Ai Cập là gì?",
     "options": [
-      "Ếch nhái",
       "Ruồi mòng",
+      "Bọ cánh cứng",
       "Châu chấu",
       "Muỗi"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 8:16-17 — 'Đức Giê-hô-va phán với Môi-se: Hãy bảo A-rôn giơ gậy ra đập bụi đất, bụi sẽ biến thành muỗi trong khắp xứ Ai Cập.'",
+    "explanation": "Kinh Thánh (Xuất Ê-díp-tô Ký 8:16-17) ghi rằng tai vạ thứ ba là \"muỗi\" (tiếng Hê-bơ-rơ: kinnam), được Đức Chúa Trời sai xuống khi A-rôn đập bụi đất. Đáp án đúng là \"Muỗi\".\n- Distractor \"Ruồi mòng\" sai: Dù là tai vạ thứ tư (Xuất 8:21), nhưng là sự kiện gần (nearby_passage) trong văn bản.\n- Distractor \"Bọ cánh cứng\" sai: Dựa trên hiểu lầm phổ biến (common_misconception) khi dịch hoặc ghi nhớ từ các bản dịch khác nhau, không có trong văn bản cho tai vạ này.\n- Distractor \"Châu chấu\" sai: Dù là tai vạ thứ tám (Xuất 10:4), nhưng đây là chi tiết sai về thứ tự (wrong_detail) các tai vạ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -547,14 +547,14 @@
     "content": "Tai vạ thứ tám giáng xuống Ai Cập là gì?",
     "options": [
       "Châu chấu",
+      "Ong bắp cày",
       "Mưa đá",
-      "Bóng tối",
-      "Ghẻ chốc"
+      "Bóng tối"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Xuất Hành 10:4 — 'Vì nếu ngươi từ chối không cho dân Ta đi, thì ngày mai Ta sẽ sai châu chấu đến trong lãnh thổ ngươi.' Đây là tai vạ thứ tám (Xuất Hành 10:1-20).",
+    "explanation": "Đáp án đúng là 'Châu chấu' vì Xuất Ai Cập ký 10:4-6 ghi rõ Chúa phán sẽ sai châu chấu đến phá hủy mùa màng, và đây là tai vạ thứ tám (các tai vạ trước đó bao gồm nước biến thành máu, ếch nhái, muỗi, ruồi mòng, dịch lệ trên súc vật, ghẻ chốc, mưa đá).\n\nCác đáp án sai:\n- 'Ong bắp cày' là sai (nearby_passage): Đây là một sự kiện được nhắc đến trong sách Xuất hành (23:28) nhưng liên quan đến việc Chúa hứa đuổi các dân khỏi xứ Ca-na-an, không phải là một trong mười tai vạ giáng xuống Ai Cập.\n- 'Mưa đá' là sai (wrong_detail): Đây là tai vạ thứ bảy (Xuất Ai Cập 9:18-26), xảy ra ngay trước tai vạ châu chấu, nên dễ bị nhầm thứ tự.\n- 'Bóng tối' là sai (common_misconception): Đây là tai vạ thứ chín (Xuất Ai Cập 10:21-23), một tai vạ nổi bật và dễ nhớ, nên người đọc có thể nhầm lẫn thứ tự với tai vạ thứ tám.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -574,15 +574,15 @@
     "type": "multiple_choice_single",
     "content": "Tai vạ bóng tối kéo dài bao lâu trên khắp xứ Ai Cập?",
     "options": [
-      "Một ngày",
-      "Mười ngày",
-      "Bảy ngày",
+      "Bảy ngày đêm",
+      "Một ngày một đêm",
+      "Cho đến khi Pha-ra-ôn đầu hàng",
       "Ba ngày"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 10:22 — 'Bóng tối dày đặc bao phủ khắp xứ Ai Cập trong ba ngày.'",
+    "explanation": "Xuất Ê-díp-tô Ký 10:22-23 ghi rõ: 'Môi-se giơ tay lên trời, thì trên khắp xứ Ai Cập có sự tối dày đặc suốt ba ngày. Trong ba ngày đó, người nầy không thấy người kia, và không ai nhỏm khỏi chỗ mình được.' Vì thế, đáp án đúng là 'Ba ngày'. \n\n- Distractor 'Bảy ngày đêm' là sai vì nhầm với tai vạ khác (mưa đá) có thể kéo dài bảy ngày (Xh 9:24), hoặc thời gian chung của các tai vạ, không phải thời gian cụ thể của tai vạ bóng tối. \n- Distractor 'Một ngày một đêm' là sai vì nó chỉ là một chi tiết số học không chính xác so với Kinh Thánh, thời gian thực tế là ba ngày. \n- Distractor 'Cho đến khi Pha-ra-ôn đầu hàng' là sai vì phạm vi quá rộng và không chính xác; Kinh Thánh không mô tả thời lượng của tai vạ này phụ thuộc vào phản ứng của Pha-ra-ôn, mà là một khoảng thời gian cố định (ba ngày) được Chúa định sẵn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -629,15 +629,15 @@
     "type": "multiple_choice_single",
     "content": "Trong lễ Vượt Qua, mỗi gia đình phải giết con vật gì?",
     "options": [
-      "Một con lừa",
-      "Một con chim bồ câu",
-      "Một con bò",
+      "Một con chim gáy hoặc bồ câu",
+      "Một con bò đực không tì vết",
+      "Một con chiên hoặc dê cho mỗi người",
       "Một con chiên hoặc dê"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 12:3-5 — Mỗi gia đình phải bắt một con chiên con hoặc dê con, không tì vết, một tuổi. Chiên con Vượt Qua là hình bóng về Chúa Giê-xu, Chiên Con của Đức Chúa Trời.",
+    "explanation": "Xuất Ê-díp-tô Ký 12:3-6 dạy: \"Các ngươi hãy bắt một con chiên con... hoặc dê con đực...\" (câu 5). Đáp án đúng là 'Một con chiên hoặc dê' vì đây là con vật được chỉ định cụ thể cho lễ Vượt Qua. Distractor 'Một con chim gáy hoặc bồ câu' là gần đúng vì đây là vật tế lễ phổ biến trong Kinh Thánh (Lê-vi Ký 1:14, 5:7), nhưng không phải cho lễ Vượt Qua. Distractor 'Một con bò đực không tì vết' sai chi tiết vì bò thường dùng cho các của lễ khác (Lê-vi Ký 1:3), không phải lễ Vượt Qua. Distractor 'Một con chiên hoặc dê cho mỗi người' sai phạm vi vì Kinh Thánh quy định là 'cho mỗi gia đình' hoặc chia sẻ giữa các gia đình nhỏ (Xuất Ê-díp-tô 12:4), không phải cho mỗi cá nhân.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -655,14 +655,14 @@
     "content": "Trong lễ phong chức thầy tế lễ, dầu xức được đổ lên đầu ai?",
     "options": [
       "Môi-se",
-      "Bết-sa-lê-ên",
-      "Giô-suê",
+      "các con trai của A-rôn",
+      "người Lê-vi",
       "A-rôn"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 29:7 — 'Rồi lấy dầu xức đổ trên đầu người mà xức cho người.' A-rôn được xức dầu để biệt riêng cho chức vụ thầy tế lễ thượng phẩm.",
+    "explanation": "Xuất Ê-díp-tô Ký 29:7 chép: 'Ngươi hãy đổ dầu xức trên đầu A-rôn, và biệt người ra thánh.' Đây là một mệnh lệnh rõ ràng trong nghi lễ phong chức. Đáp án đúng là 'A-rôn' vì câu Kinh Thánh chỉ định đích danh ông.\n\nCác đáp án sai:\n- 'Môi-se' là sai vì Môi-se là người thực hiện việc đổ dầu (là chủ thể hành động, xuyên suốt đoạn văn), chứ không phải đối tượng nhận dầu xức trong câu 7 này.\n- 'các con trai của A-rôn' là gần đúng nhưng sai chi tiết then chốt. Họ cũng được xức dầu và phong chức trong cùng một chương (câu 21, 29), nhưng câu 7 cụ thể chỉ nói đến việc đổ dầu lên đầu A-rôn.\n- 'người Lê-vi' là sai vì phạm vi quá rộng. Người Lê-vi được biệt riêng cho công việc Đền tạm, nhưng nghi lễ xức dầu đặc biệt này trong Xuất Ê-díp-tô 29 dành riêng cho A-rôn và các con trai ông trong chức tế lễ, không phải cho cả chi phái Lê-vi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -681,15 +681,15 @@
     "type": "multiple_choice_single",
     "content": "Khoảng bao nhiêu đàn ông Y-sơ-ra-ên đi bộ ra khỏi Ai Cập?",
     "options": [
-      "Khoảng 400.000",
-      "Khoảng 200.000",
-      "Khoảng 800.000",
+      "Khoảng 60.000",
+      "Khoảng 6.000.000",
+      "Khoảng 600",
       "Khoảng 600.000"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 12:37 — 'Dân Y-sơ-ra-ên đi bộ từ Ram-se đến Su-cốt, có chừng sáu mươi vạn đàn ông, không kể trẻ con.'",
+    "explanation": "Xuất Ê-díp-tô Ký 12:37 ghi rõ: 'Vả, dân Y-sơ-ra-ên đi bộ từ Ram-se đến Su-cốt, số chừng sáu trăm ngàn người đàn ông, không kể con trẻ.' Do đó, đáp án đúng là 'Khoảng 600.000' vì đó là số liệu chính xác Kinh Thánh ghi lại. Distractor 'Khoảng 60.000' sai vì thay đổi một chữ số then chốt (một số 0), dù cấu trúc và ngữ cảnh rất gần. Distractor 'Khoảng 6.000.000' là một hiểu lầm phổ biến, có thể do ước tính sai tổng dân số (bao gồm phụ nữ và trẻ em) hoặc nhầm lẫn với các con số khác. Distractor 'Khoảng 600' sai về phạm vi quá xa so với con số thực tế trong văn bản, không phù hợp với quy mô của sự kiện xuất hành được mô tả.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -711,13 +711,13 @@
     "options": [
       "430",
       "400",
-      "350",
-      "470"
+      "390",
+      "220"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Xuất Hành 12:40 — 'Thời gian dân Y-sơ-ra-ên kiều ngụ tại Ai Cập là bốn trăm ba mươi năm.'",
+    "explanation": "Xuất Ê-díp-tô Ký 12:40-41 chép: 'Vả, kiều ngụ của dân Y-sơ-ra-ên, là những kẻ đã kiều ngụ tại xứ Ê-díp-tô, được bốn trăm ba mươi năm. Xảy ra, khi mãn bốn trăm ba mươi năm rồi, thì, cũng trong ngày đó, các quân đội của Đức Giê-hô-va ra khỏi xứ Ê-díp-tô.' Do đó, đáp án đúng là 430 năm. Distractor '400' là gần đúng nhưng sai chi tiết số năm. Distractor '390' đại diện cho một hiểu lầm phổ biến khi cộng trừ các con số khác (như 400 năm trong lời tiên tri Sáng 15:13). Distractor '220' là một chi tiết số từ một phân đoạn gần đó (Sáng 11:32 nói về tuổi Tha-rê, có thể gây nhầm lẫn).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -764,15 +764,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Chúa Trời rẽ biển nào để dân Y-sơ-ra-ên đi qua?",
     "options": [
-      "Biển Chết",
       "Biển Ga-li-lê",
+      "Biển Chết",
       "Biển Đỏ",
-      "Biển Địa Trung Hải"
+      "Biển Rô"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 14:21-22 — 'Đức Giê-hô-va dùng gió đông mạnh thổi suốt đêm khiến biển rẽ ra, nước dồn lại thành hai bức vách, dân Y-sơ-ra-ên đi giữa lòng biển khô cạn.'",
+    "explanation": "Câu hỏi hỏi về biển được rẽ ra trong sự kiện Xuất Ê-díp-tô Ký 14:21-22. Đáp án đúng là 'Biển Đỏ', được ghi rõ trong bối cảnh của phân đoạn này (Xuất Ê-díp-tô Ký 13:18; 15:4, 22).\n\nCác đáp án sai:\n1. 'Biển Ga-li-lê': Sai vì đây là một biển hồ nước ngọt được nhắc đến nhiều trong Tân Ước, không phải là biển được rẽ ra trong sự kiện Xuất Ai Cập. Đây là lỗi nhầm passage gần (nearby_passage) vì nó xuất hiện trong các câu chuyện khác về Chúa Giê-xu.\n2. 'Biển Chết': Sai vì đây là một hồ nước mặn nổi tiếng ở vùng đất Y-sơ-ra-ên, không liên quan đến hành trình ra khỏi Ai Cập. Đây là lỗi sai chi tiết (wrong_detail) về địa lý Kinh Thánh.\n3. 'Biển Rô': Sai vì đây là một tên gọi khác (dịch từ 'Sea of Reeds') mà một số học giả đề xuất cho 'Biển Đỏ', nhưng trong bản dịch BTT tiếng Việt chuẩn, sự kiện này luôn được gọi là 'Biển Đỏ'. Đây là lỗi hiểu lầm phổ biến (common_misconception) từ các bản dịch hoặc tranh luận học thuật.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -790,15 +790,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Giê-hô-va dùng ___ thổi suốt đêm để rẽ biển.",
     "options": [
-      "gió bắc mạnh",
+      "gió tây mạnh",
       "gió đông mạnh",
-      "gió nam mạnh",
-      "gió tây mạnh"
+      "cơn bão lớn",
+      "ngọn lửa"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 14:21 — 'Đức Giê-hô-va dùng gió đông mạnh thổi suốt đêm đó khiến biển rẽ ra.'",
+    "explanation": "Xuất Ê-díp-tô Ký 14:21 chép: 'Đức Giê-hô-va dùng gió đông mạnh thổi suốt đêm trên biển, làm cho nước rẽ ra, và hóa nơi khô cạn.' Vì thế, đáp án đúng là 'gió đông mạnh'.\n\nCác đáp án sai:\n- 'gió tây mạnh' (wrong_detail) là sai vì Kinh Thánh ghi rõ là 'gió đông' (hướng đông), không phải gió tây.\n- 'cơn bão lớn' (common_misconception) là sai vì đoạn Kinh Thánh này mô tả một cơn gió mạnh và có kiểm soát làm rẽ nước, không phải một cơn bão hỗn loạn gây sóng lớn hay mưa gió.\n- 'ngọn lửa' (true_but_off) là sai vì mặc dù Đức Giê-hô-va có thể dùng lửa (như trong trụ lửa dẫn đường), chi tiết này không liên quan đến hành động rẽ biển được hỏi trong câu.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -816,15 +816,15 @@
     "type": "multiple_choice_single",
     "content": "Ai đã cầm trống lắc dẫn các phụ nữ hát mừng sau khi vượt Biển Đỏ?",
     "options": [
-      "Sê-phô-ra",
+      "A-rôn",
       "Mi-ri-am",
-      "Đê-bô-ra",
-      "Giốc-bết"
+      "Môi-se",
+      "Một trưởng nữ vô danh"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 15:20 — 'Nữ tiên tri Mi-ri-am, chị của A-rôn, tay cầm trống lắc, tất cả phụ nữ đều đi theo bà, cầm trống lắc mà nhảy múa.'",
+    "explanation": "Đáp án đúng là Mi-ri-am vì Xuất Ê-díp-tô Ký 15:20-21 chép rõ: 'Mi-ri-am, nữ tiên tri, chị của A-rôn, cầm trống lắc... và hết thảy phụ nữ đều theo bà mà nhảy múa và hát đối đáp...' (BTT).\n\nCác đáp án sai:\n• 'A-rôn' (nearby_passage): A-rôn là anh của Mi-ri-am và Môi-se, được nhắc đến trong câu này, nhưng Kinh Thánh không ghi ông cầm trống lắc dẫn các phụ nữ hát.\n• 'Môi-se' (wrong_detail): Môi-se là lãnh đạo dân Y-sơ-ra-ên và đã hát bài ca trong phân đoạn trước (Xuất Ê-díp-tô Ký 15:1-19), nhưng đoạn 20-21 mô tả Mi-ri-am và các phụ nữ hát mừng, không phải Môi-se cầm trống lắc.\n• 'Một trưởng nữ vô danh' (common_misconception): Một số người đọc lướt có thể nghĩ đến một phụ nữ lãnh đạo nào đó, nhưng Kinh Thánh xác định rõ danh tính là Mi-ri-am, chị của A-rôn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -843,15 +843,15 @@
     "type": "multiple_choice_single",
     "content": "Tại Ma-ra, nước đắng được biến thành ngọt khi Môi-se làm gì?",
     "options": [
-      "Đập gậy vào nước",
-      "Cầu nguyện bên bờ suối",
+      "Ném một viên đá vào nước",
+      "Kêu cầu Đức Giê-hô-va đánh nước bằng gậy",
       "Ném một khúc cây vào nước",
-      "Ném muối vào nước"
+      "Đào một cái giếng mới gần đó"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 15:25 — 'Môi-se kêu cầu Đức Giê-hô-va, Ngài chỉ cho ông một khúc cây, ông ném xuống nước thì nước liền trở nên ngọt.'",
+    "explanation": "ĐÁP ÁN ĐÚNG: Exodus 15:25 chép rõ: \"Người [Môi-se] la lên cùng Đức Giê-hô-va; Đức Giê-hô-va chỉ cho người một cây gỗ, người lấy liệng xuống nước, thì nước bèn hóa ra ngọt.\" Vậy, đáp án 'Ném một khúc cây vào nước' là chính xác.\n\nDISTRACTOR SAI:\n1. 'Ném một viên đá vào nước' (wrong_detail) – Sai chi tiết vật được ném. Kinh Thánh ghi rõ là 'một cây gỗ' (khúc cây), không phải đá.\n2. 'Kêu cầu Đức Giê-hô-va đánh nước bằng gậy' (nearby_passage) – Hành động này là một hiểu lầm từ phép lạ khác (Exodus 17:6, Môi-se đập hòn đá tại Hô-rếp để có nước), không phải sự kiện tại Ma-ra.\n3. 'Đào một cái giếng mới gần đó' (common_misconception) – Đây là một cách làm tự nhiên phổ biến, nhưng không phải phép lạ Chúa chỉ dẫn trong đoạn Kinh Thánh này. Hành động thực tế là ném khúc cây vào nguồn nước đắng sẵn có.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -899,7 +899,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 16:13 — 'Buổi chiều có chim cút bay đến đậu khắp trại quân, buổi sáng có một lớp sương phủ chung quanh trại.'",
+    "explanation": "Xuất Ê-díp-tô Ký 16:13 chép: 'Buổi chiều, chim cút bay lên phủ trên trại quân; buổi sáng, có lớp sương ở xung quanh trại quân.' Vì vậy, đáp án đúng là 'Chim cút', vì đây là thức ăn cụ thể được ban cùng thời điểm với ma-na. Distractor 'Bánh không men' là gần đúng (almost-right) vì nó liên quan đến thức ăn của dân Y-sơ-ra-ên, nhưng được nhắc đến trong bối cảnh Lễ Vượt Qua (Xuất 12:8) trước đó, không phải là thức ăn được ban cùng lúc với ma-na trong hoang mạc tại chương 16. Distractor 'Nước từ vầng đá' sai phạm vi (wrong scope) vì đó là thức uống được ban (Xuất 17:6), không phải là 'thức ăn' như câu hỏi yêu cầu. Distractor 'Cá khô từ Ai Cập' dựa trên hiểu lầm phổ biến (common misconception) về việc dân chúng nhớ lại thức ăn ở Ai Cập (Dân số 11:5), nhưng đây không phải là thứ Đức Chúa Trời ban cho họ trong hoang mạc tại sự kiện được hỏi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -910,10 +910,10 @@
       "Trung cấp"
     ],
     "options": [
-      "Bồ câu",
+      "Bánh không men",
       "Chim cút",
-      "Cá",
-      "Trái nho"
+      "Nước từ vầng đá",
+      "Cá khô từ Ai Cập"
     ]
   },
   {
@@ -924,15 +924,15 @@
     "type": "multiple_choice_single",
     "content": "Dân Y-sơ-ra-ên ăn ma-na trong bao lâu?",
     "options": [
-      "Ba mươi năm",
-      "Năm mươi năm",
+      "Bốn mươi ngày (Suốt thời gian ở tại núi Si-na-i)",
+      "Mười hai năm (Trọn hành trình từ Ai Cập về)",
       "Bốn mươi năm",
-      "Hai mươi năm"
+      "Cho đến khi có Pha-ra-ôn mới"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 16:35 — 'Dân Y-sơ-ra-ên ăn ma-na suốt bốn mươi năm, cho đến khi họ vào đến biên giới đất Ca-na-an.'",
+    "explanation": "Xuất Ê-díp-tô Ký 16:35 ghi lại cụ thể: 'Vả, dân Y-sơ-ra-ên ăn ma-na trọn bốn mươi năm, cho đến khi vào bờ cõi xứ Ca-na-an.' Do đó, đáp án đúng là \"Bốn mươi năm\".\n\n- Distractor 1 (Bốn mươi ngày) sai: Đây là distractor \"gần đúng\" vì số \"bốn mươi\" đúng, nhưng đơn vị thời gian là \"ngày\" (nhầm với các thời kỳ 40 ngày khác trong Kinh Thánh) chứ không phải \"năm\" như Ê-díp-tô 16:35.\n- Distractor 2 (Mười hai năm) sai: Sai chi tiết số học, hoàn toàn không khớp với bất kỳ con số nào liên quan đến hành trình trong sách Xuất Hành.\n- Distractor 3 (Cho đến khi có Pha-ra-ôn mới) sai: Chi tiết này \"đúng văn bản nhưng lạc câu hỏi\" vì tuy có nhắc đến một mốc thời gian (xuất hiện Pha-ra-ôn mới trong Ê-díp-tô 1:8), nhưng đó là sự kiện mở đầu câu chuyện, không liên quan gì đến độ dài thời gian ăn ma-na.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -953,13 +953,13 @@
     "options": [
       "Mặt đất",
       "Vách đá",
-      "Gốc cây",
-      "Bờ sông"
+      "Núi Si-na-i",
+      "Cây gậy của A-rôn"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 17:6 — 'Ta sẽ đứng trước mặt con, ở trên vầng đá tại Hô-rếp. Con hãy đập vào vầng đá, nước sẽ chảy ra cho dân uống.'",
+    "explanation": "Xuất Ê-díp-tô Ký 17:6 chép: 'Nầy, ta sẽ đứng trước mặt ngươi tại trên vầng đá ở Hô-rếp; ngươi sẽ đập hòn đá, thì nước sẽ từ đó chảy ra cho dân uống. Môi-se bèn làm như vậy trước mặt các trưởng lão Y-sơ-ra-ên.' Đáp án đúng là 'Vách đá' (hay 'vầng đá', 'hòn đá') vì Kinh Thánh ghi rõ Môi-se đập vào đá tại Hô-rếp theo lệnh Chúa.\n\nCác đáp án sai:\n1. 'Mặt đất' là gần đúng nhưng sai chi tiết then chốt. Phép lạ xảy ra từ đá chứ không phải từ mặt đất chung chung.\n2. 'Núi Si-na-i' là sai phạm vi. Sự kiện này xảy ra tại Hô-rếp; núi Si-na-i liên quan đến việc ban luật pháp sau này.\n3. 'Cây gậy của A-rôn' là hiểu lầm phổ biến. Dân chúng thấy Môi-se dùng gậy, nhưng gậy này là của Môi-se (hoặc 'gậy của Đức Chúa Trời'), không phải gậy của A-rôn đã trổ hoa hạnh nhân (Dân Số Ký 17:8).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -978,15 +978,15 @@
     "type": "multiple_choice_single",
     "content": "Trong trận chiến với A-ma-léc, ai đỡ hai tay Môi-se?",
     "options": [
-      "Ca-lép và Hu-rơ",
+      "Giô-suê và A-rôn",
       "A-rôn và Hu-rơ",
-      "A-rôn và Giô-suê",
-      "Giô-suê và Ca-lép"
+      "Hu-rơ và Giô-suê",
+      "Giô-suê và Bác Môi-se"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 17:12 — 'A-rôn và Hu-rơ đỡ hai tay ông, một người bên nầy, một người bên kia, hai tay ông vững vàng cho đến khi mặt trời lặn.'",
+    "explanation": "Xuất Ê-díp-tô Ký 17:11-12 chép rằng: 'Hễ đương khi Môi-se giơ tay lên, thì dân Y-sơ-ra-ên thắng hơn; nhưng khi người xụi tay xuống, dân A-ma-léc lại thắng hơn. Tay Môi-se mỏi, A-rôn và Hu-rơ bèn lấy đá kê cho người ngồi, rồi ở hai bên đỡ tay người, tay nầy đỡ bên nầy, tay kia đỡ bên kia; tay người cứ giơ lên cho đến khi mặt trời lặn.' Vì vậy, đáp án đúng là A-rôn và Hu-rơ. \n\n- Distractor 'Giô-suê và A-rôn' sai vì Giô-suê là người chỉ huy chiến trận (câu 9), không phải người đỡ tay Môi-se. Đây là distractor gần đúng vì có tên A-rôn, nhưng thay Hu-rơ bằng Giô-suê. \n- Distractor 'Hu-rơ và Giô-suê' sai vì lý do tương tự, nhầm lẫn với vai trò của Giô-suê được đề cập trong cùng phân đoạn gần đó. \n- Distractor 'Giô-suê và Bác Môi-se' sai vì không có nhân vật 'Bác Môi-se' nào được nhắc đến trong câu chuyện này; đây có thể là một hiểu lầm phổ biến từ các mối quan hệ gia đình khác trong Kinh Thánh.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1006,7 +1006,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 18:1 — 'Giê-trô, thầy tế lễ xứ Ma-đi-an, bố vợ của Môi-se, nghe mọi điều Đức Chúa Trời đã làm cho Môi-se và Y-sơ-ra-ên.'",
+    "explanation": "Xuất Ê-díp-tô Ký 18:1 chép: \"Vả, Giê-trô, thầy tế lễ xứ Ma-đi-an, ông gia của Môi-se...\" Do đó, đáp án đúng là 'Ma-đi-an'.\nCác đáp án sai:\n- 'Ê-díp-tô' (nearby_passage): Sai vì dù Môi-se xuất thân từ Ai Cập và sự kiện trong đoạn này liên quan đến việc dân Israel ra khỏi xứ Ê-díp-tô, nhưng Giê-trô không phải thầy tế lễ của xứ đó.\n- 'A-si-ri' (wrong_detail): Gần đúng nhưng sai chi tiết. Đây là một đế quốc/lãnh thổ khác trong Kinh Thánh xuất hiện ở các sách sau, không liên quan đến bối cảnh của Xuất Ê-díp-tô Ký 18.\n- 'Cơ-đê' (common_misconception): Sai vì đây là một vùng đất thường được nhắc đến trong Cựu Ước, nhưng không liên quan đến chức vụ của Giê-trô. Đây có thể là sự nhầm lẫn phổ biến với tên các dân tộc hoặc vùng đất khác.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1017,10 +1017,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Ai-cập",
-      "Ca-na-an",
+      "Ê-díp-tô",
+      "A-si-ri",
       "Ma-đi-an",
-      "Ê-đôm"
+      "Cơ-đê"
     ]
   },
   {
@@ -1032,15 +1032,15 @@
     "type": "multiple_choice_single",
     "content": "Giê-trô khuyên Môi-se lập những quan xét cai trị bao nhiêu người?",
     "options": [
-      "Quan vạn, quan ngàn, quan trăm",
-      "Quan trăm, quan năm mươi, quan mười",
+      "Quan ngàn, quan trăm, quan sáu mươi, quan mười",
+      "Quan ngàn, quan trăm, quan năm mươi, quan mười, quan một",
       "Quan ngàn, quan trăm, quan năm mươi, quan mười",
-      "Quan ngàn, quan trăm, quan hai mươi"
+      "Quan trưởng, quan lãnh đạo, quan cai quản, quan xét"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 18:21 — 'Hãy chọn trong dân những người tài đức... cắt đặt họ làm trưởng quan ngàn, quan trăm, quan năm mươi, quan mười.'",
+    "explanation": "Xuất Ê-díp-tô ký 18:21-22 ghi lại lời khuyên của Giê-trô: 'Vả lại, hãy chọn trong cả dân sự những người tài năng, kính sợ Đức Chúa Trời, chân thật, ghét sự tham lam, mà lập lên trên dân sự, làm trưởng cai trị hoặc ngàn người, hoặc trăm người, hoặc năm mươi người, hoặc mười người. Để tòa phán xét dân sự hằng ngày.' Do đó, đáp án đúng là các chức danh: quan ngàn, quan trăm, quan năm mươi, quan mười.\n\n- Distractor 1 (Quan ngàn, quan trăm, quan sáu mươi, quan mười) sai vì thay 'quan năm mươi' thành 'quan sáu mươi', một chi tiết số học sai so với Kinh Thánh.\n- Distractor 2 (Quan ngàn, quan trăm, quan năm mươi, quan mười, quan một) sai vì thêm 'quan một' vào danh sách, mở rộng phạm vi quản lý vượt ra ngoài bốn cấp được quy định trong phân đoạn.\n- Distractor 3 (Quan trưởng, quan lãnh đạo, quan cai quản, quan xét) sai vì dùng các danh từ chức vụ chung chung mô tả công việc, thay vì các chức danh cụ thể dựa trên số người được cai trị như Kinh Thánh đã nêu.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1061,7 +1061,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 19:1 — 'Tháng thứ ba sau khi dân Y-sơ-ra-ên ra khỏi Ai Cập, đúng ngày ấy, họ đến hoang mạc Si-na-i.'",
+    "explanation": "Xuất Ê-díp-tô Ký 19:1 chép rõ: 'Đúng ba tháng sau khi ra khỏi Ai-cập, dân Y-sơ-ra-ên đến hoang mạc Si-na-i.' Vậy họ đến vào tháng thứ ba sau khi ra khỏi Ai-cập.\n\n- **Tháng thứ hai** (nearby_passage): Sai. Đây là thời điểm được nhắc đến ở đoạn gần đó (Xuất 16:1) khi dân sự đến hoang mạc Sin, nhưng không phải là thời điểm đến hoang mạc Si-na-i được hỏi trong câu này.\n- **Tháng thứ nhất** (common_misconception): Sai. Đây là tháng họ xuất hành khỏi Ai-cập (Xuất 12:2, 51), nên có thể bị nhầm lẫn là thời điểm bắt đầu hành trình. Tuy nhiên, câu hỏi hỏi thời điểm đến Si-na-i, là ba tháng sau đó.\n- **Tháng thứ tư** (wrong_detail): Sai. Không có chi tiết Kinh Thánh nào hỗ trợ cho thời điểm này. Nó là một con số sai lệch so với chi tiết chính xác 'ba tháng' được ghi trong phân đoạn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1072,8 +1072,8 @@
       "Cơ bản"
     ],
     "options": [
-      "Tháng thứ nhất",
       "Tháng thứ hai",
+      "Tháng thứ nhất",
       "Tháng thứ ba",
       "Tháng thứ tư"
     ]
@@ -1087,15 +1087,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Chúa Trời phán: 'Các ngươi sẽ thành một ___ và một dân tộc thánh cho ta.'",
     "options": [
-      "dân tuyển chọn",
-      "quân đội thánh",
+      "nước của người Lê-vi",
+      "dân tộc của nhà tiên tri",
       "nước thầy tế lễ",
-      "hội thánh lớn"
+      "nước thành thánh"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 19:6 (Bản Dịch 2011) — 'Các ngươi sẽ thành một nước thầy tế lễ, cùng một dân tộc thánh cho ta.' Khái niệm này được nhắc lại trong 1 Phi-e-rơ 2:9.",
+    "explanation": "Đáp án đúng 'nước thầy tế lễ' trích từ Exodus 19:6 (BTT), nơi Chúa phán: 'Còn về phần các ngươi, nếu các ngươi vâng lời ta và giữ sự giao ước ta, thì trong muôn dân, các ngươi sẽ là sản nghiệp riêng của ta; vì cả thế gian đều thuộc về ta. Các ngươi sẽ thành một nước thầy tế lễ, cùng một dân tộc thánh cho ta' (chữ 'nước thầy tế lễ' bản 2011). Cụm từ này diễn tả dân Y-sơ-ra-ên được gọi làm một vương quốc có chức năng tế lễ và thánh.\n\n- Distractor 'nước của người Lê-vi' sai: Người Lê-vi là một chi phái chuyên lo việc tế lễ (Numbers 3:5-10), nhưng trong lời hứa Exodus 19:5-6, Chúa gọi cả dân Y-sơ-ra-ên, không chỉ một chi phái, là 'nước thầy tế lễ'.\n- Distractor 'dân tộc của nhà tiên tri' sai: Đây là một hiểu lầm phổ biến, nhầm lẫn giữa chức năng tế lễ và tiên tri. Dân Y-sơ-ra-ên được gọi là 'nước thầy tế lễ' và 'dân tộc thánh', không phải 'dân tộc của nhà tiên tri'. Các tiên tri là những cá nhân được Chúa kêu gọi riêng (vd. Amos 7:14-15).\n- Distractor 'nước thành thánh' là phương án gần đúng, nhưng sai một chi tiết then chốt: Exodus 19:6 nói 'nước thầy tế lễ' (priestly kingdom), nhấn mạnh chức năng tế lễ, chứ không phải chỉ là 'nước thành thánh'. 'Thành thánh' có thể ám chỉ nơi chốn (vd. thành Giê-ru-sa-lem), không phải bản chất chức vụ của cả dân.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1138,15 +1138,15 @@
     "type": "multiple_choice_single",
     "content": "Điều răn 'Hãy hiếu kính cha mẹ' kèm theo lời hứa gì?",
     "options": [
-      "Được giàu có",
-      "Được vào thiên đàng",
+      "Được ban phước trong mọi công việc",
+      "Được sống lâu trên trời",
       "Được sống lâu trên đất",
-      "Được nhiều con cái"
+      "Được tránh khỏi mọi tai họa"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 20:12 — 'Hãy hiếu kính cha mẹ, để con được sống lâu trên đất mà Giê-hô-va Đức Chúa Trời ban cho con.'",
+    "explanation": "Xuất Ê-díp-tô Ký 20:12 chép: 'Hãy hiếu kính cha mẹ ngươi, hầu cho ngươi được sống lâu trên đất mà Giê-hô-va Đức Chúa Trời ngươi ban cho.' Do đó, đáp án đúng là 'Được sống lâu trên đất' vì đó chính xác là lời hứa đi kèm trong câu Kinh Thánh. Distractor 1 ('Được ban phước trong mọi công việc') sai vì đây là lời hứa trong một phân đoạn khác (Phục Truyền 28:12), không phải lời hứa trực tiếp đi kèm điều răn này. Distractor 2 ('Được sống lâu trên trời') là gần đúng nhưng sai chi tiết then chốt ('trời' thay vì 'đất'), làm thay đổi ý nghĩa của lời hứa. Distractor 3 ('Được tránh khỏi mọi tai họa') sai phạm vi vì đây là một ý quá rộng và không được đề cập cụ thể trong câu này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1165,15 +1165,15 @@
     "type": "multiple_choice_single",
     "content": "Cái chậu rửa trong sân Đền Tạm được làm từ vật liệu gì?",
     "options": [
-      "Vàng ròng",
-      "Bạc",
-      "Gỗ si-tim bọc đồng",
+      "Đồng từ các bát hương của thầy tế lễ",
+      "Đồng từ đế của các trụ hành lang",
+      "Đồng từ các dụng cụ làm bánh thánh",
       "Đồng từ gương của phụ nữ"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 38:8 — 'Ông dùng đồng từ các gương của phụ nữ phục vụ tại cửa Lều Hội Kiến để làm cái chậu và chân chậu bằng đồng.'",
+    "explanation": "Xuất Ê-díp-tô Ký 38:8 ghi rõ: \"Người dùng đồng làm cái thùng và chân thùng, đồng lấy từ các tấm gương của mấy người đàn bà hầu việc tại cửa hội mạc.\" Vì vậy, đáp án đúng là đồng từ gương của phụ nữ phục vụ tại cửa Đền Tạm. Distractor 1 sai vì tham chiếu đến một nguồn đồng khác gần đó (các bát hương) nhưng không phải nguồn trong câu này. Distractor 2 sai về chi tiết, vì đế trụ hành lang được nhắc đến nhưng không phải nguồn đồng cho chậu rửa. Distractor 3 đúng văn bản (các dụng cụ làm bánh thánh cũng bằng đồng) nhưng không liên quan đến câu hỏi về nguồn gốc vật liệu của chậu rửa.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1192,14 +1192,14 @@
     "content": "Một nô lệ người Hê-bơ-rơ phải phục vụ bao lâu trước khi được tự do?",
     "options": [
       "Sáu năm",
-      "Ba năm",
       "Bảy năm",
-      "Năm năm"
+      "Một năm",
+      "Mười hai năm"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Xuất Hành 21:2 — 'Nếu con mua một người nô lệ Hê-bơ-rơ thì người ấy sẽ phục vụ sáu năm, qua năm thứ bảy sẽ được tự do.'",
+    "explanation": "Xuất Ê-díp-tô Ký 21:2 chép: 'Nếu ngươi mua một tôi trai Hê-bơ-rơ, hầu việc sáu năm thì năm thứ bảy người được tự do, khỏi trả tiền chuộc.' Vì vậy, thời hạn phục vụ đúng là sáu năm. Distractor 'Bảy năm' là sai vì nhầm lẫn chi tiết: năm thứ bảy là năm được tự do, chứ không phải năm thứ bảy mới được thả. Distractor 'Một năm' phản ánh một hiểu lầm phổ biến về thời hạn lao dịch ngắn, không có căn cứ trong luật này. Distractor 'Mười hai năm' là sai phạm vi, có thể nhầm sang các quy định thời hạn khác trong Kinh Thánh (như thời kỳ làm nô lệ bồi thường trong Lê-vi Ký 25:39-40), không áp dụng cho trường hợp cụ thể này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1244,7 +1244,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 22:21 — 'Không được ngược đãi hay áp bức người ngoại kiều, vì các con đã từng là ngoại kiều trong xứ Ai Cập.'",
+    "explanation": "Xuất Ê-díp-tô Ký 22:21 (xuất 22:21) chép rõ: \"Ngươi chớ nên ngược đãi người ngoại kiều, cũng đừng làm họ buồn tủi; vì các ngươi đã từng là ngoại kiều trong xứ Ê-díp-tô.\" Do đó, đáp án đúng là 'Không được ngược đãi hay áp bức họ', trực tiếp phản ánh mệnh lệnh này. Distractor 1 (Không được để họ thờ cúng thần tượng ngoại bang) là sai vì sai phạm vi — đoạn này nói về cách đối xử, không nói về sự thờ phượng (vấn đề thần tượng thuộc các luật khác như Xuất 20:3-5). Distractor 2 (Phải chia sẻ với họ một phần mười hoa lợi) là sai vì sai chi tiết — luật về một phần mười (như trong Lê-vi Ký 27:30) hay việc chia sẻ hoa lợi cho người nghèo (Đệ Nhị Luật 14:28-29) không phải là quy định cụ thể cho người ngoại kiều trong Xuất Ê-díp-tô 22:21. Distractor 3 (Có thể hòa đồng nhưng vẫn cần xem họ là kẻ xa lạ) là gần đúng nhưng sai vì đúng văn bản nhưng lạc câu hỏi — ý 'kẻ xa lạ' đồng nghĩa với 'người ngoại kiều', nhưng tinh thần Kinh Thánh trong đoạn này kêu gọi sự đồng cảm (vì chính dân Y-sơ-ra-ên từng là ngoại kiều), không phải là một thái độ xa lạ hay dè chừng; do đó, distractor này trái với ý chính của câu Kinh Thánh là cấm ngược đãi và khuyên nhớ đến hoàn cảnh của chính mình.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1255,10 +1255,10 @@
       "Trung cấp"
     ],
     "options": [
-      "Ngược đãi họ",
-      "Bắt làm nô lệ",
+      "Không được để họ thờ cúng thần tượng ngoại bang",
+      "Phải chia sẻ với họ một phần mười hoa lợi",
       "Không được ngược đãi hay áp bức họ",
-      "Đuổi họ khỏi xứ"
+      "Có thể hòa đồng nhưng vẫn cần xem họ là kẻ xa lạ"
     ]
   },
   {
@@ -1271,14 +1271,14 @@
     "content": "Mỗi năm dân Y-sơ-ra-ên phải giữ mấy kỳ lễ trọng thể?",
     "options": [
       "Bốn kỳ lễ",
-      "Năm kỳ lễ",
+      "Hai kỳ lễ",
       "Ba kỳ lễ",
-      "Hai kỳ lễ"
+      "Một kỳ lễ"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 23:14 — 'Mỗi năm ba lần con phải giữ lễ cho Ta.' Đó là Lễ Bánh Không Men, Lễ Các Tuần (Mùa Gặt) và Lễ Lều Tạm (Thu Hoạch).",
+    "explanation": "Xuất Ê-díp-tô Ký 23:14-17 liệt kê ba kỳ lễ trọng thể bắt buộc: \"Mỗi năm ba lần, ngươi phải giữ lễ kính ta. Ngươi sẽ giữ lễ bánh không men... lễ mùa màng... và lễ mùa gặt.\" Do đó, đáp án đúng là \"Ba kỳ lễ\".\n\n- Distractor \"Bốn kỳ lễ\" là sai vì Kinh Thánh chỉ định rõ ba lần; đây là lỗi sai chi tiết số lượng.\n- Distractor \"Hai kỳ lễ\" là sai vì bỏ sót một trong ba lễ được nêu; lỗi này có thể do nhầm với các đoạn khác nói về hai bảng đá hoặc đôi khi chỉ nhấn mạnh một vài lễ, nhưng đoạn này ghi rõ ba.\n- Distractor \"Một kỳ lễ\" là sai vì trái với mệnh lệnh rõ ràng phải giữ ba lễ mỗi năm; đây là hiểu lầm phổ biến khi nghĩ chỉ có Lễ Vượt Quan trọng nhất, nhưng đoạn Kinh Thánh này yêu cầu cả ba.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1299,12 +1299,12 @@
       "Bảng đá",
       "Bảng gỗ",
       "Giấy da",
-      "Bảng đồng"
+      "Bảng đất sét"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Xuất Hành 24:12 — 'Đức Giê-hô-va phán với Môi-se: Hãy lên núi với Ta và ở lại đó. Ta sẽ ban cho con những bảng đá, luật pháp và điều răn mà Ta đã viết.'",
+    "explanation": "Xuất Ê-díp-tô Ký 24:12 chép: 'Đức Giê-hô-va phán cùng Môi-se rằng: Hãy lên núi, đến cùng ta, và ở lại đó; ta sẽ ban cho ngươi bảng đá, luật pháp và điều răn của ta đã chép đặng dạy dỗ dân sự.' Đáp án đúng là 'Bảng đá' vì Kinh Thánh trực tiếp ghi nhận Đức Chúa Trời ban cho Môi-se 'bảng đá' để ghi luật pháp và điều răn, bao gồm Mười Điều Răn.\n\nCác đáp án sai:\n- 'Bảng gỗ': Sai chi tiết (wrong_detail). Bảng gỗ được nhắc đến trong một số ngữ cảnh khác (như Hòm Giao Ước), nhưng Mười Điều Răn được ghi trên bảng đá.\n- 'Giấy da': Là hiểu lầm phổ biến (common_misconception) do liên tưởng đến các văn bản cổ, nhưng Kinh Thánh không ghi nhận Mười Điều Răn được viết trên giấy da trong sự kiện này.\n- 'Bảng đất sét': Liên quan đến một phân đoạn gần (nearby_passage) hoặc bối cảnh văn hóa khác (các bảng chữ hình nêm), nhưng Kinh Thánh xác định rõ vật liệu là 'bảng đá'.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1322,15 +1322,15 @@
     "type": "multiple_choice_single",
     "content": "Môi-se ở trên núi Si-na-i bao lâu?",
     "options": [
-      "Năm mươi ngày năm mươi đêm",
-      "Hai mươi ngày hai mươi đêm",
-      "Ba mươi ngày ba mươi đêm",
+      "Bảy ngày bảy đêm",
+      "Bốn mươi ngày không đêm",
+      "Mười bốn ngày mười bốn đêm",
       "Bốn mươi ngày bốn mươi đêm"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 24:18 — 'Môi-se ở trên núi bốn mươi ngày bốn mươi đêm.'",
+    "explanation": "Xuất Ê-díp-tô Ký 24:18 chép: \"Môi-se vào giữa mây, lên núi, ở đó trong bốn mươi ngày và bốn mươi đêm.\" Đáp án đúng là bốn mươi ngày bốn mươi đêm. Distractor 'Bảy ngày bảy đêm' sai vì đây là khoảng thời gian Môi-se đợi trước khi vào mây (Xuất Ê-díp-tô Ký 24:16). Distractor 'Bốn mươi ngày không đêm' sai vì đây là hiểu lầm phổ biến, nhưng Kinh Thánh nhấn mạnh cả ngày lẫn đêm. Distractor 'Mười bốn ngày mười bốn đêm' sai vì đây là chi tiết từ một phân đoạn khác (thời gian người Do Thái thám thính xứ Ca-na-an, Dân Số Ký 13:25), không liên quan đến sự kiện Môi-se trên núi Si-na-i.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1349,15 +1349,15 @@
     "type": "multiple_choice_single",
     "content": "Hòm Giao Ước được làm bằng chất liệu chính nào?",
     "options": [
-      "Đồng nguyên chất",
+      "Gỗ si-tim bọc bạc",
       "Gỗ si-tim bọc vàng ròng",
-      "Gỗ bá hương bọc vàng",
-      "Gỗ ô-liu bọc bạc"
+      "Gỗ ô-liu bọc vàng ròng",
+      "Ván ép bọc vàng lá"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 25:10-11 — 'Họ phải đóng một cái hòm bằng gỗ si-tim... Hãy bọc vàng ròng, cả trong lẫn ngoài.'",
+    "explanation": "Xuất Ê-díp-tô Ký 25:10-11 chép: 'Họ sẽ làm một cái hòm bằng cây si-tim... Ngươi sẽ bọc vàng ròng bề trong và bề ngoài' (BTT). Do đó, đáp án đúng là 'Gỗ si-tim bọc vàng ròng'. Distractor 1 sai vì thay vàng ròng bằng bạc (sai chi tiết vật liệu). Distractor 2 sai vì thay gỗ si-tim bằng gỗ ô-liu, một loại gỗ được nhắc đến ở đoạn gần đó (Xh 24:20, bàn thờ xông hương) nhưng không phải cho Hòm Giao Ước. Distractor 3 sai vì đây là hiểu lầm phổ biến về vật liệu xây dựng hiện đại ('ván ép', 'vàng lá') không có trong Kinh Thánh.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1378,14 +1378,14 @@
     "content": "Trên nắp thi ân (mercy seat) của Hòm Giao Ước, có gì được làm bằng vàng?",
     "options": [
       "Hai tượng chê-ru-bim",
-      "Một tượng sư tử",
-      "Bảng chữ vàng",
-      "Một con dấu"
+      "Một tượng chê-ru-bim",
+      "Hai tượng sư tử bằng vàng",
+      "Một dây chuyền bằng vàng"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Xuất Hành 25:18 — 'Hãy làm hai tượng chê-ru-bim bằng vàng dát, đặt hai đầu nắp thi ân.'",
+    "explanation": "Xuất Ê-díp-tô Ký 25:18-20 (BTT) chép: 'Ngươi cũng hãy làm hai chê-ru-bim bằng vàng, đánh búa mà làm, để hai đầu chê-ru-bim nơi hai đầu nắp thi ân... Hai chê-ru-bim sẽ sè cánh ra, che trên nắp thi ân.' Vậy đáp án đúng là 'Hai tượng chê-ru-bim' vì Kinh Thánh ghi rõ có hai tượng bằng vàng đặt trên nắp thi ân. \nDistractor 1 ('Một tượng chê-ru-bim') sai vì nói sai số lượng (một thay vì hai), đây là lỗi sai chi tiết. \nDistractor 2 ('Hai tượng sư tử bằng vàng') sai vì nhầm với các sinh vật khác (như sư tử) được mô tả ở các đoạn gần (ví dụ: khải huyền, Ê-xê-chi-ên) chứ không phải ở đoạn này, đây là lỗi nhầm passage gần. \nDistractor 3 ('Một dây chuyền bằng vàng') sai vì vàng được nhắc đến trong đoạn mô tả Hòm Giao Ước (như các vòng bằng vàng, Xuất Ê-díp-tô Ký 25:12), nhưng chi tiết này không liên quan đến câu hỏi về vật trên nắp thi ân, đây là lỗi đúng văn bản nhưng lạc câu hỏi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1402,15 +1402,15 @@
     "type": "multiple_choice_single",
     "content": "Lớp trong cùng của Đền Tạm được dệt bằng bao nhiêu tấm vải lanh mịn?",
     "options": [
-      "Năm tấm",
+      "Chín tấm",
       "Mười hai tấm",
       "Mười tấm",
-      "Hai mươi tấm"
+      "Hai tấm"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 26:1 — 'Hãy dùng mười tấm vải lanh mịn xe chỉ, chỉ xanh, tím và đỏ có thêu hình chê-ru-bim mà làm Đền Tạm.' (Đây là lớp trong cùng; Xuất Hành 26:7 mô tả thêm một lớp phủ bằng lông dê.)",
+    "explanation": "Xuất Ê-díp-tô Ký 26:1 chép: 'Ngươi cũng hãy làm đền tạm mười bức màn bằng vải gai đậu mịn, chỉ tím, đỏ điều và đỏ sặm, có thêu các hình chê-ru-bin cực xảo.' Câu này chỉ rõ lớp trong cùng gồm mười tấm. Đáp án 'Chín tấm' là sai vì chỉ thiếu một tấm so với số chính xác. 'Mười hai tấm' là sai vì nhầm sang số tấm của lớp phủ bằng da chiên đực nhuộm đỏ (Xuất 26:14). 'Hai tấm' là sai vì đây là số tấm màn làm thành một bức cho mái đền (Xuất 26:3-6), không phải tổng số tấm của lớp trong cùng.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1429,15 +1429,15 @@
     "type": "multiple_choice_single",
     "content": "Bàn thờ thiêu trong Đền Tạm được làm bằng gì?",
     "options": [
-      "Vàng ròng",
-      "Gỗ bá hương bọc bạc",
+      "Gỗ si-tim bọc vàng",
+      "Gỗ ô-liu bọc đồng",
       "Gỗ si-tim bọc đồng",
-      "Đá nguyên khối"
+      "Đá nguyên khối bọc đồng"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 27:1-2 — 'Hãy đóng bàn thờ bằng gỗ si-tim... Hãy lấy đồng bọc bàn thờ.'",
+    "explanation": "Xuất Ê-díp-tô Ký 27:1-2 chép rõ: \"Ngươi cũng hãy đóng một bàn thờ bằng cây si-tim... Ngươi sẽ bọc đồng\" (câu 1-2). Vậy đáp án đúng là 'Gỗ si-tim bọc đồng'. Distractor 'Gỗ si-tim bọc vàng' sai vì chỉ sai duy nhất chi tiết vật liệu bọc (vàng thường dùng cho đồ vật trong Nơi Thánh, còn đồng dùng cho đồ ngoài hành lang như bàn thờ thiêu). Distractor 'Gỗ ô-liu bọc đồng' sai vì nhầm sang loại gỗ dùng cho các đồ vật khác (như bàn thờ xông hương trong Xuất 30:1-5). Distractor 'Đá nguyên khối bọc đồng' sai vì đây là một hiểu lầm phổ biến (có thể lẫn với các bàn thờ khác trong Kinh Thánh), nhưng đoạn này quy định rõ làm bằng gỗ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1455,15 +1455,15 @@
     "type": "multiple_choice_single",
     "content": "Ai được chọn làm thầy tế lễ đầu tiên của dân Y-sơ-ra-ên?",
     "options": [
-      "Ca-lép",
       "Môi-se",
-      "Giô-suê",
+      "Phinehas",
+      "Ê-li",
       "A-rôn"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 28:1 — 'Trong dân Y-sơ-ra-ên, hãy chọn A-rôn anh con và các con trai người, đem đến gần con để phục vụ Ta trong chức tế lễ.'",
+    "explanation": "Theo Xuất Ê-díp-tô Ký 28:1, Đức Chúa Trời phán cùng Môi-se rằng: 'Hãy chọn A-rôn, anh ngươi, cùng các con trai ngươi,... để họ làm chức tế lễ trước mặt ta'. Điều này xác định A-rôn là thầy tế lễ đầu tiên được Chúa chọn trực tiếp. Distractor 'Môi-se' là gần đúng vì ông là nhà lãnh đạo và là người nhận chỉ thị, nhưng không phải là thầy tế lễ. Distractor 'Phinehas' sai chi tiết vì ông là cháu của A-rôn, thuộc thế hệ sau. Distractor 'Ê-li' sai phạm vi thời gian vì ông là thầy tế lễ nổi tiếng nhưng thuộc thời kỳ sau này trong sách 1 Sa-mu-ên, không phải thời kỳ đầu của dân Y-sơ-ra-ên.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1483,15 +1483,15 @@
     "type": "multiple_choice_single",
     "content": "Bảng đeo ngực của thầy tế lễ thượng phẩm có bao nhiêu viên đá quý?",
     "options": [
-      "Bảy viên",
-      "Hai mươi bốn viên",
+      "Mười viên",
+      "Bốn viên",
       "Mười hai viên",
-      "Mười viên"
+      "Mười bốn viên"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 28:21 — 'Các viên đá sẽ có mười hai, theo tên các con trai Y-sơ-ra-ên.' Mười hai viên đá tượng trưng cho mười hai chi phái.",
+    "explanation": "Theo Xuất Ê-díp-tô Ký 28:17-21, bảng đeo ngực có mười hai viên đá quý, tương ứng với mười hai chi phái Y-sơ-ra-ên (câu 21).\n\n- Distractor \"Mười viên\" sai vì chỉ thiếu hai viên so với con số chính xác là mười hai.\n- Distractor \"Bốn viên\" sai vì đây là một hiểu lầm phổ biến, có thể do nhầm lẫn với số hàng đá trên bảng (có bốn hàng, mỗi hàng ba viên, tổng cộng mười hai viên).\n- Distractor \"Mười bốn viên\" sai vì tham chiếu nhầm sang chi tiết gần đó; con số mười bốn không xuất hiện trong đoạn mô tả bảng đeo ngực này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1510,15 +1510,15 @@
     "type": "multiple_choice_single",
     "content": "Mỗi người Y-sơ-ra-ên khi kiểm tra dân số phải nộp ___ siếc-lơ bạc.",
     "options": [
-      "năm",
       "một",
       "hai",
+      "mười",
       "nửa"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 30:13 — 'Mỗi người phải nộp nửa siếc-lơ, theo siếc-lơ của nơi thánh.' Đây là tiền chuộc mạng.",
+    "explanation": "Xuất Ê-díp-tô Ký 30:13 chép: 'Khi nào có điểm dân số, mỗi người đã đến tuổi tráng lực sẽ phải nộp nửa siếc-lơ, tùy theo siếc-lơ nơi thánh...'. Do đó, đáp án đúng là 'nửa'. Các đáp án sai: 'một' (sai chi tiết số lượng), 'hai' (sai vì nhầm với các quy định về số lượng khác trong các phân đoạn gần, như giá chuộc tôi mọi), 'mười' (sai do hiểu lầm phổ biến về các con số tròn chục trong Kinh Thánh).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1539,7 +1539,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 30:23-25 — Dầu xức thánh gồm: một dược, quế thơm, xương bồ, quế bì và dầu ô-liu. Hỗn hợp này chỉ dành cho việc thánh.",
+    "explanation": "Xuất Hành 30:23-25 liệt kê bốn vật liệu ban đầu: myrrh, quế, xương bồ, và nhục quế, cùng với dầu ô-liu để pha chế. Vì vậy, dầu xức thánh được pha chế từ năm thành phần. 'Bốn thành phần' là sai vì thiếu dầu ô-liu, là chất lỏng nền để pha chế. 'Sáu thành phần' là sai vì dựa vào các công thức gần đó (ví dụ hương trong Xuất Hành 30:34-35 có bốn thành phần, nhưng không liên quan) hoặc đếm sai. 'Ba thành phần' là sai vì mặc dù một số công thức pha chế trong Kinh Thánh có thể đơn giản hơn, nhưng đoạn này cụ thể nêu rõ năm thành phần, nên đáp án này lạc khỏi chi tiết văn bản được hỏi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1548,10 +1548,10 @@
       "Nâng cao"
     ],
     "options": [
-      "Ba thành phần",
       "Bốn thành phần",
+      "Sáu thành phần",
       "Năm thành phần",
-      "Bảy thành phần"
+      "Ba thành phần"
     ]
   },
   {
@@ -1589,15 +1589,15 @@
     "type": "multiple_choice_single",
     "content": "Hai bảng chứng (bảng đá Mười Điều Răn đầu tiên) được viết bởi ai?",
     "options": [
-      "Môi-se",
-      "A-rôn",
-      "Bết-sa-lê-ên",
+      "Môi-se viết trên hai bảng đá",
+      "Các thiên sứ viết trên hai bảng đá",
+      "Hai bảng đá được viết bởi A-rôn",
       "Ngón tay Đức Chúa Trời"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 31:18 — 'Khi phán xong với Môi-se trên núi Si-na-i, Ngài ban cho ông hai bảng chứng, tức là hai bảng đá do ngón tay Đức Chúa Trời viết.'",
+    "explanation": "Xuất Ê-díp-tô Ký 31:18 ghi rõ: 'Khi Đức Giê-hô-va đã phán xong cùng Môi-se tại núi Si-na-i, Ngài ban cho Môi-se hai bảng chứng, bảng đá, có ngón tay Đức Chúa Trời viết ra.' Vì vậy, đáp án đúng là 'Ngón tay Đức Chúa Trời' vì chính Đức Chúa Trời viết Mười Điều Răn đầu tiên. Các đáp án sai: (1) 'Môi-se viết' là hiểu lầm phổ biến vì ông thường là người ghi chép luật pháp, nhưng đoạn này chỉ định rõ Đức Chúa Trời viết; (2) 'Các thiên sứ viết' là sai chi tiết, không có chỗ nào trong đoạn này nói đến thiên sứ viết bảng; (3) 'A-rôn viết' dựa vào nhầm lẫn với các đoạn gần (như chuyện con bê vàng), nhưng A-rôn không liên quan đến việc viết bảng đá đầu tiên này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1641,15 +1641,15 @@
     "type": "multiple_choice_single",
     "content": "Khi thấy dân thờ bò vàng, Môi-se đã làm gì với hai bảng đá?",
     "options": [
-      "Đem trả cho Đức Chúa Trời",
-      "Giao cho A-rôn",
+      "Cất giữ vào trong hòm giao ước",
+      "Đem xuống núi rồi trao cho dân chúng",
       "Đập vỡ dưới chân núi",
-      "Giấu trong đá"
+      "Dựng đứng bên cạnh bàn thờ bò vàng"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 32:19 — 'Khi đến gần trại quân, ông thấy bò con và sự nhảy múa. Môi-se nổi giận, ném hai bảng đá đập vỡ dưới chân núi.'",
+    "explanation": "Đáp án đúng là \"Đập vỡ dưới chân núi\", vì Kinh Thánh chép rõ trong Xuất Ê-díp-tô Ký 32:19 rằng khi Môi-se đến gần trại quân và thấy con bò con cùng những điệu múa, thì cơn giận của người nổi phừng, người liệng hai bảng đá khỏi tay mình và đập vỡ ra dưới chân núi. Các đáp án sai: 1) \"Cất giữ vào trong hòm giao ước\" là sai vì hành động này thuộc về sau này và là một hiểu lầm phổ biến về nơi cất giữ các bảng đá thứ hai; 2) \"Đem xuống núi rồi trao cho dân chúng\" là gần đúng vì Môi-se có đem hai bảng đá xuống núi, nhưng người không trao cho dân chúng mà đập vỡ chúng; 3) \"Dựng đứng bên cạnh bàn thờ bò vàng\" là sai vì chi tiết này mô tả hành vi thờ phượng sai trái của dân chúng (xem câu 8) chứ không phải hành động của Môi-se với hai bảng đá.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1669,7 +1669,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 33:11 — 'Đức Giê-hô-va phán với Môi-se mặt đối mặt, như người nói chuyện với bạn mình.'",
+    "explanation": "Xuất Ê-díp-tô Ký 33:11 chép: 'Đức Giê-hô-va nói chuyện cùng Môi-se mặt đối mặt, như một người nói chuyện cùng bạn hữu mình'. Đây là cách thức đặc biệt, trực tiếp và thân mật, khác với cách Ngài thường bày tỏ với các tổ phụ khác. Distractor 1 sai vì nhầm chi tiết (sai nhân vật và bối cảnh giao ước). Distractor 2 sai vì đây là hiểu lầm phổ biến về cách Đức Chúa Trời thường phán với nhiều người trong Kinh Thánh, nhưng không phải là cách thức được mô tả trong câu này. Distractor 3 là đáp án 'gần đúng' vì nó mô tả cách Đức Giê-hô-va thường hiện ra (Xuất 19:18-20), nhưng đây là một sự kiện khác (tại núi Si-na-i), không phải cách thức 'mặt đối mặt, như bạn hữu' được nói đến trong Xuất 33:11.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1679,10 +1679,10 @@
       "Trung cấp"
     ],
     "options": [
-      "Qua chiêm bao",
-      "Qua tiên tri khác",
+      "Qua các thiên sứ, như khi Ngài giao giao ước với Áp-ra-ham",
+      "Trong giấc mơ, như cách Ngài bày tỏ cho Giô-sép",
       "Mặt đối mặt, như người nói chuyện với bạn mình",
-      "Qua tiếng sấm trên núi"
+      "Từ trong đám mây và lửa, như tại núi Si-na-i"
     ]
   },
   {
@@ -1694,14 +1694,14 @@
     "content": "Khi Môi-se xin thấy vinh quang Đức Chúa Trời, Ngài phán điều gì?",
     "options": [
       "Không ai thấy mặt Ta mà còn sống",
-      "Chỉ các thiên sứ được thấy mặt Ta",
-      "Ngài sẽ hiện ra trong đám mây",
-      "Hãy đợi đến ngày cuối cùng"
+      "Ngươi sẽ thấy mặt Ta mà không chết",
+      "Ngươi sẽ thấy mặt Ta ở một nơi khác",
+      "Không ai thấy Ta mà được vào Đất Hứa"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Xuất Hành 33:20 — 'Ngài phán: Con không thể thấy mặt Ta được, vì không ai thấy mặt Ta mà còn sống.'",
+    "explanation": "Xuất Ê-díp-tô Ký 33:20 chép: 'Đức Chúa Trời lại phán rằng: Ngươi chẳng thấy được mặt Ta; vì không ai thấy mặt Ta mà còn sống.' Do đó, đáp án đúng là 'Không ai thấy mặt Ta mà còn sống', phản ánh chính xác lời phán của Đức Chúa Trời khi Môi-se xin thấy vinh quang Ngài.\n\nCác đáp án sai được giải thích như sau:\n- 'Ngươi sẽ thấy mặt Ta mà không chết' (sai chi tiết): Trái ngược hoàn toàn với nội dung Kinh Thánh. Đây là distractor 'gần đúng' vì nó đề cập đến việc 'thấy mặt' và 'chết/sống', nhưng sai về ý phủ định/khẳng định và chi tiết then chốt.\n- 'Ngươi sẽ thấy mặt Ta ở một nơi khác' (đúng văn bản nhưng lạc câu hỏi): Tuy Đức Chúa Trời có đề cập đến việc đặt Môi-se trong hốc đá và che Môi-se bằng bàn tay khi Ngài đi qua (câu 22-23), nhưng đây không phải là câu trả lời trực tiếp cho câu hỏi 'Ngài phán điều gì?' khi Môi-se xin thấy vinh quang.\n- 'Không ai thấy Ta mà được vào Đất Hứa' (hiểu lầm phổ biến): Đây là một sự kết hợp sai lệch, không có trong phân đoạn này. Việc vào Đất Hứa liên quan đến hậu quả của tội lỗi của dân Y-sơ-ra-ên, không phải là điều kiện hay hệ quả trực tiếp của việc nhìn thấy Đức Chúa Trời trong ngữ cảnh này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1721,7 +1721,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 34:1 — 'Đức Giê-hô-va phán với Môi-se: Hãy đẽo hai bảng đá giống như hai bảng trước, Ta sẽ viết lên những bảng ấy các lời đã có trên hai bảng trước.'",
+    "explanation": "Câu hỏi: 'Sau khi Môi-se đập vỡ hai bảng đá, Đức Chúa Trời bảo ông làm gì?'\n\nĐÁP ÁN ĐÚNG: 'Đẽo hai bảng đá mới giống như hai bảng trước' là chính xác, dựa trên Xuất Ê-díp-tô Ký 34:1: 'Đức Giê-hô-va phán cùng Môi-se rằng: Hãy đẽo hai bảng đá giống như hai bảng trước...' (BTT).\n\nCÁC ĐÁP ÁN SAI:\n1. 'Đẽo hai bảng đá mới lớn hơn hai bảng trước' (gần đúng, nhưng sai chi tiết): Kinh Thánh ghi 'giống như', không phải 'lớn hơn'. Đây là lỗi sai một chi tiết then chốt.\n2. 'Mang hai bảng đá đã vỡ lên núi để Chúa viết lại' (nhầm passage gần): Ý này trộn lẫn với mệnh lệnh trước đó (Môi-se phải lên núi với hai bảng đá đã đẽo sẵn - Xuất 34:4), không phải là mang bảng đá vỡ. Đây là lỗi nhầm lẫn với một chi tiết trong cùng phân đoạn.\n3. 'Hối lỗi và cầu nguyện cho dân Y-sơ-ra-ên' (đúng văn bản nhưng lạc câu hỏi): Hành động này (cầu thay) của Môi-se diễn ra trước đó (Xuất 32-33), không phải là mệnh lệnh cụ thể của Đức Chúa Trời sau khi ông đập vỡ bảng đá. Nó không trả lời trực tiếp câu hỏi 'bảo ông làm gì' tại thời điểm đó.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1731,10 +1731,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Bỏ luật pháp",
-      "Lập đền thờ mới",
+      "Đẽo hai bảng đá mới lớn hơn hai bảng trước",
+      "Mang hai bảng đá đã vỡ lên núi để Chúa viết lại",
       "Đẽo hai bảng đá mới giống như hai bảng trước",
-      "Đợi 40 năm rồi nói lại"
+      "Hối lỗi và cầu nguyện cho dân Y-sơ-ra-ên"
     ]
   },
   {
@@ -1746,15 +1746,15 @@
     "type": "multiple_choice_single",
     "content": "Khi Môi-se xuống núi Si-na-i, điều gì xảy ra với khuôn mặt ông?",
     "options": [
-      "Mặt ông được che bởi khăn",
+      "Da mặt ông bị cháy sém",
       "Da mặt ông phát sáng",
-      "Mặt ông trở nên đen sạm",
-      "Mặt ông bị thương"
+      "Da mặt ông hóa thành đá",
+      "Da mặt ông được tẩy sạch"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 34:29 — 'Khi Môi-se từ trên núi Si-na-i xuống... ông không biết rằng da mặt mình phát sáng vì đã nói chuyện với Đức Giê-hô-va.'",
+    "explanation": "Xuất Ê-díp-tô Ký 34:29-30 ghi rõ: 'Vả, khi Môi-se từ trên núi Si-na-i xuống, tay cầm hai bảng chứng... thì chẳng biết rằng da mặt mình sáng rực bởi vì mình hầu chuyện Đức Giê-hô-va.' Vì vậy, đáp án đúng là 'Da mặt ông phát sáng' vì ông vừa hầu chuyện với Chúa. Các đáp án sai: 1) 'Da mặt ông bị cháy sém' là hiểu lầm phổ biến (vì núi có lửa, khói), nhưng Kinh Thánh không ghi điều này. 2) 'Da mặt ông hóa thành đá' nhầm sang chi tiết gần (hai bảng chứng bằng đá, không phải mặt). 3) 'Da mặt ông được tẩy sạch' là sai chi tiết (không có chuyện tẩy sạch, mà là sáng rực).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1774,7 +1774,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 35:2 — 'Trong sáu ngày sẽ làm việc, nhưng ngày thứ bảy sẽ là ngày thánh cho các anh em, là ngày Sa-bát nghỉ ngơi cho Đức Giê-hô-va.'",
+    "explanation": "Đáp án đúng trực tiếp trích dẫn Xuất Hành 35:2 (BTT): 'Ngày thánh, ngày Sa-bát nghỉ ngơi cho Đức Giê-hô-va — cấm làm việc'. Đây là mệnh lệnh rõ ràng về đặc tính và mục đích của ngày Sa-bát.\n\nCác đáp án sai:\n- 'Ngày thánh, ngày Sa-bát nghỉ ngơi cho dân Y-sơ-ra-ên — cấm làm việc': Sai chi tiết chủ thể ('cho dân Y-sơ-ra-ên'). Dù ngày nghỉ thực tế là cho dân sự, câu Kinh Thánh chính xác nhấn mạnh đây là 'ngày Sa-bát nghỉ ngơi cho Đức Giê-hô-va' (Exodus 35:2).\n- 'Ngày tận hiến, ngày Sa-bát cầu nguyện cho Đức Giê-hô-va — khuyến khích làm việc nhẹ': Thể hiện hiểu lầm phổ biến về việc 'làm việc' trong ngày Sa-bát. Kinh Thánh cấm làm bất kỳ công việc nào (Exodus 35:2), không có ngoại lệ 'làm việc nhẹ' hay 'khuyến khích'.\n- 'Ngày lễ, ngày Sa-bát tụ họp cho Đức Giê-hô-va — được phép làm việc thiêng liêng': Mô tả đúng một số khía cạnh khác của ngày Sa-bát (như tụ họp) nhưng lạc trọng tâm câu hỏi về bản chất 'nghỉ ngơi và cấm làm việc' được định nghĩa trong câu này. 'Được phép làm việc thiêng liêng' trái với mệnh lệnh 'cấm làm việc'.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1784,10 +1784,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Ngày làm việc thường",
-      "Ngày dâng tế lễ duy nhất",
+      "Ngày thánh, ngày Sa-bát nghỉ ngơi cho dân Y-sơ-ra-ên — cấm làm việc",
+      "Ngày tận hiến, ngày Sa-bát cầu nguyện cho Đức Giê-hô-va — khuyến khích làm việc nhẹ",
       "Ngày thánh, ngày Sa-bát nghỉ ngơi cho Đức Giê-hô-va — cấm làm việc",
-      "Ngày cầu nguyện cá nhân"
+      "Ngày lễ, ngày Sa-bát tụ họp cho Đức Giê-hô-va — được phép làm việc thiêng liêng"
     ]
   },
   {
@@ -1800,14 +1800,14 @@
     "content": "Ngoài Bết-sa-lê-ên, ai là người phụ tá chính trong việc xây Đền Tạm?",
     "options": [
       "Ô-hô-li-áp",
-      "I-tha-ma",
-      "Hu-rơ",
-      "Giô-suê"
+      "A-hi-sa-mác",
+      "Mi-ri-am",
+      "Gia-sôn"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Xuất Hành 35:34 — 'Ngài cũng ban cho ông và Ô-hô-li-áp... khả năng dạy dỗ người khác.'",
+    "explanation": "Xuất Ê-díp-tô Ký 35:30-34 cho biết Bết-sa-lê-ên là người được Chúa chọn chính, và Đức Giê-hô-va đã khiến ông và Ô-hô-li-áp đồng đổ đầy Thần của Ngài để dạy dỗ các thợ (câu 34). 35:35 xác nhận rõ: 'Ngài đã khiến hai người đầy sự khôn ngoan đặng làm mọi công việc... tức Bết-sa-lê-ên, con trai U-ri... và Ô-hô-li-áp, con trai A-hi-sa-mác'. Vì vậy, đáp án đúng là Ô-hô-li-áp.\n\nCác đáp án sai:\n- A-hi-sa-mác: Đây là tên cha của Ô-hô-li-áp (35:34), một chi tiết bị nhầm lẫn, thuộc loại 'sai chi tiết'.\n- Mi-ri-am: Đây là một nhân vật nổi tiếng trong Xuất Ê-díp-tô (em gái Môi-se) nhưng không liên quan đến việc xây Đền Tạm, đây là một 'hiểu lầm phổ biến' từ người đọc nhớ các nhân vật chính.\n- Gia-sôn: Tên này không xuất hiện trong đoạn Kinh Thánh tham chiếu, nhưng là một tên xuất hiện trong các sách lịch sử sau này (như Ma-thi-ơ), thuộc loại 'nhầm passage gần'.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1828,13 +1828,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Xuất Hành 36:6-7 — 'Môi-se ra lệnh trong trại quân rằng: Không ai cần phải dâng thêm nữa cho việc xây nơi thánh. Dân chúng mới thôi không đem đến nữa.'",
+    "explanation": "Xuất Ê-díp-tô Ký 36:6-7 ghi lại: 'Môi-se bèn truyền lịnh nầy ra khắp trại quân: Người nam cùng người nữ chớ làm công việc chi về các lễ vật đền thánh nữa. Vậy, chúng đành cầm giữ dân sự đừng đem lễ vật đến nữa. Vì các vật liệu đã đủ đặng làm hết cả công việc, và dư lại.' Đáp án đúng vì Môi-se đã ra lệnh (truyền lịnh) cho dân sự ngừng dâng hiến. Distractor 1 ('Bán bớt...') là gần đúng nhưng sai chi tiết: Kinh Thánh không ghi việc bán vật liệu thừa, mà chỉ nói họ ngừng dâng và vật liệu đã đủ. Distractor 2 ('Yêu cầu họ dâng cho...') đúng là có những người lãnh đạo công việc (Bết-sa-lê-ên, Ô-hô-li-áp), nhưng lạc câu hỏi vì vấn đề là ngừng dâng, không phải chuyển hướng dâng cho ai khác. Distractor 3 ('Đúc tượng con bò vàng') là hiểu lầm phổ biến, vì sự kiện tượng bò vàng xảy ra trước đó (Xuất 32), không liên quan đến việc dâng vật liệu thừa cho Đền Tạm.",
     "language": "vi",
     "options": [
       "Bảo họ ngừng dâng hiến",
-      "Phân phát cho dân nghèo",
-      "Trả lại vàng bạc",
-      "Xây thêm một đền tạm nữa"
+      "Bán bớt phần vật liệu dư thừa",
+      "Yêu cầu họ dâng cho những người lãnh đạo",
+      "Đúc tượng con bò vàng từ vật liệu thừa"
     ],
     "tags": [
       "Cựu Ước",
@@ -1934,15 +1934,15 @@
     "type": "multiple_choice_single",
     "content": "Đền Tạm được dựng lên vào ngày mồng một tháng mấy?",
     "options": [
-      "Tháng mười hai",
-      "Tháng bảy",
+      "Tháng hai",
+      "Tháng ba",
       "Tháng giêng",
-      "Tháng ba"
+      "Tháng tư"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 40:2 — 'Ngày mồng một tháng giêng, con hãy dựng Đền Tạm, tức Lều Hội Kiến lên.'",
+    "explanation": "Xuất Ê-díp-tô Ký 40:2 chép: \"Ngày mồng một tháng giêng, ngươi sẽ dựng đền tạm.\" Do đó, đáp án đúng là 'Tháng giêng'. Distractor 'Tháng hai' là gần đúng nhưng sai một chi tiết số học then chốt. 'Tháng ba' là một chi tiết có trong các phân đoạn gần đó (liên quan đến lễ Vượt Qua được cử hành vào tháng này) nhưng không liên quan đến ngày dựng Đền Tạm. 'Tháng tư' nằm ngoài phạm vi thời gian hợp lý được đề cập trong ngữ cảnh gần của sự kiện này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -2044,13 +2044,13 @@
     ],
     "verseEnd": 6,
     "content": "Theo Xuất 3:1-6, Đức Chúa Trời hiện ra với Môi-se trong hình thức gì khi ông đang chăn chiên?",
-    "explanation": "Xuất 3:2-3 — 'Thiên sứ Đức Giê-hô-va hiện ra cùng người trong ngọn lửa, giữa bụi gai kia. Người nhìn thấy cả bụi gai đang cháy, nhưng không hề tàn'.",
+    "explanation": "Xuất Ê-díp-tô Ký 3:2 chép: 'Thiên sứ của Đức Giê-hô-va hiện ra cùng người trong ngọn lửa, giữa bụi gai kia. Người nhìn thấy bụi gai cháy bừng, nhưng không hề tàn lụi.' Vì vậy, đáp án đúng là 'BỤI GAI cháy mà KHÔNG TÀN', mô tả chính xác hiện tượng kỳ diệu. Distractor 'BỤI GAI cháy rồi TÀN HẾT' sai vì trái ngược với chi tiết then chốt 'không tàn' trong Kinh Thánh. Distractor 'MỘT CÂY SỒI lửa cháy giữa trời' là nhầm với passage gần (Sáng 18:1, nơi Đức Giê-hô-va hiện ra với Áp-ra-ham dưới cây sồi). Distractor 'MỘT TRẬN GIÓ LỐC xoáy lửa' là hiểu lầm phổ biến, dựa trên các lần hiện ra khác của Đức Chúa Trời (như với Ê-li trong 1 Các Vua 19:11-12) chứ không phải trong phân đoạn này.",
     "language": "vi",
     "options": [
-      "Một đám mây sáng",
+      "BỤI GAI cháy rồi TÀN HẾT",
       "BỤI GAI cháy mà KHÔNG TÀN",
-      "Một cây cột lửa cao lớn",
-      "Một tiếng sấm rền vang trên núi"
+      "MỘT CÂY SỒI lửa cháy giữa trời",
+      "MỘT TRẬN GIÓ LỐC xoáy lửa"
     ],
     "tags": [
       "Cựu Ước",
@@ -2071,12 +2071,12 @@
     ],
     "verseEnd": 5,
     "content": "Theo Xuất 4:2-4, Đức Chúa Trời bảo Môi-se ném gậy xuống đất; gậy biến thành con gì?",
-    "explanation": "Xuất 4:3 — 'Đức Giê-hô-va phán: Hãy ném xuống đất. Người bèn ném xuống đất, gậy hóa ra con rắn; Môi-se chạy trốn nó'. Khi Môi-se cầm đuôi, rắn lại biến thành gậy (4:4).",
+    "explanation": "Đáp án đúng là 'Một con rắn', vì Xuất Ê-díp-tô Ký 4:3 chép: 'Ngài phán: Hãy ném nó xuống đất. Môi-se ném xuống đất, gậy hóa thành một con rắn'.\n\nDistractor 'Một con gà' sai vì không có trong đoạn Kinh Thánh này; tên các con vật khác xuất hiện trong các phép lạ sau đó của Môi-se (vd: ếch, châu chấu) nhưng không phải gà.\nDistractor 'Một con bò cạp' sai vì đây là một hiểu lầm phổ biến khi đọc lướt, do người đọc có thể liên tưởng đến việc gậy biến thành thứ nguy hiểm như bò cạp, nhưng Kinh Thánh ghi rõ là 'rắn'.\nDistractor 'Một con chim' sai vì chi tiết này không đúng; chim xuất hiện trong các câu chuyện khác (như chim bồ câu của Nô-ê, chim nuôi dân Y-sơ-ra-ên trong đồng vắng) nhưng không phải trong phép lạ gậy biến hình ở Xuất 4:2-4.",
     "language": "vi",
     "options": [
-      "Một con sư tử",
-      "Một con đại bàng",
-      "Một con bê",
+      "Một con gà",
+      "Một con bò cạp",
+      "Một con chim",
       "Một con rắn"
     ],
     "tags": [
@@ -2098,13 +2098,13 @@
     ],
     "verseEnd": 13,
     "content": "Theo Xuất 7:1, Đức Chúa Trời phán A-rôn sẽ làm gì cho Môi-se?",
-    "explanation": "Xuất 7:1 — 'Đức Giê-hô-va phán cùng Môi-se rằng: Nầy ta lập ngươi như là Đức Chúa Trời cho Pha-ra-ôn; còn A-rôn, anh ngươi, sẽ làm kẻ tiên tri của ngươi'. A-rôn nói thay Môi-se vì Môi-se 'môi miệng vụng về' (4:10).",
+    "explanation": "Xuất Ê-díp-tô Ký 7:1 chép: \"Đức Giê-hô-va phán cùng Môi-se rằng: Nầy, ta lập ngươi như Đức Chúa Trời của Pha-ra-ôn, còn A-rôn, anh ngươi, sẽ làm tiên tri của ngươi.\" Do đó, đáp án đúng là A-rôn sẽ làm tiên tri (người phát ngôn) cho Môi-se. Các đáp án sai: 1) 'Làm thầy tế lễ cho Môi-se' sai vì chức thầy tế lễ được lập cho A-rôn sau này, không phải chức vụ được Chúa phán trong câu này. Đây là một hiểu lầm phổ biến về chức vụ của A-rôn. 2) 'Làm người cố vấn cho Pha-ra-ôn' sai vì câu hỏi hỏi về vai trò của A-rôn đối với Môi-se, không phải đối với Pha-ra-ôn (sai phạm vi đối tượng). 3) 'Làm người phiên dịch cho dân Y-sơ-ra-ên' sai vì vai trò này gần với ý 'phát ngôn', nhưng bối cảnh trong phân đoạn (các câu gần đó như Xuất 4:16) nhấn mạnh A-rôn nói thay cho Môi-se với Pha-ra-ôn, không phải với dân Y-sơ-ra-ên; đây là nhầm chi tiết từ passage gần.",
     "language": "vi",
     "options": [
       "Là người phát ngôn (tiên tri) cho Môi-se",
-      "Là vua thay thế Pha-ra-ôn",
-      "Là tướng đánh trận của dân Y-sơ-ra-ên",
-      "Là thầy thông giáo dạy luật"
+      "Làm thầy tế lễ cho Môi-se",
+      "Làm người cố vấn cho Pha-ra-ôn",
+      "Làm người phiên dịch cho dân Y-sơ-ra-ên"
     ],
     "tags": [
       "Cựu Ước",
@@ -2125,13 +2125,13 @@
     ],
     "verseEnd": 28,
     "content": "Theo Xuất 12:21-23, dân Y-sơ-ra-ên phải bôi gì lên cột cửa và mày cửa để được thiên sứ phá hại đi qua?",
-    "explanation": "Xuất 12:22-23 — 'Rồi hãy lấy một chùm kinh giới nhúng vào huyết trong chậu, bôi lên mày cửa và hai cây cột cửa, đoạn trong các ngươi chớ ai bước ra khỏi cửa nhà mình cho đến sáng mai. Đức Giê-hô-va sẽ đi qua đặng hành hại xứ Ê-díp-tô; khi thấy huyết nơi mày cửa và hai cây cột cửa, Ngài sẽ vượt qua, không cho kẻ tiêu diệt vào nhà các ngươi đặng hành hại'.",
+    "explanation": "Xuất Ê-díp-tô Ký 12:22 chép: \"Hãy lấy một bó kinh giới nhúng vào huyết trong chậu, rồi đánh lên mày và hai cột cửa...\" và câu 23 giải thích Chúa sẽ vượt qua các cửa có dấu máu đó. Vì thế, đáp án đúng là MÁU chiên con Vượt Qua (từ con sinh tế được nói đến trong các câu 21, 27).\n\nCác đáp án sai: (1) 'DẦU thánh của chiên con Vượt Qua' là sai chi tiết (wrong_detail) – Kinh Thánh không đề cập đến dầu trong nghi lễ này, chỉ nói đến máu. Đây là đáp án 'gần đúng' vì chỉ sai chất liệu (dầu thay vì máu) nhưng vẫn đúng đối tượng (chiên con Vượt Qua). (2) 'MÁU của bò đực tơ' là nhầm passage gần (nearby_passage) – bò đực tơ thường xuất hiện trong các nghi lễ tế lễ khác (như Lê-vi Ký), không phải trong bối cảnh Lễ Vượt Qua đầu tiên này. (3) 'NƯỚC từ sông Nile' là hiểu lầm phổ biến (common_misconception) – dù nước sông Nile liên quan đến các tai vạ trước đó (như biến thành máu), nó không được dùng làm dấu hiệu trên cửa trong đêm Vượt Qua.",
     "language": "vi",
     "options": [
-      "Dầu ô-liu nguyên chất",
-      "Mật ong và nước",
+      "DẦU thánh của chiên con Vượt Qua",
+      "MÁU của bò đực tơ",
       "MÁU chiên con Vượt Qua",
-      "Tro của bụi gai cháy"
+      "NƯỚC từ sông Nile"
     ],
     "tags": [
       "Cựu Ước",
@@ -2152,13 +2152,13 @@
     ],
     "verseEnd": 22,
     "content": "Theo Xuất 13:21-22, Đức Chúa Trời dẫn dân Y-sơ-ra-ên qua sa mạc bằng dấu hiệu nào?",
-    "explanation": "Xuất 13:21-22 — 'Đức Giê-hô-va đi trước dân sự, ban ngày trong một trụ mây, để dẫn đường đi; ban đêm trong một trụ lửa, để soi sáng cho chúng, hầu cho được đi luôn ngày và đêm'.",
+    "explanation": "Đáp án đúng là 'TRỤ MÂY ban ngày, TRỤ LỬA ban đêm' vì Xuất Ê-díp-tô Ký 13:21-22 chép rõ: 'Đức Giê-hô-va đi trước dân sự... ban ngày trong một trụ mây... ban đêm trong một trụ lửa'.\n\nDistractor thứ nhất ('TRỤ LỬA ban ngày, TRỤ MÂY ban đêm') sai vì đã đảo ngược thứ tự dấu hiệu ban ngày và ban đêm, đây là lỗi sai chi tiết thứ tự.\nDistractor thứ hai ('TIẾNG SẤM ban ngày, ÁNH CHỚP ban đêm') sai vì đây là những dấu hiệu thường gặp trong các đoạn mô tả sự hiện diện của Đức Chúa Trời (như Xuất 19:16-19), nhưng không phải là dấu hiệu dẫn đường trong đoạn Kinh Thánh này (Xuất 13:21-22).\nDistractor thứ ba ('CỘT MÂY ban ngày, CỘT SƯƠNG ban đêm') sai vì mặc dù 'cột mây' là cách diễn đạt khác cho 'trụ mây', nhưng 'cột sương' là một sự thay thế sai lầm, phổ biến, cho 'trụ lửa' được Kinh Thánh ghi nhận.",
     "language": "vi",
     "options": [
-      "Một thiên sứ trắng đi đầu",
+      "TRỤ LỬA ban ngày, TRỤ MÂY ban đêm",
       "TRỤ MÂY ban ngày, TRỤ LỬA ban đêm",
-      "Tiếng kèn vang lừng từ trời",
-      "Một ngôi sao chiếu sáng đặc biệt"
+      "TIẾNG SẤM ban ngày, ÁNH CHỚP ban đêm",
+      "CỘT MÂY ban ngày, CỘT SƯƠNG ban đêm"
     ],
     "tags": [
       "Cựu Ước",
@@ -2206,13 +2206,13 @@
     ],
     "verseEnd": 17,
     "content": "Theo Xuất 20:1-17, Đức Chúa Trời ban cho Môi-se trên núi Si-na-i có bao nhiêu điều răn?",
-    "explanation": "Xuất 20:1-17 chứa Mười Điều Răn (Decalogue): 4 điều răn về Đức Chúa Trời (1-4), 6 điều răn về con người (5-10). Phục Truyền 5:6-21 lặp lại với chỉnh sửa nhỏ.",
+    "explanation": "Đáp án đúng là 'MƯỜI điều răn' vì Xuất Ê-díp-tô Ký 20:1-17 liệt kê đầy đủ Mười Điều Răn (từ câu 3 đến câu 17). Các đáp án sai: 'BỐN điều răn' là sai chi tiết, không có căn cứ trong đoạn này. 'CHÍN điều răn' là đáp án gần đúng nhưng sai một chi tiết then chốt (sai số lượng), có thể do nhầm lẫn khi đếm hoặc bỏ qua một điều răn. 'HAI MƯƠI điều răn' là sai phạm vi, vì con số này thường liên quan đến tổng số các luật lệ khác trong sách Xuất Ê-díp-tô, không phải số điều răn trong đoạn Kinh Thánh được hỏi.",
     "language": "vi",
     "options": [
       "MƯỜI điều răn",
-      "Bảy điều răn",
-      "Mười hai điều răn",
-      "Năm mươi điều răn"
+      "BỐN điều răn",
+      "CHÍN điều răn",
+      "HAI MƯƠI điều răn"
     ],
     "tags": [
       "Cựu Ước",
@@ -2233,13 +2233,13 @@
     ],
     "verseEnd": 8,
     "content": "Theo Xuất 32:1-8, dân Y-sơ-ra-ên đã làm gì khi Môi-se ở trên núi với Chúa quá lâu?",
-    "explanation": "Xuất 32:1,4 — 'Dân sự thấy Môi-se ở trên núi chậm xuống, bèn nhóm lại chung quanh A-rôn mà nói rằng: Nào! hãy làm các thần để dẫn chúng tôi... Người nhận lấy nơi tay dân chúng, và dùng đục làm thành một bò con đúc'.",
+    "explanation": "Đáp án đúng: Xuất 32:4,8 ghi rõ dân Y-sơ-ra-ên đã ép A-rôn đúc một con bò con bằng vàng, rồi nói: 'Hỡi Y-sơ-ra-ên! Nầy là các thần của ngươi đã đem ngươi ra khỏi xứ Ê-díp-tô', và họ dâng tế lễ, vui chơi trước tượng đó. Đây là sự kiện thờ hình tượng nổi tiếng khi Môi-se ở trên núi.\n\nVì sao các đáp án sai:\n- 'Họ ép A-rôn đúc một con RẮN ĐỒNG để thờ': Đây là đáp án gần đúng nhưng sai chi tiết then chốt. Con rắn đồng là sự kiện khác, được chép trong Dân số ký 21:8-9.\n- 'Họ bầu một người lãnh đạo mới thay thế Môi-se': Sai phạm vi. Trong đoạn này, họ không bầu lãnh đạo mới mà chỉ đòi A-rôn làm cho họ một vật để thờ (Xuất 32:1).\n- 'Họ quay trở về Ai Cập để tiếp tục làm nô lệ': Đây là một hiểu lầm phổ biến về tâm lý và lời phàn nàn của dân chúng (như trong Xuất 14:12, 16:3), nhưng trong đoạn 32:1-8 cụ thể, hành động họ thực sự làm là đúc và thờ bò vàng, không phải hành động quay về Ai Cập.",
     "language": "vi",
     "options": [
-      "Họ đợi kiên nhẫn và cầu nguyện",
-      "Họ chia thành 12 chi phái và đi tìm Môi-se",
+      "Họ ép A-rôn đúc một con RẮN ĐỒNG để thờ",
+      "Họ bầu một người lãnh đạo mới thay thế Môi-se",
       "Họ ép A-rôn đúc một con BÒ CON BẰNG VÀNG để thờ",
-      "Họ quay về Ai-cập tìm Pha-ra-ôn"
+      "Họ quay trở về Ai Cập để tiếp tục làm nô lệ"
     ],
     "tags": [
       "Cựu Ước",
@@ -2287,13 +2287,13 @@
     ],
     "verseEnd": 14,
     "content": "Theo Xuất 1:8-14, vì sao Pha-ra-ôn mới ra lệnh hành hạ dân Y-sơ-ra-ên?",
-    "explanation": "Xuất 1:9-10 — 'Pha-ra-ôn phán cùng dân mình rằng: Kìa, dân Y-sơ-ra-ên đông và mạnh hơn chúng ta; hè! ta hãy dùng chước khôn ngoan đối cùng họ, kẻo họ thêm nhiều lên'. Lo sợ liên kết kẻ thù trong chiến tranh (1:10).",
+    "explanation": "Đoạn Kinh Thánh Xuất Ê-díp-tô Ký 1:8-14 cho thấy lý do trực tiếp. Câu 9-10 ghi Pha-ra-ôn nói: 'Nầy, dân Y-sơ-ra-ên bây giờ đông và mạnh hơn chúng ta. Hè! Chúng ta hãy dùng chước khôn ngoan đối với họ, kẻo họ sinh sản nhiều thêm, và nếu có cơn chiến tranh, họ sẽ hiệp cùng kẻ thù nghịch đánh lại chúng ta...' Vì vậy, đáp án đúng là do ông SỢ dân Y-sơ-ra-ên SINH SÔI quá nhiều và liên kết kẻ thù. Đây là nỗi sợ về chính trị và an ninh.\n\nCác đáp án sai:\n1. 'Vì ông ghét dân Y-sơ-ra-ên và muốn trừng phạt họ' (common_misconception): Đoạn văn không nói Pha-ra-ôn hành động vì lòng ghét hay mục đích trừng phạt cá nhân. Động cơ chính là sự lo sợ chiến lược.\n2. 'Vì dân Y-sơ-ra-ên đã từ chối làm việc cho người Ê-díp-tô' (wrong_scope): Không có chi tiết nào trong đoạn 8-14 nói về việc dân Y-sơ-ra-ên từ chối lao động. Ngược lại, họ bị bắt làm việc nặng nhọc như một hệ quả của mệnh lệnh này.\n3. 'Vì ông muốn ngăn họ sinh sôi để giảm chi phí nuôi dưỡng' (wrong_detail): Đây là đáp án gần đúng vì có yếu tố 'ngăn sinh sôi', nhưng sai chi tiết then chốt về lý do. Pha-ra-ôn sợ vì sức mạnh và khả năng liên minh với kẻ thù của họ, không phải vì lý do kinh tế như giảm chi phí.",
     "language": "vi",
     "options": [
-      "Vì họ không tôn thờ thần Ai-cập",
-      "Vì họ không nộp thuế cho hoàng cung",
+      "Vì ông ghét dân Y-sơ-ra-ên và muốn trừng phạt họ",
+      "Vì dân Y-sơ-ra-ên đã từ chối làm việc cho người Ê-díp-tô",
       "Vì ông SỢ dân Y-sơ-ra-ên SINH SÔI quá nhiều và liên kết kẻ thù",
-      "Vì họ tự xưng có vua riêng là Giô-sép"
+      "Vì ông muốn ngăn họ sinh sôi để giảm chi phí nuôi dưỡng"
     ],
     "tags": [
       "Cựu Ước",
@@ -2314,12 +2314,12 @@
     ],
     "verseEnd": 22,
     "content": "Theo Xuất 1:15-21, các bà mụ Hê-bơ-rơ Síp-ra và Phu-a đã làm gì trước lệnh giết bé trai sơ sinh?",
-    "explanation": "Xuất 1:17 — 'Nhưng các bà mụ kính sợ Đức Chúa Trời, chẳng làm theo lời vua Ai-cập phán dặn, đều để cho các con trai sống hết'. Khi vua hỏi, họ đáp: 'phụ nữ Hê-bơ-rơ chẳng phải như đàn bà Ai-cập; vì họ mạnh khỏe hơn, đã sanh nở trước khi mụ đến' (1:19).",
+    "explanation": "ĐÁP ÁN ĐÚNG: Xuất 1:17 ghi rõ: \"Nhưng các bà mụ kính sợ Đức Chúa Trời, chẳng làm theo lời vua Ê-díp-tô dặn, đều để cho các con trai sống hết.\" Câu 19 khi trả lời Pha-ra-ôn, họ giải thích rằng \"đàn bà Hê-bơ-rơ chẳng phải như đàn bà Ê-díp-tô; vì họ mạnh mẽ hơn, đặng trước khi bà mụ đến, thì họ đã sinh rồi.\"\n\nDISTRACTOR SAI 1 (gần đúng, sai chi tiết): Sai ở chi tiết \"kính sợ Pha-ra-ôn và tuân lệnh giết một số\". Đoạn Kinh Thánh không hề nói họ giết bất kỳ bé trai nào; họ để tất cả sống vì kính sợ Đức Chúa Trời.\n\nDISTRACTOR SAI 2 (sai phạm vi): Sai vì đoạn Xuất 1:15-21 không hề mô tả việc họ bị trừng phạt ngay lập tức. Ngược lại, câu 20-21 cho thấy Đức Chúa Trời ban phước cho họ vì việc họ làm.\n\nDISTRACTOR SAI 3 (đúng văn bản nhưng lạc câu hỏi): Có yếu tố thương xót và giấu bé trai, nhưng sai vì họ đã báo lại với Pha-ra-ôn (câu 19). Câu hỏi hỏi họ đã làm gì TRƯỚC lệnh giết, và việc báo lại với Pha-ra-ôn là một phần quan trọng trong hành động của họ.",
     "language": "vi",
     "options": [
-      "Họ vâng lệnh Pha-ra-ôn ngay lập tức",
-      "Họ kêu cứu các bà mẹ trốn vào sa mạc",
-      "Họ giết các bé trai một cách bí mật",
+      "Họ kính sợ Pha-ra-ôn và tuân lệnh giết một số bé trai nhưng giấu một số khác",
+      "Họ từ chối lệnh và bị Pha-ra-ôn trừng phạt ngay lập tức",
+      "Họ thương xót các bà mẹ nên chỉ giấu bé trai mà không báo lại gì với Pha-ra-ôn",
       "Họ KÍNH SỢ Đức Chúa Trời và KHÔNG GIẾT bé trai; nói với Pha-ra-ôn các bà Hê-bơ-rơ sinh quá nhanh"
     ],
     "tags": [
@@ -2341,13 +2341,13 @@
     ],
     "verseEnd": 22,
     "content": "Theo Xuất 2:11-22, vì sao Môi-se phải bỏ trốn khỏi Ai-cập sau khi giết một người Ai-cập?",
-    "explanation": "Xuất 2:14-15 — 'Môi-se sợ, nói rằng: Chắc thật việc nầy phải lậu rồi. Pha-ra-ôn hay việc đó, thì tìm giết Môi-se; nhưng người trốn khỏi mặt Pha-ra-ôn, và đến ngụ tại xứ Ma-đi-an'. Tại đó ông cưới Sê-phô-ra (con gái Giê-trô).",
+    "explanation": "Đáp án đúng là 'Vì Pha-ra-ôn biết được chuyện và muốn GIẾT ông'. Điều này dựa trên Xuất 2:14-15: 'Người ấy đáp: Ai đã lập ngươi làm vua...?.. Pha-ra-ôn hay điều đó, bèn tìm giết Môi-se; nhưng Môi-se trốn khỏi mặt Pha-ra-ôn...'. Về các đáp án sai: 1) 'Vì ông chuẩn bị dẫn dân Y-sơ-ra-ên ra khỏi Ai-cập ngay lập tức' là gần đúng nhưng sai chi tiết then chốt; đoạn văn cho thấy Môi-se trốn ngay lập tức sau khi Pha-ra-ôn biết, không có kế hoạch hành động ngay lúc đó. 2) 'Vì ông đang bị các thủ lĩnh người Hê-bơ-rơ truy tìm để xét xử' là hiểu lầm phổ biến; thực tế, một người Hê-bơ-rơ đã hỏi Môi-se (c.14), nhưng không có chuyện các thủ lĩnh truy tìm ông. 3) 'Vì dân Ai-cập chứng kiến vụ việc và nổi loạn chống lại ông' sai chi tiết; đoạn văn không mô tả việc dân chúng nổi loạn, mà chỉ nói Pha-ra-ôn tìm giết Môi-se (c.15).",
     "language": "vi",
     "options": [
-      "Vì gia đình muốn ông đi học ở nước khác",
+      "Vì ông chuẩn bị dẫn dân Y-sơ-ra-ên ra khỏi Ai-cập ngay lập tức",
       "Vì Pha-ra-ôn biết được chuyện và muốn GIẾT ông",
-      "Vì ông được Đức Chúa Trời sai đi",
-      "Vì ông yêu một cô gái Ma-đi-an"
+      "Vì ông đang bị các thủ lĩnh người Hê-bơ-rơ truy tìm để xét xử",
+      "Vì dân Ai-cập chứng kiến vụ việc và nổi loạn chống lại ông"
     ],
     "tags": [
       "Cựu Ước",
@@ -2395,13 +2395,13 @@
     ],
     "verseEnd": 17,
     "content": "Theo Xuất 4:10-17, Môi-se thoái thác sai sứ Đức Chúa Trời với lý do gì? Chúa cho anh ai đi cùng?",
-    "explanation": "Xuất 4:10-14 — 'Môi-se thưa cùng Đức Giê-hô-va rằng: Ôi! lạy Chúa, từ hôm qua, hôm kia, hay là từ lúc Chúa phán dạy kẻ tôi tớ Chúa, tôi vẫn chẳng phải một tay nói giỏi, vì miệng và lưỡi tôi hay ngập ngừng. Đức Giê-hô-va phán rằng: Ai tạo miệng loài người ra?... A-rôn, anh ngươi, người Lê-vi... ta biết người sẽ nói giỏi, kìa, người đến đón ngươi'.",
+    "explanation": "Trong Xuất Ê-díp-tô Ký 4:10, Môi-se thưa với Đức Giê-hô-va: 'Ôi! Lạy Chúa, tôi chẳng phải là một người ăn nói... vì miệng tôi vụng môi nặng.' Đây là lý do ông thoái thác. Ở câu 14-16, Đức Giê-hô-va nổi giận và phán rằng Ngài biết A-rôn, anh của Môi-se, có tài nói và sẽ ra đón ông; A-rôn sẽ làm phát ngôn viên cho Môi-se. Vì vậy, đáp án đúng là: 'Tôi miệng vụng môi nặng' / Chúa cho A-RÔN anh ông đi cùng làm phát ngôn.\n\nCác đáp án sai: (1) 'Tôi còn trẻ quá' là lý do Môi-se đưa ra ở Xuất Ê-díp-tô Ký 4:1-9 (sợ dân không tin) và 3:11 (tôi là ai), không phải lý do ở đoạn 4:10-17 này; Giô-suê là người phụ tá sau này, không liên quan đến sự kiện này. (2) 'Tôi sợ dân chúng không tin' là lý do ở 4:1, không phải 4:10; 'A-rô-ni' là tên sai (đúng là A-rôn). Đây là distractor gần đúng vì lý do đầu sai passage, nhưng tên người sai một chi tiết then chốt. (3) 'Tôi không biết nói tiếng Ai Cập' không được đề cập trong đoạn này; Môi-se được nuôi dưỡng trong cung điện Pha-ra-ôn nên có thể nói tiếng Ai Cập; Chúa không cho Môi-se đi một mình mà cử A-rôn cùng đi.",
     "language": "vi",
     "options": [
       "'Tôi miệng vụng môi nặng' / Chúa cho A-RÔN anh ông đi cùng làm phát ngôn",
-      "Tôi không biết tiếng Ai-cập / Chúa dạy tôi tiếng mới",
-      "Tôi không có quyền hành / Chúa lập tôi làm vua",
-      "Tôi sợ con sư tử / Chúa cử thiên sứ canh"
+      "'Tôi còn trẻ quá' / Chúa cho Giô-suê đi cùng làm phát ngôn",
+      "'Tôi sợ dân chúng không tin' / Chúa cho A-Rô-ni đi cùng làm phát ngôn",
+      "'Tôi không biết nói tiếng Ai Cập' / Chúa cho Môi-se đi một mình"
     ],
     "tags": [
       "Cựu Ước",
@@ -2422,12 +2422,12 @@
     ],
     "verseEnd": 21,
     "content": "Theo Xuất 5:1-21, sau khi Môi-se yêu cầu thả dân Y-sơ-ra-ên, Pha-ra-ôn phản ứng thế nào?",
-    "explanation": "Xuất 5:7-8 — 'Từ rày, các ngươi đừng phát rơm cho dân sự dùng làm gạch như khi trước; phải để chúng nó tự đi kiếm lấy; nhưng các ngươi hãy buộc chúng nó làm số gạch in như cũ, đừng giảm bớt'.",
+    "explanation": "Trong Xuất Ê-díp-tô Ký 5:1-21, sau khi Môi-se và A-rôn yêu cầu thả dân Y-sơ-ra-ên, Pha-ra-ôn đã từ chối (c.2) và sau đó ra lệnh tăng nặng ách lao dịch: không cấp rơm nhưng dân phải làm gạch với số lượng y như trước (c.7-9, 18). ĐÁP ÁN ĐÚNG: phản ánh chính xác hành động này.\n\nDISTRACTOR 1 (gần đúng) SAI: Chi tiết 'đồng ý thả dân đi ba ngày đường' và 'đòi con đầu lòng' là từ các đoạn khác (Xuất 3:18; 4:23), không phải phản ứng trong 5:1-21. Đây là lỗi nhầm passage gần.\nDISTRACTOR 2 SAI: Không có chi tiết Pha-ra-ôn sai đánh đập Môi-se và A-rôn trong đoạn này. Ông chỉ phản ứng với các cai nô và dân chúng (c.6-19). Đây là lỗi sai chi tiết.\nDISTRACTOR 3 SAI: Pha-ra-ôn không đe dọa giết Môi-se và A-rôn trong đoạn này. Đây là một hiểu lầm phổ biến, có thể do nhớ nhầm từ các cuộc đối đầu sau.",
     "language": "vi",
     "options": [
-      "Ông đồng ý thả dân ngay lập tức",
-      "Ông yêu cầu Môi-se chứng tỏ phép lạ trước",
-      "Ông cho Môi-se thời gian để suy nghĩ thêm",
+      "Ông đồng ý thả dân đi ba ngày đường nhưng đòi con đầu lòng làm của lễ",
+      "Ông tức giận và sai cai nô đánh đập Môi-se và A-rôn trước mặt dân chúng",
+      "Ông đe dọa giết Môi-se và A-rôn nếu họ còn trở lại yêu cầu nữa",
       "Ông NẶNG NỀ HƠN ách lao dịch — bắt làm gạch không cấp RƠM, dân vẫn phải đủ số như trước"
     ],
     "tags": [
@@ -2449,13 +2449,13 @@
     ],
     "verseEnd": 25,
     "content": "Theo Xuất 7:14-25, tai họa thứ NHẤT trong 10 tai họa Ai-cập là gì?",
-    "explanation": "Xuất 7:20-21 — 'Môi-se và A-rôn... giơ gậy lên đập nước sông; cả nước sông bèn hóa ra huyết. Cá dưới sông chết, và nước sông trở nên hôi thối, người Ê-díp-tô không thể uống được'.",
+    "explanation": "Xuất 7:20-21 chép rằng Môi-se và A-rôn đập trên nước sông Nin, toàn nước trong sông biến thành máu, cá chết, sông hôi thối, và người Ai-cập không thể uống nước sông. Đây là tai họa thứ nhất. Distractor 1 (gần đúng) mô tả tai họa thứ hai (ếch nhái, Xuất 8:1-6), sai thứ tự. Distractor 2 sai chi tiết vì Kinh Thánh không ghi nước cạn kiệt mà biến thành máu. Distractor 3 là hiểu lầm phổ biến, mô tả nước đắng (như trong Xuất 15:23) chứ không phải nước biến thành máu.",
     "language": "vi",
     "options": [
-      "Nước Biển Đỏ biến thành máu",
+      "Sông Nin ĐẦY ẾCH NHÁI — ếch lên khắp nơi, làm ô uế xứ",
       "Sông Nin BIẾN THÀNH MÁU — cá chết, nước hôi, dân không uống được",
-      "Mưa đá rơi xuống đập nát mùa màng",
-      "Chấu lớn ăn hết cây cối"
+      "Nước Sông Nin CẠN KIỆT — người và súc vật không có nước uống",
+      "Sông Nin TRỞ NÊN ĐẮNG — nước không uống được, gây đau bụng"
     ],
     "tags": [
       "Cựu Ước",
@@ -2503,12 +2503,12 @@
     ],
     "verseEnd": 35,
     "content": "Trong 10 tai họa, tai họa thứ 5, 6, 7 (Xuất 9) là gì?",
-    "explanation": "Xuất 9 chứa 3 tai họa: 9:1-7 — súc vật chết (chỉ Ai-cập, không Y-sơ-ra-ên); 9:8-12 — ung nhọt phồng nổi trên người và súc vật; 9:13-35 — mưa đá lớn (chen lửa) đập nát mùa màng.",
+    "explanation": "Đáp án đúng là 'Súc vật chết (5) / Ung nhọt (6) / Mưa đá (7)' vì Xuất Ê-díp-tô Ký chương 9 ghi lại: tai họa thứ 5 là dịch lệ trên súc vật (câu 1-7), thứ 6 là ung nhọt trên người và thú (câu 8-12), và thứ 7 là mưa đá (câu 13-35).\n\nDistractor 1 ('Châu chấu (5) / Bóng tối (6) / Con đầu lòng chết (7)') sai vì đây là các tai họa thứ 8, 9, 10 được mô tả trong các chương sau (Xuất 10:1-20; 10:21-29; 11:1-10 & 12:29-30), nằm ngoài phạm vi câu hỏi chỉ hỏi về chương 9.\nDistractor 2 ('Súc vật chết (5) / Ung nhọt (6) / Nước biến thành máu (7)') sai vì 'Nước biến thành máu' thực chất là tai họa thứ nhất (Xuất 7:14-25), không phải thứ 7 trong chương 9.\nDistractor 3 ('Súc vật chết (5) / Ếch nhái (6) / Mưa đá (7)') sai vì 'Ếch nhái' là tai họa thứ 2 (Xuất 8:1-15), được nhắc đến trong chương gần đó nhưng không phải là tai họa thứ 6 trong chương 9.",
     "language": "vi",
     "options": [
-      "Châu chấu / Bóng tối / Giết con đầu lòng",
-      "Ếch nhái / Muỗi / Ruồi",
-      "Sông máu / Ếch nhái / Muỗi (thứ tự sai)",
+      "Châu chấu (5) / Bóng tối (6) / Con đầu lòng chết (7)",
+      "Súc vật chết (5) / Ung nhọt (6) / Nước biến thành máu (7)",
+      "Súc vật chết (5) / Ếch nhái (6) / Mưa đá (7)",
       "Súc vật chết (5) / Ung nhọt (6) / Mưa đá (7)"
     ],
     "tags": [
@@ -2530,13 +2530,13 @@
     ],
     "verseEnd": 29,
     "content": "Theo Xuất 10, tai họa thứ 8 và 9 là gì?",
-    "explanation": "Xuất 10:13-15 — châu chấu phủ khắp xứ ăn hết cây cỏ và trái cây mưa đá để lại. 10:21-23 — bóng tối dày đặc 3 ngày 'có thể sờ được' tại Ai-cập, dân Y-sơ-ra-ên ở Gô-sen vẫn có ánh sáng.",
+    "explanation": "Đáp án đúng: Xuất 10:4-6, 12-15 và 21-23 mô tả tai họa thứ 8 là châu chấu đến ăn sạch những gì còn sót lại sau mưa đá (câu 12, 15). Tai họa thứ 9 là bóng tối dày đặc trong 3 ngày, đến nỗi người ta không thấy nhau và không ai nhúc nhích được (câu 22-23).\n\nGiải thích distractor sai:\n1. '7 ngày sờ thấy được' (almost-right): Sai chi tiết số ngày. Bóng tối kéo dài 3 ngày, không phải 7 ngày (Xuất 10:22-23).\n2. 'Dịch lở loét (8) / Cào cào (9)': Sai phạm vi. Dịch lở loét là tai họa thứ 6 (Xuất 9:8-12). 'Cào cào' tuy là tên gọi khác của châu chấu trong một số bản dịch, nhưng đặt ở vị trí thứ 9 là sai thứ tự hoàn toàn.\n3. 'Bệnh dịch hạch (8) / Bóng tối chỉ trong nhà Pha-ra-ôn': Hiểu lầm phổ biến. Bệnh dịch hạch trên gia súc là tai họa thứ 5 (Xuất 9:1-7). Bóng tối che phủ cả xứ Ê-díp-tô, không chỉ trong nhà Pha-ra-ôn (Xuất 10:22-23).",
     "language": "vi",
     "options": [
-      "Sông máu (8) / Ếch nhái (9) (thứ tự sai - đây là tai họa 1 và 2)",
+      "Châu chấu (8) — ăn hết những gì mưa đá để lại / Bóng tối dày đặc (9) — 7 ngày sờ thấy được",
       "Châu chấu (8) — ăn hết những gì mưa đá để lại / Bóng tối dày đặc (9) — 3 ngày sờ thấy được",
-      "Ung nhọt (8) / Mưa đá (9)",
-      "Muỗi (8) / Ruồi (9)"
+      "Dịch lở loét (8) — trên người và thú vật / Cào cào (9) — làm hại cây cối",
+      "Bệnh dịch hạch (8) — trên gia súc / Bóng tối (9) — chỉ trong nhà Pha-ra-ôn"
     ],
     "tags": [
       "Cựu Ước",
@@ -2584,13 +2584,13 @@
     ],
     "verseEnd": 14,
     "content": "Theo Xuất Ê-díp-tô Ký 12:1-14, lễ Vượt Qua được tổ chức vào tháng và ngày nào?",
-    "explanation": "Xuất Ê-díp-tô Ký 12:2-6 — 'Tháng nầy đầu tiên, tức là tháng đầu trong năm... ngày mười, mỗi người trong các ngươi sẽ bắt một chiên con... Để dành chiên đó cho đến ngày mười bốn tháng nầy; rồi cả hội chúng Y-sơ-ra-ên sẽ giết nó vào lúc chiều tối'.",
+    "explanation": "Xuất Ê-díp-tô Ký 12:1-14 quy định rõ Lễ Vượt Qua diễn ra vào tháng đầu tiên (tháng A-bíp/Ni-san, tức tháng Giêng), ngày 14, và chiên con phải bị giết lúc chiều tối (câu 6). Đáp án đúng phản ánh chính xác điều này.\n\nCác đáp án sai: 1) 'Ngày 10' là sai chi tiết; đây là ngày chọn chiên con (câu 3), không phải ngày giết. 2) 'Tháng Ba' là sai phạm vi; tháng này không được nhắc đến trong đoạn. 3) 'Ngày 15' là nhầm passage gần; đây là ngày bắt đầu Lễ Bánh Không Men (câu 18), không phải ngày giết chiên Vượt Qua.",
     "language": "vi",
     "options": [
       "Tháng Giêng (tháng A-bíp/Ni-san), NGÀY 14 — chiên con bị giết lúc chiều tối",
-      "Tháng 3 ngày 10",
-      "Tháng 6 ngày 1",
-      "Tháng 9 ngày 30"
+      "Tháng Giêng (tháng A-bíp/Ni-san), NGÀY 10 — chiên con được chọn để giữ",
+      "Tháng Ba (tháng Si-van), NGÀY 14 — chiên con bị giết lúc chiều tối",
+      "Tháng Giêng (tháng A-bíp/Ni-san), NGÀY 15 — chiên con bị ăn trong đêm"
     ],
     "tags": [
       "Cựu Ước",
@@ -2611,13 +2611,13 @@
     ],
     "verseEnd": 11,
     "content": "Theo Xuất 12:5,11 — chiên Vượt Qua phải có đặc điểm gì? Cách ăn ra sao?",
-    "explanation": "Xuất 12:5,11 — 'Các ngươi sẽ chọn chiên con đực không tì vít, một tuổi... ăn thịt nội đêm ấy, nướng nơi lửa... Phải ăn nó cách nầy: lưng thắt dây, chân mang giày, tay cầm gậy, ăn cách vội vàng; ấy là lễ Vượt Qua của Đức Giê-hô-va'.",
+    "explanation": "Xuất Ê-díp-tô Ký 12:5-11 ghi rõ: \"Các ngươi hãy bắt một con chiên con... chiên con hay dê con đó phải là giống đực, một tuổi, không tì vết... Các ngươi phải ăn thịt đó... nướng lửa... ăn như vầy: Dây lưng cột, chân mang giày, tay cầm gậy...\" (BTT).\n\nĐÁP ÁN ĐÚNG đúng vì nêu đủ ba đặc điểm của con sinh (1 tuổi, không tì vết, đực) và cách ăn (nướng lửa, ăn với tư thế sẵn sàng ra đi).\n\nDISTRACTOR 1 (true_but_off) đúng về đặc điểm sinh tế nhưng sai cách ăn: Kinh văn quy định phải nướng lửa, không phải \"để sống\", và cách ăn phải thể hiện sự vội vàng, chờ lệnh xuất hành.\nDISTRACTOR 2 (wrong_detail, almost-right) đúng hầu hết, chỉ sai một chi tiết then chốt: con sinh phải là \"giống đực\" (câu 5), không phải \"cái\".\nDISTRACTOR 3 (common_misconception) sai ở hai điểm: con sinh phải \"không tì vết\" (câu 5), không thể \"có thể có vết\"; và cách ăn phải thể hiện sự vội vàng, sẵn sàng lên đường (câu 11), không phải \"ăn ngồi bàn, nghỉ ngơi\".",
     "language": "vi",
     "options": [
-      "Bê 2 tuổi, có khuyết tật, nướng / ngồi ăn",
-      "Cừu 5 tuổi, có sừng dài, luộc / nằm ăn",
+      "CHIÊN/DÊ 1 năm, KHÔNG TÌ VẾT, ĐỰC, ĐỂ SỐNG / ăn bình thường, mặc áo đẹp",
+      "CHIÊN/DÊ 1 năm, KHÔNG TÌ VẾT, CÁI, NƯỚNG lửa / ăn đứng, sẵn sàng ra đi",
       "CHIÊN/DÊ 1 năm, KHÔNG TÌ VẾT, ĐỰC, NƯỚNG lửa / ăn đứng, sẵn sàng ra đi (giày, gậy, lưng thắt)",
-      "Bò mộng 3 tuổi, sắc đỏ, hấp / ăn quỳ"
+      "CHIÊN/DÊ 1 năm, CÓ THỂ CÓ VẾT, ĐỰC, NƯỚNG lửa / ăn ngồi bàn, nghỉ ngơi"
     ],
     "tags": [
       "Cựu Ước",
@@ -2638,13 +2638,13 @@
     ],
     "verseEnd": 22,
     "content": "Theo Xuất 13:17-18, Đức Chúa Trời KHÔNG dẫn dân Y-sơ-ra-ên đi đường gần qua xứ Phi-li-tin vì lý do gì?",
-    "explanation": "Xuất 13:17 — 'Đức Chúa Trời chẳng dẫn dân ấy đi theo đường về xứ Phi-li-tin, là đường gần hơn hết, vì Ngài nói rằng: E khi dân thấy trận mạc, dối lại trong lòng, mà trở về xứ Ê-díp-tô chăng'.",
+    "explanation": "Xuất 13:17-18 chép: \"Vả, khi Pha-ra-ôn tha dân Y-sơ-ra-ên đi, Đức Chúa Trời chẳng dẫn họ đi theo đường về xứ Phi-li-tin, là đường gần hơn hết; vì Ngài nói rằng: e khi dân thấy giặc thì tiếc nhớ Ai-cập mà trở về chăng.\" Vì thế, đáp án đúng là vì Chúa sợ dân thấy giặc sẽ đổi ý quay về Ai-cập. Các phương án sai: (1) Sai chi tiết – đoạn này không đề cập lý do thiếu nước. (2) Sai phạm vi – ý này nằm ngoài phạm vi câu hỏi, không liên quan đến lý do cụ thể trong đoạn. (3) Nhầm passage gần – dù có đề cập người Phi-li-tin, nhưng Kinh Thánh không viết họ sẽ cản đường, mà chỉ lo dân Y-sơ-ra-ên thấy giặc sẽ hối hận.",
     "language": "vi",
     "options": [
-      "Vì đường đó có nhiều cây cối khó đi",
+      "Vì đường gần qua xứ Phi-li-tin không có nguồn nước cho dân và súc vật",
       "Vì sợ dân THẤY GIẶC sẽ ĐỔI Ý quay về Ai-cập",
-      "Vì Pha-ra-ôn đã chặn đường đó",
-      "Vì đó là lãnh thổ của Mô-áp"
+      "Vì Đức Chúa Trời đã hứa ban cho họ đất Ca-na-an bằng con đường dài hơn",
+      "Vì dân Phi-li-tin sẽ cản đường và không cho phép họ đi qua"
     ],
     "tags": [
       "Cựu Ước",
@@ -2665,13 +2665,13 @@
     ],
     "verseEnd": 31,
     "content": "Theo Xuất 14:21-22, dân Y-sơ-ra-ên qua Biển Đỏ thế nào?",
-    "explanation": "Xuất 14:21-22 — 'Môi-se giơ tay ra trên biển, Đức Giê-hô-va dẫn trận gió đông thổi mạnh đến đùa biển lại trọn cả đêm; Ngài làm cho biển bày ra khô, nước phân rẽ. Dân Y-sơ-ra-ên xuống biển, đi như trên đất khô, còn nước làm thành một tấm vách ngăn bên hữu và bên tả'.",
+    "explanation": "Xuất 14:21-22 chép rõ: 'Đức Giê-hô-va dùng một luồng gió đông rất mạnh thổi tới, xui biển lùi lại trọn cả đêm, biến biển thành đất khô, nước bèn phân rẽ. Dân Y-sơ-ra-ên xuống biển, đi như trên đất khô; nước làm thành một tấm vách ngăn bên hữu và bên tả.' Đáp án đúng nêu đúng GIÓ ĐÔNG, BAN ĐÊM và ĐẤT KHÔ. \nDistractor 1 sai chi tiết 'gió tây' (Xuất 14:21 ghi là 'gió đông'), đây là lỗi sai chi tiết số/tên. \nDistractor 2 sai phạm vi, ý 'trong lòng biển' không sai nhưng không phải mô tả chính xác từ 'trên đất khô' trong đoạn được hỏi (14:21-22), mà lại có thể liên quan đến cách diễn đạt ở các câu khác trong câu chuyện. \nDistractor 3 dựa trên hiểu lầm phổ biến rằng biển tự cạn hoặc lặng xuống, trong khi Kinh Thánh ghi rõ động lực là 'gió đông rất mạnh' làm chia cắt nước.",
     "language": "vi",
     "options": [
-      "Đi vòng quanh biển 7 ngày (đáp án sai)",
-      "Bay qua nhờ thiên sứ (đáp án sai)",
+      "Đức Giê-hô-va dùng gió tây mạnh ban đêm để chia đôi biển; dân đi giữa biển trên đất khô; tường nước hai bên",
+      "Đức Giê-hô-va dùng gió đông mạnh ban đêm để chia đôi biển; dân đi giữa biển trong lòng biển; tường nước hai bên",
       "Đức Giê-hô-va dùng GIÓ ĐÔNG mạnh ban đêm để chia đôi biển; dân đi giữa biển trên ĐẤT KHÔ; tường nước hai bên",
-      "Lội bơi qua biển sâu (đáp án sai)"
+      "Đức Giê-hô-va khiến biển lặng xuống và cạn đi; dân đi giữa biển trên đất khô; tường nước hai bên"
     ],
     "tags": [
       "Cựu Ước",
@@ -2692,13 +2692,13 @@
     ],
     "verseEnd": 21,
     "content": "Theo Xuất 15:20-21, sau khi qua Biển Đỏ, ai là người dẫn các phụ nữ cầm trống cơm và múa, đáp lại bài ca của Môi-se?",
-    "explanation": "Xuất 15:20-21 — 'Bấy giờ, Mi-ri-am, là nữ tiên tri, chị của A-rôn, tay cầm trống cơm, các đàn bà đều đi ra theo người, cầm trống cơm và múa. Mi-ri-am đáp lại rằng: Hãy ca tụng Đức Giê-hô-va, vì Ngài rất vinh hiển oai nghiêm; Ngài đã liệng xuống biển ngựa và người cỡi ngựa.' Mi-ri-am dẫn các phụ nữ hát đáp lại bài ca chiến thắng của Môi-se và dân Y-sơ-ra-ên (câu 1).",
+    "explanation": "Đáp án đúng là Mi-ri-am, vì Xuất 15:20-21 (BTT) ghi: 'Mi-ri-am, nữ tiên tri, chị của A-rôn, cầm trống cơm trong tay; các phụ nữ đều đi ra theo bà, tay cầm trống cơm và múa. Mi-ri-am đáp lại với họ rằng: Hãy hát xướng cho Đức Giê-hô-va...'. Bản văn chỉ rõ Mi-ri-am là người dẫn các phụ nữ và bà được gọi là nữ tiên tri.\n\nCác đáp án sai:\n1. 'A-rôn — anh của Môi-se — gọi là THẦY TẾ LỄ TỐI CAO': Sai chi tiết. A-rôn là anh của Môi-se và sau này trở thành thầy tế lễ, nhưng đoạn này không đề cập ông dẫn các phụ nữ múa. Người dẫn là Mi-ri-am, chị của A-rôn.\n2. 'Môi-se — người lãnh đạo dân Y-sơ-ra-ên — người đã hát bài ca trước đó': Thông tin đúng nhưng lạc câu hỏi. Môi-se hát bài ca ở câu 1-19, nhưng câu hỏi hỏi về người dẫn các phụ nữ múa đáp lại bài ca đó, đó là Mi-ri-am (câu 20-21).\n3. 'Các phụ nữ Y-sơ-ra-ên — như một nhóm chung chung — không có người dẫn cụ thể': Sai phạm vi. Đoạn văn không mô tả họ như một nhóm không có người dẫn. Ngược lại, nó chỉ rõ Mi-ri-am là người dẫn đầu ('các phụ nữ đều đi ra theo bà') và bà đáp lại với họ.",
     "language": "vi",
     "options": [
       "Mi-ri-am — chị của A-rôn — gọi là 'NỮ TIÊN TRI'",
-      "Sê-phô-ra — vợ Môi-se",
-      "Đê-bô-ra — quan xét",
-      "Ru-tơ — người Mô-áp"
+      "A-rôn — anh của Môi-se — gọi là 'THẦY TẾ LỄ TỐI CAO'",
+      "Môi-se — người lãnh đạo dân Y-sơ-ra-ên — người đã hát bài ca trước đó",
+      "Các phụ nữ Y-sơ-ra-ên — như một nhóm chung chung — không có người dẫn cụ thể"
     ],
     "tags": [
       "Cựu Ước",
@@ -2719,12 +2719,12 @@
     ],
     "verseEnd": 13,
     "content": "Theo Xuất 16:1-13, ngoài ma-na, Đức Chúa Trời còn ban gì cho dân vào BAN CHIỀU để có thịt ăn?",
-    "explanation": "Xuất 16:13 — 'Vậy, chiều lại, có chim cút bay lên phủ trên trại quân; đến sáng mai lại có một lớp sương ở chung quanh trại quân'. Chim cút ban chiều, ma-na ban sáng — đáp ứng nhu cầu ngày tới.",
+    "explanation": "Xuất 16:13 ghi: 'Vậy, buổi chiều, chim cút bay lên phủ trại; và buổi sáng, có sương móc ở xung quanh trại.' Câu này chỉ rõ chim cút được ban vào ban chiều, đến từ biển và phủ khắp trại. Đáp án đúng mô tả chính xác điều này.\n\n- Distractor 1 ('Chim cút từ núi — bay vào trại') chứa chi tiết sai về nguồn gốc (núi thay vì biển) nhưng đúng về loài vật và thời điểm, nên là phương án gần đúng.\n- Distractor 2 ('Cá từ sông — trôi dạt vào bờ') sai phạm vi vì đoạn Kinh Thánh này không đề cập đến cá hay sông.\n- Distractor 3 ('Bò từ đồng cỏ — đến quanh trại') dựa trên hiểu lầm phổ biến rằng thịt có thể là thú nuôi, nhưng bò không được nhắc đến trong ngữ cảnh này.",
     "language": "vi",
     "options": [
-      "Bò đực rừng từ trên núi",
-      "Cá lớn từ Biển Đỏ",
-      "Bê con từ trên trời",
+      "Chim cút (quail) từ núi — bay vào trại",
+      "Cá từ sông — trôi dạt vào bờ",
+      "Bò từ đồng cỏ — đến quanh trại",
       "CHIM CÚT (quail) từ biển — phủ khắp trại"
     ],
     "tags": [
@@ -2746,13 +2746,13 @@
     ],
     "verseEnd": 7,
     "content": "Theo Xuất 17:1-7, khi dân khát ở Rê-phi-đim, Môi-se làm gì để có nước? Tên nơi đó nghĩa gì?",
-    "explanation": "Xuất 17:6-7 — 'Nầy ta sẽ đứng đằng trước ngươi, ở trên hòn đá tại Hô-rếp kia, ngươi hãy đập hòn đá, thì nước từ đó chảy ra, dân sự sẽ uống lấy. Người đặt tên nơi nầy là Ma-sa và Mê-ri-ba, vì cớ việc cãi lộn mà dân Y-sơ-ra-ên kiếm chuyện và thử Đức Giê-hô-va'.",
+    "explanation": "Đáp án đúng căn cứ vào Xuất 17:5-6: Đức Giê-hô-va phán Môi-se cầm gậy, cùng các trưởng lão đến Hòn đá tại Hô-rếp; Môi-se đập hòn đá và nước chảy ra. Câu 7 nói rõ nơi đó được gọi là Ma-sa và Mê-ri-ba vì dân chúng thử và cãi lý với Đức Giê-hô-va.\n\nCác đáp án sai:\n1. 'núi Si-na-i' là sai chi tiết địa điểm (Xuất 17:1,6 xác định là tại Hô-rếp, vùng Rê-phi-đim; Si-na-i được nhắc sau đó trong chương 19).\n2. 'BÊ-TÊN' là sai phạm vi: tên này thuộc sự kiện khác (Gia-cốp đặt tên Bê-tên trong Sáng thế ký 28:19), không liên quan đến câu chuyện nước từ đá.\n3. 'CẦU NGUYỆN và nước TỪ MẠCH SUỐI' là hiểu lầm phổ biến: nhiều người nhớ Môi-se cầu nguyện (câu 4), nhưng hành động cụ thể được Chúa chỉ định là đập vào hòn đá (câu 6), không phải nước từ mạch suối tự chảy.",
     "language": "vi",
     "options": [
-      "Đào giếng sâu / đặt tên 'Bê-e' (giếng)",
+      "ĐẬP GẬY vào HÒN ĐÁ tại núi Si-na-i / nơi đó gọi 'MA-SA và MÊ-RI-BA' (THỬ và CÃI LÝ)",
       "ĐẬP GẬY vào HÒN ĐÁ tại Hô-rếp / nơi đó gọi 'MA-SA và MÊ-RI-BA' (THỬ và CÃI LÝ)",
-      "Cầu nguyện cho mưa rơi / 'Si-lô-ê' (gửi đến)",
-      "Chia thành các vòi nhỏ / 'Bê-tên' (nhà Đức Chúa Trời)"
+      "ĐẬP GẬY vào HÒN ĐÁ tại Hô-rếp / nơi đó gọi 'BÊ-TÊN' (NHÀ CỦA ĐỨC CHÚA TRỜI)",
+      "CẦU NGUYỆN và nước TỪ MẠCH SUỐI chảy ra tại Hô-rếp / nơi đó gọi 'MA-SA và MÊ-RI-BA' (THỬ và CÃI LÝ)"
     ],
     "tags": [
       "Cựu Ước",
@@ -2773,13 +2773,13 @@
     ],
     "verseEnd": 16,
     "content": "Theo Xuất 17:8-16, ai đánh nhau với A-ma-léc trong khi Môi-se giơ gậy lên núi? Khi gậy nặng, ai đỡ tay Môi-se?",
-    "explanation": "Xuất 17:9-12 — 'Môi-se nói cùng Giô-suê rằng: Hãy chọn lấy tráng sĩ cho chúng ta, ra chiến đấu cùng A-ma-léc... Tay Môi-se mỏi, A-rôn và Hu-rơ bèn lấy đá kê cho người ngồi, rồi ở hai bên đỡ tay người lên'.",
+    "explanation": "Kinh Thánh Xuất Ê-díp-tô Ký 17:8-16 ghi: \"Bấy giờ, A-ma-léc đến đánh Y-sơ-ra-ên tại Rê-phi-đim. Môi-se bèn nói cùng Giô-suê rằng: Hãy chọn lấy tráng sĩ cho chúng ta, ra đi đánh A-ma-léc... Vả, khi Môi-se giơ tay lên, thì dân Y-sơ-ra-ên thắng hơn; nhưng khi người xụi tay xuống, thì A-ma-léc thắng hơn. Vì tay Môi-se nặng, nên A-rôn và Hu-rơ lấy đá kê cho người ngồi, rồi ở hai bên đỡ tay người...\" (BTT).\n\nĐÁP ÁN ĐÚNG: Giô-suê là người được Môi-se giao chỉ huy trận chiến (c.9). Khi Môi-se mỏi tay, A-rôn và Hu-rơ là hai người đỡ tay ông hai bên (c.12).\n\nDISTRACTOR SAI 1 (sai chi tiết): Sai tên người đỡ tay. Mi-ri-am là chị của Môi-se, có mặt trong cuộc hành trình, nhưng không được nhắc đến trong phân đoạn này với vai trò đỡ tay.\n\nDISTRACTOR SAI 2 (nhầm passage gần): Sai tên người chỉ huy. Ca-lép là một thám tử và lãnh đạo khác, được nhắc đến sau này, nhưng trong trận chiến tại Rê-phi-đim, Giô-suê mới là người được giao nhiệm vụ chỉ huy.\n\nDISTRACTOR SAI 3 (hiểu lầm phổ biến): Sai thực thể đỡ tay. Mặc dù Đức Chúa Trời là nguồn sức mạnh và chiến thắng, nhưng văn bản mô tả rõ ràng hành động đỡ tay vật lý là do A-rôn và Hu-rơ thực hiện.",
     "language": "vi",
     "options": [
-      "Phi-nê-a / cha Mô-se A-rôn đỡ",
-      "Giô-suê / chỉ một mình A-rôn đỡ",
+      "GIÔ-SUÊ chỉ huy quân / A-RÔN và MI-RI-AM đỡ tay Môi-se hai bên",
+      "CA-LÉP chỉ huy quân / A-RÔN và HU-RƠ đỡ tay Môi-se hai bên",
       "GIÔ-SUÊ chỉ huy quân / A-RÔN và HU-RƠ đỡ tay Môi-se hai bên",
-      "Ca-lép / 12 trưởng lão đỡ"
+      "GIÔ-SUÊ chỉ huy quân / Đức Chúa Trời đỡ tay Môi-se từ trời"
     ],
     "tags": [
       "Cựu Ước",
@@ -2800,12 +2800,12 @@
     ],
     "verseEnd": 12,
     "content": "Theo Xuất 18:1-12, ai là cha vợ Môi-se đến thăm sau khi nghe các phép lạ?",
-    "explanation": "Xuất 18:1-2 — 'Giê-trô, thầy tế lễ xứ Ma-đi-an, ông gia của Môi-se, hay được mọi điều Đức Chúa Trời đã làm cho Môi-se cùng Y-sơ-ra-ên... bèn dẫn Sê-phô-ra, vợ Môi-se... đến cùng người'. Giê-trô (Reuel) cũng tên là Hô-báp (Dân 10:29).",
+    "explanation": "Xuất 18:1 chép: \"Vả, Giê-trô, thầy tế lễ Ma-đi-an, cha vợ Môi-se, hay được mọi điều Đức Chúa Trời đã làm cho Môi-se...\" (câu 1). Vậy đáp án đúng là Giê-trô, thầy tế lễ Ma-đi-an, cha Sê-phô-ra. \n\nDistractor 1 (A-RÔN) là nhầm passage gần: A-rôn là anh trai Môi-se và là phát ngôn viên (Xuất 4:14-16), nhưng ông không phải là người đến thăm vì nghe các phép lạ trong đoạn này. \nDistractor 2 (PHU-HA-RO) là sai chi tiết: Phu-ha-rô (Phu-vê) là cha của vợ Môi-se theo Dân số 25:15 và 31:8, nhưng trong Xuất 18:1-12, người đến thăm rõ ràng được gọi là Giê-trô. Đây là một sự khác biệt tên gọi dễ gây nhầm lẫn. \nDistractor 3 (MÊ-NU-EN) là hiểu lầm phổ biến: Tên này không xuất hiện trong đoạn; có thể bị nhầm với các tên khác trong sách Xuất Ê-díp-tô Ký, nhưng hoàn toàn không liên quan đến cha vợ Môi-se.",
     "language": "vi",
     "options": [
-      "Áp-ra-ham — tổ phụ chung",
-      "Phi-nê-a — bác A-rôn",
-      "La-ban — cậu Sê-phô-ra",
+      "A-RÔN — anh trai Môi-se, phát ngôn viên",
+      "PHU-HA-RO — con trai Y-sác, ông tổ Ê-sau",
+      "MÊ-NU-EN — người Đan, thầy tế lễ",
       "GIÊ-TRÔ — thầy tế lễ Ma-đi-an, cha Sê-phô-ra"
     ],
     "tags": [
@@ -2827,13 +2827,13 @@
     ],
     "verseEnd": 25,
     "content": "Theo Xuất 19:16-19, khi Đức Chúa Trời ngự xuống núi Si-na-i, dân chúng thấy/nghe gì?",
-    "explanation": "Xuất 19:16-18 — 'Qua sáng ngày thứ ba, có sấm vang chớp nhoáng, một áng mây mịt mịt ở trên núi, và tiếng kèn thổi rất vang động; cả dân sự ở trong trại quân đều run hãi... cả hòn núi đều rúng động cách kịch liệt'. 19:19 — 'Tiếng kèn càng vang động; Môi-se nói, Đức Chúa Trời đáp tiếng lại'.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Xuất 19:16-19 mô tả cảnh tượng khi Đức Chúa Trời ngự xuống núi Si-na-i: \"sấm chớp\", \"mây dày đặc trên núi\", \"tiếng kèn vang rất lớn\", \"cả núi rung động mạnh\", và \"khói bốc lên như khói lò lửa\". Đây là các dấu hiệu hữu hình và âm thanh cụ thể mà dân chúng trực tiếp chứng kiến và nghe thấy.\n\nDISTRACTOR SAI 1 (\"CHÂN TRỜI ĐỎ ỬNG\"): 90% chi tiết đúng, nhưng sai một yếu tố then chốt. Đoạn Kinh Thảnh không đề cập cảnh \"chân trời đỏ ửng\"; thay vào đó, nó miêu tả \"khói bốc lên\".\n\nDISTRACTOR SAI 2 (\"TRỜI MỞ RA\"): Sai phạm vi. Chi tiết \"trời mở ra\" không xuất hiện trong bối cảnh Xuất 19; nó thường liên quan đến các khải tượng khác (như Ê-xê-chi-ên, Khải Huyền), không phải sự kiện tại Si-na-i.\n\nDISTRACTOR SAI 3: Đây là một hiểu lầm phổ biến, tổng hợp các yếu tố có vẻ hợp lý nhưng không chính xác với văn bản. \"Chớp lóe\", \"âm thanh vang dội\", \"mây bao phủ\", \"đất rúng động\", \"hơi nóng bốc lên\" là cách diễn đạt chung chung, không khớp với mô tả cụ thể trong Kinh Thánh (\"sấm chớp\", \"tiếng kèn vang\", \"mây dày\", \"núi rung động\", \"khói bốc lên như lò luyện\").",
     "language": "vi",
     "options": [
       "SẤM CHỚP, MÂY DÀY, TIẾNG KÈN VANG, núi RUNG ĐỘNG, KHÓI bốc lên như lò luyện",
-      "Bầu trời quang đãng, sao nhỏ tỏa sáng dịu",
-      "Mặt trời mọc rực rỡ, không có gì khác lạ",
-      "Mùa xuân đẹp, hoa nở khắp các sườn núi"
+      "SẤM CHỚP, MÂY DÀY, TIẾNG KÈN VANG, núi RUNG ĐỘNG, CHÂN TRỜI ĐỎ ỬNG",
+      "SẤM CHỚP, MÂY DÀY, TIẾNG KÈN VANG, TRỜI MỞ RA, KHÓI bốc lên",
+      "CHỚP LÓE, ÂM THANH VANG DỘI, MÂY BAO PHỦ, ĐẤT RÚNG ĐỘNG, HƠI NÓNG BỐC LÊN"
     ],
     "tags": [
       "Cựu Ước",
@@ -2854,13 +2854,13 @@
     ],
     "verseEnd": 21,
     "content": "Theo Xuất 20:18-21, dân thấy sấm chớp tại Si-na-i thì sợ. Họ làm gì với Môi-se?",
-    "explanation": "Xuất 20:18-19 — 'Vả, cả dân sự nghe sấm vang, tiếng kèn thổi, thấy chớp nhoáng, núi ra khói, thì run rẩy và đứng cách tận xa. Dân sự bèn nói cùng Môi-se rằng: Chính mình người hãy nói cùng chúng tôi thì chúng tôi sẽ nghe; nhưng cầu xin Đức Chúa Trời chớ phán cùng, e chúng tôi phải chết chăng'.",
+    "explanation": "Xuất 20:18-21 ghi rõ: 'Cả dân sự đều thấy sấm chớp, nghe tiếng kèn và thấy khói núi thì run và đứng xa. Họ nói với Môi-se rằng: Chính mình ông hãy nói với chúng tôi, chúng tôi sẽ nghe theo; nhưng cầu xin Đức Chúa Trời đừng phán với chúng tôi, kẻo chúng tôi chết chăng.' (BTT). Do đó, đáp án đúng mô tả chính xác việc họ đứng xa và xin Môi-se làm trung gian. Distractor 1 sai chi tiết then chốt ('chạy lại gần' thay vì 'đứng xa'). Distractor 2 phản ánh hiểu lầm phổ biến rằng dân chúng muốn cầu xin trực tiếp, trái ngược với thái độ sợ hãi và muốn có người trung gian. Distractor 3 dựa trên ý đúng là họ sợ và trông chờ Môi-se, nhưng mô tả hành động 'im lặng mong đợi' không khớp với lời đề nghị rõ ràng được ghi trong câu Kinh Thánh.",
     "language": "vi",
     "options": [
-      "Họ chạy trốn về Ai-cập ngay",
+      "Họ chạy lại GẦN và xin Môi-se 'ngươi hãy nói cùng chúng tôi, chúng tôi sẽ nghe; cầu xin ĐỨC CHÚA TRỜI CHỚ phán với chúng tôi e chết'",
       "Họ đứng XA và xin Môi-se 'ngươi hãy nói cùng chúng tôi, chúng tôi sẽ nghe; nhưng cầu xin ĐỨC CHÚA TRỜI CHỚ phán với chúng tôi e chết'",
-      "Họ vây quanh Môi-se cảm tạ ông",
-      "Họ trèo lên núi tự gặp Đức Chúa Trời"
+      "Họ đứng XA và xin Môi-se 'hãy để chúng tôi nói cùng Đức Chúa Trời, chúng tôi sẽ xin Ngài thương xót'",
+      "Họ im lặng đứng dưới chân núi và mong đợi Môi-se trực tiếp nhận mọi lời phán từ Đức Chúa Trời"
     ],
     "tags": [
       "Cựu Ước",
@@ -2881,13 +2881,13 @@
     ],
     "verseEnd": 11,
     "content": "Theo Xuất 21:1-6, đầy tớ Hê-bơ-rơ phải phục vụ trong bao nhiêu năm? Và nếu muốn ở lại với chủ thì sao?",
-    "explanation": "Xuất 21:2,5-6 — 'Nếu ngươi mua một người đầy tớ Hê-bơ-rơ, nó sẽ hầu việc cho sáu năm; nhưng qua năm thứ bảy nó sẽ được thả ra... Nếu kẻ tôi mọi nói rằng: Tôi thương chủ, vợ và con tôi, không muốn ra được tự do, thì người chủ sẽ dẫn nó đến trước mặt Đức Chúa Trời, biểu lại gần cửa hay là cột, rồi lấy mũi dùi xỏ tai; nó sẽ hầu việc người chủ đó trọn đời'.",
+    "explanation": "Xuất 21:2-6 quy định: 'Nếu ngươi mua một tôi tớ Hê-bơ-rơ, người sẽ hầu việc sáu năm; nhưng qua năm thứ bảy, người được tự do...' (c.2). Nếu người đầy tớ muốn ở lại, chủ sẽ 'đem người đến trước mặt các quan án... rồi chủ sẽ lấy dùi xỏ lỗ tai người nơi cửa; vậy người sẽ làm tôi tớ người mãi mãi' (c.5-6). Do đó, đáp án đúng là 6 năm, năm thứ 7 tự do; muốn ở lại thì bị đâm tai tại cửa, làm tôi tớ đời đời.\n\nCác đáp án sai:\n- Distractor 1 (sai chi tiết): Sai số năm phục vụ (7 năm thay vì 6), mặc dù phần 'đâm tai... đời đời' là đúng.\n- Distractor 2 (nhầm passage gần): Sai về nghi thức đánh dấu (đánh dấu trên tay), có thể nhầm lẫn với các quy định khác trong Kinh Thánh (như trong Đệ Nhị Luật).\n- Distractor 3 (hiểu lầm phổ biến): Sai về điều kiện ở lại (bồi thường tiền chuộc rồi tự do), không phù hợp với quy định rõ ràng về việc đâm tai và phục vụ đời đời trong phân đoạn này.",
     "language": "vi",
     "options": [
-      "3 năm / chủ phải trả tiền chuộc",
-      "10 năm / chủ phải xích đầy tớ",
+      "7 NĂM rồi NĂM THỨ 8 được tự do; nếu muốn ở lại — đầy tớ được ĐÂM TAI tại cánh cửa, làm tôi tớ ĐỜI ĐỜI",
+      "6 NĂM rồi NĂM THỨ 7 được tự do; nếu muốn ở lại — đầy tớ được ĐÁNH DẤU trên tay, làm tôi tớ ĐỜI ĐỜI",
       "6 NĂM rồi NĂM THỨ 7 được tự do; nếu muốn ở lại — đầy tớ được ĐÂM TAI tại cánh cửa, làm tôi tớ ĐỜI ĐỜI",
-      "1 năm / không có lựa chọn ở lại"
+      "6 NĂM rồi NĂM THỨ 7 được tự do; nếu muốn ở lại — đầy tớ phải bồi thường tiền chuộc, rồi được tự do"
     ],
     "tags": [
       "Cựu Ước",
@@ -2908,12 +2908,12 @@
     ],
     "verseEnd": 27,
     "content": "Theo Xuất 22:21-24, Đức Chúa Trời cảnh báo dân Y-sơ-ra-ên không được hà hiếp ai?",
-    "explanation": "Xuất 22:21-22 — 'Ngươi chớ nên bạc đãi khách ngoại bang, và cũng chẳng nên hà hiếp họ, vì các ngươi đã làm khách kiều ngụ tại xứ Ê-díp-tô. Các ngươi chớ ức hiếp một người góa bụa hay là một kẻ mồ côi nào'.",
+    "explanation": "Đoạn Kinh Thánh Xuất Ê-díp-tô Ký 22:21-24 (BTT) dạy: 'Các ngươi chớ được bạc đãi khách kiều ngụ, cũng đừng hà hiếp họ, vì các ngươi đã từng làm khách kiều ngụ tại xứ Ê-díp-tô. Các ngươi chớ được ức hiếp người góa bụa, hoặc kẻ mồ côi.' Đáp án đúng liệt kê chính xác ba đối tượng được nêu trong câu 21-22 là khách lạ, bà góa, kẻ mồ côi, với lý do được trích dẫn từ câu 21. Distractor 1 (gần đúng) sai vì mở rộng phạm vi đối tượng (sai chi tiết) sang 'kẻ giàu có, người quyền thế, kẻ mạnh', dù lý do có vẻ hợp lý nhưng không phải lý do trong đoạn này. Distractor 2 sai vì dùng ý từ các điều răn khác (ví dụ Lê-vi Ký 19:18 về yêu người lân cận) chứ không phải từ đoạn 22:21-24. Distractor 3 sai vì liệt kê các tội lỗi phổ biến khác trong luật pháp, thể hiện một sự hiểu lầm chung về trọng tâm đoạn này là sự bảo vệ người dễ bị tổn thương, không phải liệt kê tội.",
     "language": "vi",
     "options": [
-      "Không hà hiếp người giàu",
-      "Không hà hiếp người Pha-ri-si",
-      "Không hà hiếp các thầy tế lễ Lê-vi",
+      "KẺ GIÀU CÓ, NGƯỜI QUYỀN THẾ, KẺ MẠNH — vì 'các ngươi cần phải kính sợ'",
+      "KẺ THÙ, NGƯỜI LÂN CẬN, KẺ NỢ NẦN — vì 'các ngươi phải yêu kẻ lân cận'",
+      "KẺ THỜ HÌNH TƯỢNG, NGƯỜI PHẠM SABBATH, KẺ NÓI DỐI — vì 'các ngươi đã được cứu chuộc'",
       "KHÁCH LẠ, BÀ GÓA, KẺ MỒ CÔI — vì 'các ngươi đã từng là khách lạ tại Ai-cập'"
     ],
     "tags": [
@@ -2962,13 +2962,13 @@
     ],
     "verseEnd": 9,
     "content": "Theo Xuất 25:8-9, Đức Chúa Trời truyền dân Y-sơ-ra-ên dựng cái gì để Ngài 'NGỰ giữa họ'?",
-    "explanation": "Xuất 25:8-9 — 'Họ sẽ làm cho ta một đền thánh đặng ta ở giữa họ. Hãy làm điều đó y như kiểu đền tạm cùng kiểu các đồ dùng mà ta sẽ chỉ cho ngươi'. Đền Tạm (mishkan) là chỗ ở di động, không phải đền thờ cố định.",
+    "explanation": "Xuất Ê-díp-tô Ký 25:8-9 ghi: 'Họ phải làm cho Ta một đền thánh để Ta ngự giữa họ. Các ngươi phải làm đền tạm cùng mọi đồ đạc theo như kiểu mẫu Ta sẽ chỉ cho.' Do đó, đáp án đúng là ĐỀN TẠM (Hội Mạc).\n\n- Distractor 1 (gần đúng) sai vì 'bàn thờ bằng đất' được Đức Chúa Trời chỉ dẫn trong Xuất 20:24, không phải là nơi Ngài ngự giữa dân sự theo mệnh lệnh tại 25:8-9.\n- Distractor 2 sai vì 'đền thờ bằng đá' là công trình cố định sau này dưới thời Sa-lô-môn (1 Các Vua 6), không phải là đền tạm di động được truyền lệnh trong đoạn này.\n- Distractor 3 sai vì 'bảng chứng ước' (hai bảng đá) được đề cập sau đó (Xuất 31:18) và là vật chứa đựng luật pháp, không phải là nơi ở ('ngự giữa') của Đức Chúa Trời.",
     "language": "vi",
     "options": [
-      "Một đền thờ cố định bằng đá",
+      "Một bàn thờ bằng đất — Môi-se phải làm theo kiểu mẫu Đức Chúa Trời chỉ cho trên núi",
       "ĐỀN TẠM (Hội Mạc) — Môi-se phải làm theo KIỂU MẪU Đức Chúa Trời chỉ cho trên núi",
-      "Một bệ vàng để dâng lễ",
-      "Một Hòm Giao Ước duy nhất"
+      "Một đền thờ bằng đá — Môi-se phải làm theo kiểu mẫu Đức Chúa Trời chỉ cho trên núi",
+      "Một bảng chứng ước — Môi-se phải làm theo kiểu mẫu Đức Chúa Trời chỉ cho trên núi"
     ],
     "tags": [
       "Cựu Ước",
@@ -3043,13 +3043,13 @@
     ],
     "verseEnd": 5,
     "content": "Theo Xuất 28:1, ai và các con trai ai được Đức Chúa Trời chỉ định làm THẦY TẾ LỄ?",
-    "explanation": "Xuất 28:1 — 'Trong vòng dân Y-sơ-ra-ên, ngươi hãy chọn A-rôn, anh ngươi, cùng các con trai người là Na-đáp, A-bi-hu, Ê-lê-a-sa, và Y-tha-ma; lập lên làm chức tế lễ trước mặt ta'. Sau đó Na-đáp + A-bi-hu chết vì 'lửa lạ' (Lê-vi 10).",
+    "explanation": "Xuất 28:1 chép rõ: \"Hãy chọn A-rôn, anh ngươi, cùng các con trai người, là Na-đáp, A-bi-hu, Ê-lê-a-sa, và Y-tha-ma; trong vòng dân Y-sơ-ra-ên, đặng làm chức tế lễ cho ta.\" Do đó, đáp án đúng là A-rôn và bốn con trai cụ thể của ông.\n\n- Distractor 1 (Môi-se và các con trai...) dựa vào tên các con trai của Lê-vi (Xuất 6:16-19), là một đoạn gần nhưng sai đối tượng được chỉ định trong câu hỏi.\n- Distractor 2 (A-rôn và 4 con trai... Môi-se) là đáp án gần đúng (almost-right) vì đúng nhân vật chính và số lượng, nhưng thay tên con trai thứ tư (Y-tha-ma) bằng Môi-se, một sai lầm chi tiết then chốt.\n- Distractor 3 (Môi-se và A-rôn cùng các con trai...) mở rộng phạm vi sai, bao gồm cả Môi-se, trong khi câu Kinh Thánh chỉ định rõ riêng A-rôn và các con trai ông.",
     "language": "vi",
     "options": [
-      "Môi-se và các con của ông",
+      "Môi-se và 4 con trai: Ghẹt-sôn, Kê-hát, Mê-ra-ri, A-bi-hua",
       "A-RÔN và 4 con trai: NA-ĐÁP, A-BI-HU, Ê-LÊ-A-SA, Y-THA-MA",
-      "Giô-suê và các tướng quân",
-      "Ca-lép và các trưởng lão"
+      "A-rôn và 4 con trai: Na-đáp, A-bi-hu, Ê-lê-a-sa, Môi-se",
+      "Môi-se và A-rôn cùng các con trai của họ"
     ],
     "tags": [
       "Cựu Ước",
@@ -3070,13 +3070,13 @@
     ],
     "verseEnd": 46,
     "content": "Theo Xuất 29:38-42, dân Y-sơ-ra-ên dâng tế lễ thiêu hằng ngày bao nhiêu lần và lúc nào?",
-    "explanation": "Xuất 29:38-39 — 'Đây là điều ngươi sẽ dâng trên bàn thờ: Hai chiên con một tuổi, mỗi ngày thường thường. Ngươi phải dâng con nầy vào buổi sớm mai, và con kia vào buổi chiều tối'. Tế lễ thiêu hằng ngày (tamid) — biểu tượng giao thông liên tục với Chúa.",
+    "explanation": "Câu hỏi hỏi về tế lễ thiêu hằng ngày trong Xuất 29:38-42. Đáp án đúng là HAI LẦN — một CHIÊN buổi SÁNG, một chiên buổi CHIỀU TỐI / HẰNG NGÀY mãi mãi (c. 38-39, 42).\n\nCác đáp án sai:\n1. \"HAI LẦN — một CHIÊN buổi SÁNG, một chiên buổi CHIỀU TỐI / mỗi ngày Sa-bát\": Sai phạm vi. Đoạn này quy định cho hằng ngày (từ đời nọ đến đời kia), không giới hạn vào ngày Sa-bát.\n2. \"MỘT LẦN — một CHIÊN buổi SÁNG / HẰNG NGÀY mãi mãi\": Sai chi tiết số lần. Kinh Thánh ghi rõ là dâng hai lần: buổi sáng và buổi chiều (c. 39).\n3. \"HAI LẦN — một BÒ đực buổi SÁNG, một chiên buổi CHIỀU TỐI / HẰNG NGÀY mãi mãi\": Nhầm passage gần. Bò đực được nhắc đến trong các nghi lễ xức dầu (Xuất 29:1, 10-14) gần đó, không phải trong quy định tế lễ thiêu hằng ngày này (chỉ dùng chiên con).",
     "language": "vi",
     "options": [
-      "Một lần buổi sáng / chỉ ngày Sa-bát",
-      "Mỗi giờ trong ngày làm việc",
+      "HAI LẦN — một CHIÊN buổi SÁNG, một chiên buổi CHIỀU TỐI / mỗi ngày Sa-bát",
+      "MỘT LẦN — một CHIÊN buổi SÁNG / HẰNG NGÀY mãi mãi",
       "HAI LẦN — một CHIÊN buổi SÁNG, một chiên buổi CHIỀU TỐI / HẰNG NGÀY mãi mãi",
-      "Bốn lần — sáng, trưa, chiều, tối"
+      "HAI LẦN — một BÒ đực buổi SÁNG, một chiên buổi CHIỀU TỐI / HẰNG NGÀY mãi mãi"
     ],
     "tags": [
       "Cựu Ước",
@@ -3097,12 +3097,12 @@
     ],
     "verseEnd": 11,
     "content": "Theo Xuất 31:1-11, ai được Chúa CHỌN và đầy dẫy THÁNH LINH để xây Đền Tạm?",
-    "explanation": "Xuất 31:2-6 — 'Nầy, ta đã kêu tên Bết-sa-lê-ên... ta đã làm cho người đầy dẫy Thần của Đức Chúa Trời, sự khôn ngoan, sự thông sáng, và sự hiểu biết... cùng Ô-hô-li-áp, con trai của A-hi-sa-mạc, chi phái Đan, làm phụ tá cho người'. Đây là LẦN ĐẦU TIÊN trong Kinh Thánh người được mô tả 'đầy dẫy Thánh Linh'.",
+    "explanation": "Đáp án đúng là 'BẾT-SA-LÊ-ÊN (chi phái Giu-đa) cùng Ô-HÔ-LI-ÁP (chi phái Đan)' vì Xuất 31:1-11 ghi rõ Chúa phán với Môi-se: 'Ta đã kêu tên Bết-sa-lê-ên... thuộc chi phái Giu-đa' (c.2) và 'Ta cũng đã đặt Ô-hô-li-áp... thuộc chi phái Đan' (c.6) để làm mọi công việc xây Đền Tạm, với Thánh Linh đầy dẫu trong họ (c.3, c.6).\n\nDistractor 'Môi-se cùng A-rôn (chi phái Lê-vi)' sai vì Môi-se và A-rôn không phải là thợ được chọn và đầy dẫy Thánh Linh để trực tiếp xây dựng Đền Tạm; họ là người lãnh đạo và thầy tế lễ (sai phạm vi - wrong_scope).\nDistractor 'Bết-sa-lê-ên (chi phái Giu-đa) cùng Ô-hô-li-áp (chi phái Bên-gia-min)' sai vì chi tiết chi phái của Ô-hô-li-áp bị nhầm; Kinh Thánh ghi ông thuộc chi phái Đan, không phải Bên-gia-min (Xuất 31:6) (sai chi tiết - wrong_detail, đây là distractor gần đúng).\nDistractor 'Môi-se (chi phái Lê-vi) cùng Giô-suê (chi phái Ép-ra-im)' sai vì Giô-suê là người phụ tá của Môi-se, không được nhắc đến trong phân đoạn này về việc xây Đền Tạm; tên ông xuất hiện trong các phân đoạn gần về sau (nhầm passage gần - nearby_passage).",
     "language": "vi",
     "options": [
-      "Phi-nê-a, con A-rôn",
-      "Giô-suê, con Nun",
-      "A-rôn, con Am-ram",
+      "Môi-se cùng A-rôn (chi phái Lê-vi)",
+      "Bết-sa-lê-ên (chi phái Giu-đa) cùng Ô-hô-li-áp (chi phái Bên-gia-min)",
+      "Môi-se (chi phái Lê-vi) cùng Giô-suê (chi phái Ép-ra-im)",
       "BẾT-SA-LÊ-ÊN (chi phái Giu-đa) cùng Ô-HÔ-LI-ÁP (chi phái Đan)"
     ],
     "tags": [
@@ -3124,13 +3124,13 @@
     ],
     "verseEnd": 35,
     "content": "Theo Xuất 32:19-35, khi xuống núi và thấy bò vàng, Môi-se làm gì?",
-    "explanation": "Xuất 32:19-20,26-28 — Môi-se nổi giận, ném vỡ hai bảng đá, đốt và nghiền bò vàng thành bột rải trên nước cho dân uống. Sau đó, ông kêu gọi 'Ai thuộc về Đức Giê-hô-va, hãy đến cùng ta!', và con cháu Lê-vi đáp lời, giết khoảng ba ngàn người.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Dựa trên Xuất 32:19-35, Môi-se hành động ngay khi thấy cảnh tượng: 'Ném vỡ hai bảng đá' (c.19), thiêu, nghiền bò vàng (c.20), rồi kêu gọi những người thuộc về Đức Giê-hô-va đứng về phía ông. Kết quả là 'có chừng ba ngàn người chết' (c.28). Ba hành động chính và con số 3,000 là câu trả lời trực tiếp cho câu hỏi.\n\nDISTRACTOR 1 (gần đúng, sai chi tiết): Các bước hành động đều đúng, nhưng sai số người chết là '300' thay vì '3,000' như Kinh Thánh ghi (Xuất 32:28).\nDISTRACTOR 2 (nhầm passage gần): Hành động 'nhận lại hai bảng đá mới' là sự kiện xảy ra sau (Xuất 34), không phải phản ứng tức thời khi Môi-se vừa xuống núi và thấy bò vàng.\nDISTRACTOR 3 (đúng văn bản nhưng lạc câu hỏi): Việc Môi-se cầu nguyện xin tha thứ diễn ra sau đó (Xuất 32:30-32) và là một hành động riêng biệt. Việc 'phá hủy bí mật' không có trong đoạn Kinh Thánh này. Câu hỏi hỏi về phản ứng tức thời của Môi-se khi vừa thấy cảnh tượng, không phải các bước tiếp theo.",
     "language": "vi",
     "options": [
       "Ném vỡ hai bảng đá, thiêu và nghiền bò vàng, kêu gọi người theo Đức Giê-hô-va — 3,000 người chết",
-      "Tha thứ ngay cho dân và A-rôn",
-      "Tổ chức lễ ăn mừng cùng dân",
-      "Trở lại núi mà không nói gì"
+      "Ném vỡ hai bảng đá, thiêu và nghiền bò vàng, kêu gọi người theo Đức Giê-hô-va — 300 người chết",
+      "Đập vỡ bò vàng, nhận lại hai bảng đá mới từ Đức Chúa Trời, kêu gọi người theo Đức Giê-hô-va — 3,000 người chết",
+      "Cầu nguyện với Đức Giê-hô-va để xin tha thứ cho dân chúng, rồi phá hủy bò vàng một cách bí mật"
     ],
     "tags": [
       "Cựu Ước",
@@ -3151,13 +3151,13 @@
     ],
     "verseEnd": 11,
     "content": "Theo Xuất 33:7-11, khi Môi-se vào 'TRẠI HỘI MẠC' bên ngoài trại quân, Đức Chúa Trời làm gì?",
-    "explanation": "Xuất 33:9,11 — 'Vừa khi người vào đó, thì trụ mây giáng xuống dừng tại cửa Trại, và Đức Giê-hô-va phán cùng Môi-se. Đức Giê-hô-va đối diện phán cùng Môi-se, như một người nói chuyện cùng bạn hữu mình'. Mối quan hệ Môi-se-Chúa độc đáo trong Cựu Ước (so Phục 34:10).",
+    "explanation": "Đáp án đúng dựa trên Xuất 33:9-11: 'Khi Môi-se đã vào trại, trụ mây bèn ngự xuống đứng nơi cửa trại, và Đức Giê-hô-va phán cùng Môi-se... Đức Giê-hô-va nói chuyện cùng Môi-se mặt đối mặt, như một người nói chuyện cùng bạn hữu mình.' Đức Chúa Trời phán trực tiếp với Môi-se một cách thân mật. Distractor 1 (gần đúng) sai vì chi tiết 'qua tiếng sấm và chớp' không có trong đoạn này, dù xuất hiện ở các dịp khác (như núi Si-na-i). Distractor 2 sai vì đây là một hiểu lầm phổ biến, lẫn lộn với sự hiện ra trong lửa ở những đoạn khác (như Xuất 3:2 hoặc 19:18), không phải trong bối cảnh này. Distractor 3 sai vì mô tả hành động của Môi-se (cầu nguyện), dù hợp lý, nhưng không trả lời đúng câu hỏi về hành động của Đức Chúa Trời; câu hỏi hỏi 'Đức Chúa Trời làm gì?'.",
     "language": "vi",
     "options": [
-      "Mưa lửa từ trời để đáp ứng",
-      "Sai thiên sứ đến làm chứng",
+      "TRỤ MÂY NGỰ XUỐNG cửa trại — Đức Giê-hô-va PHÁN với Môi-se qua tiếng sấm và chớp",
+      "TRỤ MÂY NGỰ XUỐNG cửa trại — Đức Giê-hô-va HIỆN RA trong lửa để dạy dỗ dân sự",
       "TRỤ MÂY NGỰ XUỐNG cửa trại — Đức Giê-hô-va PHÁN với Môi-se MẶT ĐỐI MẶT 'như người nói chuyện cùng bạn'",
-      "Cho ánh sáng chiếu rực rỡ"
+      "TRỤ MÂY NGỰ XUỐNG cửa trại — Môi-se CẦU NGUYỆN một mình với Đức Chúa Trời"
     ],
     "tags": [
       "Cựu Ước",
@@ -3178,13 +3178,13 @@
     ],
     "verseEnd": 9,
     "content": "Theo Xuất 34:1-9, sau khi bể hai bảng đá đầu, Đức Chúa Trời chỉ Môi-se làm gì? Và TỰ XƯNG mình thế nào khi đi qua?",
-    "explanation": "Xuất 34:1,6-7 — 'Đức Giê-hô-va phán cùng Môi-se rằng: Hãy đục hai bảng đá như hai bảng trước; rồi ta sẽ viết trên hai bảng nầy các lời đã ở nơi hai bảng kia... Đức Giê-hô-va đi ngang qua mặt người, hô rằng: Giê-hô-va! Giê-hô-va! là Đức Chúa Trời nhân từ, thương xót, chậm giận, đầy dẫy ân huệ và thành thực, ban ơn đến ngàn đời, xá điều gian ác, tội trọng, và tội lỗi'. Đây là 'tự khải' chính của Đức Chúa Trời — được trích nhiều lần trong Cựu Ước (Thi 86:15, Giô-na 4:2, v.v.).",
+    "explanation": "Câu hỏi hỏi hai việc: (1) Đức Chúa Trời chỉ Môi-se làm gì sau khi bể bảng đá đầu, và (2) Chúa tự xưng thế nào khi đi qua.\n\nĐÁP ÁN ĐÚNG: Xuất 34:1 chép 'Đức Giê-hô-va phán cùng Môi-se rằng: Hãy đẽo hai bảng đá như hai bảng đá đầu'. Xuất 34:6-7 ghi lại lời Đức Chúa Trời công bố: 'GIÊ-HÔ-VA, GIÊ-HÔ-VA, là Đức Chúa Trời nhân từ, thương xót, chậm giận, đầy dẫy ân điển và lẽ thật'. Đáp án đúng phản ánh chính xác hai chi tiết này.\n\nDISTRACTOR SAI 1 (gần đúng, sai 1 chi tiết): Sai chi tiết số lượng bảng đá. Xuất 34:1 ghi rõ 'hai bảng đá', không phải 'một bảng đá'.\nDISTRACTOR SAI 2: Dựa trên hiểu lầm phổ biến về bản tính của Đức Chúa Trời. Mặc dù Chúa quyền năng và thánh khiết, nhưng trong đoạn kinh văn cụ thể này (Xuất 34:6-7), Ngài đặc biệt nhấn mạnh các thuộc tính về ân điển và lẽ thật khi đi qua trước mặt Môi-se.\nDISTRACTOR SAI 3: Phần tự xưng 'GIÊ-HÔ-VA, Đức Chúa Trời NHÂN TỪ và THƯƠNG XÓT' là đúng nhưng không đầy đủ (thiếu 'chậm giận, đầy ân điển và LẼ THẬT'), và chi tiết 'khi ở trong trụ mây' là lạc hướng với câu hỏi. Câu hỏi chỉ hỏi 'khi đi qua', không đề cập đến trụ mây trong đoạn này (Xuất 34:5 chỉ nói 'Ngài đi ngang qua trước mặt người').",
     "language": "vi",
     "options": [
-      "Chúa cho 5 bảng đá mới / Chúa tự xưng 'Đấng phán xét'",
+      "Đẽo 1 bảng đá MỚI giống bảng cũ / Chúa tự xưng 'GIÊ-HÔ-VA, Đức Chúa Trời NHÂN TỪ và THƯƠNG XÓT, chậm giận, đầy ân điển và LẼ THẬT'",
       "Đẽo 2 bảng đá MỚI giống bảng cũ / Chúa tự xưng 'GIÊ-HÔ-VA, Đức Chúa Trời NHÂN TỪ và THƯƠNG XÓT, chậm giận, đầy ân điển và LẼ THẬT'",
-      "Dùng giấy thay đá / Chúa tự xưng 'Đấng Toàn Năng'",
-      "Không thay đá nữa / Chúa cấm Môi-se nhìn"
+      "Đẽo 2 bảng đá MỚI giống bảng cũ / Chúa tự xưng 'GIÊ-HÔ-VA, Đấng Tạo Hóa QUYỀN NĂNG và THÁNH KHIẾT, phán xét và công bình'",
+      "Đẽo 2 bảng đá MỚI giống bảng cũ / Chúa tự xưng 'GIÊ-HÔ-VA, Đức Chúa Trời NHÂN TỪ và THƯƠNG XÓT' khi ở trong trụ mây"
     ],
     "tags": [
       "Cựu Ước",
@@ -3205,12 +3205,12 @@
     ],
     "verseEnd": 35,
     "content": "Theo Xuất 34:29-35, khi Môi-se xuống núi sau lần thứ hai, mặt ông có gì đặc biệt?",
-    "explanation": "Xuất 34:29-30 — 'Khi Môi-se tay cầm hai bảng chứng đi xuống núi Si-na-i, chẳng biết rằng da mặt mình sáng rực bởi vì mình hầu chuyện Đức Giê-hô-va. A-rôn và cả dân Y-sơ-ra-ên nhìn Môi-se, thấy mặt người sáng rực, sợ không dám lại gần'. Phao-lô bình luận trong 2 Cô 3:7-18 — vinh quang Cựu Ước MỜ DẦN, vinh quang trong Đấng Christ TỎ RÕ.",
+    "explanation": "Xuất 34:29-35 ghi lại: 'Khi Môi-se từ trên núi Si-na-i xuống, tay cầm hai bảng chứng... chẳng biết rằng da mặt mình sáng rực bởi vì mình hầu chuyện cùng Đức Giê-hô-va... A-rôn và cả dân Y-sơ-ra-ên... sợ hãi mà đến gần... Môi-se lấy khăn che mặt mình...' (BTT). Đáp án đúng vì diễn tả chính xác việc mặt Môi-se chiếu sáng do gặp Chúa, phản ứng sợ hãi, và việc ông trùm khăn. Distractor 1 (gần đúng) sai vì mặt ông chiếu sáng chứ không có vết thương, và phản ứng là sợ hãi chứ không phải thương hại. Distractor 2 sai vì không có chi tiết mặt phát ra mùi hương hay dân thích thú trong đoạn này. Distractor 3 sai vì chi tiết xức dầu và đội mũ liên quan đến chức tế lễ (Xuất 29:7, Lê-vi 8:9) chứ không phải sự kiện xuống núi lần thứ hai này.",
     "language": "vi",
     "options": [
-      "Mặt ông trở nên trẻ hơn 40 tuổi",
-      "Mặt ông biến đổi giống thiên sứ",
-      "Mặt ông được xăm bằng chữ thiêng",
+      "Mặt ông CÓ VẾT THƯƠNG (do cãi vã với dân) — A-rôn và dân THƯƠNG HẠI, ông phải BĂNG BÓ che mặt khi nói cùng dân",
+      "Mặt ông PHÁT RA MÙI HƯƠNG (do đốt hương trên núi) — A-rôn và dân THÍCH THÚ, ông phải ĐỂ MẶT TRẦN khi nói cùng dân",
+      "Mặt ông ĐƯỢC XỨC DẦU (do lễ phong chức) — A-rôn và dân TÔN KÍNH, ông phải ĐỘI MŨ khi nói cùng dân",
       "Mặt ông CHIẾU SÁNG (do gặp Chúa) — A-rôn và dân SỢ HÃI, ông phải TRÙM KHĂN che mặt khi nói cùng dân"
     ],
     "tags": [
@@ -3232,13 +3232,13 @@
     ],
     "verseEnd": 29,
     "content": "Theo Xuất 35:4-29, Môi-se kêu gọi dân Y-sơ-ra-ên dâng vật liệu xây Đền Tạm. Phản ứng của dân thế nào?",
-    "explanation": "Dân chúng đáp ứng nhiệt tình và tự nguyện đem đến nhiều loại vật liệu quý (Xuất 35:20-29). Sự dâng hiến này nhiều đến mức, như được ghi tiếp trong Xuất 36:5-7, các thợ phải báo với Môi-se rằng vật liệu đã dư bội, và Môi-se phải ra lệnh ngừng dâng thêm. Đây là lần duy nhất trong Kinh Thánh ghi chép việc 'dâng quá nhiều'.",
+    "explanation": "Trong Xuất Ê-díp-tô Ký 35:4-29, câu 21, 22, 26, 29 mô tả mọi người có lòng rộng rãi, tự nguyện mang đến rất nhiều lễ vật. Đặc biệt, Xuất 36:5-7 (đoạn kế tiếp, giải quyết hậu quả trực tiếp của sự dâng hiến trong 35:4-29) ghi rõ các thợ thủ công phải báo cáo với Môi-se rằng 'dân chúng đem đến dư dật', và Môi-se phải truyền lệnh 'Đừng ai, nam hay nữ, làm công việc cung hiến cho đền tạm nữa' để ngăn việc dâng thêm. Do đó, đáp án đúng mô tả chính xác phản ứng: họ dâng quá nhiều đến mức phải ra lệnh ngừng.\n\nCác đáp án sai:\n1. 'Vừa đủ' (gần đúng nhưng sai chi tiết then chốt): Đoạn Kinh Thánh không hề nói 'vừa đủ' mà nhấn mạnh sự dư dật, quá nhiều. Đây là lỗi sai chi tiết.\n2. 'Phản đối, không chịu dâng': Điều này trái ngược hoàn toàn với văn bản, nơi mọi người đều tự nguyện và hăng hái. Đây là hiểu lầm phổ biến dựa trên những phản ứng tiêu cực khác của dân Y-sơ-ra-ên trong hành trình sa mạc.\n3. 'Chỉ dâng số lượng nhỏ, chủ yếu từ trưởng lão': Điều này thu hẹp phạm vi sai. Văn bản liệt kê rõ 'mọi người', 'mọi người đàn ông và đàn bà', 'các trưởng lão' cùng tham gia, và số lượng vật liệu được liệt kê chi tiết cho thấy là rất lớn, không phải nhỏ. Đây là lỗi sai phạm vi.",
     "language": "vi",
     "options": [
       "DÂN Y-sơ-ra-ên DÂNG QUÁ NHIỀU đến mức Môi-se phải RA LỆNH NGỪNG dâng thêm",
-      "Dân chỉ dâng phần mười như luật quy định",
-      "Dân từ chối vì không có vật liệu",
-      "Pha-ra-ôn cấm dân dâng cho Đức Chúa Trời"
+      "Dân Y-sơ-ra-ên dâng hiến VỪA ĐỦ để hoàn thành công việc xây Đền Tạm",
+      "Dân Y-sơ-ra-ên PHẢN ĐỐI và KHÔNG CHỊU dâng hiến vật liệu",
+      "Dân Y-sơ-ra-ên chỉ dâng hiến SỐ LƯỢNG NHỎ, chủ yếu từ các trưởng lão"
     ],
     "tags": [
       "Cựu Ước",
@@ -3259,13 +3259,13 @@
     ],
     "verseEnd": 38,
     "content": "Theo Xuất 36:8-13, các bức TRƯỚNG bao quanh Đền Tạm được dệt bằng gì?",
-    "explanation": "Xuất 36:8 — 'Những thợ kheo léo trong đám họ bèn làm đền tạm, mười bức trướng bằng vải gai mịn đậu, chỉ tím, đỏ điều và đỏ sặm; có thêu các hình chê-ru-bim cực xảo'. Vải gai mịn (shesh) — cao quý nhất Ai-cập, dệt thủ công.",
+    "explanation": "Đáp án đúng dựa trên Xuất 36:8,35: 'Kế đó, hết thảy thợ khéo trong vòng thợ làm đền tạm đều dùng mười tấm màn bằng vải gai mịn, chỉ xanh, chỉ tím, chỉ đỏ điều, thêu hình chê-ru-bim cực xảo mà làm đền tạm.' (BTT). Các bức trướng này được dệt từ vải gai mịn với chỉ màu tím, đỏ tía, đỏ thẫm và có hình chê-ru-bim thêu trên đó.\n\nCác đáp án sai:\n- Distractor 1 sai chi tiết vì thiếu một màu chỉ (đỏ thẫm) so với mô tả đầy đủ trong Kinh Thánh.\n- Distractor 2 trích dẫn sai phạm vi; vải bằng lông dê được dùng làm bức màn che phủ bên ngoài đền tạm (Xuất 36:14), không phải cho các bức trướng bao quanh bên trong.\n- Distractor 3 mô tả đúng vật liệu nhưng sai họa tiết; Kinh Thánh xác định rõ là hình 'chê-ru-bim' (Xuất 36:8,35), không phải chỉ là 'hoa văn' chung chung.",
     "language": "vi",
     "options": [
-      "Lông cừu trắng đơn giản",
-      "Da bò đỏ dày",
+      "VẢI GAI MỊN với CHỈ MÀU TÍM, ĐỎ TÍA, dệt thêu CHÊ-RU-BIM khéo léo",
+      "VẢI BẰNG LÔNG DÊ với CHỈ MÀU TÍM, ĐỎ TÍA, ĐỎ THẪM, dệt thêu CHÊ-RU-BIM khéo léo",
       "VẢI GAI MỊN với CHỈ MÀU TÍM, ĐỎ TÍA, ĐỎ THẪM, dệt thêu CHÊ-RU-BIM khéo léo",
-      "Lá cọ và sậy dày"
+      "VẢI GAI MỊN với CHỈ MÀU TÍM, ĐỎ TÍA, ĐỎ THẪM, dệt thêu HOA VĂN khéo léo"
     ],
     "tags": [
       "Cựu Ước",
@@ -3286,13 +3286,13 @@
     ],
     "verseEnd": 31,
     "content": "Theo Xuất 38:21-31, tổng VÀNG, BẠC, ĐỒNG dùng cho Đền Tạm là bao nhiêu?",
-    "explanation": "Xuất 38:24-29 — 'Hết thảy vàng đã hiệp dùng làm công việc trong nơi thánh, tức là vàng đã dâng, được hai mươi chín ta-lâng, bảy trăm ba mươi siếc-lơ... Bạc... đặng một trăm ta-lâng và một ngàn bảy trăm bảy mươi lăm siếc-lơ... Đồng được bảy mươi ta-lâng và hai ngàn bốn trăm siếc-lơ'. 1 ta-lâng ~34kg, 1 siếc-lơ ~11g. Tổng giá trị khoảng 1 tấn vàng + 3.4 tấn bạc + 2.4 tấn đồng.",
+    "explanation": "Xuất 38:24-31 ghi rõ tổng số: VÀNG là 29 ta-lâng và 730 siếc-lơ (c.24), BẠC là 100 ta-lâng và 1.775 siếc-lơ (c.25-28), ĐỒNG là 70 ta-lâng và 2.400 siếc-lơ (c.29-31).\n\nDistractor 1 (gần đúng) SAI vì số ĐỒNG là 2.400 siếc-lơ, không phải 2.100.\nDistractor 2 SAI vì số VÀNG là 29 ta-lâng 730 siếc-lơ; 30 ta-lâng 700 siếc-lơ là số không có trong đoạn này.\nDistractor 3 SAI vì thiếu hoàn toàn số VÀNG, chỉ liệt kê BẠC và ĐỒNG, trong khi câu hỏi yêu cầu tổng của CẢ BA loại.",
     "language": "vi",
     "options": [
-      "Vàng 10 ta-lâng / Bạc 50 ta-lâng / Đồng 100 ta-lâng",
+      "VÀNG 29 ta-lâng + 730 siếc-lơ / BẠC 100 ta-lâng + 1775 siếc-lơ / ĐỒNG 70 ta-lâng + 2100 siếc-lơ",
       "VÀNG 29 ta-lâng + 730 siếc-lơ / BẠC 100 ta-lâng + 1775 siếc-lơ / ĐỒNG 70 ta-lâng + 2400 siếc-lơ",
-      "Vàng 5 ta-lâng / Bạc 200 ta-lâng / Đồng 500 ta-lâng",
-      "Vàng 1 ta-lâng / Bạc 1 ta-lâng / Đồng 1 ta-lâng"
+      "VÀNG 30 ta-lâng + 700 siếc-lơ / BẠC 100 ta-lâng + 1775 siếc-lơ / ĐỒNG 70 ta-lâng + 2400 siếc-lơ",
+      "BẠC 100 ta-lâng + 1775 siếc-lơ / ĐỒNG 70 ta-lâng + 2400 siếc-lơ"
     ],
     "tags": [
       "Cựu Ước",
@@ -3313,12 +3313,12 @@
     ],
     "verseEnd": 31,
     "content": "Theo Xuất 39:1-31, ÁO ÊPHÔTH (ephod) của thầy tế lễ thượng phẩm có những gì đặc biệt?",
-    "explanation": "Xuất 39:2-21 (kết hợp với 28:6-30) — Êphôth dệt bằng vàng + chỉ tím/đỏ/xanh + vải gai mịn. Bảng đeo ngực gắn 12 viên đá quý — mỗi viên khắc tên 1 chi phái. Bên trong bảng đeo có URIM và THUMMIM (28:30) — dùng để 'cầu hỏi' ý Chúa trong các quyết định lớn (Dân 27:21, 1 Sa-mu-ên 14:41).",
+    "explanation": "Xuất 39:1-31 mô tả việc làm các bộ áo lễ thánh. Áo êphốt đặc biệt được làm bằng vàng, chỉ xanh, tím, đỏ (c.2-3) và có bảng đeo ngực với 12 viên đá quý tượng trưng cho 12 chi phái (c.10-14). Quan trọng, bảng đeo ngực đó chứa U-rim và Thu-mim để cầu hỏi ý Chúa (c.8-14, 21; so với Xuất 28:30). \n\n- Đáp án đúng: Khẳng định đầy đủ ba đặc điểm chính dựa trên đoạn Kinh Thánh.\n- Distractor 1 ('gắn liền với MÃO TẾ LỄ có tấm vàng'): Chi tiết này đúng với mô tả về mão (Xuất 39:30-31) nhưng thuộc về phần trang phục khác, không phải là đặc điểm của chính áo êphốt, nên lạc trọng tâm câu hỏi.\n- Distractor 2 ('được đeo trên ÁO DÀI MÀU XANH'): Áo dài màu xanh (Xuất 39:22-26) là một phần trang phục riêng biệt. Áo êphốt được mặc trực tiếp trên người (Xuất 28:4, 39:2-5), không phải 'đeo trên' áo dài, nên sai chi tiết.\n- Distractor 3 ('có các LẮC VÀNG và THÙY LỰU ở viền áo'): Chi tiết này mô tả viền của áo dài (Xuất 39:24-26), là một bộ phận hoàn toàn khác với áo êphốt, nên sai phạm vi.",
     "language": "vi",
     "options": [
-      "Chỉ là áo dài đỏ thường",
-      "Áo lông cừu đơn giản trắng",
-      "Áo bằng vải gai có hình tròn",
+      "VÀNG, CHỈ MÀU XANH/TÍM/ĐỎ; có 12 VIÊN ĐÁ QUÝ trên BẢNG ĐEO NGỰC tượng trưng 12 chi phái; được gắn liền với MÃO TẾ LỄ có tấm vàng",
+      "VÀNG, CHỈ MÀU XANH/TÍM/ĐỎ; có 12 VIÊN ĐÁ QUÝ trên BẢNG ĐEO NGỰC tượng trưng 12 chi phái; được đeo trên ÁO DÀI MÀU XANH",
+      "VÀNG, CHỈ MÀU XANH/TÍM/ĐỎ; có 12 VIÊN ĐÁ QUÝ trên BẢNG ĐEO NGỰC tượng trưng 12 chi phái; có các LẮC VÀNG và THÙY LỰU ở viền áo",
       "VÀNG, CHỈ MÀU XANH/TÍM/ĐỎ; có 12 VIÊN ĐÁ QUÝ trên BẢNG ĐEO NGỰC tượng trưng 12 chi phái; có URIM và THUMMIM để cầu hỏi Chúa"
     ],
     "tags": [
@@ -3394,13 +3394,13 @@
     ],
     "verseEnd": 30,
     "content": "Theo Xuất 25:23-30, BÀN BÁNH TRẦN THIẾT (showbread) trong Đền Tạm có chức năng gì?",
-    "explanation": "Xuất 25:30 — 'Trên bàn ngươi sẽ để bánh trần thiết hằng có trước mặt ta'. Lê-vi 24:5-9 chi tiết: 12 ổ bánh, đổi mới mỗi ngày Sa-bát, các thầy tế lễ ăn bánh cũ. 12 ổ tượng trưng 12 chi phái — luôn có sự HIỆN DIỆN của dân Y-sơ-ra-ên trước mặt Chúa.",
+    "explanation": "Đáp án đúng dựa trên Xuất Ê-díp-tô Ký 25:30 và Lê-vi Ký 24:5-9, nơi Chúa phán bảo đặt bánh trần thiết trên bàn luôn luôn và bánh tượng trưng cho giao ước, thuộc về các con trai A-rôn để ăn trong nơi thánh. Số 12 ổ bánh tượng trưng cho 12 chi phái Y-sơ-ra-ên. Distractor 1 sai vì nó thay đổi chi tiết then chốt: số bánh là 12, không phải 7, và biểu tượng là 12 chi phái, không phải 7 ngày tạo thế. Distractor 2 sai vì nó mở rộng phạm vi chức năng: bàn này chỉ để bánh trần thiết, không phải là nơi để mọi lễ vật chung chung. Distractor 3 sai vì nó phản ánh một hiểu lầm phổ biến (thường gán chức năng của bàn thờ xông hương cho bàn bánh trần thiết): chức năng tượng trưng cho lời cầu nguyện thuộc về hương, không phải bánh trần thiết.",
     "language": "vi",
     "options": [
-      "Bàn để dâng thịt cừu hằng ngày",
-      "Bàn để đốt hương thơm",
+      "BÀN ĐẶT 7 ổ BÁNH TRẦN THIẾT — TƯỢNG TRƯNG 7 ngày tạo thế trước mặt Chúa LIÊN TỤC",
+      "BÀN ĐỂ CÁC LỄ VẬT CỦA DÂN CHÚNG — TƯỢNG TRƯNG sự dâng hiến từ 12 chi phái Y-sơ-ra-ên",
       "BÀN ĐẶT 12 ổ BÁNH TRẦN THIẾT — TƯỢNG TRƯNG 12 chi phái Y-sơ-ra-ên trước mặt Chúa LIÊN TỤC",
-      "Bàn để đặt sách luật pháp"
+      "BÀN ĐẶT HƯƠNG LIỆU THƠM — TƯỢNG TRƯNG lời cầu nguyện của dân sự lên trước mặt Chúa"
     ],
     "tags": [
       "Cựu Ước",
@@ -3421,12 +3421,12 @@
     ],
     "verseEnd": 10,
     "content": "Theo Xuất 30:1-10, BÀN THỜ HƯƠNG (incense altar) trong NƠI THÁNH dùng cho việc gì?",
-    "explanation": "Xuất 30:7-8 — 'Mỗi buổi sớm mai, khi A-rôn làm đèn, sẽ xông hương tại nơi đó. Khi A-rôn thắp đèn buổi chiều tối, cũng sẽ xông hương: ấy là một thứ hương phải xông trước mặt Đức Giê-hô-va luôn luôn, trải qua các đời'. Khải Huyền 5:8 — 'những bình vàng đầy hương, là LỜI CẦU NGUYỆN của các thánh'.",
+    "explanation": "Xuất 30:7-8 chép rõ A-rôn phải đốt hương thơm trên bàn thờ mỗi buổi sáng và mỗi buổi chiều, và khói hương này là biểu tượng cho lời cầu nguyện của dân sự bay lên trước mặt Đức Giê-hô-va (xem thêm Khải huyền 5:8, 8:3-4).\n\n- Distractor 1 (gần đúng) SAI vì chi tiết 'sự tẩy sạch' là không chính xác; văn bản nhấn mạnh đến lời cầu nguyện, không phải nghi thức tẩy sạch.\n- Distractor 2 SAI vì phạm vi thời gian bị nhầm: việc đốt hương hàng năm trong Lễ Chuộc Tội (Xuất 30:10) là nghi thức riêng biệt, không phải mục đích chính hàng ngày của bàn thờ hương.\n- Distractor 3 SAI vì mặc dù việc dâng của lễ và cầu nguyện đều quan trọng, văn bản được hỏi (Xuất 30:1-10) không nối việc đốt hương với của lễ thiêu; đây là sự kết hợp lạc đề với các nghi lễ khác.",
     "language": "vi",
     "options": [
-      "Đốt thịt cừu hằng ngày",
-      "Đặt 12 bánh trần thiết",
-      "Cất Hòm Giao Ước",
+      "ĐỐT HƯƠNG mỗi sáng và mỗi chiều — biểu tượng SỰ TẨY SẠCH của dân sự trước mặt Chúa",
+      "ĐỐT HƯƠNG mỗi năm một lần trong Lễ Chuộc Tội — biểu tượng SỰ THA TỘI cho dân Y-sơ-ra-ên",
+      "ĐỐT HƯƠNG khi dâng của lễ thiêu — biểu tượng SỰ HIẾN DÂNG lên cho Chúa",
       "ĐỐT HƯƠNG mỗi sáng và mỗi chiều — biểu tượng LỜI CẦU NGUYỆN của dân thánh BAY LÊN trước mặt Chúa"
     ],
     "tags": [
@@ -3448,13 +3448,13 @@
     ],
     "verseEnd": 18,
     "content": "Theo Xuất 31:12-17, NGÀY SA-BÁT là DẤU HIỆU gì giữa Đức Chúa Trời và dân Y-sơ-ra-ên?",
-    "explanation": "Xuất 31:13,16-17 — 'Phải, các ngươi hãy giữ ngày Sa-bát ta, vì là một dấu giữa ta và các ngươi, trải qua mọi đời, để thiên hạ biết rằng ta, là Đức Giê-hô-va, làm cho các ngươi nên thánh... Aáy là một dấu đời đời cho ta cùng dân Y-sơ-ra-ên, vì Đức Giê-hô-va đã dựng nên trời và đất trong sáu ngày, qua ngày thứ bảy Ngài nghỉ và lấy sức lại'.",
+    "explanation": "Đáp án ĐÚNG: Xuất 31:16-17 nói rõ: 'Dân Y-sơ-ra-ên phải giữ ngày Sa-bát như một giao ước đời đời. Ấy là một dấu hiệu đời đời giữa ta và dân Y-sơ-ra-ên, vì trong sáu ngày Đức Giê-hô-va đã dựng nên trời và đất, còn ngày thứ bảy Ngài nghỉ và lấy sức lại.'\n\nDistractor 1 (gần đúng, sai chi tiết): Đoạn này không nói Sa-bát là dấu hiệu 'tạm thời' hay chỉ vì lý do sức khỏe; ngược lại, nhấn mạnh tính 'đời đời' và lý do từ công trình sáng tạo.\n\nDistractor 2 (sai phạm vi): Mệnh lệnh về Sa-bát ở đây được truyền cho cả dân Y-sơ-ra-ên (c.13,16), không chỉ giới hạn cho các thầy tế lễ.\n\nDistractor 3 (đúng văn bản nhưng lạc câu hỏi): Mặc dù Y-sơ-ra-ên là dân được chọn, nhưng trong đoạn 31:12-17, 'dấu hiệu' cụ thể được nối với ngày Sa-bát và công cuộc sáng tạo, không phải trực tiếp với khái niệm 'sự chọn lựa' từ giữa muôn dân (ý này có ở các đoạn khác).",
     "language": "vi",
     "options": [
-      "Dấu hiệu họ là dân giàu có",
+      "DẤU HIỆU TẠM THỜI trong hành trình sa mạc — vì 'dân cần nghỉ ngơi sức lực sau khi ra khỏi Ê-díp-tô'",
       "DẤU HIỆU ĐỜI ĐỜI giữa Chúa và dân — vì 'Đức Giê-hô-va đã LÀM nên trời và đất trong 6 ngày, nghỉ ngày thứ 7'",
-      "Dấu hiệu họ thuộc dòng Áp-ra-ham",
-      "Dấu hiệu họ ăn không nhiều"
+      "DẤU HIỆU GIAO ƯỚC chỉ với thầy tế lễ — vì 'chỉ họ mới giữ nghi thức thánh trong đền tạm'",
+      "DẤU HIỆU VỀ SỰ CHỌN LỰA dân Y-sơ-ra-ên — vì 'Đức Chúa Trời đã chọn họ từ giữa muôn dân'"
     ],
     "tags": [
       "Cựu Ước",
@@ -3475,13 +3475,13 @@
     ],
     "verseEnd": 7,
     "content": "Môi-se bao nhiêu tuổi khi đến Pha-ra-ôn? So sánh với tuổi khi trốn khỏi Ai-cập? (Tham chiếu Xuất 7:7 và Công vụ 7:23)",
-    "explanation": "Xuất 7:7 — 'Vả, khi hai người tâu cùng Pha-ra-ôn, Môi-se tuổi đã được tám mươi, còn A-rôn tám mươi ba'. Công Vụ 7:23 — 'Khi tròn bốn mươi tuổi, người [Môi-se] toan đi thăm anh em mình'. Phục 34:7 — Môi-se chết tuổi 120. Vậy đời Môi-se chia 3 giai đoạn 40 năm: Ai-cập (40) + Ma-đi-an (40) + sa mạc (40).",
+    "explanation": "ĐÁP ÁN ĐÚNG: Xuất Ê-díp-tô 7:7 ghi rõ: 'Môi-se được tám mươi tuổi... khi nói cùng Pha-ra-ôn'. Công vụ 7:23 ghi khi Môi-se trốn khỏi Ai Cập là 'gần bốn mươi tuổi'. Do đó, khoảng thời gian ở Ma-đi-an là 40 năm (80 - 40).\n\nSAI VÌ:\n- Distractor 1 (sai chi tiết): Dùng đúng tuổi 80 khi đến Pha-ra-ôn và trích dẫn Công vụ 7:23 đúng, nhưng lại kết luận '0 năm ở Ma-đi-an', mâu thuẫn với phép tính từ chính dữ liệu đã nêu.\n- Distractor 2 (sai phạm vi): Thay đổi tuổi khi đến Pha-ra-ôn từ 80 (Ex 7:7) thành 40, vượt ra ngoài thông tin trực tiếp của câu hỏi tham chiếu, dẫn đến kết luận sai.\n- Distractor 3 (hiểu lầm phổ biến): Dùng tổng tuổi thọ 120 tuổi của Môi-se (Phục truyền 34:7) làm tuổi khi gặp Pha-ra-ôn, dẫn đến tính sai thời gian ở Ma-đi-an là 80 năm.",
     "language": "vi",
     "options": [
-      "40 / 80 — bằng nhau",
-      "70 / 40 — khác nhau",
+      "80 (Ex 7:7 'tám mươi') khi đến Pha-ra-ôn / 80 khi trốn (Công Vụ 7:23 'gần 40 tuổi') — VẬY Môi-se 0 NĂM ở MA-ĐI-AN trước khi được Chúa kêu",
+      "40 (Ex 7:7 'tám mươi') khi đến Pha-ra-ôn / 40 khi trốn (Công Vụ 7:23 'gần 40 tuổi') — VẬY Môi-se 0 NĂM ở MA-ĐI-AN trước khi được Chúa kêu",
       "80 (Ex 7:7 'tám mươi') khi đến Pha-ra-ôn / 40 khi trốn (Công Vụ 7:23 'gần 40 tuổi') — VẬY Môi-se 40 NĂM ở MA-ĐI-AN trước khi được Chúa kêu",
-      "100 / 50"
+      "120 (Ex 7:7 'tám mươi') khi đến Pha-ra-ôn / 40 khi trốn (Công Vụ 7:23 'gần 40 tuổi') — VẬY Môi-se 80 NĂM ở MA-ĐI-AN trước khi được Chúa kêu"
     ],
     "tags": [
       "Cựu Ước",
@@ -3502,12 +3502,12 @@
     ],
     "verseEnd": 13,
     "content": "KIỂU 1 cross-ref Ex 12:13 — phán xét và 'huyết Vượt Qua' — câu nào trong Tân Ước dùng hình ảnh này gọi Chúa Jêsus?",
-    "explanation": "1 Cô 5:7 — 'Hãy làm cho mình sạch men cũ đi, hầu cho anh em trở nên bột nhồi mới không men, vì Đấng Christ là con sinh lễ Vượt Qua của chúng ta, đã bị giết rồi'. Phao-lô áp dụng trực tiếp Vượt Qua Cựu Ước cho Đấng Christ. Cũng xem Giăng 1:29 'Chiên Con của Đức Chúa Trời' và Khải 5:6 'Chiên Con như đã bị giết'. Việc Chúa Jêsus bị giết tại Lễ Vượt Qua hoàn toàn ứng nghiệm hình bóng.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 1 Cô-rinh-tô 5:7 trực tiếp gọi Chúa Jêsus là 'con sinh lễ Vượt Qua của chúng ta', áp dụng chính xác hình ảnh huyết Vượt Qua từ Xuất Ê-díp-tô Ký 12:13 vào Đấng Christ.\n\nGIẢI THÍCH CÁC ĐÁP ÁN SAI:\n- '1 Cô-rinh-tô 5:8': Đây là câu ngay sau đáp án đúng, nói về việc giữ lễ nhưng KHÔNG dùng hình ảnh 'con sinh lễ Vượt Qua' để gọi Chúa Jêsus, mà nói về cách sống của tín đồ.\n- 'Ma-thi-ơ 26:28': Câu này nói về huyết Chúa đổ ra trong bữa Tiệc Ly, có liên hệ đến sự tha tội, nhưng KHÔNG sử dụng hình ảnh/ngôn từ đặc trưng 'Vượt Qua' (Passover) để gọi Chúa Jêsus.\n- 'Hê-bơ-rơ 9:22': Câu này nói về nguyên tắc chung 'không đổ huyết thì không có sự tha thứ' áp dụng cho các của lễ Cựu Ước, nhưng KHÔNG trực tiếp gán hình ảnh 'con sinh lễ Vượt Qua' cho Chúa Jêsus.",
     "language": "vi",
     "options": [
-      "Mác 1:1 — 'Khởi đầu Tin Lành Đức Chúa Jêsus Christ'",
-      "Lu-ca 24:46 — 'Đấng Christ phải chịu thương khó'",
-      "Giăng 1:14 — 'Ngôi Lời thành xác thịt'",
+      "1 Cô-rinh-tô 5:8 — 'Vậy thì, chúng ta hãy giữ lễ... không phải bằng men cũ... nhưng bằng bánh không men của sự thật thà và chân thật'",
+      "Ma-thi-ơ 26:28 — 'Vì nầy là huyết ta, huyết của sự giao ước đã đổ ra cho nhiều người được tha tội'",
+      "Hê-bơ-rơ 9:22 — 'Theo luật pháp thì hầu hết mọi vật đều nhờ huyết mà được sạch: không đổ huyết thì không có sự tha thứ'",
       "1 Cô-rinh-tô 5:7 — 'Đấng Christ là con sinh lễ Vượt Qua của chúng ta, đã bị giết rồi'"
     ],
     "tags": [
@@ -3558,13 +3558,13 @@
     ],
     "verseEnd": 23,
     "content": "KIỂU 1 cross-ref Ex 33:18-23 — Môi-se xin thấy 'vinh quang' Chúa, được THẤY 'đằng sau' không phải 'mặt'. Giăng 1:18 nối tiếp ý này thế nào?",
-    "explanation": "Xuất 33:20 — 'Ngươi không thể thấy mặt Ta, vì không ai có thể thấy mặt Ta mà còn sống'. Giăng 1:18 trực tiếp gắn với câu Cựu Ước này: 'CHẲNG HỀ AI THẤY ĐỨC CHÚA TRỜI; chỉ Con một ở trong lòng Cha, là Đấng đã giải bày Cha cho chúng ta biết'. Đấng Christ là Đấng GIẢI BÀY (exegēsato) Cha — cách trực tiếp duy nhất để 'thấy' Đức Chúa Trời.",
+    "explanation": "Câu hỏi yêu cầu nối tiếp ý từ Xuất Ê-díp-tô Ký 33:18-23, nơi Môi-se chỉ được thấy 'đằng sau' Chúa, không thấy mặt, sang Giăng 1:18. Đáp án đúng (Giăng 1:18) khẳng định không ai thấy Đức Chúa Trời, chỉ Con Một (Đức Chúa Jêsus) đã 'giải bày' (tiếng Hy Lạp: ἐξηγήσατο) Cha cho loài người, làm trọn và khai sáng ý cũ về việc thấy Chúa một cách gián tiếp hoặc qua con.  \n- Distractor 1 (gần đúng) sai chi tiết then chốt: 'đã thấy Đức Chúa Trời rõ ràng mà thôi' → thực tế Kinh Thánh không nói rõ ràng, và trọng tâm của Giăng 1:18 là Con 'giải bày', không phải chỉ là việc Con 'thấy' một mình.  \n- Distractor 2: phản ánh hiểu lầm phổ biến rằng Con Một 'được xem thấy trước mặt' Đức Chúa Trời theo nghĩa đơn thuần là hiện diện, nhưng câu hỏi hỏi về việc 'nối tiếp' ý 'thấy vinh quang/Đức Chúa Trời' từ Môi-se; phương án này lệch trọng tâm giải thích và không đúng với nguyên văn 'giải bày'.  \n- Distractor 3: 'đã được Môi-se nói đến trong Ê-xô-đê' → mặc dù đúng là Môi-se được nhắc trong Xuất Ê-díp-tô Ký, nhưng đây là thông tin đúng nhưng lạc câu hỏi, vì Giăng 1:18 không nói việc Con Một 'được Môi-se nói đến' mà là Con Một tự giải bày Cha.",
     "language": "vi",
     "options": [
-      "'Đức Chúa Trời ban Môi-se thấy mặt Ngài hoàn toàn vô thời gian'",
+      "Chẳng hề ai thấy Đức Chúa Trời; chỉ Con Một đã thấy Đức Chúa Trời rõ ràng mà thôi",
       "'Chẳng hề ai THẤY ĐỨC CHÚA TRỜI; chỉ Con MỘT đã GIẢI BÀY Cha cho chúng ta'",
-      "'Đức Chúa Trời chỉ thấy được trong đền thờ Si-ôn'",
-      "'Sau khi Môi-se chết thì ai cũng có thể thấy Chúa'"
+      "Chẳng hề ai thấy Đức Chúa Trời; chỉ Con Một đã được xem thấy trước mặt Đức Chúa Trời",
+      "Chẳng hề ai thấy vinh quang Đức Chúa Trời; chỉ Con Một đã được Môi-se nói đến trong Ê-xô-đê"
     ],
     "tags": [
       "Cựu Ước",
@@ -3585,13 +3585,13 @@
     ],
     "verseEnd": 38,
     "content": "KIỂU 1 cross-ref Ex 40:34-38 (vinh quang đầy Đền Tạm) — câu Tân Ước nào ứng nghiệm hình bóng này về Chúa Jêsus và Hội thánh?",
-    "explanation": "Giăng 1:14 — Hi-lạp 'eskēnōsen' (đóng trại / cắm lều) — TỪ CÙNG GỐC với 'mishkan' (Đền Tạm) tiếng Hê-bơ-rơ. Giăng cố ý dùng từ này để chỉ ra Đấng Christ là 'Đền Tạm' MỚI giữa loài người. Vinh hiển Đức Chúa Trời ở trong Đền Tạm Cựu Ước trở thành Đấng Christ trong Tân Ước. Khải Huyền 21:3 hoàn tất: 'Đức Chúa Trời sẽ ở giữa loài người'.",
+    "explanation": "Câu hỏi hỏi về câu Tân Ước ỨNG NGHIỆM HÌNH BÓNG về vinh quang Đức Chúa Trời đầy Đền Tạm (Xuất Ê-díp-tô Ký 40:34-38). \n\n- ĐÁP ÁN ĐÚNG (Giăng 1:14): Trực tiếp ứng nghiệm hình bóng này: 'Ngôi Lời... ở giữa chúng ta' (tương ứng 'ở giữa' dân sự như đám mây ở Đền Tạm), 'đầy ơn và lẽ thật' (tương ứng sự hiện diện đầy đủ), và quan trọng nhất là 'chúng ta đã ngắm xem VINH HIỂN của Ngài' — đây chính là sự bày tỏ vinh quang Đức Chúa Trời trong thân vị Chúa Jêsus, ứng nghiệm trọn vẹn hình bóng đám mây vinh hiển đầy Đền Tạm.\n\n- DISTRACTOR 1 (Mát-thi-ơ 1:23): Sai phạm vi (wrong_scope). Câu này nói về lời tiên tri Ê-sai ứng nghiệm trong sự giáng sinh của Đấng Christ (Em-ma-nu-ên, 'Đức Chúa Trời ở cùng chúng ta'), nhưng KHÔNG trực tiếp mô tả hoặc ám chỉ đến SỰ KIỆN VINH QUANG ĐẦY ĐỀN TẠM trong Xuất Ê-díp-tô Ký. Nó đúng nhưng lạc trọng tâm câu hỏi về 'hình bóng vinh quang đầy đền'.\n\n- DISTRACTOR 2 (Hê-bơ-rơ 9:24): Gần đúng (almost-right) nhưng sai chi tiết then chốt (wrong_detail). Câu này so sánh chức vụ của Đấng Christ trong nơi thánh trên trời với Đền Tạm dưới đất, đúng bối cảnh Đền Tạm. Tuy nhiên, chi tiết then chốt bị sai: bản văn gốc Hê-bơ-rơ 9:24 viết 'Vì Đấng Christ chẳng vào nơi thánh bởi tay người ta làm ra, chỉ là BẢN CHẤT của chốn thật, NHƯNG BÂY GIỜ hiện ra trước mặt Đức Chúa Trời vì chúng ta' — nó tập trung vào sự vào nơi chí thánh THIÊN THƯỢNG của Christ, chứ KHÔNG phải mô tả việc VINH QUANG NGỰ ĐẦY ĐỀN TẠM hay sự hiện diện của Ngài GIỮA chúng ta như Giăng 1:14. Nó nói về chức tế lễ, không phải về sự đầy dẫy vinh hiển.\n\n- DISTRACTOR 3 (I Cô-rinh-tô 3:16): Nhầm passage gần (nearby_passage). Câu này dùng hình ảnh 'đền thờ' cho HỘI THÁNH (tín đồ) có Đức Thánh Linh ngự trị. Mặc dù có từ khóa 'đền thờ' và liên quan đến Hội thánh, nó SAI vì: (1) Nó nói về Đức Thánh Linh 'ở trong' tín đồ, KHÔNG phải về VINH QUANG ĐỨC CHÚA TRỜI đầy đền tạm như Xuất Ê-díp-tô Ký. (2) Nó KHÔNG ám chỉ hay ứng nghiệm trực tiếp hình bóng cụ thể về sự kiện vinh quang đầy Đền Tạm ấy, càng không nói về Chúa Jêsus là nơi vinh quang Đức Chúa Trời ngự trị giữa loài người. Đây là một ứng dụng thần học khác về khái niệm đền thờ.",
     "language": "vi",
     "options": [
-      "Mác 16:20 — 'Sau đó các môn đồ đi ra rao giảng'",
-      "Công Vụ 1:11 — 'Chúa Jêsus thăng thiên'",
+      "Mát-thi-ơ 1:23 — 'Nầy, một gái đồng trinh sẽ chịu thai, sanh một trai, RỒI NGƯỜI TA SẼ GỌI danh Ngài là Em-ma-nu-ên'",
+      "Hê-bơ-rơ 9:24 — 'Vì Đấng Christ chẳng vào nơi thánh bởi tay người ta làm ra, chỉ là BẢN CHẤT của chốn thật, NHƯNG BÂY GIỜ hiện ra trước mặt Đức Chúa Trời vì chúng ta'",
       "GIĂNG 1:14 — 'Ngôi Lời ĐÃ TRỞ NÊN XÁC THỊT, ở GIỮA CHÚNG TA, đầy ơn và LẼ THẬT — chúng ta đã ngắm xem VINH HIỂN của Ngài'",
-      "Ma-thi-ơ 18:20 — 'Hai ba người nhân danh ta nhóm họp'"
+      "I Cô-rinh-tô 3:16 — 'Anh em há chẳng biết mình là ĐỀN THỜ của Đức Chúa Trời, và Thánh Linh Đức Chúa Trời ở TRONG anh em sao?'"
     ],
     "tags": [
       "Cựu Ước",
@@ -3695,13 +3695,13 @@
     ],
     "verseEnd": 8,
     "content": "KIỂU 2 distinguish bò vàng Ex 32 vs bò vàng tại Đan và Bê-tên 1 Vua 12 — điểm khác biệt cốt lõi là gì?",
-    "explanation": "Bò vàng Ex 32: dân ép A-rôn làm 1 con khi Môi-se trên núi 40 ngày — A-rôn miễn cưỡng. 1 Vua 12:26-30: Giê-rô-bô-am (vua Y-sơ-ra-ên phía Bắc tách khỏi Giu-đa) tự ý làm 2 con bò vàng tại Đan + Bê-tên — TỘI CỐ Ý để dân không lên Giê-ru-sa-lem (đền thờ phía Nam Giu-đa). 1 Vua 12:28 cố ý nhắc câu Ex 32:4 'Hỡi Y-sơ-ra-ên! đây là các thần của ngươi đã đem ngươi ra khỏi xứ Ê-díp-tô' — khẳng định mối liên hệ thần học bằng KIỂU LẶP LẠI TỘI cũ.",
+    "explanation": "Đáp án đúng căn cứ vào Ex 32:1-4 (dân ép A-rôn làm bò vàng khi Môi-se vắng) và 1 Vua 12:28-29 (Vua Giê-rô-bô-am tự ý làm hai con bò vàng đặt ở Đan và Bê-tên để dân không lên Giê-ru-sa-lem thờ phượng), phân biệt rõ động lực và người khởi xướng.\n\nDistractor 1 (gần đúng) sai vì trong Ex 32, Môi-se không làm bò vàng mà là A-rôn bị dân ép (c.1,4); nó thuộc lỗi 'nearby_passage' do nhầm với hành động sau đó của Môi-se (đập bể bò vàng, c.19-20).\nDistractor 2 sai vì đảo ngược địa điểm: bò Ex 32 ở chân núi Si-na-i (c.1), còn bò 1 Vua 12 ở Đan và Bê-tên; nó thuộc lỗi 'wrong_scope' do mở rộng phạm vi địa lý không chính xác.\nDistractor 3 sai về chất liệu và số lượng: Ex 32 nói một con bò bằng vàng (c.4), còn 1 Vua 12 nói hai con bằng vàng (c.28-29); nó thuộc lỗi 'wrong_detail' vì sai chi tiết then chốt về số lượng.",
     "language": "vi",
     "options": [
-      "Cả hai đều do A-rôn làm — chỉ địa điểm khác",
-      "Cả hai đều do Môi-se cảnh báo nhưng dân không nghe",
+      "Bò Ex 32 do Môi-se làm khi thấy dân thờ lạy hình tượng / Bò 1 Vua 12 do dân đòi Vua Giê-rô-bô-am làm để thế chỗ Chúa",
+      "Bò Ex 32 được dựng ở Đan và Bê-tên để thờ phượng / Bò 1 Vua 12 được dựng ở chân núi Si-na-i để dân tế lễ",
       "Bò Ex 32 do dân ép A-RÔN làm khi Môi-se vắng / Bò 1 Vua 12 do GIÊ-RÔ-BÔ-AM tự ý làm 2 con (Đan + Bê-tên) để dân không lên Giê-ru-sa-lem",
-      "Cả hai chỉ là biểu tượng nghi lễ, không thờ cụ thể"
+      "Bò Ex 32 có một con bằng vàng ròng / Bò 1 Vua 12 có một con bằng gỗ bọc đồng"
     ],
     "tags": [
       "Cựu Ước",
@@ -3778,12 +3778,12 @@
     ],
     "verseEnd": 14,
     "content": "Theo Xuất Ê-díp-tô Ký chương 12, ý nghĩa thần học cốt yếu của việc bôi huyết chiên trên cửa nhà trong Lễ Vượt Qua là gì?",
-    "explanation": "Xuất Ê-díp-tô Ký 12:13 chép: 'Huyết bôi trên nhà các ngươi sẽ là dấu hiệu cho Ta; khi Ta thấy huyết, Ta sẽ vượt qua các ngươi.' Hành động này thiết lập các nguyên tắc: (1) Giá của tội lỗi là sự chết (Sáng 2:17), (2) Sự chuộc tội thay thế - một sinh vật vô tội (chiên) chết thay cho người có tội, (3) Huyết là dấu hiệu của giao ước và sự bảo vệ. Đức Chúa Trời 'vượt qua' (pasakh) trong sự thương xót. Trong Tân Ước, Chúa Giê-xu Christ được giới thiệu là 'Chiên Vượt Qua' của chúng ta (1 Cô-rinh-tô 5:7), và huyết Ngài che chở chúng ta khỏi cơn thạnh nộ của Đức Chúa Trời (Rô-ma 5:9).",
+    "explanation": "ĐÁP ÁN ĐÚNG: Xuất Ê-díp-tô Ký 12:12-13 cho thấy Chúa sẽ đoán phát xứ Ai Cập, nhưng thấy huyết trên cửa thì sẽ 'vượt qua', không hủy diệt người trong nhà. Điều này báo trước nguyên tắc thay thế: sự sống (huyết) của con sinh vô tội (Xuất 12:5) chịu chết thay, làm dấu hiệu giao ước cứu chuộc, hướng đến sự chuộc tội của Đấng Christ (1 Cô-rinh-tô 5:7).\n\nDISTRACTOR SAI 1 (gần đúng): Đúng là huyết làm dấu hiệu để thiên sứ bỏ qua (Xuất 12:13), nhưng câu này giới hạn ý nghĩa vào 'dấu hiệu thuần túy về danh tính', bỏ qua ý nghĩa thay thế đền tội (huyết của sinh mạng bị đổ ra) là cốt lõi thần học, nên lạc trọng tâm câu hỏi.\n\nDISTRACTOR SAI 2: Sai chi tiết then chốt. Huyết ở đây không phải để 'minh chứng cho sự phán xét tội lỗi của Ai Cập' áp dụng cho chính người trong nhà, mà ngược lại, là dấu hiệu để sự phán xét đó KHÔNG áp dụng cho họ (Xuất 12:13). Nó không thể hiện 'công lý trực tiếp' mà là sự thay thế.\n\nDISTRACTOR SAI 3: Đây là hiểu lầm phổ biến, nhấn mạnh quá vào hành động vâng phục của con người. Dù vâng phục là cần thiết (Xuất 12:28), nhưng sự sống sót không đến từ chính sự vâng phục ấy, mà từ huyết của con sinh được bôi lên—điều báo trước sự chuộc tội bởi ân điển qua sự chết thay.",
     "language": "vi",
     "options": [
-      "Là một nghi thức tượng trưng cho sự đoàn kết của các gia đình Y-sơ-ra-ên trước khi ra đi.",
-      "Là một hành động có tính chất bùa chú để xua đuổi tai ương, phổ biến trong các nền văn hóa cổ đại.",
-      "Chủ yếu là một dấu hiệu nhận dạng đơn thuần, giúp thiên sứ hủy diệt phân biệt được nhà người Y-sơ-ra-ên với người Ai Cập.",
+      "Nhằm đánh dấu các hộ gia đình Y-sơ-ra-ên để thiên sứ hủy diệt có thể nhận biết mà bỏ qua, như một dấu hiệu thuần túy về danh tính.",
+      "Thể hiện nguyên tắc công lý trực tiếp: huyết của con sinh minh chứng cho sự phán xét tội lỗi của Ai Cập, áp dụng cho người trong nhà.",
+      "Nhằm làm một dấu hiệu về sự vâng phục theo luật lệ của Đức Chúa Trời, và sự vâng phục ấy khiến người nhà được sống sót.",
       "Thể hiện nguyên tắc thay thế đền tội: huyết (sự sống) của con sinh vô tội làm dấu hiệu giao ước, chịu chết thay cho người có tội, báo trước sự chuộc tội của Đấng Christ."
     ],
     "tags": [
@@ -3805,13 +3805,13 @@
     ],
     "verseEnd": 21,
     "content": "Bài ca trong Xuất Ê-díp-tô Ký 15:1-21 thường được gọi là 'Bài Ca Môi-se'. Ý nghĩa thần học chính của bài ca này là gì?",
-    "explanation": "Ex 15:1-21 'Bài Ca Môi-se' là bài ca thờ phượng đầu tiên trong Kinh Thánh, đặt nền mẫu mực cho sự thờ phượng tập thể của dân Y-sơ-ra-ên và các bài thi thiên sau này. Nó tôn vinh sự cứu rỗi và quyền tể trị đời đời của Đức Giê-hô-va (câu 18). Trong Khải Huyền 15:3, bài ca này được nhắc đến cùng với 'Bài Ca Chiên Con', cho thấy sự liên tục giữa sự cứu chuộc trong Cựu Ước và Tân Ước.",
+    "explanation": "Đáp án đúng vì Xuất Ê-díp-tô Ký 15:1-21 ghi lại bài ca tạ ơn tập thể đầu tiên của dân Y-sơ-ra-ên (câu 1: 'Môi-se và dân Y-sơ-ra-ên hát bài nầy'), tập trung vào sự giải cứu của Đức Chúa Trời (câu 2, 13) và trở thành nền tảng cho sự thờ phượng. Bài ca này được nhắc đến như 'Bài ca Môi-se' trong Khải Huyền 15:3 như một mẫu mực. \n\nDistractor 1 (gần đúng) sai vì nó mở rộng phạm vi: bài ca chủ yếu là tạ ơn về sự giải cứu đã xảy ra (câu 1-12, 19-21), mặc dù có nhắc đến việc dẫn dắt dân sự (câu 13) và các dân tộc khác (câu 14-16), nhưng không phải là 'bài ca tiên tri đầu tiên' với trọng tâm chính là báo trước sự kiện tương lai. \nDistractor 2 sai chi tiết: bài ca là của cả dân Y-sơ-ra-ên (câu 1), không phải của riêng Môi-se về sự giải cứu cá nhân. \nDistractor 3 là hiểu lầm phổ biến: bài ca không chỉ mô tả sự kiện (câu 4-10, 19) mà còn chứa đựng ý nghĩa thần học rõ ràng về sự thờ phượng (câu 2, 11, 18) và đức tin tập thể.",
     "language": "vi",
     "options": [
       "Là bài ca tạ ơn đầu tiên của dân Y-sơ-ra-ên về sự giải cứu của Đức Chúa Trời, đặt nền tảng cho sự thờ phượng tập thể và được nhắc đến như một mẫu mực trong Khải Huyền 15:3.",
-      "Chủ yếu là một tác phẩm văn chương nhằm ghi lại sự kiện lịch sử một cách sinh động, không mang ý nghĩa thần học đặc biệt.",
-      "Là một bài ca chiến thắng có tính chính trị, nhằm cổ vũ tinh thần và hạ uy tín của Pha-ra-ôn cùng quân đội Ai Cập.",
-      "Là một bài thơ trữ tình thể hiện cảm xúc cá nhân của Môi-se, tương tự các bài thơ tình trong văn chương Cận Đông cổ đại."
+      "Là bài ca tiên tri đầu tiên trong Kinh Thánh, tập trung vào việc báo trước cuộc hành trình 40 năm trong đồng vắng và sự thất bại của các dân tộc xung quanh.",
+      "Là bài ca tạ ơn của riêng Môi-se về sự giải cứu cá nhân ông khỏi Ai Cập, sau đó được ghi lại như một kỷ niệm lịch sử cho dân Y-sơ-ra-ên.",
+      "Là một bài thơ mô tả thuần túy về phép lạ tại Biển Đỏ, chủ yếu nhằm ghi chép sự kiện lịch sử mà không có ý nghĩa thờ phượng hay thần học đặc biệt."
     ],
     "tags": [
       "Cựu Ước",
@@ -3832,13 +3832,13 @@
     ],
     "verseEnd": 3,
     "content": "KIỂU 3 deep meaning Ex 20:2-3 — TRƯỚC khi cho 10 điều răn, Đức Chúa Trời tự XƯNG mình. Câu mở đầu này có ý nghĩa thần học cốt yếu gì?",
-    "explanation": "Ex 20:2 mở đầu 10 điều răn không phải bằng MỆNH LỆNH mà bằng GỢI NHỚ về sự GIẢI PHÓNG. Trật tự: (1) ÂN ĐIỂN — Chúa đã cứu các ngươi rồi; (2) LUẬT PHÁP — vì các ngươi LÀ DÂN TÔI nên hãy sống thế này. Đây là nguyên tắc THẦN HỌC LỚN: dân Cựu Ước KHÔNG giữ luật để được cứu, mà GIỮ LUẬT vì ĐÃ ĐƯỢC CỨU. Tân Ước cũng vậy: Phao-lô (Ê-phê-sô 2:8-10) nhấn mạnh 'cứu bởi ân điển... được DỰNG NÊN trong Christ Jêsus để LÀM VIỆC LÀNH'.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Xuất Ê-díp-tô Ký 20:2-3 ghi: 'Ta là Giê-hô-va Đức Chúa Trời ngươi, đã rút ngươi ra khỏi xứ Ê-díp-tô, là nhà nô lệ. Trước mặt ta, ngươi chớ có các thần khác.' Câu mở đầu này nhấn mạnh ý nghĩa thần học cốt yếu: Đức Chúa Trời tự giới thiệu là Đấng Giải Cứu (Đấng đã hành động vì ân điển để giải phóng dân Ngài khỏi ách nô lệ) TRƯỚC KHI ban hành các điều răn. Điều này thiết lập mối quan hệ dựa trên ân sủng cứu chuộc; dân sự đã được cứu rồi mới nhận luật pháp, chứ không phải giữ luật để được cứu.\n\nDISTRACTOR SAI 1 (gần đúng - 'wrong_detail'): Sai chi tiết then chốt 'đã DẪN ngươi VÀO xứ Ca-na-an là ĐẤT HỨA'. Sự kiện ra khỏi Ê-díp-tô là sự giải cứu đã hoàn thành, trong khi vào Ca-na-an là lời hứa tương lai tại thời điểm đó (Xuất 20:2). Việc thay đổi chi tiết này làm mất đi ý nghĩa 'ân điển đi trước' của sự giải cứu lịch sử đã xảy ra.\n\nDISTRACTOR SAI 2 ('common_misconception'): Thể hiện một hiểu lầm phổ biến về thần học luật pháp và ân điển: 'LUẬT PHÁP LÀ NỀN TẢNG CỦA ÂN ĐIỂN' và 'dân phải giữ luật để... được cứu'. Điều này trái ngược hoàn toàn với trình tự và ý nghĩa của câu Kinh Thánh: ân điển (cứu chuộc) đi trước và là nền tảng cho việc ban luật, không phải ngược lại.\n\nDISTRACTOR SAI 3 ('nearby_passage'): Dựa trên một chân lý thần học khác (Đức Chúa Trời là Đấng Tạo Hóa, được nhấn mạnh trong các phân đoạn khác như Sáng Thế Ký 1 hay Ê-sai 40) nhưng KHÔNG PHẢI là nội dung hay ý nghĩa cốt yếu của câu mở đầu Xuất Ê-díp-tô Ký 20:2-3. Ở đây, Ngài tự xưng là Đấng Giải Cứu khỏi Ê-díp-tô, không phải là Đấng Tạo Hóa.",
     "language": "vi",
     "options": [
-      "Chỉ là lời mở đầu mang tính nghi lễ thông thường trong các bản giao ước cổ.",
-      "Nhằm xác lập uy quyền của Môi-se với tư cách người dẫn dắt dân sự.",
+      "'TA LÀ Giê-hô-va Đức Chúa Trời ngươi, đã DẪN ngươi VÀO xứ Ca-na-an là ĐẤT HỨA' — QUYỀN TỐI CAO ĐI TRƯỚC GIAO ƯỚC; dân phải vâng lời để nhận lãnh phước lành — LÀ ĐIỀU KIỆN của giao ước",
+      "'TA LÀ Giê-hô-va Đức Chúa Trời ngươi, đã RÚT ngươi RA KHỎI xứ Ê-DÍP-TÔ là NHÀ NÔ LỆ' — LUẬT PHÁP LÀ NỀN TẢNG CỦA ÂN ĐIỂN; dân phải giữ luật để chứng tỏ đức tin và được cứu — LÀ BẢN CHẤT của đức tin",
       "'TA LÀ Giê-hô-va Đức Chúa Trời ngươi, đã RÚT ngươi RA KHỎI xứ Ê-DÍP-TÔ là NHÀ NÔ LỆ' — ÂN ĐIỂN ĐI TRƯỚC LUẬT PHÁP; dân đã được CỨU rồi mới được ban điều răn — KHÔNG phải giữ luật để ĐƯỢC cứu",
-      "Đó là một công thức chính trị nhằm củng cố sự trung thành của một dân tộc mới được thành lập."
+      "'TA LÀ Giê-hô-va Đức Chúa Trời ngươi, ĐẤNG TẠO HÓA trời và đất' — THẨM QUYỀN TẠO DỰNG ĐI TRƯỚC LUẬT PHÁP; mọi loài thọ tạo phải vâng phục Đấng Tạo Hóa — LÀ NỀN TẢNG phổ quát của luân lý"
     ],
     "tags": [
       "Cựu Ước",
@@ -3859,12 +3859,12 @@
     ],
     "verseEnd": 22,
     "content": "Trong Xuất Ê-díp-tô Ký 25:22, Đức Chúa Trời phán: 'Ta sẽ gặp ngươi tại nắp thi ân, giữa hai chê-ru-bim ở trên hòm bảng chứng'. Ý nghĩa thần học chính của 'nắp thi ân' (mercy seat) là gì?",
-    "explanation": "Từ Hê-bơ-rơ 'kapporeth' (כַּפֹּרֶת) nghĩa là 'nơi chuộc tội'. Trong Lê-vi Ký 16 (Ngày Đại Lễ Chuộc Tội), thầy tế lễ thượng phẩm rảy huyết của con sinh tế trên nắp thi ân, biểu tượng cho sự tha tội và giao hòa. Trong Tân Ước, Rô-ma 3:25 dùng từ Hi-lạp 'hilastērion' (cùng từ dùng cho 'nắp thi ân' trong bản LXX) để mô tả Chúa Giê-xu Christ là của lễ chuộc tội, hoàn thành ý nghĩa của nắp thi ân. Hê-bơ-rơ 9:11-12 giải thích Chúa Christ vào Nơi Chí Thánh với chính huyết Ngài.",
+    "explanation": "Xuất Ê-díp-tô Ký 25:22 chép: 'Ta sẽ gặp ngươi tại nắp thi ân, giữa hai chê-ru-bim ở trên hòm bảng chứng'. Ý nghĩa thần học chính của 'nắp thi ân' là nơi huyết tế lễ được rảy trong Ngày Đại Lễ Chuộc Tội, biểu tượng cho sự giao hòa (Lê-vi Ký 16:14-15); và Tân Ước (Rô-ma 3:25, Hê-bơ-rơ 9:5) tiết lộ Chúa Christ là sự ứng nghiệm trọn vẹn của nắp thi ân.\n\nCác đáp án sai:\n1. (nearby_passage) Mô tả này phù hợp với chức năng của bàn thờ xông hương (Xuất 30:7-8), một vật dụng gần nhưng khác với nắp thi ân.\n2. (wrong_detail) Môi-se nhận mười điều răn trên núi Si-na-i (Xuất 20), không phải tại nắp thi ân. Nắp thi ân nằm trên hòm bảng chứng, nơi cất giữ hai bảng đá, nhưng không phải là địa điểm truyền trao luật pháp.\n3. (true_but_off) Bánh trần thiết được đặt trên bàn riêng (Xuất 25:30), không phải trên nắp thi ân. Dù Chúa Christ là bánh sự sống (Giăng 6:35), chi tiết này không liên quan trực tiếp đến ý nghĩa thần học chính của nắp thi ân được hỏi trong câu.",
     "language": "vi",
     "options": [
-      "Một bệ đỡ trang trí cho các chê-ru-bim, thể hiện vẻ uy nghi của Đền Tạm.",
-      "Ngai bằng vàng cho các thầy tế lễ ngồi khi thi hành chức vụ trong Nơi Thánh.",
-      "Một nắp đậy đơn thuần của Hòm Giao Ước, dùng để bảo vệ các bảng đá bên trong.",
+      "Nơi chỉ dành cho việc đốt hương vào mỗi buổi sáng và chiều, biểu tượng cho sự cầu nguyện; Tân Ước tiết lộ Chúa Christ là sự ứng nghiệm trọn vẹn của bàn thờ xông hương.",
+      "Nơi Môi-se nhận mười điều răn từ Đức Chúa Trời và truyền lại cho dân sự, biểu tượng cho giao ước; Tân Ước tiết lộ Chúa Christ là sự ứng nghiệm trọn vẹn của luật pháp.",
+      "Nơi các thầy tế lễ thường xuyên đặt bánh trần thiết trước mặt Chúa, biểu tượng cho sự nuôi dưỡng; Tân Ước tiết lộ Chúa Christ là sự ứng nghiệm trọn vẹn của bánh sự sống.",
       "Nơi huyết tế lễ được rảy trong Ngày Đại Lễ Chuộc Tội, biểu tượng cho sự giao hòa; Tân Ước tiết lộ Chúa Christ là sự ứng nghiệm trọn vẹn của nắp thi ân."
     ],
     "tags": [
@@ -3886,13 +3886,13 @@
     ],
     "verseEnd": 16,
     "content": "KIỂU 3 deep meaning Ex 33:14-16 — Môi-se cầu xin Đức Chúa Trời ĐI CÙNG dân vào Đất Hứa. Câu trả lời 'CHÍNH MÌNH ta sẽ ĐI VỚI ngươi, và ta sẽ cho ngươi YÊN NGHỈ' (33:14) có ý nghĩa thần học gì?",
-    "explanation": "Ex 33:15-16 — Môi-se đáp: 'NẾU CHÍNH MÌNH NGÀI CHẲNG ĐI, xin chớ đem CHÚNG TÔI lên KHỎI ĐÂY... NHỜ ĐÂU người ta SẼ BIẾT rằng tôi cùng dân sự Ngài được ơn trước MẶT Ngài? Có phải bởi NGÀI cùng đi với chúng tôi chăng?' Sự HIỆN DIỆN (Panim) của Chúa = 'GLORY' di động + dấu hiệu LỚN NHẤT phân biệt Y-sơ-ra-ên với mọi dân khác. Hê-bơ-rơ 4:3-11 phát triển 'YÊN NGHỈ' (33:14): không phải là yên nghỉ vào đất Ca-na-an thuộc thế gian — mà là 'YÊN NGHỈ THẬT' trong Christ (4:9 'một sự yên nghỉ Sa-bát còn dành cho dân Đức Chúa Trời').",
+    "explanation": "ĐÁP ÁN ĐÚNG: Xuất Ê-díp-tô Ký 33:12-16 cho thấy Môi-se cầu xin sự hiện diện của Đức Chúa Trời như dấu hiệu phân biệt dân Y-sơ-ra-ên với mọi dân khác (câu 16). Câu 14 hứa 'chính mình ta sẽ đi với ngươi, và ta sẽ cho ngươi yên nghỉ'. Ý nghĩa thần học là sự hiện diện của Đức Chúa Trời định hình căn cước của dân Ngài, và 'yên nghỉ' (anabah) này, trong Tân Ước (Hê-bơ-rơ 3:7-4:11), được giải thích rộng hơn là sự yên nghỉ thiêng liêng, cuối cùng chỉ tìm thấy trong Đấng Christ.\n\nDISTRACTOR SAI:\n1. (common_misconception) Sai vì sự hiện diện của Đức Chúa Trời trong đoạn này là dấu hiệu của ân điển và giao ước, không phải phần thưởng đơn thuần cho sự vâng lời. Lời hứa 'yên nghỉ' trong Tân Ước (Hê-bơ-rơ 4) chủ yếu nói về sự yên nghỉ thiêng liêng đời đời trong đức tin, không chỉ giới hạn ở khái niệm thiên đàng sau khi chết.\n2. (wrong_scope) Sai vì lời hứa trong câu 14-16 được đưa ra trong bối cảnh Đức Chúa Trời đồng ý đi cùng toàn dân Y-sơ-ra-ên (sau lời cầu thay của Môi-se), không chỉ riêng cho Môi-se. Hơn nữa, 'yên nghỉ' ở đây có chiều kích thiêng liêng vượt trên sự an toàn vật chất thuần túy.\n3. (nearby_passage) Sai vì mặc dù sự hiện diện của Đức Chúa Trời đem lại bảo vệ, trọng tâm đoạn 33:12-16 là mối quan hệ và căn cước, không phải chiến thắng quân sự. Lời hứa 'yên nghỉ' trong Tân Ước không được giải thích là sự ngừng chiến tranh theo nghĩa chính trị, mà là sự yên nghỉ khỏi công việc tự cứu mình, đạt được qua đức tin nơi Đấng Christ.",
     "language": "vi",
     "options": [
-      "Chúa hứa cho dân chúng những khoảng nghỉ ngơi thể chất trong hành trình sa mạc.",
+      "Sự hiện diện của Đức Chúa Trời là phần thưởng cho sự vâng lời của dân Ngài, và lời hứa 'yên nghỉ' được Tân Ước giải thích là sự nghỉ ngơi cuối cùng ở thiên đàng.",
       "Sự hiện diện của Đức Chúa Trời là đặc điểm căn cước của dân Ngài, và lời hứa 'yên nghỉ' được Tân Ước giải thích là sự yên nghỉ thiêng liêng trong Đấng Christ.",
-      "Chúa hứa ban cho dân Y-sơ-ra-ên sự giàu có về vật chất và của cải khi vào Đất Hứa.",
-      "Chúa hứa rằng Môi-se sẽ được thấy mặt Ngài một lần nữa trên núi Si-na-i."
+      "Sự hiện diện của Đức Chúa Trời là một lời hứa có điều kiện cho Môi-se cá nhân, và lời hứa 'yên nghỉ' chỉ về sự an toàn vật chất trong Đất Hứa.",
+      "Sự hiện diện của Đức Chúa Trời là lời đảm bảo về chiến thắng quân sự, và lời hứa 'yên nghỉ' được Tân Ước giải thích là sự ngừng chiến tranh trong thời kỳ Mê-si."
     ],
     "tags": [
       "Cựu Ước",
@@ -3940,13 +3940,13 @@
     ],
     "verseEnd": 25,
     "content": "KIỂU 4 verse precision Ex 2:23-25 (RVV11) — CỤM TỪ chính xác nào BẢO ĐẢM Đức Chúa Trời SẼ HÀNH ĐỘNG cho dân Y-sơ-ra-ên?",
-    "explanation": "Ex 2:23-25 (RVV11) — 'Sau khi vua Ê-díp-tô qua đời, dân Y-sơ-ra-ên kêu ca vì phải chịu nô lệ; lời than xót đó thấu đến Đức Chúa Trời. Ngài NGHE tiếng than thở chúng, NHỚ lại sự giao ước mình kết lập cùng Áp-ra-ham, Y-sác và Gia-cốp. Đức Chúa Trời ĐOÁI lại dân Y-sơ-ra-ên, NHẬN BIẾT cảnh ngộ của chúng'. 4 ĐỘNG TỪ liên tiếp (NGHE → NHỚ → ĐOÁI → BIẾT) là LỜI HỨA CỐT YẾU rằng sự giải thoát SẮP đến — đây là chuyển ngữ thần học từ 'Y-sơ-ra-ên kêu' sang 'Đức Chúa Trời hành động'.",
+    "explanation": "Đáp án đúng trích chính xác từ Xuất Ê-díp-tô Ký 2:24-25 (BTT): '24 Đức Chúa Trời nghe tiếng than thở của chúng, nên nhớ lại giao ước Ngài đã lập với Áp-ra-ham, Y-sác và Gia-cốp. 25 Đức Chúa Trời đoái xem dân Y-sơ-ra-ên và biết rõ tình trạng của họ.' Cụm từ này liệt kê các hành động của Đức Chúa Trời ('nghe', 'nhớ', 'đoái xem', 'biết') đảm bảo Ngài sẽ can thiệp. Nó đúng vì hợp nhất cả bốn chi tiết quan trọng: (1) 'nghe tiếng than thở', (2) 'nhớ lại giao ước với Áp-ra-ham, Y-sác và Gia-cốp', (3) 'đoái xem dân Y-sơ-ra-ên', và (4) 'biết rõ tình trạng'.\n\nCác đáp án sai:\n- Distractor 1 (sai chi tiết - wrong_detail): Gần đúng nhưng sai chi tiết then chốt. Trong phần 'giao ước', đây là giao ước với Áp-ra-ham, Y-sác, Gia-cốp (các tổ phụ), không phải trực tiếp với 'dân Y-sơ-ra-ên'. Đây là lỗi sai thường gặp.\n- Distractor 2 (đúng văn bản nhưng lạc câu hỏi - true_but_off): Sử dụng từ ngữ phổ biến như 'đoái thương', 'quyết định giải cứu', 'hành động' có thể mô tả ý tổng quát nhưng không phải là cụm từ chính xác nằm trong Xuất Ê-díp-tô 2:23-25. Câu hỏi yêu cầu cụm từ bảo đảm từ đoạn Kinh Thánh này.\n- Distractor 3 (nhầm passage gần - nearby_passage): Trộn lẫn và thay thế các cụm từ với những từ quen thuộc ở các phân đoạn khác mô tả sự giải cứu (ví dụ: 'thấy sự đau đớn' từ Lời Chúa phán với Môi-se ở chỗ bụi gai trong Xuất 3:7, 'động lòng thương xót' là phản ứng phổ biến trong các đoạn khác). Nó không thuộc phân đoạn 2:23-25.",
     "language": "vi",
     "options": [
       "'Đức Chúa Trời NGHE LỜI THAN THỞ chúng / NHỚ LẠI GIAO ƯỚC mình đã lập với Áp-ra-ham, Y-sác và Gia-cốp / ĐOÁI XEM dân Y-sơ-ra-ên / BIẾT (rõ tình trạng) chúng'",
-      "'Đức Chúa Trời tha tội cho dân Y-sơ-ra-ên'",
-      "'Đức Chúa Trời quyết định giết Pha-ra-ôn ngay'",
-      "'Đức Chúa Trời sai 100 thiên sứ xuống đánh Ai-cập'"
+      "'Đức Chúa Trời NGHE TIẾNG KHÓC chúng / NHỚ LẠI GIAO ƯỚC mình đã lập với dân Y-sơ-ra-ên / ĐOÁI XEM dân Y-sơ-ra-ên / BIẾT (rõ tình trạng) chúng'",
+      "'Đức Chúa Trời NGHE TIẾNG KÊU chúng / ĐOÁI THƯƠNG họ / QUYẾT ĐỊNH giải cứu dân Y-sơ-ra-ên / HÀNH ĐỘNG'",
+      "'Đức Chúa Trời NGHE TIẾNG KÊU chúng / NHỚ LẠI GIAO ƯỚC mình đã lập với các tổ phụ / THẤY SỰ ĐAU ĐỚN chúng / ĐỘNG LÒNG THƯƠNG XÓT'"
     ],
     "tags": [
       "Cựu Ước",
@@ -3967,12 +3967,12 @@
     ],
     "verseEnd": 26,
     "content": "KIỂU 4 verse precision Ex 15:26 (RVV11) — Đức Chúa Trời ban danh hiệu nào cho mình tại Ma-ra (nước đắng được chữa lành)?",
-    "explanation": "Xuất 15:26 — 'Vì TA là Giê-hô-va, Đấng chữa bệnh cho ngươi'. Hê-bơ-rơ: 'YHWH-Rapha' (יהוה רפא). Đây là một trong những danh hiệu/tên ghép quan trọng của Đức Giê-hô-va được mặc khải trong những bối cảnh cụ thể (như Yahweh-Jireh, Yahweh-Nissi, Yahweh-Shalom, Yahweh-Tsidkenu, Yahweh-Shammah). Mỗi tên tỏ MỘT KHÍA CẠNH của tính chất Đức Chúa Trời.",
+    "explanation": "Câu trả lời đúng là \"'TA LÀ ĐỨC GIÊ-HÔ-VA, Đấng CHỮA BỆNH cho ngươi' (Yahweh-Rapha)\". Trong Xuất Ê-díp-tô Ký 15:26, Chúa phán: \"...vì Ta là Đức Giê-hô-va, Đấng chữa bệnh cho ngươi.\" (RVV11).\n\nCác phương án sai:\n1. Sai chi tiết (wrong_detail): Danh hiệu \"Cội nguồn của mọi sự sống\" không xuất hiện trong câu 26 này hay bối cảnh Ma-ra. Đáp án này thay thế danh xưng chính xác (Đức Giê-hô-va) bằng một đặc tính khác.\n2. Nhầm passage gần (nearby_passage): Danh hiệu này mô tả vai trò của Chúa trong việc chuẩn bị man-na (Xuất Ê-díp-tô Ký 16), một phép lạ xảy ra *sau* sự kiện tại Ma-ra, không phải danh hiệu Ngài tự xưng tại Ma-ra.\n3. Đúng văn bản nhưng lạc câu hỏi (true_but_off): Mặc dù Đức Chúa Trời là Đấng Thánh Khiết và là Đấng chữa bệnh, danh hiệu \"Đấng Thánh Khiết\" không phải là tên Ngài tự xưng trong câu 26 này. Câu hỏi yêu cầu cụ thể danh hiệu Ngài ban cho mình tại Ma-ra, nên đây là thông tin đúng nhưng không trúng trọng tâm câu hỏi.",
     "language": "vi",
     "options": [
-      "'Ta là Đấng tạo dựng'",
-      "'Ta là Đấng ban Sự Sống'",
-      "'Ta là Đấng giải cứu'",
+      "'TA LÀ CỘI NGUỒN CỦA MỌI SỰ SỐNG, Đấng CHỮA BỆNH cho ngươi'",
+      "'TA LÀ ĐỨC GIÊ-HÔ-VA, Đấng CHUẨN BỊ MAN-NA CHO ngươi'",
+      "'TA LÀ ĐẤNG THÁNH KHIẾT, Đấng CHỮA BỆNH cho ngươi'",
       "'TA LÀ ĐỨC GIÊ-HÔ-VA, Đấng CHỮA BỆNH cho ngươi' (Yahweh-Rapha)"
     ],
     "tags": [
@@ -4021,13 +4021,13 @@
     ],
     "verseEnd": 7,
     "content": "KIỂU 4 verse precision Ex 34:6-7 (RVV11) — câu chính xác về nhân từ Đức Chúa Trời nhưng cũng VỀ SỰ CÔNG BÌNH là gì?",
-    "explanation": "Ex 34:6-7 — 'Giê-hô-va! Giê-hô-va! là Đức Chúa Trời nhân từ, thương xót, chậm giận, đầy dẫy ân huệ và thành thực, ban ơn đến ngàn đời, xá điều gian ác, tội trọng, và tội lỗi; nhưng chẳng kể kẻ có tội là vô tội, và nhân tội tổ phụ phạt lại con cháu trải ba bốn đời'. ĐỐI XỨNG: NHÂN TỪ 'NGÀN đời' vs PHẠT 'BA BỐN đời' — chứng tỏ ân điển vượt trội, NHƯNG CÔNG BÌNH KHÔNG bị bỏ qua. Ezekiel 18 chỉnh: cá nhân chịu phạt riêng tội mình, không phải con cháu — phát triển hơn.",
+    "explanation": "ĐÁP ÁN ĐÚNG trích Xuất Ê-díp-tô Ký 34:6-7 (RVV11), nêu đầy đủ cả nhân từ (nhân từ, thương xót, chậm giận, đầy dẫy ân huệ và thành thực, xá tội) và sự công bình (không kể kẻ có tội là vô tội, phạt con cháu đến ba bốn đời) của Đức Chúa Trời.\n- Distractor 1 (Sai chi tiết - Số): Câu này sai vì thay đổi phạm vi công lý: 'trải bảy đời' thay vì 'trải ba bốn đời' như trong Kinh Thánh.\n- Distractor 2 (Sai phạm vi - Thiếu): Câu này thiếu mất phần đầu quan trọng ('Giê-hô-va! Giê-hô-va!') và phần cuối về sự phạt con cháu, do đó không trọn vẹn nội dung của hai câu được hỏi.\n- Distractor 3 (Nhầm đoạn gần - Thiếu từ): Câu này gần đúng nhưng thiếu từ 'thành thực' trong danh sách các thuộc tính, dựa trên một cách trích dẫn không chính xác hoặc nhầm lẫn với các phân đoạn khác mô tả Đức Chúa Trời.",
     "language": "vi",
     "options": [
       "'Giê-hô-va! Giê-hô-va! là Đức Chúa Trời nhân từ, thương xót, chậm giận, đầy dẫy ân huệ và thành thực, ban ơn đến ngàn đời, xá điều gian ác, tội trọng, và tội lỗi; nhưng chẳng kể kẻ có tội là vô tội, và nhân tội tổ phụ phạt lại con cháu trải ba bốn đời'",
-      "'Giê-hô-va! Giê-hô-va! là Đức Chúa Trời nhân từ, thương xót, chậm giận, đầy dẫy ân huệ và thành thực, ban ơn đến ngàn đời, xá điều gian ác, tội trọng, và tội lỗi; và cũng kể kẻ có tội là vô tội vì lòng thương xót của Ngài'",
       "'Giê-hô-va! Giê-hô-va! là Đức Chúa Trời nhân từ, thương xót, chậm giận, đầy dẫy ân huệ và thành thực, ban ơn đến ngàn đời, xá điều gian ác, tội trọng, và tội lỗi; nhưng chẳng kể kẻ có tội là vô tội, và nhân tội tổ phụ phạt lại con cháu trải bảy đời'",
-      "'Giê-hô-va! Giê-hô-va! là Đức Chúa Trời nhân từ, thương xót, chậm giận, đầy dẫy ân huệ và thành thực, ban ơn đến trăm đời, xá điều gian ác, tội trọng, và tội lỗi; nhưng chẳng kể kẻ có tội là vô tội, và nhân tội tổ phụ phạt lại con cháu trải ba bốn đời'"
+      "'Nhân từ, thương xót, chậm giận, đầy dẫy ân huệ và thành thực, ban ơn đến ngàn đời, xá điều gian ác, tội trọng, và tội lỗi; nhưng chẳng kể kẻ có tội là vô tội'",
+      "'Giê-hô-va! là Đức Chúa Trời nhân từ, thương xót, chậm giận, đầy dẫy ân huệ, ban ơn đến ngàn đời, xá điều gian ác, tội trọng, và tội lỗi; nhưng chẳng kể kẻ có tội là vô tội, và nhân tội tổ phụ phạt lại con cháu trải ba bốn đời'"
     ],
     "tags": [
       "Cựu Ước",
@@ -4048,13 +4048,13 @@
     ],
     "verseEnd": 38,
     "content": "KIỂU 4 verse precision Ex 40:38 (RVV11) — câu KẾT của sách Xuất Ê-díp-tô Ký tóm tắt SỰ HIỆN DIỆN của Đức Chúa Trời thế nào?",
-    "explanation": "Ex 40:38 — 'Vì trên đền tạm ngày thì có đám mây của Đức Giê-hô-va, và đêm thì có lửa, trước mặt cả nhà Y-sơ-ra-ên, trong các cuộc hành trình của họ'. Câu KẾT THÚC sách Xuất nhấn mạnh: (1) sự hiện diện CÔNG KHAI (cả nhà Y-sơ-ra-ên trông thấy), (2) sự hiện diện LIÊN TỤC (ngày + đêm), (3) sự hiện diện ĐI CÙNG (trong các cuộc hành trình). Đây là chủ đề DẪN DẮT của sách: từ Pha-ra-ôn (vua giả) đến Đức Giê-hô-va (Vua thật) ĐI CÙNG dân Ngài.",
+    "explanation": "Câu hỏi hỏi cách Xuất Ê-díp-tô Ký 40:38 tóm tắt sự hiện diện của Đức Chúa Trời. Đáp án đúng chính xác trích Xuất Ê-díp-tô Ký 40:38 (BTT): 'Vì trụ mây của Đức Giê-hô-va ở trên đền tạm ban ngày, và lửa ở trên đó ban đêm, có mắt của cả nhà Y-sơ-ra-ên trông thấy suốt trong các cuộc hành trình của họ'. Đáp án này đúng vì nó trực tiếp mô tả sự hiện diện hữu hình, liên tục và hướng dẫn của Đức Chúa Trời qua trụ mây/trụ lửa trong mọi hành trình của dân Y-sơ-ra-ên.\n\n*   **Distractor 1 sai** vì thay đổi chi tiết quan trọng: câu Kinh Thánh ghi 'cả nhà Y-sơ-ra-ên', không phải chỉ 'Môi-se và A-rôn'. Sự hiện diện của Chúa là cho toàn dân chứ không chỉ cho các lãnh đạo. (Loại lỗi: sai chi tiết)\n*   **Distractor 2 sai** vì thay đổi phạm vi: dùng 'các cuộc định cư' thay vì 'các cuộc hành trình'. Cả sách Xuất Ê-díp-tô Ký nhấn mạnh đến cuộc hành trình ra khỏi Ai Cập và sự đồng hành của Chúa trong những chặng đường di chuyển, chứ không phải thời điểm định cư. Đây là distractor 'gần đúng' vì chỉ sai một từ then chốt. (Loại lỗi: sai phạm vi)\n*   **Distractor 3 sai** vì vay mượn chi tiết từ các phân đoạn gần: Kinh Thánh không nói trụ mây/lửa xuất hiện theo 'mùa thu' hay 'mùa đông'. Đây là sự kiện liên tục 'ban ngày' và 'ban đêm', không phải theo mùa. Chi tiết này có thể bị nhầm lẫn với việc mô tả thời tiết trong các sách gần đó. (Loại lỗi: nhầm passage gần)",
     "language": "vi",
     "options": [
       "'Vì TRỘI MÂY của Đức Giê-hô-va ở trên đền tạm BAN NGÀY, và LỬA ở trên ĐÓ BAN ĐÊM, có MẮT của cả NHÀ Y-sơ-ra-ên trông thấy SUỐT trong các CUỘC HÀNH TRÌNH của họ'",
-      "'Sau đó dân lên đường tiến vào Đất Hứa'",
-      "'Môi-se chết và A-rôn lên thay'",
-      "'Đức Chúa Trời ban thêm 10 điều răn'"
+      "'Vì trụ mây của Đức Giê-hô-va ở trên đền tạm ban ngày, và lửa ở trên đó ban đêm, có mắt của Môi-se và A-rôn trông thấy suốt trong các cuộc hành trình của họ'",
+      "'Vì trụ mây của Đức Giê-hô-va ở trên đền tạm ban ngày, và lửa ở trên đó ban đêm, có mắt của cả nhà Y-sơ-ra-ên trông thấy suốt trong các cuộc định cư của họ'",
+      "'Vì trụ mây của Đức Giê-hô-va ở trên đền tạm vào mùa thu, và lửa ở trên đó vào mùa đông, có mắt của cả nhà Y-sơ-ra-ên trông thấy suốt trong các cuộc hành trình của họ'"
     ],
     "tags": [
       "Cựu Ước",

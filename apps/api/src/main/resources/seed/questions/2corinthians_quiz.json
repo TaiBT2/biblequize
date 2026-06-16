@@ -9,14 +9,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Cô 1:3: Ngài là Đức Chúa Trời ban mọi sự an ủi.",
+    "explanation": "Đoạn Kinh Thánh 2 Cô-rinh-tô 1:3-4 viết: 'Chúc tạ Đức Chúa Trời, Cha Đức Chúa Jêsus Christ chúng ta, là Cha hay thương xót, là Đức Chúa Trời ban mọi sự yên ủi. Ngài yên ủi chúng ta trong mọi sự khốn khó của chúng ta...'\n\nĐÁP ÁN ĐÚNG: 'Mọi sự yên ủi' là chính xác vì câu 3 gọi Ngài là 'Đức Chúa Trời ban mọi sự yên ủi'.\n\nDISTRACTOR SAI 1 ('Mọi sự khôn ngoan'): Sai loại 'nearby_passage' – từ 'khôn ngoan' là chủ đề quan trọng trong thư Cô-rinh-tô (ví dụ 1 Cô-rinh-tô 1-2) nhưng không xuất hiện trong đoạn tham chiếu 1:3-4 này.\n\nDISTRACTOR SAI 2 ('Mọi sự gánh chịu'): Sai loại 'common_misconception' – dựa trên hiểu lầm phổ biến rằng Đức Chúa Trời là nguồn của mọi đau khổ. Đoạn này nói Ngài 'yên ủi chúng ta trong mọi sự khốn khó', chứ không gọi Ngài là Đức Chúa Trời của sự gánh chịu.\n\nDISTRACTOR SAI 3 ('Mọi sự bình an'): Sai loại 'true_but_off' – 'bình an' là một thuộc tính của Đức Chúa Trời được nhắc đến trong các thư khác (ví dụ Rô-ma 15:33, Phi-líp 4:9) và có liên hệ chủ đề, nhưng không phải danh xưng được dùng trong 2 Cô-rinh-tô 1:3-4.",
     "language": "vi",
     "verseEnd": 4,
     "options": [
-      "Mọi sự phán xét",
+      "Mọi sự khôn ngoan",
       "Mọi sự yên ủi",
-      "Mọi của ban cho",
-      "Mọi phép lạ"
+      "Mọi sự gánh chịu",
+      "Mọi sự bình an"
     ],
     "tags": [
       "Tân Ước",
@@ -37,14 +37,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Cô 3:17: Chúa là Thánh Linh; nơi nào có Thánh Linh của Chúa, nơi đó có sự tự do.",
+    "explanation": "Câu hỏi trực tiếp kiểm tra 2 Cô-rinh-tô 3:17: 'Vả, Chúa tức là Thánh Linh, Thánh Linh của Chúa ở đâu, thì sự tự do ở đó.' Do đó, đáp án đúng là 'Sự tự do'.\n\nCác đáp án sai:\n1. 'Sự sáng': Đây là một đáp án gần đúng nhưng sai chi tiết then chốt. Dù câu 18 nói về việc chúng ta nhìn xem vinh hiển Chúa và được biến hóa trở nên giống Ngài 'bởi Chúa, là Thánh Linh', và hình ảnh 'sự sáng' hay 'sự vinh hiển' có liên quan, nhưng câu hỏi cụ thể ở đây là về điều gì ở cùng nơi với Thánh Linh của Chúa, và câu 17 trả lời rõ ràng là 'sự tự do', không phải 'sự sáng'.\n2. 'Sự thờ phượng': Đây là một chủ đề rộng hơn (sai phạm vi) liên quan đến đời sống tín đồ nhưng không phải là điều được nói đến trong phân đoạn này khi đề cập trực tiếp về nơi có Thánh Linh của Chúa. Phân đoạn tập trung vào chức vụ của Thánh Linh trong sự tự do và sự biến hóa, không phải hành vi thờ phượng cụ thể.\n3. 'Sự cứu rỗi': Đây là một hiểu lầm phổ biến khi người đọc có thể liên tưởng Thánh Linh với sự cứu rỗi nói chung. Tuy nhiên, bối cảnh trực tiếp của câu 17-18 là về sự tự do khỏi luật pháp chết và chức vụ của Thánh Linh trong việc biến đổi chúng ta trở nên giống ảnh tượng Chúa, chứ không phải nói về khái niệm cứu rỗi như một điều kiện đồng hiện diện với Thánh Linh.",
     "language": "vi",
     "verseEnd": 18,
     "options": [
-      "Sự khôn ngoan",
+      "Sự sáng",
       "Sự tự do",
-      "Sự giàu có",
-      "Sự phán xét"
+      "Sự thờ phượng",
+      "Sự cứu rỗi"
     ],
     "tags": [
       "Tân Ước",
@@ -65,13 +65,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Cô 4:7: Chúng ta chứa kho báu trong bình bằng đất để quyền năng vượt trội (quyền phép) thuộc về Đức Chúa Trời, chứ không phải bởi chúng ta.",
+    "explanation": "Câu hỏi tham chiếu 2 Cô-rinh-tô 4:7: 'Nhưng chúng tôi đựng kho báu nầy trong bình bằng đất…'. Đáp án đúng là 'Bình bằng đất' vì Kinh Thánh dùng hình ảnh này để nhấn mạnh sự yếu đuối của con người, qua đó quyền phép thuộc về Đức Chúa Trời. Các đáp án sai: 'Bình bằng vàng' sai chi tiết chất liệu (vàng thường biểu tượng cho sự quý giá, không phải 'bình bằng đất' trong câu Kinh Thánh). 'Bình bằng gỗ' dựa trên hiểu lầm phổ biến về các vật dụng thường gặp, nhưng không phải cụm từ trong phân đoạn này. 'Vật trang trí' tuy là một loại vật dụng thật, nhưng lạc với hình ảnh cụ thể 'bình' được nêu trong câu Kinh Thánh.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
-      "Chén bằng vàng",
-      "Bình bằng đá",
-      "Hòm bằng gỗ",
+      "Bình bằng vàng",
+      "Bình bằng gỗ",
+      "Vật trang trí",
       "Bình bằng đất"
     ],
     "tags": [
@@ -93,13 +93,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Cô 5:17: Ai ở trong Đấng Christ là một tạo vật mới.",
+    "explanation": "2 Cô-rinh-tô 5:17 viết: \"Vậy, nếu ai ở trong Đấng Christ, thì nấy là người dựng nên mới; những sự cũ đã qua đi, nầy mọi sự đều trở nên mới.\" Do đó, \"tạo vật mới\" là đáp án đúng, phản ánh sự biến đổi toàn diện. Distractor 1 (Tạo vật cũ) sai vì kinh văn nhấn mạnh sự cũ đã qua. Distractor 2 (Con dân mới) sai vì đây là một cách hiểu phổ biến nhưng không phải cụm từ chính xác trong câu này. Distractor 3 (Tạo vật trong sạch) sai vì tuy ý tưởng thanh sạch liên quan, nhưng nó trích dẫn sai điểm nhấn của phân đoạn này (ví dụ, từ ngữ về sự mới mẻ trọn vẹn).",
     "language": "vi",
     "options": [
-      "Người khôn ngoan",
-      "Thầy tế lễ",
+      "Tạo vật cũ",
+      "Con dân mới",
       "Tạo vật mới",
-      "Công dân trời"
+      "Tạo vật trong sạch"
     ],
     "tags": [
       "Tân Ước",
@@ -148,13 +148,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Cô 9:6-7: Nguyên tắc này được áp dụng cho việc dâng hiến (bố thí).",
+    "explanation": "Đoạn 2 Cô-rinh-tô 9:6-8 tập trung vào sự rộng rãi trong việc dâng hiến, dùng hình ảnh gieo và gặt để minh họa nguyên tắc 'gieo ít thì gặt ít, gieo nhiều thì gặt nhiều' (câu 6). Do đó, đáp án đúng là 'Dâng hiến'.\n\n- Distractor 'Cầu nguyện' (gần đúng, nhưng sai chi tiết): Đây là một hoạt động tâm linh quan trọng và có thể được nhắc đến trong các đoạn gần đó, nhưng không phải là điều được hình ảnh gieo/gặt trong 2 Cô 9:6-8 trực tiếp ám chỉ.\n- Distractor 'Nhịn ăn': Đây là một kỷ luật tâm linh, nhưng hoàn toàn không được đề cập hay ngụ ý trong bối cảnh của đoạn Kinh Thánh này, vốn nói về sự dâng hiến rộng rãi.\n- Distractor 'Truyền giáo': Mặc dù việc dâng hiến có thể hỗ trợ công việc truyền giáo, và đây là một hiểu lầm phổ biến khi áp dụng nguyên tắc 'gieo/gặt' cho mọi lĩnh vực, nhưng đoạn văn cụ thể này (từ câu 6 đến câu 8) chỉ nói rõ về sự dâng hiến vật chất cách vui lòng.",
     "language": "vi",
     "verseEnd": 8,
     "options": [
       "Cầu nguyện",
-      "Ăn chay",
-      "Giảng đạo",
+      "Nhịn ăn",
+      "Truyền giáo",
       "Dâng hiến"
     ],
     "tags": [
@@ -176,14 +176,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Cô 1:8-9: Chúng tôi chịu khổ quá sức, nhưng để không trông cậy chính mình, bèn trông cậy Đức Chúa Trời khiến kẻ chết sống lại.",
+    "explanation": "Câu hỏi: Phao-lô thuật lại kinh nghiệm gì tại A-si? (2 Cô-rinh-tô 1:8-11).\n\nĐÁP ÁN ĐÚNG: 'Quá sức chịu đựng, nhờ đó trông cậy Chúa'. Điều này đúng vì Phao-lô mô tả rõ ràng trong câu 8: '... chúng tôi đã bị ép quá sức, quá sức chúng tôi chịu nổi...' và ông nêu mục đích trong câu 9: '... hầu cho chúng tôi không cậy mình, nhưng cậy Đức Chúa Trời...'.\n\nDISTRACTOR SAI (1) - 'Được an ủi dư dật, nhờ đó vững vàng' (Loại lỗi: wrong_detail): Mặc dù Phao-lô nói về sự an ủi (câu 3-7), nhưng đoạn 8-11 cụ thể thuật lại kinh nghiệm 'bị ép quá sức' tại A-si, chứ không phải trực tiếp nói về việc 'được an ủi dư dật' tại đó.\n\nDISTRACTOR SAI (2) - 'Bị giam giữ tại A-si, nhờ đó rao giảng' (Loại lỗi: wrong_scope): Sự kiện 'bị giam giữ' không được đề cập trong đoạn này. Đây là một chi tiết có thể liên tưởng từ các sách khác, nhưng 2 Cô-rinh-tô 1:8-11 chỉ nói về sự 'bị ép quá sức' chung chung, không chỉ rõ là bị giam giữ.\n\nDISTRACTOR SAI (3) - 'Nhận khải tượng, nhờ đó ra đi' (Loại lỗi: common_misconception): Không có khải tượng nào được nhắc đến trong đoạn Kinh Thánh này. Đây là một hiểu lầm phổ biến, có thể do nhầm lẫn với các sự kiện khác trong sứ đồ công vụ.",
     "language": "vi",
     "verseEnd": 11,
     "options": [
-      "Chiến thắng oanh liệt",
+      "Được an ủi dư dật, nhờ đó vững vàng",
       "Quá sức chịu đựng, nhờ đó trông cậy Chúa",
-      "Được dân khen ngợi",
-      "Thành công tài chính"
+      "Bị giam giữ tại A-si, nhờ đó rao giảng",
+      "Nhận khải tượng, nhờ đó ra đi"
     ],
     "tags": [
       "Tân Ước",
@@ -288,14 +288,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Cô 6:14-18: Sự công bình với gian ác, sáng với tối nào hiệp nhau được.",
+    "explanation": "Đáp án đúng là 'Sự thánh khiết và mối thông công'. Đoạn Kinh Thánh (2 Cô-rinh-tô 6:14-18) nhấn mạnh sự tương phản giữa người tin và kẻ chẳng tin, ví như sự công bình với sự gian ác, sự sáng với sự tối tăm. Câu 17 trích dẫn Chúa phán: 'Hãy ra khỏi giữa chúng nó, hãy phân rẽ ra khỏi chúng nó', mục đích rõ ràng là để bảo vệ sự thánh khiết của dân sự Chúa (c.17) và duy trì mối thông công đặc biệt với Ngài (c.18).\n\nCác đáp án sai:\n1. 'Sự tự do và mối thông công': Sai vì sai chi tiết. Đoạn văn không nhấn mạnh 'sự tự do' trong ngữ cảnh này; trọng tâm là sự thánh khiết (sự phân rẽ, không đồng hóa).\n2. 'Sự thánh khiết và quyền năng': Sai vì dựa vào passage gần. Từ 'quyền năng' có thể liên tưởng đến các đoạn khác trong thư 2 Cô-rinh-tô (như chương 12), nhưng không phải là mục tiêu chính của lời khuyên 'chớ mang ách chung' trong 6:14-18.\n3. 'Sự yêu thương và hòa thuận': Sai vì hiểu lầm phổ biến. Đây là một giá trị Cơ Đốc quan trọng, nhưng áp dụng sai ngữ cảnh. Đoạn này không khuyến khích sự hòa thuận hay thỏa hiệp với thế gian, mà kêu gọi sự phân rẽ để bảo vệ sự thánh khiết.",
     "language": "vi",
     "verseEnd": 18,
     "options": [
-      "Lợi ích kinh doanh",
+      "Sự tự do và mối thông công",
       "Sự thánh khiết và mối thông công",
-      "Tự do cá nhân",
-      "An toàn tài chính"
+      "Sự thánh khiết và quyền năng",
+      "Sự yêu thương và hòa thuận"
     ],
     "tags": [
       "Tân Ước",
@@ -316,14 +316,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Cô 7:10: Buồn rầu theo Đức Chúa Trời sanh ra sự ăn năn, không hối hận.",
+    "explanation": "Câu hỏi tham chiếu 2 Cô-rinh-tô 7:8-11. Trong câu 10, Phao-lô viết: 'Vì sự buồn rầu theo ý Đức Chúa Trời sanh ra sự ăn năn, dẫn đến sự cứu rỗi, không hề hối tiếc; nhưng sự buồn rầu theo thế gian sanh ra sự chết.' Do đó, đáp án đúng 'Sự ăn năn dẫn đến sự cứu rỗi' trực tiếp trích dẫn và tóm tắt ý chính của phân đoạn.\n\nCác đáp án sai:\n1. 'Sự buồn rầu dẫn đến sự hối cải tạm thời' (gần đúng nhưng sai chi tiết): Phân đoạn nhấn mạnh sự ăn năn dẫn đến cứu rỗi là 'không hề hối tiếc', tức không phải tạm thời.\n2. 'Sự buồn rầu theo ý Đức Chúa Trời sanh ra sự đau khổ thêm' (đúng văn bản nhưng lạc câu hỏi): Mặc dù phân đoạn có nói đến 'buồn rầu', nhưng câu hỏi hỏi về kết quả SANH RA, còn 'đau khổ' là trạng thái cảm xúc được đề cập trong ngữ cảnh khác (câu 9, 11), không phải là điều được 'sanh ra' trực tiếp từ sự buồn rầu theo ý Đức Chúa Trời.\n3. 'Sự buồn rầu đem lại sự an ủi từ thế gian' (hiểu lầm phổ biến): Phân đoạn đối lập 'buồn rầu theo ý Đức Chúa Trời' với 'buồn rầu theo thế gian' (sanh ra sự chết). Sự an ủi được nhắc đến trong câu 6-7 và 13 là đến từ Đức Chúa Trời hoặc qua người khác, không phải từ 'thế gian'.",
     "language": "vi",
     "verseEnd": 11,
     "options": [
-      "Sự cay đắng",
+      "Sự buồn rầu dẫn đến sự hối cải tạm thời",
       "Sự ăn năn dẫn đến sự cứu rỗi",
-      "Sự oán trách",
-      "Sự hối hận tạm thời"
+      "Sự buồn rầu theo ý Đức Chúa Trời sanh ra sự đau khổ thêm",
+      "Sự buồn rầu đem lại sự an ủi từ thế gian"
     ],
     "tags": [
       "Tân Ước",
@@ -344,13 +344,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Cô 8:9: Hầu cho bởi sự nghèo của Ngài mà anh em được trở nên giàu.",
+    "explanation": "Đáp án đúng: 'Ngài vốn giàu, vì anh em trở nên nghèo' (2 Cô-rinh-tô 8:9) mô tả chính xác ân điển của Chúa Giê-su là sự tự hạ, từ sự giàu có vốn có (trong địa vị thiên thượng) để trở nên nghèo (trong thân phận con người và sự chết), hầu cho chúng ta nhờ sự nghèo của Ngài mà trở nên giàu (được cứu chuộc).\n\nCác đáp án sai:\n1. 'Ngài vốn nghèo, vì anh em trở nên giàu' (sai chi tiết - wrong_detail): Đây là đáp án gần đúng nhưng đảo ngược trạng thái then chốt ('vốn giàu' thành 'vốn nghèo'), làm méo mó ý nghĩa của sự tự hạ.\n2. 'Ngài ban sự giàu có tinh thần cho anh em' (hiểu lầm phổ biến - common_misconception): Mặc dù kết quả của ân điển là sự giàu có thuộc linh, nhưng câu 8:9 đặc biệt mô tả HÀNH ĐỘNG/hình ảnh tương phản của việc trở nên nghèo, không trực tiếp nói đến việc 'ban cho'.\n3. 'Ngài trở nên nghèo để anh em được thương xót' (đúng văn bản nhưng lạc câu hỏi - true_but_off): Mặc dù Chúa thương xót, nhưng câu 8:9 nhấn mạnh mục đích 'hầu cho anh em bởi sự nghèo của Ngài mà trở nên giàu', không phải 'được thương xót'. Đáp án này đưa ra một khái niệm đúng trong Kinh Thánh nhưng không trả lời đúng trọng tâm câu hỏi về mô tả trong câu này.",
     "language": "vi",
     "options": [
       "Ngài vốn giàu, vì anh em trở nên nghèo",
-      "Ngài vốn khôn ngoan",
-      "Ngài vốn nghèo, trở nên giàu",
-      "Ngài vốn quyền năng"
+      "Ngài vốn nghèo, vì anh em trở nên giàu",
+      "Ngài ban sự giàu có tinh thần cho anh em",
+      "Ngài trở nên nghèo để anh em được thương xót"
     ],
     "tags": [
       "Tân Ước",
@@ -371,14 +371,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Cô 10:4-5: Phá đổ tư tưởng và mọi sự kiêu ngạo nổi lên.",
+    "explanation": "Đoạn 2 Cô-rinh-tô 10:3-5: 'Vì dầu chúng tôi sống trong xác thịt, chúng tôi chẳng đánh trận theo xác thịt. Vì khí giới mà chúng tôi dùng để chiến tranh là không phải thuộc về xác thịt đâu, bèn là bởi quyền năng của Đức Chúa Trời, có sức mạnh để đạp đổ các đồn lũy,...'. Đáp án đúng là 'Phá đổ đồn lũy', vì đây là mục đích cụ thể được nêu cho quyền năng của vũ khí tâm linh.\n\nCác đáp án sai:\n- 'Đánh bại chính phủ': Sai vì đây là suy nghĩ phổ biến (common misconception) về 'chiến tranh' theo nghĩa thế tục, nhưng đoạn Kinh Thánh tập trung vào cuộc chiến thuộc linh chống lại các 'lý luận' và 'sự kiêu ngạo' (câu 5), không phải thể chế chính trị.\n- 'Chiếu sáng tâm trí': Đây là distractor gần đúng (almost-right). Nó gần với ý tưởng trong câu 5 về việc 'bắt hết các ý tưởng làm tôi vâng phục Đấng Christ', nhưng sai chi tiết then chốt vì từ ngữ cụ thể trong câu 4 cho mục đích của vũ khí là 'đạp đổ các đồn lũy', không phải là 'chiếu sáng'.\n- 'Chiến thắng thiên nhiên': Sai phạm vi (wrong scope) vì hoàn toàn lạc đề. Đoạn văn nói về việc phá hủy các 'đồn lũy' mang tính tâm linh và tư tưởng (như lý luận, sự kiêu ngạo), không đề cập đến việc chinh phục hay chiến thắng thiên nhiên vật lý.",
     "language": "vi",
     "verseEnd": 5,
     "options": [
-      "Xây dựng danh tiếng",
+      "Đánh bại chính phủ",
       "Phá đổ đồn lũy",
-      "Gây ảnh hưởng xã hội",
-      "Bảo vệ thân thể"
+      "Chiếu sáng tâm trí",
+      "Chiến thắng thiên nhiên"
     ],
     "tags": [
       "Tân Ước",
@@ -455,13 +455,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Cô 5:10: Ai nấy sẽ khai trình để nhận điều lành hay dữ đã làm.",
+    "explanation": "2 Cô-rinh-tô 5:10: 'Vì chúng ta thảy đều phải ứng hầu trước tòa án Đấng Christ, hầu cho mỗi người nhận lãnh tùy theo điều thiện hay điều ác mình đã làm lúc còn trong xác thịt.' (BTT). Đáp án đúng 'Nhận lại điều đã làm qua thân thể' (tương đương 'trong xác thịt') phản ánh chính xác mục đích của sự phán xét này là xem xét những việc làm cụ thể trong đời sống thể xác.\n\n- Distractor 'qua ý định' là gần đúng (almost-right) nhưng sai chi tiết then chốt: Kinh văn nhấn mạnh việc 'đã làm', không chỉ ý định.\n- Distractor 'qua linh hồn' sai chi tiết: Bối cảnh đoạn này nói về đời sống 'trong thân thể' hay 'trong xác thịt', không phải qua linh hồn.\n- Distractor 'qua ân điển' lạc câu hỏi: Dù ân điển là chủ đề quan trọng trong thư tín, nó không phải là tiêu chí xét đoán được nêu trong câu này.",
     "language": "vi",
     "options": [
-      "Phân chia chức vụ",
-      "Phán xét để hư mất",
+      "Nhận lại điều đã làm qua ý định",
+      "Nhận lại điều đã làm qua linh hồn",
       "Nhận lại điều đã làm qua thân thể",
-      "Xác định địa vị"
+      "Nhận lại điều đã làm qua ân điển"
     ],
     "tags": [
       "Tân Ước",
@@ -482,14 +482,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Cô 11:30: Nếu cần phải khoe, tôi sẽ khoe sự yếu đuối của tôi.",
+    "explanation": "Trong 2 Cô-rinh-tô 11:23-30, Phao-lô liệt kê một loạt những gian khổ, khó nhọc, và bắt bớ mà ông đã trải qua vì danh Chúa (như bị đòn, bị ném đá, bị đắm tàu, đói khát, v.v.). Tuy nhiên, mục đích của ông không phải để khoe về thành tích hay sức mạnh, mà là để 'khoe' về 'những sự yếu đuối' (câu 30) - tức là những điểm mà ông cảm thấy bất lực, để qua đó quyền năng của Đấng Christ được tỏ ra. \n\n- Distractor 'Những sự đắc thắng' sai vì đây là một hiểu lầm phổ biến (common_misconception) khi đọc lướt, tưởng rằng Phao-lô đang khoe chiến công, nhưng thực tế ông đang trình bày những hoàn cảnh cho thấy sự yếu đuối của mình.\n- Distractor 'Những sự nhận biết' sai vì đây là chi tiết lấy từ đoạn Kinh Thánh gần đó (nearby_passage) - trong 2 Cô-rinh-tô 11:6, Phao-lô có đề cập đến 'sự nhận biết', nhưng không phải là điều ông 'khoe' trong các câu 23-30.\n- Distractor 'Những sự phục vụ' sai vì nó mở rộng phạm vi sai (wrong_scope) - mặc dù những điều Phao-lô kể ra đều xảy ra trong khi phục vụ Chúa, nhưng trọng tâm cụ thể của ông trong đoạn này là 'những sự yếu đuối' (câu 30), không phải khái niệm chung về 'phục vụ'.",
     "language": "vi",
     "verseEnd": 30,
     "options": [
-      "Những phép lạ",
+      "Những sự đắc thắng",
       "Những sự yếu đuối",
-      "Những triết lý",
-      "Những thành công"
+      "Những sự nhận biết",
+      "Những sự phục vụ"
     ],
     "tags": [
       "Tân Ước",
@@ -510,13 +510,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Cô 13:11: Hãy vui mừng, nên trọn lành, khuyên bảo nhau, đồng một ý, sống hòa thuận.",
+    "explanation": "Trong 2 Cô-rinh-tô 13:11 (BTT), lời chúc cuối thư cụ thể là: 'Hỡi anh em, hãy vui mừng, hãy nên trọn vẹn, hãy yên ủi nhau, hãy đồng tình với nhau, hãy hòa thuận với nhau, thì Đức Chúa Trời của sự yêu thương và bình an sẽ ở cùng anh em.' Từ đó, lời kêu gọi rõ ràng là 'hòa thuận, hiệp ý, bình an'.\n\n- **Distractor 'Vui mừng, cầu nguyện, tạ ơn'**: Sai vì đây là lời khuyên phổ biến từ các thư tín khác (như 1 Tê-sa-lô-ni-ca 5:16-18: 'Hãy vui mừng mãi mãi... hãy cầu nguyện không thôi... hãy tạ ơn trong mọi sự'), không phải lời chúc cuối thư của 2 Cô-rinh-tô 13:11.\n- **Distractor 'Yêu thương, hy vọng, kiên nhẫn'**: Sai vì đây là hiểu lầm phổ biến về các đức tính Cơ Đốc quan trọng (như trong 1 Cô-rinh-tô 13:13), nhưng không phải là lời kêu gọi cụ thể trong câu Kinh Thánh được hỏi.\n- **Distractor 'Trưởng thành, vững lòng, chịu khó'**: Sai vì mặc dù các ý này xuất hiện trong ngữ cảnh rộng hơn của thư 2 Cô-rinh-tô (như khuyến khích trưởng thành, vững lòng), chúng không phải là ba điều được kêu gọi trực tiếp trong lời chúc cuối 13:11.",
     "language": "vi",
     "options": [
       "Hòa thuận, hiệp ý, bình an",
-      "Giữ luật pháp",
-      "Tránh bách hại",
-      "Sống ẩn dật"
+      "Vui mừng, cầu nguyện, tạ ơn",
+      "Yêu thương, hy vọng, kiên nhẫn",
+      "Trưởng thành, vững lòng, chịu khó"
     ],
     "tags": [
       "Tân Ước",
@@ -537,12 +537,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Cô 5:17 - Nếu ai ở trong Đấng Christ thì người ấy là tạo vật mới. Những sự cũ đã qua đi, nay mọi sự đều trở nên mới.",
+    "explanation": "2 Cô-rinh-tô 5:17 chép: 'Vậy, nếu ai ở trong Đấng Christ, thì nấy là người được dựng nên mới; những sự cũ đã qua đi, nầy mọi sự đều trở nên mới.' (BTT). Đáp án 'Tạo vật mới' đúng vì câu Kinh Thánh xác định người ở trong Đấng Christ là một 'người được dựng nên mới' (tạo vật mới).\n\n*   Distractor 'Tạo vật cũ' (gần đúng) sai vì nó đảo ngược ý chính của câu: Kinh Thánh nhấn mạnh 'những sự cũ đã qua đi', chứ không phải định danh người ấy là 'cũ'.\n*   Distractor 'Đấng Tạo Hóa' sai vì lấy chi tiết từ ngữ cảnh gần (câu 18 nói về 'Đức Chúa Trời' là Đấng hòa giải), nhưng câu hỏi hỏi về bản chất của 'người ấy' (con người), không phải về Đức Chúa Trời.\n*   Distractor 'Người được tha thứ' sai vì dù là một khái niệm liên quan (và được đề cập trong ngữ cảnh rộng hơn của sự hòa giải), nhưng nó không phải là đặc điểm định danh trực tiếp mà câu 17 đưa ra. Câu hỏi đang hỏi 'người ấy là gì?' chứ không phải 'người ấy nhận được gì?'.",
     "language": "vi",
     "options": [
-      "Thánh nhân",
-      "Thiên sứ",
-      "Người tốt hơn",
+      "Tạo vật cũ",
+      "Đấng Tạo Hóa",
+      "Người được tha thứ",
       "Tạo vật mới"
     ],
     "tags": [
@@ -564,14 +564,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Cô-rinh-tô 1:3 gọi Chúa là 'Cha hay thương xót và Chúa của mọi sự an ủi'. Câu 4 giải thích Ngài an ủi chúng ta trong mọi hoạn nạn, để chúng ta cũng có thể an ủi người khác.",
+    "explanation": "Câu hỏi hỏi về 2 Cô 1:3. Kinh Thánh viết: 'Chúc tạ Đức Chúa Trời, Cha Đức Chúa Jêsus Christ chúng ta, là Cha hay thương xót, là Chúa của mọi sự an ủi' (2 Cô-rinh-tô 1:3).\n\n- Đáp án đúng đúng vì trích đúng 'Cha hay thương xót và Chúa của mọi sự an ủi', đây là cách Chúa được gọi trong câu đó.\n\n- Distractor 1 ('Cha hay thương xót và Chúa của mọi sự khích lệ') sai vì mặc dù đúng cấu trúc 'Cha hay thương xót', nhưng từ 'khích lệ' không phải là từ chính xác trong câu; từ chính xác là 'an ủi'. Đây là một lỗi chi tiết.\n- Distractor 2 ('Cha hay thương xót và Chúa của mọi sự yêu thương') sai vì nó thay thế 'mọi sự an ủi' bằng 'mọi sự yêu thương', một khái niệm có thể đến từ các phân đoạn gần đó hoặc Kinh Thánh nói chung (ví dụ về tình yêu thương của Đức Chúa Trời) nhưng không phải là từ ngữ trong 2 Cô 1:3.\n- Distractor 3 ('Đức Chúa Trời và Chúa của mọi sự an ủi') sai vì nó bỏ mất cụm từ quan trọng 'Cha hay thương xót' và thay bằng 'Đức Chúa Trời', là một tên gọi chung chung hơn. Mặc dù câu có đề cập đến Đức Chúa Trời, nhưng câu hỏi cụ thể hỏi về cách Chúa được 'gọi là gì' trong câu đó, và tên gọi đặc trưng là 'Cha hay thương xót...'.",
     "language": "vi",
     "verseEnd": 4,
     "options": [
       "Cha hay thương xót và Chúa của mọi sự an ủi",
-      "Quan án",
-      "Vua",
-      "Chiến binh"
+      "Cha hay thương xót và Chúa của mọi sự khích lệ",
+      "Cha hay thương xót và Chúa của mọi sự yêu thương",
+      "Đức Chúa Trời và Chúa của mọi sự an ủi"
     ],
     "tags": [
       "Tân Ước",
@@ -592,13 +592,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sự tự do thật đến từ Đức Thánh Linh, không phải từ hoàn cảnh.",
+    "explanation": "Câu hỏi trích dẫn trực tiếp 2 Cô-rinh-tô 3:17: \"Vả, Chúa tức là Thánh Linh, Thánh Linh của Chúa ở đâu, thì ở đó có sự tự do.\" Do đó, \"Tự do\" là đáp án đúng.\n\nCác đáp án sai: 1) \"Bình an\" là một chủ đề lân cận trong các thư tín của Phao-lô (như Rô-ma 14:17, Ga-la-ti 5:22) nhưng không phải từ ngữ chính xác trong câu này. 2) \"Sự sống\" phản ánh một hiểu lầm phổ biến khi liên kết Thánh Linh với sự sống mới (Rô-ma 8:2, 6), nhưng không phải là cụm từ được điền vào chỗ trống trong câu Kinh Thánh này. 3) \"Vinh quang\" là một từ then chốt trong ngữ cảnh rộng hơn của đoạn (2 Cô-rinh-tô 3:7-18, đặc biệt câu 18 nói về việc biến hóa từ vinh quang sang vinh quang), nên gần đúng (~90%), nhưng không phải là từ chính xác trong câu 17.",
     "language": "vi",
     "options": [
-      "Vui mừng",
       "Bình an",
+      "Sự sống",
       "Tự do",
-      "Quyền năng"
+      "Vinh quang"
     ],
     "tags": [
       "Tân Ước",
@@ -619,13 +619,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Để quyền năng tối cao thuộc về Chúa, không phải chúng ta. Sự yếu đuối tôn vinh Chúa.",
+    "explanation": "Câu hỏi tham chiếu 2 Cô-rinh-tô 4:7: 'Nhưng chúng ta có của báu này trong chậu bằng đất, hầu cho tỏ quyền phép lớn dường ấy là bởi Đức Chúa Trời, mà chẳng phải bởi chúng ta.' (BTT). Đáp án đúng là 'Bình đất (chậu bằng đất)' vì câu Kinh Thánh mô tả rõ ràng Phúc Âm (của quý) được chứa trong 'chậu bằng đất', tức thân thể hay con người mỏng giòn của chúng ta.\n\nCác đáp án sai:\n1. 'Linh của Đức Chúa Trời': Là distractor gần đúng (almost-right) vì liên quan đến quyền phép của Đức Chúa Trời được nhắc đến trong cùng câu và phân đoạn (2 Cô-rinh-tô 4), nhưng không phải vật chứa của 'của quý' theo đúng câu hỏi. Đây là lỗi 'nearby_passage'.\n2. 'Hộp bằng gỗ': Sai chi tiết về chất liệu và vật chứa. Kinh Thánh không dùng hình ảnh này trong ngữ cảnh. Đây là lỗi 'wrong_detail'.\n3. 'Kho tàng trên trời': Là một khái niệm Kinh Thánh có thật (ví dụ Ma-thi-ơ 6:20) nhưng lạc câu hỏi, vì đây là nơi cất giữ phần thưởng, không phải vật chứa của Phúc Âm trong đời sống hiện tại của Cơ Đốc nhân. Đây là lỗi 'common_misconception' do nhầm lẫn với các khái niệm về của cải thiêng liêng khác.",
     "language": "vi",
     "options": [
       "Bình đất (chậu bằng đất)",
-      "Hòm sắt",
-      "Túi da",
-      "Bình vàng"
+      "Linh của Đức Chúa Trời",
+      "Hộp bằng gỗ",
+      "Kho tàng trên trời"
     ],
     "tags": [
       "Tân Ước",
@@ -646,14 +646,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Những khó khăn hiện tại không đáng so với vinh quang mãi sau.",
+    "explanation": "Đoạn Kinh Thánh 2 Cô-rinh-tô 4:17-18 (BTT) chép: 'Vì hoạn nạn nhẹ và tạm thời của chúng ta đem lại cho chúng ta sự vinh hiển đời đời vượt qua mọi so sánh, trong khi chúng ta chẳng chú tâm vào những sự thấy được, nhưng vào những sự không thấy được; vì những sự thấy được chỉ là tạm thời, còn những sự không thấy được là đời đời.' Đáp án đúng trích trực tiếp từ câu 17, mô tả kết quả của hoạn nạn là 'sự vinh hiển đời đời vượt qua mọi so sánh'.\n\n- Distractor 1 ('Sự vinh hiển tạm thời...') sai vì thay đổi từ khóa 'đời đời' thành 'tạm thời', trái ngược với ý chính của câu 17-18 (so sánh tạm thời/đời đời).\n- Distractor 2 ('Sự bình an đời đời...') sai vì lấy ý từ những phân đoạn khác nói về bình an (như Rô-ma 5:1), không phải kết quả trực tiếp được nêu trong câu hỏi và câu Kinh Thánh tham chiếu.\n- Distractor 3 ('Sự cứu rỗi đời đời...') sai vì phản ánh một hiểu lầm phổ biến, gộp chung mọi phước lành thuộc linh thành 'sự cứu rỗi', trong khi văn bản cụ thể ở đây nhấn mạnh 'sự vinh hiển' là phần thưởng đặc biệt từ sự chịu khổ.",
     "language": "vi",
     "verseEnd": 18,
     "options": [
-      "Sự giàu có",
-      "Danh tiếng",
+      "Sự vinh hiển tạm thời vượt qua mọi so sánh",
+      "Sự bình an đời đời vượt qua mọi so sánh",
       "Sự vinh hiển đời đời vượt qua mọi so sánh",
-      "Sự thoải mái"
+      "Sự cứu rỗi đời đời vượt qua mọi so sánh"
     ],
     "tags": [
       "Tân Ước",
@@ -701,12 +701,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Chúa từ bỏ sự giàu có thiên thượng để chúng ta được giàu có thuộc linh.",
+    "explanation": "2 Cô-rinh-tô 8:9 chép: 'Vì anh em biết ơn của Đức Chúa Jêsus Christ chúng ta: Ngài vốn giàu, vì anh em mà tự làm nên nghèo, hầu cho bởi sự nghèo của Ngài, anh em được nên giàu.' (BTT). Đáp án đúng là 'nghèo', vì đây là từ trực tiếp trong câu Kinh Thánh, mô tả sự hy sinh của Chúa Giê-su khi từ bỏ địa vị cao sang để cứu chuộc chúng ta.\n\nCác distractor sai:\n- 'yếu đuối': Là từ xuất hiện trong các đoạn gần (vd: 2 Cô-rinh-tô 13:4 nói về sự yếu đuối của Ngài), nhưng không phải là từ trong câu hỏi này.\n- 'tội lỗi': Phản ánh hiểu lầm phổ biến, vì Chúa Giê-su gánh tội lỗi chúng ta (1 Phi-e-rơ 2:24), nhưng bản thân Ngài không hề trở nên tội lỗi, và đây không phải là từ trong 2 Cô-rinh-tô 8:9.\n- 'khiêm nhường': Mặc dù mô tả đúng tính cách của Chúa Giê-su (Phi-líp 2:8), đây là một khái niệm liên quan nhưng lạc trọng tâm câu hỏi; câu Kinh Thánh này nhấn mạnh cụ thể sự 'giàu' sang 'nghèo' về phương diện thuộc linh/thuộc thể, chứ không phải thái độ.",
     "language": "vi",
     "options": [
-      "Yếu",
-      "Thường",
-      "Nhỏ",
+      "yếu đuối",
+      "tội lỗi",
+      "khiêm nhường",
       "Nghèo"
     ],
     "tags": [
@@ -728,13 +728,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Không cho vì bắt buộc hay tiếc nuối. Đức Chúa Trời yêu người cho với tâm lòng vui vẻ.",
+    "explanation": "Câu hỏi này kiểm tra sự hiểu biết cụ thể về thái độ mà Đức Chúa Trời yêu thích trong sự dâng hiến, theo 2 Cô-rinh-tô 9:7. Đáp án đúng 'Cách vui lòng' trực tiếp dựa trên câu Kinh Thánh: 'Mỗi người nên theo lòng mình đã định mà quyên ra, không phải phàn nàn hay miễn cưỡng, vì Đức Chúa Trời yêu kẻ dâng của cách vui lòng.'\n\nGiải thích từng phương án:\n- ĐÚNG: 'Cách vui lòng' là mô tả chính xác từ Kinh Thánh.\n- SAI (wrong_detail): 'Cách miễn cưỡng' sai, vì câu Kinh Thánh nói rõ 'không phải... miễn cưỡng'.\n- SAI (common_misconception): 'Cách không vui lòng' là gần đúng nhưng sai chi tiết then chốt. Đây là một lựa chọn phản đề phổ biến, nhưng từ ngữ trong Kinh Thánh là khẳng định 'cách vui lòng', không phải phủ định 'không... không vui lòng'.\n- SAI (true_but_off): 'Cách như gánh nặng' lạc đề. Dù sự dâng hiến miễn cưỡng có thể cảm thấy như gánh nặng, nhưng đây không phải là mô tả trực tiếp hoặc từ ngữ hiện diện trong câu Kinh Thánh được hỏi, và nó cũng không phải là điều Đức Chúa Trời 'yêu'.",
     "language": "vi",
     "options": [
       "Cách vui lòng",
-      "Nhiều nhất",
-      "Công khai",
-      "Bắt buộc"
+      "Cách miễn cưỡng",
+      "Cách không vui lòng",
+      "Cách như gánh nặng"
     ],
     "tags": [
       "Tân Ước",
@@ -782,13 +782,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Không kết hợp mật thiết với người không cùng đức tin vì ánh sáng và bóng tối không tương hợp.",
+    "explanation": "ĐÁP ÁN ĐÚNG: **Ách**. 2 Cô-rinh-tô 6:14 viết: \"Chớ mang ách chung với kẻ chẳng tin.\" Từ \"ách\" (yoke) là hình ảnh ẩn dụ mạnh mẽ về sự ràng buộc, liên kết chặt chẽ như trong hôn nhân, hợp tác kinh doanh, hay cam kết thuộc linh. Đây là lời cảnh báo về mối quan hệ không cân xứng giữa người tin Chúa và người không tin.\n\nTẠI SAO CÁC LỰA CHỌN SAI:\n- **Giao ước**: (*nearby_passage*) Đây là một khái niệm quan trọng và xuất hiện nhiều trong Kinh Thánh, nhưng không phải từ cụ thể trong câu này. Nó là một khái niệm gần về ý tưởng (ràng buộc, thỏa thuận), nhưng đây là một distractor \"gần đúng\" sai ở chỗ: bản văn dùng hình ảnh cụ thể \"ách\", không phải từ trừu tượng \"giao ước\".\n- **Tư tưởng**: (*true_but_off*) Mặc dù sự khác biệt trong tư tưởng, niềm tin là một hệ quả và lý do quan trọng đằng sau mệnh lệnh này, nhưng nó không phải là từ chính xác để điền vào chỗ trống trong câu Kinh Thánh được trích dẫn. Đáp án này \"đúng về mặt ý tưởng nhưng lạc câu hỏi\" về từ ngữ cụ thể.\n- **Công việc**: (*common_misconception*) Đây có thể là một hiểu lầm phổ biến khi áp dụng câu Kinh Thánh, vì người ta thường nghĩ đến việc không nên hợp tác làm ăn với người ngoại đạo. Tuy nhiên, phạm vi của từ \"ách\" rộng hơn nhiều, bao hàm mọi mối liên hệ ràng buộc sâu sắc, không chỉ giới hạn ở công việc. Đáp án này thu hẹp sai phạm vi của mệnh lệnh gốc.",
     "language": "vi",
     "options": [
-      "Nón",
-      "Giày",
+      "Giao ước",
+      "Tư tưởng",
       "Ách",
-      "Áo"
+      "Công việc"
     ],
     "tags": [
       "Tân Ước",
@@ -809,12 +809,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Nghịch lý Cơ Đốc: yếu đuối là khi Chúa mạnh mẽ qua chúng ta nhất.",
+    "explanation": "Câu hỏi dựa trên 2 Cô-rinh-tô 12:10 (BTT): \"Vậy nên tôi vui lòng và tự hào về sự yếu đuối của tôi, hầu cho quyền năng của Đấng Christ ở trong tôi. Cho nên tôi vui lòng trong sự yếu đuối, trong sự sỉ nhục, trong hoạn nạn, bắt bớ, khốn khó, vì cớ Đấng Christ; vì khi tôi yếu đuối, ấy là lúc tôi mạnh mẽ.\" ĐÁP ÁN ĐÚNG: 'Mạnh mẽ' vì Kinh Thánh trực tiếp ghi lời của Phao-lô: \"khi tôi yếu đuối, ấy là lúc tôi mạnh mẽ.\" ĐÁP ÁN SAI: 1) 'Không thể chịu đựng' là HIỂU LẦM PHỔ BIẾN về cảm xúc con người, nhưng trái ngược với tinh thần vui lòng và mạnh mẽ trong Đấng Christ mà Phao-lô diễn đạt. 2) 'Được an ủi' là NHẦM PASSAGE GẦN, vì an ủi là chủ đề quan trọng trong 2 Cô-rinh-tô (ví dụ 1:3-7, 7:4-7) nhưng không phải từ ngữ cụ thể trong câu 12:10 này. 3) 'Cần sự giúp đỡ' là SAI PHẠM VI, vì mặc dù Phao-lô thừa nhận sự yếu đuối, câu này tập trung vào kết quả (mạnh mẽ trong Đấng Christ) chứ không phải nhu cầu cá nhân của ông.",
     "language": "vi",
     "options": [
-      "Sợ",
-      "Buồn",
-      "Mệt",
+      "Không thể chịu đựng",
+      "Được an ủi",
+      "Cần sự giúp đỡ",
       "Mạnh mẽ"
     ],
     "tags": [

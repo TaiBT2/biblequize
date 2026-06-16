@@ -9,13 +9,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Nhã Ca 1:1 — 'Nhã ca trong các bài ca, mà Sa-lô-môn đã làm.' Tên truyền thống 'Bài Ca Của Các Bài Ca' — bài ca tuyệt đỉnh.",
+    "explanation": "Câu Kinh Thánh Nhã Ca 1:1 ghi rõ: 'Bài ca của các bài ca, của Sa-lô-môn.' (BTT). Do đó, đáp án đúng là 'Sa-lô-môn', vì chính văn bản xác định tác giả/tác quyền thuộc về ông.\n\nCác đáp án sai:\n- 'Đa-vít': Đây là một hiểu lầm phổ biến vì Sa-lô-môn là con trai của Đa-vít, và nhiều sách khác trong Kinh Thánh gắn liền với Đa-vít, nhưng Nhã Ca 1:1 không đề cập đến ông.\n- 'Rô-bô-am': Đây là một sai sót về chi tiết tên. Rô-bô-am là con trai của Sa-lô-môn, nhưng không phải là tác giả được ghi trong câu này.\n- 'Giê-rô-bô-am': Lỗi nhầm lẫn với đoạn văn lân cận/bối cảnh. Giê-rô-bô-am là một nhân vật trong sách Các Vua, liên quan đến vương quốc phía Bắc sau thời Sa-lô-môn, không liên quan đến nội dung Nhã Ca 1:1.",
     "language": "vi",
     "options": [
       "Sa-lô-môn",
       "Đa-vít",
-      "A-sáp",
-      "Hê-man"
+      "Rô-bô-am",
+      "Giê-rô-bô-am"
     ],
     "tags": [
       "Cựu Ước",
@@ -35,13 +35,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Nhã Ca 1:5 — 'Hỡi các con gái Giê-ru-sa-lem, tôi đen, song xinh đẹp, như các trại Kê-đa, như màn cháng của Sa-lô-môn.' Sự đen là dấu hiệu lao động ngoài đồng — không phải sự xấu xa.",
+    "explanation": "Trong Nhã Ca 1:5, người nữ nói: 'Tôi đen, song xinh đẹp, hỡi các con gái Giê-ru-sa-lem, giống như các trại Kê-đa, như màn cháng của Sa-lô-môn.' (BTT). Do đó, đáp án đúng là 'Tôi đen, song xinh đẹp'. Distractor 'Tôi trắng, song xinh đẹp' sai vì thay đổi chi tiết then chốt 'đen' thành 'trắng'. Distractor 'Tôi không đen, cũng chẳng xinh đẹp' sai vì đối lập hoàn toàn với mô tả của bản văn. Distractor 'Các con gái Giê-ru-sa-lem đen và xinh đẹp' sai vì diễn giải sai chủ thể; câu Kinh Thánh nói về người nữ, không phải về các con gái Giê-ru-sa-lem.",
     "language": "vi",
     "options": [
-      "Tôi xinh đẹp như mặt trời",
+      "Tôi trắng, song xinh đẹp",
       "Tôi đen, song xinh đẹp",
-      "Tôi yếu đuối nhưng dịu dàng",
-      "Tôi giàu có và quý phái"
+      "Tôi không đen, cũng chẳng xinh đẹp",
+      "Các con gái Giê-ru-sa-lem đen và xinh đẹp"
     ],
     "tags": [
       "Cựu Ước",
@@ -61,13 +61,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Nhã Ca 2:1 — 'Ta là hoa tường vi của Sa-rôn, bông huệ của trũng.' Hai loài hoa giản dị nhưng đẹp tinh khôi của vùng Sa-rôn — bình nguyên ven biển Y-sơ-ra-ên.",
+    "explanation": "Trong Nhã Ca 2:1, người nữ nói: \"Ta là hoa tường vi của Sa-rôn, bông huệ của trũng.\" (BTT). Đây là một lời tuyên bố khiêm nhường của cô, ví mình với những bông hoa đẹp nhưng phổ biến. Phương án đúng mô tả chính xác hai hình ảnh này. \n- Distractor 1 (gần đúng) sai ở chi tiết \"bông huệ của đồi\", trong khi Kinh Thánh ghi là \"của trũng\". \n- Distractor 2 sai phạm vi vì dùng hình ảnh \"vườn nho\" và \"hoa hồng\", là những ẩn dụ xuất hiện ở các phân đoạn khác trong sách (Nhã Ca 1:6; 2:1-2) nhưng không phải là lời tự ví của người nữ trong 2:1. \n- Distractor 3 nhầm lẫn các thành tố trong câu Kinh Thánh lân cận (có thể nhớ nhầm với các hình ảnh hoa và địa danh khác trong sách), đảo trật tự và chi tiết (“hoa huệ của Sa-rôn”, “bông tường vi của trũng”) so với nguyên văn.",
     "language": "vi",
     "options": [
-      "Cây bá hương Li-ban",
-      "Cây nho trên núi",
+      "Hoa tường vi của Sa-rôn, bông huệ của đồi",
+      "Vườn nho của trũng, hoa hồng của đồi",
       "Hoa tường vi của Sa-rôn, bông huệ của trũng",
-      "Cây cọ trên sa mạc"
+      "Hoa huệ của Sa-rôn, bông tường vi của trũng"
     ],
     "tags": [
       "Cựu Ước",
@@ -87,12 +87,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Nhã Ca 2:2 — 'Bạn tình ta ở giữa đám con gái như bông huệ ở giữa gai gốc.' Sự tinh khôi nổi bật giữa môi trường tầm thường.",
+    "explanation": "Trong Nhã Ca 2:2, người yêu nói: 'Như bông huệ giữa gai gốc, bạn tôi giữa các thiếu nữ cũng như vậy.' Do đó, đáp án đúng là 'Giữa gai gốc'.\n\nCác đáp án sai:\n- 'Giữa bụi cây': Sai chi tiết. Mặc dù 'gai gốc' có thể gợi đến một bụi cây có gai, văn bản cụ thể dùng từ 'gai gốc' chứ không phải 'bụi cây' chung chung.\n- 'Giữa đồng cỏ': Sai phạm vi. Đồng cỏ thường tươi tốt và dễ chịu, trong khi hình ảnh 'gai gốc' trong câu thơ tạo sự tương phản rõ rệt để nhấn mạnh vẻ đẹp nổi bật.\n- 'Giữa các bông hoa': Đúng văn bản nhưng lạc câu hỏi. Cụm 'giữa các thiếu nữ' trong câu được so sánh với 'giữa các bông hoa', nhưng câu hỏi hỏi cụ thể bông huệ được ví giữa cái gì, không phải bạn tình được ví giữa cái gì.",
     "language": "vi",
     "options": [
-      "Giữa các sông",
-      "Giữa các vườn",
-      "Giữa các núi",
+      "Giữa bụi cây",
+      "Giữa đồng cỏ",
+      "Giữa các bông hoa",
       "Giữa gai gốc"
     ],
     "tags": [
@@ -113,13 +113,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Nhã Ca 2:4 — 'Người đưa tôi vào phòng yến tiệc, ngọn cờ người phất trên tôi ấy là ái tình.'",
+    "explanation": "Nhã Ca 2:4 viết: 'Người đã dẫn tôi vào nhà tiệc, Còn ngọn cờ người phất trên tôi là ái tình.' (BTT). Do đó, ngọn cờ được mô tả cụ thể là 'ái tình' (tình yêu).\n\nCác đáp án sai:\n- 'Sự vinh hiển': Là chủ đề thường gặp trong các sách khác (như Ê-sai), nhưng không được nêu trong ngữ cảnh này ở Nhã Ca.\n- 'Sự chiến thắng': Có thể liên tưởng đến hình ảnh 'cờ' và chiến tranh, nhưng đây là sai phạm vi vì sách Nhã Ca tập trung vào tình yêu cá nhân, không phải chiến thắng quân sự.\n- 'Sự trung tín': Là một đức tính quan trọng và có thể được một số độc giả suy diễn trong mối quan hệ, nhưng không phải từ ngữ chính xác trong câu Kinh Thánh này.",
     "language": "vi",
     "options": [
       "Ái tình (tình yêu)",
-      "Sự công bình",
-      "Sự khôn ngoan",
-      "Sự bình an"
+      "Sự vinh hiển",
+      "Sự chiến thắng",
+      "Sự trung tín"
     ],
     "tags": [
       "Cựu Ước",
@@ -139,13 +139,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Nhã Ca 2:7 — 'Hỡi các con gái Giê-ru-sa-lem, ta ép nài các ngươi bởi những con hoàng dương hoặc con nai đồng nội, chớ kinh động, chớ làm tỉnh thức ái tình ta cho đến khi nó muốn.' Lời cảnh báo về việc đánh thức tình yêu trước thời điểm thích hợp.",
+    "explanation": "Câu Nhã Ca 2:7 viết: \"Hỡi con gái Giê-ru-sa-lem, ta ép nài các ngươi bởi những con hoàng dương, hay những con nai cái trong đồng ruộng, đừng kinh động, đừng làm tỉnh thức ái tình cho đến khi nó muốn.\" Đáp án đúng nêu đúng điều kiện được dặn là \"cho đến khi nó muốn\". Distractor 1 sai vì thay đổi chi tiết then chốt về thời gian thành \"cho đến khi trời tối\", một dữ kiện không có trong câu này. Distractor 2 mở rộng sai phạm vi, diễn giải 'chớ làm tỉnh thức' thành 'khi nó đang ngủ', đây là một sự suy diễn không có trong nguyên văn. Distractor 3 phản ánh một hiểu lầm phổ biến về việc chủ động khích lệ tình yêu, hoàn toàn trái ngược với mệnh lệnh \"đừng kinh động, đừng làm tỉnh thức\" trong câu Kinh Thánh.",
     "language": "vi",
     "options": [
-      "Đừng nói về nó nơi công cộng",
+      "Chớ kinh động, chớ làm tỉnh thức ái tình cho đến khi trời tối",
       "Chớ kinh động, chớ làm tỉnh thức ái tình cho đến khi nó muốn",
-      "Đừng học từ kinh nghiệm người xưa",
-      "Đừng bao giờ thử nó"
+      "Chớ kinh động, chớ làm tỉnh thức ái tình khi nó đang ngủ",
+      "Hãy trung tín và khích lệ ái tình mọi lúc"
     ],
     "tags": [
       "Cựu Ước",
@@ -165,13 +165,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Nhã Ca 2:15 — 'Hãy bắt cho chúng tôi những con chồn, những con chồn nhỏ phá hại vườn nho; vì vườn nho chúng tôi đương trổ bông.' Hình ảnh các 'việc nhỏ' phá hủy mối quan hệ.",
+    "explanation": "Nhã Ca 2:15 chép: 'Hãy bắt cho chúng tôi những con chồn nhỏ, những con chồn nhỏ phá hại vườn nho; vì vườn nho chúng tôi đương trổ hoa.' Vì vậy, đáp án đúng là 'Phá hại các vườn nho'. Distractor 'Phá hại các rẫy lúa mì' là gần đúng vì lúa mì là cây trồng phổ biến trong Kinh Thánh, nhưng câu này chỉ nói đến vườn nho. Distractor 'Phá hại các vườn cây ăn trái' sai vì đây là một hiểu lầm phổ biến khi mở rộng ý 'vườn nho' thành các loại vườn khác. Distractor 'Phá hại các bãi chăn chiên' tuy có thể liên tưởng đến bối cảnh chăn nuôi trong sách, nhưng hoàn toàn lạc với nội dung cụ thể của câu hỏi và câu Kinh Thánh này.",
     "language": "vi",
     "options": [
-      "Phá hại đàn chiên",
-      "Phá hại lúa mì",
+      "Phá hại các rẫy lúa mì",
+      "Phá hại các vườn cây ăn trái",
       "Phá hại các vườn nho",
-      "Phá hại các vườn dâu"
+      "Phá hại các bãi chăn chiên"
     ],
     "tags": [
       "Cựu Ước",
@@ -191,12 +191,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Nhã Ca 2:16 — 'Lương nhân tôi thuộc về tôi, và tôi thuộc về người; người chăn bầy mình giữa đám bông huệ.'",
+    "explanation": "Trong Nhã Ca 2:16, cô dâu nói: \"Lương nhân tôi thuộc về tôi, và tôi thuộc về người; Người ngày đêm chăn con giữa hoa huệ.\" Vì vậy, đáp án đúng là phần đầu của câu 16, diễn tả chính xác và trọn vẹn mối tình thuộc nhau. Distractor 1 sai vì thêm chi tiết thuộc về phần sau của câu 16, làm sai trọng tâm câu hỏi về mối tình thuộc nhau. Distractor 2 sai vì mượn ý thuộc về nhưng lại ghép với hình ảnh \"hoa huệ của Sa-rôn\" ở chương khác (2:1), nên không trả lời đúng câu hỏi về câu nói trong 2:16. Distractor 3 sai vì thay đổi hoàn toàn ý nghĩa thành một lời cầu xin (trích từ 2:17), đây là một hiểu lầm phổ biến khi người đọc nhớ nhầm phân đoạn.",
     "language": "vi",
     "options": [
-      "Hai chúng ta cùng một thân thể",
-      "Tình yêu là tất cả của tôi",
-      "Tôi sẽ theo người đến cùng đất",
+      "Lương nhân tôi thuộc về tôi, và người ngày đêm chăn con giữa hoa huệ",
+      "Tôi thuộc về lương nhân tôi, và tôi là hoa huệ của Sa-rôn",
+      "Hãy nhắc tôi dậy, lương nhân tôi thuộc về tôi",
       "Lương nhân tôi thuộc về tôi, và tôi thuộc về người"
     ],
     "tags": [
@@ -217,13 +217,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Nhã Ca 3:1 — 'Ban đêm tại trên giường, tôi tìm người mà lòng tôi yêu dấu, tôi tìm kiếm người mà không gặp.'",
+    "explanation": "Trích dẫn: \"Trên giường mình, ban đêm, tôi tìm người mà lòng tôi yêu mến; Tôi tìm người, nhưng không gặp.\" (Nhã Ca 3:1). Đáp án đúng là 'Trên giường mình' vì câu Kinh Thánh ghi rõ địa điểm đầu tiên nàng tìm kiếm là trên giường của chính mình vào ban đêm. Distractor 'Trong đền vua' là gần đúng vì liên quan đến khung cảnh cung điện được nhắc đến sau đó trong phân đoạn, nhưng đây không phải là nơi tìm kiếm đầu tiên được nói đến trong câu 1. Distractor 'Trên đường phố' sai vì nàng chỉ bước ra đường phố sau khi không tìm thấy trên giường (câu 2). Distractor 'Ngoài vườn nho' sai vì đây là một địa điểm phổ biến trong sách Nhã Ca nhưng không được đề cập trong ngữ cảnh tìm kiếm ban đêm này.",
     "language": "vi",
     "options": [
       "Trên giường mình",
-      "Trong vườn nho",
-      "Tại đền thờ",
-      "Ngoài đồng vắng"
+      "Trong đền vua",
+      "Trên đường phố",
+      "Ngoài vườn nho"
     ],
     "tags": [
       "Cựu Ước",
@@ -243,13 +243,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Nhã Ca 4:7 — 'Hỡi bạn tình ta, mình vốn xinh đẹp mọi bề, nơi mình chẳng có tì vít gì cả.'",
+    "explanation": "Nhã Ca 4:7 ghi: 'Hỡi bạn tình ta, mình vốn xinh đẹp mọi bề, không có tì vít gì cả.' Do đó, đáp án đúng là lời khẳng định trọn vẹn về vẻ đẹp không tỳ vết. Distractor thứ nhất sai vì thêm chi tiết 'chỉ vương chút tì vít thôi' (sai chi tiết), trái với ý 'không có tì vít gì cả' trong Kinh Thánh. Distractor thứ hai sai vì mở rộng phạm vi so sánh với 'không ai sánh bằng' (sai phạm vi), đây là ý không có trong câu được hỏi. Distractor thứ ba sai vì dù nhận xét về vẻ đẹp nhưng lại chuyển trọng tâm sang 'con tim' (đúng văn bản nhưng lạc câu hỏi), không trả lời trực tiếp lời chàng nói về vẻ đẹp ngoại hình trong câu này.",
     "language": "vi",
     "options": [
-      "Mình đẹp như mặt trời",
+      "Mình vốn xinh đẹp mọi bề, chỉ vương chút tì vít thôi",
       "Mình vốn xinh đẹp mọi bề, không có tì vít gì cả",
-      "Mình quí giá như vàng ròng",
-      "Mình rạng rỡ như ánh sao"
+      "Mình là người đẹp tuyệt trần, không ai sánh bằng",
+      "Mình vốn xinh đẹp, nhưng con tim mới là quan trọng"
     ],
     "tags": [
       "Cựu Ước",
@@ -269,13 +269,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Nhã Ca 1:9 — 'Hỡi bạn tình ta, ta sánh mình như ngựa cái của xe Pha-ra-ôn.' Một sự so sánh đầy danh dự — ngựa cái của xe vua Pha-ra-ôn là thượng phẩm.",
+    "explanation": "Trong Nhã Ca 1:9, chàng nói: \"Ta ví sánh mình như ngựa cái của xe Pha-ra-ôn, hỡi bạn tình ta.\" Đây là lời khen về vẻ đẹp và sự quý phái của người yêu. Distractor thứ nhất sai vì thay chi tiết 'ngựa cái' thành 'ngựa đực'. Distractor thứ hai sai vì mở rộng phạm vi sang 'chiến xa người Y-sơ-ra-ên', không phải xe Pha-ra-ôn. Distractor thứ ba sai vì nhầm sang ngữ cảnh gần (Sa-lô-môn), nhưng đoạn này không đề cập ngựa của các đoàn xe ông.",
     "language": "vi",
     "options": [
-      "Cây nho trên núi cao",
-      "Bồ câu trắng nơi hốc đá",
+      "Ngựa đực của xe Pha-ra-ôn",
+      "Ngựa cái của chiến xa người Y-sơ-ra-ên",
       "Ngựa cái của xe Pha-ra-ôn",
-      "Mặt trăng giữa các vì sao"
+      "Ngựa cái của các đoàn xe Sa-lô-môn"
     ],
     "tags": [
       "Cựu Ước",
@@ -321,13 +321,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Nhã Ca 4:12 — 'Em gái ta, tân phụ ta là vườn đóng kín, là nguồn nước khóa lại, là suối niêm phong.' Hình ảnh sự trinh tiết và sự dành riêng cho chồng.",
+    "explanation": "Câu hỏi tham chiếu Nhã Ca 4:12 (BTT). Đáp án đúng là 'Vườn đóng kín, nguồn nước khóa lại, suối niêm phong' vì câu Kinh Thánh ghi rõ: 'Hỡi em gái ta, hôn thê ta, em là một khu vườn khóa kín, một mạch nước bịt kín, một nguồn suối đóng ấn.' (Nhã Ca 4:12 BTT).\n\nCác đáp án sai:\n1. 'Vườn mở rộng, nguồn nước tuôn trào, suối chảy rộng rãi' SAI vì mô tả ngược hoàn toàn với ý 'đóng kín', 'khóa lại', 'niêm phong' trong câu Kinh Thánh (sai chi tiết then chốt).\n2. 'Vườn đóng kín, nguồn nước khóa lại, ao hồ phong tỏa' SAI vì dùng 'ao hồ' thay vì 'suối' như trong nguyên văn; 'ao hồ' không xuất hiện trong ngữ cảnh gần của câu hỏi (nhầm passage gần).\n3. 'Một khu vườn xinh đẹp, một dòng suối trong lành' SAI vì chỉ mô tả chung chung, thiếu hoàn toàn các yếu tố 'đóng kín/khóa lại/niêm phong' then chốt của câu Kinh Thánh, do đó không trả lời đúng trọng tâm câu hỏi (sai phạm vi).",
     "language": "vi",
     "options": [
       "Vườn đóng kín, nguồn nước khóa lại, suối niêm phong",
-      "Cây nho trổ trái sum sê",
-      "Đồng cỏ xanh mơn mởn",
-      "Bồ câu giữa thung lũng"
+      "Vườn mở rộng, nguồn nước tuôn trào, suối chảy rộng rãi",
+      "Vườn đóng kín, nguồn nước khóa lại, ao hồ phong tỏa",
+      "Một khu vườn xinh đẹp, một dòng suối trong lành"
     ],
     "tags": [
       "Cựu Ước",
@@ -347,13 +347,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Nhã Ca 5:2 — 'Tôi ngủ, nhưng lòng tôi tỉnh thức. Ấy là tiếng của lương nhân tôi gõ cửa...' Hình ảnh tâm trí luôn hướng về người yêu dấu.",
+    "explanation": "Trong Nhã Ca 5:2, người nữ nói: 'Tôi ngủ, nhưng lòng tôi thức' (BTT). Vì vậy, 'Lòng tôi' là đáp án đúng, vì văn bản trực tiếp xác định lòng/bản chất bên trong của cô là thứ đang thức. Các đáp án sai: 1) 'Đôi mắt tôi' sai vì đây là chi tiết từ câu 12 (mô tả đôi mắt), không phải phần thức trong câu 2. 2) 'Tiếng nói tôi' sai vì không được nhắc đến trong ngữ cảnh này; người yêu gõ cửa và nói, không phải tiếng của cô. 3) 'Đức tin tôi' sai vì đây là một khái niệm không có trong sách Nhã Ca; đây là một hiểu lầm phổ biến khi áp dụng các chủ đề tâm linh khác vào văn bản tình yêu này.",
     "language": "vi",
     "options": [
-      "Mắt tôi",
+      "Đôi mắt tôi",
       "Lòng tôi",
-      "Tay tôi",
-      "Tiếng tôi"
+      "Tiếng nói tôi",
+      "Đức tin tôi"
     ],
     "tags": [
       "Cựu Ước",
@@ -373,13 +373,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Nhã Ca 5:16 — 'Miệng người rất ngọt; thật, người sánh mọi bề đáng yêu mến. Hỡi các con gái Giê-ru-sa-lem, lương nhân tôi như vậy, bạn tình tôi như vậy.'",
+    "explanation": "Câu hỏi hỏi về lời của người nữ nói về lương nhân trong Nhã Ca 5:16. Đáp án đúng là 'Miệng người rất ngọt; người sánh mọi bề đáng yêu mến' (Nhã Ca 5:16 BTT) vì câu này trích nguyên văn mô tả của người nữ về người yêu. Distractor 1 sai vì thay đổi chi tiết then chốt 'ngọt' thành 'đắng', làm sai hoàn toàn ý nghĩa mô tả tích cực. Distractor 2 sai vì dùng ý từ câu 5:8 ('người mà lòng tôi yêu mến'), nhưng không phải là lời mô tả cụ thể trong câu 16 về 'mọi bề'. Distractor 3 sai vì thay 'đáng yêu mến' bằng 'đáng quý trọng', tuy cùng hướng tích cực nhưng không đúng nguyên văn và làm lạc trọng tâm câu hỏi về lời trích dẫn chính xác.",
     "language": "vi",
     "options": [
-      "Người là vua hơn các vua",
-      "Người mạnh mẽ và oai phong",
+      "Miệng người rất đắng; người sánh mọi bề đáng yêu mến",
+      "Miệng người rất ngọt; người là người tôi yêu mến",
       "Miệng người rất ngọt; người sánh mọi bề đáng yêu mến",
-      "Người giàu có nhất xứ"
+      "Miệng người rất ngọt; người sánh mọi bề đáng quý trọng"
     ],
     "tags": [
       "Cựu Ước",
@@ -399,12 +399,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Nhã Ca 6:3 — 'Tôi thuộc về lương nhân tôi, và lương nhân tôi thuộc về tôi; người chăn bầy mình giữa đám bông huệ.'",
+    "explanation": "Đáp án đúng là 'Tôi thuộc về lương nhân tôi, và lương nhân tôi thuộc về tôi' vì đây là câu thuộc nhau được lặp lại nguyên văn trong Nhã Ca 6:3 (cũng xuất hiện ở 2:16), thể hiện mối quan hệ song thuộc đặc trưng. Distractor 1 sai vì thay 'tôi' bằng 'người nữ' ở vế thứ hai, làm thay đổi chủ thể và ý nghĩa. Distractor 2 sai vì thêm cụm 'là người yêu dấu', mở rộng phạm vi câu văn so với bản văn được hỏi. Distractor 3 sai vì thay đổi chủ thể vế đầu thành 'Người nữ', đây là một cách diễn đạt có trong ngữ cảnh gần (ví dụ như trong lời của lương nhân) nhưng không phải là câu thuộc nhau được lặp lại ở 6:3.",
     "language": "vi",
     "options": [
-      "Tôi nhận biết người, và người nhận biết tôi",
-      "Tôi giúp người, và người giúp tôi",
-      "Tôi cầu nguyện cho người, và người cầu nguyện cho tôi",
+      "Tôi thuộc về lương nhân tôi, và lương nhân tôi thuộc về người nữ",
+      "Tôi thuộc về lương nhân tôi, và lương nhân tôi thuộc về tôi, là người yêu dấu",
+      "Người nữ thuộc về lương nhân tôi, và lương nhân tôi thuộc về tôi",
       "Tôi thuộc về lương nhân tôi, và lương nhân tôi thuộc về tôi"
     ],
     "tags": [
@@ -451,13 +451,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Nhã Ca 8:6 — 'Hãy để tôi như một cái ấn nơi lòng chàng, như một cái ấn trên cánh tay chàng; vì ái tình mạnh như sự chết...' Cái ấn — biểu tượng sở hữu vĩnh viễn.",
+    "explanation": "Trong Nhã Ca 8:6, người nữ cầu xin: 'Xin để em như cái ấn trên lòng anh, như cái ấn trên cánh tay anh.' Vì vậy, đáp án đúng là 'Trên lòng và trên cánh tay'.\n\nCác đáp án sai: 1) 'Trên trán và trên cánh tay' là gần đúng nhưng sai chi tiết (ấn trên lòng, không phải trán). 2) 'Trên lòng và trên vai' là nhầm với hình ảnh ở các sách khác (ví dụ: Xuất Ê-díp-tô 28:12 nói về đá trên áo ngắn đặt lên hai vai), không phải trong Nhã Ca 8:6. 3) 'Giữa lòng và trong tâm trí' tuy đúng ý tượng trưng về sự ghi nhớ, nhưng đây là cách diễn giải ý nghĩa, không phải nguyên văn địa điểm cụ thể mà câu hỏi yêu cầu.",
     "language": "vi",
     "options": [
-      "Trên trán và trên môi",
+      "Trên trán và trên cánh tay",
       "Trên lòng và trên cánh tay",
-      "Trên đầu và trên chân",
-      "Trên ngực và trên vai"
+      "Trên lòng và trên vai",
+      "Giữa lòng và trong tâm trí"
     ],
     "tags": [
       "Cựu Ước",
@@ -477,13 +477,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Nhã Ca 8:6 — '...vì ái tình mạnh như sự chết, lòng ghen hung dữ như âm phủ; sự nóng nó là sự nóng của lửa, thật một ngọn lửa của Đức Giê-hô-va.'",
+    "explanation": "Nhã Ca 8:6 viết: \"Vì ái tình mạnh như sự chết\" (BTT). Đáp án đúng là 'Như sự chết' vì câu Kinh Thánh trực tiếp sánh sức mạnh của ái tình với sự chết. Distractor 'Như ngọn lửa của Đức Giê-hô-va' là gần đúng nhưng sai chi tiết; câu 6 cũng nói 'lòng ghen hung dữ như âm phủ' và 'các ngọn lửa nó là các ngọn lửa của Đức Giê-hô-va', nhưng đối tượng so sánh với 'ái tình mạnh' cụ thể là 'sự chết'. Distractor 'Như nước' là lấy từ ý gần đó trong sách Nhã Ca (ví dụ: 4:15, 8:7) nhưng không phải là phép so sánh cho 'ái tình mạnh' trong câu 6. Distractor 'Như sự sống' dựa trên hiểu lầm phổ biến khi đối lập sai với 'sự chết', trong khi văn bản khẳng định sự tương đồng về sức mạnh, không phải sự đối lập.",
     "language": "vi",
     "options": [
-      "Như mặt trời chiếu sáng",
-      "Như đại dương mênh mông",
+      "Như ngọn lửa của Đức Giê-hô-va",
+      "Như nước",
       "Như sự chết",
-      "Như đá hoa cương"
+      "Như sự sống"
     ],
     "tags": [
       "Cựu Ước",
@@ -503,12 +503,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Nhã Ca 8:7 — 'Nước nhiều không tưới tắt được ái tình, các sông chẳng nhận chìm nó được. Nếu người nào đem hết tài sản nhà mình đặng mua lấy ái tình, ắt người ta sẽ khinh dể nó đến điều.'",
+    "explanation": "Câu đúng là 'Nước nhiều và các sông' (Nhã Ca 8:7). Câu này đúng vì Kinh Thánh ghi rõ: 'Nước nhiều chẳng có thể dập tắt ái tình, các sông chẳng có thể làm ngập nó được'.\n\n- Distractor 'Nước nhiều và cả biển' sai vì mặc dù có 'Nước nhiều', nhưng chi tiết 'cả biển' không có trong câu Kinh Thánh này (sai chi tiết).\n- Distractor 'Các sông và các suối' sai vì tuy 'các sông' có trong câu, nhưng 'các suối' là từ được dùng ở những phân đoạn khác (như Nhã Ca 4:12, 15), không phải trong câu 8:7 (nhầm passage gần).\n- Distractor 'Lửa và ngọn lửa' sai vì đây là một hiểu lầm phổ biến. Mặc dù câu 8:6 có nói 'Vì ái tình mạnh như sự chết... nóng như ngọn lửa của Đức Giê-hô-va', nhưng câu 8:7, nơi trả lời trực tiếp câu hỏi 'điều gì... không thể dập tắt', lại không phải là lửa mà là nước và sông (hiểu lầm phổ biến).",
     "language": "vi",
     "options": [
-      "Sự khôn ngoan",
-      "Sự giàu có",
-      "Quyền lực",
+      "Nước nhiều và cả biển",
+      "Các sông và các suối",
+      "Lửa và ngọn lửa",
       "Nước nhiều và các sông"
     ],
     "tags": [
@@ -530,13 +530,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Nhã Ca 3:7-8 — 'Kìa, kiệu của Sa-lô-môn, có sáu mươi dõng sĩ trong bọn dõng sĩ Y-sơ-ra-ên vây chung quanh nó; thảy đều cầm gươm, có tài chiến trận; ai nấy đều có gươm ở nơi đùi mình, vì sợ kinh khiếp ban đêm.'",
+    "explanation": "Nhã Ca 3:7-8 (BTT) ghi: \"Nầy là kiệu của vua Sa-lô-môn; chung quanh có sáu mươi dõng sĩ, là kẻ mạnh bạo trong Y-sơ-ra-ên.\" Do đó, đáp án đúng là \"Sáu mươi dõng sĩ Y-sơ-ra-ên\". \n- Distractor \"Sáu mươi dõng sĩ Giu-đa\" sai vì bản văn xác định họ là người Y-sơ-ra-ên, không thu hẹp vào chi phái Giu-đa. \n- Distractor \"Sáu mươi dõng sĩ từ các chi phái khác\" sai vì tuy về nghĩa rộng có thể hiểu là từ nhiều chi phái, nhưng bản văn trực tiếp gọi họ là \"trong Y-sơ-ra-ên\", nên đây là một chi tiết đúng nhưng trả lời không trực tiếp và có thể gây nhiễu. \n- Distractor \"Ba mươi dõng sĩ Y-sơ-ra-ên\" là đáp án gần đúng, nhưng sai về số lượng (ba mươi thay vì sáu mươi), đây là một chi tiết số học sai lệch thường gặp khi đọc lướt các đoạn Kinh Thánh có số.",
     "language": "vi",
     "options": [
       "Sáu mươi dõng sĩ Y-sơ-ra-ên",
-      "Mười hai sứ giả",
-      "Bốn mươi tướng quân",
-      "Một trăm thầy tế lễ"
+      "Sáu mươi dõng sĩ Giu-đa",
+      "Sáu mươi dõng sĩ từ các chi phái khác",
+      "Ba mươi dõng sĩ Y-sơ-ra-ên"
     ],
     "tags": [
       "Cựu Ước",

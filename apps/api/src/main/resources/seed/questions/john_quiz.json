@@ -9,14 +9,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giăng 1:1: Ngôi Lời là Chúa Giê-su, ở cùng Đức Chúa Trời và là Đức Chúa Trời.",
+    "explanation": "Giăng 1:1-5 khẳng định \"Ban đầu có Ngôi Lời, Ngôi Lời ở cùng Đức Chúa Trời, và Ngôi Lời là Đức Chúa Trời\" (c.1). Câu 14 giải thích rõ: \"Ngôi Lời đã trở nên xác thịt, ở giữa chúng ta\", ám chỉ sự nhập thể của Chúa Giê-su. Vì vậy, cụm từ \"Ban đầu có Ngôi Lời\" trực tiếp nói về Chúa Giê-su. \n\nCác đáp án sai: (1) \"Thánh Linh\" là một sự hiểu lầm phổ biến về Ba Ngôi, nhưng đoạn Kinh Thánh này tập trung đặc biệt vào Ngôi Lời (Chúa Giê-su), không phải Ngôi thứ ba. (2) \"Giăng Báp-tít\" được nhắc đến ở câu 6, là một nhân vật trong cùng đoạn văn gần đó, nhưng không phải là Ngôi Lời. (3) \"Đa-vít\" là một nhân vật quan trọng trong Cựu Ước, nhưng hoàn toàn nằm ngoài phạm vi và bối cảnh của đoạn văn này.",
     "language": "vi",
     "verseEnd": 5,
     "options": [
       "Chúa Giê-su",
-      "Môi-se",
+      "Thánh Linh",
       "Giăng Báp-tít",
-      "Ê-li"
+      "Đa-vít"
     ],
     "tags": [
       "Tân Ước",
@@ -119,13 +119,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 8:12: Ta là sự sáng của thế gian; ai theo Ta chẳng đi trong tối tăm.",
+    "explanation": "Trong Giăng 8:12, Chúa Giê-su phán: 'Ta là sự sáng của thế gian; người nào theo ta, chẳng đi trong nơi tối tăm, nhưng có ánh sáng của sự sống.' (BTT). Do đó, 'Sự sáng của thế gian' là đáp án đúng.\n\nCác đáp án sai:\n- 'Sự sáng của dân Y-sơ-ra-ên': Sai vì Chúa Giê-su tuyên bố phạm vi rộng hơn ('thế gian'), không chỉ giới hạn trong một dân tộc.\n- 'Con đường sự sống': Đây là một danh xưng của Chúa Giê-su (Giăng 14:6), nhưng không phải là câu trả lời cho câu hỏi cụ thể về lời tuyên bố trong Giăng 8:12.\n- 'Sự sống lại và sự sống': Đây là lời tuyên bố của Chúa Giê-su trong một phân đoạn gần đó (Giăng 11:25), nhưng không phải là nội dung của Giăng 8:12.",
     "language": "vi",
     "options": [
-      "Con đường",
+      "Sự sáng của dân Y-sơ-ra-ên",
       "Sự sáng của thế gian",
-      "Sự sống lại",
-      "Cây nho thật"
+      "Con đường sự sống",
+      "Sự sống lại và sự sống"
     ],
     "tags": [
       "Tân Ước",
@@ -146,14 +146,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giăng 11:25: Ta là sự sống lại và sự sống; ai tin Ta sẽ sống.",
+    "explanation": "Câu hỏi hỏi cụ thể lời Chúa Giê-su phán TRƯỚC MỘ La-xa-rơ trong Giăng 11:25-26. Đáp án đúng là 'Sự sống lại và sự sống' (Giăng 11:25: 'Ta là sự sống lại và sự sống').\n\n*   **Sự sống lại và ánh sáng thế gian (gần đúng):** Sai chi tiết. Đây là sự kết hợp sai: 'sự sống lại' là đúng (câu 25), nhưng 'ánh sáng thế gian' là danh hiệu Chúa phán ở một ngữ cảnh khác (Giăng 8:12), không phải ở đây.\n*   **Sự sống và nguồn nước hằng sống:** Sai vì dùng chi tiết từ một passage gần (cùng sách Giăng nhưng khúc khác). 'Sự sống' là đúng, nhưng 'nguồn nước hằng sống' là lời Chúa phán với người đàn bà Sa-ma-ri bên giếng nước (Giăng 4:10,14), không phải trước mộ La-xa-rơ.\n*   **Đấng phán xét và sự sáng thế gian:** Đúng văn bản nhưng lạc câu hỏi. Cụm này mô tả chức vụ của Chúa Giê-su (xem Giăng 8:12, 9:39, 12:47-48), nhưng không phải là lời Ngài tự xưng TRỰC TIẾP tại hiện trường trước mộ La-xa-rơ trong Giăng 11.",
     "language": "vi",
     "verseEnd": 26,
     "options": [
       "Sự sống lại và sự sống",
-      "Người chăn tốt lành",
-      "Bánh sự sống",
-      "Cửa chiên"
+      "Sự sống lại và ánh sáng thế gian",
+      "Sự sống và nguồn nước hằng sống",
+      "Đấng phán xét và sự sáng thế gian"
     ],
     "tags": [
       "Tân Ước",
@@ -174,14 +174,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 2:1-11: Tại tiệc cưới Ca-na, Ngài hóa nước thành rượu.",
+    "explanation": "Trong Giăng 2:1-11, Chúa Giê-su đã biến nước thành rượu tại tiệc cưới ở Ca-na, đây là phép lạ đầu tiên được sách Giăng ghi lại (câu 11).\n\nCác đáp án sai: (1) 'Hóa bánh thành cá' là sai chi tiết; phép lạ liên quan đến bánh và cá (Giăng 6:1-14) là phép lạ thứ tư, không phải đầu tiên. (2) 'Chữa lành người bại liệt' là hiểu lầm phổ biến; phép lạ chữa người bại liệt ở Bê-tết-đa (Giăng 5:1-15) xảy ra sau, không phải đầu tiên. (3) 'Đi trên mặt nước' là sai phạm vi; phép lạ này (Giăng 6:16-21) xảy ra sau phép lạ đầu tiên rất lâu và được ghi trong sách khác (Ma-thi-ơ 14:22-33) trước Giăng.",
     "language": "vi",
     "verseEnd": 11,
     "options": [
-      "Chữa người bại 38 năm",
-      "Chữa con viên quan",
+      "Hóa bánh thành cá",
+      "Chữa lành người bại liệt",
       "Hóa nước thành rượu",
-      "Hóa bánh cho 5.000 người"
+      "Đi trên mặt nước"
     ],
     "tags": [
       "Tân Ước",
@@ -202,14 +202,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 5:2-9: Ở hồ Bê-tê-xda, Chúa phán: Hãy đứng dậy, vác giường và đi.",
+    "explanation": "Đáp án đúng là 'Bê-tê-xda' vì Giăng 5:2 chép rõ: 'Tại thành Giê-ru-sa-lem, gần cửa Chiên, có một cái ao... tiếng Hê-bơ-rơ gọi là Bê-tê-xda'. Câu hỏi hỏi về nơi xảy ra phép lạ, và câu 6-9 mô tả việc Chúa Giê-xu chữa lành người bại tại chính ao này.\n\nCác đáp án sai:\n- 'Hồ Ga-li-lê' là sai chi tiết (wrong_detail): Đây là tên một vùng biển lớn, không phải ao trong thành Giê-ru-sa-lem nơi xảy ra sự việc.\n- 'Hồ Si-lô-ê' là gần đúng nhưng sai (nearby_passage): Si-lô-ê là tên một ao/hồ khác được nhắc đến trong Kinh Thánh (ví dụ: Giăng 9:7, Lu-ca 13:4), cũng ở Giê-ru-sa-lem, dễ gây nhầm lẫn với Bê-tê-xda.\n- 'Hồ Gê-nê-xa-rết' là đúng văn bản nhưng lạc câu hỏi (true_but_off): Đây là một tên khác của biển Ga-li-lê (Lu-ca 5:1), một địa điểm có thật nhưng không liên quan đến phép lạ trong Giăng chương 5.",
     "language": "vi",
     "verseEnd": 9,
     "options": [
-      "Ên-đô",
+      "Hồ Ga-li-lê",
       "Bê-tê-xda",
-      "Si-lô-ê",
-      "Ghê-nê-sa-rét"
+      "Hồ Si-lô-ê",
+      "Hồ Gê-nê-xa-rết"
     ],
     "tags": [
       "Tân Ước",
@@ -258,13 +258,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 7:37: Ai khát, hãy đến cùng Ta mà uống.",
+    "explanation": "Câu hỏi tham chiếu Giăng 7:37-39. Trong câu 37, Chúa Giê-su tuyên bố rõ: \"Nếu ai khát, hãy đến cùng ta mà uống\". Do đó, đáp án đúng 'Mà uống' là trích dẫn trực tiếp và chính xác từ Kinh Thánh. Các đáp án sai: 1) 'Mà tìm được sự nghỉ ngơi' là gần đúng nhưng lấy ý từ một câu Kinh Thánh khác (Ma-thi-ơ 11:28) đề cập đến sự nghỉ ngơi, không phải bối cảnh 'uống' trong Giăng 7. 2) 'Mà nhận được sự sáng' mở rộng sai phạm vi, vì chủ đề ở đây là nước hằng sống, còn 'sự sáng' là chủ đề chính trong sách Giăng nhưng ở các phân đoạn khác (ví dụ Giăng 8:12). 3) 'Mà được tái sinh' là hiểu lầm phổ biến, dựa trên khái niệm thần học về sự tái sinh qua Đức Thánh Linh (Giăng 3), nhưng không phải là hành động Chúa Giê-su kêu gọi trực tiếp trong câu này.",
     "language": "vi",
     "verseEnd": 39,
     "options": [
-      "Mà được chữa lành",
-      "Mà học hỏi",
-      "Mà nghỉ ngơi",
+      "Mà tìm được sự nghỉ ngơi",
+      "Mà nhận được sự sáng",
+      "Mà được tái sinh",
       "Mà uống"
     ],
     "tags": [
@@ -286,14 +286,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 8:31-32,36: Nếu các ngươi hằng ở trong đạo ta... các ngươi sẽ biết lẽ thật, và lẽ thật sẽ buông tha các ngươi... nếu Con buông tha các ngươi, các ngươi sẽ thật được tự do.",
+    "explanation": "Đoạn Kinh Thánh Giăng 8:31-36 ghi lại lời Chúa Giê-su: 'Nếu các ngươi hằng ở trong đạo ta... thì các ngươi sẽ biết lẽ thật, và lẽ thật sẽ buông tha các ngươi' (c.31-32). Ngài kết luận: 'Vậy nếu Con buông tha các ngươi, các ngươi sẽ thật được tự do' (c.36). Như vậy, sự tự do thật đến từ 'lẽ thật' (c.32), là chính Chúa Giê-su và đạo của Ngài.\n\nCác đáp án sai:\n1. 'Từ sự vâng lời': Đây là đáp án gần đúng vì Chúa Giê-su bắt đầu bằng điều kiện 'nếu các ngươi hằng ở trong đạo ta' (sự vâng lời/hằng ở), nhưng Ngài xác định nguồn của tự do là 'lẽ thật' chứ không phải hành động vâng lời.\n2. 'Từ việc giữ luật pháp': Đây là hiểu lầm phổ biến, đặc biệt với người Pha-ri-si đương thời, nhưng Chúa Giê-su đang chỉ ra sự tự do vượt trên sự nô lệ của luật pháp và tội lỗi.\n3. 'Từ tình yêu thương': Mặc dù là chủ đề quan trọng trong Kinh Thánh, nhưng không được đề cập là nguồn của sự tự do thật trong đoạn văn cụ thể này; đây là đáp án đúng văn bản nhưng lạc câu hỏi.",
     "language": "vi",
     "verseEnd": 36,
     "options": [
-      "Từ luật pháp",
-      "Từ quyền lực",
+      "Từ sự vâng lời",
+      "Từ việc giữ luật pháp",
       "Từ lẽ thật",
-      "Từ của cải"
+      "Từ tình yêu thương"
     ],
     "tags": [
       "Tân Ước",
@@ -314,14 +314,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 9:6-7: Ngài nhổ nước miếng làm bùn, thoa mắt, bảo đi rửa.",
+    "explanation": "Câu hỏi hỏi cách thức chữa lành cụ thể trong Giăng 9:1-7. Đáp án đúng dựa trên Giăng 9:6-7: 'Ngài phàm nước miếng trên đất, lấy bùn thoa mắt người mù... và bảo người rằng: Hãy đi, rửa nơi ao Si-lô-ê'. Distractor 1 sai chi tiết địa điểm (Bết-xê-đa thay vì Si-lô-ê), dù hành động 'lấy bùn thoa mắt' là đúng. Distractor 2 mô tả cách chữa lành phổ biến trong các phép lạ khác (như Mác 8:23-25), nhưng không phải trong câu chuyện này. Distractor 3 mô tả đúng phần lệnh 'đi rửa ở Si-lô-ê' nhưng bỏ sót chi tiết then chốt là 'lấy bùn thoa mắt', đồng thời thêm yếu tố 'lập tức' không được đề cập trong trình tự văn bản cho câu hỏi này.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
-      "Đặt tay cầu nguyện",
-      "Phán một lời",
+      "Lấy bùn thoa mắt và bảo đi rửa ở Bết-xê-đa",
+      "Đặt tay trên mắt người ấy và cầu nguyện",
       "Lấy bùn thoa mắt và bảo đi rửa ở Si-lô-ê",
-      "Bảo cha mẹ cầu nguyện"
+      "Bảo người ấy đi rửa ở Si-lô-ê và lập tức được sáng"
     ],
     "tags": [
       "Tân Ước",
@@ -370,14 +370,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 13:34-35: Bởi điều nầy thiên hạ đều nhận biết các ngươi là môn đồ Ta, nếu các ngươi yêu nhau.",
+    "explanation": "ĐÁP ÁN ĐÚNG là 'Yêu nhau' vì Chúa Giê-su trực tiếp tuyên bố trong Giăng 13:34-35: 'Ta ban cho các ngươi một điều răn mới, nghĩa là các ngươi phải yêu nhau; như ta đã yêu các ngươi thể nào, thì các ngươi cũng hãy yêu nhau thể ấy. Nếu các ngươi yêu nhau, thì ấy là tại điều đó mà thiên hạ sẽ nhận biết các ngươi là môn đồ ta.'\n\nCÁC ĐÁP ÁN SAI:\n- 'Vâng giữ mọi luật lệ của Đức Chúa Trời' (Sai loại: nhầm passage gần) – Đây là chủ đề quan trọng nhưng không phải dấu hiệu nhận biết môn đồ theo đoạn Kinh Thánh này. Điều này có thể bắt nguồn từ việc nhớ đến các đoạn khác nói về việc vâng giữ điều răn (ví dụ: Giăng 14:15, 21 nói về việc vâng giữ điều răn của Chúa, nhưng ngữ cảnh cụ thể ở đây là yêu thương).\n- 'Thực hiện những phép lạ vĩ đại' (Sai loại: hiểu lầm phổ biến) – Mặc dù một số người có thể nghĩ dấu hiệu thuộc linh là quyền năng siêu nhiên, nhưng đoạn Kinh Thánh này không đề cập đến phép lạ mà chỉ rõ tình yêu thương là dấu hiệu nhận biết.\n- 'Tham dự các lễ nghi thờ phượng đều đặn' (Sai loại: đúng văn bản nhưng lạc câu hỏi) – Việc nhóm họp là quan trọng trong đời sống đức tin (Hê-bơ-rơ 10:25), nhưng không phải là tiêu chuẩn mà Chúa Giê-su đưa ra trong Giăng 13:34-35 để thế gian nhận biết môn đồ Ngài.",
     "language": "vi",
     "verseEnd": 35,
     "options": [
-      "Dâng hiến",
-      "Ăn chay",
+      "Vâng giữ mọi luật lệ của Đức Chúa Trời",
+      "Thực hiện những phép lạ vĩ đại",
       "Yêu nhau",
-      "Giữ ngày Sa-bát"
+      "Tham dự các lễ nghi thờ phượng đều đặn"
     ],
     "tags": [
       "Tân Ước",
@@ -399,13 +399,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 14:6 (BD2011): \"Đức Chúa Jêsus đáp: \"Chính Ta là con đường, chân lý và sự sống. Chẳng bởi Ta thì không ai được đến với Cha.\"",
+    "explanation": "Giăng 14:6 ghi rõ: \"Đức Chúa Jesus đáp rằng: Ta là đường đi, lẽ thật, và sự sống; chẳng bởi ta thì không ai được đến cùng Cha.\" Do đó, đáp án đúng là \"Đường đi, lẽ thật và sự sống\".\n\n- Distractor 1 (\"Đường đi, ánh sáng và sự sống\") gần đúng nhưng sai một chi tiết then chốt: thay từ \"lẽ thật\" bằng \"ánh sáng\" (một khái niệm liên quan nhưng xuất hiện ở Giăng 8:12).\n- Distractor 2 (\"Bánh hằng sống và môn đồ yêu dấu\") là đáp án đúng của câu hỏi khác (\"bánh hằng sống\" trong Giăng 6:35) và thêm một cụm không liên quan, nên lạc đề với câu hỏi về Giăng 14:6.\n- Distractor 3 (\"Lẽ thật, sự sống và sự cứu rỗi\") phản ánh một hiểu lầm phổ biến khi thêm \"sự cứu rỗi\" - một hệ quả của Chúa Giê-xu là đường đi, lẽ thật và sự sống, chứ không phải chính điều Ngài tuyên bố trong câu này.",
     "language": "vi",
     "options": [
-      "Cửa và đường",
-      "Đầu và thân",
+      "Đường đi, ánh sáng và sự sống",
+      "Bánh hằng sống và môn đồ yêu dấu",
       "Đường đi, lẽ thật và sự sống",
-      "Ánh sáng và muối"
+      "Lẽ thật, sự sống và sự cứu rỗi"
     ],
     "tags": [
       "Tân Ước",
@@ -426,14 +426,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 15:5: Ta là gốc nho, các ngươi là nhành; ở trong Ta thì kết nhiều quả.",
+    "explanation": "Giải thích: Đáp án đúng là 'Ở trong Ngài để kết nhiều quả' vì Giăng 15:5,8 nêu rõ: 'Ta là gốc nho, các ngươi là nhánh. Ai cứ ở trong ta, và ta trong họ, thì sinh ra lắm trái... Nầy, Cha ta được sáng danh là thể nào: ấy là các ngươi được kết nhiều quả, thì sẽ làm môn đồ của ta'. Đây là điều kiện để kết quả và làm môn đồ thật.\n\nCác đáp án sai: 1) 'Đứng vững trong Ngài để có nhiều lá xanh' (sai chi tiết: Kinh Thánh nhấn mạnh việc 'kết quả', không phải 'có nhiều lá xanh' – lá không phải trọng tâm của sự dạy dỗ). 2) 'Trồng thêm cây nho để kết quả nhiều hơn' (sai phạm vi: Đoạn văn tập trung vào mối liên hệ 'ở trong' với cây nho thật (Đức Chúa Jêsus), không phải về việc mở rộng số lượng cây). 3) 'Tự mình cố gắng để sinh nhiều bông trái' (hiểu lầm phổ biến: Trái Giăng 15:4-5 dạy 'không có ta, các ngươi chẳng làm chi được' – nhấn mạnh sự nương dựa chứ không phải nỗ lực tự thân).",
     "language": "vi",
     "verseEnd": 8,
     "options": [
-      "Tìm cành khác",
+      "Đứng vững trong Ngài để có nhiều lá xanh",
       "Ở trong Ngài để kết nhiều quả",
-      "Nhờ luật pháp kết quả",
-      "Tự mình cố gắng"
+      "Trồng thêm cây nho để kết quả nhiều hơn",
+      "Tự mình cố gắng để sinh nhiều bông trái"
     ],
     "tags": [
       "Tân Ước",
@@ -510,14 +510,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 19:30: 'Khi Giê-su nếm giấm rồi, Ngài bèn phán: Thế là đã xong! Rồi Ngài gục đầu mà trút linh hồn.' (Bản Dịch 2011). Lời cuối cùng là 'Thế là đã xong!' (hoặc 'Đã xong').",
+    "explanation": "Giăng 19:30 ghi: “Khi Đức Chúa Jêsus chịu lấy giấm rồi, bèn phán rằng: Thế là đã xong! Rồi Ngài gục đầu mà trút linh hồn.” Vì vậy, đáp án đúng là “Thế là đã xong! (c.30)”.\n\nDistractor 'Lạy Cha, xin tha cho họ (c.28)' là sai vì đây là lời Chúa Giê-su nói trên thập tự giá được ghi trong Lu-ca 23:34, không phải trong phân đoạn Giăng 19:28-30. Distractor 'Cha ôi, sao Ngài lìa bỏ con (c.30)' là sai vì đây là lời trong Ma-thi-ơ 27:46 và Mác 15:34, một hiểu lầm phổ biến về lời cuối cùng trong Giăng. Distractor 'Ta khát (c.28)' là sai vì chi tiết “Ta khát” được ghi trong Giăng 19:28, là lời nói trước đó, chứ không phải lời cuối cùng trong câu 30.",
     "language": "vi",
     "verseEnd": 30,
     "options": [
-      "Ta khát (c.28)",
+      "Lạy Cha, xin tha cho họ (c.28)",
       "Thế là đã xong! (c.30)",
-      "Hỡi đàn bà kia, đó là con của ngươi! (c.26-27)",
-      "Mọi sự đã được trọn (c.28, ý nghĩa)"
+      "Cha ôi, sao Ngài lìa bỏ con (c.30)",
+      "Ta khát (c.28)"
     ],
     "tags": [
       "Tân Ước",
@@ -539,13 +539,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 20:28: Tô-ma xưng Chúa Giê-su là Chúa và Đức Chúa Trời.",
+    "explanation": "Câu hỏi này hỏi về lời tuyên xưng của Tô-ma sau khi trực tiếp thấy các dấu đinh trên thân thể Chúa Giê-su phục sinh. Đáp án đúng là 'Lạy Chúa tôi và Đức Chúa Trời tôi!' (câu 28), đây là một tuyên bố đức tin rõ ràng và trọn vẹn về thân vị của Chúa Giê-su. Các phương án sai: 1) 'Lạy Chúa tôi và Đấng Christ tôi!' là gần đúng nhưng sai chi tiết từ ngữ (thay 'Đức Chúa Trời' bằng 'Đấng Christ'), mặc dù 'Đấng Christ' cũng chỉ về Ngài. 2) 'Tôi đã thấy và đã tin.' (câu 29) là một câu Kinh Thánh thật nhưng ở lạc câu hỏi, vì đó là lời Chúa Giê-su nói với Tô-ma, không phải lời của Tô-ma. 3) 'Lạy Chúa tôi và Cha tôi!' dựa trên hiểu lầm phổ biến, gộp hai thân vị Chúa Giê-su và Đức Chúa Cha làm một trong lời tuyên xưng, nhưng Tô-ma chỉ trực tiếp tuyên xưng Chúa Giê-su (hiện diện trước mặt ông) là Đức Chúa Trời.",
     "language": "vi",
     "verseEnd": 29,
     "options": [
-      "Xin Thánh Linh đến",
-      "Xin thương xót con",
-      "Con tin Ngài sống lại",
+      "Lạy Chúa tôi và Đấng Christ tôi!",
+      "Tôi đã thấy và đã tin.",
+      "Lạy Chúa tôi và Cha tôi!",
       "Lạy Chúa tôi và Đức Chúa Trời tôi!"
     ],
     "tags": [
@@ -594,11 +594,11 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Agape (ἀγάπη) có nghĩa là \"tình yêu vô điều kiện\", tình yêu cao nhất và thuần khiết nhất.",
+    "explanation": "Trong Giăng 3:16, từ được dùng trong bản gốc tiếng Hy Lạp là \"ἠγάπησεν\" (ēgapēsen), dạng động từ của \"agape\", chỉ tình yêu thương vô điều kiện, hy sinh của Đức Chúa Trời dành cho thế gian (Kinh Thánh, Bản Dịch Truyền Thống).\n- Đáp án đúng đúng vì \"agape\" mô tả chính xác bản chất tình yêu trong câu này.\n- Distractor \"Eros - Tình yêu lãng mạn\" sai vì \"eros\" là khái niệm về tình yêu lãng mạn, cảm tính, không xuất hiện trong Tân Ước và không phải từ được dùng ở đây.\n- Distractor \"Philia - Tình yêu bằng hữu\" sai vì mặc dù \"philia\" (tình bạn) xuất hiện trong Tân Ước (như Giăng 21:15-17), nhưng nó không phải là từ dùng trong Giăng 3:16 để mô tả tình yêu của Đức Chúa Trời.\n- Distractor \"Storge - Tình yêu gia đình\" sai vì \"storge\" chỉ tình yêu thương ruột thịt, tự nhiên trong gia đình, không phải là từ Hy Lạp được sử dụng trong câu Kinh Thánh này.",
     "language": "vi",
     "options": [
-      "Phileo - Tình yêu bạn bè",
       "Eros - Tình yêu lãng mạn",
+      "Philia - Tình yêu bằng hữu",
       "Agape - Tình yêu vô điều kiện",
       "Storge - Tình yêu gia đình"
     ],
@@ -621,12 +621,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 1:1 khẳng định Ngôi Lời (Logos) vốn ở cùng Đức Chúa Trời và chính là Đức Chúa Trời. Tân Ước mặc khải Ngôi Lời ấy chính là Chúa Giê-su Christ (xem thêm Giăng 1:14, 18).",
+    "explanation": "Giăng 1:1 khẳng định: \"Ban đầu có Ngôi Lời, Ngôi Lời ở cùng Đức Chúa Trời, và Ngôi Lời là Đức Chúa Trời.\" Cả câu 1:14 và các phần khác của sách (ví dụ: 1:17-18) mặc khải rằng Ngôi Lời đã trở nên xác thịt, chính là Chúa Giê-su Christ. Do đó, đáp án đúng là \"Chúa Giê-su Christ\".\n\n- Distractor \"Thánh Linh của Đức Chúa Trời\" sai vì Giăng 1:1 không đề cập đến Thánh Linh trong ngữ cảnh này; đây là một chi tiết sai.\n- Distractor \"Sứ đồ Giăng\" sai vì mặc dù ông là tác giả, nhưng câu này không nói về bản thân ông; đây là nhầm lẫn với một nhân vật trong một passage gần đó (tác giả).\n- Distractor \"Đức Chúa Trời Cha\" là một hiểu lầm phổ biến. Mặc dù Ngôi Lời là Đức Chúa Trời (Giăng 1:1c), nhưng trong mầu nhiệm Ba Ngôi, Ngôi Lời được mặc khải là Con (Chúa Giê-su), chứ không phải riêng Cha. Đây là distractor gần đúng vì liên quan đến Đức Chúa Trời nhưng sai chi tiết then chốt về ngôi vị.",
     "language": "vi",
     "options": [
-      "Đức Thánh Linh",
-      "Thiên sứ",
-      "Đức Chúa Cha",
+      "Thánh Linh của Đức Chúa Trời",
+      "Sứ đồ Giăng",
+      "Đức Chúa Trời Cha",
       "Chúa Giê-su Christ"
     ],
     "tags": [
@@ -647,13 +647,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 1:14 - Ngôi Lời (Chúa Giê-su) trở nên xác thịt, ở giữa chúng ta - đây là giáo lý nhập thể, Chúa trọn vẹn là Đức Chúa Trời và trọn vẹn là con người.",
+    "explanation": "Giăng 1:14 ghi: 'Ngôi Lời đã trở nên xác thịt, ở giữa chúng ta', trực tiếp mô tả sự kiện Ngôi Lời (Đức Chúa Trời) trở thành con người trong Chúa Giê-xu Christ, đây là định nghĩa cốt lõi của giáo lý Sự nhập thể (Incarnation).\n\nCác đáp án sai:\n- 'Sự thương khó (Passion) - Chúa chịu đau đớn và chết': Mô tả các sự kiện cuối đời Chúa Giê-xu (thập tự giá), là một phần quan trọng nhưng khác với sự nhập thể. Đây là một chủ đề được nhắc đến nhiều trong các sách Phúc Âm khác, nhưng không phải là trọng tâm của câu 1:14 (nearby_passage).\n- 'Sự phục sinh (Resurrection) - Chúa sống lại từ cõi chết': Mô tả sự kiện sau khi chết, là một giáo lý lớn nhưng thuộc phạm vi khác (sự sống lại), không phải là điều câu 1:14 đang dạy (wrong_scope).\n- 'Sự tạo dựng (Creation) - Chúa tạo nên con người': Là một hiểu lầm phổ biến khi đọc 'Ngôi Lời' (Logos) trong Giăng 1, vì Ngôi Lời có liên quan đến công trình sáng tạo (câu 1-3), nhưng câu 14 đặc biệt nhấn mạnh việc Ngôi Lời 'trở nên' xác thịt, chứ không phải 'tạo nên' xác thịt (common_misconception).",
     "language": "vi",
     "options": [
-      "Sự sáng tạo",
+      "Sự thương khó (Passion) - Chúa chịu đau đớn và chết",
       "Sự nhập thể (Incarnation) - Chúa trở nên con người",
-      "Sự tái lâm",
-      "Sự phục sinh"
+      "Sự phục sinh (Resurrection) - Chúa sống lại từ cõi chết",
+      "Sự tạo dựng (Creation) - Chúa tạo nên con người"
     ],
     "tags": [
       "Tân Ước",
@@ -727,14 +727,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giăng 11:25 - Chúa Giê-su là sự sống lại và sự sống. Ai tin Ngài, dù đã chết, cũng sẽ sống.",
+    "explanation": "Giăng 11:25-26 ghi lại lời Chúa Giê-su phán với Ma-thê: 'Ta là sự sống lại và sự sống; kẻ nào tin ta thì sẽ sống, mặc dầu đã chết rồi.' Do đó, 'Sống lại' là đáp án đúng, trực tiếp trích từ câu Kinh Thánh.\n\nCác đáp án sai:\n- 'Thương xót': Sai vì dù lòng thương xót của Chúa được bày tỏ trong câu chuyện (c.33, 35), đây không phải từ ngữ chính xác trong lời tuyên bố 'Ta là...'.\n- 'Chữa lành': Sai vì đây là một hiểu lầm phổ biến, gán ghép chức năng phổ biến trong chức vụ Chúa (chữa bệnh) vào một tuyên bố đặc thù về quyền năng trên sự chết.\n- 'Sáng thế': Sai vì dù Chúa Giê-su là Đấng tạo hóa (Giăng 1:3), từ này không xuất hiện trong ngữ cảnh câu hỏi về lời tuyên bố trực tiếp với Ma-thê và không liên quan đến chủ đề sự sống lại.",
     "language": "vi",
     "verseEnd": 26,
     "options": [
       "Sống lại",
-      "Yêu thương",
-      "Bình an",
-      "Công bình"
+      "Thương xót",
+      "Chữa lành",
+      "Sáng thế"
     ],
     "tags": [
       "Tân Ước",
@@ -755,14 +755,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 13:35 - Dấu hiệu của môn đồ thật là tình yêu thương lẫn nhau, không phải tài năng hay kiến thức.",
+    "explanation": "Câu hỏi hỏi về dấu hiệu đặc biệt để NGƯỜI TA (thế gian) nhận biết môn đồ Chúa, được Chúa Giê-su công bố trực tiếp trong phân đoạn này. Đáp án đúng là \"Yêu thương nhau\", dựa trên câu 34-35: \"Ta ban cho các ngươi một điều răn mới, nghĩa là các ngươi phải yêu nhau; như Ta đã yêu các ngươi thể nào, thì các ngươi cũng hãy yêu nhau thể ấy. Nếu các ngươi yêu nhau, thì ấy là tại điều đó mà thiên hạ sẽ nhận biết các ngươi là môn đồ Ta.\"\n*   Distractor 1 (Yêu thương Đức Chúa Trời hết lòng) SAI vì đây là điều răn lớn nhất (Ma-thi-ơ 22:37-38) nhưng KHÔNG PHẢI là dấu hiệu Chúa nêu trong câu 34-35 cho việc 'thiên hạ nhận biết'. Nó mở rộng phạm vi điều răn vượt ra ngoài ngữ cảnh câu hỏi.\n*   Distractor 2 (Vâng theo các điều răn của Ngài) SAI vì đây là một nguyên tắc chung cho môn đồ (Giăng 14:15) nhưng không phải dấu hiệu đặc thù được Chúa Giê-su chỉ định trong phân đoạn này để thế gian nhận biết, thể hiện sự hiểu lầm phổ biến khi khái quát hóa.\n*   Distractor 3 (Thờ phượng Ngài trong thần linh và lẽ thật) SAI vì lời dạy này ở Giăng 4:24, liên quan đến bản chất thờ phượng đẹp lòng Đức Chúa Trời, nhưng hoàn toàn không được nhắc đến trong ngữ cảnh Giăng 13:34-35. Nó đúng trong văn bản Kinh Thánh nhưng lạc đề với câu hỏi về dấu hiệu nhận biết cụ thể ở đây.",
     "language": "vi",
     "verseEnd": 35,
     "options": [
-      "Đi nhà thờ",
-      "Kiến thức Kinh Thánh",
+      "Yêu thương Đức Chúa Trời hết lòng",
+      "Vâng theo các điều răn của Ngài",
       "Yêu thương nhau",
-      "Làm phép lạ"
+      "Thờ phượng Ngài trong thần linh và lẽ thật"
     ],
     "tags": [
       "Tân Ước",
@@ -783,13 +783,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 14:6 - Chúa Giê-su tuyên bố Ngài là con đường duy nhất đến với Đức Chúa Cha. Câu nguyên văn hoàn chỉnh là: 'Không ai đến được với Cha mà không bởi Ta'.",
+    "explanation": "Giăng 14:6 chép: \"Đức Chúa Jêsus đáp rằng: Ta là đường đi, lẽ thật, và sự sống; chẳng bởi Ta thì không ai được đến cùng Cha.\" (BTT). Đáp án đúng, 'Bởi Ta', trực tiếp trích từ câu Kinh Thánh, khẳng định Chúa Giê-su là con đường độc nhất đến với Đức Chúa Trời.\n\n- Distractor 'Bởi đức tin' là một hiểu lầm phổ biến: Mặc dù đức tin là điều kiện cần để nhận lãnh sự cứu rỗi (Ê-phê-sô 2:8), câu hỏi này yêu cầu trích dẫn chính xác lời phán của Chúa Giê-su, Ngài không nói 'bởi đức tin' tại đây.\n- Distractor 'Bởi sự vâng phục' thuộc sai phạm vi: Sự vâng phục là hệ quả của đức tin và là dấu hiệu của môn đồ, nhưng không phải là từ ngữ Chúa Giê-su dùng trong câu này để mô tả phương cách đến với Cha.\n- Distractor 'Bởi các việc lành' là nhầm passage gần: Ý tưởng này đối lập với giáo lý cứu bởi ân điển qua đức tin (Ê-phê-sô 2:8-9) và có thể bị nhầm từ các cuộc thảo luận khác về sự cứu rỗi, nhưng không xuất hiện trong ngữ cảnh Giăng 14:6.",
     "language": "vi",
     "options": [
-      "Bởi tôn giáo",
+      "Bởi đức tin",
       "Bởi Ta",
-      "Bởi luật pháp",
-      "Bởi việc lành"
+      "Bởi sự vâng phục",
+      "Bởi các việc lành"
     ],
     "tags": [
       "Tân Ước",
@@ -810,13 +810,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giăng 19:30 - \"Tetelestai\" - Đã hoàn tất! Công trình cứu chuộc đã được thanh toán trọn vẹn.",
+    "explanation": "Câu hỏi hỏi cụ thể lời cuối cùng theo sách Giăng. Giăng 19:30 chép: 'Khi Giê-su chịu lấy giấm ấy rồi, bèn phán rằng: Mọi việc đã được trọn; rồi Ngài gục đầu mà trút linh hồn.' Vậy đáp án đúng là 'Mọi việc đã được trọn'.\n\nCác đáp án sai:\n1. 'Lạy Đức Chúa Trời tôi, sao Ngài lìa bỏ tôi?' là lời từ Ma-thi-ơ 27:46 và Mác 15:34, không phải từ Giăng.\n2. 'Lạy Cha, xin tha cho họ' là lời Chúa Giê-su cầu xin từ Lu-ca 23:34, xuất hiện sớm hơn trong sự kiện đóng đinh, không phải lời cuối cùng theo Giăng.\n3. 'Cha ôi, con giao linh hồn con trong tay Cha' là lời từ Lu-ca 23:46. Tuy đây cũng là một lời cuối cùng được ghi nhận (theo sách Lu-ca) và có ý nghĩa tương tự (phó thác linh hồn), nhưng nó không phải là lời được ghi trong Giăng. Câu hỏi chỉ hỏi theo sách Giăng.",
     "language": "vi",
     "options": [
       "Mọi việc đã được trọn (It is finished)",
-      "Lạy Cha, con phó linh hồn con",
-      "Con khát",
-      "Lạy Cha, sao Cha bỏ con"
+      "Lạy Đức Chúa Trời tôi, sao Ngài lìa bỏ tôi?",
+      "Lạy Cha, xin tha cho họ",
+      "Cha ôi, con giao linh hồn con trong tay Cha"
     ],
     "tags": [
       "Tân Ước",
@@ -837,13 +837,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giăng 20:29 - Chúa Giê-su khen những ai tin mà không cần thấy bằng mắt, như chúng ta ngày nay.",
+    "explanation": "Trong Giăng 20:29, Chúa Giê-su phán với Thô-ma: 'Vì ngươi đã thấy ta, nên ngươi tin. Phước cho những kẻ chẳng từng thấy mà đã tin vậy.' (BTT). Do đó, đáp án đúng, 'Phúc cho những kẻ không thấy mà tin', trực tiếp và chính xác trích dẫn lời Chúa, ám chỉ đến những tín đồ sau này sẽ tin mà không cần thấy bằng mắt thường. Distractor 'Phúc cho những kẻ đã thấy mà không tin' sai vì nó đảo ngược ý chính (thấy nhưng không tin), điều trái ngược với ngữ cảnh và nội dung của câu Kinh Thánh. Distractor 'Phúc cho những kẻ không thấy và không tin' sai vì nó mở rộng phạm vi một cách vô lý, bao gồm cả những người không tin, trong khi Chúa Giê-su chỉ chúc phước cho những người 'tin'. Distractor 'Phúc cho những kẻ đã sờ được như ngươi' sai vì nó rút từ ngữ cảnh gần (câu 27-28) mô tả việc Thô-ma sờ vết thương, nhưng không phải là lời tuyên bố chính về đức tin mà Chúa Giê-su nêu trong câu 29.",
     "language": "vi",
     "options": [
       "Phúc cho những kẻ không thấy mà tin",
-      "Người phải tin nhiều hơn",
-      "Đức tin cần chứng cớ",
-      "Hãy nói cho người khác"
+      "Phúc cho những kẻ đã thấy mà không tin",
+      "Phúc cho những kẻ không thấy và không tin",
+      "Phúc cho những kẻ đã sờ được như ngươi"
     ],
     "tags": [
       "Tân Ước",
@@ -864,12 +864,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 6:35 - Đức Chúa Jêsus phán: 'Ta là bánh của sự sống; ai đến cùng ta chẳng hề đói, và ai tin ta chẳng hề khát.' Chúa là nguồn nuôi dưỡng thuộc linh.",
+    "explanation": "Trong Giăng 6:35, Chúa Giê-su phán: 'Ta là bánh của sự sống; ai đến cùng ta chẳng hề đói, và ai tin ta chẳng hề khát.' Do đó, 'Bánh' là đáp án đúng. **Distractor 1 ('Nước')** là sai vì dù 'nước' và 'khát' xuất hiện gần đó trong ngữ cảnh (c.35), đây không phải từ Chúa Giê-su dùng để tự xưng trong câu này. **Distractor 2 ('Lửa')** là sai vì đây là một chi tiết hoàn toàn không có trong phân đoạn này hay các tuyên bố 'Ta là' tương tự của Chúa Giê-su trong sách Giăng. **Distractor 3 ('Cửa')** là sai vì dù 'cửa' là một ẩn dụ khác Chúa Giê-su dùng ('Ta là cái cửa' trong Giăng 10:9), nó không liên quan đến câu hỏi cụ thể về Giăng 6:35.",
     "language": "vi",
     "options": [
-      "Ánh sáng",
-      "Cửa",
       "Nước",
+      "Lửa",
+      "Cửa",
       "Bánh"
     ],
     "tags": [
@@ -918,13 +918,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giăng 1:11 — 'Ngài đã đến trong xứ mình, song dân mình chẳng hề nhận lấy.'",
+    "explanation": "Giăng 1:11 viết: 'Ngài đã đến trong xứ mình, nhưng dân mình chẳng hề nhận lấy.' Câu hỏi hỏi về phản ứng của 'người nhà' (dân mình), và câu Kinh Thánh trả lời rõ ràng là họ 'chẳng hề nhận lấy'. Đáp án đúng là cụm từ trực tiếp từ câu này. Distractor 'Dân mình đón tiếp Ngài' sai vì trái ngược hoàn toàn với Kinh Thánh. Distractor 'Dân mình chỉ nhận lấy một phần' sai vì dù nghe có vẻ hợp lý, Kinh Thánh nói 'chẳng hề nhận lấy' chứ không phải 'chỉ nhận một phần'. Distractor 'Người ngoại đã nhận lấy Ngài' là một 'gần đúng' (almost-right) vì nó mô tả nội dung của câu 12 ('Nhưng hễ ai đã nhận Ngài...'), tức là một chi tiết lân cận (nearby_passage) trong cùng phân đoạn (Giăng 1:12), nhưng câu hỏi lại hỏi về phản ứng của 'dân mình' (người Do Thái) chứ không phải 'người ngoại'.",
     "language": "vi",
     "options": [
       "Dân mình chẳng hề nhận lấy",
-      "Dân mình hân hoan đón rước",
-      "Dân mình tôn Ngài làm vua",
-      "Dân mình theo Ngài đến tận chết"
+      "Dân mình đón tiếp Ngài",
+      "Dân mình chỉ nhận lấy một phần",
+      "Người ngoại đã nhận lấy Ngài"
     ],
     "tags": [
       "Tân Ước",
@@ -944,13 +944,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 1:14 — 'Ngôi Lời đã trở nên xác thịt, ở giữa chúng ta, đầy ơn và lẽ thật; chúng ta đã ngắm xem sự vinh hiển của Ngài.'",
+    "explanation": "Giăng 1:14 chép: 'Ngôi Lời đã trở nên xác thịt, ở giữa chúng ta, đầy ơn và lẽ thật'. 'Xác thịt' (tiếng Hy Lạp: σάρξ) trực tiếp khẳng định giáo lý nhập thể, rằng Ngôi Lời (Đức Chúa Jesus) đã mang lấy bản chất con người thật sự và hữu hình. Đáp án 'Thần linh (Đức Chúa Trời)' là sai vì mặc dù Ngôi Lời là Đức Chúa Trời (câu 1), câu 14 nhấn mạnh sự trở nên 'xác thịt' chứ không phải chỉ là 'Thần linh'; đây là chi tiết từ ngữ cảnh gần nhưng bỏ sót điểm then chốt về nhập thể. Đáp án 'Hình bóng (của tương lai)' là sai vì nó mở rộng phạm vi ý nghĩa sang khái niệm biểu tượng hoặc tiên tri, trong khi câu Kinh Thánh này nói về thực tại hiện tại và trực tiếp của sự nhập thể. Đáp án 'Tinh thần (vô hình)' là sai vì đây là một hiểu lầm phổ biến, phủ nhận tính hữu hình và thể xác thật của Chúa Jesus, trái ngược hoàn toàn với từ 'xác thịt' được sử dụng.",
     "language": "vi",
     "options": [
-      "Ánh sáng",
+      "Thần linh (Đức Chúa Trời)",
       "Xác thịt (loài người)",
-      "Linh",
-      "Thiên sứ"
+      "Hình bóng (của tương lai)",
+      "Tinh thần (vô hình)"
     ],
     "tags": [
       "Tân Ước",
@@ -970,12 +970,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 1:29 — 'Kìa, Chiên con của Đức Chúa Trời, là Đấng cất tội lỗi thế gian đi.'",
+    "explanation": "Trong Giăng 1:29, Giăng Báp-tít thấy Đức Chúa Jêsus đến thì nói: 'Kìa, Chiên con của Đức Chúa Trời, Đấng cất tội lỗi thế gian đi.' Đây là lời tiên tri trực tiếp về chức vụ chuộc tội của Chúa Jêsus. \n\nDistractor 1 sai vì thay cụm 'cất tội lỗi thế gian đi' bằng 'mang sự sáng cho thế gian' (ý từ Giăng 1:9, 8:12), làm sai lệch chức năng chính được nêu trong câu này. \nDistractor 2 sai vì thay 'Chiên con của Đức Chúa Trời' bằng 'Con trai của Đức Chúa Trời' (danh hiệu đúng nhưng không phải từ Giăng 1:29), làm lạc trọng tâm câu hỏi về cách gọi cụ thể tại thời điểm đó. \nDistractor 3 sai vì thu hẹp phạm vi 'thế gian' thành 'dân Y-sơ-ra-ên', mặc dù đây là một hiểu lầm phổ biến về phạm vi cứu rỗi, nhưng Kinh Thánh tại câu này nhấn mạnh đến cả thế gian.",
     "language": "vi",
     "options": [
-      "Vua các vua",
-      "Con người",
-      "Tiên tri lớn",
+      "Chiên con của Đức Chúa Trời, Đấng mang sự sáng cho thế gian",
+      "Con trai của Đức Chúa Trời, Đấng cất tội lỗi thế gian đi",
+      "Chiên con của Đức Chúa Trời, Đấng chuộc tội cho dân Y-sơ-ra-ên",
       "Chiên con của Đức Chúa Trời, Đấng cất tội lỗi thế gian đi"
     ],
     "tags": [
@@ -996,13 +996,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giăng 1:42 — 'Đức Chúa Jêsus phán: Ngươi là Si-môn con Giô-na; ngươi sẽ được gọi là Sê-pha (nghĩa là Phi-e-rơ).'",
+    "explanation": "Giăng 1:42 chép: 'Ngài nhìn Si-môn, mà phán rằng: Ngươi là Si-môn, con của Giô-na; ngươi sẽ được gọi là Sê-pha (nghĩa là Phi-e-rơ).' Vì vậy, đáp án đúng là 'Sê-pha (Phi-e-rơ — nghĩa là 'đá')'.\n\nCác đáp án sai:\n- 'Gia-cơ (nghĩa là 'kẻ lừa dối')': Sai chi tiết. Đây là tên của một sứ đồ khác (con của Xê-bê-đê), không phải tên Chúa Jêsus đặt cho Si-môn. Ý nghĩa của tên này cũng không chính xác.\n- 'Giăng (nghĩa là 'Đức Chúa Trời ban ơn')': Trích từ phân đoạn gần. Giăng là tên của sứ đồ khác (tác giả sách Phúc Âm này), xuất hiện trong ngữ cảnh chương 1, nhưng không phải tên Chúa đặt cho Si-môn.\n- 'Bác-na-ba (nghĩa là 'con của sự an ủi')': Hiểu lầm phổ biến. Bác-na-ba là một nhân vật trong sách Công vụ, được biết đến với ý nghĩa 'con của sự khuyên bảo/an ủi', nhưng không liên quan đến sự kiện Chúa Jêsus đặt tên cho Si-môn trong Giăng 1.",
     "language": "vi",
     "options": [
       "Sê-pha (Phi-e-rơ — nghĩa là 'đá')",
-      "Ba-tha-na-ên",
-      "Thô-ma",
-      "Gia-cơ"
+      "Gia-cơ (nghĩa là 'kẻ lừa dối')",
+      "Giăng (nghĩa là 'Đức Chúa Trời ban ơn')",
+      "Bác-na-ba (nghĩa là 'con của sự an ủi')"
     ],
     "tags": [
       "Tân Ước",
@@ -1023,13 +1023,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 2:15 — 'Ngài bện một cái roi bằng dây, bèn đuổi hết thảy khỏi đền thờ, chiên và bò nữa; vãi tiền người đổi bạc và đổ bàn của họ.'",
+    "explanation": "Đáp án đúng là \"Cây roi bện bằng dây\" vì Giăng 2:15 ghi rõ: \"Ngài bèn lấy dây làm roi mà đánh đuổi hết thảy...\" (BTT).\n\nCác đáp án sai:\n1. \"Cây gậy chăn chiên của Ngài\" là sai vì Kinh Thánh không mô tả Chúa Jêsus dùng gậy chăn chiên trong sự kiện này; chi tiết cụ thể là roi bện bằng dây.\n2. \"Đôi tay không của Ngài\" là sai vì đây là một hiểu lầm phổ biến, cho rằng Chúa chỉ dùng uy quyền, nhưng phân đoạn này xác định rõ Ngài đã dùng một vật cụ thể.\n3. \"Những lời quở trách mạnh mẽ\" là sai vì tuy đúng là Chúa có quở trách (câu 16: \"đem những đồ đó ra khỏi đây...\"), nhưng câu hỏi hỏi về vật Ngài \"dùng để đuổi\", và câu trả lời trực tiếp từ hành động đuổi trong câu 15 là roi bằng dây, không phải chỉ lời nói.",
     "language": "vi",
     "options": [
-      "Một thanh kiếm",
-      "Lời quở trách",
+      "Cây gậy chăn chiên của Ngài",
+      "Đôi tay không của Ngài",
       "Cây roi bện bằng dây",
-      "Một chiếc gậy gỗ"
+      "Những lời quở trách mạnh mẽ"
     ],
     "tags": [
       "Tân Ước",
@@ -1049,13 +1049,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 2:19-21 — 'Hãy phá đền thờ nầy đi, trong ba ngày Ta sẽ dựng lại! Nhưng Ngài nói về đền thờ của thân thể Ngài.'",
+    "explanation": "Trong Giăng 2:19-21, Chúa Giê-su phán: 'Hãy phá đền thờ nầy đi, trong ba ngày Ta sẽ dựng lại!' Sách giải thích rõ: 'Ngài phải chỉ về đền thờ của thân thể Ngài.' (câu 21). Đáp án đúng đúng vì nó kết hợp chính xác khoảng thời gian 'ba ngày' với đối tượng Ngài muốn nói là 'đền thờ thân thể Ngài', ám chỉ sự phục sinh của Ngài. Distractor 1 sai vì nó đúng thời gian 'ba ngày' nhưng hiểu sai đền thờ là tòa nhà ở Giê-ru-sa-lem, đây là cách hiểu ban đầu của những người nghe (câu 20) và là một hiểu lầm phổ biến cần phân biệt. Distractor 2 sai vì nó đúng đối tượng 'đền thờ thân thể Ngài' nhưng sai thời gian then chốt ('một ngày' thay vì 'ba ngày'), đây là một chi tiết số học quan trọng bị thay đổi. Distractor 3 sai vì nó đưa ra một khái niệm ('đền thờ của Đức Chúa Trời' hay 'thiên đàng') và thời gian ('bảy ngày') không hề được đề cập trong ngữ cảnh này, làm lạc phạm vi câu hỏi và đoạn Kinh Thánh.",
     "language": "vi",
     "options": [
-      "Ba mươi ngày — đền Sa-lô-môn",
-      "Bảy ngày — đền tạm",
+      "Ba ngày — đền thờ ở Giê-ru-sa-lem (tòa nhà)",
+      "Một ngày — đền thờ thân thể Ngài (sự phục sinh)",
       "Ba ngày — đền thờ thân thể Ngài (sự phục sinh)",
-      "Bốn mươi ngày — đền tạm"
+      "Bảy ngày — đền thờ của Đức Chúa Trời (thiên đàng)"
     ],
     "tags": [
       "Tân Ước",
@@ -1075,12 +1075,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 3:5 — 'Quả thật, Ta nói cùng ngươi, nếu một người chẳng nhờ nước và Thánh Linh mà sanh, thì không được vào nước Đức Chúa Trời.'",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Nước và Thánh Linh' (Giăng 3:5). Chúa Jêsus dạy rằng sự tái sinh thuộc linh để vào Nước Đức Chúa Trời cần cả yếu tố bề ngoài (nước, tượng trưng cho phép báp-tem/sự thanh tẩy) và yếu tố bên trong (Thánh Linh, quyền năng biến đổi của Đức Chúa Trời).\n\nDISTRACTOR SAI:\n1. 'Nước và Lửa' (sai chi tiết): 'Lửa' không xuất hiện trong câu này. Dù có liên hệ với sự phán xét hay thanh tẩy trong các phân đoạn khác, nó không phải từ ngữ chính xác Chúa Jêsus dùng ở Giăng 3:5.\n2. 'Lời và Thánh Linh' (nhầm passage gần): Đây là sự kết hợp quan trọng trong giáo lý (ví dụ: Ê-phê-sô 5:26, 1 Phi-e-rơ 1:23), nhưng không phải câu trả lời chính xác cho câu hỏi trực tiếp về Giăng 3:5. Đây là distractor 'gần đúng' vì có 'Thánh Linh' nhưng sai yếu tố đầu.\n3. 'Xác thịt và Huyết' (hiểu lầm phổ biến): Trái ngược hoàn toàn với ý nghĩa của câu. Chúa Jêsus vừa đề cập 'sanh bởi xác thịt' (c.6) để tương phản với 'sanh bởi Thánh Linh', nên đáp án này thể hiện sự hiểu lầm về khái niệm tái sinh thuộc linh.",
     "language": "vi",
     "options": [
-      "Lửa và Thánh Linh",
-      "Đức tin và việc làm",
-      "Luật pháp và ân điển",
+      "Nước và Lửa",
+      "Lời và Thánh Linh",
+      "Xác thịt và Huyết",
       "Nước và Thánh Linh"
     ],
     "tags": [
@@ -1101,13 +1101,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 3:8 — 'Gió muốn thổi đâu thì thổi, ngươi nghe tiếng động; nhưng chẳng biết gió đến từ đâu và cũng không biết đi đâu. Hễ người nào sanh bởi Thánh Linh thì cũng như vậy.'",
+    "explanation": "Giăng 3:8 (BTT) chép: 'Gió muốn thổi đâu thì thổi; ngươi nghe tiếng gió, nhưng chẳng biết gió từ đâu đến và đi đâu. Hễ người nào sanh bởi Thánh Linh thì cũng như vậy.' Vì vậy, đáp án đúng là 'Gió (muốn thổi đâu thì thổi)', vì Chúa Giê-su dùng hình ảnh gió để minh họa cho sự tự do và mầu nhiệm của người được sanh bởi Thánh Linh.\n\nCác đáp án sai:\n- 'Nước (chảy đến đâu thì biết)': Đây là đáp án gần đúng nhưng sai chi tiết then chốt. Dù 'nước' và 'sự sống' xuất hiện trong ngữ cảnh gần (ví dụ: Giăng 3:5 nói về 'nước và Thánh Linh'), câu 8 đặc biệt dùng 'gió' chứ không phải 'nước'.\n- 'Lửa (chiếu sáng khắp nơi)': Đây là hiểu lầm phổ biến, vì lửa thường tượng trưng cho Đức Thánh Linh (như trong Công vụ 2:3), nhưng không phải là hình ảnh được dùng trong câu Kinh Thánh cụ thể này.\n- 'Hạt giống (gieo vào lòng đất)': Đáp án này đúng về văn bản Kinh Thánh nói chung (ví dụ trong các ẩn dụ về Nước Trời), nhưng hoàn toàn lạc với câu hỏi và ngữ cảnh của Giăng 3:8.",
     "language": "vi",
     "options": [
-      "Một dòng sông",
+      "Nước (chảy đến đâu thì biết)",
       "Gió (muốn thổi đâu thì thổi)",
-      "Một ngọn lửa",
-      "Một cây ô-liu"
+      "Lửa (chiếu sáng khắp nơi)",
+      "Hạt giống (gieo vào lòng đất)"
     ],
     "tags": [
       "Tân Ước",
@@ -1127,13 +1127,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 3:30 — 'Ngài phải dấy lên, ta phải hạ xuống.'",
+    "explanation": "Giăng Báp-tít nói: 'Ngài phải dấy lên, ta phải hạ xuống' (Giăng 3:30). Đây là lời tuyên bố khiêm nhường về vai trò của ông là người dọn đường, còn Chúa Jêsus mới là Đấng Mê-si-a phải được tôn cao. Distractor 1 sai vì đảo ngược thứ tự 'dấy lên' và 'hạ xuống', làm thay đổi hoàn toàn ý nghĩa. Distractor 2 sai vì thay đổi chủ ngữ ('ta' và 'ngài'), biến câu thành Giăng tự tôn mình lên, trái với ngữ cảnh khi ông đang nói về sự giảm đi của mình (xem Giăng 3:28-29). Distractor 3 sai vì đây là một hiểu lầm phổ biến về thứ tự thời gian hay sự ưu tiên, nhưng câu Kinh Thánh không đề cập cụ thể 'đến trước' hay 'đến sau' mà nói về sự tôn cao và hạ thấp trong vai trò.",
     "language": "vi",
     "options": [
-      "Tôi và Ngài là một",
+      "Ngài phải hạ xuống, ta phải dấy lên",
       "Ngài phải dấy lên, ta phải hạ xuống",
-      "Tôi cao hơn Ngài",
-      "Tôi đến trước Ngài"
+      "Ta phải dấy lên, ngài phải hạ xuống",
+      "Ngài phải đến trước, ta phải đến sau"
     ],
     "tags": [
       "Tân Ước",
@@ -1153,12 +1153,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 3:36 — 'Ai không chịu tin Con thì không được sự sống đâu, nhưng cơn thạnh nộ của Đức Chúa Trời cứ ở trên người đó.'",
+    "explanation": "Giăng 3:36 viết: 'Kẻ nào tin Con, thì được sự sống đời đời; ai không chịu tin Con, thì chẳng thấy sự sống đâu, nhưng cơn thạnh nộ của Đức Chúa Trời vẫn ở trên người đó.' (BTT). Do đó, đáp án đúng là 'Cơn thạnh nộ của Đức Chúa Trời ở trên người đó' vì câu Kinh Thánh nói rõ điều đó.\n\nCác phương án sai:\n- 'Cơn thạnh nổ của Đức Chúa Trời ở trên người đó': Sai một chi tiết từ ngữ then chốt ('nổ' thay vì 'nộ'), làm biến đổi ý nghĩa.\n- 'Cơn thạnh nộ của Đức Chúa Trời sẽ sớm qua khỏi người đó': Sai phạm vi, vì Kinh Thánh nói cơn thạnh nộ 'vẫn ở trên' (một trạng thái liên tục), không đề cập đến việc nó sẽ sớm qua đi.\n- 'Cơn thạnh nộ của con người ở trên người đó': Phản ánh một sự hiểu lầm phổ biến, cho rằng hậu quả chỉ là sự phản đối từ con người, trong khi bản chất là sự phán xét từ Đức Chúa Trời.",
     "language": "vi",
     "options": [
-      "Mất phước",
-      "Bệnh tật",
-      "Đời sống ngắn ngủi",
+      "Cơn thạnh nổ của Đức Chúa Trời ở trên người đó",
+      "Cơn thạnh nộ của Đức Chúa Trời sẽ sớm qua khỏi người đó",
+      "Cơn thạnh nộ của con người ở trên người đó",
       "Cơn thạnh nộ của Đức Chúa Trời ở trên người đó"
     ],
     "tags": [
@@ -1179,13 +1179,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 4:24 — 'Đức Chúa Trời là Thần, nên ai thờ lạy Ngài thì phải lấy tâm thần và lẽ thật mà thờ lạy.'",
+    "explanation": "Giăng 4:24 chép: 'Đức Chúa Trời là Thần, nên ai thờ phượng Ngài thì phải lấy tâm thần và lẽ thật mà thờ phượng.' Đáp án đúng là 'Thần (Spirit) / tâm thần và lẽ thật' vì trung thành với văn bản. Distractor 1 ('tình yêu và sự thánh khiết / tâm thần và lẽ thật') sai vì thay thế 'Thần' bằng hai thuộc tính khác, dù phần sau đúng. Distractor 2 ('Thần (Spirit) / lòng nhiệt thành và sự vâng phục') sai vì thay 'tâm thần và lẽ thật' bằng hai khái niệm phổ biến trong đời sống đạo nhưng không phải từ câu Kinh Thánh này. Distractor 3 ('Thần (Spirit) / tâm thần và lời cầu nguyện') sai vì thay 'lẽ thật' bằng 'lời cầu nguyện', một yếu tố thờ phượng quan trọng nhưng được nhấn mạnh trong các phân đoạn khác (ví dụ: Ma-thi-ơ 6:5-13), không phải trong câu này.",
     "language": "vi",
     "options": [
-      "Vua / quyền lực",
-      "Cha / vâng phục",
+      "tình yêu và sự thánh khiết / tâm thần và lẽ thật",
+      "Thần (Spirit) / lòng nhiệt thành và sự vâng phục",
       "Thần (Spirit) / tâm thần và lẽ thật",
-      "Lửa / ngợi khen"
+      "Thần (Spirit) / tâm thần và lời cầu nguyện"
     ],
     "tags": [
       "Tân Ước",
@@ -1205,13 +1205,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 4:35 — 'Hãy ngước mắt lên và xem đồng ruộng, đã vàng sẵn cho mùa gặt.'",
+    "explanation": "Giăng 4:35 chép: 'Chẳng phải các ngươi nói rằng còn bốn tháng nữa thì tới mùa gặt sao? Nhưng ta nói với các ngươi: Hãy nhướng mắt lên và xem đồng ruộng, đã vàng sẵn cho mùa gặt.' (BTT). Đáp án đúng trích dẫn chính xác lời Chúa Jêsus về hình ảnh 'đồng ruộng đã vàng sẵn cho mùa gặt', tượng trưng cho những linh hồn sẵn sàng đón nhận Tin Lành.\n\n- Distractor 'Những đám mây tích tụ trên trời' SAI vì đây là một chi tiết không có trong phân đoạn này, lạc khỏi ngữ cảnh câu hỏi về cái cần 'nhìn xem' theo lời Chúa.\n- Distractor 'Những người đang đến từ thành phố' SAI vì dù đúng là trong câu chuyện (c. 30) có nhắc đến dân thành đến, nhưng đây không phải là đối tượng Chúa Jêsus chỉ định để các môn đồ 'ngước mắt nhìn xem'.\n- Distractor 'Những cánh đồng còn xanh non' SAI vì đây là distractor 'gần đúng', nhưng sai một chi tiết then chốt: Kinh Thánh ghi 'đã vàng sẵn', chứ không phải 'còn xanh non'.",
     "language": "vi",
     "options": [
-      "Mặt trời lặn",
-      "Sông Giô-đanh",
+      "Những đám mây tích tụ trên trời",
+      "Những người đang đến từ thành phố",
       "Đồng ruộng đã vàng sẵn cho mùa gặt",
-      "Đền thờ trên núi"
+      "Những cánh đồng còn xanh non"
     ],
     "tags": [
       "Tân Ước",
@@ -1232,12 +1232,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 4:46-50 — 'Có một quan thị vệ kia, con trai người đau tại Ca-bê-na-um... Chúa Jêsus phán: Hãy đi, con của ngươi sống.'",
+    "explanation": "Giăng 4:46-54 chép: 'Lại có một quan thị vệ kia, con trai người đau ở thành Ca-bê-na-um.' (câu 46). Chúa Jêsus phán: 'Hãy đi, con của ngươi sống' (câu 50). Vì vậy, đáp án đúng là 'Một quan thị vệ'. Distractor 'Một quan tổng trấn' gần đúng nhưng sai chi tiết chức vụ (quan thị vệ, không phải tổng trấn). Distractor 'Một thầy tế lễ' phản ánh hiểu lầm phổ biến về đối tượng tìm đến Chúa, nhưng trong phân đoạn này không phải. Distractor 'Một người chủ nhà' dựa vào chi tiết gần trong phân đoạn (câu 53 nói về 'nhà người'), nhưng không phải danh xưng của người tìm Chúa.",
     "language": "vi",
     "options": [
-      "Phi-e-rơ",
+      "Một quan tổng trấn",
       "Một thầy tế lễ",
-      "Phô-ti-pha",
+      "Một người chủ nhà",
       "Một quan thị vệ"
     ],
     "tags": [
@@ -1310,12 +1310,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 5:30 — 'Ta không thể tự mình làm nổi việc gì... vì Ta không tìm ý muốn của Ta, nhưng tìm ý muốn của Đấng đã sai Ta.'",
+    "explanation": "Trong Giăng 5:30, Chúa Jêsus phán: 'Ta không thể tự mình làm chi, ấy là theo điều Ta nghe; sự phán xét của Ta là công bình, vì Ta không tìm ý muốn của Ta, mà tìm ý muốn của Đấng đã sai Ta.' Đáp án đúng trực tiếp trích từ câu Kinh Thánh, chỉ rõ Chúa tìm ý muốn của Đấng đã sai Ngài, tức Đức Chúa Cha.\nPhân tích các đáp án sai:\n1) 'Của các đấng tiên tri...' (nearby_passage): Trong ngữ cảnh đoạn Kinh Thánh và sách Giăng, Chúa Jêsus thường đề cập đến việc làm theo ý muốn của Đấng sai Ngài, không phải ý muốn tập thể của các tiên tri.\n2) 'Của dân sự Ngài...' (wrong_scope): Mặc dù Chúa Jêsus đến để phục vụ, nhất là dân Y-sơ-ra-ên, nhưng sự phán xét công bình của Ngài trong câu này được căn cứ vào ý muốn của Đấng sai, không phải ý muốn của dân sự, làm lạc phạm vi câu hỏi.\n3) 'Của chính Ta...' (wrong_detail): Đây là distractor 'gần đúng' vì câu Kinh Thánh có nhắc 'Ta không tìm ý muốn của Ta', nhưng đáp án này lại đảo ngược thành 'của chính Ta', trái với ý chính là Chúa Jêsus KHÔNG tìm ý muốn của riêng mình, mà tìm ý muốn của Đấng sai Ngài.",
     "language": "vi",
     "options": [
-      "Của các môn đồ",
-      "Của dân chúng",
-      "Của thầy tế lễ",
+      "Của các đấng tiên tri (các tiên tri)",
+      "Của dân sự Ngài (dân Y-sơ-ra-ên)",
+      "Của chính Ta (ý riêng Ta)",
       "Của Đấng đã sai Ta (Đức Chúa Cha)"
     ],
     "tags": [
@@ -1336,13 +1336,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 5:39 — 'Các ngươi tra cứu Kinh Thánh, vì tưởng bởi đó được sự sống đời đời: ấy là Kinh Thánh làm chứng về Ta vậy.'",
+    "explanation": "Giăng 5:39 ghi lại lời Chúa Jêsus: 'Các ngươi tra xem Kinh Thánh, vì tưởng bởi đó được sự sống đời đời; ấy là Kinh Thánh làm chứng về ta vậy.' Do đó, ý chính là Kinh Thánh làm chứng về Ngài. \n\n- Đáp án sai 'Kinh Thánh làm chứng về sự đoán xét' (wrong_scope): Dù Kinh Thánh có đề cập đến sự phán xét, đây không phải trọng tâm của câu này; câu hỏi hỏi cụ thể về lý do Chúa Jêsus quở họ.\n- Đáp án sai 'Kinh Thánh làm chứng về lời tiên tri' (nearby_passage): Đây là distractor gần đúng vì Kinh Thánh chứa lời tiên tri về Đấng Mê-si, nhưng câu 39 nhấn mạnh việc làm chứng về chính Chúa Jêsus, không chỉ về các lời tiên tri nói chung.\n- Đáp án sai 'Kinh Thánh chỉ để tra cứu lịch sử' (common_misconception): Đây là một hiểu lầm phổ biến; Chúa Jêsus quở họ không phải vì tra cứu Kinh Thánh, mà vì họ tra cứu mà không nhận ra Ngài là trung tâm của Kinh Thánh.",
     "language": "vi",
     "options": [
-      "Các tiên tri",
-      "Đức Thánh Linh",
+      "Kinh Thánh làm chứng về sự đoán xét",
+      "Kinh Thánh làm chứng về lời tiên tri",
       "Kinh Thánh làm chứng về Chúa Jêsus",
-      "Lề luật và truyền thống"
+      "Kinh Thánh chỉ để tra cứu lịch sử"
     ],
     "tags": [
       "Tân Ước",
@@ -1388,13 +1388,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 6:51 — 'Ta là bánh hằng sống từ trên trời xuống; nếu ai ăn bánh ấy, thì sẽ sống vô cùng; và bánh mà Ta sẽ ban cho vì sự sống của thế gian tức là thịt Ta.'",
+    "explanation": "Trong Giăng 6:51, Chúa Jêsus phán: 'Ta là bánh hằng sống từ trên trời xuống; nếu ai ăn bánh ấy, thì sẽ sống vô cùng; và bánh mà Ta sẽ ban vì sự sống của thế gian tức là thịt Ta.' Do đó, đáp án đúng là 'sống vô cùng (đời đời)', vì Ngài nhấn mạnh đến sự sống đời đời. Distractor 'Sống đời này trọn vẹn' là một hiểu lầm phổ biến, tập trung vào phước lành đời này thay vì sự sống đời đời. Distractor 'Sống lại ngày thứ ba' là gần đúng nhưng sai chi tiết; ý tưởng sống lại xuất hiện trong các phân đoạn khác (như Giăng 11:25), nhưng không phải là lời hứa trực tiếp trong câu này. Distractor 'Được no nê bởi bánh' dựa vào ngữ cảnh gần (như Giăng 6:26, 35 nói về việc đến với Chúa để không đói), nhưng đây là một kết quả khác, không phải lời hứa cụ thể về sự sống đời đời trong câu 51.",
     "language": "vi",
     "options": [
-      "Được giàu có",
-      "Được khôn ngoan",
+      "Sống đời này trọn vẹn",
+      "Sống lại ngày thứ ba",
       "Sống vô cùng (đời đời)",
-      "Được cai trị"
+      "Được no nê bởi bánh"
     ],
     "tags": [
       "Tân Ước",
@@ -1414,13 +1414,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 6:53 — 'Quả thật, Ta nói cùng các ngươi, nếu các ngươi không ăn thịt của Con người, cùng không uống huyết Ngài, thì chẳng có sự sống trong các ngươi đâu.'",
+    "explanation": "Giăng 6:53 ghi lời Chúa Jêsus: 'Nếu các ngươi không ăn thịt Con người và không uống huyết Ngài, thì chẳng có sự sống trong các ngươi.' Do đó, đáp án đúng là hình ảnh 'ăn thịt và uống huyết Con người', biểu tượng cho sự tiếp nhận trọn vẹn sự hy sinh và sự sống thuộc linh từ Ngài.\n\nDistractor 'Ăn thịt và uống nước Con người' là gần đúng nhưng sai chi tiết then chốt ('nước' thay vì 'huyết'), làm mất ý nghĩa về sự hy sinh chuộc tội.\nDistractor 'Nghe và tuân theo lời Con người' mở rộng phạm vi sang các nguyên tắc chung về sự vâng phục (như trong Giăng 5:24), không phải hình ảnh cụ thể được dùng trong câu này.\nDistractor 'Uống rượu và ăn bánh Con người' dựa trên hiểu lầm phổ biến về Tiệc Thánh, nhưng đây không phải ngữ cảnh hay hình ảnh được Chúa Jêsus dùng trực tiếp trong Giăng 6:53.",
     "language": "vi",
     "options": [
-      "Đi theo Ngài đến cùng",
-      "Cầu nguyện liên tục",
+      "Ăn thịt và uống nước Con người",
+      "Nghe và tuân theo lời Con người",
       "Ăn thịt và uống huyết Con người",
-      "Học thuộc lời Ngài"
+      "Uống rượu và ăn bánh Con người"
     ],
     "tags": [
       "Tân Ước",
@@ -1545,12 +1545,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 8:32 — 'và các ngươi sẽ biết lẽ thật, và lẽ thật sẽ buông tha các ngươi.'",
+    "explanation": "Giăng 8:32 LỜI TRỰC TIẾP ghi: 'các ngươi sẽ biết lẽ thật, và lẽ thật sẽ buông tha các ngươi.' (BTT). Vì vậy, 'Buông tha (giải phóng) các ngươi' là đúng. Các phương án sai: 'Chắc chắn đắc thắng các ngươi' nhầm sang ý tưởng chiến thắng/chế ngự có trong các phân đoạn khác (như I Giăng 5:4), không phải ngữ cảnh trực tiếp ở đây. 'Ban cho các ngươi sự sống sung mãn' là một hiểu lầm phổ biến khi áp dụng lời hứa về sự sống dồi dào trong Giăng 10:10 vào câu này. 'Cất đi mọi buồn rầu của các ngươi' tuy đúng về cảm xúc Chúa quan tâm, nhưng lạc trọng tâm câu hỏi về chức năng cụ thể của 'lẽ thật' được định nghĩa trong câu này là 'buông tha'.",
     "language": "vi",
     "options": [
-      "Khiến các ngươi giàu có",
-      "Cho các ngươi quyền lực",
-      "Cho các ngươi sự khôn ngoan",
+      "Chắc chắn đắc thắng các ngươi",
+      "Ban cho các ngươi sự sống sung mãn",
+      "Cất đi mọi buồn rầu của các ngươi",
       "Buông tha (giải phóng) các ngươi"
     ],
     "tags": [
@@ -1571,13 +1571,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 8:36 — 'Vậy nếu Con buông tha các ngươi, thì các ngươi sẽ thật được tự do.'",
+    "explanation": "Đáp án đúng là 'Thật được tự do' vì Giăng 8:36 nguyên văn chép: 'Vậy nếu Con buông tha các ngươi, các ngươi sẽ thật được tự do.' (BTT).\n\n- Distractor 'Thật được cứu rỗi' là gần đúng nhưng sai chi tiết then chốt: khái niệm 'cứu rỗi' (sōzō) rộng hơn và thường xuất hiện trong các phân đoạn khác (ví dụ: Giăng 3:17), trong khi câu này tập trung cụ thể vào 'tự do' (eleutheroō) khỏi tội lỗi (xem câu 8:34-35).\n- Distractor 'Thật được chọn lựa' sai phạm vi: chủ đề 'được chọn' không nằm trong ngữ cảnh Giăng chương 8, đây là chủ đề của các thư tín (ví dụ: Ê-phê-sô 1:4).\n- Distractor 'Thật được tái sinh' là hiểu lầm phổ biến: độc giả dễ liên tưởng đến khái niệm 'sanh lại' trong Giăng 3:3, nhưng đây không phải là ý chính của câu 8:36.",
     "language": "vi",
     "options": [
-      "Vẫn còn nô lệ",
-      "Sẽ tự do nửa",
+      "Thật được cứu rỗi",
+      "Thật được chọn lựa",
       "Thật được tự do",
-      "Cần cố gắng thêm"
+      "Thật được tái sinh"
     ],
     "tags": [
       "Tân Ước",
@@ -1597,12 +1597,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 8:44 — Chúa Jêsus phán với những người Do Thái không tin: \"Các ngươi bởi cha mình, là ma quỉ, mà sanh ra... nó vốn là kẻ nói dối và là cha sự nói dối.\"",
+    "explanation": "Câu hỏi tham chiếu Giăng 8:44. Đáp án đúng là 'Cha của các kẻ làm điều ác và cha sự nói dối', trích nguyên văn từ câu Kinh Thánh (BTT: 'Các ngươi bởi cha mình, là ma quỷ, mà sanh ra... Nó là kẻ nói dối và là cha sự nói dối. Vì nó vốn là kẻ nói dối và là cha sự nói dối.').\n\nDistractor 1 ('Cha của những kẻ không tin và cha sự nói dối') SAI vì nhầm chi tiết: Chúa Jêsus đang nói với 'những kẻ không tin' Ngài, nhưng Ngài gọi ma quỷ là 'cha của các kẻ làm điều ác', không phải 'cha của những kẻ không tin'.\nDistractor 2 ('Cha của những kẻ thế gian và cha sự chết') SAI vì sai phạm vi: 'Cha sự chết' là một mô tả khác về ma quỷ (như trong Hê-bơ-rơ 2:14), nhưng không phải là cụm từ được dùng trong Giăng 8:44 để trả lời câu hỏi này.\nDistractor 3 ('Kẻ nói dối từ ban đầu và kẻ giết người') SAI vì mặc dù đúng với mô tả về ma quỷ trong cùng ngữ cảnh ('nó vốn là kẻ giết người'), nhưng lạc câu hỏi: câu hỏi hỏi 'Chúa Jêsus gọi ma quỷ là cha của ai', còn đáp án này chỉ liệt kê danh xưng của ma quỷ mà không nói đến 'cha của...'.",
     "language": "vi",
     "options": [
-      "Cha của các tiên tri",
-      "Cha của các vua dân ngoại",
-      "Cha của loài người",
+      "Cha của những kẻ không tin và cha sự nói dối",
+      "Cha của những kẻ thế gian và cha sự chết",
+      "Kẻ nói dối từ ban đầu và kẻ giết người",
       "Cha của các kẻ làm điều ác và cha sự nói dối"
     ],
     "tags": [
@@ -1675,13 +1675,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 10:9 — 'Ta là cái cửa: nếu ai bởi Ta mà vào, thì sẽ được cứu rỗi; họ sẽ vào ra và gặp đồng cỏ.'",
+    "explanation": "Giăng 10:9 ghi: 'Ta là cái cửa: nếu ai bởi ta mà vào, thì sẽ được cứu rỗi; họ sẽ vào ra và gặp đồng cỏ.' Vì vậy, đáp án đúng là 'Cái cửa (cho chiên)' vì Chúa Jêsus trực tiếp dùng hình ảnh 'cái cửa' để diễn tả vai trò là phương cách duy nhất đưa đến sự cứu rỗi và chăn dắt. \n\nCác đáp án sai: (1) 'Người chăn thuê (cho chiên)' là sai vì đây là hình ảnh Chúa Jêsus dùng để mô tả kẻ chăn thuê bỏ chiên chạy trốn trong Giăng 10:12-13, không phải lời tự xưng của Ngài trong câu 9. (2) 'Con đường (cho chiên)' là sai vì đây là một khái niệm chung về phương hướng, không phải từ ngữ chính xác Chúa Jêsus dùng trong ngữ cảnh này (dù Ngài từng tự xưng là 'đường đi' ở Giăng 14:6). (3) 'Bầy chiên (của ta)' là sai vì đây là đối tượng Ngài chăn dắt và nhận biết (Giăng 10:14, 27), chứ không phải là điều Ngài tự xưng mình là.",
     "language": "vi",
     "options": [
-      "Người chăn",
+      "Người chăn thuê (cho chiên)",
       "Cái cửa (cho chiên)",
-      "Cái thang",
-      "Vầng đá"
+      "Con đường (cho chiên)",
+      "Bầy chiên (của ta)"
     ],
     "tags": [
       "Tân Ước",
@@ -1780,13 +1780,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giăng 11:35 chép: 'Đức Chúa Jêsus khóc.' Trong bản Kinh Thánh tiếng Anh King James Version, câu 'Jesus wept.' được xem là câu ngắn nhất, bày tỏ tình thương sâu sắc của Chúa Jêsus.",
+    "explanation": "Giăng 11:35 chép: 'Đức Chúa Jêsus khóc.' Đây là câu nguyên văn ngắn nhất trong Kinh Thánh bản tiếng Anh (KJV).\n\n- 'Chúa Jêsus khóc thương' là sai vì thêm từ 'thương' không có trong nguyên văn, làm thay đổi độ dài và ý nghĩa chính xác của câu Kinh Thánh được trích dẫn.\n- 'Đức Chúa Jêsus cầu nguyện' là sai vì đây là hành động được mô tả trong các câu/phân đoạn khác (ví dụ: Giăng 11:41-42) gần đó, không phải là nội dung của câu 35.\n- 'Ngài thương xót họ' là sai vì mặc dù đúng với tấm lòng của Chúa Jêsus trong ngữ cảnh (Giăng 11:33, 36), nhưng đây không phải là nguyên văn của câu 35, nên lạc trọng tâm câu hỏi về câu Kinh Thánh cụ thể.",
     "language": "vi",
     "options": [
       "Đức Chúa Jêsus khóc",
-      "Đức Chúa Trời là tình yêu",
-      "Hãy cầu nguyện luôn",
-      "Hãy yêu lẫn nhau"
+      "Chúa Jêsus khóc thương",
+      "Đức Chúa Jêsus cầu nguyện",
+      "Ngài thương xót họ"
     ],
     "tags": [
       "Tân Ước",
@@ -1806,13 +1806,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 11:43 — 'Khi Ngài đã nói xong, bèn kêu lên một tiếng lớn rằng: Hỡi La-xa-rơ, hãy ra!'",
+    "explanation": "Trong Giăng 11:43, Kinh Thánh chép: 'Đoạn, Ngài kêu lớn tiếng rằng: Hỡi La-xa-rơ, hãy ra!' Vì vậy, đáp án đúng là mệnh lệnh trực tiếp gọi tên La-xa-rơ và ra lệnh 'hãy ra!'. \nCác đáp án sai: 1) 'Hỡi Mác-ta, hãy ra đây!' là sai vì Mác-ta là chị của La-xa-rơ, có mặt tại hiện trường nhưng không phải người trong mộ (chi tiết tên sai). 2) 'Hỡi con người, hãy sống lại!' là sai vì nó trừu tượng, không gọi tên cụ thể La-xa-rơ (sai phạm vi/lời gọi chung chung). 3) 'Hỡi La-xa-rơ, hãy đến đây!' là gần đúng, gọi đúng tên nhưng sai động lệnh (Kinh Thánh ghi 'hãy ra', không phải 'hãy đến đây'; đây là lỗi nhầm với những phân đoạn khác Chúa gọi người 'đến đây').",
     "language": "vi",
     "options": [
-      "Hỡi loài người, hãy thấy phép lạ",
-      "Sự chết, hãy đi đi",
+      "Hỡi Mác-ta, hãy ra đây!",
+      "Hỡi con người, hãy sống lại!",
       "Hỡi La-xa-rơ, hãy ra!",
-      "Hãy mở cửa mộ"
+      "Hỡi La-xa-rơ, hãy đến đây!"
     ],
     "tags": [
       "Tân Ước",
@@ -1832,13 +1832,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 12:3 — 'Ma-ri lấy một cân dầu thơm cam tòng quý giá, xức chân Đức Chúa Jêsus, và lấy tóc mình mà lau.'",
+    "explanation": "Đáp án đúng là 'Ma-ri (em La-xa-rơ)' dựa trên Giăng 12:3, ghi rõ: 'Ma-ri lấy một cân dầu cam tùng hương thật, rất quí giá, xức chân Đức Chúa Jêsus, và lấy tóc mình mà lau'.\n\n- Distractor 'Mác-ta (chị La-xa-rơ)' là gần đúng (nhầm passage gần) vì Mác-ta là chị của Ma-ri và La-xa-rơ, cùng hiện diện trong khung cảnh (Giăng 12:2), nhưng câu Kinh Thánh chỉ định rõ người xức dầu là Ma-ri.\n- Distractor 'Ma-ri (mẹ Chúa Jêsus)' sai chi tiết (tên) vì Ma-ri mẹ Chúa Jêsus không liên quan đến sự kiện này; đây là Ma-ri ở Bê-tha-ni, em của La-xa-rơ.\n- Distractor 'Một người nữ tội lỗi trong thành' là hiểu lầm phổ biến, vì sự kiện một người nữ xức dầu và lau chân Chúa bằng tóc cũng được ghi trong Lu-ca 7:37-38, nhưng đó là một phụ nữ vô danh, khác người, khác thời điểm và địa điểm với sự kiện trong Giăng 12:3.",
     "language": "vi",
     "options": [
-      "Ma-thê",
+      "Mác-ta (chị La-xa-rơ)",
       "Ma-ri (em La-xa-rơ)",
-      "Ma-ri Ma-đơ-len",
-      "Người đàn bà Sa-ma-ri"
+      "Ma-ri (mẹ Chúa Jêsus)",
+      "Một người nữ tội lỗi trong thành"
     ],
     "tags": [
       "Tân Ước",
@@ -1858,12 +1858,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 12:13 — 'Bèn lấy những lá kè ra đón Ngài, và reo lên rằng: Hô-sa-na! Chúc phước cho Đấng nhân danh Chúa mà đến.'",
+    "explanation": "Giăng 12:13 chép: 'Lấy lá kè rải ra dưới đường, cùng kêu lên rằng: Hô-sa-na! Chúc phước cho Đấng nhân danh Chúa mà đến, là Vua của Y-sơ-ra-ên!' (BTT). 'Lá kè' là cành/lá cây chà là. Đáp án đúng vì Kinh Thánh mô tả dân chúng dùng chính lá của cây chà là. Distractor 'Cành ô liu (lá ô liu)' gần đúng vì cây ô liu phổ biến trong văn hóa và cảnh quan Y-sơ-ra-ên, nhưng đoạn này không nhắc đến. Distractor 'Cành tùng bách (lá tùng)' dựa trên hiểu lầm phổ biến về việc dùng cây xanh trong lễ lạc, nhưng không phải chi tiết trong sự kiện này. Distractor 'Cành nho (lá nho)' tuy đúng là một biểu tượng quan trọng trong Kinh Thánh (ví dụ: Giăng 15), nhưng lạc đề vì không liên quan đến trình thuật Chúa vào thành.",
     "language": "vi",
     "options": [
-      "Cành ô-liu",
-      "Cành sung",
-      "Cành nho",
+      "Cành ô liu (lá ô liu)",
+      "Cành tùng bách (lá tùng)",
+      "Cành nho (lá nho)",
       "Cành chà là (lá kè)"
     ],
     "tags": [
@@ -1910,13 +1910,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 13:5 — 'Kế đó, Ngài đổ nước vào chậu, và rửa chân cho môn đồ, lại lấy khăn mình đã vấn mà lau chân cho.'",
+    "explanation": "Giăng 13:5 chép: \"đoạn, Ngài đổ nước vào chậu, khởi sự rửa chơn môn đồ, lại lấy khăn mà Ngài đã thắt lưng mà lau.\" Vì vậy, đáp án đúng là 'Rửa chân cho các môn đồ'. Distractor 1 sai vì rửa tay là chi tiết sai (wrong_detail) nhưng cấu trúc và hành động tương tự, nên là đáp án 'gần đúng'. Distractor 2 sai vì hành động xức dầu cho đầu gợi nhớ đến các sự kiện khác trong Kinh Thánh (như Ma-thi-ơ 26:7), không phải trong bối cảnh này (nearby_passage). Distractor 3 sai vì việc 'đổ nước' có trong câu Kinh Thánh nhưng là một phần của hành động rửa chân, không phải là mục đích chính để cho uống, nên lạc trọng tâm câu hỏi (true_but_off).",
     "language": "vi",
     "options": [
-      "Bẻ bánh và phân phát",
-      "Đặt tay trên đầu",
+      "Rửa tay cho các môn đồ",
+      "Xức dầu cho đầu các môn đồ",
       "Rửa chân cho các môn đồ",
-      "Xức dầu lên đầu"
+      "Đổ nước cho các môn đồ uống"
     ],
     "tags": [
       "Tân Ước",
@@ -1936,12 +1936,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 13:23 — 'Vả, có một môn đồ dựa vào ngực Đức Chúa Jêsus, tức là người mà Ngài yêu.' Đây thường được hiểu là Sứ đồ Giăng.",
+    "explanation": "Giăng 13:23 chép: \"Có một môn đồ nằm nơi Đức Chúa Jêsus dựa, ấy là người mà Đức Chúa Jêsus yêu.\" Đây là cách nhà văn sách Phúc Âm Giăng thường tự đề cập đến chính mình (xem Giăng 19:26, 20:2, 21:7, 21:20). \n- Distractor 'Môn đồ Giu-đa Ích-ca-ri-ốt' là gần đúng nhưng sai: Giu-đa có mặt và được đề cập gần đó (câu 21, 26) nhưng không phải người tựa vào ngực Chúa; câu 23 chỉ rõ đó là người môn đồ Đức Chúa Jêsus yêu.\n- Distractor 'Môn đồ mà mọi người gọi là Phi-e-rơ' sai chi tiết: Phi-e-rơ có nhờ người môn đồ đó hỏi Chúa (câu 24), nhưng không phải là chính ông tựa vào ngực Chúa.\n- Distractor 'Môn đồ người xứ Ga-li-lê' sai phạm vi: nhiều môn đồ đến từ Ga-li-lê, nhưng chi tiết này không đặc thù và không liên quan đến thông tin trong câu Kinh Thánh được hỏi.",
     "language": "vi",
     "options": [
-      "Phi-e-rơ",
-      "Gia-cơ",
-      "Anh-rê",
+      "Môn đồ Giu-đa Ích-ca-ri-ốt",
+      "Môn đồ mà mọi người gọi là Phi-e-rơ",
+      "Môn đồ người xứ Ga-li-lê",
       "Người môn đồ Đức Chúa Jêsus yêu (Giăng)"
     ],
     "tags": [
@@ -1962,13 +1962,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giăng 14:1 — 'Lòng các ngươi chớ hề bối rối; hãy tin Đức Chúa Trời, cũng hãy tin Ta nữa.'",
+    "explanation": "Đáp án đúng là 'Lòng các ngươi chớ hề bối rối; hãy tin Đức Chúa Trời và tin Ta' (Giăng 14:1), đây chính xác là lời an ủi đầu tiên Chúa Jêsus phán với các môn đồ sau khi Giu-đa ra đi. Distractor 'Lòng các ngươi chớ hề bối rối; hãy tin Đức Chúa Trời là đủ' sai vì thiếu cụm 'và tin Ta' - một chi tiết then chốt trong câu Kinh Thánh. Distractor 'Lòng các ngươi chớ hề bối rối; hãy tin Ta và vâng lời Ta' sai vì thay thế 'tin Đức Chúa Trời và tin Ta' bằng 'tin Ta và vâng lời Ta', làm thay đổi phạm vi và nội dung mệnh lệnh. Distractor 'Hãy yêu thương nhau như Ta đã yêu thương các ngươi' sai vì trích từ một câu Kinh Thánh khác (Giăng 13:34) được nói trước đó, không phải là lời an ủi đầu tiên sau khi Giu-đa rời đi.",
     "language": "vi",
     "options": [
       "Lòng các ngươi chớ hề bối rối; hãy tin Đức Chúa Trời và tin Ta",
-      "Hãy theo Ta đến cùng",
-      "Hãy bỏ tất cả mà theo Ta",
-      "Hãy giữ luật pháp Môi-se"
+      "Lòng các ngươi chớ hề bối rối; hãy tin Đức Chúa Trời là đủ",
+      "Lòng các ngươi chớ hề bối rối; hãy tin Ta và vâng lời Ta",
+      "Hãy yêu thương nhau như Ta đã yêu thương các ngươi"
     ],
     "tags": [
       "Tân Ước",
@@ -1988,12 +1988,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 14:2 — 'Trong nhà Cha Ta có nhiều chỗ ở; bằng chẳng vậy, Ta đã nói cho các ngươi rồi. Ta đi sắm sẵn cho các ngươi một chỗ.'",
+    "explanation": "Câu Kinh Thánh Giăng 14:2 (trích theo BTT) viết: 'Trong nhà Cha Ta có nhiều chỗ ở; bằng chẳng vậy, Ta đã nói cùng các ngươi rồi. Ta đi sắm sẵn cho các ngươi một chỗ.' Đáp án đúng trực tiếp trích dẫn ý này, mô tả hai phần: (1) điều tồn tại nơi nhà Cha (nhiều chỗ ở) và (2) mục đích Chúa Jêsus đi (sắm sẵn một chỗ cho các môn đồ).\n- Distractor 'Nhiều chỗ ở; Các ngươi đi sắm sẵn cho Ta một chỗ' (loại lỗi: wrong_detail) là phương án gần đúng vì phần đầu hoàn toàn đúng ('Nhiều chỗ ở'), nhưng phần hai đảo ngược sai chủ thể - Không phải các môn đồ đi sắm chỗ cho Ngài mà là Ngài đi sắm chỗ cho họ.\n- Distractor 'Nhiều đồ quý; Ta đi nhận sự vinh hiển từ các ngươi' (loại lỗi: common_misconception) sai cả hai phần: đoạn này nhắc đến 'chỗ ở' chứ không phải 'đồ quý', và mục đích Chúa đi là sắm sẵn chỗ chứ không phải thu nhận sự vinh hiển từ người (sai lạc về vai trò và mục đích của Chúa trong lời hứa).\n- Distractor 'Nhiều nơi thờ phượng; Ta về để các ngươi có thể đến với Cha' (loại lỗi: true_but_off) lạc đề: bối cảnh chương nói về thờ phượng và đến với Cha (câu 6), nhưng cụ thể câu 2 không đề cập 'nơi thờ phượng' cũng không nói mục đích trực tiếp là 'để các ngươi có thể đến với Cha'; cách trả lời này tuy liên quan đến chủ đề chung nhưng không phải thông tin đặc thù của câu hỏi về câu 2.",
     "language": "vi",
     "options": [
-      "Một chỗ duy nhất / không cần làm gì",
-      "Chỗ chỉ cho người Do Thái",
-      "Chỗ đầy hạn chế",
+      "Nhiều chỗ ở; Các ngươi đi sắm sẵn cho Ta một chỗ",
+      "Nhiều đồ quý; Ta đi nhận sự vinh hiển từ các ngươi",
+      "Nhiều nơi thờ phượng; Ta về để các ngươi có thể đến với Cha",
       "Nhiều chỗ ở; Ta đi sắm sẵn cho các ngươi một chỗ"
     ],
     "tags": [
@@ -2040,13 +2040,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 14:27 — 'Ta để sự bình an lại cho các ngươi; Ta ban sự bình an Ta cho các ngươi; Ta cho các ngươi sự bình an chẳng phải như thế gian cho.'",
+    "explanation": "Trong Giăng 14:27, Chúa Jêsus phán: 'Ta để sự bình an lại cho các ngươi; Ta ban sự bình an của Ta cho các ngươi. Chẳng phải như thế gian ban cho thể nào, thì Ta ban cho các ngươi thể ấy.' Do đó, đáp án đúng trực tiếp trích dẫn ý chính: Ngài để lại 'Sự bình an Ta cho — chẳng phải như thế gian cho'.\n\nCác đáp án sai:\n- 'Sự vui mừng Ta cho — chẳng phải như thế gian cho': Đây là đáp án gần đúng (almost-right) nhưng sai chi tiết then chốt. Mặc dù cấu trúc câu đúng và 'vui mừng' là một chủ đề quan trọng khác trong Tin Mừng Giăng (như Giăng 15:11), nhưng nó không phải là điều được đề cập cụ thể trong câu 14:27 này.\n- 'Sự bình an Ta cho — cũng như thế gian cho': Sai chi tiết quan trọng về sự tương phản. Câu Kinh Thánh nhấn mạnh sự bình an của Chúa Jêsus ban 'chẳng phải như' thế gian, nên việc thay bằng 'cũng như' làm trái ngược hoàn toàn ý nghĩa.\n- 'Sự sống dồi dào Ta cho — chẳng phải như thế gian cho': Sai phạm vi chủ đề. 'Sự sống dồi dào' là một lời hứa quan trọng (Giăng 10:10) nhưng không phải là chủ đề của câu hỏi về Giăng 14:27.",
     "language": "vi",
     "options": [
-      "Sự giàu có",
-      "Của cải vật chất",
+      "Sự vui mừng Ta cho — chẳng phải như thế gian cho",
+      "Sự bình an Ta cho — cũng như thế gian cho",
       "Sự bình an Ta cho — chẳng phải như thế gian cho",
-      "Quyền lực"
+      "Sự sống dồi dào Ta cho — chẳng phải như thế gian cho"
     ],
     "tags": [
       "Tân Ước",
@@ -2066,12 +2066,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 15:13 — 'Chẳng có sự yêu thương nào lớn hơn là vì bạn hữu mà phó sự sống mình.'",
+    "explanation": "Câu Giăng 15:13 chép trọn vẹn: \"Chẳng có sự yêu thương nào lớn hơn sự yêu thương vì bạn hữu mà phó sự sống mình.\" Do đó, đáp án đúng trung thành với nội dung Kinh Thánh, diễn đạt sự hy sinh mạng sống (sự sống mình) vì bạn hữu. Các phương án sai: 1) 'Hy sinh của cải mình' là chi tiết sai (mặc dù cấu trúc câu tương tự nhưng thay 'sự sống' bằng 'của cải'), đây là phương án gần đúng nhưng thiếu yếu tố then chốt là mạng sống; 2) 'Yêu thương kẻ thù' mặc dù là giáo lý quan trọng (Ma-thi-ơ 5:44) nhưng không phải là nội dung của Giăng 15:13, đây là lỗi nhầm qua phân đoạn gần; 3) 'Giữ trọn các điều răn' tuy liên quan đến chủ đề yêu thương trong ngữ cảnh (Giăng 15:10, 12) nhưng không trả lời trực tiếp câu hỏi về 'sự yêu thương lớn nhất' được định nghĩa trong câu 13, đây là lỗi đúng văn bản nhưng lạc câu hỏi.",
     "language": "vi",
     "options": [
-      "Yêu cha mẹ trọn đời",
-      "Tha thứ cho kẻ thù",
-      "Hi sinh tài sản",
+      "Hy sinh của cải mình vì bạn hữu",
+      "Yêu thương kẻ thù mình như chính mình",
+      "Giữ trọn các điều răn của Đức Chúa Trời",
       "Phó sự sống mình vì bạn hữu"
     ],
     "tags": [
@@ -2092,13 +2092,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 15:16 — 'Ấy chẳng phải các ngươi đã chọn Ta, bèn là Ta đã chọn và lập các ngươi, để các ngươi đi và kết quả.'",
+    "explanation": "Câu hỏi trích dẫn Giăng 15:16: 'Ấy chẳng phải các ngươi đã chọn ta, bền là ta đã chọn các ngươi, và lập các ngươi...' (BTT). Đáp án đúng là 'Ngài đã chọn và lập các môn đồ' vì câu Kinh Thánh xác định rõ Chúa Jêsus là Đấng chủ động chọn và lập các môn đồ, không phải ngược lại. Distractor 'Các môn đồ đã chọn và theo Ngài' là gần đúng nhưng sai chi tiết then chốt về chủ thể hành động. Distractor 'Ngài đã được các môn đồ chọn và lập' đúng văn bản (Ngài đã chọn) nhưng đảo ngược quan hệ nên lạc câu hỏi. Distractor 'Các môn đồ tự chọn và lập nhau' là hiểu lầm phổ biến về sự tự lực, trái với ý chính của phân đoạn về sự kêu gọi và ban phước từ Chúa.",
     "language": "vi",
     "options": [
-      "Các môn đồ chọn Ngài",
+      "Các môn đồ đã chọn và theo Ngài",
       "Ngài đã chọn và lập các môn đồ",
-      "Cả hai cùng chọn nhau",
-      "Đức Cha trực tiếp chọn từ đời đời"
+      "Ngài đã được các môn đồ chọn và lập",
+      "Các môn đồ tự chọn và lập nhau"
     ],
     "tags": [
       "Tân Ước",
@@ -2118,12 +2118,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 16:24 — 'Đến bây giờ, các ngươi chưa từng cầu xin điều chi trong danh Ta. Hãy cầu xin đi, các ngươi sẽ được, hầu cho sự vui mừng các ngươi được trọn vẹn.'",
+    "explanation": "Giăng 16:24 ghi lại lời Chúa Jêsus: 'Hãy cầu xin, các ngươi sẽ được, hầu cho sự vui mừng của các ngươi được trọn vẹn.' Trong ngữ cảnh của chương 16, Chúa Jêsus đang hướng dẫn các môn đồ về sự cầu nguyện sau khi Ngài về cùng Cha (câu 23-28). Việc cầu xin 'trong danh Ta' là điều kiện và phương cách được nhấn mạnh ở đây để nhận được và có trọn niềm vui.\n- ĐÁP ÁN ĐÚNG: 'Trong danh Ta (Chúa Jêsus)' là chính xác vì câu 24 và ngữ cảnh trực tiếp (câu 23, 26) đều xác định rõ điều này.\n- DISTRACTOR 1 (Trong danh Đức Chúa Trời): Là 'gần đúng' vì Chúa Jêsus và Đức Chúa Trời hiệp một, nhưng trong câu hỏi cụ thể này về lời dạy trực tiếp trong Giăng 16:24, Chúa Jêsus chỉ rõ là 'trong danh Ta'. Đây là lỗi nhầm passage gần (có thể liên tưởng đến cầu nguyện nói chung với Đức Chúa Trời).\n- DISTRACTOR 2 (Trong danh các ngươi): Sai phạm vi vì hoàn toàn không có trong văn bản và trái với giáo lý về sự cầu nguyện nhân danh Chúa Jêsus.\n- DISTRACTOR 3 (Trong danh Đức Thánh Linh): Sai chi tiết. Mặc dù Giăng 14-16 nói nhiều về Đức Thánh Linh (Đấng Yên ủi), nhưng trong câu 24 và ngữ cảnh cầu nguyện để được trọn vui mừng, Chúa Jêsus không dạy cầu xin trong danh Đức Thánh Linh tại đây.",
     "language": "vi",
     "options": [
-      "Trong danh Áp-ra-ham",
-      "Trong danh các tiên tri",
-      "Trong danh Đức Cha",
+      "Trong danh Đức Chúa Trời",
+      "Trong danh các ngươi",
+      "Trong danh Đức Thánh Linh",
       "Trong danh Ta (Chúa Jêsus)"
     ],
     "tags": [
@@ -2144,13 +2144,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 16:33 — 'Trong thế gian các ngươi sẽ có sự hoạn nạn; nhưng hãy cứ vững lòng, Ta đã thắng thế gian rồi!'",
+    "explanation": "Câu trả lời đúng là 'Vững lòng (good cheer)' dựa trên Giăng 16:33, với nguyên văn: 'Ta đã bảo các con những điều nầy để trong Ta các con có sự bình an. Trong thế gian các con sẽ có hoạn nạn, nhưng hãy vững lòng, vì Ta đã thắng thế gian.' Đây là lời Đức Chúa Giê-xu khích lệ môn đồ. Distractor 'Khóc lóc (mourn)' là một cảm xúc tự nhiên trước hoạn nạn, nhưng không phải mệnh lệnh cụ thể của Chúa trong câu này. 'Chiến đấu (fight)' áp dụng sai phạm vi—bối cảnh tâm linh về sự bình an và đắc thắng, không phải hành động thể chất hay tranh đấu. 'Chạy trốn (flee)' xuất phát từ hiểu lầm phổ biến rằng nên tránh né khó khăn, trái ngược với lời kêu gọi đối diện với 'hoạn nạn' bằng sự vững lòng dựa trên chiến thắng của Chúa.",
     "language": "vi",
     "options": [
-      "Khóc lóc",
-      "Đợi chờ",
+      "Khóc lóc (mourn)",
+      "Chiến đấu (fight)",
       "Vững lòng (good cheer)",
-      "Tránh xa"
+      "Chạy trốn (flee)"
     ],
     "tags": [
       "Tân Ước",
@@ -2170,13 +2170,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giăng 17:3 — 'Vả, sự sống đời đời là nhìn biết Cha, tức là Đức Chúa Trời có một và thật, cùng Jêsus Christ, là Đấng Cha đã sai đến.'",
+    "explanation": "Giăng 17:3 chép: 'Sự sống đời đời là nhìn biết Cha, tức là Đức Chúa Trời thật và duy nhất, cùng Đức Chúa Jêsus Christ, là Đấng Cha đã sai đến.' (BTT). Đáp án đúng vì Chúa Jêsus định nghĩa sự sống đời đời là nhận biết (nhìn biết) chính xác hai Đấng: Cha (Đức Chúa Trời thật) và chính Ngài (Đức Chúa Jêsus Christ).\n\nDistractor 1 sai vì thay 'Đức Chúa Jêsus Christ' bằng 'Chúa Thánh Linh' — đây là lỗi sai chi tiết (wrong_detail), dù gần đúng nhưng thay đổi nhân vật then chốt trong định nghĩa.\nDistractor 2 sai vì thêm điều kiện 'làm theo luật pháp Ngài' — đây là lỗi mở rộng phạm vi (wrong_scope) vì câu Kinh Thánh không đề cập đến việc làm theo luật pháp trong định nghĩa này.\nDistractor 3 sai vì thay thế 'Đức Chúa Jêsus Christ' bằng kết quả 'nhận được sự tha tội' — đây dựa trên hiểu lầm phổ biến (common_misconception) rằng sự sống đời đời chỉ là hậu quả của tha tội, trong khi bản văn định nghĩa nó là mối quan hệ nhận biết cá nhân.",
     "language": "vi",
     "options": [
       "Nhìn biết Cha — Đức Chúa Trời thật và Đức Chúa Jêsus Christ",
-      "Sống lâu nhất có thể",
-      "Tạo dựng nhiều việc lành",
-      "Tránh xa mọi tội lỗi"
+      "Nhận biết Cha — Đức Chúa Trời thật và Chúa Thánh Linh",
+      "Nhận biết Cha — Đức Chúa Trời thật và làm theo luật pháp Ngài",
+      "Nhận biết Cha — Đức Chúa Trời thật và nhận được sự tha tội"
     ],
     "tags": [
       "Tân Ước",
@@ -2196,13 +2196,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 17:11 — 'Cha thánh, xin gìn giữ trong danh Cha là danh Cha đã ban cho con, để cho họ là một, cũng như Cha và Con là một vậy.'",
+    "explanation": "Giăng 17:11 chép: 'Lạy Cha Thánh, xin gìn giữ họ trong danh Cha, là danh Cha đã ban cho Con, để họ cũng hiệp làm một như chúng ta vậy.' \n\n- ĐÁP ÁN ĐÚNG: Câu trả lời chính xác trích dẫn cụ thể 'trong danh Cha' và mục đích 'để họ là một' từ Kinh Thánh.\n\n- DISTRACTOR 1 (Sai chi tiết): Sai ở chi tiết 'trong danh Con'. Mặc dù câu 11 có nhắc đến danh Cha đã ban cho Con, nhưng Chúa Jêsus cầu xin Cha gìn giữ họ trong DANH CHA, không phải danh Con. Đây là distractor 'gần đúng' vì chỉ sai một từ then chốt.\n\n- DISTRACTOR 2 (Hiểu lầm phổ biến): Cụm từ 'trong tình yêu Cha' nghe có vẻ đúng về thần học (xem Giăng 17:26), nhưng đây KHÔNG phải đối tượng của lời cầu xin 'gìn giữ' trong câu 11 được hỏi. Đây là một hiểu lầm phổ biến khi đọc lướt hoặc gộp ý các câu.\n\n- DISTRACTOR 3 (Đúng văn bản nhưng lạc câu hỏi): Cụm 'trong thế gian' và 'họ không thuộc về thế gian' có trong ngữ cảnh (câu 14, 16), nhưng KHÔNG phải là điều Chúa Jêsus cầu xin Cha 'gìn giữ' họ TRONG đó. Câu hỏi hỏi cụ thể về đối tượng của sự 'gìn giữ' (in what), nên đáp án này lạc trọng tâm câu hỏi.",
     "language": "vi",
     "options": [
-      "Trong sự khôn ngoan",
+      "Trong danh Con — để họ là một như Cha và Con là một",
       "Trong danh Cha — để họ là một như Cha và Con là một",
-      "Trong sức mạnh",
-      "Trong giàu có"
+      "Trong tình yêu Cha — để họ là một như Cha và Con là một",
+      "Trong thế gian — nhưng họ không thuộc về thế gian"
     ],
     "tags": [
       "Tân Ước",
@@ -2222,12 +2222,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 18:10 — 'Si-môn Phi-e-rơ rút gươm, đánh đầy tớ thầy cả thượng phẩm, chém đứt tai bên hữu. Đầy tớ đó tên là Mạnh-chu (Malchus).'",
+    "explanation": "Giăng 18:10 chép: 'Si-môn Phi-e-rơ có một thanh gươm, bèn rút ra, đánh đầy tớ thầy cả thượng phẩm, chém đứt tai bên mặt. Tên đầy tớ ấy là Mạnh-chu.' Vậy đáp án đúng là Mạnh-chu, đầy tớ thầy cả thượng phẩm. Các đáp án sai: 1) 'Ma-la-chi...' sai vì đây là tên một tiên tri trong Cựu Ước, không phải tên đầy tớ trong sự kiện này (sai chi tiết tên). 2) 'Mạnh-chu, đầy tớ của Phi-lát' sai vì Mạnh-chu là đầy tớ của thầy cả thượng phẩm, không phải của Phi-lát (sai phạm vi, thuộc về nhân vật khác). 3) 'Giăng, một môn đồ khác' sai vì đây là một hiểu lầm phổ biến do nhầm lẫn về các môn đồ có mặt, nhưng Kinh Thánh xác định rõ người bị thương là đầy tớ, không phải môn đồ.",
     "language": "vi",
     "options": [
-      "Một lính La-mã",
-      "Cai-phe",
-      "Phi-lát",
+      "Ma-la-chi, đầy tớ thầy cả thượng phẩm",
+      "Mạnh-chu, đầy tớ của Phi-lát",
+      "Giăng, một môn đồ khác",
       "Mạnh-chu, đầy tớ thầy cả thượng phẩm"
     ],
     "tags": [
@@ -2248,13 +2248,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 18:36 — 'Nước của Ta chẳng phải thuộc về thế gian nầy. Ví bằng nước Ta thuộc về thế gian nầy, thì tôi tớ của Ta sẽ đánh trận.'",
+    "explanation": "Trong Giăng 18:36, Chúa Jêsus trả lời Phi-lát rõ ràng: 'Nước Ta chẳng thuộc về thế gian nầy'. Đây là cơ sở cho đáp án đúng 'Thuộc về thế gian nầy' (dạng phủ định trong câu hỏi).\n\nCác đáp án sai:\n1. 'Thuộc về thế gian sau nầy' sai vì bản văn chỉ nói 'thế gian nầy' (hiện tại), không đề cập 'thế gian sau'.\n2. 'Thuộc về dân Y-sơ-ra-ên' là hiểu lầm phổ biến, vì mặc dù người Do Thái trông đợi vương quốc trần thế, nhưng Chúa Jêsus không khẳng định điều đó ở đây.\n3. 'Thuộc về các môn đồ Ngài' tuy đúng là Chúa thiết lập vương quốc thuộc linh qua các môn đồ, nhưng chi tiết này không nằm trong câu trả lời trực tiếp của Ngài với Phi-lát ở phân đoạn này.",
     "language": "vi",
     "options": [
-      "Thuộc về Y-sơ-ra-ên",
-      "Thuộc về La-mã",
+      "Thuộc về thế gian sau nầy",
+      "Thuộc về dân Y-sơ-ra-ên",
       "Thuộc về thế gian nầy",
-      "Thuộc về A-thên"
+      "Thuộc về các môn đồ Ngài"
     ],
     "tags": [
       "Tân Ước",
@@ -2274,13 +2274,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 18:38 — 'Phi-lát hỏi rằng: Lẽ thật là cái gì?'",
+    "explanation": "Giăng 18:38 chép: 'Phi-lát hỏi Ngài rằng: Lẽ thật là cái gì?' Đây là câu hỏi triết lý nổi tiếng của Phi-lát sau khi Chúa Jêsus nói 'Ta... đã đến... làm chứng cho lẽ thật' (câu 37).\n\n- Đáp án đúng 'Lẽ thật là cái gì?' trực tiếp trích từ câu Kinh Thánh.\n- Distractor 'Con người là cái gì?' sai vì mượn hình thức câu hỏi nhưng thay chủ đề; đây là một câu hỏi triết lý phổ biến nhưng không phải câu Phi-lát hỏi.\n- Distractor 'Nước tôi là cái gì?' sai vì dựa vào chi tiết gần đó: Chúa Jêsus đã nói 'Nước tôi chẳng thuộc về thế gian nầy' (câu 36), nhưng Phi-lát không hỏi lại câu này.\n- Distractor 'Điều thiện là cái gì?' là 'gần đúng' vì đây cũng là một câu hỏi triết lý căn bản và có trong bối cảnh xét xử (ví dụ: Ma-thi-ơ 19:17), nhưng trong phân đoạn Giăng 18, Phi-lát chỉ hỏi về 'lẽ thật', không hỏi về 'điều thiện'.",
     "language": "vi",
     "options": [
-      "Ngươi là ai?",
+      "Con người là cái gì?",
       "Lẽ thật là cái gì?",
-      "Tội lỗi là gì?",
-      "Cứu rỗi là sao?"
+      "Nước tôi là cái gì?",
+      "Điều thiện là cái gì?"
     ],
     "tags": [
       "Tân Ước",
@@ -2326,13 +2326,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giăng 19:19-20 — 'Phi-lát cũng viết một tấm bảng, treo trên thập tự giá. Bảng đó có đề chữ rằng: JÊSUS NGƯỜI NA-XA-RÉT, LÀ VUA DÂN GIU-ĐA. Đề bằng tiếng Hê-bơ-rơ, La-mã, và Hy-lạp.'",
+    "explanation": "Đáp án đúng là 'JÊSUS NGƯỜI NA-XA-RÉT, VUA DÂN GIU-ĐA' được xác nhận chính xác trong Giăng 19:19 (BTT): 'Phi-lát cũng sai làm một tấm bảng, viết chữ rằng: JÊSUS NGƯỜI NA-XA-RÉT, VUA DÂN GIU-ĐA'.\n\nCác đáp án sai:\n- 'JÊSUS NGƯỜI GIU-ĐA, VUA DÂN Y-SƠ-RA-ÊN': Sai chi tiết quan trọng (wrong_detail) - Chúa Jêsus được gọi là 'người Na-xa-rét', không phải 'người Giu-đa' và bảng ghi 'dân Giu-đa', không phải 'dân Y-sơ-ra-ên'. Đây là distractor gần đúng (almost-right) vì chỉ sai hai chi tiết nhỏ trong cụm từ.\n- 'JÊSUS CON ĐA-VÍT, VUA DÂN GIU-ĐA': Lấy từ passage gần (nearby_passage) - Mặc dù Chúa Jêsus được gọi là 'Con Đa-vít' trong các sách Phúc Âm khác (ví dụ: Ma-thi-ơ 1:1), nhưng cụm từ này KHÔNG xuất hiện trong bảng ghi của Phi-lát ở Giăng 19:19.\n- 'NGƯỜI NÀY LÀ VUA DÂN GIU-ĐA': Sai phạm vi (wrong_scope) - Đây là phần sau của nội dung bảng ghi (chỉ có chức vụ 'Vua dân Giu-đa'), nhưng thiếu hoàn toàn phần danh xưng và xuất xứ 'Jêsus người Na-xa-rét' mà câu hỏi yêu cầu về nội dung đầy đủ.",
     "language": "vi",
     "options": [
       "JÊSUS NGƯỜI NA-XA-RÉT, VUA DÂN GIU-ĐA (INRI)",
-      "JÊSUS, ĐẤNG MÊ-SI-A",
-      "JÊSUS, KẺ PHẠM TỘI",
-      "JÊSUS, TIÊN TRI"
+      "JÊSUS NGƯỜI GIU-ĐA, VUA DÂN Y-SƠ-RA-ÊN",
+      "JÊSUS CON ĐA-VÍT, VUA DÂN GIU-ĐA",
+      "NGƯỜI NÀY LÀ VUA DÂN GIU-ĐA"
     ],
     "tags": [
       "Tân Ước",
@@ -2353,13 +2353,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 19:26-27 — 'Đức Chúa Jêsus thấy mẹ mình, và một môn đồ Ngài yêu đứng gần... bèn phán cùng môn đồ đó rằng: Đó là mẹ ngươi! Bắt đầu từ giờ ấy, môn đồ ấy rước người về nhà mình.' Môn đồ là Giăng.",
+    "explanation": "Đoạn Kinh Thánh Giăng 19:26-27 chép rõ: 'Đức Chúa Jêsus thấy mẹ mình, và một môn đệ Ngài yêu đứng gần bên, thì nói cùng mẹ rằng: Hỡi đàn bà kia, đó là con của ngươi! Đoạn, Ngài lại phán cùng môn đồ ấy rằng: Đó là mẹ ngươi! Từ giờ đó, môn đồ nầy rước mẹ Ngài về nhà mình.' Vì vậy, đáp án đúng là 'Người môn đồ Ngài yêu (Giăng)', người được giao phó chăm sóc mẹ Ngài.\n\nCác đáp án sai:\n- 'Giu-đa Ít-ca-ri-ốt (kẻ phản Ngài)' sai vì đây là môn đồ phản Chúa, được nhắc đến trong các đoạn trước (chẳng hạn chương 13, 18), nhưng hoàn toàn không có mặt trong phân đoạn thập tự giá này.\n- 'Phi-e-rơ (môn đồ trưởng)' là đáp án gần đúng nhất vì Phi-e-rơ là một môn đồ quan trọng và thường được nhắc đến, nhưng trong phân đoạn cụ thể này, Kinh Thánh chỉ định rõ là 'môn đệ Ngài yêu' (truyền thống tin là Giăng) chứ không phải Phi-e-rơ.\n- 'Một người lính La Mã có lòng thương xót' sai vì dù có lính La Mã hiện diện ở hiện trường (Giăng 19:23-24, 32-34), không có chi tiết nào cho thấy họ được giao nhiệm vụ chăm sóc mẹ Chúa Jêsus; đây là một suy diễn phổ biến nhưng không dựa trên văn bản.",
     "language": "vi",
     "options": [
-      "Phi-e-rơ",
-      "Anh-rê",
+      "Giu-đa Ít-ca-ri-ốt (kẻ phản Ngài)",
+      "Phi-e-rơ (môn đồ trưởng)",
       "Người môn đồ Ngài yêu (Giăng)",
-      "Gia-cơ con Sê-bê-đê"
+      "Một người lính La Mã có lòng thương xót"
     ],
     "tags": [
       "Tân Ước",
@@ -2379,13 +2379,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 19:34 — 'Có một tên lính lấy giáo đâm ngang sườn Ngài, tức thì máu và nước chảy ra.'",
+    "explanation": "Giăng 19:34 ghi: 'Nhưng một tên lính lấy giáo đâm vào sườn Ngài, tức thì máu và nước chảy ra.' Do đó, đáp án đúng là 'Huyết và nước'. Distractor 'Huyết và rượu' sai vì Kinh Thánh không nói về rượu trong ngữ cảnh này. Distractor 'Máu và mật' sai vì đây là một hiểu lầm phổ biến (mật thường được nhắc ở các phân đoạn khác, như khi Chúa Jêsus trên thập tự giá). Distractor 'Nước và mồ hôi' sai vì dựa vào một chi tiết gần (mồ hôi như giọt máu trong vườn Ghết-sê-ma-nê, Lu-ca 22:44) nhưng không liên quan đến sự kiện bị đâm vào sườn sau khi chết.",
     "language": "vi",
     "options": [
-      "Chỉ huyết",
+      "Huyết và rượu",
       "Huyết và nước",
-      "Lửa và khói",
-      "Hương thơm"
+      "Máu và mật",
+      "Nước và mồ hôi"
     ],
     "tags": [
       "Tân Ước",
@@ -2405,13 +2405,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 20:8 — 'Bấy giờ, môn đồ kia đã đến mộ trước, cũng bước vào, thì thấy và tin.' Đó là người môn đồ Chúa yêu, tức Giăng.",
+    "explanation": "Đáp án đúng là 'Môn đồ Chúa yêu (Giăng)' (Giăng 20:8). Phi-e-rơ cũng vào mộ và thấy (câu 6), nhưng không ghi nhận là đã tin ngay lúc ấy. Gia-cơ là môn đồ nhưng không được kể trong đoạn này khi vào mộ. Ma-thi-ơ không có mặt trong sự kiện này và là một nhầm lẫn phổ biến vì ông là môn đồ, nhưng chỉ Giăng mới được đặc biệt ghi nhận là 'thấy và tin'.",
     "language": "vi",
     "options": [
-      "Phi-e-rơ",
-      "Ma-ri Ma-đơ-len",
+      "Phi-e-rơ (Simôn)",
+      "Gia-cơ (con của Xê-bê-đê)",
       "Môn đồ Chúa yêu (Giăng)",
-      "Thô-ma"
+      "Ma-thi-ơ (Lê-vi)"
     ],
     "tags": [
       "Tân Ước",
@@ -2431,13 +2431,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 20:21 — 'Bình an cho các ngươi! Cha đã sai Ta thể nào, Ta cũng sai các ngươi thể ấy.'",
+    "explanation": "Giăng 20:21 chép: 'Cha đã sai Ta thể nào, Ta cũng sai các ngươi thể ấy.' Đáp án đúng là 'Sai các ngươi thể ấy', vì Chúa Jêsus ủy thác sứ mạng cho các môn đồ như Ngài đã được Cha sai đến. Distractor 'Sai các ngươi thể khác' gần đúng nhưng sai chi tiết then chốt ('khác' thay vì 'ấy'), làm thay đổi ý nghĩa về sự tương đồng của sứ mạng. 'Thánh hóa các ngươi thể ấy' là sai phạm vi vì động từ 'thánh hóa' không xuất hiện trong ngữ cảnh câu này mà thuộc về chủ đề khác (ví dụ: Giăng 17:17). 'Yêu các ngươi thể ấy' phản ánh một hiểu lầm phổ biến, dù tình yêu thương là chủ đề quan trọng trong Giăng, nhưng đây không phải là từ ngữ cụ thể Chúa dùng trong câu 21 để mô tả sự ủy thác sứ mạng.",
     "language": "vi",
     "options": [
-      "Bảo các ngươi ở yên",
+      "Sai các ngươi thể khác",
       "Sai các ngươi thể ấy",
-      "Đem các ngươi vào nước thiên đàng",
-      "Tha tội cho các ngươi"
+      "Thánh hóa các ngươi thể ấy",
+      "Yêu các ngươi thể ấy"
     ],
     "tags": [
       "Tân Ước",
@@ -2483,13 +2483,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 21:6 — 'Hãy thả lưới bên hữu thuyền, thì các ngươi sẽ được. Vậy, các người đã thả lưới xuống, được nhiều cá đến nỗi không thể kéo lên nữa.' Đếm được 153 con cá.",
+    "explanation": "Đáp án đúng là \"Bên hữu thuyền — được 153 con cá\" dựa trên Giăng 21:6: \"Ngài phán rằng: Hãy thả lưới bên hữu thuyền, thì các ngươi sẽ được. Vậy, các môn đồ thả lưới xuống, được nhiều cá đến nỗi không thể kéo lên nữa\" và câu 11 ghi số cá là 153 con.\n\nCác đáp án sai:\n- \"Phía bên trái thuyền — được 153 con cá\": Sai chi tiết vị trí (trái thay vì hữu), nhưng đúng số cá 153, đây là distractor gần đúng chỉ sai một chi tiết then chốt.\n- \"Ở phía trước thuyền — được nhiều cá lớn\": Sai phạm vi, câu hỏi hỏi chính xác vị trí Chúa dặn, không đề cập cá lớn và vị trí \"trước thuyền\" không xuất hiện trong phân đoạn.\n- \"Chỗ nước sâu nhất — được đầy lưới cá\": Nhầm với phân đoạn khác (như Lu-ca 5:4 nơi Chúa bảo thả lưới chỗ nước sâu), không phải sự kiện trong Giăng 21.",
     "language": "vi",
     "options": [
-      "Bên tả thuyền",
+      "Phía bên trái thuyền — được 153 con cá",
       "Bên hữu thuyền — được 153 con cá",
-      "Đáy hồ",
-      "Gần bờ"
+      "Ở phía trước thuyền — được nhiều cá lớn",
+      "Chỗ nước sâu nhất — được đầy lưới cá"
     ],
     "tags": [
       "Tân Ước",
@@ -2510,13 +2510,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 21:15-17 — 'Hỡi Si-môn, con Giô-na, ngươi yêu Ta hơn những kẻ nầy chăng?... Hãy chăn chiên Ta.'",
+    "explanation": "Đoạn Kinh Thánh Giăng 21:15-17 ghi lại việc Chúa Jêsus hỏi Phi-e-rơ ba lần: \"Hỡi Si-môn, con Giô-na, ngươi yêu Ta hơn những kẻ nầy chăng?\" và sau câu trả lời của Phi-e-rơ, Ngài phán: \"Hãy chăn chiên Ta.\" (BTT). Do đó, đáp án đúng là \"Ngươi yêu Ta chăng? — Hãy chăn chiên Ta\".\n\nCác đáp án sai:\n1. \"Ngươi có từng chối Ta không? — Hãy theo Ta\": Sai vì mặc dù liên quan đến bối cảnh gần (Phi-e-r� chối Chúa trước đó) và gần đúng với chủ đề phục hồi, nhưng câu hỏi và mệnh lệnh cụ thể trong phân đoạn này không phải như vậy. Đây là distractor 'gần đúng'.\n2. \"Ngươi có tin Ta không? — Hãy giảng đạo\": Sai vì thay đổi chi tiết then chốt (từ 'yêu' thành 'tin') và mệnh lệnh không chính xác ('giảng đạo' thay vì 'chăn chiên').\n3. \"Ai là người yêu Ta nhất? — Hãy chăn chiên\": Sai vì câu hỏi này, dù có từ 'yêu' và mệnh lệnh đúng, lại thay đổi trọng tâm thành một câu hỏi so sánh ('ai... nhất') không có trong văn bản, nên lạc với câu hỏi cụ thể được nêu.",
     "language": "vi",
     "options": [
-      "Ngươi sẽ theo Ta sao?",
-      "Ngươi tin Ta là Đấng Christ chăng?",
+      "Ngươi có từng chối Ta không? — Hãy theo Ta",
+      "Ngươi có tin Ta không? — Hãy giảng đạo",
       "Ngươi yêu Ta chăng? — Hãy chăn chiên Ta",
-      "Ngươi đã hối cải chăng?"
+      "Ai là người yêu Ta nhất? — Hãy chăn chiên"
     ],
     "tags": [
       "Tân Ước",
@@ -2536,12 +2536,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 21:18-19 — 'Khi ngươi già, ngươi sẽ giơ bàn tay ra, người khác thắt lưng cho ngươi, và dẫn ngươi đi đến nơi mình không muốn... Ngài nói điều đó để chỉ về Phi-e-rơ sẽ chết cách nào đặng sáng danh Đức Chúa Trời.' Truyền thuyết: Phi-e-rơ chịu đóng đinh ngược.",
+    "explanation": "Giải thích: Đáp án đúng dựa trên Giăng 21:18, nơi Chúa Jêsus phán với Phi-e-rơ: 'Thật, ta nói cùng ngươi, lúc còn trẻ, ngươi tự thắt lưng lấy, và đi đâu tùy ý; nhưng khi già, ngươi sẽ giang tay ra, và một người khác thắt lưng cho, đem đi đến nơi mình chẳng muốn.' (BTT). Điều này tiên báo Phi-e-rơ sẽ bị dẫn đến nơi không muốn (cái chết tử đạo) khi về già. Distractor 1 sai vì thay đổi chi tiết then chốt 'khi già' thành 'khi còn trẻ' (sai chi tiết). Distractor 2 sai vì trộn lẫn ý của nửa đầu câu Kinh Thánh ('tự thắt lưng', 'đi nơi mình muốn') vào bối cảnh 'khi già', gây nhầm lẫn với passage gần (nhầm passage gần). Distractor 3 sai vì thể hiện một hiểu lầm phổ biến rằng Phi-e-rơ qua đời bình an, trong khi truyền thống và lời tiên tri này chỉ về cái chết tử đạo của ông (hiểu lầm phổ biến).",
     "language": "vi",
     "options": [
-      "Sẽ chết già yên bình",
-      "Sẽ bị nước cuốn",
-      "Sẽ sống đến khi Chúa trở lại",
+      "Khi còn trẻ, người khác sẽ thắt lưng và dẫn đi nơi không muốn",
+      "Khi già, ông sẽ tự mình thắt lưng và đi nơi mình muốn",
+      "Ông sẽ qua đời một cách tự nhiên và bình an trên giường",
       "Khi già, người khác sẽ thắt lưng và dẫn đi nơi không muốn (chết tử đạo)"
     ],
     "tags": [
@@ -2562,12 +2562,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 4:48 — 'Nếu các ngươi không thấy dấu lạ phép kỳ, thì các ngươi không tin!'",
+    "explanation": "Đáp án đúng là: 'Không thấy dấu lạ thì không tin'. Điều này trực tiếp dựa trên lời Chúa Jêsus nói trong Giăng 4:48 (BTT): 'Nếu không thấy phép lạ và dấu lạ, thì các ngươi chẳng tin'. Ngài quở vị quan chức và đại diện cho những người đặt đức tin của họ vào việc chứng kiến dấu lạ hữu hình.\n\nCác đáp án sai:\n1. 'Không mang bệnh nhân đến thì không tin' là đáp án gần đúng nhưng sai chi tiết. Vị quan chức trong câu chuyện (câu 47) đã mang bệnh nhân (con trai) đến nhờ Chúa chữa lành, nhưng lời quở trách của Chúa Jêsus (câu 48) không phải về việc không mang bệnh nhân đến, mà là về điều kiện 'phải thấy dấu lạ' mới tin.\n2. 'Không nhận được câu trả lời trực tiếp thì không tin' liên quan đến một chi tiết ở passage gần. Câu 47 cho thấy Chúa Jêsus không trả lời trực tiếp yêu cầu của viên quan mà đưa ra lời quở chung (câu 48). Đây là diễn biến sự việc, không phải là nội dung lời quở trách.\n3. 'Đặt điều kiện với Chúa trước khi tin' là một hiểu lầm phổ biến. Mặc dù viên quan chức đến với lời cầu xin cụ thể, lời quở của Chúa Jêsus trong câu 48 nhấn mạnh cụ thể đến việc họ cần 'thấy dấu lạ' mới tin, chứ không phải là hành động đặt điều kiện nói chung.",
     "language": "vi",
     "options": [
-      "Lòng tham vật chất",
-      "Tự kiêu",
-      "Bỏ mặc người nghèo",
+      "Không mang bệnh nhân đến thì không tin",
+      "Không nhận được câu trả lời trực tiếp thì không tin",
+      "Đặt điều kiện với Chúa trước khi tin",
       "Không thấy dấu lạ thì không tin"
     ],
     "tags": [
@@ -2588,13 +2588,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 9:7 — 'Hãy đi, rửa nơi ao Si-lô-ê (nghĩa là chịu sai đi). Vậy, người đi đến đó, rửa, và trở lại, thì đặng thấy rõ.'",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Ao Si-lô-ê (nghĩa là chịu sai đi)' là chính xác vì Kinh Thánh chép: 'Ngài phán cùng người rằng: Hãy đi, rửa nơi ao Si-lô-ê (nghĩa là chịu sai đi). Vậy, người đi đến ao đó, rửa, và rồi trở lại, thì được thấy.' (Giăng 9:7).\n\nGIẢI THÍCH CÁC ĐÁP ÁN SAI:\n1. 'Ao Bết-sai-đa (nghĩa là nhà của sự thương xót)': Đây là một ao chữa bệnh được nhắc đến trong Giăng 5:2, nơi Chúa Jêsus chữa lành một người bại. Tuy đúng là một địa điểm chữa bệnh khác trong sách Giăng, nhưng không phải là nơi được chỉ định cho người mù trong câu chuyện này (sai passage gần).\n2. 'Sông Giô-đanh (nơi có nhiều phép lạ)': Dù sông Giô-đanh là nơi diễn ra nhiều sự kiện trong Kinh Thánh (như Na-a-man được sạch phung - 2 Các Vua 5:14), và Chúa Jêsus chịu phép báp-têm tại đó, nó không liên quan đến phép lạ chữa lành người mù bẩm sinh trong Giăng chương 9 (sai chi tiết địa điểm).\n3. 'Hồ Ga-li-lê (nơi Ngài đã đi bộ trên mặt nước)': Hồ Ga-li-lê là bối cảnh của nhiều phép lạ (Ma-thi-ơ 14:25), nhưng trong câu chuyện cụ thể này, Chúa Jêsus không bảo người mù đi đến đó. Đáp án này đưa ra một địa điểm thật và có liên quan đến Chúa Jêsus, nhưng lại không đúng với câu hỏi về sự kiện trong Giăng 9:7 (đúng văn bản nhưng lạc câu hỏi).",
     "language": "vi",
     "options": [
-      "Sông Giô-đanh",
-      "Hồ Bê-tết-đa",
+      "Ao Bết-sai-đa (nghĩa là nhà của sự thương xót)",
+      "Sông Giô-đanh (nơi có nhiều phép lạ)",
       "Ao Si-lô-ê (nghĩa là chịu sai đi)",
-      "Giếng Gia-cốp"
+      "Hồ Ga-li-lê (nơi Ngài đã đi bộ trên mặt nước)"
     ],
     "tags": [
       "Tân Ước",
@@ -2614,12 +2614,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 14:9 — 'Hỡi Phi-líp, Ta ở cùng các ngươi đã lâu thay, mà ngươi chưa biết Ta! Ai đã thấy Ta, tức là đã thấy Cha. Sao ngươi lại nói rằng: Xin chỉ Cha cho chúng tôi?'",
+    "explanation": "Câu trả lời đúng là 'Ai đã thấy Ta, tức là đã thấy Cha', trích nguyên văn từ Giăng 14:9 (BTT). Câu này khẳng định sự hiệp một giữa Đức Chúa Cha và Đức Chúa Jêsus, đến nỗi thấy Con là thấy Cha. Các đáp án sai: 1) 'Ai đã thấy Ta tức là đã thấy Đức Thánh Linh' là gần đúng nhưng sai chi tiết then chốt (thay 'Cha' bằng 'Đức Thánh Linh'), trong khi ngữ cảnh câu hỏi là về Đức Chúa Cha. 2) 'Cha và Ta là một thể nhưng ngươi chưa thấy Cha' mặc dù có chứa ý 'Cha và Ta là một' (Giăng 10:30) nhưng lại thêm cụm 'nhưng ngươi chưa thấy Cha' làm thay đổi và mâu thuẫn với ý chính của câu trả lời Chúa Jêsus đang nhấn mạnh. 3) 'Ai đã thấy Ta sẽ thấy Cha trong ngày sau rốt' dựa trên hiểu lầm phổ biến, đưa khái niệm 'ngày sau rốt' vào, trong khi Chúa Jêsus khẳng định ngay lập tức và hiện tại rằng thấy Ngài là thấy Cha, không phải chờ đến tương lai.",
     "language": "vi",
     "options": [
-      "Cha sẽ hiện ra ngày sau",
-      "Cha trên trời, không ai thấy được",
-      "Hãy hỏi Đức Thánh Linh",
+      "Ai đã thấy Ta tức là đã thấy Đức Thánh Linh",
+      "Cha và Ta là một thể nhưng ngươi chưa thấy Cha",
+      "Ai đã thấy Ta sẽ thấy Cha trong ngày sau rốt",
       "Ai đã thấy Ta, tức là đã thấy Cha"
     ],
     "tags": [
@@ -2640,12 +2640,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 17:21 — 'Cha ơi, để cho ai nấy đều hiệp làm một... hầu cho thế gian tin rằng chính Cha đã sai Con đến.'",
+    "explanation": "Giăng 17:21 ghi rõ lời cầu nguyện của Chúa Jêsus: \"Để cho ai nấy đều hiệp làm một, như Cha ở trong Con, và Con ở trong Cha; lại để cho họ cũng ở trong chúng ta, đặng thế gian tin rằng chính Cha đã sai Con đến.\" Đáp án đúng là 'Hiệp làm một (như Cha và Con là một)' vì đây chính xác là điều Chúa Jêsus cầu xin để thế gian tin. Distractor 1 ('Được yêu thương') gần đúng vì tình yêu thương là chủ đề quan trọng trong chương này (câu 23,26), nhưng không phải là điều trực tiếp cầu xin cho mục đích 'để thế gian tin' trong câu 21. Distractor 2 ('Được tha tội') là một hiểu lầm phổ biến về mục đích chung của sự cứu rỗi, nhưng không được đề cập trong ngữ cảnh lời cầu nguyện này. Distractor 3 ('Được vâng phục') tuy đúng với tinh thần của Chúa Jêsus (ví dụ: Giăng 15:10) và có liên quan, nhưng nó lạc với câu hỏi cụ thể về điều kiện để thế gian tin được nêu trong Giăng 17:21.",
     "language": "vi",
     "options": [
-      "Mạnh mẽ trong đức tin",
-      "Học thuộc Kinh Thánh",
-      "Truyền giáo nhiệt huyết",
+      "Được yêu thương (như Cha đã yêu Con)",
+      "Được tha tội (như Cha đã tha cho Con)",
+      "Được vâng phục (như Con vâng phục Cha)",
       "Hiệp làm một (như Cha và Con là một)"
     ],
     "tags": [
@@ -2696,13 +2696,13 @@
     ],
     "verseEnd": 34,
     "content": "Trong Giăng 12:32-34, phản ứng trực tiếp nào của dân chúng cho thấy họ hiểu sai cụm từ 'được treo lên' (lifted up) của Chúa Jêsus?",
-    "explanation": "Giăng 3:14 (Môi-se treo rắn đồng), 8:28, 12:32-34 — ba lần Chúa nói 'được treo lên' chỉ thập tự. Trong 12:34, dân chúng ngạc nhiên và nói: 'chúng tôi nghe trong luật pháp rằng Đấng Christ còn LẠI đời đời'. Phản ứng này cho thấy họ không hiểu vì sao Đấng Christ (Đấng Mê-si) lại phải chết, dù Chúa Jêsus đang ám chỉ sự chết của Ngài.",
+    "explanation": "Câu hỏi hỏi về phản ứng trực tiếp của dân chúng cho thấy họ hiểu sai ý \"được treo lên\" trong Giăng 12:32-34. Đáp án đúng là: \"Họ nói rằng theo luật pháp, Đấng Christ phải còn lại đời đời\" (câu 34), điều này cho thấy họ nghĩ Chúa Jêsus đang nói về sự sống lâu dài thể chất của Đấng Christ, chứ không phải sự chết và sự tôn cao của Ngài trên thập tự giá.\n\nCác đáp án sai:\n1. \"Họ hỏi Ngài sẽ ở đâu khi được treo lên\" - ý này dựa trên lời họ hỏi trong câu 34 (\"Chúng tôi... nghe rằng Đấng Christ còn lại đời đời; vậy sao Ngài nói: 'Con người phải bị treo lên'?\"), nhưng đây là một phần của cuộc đối thoại, không phải phản ứng trực tiếp thể hiện sự hiểu sai về cụm từ \"được treo lên\".\n2. \"Họ tranh luận rằng Ngài là Con Người, không phải Đấng Christ\" - Sai chi tiết. Dân chúng nhắc đến \"Con người\" (câu 34) trong câu hỏi của họ, nhưng họ không tranh luận rằng Ngài không phải là Đấng Christ; thay vào đó, họ bối rối về sự tương phản giữa việc Đấng Christ tồn tại đời đời và việc Con người bị treo lên.\n3. \"Họ yêu cầu Ngài làm một dấu lạ từ trời\" - Lạc đề. Yêu cầu về dấu lạ xuất hiện ở những đoạn khác (như Giăng 6:30), không phải trong phản ứng trực tiếp tại Giăng 12:32-34.",
     "language": "vi",
     "options": [
-      "Họ chấp nhận đó là tiên báo về sự đóng đinh trên thập tự giá",
+      "Họ hỏi Ngài sẽ ở đâu khi được treo lên",
       "Họ nói rằng theo luật pháp, Đấng Christ phải còn lại đời đời",
-      "Họ thắc mắc không hiểu vì sao Con Người phải bị treo lên cao như vậy",
-      "Họ liên hệ đến hình ảnh con rắn đồng được Môi-se treo lên"
+      "Họ tranh luận rằng Ngài là Con Người, không phải Đấng Christ",
+      "Họ yêu cầu Ngài làm một dấu lạ từ trời"
     ],
     "tags": [
       "Tân Ước",
@@ -2723,13 +2723,13 @@
     ],
     "verseEnd": 55,
     "content": "Sách Giăng đặc biệt ghi lại nhiều lễ Vượt Qua. Tổng cộng có bao nhiêu lễ Vượt Qua được nhắc trực tiếp trong sách Giăng?",
-    "explanation": "Ba lễ Vượt Qua trong Giăng: (1) 2:13 — đầu chức vụ, dọn sạch đền thờ; (2) 6:4 — Ngài cho 5,000 người ăn; (3) 11:55-12:1 — lễ Ngài chịu chết. Đây là cơ sở chính cho khái niệm chức vụ Chúa Jêsus dài khoảng 3 năm.",
+    "explanation": "Giăng 11:55 cho biết 'Lễ Vượt Qua của người Giu-đa gần đến', đây là lễ cuối cùng trước sự chết của Chúa Giê-su và là một trong ba lễ Vượt Qua riêng biệt được ghi trực tiếp trong sách Giăng (xem thêm Giăng 2:13, 6:4).\n\n- Đáp án đúng đúng vì sách Giăng ghi nhận ba lễ Vượt Qua riêng biệt trong chức vụ Ngài (Giăng 2:13, 6:4, 11:55).\n- Distractor 1 ('Hai lễ...') sai vì nhầm chi tiết số lượng; số đúng là ba lễ.\n- Distractor 2 ('Bốn lễ...') sai do hiểu lầm phổ biến rằng có bốn lễ nếu tính cả lễ Vượt Qua Chúa bị đóng đinh (thực ra lễ đó là một trong ba lễ đã nêu).\n- Distractor 3 ('Ba lễ... trong các sách sử') sai vì tuy câu nói về 'ba lễ' có vẻ đúng với thông tin chung, nhưng đây là câu hỏi về sách Giăng cụ thể, không phải các sách sử hoặc toàn bộ Tân Ước.",
     "language": "vi",
     "options": [
-      "Chỉ một lễ duy nhất, là lễ Ngài chịu chết",
-      "Hai lễ, đầu chức vụ và cuối chức vụ",
+      "Hai lễ được nêu chi tiết trong sách",
+      "Bốn lễ liên quan đến Đấng Christ",
       "Ba lễ riêng biệt trong suốt chức vụ Ngài",
-      "Bốn lễ trong cả ba năm rưỡi chức vụ"
+      "Ba lễ được kể trong các sách sử"
     ],
     "tags": [
       "Tân Ước",
@@ -2806,13 +2806,13 @@
     ],
     "verseEnd": 27,
     "content": "Trong Giăng, Chúa Jêsus nhiều lần nói 'giờ ta CHƯA đến' (2:4, 7:30, 8:20). Câu nào đánh dấu BƯỚC NGOẶT chuyển sang 'giờ đã đến'?",
-    "explanation": "Giăng 12:23 — 'Giờ đã đến, khi Con người được vinh hiển'. Câu này đảo ngược 'giờ chưa đến' lặp đi lặp lại trước đó (2:4, 7:30, 8:20). Tiếp theo Chúa nói về hạt giống chết để sinh nhiều bông trái (12:24).",
+    "explanation": "Đáp án đúng là 12:23 ('Giờ đã đến, khi Con người được vinh hiển') vì đây là lần đầu tiên Chúa Jêsus tuyên bố 'giờ' của Ngài đã đến, đánh dấu bước ngoặt sau khi người Hy-lạp tìm gặp (c.20-22) và trực tiếp dẫn đến lời giảng về sự chết và sự sống lại của Ngài.\n\nDistractor 1 (7:30) là gần đúng nhưng sai: câu này thuộc một sự kiện trước đó, khi Chúa Jêsus nói 'giờ ta chưa đến', chứ không phải tuyên bố 'giờ đã đến' như câu hỏi yêu cầu.\nDistractor 2 (11:9) sai chi tiết: câu 11:9 nói về 'giờ trong ngày' (ánh sáng) chứ không phải 'giờ' đặc biệt của Chúa Jêsus; sự sống lại của La-xa-rơ (chương 11) xảy ra trước chương 12.\nDistractor 3 (14:31) sai phạm vi: câu này nằm trong bối cảnh phòng cao (sau Bữa Tiệc Ly), thuộc về sự kiện sau khi 'giờ' đã được tuyên bố ở 12:23, không phải là câu đánh dấu bước ngoặt đầu tiên.",
     "language": "vi",
     "options": [
       "12:23 — 'Giờ đã đến, khi Con người được vinh hiển' (sau khi người Hy-lạp tìm gặp Ngài)",
-      "11:43 — 'Hỡi La-xa-rơ, hãy ra' (lúc kêu La-xa-rơ ra khỏi mộ)",
-      "6:35 — 'Ta là bánh của sự sống' (bài giảng tại Ca-bê-na-um)",
-      "4:26 — 'Ta đây, là Đấng nói chuyện với ngươi' (với người đàn bà Sa-ma-ri)"
+      "7:30 — 'Giờ ấy chưa đến, khi Ngài còn ở giữa dân' (trong kỳ lễ Lều Tạm tại Giê-ru-sa-lem)",
+      "11:9 — 'Giờ ấy đã đến, khi La-xa-rơ sống lại' (sau khi Ngài gọi người chết ra khỏi mộ)",
+      "14:31 — 'Giờ đã đến, khi ta từ biệt các ngươi' (trong phòng cao lúc giảng về Đức Thánh Linh)"
     ],
     "tags": [
       "Tân Ước",
@@ -2860,13 +2860,13 @@
     ],
     "verseEnd": 8,
     "content": "Trong Giăng 20:3-8, khi Phi-e-rơ và 'môn đồ Chúa Jêsus yêu dấu' chạy ra mộ trống, chi tiết nào về thứ tự và phản ứng của hai người được ghi rõ?",
-    "explanation": "Giăng 20:4-8 — 'môn đồ kia chạy mau hơn Phi-e-rơ, và đến mộ trước nhất' nhưng cúi xuống nhìn mà không vào. Phi-e-rơ đến sau, đi thẳng vào mộ. Sau đó môn đồ kia mới vào, 'thấy và tin'.",
+    "explanation": "Đoạn Kinh Thánh Giăng 20:3-8 ghi rõ: 'Vậy, Phi-e-rơ với môn đồ khác bước ra, đi đến mộ. Cả hai đều chạy, nhưng môn đồ kia chạy mau hơn Phi-e-rơ, và đến mộ trước. Người cúi xuống, thấy vải bỏ ở đó, nhưng không vào. ... Phi-e-rơ theo đến, vào trong mộ' (c.3-6). Đáp án đúng phản ánh chính xác thứ tự (môn đồ kia đến trước) và phản ứng (môn đồ kia không vào, Phi-e-rơ vào trước).\n\nDistractor 1 (gần đúng) sai chi tiết then chốt về thứ tự: Kinh Thánh nói rõ môn đồ kia chạy mau hơn và đến trước, không phải Phi-e-rơ.\nDistractor 2 sai phạm vi: Đoạn văn không hề mô tả cả hai đến cùng lúc; ngược lại, nó nhấn mạnh sự khác biệt về tốc độ và thứ tự.\nDistractor 3 nhầm sang chi tiết của passage gần: Việc 'thấy khăn liệm xếp riêng' là quan sát sau khi đã vào mộ (c.7-8), không phải là phản ứng ban đầu về thứ tự và việc có vào mộ hay không ngay khi đến nơi.",
     "language": "vi",
     "options": [
-      "Phi-e-rơ chạy nhanh hơn, đến mộ trước, vào trước và lập tức tin Chúa đã sống lại",
-      "Cả hai môn đồ đến mộ cùng lúc và bước vào trong cùng một lúc với nhau",
+      "Phi-e-rơ chạy nhanh hơn, đến mộ trước nhưng không vào; môn đồ kia đến sau, vào trước",
+      "Cả hai cùng chạy và cùng đến mộ một lúc, rồi cùng bước vào trong mộ",
       "Môn đồ kia chạy nhanh hơn, đến mộ trước nhưng không vào; Phi-e-rơ đến sau, vào trước",
-      "Môn đồ kia đứng ngoài khóc còn Phi-e-rơ vào trong và sợ hãi không dám động"
+      "Môn đồ kia chạy nhanh hơn, vào mộ trước và thấy khăn liệm xếp riêng"
     ],
     "tags": [
       "Tân Ước",
@@ -2943,13 +2943,13 @@
     ],
     "verseEnd": 7,
     "content": "Theo Giăng 9:6-7, Chúa Jêsus chữa lành người mù bẩm sinh bằng phương pháp cụ thể nào?",
-    "explanation": "Giăng 9:6-7 — 'Ngài nhổ xuống đất, lấy nước miếng trộn thành bùn, và đem xức trên mắt người mù. Đoạn Ngài phán cùng người: Hãy đi, rửa nơi ao Si-lô-ê'. Người mù vâng lời, đi rửa và 'được sáng mắt mà về'.",
+    "explanation": "Giăng 9:6-7 ghi lại: 'Ngài phàm nước miếng trên đất, hòa thành bùn, rồi xức trên mắt người mù... và bảo người rằng: Hãy đi, rửa nơi ao Si-lô-ê. Vậy, người đi đến đó, rửa, rồi trở lại, thì được thấy rõ.' Đáp án đúng mô tả chính xác hành động của Chúa Jêsus là hòa bùn bằng nước bọt, xức lên mắt và bảo người mù đi rửa tại ao Si-lô-ê.\n\n- Distractor 1 sai vì đổi địa điểm 'Si-lô-ê' thành 'Bết-tết-đa', một ao nước khác được nhắc đến trong Giăng 5:2.\n- Distractor 2 sai vì thêm chi tiết 'cầu nguyện' và dùng từ 'bùn thánh' không có trong văn bản, đây là một hiểu lầm phổ biến về phương pháp phép lạ.\n- Distractor 3 sai vì mô tả phương pháp đặt tay và truyền khiến, đây là cách chữa lành được dùng trong các passage khác (như Mác 8:23-25) chứ không phải trong Giăng 9:6-7.",
     "language": "vi",
     "options": [
       "Nhổ nước bọt xuống đất, hòa thành bùn, xức trên mắt và bảo đi rửa nơi ao Si-lô-ê",
-      "Đặt tay trên mắt và phán 'Hãy được sáng', người mù lập tức thấy được mọi vật",
-      "Phán từ xa 'Hãy về nhà ngươi, mắt ngươi đã được sáng' không cần đụng vào ông",
-      "Bảo người mù tự đi tắm bảy lần dưới sông Giô-đanh giống Na-a-man phong cùi"
+      "Nhổ nước bọt xuống đất, hòa thành bùn, xức trên mắt và bảo đi rửa nơi ao Bết-tết-đa",
+      "Xức bùn thánh lên mắt và cầu nguyện để người đó được sáng mắt",
+      "Đặt tay trên mắt người mù và truyền khiến mắt sáng lại"
     ],
     "tags": [
       "Tân Ước",
@@ -2970,13 +2970,13 @@
     ],
     "verseEnd": 8,
     "content": "Trong Giăng có hai người tên Ma-ri nổi bật. Theo Giăng 12:1-8, Ma-ri ở Bê-tha-ni làm gì cho Chúa Jêsus?",
-    "explanation": "Giăng 12:3 — 'Ma-ri lấy một cân dầu thơm cam tùng nguyên chất, đáng giá lớn, đem xức chân Đức Chúa Jêsus, và lấy tóc mình mà lau'. Đây là Ma-ri ở Bê-tha-ni (em La-xa-rơ), KHÔNG phải Ma-ri Ma-đơ-len (xuất hiện ở 20:1-18).",
+    "explanation": "Đáp án đúng dựa trên Giăng 12:3: 'Ma-ri lấy một cân dầu cam tùng nguyên chất và rất đắt tiền xức chân Đức Chúa Jêsus, rồi lấy tóc mình lau chân Ngài.' (1) Distractor 'xức đầu' sai chi tiết then chốt (chân so với đầu). (2) Distractor 'dâng cho Chúa để Ngài dùng sau' mô tả hành động khác (dâng tặng) thay vì hành động xức trực tiếp, tuy đúng vật phẩm nhưng lạc trọng tâm câu hỏi về việc 'làm gì cho Chúa' ngay tại hiện trường. (3) Distractor 'rửa chân bằng nước' nhầm với hành động rửa chân trong các passage khác (như Giăng 13), không phải sự kiện trong đoạn này.",
     "language": "vi",
     "options": [
-      "Khóc bên chân thập tự khi Ngài bị đóng đinh tại đồi Gô-gô-tha",
+      "Lấy một cân dầu cam tùng nguyên chất xức đầu Chúa và lấy tóc lau",
       "Lấy một cân dầu cam tùng nguyên chất xức chân Chúa và lấy tóc lau",
-      "Chạy ra mộ Chúa khi trời còn tối và thấy hòn đá đã lăn ra rồi",
-      "Đứng cạnh giếng Sa-ma-ri và xin Chúa nước hằng sống cho mình"
+      "Dâng một cân dầu cam tùng nguyên chất cho Chúa để Ngài dùng sau",
+      "Rửa chân Chúa bằng nước và lấy tóc mình lau khô"
     ],
     "tags": [
       "Tân Ước",
@@ -2997,13 +2997,13 @@
     ],
     "verseEnd": 9,
     "content": "Giăng ghi hai phép lạ Chúa Jêsus chữa lành trong ngày Sa-bát gây tranh cãi với người Giu-đa. Hai phép lạ đó là gì?",
-    "explanation": "Giăng 5:1-18 — chữa người liệt 38 năm tại ao Bê-tết-đa ngày Sa-bát (gây tranh cãi). Giăng 9:1-16 — chữa người mù bẩm sinh, làm bùn ngày Sa-bát (gây tranh cãi). Cả 2 đều dẫn đến lý luận về thẩm quyền Sa-bát của Chúa.",
+    "explanation": "Câu hỏi hỏi cụ thể về HAI phép lạ CHỮA LÀNH trong ngày Sa-bát gây tranh cãi với người Giu-đa, theo sách Giăng. ĐÁP ÁN ĐÚNG: (1) Người liệt 38 năm ở ao Bê-tết-đa (Giăng 5:1-9) và (2) người mù bẩm sinh (Giăng 9:1-7) – cả hai đều xảy ra trong ngày Sa-bát và dẫn đến tranh luận (Giăng 5:16, 9:14-16).\n\nDISTRACTOR 1 (gần đúng, sai chi tiết): Chứa phép lạ đầu tiên đúng, nhưng phép lạ thứ hai là 'chữa người bại tay' (Mác 3:1-6). Dù đây cũng là phép lạ trong ngày Sa-bát gây tranh cãi, nó được ghi trong sách Mác, KHÔNG PHẢI sách Giăng như câu hỏi yêu cầu.\n\nDISTRACTOR 2 (nhầm passage gần): Chứa phép lạ đầu tiên đúng, nhưng phép lạ thứ hai ('chữa người mù tại Bết-sai-đa' - Mác 8:22-26) xảy ra ở Bết-sai-đa và được Mác ghi lại. Phép lạ này KHÔNG được mô tả là xảy ra trong ngày Sa-bát hay gây tranh cãi với người Giu-đa trong ngữ cảnh đó, và quan trọng hơn, nó KHÔNG NẰM trong sách Giăng.\n\nDISTRACTOR 3 (sai phạm vi): Đưa ra hai phép lạ chữa lành ('người phong hủi' - Mác 1:40-45 và 'người mù bẩm sinh' - Giăng 9). Phép lạ chữa người phong hủi trong Mác 1 KHÔNG được ghi nhận xảy ra trong ngày Sa-bát. Do đó, cặp này không đáp ứng tiêu chí 'trong ngày Sa-bát gây tranh cãi' như câu hỏi đặt ra, dù một trong hai (Giăng 9) có đúng.",
     "language": "vi",
     "options": [
-      "Chữa con trai quan thị vệ tại Ca-bê-na-um và cho 5,000 người ăn no",
-      "Hóa nước thành rượu Ca-na và làm cho La-xa-rơ sống lại tại Bê-tha-ni",
+      "Chữa người liệt 38 năm tại ao Bê-tết-đa (Giăng 5) và chữa người bại tay (Mác 3)",
+      "Chữa người liệt 38 năm tại ao Bê-tết-đa (Giăng 5) và chữa người mù tại Bết-sai-đa (Mác 8)",
       "Chữa người liệt 38 năm tại ao Bê-tết-đa (Giăng 5) và chữa người mù bẩm sinh (Giăng 9)",
-      "Đi trên mặt biển Ga-li-lê và chữa lành tai của Man-chu trong vườn"
+      "Chữa người phong hủi (Mác 1) và chữa người mù bẩm sinh (Giăng 9)"
     ],
     "tags": [
       "Tân Ước",
@@ -3053,13 +3053,13 @@
     ],
     "verseEnd": 30,
     "content": "Theo Giăng 13:21-30, Chúa Jêsus tỏ ra ai sẽ phản Ngài tại Tiệc Ly bằng dấu hiệu cụ thể nào?",
-    "explanation": "Giăng 13:26-27 — 'Đức Chúa Jêsus đáp rằng: Ấy là kẻ mà ta sẽ trao cho miếng bánh ta sau khi nhúng đây. Đoạn Ngài nhúng miếng bánh, trao cho Giu-đa... Liền khi Giu-đa đã nhận lấy miếng bánh, thì quỷ Sa-tan vào lòng người'.",
+    "explanation": "Đáp án đúng vì Giăng 13:26 chép: 'Đức Chúa Jêsus đáp rằng: Ấy là kẻ mà ta sẽ trao miếng bánh nầy sau khi ta nhúng. Đoạn, Ngài nhúng một miếng, rồi lấy cho Giu-đa, con Si-môn Ích-ca-ri-ốt.' và câu 27: 'Liền khi Giu-đa đã lấy miếng bánh, thì quỷ Sa-tan vào lòng người.'\n\nDistractor 1 sai vì sai chi tiết tên (Phi-e-rơ thay vì Giu-đa), mặc dù việc nhúng và trao bánh là đúng, đây là lỗi 'gần đúng'.\nDistractor 2 sai vì đây là hiểu lầm phổ biến (nhiều người tưởng Chúa chỉ thẳng và gọi tên), nhưng Kinh Thánh ghi Chúa dùng dấu hiệu nhúng và trao bánh, không chỉ thẳng công khai (Giăng 13:28-29).\nDistractor 3 sai vì mặc dù việc rửa chân diễn ra trong cùng phân đoạn (Giăng 13:1-17) và liên quan đến tất cả môn đồ, nhưng nó không phải là dấu hiệu cụ thể Chúa dùng để tỏ ra ai sẽ phản Ngài theo đúng câu hỏi (câu 21-30).",
     "language": "vi",
     "options": [
       "Ngài nhúng miếng bánh và đưa cho Giu-đa Ích-ca-ri-ốt; Sa-tan vào lòng Giu-đa",
-      "Ngài nhìn thẳng vào mắt Giu-đa và gọi tên ông giữa các môn đồ",
-      "Ngài viết tên kẻ phản trên đất và tất cả các môn đồ đều thấy được",
-      "Ngài bảo Phi-e-rơ tuốt gươm chỉ vào kẻ phản nhưng Phi-e-rơ không nghe"
+      "Ngài nhúng miếng bánh và đưa cho Si-môn Phi-e-rơ; Sa-tan vào lòng Si-môn",
+      "Ngài chỉ thẳng vào Giu-đa Ích-ca-ri-ốt và gọi tên ông; Sa-tan vào lòng Giu-đa",
+      "Ngài rửa chân cho Giu-đa Ích-ca-ri-ốt; Sa-tan vào lòng Giu-đa"
     ],
     "tags": [
       "Tân Ước",
@@ -3080,13 +3080,13 @@
     ],
     "verseEnd": 37,
     "content": "Khi Phi-lát hỏi 'Vậy thì ngươi là vua sao?' (Giăng 18:36-37), Chúa Jêsus đáp lại với cụm từ độc đáo nào về tính chất Nước Ngài?",
-    "explanation": "Giăng 18:36-37 — 'Nước của ta CHẲNG PHẢI thuộc về thế gian nầy. Ví bằng nước ta thuộc về thế gian nầy, thì tôi tớ của ta sẽ đánh trận'. Và 'Ta vì sự nầy mà sanh ra, vì sự nầy mà ta đã giáng thế: ấy là để làm chứng cho lẽ thật'.",
+    "explanation": "Trong Giăng 18:36-37, Chúa Jêsus đáp: 'Nước ta chẳng phải thuộc về thế gian nầy; ví bằng nước ta thuộc về thế gian nầy, thì tôi tớ ta sẽ đánh trận... Ta đã sanh và đã đến thế gian vì cớ nầy: để làm chứng cho lẽ thật' (BTT). Đáp án đúng nêu chính xác hai cụm từ: 'Nước ta CHẲNG PHẢI thuộc về thế gian nầy' (c.36) và 'ta đến vì cớ sự thật' (c.37).\n\nCác đáp án sai:\n1. (nearby_passage) 'Nước ta THUỘC VỀ thế gian nầy' và 'ta đến vì cớ sự thật': Sai vì Chúa Jêsus phủ định rõ 'chẳng phải thuộc về thế gian nầy', đây là sự đảo ngược từ khóa quan trọng.\n2. (wrong_detail) 'Nước ta chẳng phải thuộc về thế gian nầy' và 'ta đến vì cớ quyền lực': Sai vì Ngài nói đến 'lẽ thật' (sự thật), không phải 'quyền lực'.\n3. (common_misconception) 'Ta là vua mà ngươi nói đó, và nước ta ở dưới đất nầy': Sai vì đây là lời nói sai về phạm vi, Chúa Jêsus khẳng định nước Ngài không thuộc thế gian này (c.36), không phải 'ở dưới đất nầy'.",
     "language": "vi",
     "options": [
-      "'Nước ta là nước ở dưới đất; ta sẽ đánh bại La-mã rồi cai trị cả thế giới này'",
+      "'Nước ta THUỘC VỀ thế gian nầy' và 'ta đến vì cớ sự thật'",
       "'Nước ta CHẲNG PHẢI thuộc về thế gian nầy' và 'ta đến vì cớ sự thật'",
-      "'Nước ta sẽ đến trong vinh hiển ngay hôm nay nếu các ngươi tin'",
-      "'Nước ta là vô hình và không thể thấy được, ta không phải là vua'"
+      "'Nước ta chẳng phải thuộc về thế gian nầy' và 'ta đến vì cớ quyền lực'",
+      "Ta là vua mà ngươi nói đó, và nước ta ở dưới đất nầy"
     ],
     "tags": [
       "Tân Ước",
@@ -3134,13 +3134,13 @@
     ],
     "verseEnd": 35,
     "content": "Khi Chúa Jêsus phán 'Ta là bánh của sự sống' (Giăng 6:35), lời hứa cụ thể đi kèm cho người đến cùng Ngài là gì?",
-    "explanation": "Giăng 6:35 — 'Ta là bánh của sự sống; ai đến cùng ta chẳng hề đói, và ai tin ta chẳng hề khát'. Cấu trúc song song 'đói/khát' về tâm linh, không hứa thoát chết thể xác (xem 11:25-26 về sự chết thể xác).",
+    "explanation": "Trong Giăng 6:35, Chúa Jêsus phán: 'Ta là bánh của sự sống. Người đến cùng ta chẳng hề đói; người tin ta chẳng hề khát'. Đây là lời hứa cụ thể trực tiếp trong cùng câu. Các phương án sai bao gồm: 1) Sai phạm vi: Hứa về sự sống đời đời và không bị đoán xét đề cập trong ngữ cảnh rộng hơn (vd. câu 40, 47, 50-51) nhưng không phải là lời hứa cụ thể, trực tiếp 'đi kèm' trong ngay câu 35. 2) Nhầm đoạn gần (gần đúng): Trộn lẫn với hình ảnh 'bánh' từ câu 35 và ý 'nước' từ các chỗ khác (vd. Giăng 4:14, 7:37), dẫn đến câu đúng văn bản nhưng sai vị trí và chi tiết ('nước' không có trong câu hỏi). 3) Hiểu lầm phổ biến: Đưa ra lời hứa tổng quát về tha tội và cứu rỗi, là chủ đề quan trọng trong Tin Mừng nhưng không phải là lời hứa cụ thể được nêu trong câu Kinh Thánh này.",
     "language": "vi",
     "options": [
       "'Người đến cùng ta chẳng hề đói; người tin ta chẳng hề khát'",
-      "'Người đến cùng ta sẽ được giàu có dư dật vật chất ngay đời này'",
-      "'Người đến cùng ta sẽ không bao giờ chết về thể xác, sống đời đời'",
-      "'Người đến cùng ta sẽ được làm vua trên dân Y-sơ-ra-ên cùng ta'"
+      "'Người đến cùng ta sẽ được sự sống đời đời; người tin ta sẽ không bị đoán xét'",
+      "'Người ăn bánh này sẽ không hề đói; người uống nước này sẽ không hề khát'",
+      "'Người đến cùng ta sẽ được tha tội; người tin ta sẽ được cứu rỗi'"
     ],
     "tags": [
       "Tân Ước",
@@ -3161,12 +3161,12 @@
     ],
     "verseEnd": 13,
     "content": "Trong Giăng 10:11-13, Chúa Jêsus phân biệt 'người chăn hiền lành' với 'người chăn thuê' bằng dấu hiệu cốt lõi nào?",
-    "explanation": "Giăng 10:11-13 — 'Ta là người chăn hiền lành; người chăn hiền lành vì chiên mình phó sự sống mình. Kẻ chăn thuê chẳng phải là người chăn... thấy muông sói đến thì nó bỏ chiên chạy trốn'. Sự khác biệt: hy sinh tự nguyện vs trốn tránh khi nguy hiểm.",
+    "explanation": "Đáp án đúng dựa trực tiếp vào Giăng 10:11-13. Trong câu 11, Chúa Jêsus nói, 'Ta là người chăn hiền lành; người chăn hiền lành phó sự sống mình vì chiên.' Trong câu 12-13, Ngài mô tả người chăn thuê, 'khi thấy muông sói đến thì bỏ chiên chạy... vì là kẻ chăn thuê, chẳng lo lắng chi đến chiên.' Dấu hiệu cốt lõi là sự hy sinh mạng sống vì chiên so với việc bỏ chạy.\n\nCác đáp án sai: (1) 'Người chăn hiền lành giữ chiên khỏi muông sói; người chăn thuê để chiên bị tản lạc' - đây là distractor gần đúng (almost-right) vì nó phản ánh hành động liên quan đến muông sói, nhưng sai chi tiết then chốt: đoạn này nhấn mạnh việc 'phó sự sống mình' và 'bỏ chạy', chứ không phải mô tả chung về việc 'giữ khỏi' hay 'để tản lạc'. (2) 'Người chăn hiền lành có nhiều chiên hơn; người chăn thuê chỉ chăn ít chiên' - sai phạm vi vì đoạn Kinh Thánh không đề cập gì đến số lượng chiên. (3) 'Người chăn hiền lành gọi chiên bằng tên; người chăn thuê không nhớ tên chiên' - lấy chi tiết từ passage gần (cụ thể là ý 'biết chiên mình' ở các câu 14-15, ngoài phạm vi câu hỏi là 10:11-13), nên không phải là dấu hiệu cốt lõi được phân biệt trong các câu 11-13.",
     "language": "vi",
     "options": [
-      "Người chăn hiền lành mặc áo trắng, người chăn thuê mặc áo xám",
-      "Người chăn hiền lành có nhiều chiên hơn, người chăn thuê có ít chiên",
-      "Người chăn hiền lành thuộc dòng dõi Lê-vi, người chăn thuê thuộc dòng dõi Giu-đa",
+      "Người chăn hiền lành giữ chiên khỏi muông sói; người chăn thuê để chiên bị tản lạc",
+      "Người chăn hiền lành có nhiều chiên hơn; người chăn thuê chỉ chăn ít chiên",
+      "Người chăn hiền lành gọi chiên bằng tên; người chăn thuê không nhớ tên chiên",
       "Người chăn hiền lành phó sự sống mình vì chiên; người chăn thuê thấy muông sói thì bỏ chạy"
     ],
     "tags": [
@@ -3188,13 +3188,13 @@
     ],
     "verseEnd": 26,
     "content": "Khi Chúa Jêsus phán với Ma-thê 'Ta là sự sống lại và sự sống' (Giăng 11:25-26), lời hứa kèm theo có hai phần đối ứng nào?",
-    "explanation": "Giăng 11:25-26 — 'Ta là sự sống lại và sự sống; kẻ nào tin ta thì sẽ sống, mặc dầu đã chết rồi. Còn ai sống mà tin ta thì không hề chết'. Hai vế: (1) đã chết → sẽ sống lại, (2) đang sống → không hề chết về tâm linh/đời đời.",
+    "explanation": "Trong Giăng 11:25-26, Chúa Jêsus phán: 'Ta là sự sống lại và sự sống; kẻ nào tin ta thì sẽ sống, mặc dầu đã chết rồi; còn ai sống mà tin ta thì không hề chết.' Đáp án đúng trích nguyên văn hai phần đối ứng của lời hứa này. Distractor 1 sai vì thay đổi chi tiết then chốt 'sống mà tin ta thì không hề chết' thành 'chết mà tin ta thì sẽ được sống lại', làm mất sự tương phản giữa người đã chết và người đang sống. Distractor 2 sai vì dùng từ 'theo ta' thay vì 'tin ta', đây là một sự nhầm lẫn với các đoạn văn gần nói về sự theo Chúa (ví dụ: Giăng 8:12), nhưng câu hỏi cụ thể về lời hứa trong Giăng 11:25-26 chỉ nói về 'tin'. Distractor 3 sai vì mặc dù liên quan đến đức tin và sự cứu rỗi, nó đưa ra các khái niệm 'được cứu' và 'không bị định tội' thay vì trực tiếp nói về 'sống' và 'không hề chết' như trong lời hứa, nên lạc trọng tâm của câu hỏi về hai phần đối ứng cụ thể trong câu Kinh Thánh được trích dẫn.",
     "language": "vi",
     "options": [
-      "'Người tin sẽ làm phép lạ lớn hơn ta; sẽ được giàu có trong đời này'",
+      "'Kẻ nào tin ta thì sẽ sống, mặc dầu đã chết rồi; còn ai chết mà tin ta thì sẽ được sống lại'",
       "'Kẻ nào tin ta thì sẽ sống, mặc dầu đã chết rồi; còn ai sống mà tin ta thì không hề chết'",
-      "'Người tin ta sẽ được vào đền thờ Giê-ru-sa-lem; sẽ thấy Đức Cha hiện ra'",
-      "'Kẻ tin ta sẽ chẳng bao giờ chết về thể xác và sẽ không bao giờ bệnh tật'"
+      "'Kẻ nào theo ta thì sẽ sống, mặc dầu đã chết rồi; còn ai sống mà theo ta thì không hề chết'",
+      "'Kẻ nào tin ta thì sẽ được cứu, mặc dầu đã chết rồi; còn ai sống mà tin ta thì sẽ không hề bị định tội'"
     ],
     "tags": [
       "Tân Ước",
@@ -3296,13 +3296,13 @@
     ],
     "verseEnd": 1,
     "content": "Theo Giăng 1:1 (RVV11), câu mở đầu Phúc âm Giăng có cấu trúc ba mệnh đề. Thứ tự đúng của ba mệnh đề là gì?",
-    "explanation": "Giăng 1:1 (RVV11) — 'Ban đầu có Ngôi Lời, Ngôi Lời ở cùng Đức Chúa Trời, và Ngôi Lời là Đức Chúa Trời'. Thứ tự ba mệnh đề là: (1) tồn tại tiền hữu, (2) quan hệ với Cha, (3) thần tính trọn vẹn.",
+    "explanation": "Giăng 1:1 (RVV11) chép: 'Ban đầu có Ngôi Lời, Ngôi Lời ở cùng Đức Chúa Trời, và Ngôi Lời là Đức Chúa Trời.' Đây chính là thứ tự ba mệnh đề. Distractor 1 sai vì hoán đổi thứ tự của hai mệnh đề cuối. Distractor 2 sai vì mở rộng phạm vi chủ thể, thay 'Ngôi Lời' bằng 'Đức Chúa Trời' ở mệnh đề đầu, làm thay đổi chủ đề trọng tâm của câu. Distractor 3 sai vì phản ánh một hiểu lầm phổ biến về thần tính đầy đủ của Ngôi Lời, thay 'là Đức Chúa Trời' bằng 'là Con Đức Chúa Trời', một khái niệm không xuất hiện trong câu này.",
     "language": "vi",
     "options": [
-      "Ngôi Lời ở cùng Đức Chúa Trời / Ngôi Lời là Đức Chúa Trời / Ban đầu có Ngôi Lời",
+      "Ban đầu có Ngôi Lời / Ngôi Lời là Đức Chúa Trời / Ngôi Lời ở cùng Đức Chúa Trời",
       "Ban đầu có Ngôi Lời / Ngôi Lời ở cùng Đức Chúa Trời / Ngôi Lời là Đức Chúa Trời",
-      "Ngôi Lời là Đức Chúa Trời / Ban đầu có Ngôi Lời / Ngôi Lời ở cùng Đức Chúa Trời",
-      "Ban đầu có Ngôi Lời / Ngôi Lời là Đức Chúa Trời / Ngôi Lời ở cùng Đức Chúa Trời"
+      "Ban đầu có Đức Chúa Trời / Đức Chúa Trời ở cùng Ngôi Lời / Đức Chúa Trời là Ngôi Lời",
+      "Ban đầu có Ngôi Lời / Ngôi Lời ở cùng Đức Chúa Trời / Ngôi Lời là Con Đức Chúa Trời"
     ],
     "tags": [
       "Tân Ước",
@@ -3323,12 +3323,12 @@
     ],
     "verseEnd": 16,
     "content": "Câu Giăng 3:16 (RVV11) có cấu trúc 'Vì Đức Chúa Trời ___ thế gian, đến nỗi đã ___ Con một của Ngài, hầu cho hễ ai ___ Con ấy không bị ___, mà được sự sống đời đời'. Bốn chỗ trống lần lượt là?",
-    "explanation": "Giăng 3:16 (RVV11) — 'Vì Đức Chúa Trời yêu thương thế gian, đến nỗi đã ban Con một của Ngài, hầu cho hễ ai tin Con ấy không bị hư mất, mà được sự sống đời đời'. Bốn từ khóa: yêu thương / ban / tin / hư mất.",
+    "explanation": "Giăng 3:16 (RVV11) viết: 'Vì Đức Chúa Trời yêu thương thế gian, đến nỗi đã ban Con một của Ngài, hầu cho hễ ai tin Con ấy không bị hư mất, mà được sự sống đời đời.'\n\nĐáp án đúng 'yêu thương/ban/tin/hư mất' khớp hoàn toàn với văn bản.\n- Distractor 'yêu thương/ban/thưa/hư mất' (sai chi tiết): Từ 'thưa' là sai. Động từ cần thiết là 'tin', thể hiện đức tin, không phải lời nói 'thưa'.\n- Distractor 'yêu thương/sai/tin/hư mất' (hiểu lầm phổ biến): Từ 'sai' là sai. Động từ trong Kinh Thánh là 'ban', thể hiện sự hy sinh tự nguyện trao Con ('hiến', 'cho'), không phải là 'sai' (to send) như trong một số bản dịch khác.\n- Distractor 'yêu thương/ban/xưng/hư mất' (đúng văn bản nhưng lạc câu hỏi): Từ 'xưng' có thể đúng trong một câu Kinh Thánh khác (như Rô-ma 10:9 'xưng nhận'), nhưng tại Giăng 3:16, yêu cầu là hành động tin cậy vào Đức Chúa Giê-xu để được cứu, chứ không phải xưng nhận.",
     "language": "vi",
     "options": [
-      "thấy / sai / nhận / loại bỏ",
-      "thương / cho / theo / chết",
-      "nhớ / ban / kính / mất nước",
+      "yêu thương / ban / thưa / hư mất",
+      "yêu thương / sai / tin / hư mất",
+      "yêu thương / ban / xưng / hư mất",
       "yêu thương / ban / tin / hư mất"
     ],
     "tags": [
@@ -3350,13 +3350,13 @@
     ],
     "verseEnd": 40,
     "content": "Trong Giăng 5:39-40 (RVV11), Chúa Jêsus phán: 'Các ngươi dò xem Kinh Thánh, vì tưởng bởi đó được sự sống đời đời...' Lời tiếp theo (5:40) Ngài quở trách họ điều gì?",
-    "explanation": "Giăng 5:39-40 — 'Các ngươi dò xem Kinh Thánh, vì tưởng bởi đó được sự sống đời đời: ấy là Kinh Thánh làm chứng về ta vậy. Các ngươi không muốn đến cùng ta để được sự sống!' Vấn đề không phải đọc nhiều ít, mà từ chối đến với Đấng Kinh Thánh chỉ đến.",
+    "explanation": "Đoạn Kinh Thánh chính xác (Giăng 5:39-40 RVV11) ghi: 'Các ngươi dò xem Kinh Thánh, vì tưởng bởi đó được sự sống đời đời; ấy là Kinh Thánh làm chứng về ta vậy. Các ngươi không muốn đến cùng ta để được sự sống.' Vì vậy, lời quở trách tiếp theo là về việc họ 'KHÔNG MUỐN đến cùng ta' mặc dù Kinh Thánh làm chứng về Ngài.\n\n- **Đáp án đúng** đúng vì diễn đạt trung thành ý chính của câu 40: sự từ chối chủ động ('không muốn đến cùng Ta') là điều bị quở trách.\n\nCác đáp án sai:\n1. **'không TIN Kinh Thánh'** (gần đúng - almostRight) sai vì vấn đề không nằm ở việc họ không tin Kinh Thánh (thực tế họ rất trọng Kinh Thánh), mà là không muốn đến với Đấng mà Kinh Thánh làm chứng. Đây là lỗi 'nearby_passage' vì có liên quan đến ngữ cảnh lân cận về đức tin và Kinh Thánh nhưng không đúng trọng tâm câu được hỏi.\n2. **'không CHỊU suy gẫm'** sai vì câu 39 cho thấy họ đã 'dò xem' (tức nghiên cứu, suy gẫm) Kinh Thánh rồi. Lời quở trách không phải về sự thiếu nghiên cứu. Đây là lỗi 'common_misconception' vì có thể người đọc hiểu lầm rằng vấn đề là thiếu sự chuyên tâm học Kinh Thánh.\n3. **'không TÌM sự vinh hiển bởi Đức Chúa Trời'** sai vì đây là một chi tiết từ câu 44 trong cùng chương 5, không phải ý chính của câu 39-40 đang được hỏi. Đây là lỗi 'wrong_detail' (sai chi tiết/số câu).",
     "language": "vi",
     "options": [
-      "'Các ngươi tin sai về luật Môi-se nên không hiểu được lễ Sa-bát đúng nghĩa'",
-      "'Các ngươi không siêng năng học Kinh Thánh đủ nhiều mỗi ngày trong tuần'",
+      "'Các ngươi không TIN Kinh Thánh để được sự sống' (dù Kinh Thánh làm chứng về ta)",
+      "'Các ngươi không CHỊU suy gẫm Kinh Thánh để được sự sống' (dù Kinh Thánh làm chứng về ta)",
       "'Các ngươi không MUỐN đến cùng ta để được sự sống' (dù Kinh Thánh làm chứng về ta)",
-      "'Các ngươi không hiểu được tiếng Hê-bơ-rơ trong các bản gốc cổ xưa'"
+      "'Các ngươi không TÌM sự vinh hiển bởi Đức Chúa Trời để được sự sống' (dù Kinh Thánh làm chứng về ta)"
     ],
     "tags": [
       "Tân Ước",
@@ -3404,13 +3404,13 @@
     ],
     "verseEnd": 3,
     "content": "Trong Giăng 14:2-3 (RVV11), Chúa Jêsus an ủi môn đồ trước khi chịu chết với lời hứa cụ thể nào về sự ra đi của Ngài?",
-    "explanation": "Giăng 14:2-3 — 'Trong nhà Cha ta có nhiều chỗ ở; bằng chẳng vậy, ta đã nói cho các ngươi rồi. Ta đi sắm sẵn cho các ngươi một chỗ. Khi ta đã đi, và sắm sẵn cho các ngươi một chỗ rồi, ta sẽ trở lại đem các ngươi đi với ta'.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Dựa trực tiếp vào Giăng 14:2-3 (RVV11): 'Trong nhà Cha ta có nhiều chỗ ở; ... Ta đi sắm sẵn cho các ngươi một chỗ; ... ta sẽ trở lại đem các ngươi đi với ta, hầu cho ta ở đâu thì các ngươi cũng ở đó.' Đây là lời hứa cụ thể về việc sắm sẵn chỗ và trở lại đem môn đồ đi.\n\nDISTRACTOR 1 (gần đúng): Sai vì trộn lẫn ý từ các phân đoạn khác. 'Cầu nguyện cho các ngươi' (xem Giăng 17) và 'gửi Đức Thánh Linh' (Giăng 14:16, 26) là những lời hứa khác, không phải lời hứa CỤ THỂ về sự ra đi được nêu trong câu hỏi (14:2-3).\nDISTRACTOR 2: Sai chi tiết then chốt. Kinh văn nói rõ 'sắm sẵn cho các ngươi' (môn đồ), không phải 'cho các thiên sứ'. Cụm 'sẽ đón các ngươi sau' cũng mơ hồ, thiếu mất yếu tố 'trở lại' và 'đem các ngươi đi với ta' của Chúa Jêsus.\nDISTRACTOR 3: Sai vì lạc trọng tâm câu hỏi. 'Vì công việc Cha ta' là lý do chung, không phải lời hứa CỤ THỂ về sự ra đi. 'Sẽ trở lại phán xét thế gian' là chủ đề khác (ví dụ: Ma-thi-ơ 25:31-46), không phải lời an ủi cá nhân và đón đi như trong Giăng 14:3.",
     "language": "vi",
     "options": [
-      "Ngài đi để tìm tòi xem các môn đồ có thật sự yêu mến Ngài hay không trong tương lai",
+      "Ngài đi 'để cầu nguyện cho các ngươi' và 'sẽ gửi Đức Thánh Linh đến'",
       "Ngài đi 'sắm sẵn cho các ngươi một chỗ' và 'sẽ trở lại đem các ngươi đi với ta'",
-      "Ngài đi để chuẩn bị một cuộc nổi dậy chống lại chính quyền La Mã",
-      "Ngài đi đến Pha-ra-ôn Ai-cập trước rồi sau mới quay lại với dân Y-sơ-ra-ên"
+      "Ngài đi 'chuẩn bị một nơi cho các thiên sứ' và 'sẽ đón các ngươi sau'",
+      "Ngài đi 'vì công việc Cha ta' và 'sẽ trở lại phán xét thế gian'"
     ],
     "tags": [
       "Tân Ước",
@@ -3458,13 +3458,13 @@
     ],
     "verseEnd": 31,
     "content": "Giăng 20:30-31 (RVV11) là tuyên bố mục đích của cả sách. Theo lời chính của Giăng, ông viết các dấu lạ này để người đọc làm gì?",
-    "explanation": "Giăng 20:31 — 'Nhưng các việc nầy đã chép, để cho các ngươi tin rằng Đức Chúa Jêsus là Đấng Christ, tức là Con Đức Chúa Trời, và để khi các ngươi tin, thì nhờ danh Ngài mà được sự sống.' Đây là 'mission statement' của sách Phúc âm Giăng.",
+    "explanation": "Giăng 20:30-31 (RVV11) viết: 'Đức Chúa Jêsus đã làm trước mặt môn đồ Ngài nhiều phép lạ khác nữa, mà không chép trong sách nầy. Nhưng các việc nầy đã chép, để cho các ngươi tin rằng Đức Chúa Jêsus là Đấng Christ, tức Con Đức Chúa Trời, và để khi các ngươi tin, thì nhờ danh Ngài mà được sự sống.' ĐÁP ÁN ĐÚNG vì trực tiếp trích và tóm tắt mục đích kép được nêu trong câu Kinh Thánh: tin nhận Đức Chúa Jêsus và được sự sống nhờ danh Ngài.\n\n- DISTRACTOR 1 (gần đúng) SAI vì thay chi tiết 'nhờ danh Ngài mà được sự sống' (mục tiêu thuộc linh, vĩnh cửu) bằng 'có được phước lành trong đời này' (mục tiêu vật chất, tạm thời), làm lệch trọng tâm chính của phân đoạn.\n- DISTRACTOR 2 SAI vì mở rộng phạm vi mục đích: câu Kinh Thánh nói rõ các dấu lạ được chọn lọc ('không chép... hết') để đạt mục đích đức tin, chứ không phải để ghi chép toàn bộ hay lưu truyền sử liệu thuần túy.\n- DISTRACTOR 3 SAI vì thể hiện sự hiểu lầm phổ biến, đưa vào mục tiêu 'hiểu lời tiên tri' và 'vâng giữ điều răn' – những chủ đề có thể liên quan nhưng không phải là mục đích trực tiếp được tác giả tuyên bố trong đoạn này.",
     "language": "vi",
     "options": [
       "Để 'tin Đức Chúa Jêsus là Đấng Christ, Con Đức Chúa Trời' và 'nhờ danh Ngài mà được sự sống'",
-      "Để học thuộc lòng các phép lạ và truyền lại cho con cháu các đời sau",
-      "Để biết được tiểu sử chính xác về thời thơ ấu của Đức Chúa Jêsus tại Na-xa-rét",
-      "Để có bằng chứng pháp lý chống lại nhà cầm quyền La-mã trước tòa án"
+      "Để 'tin Đức Chúa Jêsus là Đấng Christ' và 'có được phước lành trong đời này'",
+      "Để 'ghi lại mọi phép lạ của Chúa Jêsus' và 'lưu truyền cho các thế hệ sau'",
+      "Để 'hiểu rõ các lời tiên tri' và 'vâng giữ mọi điều răn của Ngài'"
     ],
     "tags": [
       "Tân Ước",
@@ -3485,13 +3485,13 @@
     ],
     "verseEnd": 11,
     "content": "Theo Giăng 2:1-11, dấu lạ đầu tiên Chúa Jêsus làm tại tiệc cưới Ca-na là gì?",
-    "explanation": "Giăng 2:1-11 — tại tiệc cưới Ca-na, Chúa Jêsus hóa nước trong sáu cái chum thành rượu ngon. Đây là 'dấu lạ thứ nhứt' (2:11) — dấu lạ đầu trong bảy dấu của Phúc âm Giăng.",
+    "explanation": "Giăng 2:1-11 ghi lại rằng tại tiệc cưới ở Ca-na, khi hết rượu, Chúa Jêsus đã bảo đầy tớ đổ đầy nước vào sáu ché đá, rồi múc đem cho người quản tiệc. Người quản tiệc nếm thấy nước đã hóa thành rượu (c.9). Vì vậy, đáp án đúng là 'Hóa nước thành rượu nho'.\n\nCác đáp án sai: (1) 'Hóa rượu nho thành nước uống' sai vì hành động trong phân đoạn là hóa nước thành rượu, không phải ngược lại (đây là distractor gần đúng, chỉ sai chi tiết then chốt về thứ tự). (2) 'Chữa lành người bệnh tại tiệc cưới' sai vì phân đoạn này không đề cập đến bất kỳ phép lạ chữa bệnh nào, đây là một phạm vi hành động khác. (3) 'Khiến nước trong bể đựng nước trở nên sạch' sai vì mặc dù phân đoạn có nhắc đến 'sáu cái ché đá dùng cho sự rửa sạch của người Giu-đa' (c.6), nhưng phép lạ không liên quan đến việc làm sạch nước mà là biến đổi bản chất của nước.",
     "language": "vi",
     "options": [
       "Hóa nước thành rượu nho",
-      "Cho năm ngàn người ăn no",
-      "Đi trên mặt biển Ga-li-lê",
-      "Khiến cây vả khô héo"
+      "Hóa rượu nho thành nước uống",
+      "Chữa lành người bệnh tại tiệc cưới",
+      "Khiến nước trong bể đựng nước trở nên sạch"
     ],
     "tags": [
       "Tân Ước",
@@ -3512,13 +3512,13 @@
     ],
     "verseEnd": 9,
     "content": "Theo Giăng 6:9, đứa trẻ trong câu chuyện cho 5,000 người ăn có bao nhiêu bánh và bao nhiêu cá?",
-    "explanation": "Giăng 6:9 — 'Đây có một đứa con trai, có năm cái bánh mạch nha và hai con cá; nhưng đông người dường nầy, thì ngần ấy có thấm vào đâu?'",
+    "explanation": "Câu trả lời đúng là 'Năm cái bánh lúa mạch và hai con cá', trích dẫn chính xác từ Giăng 6:9 (BTT): 'Nó thưa rằng: Có một đứa con trai ở đây có năm cái bánh lúa mạch và hai con cá'.\n\nCác câu trả lời sai: (1) 'Năm cái bánh lúa mạch và năm con cá' sai vì nó thay đổi chi tiết then chốt về số cá (sai 'hai' thành 'năm'), mặc dù giữ đúng loại bánh và cấu trúc câu. (2) 'Bảy cái bánh lúa mạch và hai con cá' sai vì nhầm với một phép lạ khác trong Kinh Thánh (ví dụ, Ma-thi-ơ 15:34-37 nói về bảy cái bánh và vài con cá cho 4,000 người ăn), đây là lỗi nhầm passage gần. (3) 'Năm cái bánh và ba con cá' sai vì dựa trên sự hiểu lầm phổ biến không có trong văn bản (một số người nhớ nhầm thành 'năm bánh, hai cá' nhưng lại thêm chi tiết 'ba') và thiếu mô tả đầy đủ 'bánh lúa mạch'.",
     "language": "vi",
     "options": [
-      "Bảy bánh và hai con cá",
+      "Năm cái bánh lúa mạch và năm con cá",
       "Năm cái bánh lúa mạch và hai con cá",
-      "Mười hai bánh và bốn cá nhỏ",
-      "Ba bánh không men và một cá lớn"
+      "Bảy cái bánh lúa mạch và hai con cá",
+      "Năm cái bánh và ba con cá"
     ],
     "tags": [
       "Tân Ước",
@@ -3539,13 +3539,13 @@
     ],
     "verseEnd": 35,
     "content": "Câu Kinh Thánh ngắn nhất trong Tân Ước là 'Đức Chúa Jêsus khóc' (Giăng 11:35). Ngài khóc trong hoàn cảnh nào?",
-    "explanation": "Giăng 11:33-35 — 'Đức Chúa Jêsus thấy người khóc, và những người Giu-đa đến với người cũng khóc, bèn đau lòng cảm động mà phán... Đức Chúa Jêsus khóc'. Ngài đến mộ La-xa-rơ và bày tỏ tình thương sâu xa.",
+    "explanation": "Giăng 11:35 là câu 'Đức Chúa Jêsus khóc' và ngữ cảnh trực tiếp được mô tả trong các câu 32-34. Câu 33 cho thấy Ngài thấy Ma-ri và những người Do Thái đi với nàng khóc, câu 34 nói Ngài đi đến mộ. Vì vậy, đáp án đúng đúng vì Ngài khóc khi đến mộ và thấy chị em Ma-ri, Ma-thê khóc (cả hai chị em đều được nhắc đến trong phân đoạn).\n\nDistractor 1 (gần đúng) sai vì nó chỉ đề cập đến Ma-thê khóc một mình, trong khi Kinh Thánh ghi nhận Ngài thấy Ma-ri và những người khác cùng khóc (Giăng 11:33).\nDistractor 2 sai vì đây là một hiểu lầm phổ biến - Đức Chúa Jêsus không khóc trong bối cảnh bị Giu-đa phản bội; sự kiện đó được mô tả trong các sách Phúc Âm khác nhưng không có chi tiết Ngài khóc.\nDistractor 3 sai vì mặc dù Đức Chúa Jêsus đau buồn trong vườn Ghết-sê-ma-nê (Ma-thi-ơ 26:36-46), Kinh Thánh không ghi nhận Ngài khóc tại đó; chi tiết 'khóc' cụ thể thuộc về bối cảnh ở Giăng 11.",
     "language": "vi",
     "options": [
-      "Khi nhìn thấy đền thờ Giê-ru-sa-lem sắp bị phá hủy",
-      "Khi cầu nguyện trong vườn Ghết-sê-ma-nê đêm bị phản",
+      "Khi đến mộ La-xa-rơ và thấy Ma-thê khóc một mình",
+      "Khi bị Giu-đa phản bội và tiên tri về sự chết của Ngài",
       "Khi đến mộ La-xa-rơ và thấy chị em Ma-ri, Ma-thê khóc",
-      "Khi bị đóng đinh trên thập tự giá tại Gô-gô-tha"
+      "Khi cầu nguyện trong vườn Ghết-sê-ma-nê trước khi bị bắt"
     ],
     "tags": [
       "Tân Ước",
@@ -3566,12 +3566,12 @@
     ],
     "verseEnd": 36,
     "content": "Theo Giăng 1:35-36, ai đã chỉ Chúa Jêsus đi qua và tuyên bố: 'Kìa, Chiên con của Đức Chúa Trời'?",
-    "explanation": "Giăng 1:36 — 'Nhìn Đức Chúa Jêsus đi ngang qua, người [Giăng Báp-tít] nói rằng: Kìa, Chiên con của Đức Chúa Trời!' Lời này tiếp tục từ 1:29 — danh hiệu chỉ về Đấng chuộc tội thay cho con chiên Vượt Qua.",
+    "explanation": "Câu hỏi dựa trên Giăng 1:35-36. Trong câu 36, Giăng Báp-tít 'thấy Đức Chúa Jêsus đi ngang qua, bèn nói: Kìa, Chiên con của Đức Chúa Trời!'. Đáp án đúng nêu đúng nhân vật (Giăng Báp-tít) và bối cảnh (khi Chúa Jêsus đi qua nơi ông đang đứng).\n- Distractor 1 (Giăng Báp-tít... nơi các môn đồ đang đứng) gần đúng nhưng sai chi tiết vị trí: Kinh Thánh ghi Giăng đang đứng với hai môn đồ của mình, không phải Chúa Jêsus đi qua chỗ các môn đồ.\n- Distractor 2 (Anh-rê...) là hiểu lầm phổ biến vì Anh-rê là môn đồ theo Chúa sau sự kiện này, nhưng không phải người nói câu đó.\n- Distractor 3 (Phi-e-rơ...) thuộc nhầm passage gần: Phi-e-rơ được giới thiệu sau đó (câu 42), không liên quan đến sự kiện này.",
     "language": "vi",
     "options": [
-      "Sứ đồ Phi-e-rơ trên bờ biển Ga-li-lê khi mới gặp Chúa",
-      "Tiên tri Ê-sai trong khải tượng tại đền thờ Giê-ru-sa-lem",
-      "Bà Ma-ri Ma-đơ-len trong vườn vào sáng phục sinh đầu tuần",
+      "Giăng Báp-tít khi Chúa Jêsus đi qua nơi các môn đồ đang đứng",
+      "Anh-rê khi Chúa Jêsus đi qua nơi ông đang đứng",
+      "Phi-e-rơ khi Chúa Jêsus đi qua nơi ông đang đứng",
       "Giăng Báp-tít khi Chúa Jêsus đi qua nơi ông đang đứng"
     ],
     "tags": [
@@ -3593,13 +3593,13 @@
     ],
     "verseEnd": 9,
     "content": "Theo Giăng 4:6-7, khi Chúa Jêsus mỏi mệt ngồi bên giếng tại Sa-ma-ri, Ngài đã xin người đàn bà Sa-ma-ri điều gì?",
-    "explanation": "Giăng 4:7 — 'Một người đàn bà Sa-ma-ri đến múc nước. Đức Chúa Jêsus phán rằng: Hãy cho ta uống'. Cuộc đối thoại sau đó dẫn đến lời dạy về 'nước hằng sống' (4:10-14) và sự thờ phượng 'thần và lẽ thật' (4:24).",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Cho ta uống nước' (câu 7: 'xin ngươi cho ta uống'). Đoạn Kinh Thánh ghi rõ Chúa Jêsus xin nước uống khi mỏi mệt. \n\nDISTRACTOR SAI: \n- 'Chỉ cho ta giếng nước' (gần đúng, nhưng sai chi tiết): Đoạn có nhắc đến giếng (câu 6), nhưng lời xin cụ thể là 'uống nước', không phải 'chỉ giếng'. \n- 'Mời ta uống rượu': Sai phạm vi và là hiểu lầm phổ biến. Câu chuyện hoàn toàn về nước lã và nước sống, không liên quan đến rượu (xuất hiện trong các phép lạ khác, như tại tiệc cưới Ca-na). \n- 'Đưa ta về nhà': Sai phạm vi. Hành động này không được đề cập trong đoạn; cuộc đối thoại xoay quanh việc xin nước và bàn về sự thờ phượng.",
     "language": "vi",
     "options": [
       "Cho ta uống nước",
-      "Hãy gọi chồng ngươi đến đây",
-      "Hãy đi báo tin cho dân thành",
-      "Cho ta nghỉ qua đêm tại nhà ngươi"
+      "Chỉ cho ta giếng nước",
+      "Mời ta uống rượu",
+      "Đưa ta về nhà"
     ],
     "tags": [
       "Tân Ước",
@@ -3620,13 +3620,13 @@
     ],
     "verseEnd": 11,
     "content": "Theo Giăng 18:10, khi quân đến bắt Chúa Jêsus tại vườn Ghết-sê-ma-nê, Si-môn Phi-e-rơ làm gì?",
-    "explanation": "Giăng 18:10 — 'Bấy giờ, Si-môn Phi-e-rơ có một thanh gươm, bèn rút ra, đánh đầy tớ của thầy cả thượng phẩm, chém đứt tai bên hữu. Đầy tớ đó tên là Man-chu.' Đức Chúa Jêsus phán với Phi-e-rơ: 'Hãy nạp gươm ngươi vào vỏ' (18:11).",
+    "explanation": "Giăng 18:10 chép: 'Si-môn Phi-e-rơ có sẵn một thanh gươm, bèn rút ra đánh đầy tớ của thầy tế lễ cả, chém đứt tai bên phải. Tên đầy tớ ấy là Man-chu.' Đây là hành động cụ thể của Phi-e-rơ. \n- Distractor 1 (gần đúng) sai vì chi tiết 'tai trái' thay vì 'tai phải' như Kinh Thánh ghi. \n- Distractor 2 sai vì mô tả hành vi chạy trốn, dù các môn đồ bỏ chạy sau đó (câu 8, 12), nhưng câu hỏi hỏi về hành động của Phi-e-rơ ngay lúc đó. \n- Distractor 3 sai vì thể hiện sự hiểu lầm phổ biến rằng Phi-e-rơ thụ động, trong khi văn bản ghi rõ ông đã hành động tích cực.",
     "language": "vi",
     "options": [
-      "Chạy trốn khỏi vườn ngay lập tức cùng các môn đồ khác",
-      "Chối Chúa ngay tại vườn trước mặt các quân lính",
+      "Chạy trốn cùng các môn đồ khác ra khỏi vườn",
+      "Chém đứt tai trái của Man-chu, đầy tớ thầy tế lễ",
       "Rút gươm chém đứt tai phải của Man-chu, đầy tớ thầy tế lễ",
-      "Khóc lóc và cầu nguyện cho Chúa được giải cứu"
+      "Đứng yên và không làm gì khi thấy Chúa bị bắt"
     ],
     "tags": [
       "Tân Ước",
@@ -3647,13 +3647,13 @@
     ],
     "verseEnd": 29,
     "content": "Theo Giăng 1:29 (RVV11), Giăng Báp-tít chỉ Chúa Jêsus và phán câu trọn vẹn nào?",
-    "explanation": "Giăng 1:29 — 'Qua ngày sau, Giăng thấy Đức Chúa Jêsus đến cùng mình, thì nói rằng: Kìa, Chiên con của Đức Chúa Trời, là Đấng cất tội lỗi thế gian đi'. Danh hiệu này gắn với Chiên Vượt Qua (Xuất 12) và Tôi tớ chịu khổ (Ê-sai 53).",
+    "explanation": "Đáp án đúng là: **'Kìa, Chiên con của Đức Chúa Trời, là Đấng cất tội lỗi thế gian đi'** (Giăng 1:29). Đây là lời tuyên bố trọn vẹn của Giăng Báp-tít khi chỉ về Chúa Jêsus. Các đáp án sai: (1) Thay 'thế gian' bằng 'dân Y-sơ-ra-ên' – sai chi tiết quan trọng về phạm vi cứu rỗi. (2) Câu này mô tả chức vụ của Đấng Christ (Giăng 1:33) nhưng không phải là lời trích dẫn đầy đủ trong câu hỏi. (3) Thêm 'Đấng sẽ phán xét' – thể hiện sự hiểu lầm phổ biến về vai trò chính của Chúa Jêsus trong bối cảnh này, nơi Ngài được giới thiệu là Đấng cứu chuộc, không phải là quan án.",
     "language": "vi",
     "options": [
-      "'Kìa, Đấng Mê-si-a Y-sơ-ra-ên đã trông đợi từ thời các tổ phụ'",
+      "'Kìa, Chiên con của Đức Chúa Trời, là Đấng cất tội lỗi dân Y-sơ-ra-ên đi'",
       "'Kìa, Chiên con của Đức Chúa Trời, là Đấng cất tội lỗi thế gian đi'",
-      "'Kìa, vua dân Giu-đa đến để giải phóng các ngươi khỏi La-mã'",
-      "'Kìa, tiên tri lớn nhất trong các tiên tri của Đức Chúa Trời'"
+      "'Kìa, Đấng làm phép báp-têm bằng nước và bằng Đức Thánh Linh'",
+      "'Kìa, Chiên con của Đức Chúa Trời, Đấng sẽ phán xét thế gian'"
     ],
     "tags": [
       "Tân Ước",
@@ -3701,12 +3701,12 @@
     ],
     "verseEnd": 54,
     "content": "Theo Giăng 4:46-54, Chúa Jêsus chữa lành con trai quan thị vệ tại Ca-bê-na-um bằng cách nào?",
-    "explanation": "Giăng 4:50-53 — 'Đức Chúa Jêsus phán rằng: Hãy đi, con của ngươi sống. Người tin lời Đức Chúa Jêsus đã phán cho mình, bèn đi... Người cha biết rằng ấy là chính giờ đó Đức Chúa Jêsus đã phán cùng mình rằng: Con của ngươi sống'. Đây là dấu lạ thứ hai (4:54).",
+    "explanation": "Đáp án đúng dựa trên Giăng 4:50 ('Hãy đi, con của ngươi sống'), cho thấy Chúa Jêsus chỉ phán một lời từ xa tại Ca-na, và đứa trẻ ở Ca-bê-na-um được lành ngay giờ đó (câu 52-53).\n\nDistractor 1 sai vì sai chi tiết: Kinh Thánh không ghi Chúa Jêsus đến tận nhà hay đặt tay, Ngài chữa lành từ xa.\nDistractor 2 là đáp án 'gần đúng' nhưng vẫn sai: tuy đúng việc phán một lời, nhưng sai chi tiết then chốt là đứa trẻ không có mặt tại chỗ (câu 47,50).\nDistractor 3 sai vì hiểu lầm phổ biến: nước giếng Gia-cốp xuất hiện trong đoạn trước (Giăng 4:1-26) về người đàn bà Sa-ma-ri, không liên quan đến phép lạ chữa con trai quan thị vệ này.",
     "language": "vi",
     "options": [
-      "Đến tận nhà quan và đặt tay trên đầu đứa trẻ",
-      "Cho đứa trẻ uống nước thuốc chữa từ giếng Si-lô-ê",
-      "Sai các môn đồ đi với quan để cầu nguyện cho đứa trẻ",
+      "Đến tận nhà, đặt tay lên đứa trẻ và truyền phán: 'Con được lành'",
+      "Bảo quan thị vệ đem con đến, rồi phán một lời khi đứa trẻ có mặt",
+      "Dùng nước từ giếng Gia-cốp làm phép lạ chữa bệnh từ xa",
       "Phán từ XA: 'Hãy đi, con của ngươi sống' — đứa trẻ lành ngay giờ đó"
     ],
     "tags": [
@@ -3728,13 +3728,13 @@
     ],
     "verseEnd": 9,
     "content": "Theo Giăng 5:1-9, người bị bệnh tại ao Bê-tết-đa đã đau bao nhiêu năm khi Chúa Jêsus chữa lành?",
-    "explanation": "Giăng 5:5 — 'Tại đó có một người bị bệnh đã ba mươi tám năm'. Chúa hỏi 'ngươi có muốn lành chăng?' và phán 'hãy đứng dậy, vác giường ngươi và đi'. Người đó liền lành.",
+    "explanation": "Trong Giăng 5:5-9, Kinh Thánh ghi rõ: \"Ở đó, có một người bị bệnh đã ba mươi tám năm. Đức Chúa Jêsus thấy người ấy nằm tại đó, biết rằng đã bị bệnh lâu ngày...\" (câu 5-6). Vì vậy, đáp án đúng chỉ ra thời gian chính xác là ba mươi tám năm. \n\nDistractor 1 (Ba mươi ba năm) sai vì thay đổi chi tiết số năm quan trọng từ 'ba mươi tám' thành 'ba mươi ba', mặc dù cấu trúc và ý còn lại tương đồng. \nDistractor 2 (mười tám năm) sai vì dựa trên một chi tiết từ một phép lạ chữa bệnh khác trong Kinh Thánh (như Lu-ca 13:11-16 về người đàn bà bị còng lưng mười tám năm), không phải từ đoạn Kinh Thánh tham chiếu này. \nDistractor 3 (không nhớ) sai vì mặc dù người bệnh có nói về việc không có ai giúp mình xuống ao khi nước động (Giăng 5:7), nhưng đoạn Kinh Thánh không hề ghi rằng người ấy không nhớ số năm mắc bệnh; trái lại, thông tin về 'ba mươi tám năm' được nêu rõ.",
     "language": "vi",
     "options": [
       "Ba mươi tám năm bị bệnh tật không thể đi lại",
-      "Mười hai năm như người đàn bà chảy huyết kia",
-      "Bốn mươi năm như dân Y-sơ-ra-ên trong sa mạc",
-      "Mười tám năm bị một quỷ trói buộc làm gù lưng"
+      "Ba mươi ba năm bị bệnh tật không thể đi lại",
+      "Người đó đã bị bệnh suốt mười tám năm trước khi được chữa lành",
+      "Người ấy không nhớ mình đã bị bệnh bao nhiêu năm"
     ],
     "tags": [
       "Tân Ước",
@@ -3755,13 +3755,13 @@
     ],
     "verseEnd": 51,
     "content": "Theo Giăng 6:51 (RVV11), Chúa Jêsus tuyên bố Ngài là 'bánh hằng sống' và bánh ấy là gì?",
-    "explanation": "Giăng 6:51 (RVV11) — 'Ta là bánh hằng sống từ trên trời xuống; nếu ai ăn bánh ấy, thì sẽ sống vô cùng; và bánh mà ta sẽ ban cho vì sự sống của thế gian tức là thịt ta'. Lời này tiếp diễn từ 6:35 'Ta là bánh của sự sống' và dẫn đến tranh luận lớn (6:52-66).",
+    "explanation": "Giăng 6:51 chép: 'Ta là bánh hằng sống từ trên trời xuống; nếu ai ăn bánh nầy, thì sẽ sống đời đời; và bánh mà Ta sẽ ban cho vì sự sống của thế gian chính là thịt Ta.' Câu này xác định rõ bánh hằng sống mà Chúa Jêsus ban là 'thịt Ta — vì sự sống của thế gian'.\n\nĐáp án đúng đúng vì trích trực tiếp và đầy đủ cụm từ then chốt trong câu Kinh Thánh, chỉ rõ bản chất của bánh (thịt Ngài) và mục đích (vì sự sống của thế gian).\n\nCác đáp án sai sai vì:\n1. 'Lời Ta — vì sự sống của thế gian' là gần đúng nhưng thay từ 'Thịt' thành 'Lời'. Dù Lời Chúa quan trọng (Giăng 1:1), đây là lỗi 'nhầm passage gần' vì câu hỏi cụ thể về Giăng 6:51 dùng từ 'thịt', không phải 'lời'.\n2. 'Thịt Ta — vì sự sống của chính Ngài' sai chi tiết mục đích. Câu Kinh Thánh nói 'vì sự sống của thế gian', không phải vì chính Ngài. Đây là lỗi 'sai chi tiết'.\n3. 'Thịt Ta — vì sự sống của dân Y-sơ-ra-ên' thu hẹp phạm vi đối tượng. 'Thế gian' (kosmos) trong ngữ cảnh này chỉ toàn thể nhân loại, không chỉ riêng dân Y-sơ-ra-ên. Đây là lỗi 'sai phạm vi'.",
     "language": "vi",
     "options": [
-      "Chiên con không tì vết được dâng tại đền thờ Giê-ru-sa-lem",
+      "Lời Ta — vì sự sống của thế gian",
       "Thịt Ta — vì sự sống của thế gian",
-      "Manh-na rơi xuống mỗi ngày trong sa mạc thời Mô-se xưa",
-      "Bánh không men của lễ Vượt Qua truyền thống Y-sơ-ra-ên"
+      "Thịt Ta — vì sự sống của chính Ngài",
+      "Thịt Ta — vì sự sống của dân Y-sơ-ra-ên"
     ],
     "tags": [
       "Tân Ước",
@@ -3809,13 +3809,13 @@
     ],
     "verseEnd": 32,
     "content": "Theo Giăng 8:31-32, Chúa Jêsus phán cùng những người Giu-đa đã tin Ngài: 'Nếu các ngươi hằng ___ trong lời ta, thì thật là môn đồ ta. Các ngươi sẽ biết LẼ THẬT, và LẼ THẬT sẽ ___'.",
-    "explanation": "Giăng 8:31-32 — 'Bấy giờ Đức Chúa Jêsus phán cùng những người Giu-đa đã tin Ngài, rằng: Nếu các ngươi hằng ở trong lời ta, thì thật là môn đồ ta; các ngươi sẽ biết lẽ thật, và lẽ thật sẽ buông tha các ngươi'. 'Lẽ thật' = chính Đấng Christ (14:6).",
+    "explanation": "Đoạn Kinh Thánh Giăng 8:31-32 chép: 'Nếu các ngươi hằng ở trong lời ta, thì thật là môn đồ ta; các ngươi sẽ biết lẽ thật, và lẽ thật sẽ buông tha các ngươi.' Do đó, đáp án đúng là 'ở / buông tha các ngươi'. Các distractor sai vì: (1) 'vâng lời / cứu rỗi các ngươi' trích ý gần nhưng sai từ các câu khác (vd: Giăng 3:16 nói về sự cứu rỗi), không phải từ đúng phân đoạn này; (2) 'ở / soi sáng các ngươi' là gần đúng nhưng sai chi tiết then chốt ('soi sáng' không phải từ trong câu 32); (3) 'tin / bảo vệ các ngươi' dựa trên hiểu lầm phổ biến về vai trò của lẽ thật, nhưng không đúng với từ ngữ trong văn bản.",
     "language": "vi",
     "options": [
       "ở / buông tha các ngươi",
-      "cầu nguyện / ban phước cho các ngươi",
-      "kiêng ăn / chữa lành các ngươi",
-      "vâng lời / cứu các ngươi khỏi chết"
+      "vâng lời / cứu rỗi các ngươi",
+      "ở / soi sáng các ngươi",
+      "tin / bảo vệ các ngươi"
     ],
     "tags": [
       "Tân Ước",
@@ -3836,12 +3836,12 @@
     ],
     "verseEnd": 36,
     "content": "Theo Giăng 8:36, Chúa Jêsus tiếp tục lập luận về sự tự do thật sự. Lời nào sau đó?",
-    "explanation": "Giăng 8:36 — 'Vậy nếu Con buông tha các ngươi, các ngươi sẽ thật được tự do'. Câu này tiếp 8:34 ('ai phạm tội là tôi mọi của tội lỗi') và 8:35 ('tôi mọi không ở luôn trong nhà; còn Con thì ở luôn').",
+    "explanation": "Giăng 8:36 ghi: 'Vậy nếu Con buông tha các ngươi, các ngươi sẽ thật được tự do.' Đây là lời trực tiếp và trọn vẹn của Chúa Jêsus tiếp tục lập luận về sự tự do thật sự sau câu 35.\n\n- Đáp án đúng đúng vì trích nguyên văn và đúng ngữ cảnh.\n- Distractor 1 sai vì thay 'Con' bằng 'Đức Chúa Trời'. Đây là lỗi nhầm passage gần vì trong ngữ cảnh này, Chúa Jêsus (Con) là Đấng ban tự do, không phải Đức Chúa Trời (Cha) được nói trực tiếp ở câu này.\n- Distractor 2 sai vì thêm cụm 'đời đời' vào, làm thay đổi chi tiết của bản văn gốc.\n- Distractor 3 sai vì mặc dù ý 'giữ lời Ta' có trong bài giảng (xem câu 31), nhưng đây không phải là lời trực tiếp tiếp nối lập luận về sự tự do thật sự trong câu 36; nó lạc trọng tâm câu hỏi yêu cầu lời 'tiếp theo đó'.",
     "language": "vi",
     "options": [
-      "'Ai vâng giữ luật pháp Môi-se sẽ được tự do thật'",
-      "'Ai làm phép báp-têm sẽ được tự do khỏi tội lỗi'",
-      "'Ai dâng tế lễ tại đền thờ sẽ được tự do khỏi án phạt'",
+      "'Nếu ĐỨC CHÚA TRỜI buông tha các ngươi, các ngươi sẽ thật được tự do'",
+      "'Nếu Con buông tha các ngươi, các ngươi sẽ được tự do đời đời'",
+      "'Nếu các ngươi giữ lời Ta, các ngươi sẽ thật được tự do'",
       "'Nếu CON BUÔNG THA các ngươi, các ngươi sẽ thật được tự do'"
     ],
     "tags": [
@@ -3863,13 +3863,13 @@
     ],
     "verseEnd": 38,
     "content": "Theo Giăng 9:35-38, sau khi người mù được chữa lành bị Pha-ri-si đuổi ra khỏi nhà hội, Chúa Jêsus đi tìm và hỏi anh điều gì?",
-    "explanation": "Giăng 9:35-38 — 'Đức Chúa Jêsus nghe họ đã đuổi người ra, bèn tìm được người, mà phán rằng: Ngươi có tin đến Con Đức Chúa Trời chăng?... Người thưa rằng: Lạy Chúa, tôi tin; bèn sấp mình xuống trước mặt Ngài'. Đây là một trong những cảnh thờ lạy đầy ý nghĩa.",
+    "explanation": "Giăng 9:35-38 ghi lại: 'Đức Chúa Jêsus nghe họ đã đuổi anh ra, thấy anh, bèn phán hỏi rằng: Ngươi có tin đến Con Đức Chúa Trời chăng? Anh thưa rằng: Thưa Chúa, người là ai, hầu cho tôi tin đến? Đức Chúa Jêsus đáp rằng: Ngươi đã thấy người, và ấy là chính người đương nói với ngươi. Anh bèn nói rằng: Lạy Chúa, tôi tin; rồi sấp mình xuống trước mặt Ngài mà thờ lạy.' Đáp án đúng là câu Chúa Jêsus hỏi: 'Ngươi có tin đến Con Đức Chúa Trời chăng?' vì đó đúng câu hỏi Chúa đặt ra, thẳng vào trọng tâm đức tin đúng đắn và đã khiến anh từ 'thầy' xưng hô sang 'Chúa'. Các đáp án sai: (1) Sai chi tiết 'con người được Đức Chúa Trời sai đến' – mặc dù trong đoạn gần (9:7, 9:16) từ nói về 'người ấy' và người 'do Đức Chúa Trời sai đến', nhưng ở câu 35-38 câu hỏi trực tiếp về 'Con Đức Chúa Trời', đây là sai lệch then chốt làm mất đi thần tính và danh hiệu đầy đủ của Chúa Jêsus; (2) Lạc câu hỏi 'tin nơi những phép lạ' – điều này tuy đúng văn bản về lý do Pha-ri-si thắc mắc (9:16) nhưng không phải là câu hỏi Chúa hỏi riêng người mù sau khi bị đuổi khỏi nhà hội; dù anh có thể biết phép lạ, nhưng câu hỏi nhằm về đức tin cá nhân vào Con Đức Chúa Trời chứ không phải về công nhận phép lạ; (3) Hiểu lầm phổ biến 'người làm theo ý muốn của Đức Chúa Trời' – tuy câu này nghe có vẻ đúng về sự nhận biết công việc của Chúa Jêsus, đoạn này câu 4 Ngài nói 'làm việc của Đấng sai Ta đến', nhưng danh hiệu 'Con Đức Chúa Trời' mới là đối tượng đức tin trọn vẹn và đầy đủ chứ không chỉ là người làm theo ý muốn.",
     "language": "vi",
     "options": [
       "'Ngươi có TIN ĐẾN CON ĐỨC CHÚA TRỜI chăng?' — và anh thưa: 'Lạy Chúa, tôi tin' rồi sấp mình thờ lạy",
-      "'Ngươi có muốn được giàu có và quyền thế chăng?'",
-      "'Ngươi có muốn trở thành môn đồ của ta cùng đi truyền giáo chăng?'",
-      "'Ngươi có muốn báo thù Pha-ri-si đã đuổi ngươi ra chăng?'"
+      "'Ngươi có tin rằng Ta là con người được Đức Chúa Trời sai đến chăng?' — và anh thưa: 'Lạy Chúa, tôi tin' rồi sấp mình thờ lạy",
+      "'Ngươi có tin nơi những phép lạ Ta làm chăng?' — và anh thưa: 'Lạy Chúa, tôi tin' rồi sấp mình thờ lạy",
+      "'Ngươi có tin rằng Ta là người làm theo ý muốn của Đức Chúa Trời chăng?' — và anh thưa: 'Lạy Chúa, tôi tin' rồi sấp mình thờ lạy"
     ],
     "tags": [
       "Tân Ước",
@@ -3917,13 +3917,13 @@
     ],
     "verseEnd": 44,
     "content": "Theo Giăng 11:43-44, khi Chúa Jêsus đứng tại mộ La-xa-rơ và cầu nguyện xong, Ngài kêu lớn tiếng điều gì?",
-    "explanation": "Giăng 11:43-44 — 'Khi Ngài nói xong, bèn kêu lên một tiếng lớn rằng: Hỡi La-xa-rơ, hãy ra! Người chết đi ra, chân tay buộc bằng vải liệm và mặt thì phủ khăn'. Phép lạ thứ bảy của Phúc âm Giăng.",
+    "explanation": "Đáp án đúng là 'Hỡi La-xa-rơ, hãy ra!' (Giăng 11:43), trích nguyên văn lời Chúa Jêsus kêu lớn tiếng sau khi cầu nguyện. Distractor 1 ('Hỡi La-xa-rơ, hãy sống lại!') gần đúng nhưng sai chi tiết then chốt: Kinh Thánh ghi là 'hãy ra', không phải 'hãy sống lại', mặc dù ngữ cảnh là sự sống lại. Distractor 2 ('Hãy mở mộ ra!') là chi tiết có thật trong câu chuyện (câu 39,41) nhưng không phải là lời Chúa Jêsus 'kêu lớn tiếng' tại thời điểm câu hỏi đề cập. Distractor 3 ('Ta cảm tạ Cha vì đã nhậm lời con.') là lời cầu nguyện của Chúa Jêsus được ghi ở câu 41, trước khi Ngài kêu lớn tiếng, nên đúng văn bản nhưng lạc với yêu cầu cụ thể của câu hỏi.",
     "language": "vi",
     "options": [
-      "'Hỡi Đức Chúa Trời, xin cho La-xa-rơ sống lại'",
-      "'La-xa-rơ là bạn ta, hãy quay về với ta'",
+      "'Hỡi La-xa-rơ, hãy sống lại!'",
+      "'Hãy mở mộ ra!'",
       "'Hỡi La-xa-rơ, hãy ra!'",
-      "'La-xa-rơ ơi, ngươi không chết đâu'"
+      "'Ta cảm tạ Cha vì đã nhậm lời con.'"
     ],
     "tags": [
       "Tân Ước",
@@ -3944,12 +3944,12 @@
     ],
     "verseEnd": 25,
     "content": "Theo Giăng 12:24, Chúa Jêsus dùng ẩn dụ nào để dạy về sự chết và sự sống nhiều?",
-    "explanation": "Giăng 12:24 — 'Quả thật, quả thật, ta nói cùng các ngươi, nếu hột giống lúa mì kia, chẳng chết sau khi gieo xuống đất, thì cứ ở một mình; nhưng nếu chết đi, thì kết quả được nhiều'. Chúa nói về sự chết của Ngài đem đến nhiều con cái Đức Chúa Trời.",
+    "explanation": "Giăng 12:24 chép: 'Quả thật, quả thật, ta nói cùng các ngươi, nếu hột giống lúa mì kia chẳng chết sau khi gieo xuống đất, thì cứ một mình; nhưng nếu chết đi, thì kết quả được nhiều.' Vì vậy, đáp án đúng trích dẫn chính xác ẩn dụ 'Một HỘT GIỐNG LÚA MÌ' và diễn đạt đúng ý về sự chết để kết quả. Distractor 1 sai ở chi tiết 'CÂY LÚA MÌ' (thay vì 'HỘT GIỐNG LÚA MÌ'), dù phần còn lại giống đáp án đúng. Distractor 2 sai vì diễn giải 'sẽ héo khô' trái với ý 'kết quả nhiều' trong Kinh Thánh, phản ánh một cách hiểu sai phổ biến về kết cục. Distractor 3 dùng đúng từ ngữ Kinh Thánh nhưng lạc câu hỏi vì thay đổi ý then chốt 'chết đi' thành 'sống lại', làm sai trọng tâm bài học về sự chết đem lại sự sống.",
     "language": "vi",
     "options": [
-      "Một hột cát rơi xuống biển sẽ tan ra mà không kết quả",
-      "Một con chim bay khỏi tổ sẽ tìm được tổ mới hơn",
-      "Một ngọn đèn được thắp lên không nên giấu dưới thùng",
+      "Một CÂY LÚA MÌ chẳng chết đi thì cứ một mình; nếu chết đi, sẽ kết quả nhiều",
+      "Một HẠT GIỐNG chẳng chết đi thì cứ một mình; nếu chết đi, sẽ héo khô",
+      "Một HỘT GIỐNG LÚA MÌ chẳng sống lại thì cứ một mình; nếu sống lại, sẽ kết quả nhiều",
       "Một HỘT GIỐNG LÚA MÌ chẳng chết đi thì cứ một mình; nếu chết đi, sẽ kết quả nhiều"
     ],
     "tags": [
@@ -3971,13 +3971,13 @@
     ],
     "verseEnd": 1,
     "content": "Câu mở đầu phần 'Phòng Cao' (Giăng 13-17) là Giăng 13:1 (RVV11). Câu này nói gì về tình yêu của Chúa Jêsus với môn đồ?",
-    "explanation": "Giăng 13:1 — 'Trước ngày lễ Vượt Qua, Đức Chúa Jêsus biết giờ mình phải lìa thế gian đặng trở về cùng Đức Chúa Cha đến rồi; Ngài đã yêu kẻ thuộc về mình trong thế gian, thì cứ yêu cho đến cuối cùng'. Câu này định khung tình yêu của Phòng Cao và thập tự.",
+    "explanation": "Giăng 13:1 (RVV11) ghi: 'Trước ngày lễ Vượt Qua, Đức Chúa Jêsus biết giờ mình phải lìa thế gian đặng trở về cùng Đức Chúa Cha đến; Ngài đã yêu kẻ thuộc về mình trong thế gian, thì yêu cho đến cuối cùng.' Đây là căn cứ cho đáp án đúng vì nó ghi nhận trọn vẹn bản chất và mức độ tình yêu của Chúa Jêsus dành cho môn đồ: 'yêu thương cho đến cuối cùng' (εἰς τέλος) hàm ý sự trọn vẹn, trọn vẹn đến tận cùng, không chỉ về thời gian mà còn về mức độ. \n\n• Distractor 1 sai vì thay 'cho đến cuối cùng' bằng 'cho đến lúc chết'. Mặc dù cái chết của Chúa Jêsus là một biểu hiện tột cùng của tình yêu, nhưng cụm 'εἰς τέλος' trong văn bản nguyên thủy mang nghĩa 'cho đến cùng/trọn vẹn' hơn là chỉ giới hạn ở khung thời gian 'lúc chết'. \n• Distractor 2 sai vì thay 'cuối cùng' bằng 'đầu', hoàn toàn trái nghĩa với ý 'yêu thương trọn vẹn' của câu Kinh Thánh và phản ánh một sự hiểu lầm phổ biến về hướng của tình yêu này. \n• Distractor 3 sai vì dùng thành ngữ 'cho đến khi trời qua đất lại' (một cách diễn đạt phổ biến về sự vĩnh cửu). Mặc dù tình yêu của Chúa là vĩnh cửu, nhưng câu hỏi cụ thể hỏi về nội dung Giăng 13:1, và câu này không dùng cách diễn đạt đó; distractor này tuy đúng ý chung về tình yêu vĩnh cửu nhưng lại 'lạc đề' so với văn bản được trích dẫn cụ thể.",
     "language": "vi",
     "options": [
       "'Ngài YÊU THƯƠNG kẻ thuộc về mình trong thế gian, thì cứ yêu thương cho ĐẾN CUỐI CÙNG'",
-      "'Ngài chỉ yêu các môn đồ kế thừa hợp pháp của giao ước Áp-ra-ham'",
-      "'Ngài yêu thương dân Y-sơ-ra-ên hơn các môn đồ ngoại giáo'",
-      "'Ngài yêu thương sứ đồ Giăng nhiều hơn các môn đồ khác bằng cách công khai'"
+      "'Ngài YÊU THƯƠNG kẻ thuộc về mình trong thế gian, thì cứ yêu thương cho ĐẾN LÚC CHẾT'",
+      "'Ngài YÊU THƯƠNG kẻ thuộc về mình trong thế gian, thì cứ yêu thương cho ĐẾN ĐẦU'",
+      "'Ngài YÊU THƯƠNG kẻ thuộc về mình trong thế gian, thì cứ yêu thương cho ĐẾN KHI TRỜI QUA ĐẤT LẠI'"
     ],
     "tags": [
       "Tân Ước",
@@ -3998,13 +3998,13 @@
     ],
     "verseEnd": 14,
     "content": "Theo Giăng 14:13-14, Chúa Jêsus hứa điều gì về cầu nguyện 'nhân danh ta'?",
-    "explanation": "Giăng 14:13-14 — 'Các ngươi nhân danh ta mà cầu xin điều chi mặc dầu, ta sẽ làm cho, để Cha được sáng danh nơi Con. Nếu các ngươi nhân danh ta xin điều chi, ta sẽ làm cho'. Lời hứa kết hợp với mục đích: Cha được sáng danh.",
+    "explanation": "Đoạn Kinh Thánh Giăng 14:13-14 (BTT) ghi: 'Các ngươi nhân danh ta mà cầu xin điều chi mặc dầu, ta sẽ làm cho, để Cha được sáng danh nơi Con. Nếu các ngươi nhân danh ta xin điều chi, ta sẽ làm cho.' Đáp án đúng trung thành với lời hứa của Chúa Jêsus: Ngài sẽ làm điều đó để Cha được sáng danh nơi Con.\n\nCác đáp án sai:\n- Distractor 1 (gần đúng, sai chi tiết): Sai ở chủ thể thực hiện. Kinh văn nói 'ta sẽ làm cho' (Chúa Jêsus), không phải 'Thánh Linh sẽ làm cho'. Đây là lỗi sai chi tiết then chốt.\n- Distractor 2 (sai phạm vi): Sai mục đích của lời hứa. Kinh văn nói mục đích là 'để Cha được sáng danh', không phải 'để các ngươi được giàu có'. Điều này mở rộng/sai lệch phạm vi ý nghĩa của lời hứa.\n- Distractor 3 (hiểu lầm phổ biến): Thay thế hành động 'ta sẽ làm cho' bằng 'ta sẽ cầu thay cùng Cha'. Mặc dù Chúa Jêsus cầu thay cho tín đồ, nhưng đây không phải là lời hứa cụ thể trong câu 13-14 đang được hỏi, đây là một sự hiểu lầm hoặc áp dụng sai từ những đoạn khác.",
     "language": "vi",
     "options": [
-      "'Nếu các ngươi nhân danh ta cầu xin, ta sẽ ban tài sản nhiều'",
+      "'Các ngươi nhân danh ta mà cầu xin điều chi, Thánh Linh sẽ làm cho, để Cha được sáng danh'",
       "'Các ngươi NHÂN DANH TA mà cầu xin điều chi, TA SẼ LÀM CHO, để Cha được sáng danh nơi Con'",
-      "'Cầu xin nhân danh ta sẽ thoát khỏi mọi đau khổ thể chất'",
-      "'Nhân danh ta cầu xin sẽ trở thành tiên tri lớn trong dân'"
+      "'Các ngươi nhân danh ta mà cầu xin điều chi, ta sẽ làm cho, để các ngươi được giàu có'",
+      "'Các ngươi nhân danh ta mà cầu xin điều chi, ta sẽ cầu thay cùng Cha'"
     ],
     "tags": [
       "Tân Ước",
@@ -4052,13 +4052,13 @@
     ],
     "verseEnd": 27,
     "content": "Theo Giăng 14:27 (RVV11), Chúa Jêsus ban sự bình an cho môn đồ với SỰ KHÁC BIỆT cụ thể nào so với thế gian?",
-    "explanation": "Giăng 14:27 — 'Ta để sự bình an lại cho các ngươi; ta ban sự bình an ta cho các ngươi; ta cho các ngươi sự bình an chẳng phải như thế gian cho. Lòng các ngươi chớ bối rối và đừng sợ hãi'. Bình an của Chúa khác bình an thế gian — không phụ thuộc hoàn cảnh.",
+    "explanation": "Câu trả lời đúng được trích trực tiếp từ RVV11: 'Ta để sự bình an lại cho các ngươi; ta ban sự bình an ta cho các ngươi; TA CHO CÁC NGƯƠI SỰ BÌNH AN CHẲNG PHẢI NHƯ THẾ GIAN cho' (Giăng 14:27). Phần cuối của câu này chỉ ra sự khác biệt cụ thể: sự bình an của Chúa Jêsus ban cho không giống như sự bình an mà thế gian ban cho hoặc hiểu.\n\nDistractor 1 ('...GIỮA NHỮNG LO ÂU...') là gần đúng vì nó có chung cấu trúc, nhưng thay vì nói 'chẳng phải như thế gian,' nó chèn một ý phái sinh ('giữa những lo âu') tuy hợp lý về mặt thần học nhưng không phải là sự khác biệt chính xác được ghi trong câu Kinh Thánh này. Đây là lỗi nhầm passage gần (lấy ý từ bối cảnh chung).\n\nDistractor 2 ('...NHƯ TA ĐÃ ĐƯỢC CHA TA BAN CHO') là một câu trích từ đoạn gần (có trong Giăng 14, nhưng không phải câu 27) nên thuộc lỗi sai phạm vi. Nó đúng về văn bản nhưng trả lời một câu hỏi khác (về nguồn gốc sự bình an của Chúa Jêsus), không phải về sự khác biệt so với thế gian.\n\nDistractor 3 ('...KHI CHÚNG TA CÙNG NHAU...') thể hiện một hiểu lầm phổ biến, gán sự bình an vào bối cảnh cộng đồng hoặc sự hiệp nhất (một chủ đề khác trong sách Giăng), nhưng không phải là sự tương phản trực tiếp với 'thế gian' như được nêu trong câu hỏi và câu Kinh Thánh.",
     "language": "vi",
     "options": [
       "'Ta để sự bình an lại cho các ngươi; ta ban sự bình an ta cho các ngươi; TA CHO CÁC NGƯƠI SỰ BÌNH AN CHẲNG PHẢI NHƯ THẾ GIAN cho'",
-      "'Sự bình an của ta là sự giàu có vật chất bảo đảm trên đất'",
-      "'Sự bình an của ta là chiến thắng quân địch trên chiến trường'",
-      "'Sự bình an của ta chỉ ban cho người có đức tin lớn nhất'"
+      "'Ta để sự bình an lại cho các ngươi; ta ban sự bình an ta cho các ngươi; TA CHO CÁC NGƯƠI SỰ BÌNH AN GIỮA NHỮNG LO ÂU cho'",
+      "'Ta để sự bình an lại cho các ngươi; ta ban sự bình an ta cho các ngươi; TA CHO CÁC NGƯƠI NHƯ TA ĐÃ ĐƯỢC CHA TA BAN CHO'",
+      "'Ta để sự bình an lại cho các ngươi; ta ban sự bình an ta cho các ngươi; TA CHO CÁC NGƯƠI SỰ BÌNH AN KHI CHÚNG TA CÙNG NHAU cho'"
     ],
     "tags": [
       "Tân Ước",
@@ -4079,12 +4079,12 @@
     ],
     "verseEnd": 15,
     "content": "Theo Giăng 15:14-15, Chúa Jêsus phân biệt 'đầy tớ' và 'bạn hữu'. Sự phân biệt là gì?",
-    "explanation": "Giăng 15:14-15 — 'Các ngươi là bạn hữu ta, nếu các ngươi làm theo điều ta dạy. Ta chẳng còn gọi các ngươi là đầy tớ nữa, vì đầy tớ chẳng biết điều chủ mình làm; nhưng ta đã gọi các ngươi là bạn hữu ta, vì ta từng tỏ cho các ngươi biết mọi điều ta đã nghe nơi Cha ta'.",
+    "explanation": "Câu hỏi hỏi về sự phân biệt giữa 'đầy tớ' và 'bạn hữu' theo Giăng 15:14-15. Đáp án đúng là: 'Đầy tớ chẳng biết điều chủ làm; còn ta gọi BẠN HỮU vì ta đã TỎ ra cho các ngươi mọi điều ta đã nghe nơi Cha' (xem câu 15: '...vì ta từng tỏ cho các ngươi mọi điều ta đã nghe nơi Cha ta'). SỰ PHÂN BIỆT nằm ở việc Chúa Jêsus TỎ RA cho môn đồ những điều Ngài nghe nơi Cha, không phải chỉ vâng lời mệnh lệnh mà không hiểu biết.\n\n- Distractor 1 ('vì các ngươi đã yêu thương nhau...') SAI vì dùng ý từ Giăng 15:12, 17 (yêu thương nhau) là một điều răn khác trong cùng phân đoạn, nhưng KHÔNG phải là lý do được nêu trong câu 14-15 để định nghĩa 'bạn hữu'.\n- Distractor 2 ('vì ta đã chết thay cho các ngươi') SAI vì đây là một hiểu lầm phổ biến, lý do này không được đề cập trong ngữ cảnh Giăng 15:14-15; sự hy sinh chuộc tội được nói đến ở nơi khác (ví dụ: Giăng 10:11, 15), không phải là tiêu chí phân biệt tại đây.\n- Distractor 3 ('vì ta đã chọn các ngươi để đi và kết quả') SAI vì mở rộng phạm vi sang mục đích (đi và kết quả, được nhắc ở câu 16), nhưng câu 14-15 tập trung vào sự hiểu biết và chia sẻ mặc khải từ Cha, chứ không phải việc được chọn để sai đi.",
     "language": "vi",
     "options": [
-      "Đầy tớ vâng lời còn bạn hữu thì không vâng lời mà chỉ ngồi ăn cùng",
-      "Đầy tớ làm việc nặng còn bạn hữu chỉ làm việc nhẹ và nhàn hạ",
-      "Đầy tớ không có thẩm quyền còn bạn hữu có thẩm quyền giảng đạo",
+      "Đầy tớ chẳng biết điều chủ làm; còn ta gọi BẠN HỮU vì các ngươi đã yêu thương nhau như ta đã yêu các ngươi.",
+      "Đầy tớ chẳng biết điều chủ làm; còn ta gọi BẠN HỮU vì ta đã chết thay cho các ngươi.",
+      "Đầy tớ chẳng biết điều chủ làm; còn ta gọi BẠN HỮU vì ta đã chọn các ngươi để đi và kết quả.",
       "Đầy tớ chẳng biết điều chủ làm; còn ta gọi BẠN HỮU vì ta đã TỎ ra cho các ngươi mọi điều ta đã nghe nơi Cha"
     ],
     "tags": [
@@ -4162,13 +4162,13 @@
     ],
     "verseEnd": 3,
     "content": "Theo Giăng 17:3, Chúa Jêsus định nghĩa 'sự sống đời đời' với cụm từ chính xác nào?",
-    "explanation": "Giăng 17:3 — 'Vả, sự sống đời đời là nhìn biết Cha, tức là Đức Chúa Trời có một và thật, cùng Đức Chúa Jêsus Christ, là Đấng Cha đã sai đến'. 'Sự sống đời đời' = mối quan hệ TRI NHẬN với Đức Chúa Trời chân thật, không phải chỉ thời lượng vô tận.",
+    "explanation": "Trong Giăng 17:3, Chúa Jêsus phán: 'Sự sống đời đời là NHẬN BIẾT CHA, tức là Đức Chúa Trời có một và thật, cùng Đức Chúa Jêsus Christ, là Đấng Cha đã sai đến'. Đáp án đúng trích dẫn chính xác định nghĩa này.\n\nDistractor 1 ('... là Đấng Cha đã dựng nên') là gần đúng nhưng sai một chi tiết then chốt: Kinh Thánh dạy Đức Chúa Trời là Đấng Tạo Hóa, còn Đấng Christ là Đấng được sai đến (Giăng 17:3, 8), không phải là tạo vật được dựng nên.\nDistractor 2 ('... là TIN CẬY CHA...') sử dụng một động từ khác ('tin cậy') thay vì 'nhận biết', mặc dù đây là một khái niệm quan trọng trong Tân Ước nhưng không phải từ ngữ chính xác trong câu này.\nDistractor 3 ('... là Đấng sẽ trở lại thế gian') thêm một sự kiện tương lai (sự tái lâm), là một giáo lý đúng nhưng không nằm trong định nghĩa về sự sống đời đời tại Giăng 17:3. Câu này nhấn mạnh sự sai đến (trong quá khứ) của Đấng Christ.",
     "language": "vi",
     "options": [
-      "'Là được vào nước Đức Chúa Trời mà sống mãi với các thánh đồ'",
-      "'Là được giàu có vật chất và bình an trên đất suốt một đời'",
+      "'Là NHẬN BIẾT CHA, tức là Đức Chúa Trời có một và thật, và NHẬN BIẾT Đức Chúa Jêsus Christ, là Đấng Cha đã dựng nên'",
+      "'Là TIN CẬY CHA, tức là Đức Chúa Trời có một và thật, cùng Đức Chúa Jêsus Christ, là Đấng Cha đã sai đến'",
       "'Là NHẬN BIẾT CHA, tức là Đức Chúa Trời có một và thật, cùng Đức Chúa Jêsus Christ, là Đấng Cha đã sai đến'",
-      "'Là không bao giờ chết về thể xác mà sống mãi với gia đình mình'"
+      "'Là NHẬN BIẾT CHA, tức là Đức Chúa Trời có một và thật, cùng Đức Chúa Jêsus Christ, là Đấng sẽ trở lại thế gian'"
     ],
     "tags": [
       "Tân Ước",
@@ -4189,12 +4189,12 @@
     ],
     "verseEnd": 11,
     "content": "Trong Lời Cầu Nguyện Thầy Tế Lễ Thượng Phẩm (Giăng 17:11), Chúa Jêsus cầu xin Cha điều gì cho các môn đồ?",
-    "explanation": "Giăng 17:11 — 'Con không ở thế gian nữa, nhưng họ còn ở thế gian, và Con về cùng Cha. Lạy Cha thánh, xin gìn giữ họ trong danh Cha, là danh Cha đã ban cho Con, để họ cũng hiệp làm một như chúng ta vậy'.",
+    "explanation": "Giăng 17:11 chép: 'Con chẳng còn ở thế gian nữa, nhưng họ còn ở thế gian, và Con về cùng Cha. Lạy Cha Thánh, xin gìn giữ họ trong Danh Cha mà Cha đã ban cho Con, hầu cho họ hiệp làm một cũng như Chúng ta.' Đáp án đúng phản ánh trung thực nội dung cầu nguyện này: Chúa Jêsus cầu xin Cha gìn giữ các môn đồ trong Danh Cha (đã ban cho Con) để họ hiệp một.\n\n- Distractor 1 (gần đúng, sai chi tiết): Sai ở chi tiết 'Danh Cha mà Con đã ban cho họ'. Kinh văn ghi rõ Danh là của Cha và Cha đã ban Danh ấy cho Con (c.11-12), không phải Con ban cho môn đồ.\n- Distractor 2 (sai phạm vi): Mặc dù Đức Thánh Linh được hứa ban (xem Giăng 14-16), nhưng trong câu 11 cụ thể này, mục đích được nêu trực tiếp cho sự gìn giữ là 'hầu cho họ hiệp làm một', không phải 'được tràn đầy Đức Thánh Linh'.\n- Distractor 3 (nhầm passage gần): ý 'hầu cho thế gian tin' thực sự xuất hiện trong cùng chương, nhưng ở câu 21 ('hầu cho thế gian tin rằng Cha đã sai Con'), không phải là mục đích được nêu trong câu 11 đang được hỏi.",
     "language": "vi",
     "options": [
-      "Xin gìn giữ họ tránh khỏi mọi bệnh tật trên đất",
-      "Xin cho họ trở nên giàu có vật chất ngay đời này",
-      "Xin ban cho họ một đền thờ mới tại Giê-ru-sa-lem",
+      "Xin gìn giữ họ trong Danh Cha mà Con đã ban cho họ, hầu cho họ hiệp làm một cũng như Cha và Con",
+      "Xin gìn giữ họ trong Danh Cha mà Cha đã ban cho Con, hầu cho họ được tràn đầy Đức Thánh Linh",
+      "Xin gìn giữ họ trong Danh Cha mà Cha đã ban cho Con, hầu cho thế gian tin rằng Cha đã sai Con",
       "Xin GÌN GIỮ họ trong DANH Cha mà Cha đã ban cho Con, hầu cho HỌ HIỆP LÀM MỘT cũng như Cha và Con"
     ],
     "tags": [
@@ -4216,13 +4216,13 @@
     ],
     "verseEnd": 5,
     "content": "Theo Giăng 19:5, sau khi Chúa Jêsus bị đánh đập, đội mão gai và mặc áo điều, Phi-lát đem Ngài ra và nói câu gì?",
-    "explanation": "Giăng 19:5 — 'Vậy, Đức Chúa Jêsus đi ra, đầu đội mão triều gai, mình mặc áo điều; và Phi-lát nói cùng chúng rằng: Kìa, người nầy!' Câu La-tinh 'Ecce Homo' nổi tiếng trong nghệ thuật Tây phương.",
+    "explanation": "Giăng 19:5 ghi rõ: \"Phi-lát nói với chúng rằng: Kìa, NGƯỜI nầy!\" (Ecce Homo). Đáp án đúng trích nguyên văn từ Kinh Thánh.\n- Distractor 1 ('Kìa, VUA dân Giu-đa!') là gần đúng nhưng sai chi tiết then chốt: danh hiệu này xuất hiện ở câu 14 và 19, không phải là lời Phi-lát nói trong câu 5.\n- Distractor 2 ('Người nầy vô tội!') thể hiện sự hiểu lầm phổ biến: dù Phi-lát nhiều lần tuyên bố Chúa Jêsus vô tội (Giăng 18:38; 19:4, 6), ông không nói câu này trong bối cảnh cụ thể của câu 5.\n- Distractor 3 ('Các ngươi hãy xem người mà các ngươi tố cáo!') lấy từ đoạn gần (sự kiện có liên quan nhưng ở một phân đoạn khác): đây là lời Phi-lát nói trong Ma-thi-ơ 27:24, không phải trong Giăng 19:5.",
     "language": "vi",
     "options": [
       "'Kìa, NGƯỜI nầy!' (Ecce Homo)",
-      "'Hãy đóng đinh ông ấy ngay'",
-      "'Tôi không tìm thấy lỗi gì nơi ông ấy'",
-      "'Ông ấy là vua dân Giu-đa thật'"
+      "'Kìa, VUA dân Giu-đa!'",
+      "'Người nầy vô tội!'",
+      "'Các ngươi hãy xem người mà các ngươi tố cáo!'"
     ],
     "tags": [
       "Tân Ước",

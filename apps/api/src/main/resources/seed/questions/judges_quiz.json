@@ -36,14 +36,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Các Quan Xét 2:16 - Chúa dùng lên các quan xét để giải cứu dân khỏi kẻ áp bức. Chu kỳ: tội lỗi > áp bức > kêu cầu > giải cứu.",
+    "explanation": "Các quan xét 2:16-18 chép: \"Đức Giê-hô-va dấy lên các quan xét, giải cứu chúng khỏi tay kẻ cướp phá.\" Do đó, đáp án đúng là các quan xét, với vai trò đặc trưng là giải cứu dân trong thời kỳ này.\n\n- **Các tiên tri (hướng dẫn)**: Sai vì trong đoạn Kinh Thánh này, Đức Chúa Trời dấy lên các quan xét, không phải các tiên tri, để thực hiện sự giải cứu quân sự. Vai trò chính của tiên tri thường là truyền đạt lời Chúa, không phải là lãnh đạo quân sự giải cứu như được mô tả ở đây.\n- **Các thầy tế lễ (cầu thay)**: Sai vì thầy tế lễ không phải là nhóm người được đề cập trong đoạn này cho nhiệm vụ giải cứu dân khỏi kẻ thù. Vai trò của họ chủ yếu liên quan đến việc thờ phượng và tế lễ trong đền thờ.\n- **Các vị vua (cai trị)**: Sai vì thời kỳ các quan xét xảy ra trước khi Y-sơ-ra-ên có vua (1 Sa-mu-ên 8). Đoạn này nói về các quan xét, là những nhà lãnh đạo được Chúa dấy lên tạm thời, chứ không phải các vị vua cai trị một vương quốc.",
     "language": "vi",
     "verseEnd": 18,
     "options": [
-      "Các thầy tế lễ",
-      "Các tiên tri",
+      "Các tiên tri (hướng dẫn)",
+      "Các thầy tế lễ (cầu thay)",
       "Các quan xét (giải cứu)",
-      "Các vua"
+      "Các vị vua (cai trị)"
     ],
     "tags": [
       "Cựu Ước",
@@ -92,14 +92,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Các Quan Xét 4:4 - Đê-bô-ra vừa là nữ tiên tri vừa là quan xét xét xử dân Y-so-ra-en.",
+    "explanation": "Các câu Các Quan Xét 4:4-5 giới thiệu Đê-bô-ra là một nữ tiên tri và cũng là quan xét của Y-sơ-ra-ên trong thời kỳ đó. Bà là nữ quan xét duy nhất được Kinh Thánh ghi lại một cách rõ ràng.\n\nCác đáp án sai:\n- Mi-ri-am: Là nữ tiên tri (Xuất Ê-díp-tô Ký 15:20) và là chị của Môi-se, nhưng bà không được ghi nhận là quan xét. Đây là lỗi nhầm passage gần (gần đúng vì cũng là nữ lãnh đạo, nhưng không đúng chức vụ).\n- Ra-háp: Là một phụ nữ ngoại bang được nhắc đến với đức tin (Giô-suê 2:1, Hê-bơ-rơ 11:31), nhưng không phải quan xét của Y-sơ-ra-ên. Đây là hiểu lầm phổ biến do nhầm lẫn với các nữ anh hùng khác.\n- Ê-xơ-tê: Là một nữ hoàng và là người giải cứu dân Do Thái (sách Ê-xơ-tê), nhưng bà không giữ chức vụ quan xét trong hệ thống lãnh đạo thời Các Quan Xét. Đây là lỗi sai phạm vi (đúng là nữ lãnh đạo nhưng sai thời kỳ và chức vụ).",
     "language": "vi",
     "verseEnd": 5,
     "options": [
       "Đê-bô-ra",
-      "Ra-hab",
-      "Ru-tơ",
-      "E-xơ-tê"
+      "Mi-ri-am",
+      "Ra-háp",
+      "Ê-xơ-tê"
     ],
     "tags": [
       "Cựu Ước",
@@ -120,13 +120,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Các Quan Xét 4:21 - Gia-ên đóng cọc lều qua màng tang Si-sê-ra khi ông ngủ. Chiến thắng đến từ nơi bất ngờ.",
+    "explanation": "Câu trả lời đúng là Gia-ên, vì Các Quan Xét 4:21 chép: 'Gia-ên, vợ Hê-be, bèn lấy một cây nọc của trại, tay cầm búa, đi nhẹ nhàng đến bên người, đóng nọc đó vào thái dương người, thấu xuống đất'.\n\nCác đáp án sai:\n- 'Ba-rác': Sai vì Ba-rác là người lãnh đạo quân đội Y-sơ-ra-ên (Các Quan Xét 4:6), nhưng chính Gia-ên mới là người hạ Si-sê-ra. Đây là một chi tiết ở đoạn gần (nearby_passage) dễ gây nhầm lẫn.\n- 'Đê-bô-ra': Sai vì Đê-bô-ra là nữ tiên tri và là quan xét (Các Quan Xét 4:4), bà không trực tiếp thực hiện hành động này. Sai phạm vi (wrong_scope) của câu hỏi.\n- 'một người lính của Ba-rác': Sai vì Si-sê-ra chạy trốn đến trại Gia-ên và bị bà giết khi đang ngủ (Các Quan Xét 4:17-21), không có người lính nào của Ba-rác hiện diện ở đó. Đây là một chi tiết sai (wrong_detail).",
     "language": "vi",
     "options": [
-      "Mi-ri-am",
+      "Ba-rác",
       "Gia-ên",
       "Đê-bô-ra",
-      "Ba-rác"
+      "một người lính của Ba-rác"
     ],
     "tags": [
       "Cựu Ước",
@@ -147,14 +147,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Các Quan Xét 6:11-12 - Ghê-đê-ôn đang sợ hãi trốn tránh nhưng Chúa thấy tiềm năng trong ông.",
+    "explanation": "Kinh Thánh ghi rõ trong Các Quan Xét 6:11 rằng Ghê-đê-ôn 'đang đập lúa mì trong bồn ép nho để đem giấu khỏi dân Ma-đi-an'. Thiên sứ hiện ra và chào ông là 'người dũng sĩ' (câu 12) trong lúc ông đang làm việc này. Vì vậy, đáp án đúng là 'Đập lúa mì trong bồn ép nho vì sợ quân Ma-đi-an'. \n\nCác đáp án sai: (1) 'Đập lúa mạch trong bồn ép nho vì sợ quân Am-môn' sai vì chi tiết ngũ cốc (lúa mạch) và tên kẻ thù (Am-môn) bị nhầm lẫn; đúng phải là 'lúa mì' và 'Ma-đi-an'. Đây là distractor 'gần đúng'. (2) 'Đập lúa mì trong bồn ép nho để dâng hiến cho Đức Giê-hô-va' sai vì mở rộng phạm vi mục đích; đoạn Kinh Thánh không đề cập việc dâng hiến tại thời điểm này. (3) 'Đang chiến đấu chống lại quân Ma-đi-an tại bồn ép nho' sai vì lạc trọng tâm câu hỏi; Ghê-đê-ôn đang trốn đập lúa chứ chưa chiến đấu khi được gọi.",
     "language": "vi",
     "verseEnd": 15,
     "options": [
-      "Chiến đấu",
-      "Ngủ",
+      "Đập lúa mạch trong bồn ép nho vì sợ quân Am-môn",
+      "Đập lúa mì trong bồn ép nho để dâng hiến cho Đức Giê-hô-va",
       "Đập lúa mì trong bồn ép nho vì sợ quân Ma-đi-an",
-      "Cầu nguyện"
+      "Đang chiến đấu chống lại quân Ma-đi-an tại bồn ép nho"
     ],
     "tags": [
       "Cựu Ước",
@@ -175,14 +175,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Các Quan Xét 6:37-40 - Ghê-đê-ôn thử Chúa 2 lần bằng bông lông cừu. Chúa nhân nại với sự yếu đuối của ông.",
+    "explanation": "Câu hỏi: 'Ghê-đê-ôn dùng gì để thử Chúa?'\nĐáp án đúng: 'Bông lông cừu (sương và khô)' – Đúng. Trong Các Quan Xét 6:36-40, Ghê-đê-ôn đặt một bông lông cừu trên sân đạp lúa và thử Chúa hai lần: một lần để lông cừu đẫm sương còn đất xung quanh khô, và một lần để lông cừu khô còn đất xung quanh đẫm sương (Các Quan Xét 6:37-40).\n\nGiải thích các đáp án sai:\n1. 'Bông lông cừu (lần đầu khô, lần hai khô)' – Sai. Đây là distractor gần đúng, nhưng sai chi tiết then chốt về trạng thái của bông lông cừu. Ghê-đê-ôn thử một lần để lông cừu ướt sương (đất khô) và một lần để lông cừu khô (đất ướt sương), không phải cả hai lần đều khô.\n2. 'Lông cừu và một cái đĩa' – Sai. Chi tiết 'cái đĩa' không xuất hiện trong đoạn Kinh Thánh này. Đây là một yếu tố được thêm vào không có trong văn bản, nên lạc với câu hỏi cụ thể.\n3. 'Một con cừu non' – Sai. Đây là một chi tiết từ đoạn Kinh Thánh gần đó (ví dụ: việc Ghê-đê-ôn dâng của lễ trong Các Quan Xét 6:19-21), nhưng không liên quan đến vật dụng cụ thể được dùng để thử Chúa trong câu chuyện về bông lông cừu ở 6:36-40.",
     "language": "vi",
     "verseEnd": 40,
     "options": [
-      "Đá và gậy",
+      "Bông lông cừu (lần đầu khô, lần hai khô)",
       "Bông lông cừu (sương và khô)",
-      "Lửa và nước",
-      "Trái và rau"
+      "Lông cừu và một cái đĩa",
+      "Một con cừu non"
     ],
     "tags": [
       "Cựu Ước",
@@ -203,13 +203,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Các Quan Xét 7:7 - Chỉ 300 người để Chúa được vinh hiển. Chiến thắng không nhờ số đông mà nhờ quyền năng Chúa.",
+    "explanation": "Trong Các Quan Xét 7:7, Chúa phán với Ghê-đê-ôn: 'Ta sẽ dùng ba trăm người đã liếm mà giải cứu các ngươi, và phó dân Ma-đi-an trong tay ngươi.' Vì vậy, đáp án đúng là '300 người'. \n- '10.000 người' là số quân còn lại sau lần thử nghiệm đầu tiên (Các Quan Xét 7:3), chứ không phải số cuối cùng, nên sai.\n- '32.000 người' là số quân ban đầu (Các Quan Xét 7:3), chứ không phải số còn lại sau khi Chúa giảm, nên sai.\n- '9.700 người' là số quân bị loại sau lần thử nghiệm đầu tiên (32.000 - 10.000 = 22.000, theo Các Quan Xét 7:3), nhưng đây không phải là số còn lại cuối cùng, nên sai câu hỏi này.",
     "language": "vi",
     "options": [
       "300 người",
-      "1000 người",
-      "3000 người",
-      "100 người"
+      "10.000 người",
+      "32.000 người",
+      "9.700 người"
     ],
     "tags": [
       "Cựu Ước",
@@ -230,14 +230,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Các Quan Xét 11:30-31, 39-40 - Giép-thê hứa dâng cho Chúa người đầu tiên ra đón ông. Hậu quả là con gái ông bị dâng hiến cho Chúa và sống độc thân suốt đời, được ghi nhớ bởi các cô gái Y-sơ-ra-ên.",
+    "explanation": "Câu trả lời đúng dựa trên Các Quan Xét 11:30-31, nơi Giép-thê khấn hứa với Đức Giê-hô-va: \"Nếu Ngài phó dân Am-môn vào tay tôi, hễ tôi trở về bình an... bất kỳ vật chi ra cửa nhà tôi đặng đón rước tôi, thì nó sẽ thuộc về Đức Giê-hô-va, và tôi sẽ dâng nó làm của lễ thiêu.\"\n\nCác đáp án sai:\n1. (wrong_detail) Sai chi tiết: Lời hứa là về người đầu tiên bước ra cửa, không phải chiên đầu lòng trong bầy.\n2. (common_misconception) Hiểu lầm phổ biến: Một phần mười là lễ dâng thường lệ, không phải lời khấn hứa đặc biệt của Giép-thê trong ngữ cảnh này.\n3. (nearby_passage) Nhầm passage gần: Việc kiêng ăn và cầu nguyện là hành động phổ biến trong Kinh Thánh (ví dụ: Ê-xơ-tê 4:16) nhưng không được đề cập trong đoạn này về lời hứa của Giép-thê.",
     "language": "vi",
     "verseEnd": 31,
     "options": [
-      "Nhịn ăn 40 ngày",
-      "Xây đền thờ",
+      "Dâng cho Chúa chiên đầu lòng trong bầy của ông",
+      "Dâng cho Chúa một phần mười chiến lợi phẩm",
       "Dâng cho Chúa người đầu tiên bước ra cửa đón ông",
-      "Cho tất cả chiến lợi phẩm"
+      "Kiêng ăn và cầu nguyện suốt ba ngày"
     ],
     "tags": [
       "Cựu Ước",
@@ -258,13 +258,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Các Quan Xét 13:5 - Sam-sôn là người Na-xi-rê từ trong bụng mẹ, được biệt riêng để giải cứu Y-so-ra-en.",
+    "explanation": "Các-mác 13:5 chép lời thiên sứ nói với mẹ của Sam-sôn: 'Vì, nầy, con sẽ có thai, và sanh một trai, dao cạo sẽ không đưa qua đầu nó, vì từ trong lòng mẹ, đứa trẻ nầy sẽ là người Na-xi-rê cho Đức Chúa Trời.' Do đó, đáp án đúng là 'Người Na-xi-rê cho Đức Chúa Trời', vì đây là mục đích và đối tượng của sự biệt riêng. Distractor 1 sai vì nhầm chi tiết chức vụ (người Lê-vi thay vì người Na-xi-rê), dù cũng là chức vụ được biệt riêng, nhưng không phải là lời tiên tri trong đoạn này. Distractor 2 sai vì mở rộng phạm vi đối tượng sai (cho dân Y-sơ-ra-ên thay vì cho Đức Chúa Trời). Distractor 3 sai vì mặc dù có cụm 'Người Na-xi-rê' đúng, nhưng 'cho Mẹ người' là lạc trọng tâm câu hỏi về mục đích biệt riêng từ trong bụng mẹ.",
     "language": "vi",
     "options": [
       "Người Na-xi-rê cho Đức Chúa Trời",
-      "Thầy tế lễ",
-      "Tiên tri",
-      "Vua"
+      "Người Lê-vi cho Đức Chúa Trời",
+      "Người Na-xi-rê cho dân Y-sơ-ra-ên",
+      "Người Na-xi-rê cho Mẹ người"
     ],
     "tags": [
       "Cựu Ước",
@@ -285,14 +285,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Các Quan Xét 14:6 - Thần của Chúa cảm động Sam-sôn và ông xé con sư tử như xé con dê con.",
+    "explanation": "Các câu 5-6 chép rõ: 'Sam-sôn đi xuống cùng cha mẹ mình đến vườn nho ở Thim-na. Kìa, một con sư tử tơ đến gầm hét nghịch người. Thần của Đức Giê-hô-va cảm động người, người xé con sư tử đó như xé con dê con, dù trong tay chẳng có gì' (Các Quan Xét 14:5-6).\n\n- ĐÁP ÁN ĐÚNG 'Sư tử': Phù hợp với mô tả trong đoạn Kinh Thánh.\n- Distractor 'Gấu' (gần đúng): Sai vì trong một câu chuyện khác của Sam-sôn liên quan đến động vật (Các Quan Xét 14:8-9), ông thấy bầy ong và mật trong xác con vật đã chết, không phải gấu. Đây là sự nhầm lẫn với một chi tiết trong cùng phân đoạn gần đó.\n- Distractor 'Bò con': Sai vì đây là một chi tiết sai. Không có con bò con nào trong câu chuyện này. Có thể nhầm với các câu chuyện khác trong Kinh Thánh có liên quan đến bò.\n- Distractor 'Sói': Sai vì đây là một hiểu lầm phổ biến về loài thú dữ trong vùng, nhưng Kinh Thánh ghi rõ là 'sư tử tơ'.",
     "language": "vi",
     "verseEnd": 6,
     "options": [
       "Sư tử",
-      "Sói",
-      "Bò rừng",
-      "Gấu"
+      "Gấu",
+      "Bò con",
+      "Sói"
     ],
     "tags": [
       "Cựu Ước",
@@ -313,14 +313,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Các Quan Xét 15:15 - Sam-sôn dùng xương hàm lừa tươi đánh chết 1000 người.",
+    "explanation": "Căn cứ vào Các Quan Xét 15:15-16, Sam-sôn tìm thấy một cái xương hàm lừa còn mới, bèn giơ lên và đánh chết một ngàn người. Vì vậy, 'Xương hàm lừa' là đáp án đúng. Các đáp án sai: 1) 'Xương sườn lừa' sai chi tiết (đúng là xương hàm, không phải xương sườn), 2) 'Một khúc cây' đến từ chi tiết gần đó (câu 14 nói đến dây gai bị đứt như khúc cây cháy, nhưng không phải vũ khí dùng trong trận đánh này), 3) 'Thanh gươm' là hiểu lầm phổ biến về vũ khí chiến tranh, nhưng đoạn Kinh Thánh không hề đề cập đến gươm trong sự kiện này.",
     "language": "vi",
     "verseEnd": 16,
     "options": [
-      "Giáo",
+      "Xương sườn lừa",
       "Xương hàm lừa",
-      "Trành nỏm",
-      "Gươm"
+      "Một khúc cây",
+      "Thanh gươm"
     ],
     "tags": [
       "Cựu Ước",
@@ -341,13 +341,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Các Quan Xét 16:30 - Sam-sôn cầu nguyện lần cuối, được sức và xô hai cột đền. Chết nhiều hơn khi sống.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Xô sập đền của người Phi-li-tin, chết chung với kẻ thù' (Các Quan Xét 16:29-30). Sam-sôn, sau khi cầu xin Đức Chúa Trời ban sức mạnh lần cuối, đã dùng hai cây cột chính để xô sập toàn bộ đền thờ, giết chết nhiều người Phi-li-tin hơn lúc còn sống và cũng thiệt mạng.\n\nDISTRACTOR SAI 1 ('Bị người Phi-li-tin chém đầu...'): Sai vì đây là hiểu lầm phổ biến, nhưng Kinh Thánh không ghi nhận việc này. Sam-sôn chết ngay tại chỗ khi đền sập (câu 30).\n\nDISTRACTOR SAI 2 ('Bị chết vì đói khát...'): Sai chi tiết. Sam-sôn bị bắt, bị khoét mắt và bị bắt xay lúa trong tù (câu 21), nhưng cái chết của ông không xảy ra trong tù mà tại đền thờ trong một dịp lễ lớn (câu 23, 27).\n\nDISTRACTOR SAI 3 ('Bị sập tường nhà tù...'): Gần đúng nhưng sai đoạn gần. Đây là chi tiết không có trong Kinh Thánh. Hành động cuối cùng của Sam-sôn xảy ra tại 'đền' (nhà) của thần Đa-gôn (câu 23, 27), chứ không phải 'nhà tù'. Ông chủ động xô đổ cột đền, không phải bị động bị tường đè.",
     "language": "vi",
     "verseEnd": 30,
     "options": [
-      "Bệnh tật",
-      "Bị giết trong giấc ngủ",
-      "Bị ném từ cao",
+      "Bị người Phi-li-tin chém đầu sau khi bị bắt",
+      "Bị chết vì đói khát trong ngục tù của người Phi-li-tin",
+      "Bị sập tường nhà tù đè chết khi đang bị giam cầm",
       "Xô sập đền của người Phi-li-tin, chết chung với kẻ thù"
     ],
     "tags": [
@@ -370,13 +370,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Các Quan Xét 1:1-2 — 'Sau khi Giô-suê qua đời, dân Y-sơ-ra-ên cầu hỏi Đức Giê-hô-va... Đức Giê-hô-va phán: Giu-đa sẽ đi lên.'",
+    "explanation": "Căn cứ vào Các Quan Xét 1:1-2, sau khi Giô-suê qua đời, dân Y-sơ-ra-ên hỏi Đức Giê-hô-va: 'Ai trong chúng tôi phải đi lên trước đặng đánh dân Ca-na-an?' Đức Giê-hô-va đáp: 'Giu-đa sẽ đi lên trước.' Vậy đáp án đúng là Giu-đa. Các đáp án sai và lý do: 1) 'Bên-gia-min' là sai vì đây là chi phái được nhắc đến liền sau trong danh sách các chi phái hợp tác (câu 3), dễ nhầm với chi phái chủ đạo. 2) 'Giô-suê' là sai vì đây là một hiểu lầm phổ biến, do câu hỏi bắt đầu 'Sau khi Giô-suê qua đời', nhưng chính ông không phải là câu trả lời. 3) 'Lê-vi' là sai vì chi phái này được biệt riêng ra cho chức vụ tế lễ, không thuộc phạm vi chi phái nhận sản nghiệp và có nghĩa vụ quân sự như mười hai chi phái khác trong bối cảnh này.",
     "language": "vi",
     "options": [
       "Bên-gia-min",
-      "Ép-ra-im",
+      "Giô-suê",
       "Giu-đa",
-      "Ru-bên"
+      "Lê-vi"
     ],
     "tags": [
       "Cựu Ước",
@@ -397,13 +397,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Các Quan Xét 3:21-22 — 'Ê-hút giơ tay tả ra rút gươm... đâm vào bụng Éc-lôn... lưỡi gươm cắm vào sâu cả cán.'",
+    "explanation": "Các đoạn Thẩm phán 3:15-22 thuật lại rằng Ê-hút, người thuận tay trái, đã đâm chết Vua Éc-lôn của Mô-áp (c.15-22).\n\nĐáp án đúng là 'Éc-lôn' vì Kinh Thánh chỉ rõ đó là tên vua bị Ê-hút ám sát (c.15-17).\n\nCác đáp án sai bị loại vì:\n- 'Ba-lác': Tuy cũng là vua Mô-áp trong Kinh Thánh (Dân số ký 22:4), nhưng không phải là vua trong câu chuyện này. Ông sống ở thời kỳ Môi-se, trước sự kiện của Thẩm phán 3.\n- 'Si-hôn': Là vua A-mô-rít, không phải vua Mô-áp (Dân số ký 21:21-26). Đây là một tên vua ngoại bang phổ biến, dễ bị nhầm lẫn.\n- 'Ghi-lê-át': Là tên một địa danh/vùng đất, không phải tên một vị vua (Thẩm phán 10:3-4). Chi tiết này xuất hiện trong sách Thẩm phán nhưng hoàn toàn không liên quan đến câu hỏi.",
     "language": "vi",
     "options": [
       "Ba-lác",
       "Éc-lôn",
       "Si-hôn",
-      "Sí-sê-ra"
+      "Ghi-lê-át"
     ],
     "tags": [
       "Cựu Ước",
@@ -423,12 +423,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Các Quan Xét 5:1 — 'Trong ngày ấy, Đê-bô-ra hát bài ca nầy với Ba-rác, con trai A-bi-nô-am.'",
+    "explanation": "Các Quan Xét 5:1 chép: 'Trong ngày đó, Đê-bô-ra và Ba-rác, con trai A-bi-nô-am, hát rằng:...'\nDo đó, đáp án đúng là Đê-bô-ra và Ba-rác. \n- Distractor 'Đê-bô-ra và Gia-ên' sai vì Gia-ên là người đã giết tướng Si-sê-ra (Các Quan Xét 4:21), không phải người cùng hát bài ca chiến thắng ở chương 5. \n- Distractor 'Ba-rác và Gia-ên' sai vì thiếu vắng Đê-bô-ra, người được nêu tên đầu tiên trong câu Kinh Thánh trực tiếp trả lời câu hỏi. \n- Distractor 'Đê-bô-ra và một người Lê-vi' sai vì Ba-rác được xác định rõ ràng là con trai A-bi-nô-am, không phải là một người Lê-vi vô danh; đây là một suy đoán phổ biến nhưng không có căn cứ trong đoạn văn.",
     "language": "vi",
     "options": [
-      "Sam-sôn và Đa-li-la",
-      "Ghê-đê-ôn và 300 người",
-      "Giép-thê và con gái",
+      "Đê-bô-ra và Gia-ên",
+      "Ba-rác và Gia-ên",
+      "Đê-bô-ra và một người Lê-vi",
       "Đê-bô-ra và Ba-rác"
     ],
     "tags": [
@@ -450,13 +450,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Các Quan Xét 9:53 — 'Một người đàn bà ném thớt cối trên đầu A-bi-mê-léc, làm vỡ sọ người.'",
+    "explanation": "Câu hỏi dựa trên phân đoạn Các Quan Xét 9:53-54 (BTT). Câu Kinh Thánh ghi: 'Một người đàn bà ném một thớt cối trên đầu A-bi-mê-léc, làm bể sọ của người. Người liền gọi kẻ vác binh khí của mình, mà nói rằng: Hãy rút gươm ngươi ra giết ta đi, kẻo người ta nói rằng: Một người đàn bà đã giết ta chăng. Kẻ vác binh khí của người bèn đâm người, và người chết.' (Các Quan Xét 9:53-54). ĐÁP ÁN ĐÚNG: 'Thớt cối (đá xay)' - Kinh Thánh mô tả rõ người đàn bà đã ném một 'thớt cối' (cụ thể là phần đá trên của cối xay tay) khiến A-bi-mê-léc bị thương chí tử.\n\nGIẢI THÍCH CHO CÁC ĐÁP ÁN SAI:\n1. 'Tảng đá rơi từ trên tường' (Sai: nhầm passage gần): Đây là phương án gần đúng nhất, vì câu chuyện xảy ra ở thành Thê-bết và liên quan đến tường/tháp (câu 52). Tuy nhiên, vật thể được mô tả cụ thể là 'thớt cối' (cối đá xay), không phải một tảng đá thông thường rơi từ tường. Phương án này đúng khoảng 90% nhưng sai chi tiết then chốt về vật thể.\n2. 'Bánh xe cối xay lớn' (Sai: sai chi tiết): Đây là một chi tiết sai. 'Thớt cối' là một phiến đá tròn, thường nhỏ hơn và cầm ném được, dùng trong cối xay tay. 'Bánh xe cối xay' thường ám chỉ cối xay lớn hoặc một bộ phận khác, không phải vật thể được ném trong câu chuyện này.\n3. 'Cây lao dài' (Sai: đúng văn bản nhưng lạc câu hỏi): Đây là một vũ khí được nhắc đến trong ngữ cảnh chiến tranh, và A-bi-mê-léc sau đó đã bị đâm bởi gươm của chính kẻ vác binh khí mình (câu 54). Tuy nhiên, câu hỏi cụ thể hỏi về vật gì 'do một phụ nữ ném từ trên tháp'. Người đàn bà ném thớt cối, không phải ném cây lao. Phương án này tuy có liên quan đến câu chuyện chung (sự chết) nhưng không trả lời đúng yêu cầu của câu hỏi.",
     "language": "vi",
     "options": [
-      "Một mũi tên",
-      "Một cây giáo",
+      "Tảng đá rơi từ trên tường",
+      "Bánh xe cối xay lớn",
       "Thớt cối (đá xay)",
-      "Một con dao"
+      "Cây lao dài"
     ],
     "tags": [
       "Cựu Ước",
@@ -477,12 +477,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Các Quan Xét 12:6 — 'Họ bảo: Hãy nói: Si-bô-lết. Người Ép-ra-im nói: Si-bô-lết, vì không thể phát âm cho đúng được. Bấy giờ chúng bắt người, giết đi.'",
+    "explanation": "Các Quan Xét 12:5-6 ghi lại rằng người Ghi-lê-át đã kiểm soát bến sông Giô-đanh và hỏi những kẻ muốn qua sông rằng: \"Hãy nói Si-bô-lết\". Người Ép-ra-im không phát âm đúng được nên nói \"Xi-bô-lết\" (Sibboleth), và bị nhận diện rồi giết. Do đó, đáp án đúng là từ \"Si-bô-lết (Shibboleth)\". Các đáp án sai: (1) 'Si-lô (Shiloh)' là một địa danh quan trọng được nhắc đến nhiều trong sách Các Quan Xét (Các Quan Xét 18:31, 21:12-21), nhưng không liên quan đến sự kiện tại bến Giô-đanh này (lỗi nearby_passage, gần đúng vì cùng sách và bối cảnh chung). (2) 'Giê-ri-cô (Jericho)' là thành phố nổi tiếng gần sông Giô-đanh (Giô-suê 6), nhưng không phải là từ dùng để thử phát âm trong đoạn này (lỗi true_but_off). (3) 'Ghi-lê-át (Gilead)' là tên vùng đất của những người đặt ra câu hỏi (Các Quan Xét 12:4-5), không phải là từ cần phát âm (lỗi wrong_detail).",
     "language": "vi",
     "options": [
-      "Sí-sê-ra",
-      "Si-lô",
-      "Sa-lem",
+      "Si-lô (Shiloh)",
+      "Giê-ri-cô (Jericho)",
+      "Ghi-lê-át (Gilead)",
       "Si-bô-lết (Shibboleth)"
     ],
     "tags": [
@@ -503,13 +503,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Các Quan Xét 17:6 — 'Trong lúc đó, không có vua trong Y-sơ-ra-ên, mọi người cứ làm theo ý mình lấy làm phải.'",
+    "explanation": "Các Quan Xét 17:6 ghi: 'Trong lúc đó, nước Y-sơ-ra-ên không có vua; ai nấy làm theo ý mình tưởng là phải.' Đáp án đúng trung thành với ý chính của câu Kinh Thánh này, nhấn mạnh sự hỗn loạn và thiếu quy phục. Distractor thứ nhất ('lấy làm tà') sai vì câu gốc dùng từ 'phải', không phải 'tà'. Distractor thứ hai ('làm theo lời vị quan xét') phản ánh hiểu lầm phổ biến về thẩm quyền thời đó, trong khi thực tế câu này mô tả tình trạng vô chính phủ, mỗi người tự quyết. Distractor thứ ba ('làm theo luật pháp') tuy có thể đúng về bối cảnh lý tưởng, nhưng lạc đề vì câu hỏi hỏi về tổng kết thực tế trong sách, còn câu này mô tả chính xác việc mọi người làm theo ý riêng mình.",
     "language": "vi",
     "options": [
-      "Y-sơ-ra-ên có vua bình an",
-      "Có vị vua công bình",
+      "Không có vua, mọi người làm theo ý mình lấy làm tà",
+      "Không có vua, mọi người làm theo lời vị quan xét",
       "Không có vua, mọi người làm theo ý mình lấy làm phải",
-      "Đức Chúa Trời ngự giữa dân"
+      "Không có vua, mọi người làm theo luật pháp"
     ],
     "tags": [
       "Cựu Ước",
@@ -530,13 +530,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Các Quan Xét 19:1,25-30 — Vợ lẽ của một người Lê-vi bị dân thành Ghi-bê-a hãm hiếp đến chết, dẫn đến nội chiến với Bên-gia-min.",
+    "explanation": "Đáp án đúng là 'Một người Lê-vi' vì Kinh Thánh mô tả chủ nhân của người vợ lẽ bị hại là một người Lê-vi cư ngụ ở vùng núi Ép-ra-im (Các Quan Xét 19:1).\n\n- Distractor 'Một người Bên-gia-min' sai vì mặc dù tội ác xảy ra tại Ghi-bê-a, một thành thuộc chi phái Bên-gia-min (19:14), và những kẻ gây tội ác là người Bên-gia-min, nhưng chủ nhân của người vợ lẽ không phải là người Bên-gia-min.\n- Distractor 'Một người Giu-đa' sai vì câu chuyện không gắn nhân vật chính với chi phái Giu-đa; ông ta được xác định rõ là người Lê-vi.\n- Distractor 'Một người Ê-phơ-ra-im' sai vì mặc dù người Lê-vi này 'cư ngụ ở phía sau núi Ép-ra-im' (19:1), tức là trong địa phận chi phái Ép-ra-im, nhưng bản thân ông không thuộc chi phái đó mà là người Lê-vi.",
     "language": "vi",
     "options": [
       "Một người Lê-vi",
-      "Vua Sau-lơ",
-      "Một thầy tế lễ",
-      "Quan xét Sam-gia"
+      "Một người Bên-gia-min",
+      "Một người Giu-đa",
+      "Một người Ê-phơ-ra-im"
     ],
     "tags": [
       "Cựu Ước",

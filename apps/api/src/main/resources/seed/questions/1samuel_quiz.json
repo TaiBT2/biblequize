@@ -36,13 +36,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Sa-mu-ên 16:7 - Loài người nhìn bên ngoài nhưng Đức Giê-hô-va nhìn thấy trong lòng. Đa-vít được chọn vì tâm lòng hướng về Chúa.",
+    "explanation": "Đáp án đúng: \"Chúa nhìn tâm lòng, không phải bên ngoài\" dựa trực tiếp vào 1 Sa-mu-ên 16:7, nơi Đức Giê-hô-va phán với Sa-mu-ên: \"Đức Giê-hô-va không nhìn xem bề ngoài như loài người, vì loài người nhìn bề ngoài, nhưng Đức Giê-hô-va nhìn xem tấm lòng.\"\n\nDistractor sai 1 (\"Chúa nhìn dáng vóc, không phải tâm lòng\"): Đây là distractor 'gần đúng' nhưng đã đảo ngược hoàn toàn ý chính của câu Kinh Thánh. Bối cảnh cho thấy Sa-mu-ên bị ấn tượng bởi dáng vóc của Ê-li-áp, nhưng Chúa dạy bài học ngược lại.\n\nDistractor sai 2 (\"Chúa chọn theo lòng trung thành với triều đại cũ\"): Đây là một hiểu lầm phổ biến hoặc suy diễn không có trong đoạn. Việc lựa chọn Đa-vít không liên quan đến lòng trung thành với vua Sau-lơ hay triều đại cũ, mà hoàn toàn dựa trên tiêu chuẩn của Đức Chúa Trời.\n\nDistractor sai 3 (\"Chúa đánh giá qua sự dạn dĩ trước kẻ thù\"): Chi tiết này đúng với Đa-vít (như đánh Gô-li-át) nhưng xảy ra sau sự kiện được chọn trong 1 Sa-mu-ên 16. Nó lạc với câu hỏi cụ thể về bài học Chúa dạy Sa-mu-ên ngay tại thời điểm chọn lựa.",
     "language": "vi",
     "options": [
-      "Hãy chọn người mạnh nhất",
-      "Hãy chọn con trưởng",
+      "Chúa nhìn dáng vóc, không phải tâm lòng",
+      "Chúa chọn theo lòng trung thành với triều đại cũ",
       "Chúa nhìn tâm lòng, không phải bên ngoài",
-      "Hãy chọn người trẻ nhất"
+      "Chúa đánh giá qua sự dạn dĩ trước kẻ thù"
     ],
     "tags": [
       "Cựu Ước",
@@ -63,14 +63,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Sa-mu-ên 17:49-50 - Đa-vít dùng trái đá và trành ném, tin cậy Chúa chiến trận cho mình.",
+    "explanation": "Theo 1 Sa-mu-ên 17:45-50, Đa-vít nói với Gô-li-át: 'Ta nhân danh Đức Giê-hô-va vạn quân... mà đến cùng ngươi' (câu 45) và khẳng định chiến thắng thuộc về Đức Giê-hô-va. Trong trận đánh, 'Đa-vít lấy tay mình trong túi ra một hòn đá, ném nó bằng trành, đánh trúng người Phi-li-tin nơi trán' (câu 49). Sau đó, ông dùng chính thanh gươm của Gô-li-át để kết liễu (câu 51). Do đó, vũ khí Đa-vít DÙNG ĐỂ HẠ (tức là làm ngã xuống, đánh bại) Gô-li-át là 'trái đá và cái trành ném'.\n\nCác đáp án sai:\n1. 'Thanh gươm và cái khiên' là sai vì đây là vũ khí Đa-vít đã từ chối khi Sau-lơ trang bị cho ông (1 Sa-mu-ên 17:38-39). Ông chỉ dùng thanh gươm của Gô-li-át sau khi đã hạ đối thủ bằng trành ném đá (câu 51). Đây là lỗi nhầm passage gần (nearby_passage).\n2. 'Cung tên và mũi tên' là sai vì không hề được nhắc đến trong đoạn mô tả trận đấu. Đây là một hiểu lầm phổ biến (common_misconception) về vũ khí chiến tranh thời đó, không phải vũ khí Đa-vít sử dụng.\n3. 'Cây gậy và hòn đá' là gần đúng nhưng sai một chi tiết then chốt. Đa-vít có mang theo cây gậy (1 Sa-mu-ên 17:40), nhưng cây gậy không phải là vũ khí dùng để hạ Gô-li-át. Ông chỉ dùng trành ném (cái ná) và đá. Đây là lỗi sai chi tiết (wrong_detail).",
     "language": "vi",
     "verseEnd": 50,
     "options": [
-      "Gươm",
+      "Thanh gươm và cái khiên",
       "Trái đá và cái trành ném",
-      "Cung tên",
-      "Giáo"
+      "Cung tên và mũi tên",
+      "Cây gậy và hòn đá"
     ],
     "tags": [
       "Cựu Ước",
@@ -147,14 +147,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Sa 8:7 - Chúa nói: Họ không từ chối con đâu, nhưng từ chối ta làm vua họ. Dân chọn người thay vì Chúa.",
+    "explanation": "Dân Y-sơ-ra-ên nói với Sa-mu-ên: 'Bây giờ xin hãy lập cho chúng tôi một vua để cai trị chúng tôi, như các dân tộc khác' (1 Sa-mu-ên 8:5). Đây là điều khiến Chúa phán với Sa-mu-ên rằng: '... ấy chẳng phải ngươi chúng nó từ bỏ đâu, bèn là từ bỏ ta đó, hầu cho ta không cai trị chúng nó nữa' (câu 7).\n\n- Đáp án đúng đúng vì diễn đạt chính xác yêu cầu của dân chúng.\n- Distractor 1 (gần đúng) sai vì dân chúng không xin một nhà tiên tri mới; họ xin một vua để thay thế chế độ thẩm phán (mà Sa-mu-ên đại diện), đây là một chi tiết trong ngữ cảnh gần nhưng không phải yêu cầu thực tế.\n- Distractor 2 sai vì việc thoát khỏi ách nô lệ là chủ đề phổ biến trong lịch sử Y-sơ-ra-ên, nhưng không phải là yêu cầu trong đoạn Kinh Thánh này.\n- Distractor 3 sai vì việc xin đền thờ là chủ đề thuộc phạm vi khác (như thời kỳ sau này của vua Đa-vít hay Sa-lô-môn), không liên quan đến yêu cầu trong 1 Sa-mu-ên 8.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
       "Xin một vua như các dân tộc khác",
-      "Xin nhiều của cải",
-      "Xin một tiên tri mới",
-      "Xin chiến thắng"
+      "Xin một nhà tiên tri thay thế Sa-mu-ên",
+      "Xin được tự do khỏi ách nô lệ",
+      "Xin một đền thờ để thờ phượng"
     ],
     "tags": [
       "Cựu Ước",
@@ -175,12 +175,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Sa 9:2 - Sau-lơ có hình thức bên ngoài ấn tượng nhưng tâm lòng không vững.",
+    "explanation": "Đáp án đúng là 'Cao hơn mọi người từ vai trở lên, đẹp trai' vì 1 Sa-mu-ên 9:2 chép: 'Lại có một người Bên-gia-min, tên là Kích,... con trai người là Sau-lơ, trẻ và đẹp trai, trong dân Y-sơ-ra-ên chẳng có ai đẹp trai hơn người; người cao hơn cả dân sự từ vai trở lên.'\n\nCác đáp án sai: \n1. 'Cao hơn mọi người từ đầu trở lên' sai chi tiết (wrong_detail) vì Kinh Thánh nói rõ 'từ vai trở lên', không phải 'từ đầu trở lên'.\n2. 'Thấp hơn mọi người từ vai trở lên, mặt mộc mạc' là hiểu lầm phổ biến (common_misconception) vì trái ngược hoàn toàn với mô tả trong Kinh Thánh về vẻ đẹp trai và tầm vóc cao lớn của Sau-lơ.\n3. 'Mạnh mẽ hơn mọi người trong chiến trận, dũng cảm' tuy có thể đúng về Sau-lơ ở giai đoạn sau (true_but_off), nhưng không phải là mô tả cụ thể trong 1 Sa-mu-ên 9:2 cho câu hỏi này, nó lạc trọng tâm câu hỏi về mô tả thể chất ban đầu.",
     "language": "vi",
     "options": [
-      "Giàu nhất",
-      "Mạnh mẽ nhất",
-      "Khôn ngoan nhất",
+      "Cao hơn mọi người từ đầu trở lên, đẹp trai",
+      "Thấp hơn mọi người từ vai trở lên, mặt mộc mạc",
+      "Mạnh mẽ hơn mọi người trong chiến trận, dũng cảm",
       "Cao hơn mọi người từ vai trở lên, đẹp trai"
     ],
     "tags": [
@@ -202,13 +202,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Sa 13:14 - Chúa tìm người vừa lòng Ngài. Đa-vít được gọi là người vừa lòng Chúa (Công vụ 13:22).",
+    "explanation": "Trong 1 Sa-mu-ên 13:14, tiên tri Sa-mu-ên nói với Sau-lơ: 'Ngài đã tìm được một người theo ý Ngài' (BTT). Đáp án đúng là 'Một người vừa lòng Chúa', vì câu Kinh Thánh nhấn mạnh tiêu chuẩn của Đức Chúa Trời là tìm một người theo ý Ngài, tức là vừa lòng Ngài. Distractor 'Một người theo ý dân sự' là gần đúng nhưng sai chi tiết then chốt vì câu Kinh Thánh nói 'theo ý Ngài' (Đức Chúa Trời), không phải 'ý dân sự'. Distractor 'Một người có lòng dũng cảm' là hiểu lầm phổ biến dựa trên hình tượng vua thường thấy, nhưng không phải tiêu chí được nêu trong câu này. Distractor 'Một người vâng lời Sau-lơ' đúng văn bản ở chỗ Sau-lơ bị phạt vì không vâng lời (1 Sa-mu-ên 13:13), nhưng lạc câu hỏi vì câu hỏi hỏi về người thay thế Sau-lơ, không phải về đức tính phục vụ Sau-lơ.",
     "language": "vi",
     "options": [
-      "Người mạnh nhất",
-      "Người từ phú hoàng gia",
+      "Một người theo ý dân sự",
+      "Một người có lòng dũng cảm",
       "Một người vừa lòng Chúa",
-      "Người khôn ngoan nhất"
+      "Một người vâng lời Sau-lơ"
     ],
     "tags": [
       "Cựu Ước",
@@ -256,14 +256,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Sa 18:1 - Giô-na-than yêu Đa-vít như chính mình. Tình bạn trung tín bất chấp hoàn cảnh.",
+    "explanation": "Đáp án ĐÚNG là 'Đa-vít và Giô-na-than' vì 1 Sa-mu-ên 18:1-3 ghi rõ: 'Vả, vừa khi Đa-vít nói xong với Sau-lơ, thì linh hồn Giô-na-than cảm hiệp cùng linh hồn Đa-vít, và Giô-na-than yêu mến Đa-vít như chính mình người. ... Giô-na-than kết giao ước cùng Đa-vít, bởi vì người yêu mến Đa-vít như chính mình người.', mô tả sự khởi đầu của tình bạn nổi tiếng nhất.\n\n- Distractor 'Đa-vít và Sau-lơ' SAI vì tuy cả hai có mối quan hệ (vua-thần tử, sau là kẻ thù), nhưng không phải là tình bạn nổi tiếng, mà chính xác là Đa-vít với Giô-na-than (con Sau-lơ).\n- Distractor 'Giô-na-than và Sau-lơ' SAI vì đây là quan hệ cha con, không phải tình bạn nổi tiếng được nhấn mạnh trong đoạn Kinh Thánh này.\n- Distractor 'Ê-li và Ê-li-sê' SAI vì đây là mối quan hệ thầy trò, tiên tri kế vị (2 Các Vua 2), dù quan trọng nhưng không phải là tình bạn nổi tiếng nhất được hỏi trong ngữ cảnh 1 Sa-mu-ên 18.",
     "language": "vi",
     "verseEnd": 3,
     "options": [
-      "Đa-vít và Sa-mu-en",
+      "Đa-vít và Sau-lơ",
       "Đa-vít và Giô-na-than",
-      "Áp-ra-ham và Lót",
-      "Môi-se và A-rôn"
+      "Giô-na-than và Sau-lơ",
+      "Ê-li và Ê-li-sê"
     ],
     "tags": [
       "Cựu Ước",
@@ -284,14 +284,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Sa 24:4-7 - Đa-vít tôn trọng Sau-lơ là người được Chúa xức dầu, chỉ cắt vạt áo và sau đó bị lương tâm cắn rứt. Bài học về tôn trọng quyền bính.",
+    "explanation": "Trong 1 Sa-mu-ên 24:4-7, các thuộc hạ đề nghị Đa-vít giết Sau-lơ vì Đức Chúa Trời đã phó vua vào tay ông. Đa-vít chỉ lén cắt một vạt áo của Sau-lơ (câu 4). Ngay sau đó, lòng Đa-vít cắn rứt (câu 5) vì đã cắt vạt áo của vua, người được Đức Giê-hô-va xức dầu. Ông nói với thuộc hạ: 'Nguyện Đức Giê-hô-va giữ ta, đừng cho ta phạm tội cùng chúa ta, là kẻ chịu xức dầu của Đức Giê-hô-va, mà tra tay trên mình người!' (câu 6). Đáp án đúng vì nó mô tả chính xác hành động (cắt vạt áo) và phản ứng tức thì (ray rứt ân hận) của Đa-vít.\n\n- Distractor 1 sai vì chi tiết 'cảm thấy hài lòng' là sai. Kinh văn ghi rõ lòng Đa-vít 'cắn rứt' (ân hận), không phải hài lòng. Đây là distractor 'gần đúng' vì đúng hành động nhưng sai hoàn toàn phản ứng.\n- Distractor 2 sai vì chi tiết 'sợ quân lính' không có trong đoạn này. Lý do thật sự là Đa-vít kính sợ Đức Giê-hô-va và vua được Ngài xức dầu. Đây là một lý do có thể đúng trong ngữ cảnh khác nhưng không phải lý do trong đoạn văn này.\n- Distractor 3 sai vì nhầm với một sự kiện khác (1 Sa-mu-ên 26:7-12, nơi Đa-vít và A-bi-sai vào trại quân Sau-lơ và A-bi-sai muốn giết vua). Trong hang này (1 Sa-mu-ên 24), chỉ có Sau-lơ và người hầu cận không được đề cập là bị đụng chạm.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
-      "Bắt Sau-lơ",
+      "Cắt vạt áo Sau-lơ và cảm thấy hài lòng vì đã làm như vậy",
       "Chỉ cắt vạt áo Sau-lơ và ray rứt ân hận vì đã làm điều đó",
-      "Bỏ trốn",
-      "Giết Sau-lơ"
+      "Đưa gươm ra nhưng không đánh vì sợ quân lính của Sau-lơ",
+      "Giết người hầu cận của Sau-lơ thay vì nhà vua"
     ],
     "tags": [
       "Cựu Ước",
@@ -312,14 +312,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Sa 26:11-12 - Đa-vít tiếp tục tôn trọng mạng sống của Sau-lơ, chỉ lấy cây giáo và bình nước ở đầu giường vua rồi đi.",
+    "explanation": "Trong 1 Sa-mu-ên 26:11-12, Đa-vít lấy cây giáo và bình nước ở đầu Sau-lơ, chứ không giết ông. Đáp án đúng vì miêu tả chính xác hai vật Đa-vít đã lấy. Distractor 'Giáo và áo choàng của Sau-lơ' là gần đúng nhưng sai chi tiết (áo choàng không được đề cập trong tình huống này, là chi tiết từ passage gần về lần gặp trước). Distractor 'Chỉ một bình nước của Sau-lơ' sai về chi tiết số lượng và vật phẩm (thiếu cây giáo). Distractor 'Một nhánh cây và tấm vải' đúng văn bản (có nhánh cây, vải) nhưng lạc câu hỏi vì liên quan đến chi tiết khác trong câu chuyện, không phải vật Đa-vít lấy lần này.",
     "language": "vi",
     "verseEnd": 11,
     "options": [
-      "Gươm",
-      "Vương miện",
+      "Giáo và áo choàng của Sau-lơ",
+      "Chỉ một bình nước của Sau-lơ",
       "Giáo và bình nước của Sau-lơ",
-      "Áo choàng"
+      "Một nhánh cây và tấm vải"
     ],
     "tags": [
       "Cựu Ước",
@@ -368,13 +368,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Sa-mu-ên 5:4 — Sáng ngày sau, Đa-gôn ngã sấp mặt xuống đất trước Hòm Đức Giê-hô-va; đầu và hai bàn tay Đa-gôn bị chặt đứt rời ở trên ngạch cửa.",
+    "explanation": "Đáp án đúng dựa trực tiếp vào 1 Sa-mu-ên 5:3-4. Khi người Phi-li-tin đặt Hòm giao ước bên cạnh tượng thần Đa-gôn tại thành Ách-đốt, sáng hôm sau họ thấy tượng Đa-gôn ngã sấp xuống đất trước mặt Hòm. Họ dựng tượng lên lại, nhưng sáng hôm sau nữa, tượng lại ngã sấp xuống với đầu và hai bàn tay bị chặt, nằm trên ngạch cửa, chỉ còn phần thân. \n\n- Distractor 1 (Hòm giao ước phát sáng...): Sai vì đoạn Kinh Thánh này không mô tả hiện tượng ánh sáng hay việc tượng tan thành bụi, đây là một sự hiểu lầm phổ biến dựa trên các phép lạ khác. \n- Distractor 2 (Đa-gôn ngã sấp; toàn thân bị vỡ...): Gần đúng nhưng sai chi tiết then chốt. Tượng ngã sấp là đúng, nhưng Kinh Thánh ghi rõ chỉ có đầu và hai tay bị chặt, chứ không phải toàn thân vỡ ra từng mảnh. \n- Distractor 3 (Hòm giao ước mở ra...): Sai vì mặc dù Hòm giao ước gắn với quyền năng của Đức Chúa Trời, chi tiết cụ thể về sấm sét và Hòm mở ra không được mô tả trong sự kiện này; đây là thông tin đúng trong ngữ cảnh khác nhưng lạc với câu hỏi về điều xảy ra tại đền thờ Đa-gôn.",
     "language": "vi",
     "options": [
-      "Đa-gôn cười",
-      "Đa-gôn đứng vững",
+      "Hòm giao ước phát sáng chói lòa; Đa-gôn tan thành bụi",
+      "Đa-gôn ngã sấp; toàn thân bị vỡ ra từng mảnh",
       "Đa-gôn ngã sấp; đầu và hai tay bị chặt",
-      "Đa-gôn biến mất"
+      "Hòm giao ước mở ra; sấm sét đánh vào tượng thần"
     ],
     "tags": [
       "Cựu Ước",
@@ -394,13 +394,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Sa-mu-ên 7:12 — 'Sa-mu-ên lấy một hòn đá... đặt tên là Ê-bên-Ê-xe, mà nói rằng: Đức Giê-hô-va đã giúp đỡ chúng tôi đến bây giờ.'",
+    "explanation": "1 Samuel 7:12 ghi: \"Sa-mu-ên bèn lấy một hòn đá, dựng lên giữa khoảng Mích-ba và Sen, đặt tên là Ê-bên-Ê-xe, mà nói rằng: Đức Giê-hô-va đã cứu giúp chúng tôi đến bây giờ.\" Tên Ê-bên-Ê-xe có nghĩa là \"đá sự giúp đỡ\", chỉ về sự giúp đỡ của Đức Giê-hô-va, nên đáp án đúng là \"Đá giúp đỡ (Đức Giê-hô-va đã giúp)\".\n\nCác đáp án sai:\n- \"Đá chiến thắng (dân Y-sơ-ra-ên đã chiến thắng)\": Sai chi tiết. Dù có liên quan đến bối cảnh sau chiến thắng quân Phi-li-tin, nhưng tên đá không nhấn mạnh chiến thắng của dân sự mà nhấn mạnh sự giúp đỡ từ Đức Giê-hô-va.\n- \"Đá ghi nhớ (nơi đánh dấu ranh giới)\": Lạc câu hỏi. Dù đá có thể là vật kỷ niệm, nhưng câu hỏi hỏi về ý nghĩa tên gọi cụ thể, không phải chức năng chung của các bia đá trong Kinh Thánh; ngoài ra, nó không đánh dấu ranh giới.\n- \"Đá của lời cầu nguyện (nơi Sa-mu-ên cầu nguyện)\": Nhầm đoạn gần. Điều này dựa vào bối cảnh trước đó ở 1 Samuel 7:5-9, nơi Sa-mu-ên cầu nguyện và dâng tế lễ tại Mích-ba, nhưng tảng đá Ê-bên-Ê-xe được dựng sau đó và tên của nó không liên quan trực tiếp đến lời cầu nguyện.",
     "language": "vi",
     "options": [
       "Đá giúp đỡ (Đức Giê-hô-va đã giúp)",
-      "Đá vinh quang",
-      "Đá kỷ niệm",
-      "Đá biên giới"
+      "Đá chiến thắng (dân Y-sơ-ra-ên đã chiến thắng)",
+      "Đá ghi nhớ (nơi đánh dấu ranh giới)",
+      "Đá của lời cầu nguyện (nơi Sa-mu-ên cầu nguyện)"
     ],
     "tags": [
       "Cựu Ước",
@@ -420,12 +420,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Sa-mu-ên 10:1 — 'Sa-mu-ên lấy ve dầu, đổ trên đầu Sau-lơ, hôn người mà nói: Đức Giê-hô-va há chẳng đã xức dầu cho ngươi đặng làm vua quản trị cơ nghiệp Ngài sao?'",
+    "explanation": "Đáp án đúng là Sau-lơ, vì 1 Sa-mu-ên 10:1 chép rõ: 'Bấy giờ, Sa-mu-ên lấy một ve dầu, đổ trên đầu Sau-lơ, hôn người, mà nói rằng: Nầy Đức Giê-hô-va đã xức dầu cho ngươi đặng ngươi làm vua của cơ nghiệp Ngài.'\n\nCác đáp án sai:\n- 'Đa-vít': Đây là một hiểu lầm phổ biến vì Đa-vít là vị vua nổi tiếng nhất, nhưng ông được xức dầu sau Sau-lơ (1 Sa-mu-ên 16:13).\n- 'Sa-mu-ên': Mặc dù Sa-mu-ên là người thực hiện việc xức dầu trong câu này, nhưng ông là đấng tiên tri, không phải là người được xức dầu làm vua. Đáp án này đúng về văn bản nhưng lạc câu hỏi.\n- 'Giô-na-than': Giô-na-than là con trai của Sau-lơ, một nhân vật quan trọng, nhưng không bao giờ được xức dầu làm vua. Đây là sai chi tiết về tên nhân vật.",
     "language": "vi",
     "options": [
       "Đa-vít",
+      "Sa-mu-ên",
       "Giô-na-than",
-      "Sa-lô-môn",
       "Sau-lơ"
     ],
     "tags": [
@@ -446,13 +446,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Sa-mu-ên 16:13 — 'Sa-mu-ên lấy sừng dầu, xức cho người ở giữa các anh người. Từ ngày đó về sau, Thần của Đức Giê-hô-va cảm động Đa-vít.'",
+    "explanation": "1 Sa-mu-ên 16:13 ghi: \"Sa-mu-ên lấy sừng dầu ra, xức cho người ở giữa các anh người. Từ ngày đó về sau, Thần của Đức Giê-hô-va cảm động Đa-vít\". Do đó, đáp án đúng là 'Thần của Đức Giê-hô-va'. Các phương án sai: 'Sự bình an của Đức Giê-hô-va' là sai vì dù 'bình an' là một chủ đề quan trọng và có thể liên quan đến Đức Giê-hô-va trong Kinh Thánh, nhưng đoạn này mô tả cụ thể là 'Thần' cảm động; 'Thần của Đa-vít' là sai vì đoạn không nói về thần của chính Đa-vít mà là Thần của Đức Giê-hô-va ngự trên ông; 'Sự vui mừng của một vị vua' là sai vì đây là một hiểu lầm phổ biến về kết quả của việc xức dầu, nhưng đoạn không mô tả cảm xúc vui mừng ngay lập tức mà là sự kiện Thần của Đức Giê-hô-va đến.",
     "language": "vi",
     "options": [
-      "Sự giàu có",
-      "Sự khôn ngoan",
+      "Sự bình an của Đức Giê-hô-va",
+      "Thần của Đa-vít",
       "Thần của Đức Giê-hô-va",
-      "Sức mạnh đặc biệt"
+      "Sự vui mừng của một vị vua"
     ],
     "tags": [
       "Cựu Ước",
@@ -473,13 +473,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Sa-mu-ên 25:32-33 — 'Đáng ngợi khen Đức Giê-hô-va... cám ơn sự khôn ngoan của ngươi; ngươi đã giữ ta khỏi đổ huyết và làm chính tay mình báo thù.'",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Đổ huyết và báo thù chính tay mình' (1Sa 25:33). Đa-vít chúc phước vì A-bi-ga-in đã đến kịp thời và ngăn cản hành động báo thù chính tay ông ('…vì ngươi đã đến gặp ta kịp thời, để ngăn trở ta phạm tội làm đổ huyết và báo thù chính tay ta.' – 1Sa 25:33).\n\nDISTRACTOR SAI 1 ('Cướp bóc toàn bộ tài sản Na-banh'): Sai chi tiết. Tuy Đa-vít đã định giết Na-banh và mọi đàn ông trong nhà (1Sa 25:34), và sau đó Na-banh chết, Đức Chúa Trời đánh phạt, còn của cải thì Đa-vít lấy A-bi-ga-in làm vợ, nhưng lý do chính được nêu trong lời chúc phước là ngăn ông 'làm đổ huyết' và 'báo thù chính tay' mình, chứ không phải là ngăn cướp bóc tài sản.\n\nDISTRACTOR SAI 2 ('Không tôn trọng lời giao ước cùng Sau-lơ'): Hiểu lầm phổ biến/ngữ cảnh sai. Đây là sự kiện riêng biệt với mối quan hệ giữa Đa-vít và Sau-lơ. Lời can ngăn của A-bi-ga-in tập trung vào việc Đa-vít sẽ mang tội đổ máu vô cớ, không liên quan đến giao ước hay thỏa thuận nào với Sau-lơ.\n\nDISTRACTOR SAI 3 ('Lựa chọn tin cậy nơi sức riêng của mình'): Đúng văn bản nhưng lạc câu hỏi. Mặc dù A-bi-ga-in có khuyên Đa-vít rằng Đức Giê-hô-va sẽ lập nhà vững bền cho ông và Đức Giê-hô-va sẽ đánh kẻ thù ông (1Sa 25:28-31), điều này hàm ý tin cậy Chúa, nhưng câu hỏi cụ thể hỏi về điều A-bi-ga-in đã 'ngăn ông làm'. Hành động cụ thể bị ngăn là 'đổ huyết và báo thù chính tay mình', chứ không phải thái độ 'tin cậy nơi sức riêng' một cách chung chung.",
     "language": "vi",
     "options": [
       "Đổ huyết và báo thù chính tay mình",
-      "Bỏ đường công bình",
-      "Làm vua quá sớm",
-      "Trở về với Sau-lơ"
+      "Cướp bóc toàn bộ tài sản Na-banh",
+      "Không tôn trọng lời giao ước cùng Sau-lơ",
+      "Lựa chọn tin cậy nơi sức riêng của mình"
     ],
     "tags": [
       "Cựu Ước",
@@ -500,12 +500,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Sa-mu-ên 28:7-8 — 'Sau-lơ phán cùng tôi tớ rằng: Hãy kiếm cho ta một người đàn bà biết cầu vong... Họ đáp: Tại Ên-đô-rơ có một người đàn bà cầu vong.'",
+    "explanation": "Đáp án đúng là 'Bà bóng (cầu vong) tại Ên-đô-rơ' vì 1 Sa-mu-ên 28:7-8 ghi rõ Sau-lơ bảo tôi tớ tìm cho ông một bà bóng, và họ chỉ đến bà tại Ên-đô-rơ. Distractor 'Tiên tri Sa-mu-ên tại Ra-ma' gần đúng vì Sa-mu-ên là người Sau-lơ từng cầu hỏi, nhưng ông đã qua đời (c.3) và không ở Ra-ma lúc này; đây là nhầm lẫn với đoạn gần. Distractor 'Thầy tế lễ A-hi-mê-léc tại Nóp' sai chi tiết vì A-hi-mê-léc bị Sau-lơ giết trước đó (22:18-19), không phải người ông tìm đêm trước trận chiến. Distractor 'Đấng tiên tri giả tại Giê-ri-cô' lạc câu hỏi vì 'đấng tiên tri giả' và 'Giê-ri-cô' không xuất hiện trong bối cảnh 1 Sa-mu-ên 28.",
     "language": "vi",
     "options": [
-      "Một thầy tế lễ thượng phẩm",
-      "Tiên tri Sa-mu-ên còn sống",
-      "Vua Đa-vít",
+      "Tiên tri Sa-mu-ên tại Ra-ma",
+      "Thầy tế lễ A-hi-mê-léc tại Nóp",
+      "Đấng tiên tri giả tại Giê-ri-cô",
       "Bà bóng (cầu vong) tại Ên-đô-rơ"
     ],
     "tags": [

@@ -7,15 +7,15 @@
     "type": "multiple_choice_single",
     "content": "Tế lễ thiêu phải dùng con vật đực hay cái?",
     "options": [
-      "Con cái",
-      "Con đầu lòng",
+      "Con cái không tì vết",
+      "Con đực hoặc con cái không tì vết",
       "Con đực không tì vết",
-      "Con nào cũng được"
+      "Con đực có tì vết"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 1:3 — 'Nếu lễ vật của người ấy là tế lễ thiêu bằng bò, thì phải dâng một con bò đực không tì vết.'",
+    "explanation": "Lê-vi Ký 1:3 chép: 'Nếu lễ vật của người là của lễ thiêu bằng bò, thì phải dùng một con đực không tì vết' (BTT). Do đó, đáp án đúng là 'Con đực không tì vết' vì Kinh Thánh quy định rõ ràng về giới tính (đực) và tình trạng (không tì vết).\n\nDistractor 'Con cái không tì vết' sai vì sai chi tiết về giới tính so với quy định trong câu này.\nDistractor 'Con đực hoặc con cái không tì vết' sai vì mở rộng phạm vi cho phép cả hai giới, trong khi câu Kinh Thánh chỉ quy định con đực.\nDistractor 'Con đực có tì vết' sai vì tuy đúng giới tính nhưng sai chi tiết về tình trạng 'không tì vết' – đây là một yêu cầu bắt buộc được nhắc trong cùng câu và các câu lân cận.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -33,15 +33,15 @@
     "type": "multiple_choice_single",
     "content": "Nếu dâng tế lễ thiêu bằng chim, phải dùng loại chim nào?",
     "options": [
-      "Chim ưng",
+      "Chim sẽ sẻ hoặc chim gáy",
       "Chim cu đất hoặc bồ câu con",
-      "Chim sẻ",
-      "Chim cút"
+      "Một cặp chim cu trưởng thành",
+      "Các loài chim được phép làm thực phẩm"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 1:14 — 'Nếu lễ vật dâng cho Đức Giê-hô-va là tế lễ thiêu bằng chim, thì phải dâng chim cu đất hoặc bồ câu con.'",
+    "explanation": "Lê-vi Ký 1:14 (BTT) chép: 'Nếu của lễ thiêu dâng cho Đức Giê-hô-va bằng loài chim, thì phải dùng một cặp chim cu đất, hoặc một cặp bồ câu con.' Vì vậy, đáp án đúng là 'Chim cu đất hoặc bồ câu con'. \n\nDistractor 1 sai vì 'chim sẽ sẻ hoặc chim gáy' không phải là loại chim được quy định ở đây, dù là loài chim sạch phổ biến. \nDistractor 2 là phương án 'gần đúng' nhưng sai chi tiết then chốt: Kinh Thánh quy định dùng 'chim cu đất' hoặc 'bồ câu con', không phải chim 'trưởng thành'. \nDistractor 3 sai vì mở rộng phạm vi sai: Câu hỏi hỏi cụ thể loài chim dùng cho tế lễ thiêu, chứ không phải hỏi về các loài chim được phép làm thực phẩm nói chung.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -60,15 +60,15 @@
     "type": "multiple_choice_single",
     "content": "Tế lễ chay được làm từ nguyên liệu chính nào?",
     "options": [
-      "Trái cây",
-      "Thịt chiên",
+      "Bột thô",
+      "Bột lúa mạch",
       "Bột mịn",
-      "Rượu nho"
+      "Bột trộn muối"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 2:1 — 'Khi ai dâng tế lễ chay cho Đức Giê-hô-va thì lễ vật phải bằng bột mịn; người ấy sẽ đổ dầu lên trên và bỏ nhũ hương vào.'",
+    "explanation": "Lê-vi Ký 2:1 chép: 'Khi ai muốn dâng cho Đức Giê-hô-va một của lễ chay, thì lễ vật người phải bằng bột mịn'. Do đó, nguyên liệu chính là 'Bột mịn'. \n\n- 'Bột thô' sai vì Kinh Thánh chỉ định rõ là bột mịn, không phải bột thô. \n- 'Bột lúa mạch' sai đây là một hiểu lầm phổ biến; của lễ chay được làm từ bột lúa mì, không phải lúa mạch. \n- 'Bột trộn muối' sai vì mặc dù muối được nhắc đến trong các quy định về của lễ chay (Lê-vi Ký 2:13), nhưng câu hỏi hỏi nguyên liệu chính, còn muối là một thành phần phụ được thêm vào, không thay thế bột mịn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -112,15 +112,15 @@
     "type": "multiple_choice_single",
     "content": "Mọi lễ vật chay đều phải nêm ___ vào.",
     "options": [
-      "đường",
       "mật ong",
+      "mỡ động vật",
       "muối",
-      "men"
+      "gia vị thơm"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 2:13 — 'Phải nêm muối vào mọi lễ vật chay. Không được bỏ muối giao ước của Đức Chúa Trời khỏi lễ vật chay.'",
+    "explanation": "Lê-vi Ký 2:13 chép: 'Mọi của lễ chay ngươi phải nêm muối; chớ nên dâng lên thiếu muối của giao ước Đức Chúa Trời; trên các lễ vật ngươi phải dâng muối.' Vì vậy, đáp án đúng là 'muối', vì đây là mệnh lệnh rõ ràng trong luật về của lễ chay. Các đáp án sai: (1) 'mật ong' là sai chi tiết, vì Lê-vi Ký 2:11 cấm dâng men và mật ong trong của lễ dùng lửa dâng lên, không phải là thứ bắt buộc phải nêm. (2) 'mỡ động vật' phản ánh hiểu lầm phổ biến (mỡ thường dâng trong của lễ bằng động vật, không phải của lễ chay). (3) 'gia vị thơm' tuy đúng ngữ cảnh chung về của lễ (như trầm hương trong Lê-vi Ký 2:1-2) nhưng lạc câu hỏi vì câu 13 chỉ định rõ là muối, không phải gia vị thơm nói chung.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -139,7 +139,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 3:1 — 'Nếu lễ vật là tế lễ bình an... dù đực hay cái, phải dâng con vật không tì vết trước mặt Đức Giê-hô-va.'",
+    "explanation": "Le-vi 3:1 chép rõ: '...hoặc con đực hoặc con cái, thì phải dâng lên không tì vết...'. Vì vậy, đáp án đúng là bất kỳ giới tính nào, miễn không tì vết. Distractor thứ nhất sai vì thêm hạn chế 'chỉ con đực', trong khi Kinh Thánh cho phép cả cái. Distractor thứ hai sai vì bỏ qua yêu cầu 'không tì vết', đây là lỗi hiểu lầm phổ biến về tiêu chuẩn của sinh tế. Distractor thứ ba sai vì thu hẹp phạm vi chỉ còn 'gia súc nhỏ' (như chiên/dê), trong khi đoạn văn (cùng chương) cũng cho phép dâng bò.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -149,10 +149,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Chỉ con đực",
-      "Chỉ con cái",
+      "Chỉ con đực, không tì vết",
+      "Bất kỳ loại nào, kể cả có tì vết",
       "Đực hoặc cái, miễn là không tì vết",
-      "Phải là con đầu lòng"
+      "Chỉ từ bầy gia súc nhỏ, không tì vết"
     ]
   },
   {
@@ -164,14 +164,14 @@
     "content": "Dân Y-sơ-ra-ên bị cấm ăn hai thứ nào trong tế lễ bình an?",
     "options": [
       "Mỡ và huyết",
-      "Đầu và chân",
-      "Xương và da",
-      "Gan và tim"
+      "Mỡ và thịt",
+      "Xương và huyết",
+      "Da và đuôi"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Lê-vi Ký 3:17 — 'Đây là luật lệ đời đời cho các ngươi, trải qua các thế hệ: Không được ăn mỡ và huyết.'",
+    "explanation": "Lê-vi Ký 3:17 chép: 'Ấy sẽ là một lệ định đời đời cho dòng dõi các ngươi, mọi nơi các ngươi ở: chớ nên ăn mỡ hay là huyết.' Vì vậy, đáp án 'Mỡ và huyết' là chính xác. Các đáp án sai: (1) 'Mỡ và thịt' là gần đúng nhưng sai chi tiết then chốt (thịt không bị cấm trong câu này), dựa trên việc đọc nhầm phạm vi cấm đoán trong đoạn gần; (2) 'Xương và huyết' sai chi tiết vì xương không được đề cập trong cấm lệ này; (3) 'Da và đuôi' tuy có thể là phần không ăn được trong một số nghi lễ khác, nhưng lạc đề với câu hỏi cụ thể về lệ cấm trong Lê-vi Ký 3:17.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -189,15 +189,15 @@
     "type": "multiple_choice_single",
     "content": "Khi thầy tế lễ được xức dầu phạm tội, phải dâng con vật gì làm tế lễ chuộc tội?",
     "options": [
-      "Dê đực",
-      "Bồ câu",
-      "Chiên đực",
+      "Chiên đực không tì vết",
+      "Bò cái tơ không tì vết",
+      "Một đôi chim gáy",
       "Bò đực tơ không tì vết"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 4:3 — 'Nếu thầy tế lễ được xức dầu phạm tội, gây lỗi cho dân chúng, thì vì tội mình đã phạm, người phải dâng cho Đức Giê-hô-va một con bò đực tơ không tì vết làm tế lễ chuộc tội.'",
+    "explanation": "Lê-vi Ký 4:3 chép: 'Nếu thầy tế lễ chịu xức dầu rồi mà phạm tội... thì vì cớ tội mình đã phạm, phải dâng lên Đức Giê-hô-va một con bò đực tơ không tì vết, đặng làm của lễ chuộc tội.' Do đó, đáp án đúng là 'Bò đực tơ không tì vết'.\n\n- Distractor 'Chiên đực không tì vết' SAI vì dù đây là vật tế phổ biến cho nhiều tội lỗi khác, nhưng đoạn Kinh Thánh cụ thể này quy định riêng cho thầy tế lễ được xức dầu phải là bò đực (sai chi tiết loài vật).\n- Distractor 'Bò cái tơ không tì vết' SAI vì Kinh Thánh quy định rõ ràng là 'bò đực' (bull), không phải bò cái (sai chi tiết giới tính).\n- Distractor 'Một đôi chim gáy' SAI vì đây là lễ vật chuộc tội cho người nghèo (Lê-vi Ký 5:7), không áp dụng cho trường hợp thầy tế lễ được xức dầu phạm tội, vốn đòi hỏi lễ vật có giá trị cao hơn (hiểu lầm phổ biến về phạm vi áp dụng của luật).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -217,15 +217,15 @@
     "type": "multiple_choice_single",
     "content": "Khi một nhà lãnh đạo phạm tội, phải dâng con vật gì làm tế lễ chuộc tội?",
     "options": [
-      "Bồ câu con",
-      "Chiên cái",
-      "Bò đực tơ",
+      "Bò đực không tì vết",
+      "Cừu cái không tì vết",
+      "Chim cu non",
       "Dê đực không tì vết"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 4:22-23 — 'Khi một quan trưởng phạm tội... người phải đem đến một con dê đực không tì vết làm lễ vật vì tội mình.'",
+    "explanation": "Rê-lê-vi 4:22-23 nói rõ: 'Khi một nhà lãnh đạo...người ấy phải đem đến một con dê đực không tì vết làm con vật hiến tặng.' Do đó, đáp án đúng là 'Dê đực không tì vết' vì Kinh Thánh chỉ định chính xác sinh tế này cho tội của nhà lãnh đạo. Các đáp án sai: 'Bò đực không tì vết' (sai phạm vi, dành cho tội lỗi của thầy tế lễ xức dầu, câu 3); 'Cừu cái không tì vết' (sai chi tiết, Lê-vi Ký không quy định cừu cái cho lễ chuộc tội của nhà lãnh đạo); 'Chim cu non' (hiểu lầm phổ biến, sinh tế này được dùng trong một số lễ nghi khác (ví dụ Lê-vi Ký 14:22 cho người được tẩy sạch) nhưng không áp dụng cho lễ chuộc tội của nhà lãnh đạo nêu trong câu hỏi).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -245,15 +245,15 @@
     "type": "multiple_choice_single",
     "content": "Khi một thường dân phạm tội, phải dâng con vật gì?",
     "options": [
-      "Bồ câu đực",
+      "Dê đực không tì vết",
       "Dê cái không tì vết",
-      "Bò đực tơ",
-      "Chiên đực"
+      "Chiên con không tì vết",
+      "Một con bò không tì vết"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 4:28 — 'Người đó phải đem lễ vật là một con dê cái không tì vết, vì tội mình đã phạm.'",
+    "explanation": "Leviticus 4:27-28 quy định: 'Nếu một người trong dân chúng... vô ý phạm tội... thì phải dâng một con dê cái không tì vết làm của lễ chuộc tội mình đã phạm.' Do đó, đáp án đúng là DÊ CÁI KHÔNG TÌ VẾT.\n\nCác đáp án sai:\n- 'Dê đực không tì vết': Sai chi tiết về giới tính. Đoạn Kinh Thánh quy định rõ phải là dê cái cho tội của thường dân, không phải dê đực (sai chi tiết).\n- 'Chiên con không tì vết': Đây là con vật được quy định cho một số của lễ khác (như của lễ thiêu, của lễ chuộc tội cho thầy tế lễ), nhưng không phải cho tội vô ý của thường dân trong đoạn này (nhầm passage gần).\n- 'Một con bò không tì vết': Con bò là của lễ chuộc tội dành cho thầy tế lễ xức dầu (Lê-vi Ký 4:3) hoặc cho cả hội chúng (Lê-vi Ký 4:14), phạm vi đối tượng cao hơn, không phải cho một thường dân (sai phạm vi).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -301,7 +301,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 5:16 — 'Người ấy phải bồi thường những gì đã thiếu sót đối với vật thánh, cộng thêm một phần năm giá trị của nó.'",
+    "explanation": "Lê-vi Ký 5:16 chép: 'Người phải đền bù vật mình đã phạm về vật thánh, và thêm một phần năm giá trị, rồi giao vật đó cho thầy tế lễ.' Do đó, đáp án đúng là 'Một phần năm'. Distractor 'Một phần tư' sai vì thay đổi chi tiết số học then chốt (1/5 thành 1/4). Distractor 'Một phần mười' sai vì dựa trên hiểu lầm phổ biến về tỷ lệ dâng một phần mười (ma-a-sê-rơ) trong các bối cảnh khác. Distractor 'Gấp đôi' sai vì lấy ý từ các đoạn gần về việc bồi thường gấp đôi cho tội trộm cắp (Xuất Ê-díp-tô Ký 22:4, 7, 9), không phải cho tội phạm đến vật thánh trong Lê-vi Ký 5.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -311,10 +311,10 @@
       "Trung cấp"
     ],
     "options": [
-      "Một phần mười",
+      "Một phần tư",
       "Một phần năm",
-      "Một phần ba",
-      "Gấp đôi giá trị"
+      "Một phần mười",
+      "Gấp đôi"
     ]
   },
   {
@@ -327,14 +327,14 @@
     "content": "Nếu ai gian lận tài sản người lân cận, ngoài tế lễ chuộc lỗi, phải bồi thường bao nhiêu?",
     "options": [
       "Trả lại cộng thêm một phần năm",
-      "Trả lại gấp bốn",
-      "Trả lại đúng số đã lấy",
-      "Trả lại gấp đôi"
+      "Trả lại đầy đủ giá trị",
+      "Trả lại nhân đôi",
+      "Trả lại cộng thêm một phần tư"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Lê-vi Ký 6:5 — 'Phải trả lại nguyên vẹn, cộng thêm một phần năm giá trị. Người ấy phải giao cho chủ của nó vào ngày dâng tế lễ chuộc lỗi.'",
+    "explanation": "Theo Lê-vi Ký 6:1-5 (c.5), người phạm tội gian lận phải 'trả lại nguyên vật, và phụ thêm một phần năm giá trị vật ấy'. Do đó, đáp án đúng là 'Trả lại cộng thêm một phần năm'. Distractor 'Trả lại đầy đủ giá trị' sai vì thiếu phần phụ thêm một phần năm theo luật định. Distractor 'Trả lại nhân đôi' là chi tiết từ các luật bồi thường khác trong Kinh Thánh (Xuất Ê-díp-tô Ký 22:4, 7, 9) nhưng không áp dụng cho tội gian lận trong phân đoạn này. Distractor 'Trả lại cộng thêm một phần tư' sai về chi tiết số học (một phần tư thay vì một phần năm).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -464,7 +464,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 8:6 — 'Môi-se đem A-rôn và các con trai người đến gần, rồi tắm rửa họ bằng nước.' Đây là bước đầu tiên trong lễ phong chức.",
+    "explanation": "Lê-vi ký 8:6 ghi chép: \"Môi-se bèn đem A-rôn và các con trai người đến gần, rửa họ bằng nước.\" Đây là hành động đầu tiên được mô tả. Đáp án đúng là 'Tắm rửa bằng nước' vì nó mô tả chính xác bước khởi đầu nghi lễ này.\n\nCác đáp án sai:\n- 'Dâng của lễ thiêu' (wrong_scope): Đây là một phần quan trọng của nghi lễ (Lê-vi ký 8:14-21), nhưng nó diễn ra SAU bước tắm rửa, không phải bước đầu tiên.\n- 'Sử dụng dầu xức' (wrong_detail): Dầu được dùng để xức đền tạm và các đồ vật trước (8:10-11), và xức cho A-rôn sau khi ông đã mặc áo (8:12). Việc xức dầu cho A-rôn không phải là bước đầu tiên.\n- 'Mặc áo lễ' (nearby_passage): Việc mặc áo lễ cho A-rôn được mô tả ngay sau khi tắm rửa (8:7-9), nên rất dễ nhầm. Tuy nhiên, nó vẫn là bước thứ hai, không phải đầu tiên.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -474,10 +474,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Xức dầu",
+      "Dâng của lễ thiêu",
       "Tắm rửa bằng nước",
-      "Mặc áo lễ",
-      "Dâng tế lễ thiêu"
+      "Sử dụng dầu xức",
+      "Mặc áo lễ"
     ]
   },
   {
@@ -488,15 +488,15 @@
     "type": "multiple_choice_single",
     "content": "Môi-se đổ dầu xức trên đầu ai để biệt riêng người ra thánh?",
     "options": [
-      "Ê-lê-a-sa",
-      "Giô-suê",
       "Na-đáp",
+      "Môi-se",
+      "Hê-phơ-rôn",
       "A-rôn"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 8:12 — 'Ông đổ dầu xức trên đầu A-rôn, xức dầu cho người để biệt riêng người ra thánh.'",
+    "explanation": "Lê-vi Ký 8:12 chép: 'Môi-se cũng đổ dầu xức trên đầu A-rôn, đặng biệt riêng ra thánh.' Vì vậy, đáp án đúng là A-rôn. Các đáp án sai: (1) Na-đáp là con trai A-rôn, được xức dầu cùng với các con trai khác của A-rôn (Lê-vi Ký 8:30), không phải là người duy nhất được xức dầu trên đầu trong phân đoạn này; (2) Môi-se là người thực hiện việc xức dầu, không phải là người nhận; (3) Hê-phơ-rôn là một địa danh (ví dụ: Sáng Thế Ký 23:10), không liên quan đến nghi lễ xức dầu trong Lê-vi Ký 8.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -515,14 +515,14 @@
     "content": "Lễ phong chức cho A-rôn và các con trai kéo dài bao nhiêu ngày?",
     "options": [
       "Bảy ngày",
-      "Bốn mươi ngày",
-      "Mười ngày",
-      "Ba ngày"
+      "Ba ngày",
+      "Mười hai ngày",
+      "Cho đến khi họ được lấp đầy bởi sự vinh hiển"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Lê-vi Ký 8:33 — 'Các ngươi không được ra khỏi cửa Lều Hội Kiến trong bảy ngày, cho đến khi trọn những ngày lễ phong chức.'",
+    "explanation": "Le-vi 8:33 chép: 'Các ngươi chớ ra khỏi cửa hội mạc trong bảy ngày, cho đến ngày mãn phong chức của các ngươi; vì việc phong chức của các ngươi sẽ trải qua bảy ngày.' Vì vậy, đáp án đúng là 'Bảy ngày'. Distractor 'Ba ngày' là sai chi tiết số. Distractor 'Mười hai ngày' có thể nhầm lẫn với các thời kỳ dài hơn khác trong Kinh Thánh (như lễ thánh). Distractor 'Cho đến khi họ được lấp đầy bởi sự vinh hiển' mô tả mục đích hoặc trạng thái (tham chiếu đến Lê-vi 8:10-12, 30) nhưng không trả lời trực tiếp câu hỏi về độ dài thời gian cụ thể.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -542,14 +542,14 @@
     "content": "Điều gì xảy ra khi A-rôn dâng tế lễ đầu tiên sau lễ phong chức?",
     "options": [
       "Lửa từ Đức Giê-hô-va thiêu đốt tế lễ trên bàn thờ",
-      "Mây phủ Lều Hội Kiến",
-      "Nước chảy từ bàn thờ",
-      "Đất rung chuyển"
+      "Lửa từ Đức Giê-hô-va thiêu đốt tế lễ trên bàn thờ và đốt cháy cả nhà tạm",
+      "Lửa từ Đức Giê-hô-va thiêu đốt tế lễ trên bàn thờ trước khi có lời chúc phước",
+      "Môi-se và A-rôn bước vào nhà tạm sau khi dâng tế lễ"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Lê-vi Ký 9:24 — 'Lửa từ trước mặt Đức Giê-hô-va loè ra thiêu đốt tế lễ thiêu và mỡ trên bàn thờ.' Toàn dân thấy, reo hò và sấp mặt xuống đất.",
+    "explanation": "Lê-vi Ký 9:23-24 ghi nhận: \"Môi-se và A-rôn vào hội mạc, rồi trở lại chúc phước cho dân chúng. Sự vinh quang của Đức Giê-hô-va hiện ra cho cả dân sự. Một ngọn lửa từ trước mặt Đức Giê-hô-va lòe ra thiêu hóa các của lễ thiêu và mỡ trên bàn thờ. Cả dân sự thấy, đều cất tiếng reo mừng và sấp mặt xuống đất.\" Do đó, đáp án đúng mô tả chính xác sự kiện lửa từ Đức Giê-hô-va thiêu đốt tế lễ trên bàn thờ.\n\nCác đáp án sai:\n1. Sai về phạm vi: Câu này thêm chi tiết 'và đốt cháy cả nhà tạm' không có trong Kinh Thánh. Lửa chỉ thiêu đốt tế lễ trên bàn thờ, không đốt nhà tạm.\n2. Sai chi tiết: Lửa thiêu đốt tế lễ xảy ra sau khi Môi-se và A-rôn chúc phước cho dân chúng và vinh quang Đức Giê-hô-va hiện ra, không phải 'trước khi có lời chúc phước'.\n3. Đúng văn bản nhưng lạc câu hỏi: Môi-se và A-rôn có vào hội mạm (Lê-vi Ký 9:23), nhưng đây là hành động trước khi lửa xuất hiện, không phải là điều xảy ra 'khi A-rôn dâng tế lễ' như câu hỏi hỏi về kết quả trực tiếp.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -569,7 +569,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 9:24 — 'Toàn dân thấy vậy thì reo hò và sấp mặt xuống đất.'",
+    "explanation": "Lê-vi Ký 9:24 chép: 'Có lửa từ trước mặt Đức Giê-hô-va loè ra thiêu hóa các của lễ thiêu và mỡ trên bàn thờ. Cả dân sự thấy, đều reo mừng và sấp mặt xuống đất.' Do đó, đáp án đúng là 'Reo hò và sấp mặt xuống đất' vì đây là phản ứng trực tiếp được ghi lại. Các đáp án sai: 1) 'Reo hò và bước tới trước' sai chi tiết hành động thứ hai (bước tới trước thay vì sấp mặt), 2) 'Im lặng và quay mặt đi' sai toàn bộ phản ứng được mô tả, 3) 'Khóc lóc và chạy trốn' là hiểu lầm phổ biến về phản ứng khi thấy phép lạ đáng sợ, nhưng Kinh Thánh ghi nhận sự reo mừng và tôn thờ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -578,10 +578,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Chạy trốn",
-      "Đứng im sợ hãi",
+      "Reo hò và bước tới trước",
+      "Im lặng và quay mặt đi",
       "Reo hò và sấp mặt xuống đất",
-      "Hát ngợi khen luôn"
+      "Khóc lóc và chạy trốn"
     ]
   },
   {
@@ -593,15 +593,15 @@
     "type": "multiple_choice_single",
     "content": "Hai con trai của A-rôn dâng lửa lạ trước mặt Đức Giê-hô-va là ai?",
     "options": [
-      "Ghẹt-sôn và Kê-hát",
-      "Ê-lê-a-sa và Y-tha-ma",
+      "Môi-se và A-rôn",
       "Na-đáp và Ê-lê-a-sa",
+      "Cô-rê và Đa-than",
       "Na-đáp và A-bi-hu"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 10:1 — 'Na-đáp và A-bi-hu, hai con trai A-rôn, mỗi người lấy lư hương mình, để lửa vào, bỏ hương lên, dâng lửa lạ trước mặt Đức Giê-hô-va.'",
+    "explanation": "Câu trả lời đúng là 'Na-đáp và A-bi-hu' được xác định rõ trong Lê-vi Ký 10:1-2, nơi ghi lại sự kiện hai con trai của A-rôn dâng lửa lạ và bị tiêu diệt. Distractor 'Môi-se và A-rôn' sai vì họ là những nhân vật chính trong sách Lê-vi nhưng không liên quan đến hành động này (nearby_passage). Distractor 'Na-đáp và Ê-lê-a-sa' là gần đúng vì Ê-lê-a-sa là một con trai khác của A-rôn, nhưng người dâng lửa lạ cùng Na-đáp là A-bi-hu, không phải Ê-lê-a-sa (wrong_detail). Distractor 'Cô-rê và Đa-than' sai vì họ là những người nổi loạn được nhắc đến trong Dân Số Ký 16, một sự kiện khác biệt và lạc đề so với câu hỏi về Lê-vi Ký 10 (true_but_off).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -620,14 +620,14 @@
     "content": "Na-đáp và A-bi-hu bị ___ từ Đức Giê-hô-va thiêu chết vì dâng lửa lạ.",
     "options": [
       "lửa",
-      "sấm sét",
-      "bệnh dịch",
-      "gió lốc"
+      "thuốc cúng",
+      "nước thánh",
+      "hơi nóng"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Lê-vi Ký 10:2 — 'Lửa từ trước mặt Đức Giê-hô-va loè ra thiêu đốt họ, và họ chết trước mặt Đức Giê-hô-va.'",
+    "explanation": "Câu hỏi đề cập đến sự kiện trong Lê-vi Ký 10:2: 'Có lửa từ trước mặt Đức Giê-hô-va phun ra thiêu hóa hai người đó, và họ chết trước mặt Đức Giê-hô-va.' (BTT). ĐÁP ÁN ĐÚNG 'lửa' vì Kinh Thánh ghi rõ họ bị 'lửa từ trước mặt Đức Giê-hô-va' thiêu chết. Các đáp án sai: 1) 'thuốc cúng' (sai) - đây là vật phẩm dâng lên (tham chiếu Lê-vi Ký 10:1), không phải là thứ giết họ. 2) 'nước thánh' (sai) - là một yếu tố trong nghi lễ thánh (thường được nhắc đến trong sách Lê-vi), nhưng không liên quan đến sự trừng phạt này. 3) 'hơi nóng' (gần đúng nhưng sai) - mô tả một đặc tính của lửa, nhưng bản văn Kinh Thánh dùng từ cụ thể là 'lửa', không phải một hiện tượng liên quan chung chung.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -644,15 +644,15 @@
     "type": "multiple_choice_single",
     "content": "Loài thú nào được xem là tinh sạch để ăn?",
     "options": [
-      "Thú có nanh nhọn",
+      "Thú có móng chẻ và ăn thịt",
       "Thú có móng chẻ và nhai lại",
-      "Thú có lông dài",
-      "Thú sống trong nước"
+      "Thú có móng liền và nhai lại",
+      "Thú sống dưới nước và có vảy"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 11:3 — 'Trong các loài thú, con vật nào có móng chẻ ra làm hai và nhai lại thì các ngươi được ăn.'",
+    "explanation": "Theo Lê-vi Ký 11:3, 'Hễ loài thú nào có móng chẻ ra, chân chia hai và nhai lại, thì các ngươi được phép ăn.' Do đó, đáp án đúng là 'Thú có móng chẻ và nhai lại'. Distractor 'Thú có móng chẻ và ăn thịt' sai vì phải 'nhai lại' chứ không chỉ 'ăn thịt'. Distractor 'Thú có móng liền và nhai lại' sai vì đoạn Kinh Thánh yêu cầu 'móng chẻ ra' (chứ không phải móng liền). Distractor 'Thú sống dưới nước và có vảy' là một hiểu lầm phổ biến vì tiêu chí này áp dụng cho loài cá (Lê-vi Ký 11:9), không phải cho thú trên cất như câu hỏi đang đề cập.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -672,7 +672,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 11:7 — 'Con heo vì nó có móng chẻ ra làm hai nhưng không nhai lại, nên là vật ô uế đối với các ngươi.'",
+    "explanation": "Đáp án đúng là: 'Vì có móng chẻ nhưng không nhai lại'. Câu Lê-vi Ký 11:7-8 dạy rằng heo (con lợn) có móng chẻ, nhưng không nhai lại; nên nó ô uế cho các ngươi. Các phương án sai: 1) 'Vì có móng chẻ nhưng được xếp vào loài thủy cầm' – Sai, heo không phải thủy cầm, tiêu chí ô uế dựa trên việc nhai lại, không dựa trên cách phân loại này. 2) 'Vì không có móng chẻ nhưng nhai lại' – Sai, heo có móng chẻ (đúng), nhưng không nhai lại; phương án này đảo ngược đặc điểm dựa trên các tiêu chí cho thú ăn thịt khác (Lê-vi 11:3-6). 3) 'Vì là loài thú có hai chân nhưng không biết bay' – Sai, tiêu chí ô uế trong chương này không áp dụng cho việc bay hay số chân của thú trên cạn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -681,10 +681,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Vì sống trong bùn",
+      "Vì có móng chẻ nhưng được xếp vào loài thủy cầm",
       "Vì có móng chẻ nhưng không nhai lại",
-      "Vì lông cứng và đen",
-      "Vì kêu to"
+      "Vì không có móng chẻ nhưng nhai lại",
+      "Vì là loài thú có hai chân nhưng không biết bay"
     ]
   },
   {
@@ -695,15 +695,15 @@
     "type": "multiple_choice_single",
     "content": "Sinh vật dưới nước phải có gì mới được xem là tinh sạch?",
     "options": [
-      "Màu sáng",
-      "Chân và càng",
-      "Vỏ cứng",
+      "Mang và vảy",
+      "Vây và da",
+      "Bơi nhanh và sạch sẽ",
       "Vây và vảy"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 11:9 — 'Trong các loài sống dưới nước, con nào có vây và có vảy... thì các ngươi được ăn.'",
+    "explanation": "Lê-vi Ký 11:9 chép: 'Những loài nào ở dưới nước, trong các sông, biển, hễ vật nào có vây và có vảy, thì các ngươi được phép ăn.' Do đó, đáp án đúng là 'Vây và vảy', vì đây là hai đặc điểm Kinh Thánh quy định để xác định sinh vật dưới nước tinh sạch. Các đáp án sai: 1) 'Mang và vảy' sai chi tiết (thay 'vây' bằng 'mang'), dù mang là bộ phận phổ biến nhưng không phải tiêu chuẩn. 2) 'Vây và da' lấy từ ngữ cảnh gần về thú vật trên cạn (ví dụ Lê-vi 11:3 nói về móng và nhai lại), áp dụng sai cho sinh vật dưới nước. 3) 'Bơi nhanh và sạch sẽ' là hiểu lầm phổ biến dựa trên quan niệm tự nhiên, không dựa trên tiêu chuẩn Kinh Thánh.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -721,15 +721,15 @@
     "type": "multiple_choice_single",
     "content": "Con trai phải chịu cắt bì vào ngày thứ mấy sau khi sinh?",
     "options": [
-      "Ngày thứ bảy",
-      "Ngày thứ mười bốn",
       "Ngày thứ ba",
+      "Ngày thứ bảy",
+      "Ngày thứ ba mươi",
       "Ngày thứ tám"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 12:3 — 'Đến ngày thứ tám, đứa trẻ phải chịu cắt bì.'",
+    "explanation": "Le-vi 12:2-3 quy định: 'Người nữ... sẽ bị ô uế bảy ngày... Đến ngày thứ tám, người ta sẽ làm phép cắt bì cho đứa trẻ.' Do đó, đáp án đúng là 'Ngày thứ tám'. Distractor 'Ngày thứ ba' là sai chi tiết số. Distractor 'Ngày thứ bảy' là gần đúng nhưng nhầm với số ngày người mẹ bị ô uế (câu 2), không phải ngày cắt bì. Distractor 'Ngày thứ ba mươi' sai phạm vi, thuộc về nghi lễ thanh tẩy của người mẹ sau khi sinh con gái (câu 4-5), không liên quan đến thời điểm cắt bì cho con trai.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -747,15 +747,15 @@
     "type": "multiple_choice_single",
     "content": "Thời gian thanh tẩy của người mẹ sinh con gái dài gấp mấy lần so với sinh con trai?",
     "options": [
-      "Gấp ba",
       "Bằng nhau",
-      "Gấp bốn",
+      "Gấp ba",
+      "Gấp rưỡi",
       "Gấp đôi"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 12:2,5 — Sinh con trai: ô uế 7 ngày + 33 ngày thanh tẩy = 40 ngày. Sinh con gái: ô uế 14 ngày + 66 ngày thanh tẩy = 80 ngày. Gấp đôi thời gian.",
+    "explanation": "Lê-vi Ký 12:2-5 quy định: khi sinh con trai, thời gian ô uế là 7 ngày và thời gian thanh tẩy là 33 ngày, tổng 40 ngày. Khi sinh con gái, thời gian ô uế là 14 ngày và thời gian thanh tẩy là 66 ngày, tổng 80 ngày. Vì vậy, tổng thời gian thanh tẩy cho con gái (80 ngày) đúng là gấp đôi so với con trai (40 ngày).\n\nCác đáp án sai:\n- 'Bằng nhau' là sai vì Kinh Thánh nêu rõ hai thời hạn khác nhau.\n- 'Gấp ba' là sai số so với quy định chính xác.\n- 'Gấp rưỡi' là đáp án gần đúng nhưng vẫn sai; nó có thể xuất phát từ việc nhớ nhầm tỷ lệ giữa các con số trong phân đoạn này hoặc phân đoạn gần đó (ví dụ, so sánh sai giữa thời gian ô uế ban đầu).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -773,15 +773,15 @@
     "type": "multiple_choice_single",
     "content": "Ai là người có thẩm quyền xem xét và tuyên bố một người bị bệnh phong cùi?",
     "options": [
-      "Môi-se",
-      "Quan xét",
-      "Trưởng lão",
+      "Người thân trong nhà",
+      "Bác sĩ chuyên khoa",
+      "Trưởng lão trong cộng đồng",
       "Thầy tế lễ"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 13:2 — 'Người ấy phải được đưa đến thầy tế lễ A-rôn hoặc một trong các con trai người là thầy tế lễ.'",
+    "explanation": "Đáp án đúng là 'Thầy tế lễ' theo Kinh Thánh Lê-vi Ký 13:2-3, phần này chỉ rõ rằng khi có dấu hiệu bệnh trên da, người đó 'sẽ được dẫn đến thầy tế lễ A-rôn, hay là đến một trong các con trai người, là những thầy tế lễ' để được xem xét và tuyên bố. Các đáp án sai:\n1) 'Người thân trong nhà' là một hiểu lầm phổ biến vì trong bối cảnh xã hội, người thân có thể là người đầu tiên phát hiện, nhưng Kinh Thánh quy định rõ thẩm quyền thuộc về thầy tế lễ.\n2) 'Bác sĩ chuyên khoa' là sai phạm vi vì bệnh phong cùi được đề cập ở đây liên quan đến nghi thức tôn giáo và sự tinh sạch theo luật pháp, không phải là một vấn đề y tế hiện đại với bác sĩ.\n3) 'Trưởng lão trong cộng đồng' là một đáp án gần đúng vì trưởng lão có vai trò lãnh đạo và có thể liên quan đến việc quản lý cộng đồng, nhưng Lê-vi Ký 13 chỉ định cụ thể thầy tế lễ mới có thẩm quyền xem xét và tuyên bố (đây là lỗi nhầm passage gần - sai một chi tiết then chốt về chức vụ).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -798,15 +798,15 @@
     "type": "multiple_choice_single",
     "content": "Theo Lê-vi Ký 13:4, người có vết nghi ngờ bệnh phong phải bị cách ly bao lâu?",
     "options": [
-      "Ba mươi ngày",
-      "Ba ngày",
       "Mười bốn ngày",
+      "Mười ngày",
+      "Hai mươi ngày",
       "Bảy ngày"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 13:4 — \"thì thầy tế lễ sẽ cách ly người có vết đó trong bảy ngày.\" Sau đó sẽ tái khám để xác định.",
+    "explanation": "Câu hỏi được trả lời trực tiếp từ Lê-vi Ký 13:4 (BTT): 'Nếu lông trong vết đã biến thành trắng, và vết lõm sâu hơn da, ấy là bệnh phong đã phát ra trong vít; thầy tế lễ sẽ định người là ô uế, không cần phải giam họ lại, vì họ đã bị ô uế rồi. Còn nếu có đốm sáng trong da, không lõm sâu hơn da, và lông không biến thành trắng, thì thầy tế lễ phải giam giữ người có vít trong bảy ngày.' Đây là hướng dẫn cho trường hợp vết nghi ngờ nhưng chưa rõ ràng, nên cần cách ly bảy ngày để quan sát.\n\nĐÁP ÁN ĐÚNG: 'Bảy ngày' là thời gian cách ly chính xác được quy định.\n\nĐÁP ÁN SAI 1 ('Mười bốn ngày'): Sai chi tiết số. Đây là thời gian cách ly cho một tình trạng khác (ví dụ: sau lần khám thứ nhất, có thể cần thêm bảy ngày nữa, nhưng không phải là thời gian ban đầu được nêu trong câu hỏi).\n\nĐÁP ÁN SAI 2 ('Mười ngày'): Sai do nhầm với đoạn gần. Một số quy định thanh tẩy khác trong sách Lê-vi có thể liên quan đến khoảng thời gian mười ngày, nhưng không áp dụng cho tình huống cách ly ban đầu vì nghi ngờ bệnh phong này.\n\nĐÁP ÁN SAI 3 ('Hai mươi ngày'): Sai do hiểu lầm phổ biến. Đây không phải là thời gian cách ly tiêu chuẩn nào được đề cập trong các quy định về bệnh phong; có thể người đọc nhớ nhầm với các chu kỳ thời gian dài hơn từ những câu chuyện khác.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -826,15 +826,15 @@
     "type": "multiple_choice_single",
     "content": "Người bị bệnh phong phải kêu lên điều gì khi gặp người khác?",
     "options": [
-      "Tránh ra!",
+      "Đừng đến gần, tôi ô uế!",
       "Ô uế! Ô uế!",
-      "Cứu tôi!",
-      "Xin ơn!"
+      "Tôi không được sạch, xin tránh đường!",
+      "Xin Chúa thương xót tôi!"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 13:45 — 'Người phong phải mặc áo rách, xõa tóc, che râu và kêu lên: Ô uế! Ô uế!'",
+    "explanation": "Đáp án đúng là 'Ô uế! Ô uế!' vì Lê-vi ký 13:45-46 quy định người mắc bệnh phong phải 'kêu lên rằng: Ô uế! Ô uế!'. Distractor 1 ('Đừng đến gần, tôi ô uế!') là gần đúng nhưng sai chi tiết: văn bản chỉ định họ phải kêu lên hai tiếng 'Ô uế! Ô uế!' chứ không thêm lời dặn 'Đừng đến gần' hay 'tôi'. Distractor 2 ('Tôi không được sạch, xin tránh đường!') sai ở chỗ đây là ý của luật (họ phải ở riêng ra), nhưng không phải là lời họ phải kêu lên khi gặp người khác. Distractor 3 ('Xin Chúa thương xót tôi!') là hiểu lầm phổ biến về thái độ cầu nguyện, nhưng không liên quan đến mệnh lệnh cụ thể về lời cảnh báo ô uế trong đoạn này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -878,15 +878,15 @@
     "type": "multiple_choice_single",
     "content": "Theo Lê-vi Ký chương 14, luật về bệnh phong (hoặc vết mốc tương tự) được áp dụng cho đối tượng nào?",
     "options": [
-      "Chỉ con người",
-      "Chỉ thú vật",
+      "Chỉ con người và quần áo",
+      "Chỉ nhà cửa và đồ dùng",
       "Cả con người lẫn nhà cửa",
-      "Chỉ y phục và đồ da"
+      "Chỉ con người"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 14:34-35 quy định về việc xử lý khi có 'bệnh phong' (dịch tễ, vết mốc) trên nhà cửa. Các chương 13-14 trước đó cũng quy định chi tiết về bệnh phong trên người và trên quần áo/đồ da. Do đó, luật này áp dụng cho cả người, y phục/đồ da (Lv 13) và nhà cửa (Lv 14).",
+    "explanation": "Đáp án đúng là 'Cả con người lẫn nhà cửa' vì Lê-vi Ký 14:34-35, trong bối cảnh Chúa ban luật pháp cho dân Y-sơ-ra-ên trong xứ Ca-na-an, đã chỉ định rõ ràng việc áp dụng cho 'cái nhà' (nhà cửa). Toàn chương 14 đề cập đến các quy định về thanh tẩy cho cả con người (phần đầu chương) và nhà cửa (phần sau, từ câu 34 trở đi), chứng tỏ luật được áp dụng cho cả hai đối tượng này.\n\nCác đáp án sai: (1) 'Chỉ con người và quần áo' là gần đúng nhưng sai chi tiết: mặc dù Lê-vi Ký 13 có đề cập đến quần áo, nhưng chương 14 này không đặt luật phong/mốc cho quần áo cùng với nhà cửa trong câu hỏi. (2) 'Chỉ nhà cửa và đồ dùng' thu hẹp phạm vi sai: luật trong chương này áp dụng cho cả con người, không chỉ vật dụng. (3) 'Chỉ con người' phản ánh sự hiểu lầm phổ biến khi nghĩ bệnh phong chỉ liên quan đến người, nhưng đoạn Kinh Thánh tham chiếu mở rộng đối tượng áp dụng sang nhà cửa.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -904,14 +904,14 @@
     "content": "Sau khi hết bệnh, người bị ra mủ phải đợi bao nhiêu ngày rồi mới được thanh tẩy?",
     "options": [
       "Bảy ngày",
-      "Mười bốn ngày",
-      "Ba mươi ngày",
-      "Ba ngày"
+      "Tám ngày",
+      "Ba ngày",
+      "Mười bốn ngày"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Lê-vi Ký 15:13 — 'Khi người bị ra mủ được lành, thì phải đếm bảy ngày cho sự thanh tẩy mình.'",
+    "explanation": "Câu hỏi dựa trên Lê-vi Ký 15:13 (BTT): 'Khi người bị bịnh mủ đã được sạch, phải tính bảy ngày về sự thanh tẩy mình...'. ĐÁP ÁN ĐÚNG là 'Bảy ngày' vì Kinh Thánh quy định rõ khoảng thời gian đợi sau khi hết bệnh và trước khi thanh tẩy. DISTRACTOR SAI 1 ('Tám ngày') là gần đúng nhưng sai chi tiết số (sai 1 ngày). DISTRACTOR SAI 2 ('Ba ngày') dựa trên nhầm lẫn với các quy định về thanh tẩy khác có thời gian ngắn hơn trong các phân đoạn gần đó (ví dụ: một số quy định về tẩy uế sau khi sinh con, nhưng không phải cho trường hợp này). DISTRACTOR SAI 3 ('Mười bốn ngày') mở rộng phạm vi sai, thường áp dụng cho các giai đoạn thanh tẩy dài hơn hoặc kết hợp nhiều giai đoạn khác trong luật pháp.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -928,15 +928,15 @@
     "type": "multiple_choice_single",
     "content": "Mục đích chính của các luật thanh tẩy trong Lê-vi Ký 15 là gì?",
     "options": [
-      "Để phân biệt dân Y-sơ-ra-ên với dân ngoại",
-      "Để thầy tế lễ có quyền lực",
+      "Để giữ dân Y-sơ-ra-ên tách khỏi sự ô uế, kẻo họ bị bệnh",
+      "Để hướng dẫn sự chẩn đoán và điều trị các bệnh da liễu",
       "Để giữ dân Y-sơ-ra-ên tách khỏi sự ô uế, kẻo họ chết",
-      "Để trừng phạt tội lỗi"
+      "Để thiết lập các nghi thức cho sự hiện diện của Đức Chúa Trời"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 15:31 — 'Các ngươi phải giữ dân Y-sơ-ra-ên tách khỏi sự ô uế, kẻo họ làm ô uế Đền Tạm Ta ở giữa họ mà phải chết.'",
+    "explanation": "Câu hỏi về mục đích chính của các luật thanh tẩy trong Lê-vi Ký 15. Đáp án đúng là: 'Để giữ dân Y-sơ-ra-ên tách khỏi sự ô uế, kẻo họ chết' (Lê-vi Ký 15:31). Phần Kinh Thánh này ghi: 'Các ngươi phải khiến dân Y-sơ-ra-ên tách khỏi sự ô uế của họ, hầu cho họ không chết vì sự ô uế mình...'. Mục đích chính là ngăn ngừa sự chết, một hậu quả nghiêm trọng của việc không tách khỏi sự ô uế trong khuôn viên thánh. \n\nCác đáp án sai: \n1. 'kẻo họ bị bệnh' là sai vì tuy bệnh tật có thể liên quan, nhưng văn bản trực tiếp nói đến 'không chết' chứ không phải 'không bệnh'. \n2. 'hướng dẫn sự chẩn đoán và điều trị các bệnh da liễu' là sai vì chương này không tập trung vào y học hay điều trị lâm sàng, mà là sự thanh tẩy nghi lễ. \n3. 'thiết lập các nghi thức cho sự hiện diện của Đức Chúa Trời' là sai vì tuy liên quan đến sự thánh khiết, mục đích cụ thể được nêu trong câu 31 là tránh sự chết do ô uế, không phải trực tiếp mô tả nghi thức cho sự hiện diện của Ngài.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -954,15 +954,15 @@
     "type": "multiple_choice_single",
     "content": "Thầy tế lễ thượng phẩm được vào Nơi Chí Thánh bao nhiêu lần trong một năm?",
     "options": [
-      "Mỗi tháng một lần",
+      "Chỉ một lần, vào Lễ Vượt Qua",
       "Chỉ một lần, vào Ngày Lễ Chuộc Tội",
-      "Bất cứ khi nào cần",
-      "Mỗi ngày Sa-bát"
+      "Mỗi tháng một lần, vào ngày trăng mới",
+      "Bất cứ khi nào cần dâng tế lễ chuộc tội"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 16:2 — 'Đừng vào nơi thánh phía trong bức màn bất cứ lúc nào, kẻo phải chết.' Hê-bơ-rơ 9:7 xác nhận chỉ mỗi năm một lần vào Ngày Lễ Chuộc Tội.",
+    "explanation": "Đáp án đúng là 'Chỉ một lần, vào Ngày Lễ Chuộc Tội' dựa trên Lê-vi Ký 16:2-3, trong đó Chúa phán với Môi-se rằng A-rôn không được tùy tiện vào Nơi Chí Thánh, chỉ vào trong màn che phía trước nắp thi ân một lần mỗi năm, nhằm Ngày Chuộc Tội (Lê-vi Ký 16:34).\n\nCác đáp án sai:\n1. 'Chỉ một lần, vào Lễ Vượt Qua' sai vì nhầm chi tiết thời điểm; Ngày Lễ Chuộc Tội (Yom Kippur) là một lễ riêng biệt, khác với Lễ Vượt Qua.\n2. 'Mỗi tháng một lần, vào ngày trăng mới' sai về phạm vi tần suất; mặc dù có các nghi thức vào ngày trăng mới, nhưng việc vào Nơi Chí Thánh chỉ được phép một lần/năm.\n3. 'Bất cứ khi nào cần dâng tế lễ chuộc tội' sai vì phản ánh một hiểu lầm phổ biến; việc này bị giới hạn nghiêm ngặt bởi luật định, không phải tùy theo nhu cầu cá nhân hay tình huống.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -981,15 +981,15 @@
     "type": "multiple_choice_single",
     "content": "Vào Ngày Lễ Chuộc Tội, thầy tế lễ thượng phẩm mặc gì khi vào Nơi Chí Thánh?",
     "options": [
-      "Áo choàng màu xanh",
+      "Áo vải gai thánh thêu đẹp đẽ",
       "Áo vải gai thánh giản dị",
-      "Y phục đại lễ với ê-phót và bảng đeo ngực",
-      "Áo bào trắng và vàng"
+      "Áo vải gai cùng bộ áo xống thường",
+      "Áo bằng vải lanh mịn"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 16:4 — 'Người phải mặc áo lót thánh bằng vải gai, quần bằng vải gai, thắt đai vải gai, và đội mũ vải gai.' Không mặc y phục đại lễ thường ngày.",
+    "explanation": "Câu hỏi dựa trên Lê-vi Ký 16:4. ĐÁP ÁN ĐÚNG: 'Áo vải gai thánh giản dị' là chính xác vì câu Kinh Thánh ghi rõ: 'Người phải mặc áo lá vải gai thánh, cùng mặc quần vải gai che thân mình, thắt dây vải gai, và đội mão vải gai; ấy là bộ áo xống thánh' (Lê-vi Ký 16:4), nhấn mạnh sự giản dị, thuần khiết trong nghi lễ đặc biệt này. DISTRACTOR SAI: 1) 'Áo vải gai thánh thêu đẹp đẽ' sai vì Kinh Thánh không mô tả áo này có thêu hoa văn đẹp đẽ; đây là trang phục giản dị, đơn sơ. 2) 'Áo vải gai cùng bộ áo xống thường' sai vì phạm vi sai: câu Kinh Thánh nói đến 'bộ áo xống thánh' chứ không phải 'áo xống thường'. 3) 'Áo bằng vải lanh mịn' sai vì đây là một hiểu lầm phổ biến; dù vải gai có thể được xem là một loại vải lanh, nhưng từ ngữ Kinh Thánh dùng là 'vải gai' (linen) cụ thể cho nghi lễ này, không phải là mô tả chung chung về chất liệu mịn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1009,15 +1009,15 @@
     "type": "multiple_choice_single",
     "content": "Vào Ngày Lễ Chuộc Tội, A-rôn bắt thăm hai con dê: một cho Đức Giê-hô-va và một cho ai?",
     "options": [
-      "Dân Y-sơ-ra-ên",
-      "Thầy tế lễ",
-      "Dân ngoại",
+      "Môi-se",
+      "dân Y-sơ-ra-ên",
+      "của lễ thiêu",
       "A-xa-xên"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 16:8 — 'A-rôn bắt thăm cho hai con dê: một thăm về phần Đức Giê-hô-va và một thăm về phần A-xa-xên.'",
+    "explanation": "Lê-vi Ký 16:8-10 chép: 'Rồi A-rôn sẽ bắt thăm cho hai con dê: một thăm cho Đức Giê-hô-va, một thăm cho A-xa-xên.' Đáp án đúng là 'A-xa-xên' vì con dê thứ hai được chỉ định rõ ràng cho A-xa-xên, một thuật ngữ có thể chỉ nơi chốn hoặc một thực thể trong nghi lễ, tượng trưng cho việc gánh tội lỗi và bị đuổi vào đồng vắng.\n\n- Distractor 'Môi-se' sai vì Môi-se là người hướng dẫn nghi lễ (được nhắc đến ở các câu gần đó), nhưng không phải là đối tượng được bắt thăm cho con dê này.\n- Distractor 'dân Y-sơ-ra-ên' sai (gần đúng) vì nghi lễ này vì lợi ích của dân chúng, nhưng Kinh Thánh ghi rõ con dê được bắt thăm là 'cho A-xa-xên', không phải trực tiếp 'cho dân Y-sơ-ra-ên'.\n- Distractor 'của lễ thiêu' sai vì đây là một loại sinh tế khác được nhắc đến trong chương, nhưng không phải là đối tượng được bắt thăm cho con dê thứ hai.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1037,15 +1037,15 @@
     "type": "multiple_choice_single",
     "content": "A-rôn đặt hai tay trên đầu con dê sống và xưng mọi ___ của dân Y-sơ-ra-ên lên đầu nó.",
     "options": [
-      "lời cầu nguyện",
-      "ước muốn",
+      "của lễ",
+      "lời nguyện",
       "tội lỗi",
-      "bệnh tật"
+      "của cải"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 16:21 — 'A-rôn sẽ đặt hai tay mình trên đầu con dê sống, xưng trên nó mọi tội ác và sự vi phạm, tức là mọi tội lỗi của dân Y-sơ-ra-ên.'",
+    "explanation": "Trong Lê-vi Ký 16:21, A-rôn đặt tay trên đầu con dê sống và \"xưng trên nó mọi sự gian ác và mọi sự phạm phép của dân Y-sơ-ra-ên, tức là mọi tội lỗi của chúng\". Do đó, đáp án đúng là \"tội lỗi\". Distractor \"của lễ\" sai vì tuy được nhắc đến nhiều trong đoạn gần (của lễ chuộc tội, của lễ thiêu), nhưng đây không phải thứ được xưng ra. Distractor \"lời nguyện\" sai vì đây là một hiểu lầm phổ biến khi nghĩ về nghi lễ tôn giáo, nhưng văn bản không đề cập. Distractor \"của cải\" sai vì tuy dân Y-sơ-ra-ên có của cải, nhưng chi tiết này hoàn toàn lạc đề so với nội dung câu hỏi về nghi lễ xưng tội.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1065,14 +1065,14 @@
     "content": "Ngày Lễ Chuộc Tội (ngày kiêng ăn) được tổ chức vào ngày mười tháng mấy?",
     "options": [
       "bảy",
-      "ba",
-      "một",
-      "mười hai"
+      "năm",
+      "sáu",
+      "một"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Lê-vi Ký 16:29 — 'Đây là luật lệ đời đời cho các ngươi: ngày mười tháng bảy, các ngươi phải kiêng ăn.'",
+    "explanation": "Lê-vi Ký 16:29 ghi: \"Các ngươi khá định như một mạng lịnh đời đời: đến ngày mồng mười tháng bảy, các ngươi phải ép linh hồn mình...\". Do đó, đáp án đúng là 'bảy', vì câu Kinh Thánh xác định ngày mồng mười của tháng bảy. Distractor 'sáu' là gần đúng nhưng sai chi tiết then chốt (tháng), có thể do nhầm lẫn với các lễ khác trong những tháng gần đó. Distractor 'năm' sai chi tiết số, không phù hợp với văn bản. Distractor 'một' là hiểu lầm phổ biến, vì tháng đầu tiên trong năm (tháng giêng) có nhiều lễ quan trọng khác, nhưng không phải là tháng của Ngày Lễ Chuộc Tội.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1090,15 +1090,15 @@
     "type": "multiple_choice_single",
     "content": "Sự sống của xác thịt ở trong gì?",
     "options": [
-      "Nước",
+      "Sự hô hấp",
       "Huyết",
-      "Linh hồn",
-      "Hơi thở"
+      "Nước",
+      "Sự vâng lời"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 17:11 — 'Vì sự sống của xác thịt ở trong huyết. Ta đã ban huyết cho các ngươi để dùng trên bàn thờ mà chuộc tội cho linh hồn mình.'",
+    "explanation": "Lê-vi Ký 17:11 chép: 'Vì sanh mạng của xác thịt ở trong huyết; ta đã ban huyết cho các ngươi trên bàn thờ, đặng làm lễ chuộc tội cho linh hồn mình; vì nhờ sanh mạng mà huyết mới chuộc tội được.' Câu này xác định rõ ràng rằng sự sống (sanh mạng) của xác thịt ở trong huyết. Đáp án sai 'Sự hô hấp' là một chi tiết gần đúng vì hô hấp liên quan đến sự sống, nhưng Kinh Thánh tại đây chỉ định cụ thể là 'huyết'. Đáp án sai 'Nước' là một chi tiết sai vì nước tuy quan trọng cho sự sống nhưng không phải là yếu tố được nêu trong câu Kinh Thánh này. Đáp án sai 'Sự vâng lời' tuy là một nguyên tắc quan trọng trong Kinh Thánh, nhưng không liên quan trực tiếp đến câu hỏi về nơi chứa sự sống của xác thịt theo Lê-vi Ký 17:11, nên nó đúng văn bản nhưng lạc câu hỏi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1117,7 +1117,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 17:11 — 'Sự sống của xác thịt ở trong huyết... huyết chuộc tội cho linh hồn.' Hê-bơ-rơ 9:22 xác nhận: 'Không đổ huyết thì không có sự tha tội.'",
+    "explanation": "Câu Kinh Thánh Lê-vi Ký 17:11 chép: 'Vì sanh mạng của xác thịt ở trong huyết; ta đã ban huyết cho các ngươi trên bàn thờ, đặng làm lễ chuộc tội cho linh hồn mình; vì nhờ sanh mạng mà huyết mới chuộc tội được.' Do đó, đáp án đúng là 'Trong huyết / để chuộc tội cho linh hồn trên bàn thờ', vì câu Kinh Thánh xác định rõ sự sống (sanh mạng) ở trong huyết và mục đích của huyết được ban trên bàn thờ là để chuộc tội cho linh hồn.\n\nCác đáp án sai:\n1. Distractor 'Trong huyết / để tẩy uế cho thân thể nơi bàn thờ' SAI vì mặc dù nói đúng địa điểm 'trong huyết', nhưng chức năng 'tẩy uế cho thân thể' là sai. Kinh Thánh nêu rõ mục đích là 'chuộc tội cho linh hồn', không phải tẩy uế thân thể. Đây là distractor 'gần đúng' nhưng sai chi tiết then chốt về chức năng.\n2. Distractor 'Trong linh hồn / để chuộc tội cho xác thịt trên bàn thờ' SAI vì nó đảo ngược hoàn toàn khái niệm trong câu Kinh Thánh. Câu gốc nói sự sống ở trong huyết và huyết chuộc tội cho linh hồn, không phải sự sống ở trong linh hồn để chuộc tội cho xác thịt. Lỗi này thuộc loại nhầm lẫn với các khái niệm gần (như linh hồn, xác thịt) nhưng đặt sai vị trí.\n3. Distractor 'Trong hơi thở / để làm lễ vật thơm tho cho Đức Giê-hô-va' SAI vì mô tả này không phù hợp với Lê-vi Ký 17:11. 'Hơi thở' có thể liên tưởng đến sự sống trong Sáng-thế Ký 2:7, nhưng không phải là câu trả lời cho câu hỏi này. Còn 'lễ vật thơm tho' là ngôn ngữ mô tả các của lễ thiêu (như Lê-vi Ký 1:9), không phải chức năng cụ thể của huyết theo câu 17:11. Đây là thông tin đúng trong ngữ cảnh khác nhưng lạc đề với câu hỏi cụ thể.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1128,10 +1128,10 @@
       "Nâng cao"
     ],
     "options": [
-      "Trong xương / để hiến tế động vật",
+      "Trong huyết / để tẩy uế cho thân thể nơi bàn thờ",
       "Trong huyết / để chuộc tội cho linh hồn trên bàn thờ",
-      "Trong tâm trí / để dâng cảm tạ",
-      "Trong hơi thở / để ngợi khen"
+      "Trong linh hồn / để chuộc tội cho xác thịt trên bàn thờ",
+      "Trong hơi thở / để làm lễ vật thơm tho cho Đức Giê-hô-va"
     ]
   },
   {
@@ -1143,15 +1143,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Chúa Trời cấm dân Y-sơ-ra-ên làm theo phong tục của hai xứ nào?",
     "options": [
-      "Ba-by-lôn và A-si-ri",
-      "Phi-li-tin và Ê-đôm",
-      "Mô-áp và Am-môn",
+      "Ai-cập và A-si-ri",
+      "Ba-by-lôn và Ca-na-an",
+      "Ê-đôm và Mô-áp",
       "Ai-cập và Ca-na-an"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 18:3 — 'Các ngươi không được làm theo phong tục xứ Ai-cập, nơi các ngươi đã ở; cũng không được làm theo phong tục xứ Ca-na-an, nơi Ta đem các ngươi vào.'",
+    "explanation": "Câu hỏi trích trực tiếp Lê-vi Ký 18:3-5 (BTT). Đoạn Kinh Thánh viết: 'Các ngươi chớ làm theo những sự gì tại xứ Ê-díp-tô, là nơi các ngươi đã kiều ngụ; cũng chớ làm theo những sự gì tại xứ Ca-na-an, là xứ ta dẫn các ngươi đi vào: chớ đi theo thói tục chúng nó.' Do đó, đáp án đúng là 'Ai-cập và Ca-na-an' vì đây là hai xứ được nêu tên cụ thể trong câu này.\n\nCác phương án sai:\n- 'Ai-cập và A-si-ri' là gần đúng nhưng sai chi tiết (wrong_detail): Sai tên xứ Ca-na-an thành A-si-ri. A-si-ri là một đế quốc thường xâm lấn Y-sơ-ra-ên về sau, không được đề cập trong bối cảnh Lê-vi Ký 18.\n- 'Ba-by-lôn và Ca-na-an' là nhầm lẫn với đoạn Kinh Thánh khác (nearby_passage): Sai tên xứ Ai-cập thành Ba-by-lôn. Ba-by-lôn là nơi dân Y-sơ-ra-ên bị lưu đày sau này, không phải là nơi họ từng sống trước khi ra khỏi Ai-cập như ngữ cảnh này.\n- 'Ê-đôm và Mô-áp' tuy là các dân tộc láng giềng và thường bị cấm giao thiệp, nhưng lạc với câu hỏi hỏi cụ thể về Lê-vi Ký 18:3 (true_but_off). Câu hỏi này chỉ hỏi về hai xứ được liệt kê trong đoạn ấy, không phải các dân tộc khác.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1169,15 +1169,15 @@
     "type": "multiple_choice_single",
     "content": "Dân Y-sơ-ra-ên bị cấm dâng con cái cho thần nào?",
     "options": [
-      "A-sê-ra",
+      "Bê-li-an",
       "Mô-lóc",
-      "Đa-gôn",
-      "Ba-anh"
+      "Át-tạt-tê",
+      "Ta-mút"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 18:21 — 'Không được đem con cái mình dâng cho thần Mô-lóc mà thiêu trong lửa.'",
+    "explanation": "Lê-vi Ký 18:21 chép: 'Ngươi chớ nên dâng con cái mình cho thần tượng Mô-lóc, chớ làm ô danh Đức Chúa Trời ngươi: Ta là Đức Giê-hô-va.' Đáp án đúng là 'Mô-lóc' vì câu này chỉ rõ điều răn cấm dâng con cái cho thần tượng này. Distractor 'Bê-li-an' là gần đúng nhưng sai chi tiết; Bê-li-an là tên khác của Sa-tan hoặc thần ác trong Tân Ước (2 Cô-rinh-tô 6:15), không phải thần được nói đến trong câu này. Distractor 'Át-tạt-tê' sai vì đây là một nữ thần ngoại giáo khác được thờ phượng trong vùng, nhưng Lê-vi Ký 18:21 không đề cập đến bà. Distractor 'Ta-mút' sai vì đây là một vị thần hoặc khái niệm không có trong Kinh Thánh, không liên quan đến ngữ cảnh câu hỏi về sự cấm đoán cụ thể.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1195,15 +1195,15 @@
     "type": "multiple_choice_single",
     "content": "Hãy nên thánh, vì Ta, Giê-hô-va Đức Chúa Trời các ngươi, là ___.",
     "options": [
-      "công bình",
+      "đấng toàn năng",
       "thánh",
-      "quyền năng",
-      "yêu thương"
+      "đáng sợ",
+      "Đức Chúa Trời của Áp-ra-ham"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 19:2 — 'Hãy nên thánh, vì Ta, Giê-hô-va Đức Chúa Trời các ngươi, là thánh.' Đây là mệnh lệnh trung tâm của sách Lê-vi Ký, được 1 Phi-e-rơ 1:16 nhắc lại.",
+    "explanation": "Lê-vi Ký 19:2 ghi rõ: \"Hãy nói cùng cả hội chúng Y-sơ-ra-ên rằng: Hãy nên thánh, vì ta, Giê-hô-va Đức Chúa Trời các ngươi, là thánh.\" Do đó, đáp án chính xác là \"thánh\". \n\n- Distractor \"đấng toàn năng\" (gần đúng) là một thuộc tính đúng của Đức Chúa Trời (Sáng Thế Ký 17:1) nhưng KHÔNG PHẢI là từ ngữ cụ thể trong câu Kinh Thánh này (Lê-vi 19:2). Đây là lỗi nhầm passage gần.\n- Distractor \"đáng sợ\" phản ánh một hiểu lầm phổ biến về bản tính của Đức Chúa Trời trong Cựu Ước, dù Ngài đáng tôn kính, nhưng từ cụ thể trong câu này là \"thánh\", không phải \"đáng sợ\".\n- Distractor \"Đức Chúa Trời của Áp-ra-ham\" là một danh xưng đúng trong ngữ cảnh khác (ví dụ: Xuất Ê-díp-tô Ký 3:6), nhưng sai chi tiết cụ thể trong câu Lê-vi 19:2, nơi danh xưng là \"Giê-hô-va Đức Chúa Trời các ngươi\".",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1221,15 +1221,15 @@
     "type": "multiple_choice_single",
     "content": "Khi gặt lúa, người Y-sơ-ra-ên phải chừa lại góc ruộng và không mót lại để dành cho ai?",
     "options": [
-      "Thầy tế lễ",
-      "Nhà vua",
+      "Người nghèo và người què",
+      "Người Lê-vi và người ngoại kiều",
       "Người nghèo và ngoại kiều",
-      "Con trưởng nam"
+      "Người bệnh và người già"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 19:9-10 — 'Hãy để phần đó lại cho người nghèo và ngoại kiều. Ta là Giê-hô-va Đức Chúa Trời các ngươi.'",
+    "explanation": "Lê-vi Ký 19:9-10 chép: \"Khi các ngươi gặt lúa trong xứ mình, chớ có gặt cho đến góc đồng, và chớ mót lại... Các ngươi chớ mót nho mình... hãy để những trái đó cho kẻ nghèo và cho kẻ khách ngoại bang.\" Vì vậy, đáp án đúng là \"người nghèo và ngoại kiều\" (kẻ khách ngoại bang).\n\nCác đáp án sai:\n1. \"Người nghèo và người què\": Sai chi tiết. Kinh Thánh liệt kê người nghèo và ngoại kiều, không nhắc riêng người què trong đoạn này.\n2. \"Người Lê-vi và người ngoại kiều\": Nhầm passage gần. Luật dành phần cho người Lê-vi được đề cập ở các sách khác (như Dân Số 18), không phải trong đoạn Lê-vi 19:9-10 này.\n3. \"Người bệnh và người già\": Hiểu lầm phổ biến. Mặc dù đây là những đối tượng dễ bị tổn thương, đoạn Kinh Thánh cụ thể này không đề cập đến họ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1247,15 +1247,15 @@
     "type": "multiple_choice_single",
     "content": "Hãy yêu ___ như chính mình.",
     "options": [
-      "cha mẹ",
-      "kẻ thù",
-      "Đức Chúa Trời",
+      "bạn hữu mình",
+      "người yếu đuối",
+      "kẻ thù nghịch",
       "người lân cận"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 19:18 — 'Hãy yêu người lân cận như chính mình. Ta là Đức Giê-hô-va.' Chúa Giê-xu trích dẫn câu này là điều răn lớn thứ hai (Ma-thi-ơ 22:39).",
+    "explanation": "Câu Kinh Thánh Lê-vi Ký 19:18 chép rõ ràng: 'Ngươi chớ báo thù, chớ giữ sự báo thù cùng con cháu dân sự mình, nhưng hãy yêu người lân cận như mình. Ta là Đức Giê-hô-va' (BTT). Do đó, 'người lân cận' là đáp án chính xác cho câu hỏi. Các đáp án còn lại sai: (1) 'bạn hữu mình' là một chi tiết sai, vì phạm vi của 'người lân cận' rộng hơn, bao gồm cả những người không phải là bạn thân; (2) 'người yếu đuối' thu hẹp phạm vi mệnh lệnh vào một nhóm đối tượng cụ thể, trong khi Kinh Thánh không giới hạn như vậy; (3) 'kẻ thù nghịch' phản ánh một sự hiểu lầm phổ biến, vì mặc dù Chúa Giê-xu dạy yêu kẻ thù (Ma-thi-ơ 5:44), nhưng trong ngữ cảnh trực tiếp của Lê-vi Ký 19:18, từ nguyên gốc không nhắm tới đối tượng đó.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1326,7 +1326,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 20:7-8 — 'Các ngươi phải thánh hóa mình và phải thánh, vì Ta là Giê-hô-va Đức Chúa Trời của các ngươi. Các ngươi phải vâng giữ những luật lệ Ta và làm theo. Ta là Đức Giê-hô-va, Đấng thánh hóa các ngươi.'",
+    "explanation": "Đáp án đúng là Leviticus 20:7-8: 'Hãy làm cho mình nên thánh và giữ mình thánh, vì Ta là Giê-hô-va, Đức Chúa Trời của các ngươi. Các ngươi phải vâng giữ các luật lệ Ta và làm theo; Ta là Đấng làm cho các ngươi nên thánh.' (BTT). Đoạn trực tiếp truyền lệnh dân Y-sơ-ra-ên thánh hóa chính mình và vâng giữ luật lệ Đức Chúa Trời. Distractor 1 (gần đúng) sai chi tiết danh xưng ở mệnh đề cuối, thay 'Giê-hô-va Đức Chúa Trời các ngươi' bằng 'Đấng Thánh của các ngươi'. Distractor 2 sai vì lấy mệnh lệnh của một khúc sách gần (Luật về Sa-bát trong Xuất Ê-díp-tô Ký & Lê-vi Ký) rồi ghép với câu kết đúng. Distractor 3 dựa trên hiểu lầm phổ biến rằng trọng tâm luật lệ ở đây là cấm thờ hình tượng, trong khi đoạn Lê-vi Ký 20 tập trung vào các luật về sự thánh khiết và tình dục, chứ không nêu trực tiếp điều răn về hình tượng.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1335,10 +1335,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Hãy đến đền thờ mỗi tuần",
+      "Hãy thánh hóa mình, vâng giữ luật lệ Ta, vì Ta là Đấng Thánh của các ngươi",
       "Hãy thánh hóa mình, vâng giữ luật lệ Ta, vì Ta là Giê-hô-va Đức Chúa Trời các ngươi",
-      "Hãy dâng nhiều của lễ",
-      "Hãy đi truyền giáo cho dân ngoại"
+      "Hãy tuân giữ ngày Sa-bát và làm theo luật pháp Ta, vì Ta là Giê-hô-va Đức Chúa Trời các ngươi",
+      "Chớ nên thờ hình tượng và làm theo luật lệ Ta, vì Ta là Giê-hô-va Đức Chúa Trời các ngươi"
     ]
   },
   {
@@ -1349,15 +1349,15 @@
     "type": "multiple_choice_single",
     "content": "Lý do chính Đức Chúa Trời phân biệt thú tinh sạch và ô uế cho dân Y-sơ-ra-ên là gì?",
     "options": [
-      "Vì truyền thống tổ phụ",
-      "Vì lý do vệ sinh sức khỏe",
-      "Vì một số thú có độc",
+      "Vì dân Y-sơ-ra-ên phải phân biệt các dân tộc khác",
+      "Vì dân Y-sơ-ra-ên phải giữ cho đất đai được sạch sẽ",
+      "Vì các thú vật ô uế có hại cho sức khỏe của họ",
       "Vì dân Y-sơ-ra-ên phải thánh biệt cho Đức Giê-hô-va"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 20:26 — 'Các ngươi phải thánh cho Ta, vì Ta, Đức Giê-hô-va, là thánh, và Ta đã biệt riêng các ngươi ra khỏi các dân để các ngươi thuộc về Ta.'",
+    "explanation": "Le-vi 20:26 chép: 'Các ngươi sẽ làm thánh cho ta, vì ta là Đức Giê-hô-va, vốn là thánh; ta đã phân rẽ các ngươi ra với các dân, để các ngươi thuộc về ta.' Đáp án đúng đúng vì nó trực tiếp phản ánh mục đích thần học chính trong câu Kinh Thánh: sự phân biệt thú vật là một phương tiện để dân sự được 'thánh biệt', tức là được biệt riêng ra và thuộc về Đức Giê-hô-va.\n\nCác đáp án sai: (1) 'Vì dân Y-sơ-ra-ên phải phân biệt các dân tộc khác' là gần đúng nhưng sai chi tiết then chốt. Mặc dù câu 26 nói đến việc phân rẽ khỏi các dân, nhưng câu hỏi hỏi lý do 'phân biệt thú tinh sạch và ô uế'. Lý do trực tiếp và chính yếu được nêu trong ngữ cảnh là để họ 'thuộc về' và 'làm thánh cho' Đức Giê-hô-va, chứ không phải mục tiêu tự thân là phân biệt với các dân. (2) 'Vì dân Y-sơ-ra-ên phải giữ cho đất đai được sạch sẽ' là nhầm sang passage gần (ý tưởng về sự ô uế của đất được nhấn mạnh ở các chương khác, như Le-vi 18:25-28), không phải là lý do chính được nêu trong Le-vi 20:26 cho việc phân biệt thú vật. (3) 'Vì các thú vật ô uế có hại cho sức khỏe của họ' là một hiểu lầm phổ biến (dựa trên cách giải thích vệ sinh/sức khỏe hiện đại), nhưng không phải là lý do thần học chính được Kinh Thánh nêu trong đoạn này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1376,15 +1376,15 @@
     "type": "multiple_choice_single",
     "content": "Con cháu A-rôn có tật nguyền thì được làm gì?",
     "options": [
-      "Bị loại hoàn toàn khỏi dòng tế lễ",
-      "Chỉ được phục vụ bên ngoài Lều Hội Kiến",
+      "Được dâng một phần lễ vật nhưng không được ăn thức ăn thánh",
+      "Được phục vụ tại đền tạm nhưng không được chạm vào lễ vật",
       "Được ăn thức ăn thánh nhưng không được dâng lễ",
-      "Vẫn được dâng lễ vật trên bàn thờ"
+      "Không được phép làm bất cứ việc gì liên quan đến nơi thánh"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 21:16-22 quy định người có tật nguyền trong dòng A-rôn không được đến gần dâng lễ (câu 17-21), nhưng được ăn thức ăn thánh (câu 22).",
+    "explanation": "Kinh Thánh chép: 'Nhưng nó chớ đến gần bức màn, cũng chớ đến gần bàn thờ, vì nó có tật nơi mình; hầu cho nó không làm ô uế các nơi thánh ta' (Lê-vi Ký 21:23). Điều này khẳng định họ không được dâng lễ. Tuy nhiên, 'chúng nó sẽ được ăn những thức ăn thánh của Đức Chúa Trời mình' (Lê-vi Ký 21:22), nên đáp án đúng là được ăn thức ăn thánh nhưng không được dâng lễ.\n\n- Distractor 1 (Được dâng một phần lễ vật...) sai vì trái ngược với Kinh Thánh: họ bị cấm đến gần bàn thờ để dâng lễ (câu 23), nhưng việc được ăn thức ăn thánh (câu 22) là đúng.\n- Distractor 2 (Được phục vụ tại đền tạm...) sai vì mặc dù một số dịch vụ khác có thể được nhắc đến trong các phân đoạn gần, nhưng câu hỏi cụ thể này về 'làm gì' dựa trên Leviticus 21:16-22 chỉ rõ quyền ăn thức ăn thánh và sự cấm dâng lễ.\n- Distractor 3 (Không được phép làm bất cứ việc gì...) sai vì phạm vi quá rộng, bỏ qua chi tiết quan trọng là họ vẫn được ăn thức ăn thánh (câu 22), không phải bị loại hoàn toàn khỏi mọi đặc quyền.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1404,14 +1404,14 @@
     "content": "Theo Lê-vi Ký 22:27, con vật dâng làm tế lễ phải ở với mẹ ít nhất bao nhiêu ngày trước khi được dâng?",
     "options": [
       "Ba ngày",
-      "Ba mươi ngày",
       "Mười bốn ngày",
+      "Từ khi mới sinh",
       "Bảy ngày"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 22:27 chép: 'Khi bò con, chiên con, hoặc dê con sinh ra, nó phải ở với mẹ bảy ngày. Từ ngày thứ tám trở đi, nó mới được chấp nhận làm tế lễ dùng lửa dâng lên Đức Giê-hô-va.' Vậy, con vật phải ở với mẹ đủ bảy ngày trước khi được dâng (tức là từ ngày thứ tám trở đi).",
+    "explanation": "Lê-vi Ký 22:27 chép: 'Khi một con bò đực, con chiên hay con dê ra đời, thì nó sẽ ở với mẹ bảy ngày; qua ngày thứ tám trở đi, nó có thể được nhận làm tế lễ dùng lửa dâng cho Đức Giê-hô-va.' Vì thế, đáp án đúng là 'Bảy ngày'. Các đáp án sai: 1) 'Ba ngày' là sai chi tiết số, không đúng với quy định 7 ngày trong câu Kinh Thánh. 2) 'Mười bốn ngày' sai vì nhầm với các quy định thời gian khác trong sách Lê-vi (như thời gian thanh tẩy), không phải từ đoạn này. 3) 'Từ khi mới sinh' sai phạm vi vì câu hỏi hỏi 'ít nhất bao nhiêu ngày', còn đáp án này loại bỏ khái niệm thời gian tối thiểu cụ thể, trái với mệnh lệnh phải đợi 7 ngày.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1432,7 +1432,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 22:32 — 'Đừng làm ô danh thánh Ta; Ta phải được tôn thánh giữa dân Y-sơ-ra-ên. Ta là Đức Giê-hô-va, Đấng thánh hoá các ngươi.'",
+    "explanation": "Đáp án đúng trích nguyên văn từ Lê-vi Ký 22:32: 'Đừng làm ô danh thánh; Ta phải được tôn thánh giữa dân Y-sơ-ra-ên', khớp hoàn toàn với câu hỏi về điều Đức Giê-hô-va dạy. *Distractor 1 (gần đúng) sai ở chi tiết 'loan báo' và 'tôn vinh', trong khi Kinh Thánh viết 'đừng làm ô' và 'tôn thánh'. *Distractor 2 sai phạm vi: nội dung 'trong đền thánh' không có trong câu này, dù liên quan đến sự thánh khiết nói chung. *Distractor 3 trích ý từ câu 33 gần đó ('Ta là Đấng làm nên thánh cho các ngươi, tức là Đấng đã đem các ngươi ra khỏi xứ Ê-díp-tô'), nhưng không trả lời đúng trọng tâm câu hỏi về điều dạy trực tiếp cho hành động với danh Ngài.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1442,10 +1442,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Chỉ dùng trong đền thờ",
-      "Cấm gọi danh",
+      "Hãy loan báo danh thánh; Ta sẽ được tôn vinh giữa dân Y-sơ-ra-ên",
+      "Đừng lạm dụng danh thánh; Ta phải được kính sợ trong đền thánh",
       "Đừng làm ô danh thánh; Ta phải được tôn thánh giữa dân Y-sơ-ra-ên",
-      "Phải khắc lên đá"
+      "Hãy ghi nhớ danh thánh; Ta là Đấng đã đem các ngươi ra khỏi Ai Cập"
     ]
   },
   {
@@ -1456,15 +1456,15 @@
     "type": "multiple_choice_single",
     "content": "Lễ Vượt Qua được tổ chức vào ngày nào?",
     "options": [
-      "Ngày mồng một tháng giêng",
-      "Ngày mười lăm tháng ba",
+      "Ngày mười lăm tháng giêng",
+      "Ngày mười bốn tháng bảy",
       "Ngày mười bốn tháng giêng",
-      "Ngày mười tháng bảy"
+      "Ngày đầu tiên sau ngày Sa-bát"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 23:5 — 'Ngày mười bốn tháng giêng, vào lúc chạng vạng, là Lễ Vượt Qua của Đức Giê-hô-va.'",
+    "explanation": "Lê-vi Ký 23:5 chép rõ: 'Ngày mười bốn tháng giêng lúc chạng vạng, ấy là lễ Vượt-qua của Đức Giê-hô-va.' Do đó, đáp án đúng là ngày mười bốn tháng giêng. Distractor 'Ngày mười lăm tháng giêng' sai vì đó là ngày bắt đầu Lễ Bánh Không Men (Lê-vi Ký 23:6), một lễ riêng nhưng liền kề. Distractor 'Ngày mười bốn tháng bảy' sai về phạm vi tháng; đó là thời điểm khác trong năm được nhắc đến trong Lê-vi Ký 23 (câu 34 về Lễ Lều Tạm). Distractor 'Ngày đầu tiên sau ngày Sa-bát' sai vì đây là cách xác định ngày cho Lễ Các Trái Đầu Mùa (Lê-vi Ký 23:11), không phải cho Lễ Vượt Qua.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1484,13 +1484,13 @@
     "options": [
       "Bánh có men",
       "Bánh không men",
-      "Chỉ trái cây",
-      "Thịt nướng"
+      "Thịt chiên con",
+      "Của lễ chay"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 23:6 — 'Ngày mười lăm tháng ấy là Lễ Bánh Không Men cho Đức Giê-hô-va; trong bảy ngày, các ngươi phải ăn bánh không men.'",
+    "explanation": "Lê-vi Ký 23:6-8 quy định rõ cho Lễ Bánh Không Men: 'Ngày thứ mười lăm tháng nầy, sẽ là lễ bánh không men cho Đức Giê-hô-va; các ngươi sẽ ăn bánh không men trong bảy ngày' (câu 6). Do đó, đáp án đúng là 'Bánh không men' vì đây là món ăn bắt buộc suốt bảy ngày lễ.\n\nCác đáp án sai:\n1. 'Bánh có men' (wrong_detail) là sai vì Kinh Thánh đặc biệt cấm men trong lễ này (Lê-vi Ký 23:6). Đây là distractor 'gần đúng' vì chỉ sai một chi tiết then chốt (có men/không men).\n2. 'Thịt chiên con' (nearby_passage) là sai vì tuy được nhắc đến trong Lễ Vượt Qua (ngày trước đó, Lê-vi Ký 23:5), nhưng đây là một nghi lễ khác, không phải là thức ăn bắt buộc cho cả bảy ngày Lễ Bánh Không Men.\n3. 'Của lễ chay' (wrong_scope) là sai vì 'của lễ chay' là một khái niệm rộng về tế lễ (bao gồm bột, dầu, nhũ hương) được dâng lên, không phải là món ăn duy nhất và bắt buộc mà dân chúng phải ăn suốt bảy ngày như bánh không men (Lê-vi Ký 23:8, 13).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1534,15 +1534,15 @@
     "type": "multiple_choice_single",
     "content": "Ngày mồng một tháng bảy là ngày nghỉ, ngày kỷ niệm, được báo bằng tiếng ___.",
     "options": [
-      "reo hò",
       "trống đánh",
+      "lệnh truyền",
       "kèn thổi",
-      "hát xướng"
+      "hội chúng"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 23:24 — 'Ngày mồng một tháng bảy, các ngươi phải có một ngày nghỉ, một ngày kỷ niệm, được báo bằng tiếng kèn thổi.' Đây là Lễ Thổi Kèn (Rosh Hashanah).",
+    "explanation": "Lê-vi Ký 23:24 chép rõ: \"Hãy truyền cho dân Y-sơ-ra-ên rằng: Ngày mồng một tháng bảy, các ngươi sẽ có một ngày nghỉ, một sự nhóm hiệp để kỷ niệm, phải báo sự nhóm hiệp ấy bằng tiếng kèn thổi.\" Đáp án đúng là \"kèn thổi\" vì Kinh Thánh xác định phương tiện báo hiệu là tiếng kèn. Distractor \"trống đánh\" (gần đúng) sai vì tuy là nhạc cụ gõ phổ biến và được nhắc đến trong Kinh Thánh (Thi thiên 150:4-5), nhưng đoạn này chỉ định rõ \"tiếng kèn\". Distractor \"lệnh truyền\" sai vì tuy đây là ngày được Chúa truyền lệnh giữ, nhưng câu hỏi hỏi về phương tiện báo hiệu cụ thể được nêu trong câu. Distractor \"hội chúng\" sai vì đây là một hiểu lầm phổ biến, lẫn lộn giữa phương tiện báo hiệu (kèn) với đối tượng tham dự hoặc bản chất của ngày lễ (sự nhóm hiệp của hội chúng).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1561,15 +1561,15 @@
     "type": "multiple_choice_single",
     "content": "Lễ Lều Tạm kéo dài bao nhiêu ngày?",
     "options": [
-      "Ba ngày",
+      "Sáu ngày",
       "Bảy ngày",
-      "Mười ngày",
-      "Mười bốn ngày"
+      "Mười bốn ngày",
+      "Cho đến khi hết mùa"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 23:34 — 'Ngày mười lăm tháng bảy nầy là Lễ Lều Tạm cho Đức Giê-hô-va, kéo dài bảy ngày.'",
+    "explanation": "Le-vi 23:34-36 chép: '... từ ngày mười lăm tháng bảy nầy, sẽ giữ lễ cho Đức Giê-hô-va trong bảy ngày... Nhưng qua ngày thứ tám, các ngươi sẽ có một lễ trọng thể...' Vậy, lễ Lều Tạm chính thức kéo dài bảy ngày (c.34, 35). Các đáp án sai: 'Sáu ngày' sai một chi tiết số học quan trọng; 'Mười bốn ngày' nhầm sang thời gian của các lễ khác như Lễ Bánh Không Men; 'Cho đến khi hết mùa' mở rộng phạm vi thời gian sai, không phải là số ngày cụ thể được định rõ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1614,15 +1614,15 @@
     "type": "multiple_choice_single",
     "content": "Bao nhiêu ổ bánh phải xếp trên bàn trước mặt Đức Giê-hô-va?",
     "options": [
-      "Mười ổ",
+      "Sáu ổ",
       "Mười hai ổ",
-      "Bảy ổ",
+      "Mười ổ",
       "Hai mươi bốn ổ"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 24:5-6 — 'Ngươi phải lấy bột mịn nướng mười hai ổ bánh... xếp thành hai hàng, mỗi hàng sáu ổ, trên bàn bằng vàng ròng trước mặt Đức Giê-hô-va.'",
+    "explanation": "Lê-vi Ký 24:5-9 quy định rõ: \"Ngươi hãy lấy bột lọc mà làm mười hai ổ bánh...\" (câu 5) và \"...hãy xếp từng hàng sáu ổ trên cái bàn tinh sạch trước mặt Đức Giê-hô-va.\" (câu 6). Do đó, đáp án đúng là 'Mười hai ổ' được xếp thành hai hàng, mỗi hàng sáu ổ trên bàn. 1) 'Sáu ổ' là sai vì đây chỉ là số bánh trên một hàng, không phải tổng số. 2) 'Mười ổ' là một con số xuất hiện trong các luật về một phần mười (Lê-vi Ký 27:30-32), không liên quan đến bánh trần thiết. 3) 'Hai mươi bốn ổ' có thể là sự nhầm lẫn với số lượng 24 nhóm thầy tế lễ thay phiên (1 Sử ký 24), không liên quan đến nghi thức này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1639,15 +1639,15 @@
     "type": "multiple_choice_single",
     "content": "Hình phạt cho ai phạm thượng danh Đức Giê-hô-va là gì?",
     "options": [
-      "Đuổi khỏi trại bảy ngày",
-      "Phải dâng tế lễ chuộc tội",
+      "Bị trục xuất khỏi hội chúng — không được tham gia sinh tế",
+      "Bị xử tử — chỉ thầy tế lễ thực hiện",
       "Bị xử tử — cả hội chúng phải ném đá",
-      "Phạt tiền"
+      "Phải dâng của lễ chuộc tội và bồi thường"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 24:16 — 'Kẻ nào phạm thượng danh Đức Giê-hô-va phải bị xử tử; cả hội chúng phải ném đá người ấy.'",
+    "explanation": "Lê-vi Ký 24:16 chép: 'Hễ ai nói phạm đến danh Đức Giê-hô-va thì phải bị xử tử; cả hội chúng phải ném đá người đó.' Vì thế, đáp án đúng mô tả chính xác hình phạt là bị xử tử bởi cả hội chúng.\n\n- Distractor 1 (Bị trục xuất...) sai vì hình phạt trong câu này là tử hình, không phải trục xuất. Đây là một hình phạt được đề cập ở những chỗ khác (như Lê-vi Ký 7:20-21) cho các tội không đáng tử, nên thuộc loại 'sai phạm vi'.\n- Distractor 2 (Bị xử tử — chỉ thầy tế lễ...) là 'gần đúng' nhưng sai chi tiết then chốt: Kinh Thánh ghi rõ 'cả hội chúng' phải ném đá, không chỉ riêng thầy tế lễ. Đây thuộc loại 'sai chi tiết'.\n- Distractor 3 (Phải dâng của lễ...) sai vì đây là cách xử lý cho các tội phạm khác như vi phạm tài sản (Lê-vi Ký 5:14-6:7), không áp dụng cho tội phạm thượng. Nó lấy từ một 'đoạn gần' nhưng không đúng ngữ cảnh.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1666,14 +1666,14 @@
     "content": "Luật 'mắt đền mắt, răng đền răng' được ghi lại ở đâu trong Lê-vi Ký?",
     "options": [
       "Chương 24",
-      "Chương 19",
       "Chương 20",
-      "Chương 26"
+      "Chương 23",
+      "Chương 19"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Lê-vi Ký 24:20 — 'Gãy đền gãy, mắt đền mắt, răng đền răng. Người ấy gây thương tích cho ai thì phải bị gây thương tích như vậy.'",
+    "explanation": "Câu hỏi hỏi cụ thể về vị trí của luật 'mắt đền mắt, răng đền răng'. Đáp án đúng là **Chương 24** vì câu này được ghi rõ trong Lê-vi Ký 24:17-20.\n\nCác đáp án sai:\n- **Chương 20**: Sai chi tiết. Đây là một con số gần đúng (gần chương 24), nhưng chương 20 chủ yếu nói về các hình phạt cho tội tà dâm và thờ hình tượng, không chứa luật này.\n- **Chương 23**: Sai vì đây là chương gần đó (lân cận), nhưng chương 23 liệt kê các kỳ lễ của Đức Giê-hô-va, không đề cập đến luật báo thù cá nhân.\n- **Chương 19**: Mặc dù chương 19 có chứa nhiều luật lệ đạo đức và xã hội quan trọng (ví dụ: 'hãy yêu người lân cận như mình' trong câu 18), và đôi khi bị nhầm lẫn với các nguyên tắc công lý, nhưng nó KHÔNG chứa công thức cụ thể 'mắt đền mắt, răng đền răng'. Do đó, nó là một thông tin đúng trong Kinh Thánh nhưng không trả lời đúng câu hỏi này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1690,15 +1690,15 @@
     "type": "multiple_choice_single",
     "content": "Năm Sa-bát cho đất nghỉ là cứ bao nhiêu năm một lần?",
     "options": [
+      "Sáu năm",
       "Năm năm",
-      "Mười năm",
-      "Ba năm",
+      "Mỗi năm",
       "Bảy năm"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 25:4 — 'Nhưng năm thứ bảy sẽ là năm sa-bát, năm nghỉ cho đất, một năm sa-bát cho Đức Giê-hô-va.'",
+    "explanation": "Lê-vi Ký 25:4 chép: 'Nhưng năm thứ bảy sẽ là năm sa-bát, tức là một thời kỳ đất nghỉ, một năm sa-bát cho Đức Giê-hô-va: các ngươi chớ gieo ruộng mình, chớ tỉa vườn nho mình.' Câu này xác định chu kỳ là bảy năm. Distractor 'Sáu năm' là gần đúng nhưng sai chi tiết số năm then chốt. Distractor 'Năm năm' có thể nhầm từ các quy định khác về thời hạn (như năm thứ năm ăn trái cây trong Lê-vi 19:25). Distractor 'Mỗi năm' là hiểu lầm phổ biến rằng đất luôn được nghỉ hàng năm, trong khi năm Sa-bát là một năm đặc biệt trong chu kỳ bảy năm.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1716,15 +1716,15 @@
     "type": "multiple_choice_single",
     "content": "Năm Hân Hỉ (Jubilee) được tổ chức cứ bao nhiêu năm một lần?",
     "options": [
-      "Một trăm năm",
-      "Mười năm",
-      "Hai mươi lăm năm",
+      "Bốn mươi chín năm",
+      "Bảy năm",
+      "Mỗi năm một lần",
       "Năm mươi năm"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 25:10-11 — 'Các ngươi phải biệt riêng năm thứ năm mươi ra thánh... Năm thứ năm mươi sẽ là năm hân hỉ cho các ngươi.'",
+    "explanation": "Lê-vi Ký 25:10-11 (BTT) dạy: \"Các ngươi phải làm cho năm thứ năm mươi nên thánh, và rao truyền sự tự do cho mọi người ở trong xứ. Ấy sẽ là năm hân hỉ cho các ngươi; ai nấy đều được trở về phần sản nghiệp mình, và ai nấy đều được trở về gia quyến mình. Năm thứ năm mươi nầy là một năm hân hỉ cho các ngươi, không nên gieo, không nên gặt vật chi mọc tự nhiên, và chẳng nên hái nho không có sửa sang.\" Do đó, đáp án đúng là năm mươi năm. Distractor 'Bốn mươi chín năm' là nhầm lẫn với sự tính toán gần đó về các chu kỳ Sa-bát (7 năm x 7 = 49 năm), nhưng năm Hân Hỉ bắt đầu sau đó. Distractor 'Bảy năm' nhầm sang chu kỳ năm Sa-bát. Distractor 'Mỗi năm một lần' sai về phạm vi thời gian, vì đây là sự kiện đặc biệt theo chu kỳ dài, không phải hàng năm.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1741,15 +1741,15 @@
     "type": "multiple_choice_single",
     "content": "Năm Hân Hỉ trong Lê-vi Ký 25 có ý nghĩa thần học nào liên hệ với Tân Ước?",
     "options": [
-      "Hình bóng về sự phán xét cuối cùng",
-      "Hình bóng về sự phục sinh",
-      "Hình bóng về lễ báp-têm",
+      "Hình bóng về sự giải phóng và trở lại đoàn tụ gia đình sau chiến tranh (Lê-vi Ký 25:10)",
+      "Hình bóng về sự nghỉ ngơi và phục hồi đất đai trong chu kỳ nông nghiệp (Lê-vi Ký 25:1-7)",
+      "Hình bóng về sự công bằng xã hội và xóa nợ trong các luật dân sự (Phục-truyền 15:1-6)",
       "Hình bóng về sự giải phóng và tự do trong Chúa Giê-xu (Lu-ca 4:18-19)"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 25:10 — 'Công bố sự tự do trong cả xứ cho mọi người.' Chúa Giê-xu trích Ê-sai 61:1-2 (dựa trên Năm Hân Hỉ) trong Lu-ca 4:18-19 để tuyên bố sứ mạng giải phóng của Ngài.",
+    "explanation": "Câu hỏi tập trung vào ý nghĩa liên hệ Tân Ước của Năm Hân Hỉ. Đáp án đúng dựa trên Lu-ca 4:18-19, nơi Chúa Giê-xu trưng dẫn tiên tri Ê-sai về sự giải phóng và tự do, trực tiếp áp dụng lý lẽ của Năm Hân Hỉ cho chức vụ cứu rỗi của Ngài. Distractor 1 sai vì nó thêm chi tiết \"sau chiến tranh\" không có trong phân đoạn; năm hân hỉ quan trọng là sự phóng thích và trả lại tài sản, không phải là kết quả chiến tranh. Distractor 2 sai về phạm vi; nó chỉ mô tả khía cạnh nông nghiệp/nghỉ đất trong cùng chương (c.1-7), nhưng bỏ qua mệnh lệnh chính về tự do và giải phóng (c.10) – là phần có ý nghĩa hình bóng rõ ràng. Distractor 3 mô tả một tập tục có liên quan (năm xóa nợ) trong sách Phục-truyền, và dù nó cũng thể hiện lòng thương xót, đây là một định chế pháp lý xã hội khác riêng biệt; nó không trực tiếp trả lời câu hỏi về sự liên hệ thần học với Tân Ước mà Năm Hân Hỉ trong Lê-vi 25 đem lại.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1822,15 +1822,15 @@
     "type": "multiple_choice_single",
     "content": "Ta sẽ đặt Đền Tạm giữa các ngươi... Ta sẽ đi giữa các ngươi, làm ___ các ngươi, và các ngươi sẽ làm dân Ta.",
     "options": [
-      "vua",
-      "người chăn",
-      "quan xét",
+      "các thầy tế lễ",
+      "chiếc hòm giao ước",
+      "một ngôi nhà",
       "Đức Chúa Trời"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 26:12 — 'Ta sẽ đi giữa các ngươi, làm Đức Chúa Trời các ngươi, và các ngươi sẽ làm dân Ta.' Lời hứa giao ước này được nhắc lại trong 2 Cô-rinh-tô 6:16.",
+    "explanation": "Câu hỏi trích dẫn Lê-vi Ký 26:11-12 (BTT): 'Ta sẽ đặt Đền Tạm giữa các ngươi... Ta sẽ đi giữa các ngươi, làm Đức Chúa Trời các ngươi, và các ngươi sẽ làm dân Ta.' Do đó, đáp án đúng là 'Đức Chúa Trời', vì đây là lời hứa của Chúa về mối quan hệ đặc biệt giữa Ngài với dân Y-sơ-ra-ên.\n\nCác đáp án sai:\n- 'các thầy tế lễ' (nearby_passage): Sai vì chủ thể của hành động 'làm' trong câu này là chính Đức Chúa Trời, không phải con người. Chức vụ thầy tế lễ được nhắc đến nhiều trong sách Lê-vi nhưng không phải là đối tượng của lời hứa này.\n- 'chiếc hòm giao ước' (wrong_detail): Đây là đáp án gần đúng vì Hòm Giao Ước là biểu tượng sự hiện diện của Chúa trong Đền Tạm (Xuất Ê-díp-tô Ký 25:22). Tuy nhiên, trong câu hỏi này, Chúa hứa chính Ngài sẽ 'làm' một điều gì đó cho dân sự, chứ không phải là một vật thể.\n- 'một ngôi nhà' (true_but_off): Sai vì mặc dù Chúa có hứa ban sự an cư (Lê-vi Ký 26:5-6), nhưng từ 'nhà' trong ngữ cảnh này lạc với ý chính của câu 12, nơi Chúa nhấn mạnh Ngài sẽ làm 'Đức Chúa Trời' của họ, thiết lập một mối quan hệ giao ước, chứ không chỉ là nơi ở vật chất.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1876,15 +1876,15 @@
     "type": "multiple_choice_single",
     "content": "Dù trừng phạt, Đức Chúa Trời hứa gì nếu dân Y-sơ-ra-ên xưng nhận tội lỗi?",
     "options": [
-      "Sẽ sai tiên tri đến",
-      "Sẽ ban cho họ xứ mới",
-      "Sẽ cho họ vua mới",
+      "Sẽ nhớ lại giao ước với Nô-ê, Áp-ra-ham, và Môi-se",
+      "Sẽ ngay lập tức chấm dứt mọi hình phạt",
+      "Sẽ lập một giao ước mới tại đó",
       "Sẽ nhớ lại giao ước với Áp-ra-ham, Y-sác, Gia-cốp"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 26:42 — 'Ta sẽ nhớ lại giao ước Ta với Gia-cốp, giao ước Ta với Y-sác, giao ước Ta với Áp-ra-ham, và Ta sẽ nhớ lại đất nầy.'",
+    "explanation": "ĐÁP ÁN ĐÚNG: Câu trả lời 'Sẽ nhớ lại giao ước với Áp-ra-ham, Y-sác, Gia-cốp' là chính xác vì Lê-vi Ký 26:42 ghi rõ: 'thì ta sẽ nhớ lại giao ước của ta cùng Gia-cốp, cũng nhớ lại giao ước của ta cùng Y-sác, và nhớ lại giao ước của ta cùng Áp-ra-ham' (BTT).\n\nGIẢI THÍCH ĐÁP ÁN SAI:\n1. 'Sẽ nhớ lại giao ước với Nô-ê, Áp-ra-ham, và Môi-se': Sai chi tiết (wrong_detail). Đây là đáp án gần đúng nhất. Đoạn Kinh Thánh chỉ nhắc đến giao ước với các tổ phụ là Áp-ra-ham, Y-sác, Gia-cốp, không có Nô-ê hay Môi-se (các giao ước khác được lập sau này).\n2. 'Sẽ ngay lập tức chấm dứt mọi hình phạt': Là sự hiểu lầm phổ biến (common_misconception). Đoạn Kinh Thánh nói về lòng thương xót và sự nhớ lại giao ước của Đức Chúa Trời, nhưng không hứa hẹn sự chấm dứt tức thì và toàn bộ hình phạt. Sự phục hồi là một tiến trình (xem các câu 43-45).\n3. 'Sẽ lập một giao ước mới tại đó': Đúng văn bản nhưng lạc câu hỏi (true_but_off). Đoạn văn (câu 42) nhấn mạnh việc Đức Chúa Trời 'nhớ lại' giao ước đã có từ trước với các tổ phụ, chứ không phải hứa về việc thiết lập một giao ước mới tại thời điểm xưng tội.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1904,15 +1904,15 @@
     "type": "multiple_choice_single",
     "content": "Khi ai hứa nguyện dâng giá trị một người cho Đức Giê-hô-va, giá trị cao nhất dành cho nhóm nào?",
     "options": [
-      "Trẻ em từ 5-20 tuổi",
-      "Người già trên 60 tuổi",
+      "Người nam từ 20-60 tuổi, là thầy tế lễ",
+      "Người nữ từ 20-60 tuổi",
       "Người nam từ 20-60 tuổi",
-      "Người nữ từ 20-60 tuổi"
+      "Người nam từ 5-20 tuổi"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 27:3 — 'Nếu người nam từ hai mươi đến sáu mươi tuổi, thì giá ấn định là năm mươi siếc-lơ bạc.' Đây là mức giá cao nhất trong bảng quy định.",
+    "explanation": "Lê-vi Ký 27:3-7 quy định giá trị khấn hứa theo độ tuổi và giới tính. Cụ thể, đối với người nam từ 20 đến 60 tuổi, giá trị là năm mươi siếc-lơ bạc (câu 3), đây là mức cao nhất. Đáp án đúng là 'Người nam từ 20-60 tuổi'.\n\nCác đáp án sai:\n1. 'Người nam từ 20-60 tuổi, là thầy tế lễ' sai vì đoạn Kinh Thánh không hề phân biệt chức vụ khi định giá; đây là một hiểu lầm phổ biến (common_misconception) rằng thầy tế lễ có giá trị đặc biệt trong bối cảnh này.\n2. 'Người nữ từ 20-60 tuổi' sai vì giá trị cho nhóm này là ba mươi siếc-lơ bạc (câu 4), thấp hơn nhóm nam cùng độ tuổi; đây là sai chi tiết (wrong_detail) về giới tính.\n3. 'Người nam từ 5-20 tuổi' sai vì giá trị cho nhóm này là hai mươi siếc-lơ bạc (câu 5), thấp hơn; đây là lỗi nhầm passage gần (nearby_passage) vì nhóm này được liệt kê ngay sau nhưng có giá trị khác.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1932,7 +1932,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 27:28 — 'Tuy nhiên, bất cứ vật gì một người đã hiến dâng trọn cho Đức Giê-hô-va... thì không được bán cũng không được chuộc; mọi vật hiến dâng trọn đều rất thánh cho Đức Giê-hô-va.'",
+    "explanation": "Đoạn Kinh Thánh Lê-vi Ký 27:28-29 quy định rõ: \"Nhưng phàm vật chi đã biệt riêng ra thánh, tức là vật mà người nào phú dâng cho Đức Giê-hô-va, thì chẳng được phép bán, cũng không được phép chuộc lại. Hễ vật gì biệt riêng ra thánh, tức là vật rất thánh cho Đức Giê-hô-va.\" Do đó, đáp án đúng là \"Không — không được bán hoặc chuộc; rất thánh cho Đức Giê-hô-va\".\n\nCác đáp án sai:\n1. (nearby_passage) Sai vì áp dụng quy tắc chuộc lại (thêm 20%) từ các câu trước (c.13, 15, 19, 27) cho vật thánh thông thường, nhưng không áp dụng cho vật chê-rem (biệt riêng ra thánh, rất thánh) tại đây.\n2. (wrong_detail) Sai vì nhầm chi tiết: luật chuộc lại cho người nghèo hoặc ngoại bang (Lê-vi 25:47-49) không áp dụng cho vật chê-rem. Vật chê-rem không được chuộc dù thuộc về ai.\n3. (true_but_off) Sai vì mặc dù đúng là \"không được bán\" (theo c.28), nhưng chi tiết \"có thể được chuộc bằng bạc\" là sai hoàn toàn với quy định trong câu này, vì câu 28 nói rõ \"không được phép chuộc lại\".",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1941,10 +1941,10 @@
       "Nâng cao"
     ],
     "options": [
-      "Có, bằng tiền bạc gấp đôi",
-      "Có, bằng dâng vật khác",
+      "Có — được chuộc bằng giá trị ước định cộng thêm 20%",
+      "Có — được chuộc nếu là vật phẩm thuộc về người ngoại bang",
       "Không — không được bán hoặc chuộc; rất thánh cho Đức Giê-hô-va",
-      "Tùy thầy tế lễ thượng phẩm quyết định"
+      "Không — không được bán, nhưng có thể được chuộc bằng bạc"
     ]
   },
   {
@@ -1955,15 +1955,15 @@
     "type": "multiple_choice_single",
     "content": "Phần mười của thổ sản thuộc về ai?",
     "options": [
-      "Nhà vua",
-      "Thầy tế lễ thượng phẩm",
-      "Người Lê-vi",
+      "Thầy tế lễ",
+      "Người đã làm ra thổ sản",
+      "Người trồng trọt thổ sản",
       "Đức Giê-hô-va"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 27:30 — 'Mọi phần mười của đất, bất luận là ngũ cốc từ ruộng hay trái từ cây, đều thuộc về Đức Giê-hô-va; đó là vật thánh cho Đức Giê-hô-va.' (Sau đó, Đức Giê-hô-va ban phần mười này cho người Lê-vi để duy trì chức vụ của họ, xem Dân Số Ký 18:21-24).",
+    "explanation": "Lê-vi Ký 27:30 chép: 'Phần mười của thổ sản… đều thuộc về Đức Giê-hô-va; ấy là biệt riêng ra thánh cho Đức Giê-hô-va.' (BTT). Vì vậy, 'Đức Giê-hô-va' là đáp án đúng.\n\nDistractor 'Thầy tế lễ' sai vì, mặc dù phần mười thường được dành cho người Lê-vi (Dân số 18:21) và họ có thể phục vụ tại đền thờ, nhưng chính Đức Giê-hô-va mới là Chủ sở hữu được tuyên bố trực tiếp trong câu này. Đây là lỗi sai chi tiết (nhầm người thụ hưởng cuối cùng).\nDistractor 'Người đã làm ra thổ sản' sai vì đây là một cách hiểu lầm phổ biến – người nông dân có thể nghĩ họ làm ra sản vật nên được sở hữu tất cả, nhưng Kinh Thánh dạy Đức Chúa Trời mới là Đấng ban cho và do đó Ngài có quyền đòi hỏi phần mười.\nDistractor 'Người trồng trọt thổ sản' sai vì mặc dù đúng là họ trồng trọt và thu hoạch, nhưng câu hỏi này hỏi về việc 'thuộc về ai' theo luật pháp được quy định, chứ không phải hỏi về người thực hiện công việc. Đây là đáp án đúng về mặt văn bản nhưng lạc câu hỏi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",

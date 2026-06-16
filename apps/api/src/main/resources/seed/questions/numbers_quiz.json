@@ -34,15 +34,15 @@
     "type": "multiple_choice_single",
     "content": "Tổng số nam giới từ 20 tuổi trở lên có thể ra trận trong cuộc kiểm tra dân số lần thứ nhất là bao nhiêu?",
     "options": [
-      "503.550",
-      "601.730",
-      "625.000",
+      "603.500",
+      "603.550³",
+      "463.550",
       "603.550"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 1:46 — 'Tổng số là sáu trăm lẻ ba ngàn năm trăm năm mươi người.' Đây là tổng nam giới từ 20 tuổi trở lên có khả năng ra trận.",
+    "explanation": "Đáp án đúng là 603.550 dựa trên Dân số ký 1:46: 'Vậy, hết thảy những người đã tu bộ, tức là những người nam từ hai mươi tuổi sắp lên...số là sáu trăm ba ngàn năm trăm năm mươi người.'\n\nCác phương án sai:\n- '603.500' (gần đúng): Sai một chữ số cuối, đây là lỗi chính tả hoặc ghi nhớ sai chi tiết trong cùng câu Kinh Thánh.\n- '603.550³': Đúng văn bản nhưng thêm ký hiệu toán học không phù hợp, lạc khỏi bối cảnh số đếm người của câu hỏi.\n- '463.550': Sai một chữ số đầu, đây có thể là sự nhầm lẫn phổ biến với số liệu của một chi phái hoặc một cuộc kiểm tra dân số khác.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -61,13 +61,13 @@
     "options": [
       "Ru-bên",
       "Giu-đa",
-      "Ép-ra-im",
+      "Lê-vi",
       "Đan"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 2:3 — 'Phía đông, hướng mặt trời mọc, có trại Giu-đa đóng theo đội ngũ mình.' Giu-đa dẫn đầu ở phía đông.",
+    "explanation": "Dân Y-sơ-ra-ên đóng trại xung quanh Đền Tạm theo từng chi phái, mỗi hướng có ba chi phái. Dân-số Ký 2:3 chép: \"Về phía đông, hướng mặt trời mọc, Giu-đa đóng trại theo ngọn cờ mình…\" Vì vậy, đáp án đúng là Giu-đa.\n\n- Ru-bên (Dân-số Ký 2:10) đóng trại ở phía nam, không phải phía đông. Đây là một chi phái lân cận trong cấu trúc đóng trại, nhưng sai hướng.\n- Chi phái Lê-vi (Dân-số Ký 1:47-53) được biệt riêng để phục vụ Đền Tạm và không đóng trại chung theo bốn hướng như các chi phái khác, nên không nằm trong số các chi phái được hỏi về vị trí trại theo hướng.\n- Đan (Dân-số Ký 2:25) đóng trại ở phía bắc, không phải phía đông.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -113,15 +113,15 @@
     "type": "multiple_choice_single",
     "content": "Người Lê-vi trong độ tuổi nào được phục vụ tại Lều Hội Kiến?",
     "options": [
-      "20 đến 50 tuổi",
-      "25 đến 50 tuổi",
+      "25 đến 45 tuổi",
+      "20 đến 60 tuổi",
       "30 đến 50 tuổi",
-      "25 đến 60 tuổi"
+      "từ lúc 25 tuổi trở lên"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 4:3 — 'Từ ba mươi tuổi trở lên cho đến năm mươi tuổi, tức là tất cả những người vào phục vụ tại Lều Hội Kiến.'",
+    "explanation": "Dân số ký 4:3 ghi rõ: \"Từ ba mươi tuổi sắp lên cho đến năm mươi tuổi, tức là hết thảy người nào có thể giúp công vào việc hầu việc trong hội mạc.\" Do đó, độ tuổi đúng là 30 đến 50. Distractor \"25 đến 45 tuổi\" sai chi tiết số (sai cả tuổi bắt đầu và kết thúc). Distractor \"20 đến 60 tuổi\" mở rộng phạm vi sai so với quy định cụ thể. Distractor \"từ lúc 25 tuổi trở lên\" phản ánh một hiểu lầm phổ biến (vì người Lê-vi bắt đầu phục dịch từ 25 tuổi theo Dân số ký 8:24, nhưng đó là để tham gia công việc, còn phục vụ tại Lều Hội Kiến theo chức vụ Kê-hát thì bắt đầu từ 30 tuổi).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -191,15 +191,15 @@
     "type": "multiple_choice_single",
     "content": "Các nhà lãnh đạo Y-sơ-ra-ên dâng gì làm lễ vật khi Đền Tạm được dựng xong?",
     "options": [
-      "Ba mươi giạ bột mì",
-      "Mười con chiên và năm con dê",
+      "Mười hai xe có mui và sáu con bò",
+      "Sáu xe có mui và mười hai con chiên",
       "Sáu xe có mui và mười hai con bò",
-      "Vàng và bạc"
+      "Sáu bàn thờ bằng vàng và mười hai chậu nước"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 7:3 — 'Họ đem lễ vật đến trước mặt Đức Giê-hô-va: sáu xe có mui và mười hai con bò.' Đây là lễ vật chung của các nhà lãnh đạo Y-sơ-ra-ên.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Dân Số Ký 7:1-3 ghi rõ rằng khi Môi-se đã dựng Đền Tạm xong, các nhà lãnh đạo Y-sơ-ra-ên đã dâng lễ vật gồm sáu xe có mui và mười hai con bò để chuyên chở Đền Tạm (câu 3).\n\nDISTRACTOR \"Mười hai xe có mui và sáu con bò\": Sai chi tiết số lượng. Kinh Thánh ghi là sáu xe và mười hai con bò, chứ không phải mười hai xe và sáu con bò.\n\nDISTRACTOR \"Sáu xe có mui và mười hai con chiên\": Sai do hiểu lầm phổ biến về vật tế lễ. Đây là lễ vật phương tiện vận chuyển (xe và bò) dâng lên khi dựng xong Đền Tạm, chứ không phải vật tế lễ thông thường như chiên.\n\nDISTRACTOR \"Sáu bàn thờ bằng vàng và mười hai chậu nước\": Nhầm với các đồ vật khác được nhắc đến trong các đoạn Kinh Thánh gần đó về việc làm và dâng đồ thánh (ví dụ: Xuất Ê-díp-tô Ký 30:1-3, 17-18), nhưng không phải là lễ vật của các nhà lãnh đạo dâng lên khi Đền Tạm được dựng xong theo Dân Số Ký 7.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -219,15 +219,15 @@
     "type": "multiple_choice_single",
     "content": "Điều gì bao phủ Đền Tạm vào ban ngày và ban đêm?",
     "options": [
-      "Đám mây suốt ngày đêm",
+      "Đám mây ban ngày và ban đêm",
       "Đám mây ban ngày, cột lửa ban đêm",
-      "Thiên sứ canh giữ",
-      "Ánh sáng suốt ngày đêm"
+      "Cột lửa ban ngày, đám mây ban đêm",
+      "Hào quang ban ngày, bóng tối ban đêm"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 9:15-16 — 'Đám mây bao phủ Đền Tạm... đến chiều tối, đám mây ở trên Đền Tạm trông giống như lửa cho đến sáng.'",
+    "explanation": "Dân Y-sơ-ra-ên thấy trụ mây đậu ở trên Đền Tạm vào ban ngày, và trụ lửa vào ban đêm (Dân Số Ký 9:15-16). Do đó, đáp án đúng là 'Đám mây ban ngày, cột lửa ban đêm' vì điều đó mô tả chính xác hai hiện tượng riêng biệt bao phủ tương ứng với thời gian. Các đáp án sai: (1) 'Đám mây ban ngày và ban đêm' sai vì Kinh Thánh nói rõ ban đêm là cột lửa, không phải mây. (2) 'Cột lửa ban ngày, đám mây ban đêm' sai vì đảo ngược chi tiết thời gian so với mô tả trong Kinh Thánh. (3) 'Hào quang ban ngày, bóng tối ban đêm' sai vì đây là một hiểu lầm phổ biến hoặc suy diễn chung chung, không phải mô tả chính xác của phân đoạn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -272,14 +272,14 @@
     "content": "Đức Giê-hô-va bảo Môi-se làm hai cái kèn bằng chất liệu gì?",
     "options": [
       "Vàng",
-      "Sừng chiên đực",
       "Đồng",
+      "Gỗ si-tim",
       "Bạc"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 10:2 — 'Hãy làm hai cái kèn bằng bạc, làm bằng bạc dát, để dùng triệu tập hội chúng và ra lệnh nhổ trại.' (Chất liệu là bạc).",
+    "explanation": "Câu Kinh Thánh Numbers 10:2 ghi rõ: 'Hãy làm hai cái kèn bằng bạc dát mỏng'. Vì vậy, đáp án đúng là 'Bạc'. Distractor 'Vàng' là sai vì dù vàng là kim loại quen thuộc trong đền tạm, chi tiết cụ thể trong câu này là bạc. Distractor 'Đồng' là sai vì đây là một hiểu lầm phổ biến do đồng thường được dùng cho các vật dụng khác, nhưng không phải cho kèn theo chỉ dẫn này. Distractor 'Gỗ si-tim' là sai vì dù gỗ si-tim được dùng trong nhiều đồ vật đền tạm, câu hỏi này hỏi cụ thể về chất liệu của kèn, và câu Kinh Thánh chỉ định là bạc, không phải gỗ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -297,15 +297,15 @@
     "type": "multiple_choice_single",
     "content": "Dân Y-sơ-ra-ên than nhớ loại thức ăn nào ở Ai Cập?",
     "options": [
-      "Bánh mì và bơ",
-      "Thịt bò và cừu",
+      "Thịt bò, dưa chuột, dưa hấu",
+      "Cá, lúa mì, dưa hấu",
       "Cá, dưa chuột, dưa hấu",
-      "Nho và vả"
+      "Cỏ Ếch, dưa chuột, dưa hấu"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 11:5 — 'Chúng ta nhớ cá ăn không tốn tiền tại Ai Cập, nhớ dưa chuột, dưa hấu, rau hẹ, hành và tỏi.' Trong các lựa chọn, đáp án phù hợp nhất là 'Cá, dưa chuột, dưa hấu'.",
+    "explanation": "Dân Y-sơ-ra-ên than nhớ cá, dưa chuột, dưa hấu ở Ai Cập (Dân số ký 11:5: 'Chúng tôi nhớ những cá chúng tôi ăn nhưng không tại Ai Cập, những dưa chuột, dưa hấu,...'). - A sai vì thay 'cá' bằng 'thịt bò' là sai chi tiết then chốt, dù dưa chuột và dưa hấu đúng. - B sai vì 'lúa mì' xuất hiện trong các đoạn về sự kêu ca khác (như Xuất Ê-díp-tô ký 16) nhưng không phải là thức ăn được than nhớ trong câu này. - C sai vì 'cỏ Ếch' (sự kiện tai vạ thứ ba) có tại Ai Cập nhưng không liên quan đến lời than phiền về thức ăn trong Dân số ký 11:5.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -325,15 +325,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Giê-hô-va sai loại chim gì đến cho dân sự ăn khi họ đòi thịt?",
     "options": [
-      "Bồ câu",
+      "Chim sẻ",
       "Chim cút",
-      "Chim ưng",
-      "Chim sẻ"
+      "Chim sâm cầm",
+      "Chim bồ câu"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 11:31 — 'Một ngọn gió từ Đức Giê-hô-va thổi đến, đùa chim cút từ biển vào.' Nhưng tai vạ giáng xuống khi dân sự ăn vì lòng tham.",
+    "explanation": "Đáp án đúng là 'Chim cút'. Dân số ký 11:31-33 ghi rõ: 'Đoạn, có gió từ nơi Đức Giê-hô-va nổi lên, đem những chim cút từ biển đến, rải ra trên trại quân...'. Do đó, chim cút là loài chim chính xác Đức Giê-hô-va đã cung cấp cho dân sự. Các đáp án sai: (1) 'Chim sẻ' là sai vì đây là một loài chim phổ biến trong Kinh Thánh (Ma-thi-ơ 10:29) nhưng không phải là loài chim được nhắc đến trong bối cảnh này ở Dân số ký 11. (2) 'Chim sâm cầm' là sai vì đây có thể là một hiểu lầm phổ biến về loài chim được cung cấp, nhưng Kinh Thánh xác định rõ ràng là chim cút. (3) 'Chim bồ câu' là sai vì mặc dù chim bồ câu xuất hiện trong nhiều phân đoạn Kinh Thánh (ví dụ: Lê-vi ký 1:14, Ma-thi-ơ 3:16) và có thể liên tưởng đến sự cung cấp, nó không phải là loài chim được Đức Giê-hô-va sai đến trong câu chuyện này ở Dân số ký 11.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -351,15 +351,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Giê-hô-va bảo Môi-se chọn bao nhiêu trưởng lão để chia sẻ gánh nặng lãnh đạo?",
     "options": [
-      "Bảy mươi hai",
-      "Một trăm",
+      "Mười hai",
+      "Bảy",
       "Bảy mươi",
-      "Mười hai"
+      "Bảy mươi hai"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 11:16 — 'Hãy tập họp cho Ta bảy mươi người trong các trưởng lão Y-sơ-ra-ên.' Thần của Môi-se được ban cho họ.",
+    "explanation": "Đáp án đúng là 'Bảy mươi', dựa trên Numbers 11:16-17: 'Đức Giê-hô-va phán cùng Môi-se rằng: Hãy nhóm hiệp cho ta bảy mươi người trong các trưởng lão Y-sơ-ra-ên... Ta sẽ ngự xuống nói chuyện với ngươi tại đó, lấy Thần linh trên ngươi mà ban cho họ, để họ cùng gánh với ngươi chức vụ về dân sự, và ngươi không phải gánh một mình.'\n\nCác đáp án sai:\n- 'Mười hai' là sai vì đây là số lượng chi phái (số gần trong bối cảnh), không phải số trưởng lão được chọn theo lệnh trong đoạn này.\n- 'Bảy' là sai vì đây là một con số khác, không phải con số bảy mươi được Chúa chỉ định.\n- 'Bảy mươi hai' là sai vì dù gần với con số đúng, nhưng đoạn Kinh Thánh ghi rõ là bảy mươi, không phải bảy mươi hai; đây là một hiểu lầm phổ biến từ các truyền thống khác.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -378,15 +378,15 @@
     "type": "multiple_choice_single",
     "content": "Ai nói nghịch Môi-se vì vợ người Ê-thi-ô-bi của ông?",
     "options": [
-      "Na-đáp và A-bi-hu",
-      "Cô-ra và Đa-than",
-      "Giô-suê và Ca-lép",
+      "Mi-ri-am và các trưởng lão",
+      "Một số người lạ đối với Môi-se",
+      "A-rôn và Dathan cùng Abiram",
       "Mi-ri-am và A-rôn"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 12:1 — 'Mi-ri-am và A-rôn nói nghịch Môi-se vì cớ người vợ Ê-thi-ô-bi mà ông đã cưới.'",
+    "explanation": "Dân số ký 12:1-2 ghi rõ: 'Mi-ri-am và A-rôn nói nghịch cùng Môi-se về việc người đàn bà Ê-thi-ô-bi mà người đã lấy...'. Đáp án đúng là Mi-ri-am và A-rôn vì cả hai người này đã cùng nhau lên tiếng chỉ trích Môi-se. \n\nCác đáp án sai: (1) 'Mi-ri-am và các trưởng lão' là sai vì Kinh Thánh không nói các trưởng lão tham gia vào sự kiện này (sai chi tiết). (2) 'Một số người lạ đối với Môi-se' là sai, vì những người nói nghịch được xác định rõ là người thân trong gia đình, không phải người lạ (đúng văn bản nhưng lạc câu hỏi). (3) 'A-rôn và Dathan cùng Abiram' là sai vì Dathan và Abiram là những người đã tham gia cuộc nổi loạn khác (Dân số ký 16:1) chứ không phải trong sự kiện này (nhầm sang phân đoạn gần đó).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -406,7 +406,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 12:10 — 'Khi đám mây rời khỏi Lều, Mi-ri-am bị phong hủi, trắng như tuyết.'",
+    "explanation": "Căn cứ vào Numbers 12:10, khi trụ mây dời khỏi Trại, Mi-ri-am bị 'phung hủi, trắng như tuyết', xác nhận hình phạt là bệnh phong hủi (cùi).\n\n- **Distractor 1 (gần đúng, sai chi tiết):** 'Mất tiếng và bị đuổi ra khỏi trại'. Trong đoạn Kinh Thánh, bà bị đuổi ra khỏi trại 7 ngày (câu 14-15) như là hệ quả của bệnh phong hủi, không phải là hình phạt trực tiếp hay duy nhất. Sai ở chỗ thay thế bệnh chính (phong hủi) bằng hậu quả (mất tiếng & đuổi đi).\n- **Distractor 2 (sai chi tiết):** 'Bệnh lở loét khắp người'. Mô tả này gần với các bệnh dịch hoặc hình phạt khác trong Kinh Thánh (như Xuất Ê-díp-tô Ký 9:9-10), nhưng không phải là mô tả cụ thể về bệnh của Mi-ri-am trong Numbers 12:10.\n- **Distractor 3 (hiểu lầm phổ biến):** 'Bệnh tê liệt và mất sức'. Đây là một hình ảnh phổ biến về sự trừng phạt hoặc bệnh tật nghiêm trọng, nhưng không hề được đề cập trong phân đoạn này; câu Kinh Thánh mô tả rõ ràng là bệnh phong hủi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -416,10 +416,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Bệnh dịch",
+      "Mất tiếng và bị đuổi ra khỏi trại",
       "Bệnh phong hủi (trắng như tuyết)",
-      "Bệnh mù",
-      "Bệnh điếc"
+      "Bệnh lở loét khắp người",
+      "Bệnh tê liệt và mất sức"
     ]
   },
   {
@@ -430,15 +430,15 @@
     "type": "multiple_choice_single",
     "content": "Môi-se sai bao nhiêu người đi do thám đất Ca-na-an?",
     "options": [
-      "40 người",
+      "10 người",
       "12 người",
-      "70 người",
-      "10 người"
+      "11 người",
+      "40 người"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 13:2 — 'Hãy sai người đi do thám đất Ca-na-an.' Mỗi chi phái cử một người, tổng cộng mười hai người.",
+    "explanation": "Dân số Ký 13:2 chép: \"Hãy sai những người đi do thám xứ Ca-na-an, mà ta ban cho dân Y-sơ-ra-ên; mỗi một chi phái hãy sai một người, tức là mỗi một chi phái phải sai một quan trưởng.\" Vì có 12 chi phái (không tính chi phái Lê-vi trong việc chia đất), nên Môi-se đã sai đúng 12 người. Distractor '11 người' là gần đúng nhưng sai một chi tiết số. Distractor '10 người' là một con số sai khác. Distractor '40 người' là một hiểu lầm phổ biến, vì 40 là số năm họ đi lang thang trong đồng vắng sau sự kiện này, chứ không phải số người đi do thám.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -457,15 +457,15 @@
     "type": "multiple_choice_single",
     "content": "Những thám tử mang về những loại trái cây gì từ thung lũng Ếch-côn?",
     "options": [
-      "Một chùm nho lớn",
+      "Chùm nho, lựu và táo",
       "Chùm nho, lựu và vả",
-      "Ô-liu và chà là",
-      "Trái vả và lựu"
+      "Bồ quân, vả và lựu",
+      "Chùm nho, lựu, vả và ô-liu"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 13:23 — 'Họ cắt tại đó một nhánh nho có một chùm nho... Họ cũng hái lựu và vả.' Vậy họ mang về nho (một chùm lớn), lựu và vả.",
+    "explanation": "Câu hỏi tham chiếu Dân Số Ký 13:23. Các thám tử đã chặt một nhánh nho với một chùm nho tại thung lũng Ếch-côn, và cũng mang về một ít trái lựu và trái vả. Đáp án đúng là 'Chùm nho, lựu và vả'.\n- Distractor 1 (Chùm nho, lựu và táo) SAI vì chi tiết 'táo' thay thế 'vả' không có trong câu thuật, đây là lỗi sai chi tiết nhưng là lựa chọn 'gần đúng' vì chỉ khác một loại quả.\n- Distractor 2 (Bồ quân, vả và lựu) SAI vì đây là các loại trái được nhắc đến trong Phục Truyền Luật Lệ Ký 8:8 (vùng đất có lúa mì, lúa mạch, nho, vả, lựu, cây ô-liu và mật ong) chứ không phải trong câu chuyện thám thính cụ thể ở Dân Số Ký 13:23, thuộc lỗi dựa trên đoạn Kinh Thánh gần nhưng sai bối cảnh.\n- Distractor 3 (Chùm nho, lựu, vả và ô-liu) SAI vì thêm 'ô-liu' vào danh sách, mở rộng phạm vi sai: ô-liu không được đề cập là đã được mang về trong chuyến thám thính này, thuộc lỗi sai phạm vi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -484,15 +484,15 @@
     "type": "multiple_choice_single",
     "content": "Ngoài Giô-suê, ai là người thám tử còn lại tin rằng dân Y-sơ-ra-ên có thể chiếm đất Ca-na-an?",
     "options": [
-      "Phi-nê-a",
-      "Ê-lê-a-sa",
+      "Môi-se",
+      "A-hi-man",
       "Ca-lép",
-      "A-rôn"
+      "Sết"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 13:30 — 'Ca-lép làm cho dân chúng yên lặng trước mặt Môi-se, và nói: Chúng ta hãy đi lên chiếm lấy đất đó, vì chúng ta có thể thắng được.'",
+    "explanation": "Trong Dân Số Ký 13:30, Ca-lép đã lên tiếng trước dân chúng để làm nguôi cơn giận, nói rằng: 'Chúng ta hãy đi lên và chiếm xứ đi, vì chúng ta thắng hơn nó.' Điều này cho thấy ông cùng với Giô-suê (xem câu 13:16, 30 và 14:6-9) tin rằng dân Y-sơ-ra-ên có thể chiếm đất. \n\nCác đáp án sai: (1) 'Môi-se' là sai vì ông không phải là một trong mười hai thám tử được cử đi (Dân Số Ký 13:1-16), dù ông có mặt trong đoạn này. (2) 'A-hi-man' là sai vì đây là tên một người khổng lồ, con cháu của A-nác, được các thám tử khác nhắc đến như một phần của nỗi sợ hãi (câu 13:22, 28), chứ không phải tên một thám tử trung thành. (3) 'Sết' là sai vì đây là tên một nhân vật trong Sáng Thế Ký 5:3, hoàn toàn không liên quan đến sự kiện thám thính Ca-na-an.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -512,15 +512,15 @@
     "type": "multiple_choice_single",
     "content": "Dân Y-sơ-ra-ên phải lang thang trong hoang mạc bao nhiêu năm vì không tin Đức Chúa Trời?",
     "options": [
-      "20 năm",
-      "10 năm",
+      "38 năm",
       "30 năm",
+      "10 năm",
       "40 năm"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 14:33-34 — 'Con cái các ngươi sẽ chăn bầy trong hoang mạc bốn mươi năm... mỗi ngày thay cho một năm, tức bốn mươi năm.'",
+    "explanation": "Dân Y-sơ-ra-ên phải lang thang trong hoang mạc 40 năm (đáp án đúng) vì không tin cậy và phàn nàn sau khi nghe báo cáo của các thám tử (Dân Số Ký 14:33-34). Cụ thể, Đức Chúa Trời phán: 'Con cái các ngươi sẽ chăn chiên trong đồng vắng trong bốn mươi năm, và sẽ mang lấy hình phạt vì tội thông dâm của các ngươi, cho đến chừng nào thây của các ngươi đã ngã rạp trong đồng vắng. Theo số các ngày mà các ngươi đã do thám xứ, tức là bốn mươi ngày, mỗi ngày là một năm, các ngươi sẽ mang lấy tội ác mình trong bốn mươi năm, và các ngươi sẽ biết sự nghịch cùng ta.' (BTT).\n\n- Distractor '38 năm' (gần đúng) là sai vì không có chi tiết này trong phân đoạn liên quan; đây là một con số gần với 40 năm nhưng không chính xác.\n- Distractor '30 năm' là sai vì đây là một con số sai chi tiết, không được đề cập trong ngữ cảnh về hình phạt này.\n- Distractor '10 năm' là sai vì đây là một hiểu lầm phổ biến dựa trên việc nhầm lẫn với thời gian thám thính đất (40 ngày) hoặc các giai đoạn khác, không phải thời gian hình phạt lang thang.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -568,15 +568,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Giê-hô-va bảo dân Y-sơ-ra-ên làm tua ở vạt áo với sợi dây màu gì?",
     "options": [
-      "Đỏ thắm",
+      "Đỏ thẫm",
       "Xanh dương",
-      "Tím",
-      "Trắng"
+      "Trắng tinh",
+      "Vàng"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 15:38 — 'Hãy bảo họ đời đời phải làm tua ở các vạt áo, và gắn một sợi dây màu xanh dương vào mỗi tua.' Để nhớ giữ các điều răn.",
+    "explanation": "Dân-số Ký 15:38-39: \"Hãy nói cùng dân Y-sơ-ra-ên và biểu họ từ đời nầy sang đời kia phải làm những cái tua nơi các chéo áo mình, và lấy một sợi dây màu xanh để buộc trên các tua nơi chéo áo...\" Đây là một mệnh lệnh cụ thể để dân Y-sơ-ra-ên luôn nhớ đến các điều răn. Đáp án đúng là 'Xanh dương' vì đây là màu sắc được chỉ định trong câu Kinh Thánh. Các đáp án sai: 1) 'Đỏ thẫm' là một màu sắc phổ biến và quan trọng trong nghi lễ (như của bò tơ đỏ, hay màu nhuộm), nhưng Kinh Thánh không nói đến màu này trong ngữ cảnh tua áo ở phân đoạn này. 2) 'Trắng tinh' thường liên quan đến sự thanh sạch, nhưng không phải là mệnh lệnh cụ thể được ghi tại đây. 3) 'Vàng' có thể bị nhầm lẫn với các chi tiết về trang phục thầy tế lễ hoặc đồ trang trí Đền Tạm, nhưng không phải là màu của sợi dây cho tua áo của mọi người dân.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -597,15 +597,15 @@
     "type": "multiple_choice_single",
     "content": "Ai dẫn đầu cuộc nổi loạn chống lại Môi-se và A-rôn?",
     "options": [
-      "Ôn",
+      "Ê-li-áp",
       "Cô-ra",
-      "Đa-than",
-      "A-bi-ram"
+      "Nê-tha-nên",
+      "Mi-ri-am"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 16:1-3 — 'Cô-ra... cùng Đa-than và A-bi-ram... nổi lên chống lại Môi-se.' Cô-ra là nhân vật chính trong cuộc nổi loạn này.",
+    "explanation": "Dân Số Ký 16:1-3 ghi rõ: \"Cô-ra, con trai của Dít-sê-ha, cháu của Kê-hát, chắt của Lê-vi, cùng với Đa-than và A-bi-ram, con trai của Ê-li-áp, và Ôn, con trai của Phê-lét, là con cháu Ru-bên, nổi dậy chống lại Môi-se.\" Do đó, người dẫn đầu cuộc nổi loạn là Cô-ra. Phương án sai 'Ê-li-áp' (almost-right) là tên cha của hai người tham gia (Đa-than và A-bi-ram), không phải người dẫn đầu, đây là lỗi hiểu lầm phổ biến. Phương án 'Nê-tha-nên' là sai chi tiết, vì đây là người đứng đầu chi phái Y-sa-ca (Dân Số 1:8), không liên quan đến sự kiện này. Phương án 'Mi-ri-am' là nhầm passage gần, vì bà đã cùng A-rôn nói nghịch Môi-se trong một sự kiện trước đó (Dân Số 12:1), nhưng không phải trong cuộc nổi loạn Dân Số Ký 16.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -650,15 +650,15 @@
     "type": "multiple_choice_single",
     "content": "Cây gậy của ai đã nảy mầm, trổ hoa và ra quả để xác nhận chức tế lễ?",
     "options": [
-      "Giô-suê",
-      "Ca-lép",
+      "Môi-se",
+      "Cô-rê",
       "A-rôn",
-      "Môi-se"
+      "Na-đáp"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 17:8 — 'Gậy của A-rôn, thuộc nhà Lê-vi, đã nảy chồi, trổ hoa, và ra quả hạnh nhân chín.'",
+    "explanation": "Dân số Ký 17:8 ghi rõ: 'Ngày mai, Môi-se vào trại chứng cớ, xảy thấy cây gậy của A-rôn về nhà Lê-vi đã nứt mầm, trổ hoa, và kết trái hạnh nhân chín.' Vì vậy, đáp án đúng là A-rôn, trưởng tộc Lê-vi, người được Đức Chúa Trời chọn làm thầy tế lễ thượng phẩm. Các đáp án sai: (1) 'Môi-se' là sai vì dù ông là người đặt các cây gậy vào trước mặt Chúa và công bố kết quả, cây gậy của ông không nảy mầm (lỗi nhầm passage gần). (2) 'Cô-rê' là sai vì ông này đã dấy loạn chống lại chức tế lễ của A-rôn và bị trừng phạt (Dân số ký 16); cây gậy của ông không có phép lạ này, đây là hiểu lầm phổ biến vì sự kiện liên quan (lỗi hiểu lầm phổ biến). (3) 'Na-đáp' là sai vì ông là con trai của A-rôn, một thầy tế lễ, nhưng không phải là chủ nhân của cây gậy đặc biệt này (lỗi sai chi tiết).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -676,15 +676,15 @@
     "type": "multiple_choice_single",
     "content": "Gậy của A-rôn nảy mầm và ra quả ___.",
     "options": [
-      "vả",
+      "nhựa thơm",
       "hạnh nhân",
-      "nho",
-      "ô-liu"
+      "hoa hồng",
+      "nho"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 17:8 — 'Gậy của A-rôn, thuộc nhà Lê-vi, đã nảy chồi, trổ hoa, và ra quả hạnh nhân chín.'",
+    "explanation": "Dân Số Ký 17:8 chép: 'Ngày mai, Môi-se vào trại bảng chứng, thấy gậy A-rôn về nhà Lê-vi đã nứt mầm; nó có nứt mầm, ra hoa và kết trái hạnh nhân.' Vì vậy, 'hạnh nhân' là đáp án đúng, trực tiếp mô tả quả thực tế đã ra.\n\n- Distractor 'nhựa thơm' sai (wrong_detail): Đây là loại nhựa (hương liệu) được dùng trong đền thờ, nhưng không liên quan gì đến quả được sinh ra từ gậy A-rôn trong phép lạ này.\n- Distractor 'hoa hồng' sai nhưng gần đúng (nearby_passage): Trong toàn bộ câu chuyện về dấu lạ xác nhận chức tế lễ, chỉ gậy A-rôn nảy mầm, ra hoa và kết quả cụ thể là hạnh nhân. 'Hoa hồng' vừa sai loại quả vừa không được nhắc đến, nhưng nó gần với ý 'ra hoa' trong câu chuyện.\n- Distractor 'nho' sai (common_misconception): Đây là một loại quả phổ biến trong Kinh Thánh, thường biểu tượng cho sự trù phú của Đất Hứa, nhưng hoàn toàn không phải là quả được mô tả trong phép lạ của gậy A-rôn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -702,15 +702,15 @@
     "type": "multiple_choice_single",
     "content": "Người Lê-vi nhận phần mười từ dân sự, nhưng họ phải dâng lại bao nhiêu phần cho thầy tế lễ?",
     "options": [
-      "Một nửa",
-      "Một phần năm",
-      "Một phần ba",
+      "Một phần mười tổng số",
+      "Một nửa của phần mười",
+      "Toàn bộ phần mười",
       "Một phần mười của phần mười"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 18:26 — 'Khi các ngươi nhận phần mười từ dân Y-sơ-ra-ên... thì phải trích một phần mười của phần mười đó dâng lên Đức Giê-hô-va.'",
+    "explanation": "Dân-số Ký 18:26 chép: 'Ngươi cũng sẽ biểu người Lê-vi nói cùng họ rằng: Khi các ngươi đã lấy một phần mười... của dân Y-sơ-ra-ên... mà dâng cho Đức Giê-hô-va, thì các ngươi cũng phải dâng... một phần mười của phần mười đó.' Đây là mạng lịnh Chúa truyền dạy rõ ràng. Đáp án đúng là 'Một phần mười của phần mười' vì đúng theo câu Kinh Thánh này.\n\nDistractor 'Một phần mười tổng số' là gần đúng nhưng sai chi tiết then chốt: đối tượng dâng là một phần mười của chính phần mười họ nhận được, chứ không phải một phần mười của tổng số ban đầu từ dân sự.\nDistractor 'Một nửa của phần mười' sai chi tiết số lượng; Kinh Thánh chỉ định một phần mười, không phải một nửa.\nDistractor 'Toàn bộ phần mười' phản ánh một hiểu lầm phổ biến rằng người Lê-vi phải dâng lại hết, nhưng Kinh Thánh chỉ yêu cầu một phần mười trong số đó.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -754,15 +754,15 @@
     "type": "multiple_choice_single",
     "content": "Mi-ri-am qua đời và được chôn tại đâu?",
     "options": [
-      "Núi Si-na-i",
-      "Bê-tên",
+      "Núi Hô-rơ (trong hoang mạc Xin)",
+      "Ê-xi-ôn Ghê-be (trong hoang mạc Xin)",
       "Ca-đe (trong hoang mạc Xin)",
-      "Hếp-rôn"
+      "Ê-đôm (trong hoang mạc Xin)"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 20:1 — 'Toàn thể hội chúng Y-sơ-ra-ên đến hoang mạc Xin vào tháng giêng, và dân chúng ở tại Ca-đe. Mi-ri-am qua đời và được chôn tại đó.'",
+    "explanation": "Đáp án đúng là 'Ca-đe (trong hoang mạc Xin)' vì Dân Số Ký 20:1 ghi rõ: 'Dân Y-sơ-ra-ên, tức cả hội chúng, đến tại hoang mạc Xin vào tháng giêng, và dân sự ở tại Ca-đe; Mi-ri-am qua đời và được chôn tại đó.' (BTT).\n\n- Distractor 'Núi Hô-rơ (trong hoang mạc Xin)' sai: Núi Hô-rơ là nơi A-rôn qua đời và được chôn (Dân Số Ký 20:22-28, 33:38), không phải Mi-ri-am. Đây là nhầm lẫn với một sự kiện gần trong cùng chương.\n- Distractor 'Ê-xi-ôn Ghê-be (trong hoang mạc Xin)' sai: Ê-xi-ôn Ghê-be là nơi đóng trại nằm ở phía nam, gần vịnh Aqaba (Dân Số Ký 33:35), không phải nơi Mi-ri-am qua đời và được chôn tại Ca-đe.\n- Distractor 'Ê-đôm (trong hoang mạc Xin)' sai: Ê-đôm là tên một vùng đất/vương quốc mà dân Y-sơ-ra-ên đi ngang qua (Dân Số Ký 20:14-21), không phải là một địa điểm cụ thể để chôn cất Mi-ri-am.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -809,14 +809,14 @@
     "content": "A-rôn qua đời trên núi nào?",
     "options": [
       "Núi Si-na-i",
-      "Núi Sê-i-rơ",
       "Núi Nê-bô",
+      "Núi Mô-ri-a",
       "Núi Hô-rơ"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 20:27-28 — 'Môi-se làm theo lệnh Đức Giê-hô-va; họ lên núi Hô-rơ... A-rôn chết trên đỉnh núi.' Ê-lê-a-sa kế vị chức tế lễ.",
+    "explanation": "Theo Dân Số Ký 20:25-28, Đức Chúa Trời truyền lệnh cho Môi-se và A-rôn lên núi Hô-rơ. Tại đó, Môi-se cởi áo xống thầy tế lễ của A-rôn mặc cho Ê-lê-a-sa, con trai người. Sau đó, A-rôn qua đời trên đỉnh núi ấy. Vì vậy, đáp án đúng là Núi Hô-rơ.\n\nCác đáp án sai:\n- 'Núi Si-na-i' (sai chi tiết): Đây là nơi Đức Chúa Trời ban Luật Pháp (Xuất Ê-díp-tô Ký 19), không phải nơi A-rôn qua đời.\n- 'Núi Nê-bô' (nhầm passage gần): Đây là nơi Môi-se qua đời (Phục Truyền Luật Lệ Ký 34:1-5), một sự kiện tương tự nhưng xảy ra với một nhân vật khác và ở một địa điểm khác, nên dễ gây nhầm lẫn.\n- 'Núi Mô-ri-a' (đúng văn bản nhưng lạc câu hỏi): Núi này liên quan đến sự kiện Áp-ra-ham dâng Y-sác (Sáng Thế Ký 22:2) và sau này là đền thờ, không liên quan đến cái chết của A-rôn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -836,14 +836,14 @@
     "content": "Đức Giê-hô-va bảo Môi-se làm gì để cứu dân bị rắn cắn?",
     "options": [
       "Treo con rắn bằng đồng trên cây sào",
-      "Rảy huyết trên dân sự",
-      "Cầu nguyện suốt đêm",
-      "Dâng sinh tế chuộc tội"
+      "Bảo dân nhìn vào con rắn bằng bạc treo trên cây sào",
+      "Bảo dân cầu nguyện thật lòng để được chữa lành",
+      "Lập một đền thờ nhỏ để thờ con rắn bằng đồng"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Dân Số Ký 21:8-9 — 'Hãy làm một con rắn và treo nó lên cây sào. Ai bị rắn cắn mà nhìn nó thì sẽ sống.' Chúa Giê-xu ám chỉ sự kiện này trong Giăng 3:14.",
+    "explanation": "Đáp án đúng: \"Treo con rắn bằng đồng trên cây sào\" (Dân số ký 21:8-9). Đây là mệnh lệnh trực tiếp Đức Giê-hô-va phán với Môi-se, là phương cách cụ thể để dân chúng nhìn lên và được chữa lành.\n\nGiải thích các đáp án sai:\n- Distractor 1 (Sai chi tiết): Đúng là treo trên cây sào, nhưng chất liệu là \"bằng đồng\" (Kinh Thánh ghi rõ), không phải bạc. Đây là chi tiết then chốt bị thay đổi.\n- Distractor 2 (Hiểu lầm phổ biến): Dù cầu nguyện là quan trọng, nhưng đây không phải là chỉ dẫn cụ thể được Chúa đưa ra trong đoạn Kinh Thánh này. Phương cách cứu chữa được quy định là nhìn vào con rắn bằng đồng.\n- Distractor 3 (Đúng văn bản nhưng lạc câu hỏi): Đoạn Kinh Thánh sau này (2 Các Vua 18:4) cho biết con rắn bằng đồng này về sau đã bị vua Ê-xê-chia phá hủy vì dân chúng đốt hương cho nó. Tuy nhiên, đây không phải là mệnh lệnh ban đầu của Đức Giê-hô-va cho Môi-se khi cứu dân bị rắn cắn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -888,15 +888,15 @@
     "type": "multiple_choice_single",
     "content": "Vua Ba-lác mời ai đến để rủa sả dân Y-sơ-ra-ên?",
     "options": [
-      "Giê-trô",
+      "Vua Môi-se",
       "Ba-la-am",
-      "Cô-ra",
-      "Mên-chi-xê-đéc"
+      "Vua Ê-đôm",
+      "Vua Si-hôn"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 22:5-6 — 'Ba-lác sai sứ giả đến Ba-la-am... Xin hãy đến rủa sả dân nầy cho tôi, vì họ quá đông đối với tôi.'",
+    "explanation": "Kinh Thánh chép: 'Vậy, người sai sứ giả đến cùng Ba-la-am, con trai Bê-ô, tại Phê-thô-rơ, trên bờ sông, trong xứ của con cái Am-môn, đặng mời người đến mà rằng: Nầy, có một dân từ xứ Ê-díp-tô ra, phủ khắp mặt đất, và đóng trại đối ngang cùng ta. Bây giờ, hãy đến rủa sả dân đó cho ta...' (Dân Số Ký 22:5-6). Đáp án đúng là 'Ba-la-am' vì đây chính là người mà vua Ba-lác sai sứ giả đến mời để rủa sả dân Y-sơ-ra-ên. Distractor 'Vua Môi-se' là sai chi tiết vì Môi-se là lãnh đạo dân Y-sơ-ra-ên, không phải là người được mời. Distractor 'Vua Ê-đôm' là sai phạm vi vì đây là một vua khác (Ê-đôm) không liên quan đến sự kiện này. Distractor 'Vua Si-hôn' là gần đúng (gần với câu chuyện) nhưng vẫn sai vì đây là một vua A-mô-rít đã bị dân Y-sơ-ra-ên đánh bại trước đó (Dân Số Ký 21:21-25), không phải người được mời.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -940,15 +940,15 @@
     "type": "multiple_choice_single",
     "content": "Con lừa của Ba-la-am thấy gì trên đường mà Ba-la-am không thấy?",
     "options": [
-      "Đức Giê-hô-va trong đám mây",
-      "Một bức tường lửa",
+      "Một thiên sứ cầm cây gậy",
+      "Một con rắn lửa trên đường",
       "Một thiên sứ cầm gươm",
-      "Một con sư tử"
+      "Một vầng lửa từ trời"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 22:23 — 'Con lừa thấy thiên sứ của Đức Giê-hô-va đứng trên đường, tay cầm gươm trần.' Con lừa tránh nhưng Ba-la-am không nhìn thấy.",
+    "explanation": "Đáp án đúng là 'Một thiên sứ cầm gươm' vì Kinh Thánh chép: 'Đức Giê-hô-va để một thiên sứ cầm gươm trần đứng trên đường đặng cản Ba-la-am' (Dân số ký 22:23, BTT). Các đáp án sai: 1) 'Một thiên sứ cầm cây gậy' sai chi tiết vũ khí (gươm chứ không phải gậy). 2) 'Một con rắn lửa trên đường' là hiểu lầm phổ biến từ các câu chuyện khác (như Xuất Ê-díp-tô ký). 3) 'Một vầng lửa từ trời' lấy từ các đoạn gần (như hiện tượng trong Xuất Ê-díp-tô ký hoặc 1 Các Vua 18:38) nhưng không phải cảnh tượng trong đoạn này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -965,15 +965,15 @@
     "type": "multiple_choice_single",
     "content": "'Đức Chúa Trời không phải là ___ để nói dối, cũng không phải là con người để hối tiếc.'",
     "options": [
-      "thần tượng",
+      "nhà tiên tri",
       "loài người",
-      "kẻ ác",
-      "thiên sứ"
+      "sinh linh",
+      "đấng sáng tạo"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 23:19 — 'Đức Chúa Trời không phải là loài người để nói dối, cũng không phải là con người để hối tiếc.' Lời Ba-la-am chúc phước thay vì rủa sả.",
+    "explanation": "Phân đoạn Dân Số Ký 23:19 viết: \"Đức Chúa Trời chẳng phải là loài người mà nói dối, Cũng chẳng phải là con loài người mà ăn năn\". Do đó, đáp án đúng là \"loài người\", vì câu này nhấn mạnh sự khác biệt giữa bản chất không thay đổi và trung tín của Đức Chúa Trời với bản chất hay thay đổi và không trọn vẹn của loài người. \n- Distractor \"nhà tiên tri\" sai vì mặc dù ngữ cảnh liên quan đến lời tiên tri của Ba-la-am, nhưng từ này không xuất hiện trong câu được trích dẫn. \n- Distractor \"sinh linh\" sai vì đây là một hiểu lầm phổ biến khi nghĩ về tạo vật, nhưng câu Kinh Thánh đặc biệt so sánh với con người (loài người), không phải tạo vật nói chung. \n- Distractor \"đấng sáng tạo\" sai vì mặc dù Đức Chúa Trời là Đấng Sáng Tạo, nhưng từ này không được dùng trong câu hỏi này; việc dùng nó làm mờ đi sự tương phản cụ thể giữa Đức Chúa Trời và loài người mà câu Kinh Thánh trình bày.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -993,7 +993,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 23:8 ghi lời Ba-la-am: 'Làm sao tôi rủa sả kẻ mà Đức Chúa Trời không rủa sả? Làm sao tôi nguyền rủa kẻ mà Đức Giê-hô-va không nguyền rủa?' Ông chỉ có thể nói điều Đức Chúa Trời đặt trong miệng mình (câu 12).",
+    "explanation": "Đáp án đúng: 'Không — ông chỉ có thể nói điều Đức Chúa Trời đặt vào miệng mình.' Điều này dựa trên lời của Ba-la-am trong Dân số ký 23:12: 'Tôi há chẳng phải cẩn thận nói điều Đức Giê-hô-va đặt trong miệng tôi sao?' (BTT), cho thấy ông chỉ là công cụ phát ngôn của Đức Chúa Trời.\n\nDistractor 1 sai ('Không — ông chỉ có thể nói điều vua Ba-lác đặt vào miệng mình.') vì đây là sai chi tiết then chốt: Ba-la-am nhận lệnh từ Đức Chúa Trời, không phải từ vua Ba-lác, người thuê ông.\nDistractor 2 sai ('Có — sau đó ông đã thực hiện lời rủa sả theo ý vua.') vì đây là hiểu lầm phổ biến về kết quả; thực tế, trong đoạn này (và cả chương) Ba-la-am chỉ chúc phước, không rủa sả.\nDistractor 3 sai ('Có — ông có thể tự do chọn lời nói tiên tri của mình.') vì nó mô tả một sự tự do không có thật; câu 12 cho thấy ông bị ràng buộc bởi lời Đức Chúa Trời, dù ông có thể muốn làm khác (tham khảo thái độ của Ba-la-am trong câu chuyện).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1003,10 +1003,10 @@
       "Nâng cao"
     ],
     "options": [
-      "Có, ông có thể làm điều đó dễ dàng.",
-      "Có, nhưng chỉ sau khi dâng thêm nhiều của lễ.",
+      "Không — ông chỉ có thể nói điều vua Ba-lác đặt vào miệng mình.",
+      "Có — sau đó ông đã thực hiện lời rủa sả theo ý vua.",
       "Không — ông chỉ có thể nói điều Đức Chúa Trời đặt vào miệng mình.",
-      "Có, nhưng ông chỉ có thể rủa sả một phần dân chúng."
+      "Có — ông có thể tự do chọn lời nói tiên tri của mình."
     ]
   },
   {
@@ -1018,14 +1018,14 @@
     "content": "Lời tiên tri của Ba-la-am 'Một ngôi sao sẽ mọc lên từ Gia-cốp' được hiểu là nói về ai?",
     "options": [
       "Đấng Mê-si-a (Christ)",
-      "Sa-mu-ên",
-      "Vua Đa-vít",
-      "Giô-suê"
+      "Vua Đa-vít (David)",
+      "Tiên tri Môi-se (Moses)",
+      "Một thiên sứ của Đức Giê-hô-va"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Dân Số Ký 24:17 — 'Một ngôi sao mọc lên từ Gia-cốp, một cây phủ việt trỗi dậy từ Y-sơ-ra-ên.' Đây là lời tiên tri về Đấng Mê-si-a, dù trước mắt có thể ám chỉ Đa-vít.",
+    "explanation": "Trong Dân số ký 24:17, Ba-la-am nói tiên tri: 'Tôi thấy Người, nhưng chẳng phải bây giờ; tôi nhìn Người, nhưng chẳng phải gần đây. Một ngôi sao sẽ mọc lên từ Gia-cốp, một vương trượng sẽ trỗi dậy từ Y-sơ-ra-ên...'. Cụm từ 'vương trượng' và 'ngôi sao' thường được hiểu là biểu tượng của quyền cai trị và sự vinh hiển. Trong truyền thống Do Thái và Cơ Đốc, lời tiên tri này được áp dụng cho Đấng Mê-si-a, là Đấng sẽ đến để cai trị. Đáp án đúng là 'Đấng Mê-si-a (Christ)' vì đây là sự giải thích Tân Ước (xem Ma-thi-ơ 2:2) và truyền thống chính thống. Distractor 'Vua Đa-vít (David)' là một hiểu lầm phổ biến vì Đa-vít là vua nổi tiếng từ dòng dõi Gia-cốp, nhưng lời tiên tri này mang tính chất về tương lai xa hơn và vương quốc vĩnh cửu. Distractor 'Tiên tri Môi-se (Moses)' sai chi tiết vì Môi-se là lãnh đạo và là tiên tri, nhưng ông thuộc chi phái Lê-vi, không liên quan trực tiếp đến biểu tượng 'ngôi sao' hay 'vương trượng' trong lời tiên tri này. Distractor 'Một thiên sứ của Đức Giê-hô-va' dựa vào ngữ cảnh gần vì trong các chương trước, thiên sứ của Đức Giê-hô-va đã hiện ra với Ba-la-am (Dân số ký 22:31), nhưng lời tiên tri cụ thể trong câu 17 không nói về một thiên sứ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1045,14 +1045,14 @@
     "content": "Dân Y-sơ-ra-ên phạm tội thờ thần tượng nào tại Si-tim?",
     "options": [
       "Ba-anh Phê-ô",
-      "Thần Đa-gôn",
-      "Thần Mô-lóc",
-      "Thần Kê-mốt"
+      "Ba-anh Bê-ên",
+      "Nữ thần A-sê-ra",
+      "Mô-lóc"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Dân Số Ký 25:3 — 'Y-sơ-ra-ên thờ cúng Ba-anh Phê-ô. Cơn thịnh nộ của Đức Giê-hô-va nổi lên cùng Y-sơ-ra-ên.'",
+    "explanation": "Dân Y-sơ-ra-ên phạm tội thờ phượng 'Ba-anh Phê-ô' (Dân Số Ký 25:3). Đây là tên riêng của thần Ba-anh được thờ tại Phê-ô. Distractor 'Ba-anh Bê-ên' là tên gọi chung phổ biến của thần Ba-anh trong Kinh Thánh, xuất hiện ở nhiều sách khác (ví dụ Các Quan Xét) nhưng không phải tên cụ thể tại Si-tim. Distractor 'Nữ thần A-sê-ra' là một thần tượng khác thường được đề cập cùng với Ba-anh (Các Quan Xét 3:7), nhưng không được nói đến trong đoạn này. Distractor 'Mô-lóc' là một thần tượng khác liên quan đến tế lễ con cái (Lê-vi Ký 18:21), không phải là thần được dân chúng thờ trong sự việc tại Si-tim.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1072,15 +1072,15 @@
     "type": "multiple_choice_single",
     "content": "Ai đã hành động quyết liệt (đâm một người Y-sơ-ra-ên và một người nữ Ma-đi-an) để chặn đứng cơn thịnh nộ của Đức Giê-hô-va và dịch bệnh đã khiến 24.000 người chết tại Si-tim?",
     "options": [
-      "Giô-suê",
       "Môi-se",
-      "Ê-lê-a-sa",
+      "Giô-suê",
+      "Ca-lép",
       "Phi-nê-a"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 25:7-9 — Phi-nê-a đã đâm một người Y-sơ-ra-ên và một người nữ Ma-đi-an, hành động đó khiến cơn thịnh nộ của Đức Giê-hô-va nguôi đi và dịch bệnh dừng lại. Dịch bệnh này đã khiến 24.000 người chết.",
+    "explanation": "Đáp án đúng là 'Phi-nê-a' vì Dân số Ký 25:7-9 ghi rõ Phi-nê-a, con trai thầy tế lễ Ê-lê-a-sa, đã đâm người Y-sơ-ra-ên và người nữ Ma-đi-an, khiến cơn thịnh nộ của Đức Giê-hô-va ngưng lại và dịch bệnh chấm dứt (câu 8).\n\nCác đáp án sai:\n- 'Môi-se' (gần đúng, sai chi tiết): Môi-se là nhà lãnh đạo trong đoạn văn (câu 5-6), nhưng chính Phi-nê-a mới là người thực hiện hành động quyết liệt này.\n- 'Giô-suê' (sai phạm vi): Giô-suê là người kế nhiệm Môi-se, nhưng không xuất hiện hay được nhắc đến trong sự kiện cụ thể này tại Si-tim (Dân số Ký 25).\n- 'Ca-lép' (hiểu lầm phổ biến): Ca-lép là một thủ lĩnh trung thành khác, nhưng ông không liên quan đến sự kiện này; người học có thể nhầm lẫn giữa các nhân vật có đức tin nổi bật trong sách Dân số Ký.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1125,7 +1125,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 26:64-65 — 'Trong số những người nầy không có ai trong những người mà Môi-se và A-rôn đã kiểm tra... ngoại trừ Ca-lép con Giê-phu-nê, và Giô-suê con Nun.'",
+    "explanation": "Dân Số Ký 26:64-65 ghi rõ trong cuộc kiểm tra dân số lần hai, không còn ai (ngoại trừ Ca-lép và Giô-suê) thuộc về đoàn dân đã được kiểm tra lần đầu nữa. Đáp án đúng là Ca-lép và Giô-suê, vì chỉ có hai người này, trong số những người trên hai mươi tuổi từ cuộc kiểm tra đầu tiên tại Sinai, được vào Đất Hứa. Distractor 1 sai vì thêm Môi-se (ông không chết trong đồng vắng nhưng cũng không được vào Đất Hứa sau cuộc kiểm tra lần hai, và Kinh Thánh không liệt kê ông là người từ cuộc kiểm tra đầu tiên 'còn sống' trong bối cảnh cụ thể này). Distractor 2 sai vì thứ tự tên không quan trọng nhưng lỗi chính vẫn là thêm Môi-se, đây là một chi tiết thường được đề cập gần đoạn này. Distractor 3 sai vì nó mở rộng phạm vi quá rộng, trái ngược hoàn toàn với nhấn mạnh của phân đoạn rằng hầu hết mọi người đã chết.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1134,10 +1134,10 @@
       "Trung cấp"
     ],
     "options": [
-      "Chỉ Môi-se và A-rôn",
-      "Chỉ các trưởng lão",
+      "Môi-se, Ca-lép, và Giô-suê",
+      "Ca-lép, Giô-suê, và Môi-se",
       "Chỉ Ca-lép và Giô-suê",
-      "Khoảng một nửa thế hệ"
+      "Toàn bộ những người từ cuộc kiểm tra đầu tiên"
     ]
   },
   {
@@ -1149,15 +1149,15 @@
     "type": "multiple_choice_single",
     "content": "Các con gái của Xê-lô-phát xin Môi-se điều gì?",
     "options": [
-      "Được miễn thuế",
-      "Được lấy chồng ngoài chi phái",
+      "Được miễn nghĩa vụ quân dịch",
+      "Được kết hôn với người trong chi tộc",
       "Được thừa kế phần đất của cha",
-      "Được phục vụ tại Đền Tạm"
+      "Được đứng trước mặt Môi-se để cầu nguyện"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 27:4 — 'Tại sao tên cha chúng tôi bị xóa giữa thị tộc, vì cha không có con trai? Xin cho chúng tôi một phần sản nghiệp giữa các anh em của cha.' Đức Giê-hô-va chấp thuận.",
+    "explanation": "Đoạn Kinh Thánh Numbers 27:1-7 ghi lại việc các con gái của Xê-lô-phát (Mách-la, Nô-a, Hốt-la, Minh-ca, và Tiệc-xa) đến trước mặt Môi-se, Ê-lê-a-sa, các lãnh đạo, và cả hội chúng để trình bày rằng cha họ đã chết không có con trai. Họ lo sợ tên cha mình sẽ bị xóa khỏi chi tộc vì không có con trai nối dõi, nên đã xin: \"Xin ban cho chúng tôi một sản nghiệp giữa anh em của cha chúng tôi\" (câu 4). Điều này có nghĩa là xin được thừa kế phần đất của cha, và Chúa đã phán với Môi-se chấp thuận điều đó (câu 6-7).\n\n- Đáp án đúng đúng vì nó diễn đạt trực tiếp yêu cầu của họ về sản nghiệp (đất đai).\n- Distractor \"Được miễn nghĩa vụ quân dịch\" sai vì đoạn này không đề cập đến nghĩa vụ quân sự; đây là một chi tiết sai.\n- Distractor \"Được kết hôn với người trong chi tộc\" là gần đúng (almost-right) vì liên quan đến việc bảo tồn sản nghiệp trong chi tộc, nhưng đây không phải là điều họ xin trực tiếp trong đoạn này. Yêu cầu về hôn nhân trong chi tộc được đề cập sau đó (Numbers 36) để giải quyết hậu quả của việc thừa kế này, không phải là nội dung của lời thỉnh cầu ban đầu.\n- Distractor \"Được đứng trước mặt Môi-se để cầu nguyện\" sai vì mặc dù họ có đứng trước mặt Môi-se (câu 2), nhưng đây là hành động trình bày, không phải là nội dung của lời xin. Đây là một chi tiết đúng trong văn bản nhưng lạc với câu hỏi về điều họ xin.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1176,15 +1176,15 @@
     "type": "multiple_choice_single",
     "content": "Ai được chọn kế vị Môi-se để lãnh đạo dân Y-sơ-ra-ên?",
     "options": [
-      "Ê-lê-a-sa",
-      "Phi-nê-a",
+      "Ca-lép",
+      "A-rôn",
       "Giô-suê",
-      "Ca-lép"
+      "Hê-phê-rôn"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 27:18 — 'Đức Giê-hô-va phán với Môi-se: Hãy chọn Giô-suê, con trai Nun, người có Thần ở trong, và đặt tay trên người.'",
+    "explanation": "Theo Dân Số Ký 27:18-20, Đức Giê-hô-va phán với Môi-se rằng: 'Hãy bắt Giô-suê, con trai của Nun, là người có Thần linh trong mình, rồi đặt tay trên người; phải đem người ra đứng trước mặt thầy tế lễ Ê-lê-a-sa và trước mặt cả hội chúng, truyền lịnh cho người trước mặt chúng.' Vì vậy, Giô-suê là người được chọn. \n\n- Distractor 'Ca-lép' là sai: Ca-lép cùng với Giô-suê là hai thám tử trung tín (Dân Số Ký 14:6-9) và sau này được ban thừa hưởng đất (Giô-suê 14:13-14), nhưng ông không được chọn làm người kế vị lãnh đạo toàn dân.\n- Distractor 'A-rôn' là sai: A-rôn là anh của Môi-se và là thầy tế lễ thượng phẩm đầu tiên (Xuất Ê-díp-tô Ký 28:1), nhưng ông qua đời trước Môi-se tại núi Hô-rơ (Dân Số Ký 20:28) nên không thể là người kế vị.\n- Distractor 'Hê-phê-rôn' là sai: Hê-phê-rôn là một trưởng tộc của chi phái Giu-đa (Dân Số Ký 26:21), không có vai trò lãnh đạo toàn dân và không được đề cập trong ngữ cảnh kế vị Môi-se.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1204,15 +1204,15 @@
     "type": "multiple_choice_single",
     "content": "Tế lễ thiêu hằng ngày gồm bao nhiêu chiên con một tuổi?",
     "options": [
-      "Bốn con",
-      "Ba con",
       "Một con",
+      "Bốn con",
+      "Một cặp (đực cái)",
       "Hai con"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 28:3 — 'Đây là tế lễ dùng lửa mà các ngươi phải dâng cho Đức Giê-hô-va: mỗi ngày hai chiên con đực một tuổi, không tì vết, làm tế lễ thiêu thường xuyên.'",
+    "explanation": "Câu hỏi dựa trên Dân số Ký 28:3-4, nơi Đức Chúa Trời phán cùng Môi-se: 'Nầy là của lễ thiêu ngươi sẽ dâng lên cho Đức Giê-hô-va: chiên con giáp năm, không tì vít, mỗi ngày hai con...'. Vì vậy, đáp án đúng là 'Hai con'.\n\nCác đáp án sai:\n- 'Một con' là sai vì Kinh Thánh quy định rõ ràng là hai con mỗi ngày. Đây là một chi tiết số học sai, nhưng gần với đáp án đúng (chỉ sai một đơn vị) nên là lựa chọn 'gần đúng'.\n- 'Bốn con' là sai vì đây là số lượng chiên con dâng trong tế lễ thiêu hằng ngày vào ngày Sa-bát (Dân số Ký 28:9), không phải số lượng cho mỗi ngày thường. Đây là một lỗi nhầm lẫn với một phân đoạn gần đó.\n- 'Một cặp (đực cái)' là sai vì mặc dù Kinh Thánh thường quy định về giới tính trong một số tế lễ, nhưng đoạn văn cụ thể này (câu 3-4) không hề đề cập đến việc hai con chiên phải là một cặp đực cái cho tế lễ thiêu hằng ngày. Đây là một hiểu lầm phổ biến khi áp đặt chi tiết từ các quy định tế lễ khác vào đây.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1233,7 +1233,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 28:16 — 'Ngày mười bốn tháng giêng là Lễ Vượt Qua của Đức Giê-hô-va.'",
+    "explanation": "Dân Số Ký 28:16-17 chép rõ: 'Nhưng ngày mười bốn tháng giêng, sẽ là lễ Vượt Qua của Đức Giê-hô-va.' Vậy đáp án đúng là 'Ngày 14 tháng giêng'. Các đáp án sai: (1) 'Ngày 15 tháng giêng' là sai chi tiết, vì ngày 15 là ngày đầu tiên của Lễ Bánh Không Men (Lê-vi Ký 23:6), không phải Lễ Vượt Qua. (2) 'Ngày 14 tháng bảy' là sai phạm vi, vì ngày này liên quan đến Lễ Lều Tạm (Lê-vi Ký 23:34), không phải Lễ Vượt Qua trong tháng giêng. (3) 'Ngày đầu tiên của tháng giêng' là một hiểu lầm phổ biến, vì ngày đầu tháng (mồng một) có các nghi lễ riêng (Dân Số Ký 28:11), nhưng không phải là ngày giữ Lễ Vượt Qua.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1242,10 +1242,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Ngày 1 tháng giêng",
-      "Ngày 14 tháng giêng",
       "Ngày 15 tháng giêng",
-      "Ngày 14 tháng bảy"
+      "Ngày 14 tháng giêng",
+      "Ngày 14 tháng bảy",
+      "Ngày đầu tiên của tháng giêng"
     ]
   },
   {
@@ -1256,15 +1256,15 @@
     "type": "multiple_choice_single",
     "content": "Ngày mùng một tháng bảy (Lễ Thổi Kèn) có ý nghĩa gì đặc biệt?",
     "options": [
-      "Ngày phóng thích nô lệ",
-      "Ngày chia đất",
-      "Ngày kiêng ăn",
+      "Ngày dự trữ thực phẩm, chuẩn bị cho mùa đông",
+      "Ngày dâng tế lễ thiêu bằng bảy con bò đực",
+      "Ngày kỷ niệm việc ra khỏi xứ Ê-díp-tô",
       "Ngày nhóm họp thánh, không được làm việc nặng nhọc"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 29:1 — 'Ngày mùng một tháng bảy, các ngươi phải có một cuộc nhóm họp thánh. Các ngươi không được làm bất cứ công việc nặng nhọc nào. Đó là ngày thổi kèn cho các ngươi.'",
+    "explanation": "Trong Dân số Ký 29:1, Chúa phán cùng Môi-se: \"Ngày mùng một tháng bảy, các ngươi sẽ có sự nhóm hiệp thánh; chớ nên làm một công việc xác thịt nào; ấy sẽ là một ngày các ngươi thổi kèn cho các ngươi.\" Vì vậy, đáp án đúng là ngày nhóm họp thánh và không được làm việc nặng nhọc (công việc xác thịt).\n\nCác đáp án sai:\n1. 'Ngày dự trữ thực phẩm, chuẩn bị cho mùa đông' là sai (wrong_scope) vì đây không phải ý nghĩa được nêu trong phân đoạn; nó thuộc phạm vi của các hoạt động thực tế khác không liên quan đến nghi lễ.\n2. 'Ngày dâng tế lễ thiêu bằng bảy con bò đực' là gần đúng nhưng sai chi tiết (wrong_detail); Dân số Ký 29:2 có chỉ định về tế lễ, nhưng số bò đực là một con, không phải bảy con. Bảy con bò đực được dâng vào ngày 15 tháng bảy (Lễ Lều Tạm, c.32).\n3. 'Ngày kỷ niệm việc ra khỏi xứ Ê-díp-tô' là sai do hiểu lầm phổ biến (common_misconception); Lễ Vượt Qua (tháng giêng) mới kỷ niệm sự kiện này, không phải Lễ Thổi Kèn tháng bảy.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1283,7 +1283,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 30:2 — 'Khi một người hứa nguyện với Đức Giê-hô-va, hoặc thề buộc mình bằng một lời thề, người ấy không được thất hứa, phải làm theo mọi điều đã nói.'",
+    "explanation": "Câu đúng: Dân Số Ký 30:2 chép: 'Khi một người nam hứa nguyện với Đức Giê-hô-va, hay thề buộc lấy lời thề trói buộc linh hồn mình, thì chớ nên thất tín. Người phải làm y theo mọi lời đã ra khỏi miệng mình.' (BTT). Vì vậy, đáp án đúng là 'Không được thất hứa — phải làm theo mọi điều đã nói'.\n\nCác đáp án sai:\n1. 'Phải dâng của lễ thiêu để chuộc lời thề' là sai vì đây là gần đúng nhưng lẫn với quy định về của lễ trong các sách khác (như Lê-vi Ký), không phải yêu cầu cụ thể trong Dân Số 30:2 cho lời hứa của người nam. Câu này sai chi tiết then chốt về hành động phải làm.\n2. 'Phải thông báo lời hứa cho thầy tế lễ' là sai vì đây là quy định áp dụng cho một số trường hợp khác (như trong Lê-vi Ký về việc tuyên bố sạch), không phải yêu cầu phổ quát trong đoạn này cho mọi lời hứa của người nam.\n3. 'Chỉ phải giữ lời hứa nếu được cha mình chấp thuận' là sai vì đây là quy định áp dụng cho người nữ còn ở nhà cha (xem các câu 3-5), không phải cho phạm vi đối tượng người nam được hỏi trong câu 2.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1292,10 +1292,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Có thể thay đổi nếu khó",
-      "Có thể xin tha",
+      "Phải dâng của lễ thiêu để chuộc lời thề",
+      "Phải thông báo lời hứa cho thầy tế lễ",
       "Không được thất hứa — phải làm theo mọi điều đã nói",
-      "Phải hứa lại sau bảy ngày"
+      "Chỉ phải giữ lời hứa nếu được cha mình chấp thuận"
     ]
   },
   {
@@ -1307,15 +1307,15 @@
     "type": "multiple_choice_single",
     "content": "Theo luật lời hứa nguyện, ai có quyền hủy bỏ lời hứa nguyện của người con gái trẻ?",
     "options": [
-      "Chỉ chính cô ấy mới hủy được",
-      "Thầy tế lễ thượng phẩm",
-      "Trưởng lão trong thành",
+      "Chồng cô ấy",
+      "Mẹ cô ấy",
+      "Thầy tế lễ",
       "Cha cô ấy"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 30:5 — 'Nếu cha cô ấy ngăn cấm trong ngày ông nghe biết, thì không lời hứa nguyện hay lời thề nào cô ấy tự buộc mình sẽ có hiệu lực.' Cha có quyền hủy trong ngày biết.",
+    "explanation": "Câu hỏi xoay quanh luật về lời hứa nguyện của người con gái trẻ được quy định trong Dân Số Ký 30:3-5 (BTT). Đáp án đúng là 'Cha cô ấy' vì theo phân đoạn này (câu 3-5), nếu một người nữ trẻ tuổi, còn ở trong nhà cha mình, mà khấn hứa hoặc thề một lời hứa buộc mình, thì cha nàng, khi nghe điều đó, có quyền bác bỏ lời hứa nguyện của nàng.\n\nCác đáp án sai:\n1. 'Chồng cô ấy': Đây là đáp án sai phạm vi. Quyền hủy bỏ lời hứa nguyện của người con gái trẻ (còn ở nhà cha) thuộc về người cha, không phải người chồng. Luật dành cho người chồng được đề cập ở phần sau (câu 6-8) áp dụng cho người nữ đã lập gia đình.\n2. 'Mẹ cô ấy': Đây là đáp án gần đúng nhưng sai chi tiết then chốt. Trong đoạn Kinh Thánh được trích, chỉ có quyền của người cha được nêu rõ. Không có đề cập nào về quyền tương tự của người mẹ trong việc hủy bỏ lời hứa nguyện của con gái trẻ.\n3. 'Thầy tế lễ': Đây là hiểu lầm phổ biến về vai trò trong việc giải quyết các vấn đề luật pháp. Mặc dù thầy tế lễ có vai trò giảng dạy và phân xử luật pháp, nhưng trong luật cụ thể về lời hứa nguyện của người nữ trẻ tại nhà cha, quyền quyết định trực tiếp thuộc về người cha, không phải thầy tế lễ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1334,15 +1334,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Giê-hô-va bảo Môi-se đánh trận với dân nào trước khi ông qua đời?",
     "options": [
-      "Dân Ê-đôm",
-      "Dân Ma-đi-an",
       "Dân A-mô-rít",
-      "Dân A-ma-léc"
+      "Dân Ma-đi-an",
+      "Dân Mô-áp",
+      "Dân Ít-ra-ên"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 31:1-2 — 'Đức Giê-hô-va phán với Môi-se: Hãy trả thù dân Ma-đi-an cho dân Y-sơ-ra-ên. Sau đó ngươi sẽ được quy về cùng tổ phụ mình.'",
+    "explanation": "Đáp án đúng là 'Dân Ma-đi-an' vì Đức Giê-hô-va phán với Môi-se: 'Hãy báo thù dân Ma-đi-an vì cớ dân Y-sơ-ra-ên' trước khi Môi-se qua đời (Dân số Ký 31:1-2).\n\nCác đáp án sai:\n- 'Dân A-mô-rít' sai vì đây là dân tộc đã bị đánh bại trong các chương trước (Dân số Ký 21), không phải đối tượng của mệnh lệnh cuối cùng này.\n- 'Dân Mô-áp' là đáp án gần đúng nhưng sai chi tiết: dân Mô-áp có liên quan (vua Ma-đi-an và các trưởng lão Mô-áp cùng lập mưu trong Dân số Ký 22:4), nhưng mệnh lệnh trực tiếp là đánh dân Ma-đi-an.\n- 'Dân Ít-ra-ên' sai vì đây là một hiểu lầm phổ biến; Môi-se được lệnh báo thù cho dân Y-sơ-ra-ên chứ không phải đánh chính họ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1360,15 +1360,15 @@
     "type": "multiple_choice_single",
     "content": "Trong trận chiến với dân Ma-đi-an, Ba-la-am đã chịu kết cục gì?",
     "options": [
-      "Trốn thoát an toàn",
-      "Trở về với vua Ba-lác",
+      "Bị giết bằng gươm nhưng chỉ cùng một vua Ma-đi-an",
+      "Bị bắt sống và đem về làm tù binh",
       "Bị giết bằng gươm cùng năm vua Ma-đi-an",
-      "Được Y-sơ-ra-ên tha cho"
+      "Chạy trốn và sống sót sau trận chiến"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 31:8 — 'Họ cũng giết Ba-la-am, con trai Bê-ô, bằng gươm.' Ba-la-am chết cùng với năm vua Ma-đi-an.",
+    "explanation": "Dân số Ký 31:8 chép: '… cũng giết bằng gươm các vua Ma-đi-an, là … và Ba-la-am, con trai Bê-ô.' Đoạn này xác định Ba-la-am bị giết bằng gươm cùng với các vua Ma-đi-an trong trận chiến, vì thế đáp án đúng là 'Bị giết bằng gươm cùng năm vua Ma-đi-an'.\n\n- Distractor 1 ('Bị giết bằng gươm nhưng chỉ cùng một vua Ma-đi-an') sai vì Kinh Thánh nói rõ Ba-la-am bị giết cùng với các vua Ma-đi-an (nhiều hơn một), và số vua cụ thể được liệt kê là năm người (Ê-vi, Rê-kem, Xu-rơ, Hu-rơ và Rê-ba).\n- Distractor 2 ('Bị bắt sống và đem về làm tù binh') sai vì văn bản không hề mô tả việc bắt sống Ba-la-am; ngược lại, câu 8 khẳng định ông đã bị 'giết bằng gươm'.\n- Distractor 3 ('Chạy trốn và sống sót sau trận chiến') sai vì trái ngược hoàn toàn với thông tin trong Kinh Thánh, nơi ghi nhận số phận của ông là bị giết chết trong trận chiến đó.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1387,14 +1387,14 @@
     "content": "Chi phái nào xin ở lại bên kia sông Giô-đanh vì có nhiều bầy súc vật?",
     "options": [
       "Ru-bên và Gát",
-      "Ép-ra-im và Ma-na-se",
-      "Giu-đa và Bên-gia-min",
-      "Si-mê-ôn và Lê-vi"
+      "Ru-bên và Ma-na-se",
+      "Ru-bên, Gát và Đan",
+      "Bên-gia-min và Gát"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Dân Số Ký 32:1-5 — 'Con cháu Ru-bên và con cháu Gát có bầy súc vật rất đông... Xin cho các đầy tớ ngài nhận vùng đất nầy làm sản nghiệp, đừng đưa chúng tôi qua sông Giô-đanh.'",
+    "explanation": "Đáp án đúng: Ru-bên và Gát (Dân Số Ký 32:1-2). Trong đoạn, dân Rúp-bên (Ru-bên) và dân Gát có nhiều bầy súc vật, thấy xứ Gia-ê-xe và xứ Ga-la-át là nơi tiện nuôi súc vật, nên đã xin Môi-se được ở lại bên kia sông Giô-đanh (câu 4-5).\n\nGiải thích các đáp án sai:\n- 'Ru-bên và Ma-na-se': Sai chi tiết. Một nửa chi phái Ma-na-se chỉ được ban đất sau khi họ đồng ý giúp các chi phái khác chinh phục xứ (Dân Số Ký 32:33), không phải là bên xin ban đầu.\n- 'Ru-bên, Gát và Đan': Sai phạm vi. Chi phái Đan không được nhắc đến trong sự kiện này. Họ nhận phần đất ở phía tây sông Giô-đanh (Giô-suê 19:40-48).\n- 'Bên-gia-min và Gát': Nhầm passage gần. Chi phái Bên-gia-min nhận đất gần sông Giô-đanh, nhưng ở bên tây (Giô-suê 18:11-20), không liên quan đến yêu cầu ở lại phía đông vì bầy súc vật.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1413,15 +1413,15 @@
     "type": "multiple_choice_single",
     "content": "Điều kiện để Ru-bên và Gát được ở lại bên kia sông Giô-đanh là gì?",
     "options": [
-      "Xây thành lũy cho cả Y-sơ-ra-ên",
+      "Phải cùng ra trận giúp các chi phái khác chiếm Ca-na-an sau",
       "Phải cùng ra trận giúp các chi phái khác chiếm Ca-na-an trước",
-      "Cử người canh giữ Đền Tạm",
-      "Dâng phần mười gấp đôi"
+      "Phải ở lại bảo vệ lãnh thổ bên kia sông Giô-đanh trước",
+      "Phải nộp một phần chiến lợi phẩm từ Ca-na-an"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 32:20-22 — 'Nếu các ngươi vũ trang đi trước mặt Đức Giê-hô-va để chiến đấu... cho đến khi Ngài đuổi kẻ thù khỏi trước mặt Ngài... thì các ngươi sẽ không mắc tội với Đức Giê-hô-va và Y-sơ-ra-ên.'",
+    "explanation": "Câu hỏi dựa trên Dân số Ký 32:20-22. Đáp án đúng là: 'Phải cùng ra trận giúp các chi phái khác chiếm Ca-na-an trước' (câu 20-22: 'Nếu các ngươi cầm binh khí đánh giặc trước mặt Đức Giê-hô-va... cho đến khi Ngài đuổi kẻ thù nghịch khỏi trước mặt mình, và xứ được chinh phục trước mặt Đức Giê-hô-va, đoạn các ngươi sẽ được trở về...').\n\nDistractor 1 sai vì thay đổi chi tiết then chốt 'trước' thành 'sau', trong khi điều kiện là phải chiến đấu TRƯỚC khi được ở lại (câu 22: 'đoạn các ngươi sẽ được trở về').\nDistractor 2 sai vì mở rộng phạm vi sai: điều kiện là phải 'ra trận' cùng đi, không phải 'ở lại bảo vệ' lãnh thổ của mình.\nDistractor 3 sai vì đây là một hiểu lầm phổ biến (không có trong đoạn Kinh Thánh này); không có điều kiện nào về nộp chiến lợi phẩm, mà là về việc tham gia chiến đấu.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1441,7 +1441,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 33:1-2 — 'Đây là các chặng hành trình của dân Y-sơ-ra-ên khi họ ra khỏi Ai Cập... Theo lệnh Đức Giê-hô-va, Môi-se ghi chép các điểm xuất phát theo từng chặng đường.'",
+    "explanation": "Dân Số Ký 33:1-2 ghi rõ: \"Đây là các chặng hành trình của dân Y-sơ-ra-ên... khi họ ra khỏi xứ Ê-díp-tơ\" (BTT), vì vậy đáp án đúng là \"Các chặng hành trình của dân Y-sơ-ra-ên từ Ai Cập\". Distractor 1 sai vì thay điểm xuất phát \"Ai Cập\" bằng \"Ca-na-an\", một chi tiết then chốt bị đảo ngược. Distractor 2 sai vì mô tả một chủ đề lớn khác của sách (các cuộc kiểm tra dân số, như trong chương 1, 26), không phải nội dung chính của chương 33. Distractor 3 sai vì nội dung này phù hợp hơn với các đoạn luật pháp trong Lê-vi Ký hoặc các phần khác của Dân Số Ký (như chương 28-29), không phải chương 33.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1450,10 +1450,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Luật lệ thờ phượng",
+      "Các chặng hành trình của dân Y-sơ-ra-ên từ Ca-na-an",
       "Các chặng hành trình của dân Y-sơ-ra-ên từ Ai Cập",
-      "Gia phả các chi phái",
-      "Tế lễ hằng ngày"
+      "Các cuộc kiểm tra dân số của dân Y-sơ-ra-ên trong đồng vắng",
+      "Các luật lệ và nghi lễ cho dân Y-sơ-ra-ên trong đồng vắng"
     ]
   },
   {
@@ -1465,15 +1465,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Giê-hô-va bảo dân Y-sơ-ra-ên phải ___ tất cả dân cư trong xứ Ca-na-an khi vào chiếm đất.",
     "options": [
-      "kết giao ước với",
-      "thu thuế từ",
-      "bắt làm nô lệ",
+      "chấp nhận",
+      "cải hóa",
+      "bảo vệ",
       "đuổi"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 33:52 — 'Hãy đuổi tất cả dân cư trong xứ khỏi trước mặt các ngươi, phá hủy tất cả hình tượng khắc, tượng đúc, và triệt hạ các nơi cao.'",
+    "explanation": "Đáp án đúng là 'đuổi'. Dân Chúa 33:52-53 ghi rõ mệnh lệnh: 'thì phải đuổi hết thảy dân của xứ khỏi trước mặt các ngươi... và phải chiếm xứ làm sản nghiệp'. Cụm từ 'đuổi hết thảy dân' chỉ hành động buộc họ phải rời đi, không được ở chung. \n- Distractor 'chấp nhận' sai vì trái ngược hoàn toàn với mệnh lệnh; Chúa dặn phải đuổi chứ không được dung hòa hay sống chung với các dân tộc thờ thần tượng trong xứ. \n- Distractor 'cải hóa' là phương án gần đúng (almost-right) nhưng sai một chi tiết then chốt: mặc dù có mệnh lệnh phá hủy hình tượng và nơi cao (c.52) liên quan đến việc loại bỏ sự thờ thần tượng, nhưng mệnh lệnh trực tiếp cho dân cư là 'đuổi' chứ không phải 'cải hóa' họ. \n- Distractor 'bảo vệ' sai vì lệnh là chiếm đất và đuổi dân cư hiện tại, không phải bảo vệ họ. Đây là một chi tiết đúng trong ngữ cảnh khác (ví dụ: bảo vệ người Lê-vi), nhưng hoàn toàn lạc với mệnh lệnh trong câu hỏi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1519,15 +1519,15 @@
     "type": "multiple_choice_single",
     "content": "Hai người được giao nhiệm vụ chia đất Ca-na-an cho các chi phái là thầy tế lễ Ê-lê-a-sa và ___.",
     "options": [
-      "Môi-se con Am-ram",
-      "Phi-nê-a con Ê-lê-a-sa",
       "Ca-lép con Giê-phu-nê",
+      "Môi-se",
+      "A-rôn",
       "Giô-suê con Nun"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 34:17 — 'Đây là tên những người sẽ chia đất cho các ngươi: Thầy tế lễ Ê-lê-a-sa và Giô-suê, con trai Nun.'",
+    "explanation": "Kinh Thánh dạy rõ: \"Đây là những tên của những người sẽ chia đất cho các ngươi làm sản nghiệp: thầy tế lễ Ê-lê-a-sa và Giô-suê con trai của Nun.\" (Dân số ký 34:17). Do đó, đáp án đúng là 'Giô-suê con Nun'.\n\nCác đáp án sai:\n- 'Ca-lép con Giê-phu-nê' sai vì tuy Ca-lép là lãnh tụ đại diện cho chi phái Giu-đa (Dân số ký 34:19) và sẽ nhận phần đất riêng, nhưng ông không được giao nhiệm vụ chính chia đất chung cho tất cả các chi phái.\n- 'Môi-se' sai vì Môi-se không được vào Đất Hứa (Dân số ký 20:12) nên nhiệm vụ này được giao cho những người kế nhiệm.\n- 'A-rôn' sai vì A-rôn là thầy tế lễ thượng phẩm đầu tiên, nhưng ông đã qua đời trên núi Hô-rơ (Dân số ký 20:28) trước sự kiện này; con trai ông là Ê-lê-a-sa mới là người được giao nhiệm vụ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1546,14 +1546,14 @@
     "content": "Có bao nhiêu thành ẩn náu được lập cho người vô tình giết người?",
     "options": [
       "6 thành",
-      "10 thành",
       "3 thành",
-      "12 thành"
+      "12 thành",
+      "8 thành"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Dân Số Ký 35:6 — 'Trong các thành các ngươi nhường cho người Lê-vi, sẽ có sáu thành ẩn náu.' Ba bên này và ba bên kia sông Giô-đanh.",
+    "explanation": "Câu hỏi hỏi về số thành ẩn náu cho người vô tình giết người. Đáp án đúng là 6 thành (Dân số ký 35:6), dựa trên mệnh lệnh \"trong số bốn mươi tám thành mà các ngươi sẽ nhượng cho người Lê-vi, phải nhượng sáu thành ấn náu\".\n\n- Distractor '3 thành' sai vì nhầm chi tiết số lượng, có thể do lẫn lộn với số thành của một chi phái hay một khu vực khác.\n- Distractor '12 thành' sai vì mở rộng phạm vi sang tổng số chi phái (12), không phải số thành được chỉ định riêng cho mục đích này.\n- Distractor '8 thành' là đáp án gần đúng (gần với số 6) nhưng vẫn sai; nó có thể xuất phát từ việc nhớ nhầm sang số thành của một nhóm khác (như số thành của con cháu Mê-ra-ri) hoặc số liệu trong các đoạn gần đó.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1570,15 +1570,15 @@
     "type": "multiple_choice_single",
     "content": "Theo luật trong Dân Số Ký 35, cần bao nhiêu nhân chứng để kết án tử hình một kẻ giết người?",
     "options": [
-      "Ba nhân chứng",
-      "Một nhân chứng",
-      "Bốn nhân chứng",
+      "Chỉ cần một nhân chứng",
+      "Ít nhất ba nhân chứng",
+      "Không cần nhân chứng nếu có tang vật",
       "Ít nhất hai nhân chứng"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 35:30 — 'Kẻ nào giết người sẽ bị xử tử theo lời khai của các nhân chứng. Nhưng một nhân chứng duy nhất không đủ để kết án tử hình.'",
+    "explanation": "Dân Số Ký 35:30 quy định: 'Hễ ai giết người, người ta sẽ theo lời của các nhân chứng mà giết kẻ sát nhân; nhưng một người làm chứng không đủ để định tội cho một người phải chết.' Do đó, để kết án tử hình một kẻ giết người, cần ít nhất hai nhân chứng. Đáp án 'Chỉ cần một nhân chứng' sai vì trực tiếp mâu thuẫn với câu Kinh Thánh. Đáp án 'Ít nhất ba nhân chứng' là gần đúng nhưng sai chi tiết số lượng (cần ít nhất hai, không phải ba). Đáp án 'Không cần nhân chứng nếu có tang vật' sai vì đây là một hiểu lầm phổ biến; luật trong phân đoạn này nhấn mạnh yêu cầu về nhân chứng, không đề cập ngoại lệ với tang vật.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1623,15 +1623,15 @@
     "type": "multiple_choice_single",
     "content": "Các con gái của Xê-lô-phát phải lấy chồng trong phạm vi nào?",
     "options": [
-      "Chỉ trong dòng tế lễ",
+      "Trong bất kỳ chi phái nào của Y-sơ-ra-ên",
       "Chỉ trong chi phái cha mình",
-      "Chỉ người Lê-vi",
-      "Bất kỳ chi phái nào"
+      "Trong chi phái mẹ mình",
+      "Trong chi phái của người chồng đầu tiên"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 36:6 — 'Các con gái Xê-lô-phát được phép lấy ai mà mình muốn, nhưng chỉ lấy chồng trong thị tộc của chi phái cha mình.' Để sản nghiệp không chuyển sang chi phái khác.",
+    "explanation": "Trong Dân Số Ký 36:6-8, Môi-se truyền lại mệnh lệnh của Đức Giê-hô-va: các con gái của Xê-lô-phát \"phải kết thân với người trong chi tộc của cha mình\" (câu 6), nghĩa là chỉ được lấy chồng trong chi phái cha mình (chi phái Ma-na-se). Điều này nhằm bảo đảm sản nghiệp không bị chuyển từ chi phái này sang chi phái khác (câu 7-8).\n\nCác đáp án sai:\n- 'Trong bất kỳ chi phái nào của Y-sơ-ra-ên' sai vì phạm vi quá rộng, trái với mệnh lệnh phải giữ sản nghiệp trong chi phái.\n- 'Trong chi phái mẹ mình' là đáp án gần đúng nhưng sai chi tiết then chốt; luật quy định rõ là chi phái của cha, không phải mẹ.\n- 'Trong chi phái của người chồng đầu tiên' phản ánh một sự hiểu lầm phổ biến rằng luật này liên quan đến hôn nhân trước đó, trong khi văn bản chỉ nói về hôn nhân tương lai trong chi phái cha.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1651,7 +1651,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 36:10-12 — 'Các con gái Xê-lô-phát đã làm theo điều Đức Giê-hô-va phán... Họ lấy chồng trong các thị tộc của con cháu Ma-na-se.'",
+    "explanation": "Dân Số Ký 36:10-12 ghi lại rằng các con gái của Xê-lô-phát làm theo lệnh Đức Giê-hô-va, 'lấy chồng trong các con trai của các chú mình' (c. 11), tức là trong chi phái Ma-na-se, là chi phái của cha họ (c. 12).\n\n*   **Đáp án đúng:** Các con gái đã lấy chồng trong chi phái Ma-na-se (chi phái cha mình), theo đúng mệnh lệnh nhằm giữ sản nghiệp không chuyển sang chi phái khác.\n*   **Distractor 1 (Trong chi phái Giu-đa) sai:** Đây là một chi tiết sai lệch trong một passage gần. Trong khi sự kiện xảy ra trong Sách Dân Số Ký, chi phái Giu-đa là một trong những chi phái chính, nhưng không liên quan đến mệnh lệnh và vấn đề sản nghiệp của con gái Xê-lô-phát.\n*   **Distractor 2 (Trong chi phái của gia đình mẹ họ) sai:** Lệnh cụ thể là phải kết hôn trong chi phái của cha mình (Ma-na-se), không phải trong chi phái của gia đình mẹ họ. Sai lầm này thuộc loại 'sai phạm vi', vì đã áp dụng một quy định sai đối tượng.\n*   **Distractor 3 (Trong bất cứ chi phái nào của Y-sơ-ra-ên) sai:** Quy định này trái ngược hoàn toàn với mục đích của lệnh truyền, là để hạn chế việc kết hôn bên ngoài chi phái Ma-na-se nhằm giữ nguyên sản nghiệp. Đây là một hiểu lầm phổ biến rằng họ có thể tự do lựa chọn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1662,9 +1662,9 @@
       "Cơ bản"
     ],
     "options": [
-      "Bên-gia-min",
-      "Giu-đa",
-      "Lê-vi",
+      "Trong chi phái Giu-đa",
+      "Trong chi phái của gia đình mẹ họ",
+      "Trong bất cứ chi phái nào của Y-sơ-ra-ên",
       "Ma-na-se (chi phái cha mình)"
     ]
   },
@@ -1678,7 +1678,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 6:5 — 'Suốt thời gian hứa nguyện, không dao cạo nào được đụng đến đầu người ấy. Cho đến khi mãn kỳ biệt riêng cho Đức Giê-hô-va, người ấy là thánh và phải để tóc mọc dài.'",
+    "explanation": "Câu hỏi về luật cho người Na-xi-rê trong Dân Số Ký 6:5. ĐÁP ÁN ĐÚNG: 'Không — không dao cạo nào được đụng đến đầu, phải để tóc mọc dài' là chính xác vì câu 5 chép rõ: 'Trọn lời hứa nguyện Na-xi-rê mình, không nên có dao cạo đụng đến đầu; cho đến kỳ mãn hứa nguyện... thì là thánh, và phải để cho tóc trên đầu mình mọc dài'. DISTRACTOR 1 SAI (common_misconception): Đây là suy luận theo văn hóa (gọn gàng, tôn nghiêm) nhưng trái với mệnh lệnh rõ ràng là 'không nên có dao cạo đụng đến đầu'. DISTRACTOR 2 SAI (nearby_passage - gần đúng): Trích ý 'không cạo trọc' từ câu 9 (khi có ai chết bất thần ở bên cạnh, người Na-xi-rê phải cạo đầu), nhưng đó là ngoại lệ sau khi bị ô uế, không phải quy định trong thời gian hứa nguyện bình thường. DISTRACTOR 3 SAI (wrong_detail): Nhầm lẫn chi tiết với điều cấm khác; câu 5 cấm cạo đầu (tóc), còn câu 9 nói về việc cạo khi bị ô uế, không liên quan đến râu hay việc được phép cắt tóc.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1687,10 +1687,10 @@
       "Trung cấp"
     ],
     "options": [
-      "Có, mỗi tháng một lần",
-      "Có, vào ngày Sa-bát",
+      "Có — được cắt ngắn gọn gàng để thể hiện sự tôn nghiêm",
+      "Có — chỉ cần không cạo trọc là được, có thể tỉa tóc",
       "Không — không dao cạo nào được đụng đến đầu, phải để tóc mọc dài",
-      "Chỉ cắt khi có lệnh thầy tế lễ"
+      "Có — chỉ bị cấm cạo râu, còn tóc thì được cắt"
     ]
   },
   {
@@ -1701,15 +1701,15 @@
     "type": "multiple_choice_single",
     "content": "Kinh Thánh mô tả Môi-se là người ___ hơn mọi người trên mặt đất.",
     "options": [
-      "công chính",
+      "mạnh mẽ",
       "khiêm nhường",
-      "khôn ngoan",
-      "can đảm"
+      "thánh sạch",
+      "khôn ngoan"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 12:3 — 'Vả, Môi-se là người rất khiêm nhường, hơn mọi người trên mặt đất.'",
+    "explanation": "Dân Số Ký 12:3 chép: 'Vả, Môi-se là người khiêm nhường hơn mọi người trên mặt đất.' Do đó, 'khiêm nhường' là đáp án đúng, mô tả trực tiếp đức tính của Môi-se trong câu này.\n\nCác đáp án sai: (1) 'mạnh mẽ' là sai vì mặc dù Kinh Thánh có nói đến sự mạnh mẽ của Môi-se (như trong Xuất Ê-díp-tô Ký về các phép lạ), nhưng đây không phải là đức tính được nhắc đến trong Dân Số Ký 12:3 (nhầm passage gần). (2) 'thánh sạch' là gần đúng nhưng sai chi tiết then chốt; câu Kinh Thánh nhấn mạnh sự 'khiêm nhường' chứ không phải sự 'thánh sạch' về mặt đạo đức hay nghi lễ (sai phạm vi). (3) 'khôn ngoan' là sai vì đây là một hiểu lầm phổ biến dựa trên hình ảnh Môi-se là một lãnh đạo khôn ngoan, nhưng từ ngữ cụ thể trong câu này không phải là 'khôn ngoan' (hiểu lầm phổ biến).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1754,15 +1754,15 @@
     "type": "multiple_choice_single",
     "content": "Người đàn ông lượm củi trong ngày Sa-bát bị phạt như thế nào?",
     "options": [
-      "Bị đuổi ra khỏi trại bảy ngày",
+      "Bị đánh đòn và phạt tiền",
       "Bị ném đá đến chết",
-      "Bị bắt làm nô lệ",
-      "Bị phạt tiền"
+      "Bị phạt làm nô lệ bảy năm",
+      "Bị xử phạt bằng cách đuổi ra khỏi trại"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 15:35-36 — 'Đức Giê-hô-va phán với Môi-se: Người ấy phải chết! Cả hội chúng phải ném đá người ấy ở ngoài trại.' Đây là một án lệ nghiêm khắc cho thấy sự vi phạm có chủ đích vào ngày Sa-bát.",
+    "explanation": "Trong Dân Số Ký 15:32-36, người đàn ông bị bắt gặp lượm củi trong ngày Sa-bát. Theo lệnh của Đức Giê-hô-va được Môi-se truyền lại, ông ta bị dân chúng ném đá đến chết bên ngoài trại quân (câu 35-36). Đây là hình phạt rõ ràng.\n\nCác đáp án sai:\n1. 'Bị đánh đòn và phạt tiền': Sai chi tiết. Một số luật khác trong sách Lê-vi Ký có đề cập đến hình phạt đánh đòn hoặc bồi thường, nhưng đây không phải là hình phạt cho tội vi phạm Sa-bát trong đoạn này.\n2. 'Bị phạt làm nô lệ bảy năm': Sai do nhầm lẫn với các đoạn gần. Một số luật về nô lệ hoặc nợ nần xuất hiện trong các sách Luật pháp, nhưng không hề được đề cập trong tình huống cụ thể này.\n3. 'Bị xử phạt bằng cách đuổi ra khỏi trại': Sai do hiểu lầm phổ biến. Một số tội lỗi bị phạt bằng cách đuổi khỏi cộng đồng hoặc trại quân, nhưng hình phạt cụ thể trong đoạn Kinh Thánh này là tử hình chứ không chỉ là trục xuất.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1809,7 +1809,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 20:21 — 'Ê-đôm từ chối cho Y-sơ-ra-ên đi qua lãnh thổ mình. Vì vậy, Y-sơ-ra-ên phải đi vòng.' Dù Ê-đôm là hậu duệ của Ê-sau, anh của Gia-cốp.",
+    "explanation": "Đoạn Kinh Thánh Numbers 20:14-21 ghi lại rằng vua Ê-đôm từ chối yêu cầu của Y-sơ-ra-ên, đe dọa sẽ dùng gươm ra đón nếu họ đi qua, buộc Y-sơ-ra-ên phải đi vòng (câu 18, 21).\n\nĐáp án đúng đúng vì phản ánh chính xác sự từ chối và kết quả là Y-sơ-ra-ên phải đi đường khác.\n\n- Distractor 1 sai vì vua Ê-đôm không đồng ý với bất kỳ điều kiện nào; ông từ chối hoàn toàn và đe dọa bằng vũ lực. Đây là một chi tiết sai, tạo ra một phiên bản 'gần đúng' nhưng thay đổi hành động then chốt.\n- Distractor 2 sai vì nó mượn yếu tố 'chiến đấu giúp' từ các cuộc đàm phán với các dân tộc khác (như trong Phục truyền 2) chứ không phải từ đoạn này, nơi vua Ê-đôm không đề xuất điều kiện.\n- Distractor 3 sai vì đây là một hiểu lầm phổ biến, ngược hoàn toàn với thái độ thù địch được mô tả; không có chi tiết nào về việc đồng ý hay cung cấp hỗ trợ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1819,10 +1819,10 @@
       "Trung cấp"
     ],
     "options": [
-      "Cho phép và cung cấp lương thực",
-      "Cho phép có điều kiện",
+      "Đồng ý, nhưng chỉ cho phép đi qua phần đất phía bắc",
+      "Đồng ý, với điều kiện Y-sơ-ra-ên phải chiến đấu giúp họ",
       "Từ chối, buộc Y-sơ-ra-ên phải đi vòng",
-      "Liên minh với Y-sơ-ra-ên"
+      "Đồng ý ngay lập tức và cung cấp lương thực"
     ]
   },
   {
@@ -1835,14 +1835,14 @@
     "content": "Dân Y-sơ-ra-ên chiến thắng vua Si-hôn của dân nào?",
     "options": [
       "Dân Mô-áp",
-      "Dân Phi-li-tin",
+      "Dân Ê-đôm",
       "Dân A-mô-rít",
-      "Dân Ma-đi-an"
+      "Dân Ca-na-an"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 21:21-25 — 'Y-sơ-ra-ên sai sứ giả đến Si-hôn, vua dân A-mô-rít... Y-sơ-ra-ên đánh bại ông bằng gươm và chiếm lấy đất.'",
+    "explanation": "Đoạn Kinh Thánh Numbers 21:21-25 ghi lại việc dân Y-sơ-ra-ên xin phép đi qua lãnh thổ của vua Si-hôn, vua của dân A-mô-rít, nhưng vua này không cho phép và đem quân ra đánh Y-sơ-ra-ên tại Gia-hát. Y-sơ-ra-ên đã đánh bại vua Si-hôn và chiếm lấy xứ của dân A-mô-rít từ Ạt-nôn đến Gia-bốc (câu 24).\n\nĐÁP ÁN ĐÚNG: 'Dân A-mô-rít' là chính xác vì trong câu 21, Si-hôn được xác định là vua của dân A-mô-rít (A-mô-rít).\n\nDISTRACTOR SAI:\n1. 'Dân Mô-áp': Đây là distractor 'gần đúng' (almost-right). Trong câu 26, Kinh Thánh có đề cập Si-hôn đã từng chiến đấu với vua Mô-áp và lấy xứ của vua ấy. Tuy nhiên, câu hỏi cụ thể hỏi về dân tộc mà Si-hôn là vua (theo đoạn trích), và đó là dân A-mô-rít, không phải dân Mô-áp. Đây là lỗi sai chi tiết (wrong_detail) về tên dân tộc, dựa trên một thông tin gần đó trong đoạn.\n2. 'Dân Ê-đôm': Trước đó (Numbers 20:14-21), dân Y-sơ-ra-ên đã từng xin đi qua lãnh thổ Ê-đôm nhưng bị từ chối, nên họ đi vòng. Câu hỏi này cụ thể về trận chiến với Si-hôn trong Numbers 21, không liên quan đến Ê-đôm. Đây là lỗi sai phạm vi (wrong_scope) vì đưa vào một dân tộc từ một sự kiện khác.\n3. 'Dân Ca-na-an': Trong bối cảnh rộng hơn, dân A-mô-rít có thể được xem là một phần của các dân tộc ở Ca-na-an, và đôi khi có sự liên hệ. Tuy nhiên, trong đoạn trích cụ thể Numbers 21:21-25, văn bản luôn gọi đối tượng là 'dân A-mô-rít' (câu 21, 25, 31), không phải là 'dân Ca-na-an'. Đây là lỗi nhầm passage gần (nearby_passage) vì dùng một thuật ngữ rộng hơn, liên quan nhưng không chính xác với chi tiết trong đoạn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1860,15 +1860,15 @@
     "type": "multiple_choice_single",
     "content": "Ba-la-am thốt lên: 'Hỡi Gia-cốp, ___ đẹp đẽ thay! Hỡi Y-sơ-ra-ên, nơi ở ngươi xinh tốt biết bao!'",
     "options": [
-      "các thành",
-      "các đền thờ",
-      "đất đai",
+      "đền ngươi",
+      "thành ngươi",
+      "thửa ruộng ngươi",
       "trại ngươi"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 24:5 — 'Hỡi Gia-cốp, trại ngươi đẹp đẽ thay! Hỡi Y-sơ-ra-ên, nơi ở ngươi xinh tốt biết bao!' (Bản Dịch 2011). Ba-la-am chúc phước thay vì rủa sả.",
+    "explanation": "Trong Dân số ký 24:5, Ba-la-am cảm thán: 'Hỡi Gia-cốp, trại ngươi đẹp đẽ thay! Hỡi Y-sơ-ra-ên, nơi ở ngươi xinh tốt biết bao!'. Ông dùng 'trại ngươi' để miêu tả sự tốt đẹp của dân Y-sơ-ra-ên trong cuộc hành trình nơi hoang mạc. Distractor 'đền ngươi' gần đúng nhưng sai vì đề cập đến đền thờ, một cấu trúc cố định, trong khi bối cảnh này là trại di động (gần với 'lều' nhưng đã được chỉ định tránh). 'Thành ngươi' là sai chi tiết vì dân Y-sơ-ra-ên lúc này chưa định cư trong thành trì. 'Thửa ruộng ngươi' là sai phạm vi vì không liên quan đến bối cảnh hoang mạc và sinh kế nông nghiệp của câu chuyện.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1887,15 +1887,15 @@
     "type": "multiple_choice_single",
     "content": "Lễ cung hiến bàn thờ được mô tả trong Dân Số Ký chương 7 kéo dài tổng cộng bao nhiêu ngày?",
     "options": [
-      "Bảy ngày",
+      "Mười ba ngày — một ngày cộng thêm cho cả nhóm",
       "Mười hai ngày — mỗi ngày một nhà lãnh đạo dâng lễ vật",
-      "Bốn mươi ngày",
-      "Một ngày"
+      "Ba ngày — thời gian tóm tắt toàn bộ sự việc",
+      "Bảy ngày — một tuần lễ dâng hiến thánh"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lễ cung hiến bàn thờ diễn ra trong mười hai ngày, mỗi ngày một nhà lãnh đạo của một chi phái dâng lễ vật (Dân Số Ký 7:10-11, 84-88).",
+    "explanation": "Đoạn Kinh Thánh Dân Số Ký 7:1-88 mô tả việc mười hai nhà lãnh đạo của các chi phái Y-sơ-ra-ên lần lượt dâng lễ vật giống hệt nhau trong mười hai ngày liên tiếp (câu 10-11, 12-83). Đây là đáp án đúng.\n\n- Distractor 'Mười ba ngày — một ngày cộng thêm cho cả nhóm' SAI vì chỉ có mười hai ngày tương ứng với mười hai nhà lãnh đạo, không có ngày thứ mười ba tổng kết hay cộng thêm nào được ghi lại trong phân đoạn này. Đây là lỗi sai chi tiết (gần đúng nhưng thêm ngày).\n- Distractor 'Ba ngày — thời gian tóm tắt toàn bộ sự việc' SAI vì phạm vi thời gian ba ngày không xuất hiện trong phân đoạn mô tả chi tiết từng ngày này; nó có thể nhầm lẫn sang các sự kiện lễ nghi ngắn hạn khác.\n- Distractor 'Bảy ngày — một tuần lễ dâng hiến thánh' SAI vì đây là một hiểu lầm phổ biến, gán ý nghĩa biểu tượng của con số bảy (sự trọn vẹn) vào sự kiện cụ thể này, trong khi văn bản xác định rõ ràng là mười hai ngày.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1914,14 +1914,14 @@
     "content": "A-rôn phải thắp bảy ngọn đèn trên vật dụng nào?",
     "options": [
       "Chân đèn",
-      "Bàn bánh trần thiết",
-      "Hòm Giao Ước",
-      "Bàn thờ xông hương"
+      "Bàn thờ xông hương",
+      "Bàn thờ bằng đồng",
+      "Bàn đặt bánh trần thiết"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Dân Số Ký 8:2 — 'Khi nào ngươi thắp các đèn, bảy ngọn đèn phải chiếu phía trước chân đèn.'",
+    "explanation": "Dân Số Ký 8:2 chép: 'Hãy nói cùng A-rôn rằng: Khi người đặt các đèn, thì bảy ngọn đèn phải chiếu trên phía trước chân đèn.' Do đó, đáp án đúng là 'Chân đèn', vì đó là vật dụng cụ thể được nói đến trong câu hỏi. Các đáp án sai: (1) 'Bàn thờ xông hương' là một vật dụng thánh khác trong nơi thánh (Xuất Ê-díp-tô Ký 30:1-10), nằm gần chân đèn, nên đây là lỗi nhầm passage gần. (2) 'Bàn thờ bằng đồng' là vật dụng ở hành lang đền tạm, không phải nơi đặt đèn, nên đây là lỗi sai phạm vi. (3) 'Bàn đặt bánh trần thiết' tuy cũng ở nơi thánh (Xuất Ê-díp-tô Ký 25:23-30) nhưng câu hỏi hỏi cụ thể về vật dụng để thắp đèn, nên đáp án này đúng văn bản nhưng lạc câu hỏi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1939,15 +1939,15 @@
     "type": "multiple_choice_single",
     "content": "Khi dân sự than phiền, Đức Giê-hô-va giáng điều gì xuống?",
     "options": [
-      "Bệnh dịch",
+      "Mưa đá",
       "Lửa",
-      "Bão tố",
-      "Động đất"
+      "Bệnh dịch",
+      "Châu chấu"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 11:1 — 'Khi dân chúng than phiền về những nỗi khổ trước tai Đức Giê-hô-va, Ngài nghe và nổi giận. Lửa của Đức Giê-hô-va cháy lên giữa họ, thiêu đốt rìa trại.'",
+    "explanation": "Đáp án đúng là 'Lửa' vì Numbers 11:1 ghi rõ: 'Dân sự bèn than phiền... Đức Giê-hô-va bèn nổi giận, lửa của Đức Giê-hô-va cháy trong họ, và thiêu hóa đầu cùng của trại quân.'\n\nCác đáp án sai:\n- 'Mưa đá' là sai vì đây là tai họa xuất hiện trong các phân đoạn khác (như Xuất Ê-díp-tô Ký 9:18-26) chứ không phải trong sự kiện này ở Dân số Ký 11.\n- 'Bệnh dịch' là sai vì mặc dù đây là hình phạt phổ biến trong Cựu Ước khi dân sự phàn nàn (ví dụ Dân số Ký 14:37, 25:9), nhưng trong đoạn Kinh Thánh cụ thể này (Numbers 11:1) không đề cập đến bệnh dịch.\n- 'Châu chấu' là sai vì mặc dù châu chấu là tai họa trong các câu chuyện khác (như Xuất Ê-díp-tô Ký 10:12-15), nhưng nó không liên quan đến sự kiện được hỏi trong Numbers 11:1.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1967,14 +1967,14 @@
     "content": "Con lừa của Ba-la-am tránh đường bao nhiêu lần trước khi nói tiếng người?",
     "options": [
       "Hai lần",
-      "Một lần",
+      "Không lần nào",
       "Ba lần",
       "Bốn lần"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 22:32-33 — 'Tại sao ngươi đánh con lừa ba lần?' Con lừa thấy thiên sứ ba lần và tránh đường ba lần trước khi Đức Giê-hô-va mở miệng nó.",
+    "explanation": "Trong Dân Số Ký 22:32-33, thiên sứ của Đức Giê-hô-va phán với Ba-la-am rằng: 'Nếu con lừa chẳng quay tránh ta, thì ta hẳn đã giết ngươi rồi'. Lời này được nói sau khi con lừa đã tránh đường ba lần (trong các câu 22:23-33 mô tả ba lần cụ thể). Vì vậy, đáp án đúng là 'Ba lần'. Distractor 'Hai lần' là gần đúng nhưng sai chi tiết số lần. Distractor 'Không lần nào' là hiểu lầm phổ biến vì nghĩ rằng con lừa chỉ phản ứng khi thấy thiên sứ, nhưng thực tế nó đã tránh ba lần trước khi nói. Distractor 'Bốn lần' là sai phạm vi vì áp đặt số lần không có trong đoạn Kinh Thánh này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",

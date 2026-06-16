@@ -16,8 +16,9 @@
   - Checklist: dry-run pilot · review chất lượng · full Genesis · commit
 - SDR-2 Pilot run Genesis + review diff + quality summary
   - Status: [x] DONE — 108/144 rewritten (verify pass), 0 safety violations, committed `86655f7`, **đã seed live lên prod DB** (surgical update 108 row seed:json, backup `genesis_prod_backup.jsonl`).
-- SDR-3 (sau khi user duyệt pilot) full 66 sách
-  - Status: [ ] TODO — chờ user quyết (verify pass bật, max-attempts ~6)
+- SDR-3 full 66 sách
+  - Status: [x] DONE — book-parallel run: **2.408 viết lại (verified), 707 fail** (giữ nguyên, an toàn). 0 safety violation. **Đã seed live lên prod** (2.403/2.408 row match, backup `prod_backup_all.jsonl`). Fix: trailing-newline guard + `--file-workers` + temperature clamp ≤1.0.
+  - 707 fail = verify bắt mơ hồ / length-bias đáp án đúng dài / ít do temp-bug attempt 6 → shortlist soạn tay (xem `rewrite_report.json`).
 
 ### Notes
 - Quota 200/ngày KHÔNG áp (gọi thẳng Bedrock, không qua endpoint).

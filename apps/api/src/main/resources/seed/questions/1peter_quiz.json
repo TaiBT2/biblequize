@@ -9,14 +9,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sản nghiệp đời đời được giữ trên trời, không bị mất hay hư hỏng.",
+    "explanation": "Đáp án đúng dựa trên 1 Phi-e-rơ 1:4, mô tả sản nghiệp thiên thượng: 'không hư mất, không ô uế, không suy tàn, dành sẵn trên trời'. Distractor 1 sai vì thay đổi chi tiết then chốt 'trên trời' thành 'dưới đất', mặc dù phần còn lại giống hệt đáp án. Distractor 2 sai vì mở rộng phạm vi sai ('dành sẵn cho mọi người'), trong khi đoạn Kinh Thánh nói rõ sản nghiệp này dành cho những người được tái sinh (câu 3). Distractor 3 sai vì phản ánh một hiểu lầm phổ biến, thay thế sản nghiệp thuộc linh bằng những phước hạnh vật chất và tạm thời, hoàn toàn không có trong đoạn Kinh Thánh được hỏi.",
     "language": "vi",
     "verseEnd": 4,
     "options": [
-      "Vàng bạc",
-      "Đất đai",
+      "Sản nghiệp không hư mất, không ô uế, không suy tàn, dành sẵn dưới đất",
+      "Sản nghiệp không hư mất, không ô uế, không suy tàn, dành sẵn cho mọi người",
       "Sản nghiệp không hư mất, không ô uế, không suy tàn, dành sẵn trên trời",
-      "Quyền lực"
+      "Sự giàu có, sức khỏe và bình an trong đời này"
     ],
     "tags": [
       "Tân Ước",
@@ -37,13 +37,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Như vàng được luyện trong lửa, đức tin được làm tinh sạch qua thử thách.",
+    "explanation": "Câu hỏi tham chiếu 1 Phi-e-rơ 1:7 (BTT): 'hầu cho sự thử thách đức tin anh em quí hơn vàng hay hư nát, dầu đã bị thử lửa, vẫn có thể đem đến ngợi khen, tôn trọng và vinh hiển cho anh em trong kỳ Đức Chúa Jêsus Christ hiện ra.' Đáp án đúng 'Vàng được thử lửa (làm tinh sạch)' trực tiếp rút ra từ hình ảnh so sánh trong câu Kinh Thánh.\n\nCác đáp án sai:\n- 'Bạc được tinh luyện trong lò' (gần đúng): Đây là lỗi 'nearby_passage' vì ý tưởng kim loại quý được tinh luyện là gần, nhưng Kinh Thánh tại đây chỉ rõ là 'vàng', không phải bạc.\n- 'Đá quý được mài giũa kỹ lưỡng': Đây là lỗi 'wrong_detail' vì dùng hình ảnh khác (đá quý mài giũa) thay vì kim loại quý được thử lửa, sai chi tiết then chốt của phép so sánh.\n- 'Lúa mì được sàng sảy sạch sẽ': Đây là lỗi 'true_but_off' vì hình ảnh sàng sảy lúa mì xuất hiện trong Kinh Thánh (ví dụ Ma-thi-ơ 3:12) để nói về sự phân rẽ, nhưng không phải là phép so sánh được dùng trong 1 Phi-e-rơ 1:7 cho 'thử thách đức tin'.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
-      "Kim cương",
-      "Đá quý",
-      "Sắt thép",
+      "Bạc được tinh luyện trong lò",
+      "Đá quý được mài giũa kỹ lưỡng",
+      "Lúa mì được sàng sảy sạch sẽ",
       "Vàng được thử lửa (làm tinh sạch)"
     ],
     "tags": [
@@ -65,12 +65,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Mọi tín đồ có địa vị cao quý trong Chúa: vua và thầy tế lễ.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 1 Phi-e-rơ 2:9 chép: 'Nhưng anh em là dòng giống được lựa chọn, là chức tế lễ nhà vua, là dân thánh, là dân thuộc riêng của Đức Chúa Trời...' (BTT). Vì vậy, danh hiệu đầy đủ và chính xác là 'Dòng giống được chọn, chức tế lễ nhà vua, dân thánh, dân thuộc riêng'.\n\nDISTRACTOR SAI 1 ('Dòng giống được chọn, chức tế lễ thánh, dân thánh, dân thuộc riêng'): Sai một chi tiết then chốt. Câu Kinh Thánh ghi là 'chức tế lễ nhà vua' (royal priesthood), không phải 'chức tế lễ thánh'. Đây là lỗi sai chi tiết.\n\nDISTRACTOR SAI 2 ('Dòng giống được yêu thương, chức tế lễ nhà vua, dân thánh, dân thuộc riêng'): Trộn lẫn với ý tưởng từ phân đoạn gần đó. 1 Phi-e-rơ 2:10-11 nói về việc 'ngày trước không được thương xót' nhưng 'hiện nay đã được thương xót', và khuyên 'hãy kiêng sự ham mê'. Tuy nhiên, từ chính xác trong câu 9 là 'được lựa chọn' (chosen generation), không phải 'được yêu thương'. Đây là lỗi nhầm passage gần.\n\nDISTRACTOR SAI 3 ('Dòng giống được chọn, chức tế lễ nhà vua, dân tộc ưu tú, dân thuộc riêng'): Mặc dù 'dân tộc ưu tú' có thể là một cách diễn đạt có ý nghĩa tương đương hoặc giải thích cho 'dân thánh' (holy nation) trong một số ngữ cảnh, nó KHÔNG phải là văn bản gốc của câu hỏi trắc nghiệm yêu cầu. Câu hỏi hỏi cụ thể về cách tín đồ 'được gọi là' trong 1 Phi-e-rơ 2:9, và Kinh Thánh ghi rõ là 'dân thánh'. Việc thay thế bằng một cụm từ diễn giải khác ('dân tộc ưu tú') khiến đáp án này không còn là trích dẫn trực tiếp và chính xác, dù ý nghĩa có thể tương đồng. Đây là lỗi đúng văn bản nhưng lạc câu hỏi (yêu cầu trích dẫn chính xác).",
     "language": "vi",
     "options": [
-      "Khách lạ",
-      "Dân thường",
-      "Tôi tớ",
+      "Dòng giống được chọn, chức tế lễ thánh, dân thánh, dân thuộc riêng",
+      "Dòng giống được yêu thương, chức tế lễ nhà vua, dân thánh, dân thuộc riêng",
+      "Dòng giống được chọn, chức tế lễ nhà vua, dân tộc ưu tú, dân thuộc riêng",
       "Dòng giống được chọn, chức tế lễ nhà vua, dân thánh, dân thuộc riêng"
     ],
     "tags": [
@@ -119,13 +119,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Tình yêu thương là điều ưu tiên hàng đầu trong mọi quan hệ.",
+    "explanation": "1 Phi-e-rơ 4:8 viết: \"Trên hết mọi điều đó, phải có lòng yêu thương sốt sắng; vì sự yêu thương che đậy vô số tội lỗi.\" (BTT). Đáp án đúng \"Yêu thương nhau\" là trọng tâm của câu, vì Kinh Thánh nhấn mạnh đặc tính 'sốt sắng' và hiệu quả 'che đậy tội lỗi' của tình yêu thương giữa các tín hữu.\n\n- Distractor \"Kính sợ Chúa\" (nearby_passage) là sai vì đây là một đức tính quan trọng được nhắc đến trong nhiều phân đoạn khác (ví dụ: Châm ngôn 1:7), nhưng không phải là từ/cụm từ được đề cập trong 1 Phi-e-rơ 4:8.\n- Distractor \"Khiêm nhường với nhau\" (common_misconception) là sai vì khiêm nhường là đức tính quan trọng (1 Phi-e-rơ 5:5), và có thể dễ bị nhầm lẫn với lòng yêu thương, nhưng đây không phải là đức tính được nói đến trong câu Kinh Thánh cụ thể này.\n- Distractor \"Tha thứ cho nhau\" (true_but_off) là gần đúng nhưng vẫn sai vì hành động 'tha thứ' có liên quan mật thiết đến hệ quả 'che đậy tội lỗi' được mô tả, nhưng từ chính xác trong câu Kinh Thánh là \"lòng yêu thương\" (nguyên nhân), chứ không phải là \"tha thứ\" (một biểu hiện cụ thể của tình yêu thương).",
     "language": "vi",
     "options": [
-      "Kiêng ăn",
+      "Kính sợ Chúa",
       "Yêu thương nhau",
-      "Cầu nguyện",
-      "Vâng lời"
+      "Khiêm nhường với nhau",
+      "Tha thứ cho nhau"
     ],
     "tags": [
       "Tân Ước",
@@ -201,13 +201,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Lời Chúa là thức ăn thiết yếu để lớn lên thuộc linh, như sữa cho trẻ sơ sinh.",
+    "explanation": "Câu hỏi tham chiếu 1 Phi-e-rơ 2:2: 'Hãy như trẻ mới đẻ, thèm sữa thiêng liêng của Đạo, hầu cho anh em nhờ đó lớn lên mà được rỗi linh hồn' (BTT). Đáp án đúng 'Sữa tinh (Lời Chúa)' vì trong ngữ cảnh Kinh Thánh, 'sữa thiêng liêng' (câu 2) được giải thích là 'Đạo' (Logos - Lời Chúa). Distractor 'Sữa tinh (đức tin Chúa)' là gần đúng nhưng sai chi tiết then chốt vì bản văn chỉ rõ đó là 'Đạo', không phải 'đức tin'. Distractor 'Sữa tinh (sự cứu rỗi)' sai phạm vi vì sự cứu rỗi là kết quả (cuối câu 2), không phải bản thân thứ cần thèm. Distractor 'Sữa tinh (sự ăn năn)' dựa trên hiểu lầm phổ biến rằng sự tăng trưởng thuộc linh chỉ bắt đầu bằng ăn năn, trong khi bản văn nhấn mạnh việc liên tục nuôi dưỡng bằng Lời Chúa.",
     "language": "vi",
     "options": [
-      "Nước",
-      "Bánh",
+      "Sữa tinh (đức tin Chúa)",
+      "Sữa tinh (sự cứu rỗi)",
       "Sữa tinh (Lời Chúa)",
-      "Thịt"
+      "Sữa tinh (sự ăn năn)"
     ],
     "tags": [
       "Tân Ước",
@@ -228,13 +228,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Vẻ đẹp bên trong (tâm linh) quý giá trước mặt Chúa hơn vẻ bên ngoài.",
+    "explanation": "Câu hỏi trích dẫn 1 Phi-e-rơ 3:3-4 (BTT): 'Chớ trang sức bề ngoài như gióc tóc, đeo vàng, mặc áo quần lòe loẹt; nhưng hãy trang sức bằng con người bề trong của lòng, lấy sự dịu dàng yên lặng của tâm linh làm điều quý giá trước mặt Đức Chúa Trời.'\n\nĐÁP ÁN ĐÚNG: Chính xác tóm tắt ý chính của phân đoạn, nhấn mạnh vẻ đẹp thật ở 'người bề trong của lòng' với đặc tính 'tâm linh dịu dàng và yên lặng'.\n\nDISTRACTOR 1 (gần đúng passage): Sai vì trích dẫn những thứ SỨ ĐỒ KHUYÊN KHÔNG NÊN coi trọng (trang sức bề ngoài), như được nêu trong câu 3. Đây là ví dụ về điều KHÔNG phải là vẻ đẹp thật.\nDISTRACTOR 2 (sai chi tiết): Sai vì thay đổi vị trí 'bề trong' thành 'bề ngoài' của lòng, mâu thuẫn trực tiếp với ý chính của phân đoạn là sự tương phản giữa bề ngoài và bề trong.\nDISTRACTOR 3 (hiểu lầm phổ biến): Sai vì thay thế các đức tính then chốt ('dịu dàng yên lặng') bằng những đức tính tích cực khác nhưng không phải là trọng tâm mà đoạn Kinh Thánh này đang đề cập. Đây có thể là sự áp đặt quan điểm cá nhân về phẩm chất đáng quý.",
     "language": "vi",
     "verseEnd": 4,
     "options": [
-      "Trang sức",
-      "Tóc",
-      "Y phục",
+      "Người bề ngoài của thân thể: tóc vàng và nhan sắc kiều diễm",
+      "Người bề ngoài của lòng: tâm linh dịu dàng và yên lặng",
+      "Người bề trong của lòng: tâm linh vui mừng và năng nổ",
       "Người bề trong của lòng: tâm linh dịu dàng và yên lặng"
     ],
     "tags": [
@@ -283,12 +283,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Khó khăn là tạm thời. Chúa sẽ làm cho chúng ta trọn vẹn, vững vàng, thêm sức và đặt trên nền vững chắc.",
+    "explanation": "Câu hỏi trích dẫn 1 Phi-e-rơ 5:10: 'Đức Chúa Trời của mọi ân điển... sẽ làm cho anh em trọn vẹn, vững vàng, thêm sức, đặt trên nền vững chắc' (BTT). Đây là lời hứa trọn vẹn sau khi chịu khổ ít lâu.\n\n- Đáp án đúng: 'Làm cho trọn vẹn, vững vàng, thêm sức, đặt trên nền vững chắc' là nguyên văn Kinh Thánh, đúng với câu hỏi về điều Chúa sẽ làm.\n- Distractor 1 (gần đúng): '...đặt trong sự bình an' – Sai chi tiết cuối cùng. Kinh Thánh ghi 'đặt trên nền vững chắc', không phải 'bình an', dù bình an là chủ đề gần trong ngữ cảnh.\n- Distractor 2: '...đặt dưới sự bảo vệ' – Phản ánh hiểu lầm phổ biến rằng Chúa chỉ bảo vệ khỏi khổ, trong khi câu này nhấn mạnh việc 'đặt trên nền vững chắc' sau khi đã trải qua khổ.\n- Distractor 3: '...đặt vào sự thử thách' – Lạc câu hỏi. Dù thử thách có thể xảy ra, câu hỏi hỏi về điều Chúa làm SAU khi chịu khổ, không phải đưa vào thử thách mới.",
     "language": "vi",
     "options": [
-      "Để mặc",
-      "Đổi thay",
-      "Phạt thêm",
+      "Làm cho trọn vẹn, vững vàng, thêm sức, đặt trong sự bình an",
+      "Làm cho trọn vẹn, vững vàng, thêm sức, đặt dưới sự bảo vệ",
+      "Làm cho trọn vẹn, vững vàng, thêm sức, đặt vào sự thử thách",
       "Làm cho trọn vẹn, vững vàng, thêm sức, đặt trên nền vững chắc"
     ],
     "tags": [
@@ -310,13 +310,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Phi-e-rơ 1:8 — 'Ngài là Đấng anh em không thấy mà yêu mến; dầu nay anh em không thấy Ngài, nhưng tin Ngài, và vui mừng lắm một cách không xiết kể và vinh hiển.'",
+    "explanation": "Câu hỏi hỏi về điều các tín hữu chưa bao giờ làm với Đấng Christ nhưng vẫn yêu mến Ngài. 1 Phi-e-rơ 1:8 viết: 'Ngài là Đấng mà anh em không thấy mà yêu mến; dầu bây giờ anh em không thấy Ngài, nhưng tin Ngài, và lấy sự vui mừng không thể nói và đầy vinh hiển mà hớn hở'. Đáp án đúng là 'Thấy Ngài' vì câu Kinh Thánh nói rõ 'không thấy mà yêu mến' và 'bây giờ anh em không thấy Ngài'.\n\nCác đáp án sai:\n- 'Nghe Ngài': Là một distractor gần đúng (almost-right) vì câu hỏi về giác quan/thể chất, nhưng câu Kinh Thánh cụ thể nói về 'thấy', không phải 'nghe'. Đây là lỗi nhầm passage gần (nearby_passage) vì các đoạn khác có thể nhắc đến nghe, nhưng không phải ở đây.\n- 'Chạm Ngài': Sai chi tiết (wrong_detail) vì không được đề cập trong câu này; câu chỉ nói về việc 'thấy'.\n- 'Biết Ngài': Đúng là tín hữu biết Đấng Christ, nhưng đây là lỗi đúng văn bản nhưng lạc câu hỏi (true_but_off) vì câu hỏi không hỏi về sự hiểu biết hay mối quan hệ, mà hỏi cụ thể về việc chưa bao giờ làm gì (thấy).",
     "language": "vi",
     "options": [
-      "Nghe đến danh Ngài",
+      "Nghe Ngài",
       "Thấy Ngài",
-      "Đọc về Ngài",
-      "Cầu nguyện với Ngài"
+      "Chạm Ngài",
+      "Biết Ngài"
     ],
     "tags": [
       "Tân Ước",
@@ -337,13 +337,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Phi-e-rơ 1:16 — 'Vì có chép rằng: Hãy nên thánh, vì ta là thánh.' Lời này được trích từ Lê-vi Ký 11:44-45.",
+    "explanation": "Câu hỏi hỏi về lệnh truyền được trích dẫn trong 1 Phi-e-rơ 1:15-16. Đáp án đúng là 'Hãy nên thánh, vì Ta là thánh', vì đây là trích dẫn trực tiếp từ Lê-vi Ký 11:44-45; 19:2; 20:7, được sứ đồ Phi-e-rơ viện dẫn trong hai câu này để khuyên các tín hữu sống thánh khiết.\n\nCác đáp án sai:\n- 'Hãy yêu nhau, vì Ta đã yêu các ngươi': Đây là một mệnh lệnh quan trọng trong Tân Ước (Giăng 13:34; 15:12) và được Phi-e-rơ nhắc đến ở chương sau (1 Phi-e-rơ 4:8), nhưng không phải là lệnh được trích dẫn trong 1:15-16, vì vậy đây là lỗi nhầm passage gần.\n- 'Hãy nên thánh, vì Ta là Đấng Tạo Hóa': Đáp án này gần đúng, nhưng sai một chi tiết then chốt. Lời trích dẫn trong Kinh Thánh gốc và được Phi-e-rơ dùng là 'vì Ta là thánh', không phải 'vì Ta là Đấng Tạo Hóa'. Đây là lỗi sai chi tiết.\n- 'Hãy nên trọn vẹn, vì Ta là thánh': Mệnh lệnh 'hãy nên trọn vẹn' có trong Kinh Thánh (Ma-thi-ơ 5:48) và cũng liên quan đến đời sống đạo, nhưng không phải là lời được trích dẫn trong đoạn 1 Phi-e-rơ 1:15-16. Đây là lỗi lạc câu hỏi (true_but_off).",
     "language": "vi",
     "options": [
       "Hãy nên thánh, vì Ta là thánh",
-      "Hãy yêu kẻ lân cận",
-      "Hãy giữ ngày Sa-bát",
-      "Hãy đi và làm môn đồ"
+      "Hãy yêu nhau, vì Ta đã yêu các ngươi",
+      "Hãy nên thánh, vì Ta là Đấng Tạo Hóa",
+      "Hãy nên trọn vẹn, vì Ta là thánh"
     ],
     "tags": [
       "Tân Ước",
@@ -391,13 +391,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Phi-e-rơ 1:25 — 'Nhưng lời Chúa còn lại đời đời. Và lời đó là đạo Tin Lành đã giảng ra cho anh em.'",
+    "explanation": "Đoạn Kinh Thánh 1 Phi-e-rơ 1:24-25 (trích từ Ê-sai 40:6-8) so sánh sự phù vân của con người như cỏ khô, hoa rụng, và tương phản với điều còn lại đời đời: 'Lời Chúa còn lại đời đời' (câu 25). \n\n- Đáp án đúng 'Lời của Chúa' đúng vì câu 25 khẳng định: 'Lời Chúa còn lại đời đời'.\n\n- Distractor 'Danh vọng con người' (gần đúng) là lỗi nearby_passage: Đoạn văn nói đến 'mọi xác thịt như cỏ... vinh hiển nó như hoa' (câu 24), nhưng đây chính là thứ tàn lụi chứ không phải điều còn đời đời.\n\n- Distractor 'Sự sống đời này' là lỗi wrong_scope: Đây là phạm vi sai; đoạn văn tập trung vào sự tương phản giữa phù vân đời này với Lời Chúa đời đời, chứ không phải 'sự sống đời này' là thứ còn lại.\n\n- Distractor 'Tình yêu thế gian' là lỗi common_misconception: Đây là một hiểu lầm phổ biến khi độc giả áp dụng chủ đề 'đừng yêu thế gian' (1 Giăng 2:15) vào đây, nhưng đoạn này không đề cập trực tiếp.",
     "language": "vi",
     "options": [
       "Lời của Chúa",
-      "Đền thờ Sa-lô-môn",
-      "Vương quốc các vua",
-      "Kinh đô Giê-ru-sa-lem"
+      "Danh vọng con người",
+      "Sự sống đời này",
+      "Tình yêu thế gian"
     ],
     "tags": [
       "Tân Ước",
@@ -417,13 +417,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Phi-e-rơ 2:5 — 'Anh em cũng như đá sống, được xây nên nhà thiêng liêng, làm chức tế lễ thánh, đặng dâng của tế lễ thiêng liêng.'",
+    "explanation": "Câu đúng: 'Đá sống được xây nên nhà thiêng liêng' vì 1 Phi-e-rơ 2:5 chép: 'anh em cũng như đá sống, được xây nên nhà thiêng liêng'. Distractor 1 sai vì thay 'nhà thiêng liêng' bằng 'đền thờ hữu hình', trong khi bối cảnh là thuộc linh. Distractor 2 sai vì dùng hình ảnh 'đá quý' và 'vương quốc' từ các phân đoạn Kinh Thánh khác, không phải ý chính của câu này. Distractor 3 sai vì mặc dù 'con cái sống động' liên quan đến sự sống trong Chúa, nhưng nó không trả lời trực tiếp câu hỏi về mô tả trong 1 Phi-e-rơ 2:5, mà lạc sang khái niệm chung về chức vụ.",
     "language": "vi",
     "options": [
-      "Cừu lạc đàn",
+      "Đá sống được xây nên đền thờ hữu hình",
       "Đá sống được xây nên nhà thiêng liêng",
-      "Hạt giống mới gieo",
-      "Tù nhân được giải phóng"
+      "Những viên đá quý cho vương quốc thiêng liêng",
+      "Con cái sống động để phục vụ trong nhà"
     ],
     "tags": [
       "Tân Ước",
@@ -443,13 +443,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Phi-e-rơ 2:21 — 'Đấng Christ cũng vì anh em mà chịu khổ, để lại cho anh em một gương, hầu cho anh em noi dấu chân Ngài.'",
+    "explanation": "Câu đúng: 'Một gương để noi theo' dựa trực tiếp trên 1 Phi-e-rơ 2:21: 'Vì Đấng Christ cũng đã chịu khổ vì anh em, để lại cho anh em một gương, hầu cho anh em noi dấu chân Ngài.'\n\nGiải thích các đáp án sai:\n1. 'Một lời hứa để nắm giữ' (nearby_passage): Sai vì mặc dù Kinh Thánh có nhiều lời hứa, câu 2:21 cụ thể nói về 'một gương', không phải một lời hứa. Đây là đáp án gần đúng vì nó có cấu trúc tương tự và liên quan đến một khái niệm tích cực khác trong Kinh Thánh.\n2. 'Một mạng lệnh để vâng theo' (wrong_scope): Sai vì câu hỏi hỏi về điều Đấng Christ 'để lại', trong khi mạng lệnh thường là điều Ngài truyền dạy. Phạm vi của 'để lại' (gương mẫu) khác với 'truyền lại' (mệnh lệnh).\n3. 'Một sự giải cứu để nhận lãnh' (common_misconception): Sai vì đây là một hiểu lầm phổ biến, nhầm lẫn mục đích chính của sự chết của Đấng Christ (sự cứu chuộc) với điều cụ thể Ngài để lại trong ngữ cảnh này (một tấm gương về sự chịu khổ).",
     "language": "vi",
     "options": [
-      "Một quyển sách luật",
+      "Một lời hứa để nắm giữ",
       "Một gương để noi theo",
-      "Một tài sản thừa kế",
-      "Một đoàn quân thiêng liêng"
+      "Một mạng lệnh để vâng theo",
+      "Một sự giải cứu để nhận lãnh"
     ],
     "tags": [
       "Tân Ước",
@@ -469,13 +469,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Phi-e-rơ 3:18 — 'Vả, Đấng Christ cũng vì tội lỗi chịu chết một lần, là Đấng công bình thay cho kẻ không công bình, để dẫn chúng ta đến cùng Đức Chúa Trời.'",
+    "explanation": "Câu đúng là 'Một lần đủ cả', trích từ 1 Phi-e-rơ 3:18: 'Vì Đấng Christ cũng đã vì tội lỗi chịu chết một lần'. Cụm 'một lần' (hapax trong tiếng Hy Lạp) nhấn mạnh tính duy nhất, trọn vẹn và đời đời của sự chịu chết chuộc tội của Đấng Christ, không cần lặp lại. Distractor 'Mỗi người một lần' sai vì nảy sinh từ hiểu lầm phổ biến rằng sự cứu chuộc cần được áp dụng riêng lẻ nhiều lần, trong khi Kinh Thánh dạy sự chết 'một lần' của Ngài có giá trị cho tất cả. Distractor 'Hai lần cho mọi người' sai chi tiết số lần, vì câu Kinh Thánh chỉ rõ 'một lần'. Distractor 'Ba lần vì tội lỗi' tuy có từ 'tội lỗi' đúng với ngữ cảnh câu nhưng lạc câu hỏi về số lần, đưa ra một con số không có căn cứ trong phân đoạn này.",
     "language": "vi",
     "options": [
-      "Hằng năm như tế lễ Cựu Ước",
-      "Mỗi khi dân phạm tội",
+      "Mỗi người một lần",
+      "Hai lần cho mọi người",
       "Một lần đủ cả",
-      "Bảy lần như con số trọn vẹn"
+      "Ba lần vì tội lỗi"
     ],
     "tags": [
       "Tân Ước",
@@ -496,13 +496,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Phi-e-rơ 5:6 — 'Vậy, hãy hạ mình xuống dưới tay quyền phép của Đức Chúa Trời, hầu cho đến kỳ thuận hiệp Ngài nhắc anh em lên.'",
+    "explanation": "Câu hỏi tham chiếu 1 Phi-e-rơ 5:5-6 (BTT). Đoạn Kinh Thánh dạy: '... hãy hạ mình xuống dưới tay quyền phép của Đức Chúa Trời...' (câu 6). Vì thế, đáp án đúng là 'Tay quyền phép của Đức Chúa Trời', trực tiếp trích từ câu 6.\n\nGiải thích các đáp án sai:\n- 'Sự dạy dỗ của các trưởng lão': Đây là một distractor gần đúng (almost-right). Câu 5 trước đó nói về việc 'hãy hạ mình ở dưới tay người trưởng lão', nên người đọc có thể nhầm phần tiếp theo (câu 6) vẫn nói về cùng đối tượng. Tuy nhiên, câu hỏi cụ thể hỏi về nội dung của câu 5-6, và câu 6 rõ ràng chuyển sang đối tượng là 'tay quyền phép của Đức Chúa Trời'.\n- 'Sự thử thách của ma quỷ': Đây là một hiểu lầm phổ biến (common_misconception). Cùng chương (câu 8) có nói 'ma quỷ... đi rình mò', nên người đọc có thể liên tưởng sai. Tuy nhiên, bối cảnh trực tiếp của câu 5-6 là về sự khiêm nhường trước Đức Chúa Trời, không phải trước ma quỷ.\n- 'Sự đoán xét trong ngày sau rốt': Đây là một distractor sai phạm vi (wrong_scope). Ý này liên quan đến sự khiêm nhường và thời điểm Chúa tôn cao con người (câu 6: 'đến kỳ Ngài sẽ nhắc anh em lên'), nhưng nó mở rộng sang một khái niệm khác (sự phán xét cuối cùng) không được nhắc đến trong câu hỏi và không phải là thứ mà tín hữu được khuyên 'phải hạ mình xuống dưới' trong câu 5-6.",
     "language": "vi",
     "options": [
       "Tay quyền phép của Đức Chúa Trời",
-      "Luật pháp Môi-se",
-      "Trưởng lão hội thánh",
-      "Quyền lực của vua"
+      "Sự dạy dỗ của các trưởng lão",
+      "Sự thử thách của ma quỷ",
+      "Sự đoán xét trong ngày sau rốt"
     ],
     "tags": [
       "Tân Ước",
@@ -522,13 +522,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Phi-e-rơ 5:7 — 'Lại hãy trao mọi điều lo lắng mình cho Ngài, vì Ngài hay săn sóc anh em.'",
+    "explanation": "Kinh Thánh chép trong 1 Phi-e-rơ 5:7: 'Hãy trao mọi điều lo lắng mình cho Ngài, vì Ngài hay săn sóc anh em.' Đáp án đúng là 'Mọi điều lo lắng', vì câu này trực tiếp khuyên các tín hữu trao gánh nặng lo lắng, âu lo cho Đức Chúa Trời.\n\nCác đáp án sai:\n- 'Mọi điều vui mừng' (sai chi tiết): Đây là đáp án gần đúng, vì cấu trúc 'mọi điều...' giống nguyên văn, nhưng sai từ khóa then chốt 'lo lắng' thành 'vui mừng'. Câu Kinh Thánh không nói về việc trao điều vui mừng.\n- 'Mọi niềm tin cậy' (hiểu lầm phổ biến): Nhiều người nghĩ cần trao niềm tin cho Chúa, nhưng câu này tập trung vào việc trao điều lo lắng, còn niềm tin cậy là thái độ cần có (xem câu 6).\n- 'Mọi tội lỗi' (đúng văn bản nhưng lạc câu hỏi): Dù Kinh Thánh nói về việc xưng tội (như 1 Giăng 1:9), đây không phải điều 1 Phi-e-rơ 5:7 đang đề cập. Câu hỏi hỏi cụ thể về nội dung câu 7.",
     "language": "vi",
     "options": [
-      "Mọi tài sản",
+      "Mọi điều vui mừng",
       "Mọi điều lo lắng",
-      "Mọi kế hoạch",
-      "Mọi thành công"
+      "Mọi niềm tin cậy",
+      "Mọi tội lỗi"
     ],
     "tags": [
       "Tân Ước",
@@ -574,13 +574,13 @@
       1
     ],
     "content": "Theo 1 Phi-e-rơ 1:9, kết quả của đức tin các tín hữu là gì?",
-    "explanation": "1 Phi-e-rơ 1:9 — 'Nhận được phần thưởng về đức tin anh em, là sự cứu rỗi linh hồn mình.' 'TELOS' (kết quả/cuối cùng) = đích đến của đức tin. KHÔNG phải lời hứa thuộc thể — mà CỨU LINH HỒN. Khác với 'phúc âm thịnh vượng' — sự cứu rỗi đời đời, không phải lợi ích vật chất.",
+    "explanation": "1 Phi-e-rơ 1:9 nói rõ: 'là sự cứu rỗi linh hồn mình', nhấn mạnh kết quả thuộc linh tối hậu của đức tin. \n\n- Đáp án đúng đúng vì trích nguyên văn và trọng tâm của câu. \n- Distractor 1 sai vì tuy cấu trúc gần đúng, nhưng thay 'linh hồn' bằng 'thân thể', làm lệch trọng tâm cứu rỗi thuộc linh của đoạn. \n- Distractor 2 sai vì mở rộng phạm vi sang phước lành vật chất/đời này, trong khi ngữ cảnh (c.3-9) tập trung vào cơ nghiệp thiên thượng và sự cứu rỗi sau cuối. \n- Distractor 3 sai vì dù 'nhận biết ý muốn Đức Chúa Trời' là điều quan trọng (được nhắc ở các phần khác trong thư), nhưng không phải là kết quả trực tiếp được nêu trong 1:9.",
     "language": "vi",
     "options": [
-      "Là sự giàu có vĩnh cửu",
+      "Là sự cứu rỗi thân thể mình",
       "Là sự CỨU RỖI LINH HỒN mình",
-      "Là phép lạ thấy được",
-      "Là sự sống lâu trên đất"
+      "Là sự ban phước dư dật đời này",
+      "Là sự nhận biết ý muốn Đức Chúa Trời"
     ],
     "tags": [
       "Tân Ước",
@@ -600,12 +600,12 @@
       3
     ],
     "content": "Theo 1 Phi-e-rơ 1:10-12, các tiên tri Cựu Ước đã làm gì về sự cứu rỗi này, và ai chiếu sáng cho họ?",
-    "explanation": "1 Phi-e-rơ 1:10-12 — 'Về sự cứu rỗi đó, các đấng tiên tri đã tìm tòi tra xét, các đấng đó đã nói tiên tri về ân điển định sẵn cho anh em; nghĩa là tìm cho biết thời kỳ nào và thời kỳ cách nào mà Thánh Linh Đấng Christ ở trong lòng các đấng ấy đã chỉ cho, là khi làm chứng trước về sự đau đớn của Đấng Christ và về sự vinh hiển sẽ theo sau... Ấy là những sự mà các thiên sứ cũng ước ao xem thấu.' 3 nhóm liên quan: TIÊN TRI cũ + TÍN HỮU mới + THIÊN SỨ.",
+    "explanation": "1 Phi-e-rơ 1:10-12 nói rõ: 'Về sự cứu rỗi đó, các đấng tiên tri đã tìm tòi tra xét... Đấng Christ đã bởi Đức Thánh Linh... báo trước về sự thống khổ của Đấng Christ và về sự vinh hiển sẽ theo sau.' (BTT). Vì vậy, đáp án đúng là họ 'tìm tòi và tra xét' và được 'Đức Thánh Linh của Christ' báo trước.\n\n*   Distractor 1 (gần đúng, sai chi tiết): Sai ở 'rao giảng và truyền bá' (họ tìm tòi, chứ không phải rao giảng về điều chưa hiểu trọn) và 'thiên sứ' (bản văn nói rõ là Đức Thánh Linh).\n*   Distractor 2 (sai phạm vi): Sai hoàn toàn về thời gian và bối cảnh. Các tiên tri Cựu Ước không được chính Đấng Christ khi còn tại thế dạy dỗ, vì họ sống trước thời Ngài nhập thể.\n*   Distractor 3 (nhầm passage gần): Sai về chủ thể giải thích. Bản văn nói các tiên tri phục vụ cho chính các sứ đồ (câu 12), chứ không phải được các sứ đồ giải thích cho họ.",
     "language": "vi",
     "options": [
-      "Họ tin và truyền lại — bởi giáo hội",
-      "Họ chép xuống — bởi vua",
-      "Họ giảng dạy — bởi Phao-lô",
+      "Họ rao giảng và truyền bá — được các thiên sứ từ trời báo trước về sự thống khổ và vinh hiển của Ngài",
+      "Họ tiên tri và tuyên bố — được chính Đấng Christ khi còn tại thế dạy dỗ về sự thống khổ và vinh hiển của Ngài",
+      "Họ trông đợi và chờ đợi — được các sứ đồ của Đức Chúa Jêsus giải thích về sự thống khổ và vinh hiển của Ngài",
       "Họ tìm tòi và tra xét — được Đức Thánh Linh của Christ báo trước về sự thống khổ và vinh hiển của Ngài"
     ],
     "tags": [
@@ -626,13 +626,13 @@
       0
     ],
     "content": "Theo 1 Phi-e-rơ 1:14, các tín hữu là 'CON CÁI VÂNG PHỤC' — KHÔNG được làm theo điều gì?",
-    "explanation": "1 Phi-e-rơ 1:14 — 'Anh em đã làm con cái vâng phục, thì chớ có làm theo sự dâm dục, là sự cai trị trong anh em ngày trước, về lúc anh em còn mê muội.' 'TƯ DỤC HƯ KHÔNG' (epithymiais) trước Christ. Tín hữu = CON CÁI MỚI — không thể sống theo BỐ CŨ (xác thịt). Câu kế (1:15) — 'phải nên thánh' đáp lại không vâng theo dục vọng.",
+    "explanation": "1 Phi-e-rơ 1:14 viết: 'như con cái vâng phục, chớ làm theo những tư dục mình lúc còn ngu muội.' Đáp án đúng trích dẫn chính xác từ Kinh Thánh, chỉ ra đối tượng không được làm theo là 'những tư dục hư không' từ thời kỳ chưa biết Chúa.\n\n- Distractor 1 (Theo những sự dạy dỗ của người Pha-ri-si...): SAI vì sai chi tiết. Đoạn văn không hề đề cập đến 'người Pha-ri-si' hay 'sự dạy dỗ' của họ. Đây là một chi tiết được đưa vào không có căn cứ.\n- Distractor 2 (Theo những lời tiên tri giả mạo...): SAI vì nhầm passage gần (gần đúng). Ý này phù hợp với bối cảnh cảnh giác chung trong thư tín (như 2 Phi-e-rơ 2:1), nhưng 1 Phi-e-rơ 1:14 cụ thể nói về 'tư dục', không phải 'lời tiên tri giả mạo'. Nó chỉ sai một chi tiết then chốt là đối tượng tham chiếu.\n- Distractor 3 (Theo những điều răn của luật pháp Môi-se...): SAI vì hiểu lầm phổ biến. Một số độc giả có thể nghĩ Cơ Đốc nhân không còn theo luật pháp Môi-se, nhưng câu hỏi này đang hỏi cụ thể về điều 1 Phi-e-rơ 1:14 nói, và câu đó không hề nhắc đến 'luật pháp Môi-se'.",
     "language": "vi",
     "options": [
       "Theo những TƯ DỤC HƯ KHÔNG mình lúc còn ngu muội (chưa biết Chúa)",
-      "Theo người học rộng",
-      "Theo gương các tổ phụ",
-      "Theo phong tục"
+      "Theo những sự dạy dỗ của người Pha-ri-si lúc còn ngu muội (chưa biết Chúa)",
+      "Theo những lời tiên tri giả mạo mình lúc còn ngu muội (chưa biết Chúa)",
+      "Theo những điều răn của luật pháp Môi-se lúc còn ngu muội (chưa biết Chúa)"
     ],
     "tags": [
       "Tân Ước",
@@ -652,13 +652,13 @@
       2
     ],
     "content": "Theo 1 Phi-e-rơ 1:17, vì các tín hữu kêu cầu Đức Chúa Trời là Cha — Đấng XÉT ĐOÁN không thiên vị — họ phải làm gì trong thời gian ở trọ trên đất?",
-    "explanation": "1 Phi-e-rơ 1:17 — 'Nếu anh em xưng Đấng không tây vị, xét đoán từng người theo việc họ làm, là Cha, thì hãy lấy lòng kính sợ mà ăn ở trong thời kỳ ở trọ đời nầy.' Hai mặt: CHA (gần gũi) + ĐẤNG XÉT ĐOÁN (kính sợ). 'Ở TRỌ' (paroikias) = ngoại kiều — tín hữu là khách lạ trên đất, công dân thiên đàng.",
+    "explanation": "Đoạn Kinh Thánh 1 Phi-e-rơ 1:17 chép: 'Và nếu anh em gọi Đấng xét đoán không thiên vị là Cha, thì hãy sống trong sự kính sợ suốt thời gian ở trọ nơi đất này.' Do đó, đáp án đúng là 'Sống TRONG SỰ KÍNH SỢ', vì đây là mệnh lệnh trực tiếp từ câu Kinh Thánh, xuất phát từ nhận thức về Đức Chúa Trời là Cha và là Đấng Xét Đoán công bình.\n\nCác đáp án sai:\n- 'Sống trong sự vui mừng' là đáp án gần đúng nhưng sai chi tiết then chốt. Mặc dù sự vui mừng là một chủ đề được nhấn mạnh trong ngữ cảnh rộng hơn của chương (1 Phi-e-rơ 1:6, 8), nhưng câu 17 cụ thể lại ra lệnh 'sống trong sự kính sợ'.\n- 'Sống theo ý riêng của mình' là một hiểu lầm phổ biến, vì nó trái ngược với tinh thần vâng phục và thánh khiết được dạy trong toàn bộ thư tín, nhưng không phải là điều câu 17 trực tiếp nói đến.\n- 'Sống dựa vào sự giàu có' là một ý đúng trong văn bản nhưng lạc đề với câu hỏi. Ý này liên quan đến nội dung ở câu 18 (không dựa vào của cải hay hư nát), không phải là câu trả lời trực tiếp cho câu hỏi về điều phải làm vì biết Chúa là Đấng Xét Đoán.",
     "language": "vi",
     "options": [
-      "Nghỉ ngơi tận hưởng cuộc sống",
-      "Tích lũy của cải",
+      "Sống trong sự vui mừng",
+      "Sống theo ý riêng của mình",
       "Sống TRONG SỰ KÍNH SỢ",
-      "Tham gia chính trị"
+      "Sống dựa vào sự giàu có"
     ],
     "tags": [
       "Tân Ước",
@@ -704,13 +704,13 @@
       1
     ],
     "content": "Theo 1 Phi-e-rơ 2:1, các tín hữu phải LỘT BỎ những gì để giống như trẻ con tìm SỮA THUẦN của Lời?",
-    "explanation": "1 Phi-e-rơ 2:1 — 'Vậy anh em đã từ bỏ mọi điều độc ác, mọi điều gian giảo, mọi thứ giả trá, lòng ghen ghét và sự nói hành.' 5 thứ phải LỘT (apothemenoi): điều dữ (kakian) + dối (dolon) + giả hình (hypokriseis) + ghen tị (phthonous) + nói hành (katalalias). Đặc biệt liên quan QUAN HỆ — vì cản trở SỰ TĂNG TRƯỞNG (2:2 sữa Lời).",
+    "explanation": "Đáp án đúng là 'Mọi điều DỮ + mọi điều DỐI TRÁ + sự GIẢ HÌNH + sự GHEN TỴ + mọi sự NÓI HÀNH' vì 1 Phi-e-rơ 2:1 (BTT) viết rõ: 'Vậy hãy lột bỏ mọi điều dữ, mọi điều dối trá, sự giả hình, sự ghen tỵ, và mọi sự nói hành'. Các distractor sai vì: 1) ('sự hận thù...') dùng các tội lỗi khác (sai chi tiết) không nằm trong đoạn văn này; 2) ('mọi điều tốt...') là dạng 'gần đúng' nhưng sai một từ then chốt ('tốt' thay vì 'dữ'), dựa vào văn bản gần đó về điều 'lành' nhưng lệch ngữ cảnh (nhầm passage gần); 3) ('mọi loài xác thịt...') mở rộng phạm vi quá rộng sang các khái niệm về thế gian và xác thịt không liên quan trực tiếp đến câu hỏi (sai phạm vi).",
     "language": "vi",
     "options": [
-      "Mọi tội nói chung",
+      "sự hận thù + sự kiêu ngạo + sự nói dối + tâm tham lam",
       "Mọi điều DỮ + mọi điều DỐI TRÁ + sự GIẢ HÌNH + sự GHEN TỴ + mọi sự NÓI HÀNH",
-      "Mọi sự suy nghĩ",
-      "Mọi sự yếu đuối"
+      "mọi điều tốt + mọi điều dối trá + sự giả hình + sự ghen tỵ + mọi sự nói hành",
+      "mọi loài xác thịt + mọi điều thế gian + mọi sự vinh hiển của người"
     ],
     "tags": [
       "Tân Ước",
@@ -730,13 +730,13 @@
       0
     ],
     "content": "Theo 1 Phi-e-rơ 2:6 (trích Ê-sai 28:16), Đức Chúa Trời đã đặt tại Si-ôn cái gì?",
-    "explanation": "1 Phi-e-rơ 2:6 — 'Vì trong Kinh thánh có chép rằng: Nầy, ta đặt tại Si-ôn hòn đá góc nhà đã chọn lựa và quí báu; ai tin đến đá ấy sẽ không bị xấu hổ.' Trích Ê-sai 28:16. Phi-e-rơ liên kết Christ = HÒN ĐÁ GÓC. Câu kế (2:7) — đối với kẻ tin = quý báu; đối với kẻ chẳng tin = đá vấp ngã (trích Thi Thiên 118:22 + Ê-sai 8:14).",
+    "explanation": "Đáp án đúng trích nguyên văn từ 1 Phi-e-rơ 2:6 (BTT): 'Một HÒN ĐÁ GÓC quý báu, đã được chọn — kẻ nào TIN cậy hòn đá ấy KHÔNG bị xấu hổ'.\n\n- Distractor 1 sai vì thay động từ then chốt 'TIN cậy' bằng 'PHỤC VỤ'. Đoạn Kinh Thánh nhấn mạnh đức tin, không phải hành động phục vụ.\n- Distractor 2 sai vì thay 'HÒN ĐÁ GÓC' bằng 'BỨC TƯỜNG', làm thay đổi bản chất của vật được đặt. Ê-sai 28:16 và 1 Phi-e-rơ đều nói về 'đá góc'.\n- Distractor 3 sai vì mặc dù có từ 'HÒN ĐÁ' và ý 'không bị sập đổ' nghe có vẻ quen thuộc, nó đã trộn lẫn với một khái niệm khác (xây dựng nhà trên đá trong Ma-thi-ơ 7:24-25) và thay đổi cả đối tượng hành động ('xây dựng' thay vì 'tin cậy') lẫn hậu quả ('không bị sập đổ' thay vì 'không bị xấu hổ'). Điều này khiến nó trở thành một sự thật Kinh Thánh nhưng không đúng với câu hỏi về 1 Phi-e-rơ 2:6.",
     "language": "vi",
     "options": [
       "Một HÒN ĐÁ GÓC quý báu, đã được chọn — kẻ nào TIN cậy hòn đá ấy KHÔNG bị xấu hổ",
-      "Một đền thờ vĩ đại",
-      "Một thầy tế lễ",
-      "Một vua"
+      "Một HÒN ĐÁ GÓC quý báu, đã được chọn — kẻ nào PHỤC VỤ hòn đá ấy KHÔNG bị xấu hổ",
+      "Một BỨC TƯỜNG quý báu, đã được chọn — kẻ nào TIN cậy bức tường ấy KHÔNG bị xấu hổ",
+      "Một HÒN ĐÁ quý báu, đã được đặt — người nào XÂY DỰNG trên đá ấy KHÔNG bị sập đổ"
     ],
     "tags": [
       "Tân Ước",
@@ -782,13 +782,13 @@
       1
     ],
     "content": "Theo 1 Phi-e-rơ 2:10 (trích Ô-sê), trước kia các tín hữu (dân ngoại) là gì? Nay là gì?",
-    "explanation": "1 Phi-e-rơ 2:10 — 'Anh em ngày trước không phải là một dân, mà bây giờ là dân Đức Chúa Trời, trước không được thương xót, mà bây giờ được thương xót.' Trích Ô-sê 1:9-10, 2:23. Lời tiên tri về Y-sơ-ra-ên bị BỎ + KHÔI PHỤC nay áp dụng cho HỘI THÁNH dân ngoại được TIẾP NHẬN. Câu này được Phao-lô cũng dùng (Rô 9:25-26).",
+    "explanation": "Đáp án đúng dựa trên 1 Phi-e-rơ 2:10: 'Anh em ngày trước không phải là một dân, nhưng bây giờ là dân của Đức Chúa Trời, trước không được thương xót, nhưng bây giờ được thương xót.' (BTT). Câu này trích dẫn và áp dụng Ô-sê 1:6, 9-10; 2:23 cho các tín hữu ngoại bang. Distractor 1 sai vì thay đổi chi tiết then chốt 'trước chẳng phải một dân' thành 'trước là một dân', làm mất ý nghĩa đối lập. Distractor 2 đúng về văn bản nhưng lạc câu hỏi vì câu hỏi hỏi về tình trạng của 'dân ngoại', mà họ trước 'không được thương xót', việc nói 'trước được thương xót' là không phù hợp với ngữ cảnh này. Distractor 3 phản ánh một hiểu lầm phổ biến về ân điển, cho rằng sự thương xót vẫn chưa đến, trái ngược với khẳng định 'đã được thương xót' trong Kinh Thánh.",
     "language": "vi",
     "options": [
-      "Trước là người tốt — Nay là người xấu",
+      "Trước là một dân — Nay là DÂN của Đức Chúa Trời; trước CHẲNG ĐƯỢC THƯƠNG XÓT — Nay đã được THƯƠNG XÓT",
       "Trước CHẲNG PHẢI một dân — Nay là DÂN của Đức Chúa Trời; trước CHẲNG ĐƯỢC THƯƠNG XÓT — Nay đã được THƯƠNG XÓT",
-      "Trước là người Do Thái — Nay là dân ngoại",
-      "Trước là tự do — Nay là tôi mọi"
+      "Trước CHẲNG PHẢI một dân — Nay là DÂN của Đức Chúa Trời; trước ĐƯỢC THƯƠNG XÓT — Nay đã được THƯƠNG XÓT",
+      "Trước CHẲNG PHẢI một dân — Nay là DÂN của Đức Chúa Trời; trước CHẲNG ĐƯỢC THƯƠNG XÓT — Nay vẫn chưa được THƯƠNG XÓT"
     ],
     "tags": [
       "Tân Ước",
@@ -808,12 +808,12 @@
       3
     ],
     "content": "Theo 1 Phi-e-rơ 2:12, các tín hữu phải có cách ăn ở thế nào giữa DÂN NGOẠI? Mục đích là gì?",
-    "explanation": "1 Phi-e-rơ 2:12 — 'Phải ăn ở ngay lành giữa dân ngoại, hầu cho họ là kẻ vẫn gièm chê anh em như người gian ác, đã thấy việc lành anh em, thì đến ngày Chúa thăm viếng, họ ngợi khen Đức Chúa Trời.' Cùng dạy Mat 5:16 (sự sáng các ngươi). 'NGÀY THĂM VIẾNG' = ngày Đức Chúa Trời ban ơn (epskeptomai) — kẻ chống đối có thể được cứu qua chứng từ tín hữu.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 1 Phi-e-rơ 2:12 viết: 'Hãy ăn ở ngay lành giữa dân ngoại, hầu cho trong điều họ gièm chê anh em như người gian ác, thì bởi việc lành của anh em mà họ ngợi khen Đức Chúa Trời trong ngày thăm viếng.' (BTT). Câu này chỉ rõ mục đích là để dân ngoại, dù đang nói xấu, sẽ thấy việc tốt và cuối cùng ngợi khen Đức Chúa Trời trong 'ngày thăm viếng' (ám chỉ thời điểm Chúa đoái xét hoặc phán xét).\n\nDISTRACTOR SAI 1 ('NGÀY SAU RỐT'): Sai chi tiết thời gian. Bản văn ghi 'ngày thăm viếng' (ngày Chúa thăm viếng, can thiệp), không phải 'ngày sau rốt' (ngày tận thế chung cuộc) – đây là lỗi sai chi tiết nhưng gần đúng.\nDISTRACTOR SAI 2 ('QUAY ĐẦU TIN CHÚA ngay lập tức'): Sai phạm vi mục đích. Mục đích trong câu là để họ 'ngợi khen Đức Chúa Trời' trong một ngày cụ thể, không phải mô tả sự ăn năn tức thì hoặc cá nhân quy đạo.\nDISTRACTOR SAI 3 ('KHIÊM NHƯỜNG'): Đây là một đức tính tốt nhưng không phải từ ngữ chính xác trong câu hỏi về 'cách ăn ở' theo 1 Phi-e-rơ 2:12. Câu Kinh Thánh dùng 'ngay lành' (tốt, lành), nên 'khiêm nhường' là một đức tính khác, có thể đúng trong ngữ cảnh rộng nhưng lạc trọng tâm câu hỏi cụ thể này.",
     "language": "vi",
     "options": [
-      "Sống ẩn dật — không cần phô bày",
-      "Tranh luận thường xuyên — để chứng tỏ lẽ thật",
-      "Lảng tránh người ngoại — tránh ô uế",
+      "Cách ăn ở TỐT giữa dân ngoại — hầu cho khi họ NÓI XẤU như người LÀM ÁC, họ sẽ thấy VIỆC TỐT của anh em mà NGỢI KHEN Đức Chúa Trời trong NGÀY SAU RỐT",
+      "Cách ăn ở TỐT giữa dân ngoại — hầu cho khi họ NÓI XẤU như người LÀM ÁC, họ sẽ thấy VIỆC TỐT của anh em mà QUAY ĐẦU TIN CHÚA ngay lập tức",
+      "Cách ăn ở KHIÊM NHƯỜNG giữa dân ngoại — hầu cho khi họ NÓI XẤU như người LÀM ÁC, họ sẽ thấy VIỆC TỐT của anh em mà NGỢI KHEN Đức Chúa Trời trong NGÀY THĂM VIẾNG",
       "Cách ăn ở TỐT giữa dân ngoại — hầu cho khi họ NÓI XẤU như người LÀM ÁC, họ sẽ thấy VIỆC TỐT của anh em mà NGỢI KHEN Đức Chúa Trời trong NGÀY THĂM VIẾNG"
     ],
     "tags": [
@@ -834,13 +834,13 @@
       0
     ],
     "content": "Theo 1 Phi-e-rơ 2:17, có 4 mệnh lệnh gì cho các tín hữu?",
-    "explanation": "1 Phi-e-rơ 2:17 — 'Hãy kính mọi người; yêu anh em; kính sợ Đức Chúa Trời; tôn trọng vua.' 4 mệnh lệnh xếp 2 cặp: MỌI NGƯỜI (chung) - ANH EM (đặc biệt); ĐỨC CHÚA TRỜI (kính sợ — phobos) - VUA (tôn kính — timate). Ý: kính sợ Chúa CAO HƠN tôn kính vua. Trong môi trường La Mã, kêu phục Hoàng Đế.",
+    "explanation": "1 Phi-e-rơ 2:17 chép: 'Hãy tôn kính mọi người; yêu thương anh em; kính sợ Đức Chúa Trời; tôn kính vua.' Đáp án đúng liệt kê đầy đủ và chính xác 4 mệnh lệnh này. \n\nDistractor thứ nhất ('gần đúng') sai chi tiết then chốt: thay đổi mệnh lệnh 'kính sợ Đức Chúa Trời' thành 'kính sợ vua' và 'tôn kính vua' thành 'tôn trọng Đức Chúa Trời', làm đảo lộn đối tượng của hai mệnh lệnh quan trọng. \nDistractor thứ hai sai phạm vi: thay 'tôn kính mọi người' bằng 'kính sợ mọi người', điều này không phù hợp với tinh thần của câu Kinh Thánh vốn dạy sự tôn trọng chứ không phải sự sợ hãi đối với mọi người. \nDistractor thứ ba nhầm lẫn với các mệnh lệnh trong các phân đoạn gần: nó hoán đổi đối tượng của 'tôn kính' và 'yêu thương' ('tôn kính anh em' và 'yêu thương mọi người'), trong khi câu Kinh Thánh này chỉ định rõ đối tượng cho từng động từ.",
     "language": "vi",
     "options": [
       "TÔN KÍNH mọi người — YÊU thương anh em — KÍNH SỢ Đức Chúa Trời — TÔN KÍNH vua",
-      "Sợ vua — Sợ thầy tế — Sợ tổ phụ — Sợ người",
-      "Yêu kẻ thù — Yêu vợ — Yêu con — Yêu mình",
-      "Ngợi Chúa — Ngợi vua — Ngợi mình — Ngợi anh em"
+      "TÔN KÍNH mọi người — YÊU thương anh em — KÍNH SỢ vua — TÔN TRỌNG Đức Chúa Trời",
+      "KÍNH SỢ mọi người — YÊU thương anh em — KÍNH SỢ Đức Chúa Trời — TÔN KÍNH vua",
+      "TÔN KÍNH anh em — YÊU thương mọi người — KÍNH SỢ Đức Chúa Trời — TÔN KÍNH vua"
     ],
     "tags": [
       "Tân Ước",
@@ -860,13 +860,13 @@
       2
     ],
     "content": "Theo 1 Phi-e-rơ 2:24, Christ đã làm gì với tội của chúng ta trên CÂY GỖ (thập tự)? Mục đích là gì? Bởi LẰN ROI Ngài, chúng ta được gì?",
-    "explanation": "1 Phi-e-rơ 2:24 — 'Ngài gánh tội lỗi chúng ta trong thân thể Ngài trên cây gỗ, hầu cho chúng ta là kẻ đã chết về tội lỗi, được sống cho sự công bình; lại nhân những lằn đòn của Ngài mà anh em đã được lành bệnh.' Trích Ê-sai 53:5. 'CÂY GỖ' (xylon) = thập tự (cf. Phục Truyền 21:23 'rủa sả'). 'CHỮA LÀNH' chính là ý thuộc linh = tha tội — không phải chữa bệnh thân thể (dù có thể).",
+    "explanation": "ĐÁP ÁN ĐÚNG: 1 Phi-e-rơ 2:24 viết: 'Ngài đã mang tội chúng ta trong thân thể Ngài trên cây gỗ, hầu cho chúng ta là kẻ đã chết về tội lỗi, được sống cho sự công bình; lại nhơn những lằn đòn của Ngài mà anh em đã được lành bịnh.' Vì vậy, đáp án chính xác mô tả Ngài MANG TỘI, mục đích là để chúng ta CHẾT đối với tội và SỐNG cho sự công bình, và bởi LẰN ROI Ngài, chúng ta được CHỮA LÀNH.\n\nDISTRACTOR 1 (sai chi tiết): Câu này sai vì đảo ngược mục đích thành 'SỐNG đối với tội + CHẾT cho sự công bình', trái ngược hoàn toàn với ý nghĩa của phân đoạn.\nDISTRACTOR 2 (sai phạm vi): Mục đích 'được GIẢI THOÁT khỏi luật pháp' là một chủ đề thần học khác (ví dụ trong thư Rô-ma) và không phải là ý chính được nêu trong 1 Phi-e-rơ 2:24.\nDISTRACTOR 3 (nhầm passage gần - gần đúng): Câu này gần như chính xác, nhưng lại thay thế 'bởi LẰN ROI Ngài' thành 'bởi SỰ PHỤC SINH Ngài'. Trong khi sự phục sinh quan trọng, câu Kinh Thánh cụ thể này quy sự chữa lành cho những lằn roi của Ngài.",
     "language": "vi",
     "options": [
-      "Ngài quên đi tội — để chúng ta nhớ",
-      "Ngài giấu tội — để chúng ta che",
+      "Ngài GÁNH TỘI chúng ta trên thân thể trên CÂY GỖ — để chúng ta SỐNG đối với tội + CHẾT cho sự công bình; bởi LẰN ROI Ngài, chúng ta được CHỮA LÀNH",
+      "Ngài MANG TỘI chúng ta trên thân thể trên CÂY GỖ — để chúng ta được GIẢI THOÁT khỏi luật pháp; bởi LẰN ROI Ngài, chúng ta được CHỮA LÀNH",
       "Ngài MANG TỘI chúng ta trên thân thể trên CÂY GỖ — để chúng ta CHẾT đối với tội + SỐNG cho sự công bình; bởi LẰN ROI Ngài, chúng ta được CHỮA LÀNH",
-      "Ngài tha tội đơn giản — để chúng ta vui"
+      "Ngài MANG TỘI chúng ta trên thân thể trên CÂY GỖ — để chúng ta CHẾT đối với tội + SỐNG cho sự công bình; bởi SỰ PHỤC SINH Ngài, chúng ta được CHỮA LÀNH"
     ],
     "tags": [
       "Tân Ước",
@@ -886,13 +886,13 @@
       1
     ],
     "content": "Theo 1 Phi-e-rơ 2:25, các tín hữu trước kia LẠC giống ai? Nay đã trở về với ai?",
-    "explanation": "1 Phi-e-rơ 2:25 — 'Vì anh em vốn giống như con chiên lạc, mà bây giờ đã trở về cùng Đấng chăn chiên và Giám mục của linh hồn mình.' Trích Ê-sai 53:6 ('Chúng ta thảy đều như chiên đi lạc'). Hai danh hiệu Christ: 'Đấng Chăn Chiên' (poimēn) + 'Giám Mục' (episkopos = giám sát). Câu mở thư = Phi-e-rơ tự xưng SỨ ĐỒ = giám sát; nay nói Christ MỚI là giám sát thật.",
+    "explanation": "1 Phi-e-rơ 2:25 (BTT) viết: 'Vì anh em trước kia như chiên lạc, nhưng bây giờ đã trở về cùng Đấng chăn chiên và Đấng giám mục của linh hồn mình.' Đáp án đúng trích dẫn chính xác hình ảnh 'chiên lạc' và hai chức vụ của Chúa Giê-xu là 'Đấng chăn chiên' và 'Đấng giám mục' (người giữ gìn, coi sóc) linh hồn tín hữu.\n\nDistractor 1 ('Đấng tế lễ') là gần đúng nhưng sai chi tiết then chốt: Kinh Thánh ghi 'Đấng giám mục', không phải 'Đấng tế lễ'.\nDistractor 2 ('người lữ hành' và 'Đấng chỉ đường') là đúng về mặt ý tưởng thuộc linh nhưng không đúng với văn bản cụ thể của câu hỏi, vì câu Kinh Thánh không dùng những hình ảnh này.\nDistractor 3 ('Con Chiên' và 'Đấng Cứu Rỗi') trộn lẫn hình ảnh từ các phân đoạn khác: 'Con Chiên' thường chỉ về Chúa Giê-xu, còn 'Đấng Cứu Rỗi' là chức vụ đúng nhưng không phải từ ngữ được dùng trong 1 Phi-e-rơ 2:25.",
     "language": "vi",
     "options": [
-      "Lạc như du khách — về với hướng dẫn",
+      "Lạc như CHIÊN — đã trở về cùng Đấng CHĂN CHIÊN + ĐẤNG TẾ LỄ của anh em",
       "Lạc như CHIÊN — đã trở về cùng Đấng CHĂN CHIÊN + ĐẤNG GIÁM MỤC linh hồn anh em",
-      "Lạc như đứa trẻ — về với mẹ",
-      "Lạc như người mù — về với người sáng"
+      "Lạc như NGƯỜI LỮ HÀNH — đã trở về cùng Đấng CHỈ ĐƯỜNG linh hồn anh em",
+      "Lạc như CON CHIÊN — đã trở về cùng Đấng GIÁM MỤC + ĐẤNG CỨU RỖI linh hồn anh em"
     ],
     "tags": [
       "Tân Ước",
@@ -938,12 +938,12 @@
       3
     ],
     "content": "Theo 1 Phi-e-rơ 3:7, người chồng phải đối xử với vợ thế nào? Vì cớ gì?",
-    "explanation": "1 Phi-e-rơ 3:7 — 'Hỡi người làm chồng, hãy tỏ điều khôn ngoan ra trong sự ăn ở với vợ mình, như là với giống yếu hơn; vì họ sẽ cùng anh em hưởng phước sự sống, nên phải kính nể họ, hầu cho không điều gì làm rối loạn sự cầu nguyện của anh em.' 'GIỐNG YẾU HƠN' (asthenesterō) = thuộc thể (không thuộc linh). 'ĐỒNG KẾ TỰ' = thuộc linh ngang hàng. Đối xử ác với vợ → cầu nguyện bị NGĂN TRỞ.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 1 Phi-e-rơ 3:7 dạy: 'Cũng vậy, hỡi người làm chồng, hãy khôn ngoan ăn ở với vợ mình, như với giống yếu đuối hơn; hãy tôn trọng nàng, như cùng kế thừa ân sự sống, để những lời cầu nguyện của anh em không bị cản trở.' (BTT). Đáp án đúng trích dẫn chính xác mệnh lệnh (tỏ ra hiểu biết, tôn kính) và lý do (kẻo sự cầu nguyện bị ngăn trở).\n\nDISTRACTOR 1 (gần đúng, sai chi tiết): Sai ở chi tiết cuối 'để SỰ CẦU NGUYỆN được NHẬM LỜI'. Kinh văn nói 'kẻo... bị NGĂN TRỞ', là cảnh báo tiêu cực, không phải lời hứa tích cực về sự nhậm lời.\n\nDISTRACTOR 2 (đúng văn bản nhưng lạc câu hỏi): Mặc dù việc đẹp lòng Đức Chúa Trời là mục tiêu chung, nhưng câu hỏi hỏi cụ thể 'Vì cớ gì?' theo 1 Phi-e-rơ 3:7. Lý do trực tiếp được nêu trong câu này là 'kẻo sự cầu nguyện bị ngăn trở', không phải 'để được đẹp lòng Đức Chúa Trời'.\n\nDISTRACTOR 3 (nhầm passage gần): Sai ở từ 'THƯƠNG YÊU'. Mặc dù đây là điều tốt và có thể suy ra từ nguyên tắc chung, nhưng động từ cụ thể trong 1 Phi-e-rơ 3:7 là 'tỏ ra hiểu biết' (hay 'khôn ngoan ăn ở'). Từ 'thương yêu' thường gắn với mệnh lệnh dành cho người chồng trong Ê-phê-sô 5:25 ('Hãy yêu vợ mình'), không phải từ ngữ trong câu này.",
     "language": "vi",
     "options": [
-      "Coi vợ như đầy tớ — để giữ kỷ luật",
-      "Coi vợ ngang hàng — để hoà bình",
-      "Coi vợ thấp hơn — như văn hóa",
+      "Tỏ ra HIỂU BIẾT (sống cùng) — đối với vợ là GIỐNG YẾU hơn — TÔN KÍNH (như đồng kế tự ơn sự sống) — để SỰ CẦU NGUYỆN được NHẬM LỜI",
+      "Tỏ ra HIỂU BIẾT (sống cùng) — đối với vợ là GIỐNG YẾU hơn — TÔN KÍNH (như đồng kế tự ơn sự sống) — để được ĐẸP LÒNG Đức Chúa Trời",
+      "Phải THƯƠNG YÊU (sống cùng) — đối với vợ là GIỐNG YẾU hơn — TÔN KÍNH (như đồng kế tự ơn sự sống) — kẻo SỰ CẦU NGUYỆN bị NGĂN TRỞ",
       "Tỏ ra HIỂU BIẾT (sống cùng) — đối với vợ là GIỐNG YẾU hơn — TÔN KÍNH (như đồng kế tự ơn sự sống) — kẻo SỰ CẦU NGUYỆN bị NGĂN TRỞ"
     ],
     "tags": [
@@ -964,13 +964,13 @@
       2
     ],
     "content": "Theo 1 Phi-e-rơ 3:9, các tín hữu CHỚ làm gì khi bị làm ác? Phải làm gì thay?",
-    "explanation": "1 Phi-e-rơ 3:9 — 'Đừng lấy ác trả ác, cũng đừng lấy rủa sả trả rủa sả; trái lại phải chúc phước, ấy vì điều đó mà anh em được gọi để hưởng phước lành.' Cùng dạy Chúa Jêsus (Mat 5:44, Lu 6:28). Tín hữu KHÔNG có quyền 'mắt đền mắt' — VỊ THẾ là CHÚC PHƯỚC. Vì sao? VÌ MÌNH ĐÃ NHẬN PHƯỚC từ Chúa.",
+    "explanation": "Đáp án đúng trích nguyên ý 1 Phi-e-rơ 3:9: 'Chớ lấy ác trả ác, lấy rủa sả trả rủa sả; nhưng trái lại, phải chúc phước; ấy là vì anh em đã được gọi đến, hầu cho anh em nhận được phước lành.' (BTT). Distractor 1 sai vì thay từ 'HƯỞNG' bằng 'CHIẾN ĐẤU' (sai chi tiết then chốt). Distractor 2 sai vì thay mệnh lệnh 'chúc phước' bằng 'tố cáo', đây là ý có thể gặp ở ngữ cảnh rộng hơn nhưng không phải câu trả lời trực tiếp trong đoạn này (nhầm passage gần). Distractor 3 sai vì thêm 'tự vệ', đây là hiểu lầm phổ biến khi áp dụng nguyên tắc này vào thực tế, nhưng Kinh Thánh tại đây chỉ rõ phải 'chúc phước' chứ không nói đến tự vệ.",
     "language": "vi",
     "options": [
-      "Báo thù — bằng cách công bằng",
-      "Im lặng — không phản ứng",
+      "Chớ LẤY ÁC TRẢ ÁC, lấy RỦA SẢ trả RỦA SẢ — trái lại, phải CHÚC PHƯỚC, vì các tín hữu đã được kêu gọi để ấy mà CHIẾN ĐẤU",
+      "Chớ LẤY ÁC TRẢ ÁC, nhưng phải TỐ CÁO ngay — vì các tín hữu đã được kêu gọi để ấy mà HƯỞNG phước",
       "Chớ LẤY ÁC TRẢ ÁC, lấy RỦA SẢ trả RỦA SẢ — trái lại, phải CHÚC PHƯỚC, vì các tín hữu đã được kêu gọi để ấy mà HƯỞNG phước",
-      "Tránh xa — ẩn náu"
+      "Chớ LẤY ÁC TRẢ ÁC — trái lại, phải NHỊN NHỤC và TỰ VỆ, vì các tín hữu đã được kêu gọi để ấy mà HƯỞNG phước"
     ],
     "tags": [
       "Tân Ước",
@@ -990,13 +990,13 @@
       1
     ],
     "content": "Theo 1 Phi-e-rơ 3:13-14, ai sẽ HẠI tín hữu khi họ là kẻ TỐT LÀNH? Nếu chịu khổ vì sự công bình thì ra sao?",
-    "explanation": "1 Phi-e-rơ 3:13-14 — 'Vả lại, nếu anh em làm điều lành, thì nào ai làm dữ lại cho anh em? Nếu anh em phải vì sự công bình mà chịu khổ, ấy thật là có phước. Chớ sợ điều họ sợ và đừng rối trí.' Trích Ê-sai 8:12-13. Ý: TỐT LÀNH thường được người khen — NHƯNG nếu vẫn bị hại, là CỘNG TÁC với CHRIST trong khổ + được PHƯỚC LỚN.",
+    "explanation": "1 Phi-e-rơ 3:13-14 (BTT) viết: 'Vả, ai là người làm hại anh em, nếu anh em sốt sắng làm điều lành? Nhưng nếu vì sự công bình mà anh em phải chịu khổ, ấy thật là có phước. Chớ sợ điều họ sợ và đừng rối trí.' Đáp án đúng trung thành với ý chính: 1) Câu hỏi 'ai sẽ hại' được trả lời bằng 'ai là người...' (một cách diễn đạt nghi vấn, ý nói khó có ai hại được), 2) Phước lành được hứa cho người chịu khổ vì sự công bình, 3) Mệnh lệnh là đừng sợ. Các đáp án sai: 1) 'vì NIỀM TIN' là sai chi tiết then chốt (bản văn nói rõ 'vì sự công bình'), dù phần còn lại đúng. 2) 'được BÌNH AN' là lạc câu hỏi (bản văn đúng nói 'có phước', dù 'bình an' là chủ đề gần nhưng không phải đáp án cho câu này). 3) 'Chẳng ai có thể hại' là nhầm passage gần (bản văn dùng câu hỏi tu từ 'ai là người...', không phải khẳng định tuyệt đối 'chẳng ai'; sắc thái khác nhau).",
     "language": "vi",
     "options": [
-      "Mọi người — bị ghét tự nhiên",
+      "Ai có thể hại — nếu chịu khổ vì NIỀM TIN thì có PHƯỚC; chớ sợ điều họ sợ, đừng kinh hãi",
       "Ai có thể hại — nếu chịu khổ vì SỰ CÔNG BÌNH thì có PHƯỚC; chớ sợ điều họ sợ, đừng kinh hãi",
-      "Chỉ kẻ thù — phải đề phòng",
-      "Không ai — bảo đảm an toàn"
+      "Ai có thể hại — nếu chịu khổ vì SỰ CÔNG BÌNH thì được BÌNH AN; đừng sợ hãi, hãy vững lòng",
+      "Chẳng ai có thể hại — nếu chịu khổ vì SỰ CÔNG BÌNH thì có PHƯỚC; chớ sợ điều họ sợ, đừng kinh hãi"
     ],
     "tags": [
       "Tân Ước",
@@ -1016,12 +1016,12 @@
       3
     ],
     "content": "Theo 1 Phi-e-rơ 4:7, sự kết cuộc của muôn vật ĐÃ GẦN — vậy các tín hữu phải làm gì?",
-    "explanation": "1 Phi-e-rơ 4:7 — 'Sự cuối cùng của muôn vật đã gần; vậy hãy khôn ngoan, tỉnh thức mà cầu nguyện.' 'KẾT CUỘC' (telos) đã gần — không phải ngày tháng cụ thể mà NGUYÊN TẮC: tín hữu sống TRONG ĐỢI Christ tái lâm. 2 mệnh lệnh: KHÔN NGOAN (sōphroneō, sober-minded) + TỈNH THỨC (nēphō, watchful) — vì cầu nguyện.",
+    "explanation": "1 Phi-e-rơ 4:7 chép: 'Sự cuối cùng của muôn vật đã gần; vậy hãy khôn ngoan tỉnh thức, mà cầu nguyện.' Đáp án đúng phản ánh trực tiếp mệnh lệnh 'hãy khôn ngoan tỉnh thức, mà cầu nguyện', trong đó 'khôn ngoan tự kiềm chế' đồng nghĩa với 'khôn ngoan' (nghĩa là tiết độ, chủ động).\n\nDistractor 1 sai vì thay 'cầu nguyện' bằng 'giảng đạo' – đây là một chi tiết then chốt bị thay đổi, dù phần còn lại gần đúng.\nDistractor 2 sai vì thể hiện sự hiểu lầm phổ biến về phản ứng với thời kỳ cuối cùng (chạy trốn, ẩn náu), trái ngược với lời kêu gọi tỉnh thức và cầu nguyện trong Kinh Thánh.\nDistractor 3 sai vì đưa ra lời khuyên về tích trữ và lo lắng, điều trái ngược với tinh thần tin cậy và tỉnh thức cầu nguyện mà đoạn văn nhấn mạnh, nên lạc với trọng tâm câu hỏi.",
     "language": "vi",
     "options": [
-      "Phải kêu la cảnh báo",
-      "Phải tích trữ thực phẩm",
-      "Phải tách khỏi xã hội",
+      "Phải khôn ngoan tự kiềm chế và tỉnh thức để giảng đạo",
+      "Phải chạy trốn và tìm nơi ẩn náu cho an toàn",
+      "Phải tích trữ của cải và lo lắng cho tương lai",
       "Phải KHÔN NGOAN tự kiềm chế (TIẾT ĐỘ) và TỈNH THỨC để CẦU NGUYỆN"
     ],
     "tags": [
@@ -1042,13 +1042,13 @@
       0
     ],
     "content": "Theo 1 Phi-e-rơ 1:20, Christ đã được CHỌN trước khi nào, và được TỎ RA khi nào?",
-    "explanation": "1 Phi-e-rơ 1:20 — 'Đã định sẵn trước buổi sáng thế, và hiện ra trong cuối các thời kỳ vì cớ anh em.' 2 chữ KEY: 'ĐỊNH TRƯỚC' (proegnōsmenou — foreknown) trước SÁNG THẾ + 'HIỆN RA' (phanerōthentos) trong THỜI CUỐI. Christ KHÔNG phải kế hoạch B sau khi A-đam ngã — mà là KẾ HOẠCH CHÍNH từ trước. Cùng tư tưởng Khải 13:8.",
+    "explanation": "1 Phi-e-rơ 1:20 chép: 'Ngài là Đấng ĐỨC CHÚA TRỜI đã biết từ trước, hằng có TRƯỚC KHI SÁNG THẾ, nhưng đến CUỐI CÁC THỜI đây vì cớ các ngươi mới tỏ ra.' Đáp án đúng vì khớp với Kinh Thánh: 'từ trước khi sáng thế' (chọn lựa) và 'cuối các thời' (tỏ ra). Distractor 1 sai vì thời điểm 'tỏ ra' là 'cuối các thời' (thời Tân Ước/ơn cứu rỗi hoàn tất), không phải 'thời Cựu Ước'. Distractor 2 sai dựa trên ý gần đúng nhưng thay đổi từ 'trước khi' thành 'khi', làm thay đổi ý nghĩa về thời điểm chọn lựa căn bản. Distractor 3 đúng văn bản về phần 'chọn' nhưng phần 'tỏ ra' đưa ra mục đích không có trong câu hỏi (phán xét thế gian), lạc trọng tâm câu hỏi chỉ hỏi 'khi nào'.",
     "language": "vi",
     "options": [
       "Đã được CHỌN từ TRƯỚC KHI sáng thế — và đã được TỎ RA trong NHỮNG THỜI ĐẠI CUỐI CÙNG vì cớ chúng ta",
-      "Đã được chọn khi sáng thế — và đã được tỏ ra ngay sau Adam",
-      "Đã được chọn khi gọi Áp-ra-ham — và đã được tỏ ra qua Môi-se",
-      "Đã được chọn khi Đa-vít — và đã được tỏ ra ở Bết-lê-hem"
+      "Đã được CHỌN từ TRƯỚC KHI sáng thế — và đã được TỎ RA trong THỜI KỲ CỰU ƯỚC vì cớ chúng ta",
+      "Đã được CHỌN từ KHI sáng thế — và đã được TỎ RA trong NHỮNG THỜI ĐẠI CUỐI CÙNG vì cớ chúng ta",
+      "Đã được CHỌN từ TRƯỚC KHI sáng thế — và đã được TỎ RA để phán xét thế gian"
     ],
     "tags": [
       "Tân Ước",
@@ -1094,13 +1094,13 @@
       2
     ],
     "content": "Theo 1 Phi-e-rơ 2:13-14, các tín hữu phải PHỤC TÙNG ai? Vì cớ gì?",
-    "explanation": "1 Phi-e-rơ 2:13-15 — 'Vì cớ Chúa, hãy phục theo mọi phép tắc loài người lập lên: hoặc vua, như đấng rất cao... vì anh em làm điều lành để ngăn miệng những kẻ ngu muội dại dột.' Phi-e-rơ viết DƯỚI thời Nê-rô — vẫn dạy phục tùng. Lý do KHÔNG phải vua xứng đáng — VÌ CỚ CHÚA. Cùng tư tưởng Rô-ma 13. Có giới hạn (Công 5:29 'phải vâng lời Đức Chúa Trời hơn loài người').",
+    "explanation": "Câu hỏi hỏi về đối tượng và lý do phục tùng theo 1 Phi-e-rơ 2:13-14. ĐÁP ÁN ĐÚNG: 'Phục tùng mọi thẩm quyền của loài người (vua tối cao và quan trấn thủ) vì cớ Chúa — vì đó là ý Đức Chúa Trời' là chính xác vì câu 13 nói 'hãy phục tùng mọi thẩm quyền của loài người', câu 14 liệt kê 'vua tối cao' và 'quan trấn thủ', và câu 15 nêu mục đích 'vì cớ Chúa' và 'ý muốn của Đức Chúa Trời' (ý Đức Chúa Trời).\n\nCÁC ĐÁP ÁN SAI:\n1. (true_but_off) Sai vì thay đổi lý do 'vì cớ Chúa' thành 'vì cớ hòa bình xã hội'. Dù chính quyền có mục đích trừng phạt kẻ ác (c.14), lý do căn bản cho sự phục tùng của tín hữu là 'vì cớ Chúa'.\n2. (wrong_detail) Sai vì thêm 'quyền tôn giáo (các trưởng lão)' vào đối tượng phục tùng. Đoạn này chỉ đề cập thẩm quyền dân sự (vua, quan), không phải chức vụ trong Hội Thánh.\n3. (wrong_scope) Sai vì thu hẹp phạm vi 'mọi thẩm quyền' thành 'chỉ vua tối cao'. Câu 13-14 chỉ rõ phải phục tùng cả vua lẫn các quan trấn thủ được vua sai.",
     "language": "vi",
     "options": [
-      "Chỉ phục tùng Đức Chúa Trời và bỏ qua chính quyền.",
-      "Phục tùng vua nếu vua tốt, chống lại nếu vua xấu.",
+      "Phục tùng mọi thẩm quyền của loài người (vua tối cao và quan trấn thủ) vì cớ hòa bình xã hội — vì đó là mục đích của chính quyền.",
+      "Phục tùng mọi thẩm quyền dân sự và tôn giáo (vua tối cao và các trưởng lão) vì cớ Chúa — vì đó là ý Đức Chúa Trời.",
       "Phục tùng mọi thẩm quyền của loài người (vua tối cao và quan trấn thủ) vì cớ Chúa — vì đó là ý Đức Chúa Trời.",
-      "Chỉ phục tùng người Do Thái trong văn cảnh của sách."
+      "Phục tùng một số thẩm quyền của loài người (chỉ vua tối cao) vì cớ Chúa — vì đó là ý Đức Chúa Trời."
     ],
     "tags": [
       "Tân Ước",
@@ -1120,12 +1120,12 @@
       3
     ],
     "content": "Theo 1 Phi-e-rơ 3:19-20, Đức Chúa Jêsus đã giảng cho ai sau khi chịu chết? Sự kiện này liên kết với thời kỳ nào?",
-    "explanation": "1 Phi-e-rơ 3:19-20 — 'Ấy bởi đồng một linh đó, Ngài đi giảng cho các linh hồn bị tù, tức là kẻ bội nghịch thuở trước, về thời kỳ Nô-ê, khi Đức Chúa Trời nhịn nhục chờ đợi, chiếc tàu đóng nên, trong đó có ít người được cứu bởi nước, là chỉ có tám người.' Đây là một phân đoạn khó giải thích. Phổ biến có hai cách hiểu: (1) Chúa Christ, qua Thánh Linh, đã giảng qua Nô-ê cho những người sống trước cơn đại hồng thủy; (2) Sau khi phục sinh, Chúa Christ đã công bố chiến thắng cho các linh bị giam cầm (các thiên sứ sa ngã) từ thời Nô-ê. Phân đoạn này được Phi-e-rơ liên kết với phép báp-têm (c.21).",
+    "explanation": "Trích 1 Phi-e-rơ 3:19-20: 'Cũng bởi Đấng ấy, Ngài đã đi giảng cho các linh hồn bị tù, là những kẻ thuở trước không vâng phục... đang khi Nô-ê đóng chiếc tàu'.\n\nĐÁP ÁN ĐÚNG: 'Các linh hồn bị tù (những kẻ không vâng phục thời Nô-ê) — thời kỳ trước cơn nước lụt' là chính xác. Đoạn Kinh Thánh chỉ rõ đối tượng là các linh hồn không vâng phục trong thời Nô-ê và bối cảnh là trước cơn nước lụt.\n\nDISTRACTOR SAI 1 (gần đúng, sai chi tiết then chốt): 'Các linh hồn bị tù (những kẻ phạm tội tại Sô-đôm) — thời kỳ trước khi thành phố bị hủy diệt' dựa trên một sự kiện hủy diệt khác trong Kinh Thánh (Sáng 19), nhưng không phải là đối tượng được 1 Phi-e-rơ 3:19-20 đề cập.\n\nDISTRACTOR SAI 2 (sai phạm vi): 'Các thiên sứ sa ngã — thời kỳ trước khi thế gian bắt đầu' liên quan đến Giu-đe 6 (các thiên sứ bị cầm giữ), nhưng hoàn toàn không phải là đối tượng được giảng trong câu hỏi này.\n\nDISTRACTOR SAI 3 (sai chi tiết): 'Các môn đồ đã ngủ — thời kỳ sau khi Chúa phục sinh' sai về đối tượng (môn đồ) và thời điểm (sau phục sinh), trong khi văn bản chỉ đề cập đến thời kỳ trước nước lụt.",
     "language": "vi",
     "options": [
-      "Các thiên sứ sa ngã — thời sáng thế",
-      "Các tổ phụ Y-sơ-ra-ên — thời các tổ phụ",
-      "Các dân ngoại — thời Áp-ra-ham",
+      "Các linh hồn bị tù (những kẻ phạm tội tại Sô-đôm) — thời kỳ trước khi thành phố bị hủy diệt",
+      "Các thiên sứ sa ngã — thời kỳ trước khi thế gian bắt đầu",
+      "Các môn đồ đã ngủ — thời kỳ sau khi Chúa phục sinh",
       "Các linh hồn bị tù (những kẻ không vâng phục thời Nô-ê) — thời kỳ trước cơn nước lụt"
     ],
     "tags": [
@@ -1146,13 +1146,13 @@
       0
     ],
     "content": "Theo 1 Phi-e-rơ 4:1, vì Christ đã chịu khổ trong xác thịt, các tín hữu cũng phải lấy gì làm khí giới? Ai chịu khổ trong xác thịt thì sao?",
-    "explanation": "1 Phi-e-rơ 4:1 — 'Vậy, vì Đấng Christ đã chịu khổ trong xác thịt, thì anh em cũng phải lấy sự đó làm giáp trụ, vì người nào đã chịu khổ trong xác thịt, thì đã dứt khỏi tội lỗi.' 'KHÍ GIỚI' (hoplisasthe) = vũ trang. Ý: chịu khổ vì đức tin = QUYẾT ĐỊNH KHÔNG TÁI NHIỄM tội lỗi cũ. Người đã chịu khổ KHÔNG còn coi tội lỗi là quyến rũ.",
+    "explanation": "Đoạn Kinh Thánh 1 Phi-e-rơ 4:1 chép: 'Vậy, vì Đấng Christ đã chịu khổ trong xác thịt, thì chính anh em cũng hãy lấy cùng một tư tưởng (đó) làm khí giới; vì kẻ đã chịu khổ trong xác thịt thì đã từ bỏ tội lỗi.' (BTT).\n\n- ĐÁP ÁN ĐÚNG đúng vì trích dẫn chính xác cụm 'cùng một tư tưởng (đó) làm khí giới' và kết quả 'đã từ bỏ tội lỗi'.\n\n- DISTRACTOR 1 ('Lấy sự chịu khổ... đã được nên thánh') SAI vì mặc dù 'lấy sự chịu khổ' gần với ngữ cảnh, nhưng khí giới chính xác là 'cùng một tư tưởng' (thái độ, tâm trí của Christ), không phải bản thân sự chịu khổ. Chi tiết 'đã được nên thánh' là sai, văn bản ghi 'đã từ bỏ tội lỗi'.\n- DISTRACTOR 2 ('Lấy đức tin... đã thắng thế gian') SAI vì 'đức tin' và 'thắng thế gian' là những chủ đề quan trọng trong thư (như 1 Phi-e-rơ 5:9, 1 Giăng 5:4) nhưng không xuất hiện trong câu 1 này, đây là lỗi nhầm passage gần.\n- DISTRACTOR 3 ('Lấy tình yêu thương... sống theo ý Chúa') SAI vì 'tình yêu thương' và 'sống theo ý Chúa' là những giá trị Cơ đốc đúng đắn và được đề cập ở các câu sau (ví dụ 1 Phi-e-rơ 4:7-8), nhưng không phải là câu trả lời trực tiếp cho câu hỏi về nội dung cụ thể của 1 Phi-e-rơ 4:1, đây là lỗi đúng văn bản nhưng lạc câu hỏi.",
     "language": "vi",
     "options": [
       "Lấy cùng một tư tưởng (đó) làm khí giới — vì kẻ đã chịu khổ trong xác thịt thì đã từ bỏ tội lỗi",
-      "Lấy của tế lễ để được tha thứ",
-      "Lấy quyền năng để chiến đấu",
-      "Lấy luật pháp để hướng dẫn"
+      "Lấy sự chịu khổ làm khí giới — vì kẻ đã chịu khổ trong xác thịt thì đã được nên thánh",
+      "Lấy đức tin làm khí giới — vì kẻ đã chịu khổ trong xác thịt thì đã thắng thế gian",
+      "Lấy tình yêu thương làm khí giới — vì kẻ đã chịu khổ trong xác thịt thì đã sống theo ý Chúa"
     ],
     "tags": [
       "Tân Ước",
@@ -1172,13 +1172,13 @@
       2
     ],
     "content": "Theo 1 Phi-e-rơ 4:6, Tin Lành đã được giảng cho ai? Mục đích là gì?",
-    "explanation": "1 Phi-e-rơ 4:6 — 'Vì ấy bởi điều đó mà Tin Lành cũng đã giảng ra cho kẻ chết, hầu cho sau khi chịu xét đoán theo loài người về phần xác, thì họ được sống theo Đức Chúa Trời về phần hồn.' Đây là một câu khó giải thích, thường được hiểu theo hai cách chính: (a) chỉ về các tín hữu đã qua đời, những người đã nghe Tin Lành khi còn sống; hoặc (b) liên hệ đến 1 Phi-e-rơ 3:19 về việc Chúa giảng cho các linh hồn trong ngục. Dù cách hiểu nào, trọng tâm của câu là kết quả: 'được sống theo Đức Chúa Trời về phần hồn'.",
+    "explanation": "Câu hỏi tham chiếu 1 Phi-e-rơ 4:6: 'Vì lẽ đó, Tin Lành đây cũng đã giảng cho kẻ chết, hầu cho họ bị xét đoán theo loài người trong xác thịt, nhưng sống theo Đức Chúa Trời trong tâm linh.' Đáp án đúng trích dẫn chính xác đối tượng ('kẻ chết') và mục đích (bị xét đoán theo loài người trong xác thịt nhưng sống theo Đức Chúa Trời trong tâm linh).\n\nDistractor 1 (gần đúng) sai phạm vi: thay 'kẻ chết' bằng 'những người sống', làm thay đổi hoàn toàn đối tượng quan trọng của câu Kinh Thánh.\nDistractor 2 sai chi tiết: đảo lộn các yếu tố 'xét đoán theo Đức Chúa Trời' và 'sống theo loài người', trái ngược với ý nghĩa của câu.\nDistractor 3 nhầm passage gần: đối tượng 'các tín hữu đang chịu khổ' phù hợp với ngữ cảnh chung của chương 4 nhưng không phải là đối tượng được nói đến trong câu 6 cụ thể này.",
     "language": "vi",
     "options": [
-      "Cho người Do Thái, để họ trở lại với Đức Chúa Trời.",
-      "Cho người ngoại bang, để họ có cơ hội tin nhận.",
+      "Cho những người sống — hầu cho họ sống theo Đức Chúa Trời trong tâm linh, nhưng bị xét đoán theo loài người trong xác thịt.",
+      "Cho cả kẻ chết — hầu cho họ được xét đoán theo Đức Chúa Trời trong xác thịt, nhưng sống theo loài người trong tâm linh.",
       "Cho cả kẻ chết — hầu cho họ bị xét đoán theo loài người trong xác thịt, nhưng sống theo Đức Chúa Trời trong tâm linh.",
-      "Cho các thiên sứ sa ngã, để minh chứng sự công bình của Đức Chúa Trời."
+      "Cho các tín hữu đang chịu khổ — hầu cho họ bị xét đoán theo loài người trong xác thịt, nhưng sống theo Đức Chúa Trời trong tâm linh."
     ],
     "tags": [
       "Tân Ước",
@@ -1224,13 +1224,13 @@
       1
     ],
     "content": "Theo 1 Phi-e-rơ 4:14, ai bị mắng nhiếc vì danh Christ thì có gì?",
-    "explanation": "1 Phi-e-rơ 4:14 chép: 'Ví bằng anh em vì cớ danh Đấng Christ chịu sỉ nhục, thì anh em có phước; vì sự vinh hiển và Thánh Linh của Đức Chúa Trời đậu trên anh em.' Cụm 'Thần vinh hiển' (to tēs doxēs Pneuma) chỉ về Đức Thánh Linh. Hình ảnh này gợi nhớ sự vinh hiển của Đức Chúa Trời đậu trên đền tạm (Xuất 40:34), nay Thánh Linh ngự trên tín hữu chịu khổ vì Danh Chúa. Lời dạy này tương đồng với Ma-thi-ơ 5:11-12.",
+    "explanation": "Câu hỏi tham chiếu 1 Phi-e-rơ 4:14 (BTT): 'Nếu anh em bị mắng nhiếc vì danh Đấng Christ, thì anh em có phước; vì Thần vinh hiển, tức Thánh Linh của Đức Chúa Trời, đậu trên anh em.' Do đó, đáp án đúng là 'Là phước — vì Thần vinh hiển, tức Thánh Linh Đức Chúa Trời, đậu trên họ'.\n\nCác đáp án sai:\n- 'Là khổ — vì Thần vinh hiển, tức Thánh Linh Đức Chúa Trời, đậu trên họ': Sai vì câu Kinh Thánh khẳng định đây là 'phước', không phải 'khổ'. Đây là lỗi nhầm passage gần (nearby_passage), có thể do liên tưởng đến những câu nói về sự chịu khổ chung chung, nhưng bỏ sót chi tiết then chốt trong câu này.\n- 'Là phước — vì Thần vinh hiển, tức Thánh Linh Đức Chúa Trời, đã xa lánh họ': Sai vì câu Kinh Thánh nói Thánh Linh 'đậu trên' chứ không phải 'xa lánh'. Đây là lỗi sai chi tiết (wrong_detail), thay đổi một động từ then chốt làm đảo ngược hoàn toàn ý nghĩa.\n- 'Là phước — vì lời cầu nguyện của họ được Đức Chúa Trời nhậm': Sai vì dù ý này có thể đúng trong ngữ cảnh rộng hơn về phước lành, nhưng nó không phải là lý do được nêu trong câu Kinh Thánh cụ thể này. Đây là lỗi đúng văn bản nhưng lạc câu hỏi (true_but_off), vì nó trả lời một câu hỏi khác (ví dụ: 'kết quả của việc chịu khổ vì danh Chúa là gì?') thay vì trực tiếp trả lời câu hỏi dựa trên 1 Phi-e-rơ 4:14.",
     "language": "vi",
     "options": [
-      "Nỗi xấu hổ và cần phải giấu kín",
+      "Là khổ — vì Thần vinh hiển, tức Thánh Linh Đức Chúa Trời, đậu trên họ",
       "Là phước — vì Thần vinh hiển, tức Thánh Linh Đức Chúa Trời, đậu trên họ",
-      "Sự bình an để không phản ứng lại",
-      "Lý do để từ bỏ địa vị hoặc chức vụ"
+      "Là phước — vì Thần vinh hiển, tức Thánh Linh Đức Chúa Trời, đã xa lánh họ",
+      "Là phước — vì lời cầu nguyện của họ được Đức Chúa Trời nhậm"
     ],
     "tags": [
       "Tân Ước",
@@ -1250,13 +1250,13 @@
       0
     ],
     "content": "Theo 1 Phi-e-rơ 4:17, sự phán xét bắt đầu từ đâu?",
-    "explanation": "1 Phi-e-rơ 4:17 chép: 'Vì thời kỳ đã đến, là khi sự phán xét sẽ khởi từ nhà Đức Chúa Trời; vả, nếu khởi từ chúng ta, thì sự cuối cùng của những kẻ chẳng vâng theo Tin Lành Đức Chúa Trời sẽ ra thế nào?' 'Nhà Đức Chúa Trời' ở đây chỉ về Hội Thánh. Câu Kinh Thánh dùng lập luận 'từ trên xuống': nếu sự xét đoán bắt đầu từ chính gia đình đức tin (Hội Thánh), thì kết cục của những người không tin nhận Tin Lành sẽ còn nghiêm trọng hơn biết bao.",
+    "explanation": "1 Phi-e-rơ 4:17 chép: 'Vả, thì giờ đã đến, sự phán xét phải bắt đầu từ nhà Đức Chúa Trời; và nếu khởi từ chúng ta, thì sự cuối cùng của những kẻ chẳng vâng theo Tin Lành của Đức Chúa Trời sẽ ra thể nào?'. Đáp án đúng vì câu Kinh Thánh xác định sự phán xét 'bắt đầu từ nhà Đức Chúa Trời', tức là từ Hội Thánh, nơi những người tin Chúa. Distractor 1 (Từ thế gian) sai vì câu này nói phán xét bắt đầu từ nhà Đức Chúa Trời, không phải từ thế gian, dù đây là một chi tiết gần đúng (vì phán xét sẽ đến với thế gian nhưng không phải điểm khởi đầu). Distractor 2 (Từ ngày tận thế) sai vì đây là thời điểm liên quan, nhưng không phải là nơi bắt đầu của sự phán xét được nói trong câu này; ý tưởng này có thể xuất hiện trong các đoạn văn gần về sự phán xét chung. Distractor 3 (Từ các thiên sứ) sai vì đây là một hiểu lầm phổ biến về những thực thể thiêng liêng tham gia sự phán xét, nhưng Kinh Thánh không nói tại đây rằng phán xét bắt đầu từ các thiên sứ.",
     "language": "vi",
     "options": [
       "Từ nhà Đức Chúa Trời (tức Hội Thánh)",
-      "Từ dân Y-sơ-ra-ên",
-      "Từ đế quốc La Mã",
-      "Từ một thời điểm không xác định"
+      "Từ thế gian (tức mọi người ngoại đạo)",
+      "Từ ngày tận thế (tức lúc Chúa trở lại)",
+      "Từ các thiên sứ (tức những đấng thiêng liêng)"
     ],
     "tags": [
       "Tân Ước",
@@ -1302,12 +1302,12 @@
       3
     ],
     "content": "Theo 1 Phi-e-rơ 5:1-4, Phi-e-rơ khuyên các trưởng lão phải chăn dân Đức Chúa Trời thế nào, và phần thưởng của họ là gì khi Đấng Chăn Trưởng hiện ra?",
-    "explanation": "1 Phi-e-rơ 5:2-4 — 'Hãy chăn bầy của Đức Chúa Trời đã giao phó cho anh em; làm việc đó chẳng phải bởi ép tình, bèn là bởi vui lòng, chẳng phải vì lợi dơ bẩn, bèn là hết lòng mà làm, chẳng phải quản trị phần trách nhậm chia cho anh em, song để làm gương tốt cho cả bầy. Khi Đấng làm đầu các kẻ chăn chiên hiện ra, anh em sẽ được mão triều thiên vinh hiển, chẳng hề tàn héo.' 'Đấng Chăn Trưởng' (archipoimēn) là từ duy nhất được dùng trong Tân Ước tại đây, khác với 'Đấng Chăn Lớn' trong Hê-bơ-rơ 13:20 hay 'Đấng Chăn Tốt' trong Giăng 10.",
+    "explanation": "Đáp án đúng trích nguyên ý 1 Phi-e-rơ 5:2-4: 'hãy chăn bầy của Đức Chúa Trời... không phải bởi ép buộc, nhưng tự nguyện... chẳng phải vì lợi gian ác, nhưng vì lòng sốt sắng; đừng lấy quyền mà trị kẻ bổn đạo, nhưng để làm gương... Khi Đấng làm đầu các kẻ chăn chiên hiện ra, anh em sẽ được mão triều thiên vinh hiển, chẳng hề tàn héo.' Distractor 1 (gần đúng) sai chi tiết phần thưởng ('sự sống đời đời' thay vì 'mão triều thiên vinh hiển'). Distractor 2 thể hiện hiểu lầm phổ biến ('được vào thiên đàng' không phải là phần thưởng cụ thể được nêu trong câu này). Distractor 3 dùng ý từ các phân đoạn khác ('sự khôn ngoan và dạy dỗ thuần túy' không có trong 1 Phi-e-rơ 5:1-4).",
     "language": "vi",
     "options": [
-      "Chăn vì lòng vinh hiển để nhận tiền nhiều.",
-      "Chăn vì uy quyền để nhận chức cao.",
-      "Chăn vì truyền thống để nhận sự kính nể.",
+      "Chăn không miễn cưỡng nhưng vui lòng, không vì lợi bẩn thỉu mà sốt sắng, không quản trị hách dịch mà làm gương; khi Đấng Chăn Trưởng hiện ra sẽ ban sự sống đời đời.",
+      "Chăn không miễn cưỡng nhưng vui lòng, không vì lợi bẩn thỉu mà sốt sắng, không quản trị hách dịch mà làm gương; phần thưởng của họ là được vào thiên đàng.",
+      "Các trưởng lão phải chăn dắt với sự khôn ngoan và dạy dỗ thuần túy; khi Đấng Chăn Trưởng hiện ra sẽ ban mão triều thiên vinh hiển không phai tàn.",
       "Chăn không miễn cưỡng nhưng vui lòng, không vì lợi bẩn thỉu mà sốt sắng, không quản trị hách dịch mà làm gương; khi Đấng Chăn Trưởng hiện ra sẽ ban mão triều thiên vinh hiển không phai tàn."
     ],
     "tags": [

@@ -9,14 +9,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giona 1:3 - Giona trốn chạy khỏi mặt Chúa bằng tàu đi Ta-rê-si, hướng ngược hoàn toàn.",
+    "explanation": "Đáp án đúng là 'Ta-rê-si (hướng ngược lại)' vì Giô-na 1:3 chép rõ: 'Giô-na đứng dậy đặng trốn qua Ta-rê-si, xa khỏi mặt Đức Giê-hô-va.' Đây là hướng ngược lại với Ni-ni-ve và là nơi ông chủ động trốn đến. Distractor 'Giê-ru-sa-lem (gần biển)' sai vì Giê-ru-sa-lem không được nhắc đến trong đoạn này và không phải là nơi ông trốn; đây là một chi tiết sai. Distractor 'Đa-mách (vùng đất khác)' sai vì Đa-mách là một địa danh khác trong Kinh Thánh nhưng hoàn toàn không liên quan đến sự kiện Giô-na trốn chạy trong đoạn này; đây là lỗi sai phạm vi. Distractor 'Biển (nơi ông bị ném xuống)' tuy đúng là ông có ở trên biển sau đó (câu 4-15), nhưng đây là hệ quả của việc trốn chạy, không phải là đích đến chủ động ban đầu của ông; đây là thông tin đúng văn bản nhưng lạc câu hỏi về nơi ông 'trốn đi'.",
     "language": "vi",
     "verseEnd": 3,
     "options": [
       "Ta-rê-si (hướng ngược lại)",
-      "Ba-by-lon",
-      "Ai-cập",
-      "Mô-áp"
+      "Giê-ru-sa-lem (gần biển)",
+      "Đa-mách (vùng đất khác)",
+      "Biển (nơi ông bị ném xuống)"
     ],
     "tags": [
       "Cựu Ước",
@@ -35,14 +35,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giona 1:4 - Chúa không để Giona trốn thành công. Bão lớn để đưa ông quay lại.",
+    "explanation": "Đoạn Kinh Thánh Jonah 1:4-5 ghi rõ: \"Đức Giê-hô-va sai một trận bão lớn trên biển, có gió lớn dữ tợn đến nỗi chiếc tàu gần như vỡ ra.\" Vì vậy, đáp án đúng là 'Sai bão lớn trên biển'. Distractor 'Sai trận động đất lớn' SAI vì sai chi tiết (bão, không phải động đất). Distractor 'Khiến con tàu bị đắm ngay lập tức' SAI vì sai phạm vi (Kinh Thánh chỉ nói tàu gần vỡ, không nói đắm ngay). Distractor 'Ngài phán với ông trong một giấc mơ' SAI vì trích từ văn bản gần (Jonah được Chúa phán bảo trong các phân đoạn khác), nhưng không phải là hành động của Chúa khi Giona trốn trong đoạn 1:4-5.",
     "language": "vi",
     "verseEnd": 5,
     "options": [
-      "Gọi tiên tri khác",
+      "Sai trận động đất lớn",
       "Sai bão lớn trên biển",
-      "Để mặc",
-      "Gửi thiên sứ"
+      "Khiến con tàu bị đắm ngay lập tức",
+      "Ngài phán với ông trong một giấc mơ"
     ],
     "tags": [
       "Cựu Ước",
@@ -62,13 +62,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giona 1:12 - Giona nhận trách nhiệm và sẵn sàng chịu hậu quả tội lỗi mình.",
+    "explanation": "Trong Giô-na 1:12, Giona trả lời trực tiếp: 'Hãy bắt lấy tôi và ném tôi xuống biển, thì biển sẽ lặng xuống cho các anh, vì ta biết rằng ấy là tại cớ ta mà các anh bị cơn bão lớn nầy.' Do đó, đáp án đúng là 'Ném tôi xuống biển' vì đó là lời đề nghị cụ thể của Giona để biển lặng. Distractor 'Cầu nguyện với Đức Chúa Trời của các anh' sai vì đây là lời khuyên Giona đưa ra trước đó (câu 1:6), không phải giải pháp ông đề xuất để biển lặng ngay lúc này. Distractor 'Quăng các hàng hóa xuống biển' sai vì đây là hành động của thủy thủ (câu 1:5), không phải lời của Giona. Distractor 'Đưa tôi trở lại bờ' sai vì là một hiểu lầm phổ biến; Giona không đề nghị quay về bờ, mà là ném ông xuống biển.",
     "language": "vi",
     "options": [
       "Ném tôi xuống biển",
-      "Cầu nguyện",
-      "Quay lại",
-      "Quét dọn tàu"
+      "Cầu nguyện với Đức Chúa Trời của các anh",
+      "Quăng các hàng hóa xuống biển",
+      "Đưa tôi trở lại bờ"
     ],
     "tags": [
       "Cựu Ước",
@@ -87,13 +87,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giona 2:9 (Bản Dịch 2011) - Dù trong hoàn cảnh tuyệt vọng nhất, Giona tuyên bố 'Ơn cứu rỗi đến từ Đức Giê-hô-va'.",
+    "explanation": "Câu hỏi dựa trên Giona 2:9 (BTT): 'Nhưng tôi sẽ lấy tiếng cảm tạ mà dâng của lễ cho Ngài. Tôi sẽ trả sự tôi đã hứa. Sự cứu rỗi đến từ Đức Giê-hô-va.' Đáp án đúng là 'Cứu rỗi' vì đây là từ chính xác Giona tuyên bố trong câu Kinh Thánh. Distractor 'Chúc tụng' là gần đúng vì nó liên quan đến thái độ cảm tạ được nhắc đến trong cùng câu, nhưng không phải là từ được tuyên bố trực tiếp. Distractor 'Trừng phạt' là một hiểu lầm phổ biến dựa trên bối cảnh Giona bị cá nuốt như một hình phạt, nhưng không phải là từ trong tuyên bố này. Distractor 'Thương xót' tuy phản ánh một đặc tính của Đức Chúa Trời được nhắc đến trong sách, nhưng lạc với cụm từ cụ thể trong câu hỏi.",
     "language": "vi",
     "options": [
-      "Phán xét",
+      "Chúc tụng",
       "Cứu rỗi",
-      "Khôn ngoan",
-      "Bình an"
+      "Trừng phạt",
+      "Thương xót"
     ],
     "tags": [
       "Cựu Ước",
@@ -112,13 +112,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giona 3:3 - Lần này Giona vâng lời. Chúa cho cơ hội thứ hai.",
+    "explanation": "Giô-na 3:3-4 ghi rõ: 'Giô-na vùng dậy, đi đến Ni-ni-ve theo lệnh của Đức Giê-hô-va... Giô-na bắt đầu vào thành, đi một ngày đường, và rao giảng...'. Đáp án đúng đúng vì nó mô tả chính xác hành động vâng lời và rao giảng của Giô-na lần thứ hai. Distractor 1 sai vì nó thay đổi một chi tiết then chốt (không rao giảng), mặc dù phần còn lại đúng. Distractor 2 sai vì nó lấy hành động từ chối và trốn đi trong lần gọi đầu tiên (Giô-na 1:3), không phải lần thứ hai. Distractor 3 sai vì nó áp đặt một hiểu lầm phổ biến về thái độ của Giô-na (cầu nguyện cho sự hủy diệt sau đó), không phải hành động trực tiếp khi vừa được gọi lần thứ hai.",
     "language": "vi",
     "verseEnd": 4,
     "options": [
-      "Trốn lần nữa",
-      "Hỏi tại sao",
-      "Nghỉ ngơi",
+      "Vâng lời đi Ni-ni-ve nhưng không rao giảng",
+      "Từ chối và trốn về Gia-phô",
+      "Cầu nguyện xin Chúa hủy diệt thành",
       "Vâng lời đi Ni-ni-ve rao giảng"
     ],
     "tags": [
@@ -163,12 +163,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giona 3:10 - Chúa đổi ý khi dân sự ăn năn. Ngài nhân từ và sẵn sàng tha thứ.",
+    "explanation": "Giô-na 3:10 ghi rõ: \"Đức Chúa Trời thấy việc họ làm, đều xây bỏ đường lối xấu của mình; Đức Chúa Trời bèn ăn năn sự họa mà Ngài đã phán sẽ làm cho họ, và Ngài không làm sự đó.\" Do đó, đáp án đúng là 'Đổi ý và không hủy diệt họ'. \n- Distractor 1 sai vì Kinh Thánh nói rõ Ngài 'không làm' sự họa đó, không có chi tiết 'trừng phạt sau'. \n- Distractor 2 sai vì đây là chi tiết không có trong phân đoạn này; Giô-na chỉ rao giảng một lần ở chương 3. \n- Distractor 3 sai vì mô tả một hiểu lầm phổ biến; Kinh Thánh cho thấy Chúa chủ động đáp lại sự ăn năn, không làm ngơ.",
     "language": "vi",
     "options": [
-      "Vẫn phạt họ",
-      "Trì hoãn hình phạt",
-      "Để mặc",
+      "Đổi ý và trừng phạt họ sau đó",
+      "Bảo Giô-na quay lại rao giảng lần nữa",
+      "Làm ngơ và tiếp tục kế hoạch",
       "Đổi ý và không hủy diệt họ"
     ],
     "tags": [
@@ -188,13 +188,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giona 4:2 - Giona thừa nhận biết từ đầu Chúa sẽ tha. Vấn đề của ông là lòng hẹp hòi và kỳ thị dân tộc.",
+    "explanation": "Đáp án đúng là vì Giona đã biết trước tính nhân từ của Chúa và không muốn kẻ thù của dân tộc mình (A-si-ri) được cứu, như ông bày tỏ trong lời cầu nguyện tại Giô-na 4:2: 'Chúa là Đức Chúa Trời nhân từ, thương xót, chậm giận, giàu ơn, và đổi ý không xuống tai vạ'. Các đáp án sai: 1) Sai do ghép từ chi tiết gần (Giô-na 1:3, 12 về sự chậm trễ và hình phạt, nhưng không liên quan đến lý do giận ở đoạn 4). 2) Sai chi tiết (vua A-si-ri đã ăn năn, nhưng Giona không giận vì không tin Chúa đổi ý; ông biết Chúa sẽ đổi ý nên mới giận). 3) Hiểu lầm phổ biến (cảm giác xấu hổ, nhưng Kinh Thánh không ghi Giona trực tiếp nói về điều này trong ngữ cảnh).",
     "language": "vi",
     "verseEnd": 2,
     "options": [
-      "Vì mệt mỏi",
-      "Vì sợ",
-      "Vì mất uy tín",
+      "Vì ông lo ngại Chúa sẽ trừng phạt ông do đã chậm trễ",
+      "Vì ông không tin Chúa sẽ đổi ý sau khi nghe lời cầu xin của vua",
+      "Vì ông cảm thấy lời tiên tri của mình bị phủ nhận và xấu hổ",
       "Vì ông đã biết Chúa nhân từ và sẽ tha, ông không muốn kẻ thù được cứu"
     ],
     "tags": [
@@ -240,13 +240,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giona trích Xuất 34:6 - bản tính của Chúa. Điều tốt lành của Chúa lại khiến Giona khó chịu.",
+    "explanation": "Đáp án đúng là 'Hay làm ơn, thương xót, chậm giận, đầy ơn thương, đổi ý không phạt' vì Giona nói rõ trong Giô-na 4:2: 'Vì con biết Chúa là Đức Chúa Trời nhân từ, thương xót, chậm giận, giàu ơn thương xót, và đổi ý về sự tai vạ.'\n\nDistractor 1 ('Hay làm ơn, nóng giận, đầy ơn thương, đổi ý không phạt') sai vì thay thế chi tiết then chốt 'chậm giận' bằng 'nóng giận' (sai chi tiết).\nDistractor 2 ('Hay làm ơn, thương xót, nhanh chóng phán xét, đầy ơn thương, đổi ý không phạt') sai vì thay 'chậm giận' bằng 'nhanh chóng phán xét', phản ánh sự hiểu lầm phổ biến về bản tính phán xét của Chúa mà câu này không nói (hiểu lầm phổ biến).\nDistractor 3 ('Tuyển chọn Giona, bảo vệ ông, ban phước cho ông khi ông giận') sai vì mô tả hành động của Chúa với Giona ở những chỗ khác, không phải là sự mô tả bản tính Chúa khiến Giona giận trong 4:2 (đúng văn bản nhưng lạc câu hỏi).",
     "language": "vi",
     "options": [
-      "Nghiêm khắc",
+      "Hay làm ơn, nóng giận, đầy ơn thương, đổi ý không phạt",
       "Hay làm ơn, thương xót, chậm giận, đầy ơn thương, đổi ý không phạt",
-      "Công bình",
-      "Phán xét"
+      "Hay làm ơn, thương xót, nhanh chóng phán xét, đầy ơn thương, đổi ý không phạt",
+      "Tuyển chọn Giona, bảo vệ ông, ban phước cho ông khi ông giận"
     ],
     "tags": [
       "Cựu Ước",
@@ -290,13 +290,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giona 1:17 - 3 ngày 3 đêm. Chúa Giê-su dùng sự kiện này làm hình bóng về sự phục sinh của Ngài (Ma 12:40).",
+    "explanation": "Trong Giô-na 1:17, Kinh Thánh ghi rõ: 'Đức Giê-hô-va sắm sẵn một con cá lớn đặng nuốt Giô-na; Giô-na ở trong bụng cá ba ngày ba đêm.' Do đó, đáp án đúng là '3 ngày 3 đêm'. Distractor '3 ngày 2 đêm' sai vì thay đổi chi tiết then chốt về số đêm. Distractor '40 ngày 40 đêm' sai vì mở rộng phạm vi thời gian một cách vô lý (40 ngày thường liên quan đến các sự kiện khác, như cơn mưa lụt hay Chúa Giê-su chịu cám dỗ). Distractor '7 ngày 7 đêm' sai vì nhầm lẫn với một khoảng thời gian phổ biến khác trong Kinh Thánh (như tang chế), không liên quan đến sách Giô-na.",
     "language": "vi",
     "options": [
-      "40 ngày",
-      "1 ngày",
+      "3 ngày 2 đêm",
+      "40 ngày 40 đêm",
       "3 ngày 3 đêm",
-      "7 ngày"
+      "7 ngày 7 đêm"
     ],
     "tags": [
       "Cựu Ước",
@@ -315,13 +315,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giô-na 1:1 — 'Có lời Đức Giê-hô-va phán cho Giô-na, con trai A-mi-tai.'",
+    "explanation": "Giô-na 1:1 ghi: 'Lại có lời Đức Giê-hô-va phán cho Giô-na, con trai của A-mi-tai, mà rằng:'. Do đó, đáp án đúng là 'A-mi-tai'.\n\n- 'Giô-sép' là tên của một tổ phụ trong Sáng thế ký và cũng là tên của một người trong dòng dõi vua Đa-vít (Ma-thi-ơ 1:20). Đây là một tên phổ biến trong Kinh Thánh, xuất hiện ở nhiều sách gần đó, nhưng không phải là tên cha của Giô-na.\n- 'A-bê-đa' là tên của một người trong I Sử ký 8:15, nhưng không liên quan đến Giô-na. Đây là một chi tiết sai.\n- 'Giê-hu' là tên của một vua Y-sơ-ra-ên (II Các Vua 9:2). Có một hiểu lầm phổ biến rằng Giô-na có thể liên quan đến các nhân vật lịch sử hoặc tiên tri khác trong thời kỳ vương quốc chia đôi, nhưng cha của Giô-na không phải là Giê-hu.",
     "language": "vi",
     "options": [
       "A-mi-tai",
-      "Hô-sê",
-      "A-mốt",
-      "Mi-chê"
+      "Giô-sép",
+      "A-bê-đa",
+      "Giê-hu"
     ],
     "tags": [
       "Cựu Ước",
@@ -368,12 +368,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giô-na 1:7 — 'Họ bắt thăm... thăm trúng nhằm Giô-na.'",
+    "explanation": "Giô-na 1:7 chép: 'Rồi họ nói với nhau: \"Hãy đến, chúng ta bắt thăm để biết ai là nguyên nhân khiến tai họa này xảy đến cho chúng ta.\" Vậy họ bắt thăm, thăm rơi nhằm Giô-na.' Vì vậy, đáp án đúng là 'Giô-na', người mà thăm đã rơi trúng. Distractor 'thuyền trưởng' là sai vì mặc dù được nhắc đến trong câu 6, ông không phải là người được chỉ ra bởi lá thăm. Distractor 'các thủy thủ' là gần đúng nhưng sai chi tiết then chốt: chính họ là những người bắt thăm, chứ không phải là kết quả của việc bắt thăm. Distractor 'vị thần của họ' là sai vì đây là một hiểu lầm phổ biến; câu hỏi hỏi về con người cụ thể, và mặc dù họ kêu cầu các thần của mình, không có thần nào bị bắt thăm trúng.",
     "language": "vi",
     "options": [
-      "Người trưởng phái",
-      "Một thủy thủ ngoại đạo",
-      "Không một ai cả",
+      "thuyền trưởng",
+      "các thủy thủ",
+      "vị thần của họ",
       "Giô-na"
     ],
     "tags": [
@@ -395,13 +395,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giô-na 2:1-2 — 'Giô-na từ trong bụng cá cầu nguyện cùng Giê-hô-va Đức Chúa Trời mình... Tôi gặp hoạn nạn, kêu cầu Đức Giê-hô-va, thì Ngài đã trả lời tôi.'",
+    "explanation": "Giô-na 2:1-2 chép: 'Giô-na ở trong bụng cá cầu nguyện... Từ trong cảnh gian truân, tôi kêu cầu Đức Giê-hô-va, thì Ngài đáp lời tôi.' Đáp án đúng là 'Trong bụng cá lớn' vì văn bản chỉ rõ địa điểm ông cầu nguyện là 'trong bụng cá'. Distractor 1 sai vì sai phạm vi (chương 2 chỉ nói đến sự cầu nguyện trong cá, không liên hệ đền thờ). Distractor 2 sai chi tiết (sông Giô-đanh không xuất hiện trong bối cảnh này). Distractor 3 gần đúng nhưng lạc câu hỏi; dù Giô-na từng ở trên tàu và cầu nguyện (Giô-na 1), câu hỏi cụ thể này (dựa trên 2:1-2) hỏi về nơi chốn được mô tả trong các câu đó, là sau khi ông bị ném xuống biển và đã ở trong bụng cá.",
     "language": "vi",
     "options": [
       "Trong bụng cá lớn",
-      "Trên đỉnh núi",
-      "Trong đền thờ",
-      "Trên thuyền"
+      "Từ trong đền thờ ở Giê-ru-sa-lem",
+      "Từ bên bờ sông Giô-đanh",
+      "Từ trên con tàu đang chìm"
     ],
     "tags": [
       "Cựu Ước",
@@ -421,13 +421,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giô-na 2:10 — 'Đức Giê-hô-va phán cùng con cá, và con cá nhả Giô-na ra trên đất khô.'",
+    "explanation": "Đoạn Kinh Thánh Giô-na 2:10 chép: 'Đức Giê-hô-va phán cùng cá, cá bèn mửa Giô-na ra trên đất khô.' Đáp án đúng mô tả chính xác hành động cá 'nhả Giô-na ra trên đất khô' theo lời phán. Distractor 'Nhả Giô-na ra trên bãi biển' gần đúng nhưng sai chi tiết địa điểm then chốt ('bãi biển' thay vì 'đất khô'). Distractor 'Nuốt Giô-na một lần nữa' dựa trên hiểu lầm phổ biến rằng cá tiếp tục trừng phạt, trong khi Kinh Thánh không ghi điều này. Distractor 'Đưa Giô-na đến thành Ni-ni-ve' liên quan đến mục đích sau đó của câu chuyện, nhưng lạc khỏi câu hỏi về hành động tức thì của cá theo lời phán.",
     "language": "vi",
     "options": [
-      "Bơi ra biển sâu",
+      "Nhả Giô-na ra trên bãi biển",
       "Nhả Giô-na ra trên đất khô",
-      "Đem Giô-na lên thuyền",
-      "Nuốt Giô-na lần nữa"
+      "Nuốt Giô-na một lần nữa",
+      "Đưa Giô-na đến thành Ni-ni-ve"
     ],
     "tags": [
       "Cựu Ước",
@@ -448,13 +448,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giô-na 3:6 — 'Vua Ni-ni-ve cũng đứng dậy khỏi ngai, lột áo bào, mặc bao gai và ngồi trong tro.'",
+    "explanation": "Đáp án đúng là 'Đứng dậy khỏi ngai, mặc bao gai và ngồi trong tro' dựa trên Jonah 3:6. Đây là phản ứng trực tiếp và cá nhân của vua Ni-ni-ve khi nghe sứ điệp cảnh báo sự hủy diệt từ Giô-na, thể hiện sự ăn năn và hạ mình cách triệt để. Distractor 1 ('Ngồi vững trên ngai vàng, sai lính bắt giam Giô-na') thuộc loại 'common_misconception' vì phản ứng bắt bớ nhà tiên tri là khuôn mẫu thường gặp trong một số câu chuyện Kinh Thánh khác, nhưng không xảy ra ở đây (Jonah 3:6-9 cho thấy vua tiếp nhận và hành động theo lời cảnh báo). Distractor 2 ('Cùng dân chúng nhanh chóng rời khỏi thành Ni-ni-ve') thuộc loại 'true_but_off' vì việc rời khỏi thành là một phản ứng có thể hình dung được trước lời cảnh báo hủy diệt, nhưng không phải là hành động thực tế được mô tả trong phân đoạn này; câu hỏi hỏi về hành động cụ thể của vua khi nghe Giô-na rao giảng. Distractor 3 ('Tự tay chuẩn bị tế lễ và cầu nguyện tại đền thờ') là distractor 'gần đúng' thuộc loại 'wrong_detail', vì nó phản ánh đúng tinh thần ăn năn và kêu cầu (vua có ra sắc lệnh kêu gọi cầu khẩn Đức Chúa Trời - Jonah 3:7-8), nhưng sai chi tiết hành động cá nhân đầu tiên và trực tiếp của vua: thay vì 'tế lễ tại đền thờ', vua đã 'đứng dậy khỏi ngai, mặc bao gai và ngồi trong tro' (Jonah 3:6).",
     "language": "vi",
     "options": [
-      "Đuổi Giô-na đi",
-      "Tăng quân đội",
+      "Ngồi vững trên ngai vàng, sai lính bắt giam Giô-na",
+      "Cùng dân chúng nhanh chóng rời khỏi thành Ni-ni-ve",
       "Đứng dậy khỏi ngai, mặc bao gai và ngồi trong tro",
-      "Sai sứ giả đến A-si-ri"
+      "Tự tay chuẩn bị tế lễ và cầu nguyện tại đền thờ"
     ],
     "tags": [
       "Cựu Ước",
@@ -501,13 +501,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giô-na 4:7-8 — 'Đức Chúa Trời sắm sẵn một con sâu khi rạng đông ngày sau, sâu chích dây dưa thì nó héo... Đức Chúa Trời sắm sẵn một trận gió đông cháy.'",
+    "explanation": "Giô-na 4:7-8 mô tả: 'Đức Chúa Trời sắm sẵn một con sâu, khi hừng đông ngày mai, nó cắn cây ấy đến nỗi héo. Khi mặt trời đã mọc, Đức Chúa Trời sắm sẵn một ngọn gió đông cháy, và mặt trời giọi trên đầu Giô-na, đến nỗi ngất đi'. Vì vậy, đáp án đúng là 'Một con sâu và gió đông cháy'. Distractor 1 sai vì thay 'gió đông cháy' bằng 'nắng gắt', dù mặt trời có nóng nhưng nguyên nhân trực tiếp là gió. Distractor 2 sai vì dùng chi tiết 'mưa đá' từ các đoạn khác trong Kinh Thánh, không có trong bối cảnh này. Distractor 3 sai vì 'lửa từ trời' là hình phạt phổ biến trong Cựu Ước (như Sô-đôm) nhưng không phải là điều Đức Chúa Trời 'sắm sẵn' ở đây.",
     "language": "vi",
     "options": [
-      "Một con sư tử",
-      "Một cơn động đất",
+      "Một con sâu và nắng gắt",
+      "Một trận mưa đá và gió đông",
       "Một con sâu và gió đông cháy",
-      "Một trận mưa đá"
+      "Lửa từ trời và gió nóng"
     ],
     "tags": [
       "Cựu Ước",

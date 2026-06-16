@@ -54,3 +54,6 @@ scripts/seed/rewrite_report.json
 scripts/seed/genesis_prod_update.sql
 scripts/seed/genesis_prod_backup.jsonl
 scripts/seed/genesis_review.md
+scripts/seed/prod_update_all.sql
+scripts/seed/prod_backup_all.jsonl
+scripts/seed/rewrite_full.log

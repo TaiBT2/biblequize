@@ -36,14 +36,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giô-suê 6:3-4 - Đi vòng 1 lần mỗi ngày trong 6 ngày, ngày thứ 7 đi vòng 7 lần rồi thổi kèn và la lớn thì tường thành đổ.",
+    "explanation": "Theo Giô-suê 6:3-5, Đức Giê-hô-va truyền lệnh: 'Hết thảy các ngươi, là chiến sĩ, hãy đi vòng chung quanh thành một lần; phải làm như vậy trong sáu ngày. Ngày thứ bảy, các ngươi sẽ đi vòng quanh thành bảy lần, và những thầy tế lễ sẽ thổi kèn.' Vì vậy, dân Y-sơ-ra-ên phải đi vòng quanh thành trong 6 ngày, và đến ngày thứ 7 (sau khi đi vòng 7 lần) thì tường thành đổ. Do đó, tổng số ngày đi vòng trước khi tường đổ là 7 ngày. \n\n- Distractor '6 ngày' là sai vì chỉ tính số ngày đi vòng mỗi ngày một lần, bỏ qua ngày thứ 7 là ngày tường thành thực sự đổ sau khi đi vòng 7 lần. \n- Distractor '40 ngày' là sai vì đây là số ngày dân Y-sơ-ra-ên do thám thành (Dân số ký 13:25), không liên quan đến sự kiện vòng quanh thành Giê-ri-cô. \n- Distractor '3 ngày' là sai vì đây là một hiểu lầm phổ biến dựa trên các sự kiện khác trong Kinh Thánh (như thời gian chuẩn bị trước khi qua sông Giô-đanh), không có trong trình thuật về thành Giê-ri-cô.",
     "language": "vi",
     "verseEnd": 5,
     "options": [
+      "6 ngày",
       "40 ngày",
-      "3 ngày",
       "7 ngày",
-      "12 ngày"
+      "3 ngày"
     ],
     "tags": [
       "Cựu Ước",
@@ -64,13 +64,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giô-suê 1:3 - Mọi nơi bàn chân các ngươi đặt lên, ta ban cho các ngươi. Nhưng vẫn phải bước đi để nhận lấy.",
+    "explanation": "Câu hỏi tham chiếu Giô-suê 1:3: 'Phàm nơi nào bàn chân các ngươi đi đến, ta đã ban cho các ngươi, y như ta đã phán cùng Môi-se.' Lời hứa này được Đức Chúa Trời lặp lại với Giô-suê với tư cách là người lãnh đạo mới của cả dân tộc. ĐÁP ÁN ĐÚNG 'Dân Y-sơ-ra-ên' là chính xác vì lời hứa về đất đai được ban cho toàn thể dân Y-sơ-ra-ên, không chỉ cho một cá nhân hay một nhóm nhỏ. DISTRACTOR SAI: 1) 'Chi phái Giu-đa' (wrong_scope) là sai vì lời hứa có phạm vi cho toàn thể 12 chi phái, không chỉ riêng chi phái này. 2) 'Các chiến sĩ của ông' (common_misconception) là sai vì dù họ là công cụ chinh phục, lời hứa thuộc về toàn dân, bao gồm cả phụ nữ, trẻ em và những người không trực tiếp chiến đấu. 3) 'Chính Giô-suê' (wrong_detail) là sai vì lời hứa được ban cho Giô-suê với tư cách đại diện và vì lợi ích của dân chúng, không phải là tài sản cá nhân của ông.",
     "language": "vi",
     "options": [
-      "Chỉ các chiến binh",
-      "Riêng Giô-suê",
+      "Chi phái Giu-đa",
+      "Các chiến sĩ của ông",
       "Dân Y-sơ-ra-ên",
-      "Chi phái Giu-đa"
+      "Chính Giô-suê"
     ],
     "tags": [
       "Cựu Ước",
@@ -91,13 +91,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giô-suê 2:4 - Ra-hab giấu 2 thám tử trên mái nhà. Bà tin Chúa và được cứu khi thành bị hạ (He 11:31).",
+    "explanation": "Câu hỏi hỏi ai đã giúp giấu hai thám tử. Đáp án đúng là 'Ra-hab, người kỹ nữ' (Giô-suê 2:4-6). Vua Giê-ri-cô là người ra lệnh tìm bắt (2:2-3), không phải người giúp giấu. 'Các sứ giả' là từ dùng cho thám tử trong câu 1 và 3, nhưng họ là đối tượng được giấu, không phải người đi giấu. 'Hai thám tử' chính là những người được giấu (2:1), nên đây là đáp án lạc câu hỏi.",
     "language": "vi",
     "verseEnd": 6,
     "options": [
-      "Một thương gia",
-      "Viên quan thành",
-      "Một thầy tế lễ",
+      "Vua Giê-ri-cô, người trị vì",
+      "Các sứ giả, người đưa tin",
+      "Hai thám tử, người Y-sơ-ra-ên",
       "Ra-hab, người kỹ nữ"
     ],
     "tags": [
@@ -119,14 +119,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giô-suê 2:18 - Dây chỉ điều là dấu hiệu để quân Y-sơ-ra-ên nhận biết và tha mạng cho nhà Ra-hab.",
+    "explanation": "Trong Giô-suê 2:18, các thám tử chỉ dẫn Ra-hab: 'Hãy buộc dây chỉ điều này nơi cửa sổ mà ngươi đã thòng chúng tôi xuống.' (Giô-suê 2:18, BTT). Đây là dấu hiệu để quân đội Y-sơ-ra-ên nhận biết và tha mạng cho nhà bà khi tấn công Giê-ri-cô (Giô-suê 2:12-14, 21). Đáp án 'Dây chỉ điều (đỏ)' là chính xác vì bản văn trực tiếp mô tả giây chỉ đó là màu đỏ hay điều. Distractor 'Một chiếc áo choàng thường' thuộc lỗi 'nearby_passage' vì dù liên quan đến đồ dùng cá nhân, bản văn không hề đề cập đến việc Ra-hab treo áo choàng. 'Một lá cờ màu trắng' là distractor gần đúng nhất (almost-right) thuộc lỗi 'wrong_detail' vì nó là dấu hiệu đầu hàng phổ biến, nhưng Kinh Thánh ghi rõ là dây chỉ điều, không phải lá cờ hay màu trắng. 'Một cây gậy' thuộc lỗi 'common_misconception' vì có thể bị nhầm lẫn với các vật dụng kỳ diệu khác trong Kinh Thánh, nhưng hoàn toàn không liên quan đến câu chuyện này.",
     "language": "vi",
     "verseEnd": 21,
     "options": [
       "Dây chỉ điều (đỏ)",
-      "Cột khói",
-      "Đèn dầu",
-      "Cờ trắng"
+      "Một chiếc áo choàng thường",
+      "Một lá cờ màu trắng",
+      "Một cây gậy"
     ],
     "tags": [
       "Cựu Ước",
@@ -147,14 +147,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giô-suê 3:15-17 - Sông Giô-đan rẽ ra khi chân thầy tế lễ chạm nước, giống như Biển Đỏ.",
+    "explanation": "Trong Giô-suê 3:14-17, khi các thầy tế lễ khiêng Hòm Giao Ước bước xuống mé nước, sông Giô-đan (câu 15) đã dừng lại chảy và dựng đứng thành một đống, để dân Y-sơ-ra-ên đi qua trên đất khô. Đáp án đúng là Sông Giô-đan.\n\n*   **Sông Cái** là đáp án sai vì đây là tên của một con sông khác được nhắc đến trong Kinh Thánh (ví dụ: Sông Cái của Ê-díp-tô), nhưng không phải là sông trong câu chuyện này. Đây là lỗi nhầm passage gần.\n*   **Sông Ni-lơ** là đáp án sai vì đây là con sông nổi tiếng ở Ai Cập, nơi xảy ra các phép lạ trong sách Xuất Ê-díp-tô. Nhiều người có thể nhầm lẫn phép lạ nước rẽ với sông Ni-lơ. Đây là lỗi hiểu lầm phổ biến.\n*   **Sông A-ma-zôn** là đáp án sai vì đây là một con sông lớn, nhưng hoàn toàn không được nhắc đến trong Kinh Thánh và không liên quan đến hành trình của dân Y-sơ-ra-ên. Đây là lỗi đúng văn bản nhưng lạc câu hỏi (thuộc địa lý chung, không phải bối cảnh Kinh Thánh).",
     "language": "vi",
     "verseEnd": 17,
     "options": [
       "Sông Giô-đan",
-      "Biển Đỏ",
-      "Sông Ô-phát",
-      "Sông Ni-lô"
+      "Sông Cái",
+      "Sông Ni-lơ",
+      "Sông A-ma-zôn"
     ],
     "tags": [
       "Cựu Ước",
@@ -175,13 +175,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giô-suê 4:7 - Mỗi khi con cháu hỏi, cha mẹ sẽ kể lại phép lạ Chúa rẽ sông Gio-đan.",
+    "explanation": "Giô-suê 4:6-7 chép rõ mục đích của 12 hòn đá: '... để làm một dấu kỷ niệm... hầu cho khi nào con cháu các ngươi... thì hãy nói rằng:... Nước sông Giô-đân bị phân rẽ...' (c.6-7). Đáp án đúng 'Làm dấu kỷ niệm để con cháu nhớ phép lạ Chúa' trực tiếp phản ánh mệnh lệnh này. Distractor 1 ('Làm bàn thờ...') là gần đúng vì bàn thờ cũng liên quan đến thờ phượng và kỷ niệm, nhưng trong Giô-suê 4, đá chỉ được dựng làm đống kỷ niệm, không phải bàn thờ (bàn thờ bằng đá được đề cập ở chương khác). Distractor 2 ('Làm ranh giới...') sai phạm vi vì mục đích không liên quan đến đánh dấu lãnh thổ, mà là ký ức thuộc linh. Distractor 3 ('Làm vật liệu xây dựng...') là hiểu lầm phổ biến, vì đá được lấy từ lòng sông nhưng không dùng để xây thành, mà là một đống kỷ niệm riêng biệt.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
-      "Xây tường thành",
-      "Làm bàn thờ",
-      "Làm vũ khí",
+      "Làm bàn thờ dâng tế lễ cho Đức Giê-hô-va",
+      "Làm ranh giới đánh dấu lãnh thổ của các chi phái",
+      "Làm vật liệu xây dựng cho thành Giê-ri-cô",
       "Làm dấu kỷ niệm để con cháu nhớ phép lạ Chúa"
     ],
     "tags": [
@@ -203,13 +203,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giô-suê 5:14 - Tướng quân đội Chúa xuất hiện, Giô-suê sụp xuống thờ. Có thể là sự hiện ra của Chúa Giê-su trước nhập thể.",
+    "explanation": "Trong Giô-suê 5:13-15, Giô-suê thấy một người đàn ông với thanh gươm trần trong tay và hỏi: \"Ngươi là người bên chúng ta hay bên đối thủ chúng ta?\" Người đàn ông trả lời: \"Không, nhưng ta là tướng của đội quân Đức Giê-hô-va, bây giờ ta đến đây.\" Vì vậy, đáp án đúng là \"Tướng của đội quân Đức Giê-hô-va\".\n\nCác đáp án sai:\n1. \"Tướng của đội quân thành Giê-ri-cô\" (almost-right) sai vì người này không phải từ thành Giê-ri-cô mà là từ đội quân Đức Giê-hô-va.\n2. \"Một người lính thám thính của Y-sơ-ra-ên\" sai vì đoạn này không nhắc đến thám thính; đây là một nhân vật siêu nhiên.\n3. \"Mô-se hiện ra với một thanh gươm\" sai vì Mô-se đã qua đời (Giô-suê 1:1-2) và không được đề cập trong đoạn 5:13-15; đây là một hiểu lầm phổ biến do nhầm lẫn về sự lãnh đạo.",
     "language": "vi",
     "verseEnd": 15,
     "options": [
-      "Một chiến binh",
-      "Tiên tri Môi-se",
-      "Thiên sứ Gáp-ri-ên",
+      "Tướng của đội quân thành Giê-ri-cô",
+      "Một người lính thám thính của Y-sơ-ra-ên",
+      "Mô-se hiện ra với một thanh gươm",
       "Tướng của đội quân Đức Giê-hô-va"
     ],
     "tags": [
@@ -231,13 +231,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giô-suê 7:20-21 - A-can giấu áo choàng, bạc và vàng. Tội lỗi một người ảnh hưởng cả cộng đồng.",
+    "explanation": "Câu trả lời đúng là 'A-can, vì lấy vật bị cấm từ Giê-ri-cô' dựa trên Giô-suê 7:20-21, nơi A-can thừa nhận đã lấy một cái áo choàng Si-nê-a, hai trăm siếc-lơ bạc và một nén vàng từ trong thành Giê-ri-cô, vi phạm lệnh cấm của Đức Chúa Trời (Giô-suê 6:18-19). Điều này gây ra tội lỗi và khiến Y-sơ-ra-ên thua trận tại A-hi (câu 11-12).\n\nCác phương án sai:\n- 'Giô-suê, vì không hỏi ý kiến Đức Chúa Trời trước chiến dịch': Đây là hiểu lầm phổ biến. Mặc dù Giô-suê có thể đã có sai sót trong việc đánh giá tình hình (Giô-suê 7:3-4), Kinh Thánh quy nguyên nhân thất bại rõ ràng là do tội lỗi của A-can (câu 11).\n- 'Đa-nít, vì lấy vật bị cấm từ Giê-ri-cô': Đây là phương án 'gần đúng' nhưng sai chi tiết then chốt. A-can thuộc chi phái Giu-đa (câu 1), không phải chi phái Đan. Phương án này đúng về hành vi nhưng sai về danh tính người phạm tội.\n- 'Toàn thể dân chúng, vì không thánh hóa mình cho trận đánh': Sai phạm vi. Kinh Thánh không nói toàn thể dân chúng phạm tội lúc này. Trách nhiệm thuộc về cá nhân A-can, và sự đoán phạt ảnh hưởng đến cả cộng đồng, nhưng nguyên nhân khởi phát là tội của một người.",
     "language": "vi",
     "verseEnd": 21,
     "options": [
-      "Dân sự, vì sợ hãi",
-      "Thầy tế lễ, vì không cầu nguyện",
-      "Giô-suê, vì sai chiến thuật",
+      "Giô-suê, vì không hỏi ý kiến Đức Chúa Trời trước chiến dịch",
+      "Đa-nít, vì lấy vật bị cấm từ Giê-ri-cô",
+      "Toàn thể dân chúng, vì không thánh hóa mình cho trận đánh",
       "A-can, vì lấy vật bị cấm từ Giê-ri-cô"
     ],
     "tags": [
@@ -287,14 +287,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giô-suê 14:12 - Ca-lép xin nơi khó nhất vì tin Chúa. Dù 85 tuổi vẫn mạnh mẽ và sẵn sàng chiến đấu.",
+    "explanation": "Giô-suê 14:12 ghi rõ Ca-lép xin 'miền núi nầy' (tức Hếp-rôn) là nơi có người A-na-kim và thành lớn kiên cố. Đây là đáp án đúng vì nó khớp với chi tiết ông xin vùng đồi núi có người khổng lồ. Distractor 1 sai vì nó nhầm sang vùng đồng bằng gần Giê-ri-cô, một khu vực được nhắc đến ở những phần khác nhưng không phải là nơi Ca-lép xin. Distractor 2 là 'gần đúng' nhưng sai chi tiết then chốt: Ca-lép xin vùng đồi núi cụ thể là Hếp-rôn (có thành kiên cố), chứ không phải một vùng đất có thành lũy chung chung ở miền Nam. Distractor 3 sai vì dựa trên hiểu lầm phổ biến về 'đất hứa chảy sữa và mật', mô tả một vùng có sông nước, trong khi Ca-lép lại đặc biệt xin vùng đồi núi hiểm trở có người A-na-kim.",
     "language": "vi",
     "verseEnd": 12,
     "options": [
       "Vùng đồi núi có người khổng lồ A-na-kim",
-      "Đồng bằng màu mỡ",
-      "Bờ biển",
-      "Gie-ru-sa-lem"
+      "Vùng đồng bằng màu mỡ gần Giê-ri-cô",
+      "Vùng đất có thành lũy kiên cố ở miền Nam",
+      "Vùng đất có sông nước chảy quanh"
     ],
     "tags": [
       "Cựu Ước",
@@ -342,13 +342,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giô-suê 1:1-2 — 'Sau khi Môi-se, tôi tớ của Đức Giê-hô-va, qua đời, Đức Giê-hô-va phán cùng Giô-suê con trai Nun.'",
+    "explanation": "Câu hỏi hỏi về sự kiện mở đầu sách Giô-suê. Giô-suê 1:1-2 chép: 'Sau khi Môi-se, tôi tớ của Đức Giê-hô-va, qua đời, Đức Giê-hô-va phán cùng Giô-suê...: \"Môi-se, tôi tớ ta, đã chết...\"'. ĐÁP ÁN ĐÚNG là 'Môi-se', vì câu Kinh Thánh trực tiếp nối tiếp sau cái chết của ông. DISTRACTOR SAI: 1) 'Giô-suê' là gần đúng nhưng sai chi tiết then chốt (nhân vật chính của sách chứ không phải người vừa chết). 2) 'A-rôn' là sai chi tiết (anh của Môi-se, chết trước đó ở núi Hô-rơ, được ghi trong Dân số 20:28, không phải sự kiện mở đầu sách Giô-suê). 3) 'Giô-sép' là hiểu lầm phổ biến (một nhân vật quan trọng khác trong Kinh Thánh nhưng chết từ lâu trước thời kỳ này, không liên quan đến bối cảnh trực tiếp).",
     "language": "vi",
     "options": [
-      "Áp-ra-ham",
+      "Giô-suê",
       "Môi-se",
-      "Giô-sép",
-      "A-rôn"
+      "A-rôn",
+      "Giô-sép"
     ],
     "tags": [
       "Cựu Ước",
@@ -368,13 +368,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giô-suê 1:7 — 'Chỉ ngươi hãy vững lòng bền chí, và cẩn thận làm theo hết thảy luật pháp mà Môi-se, tôi tớ Ta, đã truyền cho ngươi.'",
+    "explanation": "Giô-suê 1:7: 'Chỉ hãy vững lòng bền chí, và cẩn thận làm theo hết thảy luật pháp mà Môi-se, tôi tớ của ta, đã truyền cho ngươi; chớ xây qua bên hữu hoặc bên tả, để hễ ngươi đi đâu cũng đều được thịnh vượng.' Câu này trực tiếp trả lời câu hỏi: Đức Giê-hô-va truyền cho Giô-suê phải 'vững lòng bền chí' (về tinh thần) và 'làm theo hết thảy luật pháp' (về hành động) để được thịnh vượng (thành công).\n\n- Distractor 1 (Tìm kiếm sự khôn ngoan từ các trưởng lão) là 'gần đúng' nhưng sai chi tiết then chốt. Đây là lỗi 'nearby_passage' vì ý này xuất hiện trong ngữ cảnh gần (ví dụ, dân chúng hứa vâng lời Giô-suê như đã vâng lời Môi-se), nhưng KHÔNG PHẢI là mệnh lệnh trực tiếp của Đức Giê-hô-va cho Giô-suê để thành công trong câu 1:7.\n- Distractor 2 (Dựa vào sức mạnh của các chiến sĩ) là lỗi 'wrong_scope'. Điều này có thể hợp lý trong bối cảnh chinh phục, nhưng hoàn toàn nằm ngoài phạm vi mệnh lệnh cụ thể của Đức Giê-hô-va trong đoạn này. Trọng tâm ở đây là sự vâng lời và lòng can đảm thuộc linh, không phải sức mạnh quân sự.\n- Distractor 3 (Chăm chỉ làm việc và tích trữ lương thực) là lỗi 'common_misconception'. Đây là một hiểu lầm phổ biến khi nghĩ về 'thành công' theo nghĩa vật chất và sự chuẩn bị thuần túy, nhưng nó không hề được đề cập trong mệnh lệnh của Đức Giê-hô-va ở đây. Thành công trong phân đoạn này gắn liền với sự vâng theo Lời Chúa.",
     "language": "vi",
     "options": [
-      "Tăng quân đội",
-      "Lập các thành kiên cố",
+      "Tìm kiếm sự khôn ngoan từ các trưởng lão",
+      "Dựa vào sức mạnh của các chiến sĩ",
       "Vững lòng bền chí và làm theo luật pháp",
-      "Tìm liên minh với các vua"
+      "Chăm chỉ làm việc và tích trữ lương thực"
     ],
     "tags": [
       "Cựu Ước",
@@ -394,13 +394,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giô-suê 6:20 — 'Khi tiếng kèn thổi vang, dân sự la lớn... thì vách thành sập đổ; dân sự lên thành, mỗi người ngay trước mặt mình, và họ chiếm lấy thành.'",
+    "explanation": "Giô-suê 6:20 chép: 'Vậy, dân sự la lên, và những thầy tế lễ thổi kèn. Vừa khi dân sự nghe tiếng kèn, bèn la lớn lên, thì vách thành ngã sập, dân sự leo lên thành, mỗi người ngay trước mặt mình, và chiếm lấy thành.' Vì vậy, đáp án đúng là 'Vách thành sập đổ' vì Kinh Thánh ghi rõ điều này xảy ra ngay lập tức. Distractor 'Vách thành rung chuyển mạnh' là gần đúng nhưng sai chi tiết then chốt (rung chuyển thay vì sập đổ). Distractor 'Vách thành xuất hiện vết nứt' dựa trên một chi tiết không có trong đoạn Kinh Thánh này (nhầm passage gần). Distractor 'Vách thành vẫn đứng vững' dựa trên một hiểu lầm phổ biến rằng phép lạ không xảy ra hoặc thành không sập, trái ngược hoàn toàn với bản văn.",
     "language": "vi",
     "options": [
       "Vách thành sập đổ",
-      "Cổng thành mở ra",
-      "Tường thành bốc cháy",
-      "Tường thành biến mất"
+      "Vách thành rung chuyển mạnh",
+      "Vách thành xuất hiện vết nứt",
+      "Vách thành vẫn đứng vững"
     ],
     "tags": [
       "Cựu Ước",
@@ -420,12 +420,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giô-suê 8:18 — 'Đức Giê-hô-va phán cùng Giô-suê: Hãy giơ ngọn giáo trong tay ngươi ra hướng về A-hi, vì Ta sẽ phó thành ấy vào tay ngươi.'",
+    "explanation": "Đáp án đúng là 'Giơ ngọn giáo hướng về A-hi' vì Giô-suê 8:18 chép: 'Đức Giê-hô-va phán cùng Giô-suê rằng: Hãy giơ cây lao trong tay ngươi hướng về A-hi; vì ta sẽ phó thành vào tay ngươi.' Ở đây, 'cây lao' (hay 'ngọn giáo') là vật Giô-suê phải giơ lên.\n\nCác đáp án sai:\n- 'Giơ cây cung hướng về A-hi' (sai chi tiết): Văn bản ghi rõ là 'cây lao' (ngọn giáo), không phải cây cung. Đây là lỗi thay đổi một chi tiết then chốt.\n- 'Hạ ngọn giáo xuống đất' (hiểu lầm phổ biến): Hành động này trái ngược với mệnh lệnh 'giơ lên'. Một số độc giả có thể nhầm lẫn với các tình huống khác trong Kinh Thánh nơi việc hạ vũ khí xuống biểu thị sự kết thúc, nhưng không phải trong bối cảnh này.\n- 'Cầm ngọn giáo chỉ về phía sau' (nhầm passage gần): Điều này có thể bắt nguồn từ việc đọc lướt hoặc nhớ nhầm chiến thuật, nơi một phần quân Israel mai phục phía sau thành, nhưng mệnh lệnh trực tiếp của Đức Giê-hô-va cho Giô-suê là giơ giáo 'hướng về' (tức phía trước, về thành) A-hi.",
     "language": "vi",
     "options": [
-      "Đốt thành A-hi",
-      "Bao vây bảy vòng",
-      "Cầu nguyện trên núi",
+      "Giơ cây cung hướng về A-hi",
+      "Hạ ngọn giáo xuống đất",
+      "Cầm ngọn giáo chỉ về phía sau",
       "Giơ ngọn giáo hướng về A-hi"
     ],
     "tags": [
@@ -473,13 +473,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giô-suê 10:11 — 'Đức Giê-hô-va từ trên trời ném đá lớn xuống trên chúng nó... có lắm người chết bởi đá mưa hơn là bởi gươm dân Y-sơ-ra-ên giết.'",
+    "explanation": "Giô-suê 10:11 chép: '...Đức Giê-hô-va khiến đá lớn từ trời rơi xuống...' nên đáp án đúng là 'Đá mưa lớn (mưa đá)'. Distractor 'Cơn mưa lửa lớn' là gần đúng nhưng sai chi tiết vật chất (lửa thay vì đá). 'Những tảng đá từ núi' sai vì Kinh Thánh nói rõ đá từ trời, không phải từ núi (lẫn với bối cảnh địa lý gần đó). 'Sấm sét và chớp lớn' là một hiểu lầm phổ biến về cách Chúa can thiệp, nhưng không được đề cập trong đoạn này.",
     "language": "vi",
     "options": [
-      "Lửa từ trời",
+      "Cơn mưa lửa lớn",
       "Đá mưa lớn (mưa đá)",
-      "Sấm sét dữ dội",
-      "Đoàn thiên sứ"
+      "Những tảng đá từ núi",
+      "Sấm sét và chớp lớn"
     ],
     "tags": [
       "Cựu Ước",
@@ -500,13 +500,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giô-suê 22:10 — 'Họ xây tại đó một bàn thờ, ở gần sông Giô-đanh, một bàn thờ rất lớn, đáng để mắt mà xem.' Sau đó họ giải thích đây là bàn thờ chứng kiến, không phải để dâng tế lễ.",
+    "explanation": "Giô-suê 22:10-12 chép rằng họ xây \"một bàn thờ lớn, đồ sộ\" (câu 10) bên bờ sông Giô-đanh, khiến các chi phái khác tưởng rằng hây lập bàn thờ riêng để dâng của lễ, trái luật pháp (câu 11, 16).\n\n- Đáp án đúng hợp lệ vì Kinh Thánh ghi rõ đó là 'một bàn thờ lớn'.\n- Distractor 'Một tòa tháp canh' là sai vì đoạn này không đề cập đến công trình phòng thủ; các chi phái đang lo ngại về việc thờ phượng sai.\n- Distractor 'Một nhà hội họp' là sai vì tuy việc hội họp quan trọng, chi tiết này không có trong đoạn; sự hiểu lầm xuất phát từ việc xây bàn thờ.\n- Distractor 'Một tượng đài kỷ niệm' là gần đúng vì nó cũng là một công trình xây dựng để đánh dấu sự kiện, nhưng sai chi tiết then chốt: Kinh Thánh nói rõ đó là một 'bàn thờ', chứ không phải chỉ là tượng đài kỷ niệm chung chung.",
     "language": "vi",
     "options": [
       "Một bàn thờ lớn",
-      "Một thành kiên cố",
-      "Một đền thờ giả",
-      "Một tượng đài chiến thắng"
+      "Một tòa tháp canh",
+      "Một nhà hội họp",
+      "Một tượng đài kỷ niệm"
     ],
     "tags": [
       "Cựu Ước",
@@ -526,12 +526,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giô-suê 24:15 — 'Hãy chọn ngày nay mình muốn phục sự ai... Còn ta và nhà ta, chúng ta sẽ phục sự Đức Giê-hô-va.'",
+    "explanation": "Giô-suê 24:15 ghi: 'Còn ta và nhà ta, chúng ta sẽ phục sự Đức Giê-hô-va.' Đây là câu nói nổi tiếng của Giô-suê, thể hiện sự lựa chọn dứt khoát của ông và gia đình trong việc thờ phượng Chúa.\n\n- Distractor 1 sai vì thay 'Đức Giê-hô-va' bằng 'thần tượng', trái ngược hoàn toàn với ý câu Kinh Thánh.\n- Distractor 2 sai vì thay chủ ngữ 'ta và nhà ta' (Giô-suê và gia đình ông) bằng 'người và nhà người' (ám chỉ người khác), làm lệch phạm vi lựa chọn cá nhân của Giô-suê.\n- Distractor 3 là 'gần đúng' nhưng sai chi tiết: thay 'nhà ta' (gia đình) bằng 'dân sự' (toàn dân Y-sơ-ra-ên), trong khi ngữ cảnh cho thấy Giô-suê đang nói về quyết định cá nhân và gia đình trước khi kêu gọi dân chúng lựa chọn.",
     "language": "vi",
     "options": [
-      "Hãy đi và lập đền thờ",
-      "Hãy theo các thần Ai Cập",
-      "Hãy giữ luật Môi-se",
+      "Còn ta và nhà ta, chúng ta sẽ phục sự thần tượng",
+      "Còn người và nhà người, họ sẽ phục sự Đức Giê-hô-va",
+      "Còn ta và dân sự, chúng ta sẽ phục sự Đức Giê-hô-va",
       "Còn ta và nhà ta, chúng ta sẽ phục sự Đức Giê-hô-va"
     ],
     "tags": [
