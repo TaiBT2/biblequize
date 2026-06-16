@@ -56,9 +56,9 @@ describe('AppLayout — TopNav shell', () => {
     expect(screen.getByTestId('user-dropdown-toggle')).toBeInTheDocument()
   })
 
-  it('renders the 3 stats (streak / energy / season)', () => {
+  it('does NOT render per-user stats in the top nav (they live in the Home hero)', () => {
     renderAppLayout()
-    expect(screen.getByTestId('topnav-stats')).toBeInTheDocument()
+    expect(screen.queryByTestId('topnav-stats')).not.toBeInTheDocument()
   })
 })
 

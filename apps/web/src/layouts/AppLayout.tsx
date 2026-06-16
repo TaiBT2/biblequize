@@ -1,8 +1,6 @@
 import { Link, Outlet, useLocation } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
 import { useAuthStore } from '../store/authStore'
 import { useTranslation } from 'react-i18next'
-import { api } from '../api/client'
 import OfflineBanner from '../components/OfflineBanner'
 import NotificationBell from './components/NotificationBell'
 import UserDropdown from './components/UserDropdown'
@@ -28,21 +26,6 @@ export default function AppLayout() {
   const { t } = useTranslation()
   const location = useLocation()
   const { user } = useAuthStore()
-
-  const { data: meData } = useQuery({
-    queryKey: ['me'],
-    queryFn: () => api.get('/api/me').then(r => r.data),
-    staleTime: 5 * 60_000,
-  })
-  const { data: rankedStatus } = useQuery<{ livesRemaining?: number; seasonPoints?: number }>({
-    queryKey: ['ranked-status'],
-    queryFn: () => api.get('/api/me/ranked-status').then(r => r.data),
-    staleTime: 60_000,
-  })
-
-  const streak = meData?.currentStreak ?? user?.currentStreak ?? 0
-  const energy = rankedStatus?.livesRemaining ?? 100
-  const seasonPoints = rankedStatus?.seasonPoints ?? 0
 
   const isActive = (path: string) =>
     path === '/'
@@ -91,15 +74,8 @@ export default function AppLayout() {
             ))}
           </nav>
 
-          {/* Right: stats + admin + bell + avatar */}
+          {/* Right: admin + bell + avatar (per-user stats live in the Home hero) */}
           <div className="ml-auto flex items-center gap-4">
-            {user && (
-              <div data-testid="topnav-stats" className="hidden lg:flex items-center gap-4">
-                <Stat dot="bg-bq-ruby" value={streak} label={t('home.greeting.streak')} />
-                <Stat dot="bg-bq-amber" value={energy} label={t('home.greeting.energy')} />
-                <Stat dot="bg-bq-emerald" value={seasonPoints} label={t('home.greeting.seasonPoints')} />
-              </div>
-            )}
             {isAdmin && (
               <Link
                 to="/admin"
@@ -121,15 +97,5 @@ export default function AppLayout() {
 
       <MobileBottomTabs />
     </div>
-  )
-}
-
-function Stat({ dot, value, label }: { dot: string; value: number; label: string }) {
-  return (
-    <span className="flex items-center gap-1.5 text-[13px] font-extrabold text-bq-ink tabular-nums">
-      <span className={`w-2 h-2 rounded-sm ${dot}`} />
-      {value.toLocaleString()}
-      <small className="font-bold text-bq-ink3 text-[10.5px] uppercase tracking-wide">{label}</small>
-    </span>
   )
 }
