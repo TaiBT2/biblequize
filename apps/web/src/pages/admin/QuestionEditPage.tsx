@@ -73,10 +73,20 @@ export default function QuestionEditPage() {
 
   const save = async (forceCreate = false) => {
     if (!draft) return
+    // Only send fields the Question entity accepts — a draft coming from the
+    // Review Queue carries extras (approvalsRequired, reviews) the strict BE
+    // deserializer rejects ("Field X is not allowed").
+    const payload: Partial<Question> = {
+      book: draft.book, chapter: draft.chapter, verseStart: draft.verseStart, verseEnd: draft.verseEnd,
+      difficulty: draft.difficulty, type: draft.type, content: draft.content,
+      options: draft.options, correctAnswer: draft.correctAnswer, correctAnswerText: draft.correctAnswerText,
+      explanation: draft.explanation, language: draft.language, reviewStatus: draft.reviewStatus,
+      category: draft.category,
+    }
     setSaving(true); setSaveError(null); setDup(null)
     try {
-      if (draft.id) await api.put(`/api/admin/questions/${draft.id}`, draft)
-      else await api.post(forceCreate ? '/api/admin/questions?forceCreate=true' : '/api/admin/questions', draft)
+      if (draft.id) await api.put(`/api/admin/questions/${draft.id}`, payload)
+      else await api.post(forceCreate ? '/api/admin/questions?forceCreate=true' : '/api/admin/questions', payload)
       navigate(backTo)
     } catch (e: any) {
       const d = e?.response?.data
