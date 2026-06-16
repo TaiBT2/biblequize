@@ -160,6 +160,7 @@ Trường: `id, name, email, avatarUrl, role, currentStreak, longestStreak, last
 - Cấm tự ban (`AdminUserController.java:109`).
 - Set `User.isBanned`, `banReason`, `bannedAt`. Khi unban → null hết các field.
 - Frontend `Users.tsx` mở modal nhập reason trước khi confirm.
+- **Enforcement (ADM-4, 2026-06-16, F-api-17):** ban chặn **cả REST lẫn WebSocket**. `CustomUserDetailsService` set principal `disabled` theo `isBanned`; `JwtAuthenticationFilter` bỏ qua xác thực nếu `!isEnabled()` → endpoint protected trả 401 dù token còn hạn. Trước đây ban chỉ chặn WebSocket (`WebSocketRateLimitInterceptor`). Mobile login đã chặn sẵn (`MobileAuthService`).
 
 ### 4.7 Hạn chế / TODO
 - Không có endpoint xóa user account từ admin (account deletion là user-initiated qua `AccountDeletionService`, audit log riêng).

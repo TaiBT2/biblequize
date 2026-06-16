@@ -36,12 +36,13 @@ Lý do "C ẩn": `Configuration`+`ExportCenter` = placeholder 0 API; `QuestionQu
   - **Spec strategy**: [x] (a) update SPEC_ADMIN §8 + DECISIONS 2026-06-16
   - Checklist: [x] impl · [x] Tầng 1 (BE 9/9 · FE ReviewQueue 6/6) · [x] Tầng 3 FE · [x] spec+DECISIONS · [ ] commit
 
-- **ADM-4 Hoàn thiện Ban: enforce ở REST (F-api-17)**
-  - Status: [ ] TODO · Files: `apps/api/.../CustomUserDetailsService.java` (set `disabled`/`accountNonLocked` theo `User.isBanned`) hoặc filter; verify `JwtAuthenticationFilter` · Test: BE security test (banned user → 401/403 REST)
-  - Hiện ban chỉ chặn WebSocket (`WebSocketRateLimitInterceptor`); JWT user bị ban vẫn gọi REST. **File nhạy cảm** (security) → chạy Tầng 3 ngay.
-  - **Spec impact**: [ ] SPEC_ADMIN §moderation (ban scope)
-  - **Spec strategy**: [ ] (a) update inline / [ ] (b) BL-N
-  - Checklist: impl · Tầng 1+2+3 (FULL — file nhạy cảm) · spec · commit
+- **ADM-4 Hoàn thiện Ban: enforce ở REST (F-api-17)** ✅
+  - Status: [x] DONE (2026-06-16) · Files: `CustomUserDetailsService.java` (builder + `.disabled(isBanned)`), `JwtAuthenticationFilter.java` (skip auth nếu `!isEnabled()`) · Test mới: `CustomUserDetailsServiceTest` (3), `JwtAuthenticationFilterTest` (2)
+  - Ban giờ chặn cả REST: user bị ban → principal disabled → filter không set Authentication → 401. WebSocket vẫn chặn như cũ. Nhất quán với MobileAuthService (đã chặn ban lúc login).
+  - **Spec impact**: [x] SPEC_ADMIN §moderation — cập nhật §10/§14 ghi ban-scope (xem dưới)
+  - **Spec strategy**: [x] (a) update inline + DOMAIN F-api-17 → fixed
+  - Checklist: [x] impl · [x] Tầng 1 (BE security 5/5) · [x] Tầng 3 BE FULL (1038/1041 pass; 3 fail = StreakServiceTest **pre-existing, date-dependent, unrelated** — chứng minh bằng stash) · [x] spec (SPEC_ADMIN §4.6 + DOMAIN F-api-17→fixed) · [ ] commit
+  - ⚠️ **Pre-existing**: 3 StreakServiceTest fail (TC_STREAK_001/004 + freezeAlreadyUsed) — không do ADM-4; cần task riêng.
 
 - **ADM-5 Dọn route + xoá trang placeholder Tier C**
   - Status: [ ] TODO · Files: router (`App.tsx`/routes) bỏ route Tier C; xoá `Configuration.tsx` + `ExportCenter.tsx` (placeholder thuần); `QuestionQuality.tsx` → giữ coverage, gộp vào Questions hoặc xoá phần "needs API"; xoá test tương ứng

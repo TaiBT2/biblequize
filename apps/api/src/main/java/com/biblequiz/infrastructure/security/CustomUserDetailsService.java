@@ -25,10 +25,14 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + email));
 
         String roleName = "ROLE_" + user.getRole();
-        return new org.springframework.security.core.userdetails.User(
-                user.getEmail(),
-                user.getPasswordHash() != null ? user.getPasswordHash() : "",
-                List.of(new SimpleGrantedAuthority(roleName))
-        );
+        // ADM-4 (F-api-17): reflect ban as a disabled account so JWT-authenticated
+        // REST requests are rejected too — previously ban only blocked WebSocket.
+        boolean banned = Boolean.TRUE.equals(user.getIsBanned());
+        return org.springframework.security.core.userdetails.User.builder()
+                .username(user.getEmail())
+                .password(user.getPasswordHash() != null ? user.getPasswordHash() : "")
+                .authorities(List.of(new SimpleGrantedAuthority(roleName)))
+                .disabled(banned)
+                .build();
     }
 }

@@ -74,6 +74,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
 
+                // ADM-4 (F-api-17): a banned user is disabled — don't authenticate,
+                // so protected REST endpoints respond 401 even with a valid token.
+                if (!userDetails.isEnabled()) {
+                    logger.warn("Rejecting request from banned/disabled user: {}", userEmail);
+                    filterChain.doFilter(request, response);
+                    return;
+                }
+
                 if (jwtService.isTokenValid(jwt, userDetails)) {
                     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails,
                             null, userDetails.getAuthorities());
