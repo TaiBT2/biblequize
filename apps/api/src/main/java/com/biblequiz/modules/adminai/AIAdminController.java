@@ -157,6 +157,39 @@ public class AIAdminController {
         }
     }
 
+    /**
+     * QPG-2: AI suggestion to improve an existing question's answers (balanced
+     * length, plausible distractors, shuffled position). Returns aiAvailable:false
+     * (not an error) when no provider is configured — the FE still has its instant
+     * heuristic check. Consumes 1 quota unit only when a provider exists.
+     */
+    @PostMapping("/improve-question")
+    public ResponseEntity<?> improveQuestion(@RequestBody ImproveQuestionRequest req) {
+        if (!aiGenerationService.hasAnyProvider()) {
+            return ResponseEntity.ok(Map.of(
+                    "aiAvailable", false,
+                    "message", "Chưa cấu hình AI provider (Gemini/Claude) — chỉ có đánh giá heuristic."));
+        }
+        if (!quotaService.tryAcquire(1)) {
+            AIQuotaService.Usage usage = quotaService.snapshot();
+            return ResponseEntity.status(429).body(Map.of(
+                    "error", "QUOTA_EXCEEDED",
+                    "message", "Đã vượt quota " + usage.limit() + " câu/ngày."));
+        }
+        int correctIdx = (req.correctAnswer() != null && !req.correctAnswer().isEmpty()
+                && req.correctAnswer().get(0) != null) ? req.correctAnswer().get(0) : 0;
+        Map<String, Object> suggestion = aiGenerationService.improveQuestion(
+                req.content(), req.options(), correctIdx, req.explanation(),
+                req.language() != null ? req.language() : "vi",
+                req.difficulty() != null ? req.difficulty() : "medium");
+        if (suggestion == null) {
+            return ResponseEntity.ok(Map.of(
+                    "aiAvailable", false,
+                    "message", "AI không trả về kết quả hợp lệ — thử lại."));
+        }
+        return ResponseEntity.ok(Map.of("aiAvailable", true, "suggestion", suggestion));
+    }
+
     private Map<String, Object> buildMockQuestion(
             String book, int chapter, int vs, int ve,
             String difficulty, String type, String language, int idx) {
