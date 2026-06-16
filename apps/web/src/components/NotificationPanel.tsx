@@ -117,7 +117,7 @@ export default function NotificationPanel({
       data-testid="notification-panel"
       role="dialog"
       aria-label={t('header.notifications.title') as string}
-      className="fixed right-2 top-14 w-[min(24rem,calc(100vw-1rem))] max-h-[min(80vh,640px)] flex flex-col rounded-2xl border border-bq-hair bg-bq-white shadow-bq-soft z-50 overflow-hidden md:absolute md:inset-auto md:left-0 md:top-full md:mt-2 md:right-auto md:w-96"
+      className="fixed right-2 top-14 w-[min(24rem,calc(100vw-1rem))] max-h-[min(80vh,640px)] flex flex-col rounded-2xl border border-bq-hair bg-bq-white shadow-bq-soft z-50 overflow-hidden md:absolute md:inset-auto md:right-0 md:top-full md:mt-2 md:left-auto md:w-96"
     >
       <div className="flex items-center justify-between px-5 py-4 border-b border-bq-hair">
         <div className="flex flex-col gap-1">
