@@ -15,9 +15,9 @@
   - **Spec strategy**: [ ] (b) sau pilot nếu cần · tạm (c) [no-spec-impact] cho tool
   - Checklist: dry-run pilot · review chất lượng · full Genesis · commit
 - SDR-2 Pilot run Genesis + review diff + quality summary
-  - Status: [ ] TODO
+  - Status: [x] DONE — 108/144 rewritten (verify pass), 0 safety violations, committed `86655f7`, **đã seed live lên prod DB** (surgical update 108 row seed:json, backup `genesis_prod_backup.jsonl`).
 - SDR-3 (sau khi user duyệt pilot) full 66 sách
-  - Status: [ ] TODO
+  - Status: [ ] TODO — chờ user quyết (verify pass bật, max-attempts ~6)
 
 ### Notes
 - Quota 200/ngày KHÔNG áp (gọi thẳng Bedrock, không qua endpoint).
