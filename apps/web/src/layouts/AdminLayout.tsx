@@ -92,14 +92,9 @@ export default function AdminLayout() {
       <main className="ml-[240px] flex-1 flex flex-col min-h-screen bg-[#11131c]">
         {/* TopNavBar */}
         <header className="fixed top-0 right-0 h-[56px] w-[calc(100%-240px)] z-10 bg-[#1d1f29] flex justify-between items-center px-8">
-          <div className="flex items-center gap-4">
-            <h1 className="text-lg font-bold tracking-tight text-[#e1e1ef]">{pageTitle}</h1>
-          </div>
-          {/* history / bell / search were non-functional placeholders — removed (ADM follow-up) */}
-          <Link to="/admin/questions/new" className="bg-[#e8a832] hover:brightness-110 transition-all text-[#281900] font-bold text-xs px-4 py-2 rounded flex items-center gap-2">
-            <span className="material-symbols-outlined text-sm">add</span>
-            Câu hỏi mới
-          </Link>
+          <h1 className="text-lg font-bold tracking-tight text-[#e1e1ef]">{pageTitle}</h1>
+          {/* Header CTA removed — each page owns its own create action (e.g. Questions
+              has its '+ Tạo câu hỏi' button); history/bell/search placeholders dropped too. */}
         </header>
 
         {/* Content Area */}

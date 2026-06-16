@@ -39,14 +39,12 @@ describe('AdminLayout', () => {
     }
   })
 
-  it('renders TopNavBar with the New-question CTA, placeholders removed', () => {
+  it('header has no placeholder controls or redundant CTA', () => {
     renderLayout()
-    const cta = screen.getByText('Câu hỏi mới')
-    expect(cta).toBeInTheDocument()
-    expect(cta.closest('a')).toHaveAttribute('href', '/admin/questions/new')
-    // non-functional header placeholders were removed
+    // search box, history/bell, and the New-question CTA were all removed
     expect(screen.queryByPlaceholderText('Search analytics or logs...')).not.toBeInTheDocument()
     expect(screen.queryByText('history')).not.toBeInTheDocument()
+    expect(screen.queryByText('Câu hỏi mới')).not.toBeInTheDocument()
   })
 
   it('renders "Về trang chính" link', () => {
