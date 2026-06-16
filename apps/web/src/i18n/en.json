@@ -484,6 +484,7 @@
       "missingClaudeKey": "Add ANTHROPIC_API_KEY to application.yml",
       "missingGeminiKey": "Add GEMINI_API_KEY to application.yml",
       "missingDeepseekKey": "Configure AWS credentials (IAM role or env) to enable DeepSeek Bedrock",
+      "providerLocked": "Coming soon — not available yet",
       "claudeModelsLabel": "Claude Models",
       "claudeAutoLabel": "Auto by difficulty",
       "claudeAutoNoteFast": "Fast · Cheap",
@@ -522,7 +523,22 @@
         "editButton": "Edit",
         "rejectTitle": "Reject",
         "restoreButton": "↩ Restore",
-        "approvedFooter": "✓ Saved → pending in Review Queue"
+        "approvedFooter": "✓ Saved → pending in Review Queue",
+        "almostRightTag": "almost-right",
+        "qualityWarningTitle": "Distractor quality warning",
+        "approveBlocked": "Fix the distractors before approving (duplicate error type or missing an 'almost-right' option)",
+        "errorType": {
+          "nearby_passage": "nearby-passage mixup",
+          "wrong_detail": "wrong detail",
+          "wrong_scope": "wrong scope",
+          "common_misconception": "common misconception",
+          "true_but_off": "true but off-question"
+        },
+        "reason": {
+          "duplicate_error_type": "Two distractors share an error type",
+          "insufficient_almost_right": "Missing an 'almost-right' option for this difficulty",
+          "missing_distractors": "AI did not declare distractor error types"
+        }
       },
       "models": {
         "haiku45Note": "Fast · Cheap",

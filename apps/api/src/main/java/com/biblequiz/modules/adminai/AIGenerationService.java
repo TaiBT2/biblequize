@@ -13,6 +13,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -408,7 +410,8 @@ public class AIGenerationService {
                 sb.append("E. KHÔNG cue lộ liễu: tránh để riêng đáp án sai chứa từ tuyệt đối (\"luôn luôn\", \"không bao giờ\", \"ngay từ đầu\", \"hoàn toàn\", \"đầy dẫy\").\n");
                 sb.append("F. THEO ĐỘ KHÓ: dễ = distractor sai rõ về thần học cơ bản; trung bình = ≥1 almost-right; khó = ≥2 almost-right, loại trừ phải nhớ chính xác câu chữ.\n");
                 sb.append("G. Vị trí đáp án đúng NGẪU NHIÊN giữa A/B/C/D — không luôn đặt ở A.\n");
-                sb.append("H. explanation: trích câu/đoạn cụ thể, nêu vì sao đáp án đúng đúng VÀ chỉ rõ TỪNG distractor sai ở đâu kèm loại lỗi của nó.\n\n");
+                sb.append("H. explanation: trích câu/đoạn cụ thể, nêu vì sao đáp án đúng đúng VÀ chỉ rõ TỪNG distractor sai ở đâu kèm loại lỗi của nó.\n");
+                sb.append("I. KHAI BÁO loại lỗi: mỗi câu PHẢI kèm field \"distractors\" — mảng object cho TỪNG phương án SAI, dạng {\"index\": <vị trí 0-3 của phương án đó trong options>, \"errorType\": <một trong: nearby_passage | wrong_detail | wrong_scope | common_misconception | true_but_off>, \"almostRight\": true/false}. Map loại lỗi → key: nhầm passage gần=nearby_passage, sai chi tiết=wrong_detail, sai phạm vi=wrong_scope, hiểu lầm phổ biến=common_misconception, đúng-văn-bản-lạc-câu-hỏi=true_but_off. 3 errorType PHẢI KHÁC nhau; KHÔNG liệt kê phương án đúng trong \"distractors\".\n\n");
             } else {
                 sb.append("Bible MCQ answer-writing rules (Haladyna/NBME standard — REQUIRED):\n");
                 sb.append("GOAL: the question must test someone who READ the text carefully, NOT someone guessing \"which option sounds most pious/complete\". Each distractor must lure a skim-reader.\n");
@@ -428,7 +431,8 @@ public class AIGenerationService {
                 sb.append("E. NO telltale cues: do not put absolute words (\"always\", \"never\", \"from the very beginning\", \"completely\") only in the wrong options.\n");
                 sb.append("F. BY DIFFICULTY: easy = distractors clearly wrong on basic theology; medium = ≥1 almost-right; hard = ≥2 almost-right, elimination requires recalling the exact wording.\n");
                 sb.append("G. Randomize the correct answer's position across A/B/C/D — do not always put it at A.\n");
-                sb.append("H. explanation: cite the specific verse, say why the correct answer is right AND pinpoint where EACH distractor goes wrong with its error type.\n\n");
+                sb.append("H. explanation: cite the specific verse, say why the correct answer is right AND pinpoint where EACH distractor goes wrong with its error type.\n");
+                sb.append("I. DECLARE error types: every item MUST include a \"distractors\" field — an array of objects for EACH wrong option: {\"index\": <0-3 position of that option in options>, \"errorType\": <one of: nearby_passage | wrong_detail | wrong_scope | common_misconception | true_but_off>, \"almostRight\": true/false}. The 3 errorType values MUST be DISTINCT; do NOT list the correct option in \"distractors\".\n\n");
             }
         }
 
@@ -443,6 +447,12 @@ public class AIGenerationService {
         // Example index is deliberately non-zero so the model doesn't anchor on A.
         sb.append("    \"correctAnswer\": 2,\n");
         sb.append("    \"explanation\": \"giải thích ngắn gọn bằng ").append(langName).append("\",\n");
+        if (isMc) {
+            // Example uses correctAnswer=2, so the wrong options are at indices 0, 1, 3.
+            sb.append("    \"distractors\": [{\"index\": 0, \"errorType\": \"nearby_passage\", \"almostRight\": false}, ")
+              .append("{\"index\": 1, \"errorType\": \"wrong_detail\", \"almostRight\": true}, ")
+              .append("{\"index\": 3, \"errorType\": \"true_but_off\", \"almostRight\": false}],\n");
+        }
         sb.append("    \"book\": \"").append(book).append("\",\n");
         sb.append("    \"chapter\": ").append(chapter).append(",\n");
         sb.append("    \"verseStart\": ").append(verseStart).append(",\n");
@@ -454,5 +464,56 @@ public class AIGenerationService {
         sb.append("Quan trọng: mỗi câu hỏi phải chính xác về mặt Kinh Thánh, dựa trên nội dung thực của ").append(ref).append(".");
 
         return sb.toString();
+    }
+
+    /**
+     * AEQ-2: attach a {@code _quality} block to every MCQ question based on its
+     * declared {@code distractors} error types. Enforces the Haladyna/NBME rule
+     * that each distractor uses a DISTINCT error type and the difficulty-scaled
+     * minimum of "almost-right" traps. Non-MCQ questions are left untouched (the
+     * FE treats an absent {@code _quality} as valid). Mutates the maps in place.
+     */
+    public void annotateQuality(List<Map<String, Object>> questions) {
+        if (questions == null) return;
+        for (Map<String, Object> q : questions) {
+            if (q == null) continue;
+            if (q.get("type") instanceof String type && type.startsWith("multiple_choice")) {
+                q.put("_quality", evaluateQuality(q));
+            }
+        }
+    }
+
+    private Map<String, Object> evaluateQuality(Map<String, Object> q) {
+        List<String> reasons = new ArrayList<>();
+        List<String> errorTypes = new ArrayList<>();
+        int almostRight = 0;
+
+        if (q.get("distractors") instanceof List<?> list && !list.isEmpty()) {
+            for (Object o : list) {
+                if (!(o instanceof Map<?, ?> m)) continue;
+                if (m.get("errorType") instanceof String s && !s.isBlank()) errorTypes.add(s);
+                if (Boolean.TRUE.equals(m.get("almostRight"))) almostRight++;
+            }
+        } else {
+            reasons.add("missing_distractors");
+        }
+
+        boolean duplicate = errorTypes.size() != new HashSet<>(errorTypes).size();
+        if (duplicate) reasons.add("duplicate_error_type");
+
+        int required = switch (String.valueOf(q.get("difficulty"))) {
+            case "hard"   -> 2;
+            case "medium" -> 1;
+            default        -> 0;
+        };
+        if (almostRight < required) reasons.add("insufficient_almost_right");
+
+        Map<String, Object> quality = new LinkedHashMap<>();
+        quality.put("valid", reasons.isEmpty());
+        quality.put("duplicateErrorType", duplicate);
+        quality.put("almostRightCount", almostRight);
+        quality.put("requiredAlmostRight", required);
+        quality.put("reasons", reasons);
+        return quality;
     }
 }

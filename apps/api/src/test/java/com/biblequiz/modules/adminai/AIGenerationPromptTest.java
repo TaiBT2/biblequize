@@ -28,6 +28,18 @@ class AIGenerationPromptTest {
     }
 
     @Test
+    void mcqPrompt_declaresErrorTypeSchema() {
+        String p = mcqPrompt("vi");
+        assertTrue(p.contains("\"distractors\""), "distractors field missing in schema");
+        assertTrue(p.contains("nearby_passage"), "errorType enum keys missing");
+        assertTrue(p.contains("true_but_off"), "errorType enum keys incomplete");
+        assertTrue(p.contains("PHẢI KHÁC nhau") || p.contains("KHÁC nhau"), "distinct-errorType rule missing");
+        String en = mcqPrompt("en");
+        assertTrue(en.contains("\"distractors\""), "distractors field missing (en)");
+        assertTrue(en.contains("MUST be DISTINCT"), "distinct-errorType rule missing (en)");
+    }
+
+    @Test
     void mcqPrompt_en_hasDistractorRules() {
         String p = mcqPrompt("en");
         assertTrue(p.contains("HOMOGENEOUS"), "homogeneous length rule missing (en)");

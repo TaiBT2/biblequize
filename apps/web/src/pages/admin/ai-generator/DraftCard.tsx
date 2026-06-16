@@ -36,6 +36,9 @@ export default function DraftCard({ draft, isEditing, isSaving, editData, onEdit
   const cur = isEditing ? { ...draft, ...editData } as DraftQuestion : draft
   const opts = Array.isArray(cur.options) ? cur.options : []
   const isCorrect = (i: number) => Array.isArray(cur.correctAnswer) ? cur.correctAnswer.includes(i) : cur.correctAnswer === i
+  // AEQ: distractor error-type metadata + quality gate.
+  const metaByIndex = new Map((cur.distractors ?? []).map(d => [d.index, d]))
+  const approveBlocked = draft.quality?.valid === false
 
   return (
     <div data-testid="ai-draft-card" data-status={draft.status} className={`bg-[#1d1f29] rounded-lg p-5 border-2 transition-all duration-200 ${
@@ -78,13 +81,31 @@ export default function DraftCard({ draft, isEditing, isSaving, editData, onEdit
                     isCorrect(i) ? 'bg-[#e8a832] text-[#281900]' : 'bg-[#32343e] text-[#d5c4af]'
                   }`}>{OPT_LABELS[i]}</span>
                   <span className="flex-1">{opt}</span>
+                  {!isCorrect(i) && metaByIndex.get(i) && (
+                    <span className="flex-shrink-0 inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-white/[0.04] border border-white/10 text-[#d5c4af]/70">
+                      {t(`admin.aiGenerator.draftCard.errorType.${metaByIndex.get(i)!.errorType}`)}
+                      {metaByIndex.get(i)!.almostRight && (
+                        <span className="text-[#e8a832]">★ {t('admin.aiGenerator.draftCard.almostRightTag')}</span>
+                      )}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
           )}
+          {cur.quality && !cur.quality.valid && (
+            <div className="px-3 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs">
+              <p className="font-bold text-amber-300 mb-1">⚠ {t('admin.aiGenerator.draftCard.qualityWarningTitle')}</p>
+              <ul className="list-disc list-inside text-amber-200/80 space-y-0.5">
+                {cur.quality.reasons.map(r => (
+                  <li key={r}>{t(`admin.aiGenerator.draftCard.reason.${r}`)}</li>
+                ))}
+              </ul>
+            </div>
+          )}
           {cur.explanation && (
-            <div className="px-3 py-2.5 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800 leading-relaxed">
-              <span className="font-bold">{t('admin.aiGenerator.draftCard.explanationPrefix')}</span>{cur.explanation}
+            <div className="px-3 py-2.5 bg-amber-500/10 border border-amber-500/20 rounded-xl text-xs text-amber-200/90 leading-relaxed">
+              <span className="font-bold text-amber-300">{t('admin.aiGenerator.draftCard.explanationPrefix')}</span>{cur.explanation}
             </div>
           )}
         </div>
@@ -126,20 +147,21 @@ export default function DraftCard({ draft, isEditing, isSaving, editData, onEdit
 
       {/* Save error */}
       {draft.saveError && (
-        <div className="mt-3 flex items-start gap-2 px-3 py-2.5 rounded-xl bg-red-50 border border-red-200">
-          <p className="text-red-600 text-xs font-semibold leading-snug">{draft.saveError}</p>
+        <div className="mt-3 flex items-start gap-2 px-3 py-2.5 rounded-xl bg-red-500/10 border border-red-500/30">
+          <p className="text-red-400 text-xs font-semibold leading-snug">{draft.saveError}</p>
         </div>
       )}
 
       {/* Actions */}
       {draft.status === 'pending' && !isEditing && (
-        <div className="flex gap-2 mt-4 pt-4 border-t border-[#eeeae0]">
-          <button data-testid="ai-draft-approve-btn" onClick={onApprove} disabled={isSaving}
-            className="flex-1 bg-[#e8a832] text-[#281900] text-sm font-bold py-2.5 rounded-xl hover:brightness-110 transition-colors disabled:opacity-60">
+        <div className="flex gap-2 mt-4 pt-4 border-t border-[#504535]/20">
+          <button data-testid="ai-draft-approve-btn" onClick={onApprove} disabled={isSaving || approveBlocked}
+            title={approveBlocked ? t('admin.aiGenerator.draftCard.approveBlocked') : undefined}
+            className="flex-1 bg-[#e8a832] text-[#281900] text-sm font-bold py-2.5 rounded-xl hover:brightness-110 transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
             {isSaving ? t('admin.aiGenerator.draftCard.approveSaving') : t('admin.aiGenerator.draftCard.approveButton')}
           </button>
           <button onClick={onEdit} className="px-4 text-sm font-bold text-[#d5c4af] bg-[#32343e] py-2.5 rounded-xl hover:bg-[#373943] transition-colors">{t('admin.aiGenerator.draftCard.editButton')}</button>
-          <button data-testid="ai-draft-reject-btn" onClick={onReject} className="w-10 flex items-center justify-center text-[#d5c4af]/60 bg-[#f0ece4] rounded-xl hover:bg-red-500/10 hover:text-red-500 transition-colors" title={t('admin.aiGenerator.draftCard.rejectTitle')}>✕</button>
+          <button data-testid="ai-draft-reject-btn" onClick={onReject} className="w-10 flex items-center justify-center text-[#d5c4af]/60 bg-[#32343e] rounded-xl hover:bg-red-500/10 hover:text-red-400 transition-colors" title={t('admin.aiGenerator.draftCard.rejectTitle')}>✕</button>
         </div>
       )}
 
@@ -150,7 +172,7 @@ export default function DraftCard({ draft, isEditing, isSaving, editData, onEdit
       )}
 
       {draft.status === 'approved' && (
-        <div className="mt-3 pt-3 border-t border-emerald-200 flex items-center gap-1.5 text-xs text-emerald-600 font-semibold">
+        <div className="mt-3 pt-3 border-t border-emerald-500/20 flex items-center gap-1.5 text-xs text-emerald-400 font-semibold">
           {t('admin.aiGenerator.draftCard.approvedFooter')}
           {draft.approvedId && <span className="text-emerald-400 font-normal ml-1">#{draft.approvedId.slice(0, 8)}</span>}
         </div>

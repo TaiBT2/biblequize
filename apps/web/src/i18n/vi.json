@@ -484,6 +484,7 @@
       "missingClaudeKey": "Thêm ANTHROPIC_API_KEY vào application.yml",
       "missingGeminiKey": "Thêm GEMINI_API_KEY vào application.yml",
       "missingDeepseekKey": "Cấu hình AWS credentials (IAM role hoặc env) để bật DeepSeek Bedrock",
+      "providerLocked": "Sắp ra mắt — chưa khả dụng",
       "claudeModelsLabel": "Mô hình Claude",
       "claudeAutoLabel": "Auto theo độ khó",
       "claudeAutoNoteFast": "Nhanh · Rẻ",
@@ -522,7 +523,22 @@
         "editButton": "Sửa",
         "rejectTitle": "Từ chối",
         "restoreButton": "↩ Khôi phục",
-        "approvedFooter": "✓ Đã lưu → chờ duyệt ở Review Queue"
+        "approvedFooter": "✓ Đã lưu → chờ duyệt ở Review Queue",
+        "almostRightTag": "gần đúng",
+        "qualityWarningTitle": "Cảnh báo chất lượng distractor",
+        "approveBlocked": "Sửa lại distractor trước khi duyệt (trùng loại lỗi hoặc thiếu đáp án 'gần đúng')",
+        "errorType": {
+          "nearby_passage": "nhầm passage gần",
+          "wrong_detail": "sai chi tiết",
+          "wrong_scope": "sai phạm vi",
+          "common_misconception": "hiểu lầm phổ biến",
+          "true_but_off": "đúng nhưng lạc câu hỏi"
+        },
+        "reason": {
+          "duplicate_error_type": "Có 2 distractor trùng loại lỗi",
+          "insufficient_almost_right": "Thiếu đáp án 'gần đúng' theo độ khó",
+          "missing_distractors": "AI không khai báo loại lỗi distractor"
+        }
       },
       "models": {
         "haiku45Note": "Nhanh · Rẻ",

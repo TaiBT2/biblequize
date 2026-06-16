@@ -115,6 +115,9 @@ public class AIAdminController {
 
         try {
             AIGenerationResult result = providerRouter.generate(ctx, provider);
+            // AEQ-2: annotate each MCQ with quality flags (distinct error types +
+            // almost-right minimum) so the FE can surface and gate weak distractors.
+            aiGenerationService.annotateQuality(result.questions());
             String adminId = auth != null ? auth.getName() : "unknown";
             AIQuotaService.Usage usage = quotaService.snapshot();
             log.info("[AI] Admin {} generated {} questions via {}. Quota: {}/{}",
