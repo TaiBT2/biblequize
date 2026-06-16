@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useNavigate } from 'react-router-dom'
 import { api } from '../../api/client'
 import { queryKeys } from '../../api/queryKeys'
+import { QuestionType } from './questionTypes'
 
 interface ReviewItem {
   id: string
@@ -61,18 +63,24 @@ async function fetchHistory(): Promise<HistoryItem[]> {
 export default function ReviewQueue() {
   const { t } = useTranslation()
   const queryClient = useQueryClient()
+  const navigate = useNavigate()
 
+  // refetchOnMount:'always' so opening the tab shows freshly-saved questions
+  // (e.g. just sent from the AI generator) without a full page reload.
   const { data: items = [], isLoading: itemsLoading } = useQuery({
     queryKey: queryKeys.reviewQueue.pending(),
     queryFn: fetchPending,
+    refetchOnMount: 'always',
   })
   const { data: stats } = useQuery({
     queryKey: queryKeys.reviewQueue.stats(),
     queryFn: fetchStats,
+    refetchOnMount: 'always',
   })
   const { data: history = [] } = useQuery({
     queryKey: queryKeys.reviewQueue.history(),
     queryFn: fetchHistory,
+    refetchOnMount: 'always',
   })
 
   const [expandedId, setExpandedId] = useState<string | null>(null)
@@ -140,7 +148,7 @@ export default function ReviewQueue() {
         <h2 className="text-2xl font-black text-[#e1e1ef]">
           {t('admin.reviewQueue.title')}
         </h2>
-        <p className="text-[#d5c4af]/60 text-sm mt-0.5">{t('admin.reviewQueue.subtitle', { count: stats?.approvalsRequired ?? 2 })}</p>
+        <p className="text-[#d5c4af]/60 text-sm mt-0.5">{t('admin.reviewQueue.subtitle', { count: stats?.approvalsRequired ?? 1 })}</p>
       </div>
 
       {/* Personalized Stats */}
@@ -278,6 +286,13 @@ export default function ReviewQueue() {
                     className="px-5 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 text-sm font-bold rounded-xl transition-colors disabled:opacity-50">
                     {t('admin.reviewQueue.rejectButton')}
                   </button>
+                  <button data-testid="review-edit-btn"
+                    onClick={() => navigate(`/admin/questions/${q.id}/edit?from=review`, { state: { question: { ...q, type: q.type as QuestionType, reviewStatus: 'PENDING' } } })}
+                    disabled={actioningId === q.id}
+                    className="ml-auto px-5 py-2 bg-white/5 hover:bg-white/10 text-[#d5c4af] text-sm font-bold rounded-xl transition-colors disabled:opacity-50 flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-base">edit</span>
+                    {t('admin.reviewQueue.editButton')}
+                  </button>
                 </div>
               )}
             </div>
@@ -312,6 +327,7 @@ export default function ReviewQueue() {
           </div>
         )}
       </div>
+
     </div>
   )
 }

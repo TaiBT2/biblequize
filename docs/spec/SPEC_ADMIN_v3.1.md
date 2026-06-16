@@ -88,12 +88,14 @@ Mọi thao tác state-changing log qua SLF4J `[ADMIN]` prefix; audit DB thông q
 ## 3. Dashboard
 
 ### 3.1 Mục đích
-Tổng quan toàn hệ thống cho admin và content-mod (read-only): KPIs, queue chờ duyệt, action items, coverage tóm tắt.
+Tổng quan toàn hệ thống cho admin và content-mod (read-only): KPIs, queue chờ duyệt, coverage tóm tắt.
+
+> **Scope cut 2026-06-16** (DECISIONS): dashboard trimmed về **chỉ số liệu thật**. Bỏ các panel placeholder chưa có backing data: `actionItems` ("Cần xử lý"), `recentActivity` ("Hoạt động Admin"), và 2 biểu đồ Sessions/User-registration (vốn render đường cong hardcoded, total luôn `—`). Chỉ giữ KPIs + Question Queue (pendingReview) + Coverage.
 
 ### 3.2 Endpoint
 `GET /api/admin/dashboard` — `AdminDashboardController.java:33` — `@PreAuthorize("hasAnyRole('ADMIN', 'CONTENT_MOD')")`.
 
-**Response shape (verified):**
+**Response shape (verified, post-trim):**
 ```json
 {
   "kpis": {
@@ -103,17 +105,7 @@ Tổng quan toàn hệ thống cho admin và content-mod (read-only): KPIs, queu
     "activeSessions": 89,
     "activeUsers": 320
   },
-  "questionQueue": {
-    "pendingReview": 12,
-    "aiGenerated": 0,
-    "communitySubmissions": 0
-  },
-  "actionItems": {
-    "pendingFeedback": 0,
-    "reportedGroups": 0,
-    "flaggedUsers": 0
-  },
-  "recentActivity": [],
+  "questionQueue": { "pendingReview": 12 },
   "coverage": { "booksWithMinPool": 14, "totalBooks": 66 }
 }
 ```
@@ -124,14 +116,12 @@ Tổng quan toàn hệ thống cho admin và content-mod (read-only): KPIs, queu
 - `kpis.pendingReview`: count questions có `reviewStatus = PENDING`
 - `kpis.activeSessions`: count `quiz_sessions` tạo từ đầu ngày hôm nay (best-effort, swallow exception)
 - `kpis.activeUsers`: count users có `lastPlayedAt` trong 7 ngày gần nhất
+- `questionQueue.pendingReview`: cùng count với `kpis.pendingReview` (panel có CTA sang Review Queue)
 - `coverage.booksWithMinPool`: count books thoả `easy ≥ 30 ∧ medium ≥ 20 ∧ hard ≥ 10`
-- `actionItems.*` và `questionQueue.aiGenerated/communitySubmissions`: hard-coded `0` (TODO comments tại `AdminDashboardController.java:67-79`).
-- `recentActivity`: empty list — note "placeholder until audit log standardized".
 
 ### 3.4 Hạn chế / TODO
-- Action items không phản ánh feedback/group/user thực — cần wire `FeedbackRepository.countByStatus(pending)` etc.
-- Recent activity placeholder; cần wire `audit_events`.
-- Frontend Dashboard render đầy đủ (`Dashboard.tsx` dùng TanStack `useQuery` — Q6 confirmed shipped).
+- Mọi field đều backed bằng count thật — không còn placeholder.
+- Nếu sau này cần lại "Cần xử lý" / "Hoạt động Admin": wire `FeedbackRepository.countByStatus(pending)` + `audit_events` (xem §14 Audit, F-api-16) rồi un-hide. Đến lúc đó mới thêm panel trở lại — không ship panel rỗng.
 
 ---
 
@@ -170,6 +160,7 @@ Trường: `id, name, email, avatarUrl, role, currentStreak, longestStreak, last
 - Cấm tự ban (`AdminUserController.java:109`).
 - Set `User.isBanned`, `banReason`, `bannedAt`. Khi unban → null hết các field.
 - Frontend `Users.tsx` mở modal nhập reason trước khi confirm.
+- **Enforcement (ADM-4, 2026-06-16, F-api-17):** ban chặn **cả REST lẫn WebSocket**. `CustomUserDetailsService` set principal `disabled` theo `isBanned`; `JwtAuthenticationFilter` bỏ qua xác thực nếu `!isEnabled()` → endpoint protected trả 401 dù token còn hạn. Trước đây ban chỉ chặn WebSocket (`WebSocketRateLimitInterceptor`). Mobile login đã chặn sẵn (`MobileAuthService`).
 
 ### 4.7 Hạn chế / TODO
 - Không có endpoint xóa user account từ admin (account deletion là user-initiated qua `AccountDeletionService`, audit log riêng).
@@ -188,6 +179,7 @@ Tạo / sửa / xoá / import câu hỏi với guardrails: duplicate detection 3
 |--------|----------|-------|--------|
 | GET | `/api/admin/questions/ping` | Health | `AdminQuestionController.java:43` |
 | GET | `/api/admin/questions` | Paginated + filter (book, difficulty, type, language, reviewStatus, category, search) | `AdminQuestionController.java:49` |
+| GET | `/api/admin/questions/{id}` | 1 câu theo id (404 nếu thiếu) — phục vụ trang edit refresh-safe (QPG-1) | `AdminQuestionController.getOne` |
 | POST | `/api/admin/questions` | Tạo (qua duplicate check) | `AdminQuestionController.java:95` |
 | POST | `/api/admin/questions/check-duplicate` | Real-time check (no save) | `AdminQuestionController.java:138` |
 | PUT | `/api/admin/questions/{id}` | Update | `AdminQuestionController.java:153` |
@@ -216,6 +208,7 @@ Tạo / sửa / xoá / import câu hỏi với guardrails: duplicate detection 3
   - IMP-3: language default `vi` nếu rỗng.
   - IMP-4: normalize tên sách Việt → English canonical (bảng map 66 sách `AdminQuestionController.java:617-656`).
   - IMP-5: 3-layer dedup vs DB (qua `DuplicateDetectionService`) + dedup trong batch (`seenContents` HashSet).
+  - IMP-7 (QQA-2): length-bias warning — nếu đáp án đúng là dài nhất VÀ ≥1.5× độ dài trung bình distractor → warning "dễ đoán" (non-block). Dùng `QuestionQualityChecker.lengthBias`.
 - **dryRun=true** → return `{ dryRun, willImport, errors, warnings, duplicates }` không lưu.
 - **dryRun=false** → lưu batch 100, status `PENDING / isActive=false / approvalsCount=0` → vào Review Queue.
 
@@ -270,12 +263,15 @@ DuplicateStatus        : enum { NO_MATCH, EXACT_MATCH, SAME_VERSE_ANSWER, SIMILA
 ### 7.1 Mục đích
 Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/verse, difficulty, type, language, count) để feed Review Queue.
 
+> **Anti-guessing rules (QQA-1, 2026-06-16):** `AIGenerationService.buildPrompt` ép luật thiết kế distractor cho câu MCQ — 4 đáp án cùng độ dài + cùng dạng ngữ pháp, distractor là near-miss hợp lý (đúng sách/sai chương…), đảo vị trí đáp án đúng, explanation nêu vì sao đáp án sai. Lý do: seed audit 2026-06-16 thấy 80% câu có đáp án đúng dài nhất (~2.4× distractor) → đoán được không cần kiến thức. Ví dụ JSON dùng `correctAnswer: 2` (không neo vị trí A).
+
 ### 7.2 Endpoints
 | Method | Endpoint | Mô tả | Source |
 |--------|----------|-------|--------|
 | GET | `/api/admin/ai/models` | List Gemini models (live API) | `AIAdminController.java:47` |
 | GET | `/api/admin/ai/info` | Provider config + quota usage | `AIAdminController.java:52` |
 | POST | `/api/admin/ai/generate` | Generate questions | `AIAdminController.java:76` |
+| POST | `/api/admin/ai/improve-question` | AI đề xuất viết lại đáp án/distractor (QPG-2). Đi qua **`AIProviderRouter`** (mặc định **DeepSeek/Bedrock** + fallback Gemini/Claude — cùng đường với generate), gửi "improve" qua customPrompt → buildPrompt áp luật distractor. `{aiAvailable, suggestion{options,correctAnswer,explanation,providerUsed}?}`; aiAvailable:false (fail-soft, không tốn quota) khi `!router.hasAvailableProvider()` | `AIAdminController.improveQuestion` |
 
 ### 7.3 Provider support (BL-AD-7, verified 2026-05-12)
 - **DeepSeek V3.2** (default): via AWS Bedrock region `ap-northeast-1` (Tokyo). Config block `biblequiz.ai.bedrock.{enabled,region,model-id,max-tokens,temperature}`. Credentials via `DefaultCredentialsProvider` chain — IAM role in prod, env vars / AWS profile for dev. Conditional bean (`BedrockDeepSeekProvider`); disable with `biblequiz.ai.bedrock.enabled=false`.
@@ -336,7 +332,9 @@ Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/ve
 > Migrations V8/V9 (`question_reviews` table).
 
 ### 8.1 Mục đích
-2 admin (hoặc CONTENT_MOD) phải Approve một câu PENDING trước khi nó vào pool active. Admin từ chối → REJECTED.
+1 admin (hoặc CONTENT_MOD) Approve một câu PENDING là đủ để vào pool active. Admin từ chối → REJECTED.
+
+> **ADM-3 (DECISIONS 2026-06-16):** hạ từ 2 → 1 phê duyệt. Dual-control (2 admin khác nhau) là bất khả thi với team 1 admin → mọi câu import/AI kẹt PENDING vĩnh viễn. Nâng lại khi pool reviewer đủ lớn.
 
 ### 8.2 Endpoints
 | Method | Endpoint | Mô tả | Source |
@@ -348,11 +346,12 @@ Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/ve
 | GET | `/api/admin/review/my-history` | Lịch sử review của admin hiện tại | `QuestionReviewController.java:195` |
 
 ### 8.3 Quy tắc
-- `APPROVALS_REQUIRED = 2` (constant `QuestionReviewController.java:29`).
+- `APPROVALS_REQUIRED = 1` (constant `QuestionReviewController.java`; ADM-3 hạ từ 2).
 - Admin không được approve câu mình đã review (check `existsByQuestionIdAndAdminId`).
-- Approve → `approvalsCount++`; nếu `≥ 2` → `reviewStatus=ACTIVE, isActive=true`.
+- Approve → `approvalsCount++`; nếu `≥ 1` → `reviewStatus=ACTIVE, isActive=true` (tức ngay phê duyệt đầu tiên).
 - Reject → 1 lần duy nhất → `reviewStatus=REJECTED, isActive=false`.
 - Stats: `pendingForMe, totalPending, active, rejected, myActionsToday, approvalsRequired`.
+- **Edit-in-place (QED-2, 2026-06-16):** mỗi câu pending có nút "Sửa" mở **chung** `QuestionEditModal` (giống tab Questions) với `reviewStatus=PENDING` → reviewer sửa-rồi-duyệt tại chỗ; save qua `PUT /api/admin/questions/{id}`. Câu ACTIVE vẫn chỉ sửa ở tab Questions (review queue chỉ chứa PENDING).
 
 ### 8.4 DTO record (review row)
 ```
@@ -723,7 +722,7 @@ Fixture endpoints để E2E tests setup/teardown user state nhanh — bypass gri
 
 | Area | Gap | Severity | Backlog ref |
 |------|-----|----------|-------------|
-| §3 Dashboard | `actionItems` + `recentActivity` hard-coded 0 / empty | medium | wire repos |
+| §3 Dashboard | ~~`actionItems` + `recentActivity` hard-coded 0 / empty~~ **RESOLVED 2026-06-16**: panel placeholder đã gỡ (scope cut, DECISIONS) — dashboard chỉ còn số liệu thật | — | done |
 | §7 AI | `POST /api/admin/ai/generate-explanations` không có (vaporware) | low | spec defer hoặc implement |
 | §7 AI | Quota in-memory, mất khi restart | medium | persist Redis hoặc DB |
 | §7 AI | Auto duplicate-check trên drafts | medium | gọi `DuplicateDetectionService` trong `AIAdminController.generate` |

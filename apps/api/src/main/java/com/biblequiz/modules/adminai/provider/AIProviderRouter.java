@@ -86,6 +86,11 @@ public class AIProviderRouter {
                 + (lastError != null ? lastError.getMessage() : "no providers available"), lastError);
     }
 
+    /** True if at least one provider has credentials and is not in cooldown. */
+    public boolean hasAvailableProvider() {
+        return providersInOrder.stream().anyMatch(AIProvider::isAvailable);
+    }
+
     public Optional<AIProvider> findProvider(String name) {
         return providersInOrder.stream()
                 .filter(p -> p.getProviderName().equalsIgnoreCase(name))

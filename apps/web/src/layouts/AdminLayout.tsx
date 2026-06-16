@@ -1,47 +1,28 @@
 import React from 'react'
-import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
+import { Link, NavLink, Outlet } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '../store/authStore'
+import { setQuizLanguage } from '../utils/quizLanguage'
 
+// Nav trimmed to core + Tier B (ADM-1, DECISIONS 2026-06-16). Hidden Tier C pages
+// (rankings, events, notifications, config, export, question-quality, early-unlock)
+// were placeholder / niche / auto-seeded. Routes still exist (no 404 on bookmark);
+// they're just not surfaced in the sidebar. Un-hide once wired to real data.
 const NAV_ITEMS = [
-  { path: '/admin', end: true, icon: 'dashboard', label: 'Dashboard' },
-  { path: '/admin/users', icon: 'group', label: 'Users' },
-  { path: '/admin/questions', icon: 'quiz', label: 'Questions' },
-  { path: '/admin/ai-generator', icon: 'psychology', label: 'AI Generator' },
-  { path: '/admin/review-queue', icon: 'queue', label: 'Review Queue' },
-  { path: '/admin/feedback', icon: 'chat_bubble', label: 'Feedback' },
-  { path: '/admin/rankings', icon: 'leaderboard', label: 'Seasons & Rankings' },
-  { path: '/admin/events', icon: 'event', label: 'Events & Tournaments' },
-  { path: '/admin/groups', icon: 'groups_2', label: 'Groups' },
-  { path: '/admin/notifications', icon: 'notifications', label: 'Notifications' },
-  { path: '/admin/config', icon: 'settings', label: 'Configuration' },
-  { path: '/admin/export', icon: 'download', label: 'Export Center' },
-  { path: '/admin/question-quality', icon: 'verified', label: 'Question Quality' },
-  { path: '/admin/metrics/early-unlock', icon: 'lock_open', label: 'Early Unlock' },
+  { path: '/admin', end: true, icon: 'dashboard', labelKey: 'admin.nav.dashboard' },
+  { path: '/admin/users', icon: 'group', labelKey: 'admin.nav.users' },
+  { path: '/admin/questions', icon: 'quiz', labelKey: 'admin.nav.questions' },
+  { path: '/admin/ai-generator', icon: 'psychology', labelKey: 'admin.nav.aiGenerator' },
+  { path: '/admin/review-queue', icon: 'queue', labelKey: 'admin.nav.reviewQueue' },
+  { path: '/admin/feedback', icon: 'chat_bubble', labelKey: 'admin.nav.feedback' },
+  { path: '/admin/groups', icon: 'groups_2', labelKey: 'admin.nav.groups' },
 ]
 
-const PAGE_TITLES: Record<string, string> = {
-  '/admin': 'Dashboard',
-  '/admin/users': 'Users',
-  '/admin/questions': 'Questions',
-  '/admin/ai-generator': 'AI Generator',
-  '/admin/review-queue': 'Review Queue',
-  '/admin/feedback': 'Feedback',
-  '/admin/rankings': 'Seasons & Rankings',
-  '/admin/events': 'Events & Tournaments',
-  '/admin/groups': 'Groups',
-  '/admin/notifications': 'Notifications',
-  '/admin/config': 'Configuration',
-  '/admin/export': 'Export Center',
-  '/admin/question-quality': 'Question Quality',
-  '/admin/metrics/early-unlock': 'Early Unlock Metrics',
-}
-
 export default function AdminLayout() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { user, logout } = useAuthStore()
-  const location = useLocation()
-  const pageTitle = PAGE_TITLES[location.pathname] || 'Admin'
+  const lang = i18n.language === 'en' ? 'en' : 'vi'
+  const switchLang = (l: 'vi' | 'en') => { setQuizLanguage(l); i18n.changeLanguage(l) }
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `flex items-center gap-3 px-3 py-2 text-sm transition-colors duration-200 ${
@@ -67,7 +48,7 @@ export default function AdminLayout() {
           {NAV_ITEMS.map(item => (
             <NavLink key={item.path} to={item.path} end={item.end} className={navLinkClass}>
               <span className="material-symbols-outlined text-xl">{item.icon}</span>
-              {item.label}
+              {t(item.labelKey)}
             </NavLink>
           ))}
         </nav>
@@ -78,6 +59,18 @@ export default function AdminLayout() {
             <span className="material-symbols-outlined text-xl">arrow_back</span>
             {t('admin.backToApp')}
           </Link>
+          {/* UI language toggle — admin had no own switcher; mirrors the main app */}
+          <div className="flex items-center gap-1 px-3" data-testid="admin-lang-toggle">
+            <span className="material-symbols-outlined text-base text-[#d5c4af]/50 mr-1">translate</span>
+            {(['vi', 'en'] as const).map(l => (
+              <button key={l} data-testid={`admin-lang-${l}`} onClick={() => switchLang(l)}
+                className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase transition-colors ${
+                  lang === l ? 'bg-[#e8a832] text-[#281900]' : 'text-[#d5c4af]/50 hover:text-[#e8a832]'
+                }`}>
+                {l}
+              </button>
+            ))}
+          </div>
           <div className="flex items-center gap-3 px-3 py-3 bg-[#1d1f29] rounded-lg">
             <div className="w-9 h-9 rounded-full bg-[#e8a832]/20 flex items-center justify-center text-[#e8a832] text-sm font-bold">
               {user?.name?.charAt(0)?.toUpperCase() || 'A'}
@@ -93,36 +86,10 @@ export default function AdminLayout() {
         </div>
       </aside>
 
-      {/* Main content */}
+      {/* Main content — top header bar removed (the sidebar already marks the
+          current page; the bar otherwise held only redundant/placeholder controls). */}
       <main className="ml-[240px] flex-1 flex flex-col min-h-screen bg-[#11131c]">
-        {/* TopNavBar */}
-        <header className="fixed top-0 right-0 h-[56px] w-[calc(100%-240px)] z-10 bg-[#1d1f29] flex justify-between items-center px-8">
-          <div className="flex items-center gap-4">
-            <h1 className="text-lg font-bold tracking-tight text-[#e1e1ef]">{pageTitle}</h1>
-            <div className="flex items-center bg-[#0c0e17]/50 rounded-full px-3 py-1 ml-4 border border-[#504535]/10">
-              <span className="material-symbols-outlined text-[#d5c4af] text-sm">search</span>
-              <input className="bg-transparent border-none focus:ring-0 focus:outline-none text-xs w-48 placeholder:text-[#d5c4af]/40 text-[#e1e1ef] ml-2" placeholder="Search analytics or logs..." type="text" />
-            </div>
-          </div>
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-4 text-[#d5c4af]">
-              <button className="hover:text-[#e8a832] transition-colors">
-                <span className="material-symbols-outlined">history</span>
-              </button>
-              <button className="relative hover:text-[#e8a832] transition-colors">
-                <span className="material-symbols-outlined">notifications</span>
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#e8a832] rounded-full" />
-              </button>
-            </div>
-            <Link to="/admin/questions" className="bg-[#e8a832] hover:brightness-110 transition-all text-[#281900] font-bold text-xs px-4 py-2 rounded flex items-center gap-2">
-              <span className="material-symbols-outlined text-sm">add</span>
-              New Quiz
-            </Link>
-          </div>
-        </header>
-
-        {/* Content Area */}
-        <div className="mt-[56px] p-8 space-y-8 max-w-[1600px] mx-auto w-full">
+        <div className="p-8 space-y-8 max-w-[1600px] mx-auto w-full">
           <Outlet />
         </div>
       </main>

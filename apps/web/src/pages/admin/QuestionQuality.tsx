@@ -25,21 +25,12 @@ export default function QuestionQuality() {
       .finally(() => setIsLoading(false))
   }, [])
 
-  const qualityScore = 72 // TODO: compute from actual data
-
   return (
     <div data-testid="admin-quality-page" className="space-y-6">
       <div><h2 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">{t('admin.questionQuality.title')}</h2><p className="text-[#d5c4af] text-sm mt-1">{t('admin.questionQuality.subtitle')}</p></div>
 
-      {/* Overall Score */}
-      <div className="rounded-lg border border-[#504535]/10 bg-[#1d1f29] p-6 text-center">
-        <div data-testid="quality-overall-score" className={`text-6xl font-black mb-2 ${qualityScore >= 70 ? 'text-emerald-400' : qualityScore >= 40 ? 'text-amber-400' : 'text-red-400'}`}>
-          {qualityScore}
-        </div>
-        <p className="text-[#d5c4af]/40 text-sm">{t('admin.questionQuality.overallScoreLabel')}</p>
-      </div>
-
-      {/* Coverage Map */}
+      {/* Coverage Map — the only real, backed view. ADM-5 removed the hardcoded
+          "overall score" (72) + the 3 "needs API" problem-category placeholders. */}
       <div data-testid="quality-coverage-map" className="rounded-lg border border-[#504535]/10 bg-[#1d1f29] p-5">
         <h3 className="font-medium text-[#e1e1ef] mb-4">{t('admin.questionQuality.coverageTitle')}</h3>
         {isLoading ? <p className="text-[#d5c4af]/40 text-sm">{t('admin.questionQuality.loading')}</p>
@@ -68,22 +59,6 @@ export default function QuestionQuality() {
             })}
           </div>
         )}
-      </div>
-
-      {/* Problem Categories */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="rounded-lg border border-red-500/20 bg-red-500/10 p-4">
-          <h4 className="text-red-400 font-bold text-sm mb-2">{t('admin.questionQuality.problemTooHardTitle')}</h4>
-          <p className="text-[#d5c4af]/40 text-xs">{t('admin.questionQuality.problemNeedsApi', { endpoint: '/api/admin/question-quality/problems' })}</p>
-        </div>
-        <div className="rounded-lg border border-amber-500/20 bg-amber-500/10 p-4">
-          <h4 className="text-[#e8a832] font-bold text-sm mb-2">{t('admin.questionQuality.problemTooEasyTitle')}</h4>
-          <p className="text-[#d5c4af]/40 text-xs">{t('admin.questionQuality.problemNeedsApi', { endpoint: '/api/admin/question-quality/problems' })}</p>
-        </div>
-        <div className="rounded-lg border border-[#d5c4af]/20 bg-[#d5c4af]/10 p-4">
-          <h4 className="text-[#d5c4af] font-bold text-sm mb-2">{t('admin.questionQuality.problemUnusedTitle')}</h4>
-          <p className="text-[#d5c4af]/40 text-xs">{t('admin.questionQuality.problemNeedsApi', { endpoint: '/api/admin/question-quality/unused' })}</p>
-        </div>
       </div>
     </div>
   )

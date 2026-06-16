@@ -4,10 +4,6 @@ import { api } from '../../api/client'
 import KpiCards from './dashboard/KpiCards'
 import CoverageChart from './dashboard/CoverageChart'
 import QuestionQueue from './dashboard/QuestionQueue'
-import ActionItems from './dashboard/ActionItems'
-import ActivityLog from './dashboard/ActivityLog'
-import SessionsChart from './dashboard/SessionsChart'
-import UserRegChart from './dashboard/UserRegChart'
 
 export default function AdminDashboard() {
   const { data, isLoading } = useQuery({
@@ -38,29 +34,14 @@ export default function AdminDashboard() {
         <KpiCards data={data?.kpis ?? null} />
       </div>
 
-      {/* Row 2: Coverage + Action Items / Activity */}
+      {/* Row 2: Coverage + Question queue */}
       <section className="grid grid-cols-1 lg:grid-cols-10 gap-8">
-        <div className="lg:col-span-6">
+        <div className="lg:col-span-7">
           <CoverageChart books={coverageData?.books ?? []} />
         </div>
-        <div className="lg:col-span-4 flex flex-col gap-8">
+        <div className="lg:col-span-3">
           <QuestionQueue data={data?.questionQueue ?? null} />
-          <ActionItems
-            pendingFeedback={data?.actionItems?.pendingFeedback ?? 0}
-            pendingReview={data?.kpis?.pendingReview ?? 0}
-            reportedGroups={data?.actionItems?.reportedGroups ?? 0}
-            flaggedUsers={data?.actionItems?.flaggedUsers ?? 0}
-          />
-          <div data-testid="admin-activity-log">
-            <ActivityLog activities={data?.recentActivity ?? []} />
-          </div>
         </div>
-      </section>
-
-      {/* Row 3: Charts */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <SessionsChart totalSessions={data?.charts?.sessionsTotal} />
-        <UserRegChart totalNewUsers={data?.charts?.newUsers30d} />
       </section>
     </div>
   )

@@ -19,25 +19,32 @@ describe('AdminLayout', () => {
     expect(screen.getByText('Admin Panel')).toBeInTheDocument()
   })
 
-  it('renders all 13 nav items', () => {
+  it('renders the 7 core + Tier B nav items (i18n VI)', () => {
     renderLayout()
-    const items = ['Users', 'Questions', 'AI Generator', 'Review Queue',
-      'Feedback', 'Seasons & Rankings', 'Events & Tournaments', 'Groups',
-      'Configuration', 'Export Center', 'Question Quality']
+    // nav labels are i18n-ized; test runs under VI
+    const items = ['Người dùng', 'Câu hỏi', 'Trình tạo AI', 'Hàng đợi duyệt',
+      'Phản hồi', 'Nhóm']
     for (const item of items) {
       expect(screen.getByText(item)).toBeInTheDocument()
     }
-    // Dashboard appears in both nav and TopNavBar h1
-    expect(screen.getAllByText('Dashboard')).toHaveLength(2)
-    // Notifications appears in both nav and TopNavBar bell icon
-    expect(screen.getAllByText('Notifications')).toHaveLength(1)
+    expect(screen.getByText('Tổng quan')).toBeInTheDocument()
   })
 
-  it('renders TopNavBar with page title and search', () => {
+  it('hides Tier C nav items (ADM-1)', () => {
     renderLayout()
-    expect(screen.getByPlaceholderText('Search analytics or logs...')).toBeInTheDocument()
-    expect(screen.getByText('New Quiz')).toBeInTheDocument()
-    expect(screen.getByText('history')).toBeInTheDocument()
+    const hidden = ['Seasons & Rankings', 'Events & Tournaments', 'Notifications',
+      'Configuration', 'Export Center', 'Question Quality', 'Early Unlock']
+    for (const item of hidden) {
+      expect(screen.queryByText(item)).not.toBeInTheDocument()
+    }
+  })
+
+  it('header has no placeholder controls or redundant CTA', () => {
+    renderLayout()
+    // search box, history/bell, and the New-question CTA were all removed
+    expect(screen.queryByPlaceholderText('Search analytics or logs...')).not.toBeInTheDocument()
+    expect(screen.queryByText('history')).not.toBeInTheDocument()
+    expect(screen.queryByText('Câu hỏi mới')).not.toBeInTheDocument()
   })
 
   it('renders "Về trang chính" link', () => {
@@ -50,6 +57,13 @@ describe('AdminLayout', () => {
     renderLayout()
     expect(screen.getByText('Admin')).toBeInTheDocument()
     expect(screen.getByText('ADMIN')).toBeInTheDocument()
+  })
+
+  it('renders the UI language toggle (VI/EN)', () => {
+    renderLayout()
+    expect(screen.getByTestId('admin-lang-toggle')).toBeInTheDocument()
+    expect(screen.getByTestId('admin-lang-vi')).toBeInTheDocument()
+    expect(screen.getByTestId('admin-lang-en')).toBeInTheDocument()
   })
 
   it('renders logout button', () => {

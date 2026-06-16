@@ -63,23 +63,12 @@ public class AdminDashboardController {
             "activeUsers", activeUsers
         ));
 
-        // Question queue
-        long aiGenerated = 0; // TODO: count AI-generated questions
+        // Question queue — only real, backed metric (pendingReview).
+        // aiGenerated/communitySubmissions placeholders removed 2026-06-16 (DECISIONS:
+        // admin panel trimmed to core). actionItems + recentActivity panels removed too.
         data.put("questionQueue", Map.of(
-            "pendingReview", pendingReview,
-            "aiGenerated", aiGenerated,
-            "communitySubmissions", 0
+            "pendingReview", pendingReview
         ));
-
-        // Action items for "Cần xử lý" panel
-        data.put("actionItems", Map.of(
-            "pendingFeedback", 0, // TODO: feedbackRepository.countByStatus("OPEN")
-            "reportedGroups", 0,  // TODO: groupRepository.countByReported
-            "flaggedUsers", 0     // TODO: userRepository.countByIsFlagged
-        ));
-
-        // Recent activity — placeholder until audit log is standardized
-        data.put("recentActivity", List.of());
 
         // Coverage summary
         try {

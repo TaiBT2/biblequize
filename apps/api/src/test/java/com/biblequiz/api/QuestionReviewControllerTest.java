@@ -75,7 +75,8 @@ class QuestionReviewControllerTest extends BaseControllerTest {
 
     @Test
     @WithMockUser(username = "admin@example.com", roles = {"ADMIN"})
-    void approve_shouldIncrementCount() throws Exception {
+    void approve_firstApproval_shouldActivate() throws Exception {
+        // ADM-3: single approval is enough — first approve flips PENDING → ACTIVE.
         when(questionRepository.findById("q-1")).thenReturn(Optional.of(pendingQuestion));
         when(reviewRepository.existsByQuestionIdAndAdminId("q-1", "admin@example.com")).thenReturn(false);
         when(reviewRepository.save(any(QuestionReview.class))).thenAnswer(inv -> inv.getArgument(0));
@@ -86,25 +87,21 @@ class QuestionReviewControllerTest extends BaseControllerTest {
                         .content("{\"comment\":\"Looks good\"}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.approvalsCount").value(1))
-                .andExpect(jsonPath("$.activated").value(false));
+                .andExpect(jsonPath("$.activated").value(true))
+                .andExpect(jsonPath("$.approvalsRequired").value(1));
     }
 
     @Test
     @WithMockUser(username = "admin@example.com", roles = {"ADMIN"})
-    void approve_secondApproval_shouldActivateQuestion() throws Exception {
-        pendingQuestion.setApprovalsCount(1); // Already has 1 approval
-
+    void approve_onNonPendingQuestion_shouldReturn400() throws Exception {
+        // Once active (after the single approval), re-approving is rejected.
+        pendingQuestion.setReviewStatus(Question.ReviewStatus.ACTIVE);
         when(questionRepository.findById("q-1")).thenReturn(Optional.of(pendingQuestion));
-        when(reviewRepository.existsByQuestionIdAndAdminId("q-1", "admin@example.com")).thenReturn(false);
-        when(reviewRepository.save(any(QuestionReview.class))).thenAnswer(inv -> inv.getArgument(0));
-        when(questionRepository.save(any(Question.class))).thenReturn(pendingQuestion);
 
         mockMvc.perform(post("/api/admin/review/q-1/approve")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{}"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.approvalsCount").value(2))
-                .andExpect(jsonPath("$.activated").value(true));
+                .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -178,6 +175,6 @@ class QuestionReviewControllerTest extends BaseControllerTest {
                 .andExpect(jsonPath("$.pendingForMe").value(5))
                 .andExpect(jsonPath("$.active").value(100))
                 .andExpect(jsonPath("$.rejected").value(3))
-                .andExpect(jsonPath("$.approvalsRequired").value(2));
+                .andExpect(jsonPath("$.approvalsRequired").value(1));
     }
 }

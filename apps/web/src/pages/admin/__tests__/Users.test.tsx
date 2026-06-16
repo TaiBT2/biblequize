@@ -36,7 +36,7 @@ describe('Users Admin', () => {
 
   it('renders role filter', () => {
     render(<UsersAdmin />)
-    expect(screen.getByText('Role (All)')).toBeInTheDocument()
+    expect(screen.getByText('Vai trò (Tất cả)')).toBeInTheDocument()
   })
 
   it('shows role badges', async () => {

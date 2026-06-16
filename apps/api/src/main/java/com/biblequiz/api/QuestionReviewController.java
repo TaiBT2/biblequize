@@ -26,7 +26,11 @@ import java.util.stream.Collectors;
 public class QuestionReviewController {
 
     private static final Logger log = LoggerFactory.getLogger(QuestionReviewController.class);
-    private static final int APPROVALS_REQUIRED = 2;
+    // ADM-3 (DECISIONS 2026-06-16): single approval activates a PENDING question.
+    // Two independent approvals were unreachable for a 1-admin team → every
+    // imported/AI question stuck PENDING forever. Bump back up if the reviewer
+    // pool grows and dual-control is wanted again.
+    private static final int APPROVALS_REQUIRED = 1;
 
     private final QuestionRepository questionRepository;
     private final QuestionReviewRepository reviewRepository;
