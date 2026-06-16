@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { api } from '../../api/client'
+import AdminSelect from '../../components/ui/AdminSelect'
 
 type FeedbackItem = {
   id: string
@@ -134,28 +135,19 @@ export default function FeedbackAdmin() {
 
         {/* Filters */}
         <div className="flex items-center gap-3">
-          <select
-            data-testid="feedback-status-filter"
-            value={statusFilter}
-            onChange={e => setStatusFilter(e.target.value)}
-            className="px-3 py-2 rounded-md bg-white/10 border border-[#d5c4af]/10 text-sm"
-          >
-            <option value="">{t('admin.feedback.filter.allStatus')}</option>
-            <option value="pending">{t('admin.feedback.filter.pending')}</option>
-            <option value="in_progress">{t('admin.feedback.filter.inProgress')}</option>
-            <option value="resolved">{t('admin.feedback.filter.resolved')}</option>
-            <option value="rejected">{t('admin.feedback.filter.rejected')}</option>
-          </select>
-          <select
-            value={typeFilter}
-            onChange={e => setTypeFilter(e.target.value)}
-            className="px-3 py-2 rounded-md bg-white/10 border border-[#d5c4af]/10 text-sm"
-          >
-            <option value="">{t('admin.feedback.filter.allTypes')}</option>
-            <option value="report">{t('admin.feedback.filter.report')}</option>
-            <option value="question">{t('admin.feedback.filter.question')}</option>
-            <option value="general">{t('admin.feedback.filter.general')}</option>
-          </select>
+          <AdminSelect testId="feedback-status-filter" className="w-44" value={statusFilter} onChange={setStatusFilter} options={[
+            { value: '', label: t('admin.feedback.filter.allStatus') },
+            { value: 'pending', label: t('admin.feedback.filter.pending') },
+            { value: 'in_progress', label: t('admin.feedback.filter.inProgress') },
+            { value: 'resolved', label: t('admin.feedback.filter.resolved') },
+            { value: 'rejected', label: t('admin.feedback.filter.rejected') },
+          ]} />
+          <AdminSelect className="w-40" value={typeFilter} onChange={setTypeFilter} options={[
+            { value: '', label: t('admin.feedback.filter.allTypes') },
+            { value: 'report', label: t('admin.feedback.filter.report') },
+            { value: 'question', label: t('admin.feedback.filter.question') },
+            { value: 'general', label: t('admin.feedback.filter.general') },
+          ]} />
           <button
             onClick={() => fetchData()}
             className="px-3 py-2 rounded-md bg-blue-600 hover:bg-blue-500 text-sm"
