@@ -93,6 +93,7 @@ export default function QuestionEditPage() {
       const res = await api.post('/api/admin/ai/improve-question', {
         content: draft.content, options: draft.options, correctAnswer: draft.correctAnswer,
         explanation: draft.explanation, type: draft.type, language: draft.language, difficulty: draft.difficulty,
+        book: draft.book, chapter: draft.chapter, verseStart: draft.verseStart, verseEnd: draft.verseEnd,
       })
       if (res.data?.aiAvailable && res.data.suggestion) setAiSuggestion(res.data.suggestion)
       else setAiMsg(res.data?.message ?? 'AI không khả dụng.')

@@ -1,6 +1,7 @@
 package com.biblequiz.modules.adminai;
 
 import com.biblequiz.api.BaseControllerTest;
+import com.biblequiz.modules.adminai.provider.AIGenerationResult;
 import com.biblequiz.modules.adminai.provider.AIProviderRouter;
 import com.biblequiz.modules.adminai.quota.AIQuotaService;
 
@@ -27,12 +28,13 @@ class AIAdminControllerTest extends BaseControllerTest {
 
     private static final String BODY =
             "{\"content\":\"Q?\",\"options\":[\"a\",\"b\",\"c\",\"d\"],\"correctAnswer\":[0]," +
-            "\"type\":\"multiple_choice_single\",\"language\":\"vi\",\"difficulty\":\"medium\"}";
+            "\"type\":\"multiple_choice_single\",\"language\":\"vi\",\"difficulty\":\"medium\"," +
+            "\"book\":\"Genesis\",\"chapter\":1}";
 
     @Test
     @WithMockUser(username = "admin@example.com", roles = {"ADMIN"})
     void improve_noProvider_returnsAiUnavailable_notError() throws Exception {
-        when(aiGenerationService.hasAnyProvider()).thenReturn(false);
+        when(providerRouter.hasAvailableProvider()).thenReturn(false);
 
         mockMvc.perform(post("/api/admin/ai/improve-question")
                         .contentType(MediaType.APPLICATION_JSON).content(BODY))
@@ -44,16 +46,18 @@ class AIAdminControllerTest extends BaseControllerTest {
     @Test
     @WithMockUser(username = "admin@example.com", roles = {"ADMIN"})
     void improve_withProvider_returnsSuggestion() throws Exception {
-        when(aiGenerationService.hasAnyProvider()).thenReturn(true);
+        when(providerRouter.hasAvailableProvider()).thenReturn(true);
         when(quotaService.tryAcquire(1)).thenReturn(true);
-        when(aiGenerationService.improveQuestion(any(), any(), anyInt(), any(), any(), any()))
-                .thenReturn(Map.of("options", List.of("w", "x", "y", "z"), "correctAnswer", 2));
+        when(providerRouter.generate(any(), any())).thenReturn(new AIGenerationResult(
+                List.of(Map.of("options", List.of("w", "x", "y", "z"), "correctAnswer", 2, "explanation", "e")),
+                0, 0, "deepseek"));
 
         mockMvc.perform(post("/api/admin/ai/improve-question")
                         .contentType(MediaType.APPLICATION_JSON).content(BODY))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.aiAvailable").value(true))
-                .andExpect(jsonPath("$.suggestion.correctAnswer").value(2));
+                .andExpect(jsonPath("$.suggestion.correctAnswer").value(2))
+                .andExpect(jsonPath("$.suggestion.providerUsed").value("deepseek"));
     }
 
     @Test

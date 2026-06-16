@@ -271,7 +271,7 @@ Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/ve
 | GET | `/api/admin/ai/models` | List Gemini models (live API) | `AIAdminController.java:47` |
 | GET | `/api/admin/ai/info` | Provider config + quota usage | `AIAdminController.java:52` |
 | POST | `/api/admin/ai/generate` | Generate questions | `AIAdminController.java:76` |
-| POST | `/api/admin/ai/improve-question` | AI đề xuất viết lại đáp án/distractor (QPG-2). `{aiAvailable, suggestion?}`; aiAvailable:false khi chưa cấu hình provider (fail-soft, không tốn quota) | `AIAdminController.improveQuestion` |
+| POST | `/api/admin/ai/improve-question` | AI đề xuất viết lại đáp án/distractor (QPG-2). Đi qua **`AIProviderRouter`** (mặc định **DeepSeek/Bedrock** + fallback Gemini/Claude — cùng đường với generate), gửi "improve" qua customPrompt → buildPrompt áp luật distractor. `{aiAvailable, suggestion{options,correctAnswer,explanation,providerUsed}?}`; aiAvailable:false (fail-soft, không tốn quota) khi `!router.hasAvailableProvider()` | `AIAdminController.improveQuestion` |
 
 ### 7.3 Provider support (BL-AD-7, verified 2026-05-12)
 - **DeepSeek V3.2** (default): via AWS Bedrock region `ap-northeast-1` (Tokyo). Config block `biblequiz.ai.bedrock.{enabled,region,model-id,max-tokens,temperature}`. Credentials via `DefaultCredentialsProvider` chain — IAM role in prod, env vars / AWS profile for dev. Conditional bean (`BedrockDeepSeekProvider`); disable with `biblequiz.ai.bedrock.enabled=false`.

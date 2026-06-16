@@ -10,5 +10,9 @@ public record ImproveQuestionRequest(
         String explanation,
         String type,
         String language,
-        String difficulty
+        String difficulty,
+        String book,
+        Integer chapter,
+        Integer verseStart,
+        Integer verseEnd
 ) {}

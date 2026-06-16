@@ -165,10 +165,13 @@ public class AIAdminController {
      */
     @PostMapping("/improve-question")
     public ResponseEntity<?> improveQuestion(@RequestBody ImproveQuestionRequest req) {
-        if (!aiGenerationService.hasAnyProvider()) {
+        // Goes through AIProviderRouter → default DeepSeek (Bedrock) + Gemini/Claude
+        // fallback, same as generation. Improve = "regenerate this one question with
+        // better answers", carried as a customPrompt so buildPrompt's distractor rules apply.
+        if (!providerRouter.hasAvailableProvider()) {
             return ResponseEntity.ok(Map.of(
                     "aiAvailable", false,
-                    "message", "Chưa cấu hình AI provider (Gemini/Claude) — chỉ có đánh giá heuristic."));
+                    "message", "Chưa cấu hình AI provider — chỉ có đánh giá heuristic."));
         }
         if (!quotaService.tryAcquire(1)) {
             AIQuotaService.Usage usage = quotaService.snapshot();
@@ -176,18 +179,52 @@ public class AIAdminController {
                     "error", "QUOTA_EXCEEDED",
                     "message", "Đã vượt quota " + usage.limit() + " câu/ngày."));
         }
+
         int correctIdx = (req.correctAnswer() != null && !req.correctAnswer().isEmpty()
                 && req.correctAnswer().get(0) != null) ? req.correctAnswer().get(0) : 0;
-        Map<String, Object> suggestion = aiGenerationService.improveQuestion(
-                req.content(), req.options(), correctIdx, req.explanation(),
-                req.language() != null ? req.language() : "vi",
-                req.difficulty() != null ? req.difficulty() : "medium");
-        if (suggestion == null) {
-            return ResponseEntity.ok(Map.of(
-                    "aiAvailable", false,
-                    "message", "AI không trả về kết quả hợp lệ — thử lại."));
+        String correctText = (req.options() != null && correctIdx >= 0 && correctIdx < req.options().size())
+                ? req.options().get(correctIdx) : "";
+        String type       = req.type() != null ? req.type() : "multiple_choice_single";
+        String language   = req.language() != null ? req.language() : "vi";
+        String difficulty = req.difficulty() != null ? req.difficulty() : "medium";
+        String book       = (req.book() != null && !req.book().isBlank()) ? req.book() : "Genesis";
+        int chapter       = req.chapter()    != null ? req.chapter()    : 1;
+        int verseStart    = req.verseStart() != null ? req.verseStart() : 1;
+        int verseEnd      = req.verseEnd()   != null ? req.verseEnd()   : verseStart;
+
+        boolean isVi = "vi".equals(language);
+        String directive = (isVi
+                ? "ĐÂY LÀ VIỆC CẢI THIỆN MỘT CÂU HỎI ĐÃ CÓ — KHÔNG tạo câu mới khác chủ đề.\n"
+                  + "Giữ NGUYÊN nội dung câu hỏi: \"" + req.content() + "\"\n"
+                  + "Giữ NGUYÊN Ý NGHĨA đáp án đúng: \"" + correctText + "\" (có thể viết lại cho cân bằng độ dài).\n"
+                  + "4 đáp án hiện tại: " + req.options() + "\n"
+                  + "Hãy viết lại 4 đáp án theo đúng các quy tắc chất lượng ở trên (cân bằng độ dài, distractor hợp lý, đảo vị trí)."
+                : "THIS IS IMPROVING AN EXISTING QUESTION — do NOT invent a different one.\n"
+                  + "Keep the question content: \"" + req.content() + "\"\n"
+                  + "Keep the MEANING of the correct answer: \"" + correctText + "\" (may reword for balanced length).\n"
+                  + "Current 4 options: " + req.options() + "\n"
+                  + "Rewrite the 4 options following the quality rules above (balanced length, plausible distractors, shuffled position).");
+
+        AIGenerationContext ctx = new AIGenerationContext(
+                book, chapter, chapter, verseStart, verseEnd,
+                difficulty, type, language, 1, null, directive, null);
+
+        try {
+            AIGenerationResult result = providerRouter.generate(ctx, null);
+            if (result.questions() == null || result.questions().isEmpty()) {
+                return ResponseEntity.ok(Map.of("aiAvailable", false, "message", "AI không trả về kết quả — thử lại."));
+            }
+            Map<String, Object> q = result.questions().get(0);
+            Map<String, Object> suggestion = new LinkedHashMap<>();
+            suggestion.put("options", q.get("options"));
+            suggestion.put("correctAnswer", q.get("correctAnswer"));
+            suggestion.put("explanation", q.get("explanation"));
+            suggestion.put("providerUsed", result.providerUsed());
+            return ResponseEntity.ok(Map.of("aiAvailable", true, "suggestion", suggestion));
+        } catch (AIProviderException e) {
+            log.warn("[AI][improve] all providers failed: {}", e.getMessage());
+            return ResponseEntity.ok(Map.of("aiAvailable", false, "message", "AI provider không khả dụng."));
         }
-        return ResponseEntity.ok(Map.of("aiAvailable", true, "suggestion", suggestion));
     }
 
     private Map<String, Object> buildMockQuestion(
