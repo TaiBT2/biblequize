@@ -100,10 +100,6 @@ export default function UsersAdmin() {
           { value: 'active', label: t('admin.users.statusActive') },
           { value: 'banned', label: t('admin.users.statusBanned') },
         ]} />
-        <button className="h-10 px-4 border border-[#504535]/20 flex items-center gap-2 text-[#e8a832] font-medium text-sm hover:bg-[#32343e] transition-colors rounded">
-          <span className="material-symbols-outlined text-sm">download</span>
-          {t('admin.users.exportCsv')}
-        </button>
       </div>
 
       {/* Table */}
