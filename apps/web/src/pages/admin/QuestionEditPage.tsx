@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams, useSearchParams, useLocation, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { api } from '../../api/client'
+import { api, aiApi } from '../../api/client'
 import QuestionFields from './QuestionFields'
 import {
   Question, QuestionType, Difficulty, DuplicateWarning,
@@ -100,7 +100,7 @@ export default function QuestionEditPage() {
     if (!draft) return
     setAiLoading(true); setAiMsg(null); setAiSuggestion(null)
     try {
-      const res = await api.post('/api/admin/ai/improve-question', {
+      const res = await aiApi.post('/api/admin/ai/improve-question', {
         content: draft.content, options: draft.options, correctAnswer: draft.correctAnswer,
         explanation: draft.explanation, type: draft.type, language: draft.language, difficulty: draft.difficulty,
         book: draft.book, chapter: draft.chapter, verseStart: draft.verseStart, verseEnd: draft.verseEnd,
