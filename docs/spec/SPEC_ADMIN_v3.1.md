@@ -354,6 +354,7 @@ Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/ve
 - Admin không được approve câu mình đã review (check `existsByQuestionIdAndAdminId`).
 - Approve → `approvalsCount++`; nếu `≥ 1` → `reviewStatus=ACTIVE, isActive=true` (tức ngay phê duyệt đầu tiên).
 - Reject → 1 lần duy nhất → `reviewStatus=REJECTED, isActive=false`.
+- **Revert về PENDING (QED-3, 2026-06-16):** sửa câu ở tab Questions đổi `reviewStatus` ACTIVE/REJECTED → PENDING sẽ mở chu kỳ duyệt mới: `approvalsCount=0` + xoá `QuestionReview` cũ (`AdminQuestionController.update`, `@Transactional`). Tránh tình trạng câu vào lại queue nhưng vô hình ở `pendingForMe` vì review của người duyệt trước vẫn còn.
 - Stats: `pendingForMe, totalPending, active, rejected, myActionsToday, approvalsRequired`.
 - **Edit-in-place (QED-2, 2026-06-16):** mỗi câu pending có nút "Sửa" mở **chung** `QuestionEditModal` (giống tab Questions) với `reviewStatus=PENDING` → reviewer sửa-rồi-duyệt tại chỗ; save qua `PUT /api/admin/questions/{id}`. Câu ACTIVE vẫn chỉ sửa ở tab Questions (review queue chỉ chứa PENDING).
 
