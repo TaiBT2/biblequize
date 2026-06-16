@@ -26,8 +26,8 @@ describe('AdminLayout', () => {
     for (const item of items) {
       expect(screen.getByText(item)).toBeInTheDocument()
     }
-    // Dashboard appears in both nav and TopNavBar h1
-    expect(screen.getAllByText('Dashboard')).toHaveLength(2)
+    // Dashboard now appears only in the nav (header title bar removed)
+    expect(screen.getAllByText('Dashboard')).toHaveLength(1)
   })
 
   it('hides Tier C nav items (ADM-1)', () => {

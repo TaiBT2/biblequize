@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
+import { Link, NavLink, Outlet } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '../store/authStore'
 import { setQuizLanguage } from '../utils/quizLanguage'
@@ -18,26 +18,9 @@ const NAV_ITEMS = [
   { path: '/admin/groups', icon: 'groups_2', label: 'Groups' },
 ]
 
-const PAGE_TITLES: Record<string, string> = {
-  '/admin': 'Dashboard',
-  '/admin/users': 'Users',
-  '/admin/questions': 'Questions',
-  '/admin/ai-generator': 'AI Generator',
-  '/admin/review-queue': 'Review Queue',
-  '/admin/feedback': 'Feedback',
-  '/admin/rankings': 'Seasons & Rankings',
-  '/admin/events': 'Events & Tournaments',
-  '/admin/groups': 'Groups',
-  '/admin/notifications': 'Notifications',
-  '/admin/question-quality': 'Question Quality',
-  '/admin/metrics/early-unlock': 'Early Unlock Metrics',
-}
-
 export default function AdminLayout() {
   const { t, i18n } = useTranslation()
   const { user, logout } = useAuthStore()
-  const location = useLocation()
-  const pageTitle = PAGE_TITLES[location.pathname] || 'Admin'
   const lang = i18n.language === 'en' ? 'en' : 'vi'
   const switchLang = (l: 'vi' | 'en') => { setQuizLanguage(l); i18n.changeLanguage(l) }
 
@@ -103,17 +86,10 @@ export default function AdminLayout() {
         </div>
       </aside>
 
-      {/* Main content */}
+      {/* Main content — top header bar removed (the sidebar already marks the
+          current page; the bar otherwise held only redundant/placeholder controls). */}
       <main className="ml-[240px] flex-1 flex flex-col min-h-screen bg-[#11131c]">
-        {/* TopNavBar */}
-        <header className="fixed top-0 right-0 h-[56px] w-[calc(100%-240px)] z-10 bg-[#1d1f29] flex justify-between items-center px-8">
-          <h1 className="text-lg font-bold tracking-tight text-[#e1e1ef]">{pageTitle}</h1>
-          {/* Header CTA removed — each page owns its own create action (e.g. Questions
-              has its '+ Tạo câu hỏi' button); history/bell/search placeholders dropped too. */}
-        </header>
-
-        {/* Content Area */}
-        <div className="mt-[56px] p-8 space-y-8 max-w-[1600px] mx-auto w-full">
+        <div className="p-8 space-y-8 max-w-[1600px] mx-auto w-full">
           <Outlet />
         </div>
       </main>
