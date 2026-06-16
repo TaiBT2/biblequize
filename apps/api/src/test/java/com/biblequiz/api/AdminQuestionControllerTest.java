@@ -111,6 +111,26 @@ class AdminQuestionControllerTest extends BaseControllerTest {
                 .andExpect(status().isOk());
     }
 
+    // ── GET /api/admin/questions/{id} (QPG-1) ────────────────────────────────
+
+    @Test
+    @WithMockUser(username = "admin@example.com", roles = {"ADMIN"})
+    void getOne_found_shouldReturn200() throws Exception {
+        when(questionRepository.findById("q-1")).thenReturn(java.util.Optional.of(sampleQuestion));
+        mockMvc.perform(get("/api/admin/questions/q-1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value("q-1"))
+                .andExpect(jsonPath("$.content").value("Test question?"));
+    }
+
+    @Test
+    @WithMockUser(username = "admin@example.com", roles = {"ADMIN"})
+    void getOne_missing_shouldReturn404() throws Exception {
+        when(questionRepository.findById("nope")).thenReturn(java.util.Optional.empty());
+        mockMvc.perform(get("/api/admin/questions/nope"))
+                .andExpect(status().isNotFound());
+    }
+
     // ── POST /api/admin/questions ────────────────────────────────────────────
 
     @Test

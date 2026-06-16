@@ -179,6 +179,7 @@ Tạo / sửa / xoá / import câu hỏi với guardrails: duplicate detection 3
 |--------|----------|-------|--------|
 | GET | `/api/admin/questions/ping` | Health | `AdminQuestionController.java:43` |
 | GET | `/api/admin/questions` | Paginated + filter (book, difficulty, type, language, reviewStatus, category, search) | `AdminQuestionController.java:49` |
+| GET | `/api/admin/questions/{id}` | 1 câu theo id (404 nếu thiếu) — phục vụ trang edit refresh-safe (QPG-1) | `AdminQuestionController.getOne` |
 | POST | `/api/admin/questions` | Tạo (qua duplicate check) | `AdminQuestionController.java:95` |
 | POST | `/api/admin/questions/check-duplicate` | Real-time check (no save) | `AdminQuestionController.java:138` |
 | PUT | `/api/admin/questions/{id}` | Update | `AdminQuestionController.java:153` |

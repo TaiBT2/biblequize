@@ -93,6 +93,14 @@ public class AdminQuestionController {
         ));
     }
 
+    /** GET /api/admin/questions/{id} — single question for the edit page (refresh-safe). */
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getOne(@PathVariable String id) {
+        return questionRepository.findById(id)
+                .<ResponseEntity<?>>map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     public ResponseEntity<?> create(
             @RequestBody Question q,
