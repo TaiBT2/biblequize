@@ -337,6 +337,8 @@ Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/ve
 1 admin (hoặc CONTENT_MOD) Approve một câu PENDING là đủ để vào pool active. Admin từ chối → REJECTED.
 
 > **ADM-3 (DECISIONS 2026-06-16):** hạ từ 2 → 1 phê duyệt. Dual-control (2 admin khác nhau) là bất khả thi với team 1 admin → mọi câu import/AI kẹt PENDING vĩnh viễn. Nâng lại khi pool reviewer đủ lớn.
+>
+> **Backfill (V67, 2026-06-16):** việc hạ ngưỡng chỉ áp dụng cho lượt duyệt mới — các câu đã được duyệt 1 lần (`approvalsCount≥1`) thời ngưỡng=2 vẫn kẹt PENDING (admin duy nhất không thể duyệt lại câu mình đã review). Migration `V67__activate_single_approval_pending.sql` backfill chúng sang `ACTIVE` (idempotent) để khớp luật 1-duyệt hiện hành.
 
 ### 8.2 Endpoints
 | Method | Endpoint | Mô tả | Source |

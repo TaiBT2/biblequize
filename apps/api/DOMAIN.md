@@ -7,7 +7,7 @@
 >
 > **Nhãn tin cậy:** `[OBS]` quan sát trực tiếp trong code (file + symbol) · `[CANDIDATE]` suy luận / chỉ có ở spec ·
 > `[?]` chưa rõ → Open Questions · `[✔]` đã xác nhận (người/log).
-> Draft 2026-06-11, branch `feat/liturgical-coverage`. **LOCAL-ONLY — không commit.**
+> Draft 2026-06-11 (admin §8 thêm 2026-06-16), branch `feat/liturgical-coverage`. **Git-tracked** (chia sẻ team từ commit 5170ada).
 >
 > ⚠️ Số dòng dễ trôi; khi nav hãy bám theo **symbol/method** (Serena project `api`).
 
@@ -248,7 +248,65 @@ Code: `modules/daily/` (`DailyChallengeService` + `DailyCompletion` entity) + `a
 
 ---
 
-## 8. Findings / Risks
+## 8. ⭐ Admin panel & content ops [OBS]
+
+> Bề mặt quản trị. Ý đồ canonical: [SPEC_ADMIN_v3.1](../../docs/spec/SPEC_USER_v3.1.md → SPEC_ADMIN).
+> Đào sâu 2026-06-16. Mọi controller dưới `/api/admin/**` + AI generator nằm trong `modules/adminai`.
+
+### 8.1 Mô hình quyền & cổng vào [OBS]
+- `[OBS]` **`/api/admin/**` KHÔNG được match riêng trong `SecurityConfig`** — nó rơi vào `anyRequest().authenticated()`. Cổng ADMIN **chỉ** là method-level `@PreAuthorize` (`@EnableMethodSecurity(prePostEnabled=true)`). Tức bất kỳ user đăng nhập nào cũng *qua* được lớp URL; chặn thật nằm ở annotation từng controller.
+- `[OBS]` **Authority = một chuỗi role duy nhất** `"ROLE_" + user.getRole()` (`CustomUserDetailsService`, `AuthService`, `UserService`, `UserDetailsService` của mobile). `User.role` là cột String đơn (không phải set). **Không có `RoleHierarchy` bean** → `ADMIN` KHÔNG bao hàm `CONTENT_MOD`; controller cho cả hai phải liệt kê tường minh `hasAnyRole('ADMIN','CONTENT_MOD')`.
+- `[OBS]` **`CONTENT_MOD` là role "mồ côi"**: chỉ xuất hiện trong 4 annotation (`AdminDashboard`, `AdminMetrics`, `QuestionReview`, `Feedback`). Không seed/OAuth nào gán nó — code chỉ set `USER`/`ADMIN`. Chỉ đạt được nếu admin **tự** đổi role qua `PATCH /api/admin/users/{id}/role` (nhận role string tuỳ ý, uppercase, không validate enum) → **F-api-20**.
+- `[OBS]` **Tạo admin** 3 đường: (a) `AdminBootstrapRunner` (CommandLineRunner `@Order(20)`) promote email trong `app.admin-emails` lúc boot; (b) `OAuth2SuccessHandler`/`OAuth2Service` set ADMIN nếu email ∈ admin-emails ngay khi đăng nhập; (c) `POST /api/me/promote-admin` (`hasRole('ADMIN')`). Bootstrap-only: `POST /api/me/bootstrap-admin` (**permitAll**, rate-limit bypass) — tạo admin **đầu tiên**, tự khoá: 409 nếu đã tồn tại bất kỳ ADMIN, 404 nếu email chưa là user → **F-api-19**.
+
+### 8.2 Catalog controller [OBS]
+| Path | Role | Vai trò |
+|---|---|---|
+| `/api/admin/questions` | ADMIN | CRUD + bulkDelete + import + check-duplicate + coverage (`AdminQuestionController`) |
+| `/api/admin/review` | ADMIN, CONTENT_MOD | Hàng đợi duyệt 2-phê-duyệt (`QuestionReviewController`) |
+| `/api/admin/users` | ADMIN | list/get/changeRole/ban (`AdminUserController`) |
+| `/api/admin/groups` | ADMIN | list/lock/unlock/soft-delete (`AdminGroupController`) |
+| `/api/admin/seasons` | ADMIN | CRUD mùa (`AdminSeasonController`) + override weekly pairing (`AdminSeasonPairingController`, endpoint-only, no UI) |
+| `/api/admin/audit` | ADMIN | đọc audit event (`AdminAuditController`) |
+| `/api/admin/dashboard` | ADMIN, CONTENT_MOD | KPI tổng hợp (`AdminDashboardController`) |
+| `/api/admin/metrics` | ADMIN, CONTENT_MOD | metrics early-unlock (`AdminMetricsController`) |
+| `/api/admin/ai` | ADMIN | sinh câu hỏi AI + quota (`AIAdminController`) |
+| `/api/admin/test` | ADMIN · **`@Profile{dev,staging,docker}`** | fixture E2E, NEVER prod (`AdminTestController`) |
+| `/api/admin/seed` (qua `TestDataSeedController`) | ADMIN | seed/clear test data |
+
+### 8.3 Vòng đời câu hỏi & duyệt (review) [OBS]
+- `[OBS]` `Question.reviewStatus ∈ {PENDING, ACTIVE, REJECTED}` + `approvalsCount`. **1 phê duyệt mở câu** (`APPROVALS_REQUIRED=1`, `QuestionReviewController`; hạ từ 2→1 theo ADM-3 / DECISIONS 2026-06-16 vì team 1-admin không bao giờ đạt 2 duyệt độc lập → câu kẹt PENDING). Mỗi admin chỉ duyệt 1 lần/câu (`existsByQuestionIdAndAdminId`); danh sách pending loại trừ câu mình đã duyệt. Migration **V67** backfill các câu PENDING cũ có `approvalsCount≥1` (đã duyệt thời ngưỡng=2) sang ACTIVE để khỏi kẹt cứng.
+- `[OBS]` **Đường tắt của admin tạo trực tiếp** (`POST /questions`): `pending=false` (mặc định) → set ngay `ACTIVE` + `approvalsCount=2` (bỏ qua review). `pending=true` → vào hàng đợi PENDING. **Import luôn vào PENDING** (`approvalsCount=0`).
+- `[OBS]` Approve đủ 1 (`APPROVALS_REQUIRED=1`) → `ACTIVE` + `isActive=true`. Reject (bất kỳ lúc nào nếu chưa ACTIVE) → `REJECTED` + `isActive=false`. Update mà set `reviewStatus=ACTIVE` cũng tự `isActive=true` + nâng `approvalsCount≥2` (sentinel "fully approved").
+- `[OBS]` ⭐ **Bible Basics safeguard** (`assertBibleBasicsSafeguard`): chặn mọi delete / bulk-delete / chuyển active→inactive làm pool `bible_basics` active của **một ngôn ngữ** tụt dưới `BasicQuizService.TOTAL_QUESTIONS` (=10). Lý do: `/api/basic-quiz/questions` cần đúng 10 câu active/ngôn ngữ; thiếu sẽ 5xx mọi lượt Bible Basics → **vỡ cổng mở Ranked** cho user mới (§3.3). Ném `BusinessLogicException` → 400.
+
+### 8.4 Import pipeline (JSON/CSV) [OBS]
+- `[OBS]` `POST /questions/import` (multipart): nhận `.json`/`.csv`, cờ `dryRun` + `skipDuplicates`. Validate IMP-1..6 mỗi record:
+  - IMP-1 thiếu `explanation` → **warning** (vẫn nhập); IMP-2 MCQ cần ≥2 option + `correctAnswer` trong range, `true_false` ép `["Đúng","Sai"]` + answer ∈{0,1}; IMP-3 default `language=vi`; IMP-4 normalize tên sách VN→canonical (bảng `VI_BOOK_MAP` 66 sách); IMP-5 dedup 3 lớp (trùng trong file → warn; EXACT_MATCH trong DB → **BLOCK bỏ record**; SAME_VERSE/SIMILAR → warn, bỏ nếu `skipDuplicates`); IMP-6 batch save 100.
+  - `[OBS]` `dryRun` trả `willImport/errors/warnings/duplicates`, không ghi DB. Bản thật: lưu batch, tất cả vào PENDING.
+
+### 8.5 Duplicate detection (3 lớp) [OBS]
+- `[OBS]` `DuplicateDetectionService.checkDuplicate` (dùng bởi create + import + endpoint `check-duplicate`): **Layer 1** content giống hệt sau normalize → `EXACT_MATCH` + `blocked=true`; **Layer 2** cùng book+chapter+verseStart+language + cùng `correctAnswerText` (normalize) → `SAME_VERSE_ANSWER` (90%, không block); **Layer 3** fuzzy similarity ≥0.75 trong cùng book+chapter → `SIMILAR_CONTENT` (không block). Chỉ EXACT chặn cứng; phần còn lại để admin quyết (`forceCreate=true` để vượt POSSIBLE_DUPLICATE).
+
+### 8.6 AI generator (`modules/adminai`) [OBS]
+- `[OBS]` `POST /api/admin/ai/generate` → `AIProviderRouter` chọn provider (deepseek / gemini / claude; `info` báo cái nào configured + default). **Quota dùng chung toàn cục 200 câu/ngày** (`AIQuotaService`, key Redis `ai:quota:{date-UTC}` TTL 25h, reset ngầm theo ngày) — chia sẻ giữa admin endpoint **và** group-leader (decision D5). Vượt → 429 `QUOTA_EXCEEDED`.
+- `[OBS]` **Fallback mock**: nếu router báo "no providers available" → trả câu mô phỏng (`buildMockQuestion`, explanation gắn "⚠️ dữ liệu mô phỏng") để giữ UX dev. Câu AI sinh ra chưa lưu DB — chỉ trả về cho admin review/sửa rồi mới `POST /questions`.
+- `[CANDIDATE]` `quotaService.tryAcquire` **fail-open** khi Redis lỗi (return true) — chủ ý cho dev/CI, nhưng ở prod = mất enforce quota trong lúc Redis down → **F-api-21**.
+
+### 8.7 Moderation user / group [OBS]
+- `[OBS]` **User**: `changeRole` (chặn tự đổi role mình), `ban` (chặn tự ban; cần `reason ≥10 ký tự`; set `isBanned/banReason/bannedAt`). **Group**: `lock`/`unlock` (`reason ≥10`), soft-delete (`deletedAt`). Tất cả chỉ `log.info("[ADMIN]...")` — **không** ghi `AuditEvent` → **F-api-18**.
+- `[OBS]` **Ban chỉ chặn WebSocket**: `WebSocketRateLimitInterceptor.isBanned` từ chối STOMP CONNECT. `CustomUserDetailsService` **không** set `disabled` theo `isBanned` → JWT của user bị ban vẫn truy cập REST bình thường tới khi token hết hạn → **F-api-17**.
+
+### 8.8 Audit log — ⚠️ verify-gỡ-oan (thực ra gần như rỗng) [OBS]
+- `[OBS]` `AuditService.logAdminAction` **chỉ được gọi từ MỘT chỗ**: `UserController.promoteToAdmin` (4 nhánh success/failed/already/error). `logUserAction` **không có caller nào**. Mọi mutation admin khác (ban, đổi role, lock/unlock/xoá group, CRUD/import/delete câu hỏi, mùa) **không** ghi `audit_events`.
+- `[OBS]` Hệ quả: `AdminAuditController` + `AdminDashboardController.recentActivity` (đã hardcode `List.of()` "until audit log is standardized") hiển thị bảng audit gần như trống — chỉ có log promote-admin. **Không phải "audit log đầy đủ"** như tên gợi ý → **F-api-16**. (Filter `?action=` của controller còn là dead code → **F-api-22**.)
+
+### 8.9 Test panel (dev-only) [OBS]
+- `[OBS]` `AdminTestController` (`@Profile{dev,staging,docker}`, KHÔNG prod) + `TestDataSeedController`: set-tier / seed-points (xoá sạch UserDailyProgress rồi chèn 1 dòng = totalPoints chính xác) / refill-energy / set-streak / set-state / set-mission-state / daily-complete / seed-group / seed-tournament / seed-review-queue / seed-feedback / seed-ranked-progress. Mọi action log `[TEST_PANEL]` WARN. Dùng giờ **UTC** (`LocalDate.now(ZoneOffset.UTC)`) cho UserDailyProgress — lệch nhẹ so với GameClock VN (§2), chấp nhận được vì chỉ là fixture.
+
+---
+
+## 9. Findings / Risks
 
 - **F-api-1 ⚪ GỠ OAN 2026-06-12 (từng gắn 🔴 nhầm)** — verify bằng DB thật: `lastUpdatedAt` (`@UpdateTimestamp`) lưu **UTC** (chơi 11:55 VN → DB ghi 04:55), cùng đồng hồ với `LocalDateTime.now(ZoneOffset.UTC)` trong `recoverEnergy()` → phép đo regen **tự nhất quán, không lệch**. Reset nửa đêm VN cũng không đi qua regen — dòng `UserDailyProgress` mới theo `(user, ngày-VN)` cấp 100 lives ngay khi `GameClock.today()` lật. Kịch bản "khóa sớm 7 tiếng" không xảy ra. **Nợ còn lại (hardening)**: luồng trộn 3 nguồn giờ (@UpdateTimestamp / now(UTC) hardcode / GameClock VN) đang *tình cờ* khớp — đổi JVM TZ hoặc JDBC serverTimezone sẽ làm regen lệch −7h im lặng (elapsed âm → không hồi). Fix rẻ khi tiện: chuyển cặp đo sang `Instant`.
 - **F-api-2 🟡 Reset ngày là lazy** — `UserDailyProgress` tạo ở `getRankedStatus()`. `[?]` Nếu client không bao giờ gọi endpoint status thì cap/lives có bị kẹt? Xác nhận không entry nào khác tạo dòng này.
@@ -262,8 +320,15 @@ Code: `modules/daily/` (`DailyChallengeService` + `DailyCompletion` entity) + `a
 - **F-api-10 ⚪ Group leaderboard không cache** — tính lại mỗi request; chậm khi gần 200 member.
 - **F-api-11 🟡 Snapshot scheduled-quiz treo FK** — `Question` bị xoá để lại ID mồ côi; submission phải null-guard (chưa verify).
 - **F-api-12 ✔ FIXED 2026-06-12 (V66)** — prestige chuyển từ tẩy sổ cái sang offset (DECISIONS 2026-06-12): `prestige_xp_offset` + `getTotalPoints = max(0, ledger − offset)`; leaderboard/lịch sử bất biến.
+- **F-api-16 🟡 Audit log gần như rỗng** — chỉ `promote-admin` ghi `AuditEvent`; mọi mutation admin khác (ban/role/lock/xoá group, CRUD câu hỏi) chỉ log slf4j. `AdminAuditController`/dashboard `recentActivity` surface bảng gần trống. → wire `AuditService.logAdminAction` vào các mutation. (§8.8)
+- **F-api-17 ✔ FIXED 2026-06-16 (ADM-4)** — `CustomUserDetailsService` set principal `disabled` theo `isBanned`; `JwtAuthenticationFilter` bỏ qua auth nếu `!isEnabled()` → user bị ban nhận 401 ở REST (trước chỉ chặn WebSocket). Pin 2 test (CustomUserDetailsServiceTest + JwtAuthenticationFilterTest). (§8.7)
+- **F-api-18 ⚪ Mutation admin không audit** — xem F-api-16; tách riêng vì đây là "no audit trail cho hành động nhạy cảm" (compliance), F-api-16 là "endpoint đọc audit vô dụng".
+- **F-api-19 ⚪ `bootstrap-admin` permitAll** — endpoint tạo admin đầu tiên mở public, nhưng tự khoá: 409 nếu đã có ADMIN, 404 nếu email chưa là user. Cửa sổ lạm dụng = trước khi có admin đầu tiên **và** attacker kiểm soát 1 email đã đăng ký. Rủi ro thấp; cũng không ghi audit. (§8.1)
+- **F-api-20 ⚪ `changeRole` nhận role tuỳ ý** — `PATCH /users/{id}/role` set thẳng `newRole.toUpperCase()` không validate enum; gõ sai → role rác (mọi `hasRole` fail im lặng cho user đó). (§8.1)
+- **F-api-21 ⚪ AI quota fail-open khi Redis lỗi** — `tryAcquire` return true khi Redis down → mất enforce 200/ngày trong lúc outage (chủ ý cho dev/CI). (§8.6)
+- **F-api-22 ⚪ AdminAuditController filter `action` chết** — nhánh `action != null` fetch list rồi gán `events = Page.empty()` → luôn trả rỗng. Impl debt.
 
-## 9. Open Questions [?]
+## 10. Open Questions [?]
 
 1. Spec 50 vs code 100 cap ranked — cái nào canonical hiện tại? (F-api-3)
 2. Có path nào ngoài `getRankedStatus()` tạo dòng `UserDailyProgress` ngày không? (F-api-2)
@@ -272,6 +337,9 @@ Code: `modules/daily/` (`DailyChallengeService` + `DailyCompletion` entity) + `a
 5. ~~Prestige có ý xoá sạch điểm all-time không?~~ `[✔ chốt 2026-06-12]` Không — chỉ reset XP hiệu dụng qua offset (V66).
 6. Mode multiplayer `SURVIVAL` — kế hoạch hay đã bỏ? `CLASSIC` == `SPEED_RACE`?
 7. Cap ngày quickmatch reset lúc nửa đêm **UTC** trong khi các daily khác dùng VN — có chủ ý?
+8. SPEC_ADMIN có yêu cầu audit trail đầy đủ cho mọi mutation admin (ban/role/lock/CRUD)? Nếu có → F-api-16/18 là gap phải đóng. (§8.8)
+9. Ban có chủ ý chỉ chặn WebSocket, hay phải chặn cả REST? (F-api-17, §8.7)
+10. `CONTENT_MOD` có thực sự dùng không (chưa có đường gán role tự động) — hay là role dự kiến chưa wire? (§8.1)
 
 ---
 
