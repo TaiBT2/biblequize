@@ -133,7 +133,7 @@ export default function QuestionFields({ draft, setField, setOption, toggleCorre
       {/* Explanation */}
       <div>
         <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.explanationLabel')}</label>
-        <textarea rows={3} className="w-full px-3 py-2 rounded bg-white/10 border border-white/10 text-sm resize-none"
+        <textarea rows={6} className="w-full px-3 py-2 rounded bg-white/10 border border-white/10 text-sm resize-y min-h-[8rem] leading-relaxed"
           value={draft.explanation ?? ''} onChange={e => setField('explanation', e.target.value)}
           placeholder={t('admin.questions.modal.explanationPlaceholder')} />
       </div>
