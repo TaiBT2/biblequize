@@ -415,6 +415,7 @@
         "healthy": "Tốt",
         "fair": "Tạm",
         "critical": "Thiếu",
+        "summary": "sách đạt chuẩn",
         "noData": "Không có dữ liệu độ phủ"
       },
       "questionQueue": {

@@ -10,37 +10,63 @@ export default function CoverageChart({ books }: { books: BookCoverage[] }) {
   const { t, i18n } = useTranslation()
   const getBookName = useBookName()
   const lang = i18n.language === 'en' ? 'en' : 'vi'
-  if (!books || books.length === 0) return <div className="text-[#d5c4af]/40 text-sm">{t('admin.dashboard.coverage.noData')}</div>
 
   return (
-    <div className="bg-[#1d1f29] p-8 rounded-lg">
-      <div className="flex justify-between items-center mb-8">
+    <div className="bg-[#1d1f29] rounded-xl border border-white/5 p-6">
+      <div className="flex justify-between items-start mb-5">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-white">{t('admin.dashboard.coverage.title')}</h2>
-          <p className="text-xs text-[#d5c4af]/50 mt-1 uppercase tracking-widest font-medium">{t('admin.dashboard.coverage.subtitle')}</p>
+          <h2 className="text-lg font-bold tracking-tight text-white">{t('admin.dashboard.coverage.title')}</h2>
+          <p className="text-[11px] text-[#d5c4af]/45 mt-1 uppercase tracking-widest font-medium">{t('admin.dashboard.coverage.subtitle')}</p>
         </div>
-        <div className="flex gap-3">
-          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-green-500" /><span className="text-[10px] uppercase text-[#d5c4af]">{t('admin.dashboard.coverage.healthy')}</span></div>
-          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-yellow-500" /><span className="text-[10px] uppercase text-[#d5c4af]">{t('admin.dashboard.coverage.fair')}</span></div>
-          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-red-500" /><span className="text-[10px] uppercase text-[#d5c4af]">{t('admin.dashboard.coverage.critical')}</span></div>
+        <div className="flex gap-3 pt-1">
+          <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-emerald-500" /><span className="text-[10px] uppercase text-[#d5c4af]/70">{t('admin.dashboard.coverage.healthy')}</span></span>
+          <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-yellow-500" /><span className="text-[10px] uppercase text-[#d5c4af]/70">{t('admin.dashboard.coverage.fair')}</span></span>
+          <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-red-500" /><span className="text-[10px] uppercase text-[#d5c4af]/70">{t('admin.dashboard.coverage.critical')}</span></span>
         </div>
       </div>
-      <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2">
-        {books.map(b => {
-          const pct = Math.min(100, Math.round((b.total / 60) * 100))
-          const color = b.meetsMinimum ? 'bg-green-500' : pct >= 50 ? 'bg-yellow-500' : 'bg-red-500'
-          const textColor = b.meetsMinimum ? 'text-green-400' : pct >= 50 ? 'text-yellow-400' : 'text-red-400'
-          return (
-            <div key={b.book} data-testid="coverage-book-bar" className="grid grid-cols-12 items-center gap-4 group">
-              <span className="col-span-2 text-[10px] font-mono text-[#d5c4af] group-hover:text-[#e8a832] transition-colors uppercase truncate">{getBookName(b.book, lang)}</span>
-              <div className="col-span-9 h-1 bg-[#11131c] overflow-hidden rounded-full">
-                <div className={`h-full ${color} rounded-full`} style={{ width: `${pct}%` }} />
+
+      {!books || books.length === 0 ? (
+        <div className="text-[#d5c4af]/40 text-sm py-8 text-center">{t('admin.dashboard.coverage.noData')}</div>
+      ) : (() => {
+        const healthy = books.filter(b => b.meetsMinimum).length
+        const total = books.length
+        const healthyPct = total > 0 ? Math.round((healthy / total) * 100) : 0
+        return (
+          <>
+            {/* Summary stat */}
+            <div className="flex items-center gap-4 mb-5 pb-5 border-b border-white/5">
+              <div className="shrink-0">
+                <span className="text-2xl font-bold text-white font-mono leading-none">
+                  {healthy}<span className="text-[#d5c4af]/35 text-base">/{total}</span>
+                </span>
+                <p className="text-[10px] uppercase tracking-wider text-[#d5c4af]/50 mt-1">{t('admin.dashboard.coverage.summary')}</p>
               </div>
-              <span data-testid="coverage-pct" className={`col-span-1 text-[10px] font-mono text-right ${textColor}`}>{pct}%</span>
+              <div className="flex-1 h-2 bg-[#11131c] rounded-full overflow-hidden">
+                <div className="h-full bg-emerald-500 rounded-full transition-all" style={{ width: `${healthyPct}%` }} />
+              </div>
+              <span className="text-sm font-mono text-emerald-400 shrink-0">{healthyPct}%</span>
             </div>
-          )
-        })}
-      </div>
+
+            {/* Per-book bars */}
+            <div className="space-y-2.5 max-h-[420px] overflow-y-auto pr-2">
+              {books.map(b => {
+                const pct = Math.min(100, Math.round((b.total / 60) * 100))
+                const bar = b.meetsMinimum ? 'bg-emerald-500' : pct >= 50 ? 'bg-yellow-500' : 'bg-red-500'
+                const txt = b.meetsMinimum ? 'text-emerald-400' : pct >= 50 ? 'text-yellow-400' : 'text-red-400'
+                return (
+                  <div key={b.book} data-testid="coverage-book-bar" className="grid grid-cols-12 items-center gap-4 group">
+                    <span className="col-span-3 lg:col-span-2 text-[10px] font-mono text-[#d5c4af]/80 group-hover:text-[#e8a832] transition-colors uppercase truncate">{getBookName(b.book, lang)}</span>
+                    <div className="col-span-8 lg:col-span-9 h-1.5 bg-[#11131c] overflow-hidden rounded-full">
+                      <div className={`h-full ${bar} rounded-full transition-all group-hover:brightness-125`} style={{ width: `${pct}%` }} />
+                    </div>
+                    <span data-testid="coverage-pct" className={`col-span-1 text-[10px] font-mono text-right ${txt}`}>{pct}%</span>
+                  </div>
+                )
+              })}
+            </div>
+          </>
+        )
+      })()}
     </div>
   )
 }

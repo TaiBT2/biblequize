@@ -415,6 +415,7 @@
         "healthy": "Healthy",
         "fair": "Fair",
         "critical": "Critical",
+        "summary": "books meet minimum",
         "noData": "No coverage data"
       },
       "questionQueue": {
