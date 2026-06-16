@@ -247,6 +247,8 @@
         "categoryLabel": "Category",
         "categoryAll": "All",
         "categoryBibleBasics": "Bible Basics",
+        "languageLabel": "Language",
+        "languageAll": "All",
         "pageSizeLabel": "Show"
       },
       "column": {

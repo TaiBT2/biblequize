@@ -76,6 +76,7 @@ export default function QuestionsAdmin() {
   const [qType,        setQType]        = useState('')
   const [reviewStatus, setReviewStatus] = useState('')
   const [category,     setCategory]     = useState('')
+  const [language,     setLanguage]     = useState('')
 
   // ── selection
   const [selectedIds, setSelectedIds] = useState<Record<string, boolean>>({})
@@ -100,9 +101,10 @@ export default function QuestionsAdmin() {
     if (qType)        p.set('type', qType)
     if (reviewStatus) p.set('reviewStatus', reviewStatus)
     if (category)     p.set('category', category)
+    if (language)     p.set('language', language)
     if (search.trim()) p.set('search', search.trim())
     return p.toString()
-  }, [page, pageSize, book, difficulty, qType, reviewStatus, category, search])
+  }, [page, pageSize, book, difficulty, qType, reviewStatus, category, language, search])
 
   const refresh = useCallback(async () => {
     setLoading(true); setError(null)
@@ -119,7 +121,7 @@ export default function QuestionsAdmin() {
   useEffect(() => { refresh() }, [refresh])
 
   // Reset to page 0 when filters change
-  useEffect(() => { setPage(0) }, [search, book, difficulty, qType, reviewStatus, category, pageSize])
+  useEffect(() => { setPage(0) }, [search, book, difficulty, qType, reviewStatus, category, language, pageSize])
 
   // ── Selection ──────────────────────────────────────────────────────────────
 
@@ -267,6 +269,19 @@ export default function QuestionsAdmin() {
           >
             <option value="">{t('admin.questions.filter.categoryAll')}</option>
             <option value="bible_basics">{t('admin.questions.filter.categoryBibleBasics')}</option>
+          </select>
+        </div>
+        <div>
+          <label className="block text-xs text-white/50 mb-1">{t('admin.questions.filter.languageLabel')}</label>
+          <select
+            data-testid="admin-questions-language-filter"
+            value={language}
+            onChange={e => setLanguage(e.target.value)}
+            className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm"
+          >
+            <option value="">{t('admin.questions.filter.languageAll')}</option>
+            <option value="vi">{t('admin.questions.modal.langVi')}</option>
+            <option value="en">{t('admin.questions.modal.langEn')}</option>
           </select>
         </div>
         <div>
