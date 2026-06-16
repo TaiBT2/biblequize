@@ -9,17 +9,13 @@
   - **Spec impact**: [x] None (UI) · **Spec strategy**: [x] (c) `[no-spec-impact]`
   - Checklist: [x] impl · [x] Tầng 3 FE (1278 pass) · [ ] commit
 
-- **QEV-2 BE endpoint đánh giá chất lượng câu hỏi (hybrid)**
-  - Status: [ ] TODO · Files: `AIAdminController` (POST `/api/admin/ai/evaluate-question`) + DTO + reuse `QuestionQualityChecker.lengthBias` (deterministic) + AI cho phần "distractor có hợp lý không" · Test: controller test
-  - Trả: `{ lengthBias{biased,ratio}, position, score, distractorPlausibility, suggestions[] }`. lengthBias + position tính cục bộ (không tốn quota); phần AI judge plausibility tốn 1 quota unit (`AIQuotaService.tryAcquire(1)`), fail-soft nếu không có provider.
-  - **Spec impact**: [ ] SPEC_ADMIN §7 · **Spec strategy**: [ ] (a)
-  - Checklist: impl · Tầng 1+3 · spec · commit
+- **QEV-2 Nút "Đánh giá chất lượng" — evaluator tức thời phía FE** ✅
+  - Status: [x] DONE (2026-06-16) · Files: `Questions.tsx` — `evaluateQuestionQuality()` (module fn) + state `quality` + nút cạnh nhãn Lựa chọn + panel checklist pass/warn/info
+  - Phủ 4/5 nguyên tắc tức thời (không endpoint, không quota): (1) đủ+không trùng, (2) length-parity (correct dài nhất & ≥1.5× → warn), (3) vị trí (đúng ở A → info), (4) explanation đủ/đủ dài. (5) distractor-plausibility gắn cờ ℹ "cần người/AI".
+  - **Spec impact**: [x] None (UI/tool) · **Spec strategy**: [x] (c) `[no-spec-impact]`
+  - Checklist: [x] impl · [x] tsc sạch · [x] Tầng 3 FE (1278 pass) · [ ] commit
 
-- **QEV-3 FE nút "Đánh giá chất lượng" + panel kết quả**
-  - Status: [ ] TODO · Files: `Questions.tsx` (nút trong modal + gọi endpoint + render checklist pass/warn) · Test: `Questions.test.tsx`
-  - Instant: hiện ngay length/position (local) ; bấm "AI review sâu" mới gọi endpoint cho plausibility.
-  - **Spec impact**: [x] None (UI) · **Spec strategy**: [x] (c)
-  - Checklist: impl · Tầng 1+3 · commit
-
-### Out of scope
-- Auto-fix (rewrite distractor) ngay trong modal — defer.
+### Out of scope / defer
+- **QEV-3 AI deep-review** (judge distractor plausibility): cần endpoint `/api/admin/ai/evaluate-question` + generic AI completion path (provider hiện chỉ có generate→questions) + 1 quota unit. Để follow-up nếu user muốn chấm "distractor có hợp lý không" bằng AI.
+- Auto-fix (AI rewrite distractor) ngay trong modal — defer.
+- i18n: label evaluator hardcode tiếng Việt (admin tool) — accepted debt.

@@ -101,6 +101,61 @@ function optionDefaults(type: QuestionType, lang = 'vi'): string[] {
   return ['', '', '', '']
 }
 
+// ── Quality evaluator (QEV) ────────────────────────────────────────────────────
+// Instant client-side heuristic check of answer-design principles. Covers
+// length-parity, position, structure and explanation; distractor plausibility
+// is left to a human/AI pass (flagged as info). No network, no AI quota.
+
+type QCheck = { status: 'pass' | 'warn' | 'info'; label: string }
+
+function evaluateQuestionQuality(q: Partial<Question>): QCheck[] {
+  const type = q.type
+  const isMc = type === 'multiple_choice_single' || type === 'multiple_choice_multi'
+  if (!isMc) return [{ status: 'info', label: 'Loại câu này không áp dụng kiểm tra đáp án trắc nghiệm.' }]
+
+  const opts = (q.options ?? []).map(o => (o ?? '').trim())
+  const correct = q.correctAnswer ?? []
+  const checks: QCheck[] = []
+
+  // 1. Filled + distinct
+  const empties = opts.filter(o => !o).length
+  const distinct = new Set(opts.map(o => o.toLowerCase())).size
+  if (empties > 0) checks.push({ status: 'warn', label: `Còn ${empties} lựa chọn để trống.` })
+  else if (distinct < opts.length) checks.push({ status: 'warn', label: 'Có lựa chọn trùng nội dung nhau.' })
+  else checks.push({ status: 'pass', label: 'Đủ lựa chọn, không trùng.' })
+
+  // 2. Length parity (the main "guessable" tell)
+  if (correct.length && opts.length >= 2) {
+    const ci = correct[0]
+    const correctLen = opts[ci]?.length ?? 0
+    const others = opts.filter((_, i) => !correct.includes(i)).map(o => o.length)
+    const avg = others.length ? others.reduce((a, b) => a + b, 0) / others.length : 0
+    const maxLen = Math.max(...opts.map(o => o.length))
+    const ratio = avg ? +(correctLen / avg).toFixed(2) : 0
+    const isLongest = correctLen >= maxLen && correctLen > 0
+    if (isLongest && ratio >= 1.5) checks.push({ status: 'warn', label: `Đáp án đúng dài nhất, ~${ratio}× distractor → dễ đoán. Hãy cân bằng độ dài 4 lựa chọn.` })
+    else if (isLongest) checks.push({ status: 'info', label: `Đáp án đúng hơi dài hơn (~${ratio}×) — chấp nhận được, nhưng để ý.` })
+    else checks.push({ status: 'pass', label: `Độ dài cân bằng (đúng ~${ratio}× distractor).` })
+  }
+
+  // 3. Position (single-answer only) — seed data leans toward A
+  if (type === 'multiple_choice_single' && correct.length === 1) {
+    if (correct[0] === 0) checks.push({ status: 'info', label: 'Đáp án đúng ở vị trí A — cân nhắc đảo vị trí để tránh đoán mò.' })
+    else checks.push({ status: 'pass', label: `Đáp án đúng ở vị trí ${String.fromCharCode(65 + correct[0])}.` })
+  }
+
+  // 4. Explanation
+  const exp = (q.explanation ?? '').trim()
+  if (!exp) checks.push({ status: 'warn', label: 'Thiếu giải thích.' })
+  else if (exp.length < 40) checks.push({ status: 'warn', label: 'Giải thích quá ngắn — nên nêu vì sao đúng VÀ vì sao một đáp án sai dễ nhầm.' })
+  else checks.push({ status: 'pass', label: 'Có giải thích đầy đủ.' })
+
+  // 5. Plausibility — needs human/AI judgement
+  checks.push({ status: 'info', label: 'Distractor có "đúng một phần rồi sai" (gần đúng, hợp lý) không? → cần mắt người/AI đánh giá.' })
+
+  return checks
+}
+
 // ── Badges ────────────────────────────────────────────────────────────────────
 
 const Badge: React.FC<{ label: string; color: string }> = ({ label, color }) => (
@@ -134,6 +189,9 @@ export default function QuestionsAdmin() {
   const [isSaving, setIsSaving] = useState(false)
   const [saveError, setSaveError] = useState<string | null>(null)
   const [saveSuccess, setSaveSuccess] = useState(false)
+  // QEV: on-demand answer-quality evaluation result (null = not run yet)
+  const [quality, setQuality] = useState<QCheck[] | null>(null)
+  useEffect(() => { setQuality(null) }, [editing?.id])
 
   // ── import modal
   const [importOpen,      setImportOpen]      = useState(false)
@@ -588,10 +646,20 @@ export default function QuestionsAdmin() {
             {/* Options + Correct Answer */}
             {editing.type !== 'fill_in_blank' && (
               <div>
-                <label className="block text-xs text-white/50 mb-2">
-                  {t('admin.questions.modal.optionsLabel')}
-                  {editing.type === 'multiple_choice_multi' && <span className="ml-2 text-blue-400">{t('admin.questions.modal.multiHint')}</span>}
-                </label>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="block text-xs text-white/50">
+                    {t('admin.questions.modal.optionsLabel')}
+                    {editing.type === 'multiple_choice_multi' && <span className="ml-2 text-blue-400">{t('admin.questions.modal.multiHint')}</span>}
+                  </label>
+                  {(editing.type === 'multiple_choice_single' || editing.type === 'multiple_choice_multi') && (
+                    <button type="button"
+                      onClick={() => setQuality(evaluateQuestionQuality(editing))}
+                      className="text-xs px-2.5 py-1 rounded bg-[#e8a832]/15 border border-[#e8a832]/30 text-[#e8a832] hover:bg-[#e8a832]/25 transition-colors flex items-center gap-1">
+                      <span className="material-symbols-outlined text-sm">checklist</span>
+                      Đánh giá chất lượng
+                    </button>
+                  )}
+                </div>
                 <div className="space-y-2">
                   {(editing.options ?? []).map((opt, i) => {
                     const isCorrect = (editing.correctAnswer ?? []).includes(i)
@@ -617,6 +685,25 @@ export default function QuestionsAdmin() {
                     )
                   })}
                 </div>
+
+                {/* QEV: quality evaluation result */}
+                {quality && (
+                  <div data-testid="quality-eval-result" className="mt-3 p-3 rounded-lg bg-[#11131c] border border-white/10 space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-semibold text-white/70 uppercase tracking-wider">Đánh giá đáp án</span>
+                      <button type="button" onClick={() => setQuality(null)} className="text-white/30 hover:text-white/60 text-xs">✕</button>
+                    </div>
+                    {quality.map((c, i) => (
+                      <div key={i} className="flex items-start gap-2 text-xs">
+                        <span className={c.status === 'pass' ? 'text-emerald-400' : c.status === 'warn' ? 'text-yellow-400' : 'text-sky-400'}>
+                          {c.status === 'pass' ? '✓' : c.status === 'warn' ? '⚠' : 'ℹ'}
+                        </span>
+                        <span className="text-white/70 leading-snug">{c.label}</span>
+                      </div>
+                    ))}
+                    <p className="text-[10px] text-white/30 pt-1">Đánh giá tức thời theo nguyên tắc; bấm lại sau khi sửa để cập nhật.</p>
+                  </div>
+                )}
               </div>
             )}
 
