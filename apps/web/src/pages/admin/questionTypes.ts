@@ -57,14 +57,29 @@ export function optionDefaults(type: QuestionType, lang = 'vi'): string[] {
 }
 
 // ── Answer-quality evaluator (QEV) ──────────────────────────────────────────────
-// Instant client-side heuristic check of answer-design principles. Covers
-// length-parity, position, structure and explanation; distractor plausibility is
-// left to a human/AI pass (flagged as info). No network, no AI quota.
+// Instant client-side heuristic check of answer-design principles (Haladyna/NBME).
+// Covers what is mechanically detectable: length-parity, position, telltale
+// absolute cues (Rule E) and explanation. Semantic rules — distinct error-types,
+// almost-right plausibility — need a human/AI pass (flagged as info). No network,
+// no AI quota.
 
 export type QCheck = { status: 'pass' | 'warn' | 'info'; label: string }
 
 /** Translator shape (i18next TFunction) — kept loose to avoid an import cycle. */
 type TFn = (key: string, opts?: Record<string, unknown>) => string
+
+// Absolute / extreme qualifiers that test-wise players use as a "this is the
+// wrong one" tell (Haladyna Rule E). When they appear on only one side
+// (correct vs distractors) they leak the answer.
+const CUE_WORDS_VI = ['luôn luôn', 'không bao giờ', 'tất cả', 'ngay từ đầu', 'hoàn toàn', 'đầy dẫy', 'tuyệt đối', 'duy nhất', 'mãi mãi']
+const CUE_WORDS_EN = ['always', 'never', 'all', 'every', 'none', 'completely', 'entirely', 'absolutely', 'only', 'must']
+
+/** Find cue words in a text. ASCII words use \b boundaries; VN phrases use includes. */
+function findCues(text: string, words: string[]): string[] {
+  const lc = text.toLowerCase()
+  return words.filter(w =>
+    /^[a-z ]+$/.test(w) ? new RegExp(`\\b${w}\\b`).test(lc) : lc.includes(w))
+}
 
 export function evaluateQuestionQuality(q: Partial<Question>, t: TFn): QCheck[] {
   const E = (k: string, o?: Record<string, unknown>) => t(`admin.questions.eval.${k}`, o)
@@ -103,13 +118,26 @@ export function evaluateQuestionQuality(q: Partial<Question>, t: TFn): QCheck[] 
     else checks.push({ status: 'pass', label: E('positionOk', { letter: String.fromCharCode(65 + correct[0]) }) })
   }
 
-  // 4. Explanation
+  // 4. Telltale absolute cues (Haladyna Rule E) — single-answer only.
+  // Asymmetry (cues on only one side) leaks the answer to test-wise players.
+  if (type === 'multiple_choice_single' && correct.length === 1) {
+    const words = q.language === 'en' ? CUE_WORDS_EN : CUE_WORDS_VI
+    const ci = correct[0]
+    const correctCues = findCues(opts[ci] ?? '', words)
+    const distractorCues = opts.filter((_, i) => i !== ci).flatMap(o => findCues(o, words))
+    if ((correctCues.length > 0) !== (distractorCues.length > 0)) {
+      const uniq = [...new Set([...correctCues, ...distractorCues])].join(', ')
+      checks.push({ status: 'warn', label: E('cueAsymmetric', { words: uniq }) })
+    } else checks.push({ status: 'pass', label: E('cueOk') })
+  }
+
+  // 5. Explanation
   const exp = (q.explanation ?? '').trim()
   if (!exp) checks.push({ status: 'warn', label: E('explanationMissing') })
   else if (exp.length < 40) checks.push({ status: 'warn', label: E('explanationShort') })
   else checks.push({ status: 'pass', label: E('explanationOk') })
 
-  // 5. Plausibility — needs human/AI judgement
+  // 6. Plausibility / error-type diversity — needs human/AI judgement
   checks.push({ status: 'info', label: E('plausibility') })
 
   return checks

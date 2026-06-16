@@ -206,10 +206,12 @@
         "lengthOk": "Độ dài cân bằng (đúng ~{{ratio}}× distractor).",
         "positionA": "Đáp án đúng ở vị trí A — cân nhắc đảo vị trí để tránh đoán mò.",
         "positionOk": "Đáp án đúng ở vị trí {{letter}}.",
+        "cueAsymmetric": "Từ tuyệt đối ({{words}}) chỉ xuất hiện ở một phía đúng/sai → manh mối dễ đoán. Rải đều hoặc bỏ.",
+        "cueOk": "Không có từ tuyệt đối lộ liễu.",
         "explanationMissing": "Thiếu giải thích.",
         "explanationShort": "Giải thích quá ngắn — nên nêu vì sao đúng VÀ vì sao một đáp án sai dễ nhầm.",
         "explanationOk": "Có giải thích đầy đủ.",
-        "plausibility": "Distractor có \"đúng một phần rồi sai\" (gần đúng, hợp lý) không? → cần mắt người/AI đánh giá."
+        "plausibility": "Mỗi distractor một loại lỗi khác nhau? Có ≥1 đáp án \"gần đúng\" (sai 1 chi tiết)? → cần mắt người/AI đánh giá."
       },
       "editor": {
         "evalTitle": "Đánh giá đáp án (tự động)",

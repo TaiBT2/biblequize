@@ -206,10 +206,12 @@
         "lengthOk": "Balanced length (correct ~{{ratio}}× distractors).",
         "positionA": "Correct answer is at A — consider shuffling to avoid guessing.",
         "positionOk": "Correct answer is at position {{letter}}.",
+        "cueAsymmetric": "Absolute words ({{words}}) appear on only one side (right/wrong) → a guessing cue. Spread them out or remove.",
+        "cueOk": "No telltale absolute words.",
         "explanationMissing": "Explanation is missing.",
         "explanationShort": "Explanation too short — state why it's right AND why a tempting wrong one is wrong.",
         "explanationOk": "Has a full explanation.",
-        "plausibility": "Are the distractors plausible 'close-but-wrong'? → needs a human/AI check."
+        "plausibility": "Does each distractor use a different error type, with ≥1 'almost-right' (wrong in one detail)? → needs a human/AI check."
       },
       "editor": {
         "evalTitle": "Answer review (auto)",
