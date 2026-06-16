@@ -13,6 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -40,6 +42,14 @@ public class AdminQuestionController {
 
     @Autowired
     private DuplicateDetectionService duplicateDetectionService;
+
+    @Autowired
+    private MessageSource messageSource;
+
+    /** Localized message via Accept-Language (see WebI18nConfig). */
+    private String msg(String code, Object... args) {
+        return messageSource.getMessage(code, args, LocaleContextHolder.getLocale());
+    }
 
     @GetMapping("/ping")
     public ResponseEntity<?> ping() {
@@ -263,10 +273,8 @@ public class AdminQuestionController {
                     BasicQuizService.CATEGORY, lang);
             long remaining = active - entry.getValue();
             if (remaining < BasicQuizService.TOTAL_QUESTIONS) {
-                throw new BusinessLogicException(
-                        "Cannot drop active Bible Basics pool below "
-                                + BasicQuizService.TOTAL_QUESTIONS
-                                + " for language '" + lang + "' (would leave " + remaining + ").");
+                throw new BusinessLogicException(msg("question.bibleBasicsSafeguard",
+                        BasicQuizService.TOTAL_QUESTIONS, lang, remaining));
             }
         }
     }
@@ -302,24 +310,23 @@ public class AdminQuestionController {
             while (it.hasNext()) {
                 Question q = it.next();
                 idx++;
-                String label = "record " + idx;
 
                 // IMP-1: Explanation warning (chỉ cảnh báo, vẫn active)
                 if (q.getExplanation() == null || q.getExplanation().isBlank()) {
-                    warnings.add(Map.of("index", idx, "warning", label + ": thiếu explanation"));
+                    warnings.add(Map.of("index", idx, "warning", msg("imp.explanationMissing", idx)));
                 }
 
                 // IMP-2: Options validation per type
                 Question.Type qType = q.getType();
                 if (qType == Question.Type.multiple_choice_single || qType == Question.Type.multiple_choice_multi) {
                     if (q.getOptions() == null || q.getOptions().size() < 2) {
-                        errors.add(Map.of("index", idx, "error", label + ": MCQ requires options (min 2)"));
+                        errors.add(Map.of("index", idx, "error", msg("imp.mcqOptions", idx)));
                         it.remove(); continue;
                     }
                     if (q.getCorrectAnswer() != null) {
                         for (int ans : q.getCorrectAnswer()) {
                             if (ans < 0 || ans >= q.getOptions().size()) {
-                                errors.add(Map.of("index", idx, "error", label + ": correctAnswer " + ans + " out of range (0-" + (q.getOptions().size() - 1) + ")"));
+                                errors.add(Map.of("index", idx, "error", msg("imp.answerOutOfRange", idx, ans, q.getOptions().size() - 1)));
                                 it.remove(); break;
                             }
                         }
@@ -332,7 +339,7 @@ public class AdminQuestionController {
                     if (q.getCorrectAnswer() != null && !q.getCorrectAnswer().isEmpty()) {
                         int ans = q.getCorrectAnswer().get(0);
                         if (ans != 0 && ans != 1) {
-                            errors.add(Map.of("index", idx, "error", label + ": true_false correctAnswer must be 0 or 1"));
+                            errors.add(Map.of("index", idx, "error", msg("imp.trueFalseAnswer", idx)));
                             it.remove(); continue;
                         }
                     }
@@ -347,7 +354,7 @@ public class AdminQuestionController {
                 // IMP-5: Duplicate detection (3-layer)
                 String contentKey = q.getContent() != null ? q.getContent().trim().toLowerCase() : "";
                 if (seenContents.contains(contentKey)) {
-                    warnings.add(Map.of("index", idx, "warning", label + ": trùng lặp với record khác trong file"));
+                    warnings.add(Map.of("index", idx, "warning", msg("imp.dupInFile", idx)));
                     duplicateCount++;
                     if (skipDuplicates) { it.remove(); continue; }
                 } else {
@@ -355,11 +362,11 @@ public class AdminQuestionController {
                             new DuplicateCheckRequest(q.getContent(), q.getCorrectAnswerText(),
                                     q.getBook(), q.getChapter(), q.getVerseStart(), q.getLanguage()));
                     if (dupResult.status() == DuplicateStatus.EXACT_MATCH) {
-                        warnings.add(Map.of("index", idx, "warning", label + ": trùng hệt câu trong DB (BLOCKED)"));
+                        warnings.add(Map.of("index", idx, "warning", msg("imp.dupExactDb", idx)));
                         duplicateCount++;
                         it.remove(); continue;
                     } else if (dupResult.status() != DuplicateStatus.NO_MATCH) {
-                        warnings.add(Map.of("index", idx, "warning", label + ": " + dupResult.message()));
+                        warnings.add(Map.of("index", idx, "warning", msg("imp.dupOther", idx, dupResult.message())));
                         duplicateCount++;
                         if (skipDuplicates) { it.remove(); continue; }
                     }
@@ -372,9 +379,8 @@ public class AdminQuestionController {
                         || qType == Question.Type.multiple_choice_multi) {
                     var lb = QuestionQualityChecker.lengthBias(q.getOptions(), q.getCorrectAnswer());
                     if (lb.biased()) {
-                        warnings.add(Map.of("index", idx, "warning", label
-                                + ": đáp án đúng dài hơn distractor ~" + lb.ratio()
-                                + "× (dễ đoán — nên cân bằng độ dài 4 lựa chọn)"));
+                        warnings.add(Map.of("index", idx, "warning",
+                                msg("imp.lengthBias", idx, String.valueOf(lb.ratio()))));
                     }
                 }
             }

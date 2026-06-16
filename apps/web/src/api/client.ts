@@ -27,6 +27,8 @@ function addAuthInterceptor(instance: typeof api) {
         console.log('Token exists:', !!token)
       }
       if (token && config.headers) config.headers.Authorization = `Bearer ${token}`
+      // Let the backend localize server-generated messages (MessageSource).
+      if (config.headers) config.headers['Accept-Language'] = i18n.language === 'en' ? 'en' : 'vi'
       return config
     },
     (error) => Promise.reject(error)
