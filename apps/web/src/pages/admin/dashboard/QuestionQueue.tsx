@@ -4,16 +4,12 @@ import { useTranslation } from 'react-i18next'
 
 interface QueueData {
   pendingReview: number
-  aiGenerated: number
-  communitySubmissions: number
 }
 
 export default function QuestionQueue({ data }: { data: QueueData | null }) {
   const { t } = useTranslation()
   const items = [
     { label: t('admin.dashboard.questionQueue.pendingReview'), value: data?.pendingReview ?? 0, color: 'bg-[#e8a832]', max: 500 },
-    { label: t('admin.dashboard.questionQueue.aiGenerated'), value: data?.aiGenerated ?? 0, color: 'bg-blue-500', max: 2000 },
-    { label: t('admin.dashboard.questionQueue.community'), value: data?.communitySubmissions ?? 0, color: 'bg-green-500', max: 200 },
   ]
 
   return (

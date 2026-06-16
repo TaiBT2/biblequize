@@ -582,3 +582,10 @@
 - Lý do: Leaderboard ngày/tuần/mùa/all-time aggregate đúng các dòng đó theo khoảng ngày — tẩy sổ làm người prestige bốc hơi hồi tố khỏi mọi bảng xếp hạng (kể cả mùa đã kết thúc), xê dịch hạng người khác, và mất dữ liệu lịch sử vĩnh viễn. Intent gốc chỉ là "reset XP, keep cosmetics".
 - Trade-off: Leaderboard giữ nguyên thành tích cũ của người prestige (đúng mong muốn); thêm 1 cột + 1 phép trừ ở phễu tier. Admin test-seed có thể làm sổ cái < offset → đã clamp 0.
 - KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-06-16 — Admin panel: cắt về core, dashboard chỉ giữ số liệu thật (ADM-2)
+- Quyết định: User chủ trương "ít chức năng nhưng hoàn thiện, bỏ các trang nửa vời". Dashboard (§3 SPEC_ADMIN) gỡ các panel placeholder chưa có backing data: `actionItems` ("Cần xử lý"), `recentActivity` ("Hoạt động Admin"), 2 biểu đồ Sessions/User-registration (render đường cong/cột hardcoded, total luôn `—` vì BE không trả `charts`). `questionQueue` rút còn `pendingReview`. Giữ: KPIs (5 count thật) + Question Queue (pendingReview + CTA) + Coverage.
+- Đảo hướng so với SPEC_ADMIN §20.1 (AD-1..6 từng định *build* các panel này). Lý do: nhiều feature dở dang > ít feature hoàn thiện; panel rỗng/giả gây hiểu nhầm "đã có dữ liệu". Component FE xoá hẳn (ActionItems/ActivityLog/SessionsChart/UserRegChart). BE bỏ field hardcode.
+- Liên quan task ADM (`docs/todo/active/2026-06-16-admin-panel-trim-to-core.md`): ADM-1 ẩn 7 trang Tier C khỏi nav, ADM-3 review 1-approval, ADM-4 enforce ban REST, ADM-5 xoá trang placeholder.
+- Nếu sau cần lại: wire `FeedbackRepository`/`audit_events` (F-api-16) rồi mới un-hide — KHÔNG ship panel rỗng.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới

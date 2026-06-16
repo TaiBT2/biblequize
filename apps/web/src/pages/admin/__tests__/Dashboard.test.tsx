@@ -13,15 +13,11 @@ function renderDashboard() {
   return render(<QueryClientProvider client={qc}><MemoryRouter><AdminDashboard /></MemoryRouter></QueryClientProvider>)
 }
 
+// Dashboard trimmed to core (ADM-2, 2026-06-16): only kpis + questionQueue.pendingReview
+// + coverage are real. actionItems / recentActivity / sessions+userReg charts removed.
 const FULL_DATA = {
   kpis: { totalUsers: 1247, totalQuestions: 3420, pendingReview: 23, activeSessions: 856, activeUsers: 342 },
-  questionQueue: { pendingReview: 23, aiGenerated: 102, communitySubmissions: 15 },
-  actionItems: { pendingFeedback: 5, reportedGroups: 2, flaggedUsers: 1 },
-  recentActivity: [
-    { action: 'Approved question', admin: 'Admin A', timestamp: '2h ago' },
-    { action: 'Flagged user', admin: 'System Bot', timestamp: '3h ago' },
-  ],
-  charts: { sessionsTotal: 5821, newUsers30d: 412 },
+  questionQueue: { pendingReview: 23 },
 }
 
 describe('Admin Dashboard', () => {
@@ -47,9 +43,7 @@ describe('Admin Dashboard', () => {
     mockApiGet.mockImplementation((url: string) => {
       if (url.includes('/dashboard')) return Promise.resolve({ data: {
         kpis: { totalUsers: 0, totalQuestions: 0, pendingReview: 0 },
-        questionQueue: { pendingReview: 0, aiGenerated: 0, communitySubmissions: 0 },
-        actionItems: {},
-        recentActivity: [],
+        questionQueue: { pendingReview: 0 },
       } })
       if (url.includes('/coverage')) return Promise.resolve({ data: { books: [] } })
       return Promise.reject(new Error('Not found'))
@@ -62,67 +56,27 @@ describe('Admin Dashboard', () => {
     expect(sessionCard.textContent).not.toContain('—')
   })
 
-  it('renders Question Queue panel', async () => {
+  it('renders Question Queue panel (pending review only)', async () => {
     renderDashboard()
     await waitFor(() => { expect(screen.getByText('Question Queue')).toBeInTheDocument() })
     expect(screen.getByText('Pending Review')).toBeInTheDocument()
-    expect(screen.getByText('AI Generated')).toBeInTheDocument()
     expect(screen.getByText('Process Next 50')).toBeInTheDocument()
+    // Removed placeholder rows
+    expect(screen.queryByText('AI Generated')).not.toBeInTheDocument()
   })
 
-  it('renders "Cần xử lý" action items', async () => {
+  it('does not render removed placeholder panels', async () => {
     renderDashboard()
-    await waitFor(() => { expect(screen.getByText('Cần xử lý')).toBeInTheDocument() })
-    expect(screen.getByText('5 feedback đang mở')).toBeInTheDocument()
-    expect(screen.getByText('23 câu chờ duyệt')).toBeInTheDocument()
-    expect(screen.getByText('2 groups bị report')).toBeInTheDocument()
-    expect(screen.getByText('1 user bị flag')).toBeInTheDocument()
-  })
-
-  it('renders green checkmark when no action items', async () => {
-    mockApiGet.mockImplementation((url: string) => {
-      if (url.includes('/dashboard')) return Promise.resolve({ data: {
-        ...FULL_DATA, actionItems: { pendingFeedback: 0, reportedGroups: 0, flaggedUsers: 0 },
-        kpis: { ...FULL_DATA.kpis, pendingReview: 0 },
-      } })
-      if (url.includes('/coverage')) return Promise.resolve({ data: { books: [] } })
-      return Promise.reject(new Error('Not found'))
-    })
-    renderDashboard()
-    await waitFor(() => { expect(screen.getByText(/hệ thống hoạt động tốt/)).toBeInTheDocument() })
-  })
-
-  it('renders admin activity log', async () => {
-    renderDashboard()
-    await waitFor(() => { expect(screen.getByText('Hoạt động Admin')).toBeInTheDocument() })
-    expect(screen.getByText(/Approved question/)).toBeInTheDocument()
-  })
-
-  it('renders activity log placeholder when empty', async () => {
-    mockApiGet.mockImplementation((url: string) => {
-      if (url.includes('/dashboard')) return Promise.resolve({ data: { ...FULL_DATA, recentActivity: [] } })
-      if (url.includes('/coverage')) return Promise.resolve({ data: { books: [] } })
-      return Promise.reject(new Error('Not found'))
-    })
-    renderDashboard()
-    await waitFor(() => { expect(screen.getByText(/thao tác quản trị sẽ hiện ở đây/)).toBeInTheDocument() })
+    await waitFor(() => { expect(screen.getByText('Question Queue')).toBeInTheDocument() })
+    expect(screen.queryByText('Cần xử lý')).not.toBeInTheDocument()
+    expect(screen.queryByText('Hoạt động Admin')).not.toBeInTheDocument()
+    expect(screen.queryByText('Sessions 7 ngày qua')).not.toBeInTheDocument()
+    expect(screen.queryByText('User registrations 30 ngày')).not.toBeInTheDocument()
   })
 
   it('renders coverage chart', async () => {
     renderDashboard()
     await waitFor(() => { expect(screen.getByText(/Question Coverage/)).toBeInTheDocument() })
-  })
-
-  it('renders sessions chart', async () => {
-    renderDashboard()
-    await waitFor(() => { expect(screen.getByText('Sessions 7 ngày qua')).toBeInTheDocument() })
-    expect(screen.getByText(/5,821/)).toBeInTheDocument()
-  })
-
-  it('renders user registration chart', async () => {
-    renderDashboard()
-    await waitFor(() => { expect(screen.getByText('User registrations 30 ngày')).toBeInTheDocument() })
-    expect(screen.getByText(/412/)).toBeInTheDocument()
   })
 
   it('shows skeleton during loading', () => {

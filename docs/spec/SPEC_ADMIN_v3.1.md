@@ -88,12 +88,14 @@ Mọi thao tác state-changing log qua SLF4J `[ADMIN]` prefix; audit DB thông q
 ## 3. Dashboard
 
 ### 3.1 Mục đích
-Tổng quan toàn hệ thống cho admin và content-mod (read-only): KPIs, queue chờ duyệt, action items, coverage tóm tắt.
+Tổng quan toàn hệ thống cho admin và content-mod (read-only): KPIs, queue chờ duyệt, coverage tóm tắt.
+
+> **Scope cut 2026-06-16** (DECISIONS): dashboard trimmed về **chỉ số liệu thật**. Bỏ các panel placeholder chưa có backing data: `actionItems` ("Cần xử lý"), `recentActivity` ("Hoạt động Admin"), và 2 biểu đồ Sessions/User-registration (vốn render đường cong hardcoded, total luôn `—`). Chỉ giữ KPIs + Question Queue (pendingReview) + Coverage.
 
 ### 3.2 Endpoint
 `GET /api/admin/dashboard` — `AdminDashboardController.java:33` — `@PreAuthorize("hasAnyRole('ADMIN', 'CONTENT_MOD')")`.
 
-**Response shape (verified):**
+**Response shape (verified, post-trim):**
 ```json
 {
   "kpis": {
@@ -103,17 +105,7 @@ Tổng quan toàn hệ thống cho admin và content-mod (read-only): KPIs, queu
     "activeSessions": 89,
     "activeUsers": 320
   },
-  "questionQueue": {
-    "pendingReview": 12,
-    "aiGenerated": 0,
-    "communitySubmissions": 0
-  },
-  "actionItems": {
-    "pendingFeedback": 0,
-    "reportedGroups": 0,
-    "flaggedUsers": 0
-  },
-  "recentActivity": [],
+  "questionQueue": { "pendingReview": 12 },
   "coverage": { "booksWithMinPool": 14, "totalBooks": 66 }
 }
 ```
@@ -124,14 +116,12 @@ Tổng quan toàn hệ thống cho admin và content-mod (read-only): KPIs, queu
 - `kpis.pendingReview`: count questions có `reviewStatus = PENDING`
 - `kpis.activeSessions`: count `quiz_sessions` tạo từ đầu ngày hôm nay (best-effort, swallow exception)
 - `kpis.activeUsers`: count users có `lastPlayedAt` trong 7 ngày gần nhất
+- `questionQueue.pendingReview`: cùng count với `kpis.pendingReview` (panel có CTA sang Review Queue)
 - `coverage.booksWithMinPool`: count books thoả `easy ≥ 30 ∧ medium ≥ 20 ∧ hard ≥ 10`
-- `actionItems.*` và `questionQueue.aiGenerated/communitySubmissions`: hard-coded `0` (TODO comments tại `AdminDashboardController.java:67-79`).
-- `recentActivity`: empty list — note "placeholder until audit log standardized".
 
 ### 3.4 Hạn chế / TODO
-- Action items không phản ánh feedback/group/user thực — cần wire `FeedbackRepository.countByStatus(pending)` etc.
-- Recent activity placeholder; cần wire `audit_events`.
-- Frontend Dashboard render đầy đủ (`Dashboard.tsx` dùng TanStack `useQuery` — Q6 confirmed shipped).
+- Mọi field đều backed bằng count thật — không còn placeholder.
+- Nếu sau này cần lại "Cần xử lý" / "Hoạt động Admin": wire `FeedbackRepository.countByStatus(pending)` + `audit_events` (xem §14 Audit, F-api-16) rồi un-hide. Đến lúc đó mới thêm panel trở lại — không ship panel rỗng.
 
 ---
 
@@ -723,7 +713,7 @@ Fixture endpoints để E2E tests setup/teardown user state nhanh — bypass gri
 
 | Area | Gap | Severity | Backlog ref |
 |------|-----|----------|-------------|
-| §3 Dashboard | `actionItems` + `recentActivity` hard-coded 0 / empty | medium | wire repos |
+| §3 Dashboard | ~~`actionItems` + `recentActivity` hard-coded 0 / empty~~ **RESOLVED 2026-06-16**: panel placeholder đã gỡ (scope cut, DECISIONS) — dashboard chỉ còn số liệu thật | — | done |
 | §7 AI | `POST /api/admin/ai/generate-explanations` không có (vaporware) | low | spec defer hoặc implement |
 | §7 AI | Quota in-memory, mất khi restart | medium | persist Redis hoặc DB |
 | §7 AI | Auto duplicate-check trên drafts | medium | gọi `DuplicateDetectionService` trong `AIAdminController.generate` |
