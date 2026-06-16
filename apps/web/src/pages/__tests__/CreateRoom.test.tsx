@@ -80,7 +80,7 @@ describe('CreateRoom', () => {
     renderCreateRoom()
     const btn20 = screen.getAllByText('20')[0] // question count 20
     fireEvent.click(btn20)
-    expect(btn20.className).toContain('bg-[#f8bd45]')
+    expect(btn20.className).toContain('bg-bq-action')
   })
 
   // 5. Segmented controls — time per question
@@ -88,7 +88,7 @@ describe('CreateRoom', () => {
     renderCreateRoom()
     const btn30 = screen.getByText('30s')
     fireEvent.click(btn30)
-    expect(btn30.className).toContain('bg-[#f8bd45]')
+    expect(btn30.className).toContain('bg-bq-action')
   })
 
   // 6. Max players slider
@@ -169,7 +169,7 @@ describe('CreateRoom', () => {
     renderCreateRoom()
     const hardBtn = screen.getByText('Khó')
     fireEvent.click(hardBtn)
-    expect(hardBtn.className).toContain('bg-[#f8bd45]')
+    expect(hardBtn.className).toContain('bg-bq-action')
   })
 
   // 14. Room name input

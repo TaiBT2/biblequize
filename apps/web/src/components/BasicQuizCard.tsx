@@ -81,7 +81,7 @@ export default function BasicQuizCard() {
     return (
       <div
         data-testid="basic-quiz-card-skeleton"
-        className="glass-card rounded-2xl p-6 h-[180px] animate-pulse bg-surface-container"
+        className="rounded-2xl p-6 h-[180px] animate-pulse bg-bq-inset border border-bq-hair"
       />
     )
   }
@@ -95,24 +95,24 @@ export default function BasicQuizCard() {
       <section
         data-testid="basic-quiz-card"
         data-state="passed"
-        className="glass-card rounded-2xl p-6 border border-secondary/20 gold-glow"
+        className="rounded-2xl p-6 bg-bq-white border border-bq-amber/30 shadow-bq-amb"
       >
         <div className="flex items-center gap-2 mb-4">
-          <span className="material-symbols-outlined text-secondary text-base" style={FILL_1}>verified</span>
-          <span className="text-xs font-bold text-secondary uppercase tracking-widest">
+          <span className="material-symbols-outlined text-bq-amberd text-base" style={FILL_1}>verified</span>
+          <span className="text-xs font-bold text-bq-amberd uppercase tracking-widest">
             {t('basicQuiz.card.passedBadge')}
           </span>
         </div>
-        <h3 className="text-2xl font-black text-on-surface mb-2">
+        <h3 className="font-display text-2xl font-black text-bq-ink mb-2">
           {t('basicQuiz.card.rankedHeader')}
         </h3>
-        <p className="text-sm text-on-surface-variant mb-4">
+        <p className="text-sm text-bq-ink2 mb-4">
           {t('basicQuiz.card.rankedDescription')}
         </p>
         <button
           data-testid="basic-quiz-card-cta"
           onClick={() => navigate('/ranked')}
-          className="gold-gradient text-on-secondary px-6 py-3 rounded-xl font-bold w-full sm:w-auto active:scale-95 shadow-lg shadow-secondary/10"
+          className="bg-bq-action text-white shadow-bq-action px-6 py-3 rounded-xl font-bold w-full sm:w-auto active:scale-95"
         >
           <span className="material-symbols-outlined align-middle text-base mr-1" style={FILL_1}>play_arrow</span>
           {t('basicQuiz.card.ctaRanked')}
@@ -137,28 +137,28 @@ export default function BasicQuizCard() {
     <section
       data-testid="basic-quiz-card"
       data-state={stateLabel}
-      className="glass-card rounded-2xl p-6 border border-secondary/30"
+      className="rounded-2xl p-6 bg-bq-white border border-bq-hair shadow-bq-soft"
     >
       <div className="flex items-start gap-4">
-        <div className="hidden sm:flex w-12 h-12 rounded-xl bg-secondary/10 items-center justify-center text-secondary shrink-0">
+        <div className="hidden sm:flex w-12 h-12 rounded-xl bg-bq-amber/10 items-center justify-center text-bq-amberd shrink-0">
           <span className="material-symbols-outlined" style={FILL_1}>menu_book</span>
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="text-lg sm:text-xl font-black text-on-surface mb-1">
+          <h3 className="font-display text-lg sm:text-xl font-black text-bq-ink mb-1">
             {t('basicQuiz.card.unlockHeader')}
           </h3>
-          <p className="text-sm text-on-surface-variant mb-3">
+          <p className="text-sm text-bq-ink2 mb-3">
             {t('basicQuiz.card.subtitle', { total: totalQuestions, threshold })}
           </p>
 
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-on-surface-variant mb-4">
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-bq-ink2 mb-4">
             {attemptCount > 0 && (
               <span data-testid="basic-quiz-attempts">
                 {t('basicQuiz.card.attemptCount', { count: attemptCount })}
               </span>
             )}
             {inCooldown && (
-              <span data-testid="basic-quiz-cooldown" className="text-secondary font-semibold">
+              <span data-testid="basic-quiz-cooldown" className="text-bq-amberd font-semibold">
                 <span className="material-symbols-outlined align-middle text-sm mr-1">timer</span>
                 {t('basicQuiz.card.cooldownLabel')}: {formatMmSs(localCooldown)}
               </span>
@@ -171,8 +171,8 @@ export default function BasicQuizCard() {
             onClick={() => navigate('/basic-quiz')}
             className={
               inCooldown
-                ? 'bg-surface-container-highest text-on-surface-variant px-6 py-3 rounded-xl font-bold w-full sm:w-auto cursor-not-allowed opacity-70'
-                : 'gold-gradient text-on-secondary px-6 py-3 rounded-xl font-bold w-full sm:w-auto active:scale-95 shadow-lg shadow-secondary/10'
+                ? 'bg-bq-inset border border-bq-hair text-bq-ink2 px-6 py-3 rounded-xl font-bold w-full sm:w-auto cursor-not-allowed opacity-70'
+                : 'bg-bq-action text-white shadow-bq-action px-6 py-3 rounded-xl font-bold w-full sm:w-auto active:scale-95'
             }
           >
             {ctaLabel}

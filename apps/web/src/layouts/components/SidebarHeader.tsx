@@ -10,7 +10,7 @@ export default function SidebarHeader() {
   return (
     <div
       data-testid="sidebar-header"
-      className="flex items-center justify-between px-5 py-4 border-b border-outline-variant/10"
+      className="flex items-center justify-between px-5 py-4 border-b border-bq-hair"
     >
       <Link
         to="/"
@@ -38,8 +38,8 @@ export default function SidebarHeader() {
             <path d="M9 8h6M9 12h4" />
           </svg>
         </span>
-        <span className="text-[19px] font-extrabold text-ivory tracking-[-0.02em] leading-none">
-          Bible<span className="text-secondary">Quiz</span>
+        <span className="font-display text-[19px] font-extrabold text-bq-ink tracking-[-0.02em] leading-none">
+          Bible<span className="text-bq-amberd">Quiz</span>
         </span>
       </Link>
       <NotificationBell />

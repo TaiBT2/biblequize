@@ -38,24 +38,24 @@ export default function MySets() {
   });
 
   return (
-    <div className="min-h-screen" style={{ background: '#11131e' }}>
+    <div className="min-h-screen bg-bq-paper">
       <div className="max-w-4xl mx-auto px-4 py-6">
 
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <Link to="/multiplayer" className="text-on-surface-variant hover:text-on-surface transition-colors">
+            <Link to="/multiplayer" className="text-bq-ink2 hover:text-bq-ink transition-colors">
               <span className="material-symbols-outlined">arrow_back</span>
             </Link>
             <div>
-              <h1 className="text-xl font-bold text-on-surface">Bộ câu hỏi của tôi</h1>
-              <p className="text-xs text-on-surface-variant mt-0.5">{sets.length}/{MAX_SETS} bộ</p>
+              <h1 className="text-xl font-bold text-bq-ink font-display">Bộ câu hỏi của tôi</h1>
+              <p className="text-xs text-bq-ink2 mt-0.5">{sets.length}/{MAX_SETS} bộ</p>
             </div>
           </div>
           <button
             onClick={() => navigate('/my-sets/new')}
             disabled={sets.length >= MAX_SETS}
-            className="gold-gradient px-4 py-2 rounded-xl text-[#11131e] font-bold text-sm flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="bg-bq-action shadow-bq-action px-4 py-2 rounded-xl text-white font-bold text-sm flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <span className="material-symbols-outlined text-lg">add</span>
             Tạo bộ mới
@@ -66,14 +66,14 @@ export default function MySets() {
         {isLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="glass-card rounded-2xl h-36 animate-pulse" />
+              <div key={i} className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl h-36 animate-pulse" />
             ))}
           </div>
         ) : sets.length === 0 ? (
-          <div className="glass-card rounded-2xl p-12 text-center">
-            <span className="material-symbols-outlined text-5xl text-on-surface-variant/40 mb-3 block">menu_book</span>
-            <p className="text-on-surface-variant text-sm">Chưa có bộ câu hỏi nào</p>
-            <p className="text-on-surface-variant/60 text-xs mt-1">Tạo bộ đầu tiên để tái sử dụng cho nhiều trận</p>
+          <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-12 text-center">
+            <span className="material-symbols-outlined text-5xl text-bq-ink3/40 mb-3 block">menu_book</span>
+            <p className="text-bq-ink2 text-sm">Chưa có bộ câu hỏi nào</p>
+            <p className="text-bq-ink3 text-xs mt-1">Tạo bộ đầu tiên để tái sử dụng cho nhiều trận</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -82,18 +82,18 @@ export default function MySets() {
               const isDraft = set.publishStatus === 'DRAFT';
               const tags = set.tags ?? [];
               return (
-                <div key={set.id} className="glass-card rounded-2xl p-5 flex flex-col gap-3 relative group">
+                <div key={set.id} className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-5 flex flex-col gap-3 relative group">
                   {/* Status + locked badges */}
                   <div className="flex items-center justify-between gap-2 flex-wrap">
                     <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                       isDraft
-                        ? 'bg-amber-500/20 text-amber-400'
-                        : 'bg-green-500/20 text-green-400'
+                        ? 'bg-bq-amber/20 text-bq-amberd'
+                        : 'bg-bq-emerald/20 text-bq-emerald'
                     }`}>
                       {isDraft ? 'NHÁP' : 'ĐÃ XUẤT BẢN'}
                     </span>
                     {locked && (
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 flex items-center gap-1">
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-bq-amber/20 text-bq-amberd flex items-center gap-1">
                         <span className="material-symbols-outlined text-sm">lock</span>
                         Đang dùng
                       </span>
@@ -102,29 +102,29 @@ export default function MySets() {
 
                   {/* Name + desc */}
                   <div className="flex-1">
-                    <h3 className="text-sm font-semibold text-on-surface leading-tight">{set.name}</h3>
+                    <h3 className="text-sm font-semibold text-bq-ink leading-tight">{set.name}</h3>
                     {set.coverScripture && (
-                      <p className="text-xs text-secondary/80 mt-1 italic">📖 {set.coverScripture}</p>
+                      <p className="text-xs text-bq-amberd/80 mt-1 italic">📖 {set.coverScripture}</p>
                     )}
                     {set.description && (
-                      <p className="text-xs text-on-surface-variant mt-1 line-clamp-2">{set.description}</p>
+                      <p className="text-xs text-bq-ink2 mt-1 line-clamp-2">{set.description}</p>
                     )}
                     {tags.length > 0 && (
                       <div className="flex gap-1 mt-2 flex-wrap">
                         {tags.slice(0, 2).map(tag => (
-                          <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded bg-white/5 text-on-surface-variant">
+                          <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded bg-bq-inset text-bq-ink2">
                             #{tag}
                           </span>
                         ))}
                         {tags.length > 2 && (
-                          <span className="text-[10px] px-1.5 py-0.5 text-on-surface-variant/60">+{tags.length - 2}</span>
+                          <span className="text-[10px] px-1.5 py-0.5 text-bq-ink3">+{tags.length - 2}</span>
                         )}
                       </div>
                     )}
                   </div>
 
                   {/* Stats */}
-                  <div className="flex items-center gap-3 text-xs text-on-surface-variant">
+                  <div className="flex items-center gap-3 text-xs text-bq-ink2">
                     <span className="flex items-center gap-1">
                       <span className="material-symbols-outlined text-sm">quiz</span>
                       {set.questionCount} câu
@@ -138,13 +138,13 @@ export default function MySets() {
                   {/* Actions */}
                   <div className="flex gap-2">
                     <Link to={`/my-sets/${set.id}/edit`}
-                      className="flex-1 py-2 rounded-xl text-xs font-semibold text-center border border-secondary/40 text-secondary hover:bg-secondary/10 transition-colors">
+                      className="flex-1 py-2 rounded-xl text-xs font-semibold text-center border border-bq-amberd/40 text-bq-amberd hover:bg-bq-amber/10 transition-colors">
                       {locked ? 'Xem' : isDraft ? 'Tiếp tục soạn' : 'Sửa'}
                     </Link>
                     {!locked && (
                       <button
                         onClick={() => setDeleteConfirm(set.id)}
-                        className="p-2 rounded-xl border border-white/10 text-on-surface-variant hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/30 transition-colors"
+                        className="p-2 rounded-xl border border-bq-hair text-bq-ink2 hover:bg-bq-ruby/10 hover:text-bq-ruby hover:border-bq-ruby/30 transition-colors"
                       >
                         <span className="material-symbols-outlined text-sm">delete</span>
                       </button>
@@ -159,20 +159,20 @@ export default function MySets() {
         {/* Delete confirm modal */}
         {deleteConfirm && (
           <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
-            <div className="glass-panel rounded-2xl p-6 max-w-sm w-full">
-              <h3 className="text-base font-bold text-on-surface mb-2">Xoá bộ câu hỏi?</h3>
-              <p className="text-sm text-on-surface-variant mb-5">
+            <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-6 max-w-sm w-full">
+              <h3 className="text-base font-bold text-bq-ink mb-2">Xoá bộ câu hỏi?</h3>
+              <p className="text-sm text-bq-ink2 mb-5">
                 Hành động này không thể hoàn tác. Các câu hỏi trong bộ sẽ vẫn còn trong ngân hàng của bạn.
               </p>
               <div className="flex gap-3 justify-end">
                 <button onClick={() => setDeleteConfirm(null)}
-                  className="px-4 py-2 rounded-xl text-sm text-on-surface-variant border border-white/10 hover:bg-white/5 transition-colors">
+                  className="px-4 py-2 rounded-xl text-sm text-bq-ink2 border border-bq-hair hover:bg-bq-inset transition-colors">
                   Huỷ
                 </button>
                 <button
                   onClick={() => deleteMutation.mutate(deleteConfirm!)}
                   disabled={deleteMutation.isPending}
-                  className="px-4 py-2 rounded-xl text-sm font-bold bg-red-500/80 text-white hover:bg-red-500 disabled:opacity-50 transition-colors">
+                  className="px-4 py-2 rounded-xl text-sm font-bold bg-bq-ruby text-white hover:bg-bq-ruby/90 disabled:opacity-50 transition-colors">
                   {deleteMutation.isPending ? 'Đang xoá...' : 'Xoá'}
                 </button>
               </div>

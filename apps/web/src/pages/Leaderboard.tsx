@@ -99,15 +99,15 @@ export default function Leaderboard() {
       {/* Header & Countdown */}
       <header className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
         <div>
-          <h1 className="text-3xl font-black tracking-tight text-on-surface mb-2">{t('leaderboard.title')}</h1>
-          <p className="text-on-surface-variant text-sm">{t('leaderboard.description')}</p>
+          <h1 className="text-3xl font-display font-black tracking-tight text-bq-ink mb-2">{t('leaderboard.title')}</h1>
+          <p className="text-bq-ink2 text-sm">{t('leaderboard.description')}</p>
         </div>
         {seasonCountdown && (
-          <div className="flex items-center gap-3 bg-surface-container-low px-4 py-3 rounded-xl border-l-4 border-secondary">
-            <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>timer</span>
+          <div className="flex items-center gap-3 bg-bq-white px-4 py-3 rounded-xl border border-bq-hair border-l-4 border-l-bq-amber shadow-bq-soft">
+            <span className="material-symbols-outlined text-bq-amberd" style={{ fontVariationSettings: "'FILL' 1" }}>timer</span>
             <div>
-              <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">{t('leaderboard.seasonEndsIn')}</p>
-              <p className="text-secondary font-bold font-mono">{seasonCountdown}</p>
+              <p className="text-[10px] text-bq-ink2 font-bold uppercase tracking-widest">{t('leaderboard.seasonEndsIn')}</p>
+              <p className="text-bq-amberd font-bold font-mono">{seasonCountdown}</p>
             </div>
           </div>
         )}
@@ -118,9 +118,9 @@ export default function Leaderboard() {
         <div className="grid grid-cols-3 gap-4 md:gap-10 items-end mb-16 px-2 animate-pulse">
           {[0, 1, 2].map(i => (
             <div key={i} className="flex flex-col items-center">
-              <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-surface-container mb-6" />
-              <div className="h-3 w-16 bg-surface-container rounded mb-2" />
-              <div className="h-3 w-12 bg-surface-container rounded" />
+              <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-bq-inset mb-6" />
+              <div className="h-3 w-16 bg-bq-inset rounded mb-2" />
+              <div className="h-3 w-12 bg-bq-inset rounded" />
             </div>
           ))}
         </div>
@@ -144,7 +144,7 @@ export default function Leaderboard() {
                   )}
                   <div
                     className={`${layout.avatar} rounded-full overflow-hidden border-2 ${isFirst ? 'shadow-[0_0_20px_rgba(232,168,50,0.4)]' : ''}`}
-                    style={{ borderColor: isFirst ? '#e8a832' : tierColor + '99' }}
+                    style={{ borderColor: isFirst ? '#D97F06' : tierColor + '99' }}
                   >
                     {(() => {
                       const r = resolveAvatar(player.avatarUrl, player.name)
@@ -154,7 +154,7 @@ export default function Leaderboard() {
                       )
                       return (
                         <div
-                          className="w-full h-full flex items-center justify-center text-sm md:text-xl font-medium text-[#11131e]"
+                          className="w-full h-full flex items-center justify-center text-sm md:text-xl font-medium text-bq-ink"
                           style={{ background: tierColor }}
                         >
                           {r.initial}
@@ -164,15 +164,15 @@ export default function Leaderboard() {
                   </div>
                   {/* Arabic-numeral rank badge — replaces La Mã (LB-P1-2) */}
                   <div
-                    className="absolute -bottom-1 md:-bottom-1.5 left-1/2 -translate-x-1/2 w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center font-medium text-[10px] md:text-xs text-[#11131e] border-2 border-background"
-                    style={{ background: isFirst ? '#e8a832' : tierColor }}
+                    className="absolute -bottom-1 md:-bottom-1.5 left-1/2 -translate-x-1/2 w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center font-medium text-[10px] md:text-xs text-bq-ink border-2 border-bq-paper"
+                    style={{ background: isFirst ? '#D97F06' : tierColor }}
                   >
                     {layout.rank}
                   </div>
                 </div>
 
                 {/* Name + tier name */}
-                <p className="font-medium text-[11px] md:text-sm text-center truncate w-full text-on-surface">{player.name}</p>
+                <p className="font-medium text-[11px] md:text-sm text-center truncate w-full text-bq-ink">{player.name}</p>
                 <p className="text-[9px] md:text-xs mb-1.5 md:mb-2 truncate w-full text-center" style={{ color: tierColor }}>
                   {t(tier.nameKey)}
                 </p>
@@ -187,11 +187,11 @@ export default function Leaderboard() {
                 >
                   <div
                     className={`${isFirst ? 'text-base md:text-2xl' : 'text-xs md:text-lg'} font-medium`}
-                    style={{ color: isFirst ? '#e8a832' : tierColor }}
+                    style={{ color: isFirst ? '#D97F06' : tierColor }}
                   >
                     {points}
                   </div>
-                  <div className="text-[8px] md:text-[10px] text-on-surface-variant/55 mt-0.5">
+                  <div className="text-[8px] md:text-[10px] text-bq-ink2/70 mt-0.5">
                     {t('leaderboard.points').toLowerCase()}{questions ? ` · ${questions} câu` : ''}
                   </div>
                 </div>
@@ -201,17 +201,17 @@ export default function Leaderboard() {
         </section>
       ) : list.length === 0 ? (
         <div className="text-center py-16 mb-16">
-          <span className="material-symbols-outlined text-5xl text-on-surface-variant/30 mb-4">leaderboard</span>
-          <p className="text-on-surface-variant text-sm">{t('leaderboard.noData')}</p>
+          <span className="material-symbols-outlined text-5xl text-bq-ink3 mb-4">leaderboard</span>
+          <p className="text-bq-ink2 text-sm">{t('leaderboard.noData')}</p>
         </div>
       ) : null}
 
       {/* Tabs */}
-      <nav className="flex p-1 bg-surface-container-low rounded-2xl mb-10">
+      <nav className="flex p-1 bg-bq-inset rounded-2xl mb-10">
         {tabs.map((tab) => (
           <button key={tab.key} onClick={() => setActiveTab(tab.key)}
             className={`flex-1 py-3 text-xs md:text-sm font-bold uppercase tracking-widest transition-all ${
-              activeTab === tab.key ? 'text-on-surface bg-surface-container-highest rounded-xl shadow-sm' : 'text-on-surface-variant hover:text-on-surface'
+              activeTab === tab.key ? 'text-bq-ink bg-bq-white rounded-xl shadow-bq-soft' : 'text-bq-ink2 hover:text-bq-ink'
             }`}>
             {tab.label}
           </button>
@@ -221,7 +221,7 @@ export default function Leaderboard() {
       {/* Table List */}
       <div className={`space-y-4 mb-16 transition-opacity ${isFetching ? 'opacity-50' : ''}`}>
         {isLoading ? (
-          [1, 2, 3, 4].map(i => <div key={i} className="h-16 bg-surface-container-low rounded-2xl animate-pulse" />)
+          [1, 2, 3, 4].map(i => <div key={i} className="h-16 bg-bq-inset rounded-2xl animate-pulse" />)
         ) : rest.length === 0 && list.length <= 3 ? null : (
           <>
             {rest.map((entry: any, idx: number) => {
@@ -259,13 +259,13 @@ export default function Leaderboard() {
       </div>
 
       {/* Season Tier Ranking — 6 religious tiers (decision A 2026-05-01) */}
-      <section className="glass-card p-6 md:p-8 rounded-3xl mb-24 border border-outline-variant/10" data-testid="leaderboard-tier-section">
+      <section className="bg-bq-white p-6 md:p-8 rounded-3xl mb-24 border border-bq-hair shadow-bq-soft" data-testid="leaderboard-tier-section">
         <header className="mb-6">
-          <h4 className="text-lg font-black flex items-center gap-2 mb-1">
+          <h4 className="text-lg font-display font-black flex items-center gap-2 mb-1 text-bq-ink">
             <span>🏆</span>
             {t('leaderboard.seasonRanking')}
           </h4>
-          <p className="text-xs text-on-surface-variant leading-relaxed">
+          <p className="text-xs text-bq-ink2 leading-relaxed">
             {season?.active && season.name
               ? t('leaderboard.tierSeasonSubtitle', { seasonName: season.name })
               : t('leaderboard.tierSeasonSubtitleFallback')}
@@ -283,13 +283,13 @@ export default function Leaderboard() {
                 data-testid={`leaderboard-tier-card-${tier.id}`}
                 className={`relative p-4 rounded-2xl border-t-2 transition-colors ${
                   isCurrent
-                    ? 'bg-secondary/10 border-secondary'
-                    : 'bg-surface-container-lowest border-outline/30'
+                    ? 'bg-bq-amber/10 border-bq-amber'
+                    : 'bg-bq-inset border-bq-hair'
                 }`}
                 style={!isCurrent ? { borderTopColor: tier.colorHex + '66' } : undefined}
               >
                 {isCurrent && (
-                  <span className="absolute top-2 right-2 bg-secondary text-[#412d00] text-[8px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-tight">
+                  <span className="absolute top-2 right-2 bg-bq-amber text-white text-[8px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-tight">
                     {t('leaderboard.me')}
                   </span>
                 )}
@@ -299,10 +299,10 @@ export default function Leaderboard() {
                 >
                   {tier.iconMaterial}
                 </span>
-                <p className="font-bold text-sm mb-1" style={{ color: isCurrent ? undefined : tier.colorHex }}>
+                <p className={`font-bold text-sm mb-1 ${isCurrent ? 'text-bq-ink' : ''}`} style={{ color: isCurrent ? undefined : tier.colorHex }}>
                   {t(tier.nameKey)}
                 </p>
-                <p className="text-[10px] text-on-surface-variant leading-relaxed">{thresholdLabel}</p>
+                <p className="text-[10px] text-bq-ink2 leading-relaxed">{thresholdLabel}</p>
               </div>
             )
           })}
@@ -347,30 +347,30 @@ function LeaderboardListRow({ rank, name, points, avatarUrl, streak, trend, isMe
     return (
       <div
         data-testid={testId}
-        className="flex items-center gap-3 md:gap-4 p-4 md:p-5 bg-[#e8a832] rounded-2xl border-l-8 border-background/20 shadow-[0_15px_30px_rgba(232,168,50,0.3)]"
+        className="flex items-center gap-3 md:gap-4 p-4 md:p-5 bg-bq-amber/10 rounded-2xl outline outline-bq-amber/40 shadow-bq-soft"
       >
-        <div className="w-7 md:w-8 text-center font-black text-[#11131e]">{rank}</div>
-        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-[#11131e] shadow-lg overflow-hidden flex items-center justify-center text-[#11131e] font-bold" style={{ background: tierColor }}>
+        <div className="w-7 md:w-8 text-center font-black text-bq-amberd">{rank}</div>
+        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-bq-amber shadow-bq-soft overflow-hidden flex items-center justify-center text-bq-ink font-bold" style={{ background: tierColor }}>
           {renderAvatarBody()}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <h3 className="font-black text-xs md:text-sm text-[#11131e] truncate">{name}</h3>
-            <span className="bg-[#11131e]/15 text-[#11131e] text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-tighter">{t('leaderboard.me')}</span>
+            <h3 className="font-black text-xs md:text-sm text-bq-ink truncate">{name}</h3>
+            <span className="bg-bq-amber/20 text-bq-amberd text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-tighter">{t('leaderboard.me')}</span>
           </div>
-          <div className="flex items-center gap-2 mt-0.5 text-[10px] md:text-[11px] text-[#11131e]/70">
+          <div className="flex items-center gap-2 mt-0.5 text-[10px] md:text-[11px] text-bq-ink2">
             <span>{tierName}</span>
             {streak != null && streak > 0 && <span>🔥 {streak}</span>}
           </div>
         </div>
         {trend != null && trend !== 0 && (
-          <div className="text-[10px] md:text-xs text-[#11131e]/70 font-bold">
+          <div className="text-[10px] md:text-xs text-bq-ink2 font-bold">
             {trend > 0 ? `▲ ${trend}` : `▼ ${Math.abs(trend)}`}
           </div>
         )}
         <div className="text-right">
-          <p className="text-[#11131e] font-black text-base md:text-lg">{points.toLocaleString()}</p>
-          <p className="text-[9px] md:text-[10px] uppercase text-[#11131e]/60 font-bold">{t('leaderboard.points')}</p>
+          <p className="text-bq-ink font-black text-base md:text-lg">{points.toLocaleString()}</p>
+          <p className="text-[9px] md:text-[10px] uppercase text-bq-ink2 font-bold">{t('leaderboard.points')}</p>
         </div>
       </div>
     )
@@ -379,30 +379,27 @@ function LeaderboardListRow({ rank, name, points, avatarUrl, streak, trend, isMe
   return (
     <div
       data-testid={testId}
-      className="flex items-center gap-3 md:gap-4 p-3 md:p-5 bg-surface-container-low rounded-2xl hover:bg-surface-container-high transition-all group"
+      className="flex items-center gap-3 md:gap-4 p-3 md:p-5 bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl hover:bg-bq-inset transition-all group"
     >
-      <div className="w-7 md:w-8 text-center font-black text-on-surface-variant group-hover:text-on-surface transition-colors text-sm">{rank}</div>
-      <div className="w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden flex items-center justify-center text-sm font-bold text-[#11131e]" style={{ background: tierColor }}>
+      <div className="w-7 md:w-8 text-center font-black text-bq-ink2 group-hover:text-bq-ink transition-colors text-sm">{rank}</div>
+      <div className="w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden flex items-center justify-center text-sm font-bold text-bq-ink" style={{ background: tierColor }}>
         {renderAvatarBody()}
       </div>
       <div className="flex-1 min-w-0">
-        <h3 className="font-bold text-xs md:text-sm text-on-surface truncate">{name}</h3>
+        <h3 className="font-bold text-xs md:text-sm text-bq-ink truncate">{name}</h3>
         <div className="flex items-center gap-2 mt-0.5 text-[10px] md:text-[11px]">
           <span style={{ color: tierColor }}>{tierName}</span>
-          {streak != null && streak > 0 && <span className="text-[#ff8c42]/80">🔥 {streak}</span>}
+          {streak != null && streak > 0 && <span className="text-bq-ember">🔥 {streak}</span>}
         </div>
       </div>
       {trend != null && trend !== 0 && (
-        <div
-          className="text-[10px] md:text-xs font-bold"
-          style={{ color: trend > 0 ? 'rgba(74,158,255,0.8)' : 'rgba(239,68,68,0.8)' }}
-        >
+        <div className={`text-[10px] md:text-xs font-bold ${trend > 0 ? 'text-bq-sapphire' : 'text-bq-ruby'}`}>
           {trend > 0 ? `▲ ${trend}` : `▼ ${Math.abs(trend)}`}
         </div>
       )}
       <div className="text-right">
-        <p className="text-on-surface font-black text-sm">{points.toLocaleString()}</p>
-        <p className="text-[9px] md:text-[10px] uppercase text-on-surface-variant">{t('leaderboard.points')}</p>
+        <p className="text-bq-ink font-black text-sm">{points.toLocaleString()}</p>
+        <p className="text-[9px] md:text-[10px] uppercase text-bq-ink2">{t('leaderboard.points')}</p>
       </div>
     </div>
   )

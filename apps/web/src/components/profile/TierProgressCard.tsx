@@ -29,45 +29,45 @@ export function TierProgressCard({ currentTier, nextTier, tierProgress, currentS
     : null
 
   return (
-    <section data-testid="profile-tier-progress" className="bg-surface-container/60 backdrop-blur-sm border border-outline-variant/10 rounded-2xl p-5 md:p-6">
+    <section data-testid="profile-tier-progress" className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-5 md:p-6">
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-outline to-outline-variant flex items-center justify-center text-[22px] border border-white/10 shrink-0">
+          <div className="w-12 h-12 rounded-xl bg-bq-inset flex items-center justify-center text-[22px] border border-bq-hair shrink-0">
             {currentTier.iconEmoji}
           </div>
           <div className="min-w-0">
-            <p data-testid="profile-tier-current-name" className="text-base font-bold text-on-surface truncate">
+            <p data-testid="profile-tier-current-name" className="text-base font-bold text-bq-ink truncate">
               {t(currentTier.nameKey)}
             </p>
-            <p className="text-xs text-on-surface-variant mt-0.5">
+            <p className="text-xs text-bq-ink2 mt-0.5">
               {t('profile.tierCurrentSub', { n: currentTier.id })}
             </p>
           </div>
         </div>
-        <span className="material-symbols-outlined text-2xl text-white/20 hidden sm:block">arrow_forward</span>
+        <span className="material-symbols-outlined text-2xl text-bq-ink3 hidden sm:block">arrow_forward</span>
         <div className="flex items-center gap-3 shrink-0">
           {nextTier ? (
             <>
               <div className="text-right">
-                <p data-testid="profile-tier-next-name" className="text-[13px] font-semibold text-secondary">
+                <p data-testid="profile-tier-next-name" className="text-[13px] font-semibold text-bq-amberd">
                   {t(nextTier.nameKey)}
                 </p>
-                <p className="text-[11px] text-on-surface-variant mt-0.5">
+                <p className="text-[11px] text-bq-ink2 mt-0.5">
                   {t('profile.tierNextSub', { n: nextTier.id, exp: tierProgress.expRemaining.toLocaleString() })}
                 </p>
               </div>
-              <div className="w-12 h-12 rounded-xl bg-secondary/10 border border-dashed border-secondary/40 flex items-center justify-center text-[22px] opacity-70">
+              <div className="w-12 h-12 rounded-xl bg-bq-amber/10 border border-dashed border-bq-amber/40 flex items-center justify-center text-[22px] opacity-70">
                 {nextTier.iconEmoji}
               </div>
             </>
           ) : (
-            <span className="text-xs font-bold text-secondary uppercase">{t('profile.tierMaxLabel')}</span>
+            <span className="text-xs font-bold text-bq-amberd uppercase">{t('profile.tierMaxLabel')}</span>
           )}
         </div>
       </div>
 
       <div className="mt-5">
-        <p className="text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant mb-1.5">
+        <p className="text-[10px] font-semibold uppercase tracking-wider text-bq-ink2 mb-1.5">
           {t('profile.subStarsLabel', { n: starsFilled })}
         </p>
         <div className="flex items-center justify-between px-1">
@@ -76,10 +76,10 @@ export function TierProgressCard({ currentTier, nextTier, tierProgress, currentS
               key={i}
               className={
                 state === 'filled'
-                  ? 'w-6 h-6 rounded-full gold-gradient text-on-secondary flex items-center justify-center text-[13px] shadow-[0_0_10px_rgba(232,168,50,0.4)]'
+                  ? 'w-6 h-6 rounded-full bg-bq-action text-white shadow-bq-action flex items-center justify-center text-[13px]'
                   : state === 'current'
-                  ? 'w-6 h-6 rounded-full bg-secondary/15 border border-secondary text-secondary flex items-center justify-center text-[13px] animate-pulse'
-                  : 'w-6 h-6 rounded-full bg-white/5 border border-white/10 text-white/20 flex items-center justify-center text-[13px]'
+                  ? 'w-6 h-6 rounded-full bg-bq-amber/15 border border-bq-amber text-bq-amberd flex items-center justify-center text-[13px] animate-pulse'
+                  : 'w-6 h-6 rounded-full bg-bq-inset border border-bq-hair text-bq-ink3 flex items-center justify-center text-[13px]'
               }
             >
               ★
@@ -89,21 +89,21 @@ export function TierProgressCard({ currentTier, nextTier, tierProgress, currentS
       </div>
 
       <div className="relative mt-5 mb-7">
-        <div className="h-2.5 bg-white/5 rounded-full overflow-hidden">
+        <div className="h-2.5 bg-bq-inset rounded-full overflow-hidden">
           <div
-            className="h-full gold-gradient rounded-full shadow-[0_0_10px_rgba(232,168,50,0.5)] relative"
+            className="h-full bg-bq-action rounded-full shadow-bq-action relative"
             style={{ width: `${tierProgress.progressPercent}%` }}
           >
             {tierProgress.progressPercent > 0 && tierProgress.progressPercent < 100 && (
-              <div className="absolute -right-0.5 -top-0.5 w-3.5 h-3.5 rounded-full bg-secondary border-2 border-background shadow-[0_0_12px_rgba(232,168,50,0.8)]" />
+              <div className="absolute -right-0.5 -top-0.5 w-3.5 h-3.5 rounded-full bg-bq-amber border-2 border-bq-white shadow-bq-amb" />
             )}
           </div>
         </div>
         {[50, 90].map(p => (
           <React.Fragment key={p}>
-            <div className="absolute -top-0.5 w-0.5 h-3.5 bg-white/20 rounded" style={{ left: `${p}%` }} />
+            <div className="absolute -top-0.5 w-0.5 h-3.5 bg-bq-hair rounded" style={{ left: `${p}%` }} />
             <div
-              className="absolute top-4 text-[9px] font-semibold uppercase tracking-wider text-white/40 -translate-x-1/2"
+              className="absolute top-4 text-[9px] font-semibold uppercase tracking-wider text-bq-ink3 -translate-x-1/2"
               style={{ left: `${p}%` }}
             >
               {p}%
@@ -112,23 +112,23 @@ export function TierProgressCard({ currentTier, nextTier, tierProgress, currentS
         ))}
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-4 border-t border-white/5">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-4 border-t border-bq-hair">
         <div className="flex flex-wrap items-center gap-3">
-          <div data-testid="profile-tier-exp" className="text-xs text-on-surface-variant">
-            <span className="text-lg font-extrabold text-secondary tracking-tight align-baseline">
+          <div data-testid="profile-tier-exp" className="text-xs text-bq-ink2">
+            <span className="text-lg font-extrabold text-bq-amberd tracking-tight align-baseline">
               {`${tierProgress.currentExp.toLocaleString()} / ${tierProgress.nextTierExp.toLocaleString()}`}
             </span>
             <span className="ml-1">EXP</span>
           </div>
           {nextTier && (
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] text-on-surface-variant">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-bq-inset border border-bq-hair text-[11px] text-bq-ink2">
               <span className="material-symbols-outlined text-[14px]">schedule</span>
               {etaDays != null ? t('profile.tierEta', { days: etaDays }) : t('profile.tierEtaUnknown')}
             </div>
           )}
         </div>
         {nextTier && (
-          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-secondary/10 border border-secondary/20 text-xs font-semibold text-secondary self-start sm:self-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-bq-amber/10 border border-bq-amber/20 text-xs font-semibold text-bq-amberd self-start sm:self-auto">
             <span className="material-symbols-outlined text-[16px]">lock_open</span>
             {t('profile.tierUnlockNext')}: {t(nextTier.nameKey)}
           </div>

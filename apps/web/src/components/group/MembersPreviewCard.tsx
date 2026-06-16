@@ -34,7 +34,7 @@ function Avatar({ member, withOnlineDot }: { member: MemberPreview; withOnlineDo
   return (
     <div
       title={`${member.name}${member.role === 'LEADER' ? ' · 👑 Leader' : member.role === 'MOD' ? ' · 🛡️ Mod' : ''}`}
-      className="relative w-9 h-9 rounded-full bg-[rgba(232,168,50,0.15)] border border-[rgba(232,168,50,0.3)] flex items-center justify-center text-[12px] font-bold text-secondary overflow-hidden shrink-0"
+      className="relative w-9 h-9 rounded-full bg-bq-amber/15 border border-bq-amber/30 flex items-center justify-center text-[12px] font-bold text-bq-amberd overflow-hidden shrink-0"
     >
       {(() => {
         const r = resolveAvatar(member.avatarUrl, member.name);
@@ -49,7 +49,7 @@ function Avatar({ member, withOnlineDot }: { member: MemberPreview; withOnlineDo
         <span className="absolute -top-0.5 -right-0.5 text-[8px]">🛡️</span>
       )}
       {withOnlineDot && (
-        <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 border border-[#11131e]" />
+        <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-bq-emerald border border-bq-white" />
       )}
     </div>
   );
@@ -64,36 +64,36 @@ export default function MembersPreviewCard({ members, total, onViewAll }: Props)
   return (
     <section
       data-testid="group-members-preview"
-      className="bg-[rgba(50,52,64,0.55)] border border-white/10 rounded-xl p-4 backdrop-blur-md"
+      className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl p-4"
     >
       <div className="flex items-center justify-between mb-3">
-        <h2 className="text-[11px] font-bold text-secondary uppercase tracking-wider">
+        <h2 className="text-[11px] font-bold text-bq-amberd uppercase tracking-wider">
           👥 {t('groups.membersTitle')} ({total})
         </h2>
         <button
           onClick={onViewAll}
-          className="text-[10px] text-on-surface/55 hover:text-secondary transition-colors"
+          className="text-[10px] text-bq-ink2 hover:text-bq-amberd transition-colors"
         >
           {t('groups.viewAll')} →
         </button>
       </div>
       {isEmpty ? (
-        <p className="text-[12px] text-on-surface/55 text-center py-4">
+        <p className="text-[12px] text-bq-ink2 text-center py-4">
           {t('groups.noMembers')}
         </p>
       ) : (
         <>
           {onlineMembers.length > 0 && (
             <div className="mb-3">
-              <div className="text-[9px] font-bold text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="text-[9px] font-bold text-bq-emerald uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-bq-emerald animate-pulse" />
                 {t('groups.membersPreview.onlineHeader', { count: onlineMembers.length })}
               </div>
               <ul className="space-y-1.5">
                 {onlineMembers.slice(0, 5).map((m) => (
                   <li key={m.userId} className="flex items-center gap-2">
                     <Avatar member={m} withOnlineDot />
-                    <span className="text-[12px] text-on-surface font-semibold truncate flex-1">{m.name}</span>
+                    <span className="text-[12px] text-bq-ink font-semibold truncate flex-1">{m.name}</span>
                   </li>
                 ))}
               </ul>
@@ -101,13 +101,13 @@ export default function MembersPreviewCard({ members, total, onViewAll }: Props)
           )}
 
           {offlineMembers.length > 0 && (
-            <div className={onlineMembers.length > 0 ? 'pt-3 border-t border-white/5' : ''}>
+            <div className={onlineMembers.length > 0 ? 'pt-3 border-t border-bq-hair' : ''}>
               {/* GD-FIX-R2-1: only render the "Khác (N)" sub-header when an
                   online section above it exists — otherwise the main h2
                   ("Thành viên (total)") already labels the row, and a second
                   "Thành viên (N)" sub-header duplicates the count. */}
               {onlineMembers.length > 0 && (
-                <div className="text-[9px] font-bold text-on-surface/55 uppercase tracking-wider mb-2">
+                <div className="text-[9px] font-bold text-bq-ink2 uppercase tracking-wider mb-2">
                   {t('groups.membersPreview.othersHeader', { count: offlineMembers.length })}
                 </div>
               )}
@@ -118,7 +118,7 @@ export default function MembersPreviewCard({ members, total, onViewAll }: Props)
                 {offlineMembers.length > 8 && (
                   <button
                     onClick={onViewAll}
-                    className="w-9 h-9 rounded-full bg-white/5 border border-white/10 text-[10px] text-on-surface/55 hover:text-secondary hover:border-secondary/40 transition-colors"
+                    className="w-9 h-9 rounded-full bg-bq-inset border border-bq-hair text-[10px] text-bq-ink2 hover:text-bq-amberd hover:border-bq-amber/40 transition-colors"
                   >
                     +{offlineMembers.length - 8}
                   </button>

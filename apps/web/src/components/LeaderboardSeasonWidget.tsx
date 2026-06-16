@@ -37,27 +37,21 @@ export default function LeaderboardSeasonWidget() {
   return (
     <div
       data-testid="leaderboard-season-widget"
-      className="rounded-[10px] px-3.5 py-3"
-      style={{
-        backgroundColor: 'rgba(232,168,50,0.06)',
-        border: '1px solid rgba(232,168,50,0.2)',
-      }}
+      className="rounded-[10px] px-3.5 py-3 bg-bq-white border border-bq-amber/20 shadow-bq-soft"
     >
       <div
-        className="text-[10px] uppercase font-bold mb-1.5"
-        style={{ letterSpacing: '0.12em', color: 'rgba(232,168,50,0.7)' }}
+        className="text-[10px] uppercase font-bold mb-1.5 text-bq-amberd"
+        style={{ letterSpacing: '0.12em' }}
       >
         {t('leaderboard.sidebar.seasonLabel')}
       </div>
       <div
-        className="text-[13px] font-semibold leading-none mb-1"
-        style={{ color: '#fff' }}
+        className="text-[13px] font-semibold leading-none mb-1 text-bq-ink"
       >
         {localizeSeasonName(season?.name, t) ?? t('leaderboard.sidebar.seasonNone')}
       </div>
       <p
-        className="text-[10px] leading-snug"
-        style={{ color: 'rgba(225,225,241,0.5)' }}
+        className="text-[10px] leading-snug text-bq-ink2"
       >
         {daysLeft != null
           ? t('leaderboard.sidebar.seasonDaysLeft', { count: daysLeft })

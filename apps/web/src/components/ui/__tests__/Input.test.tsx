@@ -26,13 +26,13 @@ describe('Input', () => {
   it('applies error styling when error is present', () => {
     render(<Input error="Error" data-testid="input" />)
     const input = screen.getByTestId('input')
-    expect(input.className).toContain('border-red-500')
+    expect(input.className).toContain('border-bq-ruby')
   })
 
   it('does not show error styling when no error', () => {
     render(<Input data-testid="input" />)
     const input = screen.getByTestId('input')
-    expect(input.className).not.toContain('border-red-500')
+    expect(input.className).not.toContain('border-bq-ruby')
   })
 
   it('handles value changes', () => {

@@ -1,5 +1,5 @@
 export function Skeleton({ className = '' }: { className?: string }) {
-  return <div className={`animate-pulse bg-on-surface/5 rounded ${className}`} />
+  return <div className={`animate-pulse bg-bq-inset rounded ${className}`} />
 }
 
 export function SkeletonText({ lines = 3 }: { lines?: number }) {
@@ -14,7 +14,7 @@ export function SkeletonText({ lines = 3 }: { lines?: number }) {
 
 export function SkeletonCard() {
   return (
-    <div className="glass-card p-4 space-y-3">
+    <div className="bg-bq-white border border-bq-hair rounded-2xl p-4 space-y-3">
       <Skeleton className="h-5 w-1/3" />
       <Skeleton className="h-4 w-full" />
       <Skeleton className="h-4 w-2/3" />
@@ -44,7 +44,7 @@ export function SkeletonGameModeGrid() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {Array.from({ length: 6 }).map((_, i) => (
-        <div key={i} className="bg-surface-container rounded-2xl p-6 border border-outline-variant/10 h-48 space-y-4">
+        <div key={i} className="bg-bq-white rounded-2xl p-6 border border-bq-hair h-48 space-y-4">
           <div className="flex items-center gap-3">
             <Skeleton className="h-6 w-6 rounded" />
             <Skeleton className="h-5 w-24" />

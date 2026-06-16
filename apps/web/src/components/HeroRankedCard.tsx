@@ -138,7 +138,7 @@ export default function HeroRankedCard({
         <div>
           <div
             data-testid="hero-ranked-card-label"
-            className="text-[10px] font-bold tracking-[0.22em] uppercase mb-2 text-ivory-dim"
+            className="text-[10px] font-bold tracking-[0.22em] uppercase mb-2 text-bq-ink2"
           >
             {labelText}
           </div>
@@ -151,22 +151,22 @@ export default function HeroRankedCard({
           </h2>
           <p
             data-testid="hero-ranked-card-tagline"
-            className="text-[13px] font-medium mb-4 text-ivory-dim"
+            className="text-[13px] font-medium mb-4 text-bq-ink2"
           >
             {taglineText}
           </p>
           <div
             data-testid="hero-ranked-card-stats"
-            className="flex flex-wrap gap-4 text-[12px] font-semibold text-ivory-dim"
+            className="flex flex-wrap gap-4 text-[12px] font-semibold text-bq-ink2"
           >
             <span data-testid="hero-ranked-card-energy" className="flex items-center gap-1.5">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-secondary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-bq-amberd">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
               {t('home.heroRanked.energyMeta', { remaining: energyRemaining, max: energyMax })}
             </span>
             <span data-testid="hero-ranked-card-progress" className="flex items-center gap-1.5">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-secondary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-bq-amberd">
                 <circle cx="12" cy="12" r="9" />
                 <path d="M12 6v6l4 2" />
               </svg>

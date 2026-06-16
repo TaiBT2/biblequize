@@ -48,10 +48,10 @@ export default function QuizSetDetail() {
   }, [groupId, setId])
 
   if (loading) return (
-    <div className="qs-bg-deep min-h-screen flex items-center justify-center text-gray-400">{t('quizSet.detail.loading')}</div>
+    <div className="bg-bq-paper min-h-screen flex items-center justify-center text-bq-ink2">{t('quizSet.detail.loading')}</div>
   )
   if (error || !quizSet) return (
-    <div className="qs-bg-deep min-h-screen flex items-center justify-center text-red-300 p-6 text-center">
+    <div className="bg-bq-paper min-h-screen flex items-center justify-center text-bq-ruby p-6 text-center">
       {error || t('quizSet.detail.notFound')}
     </div>
   )
@@ -87,25 +87,25 @@ export default function QuizSetDetail() {
   }
 
   return (
-    <div className="qs-bg-deep min-h-screen lg:flex">
+    <div className="bg-bq-paper min-h-screen lg:flex">
       {/* Main column (mobile + desktop LEFT) */}
       <div className="flex-1 lg:overflow-y-auto qs-scroll-thin qs-fade-in">
         {/* Desktop breadcrumb */}
-        <div className="hidden lg:flex px-8 py-4 border-b border-white/5 items-center gap-2 text-xs">
-          <Link to={`/groups/${groupId}`} className="text-gray-500 hover:text-white">← Nhóm</Link>
-          <span className="text-gray-600">/</span>
-          <Link to={`/groups/${groupId}/quiz-sets`} className="text-gray-500 hover:text-white">Bộ câu hỏi</Link>
-          <span className="text-gray-600">/</span>
-          <span className="text-gray-300 truncate">{quizSet.name}</span>
+        <div className="hidden lg:flex px-8 py-4 border-b border-bq-hair items-center gap-2 text-xs">
+          <Link to={`/groups/${groupId}`} className="text-bq-ink3 hover:text-bq-ink">← Nhóm</Link>
+          <span className="text-bq-ink3">/</span>
+          <Link to={`/groups/${groupId}/quiz-sets`} className="text-bq-ink3 hover:text-bq-ink">Bộ câu hỏi</Link>
+          <span className="text-bq-ink3">/</span>
+          <span className="text-bq-ink2 truncate">{quizSet.name}</span>
         </div>
 
         {/* Hero — h-44 mobile, h-64 desktop */}
         <div className="relative h-44 lg:h-64">
-          <div className="absolute inset-0 qs-cover-easter" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #FFE08A 0%, #F59E0B 100%)' }} />
           <div className="absolute inset-0 flex items-center justify-center text-7xl lg:text-9xl opacity-30 lg:opacity-20">{cover}</div>
           <div
             className="absolute inset-0"
-            style={{ background: 'linear-gradient(to bottom, transparent, transparent, #0a0c14)' }}
+            style={{ background: 'linear-gradient(to bottom, transparent, transparent, var(--bq-paper))' }}
           />
 
           {/* Mobile back button */}
@@ -123,7 +123,7 @@ export default function QuizSetDetail() {
             <div className="flex flex-wrap gap-1.5 lg:gap-2 mb-1.5 lg:mb-3">
               <span className={`qs-badge-status ${badge.cls}`}>{badge.vi}</span>
               {quizSet.averageRating != null && (
-                <span className="px-2 lg:px-2.5 py-0.5 lg:py-1 rounded-full bg-black/40 backdrop-blur text-[9px] lg:text-[10px] font-bold text-[#e8a832]">
+                <span className="px-2 lg:px-2.5 py-0.5 lg:py-1 rounded-full bg-black/40 backdrop-blur text-[9px] lg:text-[10px] font-bold text-bq-amber">
                   {t('quizSet.detail.rating', { rating: Number(quizSet.averageRating).toFixed(1), count: quizSet.totalRatings })}
                 </span>
               )}
@@ -131,9 +131,9 @@ export default function QuizSetDetail() {
                 ▶ Đã chơi {quizSet.playCount} lần
               </span>
             </div>
-            <h1 className="qs-font-vn-display font-extrabold text-white text-xl lg:text-3xl leading-tight">{quizSet.name}</h1>
+            <h1 className="font-display font-extrabold text-bq-ink text-xl lg:text-3xl leading-tight">{quizSet.name}</h1>
             {quizSet.coverScripture && (
-              <div className="hidden lg:flex items-center gap-2 mt-2 text-sm text-gray-300">
+              <div className="hidden lg:flex items-center gap-2 mt-2 text-sm text-bq-ink2">
                 <span>📍</span>
                 <span>{quizSet.coverScripture}</span>
               </div>
@@ -147,7 +147,7 @@ export default function QuizSetDetail() {
           {quizSet.tags && quizSet.tags.length > 0 && (
             <div className="flex gap-1.5 lg:gap-2 overflow-x-auto qs-scroll-thin">
               {quizSet.tags.map(tag => (
-                <span key={tag} className="shrink-0 px-2 lg:px-3 py-0.5 lg:py-1 rounded-full bg-[#e8a832]/15 text-[#e8a832] text-[10px] lg:text-xs font-semibold">
+                <span key={tag} className="shrink-0 px-2 lg:px-3 py-0.5 lg:py-1 rounded-full bg-bq-amber/15 text-bq-amberd text-[10px] lg:text-xs font-semibold">
                   {tag}
                 </span>
               ))}
@@ -157,16 +157,16 @@ export default function QuizSetDetail() {
           {/* Description */}
           {quizSet.description && (
             <div>
-              <div className="hidden lg:block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Mô tả</div>
-              <p className="text-xs lg:text-sm text-gray-300 leading-relaxed">{quizSet.description}</p>
+              <div className="hidden lg:block text-xs font-semibold text-bq-ink2 uppercase tracking-wider mb-2">Mô tả</div>
+              <p className="text-xs lg:text-sm text-bq-ink2 leading-relaxed">{quizSet.description}</p>
             </div>
           )}
 
           {/* Author note */}
           {quizSet.authorNote && (
-            <div className="qs-glass-subtle rounded-xl p-3 lg:p-4 border-l-4 border-[#e8a832]">
-              <div className="text-[10px] font-semibold text-[#e8a832] uppercase tracking-wider mb-1 lg:mb-1.5">{t('quizSet.detail.authorNote')}</div>
-              <div className="text-xs lg:text-sm text-gray-300 whitespace-pre-wrap">{quizSet.authorNote}</div>
+            <div className="bg-bq-inset rounded-xl p-3 lg:p-4 border-l-4 border-bq-amber">
+              <div className="text-[10px] font-semibold text-bq-amberd uppercase tracking-wider mb-1 lg:mb-1.5">{t('quizSet.detail.authorNote')}</div>
+              <div className="text-xs lg:text-sm text-bq-ink2 whitespace-pre-wrap">{quizSet.authorNote}</div>
             </div>
           )}
 
@@ -180,13 +180,13 @@ export default function QuizSetDetail() {
                 value={quizSet.estimatedDurationMin ? String(quizSet.estimatedDurationMin) : '—'}
                 suffix={quizSet.estimatedDurationMin ? 'm' : undefined}
               />
-              <Stat label={t('quizSet.detail.statPlays')} value={String(quizSet.playCount)} valueClass="text-[#e8a832]" />
+              <Stat label={t('quizSet.detail.statPlays')} value={String(quizSet.playCount)} valueClass="text-bq-amberd" />
             </div>
 
             {hasMastery && <MasteryCard t={t} mastery={mastery!} totalQuestions={quizSet.totalQuestions} masteryPct={masteryPct} />}
 
             {quizSet.suggestedMode && (
-              <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
+              <div className="text-[10px] font-semibold text-bq-ink2 uppercase tracking-wider">
                 {t('quizSet.detail.suggestedMode', { mode: MODE_LABELS[quizSet.suggestedMode].vi })}
               </div>
             )}
@@ -201,7 +201,7 @@ export default function QuizSetDetail() {
             {quizSet.publishStatus === 'PUBLISHED' && (
               <button
                 onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${quizSet.id}`)}
-                className="w-full py-2.5 rounded-xl qs-glass border border-white/10 text-white font-semibold text-xs flex items-center justify-center gap-1.5"
+                className="w-full py-2.5 rounded-xl bg-bq-white border border-bq-hair shadow-bq-soft text-bq-ink font-semibold text-xs flex items-center justify-center gap-1.5"
               ><span>📅</span><span>{t('quizSet.detail.schedule')}</span></button>
             )}
 
@@ -220,7 +220,7 @@ export default function QuizSetDetail() {
       </div>
 
       {/* DESKTOP: Right stats sidebar 340px */}
-      <aside className="hidden lg:block w-[340px] shrink-0 border-l border-white/5 overflow-y-auto qs-scroll-thin" style={{ background: '#0e1019' }}>
+      <aside className="hidden lg:block w-[340px] shrink-0 border-l border-bq-hair overflow-y-auto qs-scroll-thin bg-bq-inset">
         <div className="p-5 space-y-5">
           <div>
             <PrimaryActions
@@ -232,7 +232,7 @@ export default function QuizSetDetail() {
             {quizSet.publishStatus === 'PUBLISHED' && (
               <button
                 onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${quizSet.id}`)}
-                className="w-full mt-2 py-2.5 rounded-xl qs-glass-subtle border border-white/10 text-white font-semibold text-xs flex items-center justify-center gap-1.5"
+                className="w-full mt-2 py-2.5 rounded-xl bg-bq-white border border-bq-hair shadow-bq-soft text-bq-ink font-semibold text-xs flex items-center justify-center gap-1.5"
               ><span>📅</span><span>{t('quizSet.detail.schedule')}</span></button>
             )}
           </div>
@@ -243,7 +243,7 @@ export default function QuizSetDetail() {
             <DesktopStat
               label={t('quizSet.detail.statDifficulty')}
               value={diff ? `${diff.emoji} ${diff.vi}` : '—'}
-              valueClass={diff?.cls ?? 'text-gray-500'}
+              valueClass={diff?.cls ?? 'text-bq-ink3'}
               small
             />
             <DesktopStat
@@ -251,22 +251,22 @@ export default function QuizSetDetail() {
               value={quizSet.estimatedDurationMin ? String(quizSet.estimatedDurationMin) : '—'}
               suffix={quizSet.estimatedDurationMin ? 'phút' : undefined}
             />
-            <DesktopStat label={t('quizSet.detail.statPlays')} value={`${quizSet.playCount}x`} valueClass="text-[#e8a832]" />
+            <DesktopStat label={t('quizSet.detail.statPlays')} value={`${quizSet.playCount}x`} valueClass="text-bq-amberd" />
           </div>
 
           {hasMastery && <MasteryCard t={t} mastery={mastery!} totalQuestions={quizSet.totalQuestions} masteryPct={masteryPct} />}
 
           {quizSet.suggestedMode && (
             <div>
-              <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">💡 Mode đề xuất</div>
-              <div className="qs-glass-subtle rounded-xl p-3 border border-emerald-400/30">
+              <div className="text-[10px] font-semibold text-bq-ink2 uppercase tracking-wider mb-2">💡 Mode đề xuất</div>
+              <div className="bg-bq-white border border-bq-emerald/30 shadow-bq-soft rounded-xl p-3">
                 <div className="flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-lg ${MODE_LABELS[quizSet.suggestedMode].cssClass} flex items-center justify-center text-xl shrink-0`}>
                     {MODE_LABELS[quizSet.suggestedMode].emoji}
                   </div>
                   <div className="flex-1">
-                    <div className="text-sm font-bold text-white">{MODE_LABELS[quizSet.suggestedMode].vi}</div>
-                    <div className="text-[10px] text-gray-400">{MODE_LABELS[quizSet.suggestedMode].tagline}</div>
+                    <div className="text-sm font-bold text-bq-ink">{MODE_LABELS[quizSet.suggestedMode].vi}</div>
+                    <div className="text-[10px] text-bq-ink2">{MODE_LABELS[quizSet.suggestedMode].tagline}</div>
                   </div>
                 </div>
               </div>
@@ -274,8 +274,8 @@ export default function QuizSetDetail() {
           )}
 
           {/* Leader actions stacked */}
-          <div className="rounded-xl p-3 border border-white/5" style={{ background: 'rgba(50, 52, 64, 0.3)' }}>
-            <div className="text-[10px] font-semibold text-[#e8a832] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <div className="rounded-xl p-3 border border-bq-hair bg-bq-white shadow-bq-soft">
+            <div className="text-[10px] font-semibold text-bq-amberd uppercase tracking-wider mb-2 flex items-center gap-1.5">
               <span>👑</span><span>{t('quizSet.detail.leaderActions')}</span>
             </div>
             <div className="space-y-1.5">
@@ -348,7 +348,7 @@ function PrimaryActions({
     return (
       <button
         onClick={onPlayNow} disabled={busy}
-        className="w-full py-3 rounded-xl qs-gold-grad qs-font-vn-display font-extrabold text-[#11131e] text-sm flex items-center justify-center gap-2 disabled:opacity-50"
+        className="w-full py-3 rounded-xl bg-bq-action shadow-bq-action font-display font-extrabold text-white text-sm flex items-center justify-center gap-2 disabled:opacity-50"
       >
         <span>▶</span><span>{t('quizSet.detail.ctaPlayNow')}</span>
       </button>
@@ -358,7 +358,7 @@ function PrimaryActions({
     return (
       <button
         onClick={onPublish} disabled={busy || quizSet.totalQuestions < 5}
-        className="w-full py-3 rounded-xl qs-gold-grad qs-font-vn-display font-extrabold text-[#11131e] text-sm flex items-center justify-center gap-2 disabled:opacity-50"
+        className="w-full py-3 rounded-xl bg-bq-action shadow-bq-action font-display font-extrabold text-white text-sm flex items-center justify-center gap-2 disabled:opacity-50"
       >
         <span>✓</span><span>{quizSet.totalQuestions < 5 ? t('quizSet.detail.ctaNeedQuestions', { count: quizSet.totalQuestions }) : t('quizSet.detail.ctaPublish')}</span>
       </button>
@@ -368,7 +368,7 @@ function PrimaryActions({
     return (
       <button
         onClick={onUnarchive} disabled={busy}
-        className="w-full py-3 rounded-xl qs-glass border border-[#e8a832]/30 text-[#e8a832] font-bold text-sm"
+        className="w-full py-3 rounded-xl bg-bq-white border border-bq-amber/30 text-bq-amberd font-bold text-sm"
       >{t('quizSet.detail.ctaUnarchive')}</button>
     )
   }
@@ -381,31 +381,31 @@ function MasteryCard({
   t: any; mastery: QuizSetMastery; totalQuestions: number; masteryPct: number;
 }) {
   return (
-    <div className="rounded-xl p-3 lg:p-4 border border-emerald-400/30" style={{ background: 'rgba(74, 222, 128, 0.06)' }}>
-      <div className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+    <div className="rounded-xl p-3 lg:p-4 border border-bq-emerald/30 bg-bq-emerald/[0.06]">
+      <div className="text-[10px] font-bold text-bq-emerald uppercase tracking-wider mb-2 flex items-center gap-1.5">
         <span>🎯</span><span>{t('quizSet.detail.masteryHeader').replace('🎯 ', '')}</span>
       </div>
       <div className="flex items-center justify-between mb-2">
-        <span className="text-xs lg:text-sm text-white font-semibold">{t('quizSet.detail.masteryLearned')}</span>
-        <span className="text-xs lg:text-sm font-extrabold text-emerald-400">
+        <span className="text-xs lg:text-sm text-bq-ink font-semibold">{t('quizSet.detail.masteryLearned')}</span>
+        <span className="text-xs lg:text-sm font-extrabold text-bq-emerald">
           {mastery.questionsLearned}/{totalQuestions} câu
         </span>
       </div>
-      <div className="qs-progress-bar h-2 mb-3">
-        <div className="qs-progress-fill h-2" style={{ width: `${masteryPct}%` }} />
+      <div className="bg-bq-inset rounded-full overflow-hidden h-2 mb-3">
+        <div className="bg-bq-emerald h-2" style={{ width: `${masteryPct}%` }} />
       </div>
-      <div className="flex items-center justify-between text-xs text-gray-400 mb-3">
+      <div className="flex items-center justify-between text-xs text-bq-ink2 mb-3">
         <span>{masteryPct}% hoàn thành</span>
         {totalQuestions - mastery.questionsLearned > 0 && (
-          <span className="text-emerald-400">Còn {totalQuestions - mastery.questionsLearned} câu</span>
+          <span className="text-bq-emerald">Còn {totalQuestions - mastery.questionsLearned} câu</span>
         )}
       </div>
-      <div className="grid grid-cols-3 gap-2 pt-3 border-t border-emerald-400/15 text-center">
+      <div className="grid grid-cols-3 gap-2 pt-3 border-t border-bq-emerald/15 text-center">
         <MiniStat label={t('quizSet.detail.masteryAttempts')} value={t('quizSet.detail.masteryAttemptsValue', { count: mastery.totalAttempts })} />
         <MiniStat
           label={t('quizSet.detail.masteryBest')}
           value={mastery.bestAccuracy != null ? `${Number(mastery.bestAccuracy).toFixed(0)}%` : `${mastery.bestScore}đ`}
-          valueClass="text-[#e8a832]"
+          valueClass="text-bq-amberd"
         />
         <MiniStat
           label={t('quizSet.detail.masteryLast')}
@@ -413,7 +413,7 @@ function MasteryCard({
         />
       </div>
       {mastery.completedMastery && (
-        <div className="mt-2 text-center text-[10px] text-emerald-400 font-bold">{t('quizSet.detail.masteryCompleted')}</div>
+        <div className="mt-2 text-center text-[10px] text-bq-emerald font-bold">{t('quizSet.detail.masteryCompleted')}</div>
       )}
     </div>
   )
@@ -421,10 +421,10 @@ function MasteryCard({
 
 function Stat({ label, value, suffix, valueClass }: { label: string; value: string; suffix?: string; valueClass?: string }) {
   return (
-    <div className="qs-glass rounded-xl p-2 text-center">
-      <div className="text-[9px] text-gray-400 uppercase font-semibold">{label}</div>
-      <div className={`qs-font-vn-display font-bold text-base ${valueClass || 'text-white'}`}>
-        {value}{suffix && <span className="text-[10px] text-gray-500">{suffix}</span>}
+    <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl p-2 text-center">
+      <div className="text-[9px] text-bq-ink2 uppercase font-semibold">{label}</div>
+      <div className={`font-display font-bold text-base ${valueClass || 'text-bq-ink'}`}>
+        {value}{suffix && <span className="text-[10px] text-bq-ink3">{suffix}</span>}
       </div>
     </div>
   )
@@ -432,9 +432,9 @@ function Stat({ label, value, suffix, valueClass }: { label: string; value: stri
 
 function StatDifficulty({ label, diff }: { label: string; diff: { vi: string; short: string; cls: string; emoji: string } | null }) {
   return (
-    <div className="qs-glass rounded-xl p-2 text-center">
-      <div className="text-[9px] text-gray-400 uppercase font-semibold">{label}</div>
-      <div className={`text-xs font-bold mt-0.5 ${diff?.cls ?? 'text-gray-500'}`}>
+    <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl p-2 text-center">
+      <div className="text-[9px] text-bq-ink2 uppercase font-semibold">{label}</div>
+      <div className={`text-xs font-bold mt-0.5 ${diff?.cls ?? 'text-bq-ink3'}`}>
         {diff ? `${diff.emoji} ${diff.short}` : '—'}
       </div>
     </div>
@@ -447,10 +447,10 @@ function DesktopStat({
   label: string; value: string; suffix?: string; valueClass?: string; small?: boolean;
 }) {
   return (
-    <div className="qs-glass-subtle rounded-xl p-3 border border-white/5">
-      <div className="text-[10px] text-gray-400 uppercase font-semibold">{label}</div>
-      <div className={`font-extrabold mt-0.5 ${small ? 'text-sm' : 'text-xl'} ${valueClass || 'text-white'}`}>
-        {value}{suffix && <span className="text-xs text-gray-500 ml-1">{suffix}</span>}
+    <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl p-3">
+      <div className="text-[10px] text-bq-ink2 uppercase font-semibold">{label}</div>
+      <div className={`font-extrabold mt-0.5 ${small ? 'text-sm' : 'text-xl'} ${valueClass || 'text-bq-ink'}`}>
+        {value}{suffix && <span className="text-xs text-bq-ink3 ml-1">{suffix}</span>}
       </div>
     </div>
   )
@@ -459,8 +459,8 @@ function DesktopStat({
 function MiniStat({ label, value, valueClass }: { label: string; value: string; valueClass?: string }) {
   return (
     <div>
-      <div className="text-[9px] lg:text-[10px] text-gray-400 uppercase">{label}</div>
-      <div className={`text-sm font-bold ${valueClass ?? 'text-white'}`}>{value}</div>
+      <div className="text-[9px] lg:text-[10px] text-bq-ink2 uppercase">{label}</div>
+      <div className={`text-sm font-bold ${valueClass ?? 'text-bq-ink'}`}>{value}</div>
     </div>
   )
 }
@@ -473,8 +473,8 @@ function LeaderActionsRow({
   navigate: (p: string) => void;
 }) {
   return (
-    <div className="rounded-xl p-2 border border-white/5 flex items-center justify-between" style={{ background: 'rgba(50, 52, 64, 0.3)' }}>
-      <span className="text-[10px] text-gray-400">{t('quizSet.detail.leaderActions')}</span>
+    <div className="rounded-xl p-2 border border-bq-hair bg-bq-white shadow-bq-soft flex items-center justify-between">
+      <span className="text-[10px] text-bq-ink2">{t('quizSet.detail.leaderActions')}</span>
       <div className="flex gap-1">
         <IconButton
           title={t('quizSet.detail.edit')}
@@ -499,7 +499,7 @@ function LeaderActionsRow({
             </svg>
           </IconButton>
         )}
-        <IconButton title={t('quizSet.detail.delete')} onClick={onDelete} disabled={busy} className="text-red-400">
+        <IconButton title={t('quizSet.detail.delete')} onClick={onDelete} disabled={busy} className="text-bq-ruby">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
             <polyline points="3 6 5 6 21 6" />
             <path d="M19 6l-2 14H7L5 6" />
@@ -521,7 +521,7 @@ function DesktopLeaderButton({
       onClick={onClick}
       disabled={disabled}
       className={`w-full px-3 py-2 rounded-lg flex items-center gap-2 text-xs disabled:opacity-50 ${
-        danger ? 'text-red-400 hover:bg-red-500/10' : 'text-gray-300 hover:bg-white/5'
+        danger ? 'text-bq-ruby hover:bg-bq-ruby/10' : 'text-bq-ink2 hover:bg-bq-inset'
       }`}
     >
       {icon}<span>{label}</span>
@@ -541,7 +541,7 @@ function IconButton({
       aria-label={title}
       onClick={onClick}
       disabled={disabled}
-      className={`w-7 h-7 rounded-lg qs-glass flex items-center justify-center text-gray-400 disabled:opacity-50 ${className ?? ''}`}
+      className={`w-7 h-7 rounded-lg bg-bq-inset border border-bq-hair flex items-center justify-center text-bq-ink2 disabled:opacity-50 ${className ?? ''}`}
     >{children}</button>
   )
 }

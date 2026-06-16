@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { COLOR, DIFFICULTY_COLORS } from './styles'
+import { ACTION_BG, ACTION_FG, ACTION_SHADOW, COLOR, DIFFICULTY_COLORS, INSET_BG } from './styles'
 import type { EditorQuestion } from '../../../api/quizSets'
 import { validateQuestion, issueLabel, MIN_QUESTIONS_TO_PUBLISH } from './validation'
 
@@ -36,7 +36,7 @@ export default function PublishConfirmModal({
 
   return (
     <div onClick={onClose} style={{
-      position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.65)', zIndex: 60,
+      position: 'fixed', inset: 0, background: 'rgba(22,21,27,0.45)', zIndex: 60,
       display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16,
     }}>
       <div onClick={e => e.stopPropagation()} style={{
@@ -69,8 +69,8 @@ export default function PublishConfirmModal({
                       key={q.id}
                       onClick={() => { onGotoQuestion(q.id); onClose() }}
                       style={{
-                        background: 'rgba(251,191,36,0.06)',
-                        border: `1px solid rgba(251,191,36,0.30)`,
+                        background: 'rgba(245,158,11,0.08)',
+                        border: `1px solid rgba(245,158,11,0.30)`,
                         borderRadius: 7, padding: '8px 12px', textAlign: 'left', cursor: 'pointer',
                         color: COLOR.textSecondary, fontSize: 12, display: 'flex',
                         alignItems: 'center', justifyContent: 'space-between', gap: 8,
@@ -85,14 +85,14 @@ export default function PublishConfirmModal({
                 </div>
               )}
               <button onClick={onClose} style={{
-                width: '100%', background: COLOR.gold, color: '#1a1226',
-                border: 'none', padding: '10px', borderRadius: 8, fontSize: 13, fontWeight: 500, cursor: 'pointer',
+                width: '100%', background: ACTION_BG, color: ACTION_FG, boxShadow: ACTION_SHADOW,
+                border: 'none', padding: '10px', borderRadius: 8, fontSize: 13, fontWeight: 600, cursor: 'pointer',
               }}>{t('quizSet.editor.publishConfirm.backToFix')}</button>
             </>
           ) : (
             <>
               <div style={{
-                background: COLOR.inputBg, border: `1px solid ${COLOR.borderSubtle}`,
+                background: INSET_BG, border: `1px solid ${COLOR.borderSubtle}`,
                 borderRadius: 8, padding: 14, marginBottom: 16,
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: COLOR.textPrimary, marginBottom: 8 }}>
@@ -123,13 +123,13 @@ export default function PublishConfirmModal({
 
               <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
                 <button onClick={onClose} style={{
-                  background: 'rgba(255,255,255,0.04)', color: COLOR.textSecondary,
+                  background: INSET_BG, color: COLOR.textSecondary,
                   border: `1px solid ${COLOR.borderSubtle}`,
                   padding: '9px 16px', borderRadius: 8, fontSize: 13, cursor: 'pointer',
                 }}>{t('quizSet.editor.publishConfirm.cancel')}</button>
                 <button onClick={onConfirm} disabled={busy} style={{
-                  background: COLOR.gold, color: '#1a1226', border: 'none',
-                  padding: '9px 18px', borderRadius: 8, fontSize: 13, fontWeight: 500,
+                  background: ACTION_BG, color: ACTION_FG, border: 'none', boxShadow: ACTION_SHADOW,
+                  padding: '9px 18px', borderRadius: 8, fontSize: 13, fontWeight: 600,
                   cursor: busy ? 'wait' : 'pointer', opacity: busy ? 0.6 : 1,
                   display: 'inline-flex', alignItems: 'center', gap: 6,
                 }}>

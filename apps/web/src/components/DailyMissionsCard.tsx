@@ -41,13 +41,13 @@ export default function DailyMissionsCard() {
   const completedCount = missions.filter(m => m.completed).length
 
   return (
-    <div className="rounded-2xl bg-[rgba(50,52,64,0.4)] border border-secondary/15 p-4 md:p-4">
+    <div className="rounded-2xl bg-bq-white border border-bq-hair shadow-bq-soft p-4 md:p-4">
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-on-surface text-[12px] md:text-[13px] font-medium">
+        <h3 className="text-bq-ink text-[12px] md:text-[13px] font-medium">
           {t('home.dailyMissionsHeader')}
         </h3>
-        <span className="text-on-surface-variant/40 text-[10px] md:text-[11px]">
+        <span className="text-bq-ink3 text-[10px] md:text-[11px]">
           {t('home.dailyMissionsCount', { completed: completedCount, total: missions.length })}
         </span>
       </div>
@@ -66,8 +66,8 @@ export default function DailyMissionsCard() {
               <div
                 className={`w-4 h-4 md:w-[18px] md:h-[18px] rounded-full flex-shrink-0 flex items-center justify-center ${
                   m.completed
-                    ? 'bg-secondary text-[#11131e]'
-                    : 'border-[1.5px] border-white/25'
+                    ? 'bg-bq-amber text-white'
+                    : 'border-[1.5px] border-bq-hair'
                 }`}
               >
                 {m.completed && (
@@ -84,22 +84,22 @@ export default function DailyMissionsCard() {
               <div className="flex-1 min-w-0">
                 <div
                   className={`text-[11px] md:text-[12px] truncate ${
-                    m.completed ? 'text-on-surface/85 line-through opacity-70' : 'text-on-surface/85'
+                    m.completed ? 'text-bq-ink2 line-through opacity-70' : 'text-bq-ink'
                   }`}
                 >
                   {m.description}
                 </div>
-                <div className="bg-white/[0.06] rounded-[2px] h-[2px] md:h-[3px] mt-0.5 md:mt-1 overflow-hidden">
+                <div className="bg-bq-inset rounded-[2px] h-[2px] md:h-[3px] mt-0.5 md:mt-1 overflow-hidden">
                   <div
                     data-testid={`mission-${m.slot}-progress`}
-                    className="bg-secondary h-full rounded-[2px] transition-[width] duration-300"
+                    className="bg-gradient-to-r from-bq-amber to-[#FF8A3D] h-full rounded-[2px] transition-[width] duration-300"
                     style={{ width: `${pct}%` }}
                   />
                 </div>
               </div>
 
               {/* Right-aligned count */}
-              <span className="text-[9px] md:text-[10px] text-on-surface-variant/45 font-medium">
+              <span className="text-[9px] md:text-[10px] text-bq-ink3 font-medium">
                 {m.progress}/{m.target}
               </span>
             </div>
@@ -109,11 +109,11 @@ export default function DailyMissionsCard() {
 
       {/* Bonus row — only when all 3 are done */}
       {allCompleted && (
-        <div className="mt-3 pt-3 border-t border-secondary/15 flex items-center gap-2">
+        <div className="mt-3 pt-3 border-t border-bq-hair flex items-center gap-2">
           <span className="text-base">🎁</span>
-          <span className="text-[11px] font-medium text-secondary">
+          <span className="text-[11px] font-medium text-bq-amberd">
             +{bonusXp} XP{' '}
-            {bonusClaimed && <span className="text-on-surface-variant/50">{t('home.received', 'nhận được!')}</span>}
+            {bonusClaimed && <span className="text-bq-ink2">{t('home.received', 'nhận được!')}</span>}
           </span>
         </div>
       )}

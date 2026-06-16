@@ -106,9 +106,9 @@ describe('OnboardingTryQuiz', () => {
       })
       // Correct answer for Q1 is index 0 = "Sáng Thế Ký"
       await user.click(screen.getByText('Sáng Thế Ký').closest('button')!)
-      // After selection, the correct answer should have green styling
+      // After selection, the correct answer should have emerald (success) styling
       const btn = screen.getByText('Sáng Thế Ký').closest('button')!
-      expect(btn.className).toContain('green')
+      expect(btn.className).toContain('emerald')
     })
 
     it('selecting wrong answer highlights red for selected and green for correct', async () => {
@@ -120,10 +120,10 @@ describe('OnboardingTryQuiz', () => {
       // Wrong answer for Q1 is index 1 = "Xuất Hành"
       await user.click(screen.getByText('Xuất Hành').closest('button')!)
       const wrongBtn = screen.getByText('Xuất Hành').closest('button')!
-      expect(wrongBtn.className).toContain('error')
-      // Correct answer should be green
+      expect(wrongBtn.className).toContain('ruby')
+      // Correct answer should be emerald (success)
       const correctBtn = screen.getByText('Sáng Thế Ký').closest('button')!
-      expect(correctBtn.className).toContain('green')
+      expect(correctBtn.className).toContain('emerald')
     })
 
     it('advances to next question after selecting answer', async () => {

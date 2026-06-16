@@ -40,14 +40,14 @@ export function HeroCompact({ profile, tierEmoji, tierName, tierLevel }: {
     : {}
   const presetBg = resolved.kind === 'preset' ? { background: resolved.preset.bg } : {}
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-outline-variant/10 bg-gradient-to-br from-secondary/[0.08] to-surface-container/40 p-6 md:p-7 flex flex-col md:flex-row items-start md:items-center gap-5">
-      <div className="absolute -top-10 -right-10 w-52 h-52 rounded-full bg-gradient-radial from-secondary/10 to-transparent pointer-events-none" />
+    <section className="relative overflow-hidden rounded-3xl border border-bq-hair bg-bq-white shadow-bq-soft p-6 md:p-7 flex flex-col md:flex-row items-start md:items-center gap-5">
+      <div className="absolute -top-10 -right-10 w-52 h-52 rounded-full bg-gradient-radial from-bq-amber/10 to-transparent pointer-events-none" />
 
       <div className="relative shrink-0">
         <div
           data-testid="profile-avatar"
           data-cosmetic-frame={cosmetics?.activeFrame ?? undefined}
-          className={`w-[88px] h-[88px] rounded-full overflow-hidden flex items-center justify-center border-[3px] shadow-2xl ${frameColor ? '' : 'border-secondary/40'} ${resolved.kind === 'preset' ? '' : 'bg-gradient-to-br from-outline to-outline-variant'}`}
+          className={`w-[88px] h-[88px] rounded-full overflow-hidden flex items-center justify-center border-[3px] shadow-bq-soft ${frameColor ? '' : 'border-bq-amber/40'} ${resolved.kind === 'preset' ? '' : 'bg-bq-inset'}`}
           style={{ ...baseAvatarStyle, ...presetBg }}
         >
           {resolved.kind === 'img' && (
@@ -58,34 +58,34 @@ export function HeroCompact({ profile, tierEmoji, tierName, tierLevel }: {
           )}
           {resolved.kind === 'initial' && (
             <span
-              className="font-verse italic font-bold leading-none"
-              style={{ color: '#e8a832', fontSize: '44px' }}
+              className="font-literata italic font-bold leading-none text-bq-amberd"
+              style={{ fontSize: '44px' }}
               aria-hidden
             >
               {resolved.initial}
             </span>
           )}
         </div>
-        <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full gold-gradient flex items-center justify-center text-base border-[3px] border-background">
+        <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-bq-action text-white shadow-bq-action flex items-center justify-center text-base border-[3px] border-bq-white">
           {tierEmoji}
         </div>
       </div>
 
       <div className="flex-1 min-w-0 relative">
-        <h2 data-testid="profile-name" className="text-2xl md:text-[26px] font-extrabold text-on-surface tracking-tight truncate">
+        <h2 data-testid="profile-name" className="font-display text-2xl md:text-[26px] font-extrabold text-bq-ink tracking-tight truncate">
           {profile.name}
         </h2>
-        <span data-testid="profile-tier-badge" className="inline-flex items-center gap-1.5 mt-1.5 px-2.5 py-1 rounded-full bg-secondary/10 border border-secondary/30 text-xs font-semibold text-secondary">
+        <span data-testid="profile-tier-badge" className="inline-flex items-center gap-1.5 mt-1.5 px-2.5 py-1 rounded-full bg-bq-amber/10 border border-bq-amber/30 text-xs font-semibold text-bq-amberd">
           <span>{tierEmoji}</span> {tierName} · {t('profile.tierLevelLabel', { n: tierLevel })}
         </span>
-        <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2.5 text-xs text-on-surface-variant">
+        <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2.5 text-xs text-bq-ink2">
           <span data-testid="profile-email" className="inline-flex items-center gap-1">
-            <span className="material-symbols-outlined text-[14px]">mail</span>
+            <span className="material-symbols-outlined text-[14px] text-bq-ink3">mail</span>
             {profile.email}
           </span>
           {profile.createdAt && (
             <span data-testid="profile-join-date" className="inline-flex items-center gap-1">
-              <span className="material-symbols-outlined text-[14px]">calendar_today</span>
+              <span className="material-symbols-outlined text-[14px] text-bq-ink3">calendar_today</span>
               {t('profile.joinedOn')} {new Date(profile.createdAt).toLocaleDateString()}
             </span>
           )}
@@ -103,14 +103,14 @@ export function HeroCompact({ profile, tierEmoji, tierName, tierLevel }: {
             }
             try { await navigator.clipboard.writeText(url) } catch { /* no-op */ }
           }}
-          className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-on-surface hover:bg-white/10 transition-colors flex items-center justify-center"
+          className="w-10 h-10 rounded-xl bg-bq-inset border border-bq-hair text-bq-ink hover:bg-bq-hair transition-colors flex items-center justify-center"
         >
           <span className="material-symbols-outlined text-[18px]">share</span>
         </button>
         <button
           data-testid="profile-edit-btn"
           onClick={() => setEditing(true)}
-          className="h-10 px-4 rounded-xl gold-gradient text-on-secondary text-sm font-semibold inline-flex items-center gap-1.5 hover:shadow-[0_6px_18px_rgba(232,168,50,0.3)] transition-shadow"
+          className="h-10 px-4 rounded-xl bg-bq-action text-white shadow-bq-action text-sm font-semibold inline-flex items-center gap-1.5 hover:opacity-90 transition-opacity"
         >
           <span className="material-symbols-outlined text-[18px]">edit</span>
           {t('profile.editProfile')}

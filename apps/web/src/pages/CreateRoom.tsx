@@ -30,12 +30,7 @@ const BOOK_SCOPE_OPTIONS = [
   { value: 'GOSPELS',       label: '4 Phúc Âm' },
 ]
 
-const CARD_STYLE: React.CSSProperties = {
-  background: 'rgba(50,52,64,0.4)',
-  backdropFilter: 'blur(12px)',
-  border: '1px solid rgba(255,255,255,0.06)',
-  borderRadius: 18,
-}
+const CARD_CLASS = 'bg-bq-white border border-bq-hair shadow-bq-soft rounded-[18px]'
 
 export default function CreateRoom() {
   const { t } = useTranslation()
@@ -113,44 +108,41 @@ export default function CreateRoom() {
         <div className="flex justify-between items-center gap-4 flex-wrap">
           <Link
             to="/multiplayer"
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-[10px] text-sm text-gray-300 hover:text-white transition-colors"
-            style={{ border: '1px solid rgba(255,255,255,0.1)' }}
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-[10px] text-sm text-bq-ink2 hover:text-bq-ink transition-colors border border-bq-hair"
           >
             <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_back</span>
             Quay lại
           </Link>
           <div
             data-testid="create-room-organizer-hint"
-            className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full text-[13px] font-medium"
+            className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full text-[13px] font-medium text-bq-amberd"
             style={{
-              background: 'linear-gradient(135deg, rgba(232,168,50,0.18), rgba(231,194,104,0.06))',
-              border: '1px solid rgba(232,168,50,0.32)',
-              color: '#f0c674',
+              background: 'linear-gradient(135deg, rgba(245,158,11,0.18), rgba(245,158,11,0.06))',
+              border: '1px solid rgba(245,158,11,0.32)',
             }}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#e8a832' }}>workspace_premium</span>
-            <span><strong style={{ color: '#f5d484', fontWeight: 700 }}>Quản trò</strong> · bạn điều phối, không chơi</span>
+            <span className="material-symbols-outlined text-bq-amber" style={{ fontSize: 16 }}>workspace_premium</span>
+            <span><strong className="text-bq-amberd font-bold">Quản trò</strong> · bạn điều phối, không chơi</span>
           </div>
         </div>
 
         {/* ── Title ── */}
         <div>
-          <h1 className="text-[30px] font-extrabold text-white tracking-tight flex items-center gap-3.5 m-0">
+          <h1 className="text-[30px] font-display font-extrabold text-bq-ink tracking-tight flex items-center gap-3.5 m-0">
             <span
-              className="inline-flex items-center justify-center"
+              className="inline-flex items-center justify-center text-bq-amber"
               style={{
                 width: 44, height: 44,
-                background: 'linear-gradient(135deg, rgba(232,168,50,0.22), rgba(231,194,104,0.06))',
+                background: 'linear-gradient(135deg, rgba(245,158,11,0.22), rgba(245,158,11,0.06))',
                 borderRadius: 12,
-                border: '1px solid rgba(232,168,50,0.3)',
-                color: '#e8a832',
+                border: '1px solid rgba(245,158,11,0.3)',
               }}
             >
               <span className="material-symbols-outlined" style={{ fontSize: 24, fontVariationSettings: "'FILL' 1" }}>videogame_asset</span>
             </span>
             {t('createRoom.title')}
           </h1>
-          <p className="text-[14.5px] text-gray-400 pl-[58px] mt-1.5">
+          <p className="text-[14.5px] text-bq-ink2 pl-[58px] mt-1.5">
             Mời bạn bè và điều phối trận đấu Kinh Thánh
           </p>
         </div>
@@ -162,7 +154,7 @@ export default function CreateRoom() {
           <div className="space-y-4">
 
             {/* Card 1: Name + Mode */}
-            <section className="p-[22px_24px]" style={CARD_STYLE}>
+            <section className={`p-[22px_24px] ${CARD_CLASS}`}>
               <CardLabel>Tên phòng</CardLabel>
               <input
                 type="text"
@@ -171,13 +163,9 @@ export default function CreateRoom() {
                 placeholder={t('createRoom.roomNamePlaceholder')}
                 data-testid="create-room-name-input"
                 maxLength={60}
-                className="w-full px-3.5 py-3 rounded-[10px] text-[15px] text-white outline-none transition-all"
-                style={{
-                  background: 'rgba(15,18,28,0.6)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                }}
+                className="w-full px-3.5 py-3 rounded-[10px] text-[15px] bg-bq-white border border-bq-hair text-bq-ink placeholder:text-bq-ink3 outline-none transition-all focus:ring-2 focus:ring-bq-sapphire"
               />
-              <p className="text-xs text-gray-500 mt-1.5">
+              <p className="text-xs text-bq-ink3 mt-1.5">
                 {formData.roomName.length === 0 ? 'Để trống để dùng tên mặc định' : `${formData.roomName.length}/60`}
               </p>
 
@@ -200,12 +188,12 @@ export default function CreateRoom() {
                             maxPlayers: d.maxPlayers,
                           }))
                         }}
-                        className="relative rounded-[14px] p-4 pb-3.5 text-left overflow-hidden transition-all hover:-translate-y-0.5"
+                        className={`relative rounded-[14px] p-4 pb-3.5 text-left overflow-hidden transition-all hover:-translate-y-0.5 ${active ? '' : 'bg-bq-inset'}`}
                         style={{
                           background: active
                             ? `linear-gradient(135deg, ${hexToRgba(m.color, 0.18)}, ${hexToRgba(m.color, 0.04)})`
-                            : 'rgba(15,18,28,0.5)',
-                          border: `1.5px solid ${active ? m.color : 'rgba(255,255,255,0.06)'}`,
+                            : undefined,
+                          border: `1.5px solid ${active ? m.color : '#E7E4DA'}`,
                           boxShadow: active ? `0 0 0 1px ${m.color}, 0 10px 28px -10px ${m.color}` : undefined,
                         }}
                       >
@@ -219,7 +207,7 @@ export default function CreateRoom() {
                         >
                           <span className="material-symbols-outlined" style={{ fontSize: 18, fontVariationSettings: "'FILL' 1" }}>{m.icon}</span>
                         </div>
-                        <div className="text-sm font-semibold text-white leading-tight">{t(m.labelKey)}</div>
+                        <div className="text-sm font-semibold text-bq-ink leading-tight">{t(m.labelKey)}</div>
                         {active && (
                           <span
                             className="material-symbols-outlined absolute top-2.5 right-2.5"
@@ -233,9 +221,8 @@ export default function CreateRoom() {
 
                 {/* Mode description banner */}
                 <div
-                  className="mt-3 px-3.5 py-2.5 rounded-lg flex items-center gap-2.5 text-[13px] text-gray-300"
+                  className="mt-3 px-3.5 py-2.5 rounded-lg flex items-center gap-2.5 text-[13px] text-bq-ink2 bg-bq-inset"
                   style={{
-                    background: 'rgba(15,18,28,0.5)',
                     borderLeft: `3px solid ${selectedMode.color}`,
                   }}
                 >
@@ -246,7 +233,7 @@ export default function CreateRoom() {
             </section>
 
             {/* Card 2: Question source */}
-            <section className="p-[22px_24px]" style={CARD_STYLE}>
+            <section className={`p-[22px_24px] ${CARD_CLASS}`}>
               <CardLabel>Nguồn câu hỏi</CardLabel>
               <div data-testid="question-source-select" className="grid grid-cols-2 gap-2 mb-3.5">
                 {([
@@ -260,27 +247,26 @@ export default function CreateRoom() {
                       type="button"
                       aria-pressed={active}
                       onClick={() => setFormData(prev => ({ ...prev, questionSource: src.value }))}
-                      className="flex items-center gap-3 px-3.5 py-3 rounded-[12px] text-left transition-all"
+                      className={`flex items-center gap-3 px-3.5 py-3 rounded-[12px] text-left transition-all ${active ? '' : 'bg-bq-inset'}`}
                       style={{
                         background: active
-                          ? 'linear-gradient(135deg, rgba(232,168,50,0.18), rgba(231,194,104,0.06))'
-                          : 'rgba(15,18,28,0.5)',
-                        border: `1.5px solid ${active ? 'rgba(232,168,50,0.5)' : 'rgba(255,255,255,0.06)'}`,
+                          ? 'linear-gradient(135deg, rgba(245,158,11,0.18), rgba(245,158,11,0.06))'
+                          : undefined,
+                        border: `1.5px solid ${active ? 'rgba(245,158,11,0.5)' : '#E7E4DA'}`,
                       }}
                     >
                       <span
-                        className="inline-flex items-center justify-center rounded-[9px]"
+                        className={`inline-flex items-center justify-center rounded-[9px] ${active ? 'text-bq-amber' : 'text-bq-ink3'}`}
                         style={{
                           width: 36, height: 36,
-                          background: active ? 'rgba(232,168,50,0.2)' : 'rgba(255,255,255,0.05)',
-                          color: active ? '#e8a832' : '#9ca3af',
+                          background: active ? 'rgba(245,158,11,0.2)' : '#F2F0E7',
                         }}
                       >
                         <span className="material-symbols-outlined" style={{ fontSize: 18 }}>{src.icon}</span>
                       </span>
                       <div className="min-w-0">
-                        <div className={`text-sm font-semibold ${active ? 'text-white' : 'text-gray-200'}`}>{src.title}</div>
-                        <div className="text-[11.5px] text-gray-400 mt-0.5">{src.sub}</div>
+                        <div className={`text-sm font-semibold ${active ? 'text-bq-ink' : 'text-bq-ink2'}`}>{src.title}</div>
+                        <div className="text-[11.5px] text-bq-ink2 mt-0.5">{src.sub}</div>
                       </div>
                     </button>
                   )
@@ -290,19 +276,16 @@ export default function CreateRoom() {
               {formData.questionSource === 'CUSTOM' ? (
                 <>
                   <div className="flex items-center justify-between mt-3.5 mb-2">
-                    <span className="text-[11px] font-bold tracking-[0.08em] uppercase text-gray-400">Bộ câu hỏi</span>
-                    <Link to="/my-sets/new" className="inline-flex items-center gap-1 text-[13px] font-semibold text-secondary hover:text-[#f0c674]">
+                    <span className="text-[11px] font-bold tracking-[0.08em] uppercase text-bq-ink2">Bộ câu hỏi</span>
+                    <Link to="/my-sets/new" className="inline-flex items-center gap-1 text-[13px] font-semibold text-bq-amberd hover:text-bq-amber">
                       <span className="material-symbols-outlined" style={{ fontSize: 14 }}>add</span>
                       Tạo bộ mới
                     </Link>
                   </div>
                   {userSets.length === 0 ? (
-                    <div
-                      className="p-3.5 rounded-[12px] text-center"
-                      style={{ background: 'rgba(15,18,28,0.5)', border: '1px dashed rgba(255,255,255,0.12)' }}
-                    >
-                      <p className="text-xs text-gray-400">Chưa có bộ câu hỏi nào đã xuất bản.</p>
-                      <Link to="/my-sets/new" className="text-xs text-secondary hover:underline mt-1 inline-block">Soạn bộ mới →</Link>
+                    <div className="p-3.5 rounded-[12px] text-center bg-bq-inset border border-dashed border-bq-hair">
+                      <p className="text-xs text-bq-ink2">Chưa có bộ câu hỏi nào đã xuất bản.</p>
+                      <Link to="/my-sets/new" className="text-xs text-bq-amberd hover:underline mt-1 inline-block">Soạn bộ mới →</Link>
                     </div>
                   ) : (
                     <div className="space-y-2 max-h-[260px] overflow-y-auto pr-0.5">
@@ -313,28 +296,28 @@ export default function CreateRoom() {
                             key={set.id}
                             type="button"
                             onClick={() => setFormData(prev => ({ ...prev, questionSetId: active ? null : set.id }))}
-                            className="w-full flex items-center gap-3.5 p-3.5 rounded-[12px] text-left transition-all"
+                            className={`w-full flex items-center gap-3.5 p-3.5 rounded-[12px] text-left transition-all ${active ? '' : 'bg-bq-inset'}`}
                             style={{
                               background: active
-                                ? 'linear-gradient(135deg, rgba(232,168,50,0.12), rgba(231,194,104,0.04))'
-                                : 'rgba(15,18,28,0.5)',
-                              border: `1.5px solid ${active ? 'rgba(232,168,50,0.5)' : 'rgba(255,255,255,0.06)'}`,
+                                ? 'linear-gradient(135deg, rgba(245,158,11,0.12), rgba(245,158,11,0.04))'
+                                : undefined,
+                              border: `1.5px solid ${active ? 'rgba(245,158,11,0.5)' : '#E7E4DA'}`,
                             }}
                           >
                             <span
-                              className="inline-flex items-center justify-center rounded-[10px]"
-                              style={{ width: 42, height: 42, background: 'rgba(232,168,50,0.16)', color: '#e8a832' }}
+                              className="inline-flex items-center justify-center rounded-[10px] text-bq-amber"
+                              style={{ width: 42, height: 42, background: 'rgba(245,158,11,0.16)' }}
                             >
                               <span className="material-symbols-outlined" style={{ fontSize: 20 }}>menu_book</span>
                             </span>
                             <div className="flex-1 min-w-0">
-                              <div className="text-[15px] font-semibold text-white truncate">{set.name}</div>
-                              <div className="text-xs text-gray-400 mt-0.5">
+                              <div className="text-[15px] font-semibold text-bq-ink truncate">{set.name}</div>
+                              <div className="text-xs text-bq-ink2 mt-0.5">
                                 {set.questionCount} câu · {set.visibility === 'PUBLIC' ? 'Công khai' : 'Riêng tư'}
                               </div>
                             </div>
                             {active && (
-                              <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#e8a832' }}>check_circle</span>
+                              <span className="material-symbols-outlined text-bq-amber" style={{ fontSize: 20 }}>check_circle</span>
                             )}
                           </button>
                         )
@@ -343,25 +326,22 @@ export default function CreateRoom() {
                   )}
                 </>
               ) : (
-                <div
-                  className="mt-3.5 flex items-center gap-3 p-3.5 rounded-[12px] text-[13px] text-gray-300"
-                  style={{ background: 'rgba(15,18,28,0.5)', border: '1px solid rgba(255,255,255,0.06)' }}
-                >
+                <div className="mt-3.5 flex items-center gap-3 p-3.5 rounded-[12px] text-[13px] text-bq-ink2 bg-bq-inset border border-bq-hair">
                   <span
-                    className="inline-flex items-center justify-center rounded-[10px] flex-shrink-0"
-                    style={{ width: 42, height: 42, background: 'rgba(96,165,250,0.15)', color: '#60a5fa' }}
+                    className="inline-flex items-center justify-center rounded-[10px] flex-shrink-0 text-bq-sapphire"
+                    style={{ width: 42, height: 42, background: 'rgba(45,70,200,0.15)' }}
                   >
                     <span className="material-symbols-outlined" style={{ fontSize: 20 }}>info</span>
                   </span>
                   <div>
-                    Câu hỏi sẽ được chọn ngẫu nhiên từ <strong className="text-white">ngân hàng hệ thống</strong> theo độ khó và sách Kinh Thánh bạn chọn bên dưới.
+                    Câu hỏi sẽ được chọn ngẫu nhiên từ <strong className="text-bq-ink">ngân hàng hệ thống</strong> theo độ khó và sách Kinh Thánh bạn chọn bên dưới.
                   </div>
                 </div>
               )}
             </section>
 
             {/* Card 3: Match settings */}
-            <section className="p-[22px_24px]" style={CARD_STYLE}>
+            <section className={`p-[22px_24px] ${CARD_CLASS}`}>
               <CardLabel>Cài đặt trận đấu</CardLabel>
               {/* Vùng chọn câu hỏi — mờ đi khi dùng nguồn "Tự tạo câu hỏi" */}
               <div className={`transition-opacity ${formData.questionSource === 'CUSTOM' ? 'opacity-40 pointer-events-none' : ''}`}>
@@ -385,22 +365,18 @@ export default function CreateRoom() {
                   onChange={v => setFormData(p => ({ ...p, timePerQuestion: v }))}
                 />
                 <div>
-                  <div className="text-[11.5px] font-bold tracking-[0.08em] uppercase text-gray-400 mb-2">
+                  <div className="text-[11.5px] font-bold tracking-[0.08em] uppercase text-bq-ink2 mb-2">
                     {t('createRoom.bookScope', 'Sách Kinh Thánh')}
                   </div>
                   <div className="relative">
                     <select
                       value={formData.bookScope}
                       onChange={e => setFormData(prev => ({ ...prev, bookScope: e.target.value }))}
-                      className="w-full px-3.5 py-2.5 rounded-[10px] text-sm text-gray-200 appearance-none outline-none cursor-pointer pr-9"
-                      style={{
-                        background: 'rgba(15,18,28,0.55)',
-                        border: '1px solid rgba(255,255,255,0.06)',
-                      }}
+                      className="w-full px-3.5 py-2.5 rounded-[10px] text-sm bg-bq-white border border-bq-hair text-bq-ink appearance-none outline-none cursor-pointer pr-9 focus:ring-2 focus:ring-bq-sapphire"
                     >
                       {BOOK_SCOPE_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
                     </select>
-                    <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400" style={{ fontSize: 18 }}>
+                    <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-bq-ink3" style={{ fontSize: 18 }}>
                       expand_more
                     </span>
                   </div>
@@ -408,60 +384,58 @@ export default function CreateRoom() {
               </div>
 
               <div
-                className="mt-4 flex items-center gap-2 px-3.5 py-2.5 rounded-[10px] text-[13px]"
+                className="mt-4 flex items-center gap-2 px-3.5 py-2.5 rounded-[10px] text-[13px] text-bq-sapphire"
                 style={{
-                  background: 'rgba(96,165,250,0.08)',
-                  border: '1px solid rgba(96,165,250,0.22)',
-                  color: '#93c5fd',
+                  background: 'rgba(45,70,200,0.08)',
+                  border: '1px solid rgba(45,70,200,0.22)',
                 }}
               >
                 <span className="material-symbols-outlined" style={{ fontSize: 16 }}>schedule</span>
                 <span>
                   Ước lượng trận đấu khoảng{' '}
-                  <strong className="text-blue-200">~{Math.max(1, Math.ceil(formData.questionCount * formData.timePerQuestion / 60))} phút</strong>
+                  <strong className="text-bq-sapphire">~{Math.max(1, Math.ceil(formData.questionCount * formData.timePerQuestion / 60))} phút</strong>
                 </span>
               </div>
               </div>
 
               {/* Số người chơi tối đa — luôn bật, không phụ thuộc nguồn câu hỏi */}
-              <div className="mt-[18px] pt-[18px] border-t border-white/[0.06]">
+              <div className="mt-[18px] pt-[18px] border-t border-bq-hair">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-[11.5px] font-bold tracking-[0.08em] uppercase text-gray-400">
+                  <span className="text-[11.5px] font-bold tracking-[0.08em] uppercase text-bq-ink2">
                     {t('createRoom.maxPlayers')}
                   </span>
-                  <span className="px-3 py-1 rounded-full text-xs font-bold" style={{ background: 'rgba(232,168,50,0.15)', color: '#e8a832' }}>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold text-bq-amberd" style={{ background: 'rgba(245,158,11,0.15)' }}>
                     {formData.maxPlayers}
                   </span>
                 </div>
                 <input
                   type="range" min={2} max={100} value={formData.maxPlayers}
                   onChange={e => setFormData(prev => ({ ...prev, maxPlayers: parseInt(e.target.value) }))}
-                  className="w-full accent-[#e8a832] h-2 rounded-full appearance-none cursor-pointer"
-                  style={{ background: 'rgba(15,18,28,0.55)' }}
+                  className="w-full accent-bq-amber h-2 rounded-full appearance-none cursor-pointer bg-bq-inset"
                 />
-                <div className="flex justify-between text-[10px] text-gray-500 mt-1">
+                <div className="flex justify-between text-[10px] text-bq-ink3 mt-1">
                   <span>2</span><span>100</span>
                 </div>
               </div>
             </section>
 
             {/* Card 4: Privacy + Advanced */}
-            <section className="p-[22px_24px]" style={CARD_STYLE}>
+            <section className={`p-[22px_24px] ${CARD_CLASS}`}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <span
-                    className="inline-flex items-center justify-center rounded-[9px]"
-                    style={{ width: 36, height: 36, background: 'rgba(232,168,50,0.14)', color: '#e8a832' }}
+                    className="inline-flex items-center justify-center rounded-[9px] text-bq-amber"
+                    style={{ width: 36, height: 36, background: 'rgba(245,158,11,0.14)' }}
                   >
                     <span className="material-symbols-outlined" style={{ fontSize: 18, fontVariationSettings: "'FILL' 1" }}>
                       {formData.isPublic ? 'public' : 'lock'}
                     </span>
                   </span>
                   <div>
-                    <div className="text-sm font-semibold text-white">
+                    <div className="text-sm font-semibold text-bq-ink">
                       {formData.isPublic ? t('createRoom.isPublic') : t('createRoom.isPrivate')}
                     </div>
-                    <div className="text-xs text-gray-400 mt-0.5">
+                    <div className="text-xs text-bq-ink2 mt-0.5">
                       {formData.isPublic ? t('createRoom.publicDesc') : t('createRoom.privateDesc')}
                     </div>
                   </div>
@@ -470,12 +444,7 @@ export default function CreateRoom() {
                 <button
                   type="button"
                   onClick={() => setFormData(prev => ({ ...prev, isPublic: !prev.isPublic }))}
-                  className="relative rounded-full w-12 h-6 transition-colors flex-shrink-0"
-                  style={{
-                    background: formData.isPublic
-                      ? 'linear-gradient(135deg, #e8a832, #e7c268)'
-                      : 'rgba(255,255,255,0.1)',
-                  }}
+                  className={`relative rounded-full w-12 h-6 transition-colors flex-shrink-0 ${formData.isPublic ? 'bg-bq-action' : 'bg-bq-inset'}`}
                   aria-pressed={formData.isPublic}
                 >
                   <span
@@ -518,7 +487,7 @@ export default function CreateRoom() {
 
 function CardLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-[11px] font-bold tracking-[0.1em] uppercase text-gray-400 mb-2.5 flex items-center gap-2">
+    <div className="text-[11px] font-bold tracking-[0.1em] uppercase text-bq-ink2 mb-2.5 flex items-center gap-2">
       {children}
     </div>
   )
@@ -534,11 +503,8 @@ function ChipGroup<T extends string | number>({
 }) {
   return (
     <div>
-      <div className="text-[11.5px] font-bold tracking-[0.08em] uppercase text-gray-400 mb-2">{label}</div>
-      <div
-        className="flex gap-1 p-1 rounded-[10px]"
-        style={{ background: 'rgba(15,18,28,0.55)', border: '1px solid rgba(255,255,255,0.06)' }}
-      >
+      <div className="text-[11.5px] font-bold tracking-[0.08em] uppercase text-bq-ink2 mb-2">{label}</div>
+      <div className="flex gap-1 p-1 rounded-[10px] bg-bq-inset border border-bq-hair">
         {options.map(opt => {
           const active = opt.value === value
           return (
@@ -548,10 +514,9 @@ function ChipGroup<T extends string | number>({
               onClick={() => onChange(opt.value)}
               className={`flex-1 py-2 px-2 rounded-[7px] text-[13px] transition-all ${
                 active
-                  ? 'font-bold text-[#1a1a1a] bg-[#f8bd45]'
-                  : 'font-medium text-gray-300 hover:text-white'
+                  ? 'font-bold text-white bg-bq-action shadow-bq-action'
+                  : 'font-medium text-bq-ink2 hover:text-bq-ink'
               }`}
-              style={active ? { background: 'linear-gradient(135deg, #e8a832, #e7c268)', color: '#1a1a1a' } : undefined}
             >
               {opt.label}
             </button>

@@ -7,8 +7,9 @@ import { AVATAR_PRESETS, isPresetValue, toPresetValue } from '../../data/avatars
 import { isOAuthAvatarUrl, resolveAvatar } from '../../utils/avatar'
 
 const NAME_MAX = 50
-const GOLD = '#e8a832'
-const GOLD_DEEP = '#c98a1c'
+// "Khung Sáng" amber accent (light theme). amber-deep is contrast-safe on
+// the white modal surface.
+const GOLD = '#D97F06'
 
 export function EditProfileModal({ open, onClose, profile }: {
   open: boolean
@@ -67,19 +68,12 @@ export function EditProfileModal({ open, onClose, profile }: {
     <div
       data-testid="edit-profile-modal"
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: 'rgba(6,7,12,0.78)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
+      style={{ background: 'rgba(22,21,27,0.45)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
       onMouseDown={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
       <form
         onSubmit={handleSubmit}
-        className="relative w-full max-w-md rounded-3xl p-6 md:p-7 space-y-5"
-        style={{
-          background: 'rgba(50,52,64,0.4)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          border: `1px solid ${GOLD}33`,
-          boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px ${GOLD}1a inset`,
-        }}
+        className="relative w-full max-w-md rounded-3xl bg-bq-white border border-bq-hair shadow-bq-soft p-6 md:p-7 space-y-5"
       >
         <button
           type="button"
@@ -87,13 +81,13 @@ export function EditProfileModal({ open, onClose, profile }: {
           data-testid="edit-profile-close"
           onClick={onClose}
           disabled={mutation.isPending}
-          className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors disabled:opacity-50"
+          className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center hover:bg-bq-inset transition-colors disabled:opacity-50"
           style={{ color: GOLD }}
         >
           <span className="material-symbols-outlined text-[20px]">close</span>
         </button>
 
-        <h2 className="text-xl font-extrabold text-on-surface tracking-tight pr-10">
+        <h2 className="font-display text-xl font-extrabold text-bq-ink tracking-tight pr-10">
           {t('profile.editModalTitle')}
         </h2>
 
@@ -104,8 +98,8 @@ export function EditProfileModal({ open, onClose, profile }: {
             className="w-[92px] h-[92px] rounded-full overflow-hidden flex items-center justify-center shrink-0"
             style={{
               border: `2px solid ${GOLD}`,
-              boxShadow: `0 0 24px ${GOLD}59, 0 8px 20px rgba(0,0,0,0.4)`,
-              background: resolved.kind === 'preset' ? resolved.preset.bg : 'linear-gradient(135deg, #2a2d3a, #1a1c25)',
+              boxShadow: `0 0 24px ${GOLD}40, 0 8px 20px rgba(20,20,30,0.12)`,
+              background: resolved.kind === 'preset' ? resolved.preset.bg : 'linear-gradient(135deg, #F2F0E7, #FFFFFF)',
             }}
           >
             {resolved.kind === 'img' && (
@@ -139,10 +133,10 @@ export function EditProfileModal({ open, onClose, profile }: {
           {presetGridOpen && (
             <div
               data-testid="edit-profile-preset-grid"
-              className="w-full rounded-2xl p-3 mt-1"
-              style={{ background: 'rgba(17,19,30,0.6)', border: `1px solid ${GOLD}26` }}
+              className="w-full rounded-2xl bg-bq-inset p-3 mt-1"
+              style={{ border: `1px solid ${GOLD}26` }}
             >
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant mb-2">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-bq-ink2 mb-2">
                 {t('profile.editAvatarPresetsHeading')}
               </p>
               <div className="grid grid-cols-6 gap-2">
@@ -161,7 +155,7 @@ export function EditProfileModal({ open, onClose, profile }: {
                     <img src={googleAvatar} alt="" className="w-full h-full object-cover" />
                     <span
                       className="absolute -bottom-0.5 -right-0.5 text-[9px] font-black rounded-full w-4 h-4 flex items-center justify-center"
-                      style={{ background: GOLD, color: '#11131e' }}
+                      style={{ background: GOLD, color: '#FFFFFF' }}
                       aria-hidden
                     >G</span>
                   </button>
@@ -193,13 +187,12 @@ export function EditProfileModal({ open, onClose, profile }: {
 
         {/* Name field */}
         <label className="block">
-          <span className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">
+          <span className="text-xs font-semibold uppercase tracking-wider text-bq-ink2">
             {t('profile.editFieldName')}
           </span>
           <div
-            className="mt-1 flex items-center gap-2 rounded-xl px-3 py-2 transition-colors focus-within:border-[color:var(--tw-ring-color)]"
+            className="mt-1 flex items-center gap-2 rounded-xl bg-bq-inset px-3 py-2 transition-colors focus-within:border-[color:var(--tw-ring-color)]"
             style={{
-              background: 'rgba(17,19,30,0.55)',
               border: `1px solid ${GOLD}26`,
             }}
           >
@@ -210,25 +203,24 @@ export function EditProfileModal({ open, onClose, profile }: {
               value={name}
               onChange={(e) => setName(e.target.value)}
               maxLength={NAME_MAX + 10}
-              className="flex-1 bg-transparent outline-none text-on-surface text-sm placeholder:text-on-surface-variant/60"
+              className="flex-1 bg-transparent outline-none text-bq-ink text-sm placeholder:text-bq-ink3"
               onFocus={(e) => { e.currentTarget.parentElement!.style.border = `1px solid ${GOLD}` }}
               onBlur={(e) => { e.currentTarget.parentElement!.style.border = `1px solid ${GOLD}26` }}
             />
-            <span className="text-[10px] text-on-surface-variant tabular-nums">{name.length}/{NAME_MAX}</span>
+            <span className="text-[10px] text-bq-ink2 tabular-nums">{name.length}/{NAME_MAX}</span>
           </div>
         </label>
 
         {/* Email read-only */}
         <div
           data-testid="edit-profile-email-row"
-          className="flex items-center gap-2 rounded-xl px-3 py-2"
+          className="flex items-center gap-2 rounded-xl bg-bq-inset px-3 py-2"
           style={{
             border: `1px dashed ${GOLD}40`,
-            background: 'rgba(17,19,30,0.35)',
           }}
         >
-          <span className="material-symbols-outlined text-[18px] text-on-surface-variant" aria-hidden>mail</span>
-          <span className="text-sm text-on-surface-variant truncate flex-1">{profile.email}</span>
+          <span className="material-symbols-outlined text-[18px] text-bq-ink2" aria-hidden>mail</span>
+          <span className="text-sm text-bq-ink2 truncate flex-1">{profile.email}</span>
           <span
             className="inline-flex items-center gap-1 text-[10px] font-semibold px-1.5 py-0.5 rounded-full"
             style={{ background: `${GOLD}1a`, color: GOLD, border: `1px solid ${GOLD}40` }}
@@ -247,7 +239,7 @@ export function EditProfileModal({ open, onClose, profile }: {
             type="button"
             onClick={onClose}
             disabled={mutation.isPending}
-            className="flex-1 px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors disabled:opacity-50 hover:bg-white/5"
+            className="flex-1 px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors disabled:opacity-50 hover:bg-bq-inset"
             style={{ border: `1px solid ${GOLD}40`, color: GOLD }}
           >
             {t('common.cancel')}
@@ -256,13 +248,8 @@ export function EditProfileModal({ open, onClose, profile }: {
             type="submit"
             data-testid="edit-profile-submit"
             disabled={mutation.isPending}
-            className="rounded-xl py-2.5 text-sm font-bold disabled:opacity-50 transition-shadow"
-            style={{
-              flex: '1.5 1 0',
-              background: `linear-gradient(135deg, ${GOLD} 0%, ${GOLD_DEEP} 100%)`,
-              color: '#11131e',
-              boxShadow: `0 8px 20px ${GOLD}40`,
-            }}
+            className="rounded-xl py-2.5 text-sm font-bold text-white bg-bq-action shadow-bq-action disabled:opacity-50 transition-opacity hover:opacity-90"
+            style={{ flex: '1.5 1 0' }}
           >
             {mutation.isPending ? t('profile.editSaving') : t('profile.editSubmit')}
           </button>

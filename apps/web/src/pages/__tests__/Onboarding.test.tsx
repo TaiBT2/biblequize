@@ -199,8 +199,8 @@ describe('Onboarding', () => {
       await goToSlide1()
       // 3 dot indicators should exist
       const dots = document.querySelectorAll('.rounded-full.transition-all')
-      // At least the active dot with gold-gradient
-      const activeDot = document.querySelector('.gold-gradient.rounded-full')
+      // At least the active dot with the bq action gradient
+      const activeDot = document.querySelector('.bg-bq-action.rounded-full')
       expect(activeDot).toBeInTheDocument()
     })
   })

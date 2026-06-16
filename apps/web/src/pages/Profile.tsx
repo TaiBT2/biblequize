@@ -88,8 +88,8 @@ const Profile: React.FC = () => {
     return (
       <div className="flex items-center justify-center py-24">
         <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4 text-secondary">{t('profile.loginRequired')}</h2>
-          <Link to="/login" className="px-6 py-3 rounded-lg font-bold gold-gradient text-on-secondary inline-block">
+          <h2 className="text-2xl font-bold mb-4 text-bq-amberd">{t('profile.loginRequired')}</h2>
+          <Link to="/login" className="px-6 py-3 rounded-lg font-bold bg-bq-action text-white shadow-bq-action inline-block">
             {t('auth.login')}
           </Link>
         </div>
@@ -104,7 +104,7 @@ const Profile: React.FC = () => {
       <div className="flex items-center justify-center py-24">
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4 text-error">{t('profile.loadError')}</h2>
-          <p className="text-on-surface-variant mb-4">{t('profile.tryAgainLater')}</p>
+          <p className="text-bq-ink2 mb-4">{t('profile.tryAgainLater')}</p>
         </div>
       </div>
     )
@@ -138,8 +138,8 @@ const Profile: React.FC = () => {
   return (
     <div data-testid="profile-page" className="space-y-4">
       <div>
-        <h1 className="text-2xl font-extrabold text-on-surface tracking-tight">{t('profile.title')}</h1>
-        <p className="text-sm text-on-surface-variant mt-0.5">{t('profile.subtitle')}</p>
+        <h1 className="font-display text-2xl font-extrabold text-bq-ink tracking-tight">{t('profile.title')}</h1>
+        <p className="text-sm text-bq-ink2 mt-0.5">{t('profile.subtitle')}</p>
       </div>
 
       <HeroCompact

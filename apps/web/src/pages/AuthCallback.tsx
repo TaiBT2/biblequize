@@ -82,29 +82,29 @@ export default function AuthCallback() {
   }, [searchParams, navigate, t])
 
   return (
-    <div className="min-h-screen neon-bg flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-bq-paper flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute top-20 left-20 text-5xl neon-green opacity-20 animate-pulse">🔐</div>
-      <div className="absolute bottom-20 right-20 text-5xl neon-pink opacity-20 animate-pulse">⚡</div>
+      <div className="absolute top-20 left-20 text-5xl opacity-20 animate-pulse">🔐</div>
+      <div className="absolute bottom-20 right-20 text-5xl opacity-20 animate-pulse">⚡</div>
 
       <div className="text-center">
-        <div className="neon-card p-8">
+        <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-bq p-8">
           {isProcessing ? (
             <>
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-neon-blue mx-auto mb-4"></div>
-              <p className="neon-text text-white">{t('auth.processing')}</p>
+              <div className="animate-spin rounded-full h-12 w-12 border-2 border-bq-hair border-t-bq-amberd mx-auto mb-4"></div>
+              <p className="text-bq-ink">{t('auth.processing')}</p>
             </>
           ) : error ? (
             <>
               <div className="text-6xl mb-4">❌</div>
-              <p className="neon-text text-red-400 mb-4">{error}</p>
-              <p className="text-white opacity-70">{t('auth.redirectingLogin')}</p>
+              <p className="text-bq-ruby mb-4">{error}</p>
+              <p className="text-bq-ink2">{t('auth.redirectingLogin')}</p>
             </>
           ) : (
             <>
               <div className="text-6xl mb-4">✅</div>
-              <p className="neon-text text-green-400 mb-4">{t('auth.loginSuccess')}</p>
-              <p className="text-white opacity-70">{t('auth.redirectingHome')}</p>
+              <p className="text-bq-emerald mb-4">{t('auth.loginSuccess')}</p>
+              <p className="text-bq-ink2">{t('auth.redirectingHome')}</p>
             </>
           )}
         </div>

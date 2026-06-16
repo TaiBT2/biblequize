@@ -17,9 +17,9 @@ interface TierStyle {
 }
 
 const TIER_STYLE: Record<BadgeTier, TierStyle> = {
-  TOAN_THU: { icon: 'auto_stories', markSize: 120, glow: 'rgba(232,168,50,0.7)', gradientHeading: true },
-  TAN_TAM: { icon: 'star', markSize: 100, glow: 'rgba(232,168,50,0.5)', gradientHeading: false },
-  HANH_HUONG: { icon: 'volunteer_activism', markSize: 80, glow: 'rgba(232,168,50,0.3)', gradientHeading: false },
+  TOAN_THU: { icon: 'auto_stories', markSize: 120, glow: 'rgba(245,158,11,0.7)', gradientHeading: true },
+  TAN_TAM: { icon: 'star', markSize: 100, glow: 'rgba(245,158,11,0.5)', gradientHeading: false },
+  HANH_HUONG: { icon: 'volunteer_activism', markSize: 80, glow: 'rgba(245,158,11,0.3)', gradientHeading: false },
 }
 
 /** seasonId format: season-{year}-q{1-4}. Maps quarter → liturgical season key. */
@@ -60,12 +60,12 @@ export default function BadgeAwardModal({ isOpen, onClose, badge, onShare }: Bad
         fontFamily: "'Cormorant Garamond', serif",
         fontStyle: 'italic',
         fontSize: 26,
-        background: 'linear-gradient(135deg, #f3c969, #e8a832, #d4951f)',
+        background: 'linear-gradient(135deg, #FFE08A, #F59E0B, #D97F06)',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
         backgroundClip: 'text',
       }
-    : { fontSize: 22, fontWeight: 800, color: '#e8a832' }
+    : { fontSize: 22, fontWeight: 800, color: '#D97F06' }
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="md" ariaLabel={tierName}>
@@ -75,14 +75,14 @@ export default function BadgeAwardModal({ isOpen, onClose, badge, onShare }: Bad
           style={{
             width: style.markSize, height: style.markSize, margin: '0 auto 12px',
             borderRadius: '50%',
-            background: `radial-gradient(circle, ${style.glow} 0%, rgba(232,168,50,0) 70%)`,
+            background: `radial-gradient(circle, ${style.glow} 0%, rgba(245,158,11,0) 70%)`,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}
         >
           <span
             className="material-symbols-outlined"
             style={{
-              fontSize: style.markSize * 0.42, color: '#e8a832',
+              fontSize: style.markSize * 0.42, color: '#D97F06',
               fontVariationSettings: "'FILL' 1",
             }}
           >
@@ -92,18 +92,18 @@ export default function BadgeAwardModal({ isOpen, onClose, badge, onShare }: Bad
 
         <div style={{
           fontSize: 11, fontWeight: 700, letterSpacing: '0.2em',
-          textTransform: 'uppercase', color: '#e8a832',
+          textTransform: 'uppercase', color: '#D97F06',
         }}>
           {t('ranked.badge_award.heading_sm')}
         </div>
 
-        <h2 style={{ margin: '4px 0 2px', ...headingStyle }}>{tierName}</h2>
+        <h2 className="font-display" style={{ margin: '4px 0 2px', ...headingStyle }}>{tierName}</h2>
 
-        <div style={{ fontSize: 13, color: '#8a8da0', marginBottom: 12 }}>{seasonName}</div>
+        <div style={{ fontSize: 13, color: '#A8A69C', marginBottom: 12 }}>{seasonName}</div>
 
         <p style={{
           fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic',
-          fontSize: 16, color: '#c5c8d8', lineHeight: 1.4, margin: '0 0 16px',
+          fontSize: 16, color: '#6C6A62', lineHeight: 1.4, margin: '0 0 16px',
         }}>
           {verse}
         </p>
@@ -115,14 +115,14 @@ export default function BadgeAwardModal({ isOpen, onClose, badge, onShare }: Bad
               key={s.label}
               style={{
                 flex: 1, padding: '10px 4px', borderRadius: 10,
-                background: 'rgba(232,168,50,0.08)',
-                border: '1px solid rgba(232,168,50,0.15)',
+                background: 'rgba(245,158,11,0.08)',
+                border: '1px solid rgba(245,158,11,0.15)',
               }}
             >
-              <div style={{ fontSize: 18, fontWeight: 800, color: '#e8a832' }}>{s.value}</div>
+              <div style={{ fontSize: 18, fontWeight: 800, color: '#D97F06' }}>{s.value}</div>
               <div style={{
                 fontSize: 9, fontWeight: 600, letterSpacing: '0.06em',
-                textTransform: 'uppercase', color: '#8a8da0', marginTop: 2,
+                textTransform: 'uppercase', color: '#A8A69C', marginTop: 2,
               }}>
                 {s.label}
               </div>
@@ -137,8 +137,8 @@ export default function BadgeAwardModal({ isOpen, onClose, badge, onShare }: Bad
               onClick={onShare}
               style={{
                 width: '100%', padding: '12px 16px', borderRadius: 12, border: 'none',
-                background: 'linear-gradient(135deg, #e8a832, #d4951f)',
-                color: '#11131e', fontSize: 14, fontWeight: 800, cursor: 'pointer',
+                background: 'linear-gradient(135deg, #FF9D2E 0%, #FF5A45 55%, #E0354B 100%)',
+                color: '#FFFFFF', fontSize: 14, fontWeight: 800, cursor: 'pointer',
               }}
             >
               {t('ranked.badge_award.share_cta')}
@@ -150,8 +150,8 @@ export default function BadgeAwardModal({ isOpen, onClose, badge, onShare }: Bad
             style={{
               width: '100%', padding: '12px 16px', borderRadius: 12,
               background: 'transparent',
-              border: '1px solid rgba(255,255,255,0.15)',
-              color: '#c5c8d8', fontSize: 14, fontWeight: 600, cursor: 'pointer',
+              border: '1px solid #E7E4DA',
+              color: '#6C6A62', fontSize: 14, fontWeight: 600, cursor: 'pointer',
             }}
           >
             {t('ranked.badge_award.close_cta')}

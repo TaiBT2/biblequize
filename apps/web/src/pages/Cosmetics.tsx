@@ -21,12 +21,12 @@ interface CosmeticsData {
 const TIER_ICONS = ['🌱', '🌿', '📜', '🪔', '🔥', '👑']
 
 const FRAME_COLORS: Record<string, string> = {
-  frame_tier1: 'border-gray-400',
-  frame_tier2: 'border-sky-400',
-  frame_tier3: 'border-blue-500',
-  frame_tier4: 'border-purple-500',
-  frame_tier5: 'border-yellow-400',
-  frame_tier6: 'border-red-400',
+  frame_tier1: 'border-bq-ink3',
+  frame_tier2: 'border-bq-sapphire/60',
+  frame_tier3: 'border-bq-sapphire',
+  frame_tier4: 'border-bq-sapphire',
+  frame_tier5: 'border-bq-amber',
+  frame_tier6: 'border-bq-ruby',
 }
 
 export default function Cosmetics() {
@@ -47,10 +47,10 @@ export default function Cosmetics() {
   if (isLoading || !data) {
     return (
       <div className="space-y-8 max-w-3xl mx-auto animate-pulse">
-        <div className="h-8 w-48 bg-surface-container rounded-lg" />
+        <div className="h-8 w-48 bg-bq-inset rounded-lg" />
         <div className="grid grid-cols-3 gap-4">
           {[1, 2, 3, 4, 5, 6].map(i => (
-            <div key={i} className="h-32 bg-surface-container rounded-xl" />
+            <div key={i} className="h-32 bg-bq-inset rounded-xl" />
           ))}
         </div>
       </div>
@@ -61,19 +61,19 @@ export default function Cosmetics() {
     <div data-testid="cosmetics-page" className="space-y-8 max-w-3xl mx-auto">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <Link to="/profile" className="text-on-surface-variant hover:text-on-surface transition-colors">
+        <Link to="/profile" className="text-bq-ink2 hover:text-bq-ink transition-colors">
           <span className="material-symbols-outlined">arrow_back</span>
         </Link>
         <div>
-          <h1 className="text-2xl font-black text-on-surface">{t('gameModes.cosmeticsPage.title')}</h1>
-          <p className="text-sm text-on-surface-variant">{t('gameModes.cosmeticsPage.subtitle')}</p>
+          <h1 className="font-display text-2xl font-black text-bq-ink">{t('gameModes.cosmeticsPage.title')}</h1>
+          <p className="text-sm text-bq-ink2">{t('gameModes.cosmeticsPage.subtitle')}</p>
         </div>
       </div>
 
       {/* Avatar Frames */}
       <section data-testid="cosmetics-frames-section">
-        <h2 className="text-lg font-bold text-on-surface mb-4 flex items-center gap-2">
-          <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
+        <h2 className="text-lg font-bold text-bq-ink mb-4 flex items-center gap-2">
+          <span className="material-symbols-outlined text-bq-amberd" style={{ fontVariationSettings: "'FILL' 1" }}>
             frame_person
           </span>
           {t('gameModes.cosmeticsPage.avatarFramesSection')}
@@ -87,26 +87,26 @@ export default function Cosmetics() {
               disabled={!frame.unlocked}
               className={`relative rounded-xl p-4 border-2 transition-all text-center ${
                 frame.active
-                  ? `${FRAME_COLORS[frame.id] ?? 'border-secondary'} bg-secondary/10`
+                  ? `${FRAME_COLORS[frame.id] ?? 'border-bq-amber'} bg-bq-amber/10`
                   : frame.unlocked
-                    ? 'border-outline-variant/20 bg-surface-container hover:border-secondary/50'
-                    : 'border-outline-variant/10 bg-surface-container opacity-50 cursor-not-allowed'
+                    ? 'border-bq-hair bg-bq-white shadow-bq-soft hover:border-bq-amber/50'
+                    : 'border-bq-hair bg-bq-inset opacity-60 cursor-not-allowed'
               }`}
             >
               {/* Tier icon as frame preview */}
               <div className={`w-16 h-16 mx-auto rounded-full border-4 flex items-center justify-center mb-3 ${
-                FRAME_COLORS[frame.id] ?? 'border-gray-400'
+                FRAME_COLORS[frame.id] ?? 'border-bq-ink3'
               } ${frame.unlocked ? '' : 'grayscale'}`}>
                 <span className="text-2xl">{TIER_ICONS[frame.tier - 1]}</span>
               </div>
-              <p className="text-xs font-bold text-on-surface">{frame.name}</p>
-              <p className="text-[10px] text-on-surface-variant mt-0.5">
+              <p className="text-xs font-bold text-bq-ink">{frame.name}</p>
+              <p className="text-[10px] text-bq-ink2 mt-0.5">
                 {frame.unlocked
                   ? (frame.active ? t('gameModes.cosmeticsPage.statusActive') : t('gameModes.cosmeticsPage.statusUnlocked'))
                   : t('gameModes.cosmeticsPage.statusLockedTier', { tier: frame.tier })}
               </p>
               {!frame.unlocked && (
-                <span data-testid="cosmetics-lock-icon" className="material-symbols-outlined absolute top-2 right-2 text-sm text-on-surface-variant">
+                <span data-testid="cosmetics-lock-icon" className="material-symbols-outlined absolute top-2 right-2 text-sm text-bq-ink3">
                   lock
                 </span>
               )}
@@ -117,8 +117,8 @@ export default function Cosmetics() {
 
       {/* Quiz Themes */}
       <section data-testid="cosmetics-themes-section">
-        <h2 className="text-lg font-bold text-on-surface mb-4 flex items-center gap-2">
-          <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
+        <h2 className="text-lg font-bold text-bq-ink mb-4 flex items-center gap-2">
+          <span className="material-symbols-outlined text-bq-amberd" style={{ fontVariationSettings: "'FILL' 1" }}>
             palette
           </span>
           {t('gameModes.cosmeticsPage.quizThemesSection')}
@@ -131,15 +131,15 @@ export default function Cosmetics() {
               disabled={!theme.unlocked}
               className={`rounded-xl p-4 border-2 transition-all text-center ${
                 theme.active
-                  ? 'border-secondary bg-secondary/10'
+                  ? 'border-bq-amber bg-bq-amber/10'
                   : theme.unlocked
-                    ? 'border-outline-variant/20 bg-surface-container hover:border-secondary/50'
-                    : 'border-outline-variant/10 bg-surface-container opacity-50 cursor-not-allowed'
+                    ? 'border-bq-hair bg-bq-white shadow-bq-soft hover:border-bq-amber/50'
+                    : 'border-bq-hair bg-bq-inset opacity-60 cursor-not-allowed'
               }`}
             >
               <div className="text-2xl mb-2">{TIER_ICONS[theme.tier - 1]}</div>
-              <p className="text-xs font-bold text-on-surface">{theme.name}</p>
-              <p className="text-[10px] text-on-surface-variant mt-0.5">
+              <p className="text-xs font-bold text-bq-ink">{theme.name}</p>
+              <p className="text-[10px] text-bq-ink2 mt-0.5">
                 {theme.unlocked
                   ? (theme.active ? t('gameModes.cosmeticsPage.statusActive') : t('gameModes.cosmeticsPage.statusUnlocked'))
                   : t('gameModes.cosmeticsPage.statusLockedTier', { tier: theme.tier })}

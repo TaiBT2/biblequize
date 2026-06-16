@@ -26,34 +26,28 @@ export default function StreakWidget() {
   return (
     <div
       data-testid="streak-widget"
-      className="rounded-[10px] px-3.5 py-3"
-      style={{
-        backgroundColor: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.06)',
-      }}
+      className="rounded-[10px] px-3.5 py-3 bg-bq-white border border-bq-hair shadow-bq-soft"
     >
       <div
-        className="text-[10px] uppercase font-bold mb-1.5"
-        style={{ letterSpacing: '0.12em', color: 'rgba(225,225,241,0.5)' }}
+        className="text-[10px] uppercase font-bold mb-1.5 text-bq-ink2"
+        style={{ letterSpacing: '0.12em' }}
       >
         🔥 Streak
       </div>
       <div className="flex items-baseline gap-1.5 mb-1">
         <span
           data-testid="streak-widget-count"
-          className="text-[22px] font-extrabold leading-none"
-          style={{ color: '#fb923c' }}
+          className="text-[22px] font-extrabold leading-none text-bq-amberd"
         >
           {streak}
         </span>
-        <span className="text-[11px]" style={{ color: 'rgba(225,225,241,0.55)' }}>
+        <span className="text-[11px] text-bq-ink2">
           ngày liên tục
         </span>
       </div>
       <p
         data-testid="streak-widget-caption"
-        className="text-[10px] leading-snug"
-        style={{ color: 'rgba(251,146,60,0.8)' }}
+        className="text-[10px] leading-snug text-bq-amberd"
       >
         {caption}
       </p>

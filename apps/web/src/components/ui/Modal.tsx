@@ -89,9 +89,9 @@ export default function Modal({
       style={{
         position: 'fixed',
         inset: 0,
-        background: 'rgba(10, 12, 20, 0.85)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
+        background: 'rgba(22, 21, 27, 0.45)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -108,15 +108,13 @@ export default function Modal({
         onClick={(e) => e.stopPropagation()}
         style={{
           position: 'relative',
-          background: 'linear-gradient(180deg, rgba(50, 52, 64, 0.95), rgba(30, 32, 44, 0.95))',
-          border: '1px solid rgba(232, 168, 50, 0.3)',
+          background: '#FFFFFF',
+          border: '1px solid #E7E4DA',
           borderRadius: 24,
           padding: '32px 24px 24px 24px',
           maxWidth: SIZE_MAX_WIDTH[size],
           width: '100%',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.4)',
+          boxShadow: '0 34px 64px -28px rgba(20, 20, 30, 0.35)',
           animation: 'bq-modal-slide-up 0.4s ease',
         }}
       >
@@ -137,7 +135,7 @@ export default function Modal({
               borderRadius: 8,
               background: 'transparent',
               border: 'none',
-              color: '#8a8da0',
+              color: '#6C6A62',
               cursor: 'pointer',
               fontSize: 20,
             }}

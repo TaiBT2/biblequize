@@ -43,7 +43,7 @@ export default function MobileBottomTabs() {
   return (
     <nav
       data-testid="mobile-bottom-tabs"
-      className="md:hidden fixed bottom-0 left-0 w-full z-40 flex items-stretch justify-between px-1 pt-1 bg-[#11131e]/90 backdrop-blur-xl border-t border-[rgba(232,168,50,0.15)]"
+      className="md:hidden fixed bottom-0 left-0 w-full z-40 flex items-stretch justify-between px-1 pt-1 bg-bq-paper/90 backdrop-blur-xl border-t border-bq-hair"
       style={{ paddingBottom: 'max(8px, env(safe-area-inset-bottom))' }}
     >
       {TABS.map(tab => {
@@ -58,8 +58,8 @@ export default function MobileBottomTabs() {
             aria-current={active ? 'page' : undefined}
             className={`relative flex-1 flex flex-col items-center justify-center gap-0.5 min-h-[52px] px-1 transition-colors duration-200 ease-out ${
               active
-                ? 'text-secondary'
-                : 'text-on-surface/50 hover:text-on-surface/80'
+                ? 'text-bq-amberd'
+                : 'text-bq-ink3 hover:text-bq-ink2'
             }`}
           >
             <span
@@ -79,7 +79,7 @@ export default function MobileBottomTabs() {
             {active && (
               <span
                 aria-hidden="true"
-                className="absolute bottom-0 h-[2px] w-6 rounded-full bg-secondary"
+                className="absolute bottom-0 h-[2px] w-6 rounded-full bg-bq-amber"
               />
             )}
           </Link>

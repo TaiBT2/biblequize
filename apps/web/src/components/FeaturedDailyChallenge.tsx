@@ -122,30 +122,30 @@ export default function FeaturedDailyChallenge() {
 
   if (isLoading) {
     return (
-      <div data-testid="featured-daily-loading" className="rounded-2xl bg-surface-container p-5 border border-secondary/20 animate-pulse">
-        <div className="h-3 w-28 bg-surface-container-high rounded mb-3" />
-        <div className="h-6 w-3/4 bg-surface-container-high rounded mb-2" />
-        <div className="h-3 w-1/2 bg-surface-container-high rounded mb-4" />
-        <div className="h-3 w-2/3 bg-surface-container-high rounded mb-4" />
-        <div className="h-10 w-full bg-surface-container-high rounded" />
+      <div data-testid="featured-daily-loading" className="rounded-2xl bg-bq-white p-5 border border-bq-hair shadow-bq-soft animate-pulse">
+        <div className="h-3 w-28 bg-bq-inset rounded mb-3" />
+        <div className="h-6 w-3/4 bg-bq-inset rounded mb-2" />
+        <div className="h-3 w-1/2 bg-bq-inset rounded mb-4" />
+        <div className="h-3 w-2/3 bg-bq-inset rounded mb-4" />
+        <div className="h-10 w-full bg-bq-inset rounded" />
       </div>
     )
   }
 
   if (isError || !data) {
     return (
-      <div data-testid="featured-daily-error" className="rounded-2xl bg-surface-container p-5 border border-secondary/20">
+      <div data-testid="featured-daily-error" className="rounded-2xl bg-bq-white p-5 border border-bq-hair shadow-bq-soft">
         <div className="flex items-center gap-3 mb-3">
-          <span className="material-symbols-outlined text-tertiary text-2xl" style={FILL_1}>calendar_today</span>
-          <h2 className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">
+          <span className="material-symbols-outlined text-bq-amberd text-2xl" style={FILL_1}>calendar_today</span>
+          <h2 className="text-xs font-bold text-bq-ink2 uppercase tracking-widest">
             {t('home.featuredDaily.title')}
           </h2>
         </div>
-        <p className="text-base font-medium text-on-surface mb-3">{t('home.featuredDaily.errorFallback')}</p>
+        <p className="text-base font-medium text-bq-ink mb-3">{t('home.featuredDaily.errorFallback')}</p>
         <button
           data-testid="featured-daily-retry"
           onClick={() => refetch()}
-          className="text-xs font-bold text-secondary uppercase tracking-widest hover:underline"
+          className="text-xs font-bold text-bq-amberd uppercase tracking-widest hover:underline"
         >
           {t('home.featuredDaily.retry')} →
         </button>
@@ -169,39 +169,39 @@ export default function FeaturedDailyChallenge() {
       <div
         data-testid="featured-daily-challenge"
         data-state="completed"
-        className="relative overflow-hidden rounded-2xl border border-secondary/30 bg-[rgba(50,52,64,0.4)] backdrop-blur-md p-5 md:p-6"
+        className="relative overflow-hidden rounded-2xl border border-bq-hair bg-bq-white shadow-bq-soft p-5 md:p-6"
       >
         <div className="flex items-center justify-between mb-2">
-          <h2 className="text-[10px] md:text-[11px] font-bold text-secondary/70 uppercase tracking-[0.6px] md:tracking-[0.8px]">
+          <h2 className="text-[10px] md:text-[11px] font-bold text-bq-ink2 uppercase tracking-[0.6px] md:tracking-[0.8px]">
             {t('home.featuredDaily.completedState.title')}
           </h2>
-          <span className="bg-secondary/15 text-secondary px-2 py-0.5 rounded-full text-[9px] md:text-[10px] font-medium">
+          <span className="bg-bq-emerald/10 text-bq-emerald px-2 py-0.5 rounded-full text-[9px] md:text-[10px] font-medium">
             {t('home.featuredDaily.doneBadge')}
           </span>
         </div>
 
         <p
           data-testid="featured-daily-score"
-          className="text-on-surface text-[15px] md:text-[17px] font-medium mb-1.5 leading-tight"
+          className="text-bq-ink text-[15px] md:text-[17px] font-medium mb-1.5 leading-tight"
         >
           {t(scoreKey, { correct, total })}
         </p>
 
         <p
           data-testid="featured-daily-theme"
-          className="text-[11px] md:text-xs text-on-surface-variant/55 leading-relaxed mb-3"
+          className="text-[11px] md:text-xs text-bq-ink2 leading-relaxed mb-3"
         >
           {t('home.featuredDaily.completedState.themeLabel', { theme: tagline })}
         </p>
 
-        <p className="text-[10px] md:text-[11px] font-medium text-secondary uppercase tracking-widest mb-3">
+        <p className="text-[10px] md:text-[11px] font-medium text-bq-amberd uppercase tracking-widest mb-3">
           {t('home.featuredDaily.completedState.xpEarned', { xp: xpEarned })}
         </p>
 
         <Link
           to="/daily"
           data-testid="featured-daily-review-cta"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-secondary/40 text-secondary font-medium hover:bg-secondary/10 transition-colors text-sm"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-bq-hair text-bq-ink2 font-medium hover:border-bq-amber/30 hover:bg-bq-paper transition-colors text-sm"
         >
           <span className="material-symbols-outlined text-base" style={FILL_1}>menu_book</span>
           {t('home.featuredDaily.completedState.ctaReview')}
@@ -209,7 +209,7 @@ export default function FeaturedDailyChallenge() {
 
         <div
           data-testid="featured-daily-countdown"
-          className="text-[10px] md:text-[11px] text-on-surface-variant/40 mt-3"
+          className="text-[10px] md:text-[11px] text-bq-ink3 mt-3"
         >
           {t('home.featuredDaily.completedState.nextChallenge', { time: countdown })}
         </div>
@@ -222,12 +222,15 @@ export default function FeaturedDailyChallenge() {
     <div
       data-testid="featured-daily-challenge"
       data-state="active"
-      className="relative overflow-hidden rounded-2xl border border-[rgba(239,68,68,0.2)] bg-[linear-gradient(135deg,rgba(239,68,68,0.08)_0%,rgba(50,52,64,0.4)_60%)] backdrop-blur-md p-5 md:p-6"
+      className="relative overflow-hidden rounded-2xl border border-bq-amber/30 bg-bq-white shadow-bq-amb p-5 md:p-6"
     >
+      {/* Signature spectrum top strip */}
+      <div aria-hidden className="absolute inset-x-0 top-0 h-[5px] bg-bq-spectrum" />
+
       {/* Decorative radial blob (top-right) */}
       <div
         aria-hidden
-        className="absolute -top-10 -right-10 w-[200px] h-[200px] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(239,68,68,0.12)_0%,transparent_70%)]"
+        className="absolute -top-10 -right-10 w-[200px] h-[200px] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(245,158,11,0.10)_0%,transparent_70%)]"
       />
 
       <div className="relative">
@@ -236,7 +239,7 @@ export default function FeaturedDailyChallenge() {
         <div className="grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] gap-x-3 md:gap-x-6 gap-y-3 md:gap-y-0 items-center">
           <div
             data-testid="featured-daily-icon"
-            className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl grid place-items-center text-white shadow-[0_4px_16px_rgba(239,68,68,0.3)] md:shadow-[0_8px_24px_rgba(239,68,68,0.3)] bg-gradient-to-br from-[#ef4444] to-[#f97316] shrink-0"
+            className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl grid place-items-center text-white shadow-bq-flame bg-bq-flame shrink-0"
           >
             <span className="material-symbols-outlined text-[24px] md:text-[32px]" style={FILL_1}>local_fire_department</span>
           </div>
@@ -244,13 +247,13 @@ export default function FeaturedDailyChallenge() {
           <div className="min-w-0">
             <div
               data-testid="featured-daily-label"
-              className="text-[10px] md:text-[11px] font-bold text-[#fca5a5] uppercase tracking-[0.8px] md:tracking-[1px] mb-0.5 md:mb-1"
+              className="text-[10px] md:text-[11px] font-bold text-bq-amberd uppercase tracking-[0.8px] md:tracking-[1px] mb-0.5 md:mb-1"
             >
               {t('home.featuredDaily.title')}
             </div>
             <div
               data-testid="featured-daily-tagline"
-              className="text-[17px] md:text-[22px] font-extrabold leading-tight md:mb-2 text-on-surface tracking-[-0.3px]"
+              className="font-display text-[17px] md:text-[22px] font-extrabold leading-tight md:mb-2 text-bq-ink tracking-[-0.3px]"
             >
               {tagline || t('home.featuredDaily.errorFallback')}
             </div>
@@ -291,14 +294,14 @@ export default function FeaturedDailyChallenge() {
             <Link
               to="/daily"
               data-testid="featured-daily-cta"
-              className="inline-flex items-center justify-center gap-2 px-5 md:px-6 py-3 md:py-3.5 rounded-xl gold-gradient text-[#11131e] font-extrabold text-[15px] shadow-[0_4px_16px_rgba(232,168,50,0.3)] md:shadow-[0_6px_20px_rgba(232,168,50,0.35)] hover:-translate-y-0.5 transition-transform"
+              className="inline-flex items-center justify-center gap-2 px-5 md:px-6 py-3 md:py-3.5 rounded-xl bg-bq-action text-white shadow-bq-action font-extrabold text-[15px] hover:-translate-y-0.5 transition-transform"
             >
               {t('home.featuredDaily.cta')}
               <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
             </Link>
             <div
               data-testid="featured-daily-countdown"
-              className="text-[11px] text-on-surface-variant/70 tabular-nums text-center md:text-right"
+              className="text-[11px] text-bq-ink2 tabular-nums text-center md:text-right"
             >
               {t('home.featuredDaily.countdownShort', { time: countdown })}
             </div>
@@ -319,14 +322,14 @@ interface MetaChipProps {
 function MetaChip({ icon, children, tone = 'default', testId }: MetaChipProps) {
   const toneCls =
     tone === 'reward'
-      ? 'text-secondary border-secondary/25'
+      ? 'text-bq-amberd border-bq-amber/30'
       : tone === 'season'
-        ? 'text-[#fca5a5] border-[rgba(239,68,68,0.25)]'
-        : 'text-on-surface/85 border-white/[0.05]'
+        ? 'text-bq-sapphire border-bq-sapphire/30'
+        : 'text-bq-ink2 border-bq-hair'
   return (
     <span
       data-testid={testId}
-      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-[10px] bg-[rgba(17,19,30,0.5)] border text-[12px] font-semibold ${toneCls}`}
+      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-[10px] bg-bq-paper border text-[12px] font-semibold ${toneCls}`}
     >
       <span className="material-symbols-outlined text-[14px]">{icon}</span>
       {children}

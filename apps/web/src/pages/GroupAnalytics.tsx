@@ -59,14 +59,14 @@ function ChartBar({ height, label, isToday }: { height: number; label: string; i
       <div
         className={`w-full rounded-t-[4px] ${
           isToday
-            ? 'bg-gradient-to-b from-[rgba(232,168,50,0.7)] to-secondary shadow-[0_0_8px_rgba(232,168,50,0.4)]'
-            : 'bg-gradient-to-b from-[rgba(232,168,50,0.5)] to-secondary'
+            ? 'bg-gradient-to-b from-bq-amber/70 to-bq-amberd shadow-bq-amb'
+            : 'bg-gradient-to-b from-bq-amber/50 to-bq-amberd'
         }`}
         style={{ height: `${height}%` }}
       />
       <div
         className={`text-[9px] ${
-          isToday ? 'text-secondary font-medium' : 'text-on-surface-variant/40'
+          isToday ? 'text-bq-amberd font-medium' : 'text-bq-ink3'
         }`}
       >
         {label}
@@ -98,7 +98,7 @@ function KpiCard({
   return (
     <div
       data-testid={testId}
-      className="bg-[rgba(50,52,64,0.5)] border-[0.5px] rounded-lg p-2.5 relative"
+      className="bg-bq-white border-[0.5px] rounded-lg p-2.5 relative"
       style={{ borderColor }}
     >
       <div className="flex items-start justify-between gap-1.5 mb-1">
@@ -109,7 +109,7 @@ function KpiCard({
           <span
             title={tooltip}
             aria-label={tooltip}
-            className="text-on-surface/40 hover:text-on-surface/70 cursor-help text-[10px] leading-none mt-0.5"
+            className="text-bq-ink3 hover:text-bq-ink2 cursor-help text-[10px] leading-none mt-0.5"
           >
             ⓘ
           </span>
@@ -117,7 +117,7 @@ function KpiCard({
       </div>
       <div className="flex items-baseline gap-1">
         <span className="text-[22px] font-medium" style={{ color: textColor }}>{value}</span>
-        {unit && <span className="text-on-surface/40 text-[11px]">{unit}</span>}
+        {unit && <span className="text-bq-ink3 text-[11px]">{unit}</span>}
       </div>
       {delta && (
         <div className="text-[10px] mt-0.5" style={{ color: textColor }}>
@@ -182,7 +182,7 @@ const GroupAnalytics: React.FC = () => {
   if (loading) {
     return (
       <div className="max-w-5xl mx-auto px-4 py-8 flex items-center justify-center min-h-[60vh]">
-        <div className="w-10 h-10 border-2 border-secondary/20 border-t-secondary rounded-full animate-spin" />
+        <div className="w-10 h-10 border-2 border-bq-amber/20 border-t-bq-amberd rounded-full animate-spin" />
       </div>
     );
   }
@@ -190,19 +190,19 @@ const GroupAnalytics: React.FC = () => {
   if (error) {
     return (
       <div className="max-w-5xl mx-auto px-4 py-8">
-        <div className="bg-[rgba(50,52,64,0.4)] rounded-2xl p-10 text-center border-[0.5px] border-white/[0.06]">
+        <div className="bg-bq-white rounded-2xl p-10 text-center border border-bq-hair shadow-bq-soft">
           <span className="material-symbols-outlined text-5xl text-error mb-4 block">error</span>
           <p className="text-error font-medium mb-5 text-[14px]">{error}</p>
           <div className="flex justify-center gap-3">
             <button
               onClick={fetchAnalytics}
-              className="px-5 py-2.5 bg-white/5 text-on-surface rounded-lg font-medium text-[12px] hover:bg-white/10 transition-all"
+              className="px-5 py-2.5 bg-bq-inset text-bq-ink rounded-lg font-medium text-[12px] hover:bg-bq-hair transition-all"
             >
               {t('common.retry')}
             </button>
             <button
               onClick={() => navigate(`/groups/${id}`)}
-              className="px-5 py-2.5 bg-secondary/10 text-secondary rounded-lg font-medium text-[12px] hover:bg-secondary/20 transition-all flex items-center gap-2"
+              className="px-5 py-2.5 bg-bq-amber/10 text-bq-amberd rounded-lg font-medium text-[12px] hover:bg-bq-amber/20 transition-all flex items-center gap-2"
             >
               <span className="material-symbols-outlined text-[16px]">arrow_back</span>
               {t('groupAnalytics.backToGroup')}
@@ -244,32 +244,32 @@ const GroupAnalytics: React.FC = () => {
     inactiveCount / Math.max(1, memberCountSafe) < 0.3;
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-6 space-y-3">
+    <div className="bg-bq-paper max-w-5xl mx-auto px-4 py-6 space-y-3">
       {/* ── Back link ── */}
       <button
         onClick={() => navigate(`/groups/${id}`)}
-        className="flex items-center gap-1 text-on-surface-variant text-[11px] font-medium tracking-wider uppercase hover:text-secondary transition-colors"
+        className="flex items-center gap-1 text-bq-ink2 text-[11px] font-medium tracking-wider uppercase hover:text-bq-amberd transition-colors"
       >
         <span className="material-symbols-outlined text-[14px]">arrow_back</span>
         {t('groupAnalytics.backToGroup')}
       </button>
 
-      {/* ── Analytics card (mockup: groups_leader_dashboard.html, blue-tinted leader-only block) ── */}
-      <section className="bg-[rgba(74,158,255,0.05)] border-[0.5px] border-[rgba(74,158,255,0.25)] rounded-xl p-3.5 sm:p-5">
+      {/* ── Analytics card (mockup: groups_leader_dashboard.html, sapphire-tinted leader-only block) ── */}
+      <section className="bg-bq-sapphire/[0.05] border-[0.5px] border-bq-sapphire/25 rounded-xl p-3.5 sm:p-5">
         <div className="flex flex-wrap gap-2 justify-between items-center mb-3 sm:mb-4">
           <div>
-            <div className="text-[rgba(106,184,232,0.7)] text-[10px] tracking-wider mb-1">
+            <div className="text-bq-sapphire/70 text-[10px] tracking-wider mb-1">
               {t('groups.leaderOnly')}
             </div>
-            <div className="text-on-surface text-[14px] font-medium">📊 {t('groups.analyticsTitle')}</div>
+            <div className="text-bq-ink text-[14px] font-medium">📊 {t('groups.analyticsTitle')}</div>
           </div>
-          <div className="inline-flex bg-black/30 rounded-md p-0.5">
+          <div className="inline-flex bg-bq-inset rounded-md p-0.5">
             {(['7d', '30d', '90d'] as const).map((p) => (
               <button
                 key={p}
                 onClick={() => setPeriod(p)}
                 className={`border-0 px-2.5 py-1 rounded text-[10px] font-medium cursor-pointer transition-all ${
-                  period === p ? 'bg-[#6AB8E8] text-background' : 'bg-transparent text-on-surface/55'
+                  period === p ? 'bg-bq-sapphire text-white' : 'bg-transparent text-bq-ink2'
                 }`}
               >
                 {p === '7d' ? t('groups.period7d') : p === '30d' ? t('groups.period30d') : t('groups.period90d')}
@@ -286,8 +286,8 @@ const GroupAnalytics: React.FC = () => {
             value={activeWeek}
             unit={`/ ${totalMembers}`}
             delta={{ sign: '▲', text: t('groups.kpiVsLastWeek') }}
-            borderColor="rgba(99,153,34,0.3)"
-            textColor="#97C459"
+            borderColor="rgba(14,138,107,0.3)"
+            textColor="#0E8A6B"
             tooltip={t('groups.kpiTooltip.activeWeek', { active: activeWeek, total: totalMembers })}
           />
           <KpiCard
@@ -295,8 +295,8 @@ const GroupAnalytics: React.FC = () => {
             label={t('groups.kpiAvgScore')}
             value={avgScore || '—'}
             unit={t('groups.kpiPerPerson')}
-            borderColor="rgba(232,168,50,0.3)"
-            textColor="#e8a832"
+            borderColor="rgba(245,158,11,0.3)"
+            textColor="#D97F06"
             tooltip={t('groups.kpiTooltip.avgScore', {
               sample: activeWeek,
               note: activeWeek > 0 && activeWeek < 3 ? ' ' + t('groups.kpiTooltip.smallSampleWarn') : '',
@@ -307,8 +307,8 @@ const GroupAnalytics: React.FC = () => {
             label={t('groups.kpiAccuracy')}
             value={`${accuracy}%`}
             delta={{ sign: '—', text: t('groups.kpiStable') }}
-            borderColor="rgba(106,184,232,0.3)"
-            textColor="#6AB8E8"
+            borderColor="rgba(45,70,200,0.3)"
+            textColor="#2D46C8"
             tooltip={t('groups.kpiTooltip.accuracy', { sample: activeWeek })}
           />
           <KpiCard
@@ -317,8 +317,8 @@ const GroupAnalytics: React.FC = () => {
             value={inactiveCount}
             unit={t('groups.kpiPeople')}
             delta={{ sign: '▼', text: t('groups.kpiNeedAttention') }}
-            borderColor="rgba(255,140,66,0.3)"
-            textColor="#ff8c42"
+            borderColor="rgba(255,111,61,0.3)"
+            textColor="#FF6F3D"
             tooltip={t('groups.kpiTooltip.inactive', { count: inactiveCount, total: totalMembers, days: 7 })}
           />
         </div>
@@ -327,23 +327,23 @@ const GroupAnalytics: React.FC = () => {
         {chartHidden ? (
           <div
             data-testid="analytics-chart-empty"
-            className="bg-[rgba(50,52,64,0.5)] border-[0.5px] border-white/[0.06] rounded-lg p-6 mb-3 text-center"
+            className="bg-bq-inset border-[0.5px] border-bq-hair rounded-lg p-6 mb-3 text-center"
           >
             <div className="text-3xl mb-2 opacity-50">📊</div>
-            <div className="text-on-surface text-[12px] font-medium mb-1">
+            <div className="text-bq-ink text-[12px] font-medium mb-1">
               {t('groups.analyticsEmpty.chartTitle')}
             </div>
-            <div className="text-on-surface/55 text-[11px]">
+            <div className="text-bq-ink2 text-[11px]">
               {groupAge.isNew
                 ? t('groups.analyticsEmpty.tooNew', { days: Math.max(0, 7 - groupAge.days) })
                 : t('groups.analyticsEmpty.tooSmall', { min: 3 })}
             </div>
           </div>
         ) : (
-          <div className="bg-[rgba(50,52,64,0.5)] border-[0.5px] border-white/[0.06] rounded-lg p-3 mb-3">
+          <div className="bg-bq-inset border-[0.5px] border-bq-hair rounded-lg p-3 mb-3">
             <div className="flex justify-between items-center mb-2.5">
-              <div className="text-on-surface/85 text-[11px] font-medium">📈 {t('groups.weeklyActivity')}</div>
-              <div className="text-on-surface/40 text-[10px]">{t('groups.weeklyActivitySubtitle')}</div>
+              <div className="text-bq-ink text-[11px] font-medium">📈 {t('groups.weeklyActivity')}</div>
+              <div className="text-bq-ink3 text-[10px]">{t('groups.weeklyActivitySubtitle')}</div>
             </div>
             <div className="grid grid-cols-7 gap-1.5 items-end h-20">
               {weeklyBars.length === 7 ? (
@@ -366,21 +366,21 @@ const GroupAnalytics: React.FC = () => {
 
         {/* Inactive members alert — hidden for new groups, small samples, or low ratio (GD-2) */}
         {!inactiveAlertHidden && (
-          <div className="bg-[rgba(255,140,66,0.06)] border-[0.5px] border-[rgba(255,140,66,0.3)] rounded-lg px-3 py-2.5 flex justify-between items-start gap-3">
+          <div className="bg-bq-ember/[0.06] border-[0.5px] border-bq-ember/30 rounded-lg px-3 py-2.5 flex justify-between items-start gap-3">
             <div className="flex-1">
               <div className="flex items-center gap-1.5 mb-1">
                 <span className="text-[13px]">⚠️</span>
-                <span className="text-[#ff8c42] text-[11px] font-medium">
+                <span className="text-bq-ember text-[11px] font-medium">
                   {t('groups.inactiveAlert', { count: inactiveCount })}
                 </span>
               </div>
-              <div className="text-on-surface/60 text-[11px] leading-snug">
+              <div className="text-bq-ink2 text-[11px] leading-snug">
                 {t('groups.inactiveAlertDesc')}
               </div>
             </div>
             <Link
               to={`/groups/${id}?tab=members&filter=inactive`}
-              className="bg-[rgba(255,140,66,0.15)] text-[#ff8c42] border-[0.5px] border-[rgba(255,140,66,0.4)] rounded-md px-3 py-1.5 text-[11px] font-medium flex-shrink-0 hover:brightness-110 transition-all"
+              className="bg-bq-ember/15 text-bq-ember border-[0.5px] border-bq-ember/40 rounded-md px-3 py-1.5 text-[11px] font-medium flex-shrink-0 hover:brightness-110 transition-all"
             >
               {t('groups.viewInactiveList')}
             </Link>
@@ -390,8 +390,8 @@ const GroupAnalytics: React.FC = () => {
 
       {/* ── Top contributors (real data from analytics.topContributors) ── */}
       {topContributors.length > 0 && (
-        <section className="bg-[rgba(50,52,64,0.4)] border-[0.5px] border-white/[0.06] rounded-xl p-3.5 sm:p-5">
-          <div className="text-on-surface text-[13px] font-medium mb-3 flex items-center gap-2">
+        <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl p-3.5 sm:p-5">
+          <div className="text-bq-ink text-[13px] font-medium mb-3 flex items-center gap-2">
             🏆 {t('groupAnalytics.topContributors')}
           </div>
           <div className="flex flex-col gap-2">
@@ -400,20 +400,20 @@ const GroupAnalytics: React.FC = () => {
                 key={c.userId}
                 className={`rounded-lg px-3 py-2.5 flex items-center gap-3 border-[0.5px] ${
                   idx === 0
-                    ? 'bg-[rgba(232,168,50,0.05)] border-[rgba(232,168,50,0.25)]'
-                    : 'bg-white/[0.03] border-white/[0.04]'
+                    ? 'bg-bq-amber/[0.06] border-bq-amber/25'
+                    : 'bg-bq-inset border-bq-hair'
                 }`}
               >
                 <div
                   className={`text-[13px] font-medium w-5 text-center ${
-                    idx < 3 ? 'text-secondary' : 'text-on-surface-variant'
+                    idx < 3 ? 'text-bq-amberd' : 'text-bq-ink2'
                   }`}
                 >
                   {idx + 1}
                 </div>
                 <div
                   className={`w-9 h-9 rounded-lg flex items-center justify-center text-[12px] font-medium ${
-                    idx === 0 ? 'bg-[rgba(232,168,50,0.15)] text-secondary ring-2 ring-secondary' : 'bg-white/10 text-on-surface'
+                    idx === 0 ? 'bg-bq-amber/15 text-bq-amberd ring-2 ring-bq-amberd' : 'bg-bq-inset text-bq-ink'
                   }`}
                 >
                   {c.avatarUrl ? (
@@ -423,12 +423,12 @@ const GroupAnalytics: React.FC = () => {
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-on-surface text-[12px] font-medium truncate">{c.name}</div>
-                  <div className="text-on-surface/45 text-[10px]">
+                  <div className="text-bq-ink text-[12px] font-medium truncate">{c.name}</div>
+                  <div className="text-bq-ink3 text-[10px]">
                     {c.questionsAnswered} {t('groupAnalytics.questionsLabel')}
                   </div>
                 </div>
-                <div className="text-secondary text-[12px] font-medium">{(c.score ?? 0).toLocaleString()}</div>
+                <div className="text-bq-amberd text-[12px] font-medium">{(c.score ?? 0).toLocaleString()}</div>
               </div>
             ))}
           </div>
@@ -436,24 +436,24 @@ const GroupAnalytics: React.FC = () => {
       )}
 
       {/* ── Quick Actions panel ── */}
-      <section className="bg-[rgba(50,52,64,0.4)] border-[0.5px] border-[rgba(232,168,50,0.15)] rounded-xl p-3.5 sm:p-5">
-        <div className="text-on-surface text-[13px] font-medium mb-3">⚡ {t('groups.quickActions')}</div>
+      <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl p-3.5 sm:p-5">
+        <div className="text-bq-ink text-[13px] font-medium mb-3">⚡ {t('groups.quickActions')}</div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
           <Link
             to={`/groups/${id}?tab=quizsets`}
-            className="bg-[rgba(232,168,50,0.08)] border-[0.5px] border-[rgba(232,168,50,0.25)] rounded-lg px-2 py-3 cursor-pointer flex flex-col items-center gap-1 hover:brightness-125 transition-all"
+            className="bg-bq-amber/[0.08] border-[0.5px] border-bq-amber/25 rounded-lg px-2 py-3 cursor-pointer flex flex-col items-center gap-1 hover:brightness-105 transition-all"
           >
             <span className="text-[18px]">📚</span>
-            <span className="text-on-surface text-[11px]">{t('groups.quickActionCreateQuiz')}</span>
-            <span className="text-on-surface/40 text-[9px]">{t('groups.quickActionUsedCount', { used: 0, max: 20 })}</span>
+            <span className="text-bq-ink text-[11px]">{t('groups.quickActionCreateQuiz')}</span>
+            <span className="text-bq-ink3 text-[9px]">{t('groups.quickActionUsedCount', { used: 0, max: 20 })}</span>
           </Link>
           <Link
             to={`/groups/${id}?tab=announcements`}
-            className="bg-[rgba(74,158,255,0.08)] border-[0.5px] border-[rgba(74,158,255,0.25)] rounded-lg px-2 py-3 cursor-pointer flex flex-col items-center gap-1 hover:brightness-125 transition-all"
+            className="bg-bq-sapphire/[0.08] border-[0.5px] border-bq-sapphire/25 rounded-lg px-2 py-3 cursor-pointer flex flex-col items-center gap-1 hover:brightness-105 transition-all"
           >
             <span className="text-[18px]">📢</span>
-            <span className="text-on-surface text-[11px]">{t('groups.quickActionPostAnnouncement')}</span>
-            <span className="text-on-surface/40 text-[9px]">
+            <span className="text-bq-ink text-[11px]">{t('groups.quickActionPostAnnouncement')}</span>
+            <span className="text-bq-ink3 text-[9px]">
               {t('groups.quickActionSendTo', { count: totalMembers })}
             </span>
           </Link>
@@ -464,31 +464,31 @@ const GroupAnalytics: React.FC = () => {
               data-testid="qa-tournament-disabled"
               title={t('groups.action.tournament.needMembers', { current: memberCountSafe, min: 4 })}
               aria-disabled="true"
-              className="bg-white/[0.02] border-[0.5px] border-white/5 rounded-lg px-2 py-3 cursor-not-allowed opacity-50 flex flex-col items-center gap-1"
+              className="bg-bq-inset border-[0.5px] border-bq-hair rounded-lg px-2 py-3 cursor-not-allowed opacity-50 flex flex-col items-center gap-1"
             >
               <span className="text-[18px]">🏆</span>
-              <span className="text-on-surface text-[11px]">{t('groups.quickActionTournament')}</span>
-              <span className="text-on-surface/40 text-[9px]">
+              <span className="text-bq-ink text-[11px]">{t('groups.quickActionTournament')}</span>
+              <span className="text-bq-ink3 text-[9px]">
                 {t('groups.action.tournament.needMembers', { current: memberCountSafe, min: 4 })}
               </span>
             </button>
           ) : (
             <Link
               to="/tournaments"
-              className="bg-[rgba(168,85,247,0.08)] border-[0.5px] border-[rgba(168,85,247,0.25)] rounded-lg px-2 py-3 cursor-pointer flex flex-col items-center gap-1 hover:brightness-125 transition-all"
+              className="bg-bq-sapphire/[0.08] border-[0.5px] border-bq-sapphire/25 rounded-lg px-2 py-3 cursor-pointer flex flex-col items-center gap-1 hover:brightness-105 transition-all"
             >
               <span className="text-[18px]">🏆</span>
-              <span className="text-on-surface text-[11px]">{t('groups.quickActionTournament')}</span>
-              <span className="text-on-surface/40 text-[9px]">{t('groups.quickActionBracket')}</span>
+              <span className="text-bq-ink text-[11px]">{t('groups.quickActionTournament')}</span>
+              <span className="text-bq-ink3 text-[9px]">{t('groups.quickActionBracket')}</span>
             </Link>
           )}
           <Link
             to={`/groups/${id}?tab=members`}
-            className="bg-[rgba(99,153,34,0.08)] border-[0.5px] border-[rgba(99,153,34,0.25)] rounded-lg px-2 py-3 cursor-pointer flex flex-col items-center gap-1 hover:brightness-125 transition-all"
+            className="bg-bq-emerald/[0.08] border-[0.5px] border-bq-emerald/25 rounded-lg px-2 py-3 cursor-pointer flex flex-col items-center gap-1 hover:brightness-105 transition-all"
           >
             <span className="text-[18px]">👥</span>
-            <span className="text-on-surface text-[11px]">{t('groups.quickActionMembers')}</span>
-            <span className="text-on-surface/40 text-[9px]">
+            <span className="text-bq-ink text-[11px]">{t('groups.quickActionMembers')}</span>
+            <span className="text-bq-ink3 text-[9px]">
               {t('groups.quickActionPendingRequests', { count: 0 })}
             </span>
           </Link>

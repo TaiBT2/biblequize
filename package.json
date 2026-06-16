@@ -12,5 +12,12 @@
     "web:test": "pnpm --filter biblequiz-web test",
     "mobile:start": "pnpm --filter mobile start",
     "mobile:test": "pnpm --filter mobile test"
+  },
+  "pnpm": {
+    "overrides": {
+      "react": "19.1.0",
+      "react-dom": "19.1.0",
+      "@types/react-dom": "^19.1.0"
+    }
   }
 }

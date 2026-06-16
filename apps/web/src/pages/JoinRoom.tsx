@@ -62,24 +62,24 @@ export default function JoinRoom() {
       <div className="max-w-sm w-full text-center space-y-4">
         {joining ? (
           <>
-            <div className="text-xs uppercase tracking-widest text-on-surface-variant">
+            <div className="text-xs uppercase tracking-widest text-bq-ink2">
               Đang vào phòng
             </div>
-            <div className="text-2xl font-extrabold text-on-surface">{code}</div>
-            <div className="text-sm text-on-surface-variant">
+            <div className="text-2xl font-extrabold text-bq-ink">{code}</div>
+            <div className="text-sm text-bq-ink2">
               Vui lòng chờ trong giây lát…
             </div>
           </>
         ) : (
           <>
-            <div className="text-xs uppercase tracking-widest text-[#f87171]">
+            <div className="text-xs uppercase tracking-widest text-bq-ruby">
               Không vào được phòng
             </div>
-            <div className="text-base font-semibold text-on-surface">{error}</div>
+            <div className="text-base font-semibold text-bq-ink">{error}</div>
             <button
               type="button"
               onClick={() => navigate('/multiplayer', { replace: true })}
-              className="mt-2 inline-flex items-center justify-center h-10 px-5 rounded-lg bg-secondary text-on-secondary text-sm font-bold"
+              className="mt-2 inline-flex items-center justify-center h-10 px-5 rounded-lg bg-bq-action text-white shadow-bq-action text-sm font-bold"
             >
               Về Multiplayer
             </button>

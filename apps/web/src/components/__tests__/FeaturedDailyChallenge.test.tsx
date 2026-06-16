@@ -158,6 +158,9 @@ describe('FeaturedDailyChallenge', () => {
     // Fake timers from the start with shouldAdvanceTime so the TanStack
     // Query resolution still flushes. Once the countdown is on screen we
     // hand-advance Date + setInterval together to verify the tick.
+    // vitest 3 forbids useFakeTimers() while the date is already mocked
+    // (beforeEach calls setSystemTime) — reset to real timers first.
+    vi.useRealTimers()
     vi.useFakeTimers({ now: new Date('2026-04-29T10:00:00Z'), shouldAdvanceTime: true })
     mockApiGet.mockResolvedValue({ data: sampleResponse() })
     renderComponent()

@@ -18,19 +18,18 @@ export default function SectionHeader({ title, meta, className = '' }: SectionHe
     >
       <span
         aria-hidden
-        className="block w-[3px] h-3.5 rounded-[2px] shrink-0"
-        style={{ background: 'linear-gradient(180deg, #e8a832, #c98a1c)' }}
+        className="block w-[3px] h-3.5 rounded-[2px] shrink-0 bg-bq-spectrum"
       />
       <h2
         data-testid="section-header-title"
-        className="text-[11px] font-bold text-ivory uppercase tracking-[0.16em]"
+        className="font-display text-[11px] font-bold text-bq-ink uppercase tracking-[0.16em]"
       >
         {title}
       </h2>
       {meta && (
         <span
           data-testid="section-header-meta"
-          className="ml-auto text-[11px] text-ivory-faint font-medium"
+          className="ml-auto text-[11px] text-bq-ink3 font-medium"
         >
           {meta}
         </span>

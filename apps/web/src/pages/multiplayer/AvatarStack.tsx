@@ -2,11 +2,11 @@
 // Used inside RoomCard footer to show who's in the room at a glance.
 
 const PALETTE = [
-  { bg: 'rgba(232,168,50,0.3)', fg: '#e8a832' },
-  { bg: 'rgba(74,158,255,0.3)', fg: '#6AB8E8' },
-  { bg: 'rgba(168,85,247,0.3)', fg: '#c084fc' },
-  { bg: 'rgba(99,153,34,0.3)',  fg: '#97C459' },
-  { bg: 'rgba(255,140,66,0.3)', fg: '#ff8c42' },
+  { bg: 'rgba(245,158,11,0.18)', fg: '#D97F06' },  // amber
+  { bg: 'rgba(45,70,200,0.18)',  fg: '#2D46C8' },  // sapphire
+  { bg: 'rgba(14,138,107,0.18)', fg: '#0E8A6B' },  // emerald
+  { bg: 'rgba(224,53,75,0.16)',  fg: '#E0354B' },  // ruby
+  { bg: 'rgba(255,111,61,0.18)', fg: '#FF6F3D' },  // ember
 ]
 
 interface Props {
@@ -30,7 +30,7 @@ export default function AvatarStack({ initials, current, max, compact }: Props) 
               key={i}
               className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold border-2"
               style={{
-                background: c.bg, color: c.fg, borderColor: '#11131e',
+                background: c.bg, color: c.fg, borderColor: '#FFFFFF',
                 marginLeft: i > 0 ? '-8px' : undefined,
                 zIndex: 10 - i,
               }}
@@ -43,9 +43,9 @@ export default function AvatarStack({ initials, current, max, compact }: Props) 
           <div
             className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold border-2"
             style={{
-              background: 'rgba(255,255,255,0.06)',
-              color: 'rgba(255,255,255,0.6)',
-              borderColor: '#11131e',
+              background: 'rgba(231,228,218,0.5)',
+              color: 'rgba(108,106,98,0.9)',
+              borderColor: '#FFFFFF',
               marginLeft: shown.length > 0 ? '-8px' : undefined,
               zIndex: 10 - shown.length,
             }}
@@ -55,7 +55,7 @@ export default function AvatarStack({ initials, current, max, compact }: Props) 
         )}
       </div>
       {!compact && (
-        <span className="text-[11px] text-white/60 font-semibold">{current} / {max}</span>
+        <span className="text-[11px] text-bq-ink2 font-semibold">{current} / {max}</span>
       )}
     </div>
   )

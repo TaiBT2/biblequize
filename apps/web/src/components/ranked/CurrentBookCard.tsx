@@ -47,13 +47,13 @@ export default function CurrentBookCard({
   return (
     <section>
       <div className="flex items-baseline justify-between mb-2">
-        <span className="text-on-surface/85 text-[13px] font-medium">
+        <span className="text-bq-ink text-[13px] font-medium">
           {t('ranked.currentBookSection')}
         </span>
         <Link
           to="/practice"
           data-testid="ranked-change-book-link"
-          className="text-secondary text-[11px] hover:underline"
+          className="text-bq-amberd text-[11px] hover:underline"
         >
           {t('ranked.changeBookLink')}
         </Link>
@@ -61,13 +61,9 @@ export default function CurrentBookCard({
 
       <div
         data-testid="ranked-current-book"
-        className="rounded-2xl border border-secondary/15 p-3 md:p-4 flex items-center gap-3"
-        style={{ background: 'rgba(50,52,64,0.4)' }}
+        className="rounded-2xl border border-bq-hair bg-bq-white shadow-bq-soft p-3 md:p-4 flex items-center gap-3"
       >
-        <div
-          className="flex items-center justify-center w-10 h-10 rounded-lg shrink-0 text-[20px]"
-          style={{ background: 'rgba(232,168,50,0.15)' }}
-        >
+        <div className="flex items-center justify-center w-10 h-10 rounded-lg shrink-0 text-[20px] bg-bq-amber/15">
           📖
         </div>
 
@@ -75,28 +71,28 @@ export default function CurrentBookCard({
           <div className="flex items-center gap-2 flex-wrap mb-1">
             <span
               data-testid="ranked-current-book-name"
-              className="text-on-surface text-[14px] font-medium"
+              className="text-bq-ink text-[14px] font-medium"
             >
               {bookName}
             </span>
-            <span className="text-on-surface-variant/50 text-[11px]">
+            <span className="text-bq-ink3 text-[11px]">
               {t(positionKey, { n: positionInTestament })}
             </span>
             <span
-              className="px-2 py-0.5 rounded-full text-[9px] font-medium uppercase tracking-wider bg-secondary/15 text-secondary"
+              className="px-2 py-0.5 rounded-full text-[9px] font-medium uppercase tracking-wider bg-bq-amber/15 text-bq-amberd"
             >
               {difficultyLabel}
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="bg-white/[0.06] rounded-[2px] h-1 flex-1 max-w-[200px] overflow-hidden">
+            <div className="bg-bq-inset border border-bq-hair rounded-[2px] h-1 flex-1 max-w-[200px] overflow-hidden">
               <div
                 data-testid="ranked-current-book-progress"
-                className="h-full rounded-[2px] bg-secondary transition-[width] duration-500"
+                className="h-full rounded-[2px] bg-bq-amber transition-[width] duration-500"
                 style={{ width: `${Math.min(100, masteryPct)}%` }}
               />
             </div>
-            <span className="text-on-surface-variant/50 text-[10px]">
+            <span className="text-bq-ink3 text-[10px]">
               {t('ranked.bookMasteryShort', { percent: Math.round(masteryPct) })}
             </span>
           </div>

@@ -66,7 +66,7 @@ export default function EnergyCard({
       style={{ background: 'rgba(50,52,64,0.4)' }}
     >
       <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-        <div className="flex items-center gap-2 text-secondary/80">
+        <div className="flex items-center gap-2 text-bq-amberd/80">
           <span className="text-sm">⚡</span>
           <span className="text-[11px] font-medium tracking-wider uppercase">
             {t('ranked.energy')}
@@ -74,7 +74,7 @@ export default function EnergyCard({
         </div>
         <span
           data-testid="ranked-reset-timer"
-          className="text-on-surface-variant/45 text-[11px]"
+          className="text-bq-ink2/45 text-[11px]"
         >
           {t('ranked.energyRecoverIn', { time: recoverTimeLeft })}
         </span>
@@ -88,11 +88,11 @@ export default function EnergyCard({
         >
           {energy}
         </span>
-        <span className="text-on-surface-variant/40 text-[14px]">/{energyMax}</span>
+        <span className="text-bq-ink2/40 text-[14px]">/{energyMax}</span>
         {isOut ? (
           <span
             data-testid="ranked-energy-status"
-            className="ml-auto text-[11px] font-medium text-on-surface-variant/50"
+            className="ml-auto text-[11px] font-medium text-bq-ink2/50"
           >
             {t('ranked.outOfEnergy')}
           </span>

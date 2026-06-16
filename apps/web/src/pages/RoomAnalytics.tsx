@@ -104,7 +104,7 @@ export default function RoomAnalytics() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-on-surface-variant">
+      <div className="min-h-screen flex items-center justify-center text-bq-ink2 bg-bq-paper">
         Đang tải phân tích...
       </div>
     );
@@ -112,13 +112,12 @@ export default function RoomAnalytics() {
 
   if (error || !room) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-3 px-4">
-        <span className="material-symbols-outlined text-4xl" style={{ color: '#f87171', ...FILL_STYLE }}>error</span>
-        <p className="text-on-surface text-center">{error ?? 'Không tìm thấy phòng'}</p>
+      <div className="min-h-screen flex flex-col items-center justify-center gap-3 px-4 bg-bq-paper">
+        <span className="material-symbols-outlined text-4xl" style={{ color: '#E0354B', ...FILL_STYLE }}>error</span>
+        <p className="text-bq-ink text-center">{error ?? 'Không tìm thấy phòng'}</p>
         <button
           onClick={() => navigate('/multiplayer')}
-          className="px-4 py-2 rounded-lg text-sm font-bold"
-          style={{ background: '#e8a832', color: '#11131e' }}
+          className="px-4 py-2 rounded-lg text-sm font-bold bg-bq-action text-white shadow-bq-action"
         >
           Về danh sách phòng
         </button>
@@ -129,9 +128,8 @@ export default function RoomAnalytics() {
   return (
     <div
       data-testid="room-analytics-page"
-      className="min-h-screen px-4 lg:px-8 py-6"
+      className="min-h-screen px-4 lg:px-8 py-6 bg-bq-paper"
       style={{
-        background: 'radial-gradient(ellipse at top, rgba(232,168,50,0.10) 0%, #0a0b13 60%)',
         fontFamily: "'Be Vietnam Pro', sans-serif",
       }}
     >
@@ -140,8 +138,7 @@ export default function RoomAnalytics() {
         <button
           type="button"
           onClick={() => navigate(`/room/${roomId}/quiz`)}
-          className="text-sm font-semibold inline-flex items-center gap-1.5"
-          style={{ color: '#9ca3af' }}
+          className="text-sm font-semibold inline-flex items-center gap-1.5 text-bq-ink2"
           data-testid="analytics-back-btn"
         >
           <span className="material-symbols-outlined text-base">arrow_back</span>
@@ -150,7 +147,7 @@ export default function RoomAnalytics() {
         <div className="flex items-center gap-2">
           <span
             className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
-            style={{ background: 'rgba(232,168,50,0.2)', color: '#e8a832' }}
+            style={{ background: 'rgba(245,158,11,0.18)', color: '#D97F06' }}
           >
             📊 Phân tích chi tiết
           </span>
@@ -160,27 +157,22 @@ export default function RoomAnalytics() {
       <div className="max-w-5xl mx-auto space-y-5">
         {/* Title */}
         <div>
-          <div className="text-xs font-bold uppercase tracking-[0.3em] mb-1" style={{ color: '#9ca3af' }}>
+          <div className="text-xs font-bold uppercase tracking-[0.3em] mb-1" style={{ color: '#6C6A62' }}>
             {room.mode.replace(/_/g, ' ')} · {room.roomCode}
           </div>
-          <h1 className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="font-display text-2xl lg:text-3xl font-extrabold text-bq-ink tracking-tight">
             {room.roomName || 'Phân tích trận đấu'}
           </h1>
           {room.hostName && (
-            <p className="text-sm mt-1" style={{ color: '#9ca3af' }}>
-              Chủ phòng: <span className="text-on-surface font-semibold">{room.hostName}</span>
+            <p className="text-sm mt-1" style={{ color: '#6C6A62' }}>
+              Chủ phòng: <span className="text-bq-ink font-semibold">{room.hostName}</span>
             </p>
           )}
         </div>
 
         {/* Match summary card */}
         <section
-          className="rounded-2xl p-5"
-          style={{
-            background: 'rgba(50,52,64,0.78)',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255,255,255,0.06)',
-          }}
+          className="rounded-2xl p-5 bg-bq-white border border-bq-hair shadow-bq-soft"
         >
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-0">
             <SummaryCell label="Câu hỏi" value={`${room.questionCount}`} />
@@ -197,27 +189,22 @@ export default function RoomAnalytics() {
 
         {/* Per-player breakdown */}
         <section
-          className="rounded-2xl overflow-hidden"
-          style={{
-            background: 'rgba(50,52,64,0.55)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255,255,255,0.06)',
-          }}
+          className="rounded-2xl overflow-hidden bg-bq-white border border-bq-hair shadow-bq-soft"
         >
-          <div className="px-5 py-3 border-b" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-            <h2 className="text-sm font-bold uppercase tracking-wider" style={{ color: '#e8a832' }}>
+          <div className="px-5 py-3 border-b" style={{ borderColor: '#E7E4DA' }}>
+            <h2 className="text-sm font-bold uppercase tracking-wider" style={{ color: '#D97F06' }}>
               Chi tiết người chơi
             </h2>
           </div>
           {board.length === 0 ? (
-            <p className="px-5 py-6 text-sm text-center" style={{ color: '#9ca3af' }}>
+            <p className="px-5 py-6 text-sm text-center" style={{ color: '#6C6A62' }}>
               Phòng chưa có dữ liệu kết quả.
             </p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
-                <thead className="text-xs uppercase tracking-wider" style={{ color: '#9ca3af' }}>
-                  <tr className="border-b" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+                <thead className="text-xs uppercase tracking-wider" style={{ color: '#6C6A62' }}>
+                  <tr className="border-b" style={{ borderColor: '#E7E4DA' }}>
                     <Th>Hạng</Th>
                     <Th>Người chơi</Th>
                     <Th align="right">Điểm</Th>
@@ -239,42 +226,42 @@ export default function RoomAnalytics() {
                       <tr
                         key={p.playerId}
                         className="border-b"
-                        style={{ borderColor: 'rgba(255,255,255,0.04)' }}
+                        style={{ borderColor: '#E7E4DA' }}
                       >
                         <Td>
                           <span
                             className="font-bold"
                             style={{
-                              color: rank === 1 ? '#e8a832' : rank === 2 ? '#d1d5db' : rank === 3 ? '#cd7f32' : '#9ca3af',
+                              color: rank === 1 ? '#D97F06' : rank === 2 ? '#6C6A62' : rank === 3 ? '#D97F06' : '#6C6A62',
                             }}
                           >
                             {rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`}
                           </span>
                         </Td>
                         <Td>
-                          <span className="font-semibold text-white">{p.username}</span>
+                          <span className="font-semibold text-bq-ink">{p.username}</span>
                           {rank === 1 && <span className="ml-1">👑</span>}
                         </Td>
                         <Td align="right">
-                          <span className="font-bold" style={{ color: rank === 1 ? '#e8a832' : '#fff' }}>
+                          <span className="font-bold" style={{ color: rank === 1 ? '#D97F06' : '#16151B' }}>
                             {p.score}
                           </span>
                         </Td>
-                        <Td align="right" className="tabular-nums" style={{ color: '#4ade80' }}>
+                        <Td align="right" className="tabular-nums" style={{ color: '#0E8A6B' }}>
                           {p.correctAnswers}
                         </Td>
-                        <Td align="right" className="tabular-nums" style={{ color: '#9ca3af' }}>
+                        <Td align="right" className="tabular-nums" style={{ color: '#6C6A62' }}>
                           {p.totalAnswered}/{room.questionCount}
                         </Td>
-                        <Td align="right" className="tabular-nums" style={{ color: accPct >= 70 ? '#4ade80' : accPct >= 40 ? '#e8a832' : '#f87171' }}>
+                        <Td align="right" className="tabular-nums" style={{ color: accPct >= 70 ? '#0E8A6B' : accPct >= 40 ? '#D97F06' : '#E0354B' }}>
                           {accPct}%
                         </Td>
                         <Td>
                           <span
                             className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded"
                             style={{
-                              background: p.playerStatus === 'ELIMINATED' ? 'rgba(248,113,113,0.15)' : 'rgba(74,222,128,0.15)',
-                              color: p.playerStatus === 'ELIMINATED' ? '#f87171' : '#4ade80',
+                              background: p.playerStatus === 'ELIMINATED' ? 'rgba(224,53,75,0.12)' : 'rgba(14,138,107,0.12)',
+                              color: p.playerStatus === 'ELIMINATED' ? '#E0354B' : '#0E8A6B',
                             }}
                           >
                             {p.playerStatus === 'ELIMINATED' ? 'Bị loại' : 'Hoàn thành'}
@@ -291,24 +278,19 @@ export default function RoomAnalytics() {
 
         {/* Per-question breakdown */}
         <section
-          className="rounded-2xl overflow-hidden"
-          style={{
-            background: 'rgba(50,52,64,0.55)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255,255,255,0.06)',
-          }}
+          className="rounded-2xl overflow-hidden bg-bq-white border border-bq-hair shadow-bq-soft"
         >
-          <div className="px-5 py-3 border-b" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-            <h2 className="text-sm font-bold uppercase tracking-wider" style={{ color: '#e8a832' }}>
+          <div className="px-5 py-3 border-b" style={{ borderColor: '#E7E4DA' }}>
+            <h2 className="text-sm font-bold uppercase tracking-wider" style={{ color: '#D97F06' }}>
               Chi tiết từng câu hỏi
             </h2>
           </div>
           {rounds.length === 0 ? (
-            <p className="px-5 py-6 text-sm text-center" style={{ color: '#9ca3af' }}>
+            <p className="px-5 py-6 text-sm text-center" style={{ color: '#6C6A62' }}>
               Phòng chưa có vòng nào được lưu.
             </p>
           ) : (
-            <div className="divide-y" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
+            <div className="divide-y" style={{ borderColor: '#E7E4DA' }}>
               {rounds.map(r => (
                 <RoundRow key={r.roundNo} round={r} />
               ))}
@@ -325,32 +307,32 @@ const RoundRow: React.FC<{ round: RoundAnalytics }> = ({ round: r }) => {
   const avgSec = (r.avgResponseMs / 1000).toFixed(1);
   const maxOptCount = r.distribution.reduce((m, n) => Math.max(m, n), 0);
   const optionLetters = ['A', 'B', 'C', 'D', 'E', 'F'];
-  const optionPalette = ['#ff7a59', '#4ea8de', '#e8a832', '#86b8a0', '#c084fc', '#9ca3af'];
+  const optionPalette = ['#FF6F3D', '#2D46C8', '#F59E0B', '#0E8A6B', '#2D46C8', '#6C6A62'];
 
   return (
-    <div className="px-5 py-4 border-b" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
+    <div className="px-5 py-4 border-b" style={{ borderColor: '#E7E4DA' }}>
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1.5">
             <span
               className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded"
-              style={{ background: 'rgba(232,168,50,0.15)', color: '#e8a832' }}
+              style={{ background: 'rgba(245,158,11,0.15)', color: '#D97F06' }}
             >
               Câu {r.roundNo + 1}
             </span>
-            <span className="text-xs font-semibold" style={{ color: '#9ca3af' }}>
+            <span className="text-xs font-semibold" style={{ color: '#6C6A62' }}>
               {r.totalAnswers} người trả lời · TB {avgSec}s
             </span>
           </div>
-          <p className="text-sm text-white leading-relaxed">{r.questionContent}</p>
+          <p className="text-sm text-bq-ink leading-relaxed">{r.questionContent}</p>
         </div>
         <div className="text-right flex-shrink-0">
-          <div className="text-xs uppercase tracking-wider mb-0.5" style={{ color: '#9ca3af' }}>
+          <div className="text-xs uppercase tracking-wider mb-0.5" style={{ color: '#6C6A62' }}>
             Đúng
           </div>
           <div
             className="font-bold text-lg tabular-nums"
-            style={{ color: correctPct >= 70 ? '#4ade80' : correctPct >= 40 ? '#e8a832' : '#f87171' }}
+            style={{ color: correctPct >= 70 ? '#0E8A6B' : correctPct >= 40 ? '#D97F06' : '#E0354B' }}
           >
             {r.correctCount}/{r.totalAnswers} · {correctPct}%
           </div>
@@ -363,30 +345,30 @@ const RoundRow: React.FC<{ round: RoundAnalytics }> = ({ round: r }) => {
             const count = r.distribution[i] ?? 0;
             const pct = r.totalAnswers > 0 ? (count / r.totalAnswers) * 100 : 0;
             const isCorrect = i === r.correctIndex;
-            const barColor = isCorrect ? '#4ade80' : optionPalette[i] ?? '#9ca3af';
+            const barColor = isCorrect ? '#0E8A6B' : optionPalette[i] ?? '#6C6A62';
             const barAlpha = maxOptCount > 0 ? count / maxOptCount : 0;
             return (
               <div key={i} className="flex items-center gap-3">
                 <div
                   className="w-7 h-7 rounded-lg grid place-items-center font-bold text-xs flex-shrink-0"
                   style={{
-                    background: isCorrect ? 'rgba(74,222,128,0.18)' : `${barColor}26`,
-                    color: isCorrect ? '#4ade80' : barColor,
-                    border: isCorrect ? '1px solid rgba(74,222,128,0.5)' : 'none',
+                    background: isCorrect ? 'rgba(14,138,107,0.14)' : `${barColor}1f`,
+                    color: isCorrect ? '#0E8A6B' : barColor,
+                    border: isCorrect ? '1px solid rgba(14,138,107,0.45)' : 'none',
                   }}
                 >
                   {optionLetters[i] ?? i + 1}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className={`text-sm truncate ${isCorrect ? 'font-semibold text-white' : 'text-on-surface-variant'}`}>
+                    <span className={`text-sm truncate ${isCorrect ? 'font-semibold text-bq-ink' : 'text-bq-ink2'}`}>
                       {opt}
                     </span>
-                    {isCorrect && <span className="text-[10px] font-bold flex-shrink-0" style={{ color: '#4ade80' }}>✓ ĐÁP ÁN</span>}
+                    {isCorrect && <span className="text-[10px] font-bold flex-shrink-0" style={{ color: '#0E8A6B' }}>✓ ĐÁP ÁN</span>}
                   </div>
                   <div
                     className="h-1.5 rounded-full overflow-hidden"
-                    style={{ background: 'rgba(255,255,255,0.05)' }}
+                    style={{ background: '#F2F0E7' }}
                   >
                     <div
                       className="h-full rounded-full transition-all"
@@ -398,7 +380,7 @@ const RoundRow: React.FC<{ round: RoundAnalytics }> = ({ round: r }) => {
                     />
                   </div>
                 </div>
-                <div className="text-xs font-bold tabular-nums w-10 text-right" style={{ color: '#d1d5db' }}>
+                <div className="text-xs font-bold tabular-nums w-10 text-right" style={{ color: '#6C6A62' }}>
                   {count}
                 </div>
               </div>
@@ -421,10 +403,10 @@ function formatDuration(ms: number | null | undefined): string {
 const SummaryCell: React.FC<{ label: string; value: string; divider?: boolean }> = ({ label, value, divider }) => (
   <div
     className={`text-center px-3 ${divider ? 'lg:border-l' : ''}`}
-    style={{ borderColor: 'rgba(255,255,255,0.05)' }}
+    style={{ borderColor: '#E7E4DA' }}
   >
-    <div className="text-[10px] uppercase tracking-wider" style={{ color: '#9ca3af' }}>{label}</div>
-    <div className="font-bold text-white text-base lg:text-lg mt-0.5">{value}</div>
+    <div className="text-[10px] uppercase tracking-wider" style={{ color: '#6C6A62' }}>{label}</div>
+    <div className="font-bold text-bq-ink text-base lg:text-lg mt-0.5">{value}</div>
   </div>
 );
 

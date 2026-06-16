@@ -103,7 +103,7 @@ describe('Leaderboard', () => {
     // Test User has 4,520 pts → tier 2 (seeker, 1,000-4,999)
     await waitFor(() => {
       const tier2Card = screen.getByTestId('leaderboard-tier-card-2')
-      expect(tier2Card.className).toContain('border-secondary')
+      expect(tier2Card.className).toContain('border-bq-amber')
       // "Bạn" badge appears inside tier-2 card AND in list (current user row), so >= 1 expected
       expect(tier2Card.textContent).toContain('Bạn')
     })

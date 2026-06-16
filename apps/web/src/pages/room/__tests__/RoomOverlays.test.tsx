@@ -346,6 +346,6 @@ describe('RoundScoreboard', () => {
   it('highlights current user', () => {
     render(<RoundScoreboard scores={scores} myUsername="Alice" />)
     const aliceEl = screen.getByText('Alice')
-    expect(aliceEl.className).toContain('text-secondary')
+    expect(aliceEl.className).toContain('text-bq-amberd')
   })
 })

@@ -54,36 +54,31 @@ export default function FeaturedDailyCard({
   return (
     <div
       data-testid="featured-daily-card"
-      className="relative overflow-hidden rounded-2xl border border-[rgba(232,168,50,0.18)] border-l-[3px] border-l-secondary p-5 md:p-6 mb-5 backdrop-blur-[14px] transition-all duration-200 hover:border-[rgba(232,168,50,0.35)] hover:-translate-y-px hover:shadow-[0_10px_30px_-8px_rgba(232,168,50,0.18)]"
-      style={{
-        background:
-          'radial-gradient(ellipse 350px 200px at 90% 0%, rgba(124,45,58,0.15), transparent 60%), radial-gradient(ellipse 300px 150px at 20% 100%, rgba(232,168,50,0.08), transparent 60%), rgba(28,22,18,0.7)',
-      }}
+      className="relative overflow-hidden rounded-2xl bg-bq-white border border-bq-amber/30 p-5 md:p-6 mb-5 shadow-bq-amb transition-all duration-200 hover:border-bq-amber/50 hover:-translate-y-px"
     >
+      {/* Signature spectrum top strip */}
+      <div aria-hidden className="absolute inset-x-0 top-0 h-[5px] bg-bq-spectrum" />
+
       {/* Label row: dot + label + date */}
       <div
         data-testid="featured-daily-card-label"
-        className="text-[10px] font-bold tracking-[0.22em] uppercase text-secondary mb-2 flex items-center gap-2"
+        className="text-[10px] font-bold tracking-[0.22em] uppercase text-bq-amberd mb-2 flex items-center gap-2"
       >
         <span
           aria-hidden
-          className="inline-block w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"
-          style={{ boxShadow: '0 0 8px rgba(232,168,50,0.7)' }}
+          className="inline-block w-1.5 h-1.5 rounded-full bg-bq-amber animate-pulse"
         />
         <span>Thử thách hôm nay</span>
         <span className="opacity-50">·</span>
-        <span data-testid="featured-daily-card-date" className="text-ivory-dim font-semibold tracking-[0.1em]">
+        <span data-testid="featured-daily-card-date" className="text-bq-ink2 font-semibold tracking-[0.1em]">
           {dayLabel}
         </span>
       </div>
 
       {/* Heading with "Lời Chúa" gold serif emphasis */}
-      <h2 className="text-[16px] sm:text-[18px] md:text-[22px] font-extrabold text-ivory leading-[1.25] tracking-[-0.02em] mb-3.5 whitespace-nowrap">
+      <h2 className="font-display text-[16px] sm:text-[18px] md:text-[22px] font-extrabold text-bq-ink leading-[1.25] tracking-[-0.02em] mb-3.5 whitespace-nowrap">
         Bắt đầu ngày mới với{' '}
-        <span
-          className="text-secondary italic"
-          style={{ fontFamily: '"Lora", "Playfair Display", Georgia, serif', fontWeight: 700 }}
-        >
+        <span className="font-literata text-bq-amberd italic font-bold">
           Lời Chúa
         </span>
       </h2>
@@ -93,15 +88,15 @@ export default function FeaturedDailyCard({
         data-testid="featured-daily-card-meta"
         className="flex flex-nowrap gap-1.5 mb-3.5 whitespace-nowrap"
       >
-        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full border border-[rgba(232,168,50,0.20)] bg-[rgba(232,168,50,0.06)] text-[11px] text-ivory-dim">
+        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full border border-bq-hair bg-bq-paper text-[11px] text-bq-ink2">
           <span aria-hidden>📖</span>
           {questionCount} câu
         </span>
-        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full border border-[rgba(232,168,50,0.20)] bg-[rgba(232,168,50,0.06)] text-[11px] text-ivory-dim">
+        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full border border-bq-hair bg-bq-paper text-[11px] text-bq-ink2">
           <span aria-hidden>⏱</span>
           ~{estimatedMinutes} phút
         </span>
-        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full border border-[rgba(232,168,50,0.20)] bg-[rgba(232,168,50,0.06)] text-[11px] text-ivory-dim">
+        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full border border-bq-hair bg-bq-paper text-[11px] text-bq-ink2">
           <span aria-hidden>🌐</span>
           Cùng cộng đồng
         </span>
@@ -110,12 +105,12 @@ export default function FeaturedDailyCard({
       {/* Reward block */}
       <div
         data-testid="featured-daily-card-reward"
-        className="flex items-center gap-2.5 px-3.5 py-2.5 mb-4 rounded-xl border border-[rgba(232,168,50,0.25)] bg-[rgba(232,168,50,0.08)]"
+        className="flex items-center gap-2.5 px-3.5 py-2.5 mb-4 rounded-xl border border-bq-amber/30 bg-bq-paper"
       >
         <span aria-hidden className="text-[16px]">🏆</span>
-        <span className="text-[13px] text-ivory">
-          <span className="text-ivory-dim">Phần thưởng:</span>{' '}
-          <span className="font-bold text-secondary">+50 XP</span>
+        <span className="text-[13px] text-bq-ink">
+          <span className="text-bq-ink2">Phần thưởng:</span>{' '}
+          <span className="font-bold text-bq-amberd">+50 XP</span>
         </span>
       </div>
 
@@ -124,13 +119,13 @@ export default function FeaturedDailyCard({
         <div className="min-w-0">
           <div
             data-testid="featured-daily-card-countdown-label"
-            className="text-[10px] font-semibold tracking-[0.12em] uppercase text-ivory-faint whitespace-nowrap"
+            className="text-[10px] font-semibold tracking-[0.12em] uppercase text-bq-ink3 whitespace-nowrap"
           >
             Còn lại trong ngày
           </div>
           <div
             data-testid="featured-daily-card-countdown"
-            className="text-[18px] font-extrabold text-tertiary tabular-nums tracking-[0.04em] mt-0.5"
+            className="text-[18px] font-extrabold text-bq-amberd tabular-nums tracking-[0.04em] mt-0.5"
           >
             {computed}
           </div>
@@ -139,12 +134,7 @@ export default function FeaturedDailyCard({
           data-testid="featured-daily-card-cta"
           type="button"
           onClick={onStart}
-          className="inline-flex flex-shrink-0 items-center justify-center gap-1.5 px-5 py-3 rounded-[12px] font-bold text-[14px] text-[#1a1208] tracking-[0.01em] whitespace-nowrap transition-transform duration-200 hover:translate-x-[3px]"
-          style={{
-            background: 'linear-gradient(135deg, #e8a832, #c98a1c)',
-            boxShadow:
-              '0 4px 14px rgba(232,168,50,0.30), inset 0 1px 0 rgba(255,220,140,0.4)',
-          }}
+          className="inline-flex flex-shrink-0 items-center justify-center gap-1.5 px-5 py-3 rounded-[12px] bg-bq-action text-white shadow-bq-action font-bold text-[14px] tracking-[0.01em] whitespace-nowrap transition-transform duration-200 hover:translate-x-[3px]"
         >
           Bắt đầu
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

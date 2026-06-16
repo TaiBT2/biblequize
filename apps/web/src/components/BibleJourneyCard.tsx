@@ -69,28 +69,27 @@ export default function BibleJourneyCard() {
     <Link
       to="/journey"
       data-testid="bible-journey-card"
-      className="relative block rounded-[18px] border border-[rgba(245,240,230,0.06)] backdrop-blur-[12px] p-5 md:p-6 hover:border-[rgba(232,168,50,0.2)] transition-colors overflow-hidden"
-      style={{ background: 'rgba(24,26,36,0.55)' }}
+      className="relative block rounded-[18px] border border-bq-hair bg-bq-white shadow-bq-soft p-5 md:p-6 hover:border-bq-amber/30 transition-colors overflow-hidden"
     >
-      {/* Top-right gold radial glow */}
+      {/* Top-right amber radial glow */}
       <span
         aria-hidden
         className="absolute -top-1/2 -right-[10%] w-[350px] h-[350px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(232,168,50,0.07), transparent 65%)' }}
+        style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.08), transparent 65%)' }}
       />
 
       <div className="relative">
         <div className="flex items-baseline justify-between gap-3 mb-1.5 flex-wrap">
           <h3
             data-testid="bible-journey-title"
-            className="flex items-center gap-3 text-[16px] md:text-[18px] font-bold text-ivory tracking-[-0.015em]"
+            className="flex items-center gap-3 text-[16px] md:text-[18px] font-display font-bold text-bq-ink tracking-[-0.015em]"
           >
             <svg
               width="22"
               height="22"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#e8a832"
+              stroke="var(--bq-amber-deep)"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -101,8 +100,8 @@ export default function BibleJourneyCard() {
             </svg>
             {t('home.journey.title')}
           </h3>
-          <div data-testid="bible-journey-meta" className="text-[13px] text-ivory-dim font-medium">
-            <span className="text-secondary font-extrabold text-[16px] tabular-nums">
+          <div data-testid="bible-journey-meta" className="text-[13px] text-bq-ink2 font-medium">
+            <span className="text-bq-amberd font-extrabold text-[16px] tabular-nums">
               {totalDone}
             </span>{' '}
             {t('home.journeyExtra.metaCountSuffix', { total })}
@@ -120,7 +119,7 @@ export default function BibleJourneyCard() {
 
         <p
           data-testid="bible-journey-sub"
-          className="text-[12px] text-ivory-dim mb-4"
+          className="text-[12px] text-bq-ink2 mb-4"
         >
           {t('home.journeyExtra.subUnlock')}
         </p>
@@ -128,7 +127,7 @@ export default function BibleJourneyCard() {
         {/* Horizontal-scroll book chips */}
         <div
           data-testid="bible-journey-chips"
-          className="flex gap-2.5 overflow-x-auto pb-1.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-[5px] [&::-webkit-scrollbar-thumb]:bg-[rgba(232,168,50,0.15)] [&::-webkit-scrollbar-thumb]:rounded-full"
+          className="flex gap-2.5 overflow-x-auto pb-1.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-[5px] [&::-webkit-scrollbar-thumb]:bg-[rgba(245,158,11,0.2)] [&::-webkit-scrollbar-thumb]:rounded-full"
         >
           {visible.map(b => (
             <BookChip key={b.book} book={b} isVi={isVi} />
@@ -136,22 +135,18 @@ export default function BibleJourneyCard() {
           {remaining > 0 && (
             <div
               data-testid="bible-journey-overflow"
-              className="shrink-0 min-w-[138px] rounded-xl px-3.5 py-3 opacity-45 cursor-not-allowed"
-              style={{
-                background: 'rgba(245,240,230,0.025)',
-                border: '1px solid rgba(245,240,230,0.06)',
-              }}
+              className="shrink-0 min-w-[138px] rounded-xl px-3.5 py-3 bg-bq-inset border border-bq-hair opacity-70 cursor-not-allowed"
             >
-              <div className="text-[9px] uppercase tracking-[0.14em] text-ivory-faint font-bold">
+              <div className="text-[9px] uppercase tracking-[0.14em] text-bq-ink3 font-bold">
                 …
               </div>
-              <div className="text-[13px] font-bold text-ivory mt-1 leading-tight tracking-[-0.01em]">
+              <div className="text-[13px] font-bold text-bq-ink2 mt-1 leading-tight tracking-[-0.01em]">
                 {t('home.journeyExtra.overflowLabel', { remaining })}
               </div>
-              <div className="text-[11px] text-ivory-faint mt-2 font-medium">
+              <div className="text-[11px] text-bq-ink3 mt-2 font-medium">
                 {t('home.journeyExtra.overflowSub')}
               </div>
-              <div className="mt-2 h-[3px] rounded-full bg-[rgba(245,240,230,0.05)]" />
+              <div className="mt-2 h-[3px] rounded-full bg-bq-hair" />
             </div>
           )}
         </div>
@@ -188,33 +183,36 @@ function BookChip({ book, isVi }: { book: BookProgress; isVi: boolean }) {
       data-testid={`bible-journey-chip-${book.book}`}
       data-status={book.status}
       className={`shrink-0 min-w-[138px] rounded-xl px-3.5 py-3 transition-colors ${
-        isLocked ? 'opacity-45 cursor-not-allowed' : 'cursor-pointer hover:bg-[rgba(245,240,230,0.05)]'
+        isLocked
+          ? 'bg-bq-inset border border-bq-hair text-bq-ink3 opacity-70 cursor-not-allowed'
+          : isCurrent
+            ? ''
+            : isDone
+              ? 'bg-bq-emerald/10 border border-bq-emerald/30 cursor-pointer hover:bg-bq-emerald/15'
+              : 'bg-bq-inset border border-bq-hair cursor-pointer hover:bg-bq-paper'
       }`}
       style={
         isCurrent
           ? {
               background:
-                'radial-gradient(ellipse 200px 80px at 50% 0%, rgba(232,168,50,0.18), transparent 70%), rgba(232,168,50,0.05)',
-              border: '1px solid rgba(232,168,50,0.45)',
+                'radial-gradient(ellipse 200px 80px at 50% 0%, rgba(245,158,11,0.18), transparent 70%), rgba(245,158,11,0.06)',
+              border: '1px solid rgba(245,158,11,0.45)',
               boxShadow:
-                '0 0 24px rgba(232,168,50,0.18), inset 0 1px 0 rgba(232,168,50,0.2)',
+                '0 0 24px rgba(245,158,11,0.18), inset 0 1px 0 rgba(245,158,11,0.2)',
             }
-          : {
-              background: 'rgba(245,240,230,0.025)',
-              border: '1px solid rgba(245,240,230,0.06)',
-            }
+          : undefined
       }
     >
       <div
         className={`text-[9px] uppercase tracking-[0.14em] font-bold ${
-          isCurrent ? 'text-gold-deep' : 'text-ivory-faint'
+          isCurrent ? 'text-bq-amberd' : isLocked ? 'text-bq-ink3' : 'text-bq-ink3'
         }`}
       >
         {isCurrent ? orderLabel : String(book.order).padStart(2, '0')}
       </div>
       <div
         className={`text-[13px] font-bold mt-1 leading-tight tracking-[-0.01em] flex items-center gap-1.5 ${
-          isCurrent ? 'text-[#f5e3a8]' : 'text-ivory'
+          isCurrent ? 'text-bq-amberd' : isDone ? 'text-bq-emerald' : isLocked ? 'text-bq-ink3' : 'text-bq-ink'
         }`}
       >
         {isLocked ? (
@@ -241,7 +239,7 @@ function BookChip({ book, isVi }: { book: BookProgress; isVi: boolean }) {
             strokeWidth="2.2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="shrink-0 text-sage"
+            className="shrink-0 text-bq-emerald"
           >
             <path d="M5 13l4 4L19 7" />
           </svg>
@@ -263,20 +261,24 @@ function BookChip({ book, isVi }: { book: BookProgress; isVi: boolean }) {
       </div>
       <div
         className={`text-[11px] mt-2 font-medium ${
-          isCurrent ? 'text-tertiary' : 'text-ivory-faint'
+          isCurrent ? 'text-bq-amberd' : isDone ? 'text-bq-emerald' : 'text-bq-ink3'
         }`}
       >
         {status}
       </div>
-      <div className="mt-2 h-[3px] rounded-full overflow-hidden bg-[rgba(245,240,230,0.05)]">
+      <div className="mt-2 h-[3px] rounded-full overflow-hidden bg-bq-inset">
         {(isCurrent || isDone) && fillPct > 0 && (
           <div
             data-testid={`bible-journey-chip-fill-${book.book}`}
-            className="h-full rounded-full"
+            className={`h-full rounded-full ${isDone ? 'bg-bq-emerald' : ''}`}
             style={{
               width: `${fillPct}%`,
-              background: 'linear-gradient(90deg, #c98a1c, #e8a832, #e7c268)',
-              boxShadow: '0 0 6px rgba(232,168,50,0.6)',
+              ...(isDone
+                ? {}
+                : {
+                    background: 'linear-gradient(90deg, var(--bq-amber-deep), var(--bq-amber), var(--bq-amber-lt))',
+                    boxShadow: '0 0 6px rgba(245,158,11,0.6)',
+                  }),
             }}
           />
         )}

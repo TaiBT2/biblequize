@@ -66,8 +66,8 @@ export default function LiveFeed({ incoming, myId }: LiveFeedProps) {
             key={e.id}
             className={`text-xs px-3 py-1.5 rounded-full animate-slideInRight backdrop-blur-sm
               ${e.isCorrect
-                ? 'bg-green-500/20 text-green-400 border border-green-500/20'
-                : 'bg-red-500/20 text-red-400 border border-red-500/20'
+                ? 'bg-bq-emerald/15 text-bq-emerald border border-bq-emerald/20'
+                : 'bg-bq-ruby/15 text-bq-ruby border border-bq-ruby/20'
               }`}
           >
             {msg}

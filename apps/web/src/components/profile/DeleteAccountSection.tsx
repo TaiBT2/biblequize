@@ -36,7 +36,7 @@ export function DeleteAccountSection() {
       </div>
       <div className="flex-1">
         <p className="text-[13px] font-bold text-error">{t('profile.dangerZone')}</p>
-        <p className="text-[11px] text-on-surface-variant mt-1">{t('profile.dangerDesc')}</p>
+        <p className="text-[11px] text-bq-ink2 mt-1">{t('profile.dangerDesc')}</p>
       </div>
       <button
         data-testid="profile-delete-account-btn"
@@ -48,9 +48,9 @@ export function DeleteAccountSection() {
       </button>
 
       {showModal && (
-        <div data-testid="delete-account-modal" className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-          <div className="glass-card max-w-md w-full p-6 space-y-4">
-            <h2 className="text-xl font-bold text-error">{t('profile.deleteAccountTitle')}</h2>
+        <div data-testid="delete-account-modal" className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(22,21,27,0.45)] backdrop-blur-sm p-4">
+          <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl max-w-md w-full p-6 space-y-4">
+            <h2 className="font-display text-xl font-bold text-error">{t('profile.deleteAccountTitle')}</h2>
             <div className="bg-error/10 border border-error/30 rounded-lg p-4">
               <p className="text-sm text-error">{t('profile.deleteAccountWarning')}</p>
               <ul className="text-sm text-error/80 mt-2 space-y-1 list-disc pl-5">
@@ -60,7 +60,7 @@ export function DeleteAccountSection() {
                 <li>{t('profile.deleteAccountData4')}</li>
               </ul>
             </div>
-            <p className="text-sm text-on-surface-variant">
+            <p className="text-sm text-bq-ink2">
               {t('profile.deleteAccountConfirmLabel', { phrase: expectedPhrase })}
             </p>
             <input
@@ -69,14 +69,14 @@ export function DeleteAccountSection() {
               value={confirmPhrase}
               onChange={(e) => setConfirmPhrase(e.target.value)}
               placeholder={expectedPhrase}
-              className="w-full bg-surface-container-high border border-outline-variant/20 rounded-lg px-3 py-2 text-on-surface text-sm focus:border-error outline-none"
+              className="w-full bg-bq-inset border border-bq-hair rounded-lg px-3 py-2 text-bq-ink text-sm focus:border-error outline-none"
             />
             {error && <p className="text-sm text-error">{error}</p>}
             <div className="flex gap-3">
               <button
                 data-testid="delete-account-cancel-btn"
                 onClick={() => { setShowModal(false); setConfirmPhrase(''); setError('') }}
-                className="flex-1 px-4 py-2 rounded-lg border border-outline-variant/20 text-on-surface-variant text-sm hover:bg-surface-container-high"
+                className="flex-1 px-4 py-2 rounded-lg border border-bq-hair text-bq-ink2 text-sm hover:bg-bq-inset"
               >
                 {t('common.cancel')}
               </button>

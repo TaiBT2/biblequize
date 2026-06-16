@@ -78,7 +78,8 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
     }
 
     if (acc >= 70) {
-      const colors = ['#e8a832', '#fbbf24', '#4ade80', '#84cc16', '#f8bd45']
+      // Khung Sáng jewel spectrum for celebration confetti (not answer colors).
+      const colors = ['#2D46C8', '#0E8A6B', '#F59E0B', '#E0354B', '#FF6F3D']
       const burst = (originX: number) => confetti({
         particleCount: acc >= 90 ? 90 : 55,
         spread: 75,
@@ -197,12 +198,12 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
 
   if (!stats) {
     return (
-      <div className="min-h-screen bg-[#11131e] flex items-center justify-center p-4">
-        <div className="glass-card p-8 rounded-2xl text-center max-w-md w-full border border-outline-variant/10">
-          <span className="material-symbols-outlined text-error text-5xl mb-4 block">error</span>
-          <h2 className="text-2xl font-black text-on-surface mb-2">{t('results.noData')}</h2>
-          <p className="text-on-surface-variant text-sm mb-6">{t('results.errorLoading')}</p>
-          <button onClick={onBackToHome} className="gold-gradient text-on-secondary font-black px-8 py-3 rounded-xl">
+      <div className="min-h-screen bg-bq-paper flex items-center justify-center p-4">
+        <div className="bg-bq-white p-8 rounded-2xl text-center max-w-md w-full border border-bq-hair shadow-bq-soft">
+          <span className="material-symbols-outlined text-bq-ruby text-5xl mb-4 block">error</span>
+          <h2 className="text-2xl font-display font-black text-bq-ink mb-2">{t('results.noData')}</h2>
+          <p className="text-bq-ink2 text-sm mb-6">{t('results.errorLoading')}</p>
+          <button onClick={onBackToHome} className="bg-bq-action text-white shadow-bq-action hover:brightness-105 font-black px-8 py-3 rounded-xl transition">
             {t('errors.goHome')}
           </button>
         </div>
@@ -210,21 +211,20 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
     )
   }
 
-  // Hero variant tokens
-  const heroBg = isHigh
-    ? 'from-[rgba(74,222,128,0.08)] to-[rgba(50,52,64,0.4)]'
-    : 'from-[rgba(96,165,250,0.08)] to-[rgba(50,52,64,0.4)]'
-  const heroBorder = isHigh ? 'border-[rgba(74,222,128,0.25)]' : 'border-[rgba(96,165,250,0.25)]'
-  const heroMessageClass = isHigh
-    ? 'bg-gradient-to-br from-[#fbbf24] to-[#84cc16] bg-clip-text text-transparent'
-    : 'text-[#93c5fd]'
-  const accuracyColor = isHigh ? 'text-[#4ade80]' : 'text-[#93c5fd]'
+  // Hero variant tokens — high = emerald (success), low = sapphire (info).
+  // Hero is a white card + spectrum strip + amber shadow; accent only tints
+  // the radial glow, the tone message and the accuracy figure.
+  const heroGlow = isHigh
+    ? 'radial-gradient(circle at 20% 30%, rgba(245,158,11,0.12) 0%, transparent 50%), radial-gradient(circle at 80% 60%, rgba(14,138,107,0.1) 0%, transparent 50%), radial-gradient(circle at 50% 80%, rgba(224,53,75,0.08) 0%, transparent 50%)'
+    : 'radial-gradient(circle at 20% 30%, rgba(45,70,200,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 60%, rgba(245,158,11,0.08) 0%, transparent 50%)'
+  const heroMessageClass = isHigh ? 'text-bq-emerald' : 'text-bq-sapphire'
+  const accuracyColor = isHigh ? 'text-bq-emerald' : 'text-bq-sapphire'
 
   // Insight card (only show if we have a clear book context)
   const showInsight = books.length === 1
   const insightTone = isHigh
-    ? { bg: 'bg-[rgba(74,222,128,0.06)]', border: 'border-[rgba(74,222,128,0.2)]', iconBg: 'bg-[rgba(74,222,128,0.15)]', iconBorder: 'border-[rgba(74,222,128,0.3)]', iconColor: 'text-[#86efac]' }
-    : { bg: 'bg-[rgba(167,139,250,0.06)]', border: 'border-[rgba(167,139,250,0.2)]', iconBg: 'bg-[rgba(167,139,250,0.15)]', iconBorder: 'border-[rgba(167,139,250,0.3)]', iconColor: 'text-[#c4b5fd]' }
+    ? { bg: 'bg-bq-inset', border: 'border-bq-hair', iconBg: 'bg-bq-emerald/10', iconBorder: 'border-bq-emerald/25', iconColor: 'text-bq-emerald' }
+    : { bg: 'bg-bq-inset', border: 'border-bq-hair', iconBg: 'bg-bq-sapphire/10', iconBorder: 'border-bq-sapphire/25', iconColor: 'text-bq-sapphire' }
 
   // Multi-book breakdown
   const sorted = [...books].sort((a, b) => b.acc - a.acc)
@@ -232,66 +232,62 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
   const weakest = sorted.length > 1 ? sorted[sorted.length - 1] : null
 
   const diffMeta = {
-    easy: { label: t('results.difficulty.easy'), labelShort: t('results.difficulty.easy'), labelColor: 'text-[#86efac]', barClass: 'bg-gradient-to-r from-[#4ade80] to-[#22c55e]' },
-    medium: { label: t('results.difficulty.medium'), labelShort: t('results.difficulty.mediumShort'), labelColor: 'text-[#93c5fd]', barClass: 'bg-gradient-to-r from-[#60a5fa] to-[#3b82f6]' },
-    hard: { label: t('results.difficulty.hard'), labelShort: t('results.difficulty.hard'), labelColor: 'text-[#fca5a5]', barClass: 'bg-gradient-to-r from-[#f87171] to-[#dc2626]' }
+    easy: { label: t('results.difficulty.easy'), labelShort: t('results.difficulty.easy'), labelColor: 'text-bq-emerald', barClass: 'bg-bq-emerald' },
+    medium: { label: t('results.difficulty.medium'), labelShort: t('results.difficulty.mediumShort'), labelColor: 'text-bq-sapphire', barClass: 'bg-bq-sapphire' },
+    hard: { label: t('results.difficulty.hard'), labelShort: t('results.difficulty.hard'), labelColor: 'text-bq-ruby', barClass: 'bg-bq-ruby' }
   } as const
 
   return (
-    <div data-testid="quiz-results-page" className="min-h-screen bg-[#11131e] p-4 py-8 md:py-12 pb-28 md:pb-12">
+    <div data-testid="quiz-results-page" className="min-h-screen bg-bq-paper p-4 py-8 md:py-12 pb-28 md:pb-12">
       <main className="max-w-2xl mx-auto w-full flex flex-col">
 
-        {/* HERO BLOCK */}
+        {/* HERO BLOCK — celebratory white card with spectrum top strip */}
         <section
-          className={`relative overflow-hidden rounded-3xl border-[1.5px] ${heroBorder} bg-gradient-to-br ${heroBg} px-6 py-7 md:px-8 md:py-8 mb-4 text-center`}
+          className="relative overflow-hidden rounded-3xl border border-bq-hair bg-bq-white shadow-bq-amb px-6 py-7 md:px-8 md:py-8 mb-4 text-center"
           data-testid="quiz-results-hero"
         >
-          {isHigh && (
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle at 20% 30%, rgba(251,191,36,0.15) 0%, transparent 50%), radial-gradient(circle at 80% 60%, rgba(74,222,128,0.12) 0%, transparent 50%), radial-gradient(circle at 50% 80%, rgba(232,168,50,0.1) 0%, transparent 50%)'
-              }}
-            />
-          )}
+          <span aria-hidden className="absolute top-0 inset-x-0 h-[5px] bg-bq-spectrum" />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{ backgroundImage: heroGlow }}
+          />
 
           <div className="relative z-10">
-            <div className="text-5xl md:text-6xl mb-2 drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]">{emoji}</div>
+            <div className="text-5xl md:text-6xl mb-2">{emoji}</div>
             <h1
               data-testid="quiz-results-grade"
-              className={`text-2xl md:text-[28px] font-extrabold leading-tight mb-1.5 ${heroMessageClass}`}
+              className={`font-display text-2xl md:text-[28px] font-extrabold leading-tight mb-1.5 ${heroMessageClass}`}
             >
               {t(`results.tones.${tone}`)}
             </h1>
-            <p className="text-xs md:text-sm text-on-surface-variant max-w-md mx-auto mb-5 leading-relaxed">
+            <p className="text-xs md:text-sm text-bq-ink2 max-w-md mx-auto mb-5 leading-relaxed">
               {t(`results.tonesSub.${tone}`, { book: primaryBook || '' })}
             </p>
 
             {/* 3 stat row */}
-            <div className="grid grid-cols-3 gap-px rounded-2xl overflow-hidden bg-white/[0.06] max-w-md mx-auto">
-              <div className="bg-[rgba(17,19,30,0.5)] py-3 px-2">
-                <div data-testid="quiz-results-score" className="text-lg md:text-xl font-extrabold leading-none mb-1 tabular-nums text-on-surface">
+            <div className="grid grid-cols-3 gap-px rounded-2xl overflow-hidden bg-bq-hair max-w-md mx-auto">
+              <div className="bg-bq-inset py-3 px-2">
+                <div data-testid="quiz-results-score" className="font-display text-lg md:text-xl font-extrabold leading-none mb-1 tabular-nums text-bq-ink">
                   {stats.correctAnswers}
-                  <span className="text-[#6b7280] font-semibold text-[0.7em]">/{stats.totalQuestions}</span>
+                  <span className="text-bq-ink3 font-semibold text-[0.7em]">/{stats.totalQuestions}</span>
                 </div>
-                <div className="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant">
+                <div className="text-[10px] uppercase tracking-wider font-bold text-bq-ink2">
                   <span className="md:hidden">{t('results.stats.correctShort')}</span>
                   <span className="hidden md:inline">{t('results.stats.correct')}</span>
                 </div>
               </div>
-              <div className="bg-[rgba(17,19,30,0.5)] py-3 px-2">
-                <div data-testid="quiz-results-accuracy" className={`text-lg md:text-xl font-extrabold leading-none mb-1 tabular-nums ${accuracyColor}`}>
+              <div className="bg-bq-inset py-3 px-2">
+                <div data-testid="quiz-results-accuracy" className={`font-display text-lg md:text-xl font-extrabold leading-none mb-1 tabular-nums ${accuracyColor}`}>
                   {accuracy}%
                 </div>
-                <div className="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant">{t('results.stats.accuracyShort')}</div>
+                <div className="text-[10px] uppercase tracking-wider font-bold text-bq-ink2">{t('results.stats.accuracyShort')}</div>
               </div>
-              <div className="bg-[rgba(17,19,30,0.5)] py-3 px-2">
-                <div data-testid="quiz-results-total-score" className="text-lg md:text-xl font-extrabold leading-none mb-1 tabular-nums bg-gradient-to-br from-[#e8a832] to-[#fbbf24] bg-clip-text text-transparent">
+              <div className="bg-bq-inset py-3 px-2">
+                <div data-testid="quiz-results-total-score" className="font-display text-lg md:text-xl font-extrabold leading-none mb-1 tabular-nums text-bq-amberd">
                   {scoreDisplay}
                 </div>
-                <div className="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant">
+                <div className="text-[10px] uppercase tracking-wider font-bold text-bq-ink2">
                   <span className="md:hidden">{t('results.stats.scoreShort')}</span>
                   <span className="hidden md:inline">{t('results.stats.score')}</span>
                 </div>
@@ -302,35 +298,35 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
 
         {/* SCORE BREAKDOWN — only when there are real bonuses */}
         {breakdown && (
-          <section className="bg-[rgba(50,52,64,0.4)] border border-[rgba(232,168,50,0.1)] rounded-2xl px-5 py-4 md:px-6 md:py-5 mb-3.5" data-testid="quiz-results-breakdown">
+          <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl px-5 py-4 md:px-6 md:py-5 mb-3.5" data-testid="quiz-results-breakdown">
             <div className="flex items-center justify-between py-2 text-sm">
-              <span className="text-on-surface-variant inline-flex items-center gap-2">
-                <span className="material-symbols-outlined text-base text-[#fbbf24]">check_circle</span>
+              <span className="text-bq-ink2 inline-flex items-center gap-2">
+                <span className="material-symbols-outlined text-base text-bq-amberd">check_circle</span>
                 {t('results.breakdown.base')}
               </span>
-              <span className="font-bold text-on-surface tabular-nums">{breakdown.base}</span>
+              <span className="font-bold text-bq-ink tabular-nums">{breakdown.base}</span>
             </div>
             {breakdown.speed > 0 && (
-              <div className="flex items-center justify-between py-2 text-sm border-t border-white/[0.04]">
-                <span className="text-on-surface-variant inline-flex items-center gap-2">
-                  <span className="material-symbols-outlined text-base text-[#fbbf24]">timer</span>
+              <div className="flex items-center justify-between py-2 text-sm border-t border-bq-hair">
+                <span className="text-bq-ink2 inline-flex items-center gap-2">
+                  <span className="material-symbols-outlined text-base text-bq-amberd">timer</span>
                   {t('results.breakdown.speedBonus')}
                 </span>
-                <span className="font-bold text-[#4ade80] tabular-nums">+{breakdown.speed}</span>
+                <span className="font-bold text-bq-emerald tabular-nums">+{breakdown.speed}</span>
               </div>
             )}
             {breakdown.combo > 0 && (
-              <div className="flex items-center justify-between py-2 text-sm border-t border-white/[0.04]">
-                <span className="text-on-surface-variant inline-flex items-center gap-2">
-                  <span className="material-symbols-outlined text-base text-[#fbbf24]">local_fire_department</span>
+              <div className="flex items-center justify-between py-2 text-sm border-t border-bq-hair">
+                <span className="text-bq-ink2 inline-flex items-center gap-2">
+                  <span className="material-symbols-outlined text-base text-bq-amberd">local_fire_department</span>
                   {t('results.breakdown.combo', { multiplier: breakdown.multiplier })}
                 </span>
-                <span className="font-bold text-[#4ade80] tabular-nums">+{breakdown.combo}</span>
+                <span className="font-bold text-bq-emerald tabular-nums">+{breakdown.combo}</span>
               </div>
             )}
-            <div className="flex items-center justify-between pt-3.5 mt-1.5 border-t-2 border-[rgba(232,168,50,0.2)]">
-              <span className="font-bold text-on-surface text-[15px]">{t('results.breakdown.total')}</span>
-              <span className="text-[22px] font-extrabold bg-gradient-to-br from-[#e8a832] to-[#fbbf24] bg-clip-text text-transparent tabular-nums">
+            <div className="flex items-center justify-between pt-3.5 mt-1.5 border-t-2 border-bq-hair">
+              <span className="font-bold text-bq-ink text-[15px]">{t('results.breakdown.total')}</span>
+              <span className="font-display text-[22px] font-extrabold text-bq-amberd tabular-nums">
                 {scoreDisplay}
               </span>
             </div>
@@ -343,26 +339,26 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
             <div className={`w-10 h-10 rounded-[10px] grid place-items-center flex-shrink-0 border ${insightTone.iconBorder} ${insightTone.iconBg} ${insightTone.iconColor}`}>
               <span className="material-symbols-outlined text-[22px]">{isHigh ? 'trophy' : 'insights'}</span>
             </div>
-            <p className="text-xs md:text-[13px] text-[#d1d5db] leading-relaxed">
+            <p className="text-xs md:text-[13px] text-bq-ink2 leading-relaxed">
               {primaryBook && (
                 <>
-                  <strong className={isHigh ? 'text-[#86efac] font-bold' : 'text-[#c4b5fd] font-bold'}>
+                  <strong className={isHigh ? 'text-bq-emerald font-bold' : 'text-bq-sapphire font-bold'}>
                     {primaryBook}
                   </strong>
                   {' · '}
                 </>
               )}
-              {t('results.stats.correct')}: <strong className="text-on-surface font-bold">{stats.correctAnswers}/{stats.totalQuestions}</strong>
-              {isHigh && <> · <strong className="text-[#86efac] font-bold">+1 streak</strong> 🔥</>}
+              {t('results.stats.correct')}: <strong className="text-bq-ink font-bold">{stats.correctAnswers}/{stats.totalQuestions}</strong>
+              {isHigh && <> · <strong className="text-bq-emerald font-bold">+1 streak</strong> 🔥</>}
             </p>
           </section>
         )}
 
         {/* ANALYSIS — diff rows for single-book; strongest/weakest for multi-book */}
         {books.length === 1 && diffRows.length > 0 && (
-          <section className="bg-[rgba(50,52,64,0.3)] border border-white/[0.04] rounded-2xl px-5 py-4 md:px-6 md:py-5 mb-4">
-            <h3 className="text-[13px] font-bold mb-3.5 flex items-center gap-2 text-[#d1d5db]">
-              <span className="material-symbols-outlined text-base text-[#fbbf24]">analytics</span>
+          <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl px-5 py-4 md:px-6 md:py-5 mb-4">
+            <h3 className="text-[13px] font-bold mb-3.5 flex items-center gap-2 text-bq-ink">
+              <span className="material-symbols-outlined text-base text-bq-amberd">analytics</span>
               {t('results.difficulty.title')}
             </h3>
             <div className="space-y-1">
@@ -374,14 +370,14 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
                       <span className="md:hidden">{meta.labelShort}</span>
                       <span className="hidden md:inline">{meta.label}</span>
                     </div>
-                    <div className="h-2 bg-white/[0.05] rounded overflow-hidden">
+                    <div className="h-2 bg-bq-inset rounded overflow-hidden">
                       <div
                         className={`h-full rounded ${meta.barClass} transition-[width] duration-500`}
                         style={{ width: `${row.pct}%` }}
                       />
                     </div>
-                    <div className="text-xs font-bold text-on-surface text-right tabular-nums">
-                      {row.correct}/{row.total} <span className="text-[#6b7280] text-[10px] font-medium">{row.pct}%</span>
+                    <div className="text-xs font-bold text-bq-ink text-right tabular-nums">
+                      {row.correct}/{row.total} <span className="text-bq-ink3 text-[10px] font-medium">{row.pct}%</span>
                     </div>
                   </div>
                 )
@@ -391,19 +387,19 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
         )}
 
         {books.length > 1 && strongest && (
-          <section className="bg-[rgba(50,52,64,0.3)] border border-white/[0.04] rounded-2xl px-5 py-4 md:px-6 md:py-5 mb-4">
-            <h3 className="text-[13px] font-bold mb-3.5 flex items-center gap-2 text-[#d1d5db]">
-              <span className="material-symbols-outlined text-base text-[#fbbf24]">analytics</span>
+          <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl px-5 py-4 md:px-6 md:py-5 mb-4">
+            <h3 className="text-[13px] font-bold mb-3.5 flex items-center gap-2 text-bq-ink">
+              <span className="material-symbols-outlined text-base text-bq-amberd">analytics</span>
               {t('results.analysis')}
             </h3>
             <div className="grid grid-cols-2 gap-3">
-              <div className="bg-[#4ade80]/5 border border-[#4ade80]/20 rounded-xl p-3.5">
-                <p className="text-[#4ade80] font-bold text-xs mb-1">{t('results.strongest')}</p>
-                <p className="text-on-surface font-bold text-sm">{strongest.book} ({Math.round(strongest.acc * 100)}%)</p>
+              <div className="bg-bq-emerald/5 border border-bq-emerald/20 rounded-xl p-3.5">
+                <p className="text-bq-emerald font-bold text-xs mb-1">{t('results.strongest')}</p>
+                <p className="text-bq-ink font-bold text-sm">{strongest.book} ({Math.round(strongest.acc * 100)}%)</p>
               </div>
-              <div className="bg-error/5 border border-error/20 rounded-xl p-3.5">
-                <p className="text-error font-bold text-xs mb-1">{t('results.needsImprovement')}</p>
-                <p className="text-on-surface font-bold text-sm">
+              <div className="bg-bq-ruby/5 border border-bq-ruby/20 rounded-xl p-3.5">
+                <p className="text-bq-ruby font-bold text-xs mb-1">{t('results.needsImprovement')}</p>
+                <p className="text-bq-ink font-bold text-sm">
                   {weakest && weakest.acc < 1 ? `${weakest.book} (${Math.round(weakest.acc * 100)}%)` : t('results.allExcellent')}
                 </p>
               </div>
@@ -416,7 +412,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
           <button
             data-testid="quiz-results-review-btn"
             onClick={() => navigate('/review', { state: { stats } })}
-            className="w-full py-3.5 rounded-xl border border-white/[0.08] bg-[rgba(50,52,64,0.5)] text-[#d1d5db] hover:text-on-surface font-bold text-sm flex items-center justify-center gap-2 transition-colors"
+            className="w-full py-3.5 rounded-xl border border-bq-hair bg-bq-white text-bq-ink2 hover:text-bq-ink hover:bg-bq-inset font-bold text-sm flex items-center justify-center gap-2 transition-colors"
           >
             <span className="material-symbols-outlined text-base">visibility</span>
             <span className="md:hidden">{t('results.review')}</span>
@@ -425,7 +421,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
           <button
             data-testid="quiz-results-play-btn"
             onClick={onPlayAgain}
-            className="w-full py-3.5 rounded-xl bg-gradient-to-br from-[#e8a832] to-[#d97706] text-[#11131e] shadow-[0_6px_20px_rgba(232,168,50,0.3)] font-extrabold text-sm flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0"
+            className="w-full py-3.5 rounded-xl bg-bq-action text-white shadow-bq-action font-extrabold text-sm flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 hover:brightness-105 active:translate-y-0"
           >
             <span className="material-symbols-outlined text-base">refresh</span>
             <span className="md:hidden">{t('results.playAgain')}</span>
@@ -435,7 +431,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
         <button
           data-testid="quiz-results-home-btn"
           onClick={onBackToHome}
-          className="mt-2 w-full py-2.5 text-xs text-[#6b7280] hover:text-on-surface-variant underline underline-offset-[3px]"
+          className="mt-2 w-full py-2.5 text-xs text-bq-ink3 hover:text-bq-ink2 underline underline-offset-[3px]"
         >
           {t('results.actions.backHome')}
         </button>

@@ -631,10 +631,10 @@ const Quiz: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-surface flex items-center justify-center">
-        <div className="glass-panel p-8 text-center max-w-xs w-full rounded-3xl border border-outline-variant/10">
-          <div className="text-xl font-bold mb-4 text-on-surface">{t('quiz.loading')}</div>
-          <div className="animate-spin w-8 h-8 border-4 border-secondary border-t-transparent rounded-full mx-auto"></div>
+      <div className="min-h-screen bg-bq-paper flex items-center justify-center">
+        <div className="bg-bq-white p-8 text-center max-w-xs w-full rounded-3xl border border-bq-hair shadow-bq-soft">
+          <div className="text-xl font-bold mb-4 text-bq-ink">{t('quiz.loading')}</div>
+          <div className="animate-spin w-8 h-8 border-4 border-bq-amberd border-t-transparent rounded-full mx-auto"></div>
         </div>
       </div>
     )
@@ -761,12 +761,12 @@ const Quiz: React.FC = () => {
 
   if (!currentQuestion) {
     return (
-      <div className="min-h-screen bg-surface flex items-center justify-center">
-        <div className="glass-panel p-8 text-center max-w-sm w-full rounded-3xl border border-outline-variant/10">
-          <div className="text-2xl font-bold mb-4 text-on-surface">{t('quiz.noQuestions')}</div>
+      <div className="min-h-screen bg-bq-paper flex items-center justify-center">
+        <div className="bg-bq-white p-8 text-center max-w-sm w-full rounded-3xl border border-bq-hair shadow-bq-soft">
+          <div className="text-2xl font-bold mb-4 text-bq-ink font-display">{t('quiz.noQuestions')}</div>
           <button
             onClick={() => navigate('/practice')}
-            className="bg-gradient-to-r from-secondary to-tertiary text-on-secondary px-8 py-3 rounded-2xl font-black text-sm shadow-xl active:scale-95 transition-all hover:brightness-110"
+            className="bg-bq-action text-white px-8 py-3 rounded-2xl font-black text-sm shadow-bq-action active:scale-95 transition-all hover:brightness-110"
           >
             {t('quiz.goBack')}
           </button>
@@ -776,19 +776,19 @@ const Quiz: React.FC = () => {
   }
 
   return (
-    <div data-testid="quiz-page" className="min-h-screen bg-surface font-body text-on-surface overflow-hidden relative">
+    <div data-testid="quiz-page" className="min-h-screen bg-bq-paper font-body text-bq-ink overflow-hidden relative">
       {/* Background Decorative Elements */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/5 blur-[120px] rounded-full"></div>
-        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full"></div>
+        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-bq-amber/5 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-bq-sapphire/5 blur-[120px] rounded-full"></div>
       </div>
 
       {/* Top Navigation Header */}
-      <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-surface-container-low border-b border-outline-variant/10">
+      <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-bq-white border-b border-bq-hair">
         <div className="flex items-center gap-3">
           <Link
             to={quitPath}
-            className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-variant transition-colors"
+            className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-bq-inset transition-colors"
             onClick={(e) => {
               e.preventDefault()
               if (confirm(t('quiz.confirmQuit'))) {
@@ -796,13 +796,13 @@ const Quiz: React.FC = () => {
               }
             }}
           >
-            <span className="material-symbols-outlined text-on-surface-variant">close</span>
+            <span className="material-symbols-outlined text-bq-ink2">close</span>
           </Link>
           <div className="flex flex-col">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-secondary">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-bq-amberd">
               {t('quiz.question', { current: currentQuestionIndex + 1, total: questions.length })}
             </span>
-            <span className="font-headline font-bold text-sm tracking-tight">
+            <span className="font-display font-bold text-sm tracking-tight">
               {currentQuestion.book}{currentQuestion.chapter ? `: ${t('quiz.chapter', { chapter: currentQuestion.chapter })}` : ''}
             </span>
           </div>
@@ -811,21 +811,21 @@ const Quiz: React.FC = () => {
         {/* Progress Bar Center (desktop) */}
         <div className="absolute left-1/2 -translate-x-1/2 w-full max-w-md px-4 hidden md:block text-center">
           <div className="flex items-center gap-4">
-            <div className="h-2 flex-1 bg-primary-container rounded-full overflow-hidden">
+            <div className="h-2 flex-1 bg-bq-inset rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-secondary to-tertiary shadow-[0_0_8px_rgba(232,168,50,0.4)] transition-all duration-500"
+                className="h-full bg-bq-action transition-all duration-500"
                 style={{ width: `${progressPercent}%` }}
               ></div>
             </div>
-            <span data-testid="quiz-progress" className="text-[10px] font-black text-secondary whitespace-nowrap">
+            <span data-testid="quiz-progress" className="text-[10px] font-black text-bq-amberd whitespace-nowrap">
               {currentQuestionIndex + 1} / {questions.length}
             </span>
           </div>
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-full border border-outline-variant/10">
-            <span className="material-symbols-outlined text-secondary text-lg" style={FILL_STYLE}>bolt</span>
+          <div className="hidden md:flex items-center gap-2 bg-bq-inset px-3 py-1.5 rounded-full border border-bq-hair">
+            <span className="material-symbols-outlined text-bq-amberd text-lg" style={FILL_STYLE}>bolt</span>
             <span className="font-bold text-sm">{score.toLocaleString()}</span>
           </div>
           <div className="md:hidden">
@@ -840,16 +840,16 @@ const Quiz: React.FC = () => {
       </header>
 
       {/* Mobile Progress Bar */}
-      <div className="fixed top-16 left-0 w-full h-1 bg-primary-container md:hidden z-50">
+      <div className="fixed top-16 left-0 w-full h-1 bg-bq-inset md:hidden z-50">
         <div
-          className="h-full bg-gradient-to-r from-secondary to-tertiary transition-all duration-500"
+          className="h-full bg-bq-action transition-all duration-500"
           style={{ width: `${progressPercent}%` }}
         ></div>
       </div>
 
       {/* Combo Banner */}
       {showCombo && (
-        <div className="combo-banner-anim fixed top-20 left-1/2 z-[60] px-6 py-3 rounded-full font-black text-lg shadow-lg bg-gradient-to-r from-orange-500 to-red-500 text-white whitespace-nowrap">
+        <div className="combo-banner-anim fixed top-20 left-1/2 z-[60] px-6 py-3 rounded-full font-black text-lg shadow-bq-flame bg-bq-flame text-white whitespace-nowrap">
           🔥 {combo}x COMBO!
         </div>
       )}
@@ -866,40 +866,40 @@ const Quiz: React.FC = () => {
           className={`md:hidden w-full grid gap-2 mb-4 ${isPracticeMode ? 'grid-cols-2' : 'grid-cols-3'}`}
         >
           {!isPracticeMode && (
-          <div className="flex items-center gap-2 px-2.5 py-2 rounded-xl bg-surface-container-low border border-outline-variant/10 min-w-0">
-            <span className="material-symbols-outlined text-secondary text-base flex-shrink-0" style={FILL_STYLE}>bolt</span>
+          <div className="flex items-center gap-2 px-2.5 py-2 rounded-xl bg-bq-white border border-bq-hair shadow-bq-soft min-w-0">
+            <span className="material-symbols-outlined text-bq-amberd text-base flex-shrink-0" style={FILL_STYLE}>bolt</span>
             <div className="min-w-0 flex-1">
-              <div className="text-[9px] font-bold uppercase tracking-wider text-on-surface-variant leading-none">{t('quiz.energy')}</div>
+              <div className="text-[9px] font-bold uppercase tracking-wider text-bq-ink2 leading-none">{t('quiz.energy')}</div>
               <div
                 className="flex items-center gap-1.5 mt-1.5"
                 data-testid="quiz-energy-bar-mobile"
                 data-energy={serverEnergy ?? ''}
               >
-                <div className="relative flex-1 h-2 rounded-full bg-surface-container-highest overflow-hidden">
+                <div className="relative flex-1 h-2 rounded-full bg-bq-inset overflow-hidden">
                   <div
-                    className="absolute inset-y-0 left-0 rounded-full bg-secondary transition-[width] duration-500 ease-out"
+                    className="absolute inset-y-0 left-0 rounded-full bg-bq-amber transition-[width] duration-500 ease-out"
                     style={{ width: `${computeEnergyPercent(serverEnergy, lives)}%` }}
                   />
                 </div>
-                <span className="text-[10px] font-bold tabular-nums text-on-surface leading-none">
+                <span className="text-[10px] font-bold tabular-nums text-bq-ink leading-none">
                   {Math.round(computeEnergyPercent(serverEnergy, lives))}%
                 </span>
               </div>
             </div>
           </div>
           )}
-          <div className="flex items-center gap-2 px-2.5 py-2 rounded-xl bg-surface-container-low border border-outline-variant/10 min-w-0">
-            <span className="material-symbols-outlined text-secondary text-base flex-shrink-0" style={FILL_STYLE}>stars</span>
+          <div className="flex items-center gap-2 px-2.5 py-2 rounded-xl bg-bq-white border border-bq-hair shadow-bq-soft min-w-0">
+            <span className="material-symbols-outlined text-bq-amberd text-base flex-shrink-0" style={FILL_STYLE}>stars</span>
             <div className="min-w-0">
-              <div className="text-[9px] font-bold uppercase tracking-wider text-on-surface-variant leading-none">{t('quiz.comboStreak')}</div>
-              <div className={`text-[13px] font-extrabold tabular-nums leading-none mt-1.5 ${combo > 0 ? 'text-secondary' : 'text-on-surface'} ${scorePopping ? 'score-pop-anim' : ''}`}>×{combo}</div>
+              <div className="text-[9px] font-bold uppercase tracking-wider text-bq-ink2 leading-none">{t('quiz.comboStreak')}</div>
+              <div className={`text-[13px] font-extrabold tabular-nums leading-none mt-1.5 ${combo > 0 ? 'text-bq-amberd' : 'text-bq-ink'} ${scorePopping ? 'score-pop-anim' : ''}`}>×{combo}</div>
             </div>
           </div>
-          <div className="flex items-center gap-2 px-2.5 py-2 rounded-xl bg-surface-container-low border border-outline-variant/10 min-w-0">
-            <span className="material-symbols-outlined text-green-400 text-base flex-shrink-0" style={FILL_STYLE}>scoreboard</span>
+          <div className="flex items-center gap-2 px-2.5 py-2 rounded-xl bg-bq-white border border-bq-hair shadow-bq-soft min-w-0">
+            <span className="material-symbols-outlined text-bq-emerald text-base flex-shrink-0" style={FILL_STYLE}>scoreboard</span>
             <div className="min-w-0">
-              <div className="text-[9px] font-bold uppercase tracking-wider text-on-surface-variant leading-none">{t('quiz.score')}</div>
-              <div className="text-[13px] font-extrabold tabular-nums leading-none mt-1.5 text-on-surface">{score.toLocaleString()}</div>
+              <div className="text-[9px] font-bold uppercase tracking-wider text-bq-ink2 leading-none">{t('quiz.score')}</div>
+              <div className="text-[13px] font-extrabold tabular-nums leading-none mt-1.5 text-bq-ink">{score.toLocaleString()}</div>
             </div>
           </div>
         </div>
@@ -907,10 +907,10 @@ const Quiz: React.FC = () => {
         {/* Top Stats Row — desktop only (mobile uses HUD strip above) */}
         <div className="hidden md:flex w-full justify-between items-end mb-8">
           <div className="flex flex-col items-start gap-1">
-            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">{t('quiz.comboStreak')}</span>
-            <div className={`flex items-center gap-2 glass-panel px-4 py-2 rounded-2xl border transition-all duration-300 ${combo > 0 ? 'border-secondary/20 gold-glow' : 'border-outline-variant/10'}`}>
-              <span className="material-symbols-outlined text-secondary" style={FILL_STYLE}>stars</span>
-              <span className={`font-headline font-black text-2xl italic ${combo > 0 ? 'text-secondary' : 'text-on-surface-variant'} ${scorePopping ? 'score-pop-anim' : ''}`}>
+            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-bq-ink2">{t('quiz.comboStreak')}</span>
+            <div className={`flex items-center gap-2 bg-bq-white px-4 py-2 rounded-2xl border transition-all duration-300 ${combo > 0 ? 'border-bq-amber/40 shadow-bq-amb' : 'border-bq-hair shadow-bq-soft'}`}>
+              <span className="material-symbols-outlined text-bq-amberd" style={FILL_STYLE}>stars</span>
+              <span className={`font-display font-black text-2xl italic ${combo > 0 ? 'text-bq-amberd' : 'text-bq-ink2'} ${scorePopping ? 'score-pop-anim' : ''}`}>
                 x{combo}
               </span>
             </div>
@@ -920,7 +920,7 @@ const Quiz: React.FC = () => {
               bands (gold/yellow/orange/red) + warning/critical pulse
               animations + correct dashOffset formula (QZ-P0-3). */}
           <div className="hidden md:flex flex-col items-center gap-1">
-            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">
+            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-bq-ink2">
               {t('quiz.time')}
             </span>
             <CircularTimer
@@ -937,19 +937,19 @@ const Quiz: React.FC = () => {
             <div className="min-w-[180px]" aria-hidden="true" />
           ) : (
             <div className="flex flex-col items-end gap-1 min-w-[180px]">
-              <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">{t('quiz.energy')}</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-bq-ink2">{t('quiz.energy')}</span>
               <div
                 className="flex items-center gap-2 w-full"
                 data-testid="quiz-energy-bar"
                 data-energy={serverEnergy ?? ''}
               >
-                <div className="relative flex-1 h-3 rounded-full bg-surface-container-highest overflow-hidden">
+                <div className="relative flex-1 h-3 rounded-full bg-bq-inset overflow-hidden">
                   <div
-                    className="absolute inset-y-0 left-0 rounded-full bg-secondary shadow-[0_0_10px_rgba(232,168,50,0.3)] transition-[width] duration-500 ease-out"
+                    className="absolute inset-y-0 left-0 rounded-full bg-bq-amber transition-[width] duration-500 ease-out"
                     style={{ width: `${computeEnergyPercent(serverEnergy, lives)}%` }}
                   />
                 </div>
-                <span className="text-sm font-bold tabular-nums text-on-surface min-w-[44px] text-right">
+                <span className="text-sm font-bold tabular-nums text-bq-ink min-w-[44px] text-right">
                   {Math.round(computeEnergyPercent(serverEnergy, lives))}%
                 </span>
               </div>
@@ -975,29 +975,29 @@ const Quiz: React.FC = () => {
             return (
               <div
                 data-question-length={lenClass}
-                className="relative w-full aspect-auto min-h-[160px] md:aspect-[21/7] md:min-h-0 flex flex-col items-center justify-center text-center p-5 md:p-10 bg-surface-container-low rounded-2xl md:rounded-[2.5rem] border border-outline-variant/10 shadow-2xl overflow-hidden"
+                className="relative w-full aspect-auto min-h-[160px] md:aspect-[21/7] md:min-h-0 flex flex-col items-center justify-center text-center p-5 md:p-10 bg-bq-white rounded-2xl md:rounded-[2.5rem] border border-bq-hair shadow-bq-soft overflow-hidden"
               >
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 md:w-2 h-20 md:h-32 bg-secondary rounded-r-full"></div>
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 md:w-2 h-20 md:h-32 bg-bq-amber rounded-r-full"></div>
 
                 {/* Verse badge — pill at the top of the card. */}
                 <div
                   data-testid="quiz-verse-badge"
-                  className="inline-flex items-center gap-1.5 bg-secondary/10 border border-secondary/20 rounded-full px-3 py-1 mb-3 md:mb-4"
+                  className="inline-flex items-center gap-1.5 bg-bq-inset border border-bq-hair rounded-full px-3 py-1 mb-3 md:mb-4"
                 >
-                  <span className="material-symbols-outlined text-secondary text-xs">menu_book</span>
-                  <span className="text-secondary text-[11px] font-medium tracking-wider">
+                  <span className="material-symbols-outlined text-bq-amberd text-xs">menu_book</span>
+                  <span className="text-bq-amberd text-[11px] font-medium tracking-wider">
                     {formatVerseRef(currentQuestion)}
                   </span>
                 </div>
 
                 <h2
                   data-testid="quiz-question-text"
-                  className={`question-text font-headline ${mobileFontCls} md:text-4xl md:font-extrabold md:text-center tracking-tight leading-snug max-w-3xl text-on-surface w-full`}
+                  className={`question-text font-display ${mobileFontCls} md:text-4xl md:font-extrabold md:text-center tracking-tight leading-snug max-w-3xl text-bq-ink w-full`}
                 >
                   {wrapProperNouns(currentQuestion.content)}
                 </h2>
                 {/* Bottom book-meta — desktop only; mobile already shows book+chapter in topbar. */}
-                <div className="hidden md:flex mt-8 items-center gap-2 text-on-surface-variant/60">
+                <div className="hidden md:flex mt-8 items-center gap-2 text-bq-ink3">
                   <span className="material-symbols-outlined text-sm">menu_book</span>
                   <span data-testid="quiz-question-book" className="text-xs font-bold uppercase tracking-widest">
                     {currentQuestion.book}{currentQuestion.chapter ? ` - ${t('quiz.chapter', { chapter: currentQuestion.chapter })}` : ''}
@@ -1069,8 +1069,8 @@ const Quiz: React.FC = () => {
             aria-disabled={!lifeline.canUseHint || showResult}
             className={`flex items-center gap-2 transition-colors ${
               lifeline.canUseHint && !showResult
-                ? 'text-on-surface-variant hover:text-on-surface'
-                : 'text-on-surface-variant/30 cursor-not-allowed'
+                ? 'text-bq-ink2 hover:text-bq-ink'
+                : 'text-bq-ink3 cursor-not-allowed'
             }`}
           >
             <span className="material-symbols-outlined">lightbulb</span>
@@ -1086,7 +1086,7 @@ const Quiz: React.FC = () => {
                 handleAnswerSelect(-1)
               }
             }}
-            className="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors"
+            className="flex items-center gap-2 text-bq-ink2 hover:text-bq-ink transition-colors"
           >
             <span className="material-symbols-outlined">skip_next</span>
             <span className="text-xs font-bold uppercase tracking-widest">{t('quiz.skip')}</span>
@@ -1105,7 +1105,7 @@ const Quiz: React.FC = () => {
         const hasWrongExp = isCorrect === false && (currentQuestion.explanation || currentQuestion.verseStart)
         const hasRightExp = isCorrect === true && settings?.showExplanation && currentQuestion.explanation
         const hasExp = hasWrongExp || hasRightExp
-        const pillBorder = isCorrect ? 'border-secondary/30 text-secondary' : 'border-error/30 text-error'
+        const pillBorder = isCorrect ? 'border-bq-amber/40 text-bq-amberd' : 'border-bq-ruby/40 text-bq-ruby'
         return (
           <div className="fixed bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)] max-w-lg flex flex-col items-center gap-2">
             {hasExp && (
@@ -1114,26 +1114,26 @@ const Quiz: React.FC = () => {
                   data-testid="quiz-explanation-pill"
                   type="button"
                   onClick={() => setExplanationCollapsed(false)}
-                  className={`px-4 py-2 rounded-full glass-panel border text-xs font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform ${pillBorder}`}
+                  className={`px-4 py-2 rounded-full bg-bq-white border text-xs font-bold flex items-center gap-2 shadow-bq-soft hover:scale-105 transition-transform ${pillBorder}`}
                 >
                   <span className="material-symbols-outlined text-sm" style={FILL_STYLE}>lightbulb</span>
                   {t('quiz.showExplanationAgain', 'Xem giải thích')}
                 </button>
               ) : (
                 <div ref={explanationRef} data-testid="quiz-explanation" className="w-full animate-slide-up">
-                  <div className={`glass-panel p-5 rounded-2xl border space-y-3 max-h-[50vh] overflow-y-auto ${isCorrect ? 'border-secondary/20' : 'border-error/20'}`}>
+                  <div className={`bg-bq-white p-5 rounded-2xl border space-y-3 max-h-[50vh] overflow-y-auto shadow-bq-soft ${isCorrect ? 'border-bq-amber/40' : 'border-bq-ruby/40'}`}>
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2 min-w-0">
                         {hasWrongExp && (
                           <>
-                            <span className="material-symbols-outlined text-green-400 text-sm flex-shrink-0" style={FILL_STYLE}>check_circle</span>
-                            <span className="text-sm font-bold text-green-400 truncate">
+                            <span className="material-symbols-outlined text-bq-emerald text-sm flex-shrink-0" style={FILL_STYLE}>check_circle</span>
+                            <span className="text-sm font-bold text-bq-emerald truncate">
                               {t('quiz.correctAnswerIs', { answer: currentQuestion.options[currentQuestion.correctAnswer?.[0] ?? 0] ?? '' })}
                             </span>
                           </>
                         )}
                         {hasRightExp && (
-                          <span className="text-sm font-bold text-on-surface">
+                          <span className="text-sm font-bold text-bq-ink">
                             {t('quiz.explanation')}
                           </span>
                         )}
@@ -1142,14 +1142,14 @@ const Quiz: React.FC = () => {
                         data-testid="quiz-explanation-close"
                         type="button"
                         onClick={() => setExplanationCollapsed(true)}
-                        className="text-on-surface-variant/60 hover:text-on-surface transition-colors -mr-1 flex-shrink-0"
+                        className="text-bq-ink3 hover:text-bq-ink transition-colors -mr-1 flex-shrink-0"
                         aria-label={t('quiz.minimizeExplanation', 'Thu nhỏ')}
                       >
                         <span className="material-symbols-outlined text-base">close</span>
                       </button>
                     </div>
                     {hasWrongExp && currentQuestion.verseStart && (
-                      <p className="text-secondary text-sm font-medium flex items-center gap-1.5">
+                      <p className="text-bq-amberd text-sm font-medium flex items-center gap-1.5">
                         <span className="material-symbols-outlined text-sm">menu_book</span>
                         {currentQuestion.book} {currentQuestion.chapter}:{currentQuestion.verseStart}
                         {currentQuestion.verseEnd && currentQuestion.verseEnd !== currentQuestion.verseStart
@@ -1157,8 +1157,8 @@ const Quiz: React.FC = () => {
                       </p>
                     )}
                     {currentQuestion.explanation && (
-                      <p className="text-on-surface-variant text-sm leading-relaxed flex items-start gap-1.5">
-                        <span className="material-symbols-outlined text-sm mt-0.5 text-secondary/60">lightbulb</span>
+                      <p className="text-bq-ink2 text-sm leading-relaxed flex items-start gap-1.5">
+                        <span className="material-symbols-outlined text-sm mt-0.5 text-bq-amberd">lightbulb</span>
                         <span>{currentQuestion.explanation}</span>
                       </p>
                     )}
@@ -1167,7 +1167,7 @@ const Quiz: React.FC = () => {
                         onClick={() => {
                           try { api.post('/api/me/bookmarks', { questionId: currentQuestion.id }) } catch {}
                         }}
-                        className="flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-secondary/80 transition-colors mt-1"
+                        className="flex items-center gap-1.5 text-xs font-bold text-bq-amberd hover:opacity-80 transition-opacity mt-1"
                       >
                         <span className="material-symbols-outlined text-sm">bookmark_add</span>
                         {t('quiz.bookmarkForReview', 'Đánh dấu ôn lại')}
@@ -1179,20 +1179,20 @@ const Quiz: React.FC = () => {
             )}
             <div
               data-testid="quiz-answer-feedback"
-              className="w-full bg-surface-container-highest p-4 sm:p-5 rounded-3xl border border-secondary/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 glass-panel"
+              className={`w-full bg-bq-white p-4 sm:p-5 rounded-3xl border shadow-bq-soft flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 ${isCorrect ? 'border-bq-amber/40' : 'border-bq-ruby/40'}`}
             >
               <div className="flex items-center gap-4 min-w-0">
-                <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center flex-shrink-0 ${isCorrect ? 'bg-secondary/20' : 'bg-error/20'}`}>
+                <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center flex-shrink-0 ${isCorrect ? 'bg-bq-amber/15' : 'bg-bq-ruby/15'}`}>
                   <span
-                    className={`material-symbols-outlined text-2xl ${isCorrect ? 'text-secondary' : 'text-error'}`}
+                    className={`material-symbols-outlined text-2xl ${isCorrect ? 'text-bq-amberd' : 'text-bq-ruby'}`}
                     style={FILL_STYLE}
                   >{isCorrect ? 'verified' : 'cancel'}</span>
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-base font-bold text-on-surface leading-tight">
+                  <p className="text-base font-bold text-bq-ink leading-tight">
                     {isCorrect ? t('quiz.correct') : t('quiz.incorrect')}
                   </p>
-                  <p data-testid="quiz-score-delta" className={`text-xs font-medium leading-tight mt-0.5 ${isCorrect ? 'text-secondary/80' : 'text-error/80'}`}>
+                  <p data-testid="quiz-score-delta" className={`text-xs font-medium leading-tight mt-0.5 ${isCorrect ? 'text-bq-amberd' : 'text-bq-ruby'}`}>
                     {isCorrect ? t('quiz.bonusPoints', { points: lastQuestionScore }) : t('quiz.noPoints')}
                   </p>
                 </div>
@@ -1200,7 +1200,7 @@ const Quiz: React.FC = () => {
               <button
                 data-testid="quiz-next-btn"
                 onClick={nextQuestion}
-                className="bg-gradient-to-r from-secondary to-tertiary text-on-secondary px-6 sm:px-8 py-3 rounded-2xl font-black text-sm shadow-xl active:scale-95 transition-all hover:brightness-110 whitespace-nowrap w-full sm:w-auto"
+                className="bg-bq-action text-white px-6 sm:px-8 py-3 rounded-2xl font-black text-sm shadow-bq-action active:scale-95 transition-all hover:brightness-110 whitespace-nowrap w-full sm:w-auto"
               >
                 {currentQuestionIndex + 1 >= questions.length ? t('quiz.viewResults') : t('quiz.nextQuestion')}
               </button>

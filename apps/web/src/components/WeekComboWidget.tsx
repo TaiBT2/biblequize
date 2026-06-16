@@ -29,31 +29,25 @@ export default function WeekComboWidget() {
   return (
     <div
       data-testid="week-combo-widget"
-      className="rounded-[10px] px-3.5 py-3"
-      style={{
-        backgroundColor: 'rgba(255,140,66,0.06)',
-        border: '1px solid rgba(255,140,66,0.18)',
-      }}
+      className="rounded-[10px] px-3.5 py-3 bg-bq-white border border-bq-amber/20 shadow-bq-soft"
     >
       <div
-        className="text-[10px] uppercase font-bold mb-1.5"
-        style={{ letterSpacing: '0.12em', color: 'rgba(255,140,66,0.7)' }}
+        className="text-[10px] uppercase font-bold mb-1.5 text-bq-amberd"
+        style={{ letterSpacing: '0.12em' }}
       >
         {t('ranked.sidebar.weekComboLabel')}
       </div>
       {combo != null && combo > 0 ? (
         <div
           data-testid="week-combo-widget-value"
-          className="text-[15px] font-semibold leading-none"
-          style={{ color: '#ff8c42' }}
+          className="text-[15px] font-semibold leading-none text-bq-amberd"
         >
           ×{combo}
         </div>
       ) : (
         <p
           data-testid="week-combo-widget-pending"
-          className="text-[10px] leading-snug"
-          style={{ color: 'rgba(225,225,241,0.5)' }}
+          className="text-[10px] leading-snug text-bq-ink2"
         >
           {t('ranked.sidebar.weekComboPending')}
         </p>

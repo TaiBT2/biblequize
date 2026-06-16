@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { localizeBibleBook } from '../../../data/bibleData'
-import { COLOR, DIFFICULTY_COLORS } from './styles'
+import { ACTION_BG, ACTION_BG_DISABLED, ACTION_FG, ACTION_SHADOW, COLOR, DIFFICULTY_COLORS, INSET_BG } from './styles'
 
 interface Scope {
   book: string
@@ -65,7 +65,7 @@ export default function AIGeneratePanel({
 
   const Stepper = ({
     value, setValue, label, color,
-  }: { value: number; setValue: (n: number) => void; label: string; color: typeof DIFFICULTY_COLORS.easy }) => (
+  }: { value: number; setValue: (n: number) => void; label: string; color: (typeof DIFFICULTY_COLORS)[keyof typeof DIFFICULTY_COLORS] }) => (
     <div style={{
       background: color.bg, border: `1px solid ${color.border}`,
       borderRadius: 8, padding: '10px 8px',
@@ -76,13 +76,13 @@ export default function AIGeneratePanel({
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '24px 1fr 24px', gap: 4, alignItems: 'center' }}>
         <button onClick={() => setValue(Math.max(0, value - 1))} style={{
-          background: 'rgba(255,255,255,0.06)', color: COLOR.textSecondary, border: 'none',
+          background: INSET_BG, color: COLOR.textSecondary, border: 'none',
           width: 24, height: 24, borderRadius: 5, cursor: 'pointer', fontSize: 14, lineHeight: 1,
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
         }}>−</button>
         <div style={{ fontSize: 18, fontWeight: 500, color: COLOR.textPrimary, textAlign: 'center' }}>{value}</div>
         <button onClick={() => setValue(Math.min(15, value + 1))} style={{
-          background: `rgba(${color.accent === '#4ade80' ? '74,222,128' : color.accent === '#fbbf24' ? '251,191,36' : '239,68,68'},0.15)`,
+          background: color.chip,
           color: color.accent, border: 'none',
           width: 24, height: 24, borderRadius: 5, cursor: 'pointer', fontSize: 14, lineHeight: 1,
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
@@ -93,13 +93,13 @@ export default function AIGeneratePanel({
 
   return (
     <div onClick={onClose} style={{
-      position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.65)', zIndex: 50,
+      position: 'fixed', inset: 0, background: 'rgba(22,21,27,0.45)', zIndex: 50,
       display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16,
     }}>
       <div onClick={e => e.stopPropagation()} style={{
         background: COLOR.bgPanel, border: `1px solid ${COLOR.borderSubtle}`,
         borderRadius: 16, maxWidth: 580, width: '100%', maxHeight: '92vh', overflowY: 'auto',
-        boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
+        boxShadow: '0 18px 40px -24px rgba(20,20,30,0.28)',
       }}>
         <div style={{ padding: '20px 24px 0', display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1 }}>
@@ -108,7 +108,7 @@ export default function AIGeneratePanel({
           </div>
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 5,
-            background: COLOR.goldBg, border: `1px solid rgba(232,168,50,0.22)`,
+            background: COLOR.goldBg, border: `1px solid rgba(245,158,11,0.30)`,
             padding: '4px 9px', borderRadius: 999, fontSize: 11, color: COLOR.gold,
           }}>
             <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>auto_awesome</span>
@@ -126,7 +126,7 @@ export default function AIGeneratePanel({
             {t('quizSet.editor.aiPanel.bookHeader')}
           </div>
           <div style={{
-            background: COLOR.inputBg, border: `1px solid rgba(232,168,50,0.30)`,
+            background: COLOR.inputBg, border: `1px solid rgba(245,158,11,0.30)`,
             borderRadius: 8, padding: '11px 13px', fontSize: 13, color: COLOR.textPrimary, marginBottom: 14,
           }}>
             <span className="material-symbols-outlined" style={{ fontSize: 14, color: COLOR.gold, marginRight: 8, verticalAlign: -2 }} aria-hidden>menu_book</span>
@@ -136,7 +136,7 @@ export default function AIGeneratePanel({
 
           {/* PHẠM VI: Chương + Câu */}
           <div style={{
-            background: 'rgba(255,255,255,0.02)', border: `1px solid ${COLOR.borderXSubtle}`,
+            background: INSET_BG, border: `1px solid ${COLOR.borderXSubtle}`,
             borderRadius: 10, padding: '12px 14px', marginBottom: 16,
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
@@ -202,7 +202,7 @@ export default function AIGeneratePanel({
 
           {/* PHÂN BỔ ĐỘ KHÓ */}
           <div style={{
-            background: 'rgba(255,255,255,0.02)', border: `1px solid ${COLOR.borderXSubtle}`,
+            background: INSET_BG, border: `1px solid ${COLOR.borderXSubtle}`,
             borderRadius: 10, padding: '12px 14px', marginBottom: 18,
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
@@ -220,7 +220,7 @@ export default function AIGeneratePanel({
             {/* Stacked bar */}
             <div style={{
               display: 'flex', height: 6, borderRadius: 3, overflow: 'hidden',
-              marginBottom: 14, background: 'rgba(255,255,255,0.05)',
+              marginBottom: 14, background: '#FFFFFF',
             }}>
               <div style={{ width: `${pct(easy)}%`, background: DIFFICULTY_COLORS.easy.accent, transition: 'width 0.2s' }} />
               <div style={{ width: `${pct(medium)}%`, background: DIFFICULTY_COLORS.medium.accent, transition: 'width 0.2s' }} />
@@ -233,7 +233,7 @@ export default function AIGeneratePanel({
               <Stepper value={hard} setValue={setHard} label={t('quizSet.editor.aiPanel.diffHard')} color={DIFFICULTY_COLORS.hard} />
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingTop: 10, borderTop: `1px solid rgba(255,255,255,0.04)` }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingTop: 10, borderTop: `1px solid ${COLOR.borderXSubtle}` }}>
               <span style={{ fontSize: 11, color: COLOR.textDisabled }}>{t('quizSet.editor.aiPanel.suggestion')}</span>
               <button onClick={() => { setEasy(2); setMedium(2); setHard(2) }} style={pillBtn()}>
                 <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>balance</span> {t('quizSet.editor.aiPanel.balance')}
@@ -246,7 +246,7 @@ export default function AIGeneratePanel({
 
           {error && (
             <div style={{
-              background: 'rgba(239,68,68,0.10)', border: `1px solid rgba(239,68,68,0.30)`,
+              background: 'rgba(224,53,75,0.10)', border: `1px solid rgba(224,53,75,0.30)`,
               color: COLOR.danger, padding: '8px 12px', borderRadius: 7, fontSize: 12, marginBottom: 12,
             }}>
               <span className="material-symbols-outlined" style={{ fontSize: 14, marginRight: 6, verticalAlign: -2 }} aria-hidden>error</span>
@@ -256,8 +256,8 @@ export default function AIGeneratePanel({
         </div>
 
         <div style={{
-          padding: '16px 24px 20px', borderTop: `1px solid rgba(255,255,255,0.04)`,
-          background: 'rgba(255,255,255,0.015)',
+          padding: '16px 24px 20px', borderTop: `1px solid ${COLOR.borderXSubtle}`,
+          background: INSET_BG,
         }}>
           <button
             onClick={() => {
@@ -273,9 +273,10 @@ export default function AIGeneratePanel({
             disabled={disabled}
             style={{
               width: '100%',
-              background: disabled ? 'rgba(232,168,50,0.30)' : COLOR.gold,
-              color: '#1a1226', border: 'none', padding: '13px 16px',
-              borderRadius: 10, fontSize: 14, fontWeight: 500,
+              background: disabled ? ACTION_BG_DISABLED : ACTION_BG,
+              boxShadow: disabled ? 'none' : ACTION_SHADOW,
+              color: ACTION_FG, border: 'none', padding: '13px 16px',
+              borderRadius: 10, fontSize: 14, fontWeight: 600,
               cursor: disabled ? 'not-allowed' : 'pointer',
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               opacity: disabled ? 0.6 : 1,
@@ -319,9 +320,9 @@ function scopeInput(placeholderStyle = false): React.CSSProperties {
 
 function pillBtn(highlighted = false): React.CSSProperties {
   return {
-    background: highlighted ? COLOR.goldBg : 'rgba(255,255,255,0.04)',
+    background: highlighted ? COLOR.goldBg : '#FFFFFF',
     color: highlighted ? COLOR.gold : COLOR.textSecondary,
-    border: `1px solid ${highlighted ? 'rgba(232,168,50,0.22)' : COLOR.borderSubtle}`,
+    border: `1px solid ${highlighted ? 'rgba(245,158,11,0.30)' : COLOR.borderSubtle}`,
     padding: '4px 10px', borderRadius: 999, fontSize: 11, cursor: 'pointer',
     display: 'inline-flex', alignItems: 'center', gap: 4,
   }

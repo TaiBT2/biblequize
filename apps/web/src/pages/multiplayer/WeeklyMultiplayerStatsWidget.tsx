@@ -30,14 +30,13 @@ export default function WeeklyMultiplayerStatsWidget() {
   if (isLoading || !data) {
     return (
       <div
-        className="p-4 rounded-xl animate-pulse"
-        style={{ background: 'rgba(50,52,64,0.4)', border: '1px solid rgba(255,255,255,0.06)' }}
+        className="p-4 rounded-xl animate-pulse bg-bq-white border border-bq-hair shadow-bq-soft"
       >
-        <div className="h-3 w-16 bg-white/10 rounded mb-3" />
-        <div className="h-6 w-12 bg-white/10 rounded mb-3" />
+        <div className="h-3 w-16 bg-bq-inset rounded mb-3" />
+        <div className="h-6 w-12 bg-bq-inset rounded mb-3" />
         <div className="space-y-2">
-          <div className="h-2 w-full bg-white/5 rounded" />
-          <div className="h-2 w-full bg-white/5 rounded" />
+          <div className="h-2 w-full bg-bq-inset rounded" />
+          <div className="h-2 w-full bg-bq-inset rounded" />
         </div>
       </div>
     )
@@ -47,28 +46,23 @@ export default function WeeklyMultiplayerStatsWidget() {
 
   return (
     <div
-      className="p-4 rounded-xl"
-      style={{
-        background: 'rgba(50,52,64,0.4)',
-        backdropFilter: 'blur(12px)',
-        border: '1px solid rgba(255,255,255,0.06)',
-      }}
+      className="p-4 rounded-xl bg-bq-white border border-bq-hair shadow-bq-soft"
     >
-      <div className="text-[10px] tracking-widest uppercase font-bold mb-2" style={{ color: '#38bdf8' }}>
+      <div className="text-[10px] tracking-widest uppercase font-bold mb-2" style={{ color: '#2D46C8' }}>
         {t('multiplayer.stats.weekHeader')}
       </div>
       <div className="flex items-baseline justify-between mb-3">
-        <div className="text-[26px] font-extrabold leading-none text-white">{data.wins}</div>
-        <div className="text-[10px] text-white/50">{t('multiplayer.stats.wins')}</div>
+        <div className="text-[26px] font-extrabold leading-none text-bq-ink">{data.wins}</div>
+        <div className="text-[10px] text-bq-ink2">{t('multiplayer.stats.wins')}</div>
       </div>
       <div className="space-y-1.5 text-[11px]">
-        <div className="flex justify-between text-white/70">
+        <div className="flex justify-between text-bq-ink2">
           <span>{t('multiplayer.stats.winRate')}</span>
-          <span className="font-bold text-white">{winRatePct}%</span>
+          <span className="font-bold text-bq-ink">{winRatePct}%</span>
         </div>
-        <div className="flex justify-between text-white/70">
+        <div className="flex justify-between text-bq-ink2">
           <span>{t('multiplayer.stats.mvp')}</span>
-          <span className="font-bold" style={{ color: '#e8a832' }}>×{data.mvpCount}</span>
+          <span className="font-bold" style={{ color: '#D97F06' }}>×{data.mvpCount}</span>
         </div>
       </div>
     </div>

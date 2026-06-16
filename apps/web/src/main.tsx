@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './styles/global.css'
+import './styles/tokens.css'
 import { useAuthStore } from './store/authStore'
 import { ErrorProvider } from './contexts/ErrorContext'
 import { ToastProvider } from './contexts/ToastContext'
@@ -12,6 +13,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import { initStorageSync } from './utils/localStorageClearDetector'
 import './i18n'
 import Home from './pages/Home'
+import HomeKhungSangMock from './pages/HomeKhungSangMock'
 import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -128,6 +130,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <ToastProvider>
             <BrowserRouter>
               <Routes>
+                {/* PREVIEW-ONLY: coded mockup of the game-vibe Home redesign (v2).
+                    Standalone (own chrome), no auth, no AppLayout. Remove after approval. */}
+                <Route path="/home-khung-sang-preview" element={<HomeKhungSangMock />} />
                 {/* "/" = LandingPage for guest, Home (with AppLayout) for authenticated */}
                 <Route element={<HomeOrLanding />}>
                   <Route path="/" element={<Home />} />

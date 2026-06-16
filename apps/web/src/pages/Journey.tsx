@@ -45,13 +45,13 @@ export default function Journey() {
   if (isLoading) {
     return (
       <div className="space-y-6 max-w-4xl mx-auto w-full">
-        <div className="glass-card p-6 space-y-3">
-          <div className="animate-pulse bg-on-surface/5 h-6 w-48 rounded" />
-          <div className="animate-pulse bg-on-surface/5 h-4 w-64 rounded" />
-          <div className="animate-pulse bg-on-surface/5 h-3 w-full rounded-full" />
+        <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-6 space-y-3">
+          <div className="animate-pulse bg-bq-inset h-6 w-48 rounded" />
+          <div className="animate-pulse bg-bq-inset h-4 w-64 rounded" />
+          <div className="animate-pulse bg-bq-inset h-3 w-full rounded-full" />
         </div>
         {Array.from({ length: 8 }).map((_, i) => (
-          <div key={i} className="animate-pulse bg-on-surface/5 h-16 rounded-xl" />
+          <div key={i} className="animate-pulse bg-bq-inset h-16 rounded-xl" />
         ))}
       </div>
     )
@@ -60,8 +60,8 @@ export default function Journey() {
   if (error || !data) {
     return (
       <div className="flex flex-col items-center justify-center py-24">
-        <span className="material-symbols-outlined text-5xl text-on-surface-variant/40 mb-4">error</span>
-        <p className="text-on-surface-variant">{t('common.error')}</p>
+        <span className="material-symbols-outlined text-5xl text-bq-ruby/40 mb-4">error</span>
+        <p className="text-bq-ink2">{t('common.error')}</p>
       </div>
     )
   }
@@ -75,31 +75,31 @@ export default function Journey() {
   return (
     <div className="space-y-6 max-w-4xl mx-auto w-full" data-testid="journey-page">
       {/* Summary */}
-      <section className="glass-card p-6" data-testid="journey-summary-card">
+      <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-6" data-testid="journey-summary-card">
         <div className="flex items-center gap-3 mb-3">
-          <span className="material-symbols-outlined text-secondary text-2xl" style={FILL_1}>map</span>
-          <h1 className="text-xl font-bold text-on-surface">{t('journey.title')}</h1>
+          <span className="material-symbols-outlined text-bq-amberd text-2xl" style={FILL_1}>map</span>
+          <h1 className="text-xl font-display font-bold text-bq-ink">{t('journey.title')}</h1>
         </div>
-        <p data-testid="journey-mastery-pct" className="text-on-surface-variant text-sm mb-3">
+        <p data-testid="journey-mastery-pct" className="text-bq-ink2 text-sm mb-3">
           {t('journey.conquered', { count: summary.completedBooks, total: summary.totalBooks, percent: pct })}
         </p>
-        <div className="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+        <div className="w-full h-3 bg-bq-inset rounded-full overflow-hidden">
           <div
-            className="h-full bg-secondary rounded-full transition-all"
+            className="h-full bg-bq-amber rounded-full transition-all"
             style={{ width: `${pct}%` }}
           />
         </div>
-        <div className="flex gap-6 mt-3 text-xs text-on-surface-variant">
+        <div className="flex gap-6 mt-3 text-xs text-bq-ink2">
           <span data-testid="journey-books-completed" className="flex items-center gap-1">
-            <span className="w-2 h-2 rounded-full bg-secondary" />
+            <span className="w-2 h-2 rounded-full bg-bq-emerald" />
             {t('journey.completed')}: {summary.completedBooks}
           </span>
           <span data-testid="journey-books-inprogress" className="flex items-center gap-1">
-            <span className="w-2 h-2 rounded-full bg-primary" />
+            <span className="w-2 h-2 rounded-full bg-bq-amber" />
             {t('journey.inProgress')}: {summary.inProgressBooks}
           </span>
           <span className="flex items-center gap-1">
-            <span className="w-2 h-2 rounded-full bg-on-surface-variant/30" />
+            <span className="w-2 h-2 rounded-full bg-bq-ink3/40" />
             {t('journey.notStarted')}: {summary.lockedBooks}
           </span>
         </div>
@@ -144,7 +144,7 @@ function BookSection({
 }) {
   return (
     <section data-testid={testId}>
-      <h2 className="text-sm font-bold text-on-surface-variant uppercase tracking-wider mb-3 px-1">{title}</h2>
+      <h2 className="text-sm font-bold text-bq-ink2 uppercase tracking-wider mb-3 px-1">{title}</h2>
       <div className="space-y-2">
         {books.map((book) => (
           <BookCard key={book.order} book={book} isVi={isVi} onClick={() => onBookClick(book)} t={t} />
@@ -172,16 +172,16 @@ function BookCard({
       onClick={onClick}
       className={`flex items-center gap-4 p-4 rounded-xl border transition-all ${
         isCompleted
-          ? 'bg-secondary/5 border-secondary/30 cursor-pointer hover:border-secondary/50'
-          : 'bg-surface-container border-outline-variant/10 cursor-pointer hover:border-primary/30'
+          ? 'bg-bq-emerald/10 border-bq-emerald/30 cursor-pointer hover:border-bq-emerald/50'
+          : 'bg-bq-white border-bq-hair cursor-pointer hover:border-bq-amber/40'
       }`}
     >
       {/* Status icon */}
       <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${
-        isCompleted ? 'bg-secondary/20' : 'bg-primary/20'
+        isCompleted ? 'bg-bq-emerald/20' : 'bg-bq-amber/20'
       }`}>
         <span className={`material-symbols-outlined text-lg ${
-          isCompleted ? 'text-secondary' : 'text-primary'
+          isCompleted ? 'text-bq-emerald' : 'text-bq-amberd'
         }`} style={isCompleted ? { fontVariationSettings: "'FILL' 1" } : undefined}>
           {isCompleted ? 'check_circle' : 'menu_book'}
         </span>
@@ -190,30 +190,30 @@ function BookCard({
       {/* Book info */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
-          <span data-testid="journey-book-name" className="font-semibold text-sm text-on-surface">
+          <span data-testid="journey-book-name" className="font-semibold text-sm text-bq-ink">
             {bookName}
           </span>
-          <span className="text-[10px] text-on-surface-variant">#{book.order}</span>
+          <span className="text-[10px] text-bq-ink2">#{book.order}</span>
         </div>
         {book.totalQuestions > 0 ? (
-          <p data-testid="journey-book-mastery" className="text-xs text-on-surface-variant">
+          <p data-testid="journey-book-mastery" className="text-xs text-bq-ink2">
             {t('journey.questions', { count: book.totalQuestions })} · {book.masteredQuestions}/{book.totalQuestions}
           </p>
         ) : (
-          <p data-testid="journey-book-mastery" className="text-xs text-on-surface-variant/50">{t('journey.noQuestions')}</p>
+          <p data-testid="journey-book-mastery" className="text-xs text-bq-ink3">{t('journey.noQuestions')}</p>
         )}
       </div>
 
       {/* Progress bar + percentage */}
       {book.totalQuestions > 0 && (
         <div className="flex items-center gap-3 shrink-0">
-          <div className="w-20 h-2 bg-surface-container-high rounded-full overflow-hidden">
+          <div className="w-20 h-2 bg-bq-inset rounded-full overflow-hidden">
             <div
-              className={`h-full rounded-full transition-all ${isCompleted ? 'bg-secondary' : 'bg-primary'}`}
+              className={`h-full rounded-full transition-all ${isCompleted ? 'bg-bq-emerald' : 'bg-bq-amber'}`}
               style={{ width: `${Math.min(book.masteryPercent, 100)}%` }}
             />
           </div>
-          <span className={`text-xs font-bold w-10 text-right ${isCompleted ? 'text-secondary' : 'text-on-surface-variant'}`}>
+          <span className={`text-xs font-bold w-10 text-right ${isCompleted ? 'text-bq-emerald' : 'text-bq-ink2'}`}>
             {book.masteryPercent}%
           </span>
         </div>

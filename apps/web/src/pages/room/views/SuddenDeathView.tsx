@@ -24,9 +24,9 @@ const SuddenDeathView: React.FC<{ sd: SuddenDeathState; myUsername: string }> = 
 export const SdSpectatingBadge: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <div className="hidden sm:flex items-center gap-1 bg-[#ff8c42]/10 px-2.5 py-1 rounded-full border border-[#ff8c42]/20">
-      <span className="material-symbols-outlined text-[#ff8c42] text-sm">visibility</span>
-      <span className="text-[#ff8c42] text-[10px] font-bold">{t('room.quiz.sdSpectating')}</span>
+    <div className="hidden sm:flex items-center gap-1 bg-bq-ember/10 px-2.5 py-1 rounded-full border border-bq-ember/20">
+      <span className="material-symbols-outlined text-bq-ember text-sm">visibility</span>
+      <span className="text-bq-ember text-[10px] font-bold">{t('room.quiz.sdSpectating')}</span>
     </div>
   );
 };

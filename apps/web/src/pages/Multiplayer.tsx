@@ -95,13 +95,13 @@ export default function Multiplayer() {
   const liveCount = allRooms.filter(r => r.status === 'LOBBY' || r.status === 'IN_PROGRESS').length
 
   return (
-    <div data-testid="multiplayer-page" className="max-w-[1180px] mx-auto space-y-6">
+    <div data-testid="multiplayer-page" className="max-w-[1180px] mx-auto space-y-6 bg-bq-paper">
 
       {roomEndedBanner && (
         <div
           data-testid="multiplayer-room-ended-banner"
           className="rounded-xl px-4 py-3 flex items-center gap-3"
-          style={{ background: 'rgba(232,168,50,0.08)', border: '1px solid rgba(232,168,50,0.25)', color: '#fbbf24' }}
+          style={{ background: 'rgba(245,158,11,0.10)', border: '1px solid rgba(245,158,11,0.30)', color: '#D97F06' }}
         >
           <span className="material-symbols-outlined text-lg">info</span>
           <span className="text-sm font-medium">
@@ -114,27 +114,27 @@ export default function Multiplayer() {
       <header className="flex items-start justify-between gap-6 flex-wrap">
         <div>
           <div className="flex items-center gap-2 mb-1 flex-wrap">
-            <span className="text-[11px] tracking-[0.2em] uppercase font-bold" style={{ color: '#e8a832' }}>
+            <span className="text-[11px] tracking-[0.2em] uppercase font-bold" style={{ color: '#D97F06' }}>
               {t('multiplayer.subtitle', 'Chế độ Đa người chơi')}
             </span>
-            <span className="w-1 h-1 rounded-full bg-white/30" />
-            <span className="flex items-center gap-1.5 text-[11px] text-white/60">
+            <span className="w-1 h-1 rounded-full bg-bq-hair" />
+            <span className="flex items-center gap-1.5 text-[11px] text-bq-ink2">
               <LiveDot />
-              <span><span className="font-bold text-white">{liveCount}</span> {t('multiplayer.liveRoomsSuffix')}</span>
+              <span><span className="font-bold text-bq-ink">{liveCount}</span> {t('multiplayer.liveRoomsSuffix')}</span>
             </span>
           </div>
-          <h1 className="text-[28px] md:text-[34px] font-extrabold tracking-tight leading-tight text-white">
+          <h1 className="font-display text-[28px] md:text-[34px] font-extrabold tracking-tight leading-tight text-bq-ink">
             {t('multiplayer.title', 'Phòng Chơi')}
           </h1>
-          <p className="text-[13px] text-white/55 mt-1">
+          <p className="text-[13px] text-bq-ink2 mt-1">
             {t('multiplayer.desc', 'Realtime · 4 chế độ · Mời bạn bè cùng học Kinh Thánh qua game')}
           </p>
         </div>
 
         <button
           onClick={() => navigate('/my-sets')}
-          className="hidden md:flex items-center gap-2 px-4 h-10 rounded-lg text-[13px] font-semibold transition-colors"
-          style={{ background: 'rgba(50,52,64,0.4)', border: '1px solid rgba(255,255,255,0.06)', color: '#fff' }}
+          className="hidden md:flex items-center gap-2 px-4 h-10 rounded-lg text-[13px] font-semibold transition-colors bg-bq-white"
+          style={{ border: '1px solid #E7E4DA', color: '#16151B' }}
         >
           <span className="material-symbols-outlined text-sm" style={FILL_1}>menu_book</span>
           {t('multiplayer.quizSetsBtn')}
@@ -147,31 +147,29 @@ export default function Multiplayer() {
       {/* ── Hero row 50/50: Tạo phòng (gold) + Solo Arena (indigo) ── */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
-          className="rounded-2xl p-6 relative overflow-hidden"
+          className="rounded-2xl p-6 relative overflow-hidden bg-bq-white shadow-bq-soft"
           style={{
-            background: 'linear-gradient(135deg, rgba(232,168,50,0.12), rgba(231,194,104,0.06))',
-            border: '1px solid rgba(232,168,50,0.25)',
-            boxShadow: '0 0 24px -8px rgba(232,168,50,0.3)',
+            border: '1px solid rgba(245,158,11,0.30)',
           }}
         >
           <div className="absolute -right-12 -top-12 w-48 h-48 rounded-full pointer-events-none"
-            style={{ background: 'radial-gradient(circle, rgba(232,168,50,0.15) 0%, transparent 70%)' }} />
+            style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.10) 0%, transparent 70%)' }} />
           <div className="relative">
             <div className="flex items-center gap-2 mb-3">
               <div
                 className="w-9 h-9 rounded-lg flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #e8a832, #e7c268)' }}
+                style={{ background: 'linear-gradient(135deg, #F59E0B, #FFE08A)' }}
               >
-                <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#11131e', fontVariationSettings: "'FILL' 1" }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFFFFF', fontVariationSettings: "'FILL' 1" }}>
                   workspace_premium
                 </span>
               </div>
-              <div className="text-[10px] tracking-widest uppercase font-bold" style={{ color: '#e8a832' }}>
+              <div className="text-[10px] tracking-widest uppercase font-bold" style={{ color: '#D97F06' }}>
                 {t('multiplayer.create.kicker')}
               </div>
             </div>
-            <h2 className="text-[20px] font-extrabold mb-1.5 leading-tight text-white">{t('multiplayer.create.title')}</h2>
-            <p className="text-[12.5px] text-white/65 mb-4 leading-relaxed">
+            <h2 className="font-display text-[20px] font-extrabold mb-1.5 leading-tight text-bq-ink">{t('multiplayer.create.title')}</h2>
+            <p className="text-[12.5px] text-bq-ink2 mb-4 leading-relaxed">
               {t('multiplayer.create.desc')}
             </p>
             <div className="flex items-center gap-2 mb-5 flex-wrap">
@@ -182,8 +180,8 @@ export default function Multiplayer() {
             <button
               data-testid="multiplayer-create-btn"
               onClick={() => navigate('/room/create')}
-              className="w-full md:w-auto inline-flex items-center justify-center gap-2 h-11 px-5 rounded-lg text-[14px] font-bold transition-opacity hover:opacity-90"
-              style={{ background: 'linear-gradient(135deg, #e8a832, #e7c268)', color: '#1a1226' }}
+              className="w-full md:w-auto inline-flex items-center justify-center gap-2 h-11 px-5 rounded-lg text-[14px] font-bold transition-opacity hover:opacity-90 shadow-bq-action"
+              style={{ background: 'var(--bq-action)', color: '#FFFFFF' }}
             >
               <span className="material-symbols-outlined" style={{ fontSize: 18 }}>add</span>
               {t('multiplayer.createRoom', 'Tạo Phòng')}
@@ -201,15 +199,15 @@ export default function Multiplayer() {
       <section className="space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div className="flex items-center gap-3">
-            <h3 className="text-[18px] font-bold tracking-tight text-white">
+            <h3 className="font-display text-[18px] font-bold tracking-tight text-bq-ink">
               {t('multiplayer.waitingRooms', 'Phòng đang chờ')}
             </h3>
             <span
               className="flex items-center gap-1.5 px-2.5 py-1 rounded-full"
-              style={{ background: 'rgba(34,197,94,0.10)', border: '1px solid rgba(34,197,94,0.20)' }}
+              style={{ background: 'rgba(14,138,107,0.10)', border: '1px solid rgba(14,138,107,0.22)' }}
             >
               <LiveDot />
-              <span className="text-[10px] font-bold uppercase tracking-wider text-green-400">Live · {liveCount}</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: '#0E8A6B' }}>Live · {liveCount}</span>
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -217,10 +215,9 @@ export default function Multiplayer() {
               onClick={() => refetch()}
               disabled={isFetching}
               title={t('multiplayer.refresh', 'Làm mới')}
-              className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
-              style={{ background: 'rgba(255,255,255,0.04)' }}
+              className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors bg-bq-inset"
             >
-              <span className={`material-symbols-outlined text-white/70 ${isFetching ? 'animate-spin' : ''}`} style={{ fontSize: 14 }}>refresh</span>
+              <span className={`material-symbols-outlined text-bq-ink2 ${isFetching ? 'animate-spin' : ''}`} style={{ fontSize: 14 }}>refresh</span>
             </button>
           </div>
         </div>
@@ -232,7 +229,7 @@ export default function Multiplayer() {
             active={modeFilter === 'QUICK_MATCH'}
             onClick={() => setModeFilter('QUICK_MATCH')}
             icon="rocket_launch"
-            iconColor="#818cf8"
+            iconColor="#2D46C8"
           >
             {t('multiplayer.filterQuickMatch')}
           </FilterChip>
@@ -247,7 +244,7 @@ export default function Multiplayer() {
               {MODE_DISPLAY_LABEL[m.id]}
             </FilterChip>
           ))}
-          <div className="w-px h-5 bg-white/10 mx-1" />
+          <div className="w-px h-5 bg-bq-hair mx-1" />
           <FilterChip active={sort === 'newest'} onClick={() => setSort('newest')}>{t('multiplayer.sortNewest')}</FilterChip>
           <FilterChip active={sort === 'filling'} onClick={() => setSort('filling')}>{t('multiplayer.sortFilling')}</FilterChip>
         </div>
@@ -256,7 +253,7 @@ export default function Multiplayer() {
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[1, 2, 3, 4].map(i => (
-              <div key={i} className="h-44 rounded-xl animate-pulse" style={{ background: 'rgba(50,52,64,0.3)' }} />
+              <div key={i} className="h-44 rounded-xl animate-pulse bg-bq-inset" />
             ))}
           </div>
         ) : isError ? (
@@ -282,8 +279,8 @@ export default function Multiplayer() {
 function LiveDot() {
   return (
     <span className="relative inline-block w-2 h-2">
-      <span className="absolute inset-0 rounded-full bg-green-500" />
-      <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-75" />
+      <span className="absolute inset-0 rounded-full bg-bq-emerald" />
+      <span className="absolute inset-0 rounded-full bg-bq-emerald animate-ping opacity-75" />
     </span>
   )
 }
@@ -292,7 +289,7 @@ function FeatureTag({ icon, label }: { icon: string; label: string }) {
   return (
     <span
       className="px-2 py-1 rounded-md text-[10px] font-semibold flex items-center gap-1"
-      style={{ background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.6)' }}
+      style={{ background: '#F2F0E7', color: '#6C6A62' }}
     >
       <span className="material-symbols-outlined" style={{ fontSize: 12 }}>{icon}</span>
       {label}
@@ -315,9 +312,9 @@ function FilterChip({
       onClick={onClick}
       className="inline-flex items-center gap-1.5 px-3 h-8 rounded-full text-[12px] font-semibold transition-colors"
       style={{
-        background: active ? 'rgba(232,168,50,0.15)' : 'transparent',
-        border: `1px solid ${active ? 'rgba(232,168,50,0.4)' : 'rgba(255,255,255,0.10)'}`,
-        color: active ? '#e8a832' : 'rgba(255,255,255,0.7)',
+        background: active ? 'rgba(245,158,11,0.14)' : '#FFFFFF',
+        border: `1px solid ${active ? 'rgba(245,158,11,0.40)' : '#E7E4DA'}`,
+        color: active ? '#D97F06' : '#6C6A62',
       }}
     >
       {icon && (
@@ -334,18 +331,18 @@ function ErrorState({ onRetry, retrying }: { onRetry: () => void; retrying: bool
     <div
       data-testid="multiplayer-error-state"
       className="flex flex-col items-center justify-center py-20 rounded-2xl"
-      style={{ background: 'rgba(248,113,113,0.06)', border: '1px solid rgba(248,113,113,0.2)' }}
+      style={{ background: 'rgba(224,53,75,0.06)', border: '1px solid rgba(224,53,75,0.20)' }}
     >
-      <div className="w-20 h-20 rounded-full flex items-center justify-center mb-5" style={{ background: 'rgba(248,113,113,0.12)' }}>
-        <span className="material-symbols-outlined" style={{ fontSize: 32, color: '#f87171' }}>error</span>
+      <div className="w-20 h-20 rounded-full flex items-center justify-center mb-5" style={{ background: 'rgba(224,53,75,0.12)' }}>
+        <span className="material-symbols-outlined" style={{ fontSize: 32, color: '#E0354B' }}>error</span>
       </div>
-      <h5 className="text-lg font-bold text-white mb-2">{t('multiplayer.loadErrorTitle')}</h5>
-      <p className="text-sm text-white/55 text-center max-w-xs mb-6">{t('multiplayer.loadErrorDesc')}</p>
+      <h5 className="font-display text-lg font-bold text-bq-ink mb-2">{t('multiplayer.loadErrorTitle')}</h5>
+      <p className="text-sm text-bq-ink2 text-center max-w-xs mb-6">{t('multiplayer.loadErrorDesc')}</p>
       <button
         onClick={onRetry}
         disabled={retrying}
-        className="py-3 px-8 rounded-xl font-bold text-sm disabled:opacity-60"
-        style={{ background: 'linear-gradient(135deg, #e8a832, #e7c268)', color: '#1a1226' }}
+        className="py-3 px-8 rounded-xl font-bold text-sm disabled:opacity-60 shadow-bq-action"
+        style={{ background: 'var(--bq-action)', color: '#FFFFFF' }}
       >
         {retrying ? t('multiplayer.loadErrorLoading') : t('multiplayer.loadErrorRetry')}
       </button>

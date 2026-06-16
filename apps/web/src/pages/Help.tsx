@@ -59,10 +59,10 @@ export default function Help() {
     <div data-testid="help-page" className="space-y-8">
       {/* ── Hero ── */}
       <section>
-        <h1 className="text-3xl md:text-4xl font-black tracking-tight text-on-surface mb-2">
+        <h1 className="font-display text-3xl md:text-4xl font-black tracking-tight text-bq-ink mb-2">
           {t('help.title')}
         </h1>
-        <p className="text-on-surface-variant">{t('help.subtitle')}</p>
+        <p className="text-bq-ink2">{t('help.subtitle')}</p>
       </section>
 
       {/* ── Category pills ── */}
@@ -90,7 +90,7 @@ export default function Help() {
             if (items.length === 0) return null
             return (
               <section key={cat} data-testid={`faq-category-${cat}`}>
-                <h2 className="text-xs font-black uppercase tracking-[0.2em] text-secondary mb-3">
+                <h2 className="text-xs font-black uppercase tracking-[0.2em] text-bq-amberd mb-3">
                   {t(`help.categories.${cat}`)}
                 </h2>
                 <div className="space-y-2">
@@ -118,18 +118,18 @@ export default function Help() {
             />
           ))}
           {visibleItems.length === 0 && (
-            <p className="text-on-surface-variant text-sm">{t('help.emptyResult')}</p>
+            <p className="text-bq-ink2 text-sm">{t('help.emptyResult')}</p>
           )}
         </div>
       )}
 
       {/* ── Footer: contact hint ── */}
-      <section className="mt-12 pt-6 border-t border-outline-variant/10 text-center">
-        <p className="text-sm text-on-surface-variant">
+      <section className="mt-12 pt-6 border-t border-bq-hair text-center">
+        <p className="text-sm text-bq-ink2">
           {t('help.contactHint')}{' '}
           <a
             href="mailto:support@forbible.org"
-            className="font-bold text-secondary hover:underline"
+            className="font-bold text-bq-amberd hover:underline"
           >
             {t('help.contactCta')}
           </a>
@@ -156,8 +156,8 @@ function CategoryPill({
       onClick={onClick}
       className={`px-4 py-2 rounded-full text-xs font-bold tracking-tight transition-colors ${
         active
-          ? 'gold-gradient text-on-secondary shadow-md'
-          : 'bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface'
+          ? 'bg-bq-action text-white shadow-bq-action'
+          : 'bg-bq-white border border-bq-hair text-bq-ink2 hover:bg-bq-inset hover:text-bq-ink'
       }`}
     >
       {label}
@@ -184,8 +184,8 @@ function FaqAccordion({
       data-open={open ? 'true' : 'false'}
       className={`rounded-2xl border transition-all ${
         open
-          ? 'bg-surface-container border-secondary/30'
-          : 'bg-surface-container-low border-outline-variant/10 hover:border-outline-variant/30'
+          ? 'bg-bq-white border-bq-amber/40 shadow-bq-soft'
+          : 'bg-bq-white border-bq-hair hover:border-bq-ink3'
       }`}
     >
       <button
@@ -194,11 +194,11 @@ function FaqAccordion({
         aria-expanded={open}
         className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
       >
-        <span className="font-bold text-on-surface flex-1">
+        <span className="font-bold text-bq-ink flex-1">
           {t(`help.items.${id}.q`)}
         </span>
         <span
-          className={`material-symbols-outlined text-on-surface-variant transition-transform ${
+          className={`material-symbols-outlined text-bq-ink2 transition-transform ${
             open ? 'rotate-180' : ''
           }`}
         >
@@ -206,7 +206,7 @@ function FaqAccordion({
         </span>
       </button>
       {open && (
-        <div ref={panelRef} className="px-5 pb-5 text-sm text-on-surface-variant leading-relaxed whitespace-pre-line">
+        <div ref={panelRef} className="px-5 pb-5 text-sm text-bq-ink2 leading-relaxed whitespace-pre-line">
           {t(`help.items.${id}.a`)}
         </div>
       )}

@@ -28,12 +28,12 @@ interface Props {
 // share a tone. Matches QuizSetsPreviewCard palette so list ↔ preview tile
 // pairs stay visually consistent for the same set.
 const HERO_GRADIENTS = [
-  'linear-gradient(135deg, #1a1d2e 0%, #4a3d2e 50%, #5e4a32 100%)', // gold-on-dark (default per mockup hero)
-  'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)',              // emerald
-  'linear-gradient(135deg, #4ea8de 0%, #2d88be 100%)',              // sky
-  'linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)',              // purple
-  'linear-gradient(135deg, #ff7a59 0%, #cf5a39 100%)',              // orange
-  'linear-gradient(135deg, #1a3d2e 0%, #2a4d3e 100%)',              // deep green
+  'linear-gradient(135deg, #F59E0B 0%, #D97F06 50%, #B36405 100%)', // amber (default per mockup hero)
+  'linear-gradient(135deg, #46C89A 0%, #0E8A6B 100%)',              // emerald
+  'linear-gradient(135deg, #6E86F0 0%, #2D46C8 100%)',              // sapphire
+  'linear-gradient(135deg, #2D46C8 0%, #1E2E86 100%)',              // deep sapphire
+  'linear-gradient(135deg, #FF7A5A 0%, #E0354B 100%)',              // ruby/ember
+  'linear-gradient(135deg, #0E8A6B 0%, #0A6650 100%)',              // deep emerald
 ];
 
 function hashId(id: string): number {
@@ -56,12 +56,12 @@ function parseEmojiCover(coverUrl?: string | null): string | null {
 }
 
 const MODE_BADGE: Record<string, { label: string; bg: string; border: string; color: string }> = {
-  SPEED_RACE:            { label: '⚡', bg: 'linear-gradient(135deg, rgba(232,168,50,0.15), rgba(232,168,50,0.03))', border: 'rgba(232,168,50,0.3)', color: '#e8a832' },
-  GROUP_LIVE_SEQUENTIAL: { label: '📚', bg: 'linear-gradient(135deg, rgba(74,222,128,0.15), rgba(74,222,128,0.03))', border: 'rgba(74,222,128,0.3)', color: '#4ade80' },
-  SEQUENTIAL:            { label: '📚', bg: 'linear-gradient(135deg, rgba(74,222,128,0.15), rgba(74,222,128,0.03))', border: 'rgba(74,222,128,0.3)', color: '#4ade80' },
-  TEAM_VS_TEAM:          { label: '⚔️', bg: 'linear-gradient(135deg, rgba(78,168,222,0.15), rgba(78,168,222,0.03))', border: 'rgba(78,168,222,0.3)', color: '#4ea8de' },
-  BATTLE_ROYALE:         { label: '💀', bg: 'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(168,85,247,0.03))', border: 'rgba(168,85,247,0.3)', color: '#a855f7' },
-  SUDDEN_DEATH:          { label: '🥊', bg: 'linear-gradient(135deg, rgba(255,122,89,0.15), rgba(255,122,89,0.03))', border: 'rgba(255,122,89,0.3)', color: '#ff7a59' },
+  SPEED_RACE:            { label: '⚡', bg: 'linear-gradient(135deg, rgba(245,158,11,0.15), rgba(245,158,11,0.03))', border: 'rgba(245,158,11,0.3)', color: '#D97F06' },
+  GROUP_LIVE_SEQUENTIAL: { label: '📚', bg: 'linear-gradient(135deg, rgba(14,138,107,0.15), rgba(14,138,107,0.03))', border: 'rgba(14,138,107,0.3)', color: '#0E8A6B' },
+  SEQUENTIAL:            { label: '📚', bg: 'linear-gradient(135deg, rgba(14,138,107,0.15), rgba(14,138,107,0.03))', border: 'rgba(14,138,107,0.3)', color: '#0E8A6B' },
+  TEAM_VS_TEAM:          { label: '⚔️', bg: 'linear-gradient(135deg, rgba(45,70,200,0.15), rgba(45,70,200,0.03))', border: 'rgba(45,70,200,0.3)', color: '#2D46C8' },
+  BATTLE_ROYALE:         { label: '💀', bg: 'linear-gradient(135deg, rgba(45,70,200,0.15), rgba(45,70,200,0.03))', border: 'rgba(45,70,200,0.3)', color: '#2D46C8' },
+  SUDDEN_DEATH:          { label: '🥊', bg: 'linear-gradient(135deg, rgba(224,53,75,0.15), rgba(224,53,75,0.03))', border: 'rgba(224,53,75,0.3)', color: '#E0354B' },
 };
 
 export default function QuizSetCard({ quizSet, onClick }: Props) {
@@ -76,9 +76,9 @@ export default function QuizSetCard({ quizSet, onClick }: Props) {
 
   const difficultyMeta: { label: string; color: string } | null = (() => {
     switch ((quizSet.difficulty ?? '').toUpperCase()) {
-      case 'EASY':   return { label: t('groups.quizCard.difficultyEasy'), color: '#4ade80' };
-      case 'MEDIUM': return { label: '⚡ ' + t('groups.quizCard.difficultyMedium'), color: '#e8a832' };
-      case 'HARD':   return { label: '🔥 ' + t('groups.quizCard.difficultyHard'), color: '#ff7a59' };
+      case 'EASY':   return { label: t('groups.quizCard.difficultyEasy'), color: '#0E8A6B' };
+      case 'MEDIUM': return { label: '⚡ ' + t('groups.quizCard.difficultyMedium'), color: '#D97F06' };
+      case 'HARD':   return { label: '🔥 ' + t('groups.quizCard.difficultyHard'), color: '#E0354B' };
       default: return null;
     }
   })();
@@ -88,21 +88,21 @@ export default function QuizSetCard({ quizSet, onClick }: Props) {
       type="button"
       onClick={onClick}
       data-testid={`quiz-set-card-${quizSet.id}`}
-      className="text-left rounded-xl overflow-hidden border border-white/10 bg-[rgba(50,52,64,0.55)] backdrop-blur-md hover:-translate-y-0.5 hover:border-white/20 hover:shadow-[0_8px_24px_rgba(0,0,0,0.25)] transition-all"
+      className="text-left rounded-xl overflow-hidden border border-bq-hair bg-bq-white shadow-bq-soft hover:-translate-y-0.5 hover:border-bq-ink3/40 transition-all"
     >
       {/* Hero */}
       <div className="h-28 relative" style={{ background: gradient }}>
         <div className="absolute inset-0 flex items-center justify-center text-5xl opacity-40 select-none">
           {emoji}
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
         <div className="absolute top-2 left-2">
           {isDraft ? (
-            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-on-surface/70 border border-white/10">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/85 text-bq-ink2 border border-bq-hair">
               {t('groups.quizCard.statusDraft')}
             </span>
           ) : (
-            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-400/30">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-bq-emerald/20 text-white border border-bq-emerald/40">
               ✓ {t('groups.quizCard.statusPublished')}
             </span>
           )}
@@ -110,12 +110,12 @@ export default function QuizSetCard({ quizSet, onClick }: Props) {
         {(showRating || showPlay) && (
           <div className="absolute top-2 right-2 flex gap-1">
             {showRating && (
-              <span className="px-1.5 py-0.5 rounded bg-black/40 backdrop-blur text-secondary text-[10px] font-bold">
+              <span className="px-1.5 py-0.5 rounded bg-black/40 backdrop-blur text-bq-amber text-[10px] font-bold">
                 ⭐ {(quizSet.averageRating ?? 0).toFixed(1)}
               </span>
             )}
             {showPlay && (
-              <span className="px-1.5 py-0.5 rounded bg-black/40 backdrop-blur text-on-surface text-[10px] font-bold">
+              <span className="px-1.5 py-0.5 rounded bg-black/40 backdrop-blur text-white text-[10px] font-bold">
                 ▶ {quizSet.playCount}x
               </span>
             )}
@@ -125,17 +125,17 @@ export default function QuizSetCard({ quizSet, onClick }: Props) {
 
       {/* Body */}
       <div className="p-3">
-        <h3 className="font-extrabold text-on-surface text-sm leading-tight line-clamp-2">{quizSet.name}</h3>
+        <h3 className="font-extrabold text-bq-ink text-sm leading-tight line-clamp-2">{quizSet.name}</h3>
         {quizSet.coverScripture && (
-          <div className="text-[10px] text-on-surface/55 mt-1 line-clamp-1">📍 {quizSet.coverScripture}</div>
+          <div className="text-[10px] text-bq-ink2 mt-1 line-clamp-1">📍 {quizSet.coverScripture}</div>
         )}
         <div className="flex items-center gap-1.5 mt-2 flex-wrap">
-          <span className="text-[10px] text-on-surface/55">
+          <span className="text-[10px] text-bq-ink2">
             {t('groups.questionsCount', { count: quizSet.questionCount })}
           </span>
           {difficultyMeta && (
             <>
-              <span className="text-[10px] text-on-surface/30">·</span>
+              <span className="text-[10px] text-bq-ink3">·</span>
               <span className="text-[10px] font-semibold" style={{ color: difficultyMeta.color }}>
                 {difficultyMeta.label}
               </span>
@@ -143,8 +143,8 @@ export default function QuizSetCard({ quizSet, onClick }: Props) {
           )}
           {quizSet.estimatedDurationMin != null && quizSet.estimatedDurationMin > 0 && (
             <>
-              <span className="text-[10px] text-on-surface/30">·</span>
-              <span className="text-[10px] text-on-surface/55">
+              <span className="text-[10px] text-bq-ink3">·</span>
+              <span className="text-[10px] text-bq-ink2">
                 {t('groups.quizCard.duration', { min: quizSet.estimatedDurationMin })}
               </span>
             </>
@@ -162,7 +162,7 @@ export default function QuizSetCard({ quizSet, onClick }: Props) {
               </span>
             )}
             {quizSet.inUseByScheduled && (
-              <span className="text-[9px] px-1.5 py-0.5 rounded font-semibold border border-purple-400/40 bg-purple-500/15 text-purple-300">
+              <span className="text-[9px] px-1.5 py-0.5 rounded font-semibold border border-bq-sapphire/40 bg-bq-sapphire/15 text-bq-sapphire">
                 📅 {t('groups.quizCard.inUseScheduled')}
               </span>
             )}

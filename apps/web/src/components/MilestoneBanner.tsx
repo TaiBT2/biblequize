@@ -37,9 +37,9 @@ export default function MilestoneBanner() {
     const nextTierName = getNextTierLabel(data.tierLevel, t)
     if (!nextTierName) return null
     return (
-      <div data-testid="tier-milestone-banner" className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/10 border border-secondary/20 mt-2">
+      <div data-testid="tier-milestone-banner" className="flex items-center gap-2 px-3 py-2 rounded-lg bg-bq-amber/10 border border-bq-amber/20 mt-2">
         <span className="text-sm">🏃</span>
-        <span className="text-xs font-bold text-secondary">
+        <span className="text-xs font-bold text-bq-amberd">
           {t('components.milestone.halfwayTo', { tier: nextTierName })}
         </span>
       </div>
@@ -69,9 +69,9 @@ function SurgeCountdown({ surgeUntil }: { surgeUntil: string }) {
   }, [surgeUntil])
 
   return (
-    <div data-testid="tier-milestone-banner" className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-secondary/20 border border-purple-500/30 mt-2">
+    <div data-testid="tier-milestone-banner" className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-bq-sapphire/20 to-bq-amber/20 border border-bq-sapphire/30 mt-2">
       <span className="text-sm">🚀</span>
-      <span className="text-xs font-black text-purple-300">
+      <span className="text-xs font-black text-bq-sapphire">
         {t('components.milestone.surgeCountdown', { remaining })}
       </span>
     </div>

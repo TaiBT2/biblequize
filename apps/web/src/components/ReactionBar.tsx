@@ -53,7 +53,7 @@ export default function ReactionBar({ onSend, incoming }: ReactionBarProps) {
             style={{ left: `${f.x}%`, bottom: '20%' }}
           >
             <span className="text-4xl">{f.reaction}</span>
-            <span className="block text-[10px] text-white/50 text-center">{f.senderName}</span>
+            <span className="block text-[10px] text-bq-ink2/70 text-center">{f.senderName}</span>
           </div>
         ))}
       </div>

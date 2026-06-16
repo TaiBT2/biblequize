@@ -29,23 +29,24 @@ export default function PoolExhaustedModal({
       <div data-testid="pool-exhausted-modal" style={{ textAlign: 'center' }}>
         <span
           className="material-symbols-outlined"
-          style={{ fontSize: 60, color: '#e8a832', fontVariationSettings: "'FILL' 1" }}
+          style={{ fontSize: 60, color: '#D97F06', fontVariationSettings: "'FILL' 1" }}
         >
           nights_stay
         </span>
 
         <h2
+          className="font-display"
           style={{
             fontSize: 22,
             fontWeight: 800,
-            color: '#ffffff',
+            color: '#16151B',
             margin: '12px 0 8px',
           }}
         >
           {t('ranked.pool_exhausted.title')}
         </h2>
 
-        <p style={{ fontSize: 14, color: '#c5c8d8', lineHeight: 1.5, margin: 0 }}>
+        <p style={{ fontSize: 14, color: '#6C6A62', lineHeight: 1.5, margin: 0 }}>
           {canUnlockNext
             ? t('ranked.pool_exhausted.body')
             : t('ranked.pool_exhausted.no_unlock_body')}
@@ -66,8 +67,8 @@ export default function PoolExhaustedModal({
                   padding: '12px 16px',
                   borderRadius: 12,
                   border: 'none',
-                  background: 'linear-gradient(135deg, #e8a832, #d4951f)',
-                  color: '#11131e',
+                  background: 'linear-gradient(135deg, #FF9D2E 0%, #FF5A45 55%, #E0354B 100%)',
+                  color: '#FFFFFF',
                   fontSize: 14,
                   fontWeight: 800,
                   cursor: 'pointer',
@@ -83,8 +84,8 @@ export default function PoolExhaustedModal({
                   padding: '12px 16px',
                   borderRadius: 12,
                   background: 'transparent',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
-                  color: '#c5c8d8',
+                  border: '1px solid #E7E4DA',
+                  color: '#6C6A62',
                   fontSize: 14,
                   fontWeight: 600,
                   cursor: 'pointer',
@@ -102,8 +103,8 @@ export default function PoolExhaustedModal({
                 padding: '12px 16px',
                 borderRadius: 12,
                 background: 'transparent',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                color: '#c5c8d8',
+                border: '1px solid #E7E4DA',
+                color: '#6C6A62',
                 fontSize: 14,
                 fontWeight: 600,
                 cursor: 'pointer',

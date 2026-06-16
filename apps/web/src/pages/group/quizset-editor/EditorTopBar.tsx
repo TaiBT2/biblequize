@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { TFunction } from 'i18next'
 import type { PublishStatus } from '../../../api/quizSets'
-import { COLOR } from './styles'
+import { ACTION_BG, ACTION_BG_DISABLED, ACTION_FG, ACTION_SHADOW, COLOR, INSET_BG } from './styles'
 
 interface Props {
   backHref: string
@@ -26,11 +26,11 @@ function statusBadge(t: TFunction, status: PublishStatus, savedAgo: number | nul
     if (saving) label = t('quizSet.editor.topbar.saving')
     else if (savedAgo == null) label = t('quizSet.editor.topbar.draft')
     else label = t('quizSet.editor.topbar.draftSavedAgo', { ago: formatAgo(t, savedAgo) })
-    return { bg: 'rgba(251,191,36,0.10)', color: COLOR.warning, label }
+    return { bg: 'rgba(245,158,11,0.12)', color: COLOR.warning, label }
   }
-  if (status === 'PUBLISHED') return { bg: 'rgba(74,222,128,0.12)', color: COLOR.success, label: t('quizSet.editor.topbar.published') }
-  if (status === 'ARCHIVED')  return { bg: 'rgba(156,163,175,0.12)', color: COLOR.textMuted, label: t('quizSet.editor.topbar.archived') }
-  return { bg: 'rgba(239,68,68,0.12)', color: COLOR.danger, label: t('quizSet.editor.topbar.deleted') }
+  if (status === 'PUBLISHED') return { bg: 'rgba(14,138,107,0.12)', color: COLOR.success, label: t('quizSet.editor.topbar.published') }
+  if (status === 'ARCHIVED')  return { bg: 'rgba(168,166,156,0.16)', color: COLOR.textMuted, label: t('quizSet.editor.topbar.archived') }
+  return { bg: 'rgba(224,53,75,0.12)', color: COLOR.danger, label: t('quizSet.editor.topbar.deleted') }
 }
 
 function formatAgo(t: TFunction, sec: number): string {
@@ -89,7 +89,7 @@ export default function EditorTopBar({
       {showAi && (
         <div style={{
           display: 'inline-flex', alignItems: 'center', gap: 5,
-          background: COLOR.goldBg, border: `1px solid rgba(232,168,50,0.22)`,
+          background: COLOR.goldBg, border: `1px solid rgba(245,158,11,0.30)`,
           padding: '4px 9px', borderRadius: 999, fontSize: 11, color: COLOR.gold,
         }}>
           <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>auto_awesome</span>
@@ -98,7 +98,7 @@ export default function EditorTopBar({
       )}
 
       <button onClick={onSaveDraft} disabled={saving} style={{
-        background: 'rgba(255,255,255,0.04)', color: COLOR.textSecondary,
+        background: INSET_BG, color: COLOR.textSecondary,
         border: `1px solid ${COLOR.borderSubtle}`,
         padding: '8px 14px', borderRadius: 8, fontSize: 13, cursor: 'pointer',
         opacity: saving ? 0.6 : 1,
@@ -111,10 +111,11 @@ export default function EditorTopBar({
         const enabled = status === 'PUBLISHED' ? !saving : canPublish
         return (
           <button onClick={onPublish} disabled={!enabled} style={{
-            background: enabled ? COLOR.gold : 'rgba(232,168,50,0.30)',
-            color: '#1a1226', border: 'none', padding: '8px 18px', borderRadius: 8,
-            fontSize: 13, fontWeight: 500, cursor: enabled ? 'pointer' : 'not-allowed',
+            background: enabled ? ACTION_BG : ACTION_BG_DISABLED,
+            color: ACTION_FG, border: 'none', padding: '8px 18px', borderRadius: 8,
+            fontSize: 13, fontWeight: 600, cursor: enabled ? 'pointer' : 'not-allowed',
             display: 'inline-flex', alignItems: 'center', gap: 5,
+            boxShadow: enabled ? ACTION_SHADOW : 'none',
             opacity: enabled ? 1 : 0.6,
           }}>
             <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>

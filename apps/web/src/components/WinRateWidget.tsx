@@ -33,23 +33,18 @@ export default function WinRateWidget() {
   return (
     <div
       data-testid="win-rate-widget"
-      className="rounded-[10px] px-3.5 py-3"
-      style={{
-        backgroundColor: 'rgba(74,158,255,0.06)',
-        border: '1px solid rgba(74,158,255,0.18)',
-      }}
+      className="rounded-[10px] px-3.5 py-3 bg-bq-white border border-bq-sapphire/20 shadow-bq-soft"
     >
       <div
-        className="text-[10px] uppercase font-bold mb-1.5"
-        style={{ letterSpacing: '0.12em', color: 'rgba(74,158,255,0.7)' }}
+        className="text-[10px] uppercase font-bold mb-1.5 text-bq-sapphire"
+        style={{ letterSpacing: '0.12em' }}
       >
         {t('ranked.sidebar.winRateLabel')}
       </div>
       {hasData ? (
         <div
           data-testid="win-rate-widget-value"
-          className="text-[15px] font-semibold leading-none"
-          style={{ color: '#4a9eff' }}
+          className="text-[15px] font-semibold leading-none text-bq-sapphire"
         >
           {t('ranked.sidebar.winRateValue', {
             percent: Math.round(accuracy * 100),
@@ -60,8 +55,7 @@ export default function WinRateWidget() {
       ) : (
         <p
           data-testid="win-rate-widget-empty"
-          className="text-[10px] leading-snug"
-          style={{ color: 'rgba(225,225,241,0.5)' }}
+          className="text-[10px] leading-snug text-bq-ink2"
         >
           {t('ranked.sidebar.winRateNoData')}
         </p>

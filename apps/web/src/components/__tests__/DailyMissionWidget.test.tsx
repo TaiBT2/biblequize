@@ -107,8 +107,8 @@ describe('DailyMissionWidget', () => {
     expect(bar.style.width).toBe('100%')
     const caption = screen.getByTestId('daily-mission-widget-caption')
     expect(caption).toHaveTextContent('Tất cả nhiệm vụ hoàn thành! 🎉')
-    // happy-dom preserves the literal hex color
-    expect(caption.style.color.toLowerCase()).toBe('#e8a832')
+    // Khung Sáng: gold caption now uses the bq-amberd token class
+    expect(caption.className).toContain('text-bq-amberd')
   })
 
   it('clicking widget navigates to / (Home, where full DailyMissionsCard lives)', async () => {

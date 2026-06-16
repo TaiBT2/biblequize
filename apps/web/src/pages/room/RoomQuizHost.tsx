@@ -56,9 +56,9 @@ const HOST_OPTION_STYLES = [
   { tile: 'border-answer-d/30 bg-answer-d/10', letter: 'bg-answer-d/20 text-answer-d' },
 ] as const;
 
-// Rank accent colors for top-3 rows (gold / silver / bronze) — same values
-// already used across the room end screens.
-const RANK_ACCENTS = ['#e8a832', '#d1d5db', '#cd7f32'] as const;
+// Rank accent colors for top-3 rows (gold / silver / bronze) — Khung Sáng
+// contrast-safe variants that read on the light paper/white surfaces.
+const RANK_ACCENTS = ['#D97F06', '#6C6A62', '#cd7f32'] as const;
 
 const RoomQuizHost: React.FC = () => {
   const { roomId } = useParams();
@@ -288,10 +288,10 @@ const RoomQuizHost: React.FC = () => {
   const playerCount = Math.max(scores.length, answeredCount);
 
   // QTR-5 — TV presentation: timer urgency derived per render (pure math,
-  // no extra state). Gold while >50% of the window remains, orange ≤50%,
-  // red ≤20%. #d97706 / #ef4444 already part of this screen's palette.
+  // no extra state). Amber while >50% of the window remains, ember ≤50%,
+  // ruby ≤20% (Khung Sáng warm-family urgency, contrast-safe on paper).
   const timerRatio = timeLimit > 0 ? Math.max(0, Math.min(1, timeLeft / timeLimit)) : 0;
-  const timerColor = timerRatio <= 0.2 ? '#ef4444' : timerRatio <= 0.5 ? '#d97706' : '#e8a832';
+  const timerColor = timerRatio <= 0.2 ? '#E0354B' : timerRatio <= 0.5 ? '#FF6F3D' : '#D97F06';
 
   // ── Sprint 4 (S4-10): Quan Tro wrap-up screen — QTR-2 visual redesign:
   // centered max-w-3xl column, winner hero with gold accent + glow, 4 stat
@@ -306,9 +306,9 @@ const RoomQuizHost: React.FC = () => {
     return (
       <div
         data-testid="quiz-end-host-page"
-        className="min-h-screen text-white relative"
+        className="min-h-screen text-bq-ink relative"
         style={{
-          background: 'radial-gradient(ellipse at top, rgba(232,168,50,0.18) 0%, #11131e 60%)',
+          background: 'radial-gradient(ellipse at top, rgba(245,158,11,0.18) 0%, #FBFAF5 60%)',
           fontFamily: "'Be Vietnam Pro', sans-serif",
         }}
       >
@@ -316,7 +316,7 @@ const RoomQuizHost: React.FC = () => {
           <header className="pt-4 flex items-center">
             <span
               className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
-              style={{ background: 'rgba(232,168,50,0.2)', color: '#e8a832' }}
+              style={{ background: 'rgba(245,158,11,0.18)', color: '#D97F06' }}
             >
               👑 Quản trò
             </span>
@@ -324,7 +324,7 @@ const RoomQuizHost: React.FC = () => {
 
           {/* Celebration header */}
           <div className="text-center pt-8 pb-6">
-            <div className="text-[10px] font-bold uppercase tracking-[0.4em] mb-2" style={{ color: '#e8a832' }}>
+            <div className="text-[10px] font-bold uppercase tracking-[0.4em] mb-2" style={{ color: '#D97F06' }}>
               Trận đấu kết thúc
             </div>
             {/* Audience-facing headline (this screen is cast to a TV) —
@@ -332,9 +332,9 @@ const RoomQuizHost: React.FC = () => {
             <div className="flex items-center justify-center gap-3">
               <span className="text-3xl" aria-hidden="true">🏆</span>
               <h1
-                className="font-black text-3xl lg:text-4xl tracking-tight"
+                className="font-display font-black text-3xl lg:text-4xl tracking-tight"
                 style={{
-                  background: 'linear-gradient(135deg, #f4c560 0%, #e8a832 100%)',
+                  background: 'linear-gradient(135deg, #F59E0B 0%, #D97F06 100%)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
                   color: 'transparent',
@@ -355,20 +355,20 @@ const RoomQuizHost: React.FC = () => {
 
           {/* Stat tiles — one row on ≥sm, 2×2 on mobile */}
           <div className="mb-6">
-            <div className="text-[10px] uppercase tracking-wider font-bold mb-2" style={{ color: '#9ca3af' }}>
+            <div className="text-[10px] uppercase tracking-wider font-bold mb-2" style={{ color: '#6C6A62' }}>
               📊 Thống kê trận đấu
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3" data-testid="end-host-stats">
               <StatCard label="Tổng câu hỏi" value={`${matchStats.totalQuestions || finalRanks[0]?.totalAnswered || 0}`} icon="quiz" />
               <StatCard label="Thời lượng" value={matchStats.duration} icon="timer" />
               <StatCard label="Người chơi" value={`${matchStats.players}`} icon="group" />
-              <StatCard label="Tỷ lệ đúng TB" value={`${matchStats.avgAccuracy}%`} accent="#34d399" icon="check_circle" />
+              <StatCard label="Tỷ lệ đúng TB" value={`${matchStats.avgAccuracy}%`} accent="#0E8A6B" icon="check_circle" />
             </div>
           </div>
 
           {/* Final rankings — medal accents top 3 + correct-ratio mini bar */}
           <div className="mb-8">
-            <div className="text-[10px] uppercase tracking-wider font-bold mb-2" style={{ color: '#9ca3af' }}>
+            <div className="text-[10px] uppercase tracking-wider font-bold mb-2" style={{ color: '#6C6A62' }}>
               🏆 Xếp hạng cuối cùng
             </div>
             <ul className="space-y-2" data-testid="end-host-rankings">
@@ -381,38 +381,38 @@ const RoomQuizHost: React.FC = () => {
                 return (
                   <li
                     key={r.playerId ?? `r${i}`}
-                    className="glass-card rounded-xl px-3 py-2.5 flex items-center gap-3"
+                    className="bg-bq-white shadow-bq-soft rounded-xl px-3 py-2.5 flex items-center gap-3"
                     style={{
-                      border: accent ? `1px solid ${accent}4D` : '1px solid rgba(255,255,255,0.04)',
+                      border: accent ? `1px solid ${accent}4D` : '1px solid #E7E4DA',
                     }}
                   >
                     <span
                       className="w-7 h-7 rounded-full grid place-items-center text-xs font-black flex-shrink-0"
                       style={
                         accent
-                          ? { background: `${accent}33`, color: accent }
-                          : { background: 'rgba(255,255,255,0.05)', color: '#9ca3af' }
+                          ? { background: `${accent}26`, color: accent }
+                          : { background: '#F2F0E7', color: '#6C6A62' }
                       }
                     >
                       {i + 1}
                     </span>
                     <div
                       className="w-8 h-8 rounded-full grid place-items-center text-xs font-bold text-white flex-shrink-0"
-                      style={{ background: 'linear-gradient(135deg, #6366f1, #4338ca)' }}
+                      style={{ background: 'linear-gradient(135deg, #6E86F0, #2D46C8)' }}
                     >
                       {r.username?.[0]?.toUpperCase() ?? '?'}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-sm font-semibold truncate text-on-surface">{r.username}</div>
+                      <div className="text-sm font-semibold truncate text-bq-ink">{r.username}</div>
                       {ratio !== null && (
                         <div className="flex items-center gap-2 mt-1" data-testid={`host-rank-ratio-${i}`}>
-                          <div className="h-1 flex-1 max-w-[120px] rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.08)' }}>
+                          <div className="h-1 flex-1 max-w-[120px] rounded-full overflow-hidden" style={{ background: '#F2F0E7' }}>
                             <div
                               className="h-full rounded-full"
-                              style={{ width: `${Math.round(ratio * 100)}%`, background: '#34d399' }}
+                              style={{ width: `${Math.round(ratio * 100)}%`, background: '#0E8A6B' }}
                             />
                           </div>
-                          <span className="text-[10px] whitespace-nowrap" style={{ color: '#34d399' }}>
+                          <span className="text-[10px] whitespace-nowrap" style={{ color: '#0E8A6B' }}>
                             {r.correctAnswers}/{r.totalAnswered} đúng
                           </span>
                         </div>
@@ -420,17 +420,17 @@ const RoomQuizHost: React.FC = () => {
                     </div>
                     {isBattleRoyale ? (
                       <span className="text-right flex-shrink-0">
-                        <span className="block text-base font-black tabular-nums" style={{ color: accent ?? '#fff' }}>
+                        <span className="block text-base font-black tabular-nums" style={{ color: accent ?? '#16151B' }}>
                           {r.correctAnswers ?? 0}/{r.totalAnswered ?? 0}
                         </span>
-                        <span className="block text-[10px] tabular-nums" style={{ color: '#9ca3af' }}>
+                        <span className="block text-[10px] tabular-nums" style={{ color: '#6C6A62' }}>
                           {r.score ?? 0}đ
                         </span>
                       </span>
                     ) : (
                       <span
                         className="text-base font-black tabular-nums flex-shrink-0"
-                        style={{ color: accent ?? '#fff' }}
+                        style={{ color: accent ?? '#16151B' }}
                       >
                         {r.score ?? 0}
                       </span>
@@ -446,8 +446,7 @@ const RoomQuizHost: React.FC = () => {
             <button
               data-testid="end-host-replay"
               onClick={handleReplayWithSameGroup}
-              className="gold-gradient w-full py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2"
-              style={{ color: '#11131e' }}
+              className="bg-bq-action text-white shadow-bq-action w-full py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined text-[18px]" aria-hidden="true">replay</span>
               <span>Tổ chức trận mới với cùng nhóm</span>
@@ -456,8 +455,8 @@ const RoomQuizHost: React.FC = () => {
               <button
                 data-testid="end-host-analytics"
                 onClick={() => navigate(`/room/${roomId}/analytics`)}
-                className="py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5"
-                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+                className="py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 text-bq-ink"
+                style={{ background: '#FFFFFF', border: '1px solid #E7E4DA' }}
               >
                 <span className="material-symbols-outlined text-[16px]" aria-hidden="true">monitoring</span>
                 Phân tích
@@ -465,8 +464,8 @@ const RoomQuizHost: React.FC = () => {
               <button
                 data-testid="end-host-close"
                 onClick={() => navigate('/multiplayer', { replace: true })}
-                className="py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5"
-                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+                className="py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 text-bq-ink"
+                style={{ background: '#FFFFFF', border: '1px solid #E7E4DA' }}
               >
                 <span className="material-symbols-outlined text-[16px]" aria-hidden="true">logout</span>
                 Đóng
@@ -481,18 +480,18 @@ const RoomQuizHost: React.FC = () => {
   return (
     <div
       data-testid="room-quiz-host-page"
-      className="min-h-screen text-white"
-      style={{ background: '#11131e', fontFamily: "'Be Vietnam Pro', sans-serif" }}
+      className="min-h-screen text-bq-ink"
+      style={{ background: '#FBFAF5', fontFamily: "'Be Vietnam Pro', sans-serif" }}
     >
       {reconnecting && (
-        <div className="fixed top-0 left-0 right-0 z-[70] text-center py-2 text-sm font-medium"
-             style={{ background: 'rgba(239,68,68,0.9)' }}>
+        <div className="fixed top-0 left-0 right-0 z-[70] text-center py-2 text-sm font-medium text-white"
+             style={{ background: 'rgba(224,53,75,0.92)' }}>
           Đang kết nối lại…
         </div>
       )}
       {!connected && !reconnecting && (
         <div className="fixed top-0 left-0 right-0 z-[60] text-center py-1 text-xs"
-             style={{ background: 'rgba(0,0,0,0.5)', color: '#9ca3af' }}>
+             style={{ background: '#F2F0E7', color: '#6C6A62' }}>
           Đang chờ kết nối…
         </div>
       )}
@@ -507,15 +506,15 @@ const RoomQuizHost: React.FC = () => {
           <div className="flex items-center gap-2 lg:gap-3 min-w-0">
             <span
               className="px-2 py-0.5 lg:px-2.5 lg:py-1 rounded text-[10px] lg:text-xs font-bold uppercase tracking-wider flex-shrink-0"
-              style={{ background: 'rgba(232,168,50,0.2)', color: '#e8a832' }}
+              style={{ background: 'rgba(245,158,11,0.18)', color: '#D97F06' }}
             >
               👑 Quản trò
             </span>
-            <span className="text-sm lg:text-lg font-bold text-on-surface-variant flex-shrink-0" data-testid="host-question-counter">
+            <span className="text-sm lg:text-lg font-bold text-bq-ink2 flex-shrink-0" data-testid="host-question-counter">
               Câu {questionIndex + (question ? 1 : 0)} / {totalQuestions || '?'}
             </span>
             {navState.hostName && (
-              <span className="hidden sm:block text-xs lg:text-sm truncate" style={{ color: '#6b7280' }}>
+              <span className="hidden sm:block text-xs lg:text-sm truncate" style={{ color: '#A8A69C' }}>
                 · Quản trò: {navState.hostName}
               </span>
             )}
@@ -523,22 +522,22 @@ const RoomQuizHost: React.FC = () => {
           <div className="flex items-center gap-2 lg:gap-3 flex-shrink-0" data-testid="host-timer">
             <span className="material-symbols-outlined text-2xl lg:text-3xl" style={{ color: timerColor }} aria-hidden="true">timer</span>
             <span
-              className="font-black text-3xl lg:text-4xl xl:text-5xl tabular-nums transition-colors duration-500"
+              className="font-display font-black text-3xl lg:text-4xl xl:text-5xl tabular-nums transition-colors duration-500"
               style={{ color: timerColor }}
             >
               {timeLeft}s
             </span>
             <div
               className="w-1.5 h-1.5 rounded-full"
-              style={{ background: connected ? '#34d399' : '#ef4444' }}
+              style={{ background: connected ? '#0E8A6B' : '#E0354B' }}
               aria-hidden="true"
             />
           </div>
         </header>
-        {/* Countdown bar — thick, gold → orange → red as time runs out */}
-        <div className="h-2 rounded-full overflow-hidden mb-4 lg:mb-6" style={{ background: 'rgba(255,255,255,0.08)' }}>
+        {/* Countdown bar — thick, amber → ember → ruby as time runs out */}
+        <div className="h-2 rounded-full overflow-hidden mb-4 lg:mb-6" style={{ background: '#F2F0E7' }}>
           <div
-            className={`h-full rounded-full transition-all duration-1000 ease-linear${timerRatio > 0.5 ? ' gold-gradient' : ''}`}
+            className={`h-full rounded-full transition-all duration-1000 ease-linear${timerRatio > 0.5 ? ' bg-bq-flame' : ''}`}
             style={{
               width: `${timerRatio * 100}%`,
               background: timerRatio > 0.5 ? undefined : timerColor,
@@ -551,10 +550,10 @@ const RoomQuizHost: React.FC = () => {
           {/* ── Main column ── */}
           <main className="min-w-0 space-y-4">
             {/* Question card */}
-            <section className="glass-card rounded-2xl p-4 lg:p-8" data-testid="host-question-card">
+            <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-4 lg:p-8" data-testid="host-question-card">
               {question ? (
                 <>
-                  <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold leading-snug lg:leading-snug mb-6 lg:mb-8 text-on-surface">
+                  <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold leading-snug lg:leading-snug mb-6 lg:mb-8 text-bq-ink">
                     {question.content}
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4">
@@ -574,29 +573,28 @@ const RoomQuizHost: React.FC = () => {
                           style={
                             isCorrect
                               ? {
-                                  background: 'rgba(74,222,128,0.18)',
-                                  borderColor: '#4ade80',
-                                  boxShadow: '0 0 40px rgba(74,222,128,0.45)',
+                                  background: 'rgba(14,138,107,0.12)',
+                                  borderColor: '#0E8A6B',
+                                  boxShadow: '0 0 40px rgba(14,138,107,0.35)',
                                 }
                               : undefined
                           }
                         >
                           <div
-                            className={`w-12 h-12 lg:w-14 lg:h-14 rounded-xl grid place-items-center text-xl lg:text-2xl font-bold flex-shrink-0 ${
-                              isCorrect ? 'answer-letter-green-grad text-white shadow-lg' : c.letter
-                            }`}
+                            className={`w-12 h-12 lg:w-14 lg:h-14 rounded-xl grid place-items-center text-xl lg:text-2xl font-bold flex-shrink-0 ${c.letter}`}
+                            style={isCorrect ? { background: '#0E8A6B', color: '#FFFFFF' } : undefined}
                           >
                             {['A','B','C','D'][i] ?? '?'}
                           </div>
                           <span
                             className={`flex-1 text-xl lg:text-2xl leading-snug ${
-                              isCorrect ? 'text-white font-semibold' : 'text-on-surface font-medium'
+                              isCorrect ? 'text-bq-emerald font-semibold' : 'text-bq-ink font-medium'
                             }`}
                           >
                             {opt}
                           </span>
                           {isCorrect && (
-                            <span className="text-xs lg:text-sm font-bold whitespace-nowrap flex-shrink-0" style={{ color: '#4ade80' }}>
+                            <span className="text-xs lg:text-sm font-bold whitespace-nowrap flex-shrink-0" style={{ color: '#0E8A6B' }}>
                               ✓ ĐÁP ÁN
                             </span>
                           )}
@@ -606,7 +604,7 @@ const RoomQuizHost: React.FC = () => {
                   </div>
                 </>
               ) : (
-                <div className="text-center text-sm text-gray-400 py-10">Đang chờ câu hỏi đầu tiên…</div>
+                <div className="text-center text-sm text-bq-ink2 py-10">Đang chờ câu hỏi đầu tiên…</div>
               )}
             </section>
 
@@ -624,13 +622,13 @@ const RoomQuizHost: React.FC = () => {
               }`}
             >
               <div
-                className="glass-panel relative mx-auto max-w-xl rounded-2xl px-3 py-2.5 border lg:mx-0 lg:max-w-none lg:rounded-full lg:px-2 lg:py-1.5"
-                style={{ borderColor: 'rgba(255,255,255,0.08)' }}
+                className="bg-bq-white shadow-bq-soft relative mx-auto max-w-xl rounded-2xl px-3 py-2.5 border lg:mx-0 lg:max-w-none lg:rounded-full lg:px-2 lg:py-1.5"
+                style={{ borderColor: '#E7E4DA' }}
               >
                 {actionError && (
                   <div
-                    className="text-[10px] mb-1.5 text-center lg:absolute lg:bottom-full lg:right-0 lg:mb-2 lg:whitespace-nowrap lg:px-3 lg:py-1.5 lg:rounded-lg lg:glass-panel"
-                    style={{ color: '#f87171' }}
+                    className="text-[10px] mb-1.5 text-center lg:absolute lg:bottom-full lg:right-0 lg:mb-2 lg:whitespace-nowrap lg:px-3 lg:py-1.5 lg:rounded-lg lg:bg-bq-white lg:shadow-bq-soft"
+                    style={{ color: '#E0354B' }}
                   >
                     {actionError}
                   </div>
@@ -640,7 +638,7 @@ const RoomQuizHost: React.FC = () => {
                     data-testid="host-control-pause"
                     onClick={handlePauseToggle}
                     className="flex-1 lg:flex-none px-2 lg:px-3.5 py-2 lg:py-1.5 rounded-xl lg:rounded-full flex items-center justify-center gap-1.5 text-xs lg:text-[11px] font-semibold transition-colors"
-                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#fff' }}
+                    style={{ background: '#F2F0E7', border: '1px solid #E7E4DA', color: '#16151B' }}
                   >
                     <span className="material-symbols-outlined text-[18px]" aria-hidden="true">
                       {isPaused ? 'play_arrow' : 'pause'}
@@ -651,7 +649,7 @@ const RoomQuizHost: React.FC = () => {
                     data-testid="host-control-skip"
                     onClick={handleSkip}
                     className="flex-1 lg:flex-none px-2 lg:px-3.5 py-2 lg:py-1.5 rounded-xl lg:rounded-full flex items-center justify-center gap-1.5 text-xs lg:text-[11px] font-semibold transition-colors"
-                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#fff' }}
+                    style={{ background: '#F2F0E7', border: '1px solid #E7E4DA', color: '#16151B' }}
                   >
                     <span className="material-symbols-outlined text-[18px]" aria-hidden="true">skip_next</span>
                     <span>Bỏ câu</span>
@@ -660,7 +658,7 @@ const RoomQuizHost: React.FC = () => {
                     data-testid="host-control-broadcast"
                     onClick={() => setShowBroadcast(true)}
                     className="flex-1 lg:flex-none px-2 lg:px-3.5 py-2 lg:py-1.5 rounded-xl lg:rounded-full flex items-center justify-center gap-1.5 text-xs lg:text-[11px] font-semibold transition-colors"
-                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#fff' }}
+                    style={{ background: '#F2F0E7', border: '1px solid #E7E4DA', color: '#16151B' }}
                   >
                     <span className="material-symbols-outlined text-[18px]" aria-hidden="true">chat</span>
                     <span>Nhắn</span>
@@ -669,7 +667,7 @@ const RoomQuizHost: React.FC = () => {
                     data-testid="host-control-end"
                     onClick={() => setShowEndConfirm(true)}
                     className="flex-1 lg:flex-none px-2 lg:px-3.5 py-2 lg:py-1.5 rounded-xl lg:rounded-full flex items-center justify-center gap-1.5 text-xs lg:text-[11px] font-semibold transition-colors"
-                    style={{ background: 'rgba(239,68,68,0.06)', border: '1px solid rgba(239,68,68,0.35)', color: '#f87171' }}
+                    style={{ background: 'rgba(224,53,75,0.06)', border: '1px solid rgba(224,53,75,0.35)', color: '#E0354B' }}
                   >
                     <span className="material-symbols-outlined text-[18px]" aria-hidden="true">stop_circle</span>
                     <span>Kết thúc</span>
@@ -684,41 +682,41 @@ const RoomQuizHost: React.FC = () => {
             {/* Live answer ticker — QTR-5: TV-readable n/m counter + chips
                 that pop in as ANSWER_SUBMITTED events land. (Per-option
                 counts stay impossible — payload carries no option index.) */}
-            <section className="glass-card rounded-2xl p-4 lg:p-5">
-              <span className="text-[10px] uppercase tracking-wider font-bold" style={{ color: '#9ca3af' }}>
+            <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-4 lg:p-5">
+              <span className="text-[10px] uppercase tracking-wider font-bold" style={{ color: '#6C6A62' }}>
                 Tình trạng trả lời
               </span>
               <div className="flex items-baseline gap-2 mt-1 mb-3">
-                <span className="font-black text-3xl lg:text-4xl tabular-nums" style={{ color: '#e8a832' }}>
+                <span className="font-display font-black text-3xl lg:text-4xl tabular-nums" style={{ color: '#D97F06' }}>
                   {answeredCount}
                 </span>
-                <span className="font-bold text-lg tabular-nums text-on-surface-variant">/ {playerCount}</span>
-                <span className="text-xs font-semibold" style={{ color: '#9ca3af' }}>đã trả lời</span>
+                <span className="font-bold text-lg tabular-nums text-bq-ink2">/ {playerCount}</span>
+                <span className="text-xs font-semibold" style={{ color: '#6C6A62' }}>đã trả lời</span>
               </div>
               {liveAnswerList.length === 0 ? (
-                <div className="text-xs text-gray-500 italic">Chưa có ai trả lời</div>
+                <div className="text-xs text-bq-ink3 italic">Chưa có ai trả lời</div>
               ) : (
                 <ul className="space-y-2" data-testid="host-live-answers">
                   {liveAnswerList.map(a => (
                     <li
                       key={a.userId}
                       className="host-chip-pop flex items-center gap-2.5 text-sm rounded-xl px-2.5 py-2"
-                      style={{ background: 'rgba(255,255,255,0.03)' }}
+                      style={{ background: '#F2F0E7' }}
                     >
                       <div
                         className="w-8 h-8 rounded-full grid place-items-center text-xs font-bold text-white flex-shrink-0"
-                        style={{ background: 'linear-gradient(135deg, #6366f1, #4338ca)' }}
+                        style={{ background: 'linear-gradient(135deg, #6E86F0, #2D46C8)' }}
                       >
                         {a.username[0]?.toUpperCase() ?? '?'}
                       </div>
-                      <span className="flex-1 truncate font-medium text-on-surface">{a.username}</span>
+                      <span className="flex-1 truncate font-medium text-bq-ink">{a.username}</span>
                       {a.status === 'correct' && (
-                        <span className="text-xs font-bold whitespace-nowrap" style={{ color: '#4ade80' }}>
+                        <span className="text-xs font-bold whitespace-nowrap" style={{ color: '#0E8A6B' }}>
                           ✓ ĐÚNG{a.reactionTimeMs ? ` · ${(a.reactionTimeMs/1000).toFixed(1)}s` : ''}
                         </span>
                       )}
                       {a.status === 'wrong' && (
-                        <span className="text-xs font-bold whitespace-nowrap" style={{ color: '#f87171' }}>
+                        <span className="text-xs font-bold whitespace-nowrap" style={{ color: '#E0354B' }}>
                           ✗ SAI{a.reactionTimeMs ? ` · ${(a.reactionTimeMs/1000).toFixed(1)}s` : ''}
                         </span>
                       )}
@@ -729,12 +727,12 @@ const RoomQuizHost: React.FC = () => {
             </section>
 
             {/* Live scoreboard — top 5 with rank accents */}
-            <section className="glass-card rounded-2xl p-4">
-              <div className="text-[10px] uppercase tracking-wider font-bold mb-3" style={{ color: '#9ca3af' }}>
+            <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-4">
+              <div className="text-[10px] uppercase tracking-wider font-bold mb-3" style={{ color: '#6C6A62' }}>
                 🏆 Bảng xếp hạng tạm thời
               </div>
               {scores.length === 0 ? (
-                <div className="text-xs text-gray-500 italic">Chưa có điểm</div>
+                <div className="text-xs text-bq-ink3 italic">Chưa có điểm</div>
               ) : (
                 <ul className="space-y-1.5" data-testid="host-scoreboard">
                   {scores.slice(0, 5).map((s, i) => {
@@ -744,7 +742,7 @@ const RoomQuizHost: React.FC = () => {
                         key={s.userId}
                         className="flex items-center gap-2 text-xs rounded-lg px-2 py-1.5"
                         style={{
-                          background: 'rgba(255,255,255,0.03)',
+                          background: '#F2F0E7',
                           border: accent ? `1px solid ${accent}33` : '1px solid transparent',
                         }}
                       >
@@ -753,13 +751,13 @@ const RoomQuizHost: React.FC = () => {
                           style={
                             accent
                               ? { background: `${accent}33`, color: accent }
-                              : { background: 'rgba(255,255,255,0.05)', color: '#9ca3af' }
+                              : { background: '#FBFAF5', color: '#6C6A62' }
                           }
                         >
                           {i + 1}
                         </span>
-                        <span className="flex-1 truncate text-on-surface">{s.username}</span>
-                        <span className="font-bold tabular-nums" style={{ color: accent ?? '#fff' }}>
+                        <span className="flex-1 truncate text-bq-ink">{s.username}</span>
+                        <span className="font-bold tabular-nums" style={{ color: accent ?? '#16151B' }}>
                           {s.score}
                         </span>
                       </li>
@@ -777,17 +775,16 @@ const RoomQuizHost: React.FC = () => {
         <div
           data-testid="host-pause-overlay"
           className="fixed inset-0 z-50 grid place-items-center backdrop-blur-sm"
-          style={{ background: 'rgba(0,0,0,0.7)' }}
+          style={{ background: 'rgba(251,250,245,0.82)' }}
         >
           <div className="text-center">
             <div className="text-5xl mb-3">⏸️</div>
-            <div className="font-bold text-2xl mb-1">Trận đấu đã tạm dừng</div>
-            <div className="text-sm text-gray-400 mb-6">Bấm tiếp tục khi sẵn sàng</div>
+            <div className="font-display font-bold text-2xl mb-1 text-bq-ink">Trận đấu đã tạm dừng</div>
+            <div className="text-sm text-bq-ink2 mb-6">Bấm tiếp tục khi sẵn sàng</div>
             <button
               data-testid="host-pause-resume"
               onClick={handlePauseToggle}
-              className="gold-gradient inline-flex items-center gap-2 px-8 py-3 rounded-full font-bold text-lg"
-              style={{ color: '#11131e' }}
+              className="bg-bq-action text-white shadow-bq-action inline-flex items-center gap-2 px-8 py-3 rounded-full font-bold text-lg"
             >
               <span className="material-symbols-outlined">play_arrow</span>
               Tiếp tục
@@ -798,32 +795,32 @@ const RoomQuizHost: React.FC = () => {
 
       {/* Skip toast */}
       {skippedToast && (
-        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-lg text-sm"
-             style={{ background: 'rgba(232,168,50,0.95)', color: '#11131e' }}>
+        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-lg text-sm font-semibold"
+             style={{ background: 'rgba(245,158,11,0.95)', color: '#16151B' }}>
           ⏭️ Đã bỏ câu này
         </div>
       )}
 
       {/* Broadcast modal */}
       {showBroadcast && (
-        <div className="fixed inset-0 z-[60] grid place-items-center p-4" style={{ background: 'rgba(0,0,0,0.6)' }}>
-          <div className="w-full max-w-sm rounded-xl p-4" style={{ background: '#1d1f2a' }}>
-            <div className="font-bold mb-2">💬 Nhắn cả phòng</div>
+        <div className="fixed inset-0 z-[60] grid place-items-center p-4" style={{ background: 'rgba(22,21,27,0.4)' }}>
+          <div className="w-full max-w-sm rounded-xl p-4 bg-bq-white shadow-bq-soft border border-bq-hair">
+            <div className="font-bold mb-2 text-bq-ink">💬 Nhắn cả phòng</div>
             <textarea
               data-testid="host-broadcast-input"
               maxLength={200}
               value={broadcastMsg}
               onChange={(e) => setBroadcastMsg(e.target.value)}
               placeholder="Tin nhắn hiện 5 giây cho tất cả người chơi…"
-              className="w-full rounded-lg p-2 text-sm text-white outline-none"
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', minHeight: 80 }}
+              className="w-full rounded-lg p-2 text-sm text-bq-ink outline-none"
+              style={{ background: '#F2F0E7', border: '1px solid #E7E4DA', minHeight: 80 }}
             />
-            <div className="text-right text-[10px] text-gray-500 mb-3">{broadcastMsg.length} / 200</div>
+            <div className="text-right text-[10px] text-bq-ink3 mb-3">{broadcastMsg.length} / 200</div>
             <div className="flex gap-2 justify-end">
               <button
                 onClick={() => { setShowBroadcast(false); setBroadcastMsg(''); }}
                 className="px-3 py-1.5 rounded text-sm"
-                style={{ background: 'rgba(255,255,255,0.05)', color: '#9ca3af' }}
+                style={{ background: '#F2F0E7', color: '#6C6A62' }}
               >
                 Hủy
               </button>
@@ -831,8 +828,7 @@ const RoomQuizHost: React.FC = () => {
                 data-testid="host-broadcast-send"
                 onClick={handleSendBroadcast}
                 disabled={broadcastMsg.trim().length === 0}
-                className="px-3 py-1.5 rounded text-sm font-bold"
-                style={{ background: 'linear-gradient(135deg, #e8a832, #d97706)', color: '#11131e' }}
+                className="px-3 py-1.5 rounded text-sm font-bold bg-bq-action text-white shadow-bq-action"
               >
                 Gửi
               </button>
@@ -843,17 +839,17 @@ const RoomQuizHost: React.FC = () => {
 
       {/* End-early confirm */}
       {showEndConfirm && (
-        <div className="fixed inset-0 z-[60] grid place-items-center p-4" style={{ background: 'rgba(0,0,0,0.6)' }}>
-          <div className="w-full max-w-sm rounded-xl p-4" style={{ background: '#1d1f2a' }}>
-            <div className="font-bold mb-2">🛑 Kết thúc trận đấu sớm?</div>
-            <div className="text-sm text-gray-400 mb-4">
+        <div className="fixed inset-0 z-[60] grid place-items-center p-4" style={{ background: 'rgba(22,21,27,0.4)' }}>
+          <div className="w-full max-w-sm rounded-xl p-4 bg-bq-white shadow-bq-soft border border-bq-hair">
+            <div className="font-bold mb-2 text-bq-ink">🛑 Kết thúc trận đấu sớm?</div>
+            <div className="text-sm text-bq-ink2 mb-4">
               Tất cả người chơi sẽ thấy bảng xếp hạng cuối cùng dựa trên điểm số hiện tại.
             </div>
             <div className="flex gap-2 justify-end">
               <button
                 onClick={() => setShowEndConfirm(false)}
                 className="px-3 py-1.5 rounded text-sm"
-                style={{ background: 'rgba(255,255,255,0.05)', color: '#9ca3af' }}
+                style={{ background: '#F2F0E7', color: '#6C6A62' }}
               >
                 Hủy
               </button>
@@ -861,7 +857,7 @@ const RoomQuizHost: React.FC = () => {
                 data-testid="host-end-confirm"
                 onClick={handleEndEarly}
                 className="px-3 py-1.5 rounded text-sm font-bold"
-                style={{ background: 'linear-gradient(135deg, #ef4444, #b91c1c)', color: '#fff' }}
+                style={{ background: 'linear-gradient(135deg, #E0354B, #B0233A)', color: '#fff' }}
               >
                 Kết thúc
               </button>
@@ -878,20 +874,20 @@ const RoomQuizHost: React.FC = () => {
 
 const StatCard: React.FC<{ label: string; value: string; accent?: string; icon?: string }> = ({ label, value, accent, icon }) => (
   <div
-    className="glass-card rounded-xl p-3"
-    style={{ border: '1px solid rgba(255,255,255,0.04)' }}
+    className="bg-bq-white shadow-bq-soft rounded-xl p-3"
+    style={{ border: '1px solid #E7E4DA' }}
   >
     {icon && (
       <span
         className="material-symbols-outlined text-[18px] mb-1 block"
-        style={{ color: accent ?? '#e8a832' }}
+        style={{ color: accent ?? '#D97F06' }}
         aria-hidden="true"
       >
         {icon}
       </span>
     )}
-    <div className="font-black text-lg lg:text-xl tabular-nums" style={{ color: accent ?? '#fff' }}>{value}</div>
-    <div className="text-[10px] uppercase tracking-wide mt-0.5" style={{ color: '#9ca3af' }}>{label}</div>
+    <div className="font-display font-black text-lg lg:text-xl tabular-nums" style={{ color: accent ?? '#16151B' }}>{value}</div>
+    <div className="text-[10px] uppercase tracking-wide mt-0.5" style={{ color: '#6C6A62' }}>{label}</div>
   </div>
 );
 

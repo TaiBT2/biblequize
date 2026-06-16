@@ -30,12 +30,12 @@ interface TierInfo {
 }
 
 const TIERS: TierInfo[] = [
-  { name: 'newBeliever', icon: 'person', color: '#919098', bgColor: 'bg-[#919098]/10', textColor: 'text-[#919098]', borderColor: 'border-[#919098]/30', minPoints: 0 },
-  { name: 'seeker', icon: 'search', color: '#4ade80', bgColor: 'bg-[#4ade80]/10', textColor: 'text-[#4ade80]', borderColor: 'border-[#4ade80]/30', minPoints: 500 },
-  { name: 'disciple', icon: 'school', color: '#4a9eff', bgColor: 'bg-[#4a9eff]/10', textColor: 'text-[#4a9eff]', borderColor: 'border-[#4a9eff]/30', minPoints: 1500 },
-  { name: 'sage', icon: 'psychology', color: '#9b59b6', bgColor: 'bg-[#9b59b6]/10', textColor: 'text-[#9b59b6]', borderColor: 'border-[#9b59b6]/30', minPoints: 4000 },
-  { name: 'prophet', icon: 'auto_awesome', color: '#e8a832', bgColor: 'bg-secondary/10', textColor: 'text-secondary', borderColor: 'border-secondary/30', minPoints: 8000 },
-  { name: 'apostle', icon: 'local_fire_department', color: '#ff6b6b', bgColor: 'bg-[#ff6b6b]/10', textColor: 'text-[#ff6b6b]', borderColor: 'border-[#ff6b6b]/30', minPoints: 15000 },
+  { name: 'newBeliever', icon: 'person', color: '#A8A69C', bgColor: 'bg-bq-inset', textColor: 'text-bq-ink3', borderColor: 'border-bq-hair', minPoints: 0 },
+  { name: 'seeker', icon: 'search', color: '#0E8A6B', bgColor: 'bg-bq-emerald/10', textColor: 'text-bq-emerald', borderColor: 'border-bq-emerald/30', minPoints: 500 },
+  { name: 'disciple', icon: 'school', color: '#2D46C8', bgColor: 'bg-bq-sapphire/10', textColor: 'text-bq-sapphire', borderColor: 'border-bq-sapphire/30', minPoints: 1500 },
+  { name: 'sage', icon: 'psychology', color: '#2D46C8', bgColor: 'bg-bq-sapphire/10', textColor: 'text-bq-sapphire', borderColor: 'border-bq-sapphire/30', minPoints: 4000 },
+  { name: 'prophet', icon: 'auto_awesome', color: '#F59E0B', bgColor: 'bg-bq-amber/10', textColor: 'text-bq-amberd', borderColor: 'border-bq-amber/30', minPoints: 8000 },
+  { name: 'apostle', icon: 'local_fire_department', color: '#E0354B', bgColor: 'bg-bq-ruby/10', textColor: 'text-bq-ruby', borderColor: 'border-bq-ruby/30', minPoints: 15000 },
 ]
 
 function getCurrentTier(points: number): { current: TierInfo; next: TierInfo | null; progress: number } {
@@ -147,18 +147,18 @@ const Achievements: React.FC = () => {
     return (
       <div className="flex items-center justify-center py-24">
         <div className="text-center">
-          <span className="material-symbols-outlined text-6xl text-on-surface-variant mb-4 block" style={FILL_STYLE}>
+          <span className="material-symbols-outlined text-6xl text-bq-ink2 mb-4 block" style={FILL_STYLE}>
             lock
           </span>
-          <h2 className="text-2xl font-bold mb-4 text-on-surface">
+          <h2 className="text-2xl font-bold mb-4 text-bq-ink">
             {t('achievements.loginRequired')}
           </h2>
-          <p className="text-on-surface-variant mb-8">
+          <p className="text-bq-ink2 mb-8">
             {t('achievements.loginDescription')}
           </p>
           <Link
             to="/login"
-            className="px-6 py-3 rounded-xl font-bold gold-gradient text-on-secondary inline-block"
+            className="px-6 py-3 rounded-xl font-bold bg-bq-action text-white shadow-bq-action inline-block"
           >
             {t('auth.login')}
           </Link>
@@ -172,8 +172,8 @@ const Achievements: React.FC = () => {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center py-24 gap-4">
-        <div className="w-12 h-12 border-4 border-surface-container-highest border-t-secondary rounded-full animate-spin" />
-        <p className="text-on-surface-variant font-medium">{t('achievements.loading')}</p>
+        <div className="w-12 h-12 border-4 border-bq-hair border-t-bq-amberd rounded-full animate-spin" />
+        <p className="text-bq-ink2 font-medium">{t('achievements.loading')}</p>
       </div>
     )
   }
@@ -184,12 +184,12 @@ const Achievements: React.FC = () => {
       <header className="mb-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <h1 className="text-4xl font-black tracking-tight text-on-surface mb-2">
+            <h1 className="font-display text-4xl font-black tracking-tight text-bq-ink mb-2">
               {t('achievements.title')}
             </h1>
-            <p className="text-on-surface-variant flex items-center gap-2">
+            <p className="text-bq-ink2 flex items-center gap-2">
               <span
-                className="material-symbols-outlined text-secondary text-sm"
+                className="material-symbols-outlined text-bq-amberd text-sm"
                 style={FILL_STYLE}
               >
                 stars
@@ -198,13 +198,13 @@ const Achievements: React.FC = () => {
             </p>
           </div>
           <div className="w-full md:w-72">
-            <div className="flex justify-between text-xs font-bold uppercase tracking-wider mb-2 text-on-surface-variant">
+            <div className="flex justify-between text-xs font-bold uppercase tracking-wider mb-2 text-bq-ink2">
               <span>{t('achievements.overallProgress')}</span>
-              <span className="text-secondary">{overallProgress}%</span>
+              <span className="text-bq-amberd">{overallProgress}%</span>
             </div>
-            <div className="h-3 w-full bg-primary-container rounded-full overflow-hidden">
+            <div className="h-3 w-full bg-bq-inset rounded-full overflow-hidden">
               <div
-                className="h-full gold-gradient rounded-full transition-all duration-700"
+                className="h-full bg-bq-action rounded-full transition-all duration-700"
                 style={{ width: `${overallProgress}%` }}
               />
             </div>
@@ -217,7 +217,7 @@ const Achievements: React.FC = () => {
         {/* Left Column: Content */}
         <div className="xl:col-span-9 space-y-10">
           {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-2 pb-2 border-b border-outline-variant/15">
+          <div className="flex flex-wrap gap-2 pb-2 border-b border-bq-hair">
             {visibleCategories.map((cat) => {
               const isActive = activeTab === cat.key
               return (
@@ -226,8 +226,8 @@ const Achievements: React.FC = () => {
                   onClick={() => setActiveTab(cat.key)}
                   className={`px-5 py-2 rounded-full text-sm whitespace-nowrap transition-colors ${
                     isActive
-                      ? 'font-bold bg-secondary text-on-secondary'
-                      : 'font-medium text-on-surface-variant hover:bg-surface-container-high'
+                      ? 'font-bold bg-bq-amber text-bq-ink'
+                      : 'font-medium text-bq-ink2 hover:bg-bq-inset'
                   }`}
                 >
                   {t(cat.labelKey)}
@@ -238,12 +238,12 @@ const Achievements: React.FC = () => {
 
           {/* Achievement Cards Grid */}
           {filteredAchievements.length === 0 ? (
-            <div className="bg-surface-container rounded-3xl p-16 text-center">
-              <span className="material-symbols-outlined text-6xl text-on-surface-variant/30 mb-4 block">
+            <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-3xl p-16 text-center">
+              <span className="material-symbols-outlined text-6xl text-bq-ink3 mb-4 block">
                 emoji_events
               </span>
-              <h3 className="text-xl font-bold text-on-surface mb-2">{t('achievements.noAchievements')}</h3>
-              <p className="text-on-surface-variant">
+              <h3 className="text-xl font-bold text-bq-ink mb-2">{t('achievements.noAchievements')}</h3>
+              <p className="text-bq-ink2">
                 {t('achievements.playToUnlock')}
               </p>
             </div>
@@ -257,40 +257,40 @@ const Achievements: React.FC = () => {
                   return (
                     <div
                       key={achievement.id}
-                      className="glass-card p-6 rounded-xl border border-secondary/10 shadow-[0_0_20px_rgba(248,189,69,0.15)] relative overflow-hidden group"
+                      className="bg-bq-white p-6 rounded-xl border border-bq-amber/30 shadow-bq-amb relative overflow-hidden group"
                     >
                       {/* Glow orb */}
-                      <div className="absolute -right-4 -top-4 w-24 h-24 bg-secondary/5 rounded-full blur-2xl group-hover:bg-secondary/10 transition-colors" />
+                      <div className="absolute -right-4 -top-4 w-24 h-24 bg-bq-amber/10 rounded-full blur-2xl group-hover:bg-bq-amber/20 transition-colors" />
 
                       {/* Top row: icon + status */}
                       <div className="flex items-start justify-between mb-4">
-                        <div className="w-14 h-14 rounded-full gold-gradient flex items-center justify-center shadow-lg">
+                        <div className="w-14 h-14 rounded-full bg-bq-action flex items-center justify-center shadow-bq-action">
                           <span
-                            className="material-symbols-outlined text-on-secondary text-3xl"
+                            className="material-symbols-outlined text-white text-3xl"
                             style={FILL_STYLE}
                           >
                             {achievement.icon || catMeta.icon}
                           </span>
                         </div>
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-1 rounded">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-bq-amberd bg-bq-amber/10 px-2 py-1 rounded">
                           {t('achievements.unlocked')}
                         </span>
                       </div>
 
                       {/* Name & description */}
-                      <h3 className="text-lg font-bold text-on-surface mb-1">
+                      <h3 className="text-lg font-bold text-bq-ink mb-1">
                         {achievement.name}
                       </h3>
-                      <p className="text-sm text-on-surface-variant leading-relaxed mb-4">
+                      <p className="text-sm text-bq-ink2 leading-relaxed mb-4">
                         {achievement.description}
                       </p>
 
                       {/* Footer: date */}
-                      <div className="pt-4 border-t border-outline-variant/10 flex items-center gap-2">
-                        <span className="material-symbols-outlined text-xs text-on-surface-variant">
+                      <div className="pt-4 border-t border-bq-hair flex items-center gap-2">
+                        <span className="material-symbols-outlined text-xs text-bq-ink2">
                           calendar_today
                         </span>
-                        <span className="text-[11px] text-on-surface-variant font-medium">
+                        <span className="text-[11px] text-bq-ink2 font-medium">
                           {t('achievements.earnedOn', { date: new Date(achievement.unlockedAt!).toLocaleDateString('vi-VN') })}
                         </span>
                       </div>
@@ -302,34 +302,34 @@ const Achievements: React.FC = () => {
                 return (
                   <div
                     key={achievement.id}
-                    className="bg-surface-container-low p-6 rounded-xl border border-transparent opacity-60 grayscale relative overflow-hidden"
+                    className="bg-bq-inset p-6 rounded-xl border border-bq-hair opacity-80 grayscale relative overflow-hidden"
                   >
                     {/* Top row: icon + lock */}
                     <div className="flex items-start justify-between mb-4">
-                      <div className="w-14 h-14 rounded-full bg-surface-container-highest flex items-center justify-center">
-                        <span className="material-symbols-outlined text-on-surface-variant text-3xl">
+                      <div className="w-14 h-14 rounded-full bg-bq-white border border-bq-hair flex items-center justify-center">
+                        <span className="material-symbols-outlined text-bq-ink3 text-3xl">
                           {achievement.icon || catMeta.icon}
                         </span>
                       </div>
-                      <span className="material-symbols-outlined text-on-surface-variant text-sm">
+                      <span className="material-symbols-outlined text-bq-ink3 text-sm">
                         lock
                       </span>
                     </div>
 
                     {/* Name & description */}
-                    <h3 className="text-lg font-bold text-on-surface mb-1">
+                    <h3 className="text-lg font-bold text-bq-ink2 mb-1">
                       {achievement.name}
                     </h3>
-                    <p className="text-sm text-on-surface-variant leading-relaxed mb-4">
+                    <p className="text-sm text-bq-ink3 leading-relaxed mb-4">
                       {achievement.description}
                     </p>
 
                     {/* Footer: progress bar */}
-                    <div className="pt-4 border-t border-outline-variant/10">
-                      <div className="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
-                        <div className="h-full bg-outline rounded-full" style={{ width: '0%' }} />
+                    <div className="pt-4 border-t border-bq-hair">
+                      <div className="h-1.5 w-full bg-bq-white rounded-full overflow-hidden">
+                        <div className="h-full bg-bq-ink3 rounded-full" style={{ width: '0%' }} />
                       </div>
-                      <p className="text-[10px] text-on-surface-variant font-medium mt-2">
+                      <p className="text-[10px] text-bq-ink3 font-medium mt-2">
                         {t('achievements.locked')}
                       </p>
                     </div>
@@ -343,31 +343,31 @@ const Achievements: React.FC = () => {
         {/* Right Column: Sidebar Stats */}
         <aside className="xl:col-span-3 space-y-8">
           {/* Recently Unlocked */}
-          <section className="bg-surface-container p-6 rounded-2xl">
-            <h2 className="text-lg font-bold text-on-surface mb-6 flex items-center gap-2">
+          <section className="bg-bq-white border border-bq-hair shadow-bq-soft p-6 rounded-2xl">
+            <h2 className="text-lg font-bold text-bq-ink mb-6 flex items-center gap-2">
               {t('achievements.recentlyEarned')}
             </h2>
             <div className="space-y-6">
               {recentUnlocked.length === 0 ? (
-                <p className="text-sm text-on-surface-variant">{t('achievements.noAchievements')}</p>
+                <p className="text-sm text-bq-ink2">{t('achievements.noAchievements')}</p>
               ) : (
                 recentUnlocked.map((a) => {
                   const catMeta = getCategoryMeta(a.category)
                   return (
                     <div key={a.id} className="flex items-center gap-4 group">
-                      <div className="w-12 h-12 rounded-xl gold-gradient flex-shrink-0 flex items-center justify-center shadow-md">
+                      <div className="w-12 h-12 rounded-xl bg-bq-action flex-shrink-0 flex items-center justify-center shadow-bq-action">
                         <span
-                          className="material-symbols-outlined text-on-secondary text-2xl"
+                          className="material-symbols-outlined text-white text-2xl"
                           style={FILL_STYLE}
                         >
                           {a.icon || catMeta.icon}
                         </span>
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-on-surface group-hover:text-secondary transition-colors">
+                        <p className="text-sm font-bold text-bq-ink group-hover:text-bq-amberd transition-colors">
                           {a.name}
                         </p>
-                        <p className="text-[11px] text-on-surface-variant">
+                        <p className="text-[11px] text-bq-ink2">
                           {a.description}
                         </p>
                       </div>
@@ -376,41 +376,41 @@ const Achievements: React.FC = () => {
                 })
               )}
             </div>
-            <button className="w-full mt-8 py-3 rounded-xl border border-outline-variant/20 text-xs font-bold text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all">
+            <button className="w-full mt-8 py-3 rounded-xl border border-bq-hair text-xs font-bold text-bq-ink2 hover:bg-bq-inset hover:text-bq-ink transition-all">
               {t('achievements.viewAllHistory')}
             </button>
           </section>
 
           {/* Gamification Summary / Season Stats */}
-          <section className="bg-gradient-to-br from-surface-container to-surface-container-low p-6 rounded-2xl relative overflow-hidden">
+          <section className="bg-bq-white border border-bq-hair shadow-bq-soft p-6 rounded-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 p-2 opacity-5">
               <span className="material-symbols-outlined text-8xl">trophy</span>
             </div>
-            <h3 className="text-xs font-black uppercase tracking-widest text-secondary mb-4">
+            <h3 className="text-xs font-black uppercase tracking-widest text-bq-amberd mb-4">
               {t('achievements.seasonStats')}
             </h3>
             <div className="space-y-4">
               <div className="flex justify-between items-center">
-                <span className="text-sm text-on-surface-variant">{t('achievements.currentRank')}</span>
-                <span className="text-sm font-bold text-on-surface">
+                <span className="text-sm text-bq-ink2">{t('achievements.currentRank')}</span>
+                <span className="text-sm font-bold text-bq-ink">
                   {t(`tiers.${tierData.current.name}`)}
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm text-on-surface-variant">{t('achievements.experiencePoints')}</span>
-                <span className="text-sm font-bold text-on-surface">
+                <span className="text-sm text-bq-ink2">{t('achievements.experiencePoints')}</span>
+                <span className="text-sm font-bold text-bq-ink">
                   {((stats.totalPoints ?? totalPoints) ?? 0).toLocaleString()} XP
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm text-on-surface-variant">{t('achievements.accuracy')}</span>
-                <span className="text-sm font-bold text-on-surface">
+                <span className="text-sm text-bq-ink2">{t('achievements.accuracy')}</span>
+                <span className="text-sm font-bold text-bq-ink">
                   {stats.accuracy || 0}%
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm text-on-surface-variant">{t('achievements.longestStreak')}</span>
-                <span className="text-sm font-bold text-on-surface">
+                <span className="text-sm text-bq-ink2">{t('achievements.longestStreak')}</span>
+                <span className="text-sm font-bold text-bq-ink">
                   {stats.longestStreak || 0} {t('common.days')}
                 </span>
               </div>
@@ -418,7 +418,7 @@ const Achievements: React.FC = () => {
           </section>
 
           {/* Tier Progress (compact sidebar version) */}
-          <section className={`bg-surface-container p-6 rounded-2xl border ${tierData.current.borderColor}`}>
+          <section className={`bg-bq-white shadow-bq-soft p-6 rounded-2xl border ${tierData.current.borderColor}`}>
             <div className="flex items-center gap-4 mb-4">
               <div className={`w-14 h-14 rounded-xl ${tierData.current.bgColor} flex items-center justify-center`}>
                 <span
@@ -429,9 +429,9 @@ const Achievements: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-sm font-black text-on-surface">{t(`tiers.${tierData.current.name}`)}</p>
+                <p className="text-sm font-black text-bq-ink">{t(`tiers.${tierData.current.name}`)}</p>
                 {tierData.next && (
-                  <p className="text-[11px] text-on-surface-variant">
+                  <p className="text-[11px] text-bq-ink2">
                     {t('achievements.nextTier')}: {t(`tiers.${tierData.next.name}`)}
                   </p>
                 )}
@@ -439,7 +439,7 @@ const Achievements: React.FC = () => {
             </div>
             {tierData.next ? (
               <>
-                <div className="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden mb-2">
+                <div className="h-2 w-full bg-bq-inset rounded-full overflow-hidden mb-2">
                   <div
                     className="h-full rounded-full transition-all duration-700 ease-out"
                     style={{
@@ -448,22 +448,22 @@ const Achievements: React.FC = () => {
                     }}
                   />
                 </div>
-                <p className="text-[10px] text-on-surface-variant font-medium">
+                <p className="text-[10px] text-bq-ink2 font-medium">
                   {stats.totalPoints || totalPoints} / {tierData.next.minPoints} {t('achievements.pointsUnit')}
                 </p>
               </>
             ) : (
-              <p className="text-[11px] text-on-surface-variant italic">
+              <p className="text-[11px] text-bq-ink2 italic">
                 {t('achievements.maxTier')}
               </p>
             )}
           </section>
 
           {/* Promotional Event Banner */}
-          <div className="rounded-2xl overflow-hidden h-48 relative group cursor-pointer">
-            <div className="w-full h-full bg-gradient-to-br from-secondary-container to-surface-container-low" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-5">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-secondary mb-1">
+          <div className="rounded-2xl overflow-hidden h-48 relative group cursor-pointer shadow-bq-soft">
+            <div className="w-full h-full bg-bq-flame" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-5">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-bq-amber mb-1">
                 {t('achievements.specialEvent')}
               </p>
               <h4 className="text-sm font-bold text-white leading-tight">

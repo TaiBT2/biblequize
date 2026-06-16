@@ -12,12 +12,12 @@ interface HeatmapCardProps {
 }
 
 function levelClass(d: HeatmapDay): string {
-  if (!d.completed) return 'bg-white/5'
+  if (!d.completed) return 'bg-bq-inset'
   const ratio = d.totalQuestions > 0 ? d.correctCount / d.totalQuestions : 0
-  if (ratio >= 1.0) return 'bg-gradient-to-br from-secondary to-[#d97706]'
-  if (ratio >= 0.8) return 'bg-[rgba(232,168,50,0.65)]'
-  if (ratio >= 0.6) return 'bg-[rgba(232,168,50,0.4)]'
-  return 'bg-[rgba(232,168,50,0.2)]'
+  if (ratio >= 1.0) return 'bg-bq-flame'
+  if (ratio >= 0.8) return 'bg-bq-amber/65'
+  if (ratio >= 0.6) return 'bg-bq-amber/40'
+  return 'bg-bq-amber/20'
 }
 
 export function HeatmapCard({ days }: HeatmapCardProps) {
@@ -28,13 +28,13 @@ export function HeatmapCard({ days }: HeatmapCardProps) {
   const todayIso = new Date().toISOString().split('T')[0]
 
   return (
-    <div className="bg-[rgba(50,52,64,0.4)] backdrop-blur-md border border-[rgba(232,168,50,0.1)] rounded-2xl p-5">
+    <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-5">
       <div className="flex items-center justify-between mb-4">
-        <div className="text-[15px] font-bold flex items-center gap-2">
-          <span className="material-symbols-outlined text-lg text-secondary">grid_view</span>
+        <div className="text-[15px] font-bold flex items-center gap-2 text-bq-ink">
+          <span className="material-symbols-outlined text-lg text-bq-amberd">grid_view</span>
           {t('daily.heatmapTitle', { days: total })}
         </div>
-        <span className="text-xs text-on-surface-variant">
+        <span className="text-xs text-bq-ink2">
           {t('daily.heatmapStats', { completed: completedCount, total, percent })}
         </span>
       </div>
@@ -47,22 +47,22 @@ export function HeatmapCard({ days }: HeatmapCardProps) {
               key={d.date}
               title={`${d.date}: ${d.completed ? `${d.correctCount}/${d.totalQuestions}` : t('daily.heatmapMissed')}`}
               className={`aspect-square rounded cursor-pointer transition-transform hover:scale-[1.3] ${levelClass(d)} ${
-                isToday ? 'ring-2 ring-[#fbbf24] ring-offset-1 ring-offset-[#11131e]' : ''
+                isToday ? 'ring-2 ring-bq-amber ring-offset-1 ring-offset-bq-white' : ''
               }`}
             />
           )
         })}
       </div>
 
-      <div className="flex items-center justify-between text-[11px] text-on-surface-variant">
+      <div className="flex items-center justify-between text-[11px] text-bq-ink2">
         <span>{t('daily.heatmapLegendRange', { days: total })}</span>
         <div className="flex items-center gap-1">
           <span>{t('daily.heatmapLegendLow')}</span>
-          <div className="w-3 h-3 rounded bg-white/5" />
-          <div className="w-3 h-3 rounded bg-[rgba(232,168,50,0.2)]" />
-          <div className="w-3 h-3 rounded bg-[rgba(232,168,50,0.4)]" />
-          <div className="w-3 h-3 rounded bg-[rgba(232,168,50,0.65)]" />
-          <div className="w-3 h-3 rounded bg-gradient-to-br from-secondary to-[#d97706]" />
+          <div className="w-3 h-3 rounded bg-bq-inset" />
+          <div className="w-3 h-3 rounded bg-bq-amber/20" />
+          <div className="w-3 h-3 rounded bg-bq-amber/40" />
+          <div className="w-3 h-3 rounded bg-bq-amber/65" />
+          <div className="w-3 h-3 rounded bg-bq-flame" />
           <span>{t('daily.heatmapLegendHigh')}</span>
         </div>
       </div>

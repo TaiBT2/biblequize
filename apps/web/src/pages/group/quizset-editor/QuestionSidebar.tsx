@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import type { EditorQuestion } from '../../../api/quizSets'
-import { COLOR, DIFFICULTY_COLORS } from './styles'
+import { ACTION_BG, ACTION_FG, ACTION_SHADOW, COLOR, DIFFICULTY_COLORS, INSET_BG } from './styles'
 import { isQuestionValid, validateQuestion } from './validation'
 
 interface Props {
@@ -31,7 +31,7 @@ export default function QuestionSidebar({
 
   return (
     <div style={{
-      background: 'rgba(50,52,64,0.15)',
+      background: INSET_BG,
       borderRight: `1px solid ${COLOR.borderXSubtle}`,
       padding: '16px 12px',
       display: 'flex',
@@ -86,8 +86,8 @@ export default function QuestionSidebar({
           </button>
         )}
         <button onClick={onAddManual} disabled={addBusy} style={{
-          background: COLOR.gold, color: '#1a1226',
-          border: 'none',
+          background: ACTION_BG, color: ACTION_FG,
+          border: 'none', boxShadow: ACTION_SHADOW,
           padding: '9px 11px', borderRadius: 7, fontSize: 12, fontWeight: 600,
           cursor: addBusy ? 'wait' : 'pointer',
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 5,
@@ -124,7 +124,7 @@ export default function QuestionSidebar({
               key={q.id}
               onClick={() => onActivate(q.id)}
               style={{
-                background: isActive ? COLOR.goldBg : 'rgba(255,255,255,0.04)',
+                background: isActive ? COLOR.goldBg : COLOR.bgPanel,
                 // Split `border` shorthand to avoid React warning about
                 // shorthand-then-longhand `borderLeft` conflict.
                 borderTop:    `1px solid ${isActive ? COLOR.goldBorder : COLOR.borderXSubtle}`,

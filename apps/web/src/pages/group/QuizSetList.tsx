@@ -13,16 +13,17 @@ import QuizSetListCard from '../../components/group/QuizSetListCard'
 
 type GroupRole = 'LEADER' | 'MOD' | 'MEMBER' | null
 
-/** Card cover gradients — cycle theo tag dominant hoặc fallback by index. */
+/** Card cover gradients — cycle theo tag dominant hoặc fallback by index.
+ *  Khung Sáng: nhẹ, sáng — jewel tint trên nền giấy. */
 const COVER_GRADIENTS = [
-  'linear-gradient(135deg, #1a1d2e 0%, #4a3d2e 100%)',  // easter — gold/brown
-  'linear-gradient(135deg, #1a1d2e 0%, #2a3d4e 100%)',  // gospel — blue/dark
-  'linear-gradient(135deg, #1a3d2e 0%, #2a4d3e 100%)',  // creation — green
-  'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)',  // children — bright green
-  'linear-gradient(135deg, #ff7a59 0%, #d4541a 100%)',  // OT — orange
-  'linear-gradient(135deg, #1a1d3e 0%, #2a3d6e 100%)',  // sea — deep blue
-  'linear-gradient(135deg, #2e1a3d 0%, #4d2a5e 100%)',  // psalms — purple
-  'linear-gradient(135deg, #1a2d3e 0%, #2e3d5e 100%)',  // letters — slate
+  'linear-gradient(135deg, #FFE08A 0%, #F59E0B 100%)',  // easter — amber
+  'linear-gradient(135deg, #6E86F0 0%, #2D46C8 100%)',  // gospel — sapphire
+  'linear-gradient(135deg, #46C89A 0%, #0E8A6B 100%)',  // creation — emerald
+  'linear-gradient(135deg, #46C89A 0%, #0E8A6B 100%)',  // children — emerald
+  'linear-gradient(135deg, #FF7A5A 0%, #E0354B 100%)',  // OT — ruby/ember
+  'linear-gradient(135deg, #6E86F0 0%, #2D46C8 100%)',  // sea — sapphire
+  'linear-gradient(135deg, #6E86F0 0%, #2D46C8 100%)',  // psalms — sapphire
+  'linear-gradient(135deg, #6E86F0 0%, #2D46C8 100%)',  // letters — sapphire
 ]
 
 function pickCoverGradient(qs: QuizSet, idx: number): string {
@@ -39,10 +40,10 @@ function pickCoverGradient(qs: QuizSet, idx: number): string {
 }
 
 const STATUS_FILTERS: { key: PublishStatus | 'ALL'; tKey: string; dot: string }[] = [
-  { key: 'ALL',       tKey: 'quizSet.list.filterAll',       dot: '#e8a832' },
-  { key: 'PUBLISHED', tKey: 'quizSet.list.filterPublished', dot: '#4ade80' },
-  { key: 'DRAFT',     tKey: 'quizSet.list.filterDraft',     dot: '#9ca3af' },
-  { key: 'ARCHIVED',  tKey: 'quizSet.list.filterArchived',  dot: '#e8a832' },
+  { key: 'ALL',       tKey: 'quizSet.list.filterAll',       dot: '#F59E0B' },
+  { key: 'PUBLISHED', tKey: 'quizSet.list.filterPublished', dot: '#0E8A6B' },
+  { key: 'DRAFT',     tKey: 'quizSet.list.filterDraft',     dot: '#A8A69C' },
+  { key: 'ARCHIVED',  tKey: 'quizSet.list.filterArchived',  dot: '#F59E0B' },
 ]
 
 const SORT_OPTIONS: { key: NonNullable<ListQuizSetsParams['sort']>; tKey: string }[] = [
@@ -189,7 +190,7 @@ export default function QuizSetList() {
   }, [nonDrafts, activeFolder])
 
   return (
-    <div className="qs-bg-deep min-h-screen lg:flex">
+    <div className="bg-bq-paper min-h-screen lg:flex">
       {/* Mobile header (lg:hidden) */}
       <div className="lg:hidden">
         <MobileHeader
@@ -198,15 +199,15 @@ export default function QuizSetList() {
       </div>
 
       {/* Desktop folder sidebar (hidden:lg:flex) */}
-      <aside className="hidden lg:flex w-[240px] shrink-0 border-r border-white/5 flex-col qs-bg" style={{ background: '#0e1019' }}>
-        <div className="px-4 py-3 border-b border-white/5">
-          <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">Danh mục</div>
+      <aside className="hidden lg:flex w-[240px] shrink-0 border-r border-bq-hair flex-col bg-bq-inset">
+        <div className="px-4 py-3 border-b border-bq-hair">
+          <div className="text-[10px] font-semibold text-bq-ink3 uppercase tracking-wider mb-2">Danh mục</div>
           <button
             onClick={handleCreateFolder}
-            className="w-full qs-glass-subtle rounded-lg px-3 py-2 flex items-center gap-2 text-xs hover:bg-white/5"
+            className="w-full bg-bq-white border border-bq-hair rounded-lg px-3 py-2 flex items-center gap-2 text-xs hover:bg-bq-inset"
           >
-            <span className="text-[#e8a832]">+</span>
-            <span className="text-gray-300">{t('quizSet.list.createFolder').replace('+ ', '')}</span>
+            <span className="text-bq-amberd">+</span>
+            <span className="text-bq-ink2">{t('quizSet.list.createFolder').replace('+ ', '')}</span>
           </button>
         </div>
 
@@ -227,13 +228,13 @@ export default function QuizSetList() {
                 <button
                   key={f.key}
                   onClick={() => setStatusFilter(selected ? 'ALL' : (f.key as PublishStatus))}
-                  className="w-full flex items-center justify-between px-4 py-1.5 text-xs hover:bg-white/3"
+                  className="w-full flex items-center justify-between px-4 py-1.5 text-xs hover:bg-bq-inset"
                 >
-                  <span className={`flex items-center gap-2 ${selected ? 'text-[#e8a832] font-bold' : 'text-gray-300'}`}>
+                  <span className={`flex items-center gap-2 ${selected ? 'text-bq-amberd font-bold' : 'text-bq-ink2'}`}>
                     <span className="w-2 h-2 rounded-full" style={{ background: f.dot }} />
                     <span>{t(f.tKey)}</span>
                   </span>
-                  <span className="text-[10px] text-gray-500">{counts[f.key] || 0}</span>
+                  <span className="text-[10px] text-bq-ink3">{counts[f.key] || 0}</span>
                 </button>
               )
             })}
@@ -264,40 +265,40 @@ export default function QuizSetList() {
       </aside>
 
       {/* MAIN content */}
-      <div className="flex-1 flex flex-col qs-bg-deep min-h-screen">
+      <div className="flex-1 flex flex-col bg-bq-paper min-h-screen">
         {/* Desktop toolbar */}
-        <div className="hidden lg:block px-6 py-4 border-b border-white/5" style={{ background: '#0e1019' }}>
+        <div className="hidden lg:block px-6 py-4 border-b border-bq-hair bg-bq-white">
           <div className="flex items-center justify-between mb-3">
             <div>
-              <div className="text-[10px] text-gray-500 uppercase font-semibold tracking-wider">
-                <Link to={`/groups/${groupId}`} className="hover:text-white">{(groupName || 'Nhóm').toUpperCase()}</Link>
+              <div className="text-[10px] text-bq-ink3 uppercase font-semibold tracking-wider">
+                <Link to={`/groups/${groupId}`} className="hover:text-bq-ink">{(groupName || 'Nhóm').toUpperCase()}</Link>
                 {' / '}<span>BỘ CÂU HỎI</span>
               </div>
-              <h1 className="text-2xl font-extrabold text-white mt-0.5 qs-font-vn-display">
+              <h1 className="text-2xl font-extrabold text-bq-ink mt-0.5 font-display">
                 {activeFolder === 'ALL' ? 'Tất cả bộ câu hỏi' :
                  activeFolder === 'UNCAT' ? 'Chưa phân loại' :
                  folders.find(f => f.id === activeFolder)?.name || 'Bộ câu hỏi'}
-                <span className="text-gray-500 font-normal text-xl ml-1">({filteredByFolder.length})</span>
+                <span className="text-bq-ink3 font-normal text-xl ml-1">({filteredByFolder.length})</span>
               </h1>
             </div>
             <div className="flex gap-2">
               <button
                 type="button"
                 title="Tính năng đang phát triển"
-                className="px-3 py-2 rounded-lg qs-glass-subtle border border-white/10 text-gray-300 text-xs font-semibold flex items-center gap-1.5 hover:border-white/20 opacity-60 cursor-not-allowed"
+                className="px-3 py-2 rounded-lg bg-bq-inset border border-bq-hair text-bq-ink2 text-xs font-semibold flex items-center gap-1.5 hover:border-bq-ink3 opacity-60 cursor-not-allowed"
               >
                 <span>📋</span><span>Clone từ template</span>
               </button>
               <button
                 type="button"
                 title="Tính năng đang phát triển"
-                className="px-3 py-2 rounded-lg qs-glass-subtle border border-white/10 text-gray-300 text-xs font-semibold flex items-center gap-1.5 hover:border-white/20 opacity-60 cursor-not-allowed"
+                className="px-3 py-2 rounded-lg bg-bq-inset border border-bq-hair text-bq-ink2 text-xs font-semibold flex items-center gap-1.5 hover:border-bq-ink3 opacity-60 cursor-not-allowed"
               >
                 <span>📥</span><span>Import</span>
               </button>
               <Link
                 to={`/groups/${groupId}/quiz-sets/new`}
-                className="px-4 py-2 rounded-lg qs-gold-grad text-[#11131e] text-xs font-extrabold flex items-center gap-1.5 hover:opacity-90"
+                className="px-4 py-2 rounded-lg bg-bq-action shadow-bq-action text-white text-xs font-extrabold flex items-center gap-1.5 hover:opacity-90"
               >
                 <span className="text-base leading-none">+</span><span>TẠO BỘ MỚI</span>
               </Link>
@@ -305,33 +306,33 @@ export default function QuizSetList() {
           </div>
 
           <div className="flex items-center gap-2">
-            <div className="flex-1 qs-glass-subtle rounded-lg px-3 py-2 flex items-center gap-2 max-w-md border border-white/10">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="text-gray-400">
+            <div className="flex-1 bg-bq-inset rounded-lg px-3 py-2 flex items-center gap-2 max-w-md border border-bq-hair">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="text-bq-ink3">
                 <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
               </svg>
               <input
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="bg-transparent outline-none text-xs text-white placeholder-gray-500 flex-1"
+                className="bg-transparent outline-none text-xs text-bq-ink placeholder-bq-ink3 flex-1"
                 placeholder="Tìm theo tên, mô tả, tag..."
               />
-              <span className="text-[10px] text-gray-600 px-1.5 py-0.5 rounded border border-white/10">⌘K</span>
+              <span className="text-[10px] text-bq-ink3 px-1.5 py-0.5 rounded border border-bq-hair">⌘K</span>
             </div>
 
             <div className="flex items-center gap-1.5 ml-auto text-xs">
-              <span className="text-gray-500">{t('quizSet.list.sortLabel')}</span>
+              <span className="text-bq-ink3">{t('quizSet.list.sortLabel')}</span>
               <div className="relative">
                 <button
                   type="button"
                   onClick={() => setSortOpen(v => !v)}
-                  className="qs-glass-subtle rounded-lg px-2.5 py-1.5 text-gray-300 outline-none border border-white/10 cursor-pointer flex items-center gap-1"
+                  className="bg-bq-inset rounded-lg px-2.5 py-1.5 text-bq-ink2 outline-none border border-bq-hair cursor-pointer flex items-center gap-1"
                 >
                   <span>{t(SORT_OPTIONS.find(o => o.key === sort)?.tKey || 'quizSet.list.sortPopular')}</span>
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z" /></svg>
                 </button>
                 {sortOpen && (
                   <div
-                    className="absolute right-0 top-full mt-1 w-44 qs-glass-strong rounded-lg overflow-hidden z-20"
+                    className="absolute right-0 top-full mt-1 w-44 bg-bq-white border border-bq-hair shadow-bq-soft rounded-lg overflow-hidden z-20"
                     onMouseLeave={() => setSortOpen(false)}
                   >
                     {SORT_OPTIONS.map(o => (
@@ -339,18 +340,18 @@ export default function QuizSetList() {
                         key={o.key}
                         type="button"
                         onClick={() => { setSort(o.key); setSortOpen(false) }}
-                        className={`w-full px-3 py-1.5 text-left text-xs hover:bg-white/5 ${sort === o.key ? 'text-[#e8a832] font-bold' : 'text-gray-300'}`}
+                        className={`w-full px-3 py-1.5 text-left text-xs hover:bg-bq-inset ${sort === o.key ? 'text-bq-amberd font-bold' : 'text-bq-ink2'}`}
                       >{t(o.tKey)}</button>
                     ))}
                   </div>
                 )}
               </div>
 
-              <div className="flex qs-glass-subtle rounded-lg overflow-hidden border border-white/10 ml-1">
+              <div className="flex bg-bq-inset rounded-lg overflow-hidden border border-bq-hair ml-1">
                 <button
                   type="button"
                   onClick={() => setViewMode('grid')}
-                  className={`px-2 py-1.5 ${viewMode === 'grid' ? 'text-[#e8a832] bg-[#e8a832]/10' : 'text-gray-500 hover:text-gray-300'}`}
+                  className={`px-2 py-1.5 ${viewMode === 'grid' ? 'text-bq-amberd bg-bq-amber/10' : 'text-bq-ink3 hover:text-bq-ink2'}`}
                   title="Lưới"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -360,7 +361,7 @@ export default function QuizSetList() {
                 <button
                   type="button"
                   onClick={() => setViewMode('list')}
-                  className={`px-2 py-1.5 ${viewMode === 'list' ? 'text-[#e8a832] bg-[#e8a832]/10' : 'text-gray-500 hover:text-gray-300'}`}
+                  className={`px-2 py-1.5 ${viewMode === 'list' ? 'text-bq-amberd bg-bq-amber/10' : 'text-bq-ink3 hover:text-bq-ink2'}`}
                   title="Danh sách"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
@@ -379,14 +380,14 @@ export default function QuizSetList() {
 
         {/* Mobile filter chips + search */}
         <div className="lg:hidden px-5 mb-3">
-          <div className="qs-glass rounded-xl px-3 py-2.5 flex items-center gap-2">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="text-gray-400">
+          <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl px-3 py-2.5 flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="text-bq-ink3">
               <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
             </svg>
             <input
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="bg-transparent outline-none text-sm text-white placeholder-gray-500 flex-1"
+              className="bg-transparent outline-none text-sm text-bq-ink placeholder-bq-ink3 flex-1"
               placeholder={t('quizSet.list.search')}
             />
           </div>
@@ -400,8 +401,8 @@ export default function QuizSetList() {
                   onClick={() => setStatusFilter(f.key)}
                   className={`shrink-0 px-3 py-1 rounded-full text-[10px] font-semibold ${
                     selected
-                      ? 'bg-[#e8a832]/15 text-[#e8a832] border border-[#e8a832]/30'
-                      : 'qs-glass text-gray-300'
+                      ? 'bg-bq-amber/15 text-bq-amberd border border-bq-amber/30'
+                      : 'bg-bq-white border border-bq-hair text-bq-ink2'
                   }`}
                 >
                   {t(f.tKey)} · {counts[f.key] || 0}
@@ -411,26 +412,26 @@ export default function QuizSetList() {
           </div>
 
           <div className="flex justify-between items-center mt-2">
-            <span className="text-[10px] text-gray-500">{t('quizSet.list.sortLabel')}</span>
+            <span className="text-[10px] text-bq-ink3">{t('quizSet.list.sortLabel')}</span>
             <select
               value={sort}
               onChange={e => setSort(e.target.value as any)}
-              className="text-[10px] text-[#e8a832] font-semibold bg-transparent outline-none cursor-pointer"
+              className="text-[10px] text-bq-amberd font-semibold bg-transparent outline-none cursor-pointer"
             >
               {SORT_OPTIONS.map(o => (
-                <option key={o.key} value={o.key} className="qs-bg">{t(o.tKey)}</option>
+                <option key={o.key} value={o.key} className="bg-bq-white text-bq-ink">{t(o.tKey)}</option>
               ))}
             </select>
           </div>
         </div>
 
         {error && (
-          <div className="mx-5 lg:mx-6 mb-3 px-4 py-3 rounded-lg bg-red-500/20 text-red-200 text-sm">{error}</div>
+          <div className="mx-5 lg:mx-6 mb-3 px-4 py-3 rounded-lg bg-bq-ruby/15 text-bq-ruby text-sm">{error}</div>
         )}
 
         <div className="flex-1 overflow-y-auto qs-scroll-thin px-5 lg:px-6 lg:py-6">
           {loading ? (
-            <div className="px-5 py-8 text-center text-gray-500">{t('quizSet.list.loading')}</div>
+            <div className="px-5 py-8 text-center text-bq-ink3">{t('quizSet.list.loading')}</div>
           ) : items.length === 0 ? (
             <EmptyState groupId={groupId!} hasSearch={search.length > 0} t={t} />
           ) : grouped ? (
@@ -474,13 +475,13 @@ export default function QuizSetList() {
           {/* Mobile-only "Tạo thư mục" footer (desktop has it in sidebar) */}
           <button
             onClick={handleCreateFolder}
-            className="lg:hidden w-full mt-3 py-2 rounded-xl qs-glass border border-dashed border-white/20 text-xs text-gray-400 hover:text-[#e8a832] hover:border-[#e8a832]/40"
+            className="lg:hidden w-full mt-3 py-2 rounded-xl bg-bq-white border border-dashed border-bq-hair text-xs text-bq-ink2 hover:text-bq-amberd hover:border-bq-amber/40"
           >{t('quizSet.list.createFolder')}</button>
         </div>
       </div>
 
       {pickerError && (
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-lg bg-red-500/90 text-white text-xs shadow-lg">
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-lg bg-bq-ruby text-white text-xs shadow-lg">
           {pickerError}
         </div>
       )}
@@ -506,7 +507,7 @@ function MobileHeader({ groupId, t, totalCount }: { groupId: string; t: any; tot
     <div className="px-5 py-3 flex items-center justify-between">
       <button
         onClick={() => navigate(`/groups/${groupId}`)}
-        className="w-9 h-9 rounded-full qs-glass flex items-center justify-center text-gray-400"
+        className="w-9 h-9 rounded-full bg-bq-white border border-bq-hair flex items-center justify-center text-bq-ink2"
         aria-label={t('quizSet.list.back')}
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
@@ -514,12 +515,12 @@ function MobileHeader({ groupId, t, totalCount }: { groupId: string; t: any; tot
         </svg>
       </button>
       <div className="text-center">
-        <div className="text-xs text-gray-400">{t('quizSet.list.title')}</div>
-        <div className="text-sm font-bold text-white qs-font-vn-display">{t('quizSet.list.totalCount', { count: totalCount })}</div>
+        <div className="text-xs text-bq-ink2">{t('quizSet.list.title')}</div>
+        <div className="text-sm font-bold text-bq-ink font-display">{t('quizSet.list.totalCount', { count: totalCount })}</div>
       </div>
       <Link
         to={`/groups/${groupId}/quiz-sets/new`}
-        className="w-9 h-9 rounded-full qs-gold-grad flex items-center justify-center text-[#11131e] font-bold"
+        className="w-9 h-9 rounded-full bg-bq-action shadow-bq-action flex items-center justify-center text-white font-bold"
         aria-label={t('quizSet.list.createNew')}
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
@@ -534,7 +535,7 @@ function SidebarSection({ label, children }: { label: string; children: React.Re
   return (
     <>
       <div className="px-4 py-1 mt-3">
-        <div className="text-[9px] font-semibold text-gray-600 uppercase tracking-wider">{label}</div>
+        <div className="text-[9px] font-semibold text-bq-ink3 uppercase tracking-wider">{label}</div>
       </div>
       {children}
     </>
@@ -549,24 +550,24 @@ function FolderItem({
   highlight?: boolean; dimmed?: boolean;
 }) {
   return (
-    <div className="group flex items-center hover:bg-white/3">
+    <div className="group flex items-center hover:bg-bq-inset">
       <button
         onClick={onClick}
         className="flex-1 flex items-center justify-between px-4 py-1.5 text-xs"
       >
         <span className={`flex items-center gap-2 ${
-          active ? 'text-[#e8a832] font-bold' :
-          highlight ? 'text-[#e8a832] font-bold' :
-          dimmed ? 'text-gray-500' : 'text-gray-300'
+          active ? 'text-bq-amberd font-bold' :
+          highlight ? 'text-bq-amberd font-bold' :
+          dimmed ? 'text-bq-ink3' : 'text-bq-ink2'
         }`}>
           <span>{emoji}</span><span>{label}</span>
         </span>
-        <span className={`text-[10px] ${active || highlight ? 'text-[#e8a832]' : 'text-gray-500'}`}>{count}</span>
+        <span className={`text-[10px] ${active || highlight ? 'text-bq-amberd' : 'text-bq-ink3'}`}>{count}</span>
       </button>
       {onDelete && (
         <button
           onClick={onDelete}
-          className="opacity-0 group-hover:opacity-100 px-2 text-gray-500 hover:text-red-400 text-xs"
+          className="opacity-0 group-hover:opacity-100 px-2 text-bq-ink3 hover:text-bq-ruby text-xs"
           title="Xóa thư mục"
         >×</button>
       )}
@@ -582,9 +583,9 @@ function SectionGroup({
   return (
     <div className="mb-6">
       <div className="flex items-center gap-2 mb-3">
-        <span className={`text-sm font-bold ${dimmed ? 'text-gray-400' : 'text-white'}`}>{title}</span>
-        <span className="text-xs text-gray-500">{count} bộ</span>
-        <div className="h-px flex-1 bg-white/5 ml-2" />
+        <span className={`text-sm font-bold ${dimmed ? 'text-bq-ink2' : 'text-bq-ink'}`}>{title}</span>
+        <span className="text-xs text-bq-ink3">{count} bộ</span>
+        <div className="h-px flex-1 bg-bq-hair ml-2" />
       </div>
       {children}
     </div>
@@ -661,37 +662,37 @@ function QuizSetCard({
       className="qs-fade-in cursor-pointer block"
     >
       {/* Desktop: cover on top (hidden when list view forced) */}
-      <div className={`${forceCompact ? 'hidden' : 'hidden lg:block'} qs-quiz-card rounded-xl overflow-hidden ${
-        idx === 0 ? 'qs-glass-strong border border-[#e8a832]/30' : 'qs-glass border border-white/10'
+      <div className={`${forceCompact ? 'hidden' : 'hidden lg:block'} transition rounded-xl overflow-hidden shadow-bq-soft ${
+        idx === 0 ? 'bg-bq-white border border-bq-amber/30' : 'bg-bq-white border border-bq-hair'
       }`}>
         <div className="h-28 relative overflow-hidden" style={{ background: gradient }}>
           <div className="absolute inset-0 flex items-center justify-center text-5xl opacity-40">{cover}</div>
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%, transparent 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%, transparent 100%)' }} />
           <div className="absolute top-2 left-2"><span className={`qs-badge-status ${badge.cls}`}>{badge.vi}</span></div>
           <div className="absolute top-2 right-2 flex gap-1">
             {qs.averageRating != null && (
-              <span className="px-1.5 py-0.5 rounded bg-black/40 backdrop-blur text-[#e8a832] text-[10px] font-bold">⭐ {Number(qs.averageRating).toFixed(1)}</span>
+              <span className="px-1.5 py-0.5 rounded bg-black/40 backdrop-blur text-bq-amber text-[10px] font-bold">⭐ {Number(qs.averageRating).toFixed(1)}</span>
             )}
             <span className="px-1.5 py-0.5 rounded bg-black/40 backdrop-blur text-white text-[10px] font-bold">▶ {qs.playCount}x</span>
           </div>
         </div>
         <div className="p-3">
-          <h3 className="font-extrabold text-white text-sm leading-tight qs-font-vn-display">{qs.name}</h3>
+          <h3 className="font-extrabold text-bq-ink text-sm leading-tight font-display">{qs.name}</h3>
           {qs.coverScripture && (
-            <div className="text-[10px] text-gray-400 mt-1 line-clamp-1">📍 {qs.coverScripture}{qs.description ? ` · "${qs.description.slice(0, 40)}"` : ''}</div>
+            <div className="text-[10px] text-bq-ink2 mt-1 line-clamp-1">📍 {qs.coverScripture}{qs.description ? ` · "${qs.description.slice(0, 40)}"` : ''}</div>
           )}
           <div className="flex items-center gap-1.5 mt-2">
-            <span className="text-[10px] text-gray-500">{qs.totalQuestions} câu</span>
+            <span className="text-[10px] text-bq-ink3">{qs.totalQuestions} câu</span>
             {diff && (
               <>
-                <span className="text-[10px] text-gray-600">·</span>
+                <span className="text-[10px] text-bq-ink3">·</span>
                 <span className={`text-[10px] font-semibold ${diff.cssClass}`}>{diff.emoji} {diff.vi}</span>
               </>
             )}
             {qs.estimatedDurationMin != null && (
               <>
-                <span className="text-[10px] text-gray-600">·</span>
-                <span className="text-[10px] text-gray-500">~{qs.estimatedDurationMin}p</span>
+                <span className="text-[10px] text-bq-ink3">·</span>
+                <span className="text-[10px] text-bq-ink3">~{qs.estimatedDurationMin}p</span>
               </>
             )}
           </div>
@@ -709,12 +710,12 @@ function QuizSetCard({
       </div>
 
       {/* Mobile / list view: compact horizontal */}
-      <div className={`${forceCompact ? 'block' : 'lg:hidden'} qs-glass rounded-xl mb-2 overflow-hidden`}>
+      <div className={`${forceCompact ? 'block' : 'lg:hidden'} bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl mb-2 overflow-hidden`}>
         <div className="flex p-3 gap-3">
-          <div className="w-14 h-14 rounded-lg flex items-center justify-center text-2xl shrink-0 qs-cover-fallback">{cover}</div>
+          <div className="w-14 h-14 rounded-lg flex items-center justify-center text-2xl shrink-0 bg-bq-inset">{cover}</div>
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between">
-              <h3 className="qs-font-vn-display font-bold text-white text-xs leading-tight truncate">{qs.name}</h3>
+              <h3 className="font-display font-bold text-bq-ink text-xs leading-tight truncate">{qs.name}</h3>
               {qs.publishStatus === 'PUBLISHED' && (
                 <span className="qs-badge-status qs-badge-published shrink-0 ml-1">Pub</span>
               )}
@@ -723,24 +724,24 @@ function QuizSetCard({
               )}
             </div>
             {qs.coverScripture && (
-              <div className="text-[10px] text-gray-400 mt-0.5 line-clamp-1">📍 {qs.coverScripture}</div>
+              <div className="text-[10px] text-bq-ink2 mt-0.5 line-clamp-1">📍 {qs.coverScripture}</div>
             )}
             <div className="flex items-center gap-1.5 mt-1.5">
-              <span className="text-[10px] text-gray-500">{qs.totalQuestions} câu</span>
+              <span className="text-[10px] text-bq-ink3">{qs.totalQuestions} câu</span>
               {diff && (
                 <>
-                  <span className="text-[10px] text-gray-600">·</span>
+                  <span className="text-[10px] text-bq-ink3">·</span>
                   <span className={`text-[10px] font-semibold ${diff.cssClass}`}>{diff.vi}</span>
                 </>
               )}
               {qs.playCount > 0 && (
                 <>
-                  <span className="text-[10px] text-gray-600">·</span>
-                  <span className="text-[10px] text-[#e8a832] font-bold">▶ {qs.playCount}x</span>
+                  <span className="text-[10px] text-bq-ink3">·</span>
+                  <span className="text-[10px] text-bq-amberd font-bold">▶ {qs.playCount}x</span>
                 </>
               )}
               {qs.averageRating != null && (
-                <span className="text-[10px] text-[#e8a832] ml-auto">⭐ {Number(qs.averageRating).toFixed(1)}</span>
+                <span className="text-[10px] text-bq-amberd ml-auto">⭐ {Number(qs.averageRating).toFixed(1)}</span>
               )}
             </div>
             {showActions && (
@@ -772,13 +773,13 @@ function CardActionRow({
 }) {
   const sizeCls = compact ? 'h-7 px-2 text-[10px]' : 'h-8 px-2.5 text-xs'
   return (
-    <div className={`flex items-center gap-1.5 ${compact ? 'mt-1.5' : 'mt-2.5 pt-2.5 border-t border-white/5'}`}>
+    <div className={`flex items-center gap-1.5 ${compact ? 'mt-1.5' : 'mt-2.5 pt-2.5 border-t border-bq-hair'}`}>
       <button
         type="button"
         onClick={e => { stop(e); onPlayMultiplayer(qs) }}
         title="Chơi cùng nhau"
         aria-label="Chơi cùng nhau với nhóm"
-        className={`${sizeCls} rounded-lg bg-[#e8a832]/15 hover:bg-[#e8a832]/25 border border-[#e8a832]/30 text-[#e8a832] font-semibold flex items-center gap-1`}
+        className={`${sizeCls} rounded-lg bg-bq-amber/15 hover:bg-bq-amber/25 border border-bq-amber/30 text-bq-amberd font-semibold flex items-center gap-1`}
       >
         <span>👥</span><span>Chơi cùng</span>
       </button>
@@ -788,7 +789,7 @@ function CardActionRow({
           onClick={e => { stop(e); onSchedule(qs) }}
           title="Đặt lịch quiz cho nhóm"
           aria-label="Đặt lịch quiz cho nhóm"
-          className={`${sizeCls} rounded-lg bg-purple-500/15 hover:bg-purple-500/25 border border-purple-400/30 text-purple-300 font-semibold flex items-center gap-1`}
+          className={`${sizeCls} rounded-lg bg-bq-sapphire/15 hover:bg-bq-sapphire/25 border border-bq-sapphire/30 text-bq-sapphire font-semibold flex items-center gap-1`}
         >
           <span>📅</span><span>Đặt lịch</span>
         </button>
@@ -805,7 +806,7 @@ function ModeBadgeRow({ suggestedMode }: { suggestedMode?: string | null }) {
         <span
           key={m.key}
           className={`text-[9px] px-1.5 py-0.5 rounded ${m.cssClass} font-semibold ${
-            suggestedMode === m.key ? 'ring-1 ring-emerald-400/40' : ''
+            suggestedMode === m.key ? 'ring-1 ring-bq-emerald/40' : ''
           }`}
         >{m.emoji}</span>
       ))}
@@ -818,26 +819,25 @@ function DraftCard({ groupId, qs }: { groupId: string; qs: QuizSet }) {
   return (
     <Link
       to={`/groups/${groupId}/quiz-sets/${qs.id}`}
-      className="block rounded-xl mb-2 overflow-hidden border border-gray-500/20 qs-fade-in"
-      style={{ background: 'rgba(50, 52, 64, 0.3)' }}
+      className="block rounded-xl mb-2 overflow-hidden border border-bq-hair shadow-bq-soft qs-fade-in bg-bq-inset"
     >
       {/* Desktop: cover on top */}
       <div className="hidden lg:block">
-        <div className="h-28 relative bg-gray-700/30 flex items-center justify-center">
+        <div className="h-28 relative bg-bq-white flex items-center justify-center">
           <div className="text-5xl opacity-30">📝</div>
           <div className="absolute top-2 left-2"><span className="qs-badge-status qs-badge-draft">Nháp</span></div>
         </div>
         <div className="p-3">
-          <h3 className="font-extrabold text-gray-300 text-sm leading-tight qs-font-vn-display">{qs.name}</h3>
-          <div className="text-[10px] text-gray-500 mt-1">
+          <h3 className="font-extrabold text-bq-ink2 text-sm leading-tight font-display">{qs.name}</h3>
+          <div className="text-[10px] text-bq-ink3 mt-1">
             {qs.totalQuestions > 0 ? `Mới có ${qs.totalQuestions}/15 câu` : 'Chưa có câu hỏi'}
             {qs.updatedAt && ` · Sửa cuối: ${formatRelative(qs.updatedAt)}`}
           </div>
           <div className="mt-2">
-            <div className="qs-progress-bar h-1">
-              <div className="qs-progress-fill qs-progress-fill-gold h-1" style={{ width: `${pct}%` }} />
+            <div className="bg-bq-inset rounded-full overflow-hidden h-1">
+              <div className="bg-bq-amber h-1" style={{ width: `${pct}%` }} />
             </div>
-            <div className="text-[10px] text-gray-500 mt-1">
+            <div className="text-[10px] text-bq-ink3 mt-1">
               {pct}% hoàn thành
               {qs.totalQuestions < 5 && ` · Cần thêm ${5 - qs.totalQuestions} câu để xuất bản`}
             </div>
@@ -847,23 +847,20 @@ function DraftCard({ groupId, qs }: { groupId: string; qs: QuizSet }) {
 
       {/* Mobile: compact horizontal */}
       <div className="lg:hidden flex p-3 gap-3">
-        <div
-          className="w-14 h-14 rounded-lg flex items-center justify-center text-2xl shrink-0"
-          style={{ background: 'rgba(156, 163, 175, 0.15)' }}
-        >📝</div>
+        <div className="w-14 h-14 rounded-lg flex items-center justify-center text-2xl shrink-0 bg-bq-white">📝</div>
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between">
-            <h3 className="qs-font-vn-display font-bold text-gray-300 text-xs leading-tight truncate">{qs.name}</h3>
+            <h3 className="font-display font-bold text-bq-ink2 text-xs leading-tight truncate">{qs.name}</h3>
             <span className="qs-badge-status qs-badge-draft shrink-0 ml-1">Nháp</span>
           </div>
-          <div className="text-[10px] text-gray-500 mt-0.5">
+          <div className="text-[10px] text-bq-ink3 mt-0.5">
             {qs.totalQuestions > 0 ? `Mới có ${qs.totalQuestions} câu` : 'Chưa có câu hỏi'} · Sửa cuối: {qs.updatedAt ? formatRelative(qs.updatedAt) : '—'}
           </div>
           <div className="mt-1.5">
-            <div className="qs-progress-bar h-1">
-              <div className="qs-progress-fill qs-progress-fill-gold h-1" style={{ width: `${pct}%` }} />
+            <div className="bg-bq-inset rounded-full overflow-hidden h-1">
+              <div className="bg-bq-amber h-1" style={{ width: `${pct}%` }} />
             </div>
-            <div className="text-[10px] text-gray-500 mt-1">{pct}% hoàn thành</div>
+            <div className="text-[10px] text-bq-ink3 mt-1">{pct}% hoàn thành</div>
           </div>
         </div>
       </div>
@@ -873,15 +870,15 @@ function DraftCard({ groupId, qs }: { groupId: string; qs: QuizSet }) {
 
 function EmptyState({ groupId, hasSearch, t }: { groupId: string; hasSearch: boolean; t: any }) {
   return (
-    <div className="rounded-xl p-8 text-center qs-glass">
+    <div className="rounded-xl p-8 text-center bg-bq-white border border-bq-hair shadow-bq-soft">
       <div className="text-5xl mb-3">📚</div>
-      <p className="text-gray-300 mb-4 text-sm">
+      <p className="text-bq-ink2 mb-4 text-sm">
         {hasSearch ? t('quizSet.list.emptySearch') : t('quizSet.list.emptyAll')}
       </p>
       {!hasSearch && (
         <Link
           to={`/groups/${groupId}/quiz-sets/new`}
-          className="inline-block px-4 py-2 rounded-lg qs-gold-grad text-[#11131e] font-bold text-sm"
+          className="inline-block px-4 py-2 rounded-lg bg-bq-action shadow-bq-action text-white font-bold text-sm"
         >{t('quizSet.list.createFirst')}</Link>
       )}
     </div>

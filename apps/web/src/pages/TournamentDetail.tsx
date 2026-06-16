@@ -68,10 +68,10 @@ function getRoundLabel(round: number, totalRounds: number): string {
 
 function getDifficultyLabel(d?: string): { label: string; icon: string; color: string } {
   const map: Record<string, { label: string; icon: string; color: string }> = {
-    EASY:   { label: 'Dễ',       icon: '😊', color: '#97C459' },
-    MEDIUM: { label: 'Trung bình',icon: '⚡', color: '#ff8c42' },
-    HARD:   { label: 'Khó',      icon: '🔥', color: '#f87171' },
-    MIXED:  { label: 'Hỗn hợp', icon: '🌐', color: '#e8a832' },
+    EASY:   { label: 'Dễ',       icon: '😊', color: 'var(--bq-emerald)' },
+    MEDIUM: { label: 'Trung bình',icon: '⚡', color: 'var(--bq-amber-deep)' },
+    HARD:   { label: 'Khó',      icon: '🔥', color: 'var(--bq-ruby)' },
+    MIXED:  { label: 'Hỗn hợp', icon: '🌐', color: 'var(--bq-amber-deep)' },
   };
   return map[d ?? 'MIXED'] ?? map.MIXED;
 }
@@ -110,8 +110,8 @@ function MatchCard({
   const isPending = match.status === 'PENDING';
   const isFinal = match.roundNumber === totalRounds;
 
-  const AVATAR_COLORS = ['rgba(232,168,50,0.3)', 'rgba(74,158,255,0.3)', 'rgba(168,85,247,0.3)', 'rgba(99,153,34,0.3)', 'rgba(255,140,66,0.3)', 'rgba(106,184,232,0.3)', 'rgba(248,113,113,0.3)', 'rgba(192,132,252,0.3)'];
-  const AVATAR_TEXT = ['#e8a832', '#6AB8E8', '#c084fc', '#97C459', '#ff8c42', '#6AB8E8', '#f87171', '#c084fc'];
+  const AVATAR_COLORS = ['rgba(245,158,11,0.18)', 'rgba(45,70,200,0.16)', 'rgba(45,70,200,0.16)', 'rgba(14,138,107,0.16)', 'rgba(255,111,61,0.16)', 'rgba(45,70,200,0.16)', 'rgba(224,53,75,0.16)', 'rgba(45,70,200,0.16)'];
+  const AVATAR_TEXT = ['var(--bq-amber-deep)', 'var(--bq-sapphire)', 'var(--bq-sapphire)', 'var(--bq-emerald)', 'var(--bq-amber-deep)', 'var(--bq-sapphire)', 'var(--bq-ruby)', 'var(--bq-sapphire)'];
   function avatarColor(idx: number) { return AVATAR_COLORS[idx % AVATAR_COLORS.length]; }
   function avatarText(idx: number)  { return AVATAR_TEXT[idx % AVATAR_TEXT.length]; }
 
@@ -120,16 +120,16 @@ function MatchCard({
       <div
         className="rounded-lg overflow-hidden cursor-pointer"
         style={{
-          background: 'rgba(50,52,64,0.3)',
-          border: '0.5px dashed rgba(255,255,255,0.1)',
+          background: 'var(--bq-paper-sunk)',
+          border: '1px dashed var(--bq-hairline)',
         }}
         onClick={() => onMatchClick(match)}
       >
-        <div className="px-2.5 py-1.5 flex justify-between items-center" style={{ borderBottom: '0.5px solid rgba(255,255,255,0.04)', background: 'rgba(0,0,0,0.15)' }}>
-          <span className="text-[9px]" style={{ color: 'rgba(255,255,255,0.4)' }}>Match #{match.matchIndex + 1}</span>
+        <div className="px-2.5 py-1.5 flex justify-between items-center" style={{ borderBottom: '1px solid var(--bq-hairline)', background: 'var(--bq-paper-sunk)' }}>
+          <span className="text-[9px]" style={{ color: 'var(--bq-ink-faint)' }}>Match #{match.matchIndex + 1}</span>
         </div>
         <div className="px-2.5 py-2 text-center">
-          <span className="text-[11px]" style={{ color: 'rgba(255,255,255,0.5)' }}>⏳ Chờ kết quả vòng trước</span>
+          <span className="text-[11px]" style={{ color: 'var(--bq-ink-soft)' }}>⏳ Chờ kết quả vòng trước</span>
         </div>
       </div>
     );
@@ -139,15 +139,15 @@ function MatchCard({
     <div
       className="rounded-lg overflow-hidden cursor-pointer transition-all duration-200"
       style={{
-        background: isFinal ? 'linear-gradient(135deg, rgba(232,168,50,0.08), rgba(50,52,64,0.4))' : 'rgba(50,52,64,0.5)',
+        background: isFinal ? 'linear-gradient(135deg, rgba(245,158,11,0.10), var(--bq-white))' : 'var(--bq-white)',
         border: isUserMatch
-          ? '0.5px solid rgba(232,168,50,0.5)'
+          ? '1px solid rgba(245,158,11,0.55)'
           : isFinal
-            ? '0.5px solid rgba(232,168,50,0.3)'
+            ? '1px solid rgba(245,158,11,0.4)'
             : isActive
-              ? '0.5px solid rgba(151,196,89,0.4)'
-              : '0.5px solid rgba(255,255,255,0.08)',
-        boxShadow: isUserMatch ? '0 0 12px rgba(232,168,50,0.12)' : undefined,
+              ? '1px solid rgba(14,138,107,0.45)'
+              : '1px solid var(--bq-hairline)',
+        boxShadow: isUserMatch ? '0 0 12px rgba(245,158,11,0.18)' : 'var(--bq-shadow-soft)',
       }}
       onClick={() => onMatchClick(match)}
     >
@@ -155,17 +155,17 @@ function MatchCard({
       <div
         className="px-2.5 py-1.5 flex justify-between items-center"
         style={{
-          borderBottom: `0.5px solid ${isUserMatch ? 'rgba(232,168,50,0.2)' : 'rgba(255,255,255,0.04)'}`,
-          background: isUserMatch ? 'rgba(232,168,50,0.1)' : isFinal ? 'rgba(232,168,50,0.15)' : 'rgba(0,0,0,0.2)',
+          borderBottom: `1px solid ${isUserMatch ? 'rgba(245,158,11,0.3)' : 'var(--bq-hairline)'}`,
+          background: isUserMatch ? 'rgba(245,158,11,0.12)' : isFinal ? 'rgba(245,158,11,0.14)' : 'var(--bq-paper-sunk)',
         }}
       >
-        <span className="text-[9px] font-medium" style={{ color: isUserMatch ? '#e8a832' : isFinal ? '#e8a832' : 'rgba(255,255,255,0.5)' }}>
+        <span className="text-[9px] font-medium" style={{ color: isUserMatch ? 'var(--bq-amber-deep)' : isFinal ? 'var(--bq-amber-deep)' : 'var(--bq-ink-soft)' }}>
           {isFinal ? '🏆 CHUNG KẾT' : isUserMatch ? `Match #${match.matchIndex + 1} · Trận của bạn` : `Match #${match.matchIndex + 1}`}
         </span>
         {isActive && (
           <span className="flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#97C459', boxShadow: '0 0 4px #97C459' }} />
-            <span className="text-[9px]" style={{ color: '#97C459' }}>LIVE</span>
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--bq-emerald)', boxShadow: '0 0 4px var(--bq-emerald)' }} />
+            <span className="text-[9px]" style={{ color: 'var(--bq-emerald)' }}>LIVE</span>
           </span>
         )}
       </div>
@@ -174,8 +174,8 @@ function MatchCard({
       <div
         className="px-2.5 py-2 flex items-center gap-1.5"
         style={{
-          borderBottom: '0.5px solid rgba(255,255,255,0.04)',
-          background: isUserMatch && p1?.userId === currentUserId ? 'rgba(232,168,50,0.05)' : undefined,
+          borderBottom: '1px solid var(--bq-hairline)',
+          background: isUserMatch && p1?.userId === currentUserId ? 'rgba(245,158,11,0.06)' : undefined,
         }}
       >
         {p1 ? (
@@ -183,7 +183,7 @@ function MatchCard({
             {p1.seed != null && (
               <div
                 className="w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold flex-shrink-0"
-                style={{ background: p1.seed <= 2 ? 'rgba(232,168,50,0.25)' : 'rgba(255,255,255,0.06)', color: p1.seed <= 2 ? '#e8a832' : 'rgba(255,255,255,0.5)' }}
+                style={{ background: p1.seed <= 2 ? 'rgba(245,158,11,0.18)' : 'var(--bq-paper-sunk)', color: p1.seed <= 2 ? 'var(--bq-amber-deep)' : 'var(--bq-ink-soft)' }}
               >
                 {p1.seed}
               </div>
@@ -194,15 +194,15 @@ function MatchCard({
             >
               {p1.userName.charAt(0).toUpperCase()}
             </div>
-            <span className="text-[11px] flex-1 truncate font-medium" style={{ color: p1.isWinner ? '#e8a832' : '#fff' }}>
+            <span className="text-[11px] flex-1 truncate font-medium" style={{ color: p1.isWinner ? 'var(--bq-amber-deep)' : 'var(--bq-ink)' }}>
               {p1.userName}{p1.userId === currentUserId ? ' (bạn)' : ''}
             </span>
             {match.status !== 'PENDING' && <HeartIcons count={p1.lives} />}
           </>
         ) : (
           <>
-            <div className="w-5 h-5 rounded-full flex items-center justify-center text-[9px]" style={{ background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.3)' }}>?</div>
-            <span className="text-[11px] italic" style={{ color: 'rgba(255,255,255,0.35)' }}>TBD</span>
+            <div className="w-5 h-5 rounded-full flex items-center justify-center text-[9px]" style={{ background: 'var(--bq-paper-sunk)', color: 'var(--bq-ink-faint)' }}>?</div>
+            <span className="text-[11px] italic" style={{ color: 'var(--bq-ink-faint)' }}>TBD</span>
           </>
         )}
       </div>
@@ -210,14 +210,14 @@ function MatchCard({
       {/* Player 2 row */}
       <div
         className="px-2.5 py-2 flex items-center gap-1.5"
-        style={{ background: isUserMatch && p2?.userId === currentUserId ? 'rgba(232,168,50,0.05)' : undefined }}
+        style={{ background: isUserMatch && p2?.userId === currentUserId ? 'rgba(245,158,11,0.06)' : undefined }}
       >
         {p2 ? (
           <>
             {p2.seed != null && (
               <div
                 className="w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold flex-shrink-0"
-                style={{ background: p2.seed <= 2 ? 'rgba(232,168,50,0.25)' : 'rgba(255,255,255,0.06)', color: p2.seed <= 2 ? '#e8a832' : 'rgba(255,255,255,0.5)' }}
+                style={{ background: p2.seed <= 2 ? 'rgba(245,158,11,0.18)' : 'var(--bq-paper-sunk)', color: p2.seed <= 2 ? 'var(--bq-amber-deep)' : 'var(--bq-ink-soft)' }}
               >
                 {p2.seed}
               </div>
@@ -228,15 +228,15 @@ function MatchCard({
             >
               {p2.userName.charAt(0).toUpperCase()}
             </div>
-            <span className="text-[11px] flex-1 truncate" style={{ color: p2.isWinner ? '#e8a832' : 'rgba(255,255,255,0.7)' }}>
+            <span className="text-[11px] flex-1 truncate" style={{ color: p2.isWinner ? 'var(--bq-amber-deep)' : 'var(--bq-ink-soft)' }}>
               {p2.userName}{p2.userId === currentUserId ? ' (bạn)' : ''}
             </span>
             {match.status !== 'PENDING' && <HeartIcons count={p2.lives} />}
           </>
         ) : (
           <>
-            <div className="w-5 h-5 rounded-full flex items-center justify-center text-[9px]" style={{ background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.3)' }}>?</div>
-            <span className="text-[11px] italic" style={{ color: 'rgba(255,255,255,0.35)' }}>
+            <div className="w-5 h-5 rounded-full flex items-center justify-center text-[9px]" style={{ background: 'var(--bq-paper-sunk)', color: 'var(--bq-ink-faint)' }}>?</div>
+            <span className="text-[11px] italic" style={{ color: 'var(--bq-ink-faint)' }}>
               {match.isBye ? 'BYE' : 'TBD'}
             </span>
           </>
@@ -265,8 +265,8 @@ function CompactBracketView({
           const isFinal = rn === totalRounds;
           return (
             <div key={rn} className="flex flex-col gap-3">
-              <div className="text-center pb-2" style={{ borderBottom: '0.5px solid rgba(255,255,255,0.06)' }}>
-                <span className="text-[10px] font-medium tracking-wider" style={{ color: isFinal ? 'rgba(232,168,50,0.7)' : 'rgba(255,255,255,0.5)' }}>
+              <div className="text-center pb-2" style={{ borderBottom: '1px solid var(--bq-hairline)' }}>
+                <span className="text-[10px] font-medium tracking-wider" style={{ color: isFinal ? 'var(--bq-amber-deep)' : 'var(--bq-ink-soft)' }}>
                   VÒNG {rn} — {getRoundLabel(rn, totalRounds)}
                 </span>
               </div>
@@ -281,16 +281,16 @@ function CompactBracketView({
                     totalRounds={totalRounds}
                   />
                 )) : (
-                  <div className="rounded-lg p-3 text-center" style={{ background: 'rgba(50,52,64,0.3)', border: '0.5px dashed rgba(255,255,255,0.08)' }}>
-                    <span className="text-[11px]" style={{ color: 'rgba(255,255,255,0.4)' }}>Chờ kết quả...</span>
+                  <div className="rounded-lg p-3 text-center" style={{ background: 'var(--bq-paper-sunk)', border: '1px dashed var(--bq-hairline)' }}>
+                    <span className="text-[11px]" style={{ color: 'var(--bq-ink-faint)' }}>Chờ kết quả...</span>
                   </div>
                 )}
                 {/* Rewards placeholder for final column */}
                 {isFinal && (
-                  <div className="rounded-lg p-3 text-center mt-2" style={{ background: 'rgba(232,168,50,0.05)', border: '0.5px solid rgba(232,168,50,0.2)' }}>
+                  <div className="rounded-lg p-3 text-center mt-2" style={{ background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.3)' }}>
                     <div className="text-xl mb-1">👑</div>
-                    <div className="text-[11px] font-medium" style={{ color: '#e8a832' }}>Vương quyền chờ chủ nhân</div>
-                    <div className="text-[10px] mt-0.5" style={{ color: 'rgba(255,255,255,0.45)' }}>+500 XP · Badge Vô Địch</div>
+                    <div className="text-[11px] font-medium" style={{ color: 'var(--bq-amber-deep)' }}>Vương quyền chờ chủ nhân</div>
+                    <div className="text-[10px] mt-0.5" style={{ color: 'var(--bq-ink-soft)' }}>+500 XP · Badge Vô Địch</div>
                   </div>
                 )}
               </div>
@@ -298,7 +298,7 @@ function CompactBracketView({
           );
         })}
       </div>
-      <p className="text-center mt-4 text-[11px]" style={{ color: 'rgba(255,255,255,0.4)' }}>
+      <p className="text-center mt-4 text-[11px]" style={{ color: 'var(--bq-ink-soft)' }}>
         💡 Trận của bạn được highlight vàng · Click vào match để xem chi tiết
       </p>
     </div>
@@ -322,7 +322,7 @@ function GoldConfetti() {
             style={{
               left: `${left}%`, top: '-5%',
               width: size, height: size * 0.6,
-              background: `linear-gradient(${rotation}deg, #e8a832, #e7c268, #f8bd45)`,
+              background: `linear-gradient(${rotation}deg, var(--bq-amber), var(--bq-amber-lt), var(--bq-ember))`,
               animation: `confettiFall ${duration}s ${delay}s ease-in infinite`,
               opacity: 0.8,
             }}
@@ -407,8 +407,8 @@ const TournamentDetail: React.FC = () => {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-        <div className="w-10 h-10 rounded-full animate-spin" style={{ border: '3px solid rgba(255,255,255,0.08)', borderTopColor: '#e8a832' }} />
-        <span className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>{t('tournaments.loadingTournament')}</span>
+        <div className="w-10 h-10 rounded-full animate-spin" style={{ border: '3px solid var(--bq-hairline)', borderTopColor: 'var(--bq-amber)' }} />
+        <span className="text-sm" style={{ color: 'var(--bq-ink-soft)' }}>{t('tournaments.loadingTournament')}</span>
       </div>
     );
   }
@@ -417,14 +417,14 @@ const TournamentDetail: React.FC = () => {
   if (error && !bracket) {
     return (
       <div className="max-w-3xl mx-auto">
-        <button onClick={() => navigate('/tournaments')} className="flex items-center gap-1.5 text-sm mb-8 transition-colors hover:opacity-80" style={{ color: 'rgba(255,255,255,0.5)' }}>
+        <button onClick={() => navigate('/tournaments')} className="flex items-center gap-1.5 text-sm mb-8 transition-colors hover:opacity-80" style={{ color: 'var(--bq-ink-soft)' }}>
           <span className="material-symbols-outlined text-lg">arrow_back</span>
           {t('nav.tournaments')}
         </button>
-        <div className="glass-card rounded-2xl p-12 text-center">
-          <span className="material-symbols-outlined text-5xl mb-4 block" style={{ color: '#f87171' }}>error</span>
-          <p className="text-sm mb-6" style={{ color: '#f87171' }}>{error}</p>
-          <button className="px-6 py-2.5 rounded-xl text-sm font-bold transition-colors" style={{ background: 'rgba(232,168,50,0.1)', border: '0.5px solid rgba(232,168,50,0.3)', color: '#e8a832' }}
+        <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-12 text-center">
+          <span className="material-symbols-outlined text-5xl mb-4 block" style={{ color: 'var(--bq-ruby)' }}>error</span>
+          <p className="text-sm mb-6" style={{ color: 'var(--bq-ruby)' }}>{error}</p>
+          <button className="px-6 py-2.5 rounded-xl text-sm font-bold transition-colors" style={{ background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.35)', color: 'var(--bq-amber-deep)' }}
             onClick={() => { setLoading(true); setError(''); fetchBracket(); }}>
             {t('common.retry')}
           </button>
@@ -449,9 +449,9 @@ const TournamentDetail: React.FC = () => {
   })();
 
   const STATUS_CONFIG: Record<string, { label: string; bg: string; color: string; border: string }> = {
-    LOBBY:       { label: '⏰ SẮP DIỄN RA',  bg: 'rgba(168,85,247,0.2)',  color: '#c084fc', border: 'rgba(168,85,247,0.4)' },
-    IN_PROGRESS: { label: '⚔️ ĐANG DIỄN RA', bg: 'rgba(232,168,50,0.15)', color: '#e8a832', border: 'rgba(232,168,50,0.4)' },
-    COMPLETED:   { label: '✅ ĐÃ KẾT THÚC',  bg: 'rgba(99,153,34,0.15)',  color: '#97C459', border: 'rgba(99,153,34,0.35)' },
+    LOBBY:       { label: '⏰ SẮP DIỄN RA',  bg: 'rgba(45,70,200,0.12)',  color: 'var(--bq-sapphire)', border: 'rgba(45,70,200,0.35)' },
+    IN_PROGRESS: { label: '⚔️ ĐANG DIỄN RA', bg: 'rgba(245,158,11,0.15)', color: 'var(--bq-amber-deep)', border: 'rgba(245,158,11,0.4)' },
+    COMPLETED:   { label: '✅ ĐÃ KẾT THÚC',  bg: 'rgba(14,138,107,0.14)',  color: 'var(--bq-emerald)', border: 'rgba(14,138,107,0.35)' },
   };
   const statusCfg = STATUS_CONFIG[bracket.status] ?? STATUS_CONFIG.LOBBY;
 
@@ -459,58 +459,58 @@ const TournamentDetail: React.FC = () => {
     <div data-testid="tournament-detail-page" className="space-y-4">
 
       {/* ── Breadcrumb ── */}
-      <nav className="flex items-center gap-2 text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
+      <nav className="flex items-center gap-2 text-xs" style={{ color: 'var(--bq-ink-soft)' }}>
         <button onClick={() => navigate('/multiplayer')} className="hover:opacity-80 transition-opacity">← Đa người chơi</button>
-        <span style={{ color: 'rgba(255,255,255,0.3)' }}>/</span>
+        <span style={{ color: 'var(--bq-ink-faint)' }}>/</span>
         <button onClick={() => navigate('/tournaments')} className="hover:opacity-80 transition-opacity">Giải đấu</button>
-        <span style={{ color: 'rgba(255,255,255,0.3)' }}>/</span>
-        <span className="text-white truncate max-w-[200px]">{bracket.name}</span>
+        <span style={{ color: 'var(--bq-ink-faint)' }}>/</span>
+        <span className="truncate max-w-[200px]" style={{ color: 'var(--bq-ink)' }}>{bracket.name}</span>
       </nav>
 
       {/* ── Hero Header ── */}
       <header
-        className="rounded-2xl p-5 relative overflow-hidden"
+        className="rounded-2xl p-5 relative overflow-hidden bg-bq-white shadow-bq-soft"
         data-testid="tournament-detail-name"
         style={{
-          background: 'linear-gradient(135deg, rgba(232,168,50,0.12), rgba(168,85,247,0.08), rgba(50,52,64,0.4))',
-          border: '0.5px solid rgba(232,168,50,0.3)',
+          background: 'linear-gradient(135deg, rgba(245,158,11,0.12), rgba(45,70,200,0.06), var(--bq-white))',
+          border: '1px solid rgba(245,158,11,0.3)',
         }}
       >
         {/* Trophy watermark */}
-        <div className="absolute -top-5 -right-5 opacity-[0.08] text-[180px] pointer-events-none select-none">🏆</div>
+        <div className="absolute -top-5 -right-5 opacity-[0.06] text-[180px] pointer-events-none select-none">🏆</div>
 
         <div className="flex items-start gap-4 relative">
           {/* Trophy icon */}
-          <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(232,168,50,0.25)', border: '1.5px solid #e8a832' }}>
+          <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(245,158,11,0.18)', border: '1.5px solid var(--bq-amber)' }}>
             <span className="text-3xl">🏆</span>
           </div>
 
           {/* Title + meta */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap mb-1">
-              <span className="px-2 py-0.5 rounded-full text-[9px] font-medium" style={{ background: statusCfg.bg, color: statusCfg.color, border: `0.5px solid ${statusCfg.border}`, letterSpacing: '0.04em' }}>
+              <span className="px-2 py-0.5 rounded-full text-[9px] font-medium" style={{ background: statusCfg.bg, color: statusCfg.color, border: `1px solid ${statusCfg.border}`, letterSpacing: '0.04em' }}>
                 {statusCfg.label}
               </span>
-              <span className="px-2 py-0.5 rounded-full text-[9px] font-medium" style={{ background: 'rgba(74,158,255,0.15)', color: '#6AB8E8' }}>
+              <span className="px-2 py-0.5 rounded-full text-[9px] font-medium" style={{ background: 'rgba(45,70,200,0.12)', color: 'var(--bq-sapphire)' }}>
                 PUBLIC
               </span>
             </div>
-            <h1 className="text-xl font-semibold text-white mb-1 leading-snug">{bracket.name}</h1>
-            <p className="text-sm mb-2" style={{ color: 'rgba(255,255,255,0.6)' }}>
+            <h1 className="font-display text-xl font-semibold mb-1 leading-snug" style={{ color: 'var(--bq-ink)' }}>{bracket.name}</h1>
+            <p className="text-sm mb-2" style={{ color: 'var(--bq-ink-soft)' }}>
               Bracket elimination {maxParticipants} người · {bracket.totalRounds} vòng · 1v1 mỗi trận
             </p>
             {bracket.organizerName && (
               <div className="flex items-center gap-2 flex-wrap">
-                <div className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-medium" style={{ background: 'rgba(232,168,50,0.3)', color: '#e8a832' }}>
+                <div className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-medium" style={{ background: 'rgba(245,158,11,0.18)', color: 'var(--bq-amber-deep)' }}>
                   {bracket.organizerName.charAt(0).toUpperCase()}
                 </div>
-                <span className="text-[11px]" style={{ color: 'rgba(255,255,255,0.85)' }}>{bracket.organizerName}</span>
-                <span style={{ color: 'rgba(255,255,255,0.4)' }}>·</span>
-                <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.55)' }}>tổ chức</span>
+                <span className="text-[11px]" style={{ color: 'var(--bq-ink)' }}>{bracket.organizerName}</span>
+                <span style={{ color: 'var(--bq-ink-faint)' }}>·</span>
+                <span className="text-[10px]" style={{ color: 'var(--bq-ink-soft)' }}>tổ chức</span>
                 {bracket.organizerLocation && (
                   <>
-                    <span style={{ color: 'rgba(255,255,255,0.3)' }}>·</span>
-                    <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.55)' }}>📍 {bracket.organizerLocation}</span>
+                    <span style={{ color: 'var(--bq-ink-faint)' }}>·</span>
+                    <span className="text-[10px]" style={{ color: 'var(--bq-ink-soft)' }}>📍 {bracket.organizerLocation}</span>
                   </>
                 )}
               </div>
@@ -520,10 +520,10 @@ const TournamentDetail: React.FC = () => {
           {/* CTA panel */}
           <div className="flex flex-col items-end gap-2 flex-shrink-0">
             {/* Participant counter */}
-            <div className="rounded-lg px-3 py-2 text-center" style={{ background: 'rgba(0,0,0,0.4)', border: '0.5px solid rgba(232,168,50,0.3)' }}>
-              <div className="text-[9px] tracking-wider mb-0.5" style={{ color: 'rgba(232,168,50,0.7)' }}>NGƯỜI THAM GIA</div>
-              <div className="text-lg font-semibold leading-tight" style={{ color: '#e8a832' }}>{participantCount}/{maxParticipants}</div>
-              <div className="text-[10px] mt-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>
+            <div className="rounded-lg px-3 py-2 text-center" style={{ background: 'var(--bq-paper-sunk)', border: '1px solid rgba(245,158,11,0.3)' }}>
+              <div className="text-[9px] tracking-wider mb-0.5" style={{ color: 'var(--bq-amber-deep)' }}>NGƯỜI THAM GIA</div>
+              <div className="text-lg font-semibold leading-tight" style={{ color: 'var(--bq-amber-deep)' }}>{participantCount}/{maxParticipants}</div>
+              <div className="text-[10px] mt-0.5" style={{ color: 'var(--bq-ink-soft)' }}>
                 Còn {Math.max(0, maxParticipants - participantCount)} chỗ
               </div>
             </div>
@@ -534,7 +534,7 @@ const TournamentDetail: React.FC = () => {
                   onClick={handleJoin}
                   disabled={joinLoading}
                   className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all hover:opacity-90 disabled:opacity-50"
-                  style={{ background: '#e8a832', color: '#412d00', boxShadow: '0 0 20px rgba(232,168,50,0.3)' }}
+                  style={{ background: 'var(--bq-action)', color: '#FFFFFF', boxShadow: 'var(--bq-glow-action)' }}
                 >
                   <span>⚔️</span>
                   {joinLoading ? 'Đang đăng ký...' : 'Tham gia ngay'}
@@ -543,7 +543,7 @@ const TournamentDetail: React.FC = () => {
                   onClick={handleStart}
                   disabled={startLoading}
                   className="flex items-center gap-2 px-5 py-2 rounded-xl text-xs font-medium transition-all hover:opacity-80 disabled:opacity-50"
-                  style={{ background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.7)', border: '0.5px solid rgba(255,255,255,0.12)' }}
+                  style={{ background: 'var(--bq-paper-sunk)', color: 'var(--bq-ink-soft)', border: '1px solid var(--bq-hairline)' }}
                 >
                   <span className="material-symbols-outlined text-sm">rocket_launch</span>
                   {startLoading ? 'Đang bắt đầu...' : 'Bắt đầu ngay'}
@@ -555,14 +555,14 @@ const TournamentDetail: React.FC = () => {
               <button
                 onClick={() => navigate(`/tournaments/${id}/match/latest`)}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all hover:opacity-90"
-                style={{ background: '#e8a832', color: '#412d00' }}
+                style={{ background: 'var(--bq-action)', color: '#FFFFFF' }}
               >
                 <span>⚔️</span> Vào trận của bạn
               </button>
             )}
 
             {actionMsg && (
-              <p className="text-[11px] font-medium max-w-[160px] text-right" style={{ color: actionMsg.type === 'success' ? '#97C459' : '#f87171' }}>
+              <p className="text-[11px] font-medium max-w-[160px] text-right" style={{ color: actionMsg.type === 'success' ? 'var(--bq-emerald)' : 'var(--bq-ruby)' }}>
                 {actionMsg.text}
               </p>
             )}
@@ -572,32 +572,32 @@ const TournamentDetail: React.FC = () => {
 
       {/* ── 4 Info Cards ── */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3" data-testid="tournament-rules">
-        <div className="rounded-xl p-3" style={{ background: 'rgba(50,52,64,0.4)', border: '0.5px solid rgba(74,158,255,0.25)' }}>
-          <div className="text-[9px] tracking-wider mb-1.5" style={{ color: 'rgba(106,184,232,0.7)' }}>SÁCH KINH THÁNH</div>
-          <div className="text-sm font-medium text-white mb-0.5">📖 {bracket.bookScope ?? '1 + 2 Sa-mu-ên'}</div>
-          <div className="text-[10px]" style={{ color: 'rgba(255,255,255,0.5)' }}>Cựu Ước · Lịch sử</div>
+        <div className="rounded-xl p-3 bg-bq-white shadow-bq-soft" style={{ border: '1px solid rgba(45,70,200,0.22)' }}>
+          <div className="text-[9px] tracking-wider mb-1.5" style={{ color: 'var(--bq-sapphire)' }}>SÁCH KINH THÁNH</div>
+          <div className="text-sm font-medium mb-0.5" style={{ color: 'var(--bq-ink)' }}>📖 {bracket.bookScope ?? '1 + 2 Sa-mu-ên'}</div>
+          <div className="text-[10px]" style={{ color: 'var(--bq-ink-soft)' }}>Cựu Ước · Lịch sử</div>
         </div>
-        <div className="rounded-xl p-3" style={{ background: 'rgba(50,52,64,0.4)', border: '0.5px solid rgba(255,140,66,0.25)' }}>
-          <div className="text-[9px] tracking-wider mb-1.5" style={{ color: 'rgba(255,140,66,0.7)' }}>ĐỘ KHÓ</div>
-          <div className="text-sm font-medium text-white mb-0.5">{diff.icon} {diff.label}</div>
-          <div className="text-[10px]" style={{ color: 'rgba(255,255,255,0.5)' }}>
+        <div className="rounded-xl p-3 bg-bq-white shadow-bq-soft" style={{ border: '1px solid rgba(245,158,11,0.22)' }}>
+          <div className="text-[9px] tracking-wider mb-1.5" style={{ color: 'var(--bq-amber-deep)' }}>ĐỘ KHÓ</div>
+          <div className="text-sm font-medium mb-0.5" style={{ color: 'var(--bq-ink)' }}>{diff.icon} {diff.label}</div>
+          <div className="text-[10px]" style={{ color: 'var(--bq-ink-soft)' }}>
             {bracket.questionCount ?? 10} câu / trận · {bracket.timePerQuestion ?? 15}s/câu
           </div>
         </div>
-        <div className="rounded-xl p-3" style={{ background: 'rgba(50,52,64,0.4)', border: '0.5px solid rgba(239,68,68,0.25)' }}>
-          <div className="text-[9px] tracking-wider mb-1.5" style={{ color: 'rgba(248,113,113,0.7)' }}>CƠ CHẾ</div>
-          <div className="text-sm font-medium text-white mb-0.5">❤️ 3 mạng / trận</div>
-          <div className="text-[10px]" style={{ color: 'rgba(255,255,255,0.5)' }}>Hết mạng = thua</div>
+        <div className="rounded-xl p-3 bg-bq-white shadow-bq-soft" style={{ border: '1px solid rgba(224,53,75,0.22)' }}>
+          <div className="text-[9px] tracking-wider mb-1.5" style={{ color: 'var(--bq-ruby)' }}>CƠ CHẾ</div>
+          <div className="text-sm font-medium mb-0.5" style={{ color: 'var(--bq-ink)' }}>❤️ 3 mạng / trận</div>
+          <div className="text-[10px]" style={{ color: 'var(--bq-ink-soft)' }}>Hết mạng = thua</div>
         </div>
-        <div className="rounded-xl p-3" style={{ background: 'rgba(50,52,64,0.4)', border: '0.5px solid rgba(232,168,50,0.25)' }}>
-          <div className="text-[9px] tracking-wider mb-1.5" style={{ color: 'rgba(232,168,50,0.7)' }}>PHẦN THƯỞNG</div>
-          <div className="text-sm font-medium text-white mb-0.5">🏆 {bracket.rewards ?? '+500 XP · Badge'}</div>
-          <div className="text-[10px]" style={{ color: 'rgba(255,255,255,0.5)' }}>Top 1 · Top 4 nhận giảm</div>
+        <div className="rounded-xl p-3 bg-bq-white shadow-bq-soft" style={{ border: '1px solid rgba(245,158,11,0.22)' }}>
+          <div className="text-[9px] tracking-wider mb-1.5" style={{ color: 'var(--bq-amber-deep)' }}>PHẦN THƯỞNG</div>
+          <div className="text-sm font-medium mb-0.5" style={{ color: 'var(--bq-ink)' }}>🏆 {bracket.rewards ?? '+500 XP · Badge'}</div>
+          <div className="text-[10px]" style={{ color: 'var(--bq-ink-soft)' }}>Top 1 · Top 4 nhận giảm</div>
         </div>
       </div>
 
       {/* ── Tab Navigation ── */}
-      <div className="flex items-center gap-1" style={{ borderBottom: '0.5px solid rgba(255,255,255,0.08)' }}>
+      <div className="flex items-center gap-1" style={{ borderBottom: '1px solid var(--bq-hairline)' }}>
         {([
           ['bracket', '🌳 Bracket'],
           ['players', `👥 Người chơi (${participantCount}/${maxParticipants})`],
@@ -609,8 +609,8 @@ const TournamentDetail: React.FC = () => {
             onClick={() => setActiveTab(tab)}
             className="px-4 py-2.5 text-sm transition-all"
             style={activeTab === tab
-              ? { color: '#e8a832', borderBottom: '2px solid #e8a832', fontWeight: 500, marginBottom: -1 }
-              : { color: 'rgba(255,255,255,0.55)', border: 'none' }
+              ? { color: 'var(--bq-amber-deep)', borderBottom: '2px solid var(--bq-amber)', fontWeight: 500, marginBottom: -1 }
+              : { color: 'var(--bq-ink-soft)', border: 'none' }
             }
           >
             {label}
@@ -621,9 +621,9 @@ const TournamentDetail: React.FC = () => {
       {/* ── Tab Content ── */}
       {activeTab === 'bracket' && (
         <section
-          className="rounded-xl p-4"
+          className="rounded-xl p-4 bg-bq-white shadow-bq-soft"
           data-testid="tournament-bracket"
-          style={{ background: 'rgba(50,52,64,0.3)', border: '0.5px solid rgba(255,255,255,0.06)' }}
+          style={{ border: '1px solid var(--bq-hairline)' }}
         >
           {(bracket.status === 'IN_PROGRESS' || bracket.status === 'COMPLETED') ? (
             <CompactBracketView
@@ -635,8 +635,8 @@ const TournamentDetail: React.FC = () => {
           ) : (
             <div className="text-center py-10">
               <div className="text-4xl mb-3">⏳</div>
-              <p className="text-sm font-medium text-white mb-1">Giải đấu chưa bắt đầu</p>
-              <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
+              <p className="text-sm font-medium mb-1" style={{ color: 'var(--bq-ink)' }}>Giải đấu chưa bắt đầu</p>
+              <p className="text-xs" style={{ color: 'var(--bq-ink-soft)' }}>
                 Bracket sẽ hiển thị sau khi đủ người và giải đấu bắt đầu
               </p>
             </div>
@@ -649,24 +649,24 @@ const TournamentDetail: React.FC = () => {
           {bracket.participants && bracket.participants.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
               {bracket.participants.map((p, i) => (
-                <div key={p.userId} className="rounded-xl px-4 py-3 flex items-center gap-3" style={{ background: 'rgba(50,52,64,0.4)', border: '0.5px solid rgba(255,255,255,0.08)' }}>
+                <div key={p.userId} className="rounded-xl px-4 py-3 flex items-center gap-3 bg-bq-white shadow-bq-soft" style={{ border: '1px solid var(--bq-hairline)' }}>
                   {p.seed != null && (
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold" style={{ background: 'rgba(232,168,50,0.2)', color: '#e8a832' }}>
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold" style={{ background: 'rgba(245,158,11,0.18)', color: 'var(--bq-amber-deep)' }}>
                       {p.seed}
                     </div>
                   )}
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style={{ background: `rgba(${[232,168,50,74,158,255,168,85,247,99,153,34][i % 12] || 100},${[168,50,74,158,255,168,85,247,99,153,34,100][i % 12] || 100},${[50,100,255,168,85,247,99,153,34,100,74,200][i % 12] || 100},0.2)`, color: ['#e8a832', '#6AB8E8', '#c084fc', '#97C459'][i % 4] }}>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style={{ background: ['rgba(245,158,11,0.16)', 'rgba(45,70,200,0.14)', 'rgba(45,70,200,0.14)', 'rgba(14,138,107,0.14)'][i % 4], color: ['var(--bq-amber-deep)', 'var(--bq-sapphire)', 'var(--bq-sapphire)', 'var(--bq-emerald)'][i % 4] }}>
                     {p.userName.charAt(0).toUpperCase()}
                   </div>
-                  <span className="text-sm font-medium text-white truncate">{p.userName}</span>
+                  <span className="text-sm font-medium truncate" style={{ color: 'var(--bq-ink)' }}>{p.userName}</span>
                   {p.userId === user?.email && (
-                    <span className="ml-auto text-[9px] font-medium px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(232,168,50,0.15)', color: '#e8a832' }}>BẠN</span>
+                    <span className="ml-auto text-[9px] font-medium px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(245,158,11,0.15)', color: 'var(--bq-amber-deep)' }}>BẠN</span>
                   )}
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-center py-10" style={{ color: 'rgba(255,255,255,0.5)' }}>
+            <div className="text-center py-10" style={{ color: 'var(--bq-ink-soft)' }}>
               <div className="text-3xl mb-2">👥</div>
               <p className="text-sm">Chưa có người đăng ký</p>
             </div>
@@ -675,7 +675,7 @@ const TournamentDetail: React.FC = () => {
       )}
 
       {activeTab === 'rules' && (
-        <section className="rounded-xl p-5 space-y-3" style={{ background: 'rgba(50,52,64,0.3)', border: '0.5px solid rgba(255,255,255,0.06)' }}>
+        <section className="rounded-xl p-5 space-y-3 bg-bq-white shadow-bq-soft" style={{ border: '1px solid var(--bq-hairline)' }}>
           {[
             ['⚔️', 'Hình thức', 'Single elimination — thua là bị loại'],
             ['❤️', 'Mạng sống', '3 mạng / trận. Trả lời sai mất 1 mạng. Hết mạng = thua trận'],
@@ -683,11 +683,11 @@ const TournamentDetail: React.FC = () => {
             ['📖', 'Nội dung', `${bracket.bookScope ?? 'Kinh Thánh'} · ${bracket.questionCount ?? 10} câu / trận`],
             ['🏆', 'Phần thưởng', bracket.rewards ?? '+500 XP · Badge đặc biệt cho Top 1'],
           ].map(([icon, title, desc]) => (
-            <div key={title} className="flex items-start gap-3 pb-3" style={{ borderBottom: '0.5px solid rgba(255,255,255,0.05)' }}>
+            <div key={title} className="flex items-start gap-3 pb-3" style={{ borderBottom: '1px solid var(--bq-hairline)' }}>
               <span className="text-lg flex-shrink-0">{icon}</span>
               <div>
-                <div className="text-sm font-medium text-white mb-0.5">{title}</div>
-                <div className="text-xs" style={{ color: 'rgba(255,255,255,0.55)' }}>{desc}</div>
+                <div className="text-sm font-medium mb-0.5" style={{ color: 'var(--bq-ink)' }}>{title}</div>
+                <div className="text-xs" style={{ color: 'var(--bq-ink-soft)' }}>{desc}</div>
               </div>
             </div>
           ))}
@@ -695,7 +695,7 @@ const TournamentDetail: React.FC = () => {
       )}
 
       {activeTab === 'stats' && (
-        <div className="text-center py-12" style={{ color: 'rgba(255,255,255,0.4)' }}>
+        <div className="text-center py-12" style={{ color: 'var(--bq-ink-soft)' }}>
           <div className="text-4xl mb-3">📊</div>
           <p className="text-sm">Thống kê sẽ hiển thị sau khi giải đấu kết thúc</p>
         </div>
@@ -705,11 +705,11 @@ const TournamentDetail: React.FC = () => {
       {champion && (
         <section className="max-w-md mx-auto">
           <div className="relative">
-            <div className="absolute -inset-1 rounded-2xl blur opacity-30" style={{ background: 'linear-gradient(to right, #e8a832, #e7c268)' }} />
-            <div className="relative rounded-2xl p-8 text-center" style={{ background: 'rgba(50,52,64,0.6)', border: '0.5px solid rgba(232,168,50,0.3)' }}>
-              <span className="material-symbols-outlined text-5xl mb-2 block" style={{ color: '#e8a832', fontVariationSettings: "'FILL' 1" }}>workspace_premium</span>
-              <p className="text-[10px] uppercase tracking-widest mb-1" style={{ color: 'rgba(255,255,255,0.6)' }}>{t('tournaments.champion')}</p>
-              <p className="text-2xl font-black" style={{ color: '#e8a832' }}>{champion}</p>
+            <div className="absolute -inset-1 rounded-2xl blur opacity-30" style={{ background: 'linear-gradient(to right, var(--bq-amber), var(--bq-amber-lt))' }} />
+            <div className="relative rounded-2xl p-8 text-center bg-bq-white shadow-bq-soft" style={{ border: '1px solid rgba(245,158,11,0.3)' }}>
+              <span className="material-symbols-outlined text-5xl mb-2 block" style={{ color: 'var(--bq-amber-deep)', fontVariationSettings: "'FILL' 1" }}>workspace_premium</span>
+              <p className="text-[10px] uppercase tracking-widest mb-1" style={{ color: 'var(--bq-ink-soft)' }}>{t('tournaments.champion')}</p>
+              <p className="text-2xl font-black" style={{ color: 'var(--bq-amber-deep)' }}>{champion}</p>
             </div>
           </div>
         </section>
@@ -718,18 +718,18 @@ const TournamentDetail: React.FC = () => {
       {/* ── Winner Overlay ── */}
       {showWinnerOverlay && champion && (
         <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => setShowWinnerOverlay(false)}>
-          <div className="absolute inset-0 backdrop-blur-md" style={{ background: 'rgba(17,19,30,0.9)' }} />
+          <div className="absolute inset-0 backdrop-blur-md" style={{ background: 'rgba(251,250,245,0.92)' }} />
           <GoldConfetti />
           <div className="relative z-10 text-center px-6 max-w-md">
-            <span className="material-symbols-outlined text-7xl mb-4 block" style={{ color: '#e8a832', fontVariationSettings: "'FILL' 1" }}>workspace_premium</span>
-            <div className="w-24 h-24 rounded-full flex items-center justify-center text-4xl font-black mx-auto mb-4" style={{ background: 'rgba(232,168,50,0.2)', border: '2px solid rgba(232,168,50,0.5)', color: '#e8a832', boxShadow: '0 0 40px rgba(232,168,50,0.3)' }}>
+            <span className="material-symbols-outlined text-7xl mb-4 block" style={{ color: 'var(--bq-amber-deep)', fontVariationSettings: "'FILL' 1" }}>workspace_premium</span>
+            <div className="w-24 h-24 rounded-full flex items-center justify-center text-4xl font-black mx-auto mb-4" style={{ background: 'rgba(245,158,11,0.18)', border: '2px solid rgba(245,158,11,0.5)', color: 'var(--bq-amber-deep)', boxShadow: '0 0 40px rgba(245,158,11,0.3)' }}>
               {champion.charAt(0).toUpperCase()}
             </div>
-            <p className="text-3xl font-black mb-2" style={{ color: '#e8a832' }}>{champion}</p>
-            <p className="text-lg mb-8" style={{ color: 'rgba(255,255,255,0.6)' }}>{t('tournaments.wonMatch')}</p>
+            <p className="text-3xl font-black mb-2" style={{ color: 'var(--bq-amber-deep)' }}>{champion}</p>
+            <p className="text-lg mb-8" style={{ color: 'var(--bq-ink-soft)' }}>{t('tournaments.wonMatch')}</p>
             <button
               className="px-10 py-4 rounded-xl font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform"
-              style={{ background: '#e8a832', color: '#412d00', boxShadow: '0 0 30px rgba(232,168,50,0.35)' }}
+              style={{ background: 'var(--bq-action)', color: '#FFFFFF', boxShadow: 'var(--bq-glow-action)' }}
               onClick={(e) => { e.stopPropagation(); setShowWinnerOverlay(false); }}
             >
               Đóng

@@ -32,34 +32,34 @@ const MODE_INFO: Record<string, ModeInfo> = {
     ruleTitle: 'Luật Speed Race',
     ruleText: 'Trả lời nhanh + đúng để ghi điểm cao nhất.',
     ruleDetail: 'Tốc độ + chính xác cùng quyết định thứ hạng. Ai trả lời nhanh hơn và đúng hơn sẽ giành điểm cao nhất.',
-    chipColor: '#fbbf24', chipBg: 'rgba(232,168,50,0.15)', chipBorder: 'rgba(232,168,50,0.4)',
+    chipColor: 'var(--bq-amber-deep)', chipBg: 'color-mix(in srgb, var(--bq-amber) 15%, transparent)', chipBorder: 'color-mix(in srgb, var(--bq-amber) 40%, transparent)',
   },
   BATTLE_ROYALE: {
     label: 'Battle Royale', icon: 'favorite',
     ruleTitle: 'Luật Battle Royale',
     ruleText: 'Sai = Loại. Người đúng cuối cùng thắng.',
     ruleDetail: 'Mỗi câu sai sẽ bị loại khỏi vòng tiếp theo. Tối đa 30 câu/trận. Khi cả nhóm cùng sai 1 câu, không ai bị loại.',
-    chipColor: '#f87171', chipBg: 'rgba(239,68,68,0.15)', chipBorder: 'rgba(239,68,68,0.4)',
+    chipColor: 'var(--bq-ruby)', chipBg: 'color-mix(in srgb, var(--bq-ruby) 15%, transparent)', chipBorder: 'color-mix(in srgb, var(--bq-ruby) 40%, transparent)',
   },
   TEAM_VS_TEAM: {
     label: 'Team vs Team', icon: 'groups_2',
     ruleTitle: 'Luật Team vs Team',
     ruleText: 'Hai đội cạnh tranh — đội nhiều điểm hơn thắng.',
     ruleDetail: 'Hai đội cạnh tranh nhau. Đội nào ghi nhiều điểm hơn sau tất cả câu hỏi sẽ thắng. Phối hợp với đồng đội!',
-    chipColor: '#60a5fa', chipBg: 'rgba(96,165,250,0.15)', chipBorder: 'rgba(96,165,250,0.4)',
+    chipColor: 'var(--bq-sapphire)', chipBg: 'color-mix(in srgb, var(--bq-sapphire) 15%, transparent)', chipBorder: 'color-mix(in srgb, var(--bq-sapphire) 40%, transparent)',
   },
   SUDDEN_DEATH: {
     label: 'Đấu vương', icon: 'swords',
     ruleTitle: 'Luật Đấu vương',
     ruleText: 'Sai một câu là thua. Hai người đấu tay đôi.',
     ruleDetail: 'Chỉ 2 người đấu cùng lúc. Sai 1 câu là thua. Người chiến thắng sẽ đấu tiếp người tiếp theo trong hàng đợi.',
-    chipColor: '#c084fc', chipBg: 'rgba(192,132,252,0.15)', chipBorder: 'rgba(192,132,252,0.4)',
+    chipColor: 'var(--bq-ember)', chipBg: 'color-mix(in srgb, var(--bq-ember) 15%, transparent)', chipBorder: 'color-mix(in srgb, var(--bq-ember) 40%, transparent)',
   },
   GROUP_LIVE_SEQUENTIAL: {
     label: 'Chơi cùng nhau', icon: 'group',
     ruleTitle: 'Luật Chơi cùng nhau',
     ruleText: 'Mọi người trả lời tuần tự — chờ tất cả xong mới hiện đáp án.',
-    chipColor: '#a78bfa', chipBg: 'rgba(167,139,250,0.15)', chipBorder: 'rgba(167,139,250,0.4)',
+    chipColor: 'var(--bq-emerald)', chipBg: 'color-mix(in srgb, var(--bq-emerald) 15%, transparent)', chipBorder: 'color-mix(in srgb, var(--bq-emerald) 40%, transparent)',
   },
 };
 
@@ -382,7 +382,7 @@ const RoomLobby: React.FC = () => {
   const modeInfo = MODE_INFO[room?.mode ?? ''] ?? {
     label: room?.mode ?? '', icon: 'sports_esports',
     ruleTitle: 'Luật chơi', ruleText: '', ruleDetail: '',
-    chipColor: '#e8a832', chipBg: 'rgba(232,168,50,0.15)', chipBorder: 'rgba(232,168,50,0.4)',
+    chipColor: 'var(--bq-amber-deep)', chipBg: 'color-mix(in srgb, var(--bq-amber) 15%, transparent)', chipBorder: 'color-mix(in srgb, var(--bq-amber) 40%, transparent)',
   };
 
   const nonHostPlayers = useMemo(() => room?.players?.filter(p => p.userId !== room?.hostId) ?? [], [room]);
@@ -434,10 +434,10 @@ const RoomLobby: React.FC = () => {
       <div
         className="fixed inset-0 z-[80] flex flex-col items-center justify-center px-6 overflow-hidden"
         style={{
-          // GO! state: brighter gold radiating; ticking states: dimmer.
+          // GO! state: brighter amber radiating; ticking states: dimmer.
           background: isGo
-            ? 'radial-gradient(circle at center, rgba(232,168,50,0.55) 0%, rgba(212,148,31,0.30) 35%, #11131e 75%)'
-            : 'radial-gradient(circle at center, rgba(212,148,31,0.30) 0%, #11131e 70%)',
+            ? 'radial-gradient(circle at center, rgba(245,158,11,0.45) 0%, rgba(255,224,138,0.35) 35%, var(--bq-paper) 75%)'
+            : 'radial-gradient(circle at center, rgba(255,224,138,0.40) 0%, var(--bq-paper) 70%)',
           fontFamily: "'Be Vietnam Pro', sans-serif",
           transition: 'background 200ms ease-out',
         }}
@@ -449,7 +449,7 @@ const RoomLobby: React.FC = () => {
         {!isGo && (
           <div
             className="text-xs lg:text-sm font-bold uppercase mb-6 lg:mb-8 fade-in"
-            style={{ color: '#e8a832', letterSpacing: '0.4em' }}
+            style={{ color: 'var(--bq-amber-deep)', letterSpacing: '0.4em' }}
           >
             BẮT ĐẦU TRONG
           </div>
@@ -463,35 +463,37 @@ const RoomLobby: React.FC = () => {
             style={{
               fontSize: 'clamp(72px, 18vw, 192px)',
               fontWeight: 900,
-              color: '#fff',
               letterSpacing: '-0.02em',
               lineHeight: 1.05,
-              textShadow: '0 8px 60px rgba(0,0,0,0.6), 0 0 80px rgba(232,168,50,0.4)',
+              background: 'var(--bq-action)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              filter: 'drop-shadow(0 8px 40px rgba(224,53,75,0.35))',
             }}
           >
             BẮT ĐẦU!
           </div>
         ) : (
           <div className="relative" data-testid={`lobby-countdown-${countdown}`}>
-            {/* Pulsing gold ring sized 8px outside the circle */}
+            {/* Pulsing amber ring sized 8px outside the circle */}
             <div
               className="absolute -inset-2 rounded-full pointer-events-none"
               style={{
-                border: '2px solid #e8a832',
+                border: '2px solid var(--bq-amber-deep)',
                 animation: 'countdownRingPulse 1s ease-in-out infinite',
               }}
               aria-hidden="true"
             />
-            {/* Glass-strong circle wrapper */}
+            {/* Light card circle wrapper */}
             <div
               className="grid place-items-center rounded-full"
               style={{
                 width: 'clamp(180px, 32vw, 240px)',
                 height: 'clamp(180px, 32vw, 240px)',
-                background: 'rgba(50,52,64,0.78)',
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(232,168,50,0.3)',
-                boxShadow: '0 0 60px rgba(232,168,50,0.25), inset 0 2px 20px rgba(255,255,255,0.05)',
+                background: 'var(--bq-white)',
+                border: '1px solid color-mix(in srgb, var(--bq-amber) 30%, transparent)',
+                boxShadow: '0 0 60px rgba(245,158,11,0.25), var(--bq-shadow-soft)',
               }}
             >
               <div
@@ -501,7 +503,7 @@ const RoomLobby: React.FC = () => {
                   fontWeight: 900,
                   letterSpacing: '-0.04em',
                   lineHeight: 1,
-                  background: 'linear-gradient(135deg, #fbbf24 0%, #e8a832 50%, #d4941f 100%)',
+                  background: 'linear-gradient(135deg, var(--bq-amber) 0%, var(--bq-amber-deep) 50%, var(--bq-ember) 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -517,21 +519,16 @@ const RoomLobby: React.FC = () => {
         {/* Mode chip (under the circle) — only on ticking states */}
         {!isGo && modeLabel && (
           <div
-            className="mt-8 lg:mt-10 inline-flex items-center gap-2 px-4 py-2 rounded-full fade-in"
-            style={{
-              background: 'rgba(50,52,64,0.55)',
-              backdropFilter: 'blur(12px)',
-              border: '1px solid rgba(255,255,255,0.06)',
-            }}
+            className="mt-8 lg:mt-10 inline-flex items-center gap-2 px-4 py-2 rounded-full fade-in bg-bq-white border border-bq-hair shadow-bq-soft"
           >
             <span className="text-base">{modeInfo.icon === 'bolt' ? '⚡' : modeInfo.icon === 'favorite' ? '❤️' : modeInfo.icon === 'groups_2' ? '👥' : '👑'}</span>
-            <span className="text-sm font-semibold text-white">
+            <span className="text-sm font-semibold text-bq-ink">
               {modeLabel}{room?.questionCount ? ` · ${room.questionCount} câu` : ''}
             </span>
           </div>
         )}
         {isGo && (
-          <div className="mt-6 lg:mt-8 text-base lg:text-xl font-semibold fade-in" style={{ color: 'rgba(255,255,255,0.9)', animationDelay: '0.4s' }}>
+          <div className="mt-6 lg:mt-8 text-base lg:text-xl font-semibold fade-in text-bq-ink2" style={{ animationDelay: '0.4s' }}>
             Câu hỏi đầu tiên đang đến...
           </div>
         )}
@@ -550,12 +547,12 @@ const RoomLobby: React.FC = () => {
                     fontSize: 13,
                     marginLeft: i === 0 ? 0 : -8,
                     background: i === 0
-                      ? 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)'
+                      ? 'linear-gradient(135deg, var(--bq-amber-lt) 0%, var(--bq-amber-deep) 100%)'
                       : i === 1
-                      ? 'linear-gradient(135deg, #4ade80 0%, #047857 100%)'
-                      : 'linear-gradient(135deg, #38bdf8 0%, #0369a1 100%)',
-                    color: i === 0 ? '#11131e' : '#fff',
-                    border: '2px solid #11131e',
+                      ? 'linear-gradient(135deg, var(--bq-emerald-lt) 0%, var(--bq-emerald) 100%)'
+                      : 'linear-gradient(135deg, var(--bq-sapphire-lt) 0%, var(--bq-sapphire) 100%)',
+                    color: i === 0 ? 'var(--bq-ink)' : '#fff',
+                    border: '2px solid var(--bq-paper)',
                     zIndex: orderedForOverlay.length - i,
                   }}
                   aria-hidden="true"
@@ -564,7 +561,7 @@ const RoomLobby: React.FC = () => {
                 </div>
               ))}
             </div>
-            <span className="ml-3 text-xs lg:text-sm font-semibold" style={{ color: 'rgba(255,255,255,0.7)' }}>
+            <span className="ml-3 text-xs lg:text-sm font-semibold text-bq-ink2">
               {room?.currentPlayers ?? 0} người chơi
             </span>
           </div>
@@ -596,19 +593,19 @@ const RoomLobby: React.FC = () => {
 
   /* ── Error state ── */
   if (error) return (
-    <div className="min-h-screen bg-surface-dim flex items-center justify-center">
+    <div className="min-h-screen bg-bq-paper flex items-center justify-center">
       <div className="text-center space-y-4">
-        <span className="material-symbols-outlined text-error text-5xl">error</span>
-        <p className="text-error text-lg">{error}</p>
-        <button onClick={() => navigate('/multiplayer')} className="text-secondary underline text-sm">{t('common.back')}</button>
+        <span className="material-symbols-outlined text-bq-ruby text-5xl">error</span>
+        <p className="text-bq-ruby text-lg">{error}</p>
+        <button onClick={() => navigate('/multiplayer')} className="text-bq-amberd underline text-sm">{t('common.back')}</button>
       </div>
     </div>
   );
 
   /* ── Loading state ── */
   if (!room) return (
-    <div className="min-h-screen bg-surface-dim flex items-center justify-center">
-      <p className="text-on-surface-variant animate-pulse text-lg">{t('room.loadingRoom')}</p>
+    <div className="min-h-screen bg-bq-paper flex items-center justify-center">
+      <p className="text-bq-ink2 animate-pulse text-lg">{t('room.loadingRoom')}</p>
     </div>
   );
 
@@ -623,11 +620,11 @@ const RoomLobby: React.FC = () => {
 
   return (
     <div
-      className="min-h-screen flex flex-col"
-      style={{ background: '#0a0b13', color: '#f3f4f6', fontFamily: "'Be Vietnam Pro', sans-serif" }}
+      className="min-h-screen flex flex-col bg-bq-paper text-bq-ink"
+      style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}
     >
       {reconnecting && (
-        <div className="fixed top-0 left-0 right-0 z-[70] bg-error-container/90 text-on-error-container text-center py-2 text-sm font-medium">
+        <div className="fixed top-0 left-0 right-0 z-[70] bg-bq-ruby/10 text-bq-ruby text-center py-2 text-sm font-medium border-b border-bq-ruby/20">
           <span className="material-symbols-outlined text-sm align-middle mr-1">wifi_off</span>
           {t('room.reconnecting')}
         </div>
@@ -635,20 +632,18 @@ const RoomLobby: React.FC = () => {
 
       {/* ─── Topbar ─── */}
       <header
-        className="flex items-center justify-between gap-3 px-4 lg:px-6 py-3 border-b"
-        style={{ background: '#0d0f17', borderColor: 'rgba(255,255,255,0.04)' }}
+        className="flex items-center justify-between gap-3 px-4 lg:px-6 py-3 border-b bg-bq-white border-bq-hair"
       >
         <div className="flex items-center gap-3 min-w-0">
           <button
             onClick={() => navigate('/multiplayer')}
-            className="text-xs font-semibold inline-flex items-center gap-1.5 hover:text-on-surface flex-shrink-0"
-            style={{ color: '#9ca3af' }}
+            className="text-xs font-semibold inline-flex items-center gap-1.5 text-bq-ink2 hover:text-bq-ink flex-shrink-0"
             data-testid="lobby-back-btn"
           >
             <span className="material-symbols-outlined text-base">arrow_back</span>
             <span className="hidden sm:inline">Đa người chơi</span>
           </button>
-          <div className="hidden sm:block h-5 w-px" style={{ background: 'rgba(255,255,255,0.1)' }} />
+          <div className="hidden sm:block h-5 w-px bg-bq-hair" />
           <span
             className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider flex-shrink-0"
             style={{ color: modeInfo.chipColor, background: modeInfo.chipBg, border: `1px solid ${modeInfo.chipBorder}` }}
@@ -661,9 +656,9 @@ const RoomLobby: React.FC = () => {
             <span
               className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold flex-shrink-0 max-w-[180px] truncate"
               style={{
-                color: '#e8a832',
-                background: 'rgba(232, 168, 50, 0.1)',
-                border: '1px solid rgba(232, 168, 50, 0.3)',
+                color: 'var(--bq-amber-deep)',
+                background: 'color-mix(in srgb, var(--bq-amber) 10%, transparent)',
+                border: '1px solid color-mix(in srgb, var(--bq-amber) 30%, transparent)',
               }}
               data-testid="lobby-topbar-quizset"
               title={room.groupQuizSetName}
@@ -672,27 +667,22 @@ const RoomLobby: React.FC = () => {
               <span className="truncate">{room.groupQuizSetName}</span>
             </span>
           )}
-          <span className="text-xs font-mono truncate" style={{ color: '#9ca3af', fontVariantNumeric: 'tabular-nums' }} data-testid="lobby-topbar-code">
+          <span className="text-xs font-mono truncate text-bq-ink2" style={{ fontVariantNumeric: 'tabular-nums' }} data-testid="lobby-topbar-code">
             Phòng {room.roomCode}
           </span>
         </div>
         <div className="flex items-center gap-2 lg:gap-3 flex-shrink-0">
-          <div className="hidden sm:inline-flex items-center gap-1.5 text-xs" style={{ color: '#9ca3af' }}>
+          <div className="hidden sm:inline-flex items-center gap-1.5 text-xs text-bq-ink2">
             <span
               className="inline-block w-1.5 h-1.5 rounded-full animate-pulse"
-              style={{ background: connected ? '#4ade80' : '#f87171' }}
+              style={{ background: connected ? 'var(--bq-emerald)' : 'var(--bq-ruby)' }}
             />
             {connected ? 'Đã kết nối' : 'Mất kết nối'}
           </div>
           <button
             onClick={handleLeave}
             data-testid="lobby-leave-btn"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold"
-            style={{
-              background: 'rgba(248,113,113,0.08)',
-              color: '#f87171',
-              border: '1px solid rgba(248,113,113,0.25)',
-            }}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-bq-ruby/10 text-bq-ruby border border-bq-ruby/25"
           >
             <span className="material-symbols-outlined text-[14px]">logout</span>
             <span className="hidden sm:inline">Rời phòng</span>
@@ -708,18 +698,14 @@ const RoomLobby: React.FC = () => {
           {/* ─── QP-10: Quick Match indigo banner (no Quản trò) ─── */}
           {isQuickMatch && (
             <div
-              className="rounded-xl px-4 py-3 mb-4 flex items-start gap-3"
-              style={{
-                background: 'rgba(99,102,241,0.08)',
-                border: '1px solid rgba(99,102,241,0.3)',
-              }}
+              className="rounded-xl px-4 py-3 mb-4 flex items-start gap-3 bg-bq-white border border-bq-sapphire/30 shadow-bq-soft"
               data-testid="lobby-quickmatch-banner"
             >
-              <span className="material-symbols-outlined flex-shrink-0" style={{ color: '#818cf8', fontSize: 20 }}>
+              <span className="material-symbols-outlined flex-shrink-0 text-bq-sapphire" style={{ fontSize: 20 }}>
                 rocket_launch
               </span>
-              <div className="text-xs leading-relaxed" style={{ color: '#d1d5db' }}>
-                <span className="font-bold" style={{ color: '#a5b4fc' }}>Đấu Nhanh — Không có Quản trò.</span>{' '}
+              <div className="text-xs leading-relaxed text-bq-ink2">
+                <span className="font-bold text-bq-sapphire">Đấu Nhanh — Không có Quản trò.</span>{' '}
                 Bất kỳ ai cũng có thể bấm <strong>Bắt đầu</strong> khi đủ 2 người sẵn sàng.
               </div>
             </div>
@@ -728,94 +714,78 @@ const RoomLobby: React.FC = () => {
           {/* ─── Sprint 4: Quản trò badge / host info card ─── */}
           {!isQuickMatch && isOrganizerMode && (
             <div
-              className="rounded-xl px-4 py-3 mb-4 flex items-start gap-3"
-              style={{
-                background: 'rgba(232,168,50,0.08)',
-                border: '1px solid rgba(232,168,50,0.3)',
-              }}
+              className="rounded-xl px-4 py-3 mb-4 flex items-start gap-3 bg-bq-white border border-bq-amber/30 shadow-bq-soft"
               data-testid="lobby-organizer-badge"
             >
               <span className="text-xl flex-shrink-0">👑</span>
-              <div className="text-xs leading-relaxed" style={{ color: '#d1d5db' }}>
-                <span className="font-bold" style={{ color: '#e8a832' }}>Bạn là Quản trò.</span>{' '}
+              <div className="text-xs leading-relaxed text-bq-ink2">
+                <span className="font-bold text-bq-amberd">Bạn là Quản trò.</span>{' '}
                 Bạn điều phối trận đấu, không trả lời câu hỏi để đảm bảo công bằng cho người chơi.
               </div>
             </div>
           )}
           {!isQuickMatch && !isOrganizerMode && !hostPlaysGame && room.hostName && (
             <div
-              className="rounded-xl px-4 py-3 mb-4 flex items-center gap-3"
-              style={{
-                background: 'rgba(232,168,50,0.05)',
-                border: '1px solid rgba(232,168,50,0.2)',
-              }}
+              className="rounded-xl px-4 py-3 mb-4 flex items-center gap-3 bg-bq-white border border-bq-amber/20 shadow-bq-soft"
               data-testid="lobby-host-info-card"
             >
               <div
-                className="w-10 h-10 rounded-full grid place-items-center font-bold text-base flex-shrink-0"
+                className="w-10 h-10 rounded-full grid place-items-center font-bold text-base flex-shrink-0 text-bq-ink"
                 style={{
-                  background: 'linear-gradient(135deg, #e8a832, #d4941f)',
-                  color: '#11131e',
+                  background: 'linear-gradient(135deg, var(--bq-amber-lt), var(--bq-amber-deep))',
                 }}
               >
                 {room.hostName[0]?.toUpperCase() ?? '?'}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-[10px] uppercase tracking-wider font-bold" style={{ color: '#9ca3af' }}>
+                <div className="text-[10px] uppercase tracking-wider font-bold text-bq-ink2">
                   👑 Quản trò
                 </div>
-                <div className="text-sm font-bold text-white truncate">{room.hostName}</div>
+                <div className="text-sm font-bold text-bq-ink truncate">{room.hostName}</div>
               </div>
-              <span className="text-[10px] flex-shrink-0" style={{ color: '#9ca3af' }}>Không chơi</span>
+              <span className="text-[10px] flex-shrink-0 text-bq-ink2">Không chơi</span>
             </div>
           )}
 
           {/* ─── HERO BLOCK ─── */}
           <section
-            className="relative rounded-2xl p-4 lg:p-6 mb-4 overflow-hidden"
-            style={{
-              background: 'rgba(50,52,64,0.78)',
-              backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(232,168,50,0.15)',
-            }}
+            className="relative rounded-2xl p-4 lg:p-6 mb-4 overflow-hidden bg-bq-white border border-bq-hair shadow-bq-soft"
             data-testid="lobby-hero"
           >
-            {/* Decorative gold gradient */}
+            {/* Decorative amber gradient */}
             <div
               aria-hidden="true"
               className="absolute inset-0 pointer-events-none"
-              style={{ background: 'linear-gradient(135deg, rgba(232,168,50,0.15) 0%, transparent 60%)' }}
+              style={{ background: 'linear-gradient(135deg, color-mix(in srgb, var(--bq-amber) 12%, transparent) 0%, transparent 60%)' }}
             />
             <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-4 lg:gap-6 items-center">
               <div className="min-w-0">
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
                   {room.roomName && (
-                    <span className="text-xs font-semibold truncate" style={{ color: '#d1d5db' }}>
+                    <span className="text-xs font-semibold truncate text-bq-ink2">
                       {room.roomName}
                     </span>
                   )}
                   <span
                     className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider"
                     style={{
-                      color: room.isPublic ? '#4ade80' : '#ff8c42',
-                      background: room.isPublic ? 'rgba(74,222,128,0.1)' : 'rgba(255,140,66,0.1)',
-                      border: `1px solid ${room.isPublic ? 'rgba(74,222,128,0.25)' : 'rgba(255,140,66,0.25)'}`,
+                      color: room.isPublic ? 'var(--bq-emerald)' : 'var(--bq-ember)',
+                      background: room.isPublic ? 'color-mix(in srgb, var(--bq-emerald) 10%, transparent)' : 'color-mix(in srgb, var(--bq-ember) 10%, transparent)',
+                      border: `1px solid ${room.isPublic ? 'color-mix(in srgb, var(--bq-emerald) 25%, transparent)' : 'color-mix(in srgb, var(--bq-ember) 25%, transparent)'}`,
                     }}
                   >
                     <span className="material-symbols-outlined text-[10px]">{room.isPublic ? 'public' : 'lock'}</span>
                     {room.isPublic ? 'Công khai' : 'Riêng tư'}
                   </span>
                 </div>
-                <div className="text-[10px] uppercase tracking-wider mb-1" style={{ color: '#9ca3af' }}>Mã phòng</div>
+                <div className="text-[10px] uppercase tracking-wider mb-1 text-bq-ink2">Mã phòng</div>
                 <div
-                  className="font-black leading-none mb-3"
+                  className="font-display font-black leading-none mb-3"
                   style={{
-                    color: '#e8a832',
                     fontSize: 'clamp(32px, 5vw, 48px)',
                     letterSpacing: '0.25em',
-                    fontFamily: "'Be Vietnam Pro', sans-serif",
                     fontVariantNumeric: 'tabular-nums',
-                    background: 'linear-gradient(135deg, #e8a832 0%, #fbbf24 50%, #e7c268 100%)',
+                    background: 'linear-gradient(135deg, var(--bq-amber-deep) 0%, var(--bq-amber) 50%, var(--bq-ember) 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
@@ -829,12 +799,7 @@ const RoomLobby: React.FC = () => {
                     type="button"
                     onClick={() => copyToClipboard('code', room.roomCode)}
                     data-testid="lobby-hero-copy-code"
-                    className="px-3 py-1.5 rounded-lg text-xs font-semibold inline-flex items-center gap-1.5"
-                    style={{
-                      background: 'rgba(50,52,64,0.55)',
-                      color: '#fbbf24',
-                      border: '1px solid rgba(232,168,50,0.3)',
-                    }}
+                    className="px-3 py-1.5 rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 bg-bq-inset text-bq-amberd border border-bq-amber/30"
                   >
                     <span className="material-symbols-outlined text-[14px]">content_copy</span>
                     {heroCopied === 'code' ? 'Đã copy' : 'Sao chép'}
@@ -843,12 +808,7 @@ const RoomLobby: React.FC = () => {
                     type="button"
                     onClick={() => copyToClipboard('link', `${window.location.origin}/room/join?code=${room.roomCode}`)}
                     data-testid="lobby-hero-copy-link"
-                    className="px-3 py-1.5 rounded-lg text-xs font-semibold inline-flex items-center gap-1.5"
-                    style={{
-                      background: 'rgba(50,52,64,0.55)',
-                      color: '#fbbf24',
-                      border: '1px solid rgba(232,168,50,0.3)',
-                    }}
+                    className="px-3 py-1.5 rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 bg-bq-inset text-bq-amberd border border-bq-amber/30"
                   >
                     <span className="material-symbols-outlined text-[14px]">link</span>
                     {heroCopied === 'link' ? 'Đã copy' : 'Sao chép link'}
@@ -857,12 +817,7 @@ const RoomLobby: React.FC = () => {
                     type="button"
                     onClick={() => setShowInvite(true)}
                     data-testid="lobby-share-btn"
-                    className="px-3 py-1.5 rounded-lg text-xs font-semibold inline-flex items-center gap-1.5"
-                    style={{
-                      background: 'rgba(50,52,64,0.55)',
-                      color: '#fbbf24',
-                      border: '1px solid rgba(232,168,50,0.3)',
-                    }}
+                    className="px-3 py-1.5 rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 bg-bq-inset text-bq-amberd border border-bq-amber/30"
                   >
                     <span className="material-symbols-outlined text-[14px]">qr_code_2</span>
                     Mã QR
@@ -884,7 +839,7 @@ const RoomLobby: React.FC = () => {
               </div>
             </div>
             {/* Stats grid bottom */}
-            <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mt-5 pt-5 border-t" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+            <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mt-5 pt-5 border-t border-bq-hair">
               <HeroStat label="Câu hỏi" value={`${room.questionCount}`} />
               <HeroStat label="Thời gian/câu" value={`${room.timePerQuestion}s`} />
               <HeroStat label="Độ khó" value={DIFFICULTY_LABEL[room.difficulty ?? ''] ?? 'Hỗn hợp'} />
@@ -895,22 +850,22 @@ const RoomLobby: React.FC = () => {
           {/* ─── PLAYERS ─── */}
           <section className="mb-4" data-testid="lobby-player-grid">
             <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-              <div className="inline-flex items-center gap-2 text-sm font-bold">
-                <span className="material-symbols-outlined text-[17px]" style={{ color: '#e8a832' }}>groups</span>
+              <div className="inline-flex items-center gap-2 text-sm font-bold text-bq-ink">
+                <span className="material-symbols-outlined text-[17px] text-bq-amberd">groups</span>
                 Người chơi
                 <span
-                  className="px-2.5 py-1 rounded-lg text-xs font-bold"
-                  style={{ color: '#fbbf24', background: 'rgba(232,168,50,0.12)', fontVariantNumeric: 'tabular-nums' }}
+                  className="px-2.5 py-1 rounded-lg text-xs font-bold text-bq-amberd bg-bq-amber/12"
+                  style={{ fontVariantNumeric: 'tabular-nums' }}
                 >
                   {room.currentPlayers}/{room.maxPlayers}
                 </span>
               </div>
               {room.currentPlayers < 2 ? (
-                <span className="text-[11px] font-semibold" style={{ color: '#fbbf24', opacity: 0.85 }}>
+                <span className="text-[11px] font-semibold text-bq-amberd">
                   Cần thêm {2 - room.currentPlayers} người để bắt đầu
                 </span>
               ) : canStart ? (
-                <span className="text-[11px] font-bold inline-flex items-center gap-1" style={{ color: '#4ade80' }}>
+                <span className="text-[11px] font-bold inline-flex items-center gap-1 text-bq-emerald">
                   <span className="material-symbols-outlined text-[14px]">check_circle</span>
                   Đủ người · Sẵn sàng
                 </span>
@@ -960,20 +915,16 @@ const RoomLobby: React.FC = () => {
           {/* ─── RULES ─── */}
           {modeInfo.ruleText && (
             <section
-              className="rounded-xl px-4 py-3 mb-4 flex items-center gap-3"
-              style={{ background: 'rgba(96,165,250,0.05)', border: '1px solid rgba(96,165,250,0.15)' }}
+              className="rounded-xl px-4 py-3 mb-4 flex items-center gap-3 bg-bq-white border border-bq-hair shadow-bq-soft"
             >
               <div
-                className="w-9 h-9 grid place-items-center rounded-lg flex-shrink-0"
-                style={{ background: 'rgba(96,165,250,0.1)', color: '#60a5fa' }}
+                className="w-9 h-9 grid place-items-center rounded-lg flex-shrink-0 text-bq-sapphire"
+                style={{ background: 'color-mix(in srgb, var(--bq-sapphire) 10%, transparent)' }}
               >
                 <span className="material-symbols-outlined text-[18px]">lightbulb</span>
               </div>
-              <div className="flex-1 min-w-0 text-xs" style={{ color: '#d1d5db', lineHeight: 1.5 }}>
-                <div
-                  className="text-[10px] uppercase tracking-wider font-bold mb-0.5"
-                  style={{ color: '#93c5fd' }}
-                >
+              <div className="flex-1 min-w-0 text-xs text-bq-ink2" style={{ lineHeight: 1.5 }}>
+                <div className="text-[10px] uppercase tracking-wider font-bold mb-0.5 text-bq-sapphire">
                   {modeInfo.ruleTitle}
                 </div>
                 {modeInfo.ruleText}
@@ -982,8 +933,7 @@ const RoomLobby: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowRulesDetail(true)}
-                  className="text-[11px] font-bold inline-flex items-center gap-0.5 flex-shrink-0"
-                  style={{ color: '#60a5fa' }}
+                  className="text-[11px] font-bold inline-flex items-center gap-0.5 flex-shrink-0 text-bq-sapphire"
                   data-testid="lobby-rules-detail-btn"
                 >
                   Chi tiết
@@ -1021,14 +971,9 @@ const RoomLobby: React.FC = () => {
       {/* ─── MOBILE BOTTOM CTA ─── (desktop CTA lives inside ChatPanel) */}
       {isMobile && (
         <footer
-          className="lg:hidden px-4 py-3 border-t"
-          style={{
-            background: 'rgba(13,15,23,0.95)',
-            backdropFilter: 'blur(20px)',
-            borderColor: 'rgba(232,168,50,0.1)',
-          }}
+          className="lg:hidden px-4 py-3 border-t bg-bq-white border-bq-hair"
         >
-          <div className="text-[10px] mb-2 text-center" style={{ color: canStart ? '#4ade80' : '#fbbf24' }}>
+          <div className="text-[10px] mb-2 text-center" style={{ color: canStart ? 'var(--bq-emerald)' : 'var(--bq-amber-deep)' }}>
             {statusPrimary}
           </div>
           <LobbyCTA
@@ -1049,20 +994,13 @@ const RoomLobby: React.FC = () => {
           onClick={() => setChatOpen(true)}
           aria-label="Mở trò chuyện"
           data-testid="lobby-chat-fab"
-          className="fixed right-4 lg:right-6 bottom-20 lg:bottom-24 w-12 h-12 grid place-items-center rounded-full z-40"
-          style={{
-            background: 'rgba(50,52,64,0.8)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(232,168,50,0.3)',
-            color: '#fbbf24',
-            boxShadow: '0 6px 20px rgba(0,0,0,0.4)',
-          }}
+          className="fixed right-4 lg:right-6 bottom-20 lg:bottom-24 w-12 h-12 grid place-items-center rounded-full z-40 bg-bq-white border border-bq-amber/30 text-bq-amberd shadow-bq-soft"
         >
           <span className="material-symbols-outlined">chat_bubble</span>
           {unreadChat > 0 && (
             <span
-              className="absolute -top-1 -right-1 px-1.5 rounded-full text-[9px] font-extrabold"
-              style={{ background: '#f87171', color: '#fff', minWidth: 16, textAlign: 'center' }}
+              className="absolute -top-1 -right-1 px-1.5 rounded-full text-[9px] font-extrabold text-white"
+              style={{ background: 'var(--bq-ruby)', minWidth: 16, textAlign: 'center' }}
             >
               {unreadChat > 9 ? '9+' : unreadChat}
             </span>
@@ -1096,25 +1034,24 @@ const RoomLobby: React.FC = () => {
           aria-modal="true"
           aria-label="Chi tiết luật chơi"
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(4px)' }}
+          style={{ background: 'rgba(20,20,30,0.55)', backdropFilter: 'blur(4px)' }}
           onClick={() => setShowRulesDetail(false)}
         >
           <div
-            className="w-full max-w-md rounded-2xl p-6"
-            style={{ background: 'rgba(30,33,46,0.95)', border: '1px solid rgba(96,165,250,0.3)' }}
+            className="w-full max-w-md rounded-2xl p-6 bg-bq-white border border-bq-hair shadow-bq-soft"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-base font-bold" style={{ color: '#93c5fd' }}>{modeInfo.ruleTitle}</h3>
+              <h3 className="text-base font-bold text-bq-sapphire">{modeInfo.ruleTitle}</h3>
               <button
                 onClick={() => setShowRulesDetail(false)}
                 aria-label="Đóng"
-                className="w-8 h-8 grid place-items-center rounded-lg hover:bg-white/5"
+                className="w-8 h-8 grid place-items-center rounded-lg hover:bg-bq-inset"
               >
-                <span className="material-symbols-outlined text-on-surface-variant">close</span>
+                <span className="material-symbols-outlined text-bq-ink2">close</span>
               </button>
             </div>
-            <p className="text-sm leading-relaxed" style={{ color: '#d1d5db' }}>{modeInfo.ruleDetail}</p>
+            <p className="text-sm leading-relaxed text-bq-ink2">{modeInfo.ruleDetail}</p>
           </div>
         </div>
       )}
@@ -1142,11 +1079,10 @@ const LobbyCTA: React.FC<{
       <button
         onClick={onStart}
         data-testid="lobby-start-btn"
-        className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-extrabold"
+        className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-extrabold text-white"
         style={{
-          background: 'linear-gradient(135deg, #6366f1 0%, #818cf8 100%)',
-          color: '#fff',
-          boxShadow: '0 6px 20px rgba(99,102,241,0.3)',
+          background: 'linear-gradient(135deg, var(--bq-sapphire) 0%, var(--bq-sapphire-lt) 100%)',
+          boxShadow: 'var(--bq-shadow-sap)',
         }}
       >
         <span className="material-symbols-outlined text-lg">rocket_launch</span>
@@ -1164,14 +1100,9 @@ const LobbyCTA: React.FC<{
         disabled={!canStart}
         title={!canStart ? statusSecondary : undefined}
         data-testid="lobby-start-btn"
-        className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-extrabold disabled:cursor-not-allowed"
-        style={{
-          background: canStart
-            ? 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)'
-            : 'rgba(50,52,64,0.5)',
-          color: canStart ? '#11131e' : '#6b7280',
-          boxShadow: canStart ? '0 6px 20px rgba(232,168,50,0.3)' : 'none',
-        }}
+        className={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-extrabold disabled:cursor-not-allowed ${
+          canStart ? 'bg-bq-action text-white shadow-bq-action' : 'bg-bq-inset text-bq-ink3'
+        }`}
       >
         <span>👑</span>
         <span>{canStart ? 'BẮT ĐẦU TRẬN ĐẤU' : 'ĐANG CHỜ...'}</span>
@@ -1187,14 +1118,10 @@ const LobbyCTA: React.FC<{
     <button
       data-testid="lobby-ready-btn"
       onClick={onToggleReady}
-      className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-extrabold"
-      style={{
-        background: myReady
-          ? 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)'
-          : 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
-        color: '#11131e',
-        boxShadow: '0 6px 20px rgba(0,0,0,0.3)',
-      }}
+      className={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-extrabold text-white ${
+        myReady ? 'shadow-bq-eme' : 'bg-bq-action shadow-bq-action'
+      }`}
+      style={myReady ? { background: 'linear-gradient(135deg, var(--bq-emerald-lt) 0%, var(--bq-emerald) 100%)' } : undefined}
     >
       <span className="material-symbols-outlined text-lg">
         {myReady ? 'check_circle' : 'radio_button_unchecked'}
@@ -1209,22 +1136,21 @@ const LobbyCTA: React.FC<{
 
 const HeroStat: React.FC<{ label: string; value: string }> = ({ label, value }) => (
   <div>
-    <div className="text-[10px] uppercase tracking-wider" style={{ color: '#6b7280' }}>{label}</div>
-    <div className="font-extrabold text-white text-base lg:text-lg leading-tight mt-0.5">{value}</div>
+    <div className="text-[10px] uppercase tracking-wider text-bq-ink3">{label}</div>
+    <div className="font-extrabold text-bq-ink text-base lg:text-lg leading-tight mt-0.5">{value}</div>
   </div>
 );
 
 const ActivityLogPanel: React.FC<{ entries: ActivityEntry[]; statusHint: string }> = ({ entries, statusHint }) => (
   <aside
-    className="hidden lg:flex flex-col border-r p-4 overflow-hidden"
-    style={{ background: '#0d0f17', borderColor: 'rgba(255,255,255,0.04)' }}
+    className="hidden lg:flex flex-col border-r p-4 overflow-hidden bg-bq-white border-bq-hair"
     data-testid="lobby-activity-log"
   >
     <div className="flex items-center gap-2 mb-3">
-      <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: '#9ca3af' }}>
+      <span className="text-[10px] font-bold uppercase tracking-wider text-bq-ink2">
         📜 Hoạt động phòng
       </span>
-      <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.05)' }} />
+      <div className="h-px flex-1 bg-bq-hair" />
     </div>
     <div className="space-y-2 flex-1 overflow-y-auto">
       {entries.map((e, i) => (
@@ -1232,16 +1158,16 @@ const ActivityLogPanel: React.FC<{ entries: ActivityEntry[]; statusHint: string 
           key={i}
           className="text-xs italic"
           style={{
-            color: e.tone === 'ok' ? 'rgba(74,222,128,0.85)'
-              : e.tone === 'warn' ? 'rgba(248,113,113,0.85)'
-              : '#6b7280',
+            color: e.tone === 'ok' ? 'var(--bq-emerald)'
+              : e.tone === 'warn' ? 'var(--bq-ruby)'
+              : 'var(--bq-ink-soft)',
           }}
         >
           {e.time} · {e.text}
         </div>
       ))}
       {statusHint && (
-        <div className="text-xs font-semibold mt-2" style={{ color: '#fbbf24' }}>
+        <div className="text-xs font-semibold mt-2 text-bq-amberd">
           {statusHint}
         </div>
       )}
@@ -1267,20 +1193,20 @@ const PlayerSlot: React.FC<{
     isHost ? 'host' : (isReady ? 'ready' : 'waiting');
 
   const colors = {
-    host:    { border: 'rgba(232,168,50,0.4)', avatarBg: 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)', avatarText: '#11131e', avatarBorder: '#fbbf24', statusBg: 'rgba(232,168,50,0.15)', statusText: '#fbbf24', statusLabel: 'Chủ phòng' },
-    ready:   { border: 'rgba(74,222,128,0.4)',  avatarBg: 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)', avatarText: '#11131e', avatarBorder: '#4ade80', statusBg: 'rgba(74,222,128,0.12)', statusText: '#4ade80', statusLabel: 'Sẵn sàng' },
-    waiting: { border: 'rgba(167,139,250,0.3)', avatarBg: 'linear-gradient(135deg, #c084fc 0%, #9333ea 100%)', avatarText: '#fff',    avatarBorder: '#c084fc', statusBg: 'rgba(167,139,250,0.12)', statusText: '#c4b5fd', statusLabel: 'Chưa sẵn sàng' },
+    host:    { border: 'color-mix(in srgb, var(--bq-amber) 40%, transparent)', avatarBg: 'linear-gradient(135deg, var(--bq-amber-lt) 0%, var(--bq-amber-deep) 100%)', avatarText: 'var(--bq-ink)', avatarBorder: 'var(--bq-amber)', statusBg: 'color-mix(in srgb, var(--bq-amber) 15%, transparent)', statusText: 'var(--bq-amber-deep)', statusLabel: 'Chủ phòng' },
+    ready:   { border: 'color-mix(in srgb, var(--bq-emerald) 40%, transparent)',  avatarBg: 'linear-gradient(135deg, var(--bq-emerald-lt) 0%, var(--bq-emerald) 100%)', avatarText: '#fff', avatarBorder: 'var(--bq-emerald)', statusBg: 'color-mix(in srgb, var(--bq-emerald) 12%, transparent)', statusText: 'var(--bq-emerald)', statusLabel: 'Sẵn sàng' },
+    waiting: { border: 'color-mix(in srgb, var(--bq-sapphire) 30%, transparent)', avatarBg: 'linear-gradient(135deg, var(--bq-sapphire-lt) 0%, var(--bq-sapphire) 100%)', avatarText: '#fff',    avatarBorder: 'var(--bq-sapphire)', statusBg: 'color-mix(in srgb, var(--bq-sapphire) 12%, transparent)', statusText: 'var(--bq-sapphire)', statusLabel: 'Chưa sẵn sàng' },
   }[variant];
 
   const bg = variant === 'host'
-    ? 'linear-gradient(180deg, rgba(232,168,50,0.08) 0%, rgba(50,52,64,0.4) 60%)'
+    ? 'linear-gradient(180deg, color-mix(in srgb, var(--bq-amber) 8%, transparent) 0%, var(--bq-white) 60%)'
     : variant === 'ready'
-    ? 'linear-gradient(180deg, rgba(74,222,128,0.06) 0%, rgba(50,52,64,0.4) 60%)'
-    : 'linear-gradient(180deg, rgba(167,139,250,0.04) 0%, rgba(50,52,64,0.4) 60%)';
+    ? 'linear-gradient(180deg, color-mix(in srgb, var(--bq-emerald) 6%, transparent) 0%, var(--bq-white) 60%)'
+    : 'linear-gradient(180deg, color-mix(in srgb, var(--bq-sapphire) 5%, transparent) 0%, var(--bq-white) 60%)';
 
   return (
     <div
-      className="relative text-center px-2.5 py-3 rounded-xl"
+      className="relative text-center px-2.5 py-3 rounded-xl shadow-bq-soft"
       style={{ background: bg, border: `1.5px solid ${colors.border}`, minHeight: 130 }}
       data-testid={`lobby-slot-${player.userId}`}
     >
@@ -1295,23 +1221,21 @@ const PlayerSlot: React.FC<{
             type="button"
             aria-label="Tùy chọn"
             onClick={(e) => { e.stopPropagation(); onKickToggle(); }}
-            className="w-6 h-6 grid place-items-center rounded-md hover:bg-white/10"
-            style={{ color: '#9ca3af' }}
+            className="w-6 h-6 grid place-items-center rounded-md text-bq-ink2 hover:bg-bq-inset"
             data-testid={`lobby-slot-menu-${player.userId}`}
           >
             <span className="material-symbols-outlined text-[16px]">more_vert</span>
           </button>
           {kickOpen && (
             <div
-              className="absolute left-0 top-7 z-20 rounded-lg overflow-hidden"
-              style={{ background: '#1d1f2a', border: '1px solid rgba(248,113,113,0.3)', minWidth: 110 }}
+              className="absolute left-0 top-7 z-20 rounded-lg overflow-hidden bg-bq-white border border-bq-ruby/30 shadow-bq-soft"
+              style={{ minWidth: 110 }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 type="button"
                 onClick={onKickConfirm}
-                className="block w-full text-left px-3 py-2 text-xs font-bold hover:bg-white/5"
-                style={{ color: '#f87171' }}
+                className="block w-full text-left px-3 py-2 text-xs font-bold text-bq-ruby hover:bg-bq-inset"
                 data-testid={`lobby-kick-${player.userId}`}
               >
                 <span className="material-symbols-outlined text-[14px] align-middle mr-1">person_remove</span>
@@ -1335,10 +1259,10 @@ const PlayerSlot: React.FC<{
           : (player.username?.[0]?.toUpperCase() ?? 'U')}
       </div>
 
-      <div className="text-xs font-bold mb-0.5 truncate" style={{ color: '#f3f4f6' }}>
+      <div className="text-xs font-bold mb-0.5 truncate text-bq-ink">
         {player.username}{isMe ? ' (bạn)' : ''}
       </div>
-      <div className="text-[10px] mb-1.5" style={{ color: '#9ca3af' }}>
+      <div className="text-[10px] mb-1.5 text-bq-ink2">
         {player.tier ?? 'Tân Tín Hữu'}
       </div>
       <div
@@ -1364,50 +1288,47 @@ const InviteSlot: React.FC<{ onClick: () => void }> = ({ onClick }) => (
     data-testid="lobby-invite-slot"
     className="text-center px-2.5 py-3 rounded-xl hover:opacity-90 transition-opacity"
     style={{
-      background: 'rgba(232,168,50,0.04)',
-      border: '1.5px dashed rgba(232,168,50,0.3)',
+      background: 'color-mix(in srgb, var(--bq-amber) 4%, transparent)',
+      border: '1.5px dashed color-mix(in srgb, var(--bq-amber) 30%, transparent)',
       minHeight: 130,
       cursor: 'pointer',
     }}
   >
     <div
-      className="mx-auto mb-2 grid place-items-center rounded-full"
+      className="mx-auto mb-2 grid place-items-center rounded-full text-bq-amberd"
       style={{
         width: 48, height: 48,
-        background: 'rgba(232,168,50,0.1)',
-        border: '2px dashed rgba(232,168,50,0.4)',
-        color: '#e8a832',
+        background: 'color-mix(in srgb, var(--bq-amber) 10%, transparent)',
+        border: '2px dashed color-mix(in srgb, var(--bq-amber) 40%, transparent)',
       }}
     >
       <span className="material-symbols-outlined">person_add</span>
     </div>
-    <div className="text-xs font-bold" style={{ color: '#fbbf24' }}>Mời bạn bè</div>
-    <div className="text-[10px] mt-0.5" style={{ color: '#9ca3af' }}>Chia sẻ mã / Link / QR</div>
+    <div className="text-xs font-bold text-bq-amberd">Mời bạn bè</div>
+    <div className="text-[10px] mt-0.5 text-bq-ink2">Chia sẻ mã / Link / QR</div>
   </button>
 );
 
 const EmptySlot: React.FC<{ index: number }> = ({ index }) => (
   <div
-    className="text-center px-2.5 py-3 rounded-xl"
+    className="text-center px-2.5 py-3 rounded-xl bg-bq-inset"
     style={{
-      background: 'rgba(50,52,64,0.15)',
-      border: '1.5px dashed rgba(255,255,255,0.06)',
+      border: '1.5px dashed var(--bq-hairline)',
       minHeight: 130,
-      opacity: 0.5,
+      opacity: 0.7,
     }}
   >
     <div
-      className="mx-auto mb-2 grid place-items-center rounded-full"
+      className="mx-auto mb-2 grid place-items-center rounded-full text-bq-ink3"
       style={{
         width: 48, height: 48,
         background: 'transparent',
-        border: '2px dashed rgba(255,255,255,0.08)',
-        color: 'rgba(255,255,255,0.15)',
+        border: '2px dashed var(--bq-hairline)',
       }}
     >
       <span className="material-symbols-outlined">hourglass_empty</span>
     </div>
-    <div className="text-[11px]" style={{ color: '#6b7280' }}>Slot {index}</div>
+    <div className="text-[11px] text-bq-ink3">Slot {index}</div>
   </div>
 );
 
@@ -1434,7 +1355,7 @@ const TeamSplit: React.FC<{
         <span className="material-symbols-outlined text-[15px]">shield</span>
         {label}
         {myTeam && players.some(p => p.userId === myUserId) && (
-          <span className="text-[10px] font-semibold" style={{ color: '#9ca3af' }}>(bạn)</span>
+          <span className="text-[10px] font-semibold text-bq-ink2">(bạn)</span>
         )}
       </div>
       <div className="grid grid-cols-2 gap-2">
@@ -1454,8 +1375,8 @@ const TeamSplit: React.FC<{
           <button
             type="button"
             onClick={onInvite}
-            className="text-center px-2.5 py-3 rounded-xl col-span-2"
-            style={{ background: 'rgba(50,52,64,0.2)', border: `1.5px dashed ${color}66`, minHeight: 80, color }}
+            className="text-center px-2.5 py-3 rounded-xl col-span-2 bg-bq-inset"
+            style={{ border: `1.5px dashed color-mix(in srgb, ${color} 40%, transparent)`, minHeight: 80, color }}
           >
             <span className="material-symbols-outlined">person_add</span>
             <div className="text-[11px] mt-1 font-semibold">Mời vào đội</div>
@@ -1466,14 +1387,13 @@ const TeamSplit: React.FC<{
   );
   return (
     <div className="space-y-4">
-      {renderTeam('Đội A', '#60a5fa', teamAPlayers)}
-      {renderTeam('Đội B', '#f87171', teamBPlayers)}
+      {renderTeam('Đội A', 'var(--bq-sapphire)', teamAPlayers)}
+      {renderTeam('Đội B', 'var(--bq-ruby)', teamBPlayers)}
       {myUserId && (
         <button
           onClick={onSwitchTeam}
           disabled={switchingTeam}
-          className="text-xs px-3 py-2 rounded-lg inline-flex items-center gap-1.5 disabled:opacity-50"
-          style={{ color: '#e8a832', border: '1px solid rgba(232,168,50,0.3)' }}
+          className="text-xs px-3 py-2 rounded-lg inline-flex items-center gap-1.5 disabled:opacity-50 text-bq-amberd border border-bq-amber/30"
         >
           <span className="material-symbols-outlined text-[14px]">swap_horiz</span>
           Đổi đội
@@ -1492,14 +1412,14 @@ type ChatViewProps = {
   setInput: (v: string) => void;
   onSend: (v: string) => void;
   onClose: () => void;
-  chatEndRef: React.RefObject<HTMLDivElement>;
+  chatEndRef: React.RefObject<HTMLDivElement | null>;
 };
 
-const ChatBody: React.FC<{ messages: ChatMessage[]; chatEndRef: React.RefObject<HTMLDivElement> }> = ({ messages, chatEndRef }) => (
+const ChatBody: React.FC<{ messages: ChatMessage[]; chatEndRef: React.RefObject<HTMLDivElement | null> }> = ({ messages, chatEndRef }) => (
   <div className="flex-1 overflow-y-auto px-4 py-3 space-y-2.5" style={{ minHeight: 0 }}>
     {messages.length === 1 && messages[0].isSystem && (
-      <div className="text-center py-4" style={{ color: '#6b7280', fontSize: 11 }}>
-        <span className="material-symbols-outlined text-[28px] block mb-1.5" style={{ color: 'rgba(255,255,255,0.1)' }}>chat</span>
+      <div className="text-center py-4 text-bq-ink3" style={{ fontSize: 11 }}>
+        <span className="material-symbols-outlined text-[28px] block mb-1.5 text-bq-hair">chat</span>
         Hãy chào hỏi để bắt đầu!
       </div>
     )}
@@ -1507,16 +1427,15 @@ const ChatBody: React.FC<{ messages: ChatMessage[]; chatEndRef: React.RefObject<
       msg.isSystem ? (
         <div
           key={i}
-          className="rounded-lg px-3 py-2 text-xs"
+          className="rounded-lg px-3 py-2 text-xs text-bq-sapphire"
           style={{
-            background: 'rgba(96,165,250,0.06)',
-            borderLeft: '2px solid rgba(96,165,250,0.4)',
-            color: '#93c5fd',
+            background: 'color-mix(in srgb, var(--bq-sapphire) 6%, transparent)',
+            borderLeft: '2px solid color-mix(in srgb, var(--bq-sapphire) 40%, transparent)',
             lineHeight: 1.5,
           }}
         >
           {msg.text}
-          {msg.time && <div className="text-[9px] mt-1" style={{ color: '#6b7280' }}>{msg.time}</div>}
+          {msg.time && <div className="text-[9px] mt-1 text-bq-ink3">{msg.time}</div>}
         </div>
       ) : (
         <div key={i} className="flex items-start gap-2">
@@ -1524,17 +1443,17 @@ const ChatBody: React.FC<{ messages: ChatMessage[]; chatEndRef: React.RefObject<
             className="w-6 h-6 rounded-full grid place-items-center text-[11px] font-extrabold flex-shrink-0"
             style={{
               background: msg.isHost
-                ? 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)'
-                : 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)',
-              color: '#11131e',
+                ? 'linear-gradient(135deg, var(--bq-amber-lt) 0%, var(--bq-amber-deep) 100%)'
+                : 'linear-gradient(135deg, var(--bq-emerald-lt) 0%, var(--bq-emerald) 100%)',
+              color: msg.isHost ? 'var(--bq-ink)' : '#fff',
             }}
           >
             {msg.sender?.[0]?.toUpperCase()}
           </div>
           <div className="flex-1 min-w-0">
-            <div className="text-[11px] font-bold mb-0.5" style={{ color: msg.isHost ? '#fbbf24' : '#86efac' }}>{msg.sender}</div>
-            <div className="text-xs" style={{ color: '#d1d5db' }}>{msg.text}</div>
-            {msg.time && <div className="text-[9px] mt-0.5" style={{ color: '#6b7280' }}>{msg.time}</div>}
+            <div className="text-[11px] font-bold mb-0.5" style={{ color: msg.isHost ? 'var(--bq-amber-deep)' : 'var(--bq-emerald)' }}>{msg.sender}</div>
+            <div className="text-xs text-bq-ink2">{msg.text}</div>
+            {msg.time && <div className="text-[9px] mt-0.5 text-bq-ink3">{msg.time}</div>}
           </div>
         </div>
       )
@@ -1544,14 +1463,13 @@ const ChatBody: React.FC<{ messages: ChatMessage[]; chatEndRef: React.RefObject<
 );
 
 const ChatReactionsRow: React.FC<{ onSend: (e: string) => void }> = ({ onSend }) => (
-  <div className="flex gap-1.5 px-4 py-2.5 border-t" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
+  <div className="flex gap-1.5 px-4 py-2.5 border-t border-bq-hair">
     {QUICK_EMOJIS.map(e => (
       <button
         key={e}
         type="button"
         onClick={() => onSend(e)}
-        className="w-8 h-8 grid place-items-center rounded-lg text-base hover:bg-white/5"
-        style={{ background: 'rgba(50,52,64,0.4)', border: '1px solid rgba(255,255,255,0.06)' }}
+        className="w-8 h-8 grid place-items-center rounded-lg text-base bg-bq-inset border border-bq-hair hover:bg-bq-paper"
       >
         {e}
       </button>
@@ -1560,22 +1478,21 @@ const ChatReactionsRow: React.FC<{ onSend: (e: string) => void }> = ({ onSend })
 );
 
 const ChatInputRow: React.FC<{ value: string; onChange: (v: string) => void; onSend: () => void }> = ({ value, onChange, onSend }) => (
-  <div className="flex gap-1.5 px-4 py-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
+  <div className="flex gap-1.5 px-4 py-3 border-t border-bq-hair">
     <input
       type="text"
       value={value}
       onChange={e => onChange(e.target.value)}
       onKeyDown={e => { if (e.key === 'Enter') onSend(); }}
       placeholder="Nhắn tin trong phòng..."
-      className="flex-1 px-3 py-2 rounded-lg text-xs outline-none"
-      style={{ background: 'rgba(50,52,64,0.4)', border: '1px solid rgba(255,255,255,0.06)', color: '#f3f4f6' }}
+      className="flex-1 px-3 py-2 rounded-lg text-xs outline-none bg-bq-inset border border-bq-hair text-bq-ink"
     />
     <button
       type="button"
       onClick={onSend}
       aria-label="Gửi"
-      className="w-9 h-9 grid place-items-center rounded-lg"
-      style={{ background: 'rgba(232,168,50,0.15)', color: '#fbbf24', border: '1px solid rgba(232,168,50,0.3)' }}
+      className="w-9 h-9 grid place-items-center rounded-lg text-bq-amberd border border-bq-amber/30"
+      style={{ background: 'color-mix(in srgb, var(--bq-amber) 15%, transparent)' }}
     >
       <span className="material-symbols-outlined text-[15px]">send</span>
     </button>
@@ -1589,24 +1506,23 @@ type ChatPanelProps = Omit<ChatViewProps, 'onClose'> & {
 
 const ChatPanel: React.FC<ChatPanelProps> = ({ messages, input, setInput, onSend, chatEndRef, onlineCount, cta }) => (
   <aside
-    className="flex flex-col border-l"
-    style={{ background: '#0d0f17', borderColor: 'rgba(255,255,255,0.04)' }}
+    className="flex flex-col border-l bg-bq-white border-bq-hair"
     data-testid="lobby-chat-panel"
   >
-    <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
+    <div className="flex items-center justify-between px-4 py-3 border-b border-bq-hair">
       <div className="inline-flex items-center gap-1.5 text-[13px] font-bold">
         <span className="text-sm">💬</span>
-        <span className="uppercase tracking-wider text-xs" style={{ color: '#d1d5db' }}>Trò chuyện</span>
+        <span className="uppercase tracking-wider text-xs text-bq-ink2">Trò chuyện</span>
       </div>
       {typeof onlineCount === 'number' && (
-        <span className="text-[10px]" style={{ color: '#6b7280' }}>{onlineCount} online</span>
+        <span className="text-[10px] text-bq-ink3">{onlineCount} online</span>
       )}
     </div>
     <ChatBody messages={messages} chatEndRef={chatEndRef} />
     <ChatReactionsRow onSend={onSend} />
     <ChatInputRow value={input} onChange={setInput} onSend={() => onSend(input)} />
     {cta && (
-      <div className="p-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
+      <div className="p-3 border-t border-bq-hair">
         {cta}
       </div>
     )}
@@ -1616,26 +1532,24 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ messages, input, setInput, onSend
 const ChatDrawer: React.FC<ChatViewProps> = ({ messages, input, setInput, onSend, onClose, chatEndRef }) => (
   <div
     className="fixed inset-0 z-50 flex justify-end"
-    style={{ background: 'rgba(0,0,0,0.5)' }}
+    style={{ background: 'rgba(20,20,30,0.5)' }}
     onClick={onClose}
     data-testid="lobby-chat-drawer"
   >
     <div
-      className="flex flex-col w-full max-w-sm h-full"
-      style={{ background: '#0d0f17' }}
+      className="flex flex-col w-full max-w-sm h-full bg-bq-white"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
-        <div className="inline-flex items-center gap-1.5 text-[13px] font-bold">
-          <span className="material-symbols-outlined text-base" style={{ color: '#9ca3af' }}>chat</span>
+      <div className="flex items-center justify-between px-4 py-3 border-b border-bq-hair">
+        <div className="inline-flex items-center gap-1.5 text-[13px] font-bold text-bq-ink">
+          <span className="material-symbols-outlined text-base text-bq-ink2">chat</span>
           Trò chuyện
         </div>
         <button
           type="button"
           onClick={onClose}
           aria-label="Đóng chat"
-          className="w-8 h-8 grid place-items-center rounded-lg hover:bg-white/5"
-          style={{ color: '#9ca3af' }}
+          className="w-8 h-8 grid place-items-center rounded-lg text-bq-ink2 hover:bg-bq-inset"
         >
           <span className="material-symbols-outlined">close</span>
         </button>

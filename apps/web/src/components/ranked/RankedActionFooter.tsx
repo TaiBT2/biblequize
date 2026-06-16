@@ -63,7 +63,7 @@ export default function RankedActionFooter({
     <button
       data-testid="ranked-start-btn"
       onClick={onStart}
-      className="w-full gold-gradient text-on-secondary font-medium rounded-xl shadow-[0_8px_30px_rgb(248,189,69,0.25)] hover:shadow-[0_12px_36px_rgb(248,189,69,0.4)] active:scale-[0.98] transition-all py-3.5 px-6 flex items-center justify-center gap-2"
+      className="w-full bg-bq-action text-white shadow-bq-action font-bold rounded-xl active:scale-[0.98] transition-all py-3.5 px-6 flex items-center justify-center gap-2"
     >
       <span className="material-symbols-outlined text-[20px]" style={FILL_1}>
         play_arrow
@@ -73,13 +73,13 @@ export default function RankedActionFooter({
       </span>
     </button>
   ) : capReached ? (
-    <div className="w-full bg-surface-container-high text-on-surface-variant rounded-xl py-3.5 px-6 flex items-center justify-center opacity-60 cursor-not-allowed">
+    <div className="w-full bg-bq-inset border border-bq-hair text-bq-ink2 rounded-xl py-3.5 px-6 flex items-center justify-center opacity-70 cursor-not-allowed">
       <span className="text-[15px] font-medium tracking-tight">
         {t('ranked.ctaCapMain')}
       </span>
     </div>
   ) : (
-    <div className="w-full bg-surface-container-high text-on-surface-variant rounded-xl py-3.5 px-6 flex items-center justify-center opacity-60 cursor-not-allowed">
+    <div className="w-full bg-bq-inset border border-bq-hair text-bq-ink2 rounded-xl py-3.5 px-6 flex items-center justify-center opacity-70 cursor-not-allowed">
       <span className="text-[15px] font-medium tracking-tight">
         {t('ranked.ctaNoEnergyMain')}
       </span>
@@ -114,15 +114,15 @@ export default function RankedActionFooter({
         className="h-6 pointer-events-none"
         style={{
           background:
-            'linear-gradient(180deg, rgba(17,19,30,0) 0%, rgba(17,19,30,0.95) 100%)',
+            'linear-gradient(180deg, rgba(251,250,245,0) 0%, rgba(251,250,245,0.95) 100%)',
         }}
       />
-      <div className="bg-[#11131e]/95 backdrop-blur-md border-t border-secondary/15 px-4 md:px-10 lg:px-14 pt-3 pb-2 pointer-events-auto">
+      <div className="bg-bq-paper/95 backdrop-blur-md border-t border-bq-hair px-4 md:px-10 lg:px-14 pt-3 pb-2 pointer-events-auto">
         <div className="max-w-5xl mx-auto">
           {button}
           <p
             data-testid={captionTestId}
-            className="text-center text-on-surface-variant/55 text-[11px] mt-1.5"
+            className="text-center text-bq-ink3 text-[11px] mt-1.5"
           >
             {caption}
           </p>

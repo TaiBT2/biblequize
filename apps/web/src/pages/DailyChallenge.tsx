@@ -104,13 +104,13 @@ function getLast7Days(t: (key: string) => string, completedDates: Set<string>) {
 function LoadingSkeleton() {
   return (
     <div className="max-w-5xl mx-auto p-2 space-y-6 animate-pulse">
-      <div className="h-16 bg-surface-container-high rounded-xl" />
-      <div className="h-80 bg-surface-container rounded-2xl" />
+      <div className="h-16 bg-bq-inset rounded-xl" />
+      <div className="h-80 bg-bq-inset rounded-2xl" />
       <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-5">
-        <div className="h-96 bg-surface-container rounded-2xl" />
-        <div className="h-96 bg-surface-container rounded-2xl" />
+        <div className="h-96 bg-bq-inset rounded-2xl" />
+        <div className="h-96 bg-bq-inset rounded-2xl" />
       </div>
-      <div className="h-40 bg-surface-container rounded-2xl" />
+      <div className="h-40 bg-bq-inset rounded-2xl" />
     </div>
   )
 }
@@ -443,14 +443,14 @@ const DailyChallenge: React.FC = () => {
   if (challengeQuery.isError && !challengeData) {
     return (
       <div data-testid="daily-error-state" className="max-w-5xl mx-auto flex flex-col items-center justify-center py-20 space-y-6">
-        <div className="w-20 h-20 bg-error-container/20 rounded-full flex items-center justify-center">
-          <span className="material-symbols-outlined text-5xl text-error">error</span>
+        <div className="w-20 h-20 bg-bq-ruby/10 rounded-full flex items-center justify-center">
+          <span className="material-symbols-outlined text-5xl text-bq-ruby">error</span>
         </div>
-        <p className="text-on-surface-variant text-lg">{error ?? t('daily.loadError')}</p>
+        <p className="text-bq-ink2 text-lg">{error ?? t('daily.loadError')}</p>
         <button
           data-testid="daily-error-retry-btn"
           onClick={() => window.location.reload()}
-          className="gold-gradient px-8 py-3 rounded-xl text-on-secondary font-bold"
+          className="bg-bq-action text-white shadow-bq-action px-8 py-3 rounded-xl font-bold"
         >
           {t('common.retry')}
         </button>
@@ -468,10 +468,10 @@ const DailyChallenge: React.FC = () => {
       <main className={`relative min-h-screen pt-6 px-6 flex flex-col items-center justify-center max-w-5xl mx-auto ${answered ? 'pb-56 sm:pb-44' : 'pb-12'}`}>
         <div className="w-full flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-lg font-extrabold tracking-tight text-on-surface">{t('daily.title')}</h2>
-            <p className="text-xs text-on-surface-variant mt-0.5">{t('quiz.question', { current: currentIndex + 1, total: totalQuestions })}</p>
+            <h2 className="font-display text-lg font-extrabold tracking-tight text-bq-ink">{t('daily.title')}</h2>
+            <p className="text-xs text-bq-ink2 mt-0.5">{t('quiz.question', { current: currentIndex + 1, total: totalQuestions })}</p>
           </div>
-          <div className="bg-surface-container-high px-4 py-2 rounded-xl border border-outline-variant/10 text-sm font-mono font-bold text-secondary">
+          <div className="bg-bq-white px-4 py-2 rounded-xl border border-bq-hair text-sm font-mono font-bold text-bq-amberd">
             {todayLabel}
           </div>
         </div>
@@ -482,8 +482,8 @@ const DailyChallenge: React.FC = () => {
               key={i}
               className={`h-1.5 flex-1 rounded-full transition-colors duration-300 ${
                 i < currentIndex
-                  ? results[i] ? 'bg-green-500' : 'bg-red-500'
-                  : i === currentIndex ? 'bg-secondary' : 'bg-outline-variant/20'
+                  ? results[i] ? 'bg-bq-emerald' : 'bg-bq-ruby'
+                  : i === currentIndex ? 'bg-bq-amber' : 'bg-bq-inset'
               }`}
             />
           ))}
@@ -499,22 +499,22 @@ const DailyChallenge: React.FC = () => {
             return (
               <div
                 data-question-length={lenClass}
-                className="relative w-full aspect-auto min-h-[160px] md:aspect-[21/7] md:min-h-0 flex flex-col items-center justify-center text-center p-5 md:p-10 bg-surface-container-low rounded-2xl md:rounded-[2.5rem] border border-outline-variant/10 shadow-2xl overflow-hidden"
+                className="relative w-full aspect-auto min-h-[160px] md:aspect-[21/7] md:min-h-0 flex flex-col items-center justify-center text-center p-5 md:p-10 bg-bq-white rounded-2xl md:rounded-[2.5rem] border border-bq-hair shadow-bq-soft overflow-hidden"
               >
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 md:w-2 h-20 md:h-32 bg-secondary rounded-r-full" />
-                <div className="inline-flex items-center gap-1.5 bg-secondary/10 border border-secondary/20 rounded-full px-3 py-1 mb-3 md:mb-4">
-                  <span className="material-symbols-outlined text-secondary text-xs">menu_book</span>
-                  <span className="text-secondary text-[11px] font-medium tracking-wider">
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 md:w-2 h-20 md:h-32 bg-bq-amber rounded-r-full" />
+                <div className="inline-flex items-center gap-1.5 bg-bq-amber/10 border border-bq-amber/20 rounded-full px-3 py-1 mb-3 md:mb-4">
+                  <span className="material-symbols-outlined text-bq-amberd text-xs">menu_book</span>
+                  <span className="text-bq-amberd text-[11px] font-medium tracking-wider">
                     {formatVerseRef({ book: question.book, chapter: question.chapter })}
                   </span>
                 </div>
                 <h2
                   data-testid="daily-question-text"
-                  className={`question-text font-headline ${mobileFontCls} md:text-4xl md:font-extrabold md:text-center tracking-tight leading-snug max-w-3xl text-on-surface w-full`}
+                  className={`question-text font-headline ${mobileFontCls} md:text-4xl md:font-extrabold md:text-center tracking-tight leading-snug max-w-3xl text-bq-ink w-full`}
                 >
                   {wrapProperNouns(question.content)}
                 </h2>
-                <div className="hidden md:flex mt-6 items-center gap-2 text-on-surface-variant/60">
+                <div className="hidden md:flex mt-6 items-center gap-2 text-bq-ink3">
                   <span className="material-symbols-outlined text-sm">menu_book</span>
                   <span className="text-xs font-bold uppercase tracking-widest">
                     {question.book}{question.chapter ? ` - ${t('quiz.chapter', { chapter: question.chapter })}` : ''}
@@ -568,8 +568,8 @@ const DailyChallenge: React.FC = () => {
                   data-testid="daily-explanation-pill"
                   type="button"
                   onClick={() => setExplanationCollapsed(false)}
-                  className={`px-4 py-2 rounded-full glass-panel border text-xs font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform ${
-                    isCorrect ? 'border-secondary/30 text-secondary' : 'border-error/30 text-error'
+                  className={`px-4 py-2 rounded-full bg-bq-white border text-xs font-bold flex items-center gap-2 shadow-bq-soft hover:scale-105 transition-transform ${
+                    isCorrect ? 'border-bq-emerald/30 text-bq-emerald' : 'border-bq-ruby/30 text-bq-ruby'
                   }`}
                 >
                   <span className="material-symbols-outlined text-sm" style={FILL_1}>lightbulb</span>
@@ -577,13 +577,13 @@ const DailyChallenge: React.FC = () => {
                 </button>
               ) : (
                 <div ref={explanationRef} className="w-full">
-                  <div className={`glass-panel p-5 rounded-2xl border space-y-3 max-h-[50vh] overflow-y-auto ${isCorrect ? 'border-green-500/20' : 'border-error/20'}`}>
+                  <div className={`bg-bq-white shadow-bq-soft p-5 rounded-2xl border space-y-3 max-h-[50vh] overflow-y-auto ${isCorrect ? 'border-bq-emerald/20' : 'border-bq-ruby/20'}`}>
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2 min-w-0">
                         {!isCorrect && correctOptionText && (
                           <>
-                            <span className="material-symbols-outlined text-green-400 text-sm flex-shrink-0" style={FILL_1}>check_circle</span>
-                            <span className="text-sm font-bold text-green-400 truncate">
+                            <span className="material-symbols-outlined text-bq-emerald text-sm flex-shrink-0" style={FILL_1}>check_circle</span>
+                            <span className="text-sm font-bold text-bq-emerald truncate">
                               {t('quiz.correctAnswerIs', { answer: correctOptionText })}
                             </span>
                           </>
@@ -593,15 +593,15 @@ const DailyChallenge: React.FC = () => {
                         data-testid="daily-explanation-close"
                         type="button"
                         onClick={() => setExplanationCollapsed(true)}
-                        className="text-on-surface-variant/60 hover:text-on-surface transition-colors -mr-1 flex-shrink-0"
+                        className="text-bq-ink3 hover:text-bq-ink transition-colors -mr-1 flex-shrink-0"
                         aria-label={t('quiz.minimizeExplanation', 'Thu nhỏ')}
                       >
                         <span className="material-symbols-outlined text-base">close</span>
                       </button>
                     </div>
                     {currentExplanation && (
-                      <p className="text-on-surface-variant text-sm leading-relaxed flex items-start gap-1.5">
-                        <span className="material-symbols-outlined text-sm mt-0.5 text-secondary/60">lightbulb</span>
+                      <p className="text-bq-ink2 text-sm leading-relaxed flex items-start gap-1.5">
+                        <span className="material-symbols-outlined text-sm mt-0.5 text-bq-amberd">lightbulb</span>
                         <span>{currentExplanation}</span>
                       </p>
                     )}
@@ -611,20 +611,20 @@ const DailyChallenge: React.FC = () => {
             )}
             <div
               data-testid="daily-answer-feedback"
-              className="w-full bg-surface-container-highest p-4 sm:p-5 rounded-3xl border border-secondary/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 glass-panel"
+              className={`w-full bg-bq-white p-4 sm:p-5 rounded-3xl border shadow-bq-soft flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 ${isCorrect ? 'border-bq-emerald/30' : 'border-bq-ruby/30'}`}
             >
               <div className="flex items-center gap-4 min-w-0">
-                <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center flex-shrink-0 ${isCorrect ? 'bg-secondary/20' : 'bg-error/20'}`}>
+                <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center flex-shrink-0 ${isCorrect ? 'bg-bq-emerald/15' : 'bg-bq-ruby/15'}`}>
                   <span
-                    className={`material-symbols-outlined text-2xl ${isCorrect ? 'text-secondary' : 'text-error'}`}
+                    className={`material-symbols-outlined text-2xl ${isCorrect ? 'text-bq-emerald' : 'text-bq-ruby'}`}
                     style={FILL_1}
                   >{isCorrect ? 'verified' : 'cancel'}</span>
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-base font-bold text-on-surface leading-tight">
+                  <p className="text-base font-bold text-bq-ink leading-tight">
                     {isCorrect ? t('quiz.correct') : t('quiz.incorrect')}
                   </p>
-                  <p className={`text-xs font-medium leading-tight mt-0.5 ${isCorrect ? 'text-secondary/80' : 'text-error/80'}`}>
+                  <p className={`text-xs font-medium leading-tight mt-0.5 ${isCorrect ? 'text-bq-emerald' : 'text-bq-ruby'}`}>
                     {isCorrect ? t('quiz.bonusPoints', { points: 20 }) : t('quiz.noPoints')}
                   </p>
                 </div>
@@ -632,7 +632,7 @@ const DailyChallenge: React.FC = () => {
               <button
                 data-testid="daily-next-btn"
                 onClick={handleNext}
-                className="bg-gradient-to-r from-secondary to-tertiary text-on-secondary px-6 sm:px-8 py-3 rounded-2xl font-black text-sm shadow-xl active:scale-95 transition-all hover:brightness-110 whitespace-nowrap w-full sm:w-auto"
+                className="bg-bq-action text-white px-6 sm:px-8 py-3 rounded-2xl font-black text-sm shadow-bq-action active:scale-95 transition-all hover:brightness-110 whitespace-nowrap w-full sm:w-auto"
               >
                 {currentIndex + 1 >= totalQuestions ? t('daily.viewResult') : t('daily.nextQuestion')}
               </button>
@@ -647,12 +647,12 @@ const DailyChallenge: React.FC = () => {
   if ((!challengeData || !Array.isArray(challengeData.questions) || challengeData.questions.length === 0) && !isCompleted) {
     return (
       <div className="max-w-5xl mx-auto flex flex-col items-center justify-center py-20 space-y-6">
-        <div className="w-20 h-20 bg-surface-container-high rounded-full flex items-center justify-center">
-          <span className="material-symbols-outlined text-5xl text-on-surface-variant">hourglass_empty</span>
+        <div className="w-20 h-20 bg-bq-inset rounded-full flex items-center justify-center">
+          <span className="material-symbols-outlined text-5xl text-bq-ink2">hourglass_empty</span>
         </div>
-        <h3 className="text-2xl font-bold text-on-surface">{t('daily.noQuestions')}</h3>
-        <p className="text-on-surface-variant">{t('daily.comeBackLater')}</p>
-        <Link to="/" className="gold-gradient px-8 py-3 rounded-xl text-on-secondary font-bold">{t('daily.home')}</Link>
+        <h3 className="font-display text-2xl font-bold text-bq-ink">{t('daily.noQuestions')}</h3>
+        <p className="text-bq-ink2">{t('daily.comeBackLater')}</p>
+        <Link to="/" className="bg-bq-action text-white shadow-bq-action px-8 py-3 rounded-xl font-bold">{t('daily.home')}</Link>
       </div>
     )
   }
@@ -739,16 +739,16 @@ const DailyChallenge: React.FC = () => {
           Backend reveals correctAnswer/explanation in GET /api/daily-challenge
           payload only when the user has already completed today. */}
       {showReviewModal && challengeData?.questions && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-start justify-center p-4 overflow-y-auto" onClick={() => setShowReviewModal(false)}>
-          <div className="max-w-2xl w-full bg-[rgba(50,52,64,0.95)] backdrop-blur-md rounded-2xl border border-[rgba(232,168,50,0.2)] p-6 my-8" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-start justify-center p-4 overflow-y-auto" onClick={() => setShowReviewModal(false)}>
+          <div className="max-w-2xl w-full bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-6 my-8" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-5">
-              <h3 className="text-xl font-extrabold text-on-surface flex items-center gap-2">
-                <span className="material-symbols-outlined text-secondary">visibility</span>
+              <h3 className="font-display text-xl font-extrabold text-bq-ink flex items-center gap-2">
+                <span className="material-symbols-outlined text-bq-amberd">visibility</span>
                 {t('daily.review.title')}
               </h3>
               <button
                 onClick={() => setShowReviewModal(false)}
-                className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 grid place-items-center text-on-surface-variant"
+                className="w-8 h-8 rounded-lg bg-bq-inset hover:bg-bq-hair grid place-items-center text-bq-ink2"
               >
                 <span className="material-symbols-outlined">close</span>
               </button>
@@ -758,19 +758,19 @@ const DailyChallenge: React.FC = () => {
                 const correctIdx = q.correctAnswer?.[0] ?? -1
                 const userGotIt = results[idx]
                 return (
-                  <div key={q.id} className="bg-[rgba(17,19,30,0.6)] border border-white/5 rounded-xl p-4">
+                  <div key={q.id} className="bg-bq-paper border border-bq-hair rounded-xl p-4">
                     <div className="flex items-start justify-between gap-3 mb-3">
                       <div className="flex items-start gap-2 flex-1">
                         <span className={`flex-shrink-0 w-6 h-6 rounded-full grid place-items-center text-xs font-bold ${
                           userGotIt === undefined
-                            ? 'bg-white/10 text-on-surface-variant'
-                            : userGotIt ? 'bg-[#4ade80]/20 text-[#4ade80]' : 'bg-error/20 text-error'
+                            ? 'bg-bq-inset text-bq-ink2'
+                            : userGotIt ? 'bg-bq-emerald/15 text-bq-emerald' : 'bg-bq-ruby/15 text-bq-ruby'
                         }`}>
                           {idx + 1}
                         </span>
-                        <span className="text-sm font-bold text-on-surface leading-relaxed">{q.content}</span>
+                        <span className="text-sm font-bold text-bq-ink leading-relaxed">{q.content}</span>
                       </div>
-                      <span className="text-[10px] text-on-surface-variant flex-shrink-0 px-2 py-0.5 rounded bg-white/5">
+                      <span className="text-[10px] text-bq-ink2 flex-shrink-0 px-2 py-0.5 rounded bg-bq-inset">
                         {q.book} {q.chapter}
                       </span>
                     </div>
@@ -782,8 +782,8 @@ const DailyChallenge: React.FC = () => {
                             key={i}
                             className={`px-3 py-2 rounded-lg text-xs flex items-start gap-2 border ${
                               isCorrect
-                                ? 'bg-[#4ade80]/10 border-[#4ade80]/30 text-[#4ade80]'
-                                : 'bg-white/5 border-white/5 text-on-surface-variant'
+                                ? 'bg-bq-emerald/10 border-bq-emerald/30 text-bq-emerald'
+                                : 'bg-bq-inset border-bq-hair text-bq-ink2'
                             }`}
                           >
                             <span className="font-bold">{LETTERS[i]}.</span>
@@ -794,8 +794,8 @@ const DailyChallenge: React.FC = () => {
                       })}
                     </div>
                     {q.explanation && (
-                      <div className="text-xs text-on-surface-variant leading-relaxed bg-secondary/5 border-l-2 border-secondary/40 px-3 py-2 rounded">
-                        <span className="material-symbols-outlined text-sm align-middle mr-1 text-secondary/70">lightbulb</span>
+                      <div className="text-xs text-bq-ink2 leading-relaxed bg-bq-amber/5 border-l-2 border-bq-amber/40 px-3 py-2 rounded">
+                        <span className="material-symbols-outlined text-sm align-middle mr-1 text-bq-amberd">lightbulb</span>
                         {q.explanation}
                       </div>
                     )}
@@ -809,8 +809,8 @@ const DailyChallenge: React.FC = () => {
 
       {/* Share modal */}
       {showShareCard && dailyResult && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setShowShareCard(false)}>
-          <div className="max-w-md w-full glass-card rounded-2xl border border-white/5 p-6" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setShowShareCard(false)}>
+          <div className="max-w-md w-full bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-6" onClick={(e) => e.stopPropagation()}>
             <ShareCard
               sessionId={dailyResult.sessionId ?? sessionId ?? ''}
               score={dailyResult.xpEarned ?? 0}
@@ -820,7 +820,7 @@ const DailyChallenge: React.FC = () => {
             />
             <button
               onClick={() => setShowShareCard(false)}
-              className="block mx-auto mt-4 text-on-surface-variant hover:text-on-surface transition-colors text-sm font-medium"
+              className="block mx-auto mt-4 text-bq-ink2 hover:text-bq-ink transition-colors text-sm font-medium"
             >
               {t('common.close')}
             </button>

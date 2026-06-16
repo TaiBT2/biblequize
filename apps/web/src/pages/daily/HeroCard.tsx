@@ -46,18 +46,18 @@ export function HeroCard(props: HeroCardProps) {
   const { t } = useTranslation()
 
   return (
-    <div className="relative bg-[rgba(50,52,64,0.4)] backdrop-blur-md border border-[rgba(232,168,50,0.15)] rounded-[20px] overflow-hidden mb-7">
-      <div className="absolute inset-y-0 right-0 w-[400px] bg-[radial-gradient(circle_at_right,rgba(239,68,68,0.08)_0%,transparent_60%)] pointer-events-none" />
+    <div className="relative bg-bq-white border border-bq-hair shadow-bq-amb rounded-[20px] overflow-hidden mb-7">
+      <div className="absolute inset-y-0 right-0 w-[400px] bg-[radial-gradient(circle_at_right,rgba(245,158,11,0.10)_0%,transparent_60%)] pointer-events-none" />
       <div className={`relative z-[1] grid grid-cols-1 ${props.state === 'done' ? 'lg:grid-cols-[1.6fr_1fr]' : ''}`}>
         {/* LEFT (or full-width on ready state) */}
-        <div className={`p-8 ${props.state === 'done' ? 'lg:border-r border-white/5' : ''}`}>
+        <div className={`p-8 ${props.state === 'done' ? 'lg:border-r border-bq-hair' : ''}`}>
           {props.state === 'ready' ? <ReadyLeft {...props} /> : <DoneLeft {...props} />}
         </div>
         {/* RIGHT — only Done state. Ready hero is single-column post-DC-1/DC-2
             (verse moved to Home banner, big-flame streak block now lives
             exclusively in the standalone StreakCard). */}
         {props.state === 'done' && (
-          <div className="p-8 bg-[rgba(17,19,30,0.3)]">
+          <div className="p-8 bg-bq-inset">
             <DoneRight {...props} />
           </div>
         )}
@@ -68,19 +68,19 @@ export function HeroCard(props: HeroCardProps) {
   function ReadyLeft({ questionCount, timeLimit, yesterday, onStart }: HeroCardProps) {
     return (
       <>
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[20px] mb-3 bg-gradient-to-br from-[rgba(239,68,68,0.15)] to-[rgba(249,115,22,0.1)] border border-[rgba(239,68,68,0.3)] text-[#fca5a5] text-xs font-bold uppercase tracking-[0.5px]">
-          <span className="w-2 h-2 rounded-full bg-[#ef4444] animate-pulse-ring" />
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[20px] mb-3 bg-bq-amber/10 border border-bq-amber/30 text-bq-amberd text-xs font-bold uppercase tracking-[0.5px]">
+          <span className="w-2 h-2 rounded-full bg-bq-ember animate-pulse-ring" />
           {t('daily.ready.statusBadge')}
         </div>
-        <div className="text-[11px] text-on-surface-variant/70 font-semibold uppercase tracking-[0.18em] mb-1.5">
+        <div className="text-[11px] text-bq-ink3 font-semibold uppercase tracking-[0.18em] mb-1.5">
           {t('daily.ready.eyebrow')}
         </div>
-        <h3 className="text-[28px] font-extrabold mb-2.5 tracking-tight">
-          <span className="text-on-surface">{t('daily.ready.titleLead', { count: questionCount })}</span>
+        <h3 className="font-display text-[28px] font-extrabold mb-2.5 tracking-tight">
+          <span className="text-bq-ink">{t('daily.ready.titleLead', { count: questionCount })}</span>
           {' '}
-          <span className="text-secondary">{t('daily.ready.titleAccent')}</span>
+          <span className="text-bq-amberd">{t('daily.ready.titleAccent')}</span>
         </h3>
-        <p className="text-on-surface-variant text-sm italic leading-relaxed mb-6">
+        <p className="font-literata text-bq-ink2 text-sm italic leading-relaxed mb-6">
           &ldquo;{t('daily.ready.desc')}&rdquo;
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-[22px]">
@@ -89,31 +89,31 @@ export function HeroCard(props: HeroCardProps) {
           <MetaItem icon="public" text={t('daily.ready.metaGlobal')} />
           <MetaItem icon="shield" text={t('daily.ready.metaNoEnergy')} />
         </div>
-        <div className="bg-[rgba(17,19,30,0.4)] border border-[rgba(232,168,50,0.12)] rounded-xl px-4 py-3.5 mb-[22px] flex items-center gap-3.5">
-          <div className="w-10 h-10 rounded-[10px] bg-gradient-to-br from-[rgba(232,168,50,0.2)] to-[rgba(217,119,6,0.1)] border border-[rgba(232,168,50,0.3)] grid place-items-center text-secondary text-[22px] flex-shrink-0">
+        <div className="bg-bq-inset border border-bq-amber/12 rounded-xl px-4 py-3.5 mb-[22px] flex items-center gap-3.5">
+          <div className="w-10 h-10 rounded-[10px] bg-bq-amber/15 border border-bq-amber/30 grid place-items-center text-bq-amberd text-[22px] flex-shrink-0">
             <span className="material-symbols-outlined">workspace_premium</span>
           </div>
           <div className="flex-1">
-            <div className="text-[11px] text-on-surface-variant font-semibold uppercase tracking-[0.5px]">
+            <div className="text-[11px] text-bq-ink2 font-semibold uppercase tracking-[0.5px]">
               {t('daily.ready.rewardLabel')}
             </div>
-            <div className="text-sm text-on-surface font-bold mt-0.5">
-              <strong className="text-secondary">+50 XP</strong> {t('daily.ready.rewardBase')} ·{' '}
-              <strong className="text-secondary">+25 XP</strong> {t('daily.ready.rewardPerfect')}
+            <div className="text-sm text-bq-ink font-bold mt-0.5">
+              <strong className="text-bq-amberd">+50 XP</strong> {t('daily.ready.rewardBase')} ·{' '}
+              <strong className="text-bq-amberd">+25 XP</strong> {t('daily.ready.rewardPerfect')}
             </div>
           </div>
         </div>
         <button
           data-testid="daily-start-btn"
           onClick={onStart}
-          className="w-full bg-gradient-to-br from-secondary to-[#d97706] text-on-secondary border-none px-7 py-4 rounded-2xl text-base font-extrabold cursor-pointer transition-all flex items-center justify-center gap-2.5 shadow-[0_6px_24px_rgba(232,168,50,0.35)] hover:-translate-y-px hover:shadow-[0_8px_28px_rgba(232,168,50,0.5)]"
+          className="w-full bg-bq-action text-white border-none px-7 py-4 rounded-2xl text-base font-extrabold cursor-pointer transition-all flex items-center justify-center gap-2.5 shadow-bq-action hover:-translate-y-px"
         >
           <span className="material-symbols-outlined">play_arrow</span>
           {t('daily.ready.cta')}
         </button>
         {yesterday?.completed && (
-          <div className="mt-4 px-3.5 py-3 bg-[rgba(17,19,30,0.4)] border-l-[3px] border-[rgba(96,165,250,0.5)] rounded-lg text-xs text-on-surface-variant leading-relaxed">
-            📊 <strong className="text-[#93c5fd]">{t('daily.ready.yesterdayPrefix')}</strong>{' '}
+          <div className="mt-4 px-3.5 py-3 bg-bq-inset border-l-[3px] border-bq-sapphire/50 rounded-lg text-xs text-bq-ink2 leading-relaxed">
+            📊 <strong className="text-bq-sapphire">{t('daily.ready.yesterdayPrefix')}</strong>{' '}
             {yesterday.timeSeconds && yesterday.timeSeconds > 0
               ? t('daily.ready.yesterdayBody', {
                   correct: yesterday.correctCount ?? 0,
@@ -137,25 +137,25 @@ export function HeroCard(props: HeroCardProps) {
       : '—'
     return (
       <>
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[20px] mb-[18px] bg-gradient-to-br from-[rgba(74,222,128,0.15)] to-[rgba(34,197,94,0.1)] border border-[rgba(74,222,128,0.3)] text-[#86efac] text-xs font-bold uppercase tracking-[0.5px]">
-          <span className="w-2 h-2 rounded-full bg-[#4ade80] animate-pulse-ring-green" />
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[20px] mb-[18px] bg-bq-emerald/10 border border-bq-emerald/30 text-bq-emerald text-xs font-bold uppercase tracking-[0.5px]">
+          <span className="w-2 h-2 rounded-full bg-bq-emerald animate-pulse-ring-green" />
           {t('daily.done.statusBadge', { time: completedTimeLabel })}
         </div>
-        <h3 data-testid="daily-completed-badge" className="text-[28px] font-extrabold mb-2.5 tracking-tight text-on-surface">
+        <h3 data-testid="daily-completed-badge" className="font-display text-[28px] font-extrabold mb-2.5 tracking-tight text-bq-ink">
           {t('daily.done.title')}
         </h3>
-        <p className="text-on-surface-variant text-sm leading-relaxed mb-6">
+        <p className="text-bq-ink2 text-sm leading-relaxed mb-6">
           {done.betterThanPercent != null
-            ? <>{t('daily.done.descPrefix')} <strong className="text-[#4ade80]">{done.betterThanPercent}%</strong> {t('daily.done.descPlayers')}</>
+            ? <>{t('daily.done.descPrefix')} <strong className="text-bq-emerald">{done.betterThanPercent}%</strong> {t('daily.done.descPlayers')}</>
             : t('daily.done.descNoData')}
         </p>
-        <div className="bg-[rgba(17,19,30,0.5)] border border-[rgba(74,222,128,0.15)] rounded-xl p-4 mb-[22px]">
-          <SummaryRow icon="check_circle" label={t('daily.done.rowCorrect')} value={`${done.correctCount} / ${done.totalQuestions}`} valueClass="text-[#4ade80]" />
+        <div className="bg-bq-inset border border-bq-emerald/15 rounded-xl p-4 mb-[22px]">
+          <SummaryRow icon="check_circle" label={t('daily.done.rowCorrect')} value={`${done.correctCount} / ${done.totalQuestions}`} valueClass="text-bq-emerald" />
           {done.timeSeconds != null && (
             <SummaryRow icon="timer" label={t('daily.done.rowTime')} value={formatTime(done.timeSeconds)} />
           )}
           {done.betterThanPercent != null && (
-            <SummaryRow icon="trending_up" label={t('daily.done.rowBetterThan')} value={t('daily.done.betterThanValue', { percent: done.betterThanPercent })} valueClass="text-[#4ade80]" />
+            <SummaryRow icon="trending_up" label={t('daily.done.rowBetterThan')} value={t('daily.done.betterThanValue', { percent: done.betterThanPercent })} valueClass="text-bq-emerald" />
           )}
           <SummaryRow
             icon="workspace_premium"
@@ -163,7 +163,7 @@ export function HeroCard(props: HeroCardProps) {
             value={done.xpEarned > 0
               ? `+${done.xpEarned} XP`
               : t('daily.done.xpThresholdMissed', 'Cần ≥4/5 đúng để nhận 50 XP')}
-            valueClass={done.xpEarned > 0 ? 'text-secondary' : 'text-on-surface-variant/55 text-[11px]'}
+            valueClass={done.xpEarned > 0 ? 'text-bq-amberd' : 'text-bq-ink3 text-[11px]'}
             lastRow
           />
           {done.resultsBreakdown && done.resultsBreakdown.length > 0 && (
@@ -173,8 +173,8 @@ export function HeroCard(props: HeroCardProps) {
                   key={i}
                   title={t('daily.done.qDotTitle', { num: i + 1, status: correct ? t('daily.done.qDotCorrect') : t('daily.done.qDotWrong') })}
                   className={`flex-1 h-2 rounded ${correct
-                    ? 'bg-gradient-to-br from-[#4ade80] to-[#22c55e]'
-                    : 'bg-gradient-to-br from-[#f87171] to-[#ef4444]'
+                    ? 'bg-bq-emerald'
+                    : 'bg-bq-ruby'
                     }`}
                 />
               ))}
@@ -183,7 +183,7 @@ export function HeroCard(props: HeroCardProps) {
         </div>
         <button
           onClick={onReview}
-          className="w-full bg-gradient-to-br from-secondary to-[#d97706] text-on-secondary border-none px-7 py-4 rounded-2xl text-base font-extrabold cursor-pointer transition-all flex items-center justify-center gap-2.5 shadow-[0_6px_24px_rgba(232,168,50,0.35)] hover:-translate-y-px"
+          className="w-full bg-bq-action text-white border-none px-7 py-4 rounded-2xl text-base font-extrabold cursor-pointer transition-all flex items-center justify-center gap-2.5 shadow-bq-action hover:-translate-y-px"
         >
           <span className="material-symbols-outlined">visibility</span>
           {t('daily.done.cta')}
@@ -208,11 +208,11 @@ export function HeroCard(props: HeroCardProps) {
             <svg className="w-full h-full -rotate-90" viewBox="0 0 160 160">
               <defs>
                 <linearGradient id="dailyHeroScoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#fbbf24" />
-                  <stop offset="100%" stopColor="#d97706" />
+                  <stop offset="0%" stopColor="#F59E0B" />
+                  <stop offset="100%" stopColor="#D97F06" />
                 </linearGradient>
               </defs>
-              <circle cx="80" cy="80" r={ringRadius} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="12" />
+              <circle cx="80" cy="80" r={ringRadius} fill="none" stroke="rgba(22,21,27,0.08)" strokeWidth="12" />
               <circle
                 cx="80"
                 cy="80"
@@ -223,7 +223,7 @@ export function HeroCard(props: HeroCardProps) {
                 strokeLinecap="round"
                 strokeDasharray={ringCircumference}
                 strokeDashoffset={ringOffset}
-                style={{ filter: 'drop-shadow(0 0 8px rgba(232,168,50,0.4))', transition: 'stroke-dashoffset 0.8s ease-out' }}
+                style={{ filter: 'drop-shadow(0 0 8px rgba(245,158,11,0.45))', transition: 'stroke-dashoffset 0.8s ease-out' }}
               />
             </svg>
             <div className="absolute inset-0 grid place-items-center text-center">
@@ -232,7 +232,7 @@ export function HeroCard(props: HeroCardProps) {
                   data-testid="daily-score-display"
                   className="text-[42px] font-extrabold leading-none"
                   style={{
-                    background: 'linear-gradient(135deg, #e8a832 0%, #fbbf24 100%)',
+                    background: 'linear-gradient(135deg, #D97F06 0%, #F59E0B 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
@@ -240,10 +240,10 @@ export function HeroCard(props: HeroCardProps) {
                 >
                   {done.correctCount}
                 </div>
-                <div className="text-sm text-on-surface-variant mt-1">
+                <div className="text-sm text-bq-ink2 mt-1">
                   {t('daily.done.scoreOf', { total: done.totalQuestions })}
                 </div>
-                <div className="text-[11px] text-[#4ade80] font-bold mt-0.5">
+                <div className="text-[11px] text-bq-emerald font-bold mt-0.5">
                   {t('daily.done.scorePercent', { percent })}
                 </div>
               </div>
@@ -267,18 +267,18 @@ export function HeroCard(props: HeroCardProps) {
 
 function MetaItem({ icon, text }: { icon: string; text: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-[10px] bg-[rgba(17,19,30,0.5)] border border-white/5 text-xs text-on-surface font-semibold">
-      <span className="material-symbols-outlined text-base text-secondary">{icon}</span>
+    <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-[10px] bg-bq-inset border border-bq-hair text-xs text-bq-ink font-semibold">
+      <span className="material-symbols-outlined text-base text-bq-amberd">{icon}</span>
       {text}
     </span>
   )
 }
 
-function SummaryRow({ icon, label, value, valueClass = 'text-on-surface', lastRow = false }: { icon: string; label: string; value: string; valueClass?: string; lastRow?: boolean }) {
+function SummaryRow({ icon, label, value, valueClass = 'text-bq-ink', lastRow = false }: { icon: string; label: string; value: string; valueClass?: string; lastRow?: boolean }) {
   return (
-    <div className={`flex justify-between items-center py-2.5 ${!lastRow ? 'border-b border-white/5' : ''}`}>
-      <div className="text-xs text-on-surface-variant flex items-center gap-2">
-        <span className="material-symbols-outlined text-base text-on-surface-variant">{icon}</span>
+    <div className={`flex justify-between items-center py-2.5 ${!lastRow ? 'border-b border-bq-hair' : ''}`}>
+      <div className="text-xs text-bq-ink2 flex items-center gap-2">
+        <span className="material-symbols-outlined text-base text-bq-ink2">{icon}</span>
         {label}
       </div>
       <div className={`text-sm font-bold ${valueClass}`}>{value}</div>
@@ -287,11 +287,11 @@ function SummaryRow({ icon, label, value, valueClass = 'text-on-surface', lastRo
 }
 
 function StatMini({ value, label, highlight = false, success = false }: { value: string; label: string; highlight?: boolean; success?: boolean }) {
-  const valueColor = highlight ? 'text-secondary' : success ? 'text-[#4ade80]' : 'text-on-surface'
+  const valueColor = highlight ? 'text-bq-amberd' : success ? 'text-bq-emerald' : 'text-bq-ink'
   return (
-    <div className="bg-[rgba(17,19,30,0.4)] border border-white/5 rounded-[10px] px-3 py-2.5 text-center">
+    <div className="bg-bq-white border border-bq-hair rounded-[10px] px-3 py-2.5 text-center">
       <div className={`text-lg font-extrabold ${valueColor}`}>{value}</div>
-      <div className="text-[10px] text-on-surface-variant uppercase tracking-[0.5px] mt-0.5">{label}</div>
+      <div className="text-[10px] text-bq-ink2 uppercase tracking-[0.5px] mt-0.5">{label}</div>
     </div>
   )
 }
@@ -300,7 +300,7 @@ function ShareBtn({ icon, label, onClick }: { icon: string; label: string; onCli
   return (
     <button
       onClick={onClick}
-      className="bg-[rgba(232,168,50,0.1)] text-secondary border border-[rgba(232,168,50,0.25)] hover:bg-[rgba(232,168,50,0.2)] px-3 py-3 rounded-[10px] text-[13px] font-bold cursor-pointer transition-all flex items-center justify-center gap-1.5"
+      className="bg-bq-amber/10 text-bq-amberd border border-bq-amber/25 hover:bg-bq-amber/20 px-3 py-3 rounded-[10px] text-[13px] font-bold cursor-pointer transition-all flex items-center justify-center gap-1.5"
     >
       <span className="material-symbols-outlined text-base">{icon}</span>
       {label}

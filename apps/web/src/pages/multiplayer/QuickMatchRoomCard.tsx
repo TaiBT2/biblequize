@@ -12,9 +12,9 @@ import AvatarStack from './AvatarStack'
 import { formatBookScope, type PublicRoom } from './types'
 import { MODE_META, type RoomModeId } from '../create-room/modeMeta'
 
-const INDIGO = '#6366f1'
-const INDIGO_LIGHT = '#a5b4fc'
-const INDIGO_GRADIENT = 'linear-gradient(135deg, #6366f1 0%, #818cf8 100%)'
+const INDIGO = '#2D46C8'
+const INDIGO_LIGHT = '#2D46C8'
+const INDIGO_GRADIENT = 'linear-gradient(135deg, #2D46C8 0%, #6E86F0 100%)'
 
 function modeShortLabel(id: string): string {
   switch (id) {
@@ -54,10 +54,9 @@ export default function QuickMatchRoomCard({ room }: { room: PublicRoom }) {
   return (
     <article
       data-testid="room-card"
-      className="rounded-xl p-5 flex flex-col gap-3 relative overflow-hidden transition-transform hover:-translate-y-0.5"
+      className="rounded-xl p-5 flex flex-col gap-3 relative overflow-hidden transition-transform hover:-translate-y-0.5 bg-bq-white shadow-bq-soft"
       style={{
-        background: `linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(50,52,64,0.4) 100%)`,
-        border: `1px solid ${isFull ? 'rgba(255,255,255,0.06)' : 'rgba(99,102,241,0.25)'}`,
+        border: `1px solid ${isFull ? '#E7E4DA' : 'rgba(45,70,200,0.30)'}`,
         cursor: isFull ? 'default' : 'pointer',
       }}
       onClick={() => { if (!isFull) handleJoin() }}
@@ -65,7 +64,7 @@ export default function QuickMatchRoomCard({ room }: { room: PublicRoom }) {
       {/* "Đấu Nhanh" pill (top-right) */}
       <div
         className="absolute top-3 right-3 px-2 py-0.5 rounded-md"
-        style={{ background: 'rgba(99,102,241,0.2)', border: '1px solid rgba(99,102,241,0.4)' }}
+        style={{ background: 'rgba(45,70,200,0.12)', border: '1px solid rgba(45,70,200,0.30)' }}
       >
         <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: INDIGO_LIGHT }}>
           {t('multiplayer.filterQuickMatch')}
@@ -76,7 +75,7 @@ export default function QuickMatchRoomCard({ room }: { room: PublicRoom }) {
       <div className="flex items-start gap-2 pr-16">
         <div
           className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-          style={{ background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.25)' }}
+          style={{ background: 'rgba(45,70,200,0.10)', border: '1px solid rgba(45,70,200,0.22)' }}
         >
           <span className="material-symbols-outlined" style={{ fontSize: 18, color: INDIGO }}>rocket_launch</span>
         </div>
@@ -84,12 +83,12 @@ export default function QuickMatchRoomCard({ room }: { room: PublicRoom }) {
           <div className="text-[10px] font-bold tracking-wider uppercase" style={{ color: INDIGO_LIGHT }}>
             {t('multiplayer.quickMatch.noHost', { mode: modeShortLabel(room.mode) })}
           </div>
-          <div className="text-sm font-bold text-white truncate">{t('multiplayer.quickMatch.roomCode', { code: room.roomCode })}</div>
+          <div className="text-sm font-bold text-bq-ink truncate">{t('multiplayer.quickMatch.roomCode', { code: room.roomCode })}</div>
         </div>
       </div>
 
       {/* Source + scope line */}
-      <div className="flex items-center gap-2 text-[11px] text-white/55">
+      <div className="flex items-center gap-2 text-[11px] text-bq-ink2">
         <span
           className="material-symbols-outlined"
           style={{ fontSize: 14, color: INDIGO_LIGHT, fontVariationSettings: isAi ? "'FILL' 1" : undefined }}
@@ -97,20 +96,20 @@ export default function QuickMatchRoomCard({ room }: { room: PublicRoom }) {
           {isAi ? 'auto_awesome' : 'memory'}
         </span>
         <span>{isAi ? t('multiplayer.quickMatch.aiSource') : t('multiplayer.quickMatch.serverSource')}</span>
-        <span className="w-1 h-1 rounded-full bg-white/20" />
+        <span className="w-1 h-1 rounded-full bg-bq-hair" />
         <span>{formatBookScope(t, room.bookScope)}</span>
       </div>
 
       {/* Avatar stack + meta */}
       <div className="flex items-center justify-between gap-2">
         <AvatarStack initials={room.playerInitials ?? []} current={room.currentPlayers} max={room.maxPlayers} />
-        <div className="text-[10px] text-white/40 text-right flex-shrink-0">
+        <div className="text-[10px] text-bq-ink3 text-right flex-shrink-0">
           {t('multiplayer.quickMatch.questionsMeta', { count: room.questionCount ?? 10, time: room.timePerQuestion ?? 30 })}
         </div>
       </div>
 
       {joinError && (
-        <div className="text-[11px] px-2 py-1 rounded-lg" style={{ background: 'rgba(239,68,68,0.12)', color: '#f87171' }}>
+        <div className="text-[11px] px-2 py-1 rounded-lg" style={{ background: 'rgba(224,53,75,0.10)', color: '#E0354B' }}>
           ⚠ {joinError}
         </div>
       )}
@@ -120,7 +119,7 @@ export default function QuickMatchRoomCard({ room }: { room: PublicRoom }) {
         onClick={(e) => { e.stopPropagation(); handleJoin() }}
         disabled={joining || isFull}
         className="w-full h-9 rounded-lg text-white text-[12px] font-bold transition-opacity hover:opacity-90 disabled:opacity-60"
-        style={{ background: isFull ? 'rgba(255,255,255,0.06)' : INDIGO_GRADIENT, color: isFull ? 'rgba(255,255,255,0.4)' : '#fff' }}
+        style={{ background: isFull ? '#F2F0E7' : INDIGO_GRADIENT, color: isFull ? '#A8A69C' : '#fff' }}
       >
         {joining ? t('multiplayer.quickMatch.ctaJoining') : isFull ? t('multiplayer.quickMatch.ctaFull') : t('multiplayer.quickMatch.ctaEnterNow')}
       </button>

@@ -7,22 +7,22 @@ export default function TermsOfService() {
   const isVi = i18n.language === 'vi'
 
   return (
-    <div className="min-h-screen bg-[#11131e] text-on-surface">
+    <div className="min-h-screen bg-bq-paper text-bq-ink">
       <div className="max-w-3xl mx-auto px-6 py-12">
-        <Link to="/" className="text-secondary text-sm hover:underline mb-6 inline-block">
+        <Link to="/" className="text-bq-sapphire text-sm hover:underline mb-6 inline-block">
           &larr; {t('common.back')}
         </Link>
 
-        <h1 className="text-2xl font-bold text-on-surface mb-2">
+        <h1 className="text-2xl font-bold font-display text-bq-ink mb-2">
           {isVi ? 'Điều khoản Sử dụng' : 'Terms of Service'}
         </h1>
-        <p className="text-sm text-on-surface-variant mb-8">
+        <p className="text-sm text-bq-ink2 mb-8">
           {isVi ? 'Cập nhật lần cuối: 07/04/2026' : 'Last updated: April 7, 2026'}
         </p>
 
-        <div className="space-y-8 text-on-surface-variant leading-relaxed">
+        <div className="space-y-8 text-bq-ink2 leading-relaxed bg-bq-white border border-bq-hair shadow-bq-soft rounded-bq p-6 sm:p-8">
           <section>
-            <h2 className="text-lg font-semibold text-on-surface mb-2">
+            <h2 className="text-lg font-semibold font-display text-bq-ink mb-2">
               {isVi ? '1. Chấp nhận điều khoản' : '1. Acceptance of Terms'}
             </h2>
             <p>{isVi
@@ -32,7 +32,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-on-surface mb-2">
+            <h2 className="text-lg font-semibold font-display text-bq-ink mb-2">
               {isVi ? '2. Tài khoản người dùng' : '2. User Accounts'}
             </h2>
             <ul className="list-disc pl-6 space-y-1">
@@ -44,7 +44,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-on-surface mb-2">
+            <h2 className="text-lg font-semibold font-display text-bq-ink mb-2">
               {isVi ? '3. Nội dung và hành vi' : '3. Content and Behavior'}
             </h2>
             <p>{isVi ? 'Khi sử dụng BibleQuiz, bạn KHÔNG được:' : 'When using BibleQuiz, you must NOT:'}</p>
@@ -58,7 +58,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-on-surface mb-2">
+            <h2 className="text-lg font-semibold font-display text-bq-ink mb-2">
               {isVi ? '4. Quyền sở hữu trí tuệ' : '4. Intellectual Property'}
             </h2>
             <ul className="list-disc pl-6 space-y-1">
@@ -69,7 +69,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-on-surface mb-2">
+            <h2 className="text-lg font-semibold font-display text-bq-ink mb-2">
               {isVi ? '5. Miễn trừ trách nhiệm' : '5. Disclaimer'}
             </h2>
             <p>{isVi
@@ -79,7 +79,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-on-surface mb-2">
+            <h2 className="text-lg font-semibold font-display text-bq-ink mb-2">
               {isVi ? '6. Chấm dứt' : '6. Termination'}
             </h2>
             <p>{isVi
@@ -89,7 +89,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-on-surface mb-2">
+            <h2 className="text-lg font-semibold font-display text-bq-ink mb-2">
               {isVi ? '7. Thay đổi điều khoản' : '7. Changes to Terms'}
             </h2>
             <p>{isVi
@@ -99,7 +99,7 @@ export default function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-on-surface mb-2">
+            <h2 className="text-lg font-semibold font-display text-bq-ink mb-2">
               {isVi ? '8. Liên hệ' : '8. Contact'}
             </h2>
             <p>{isVi

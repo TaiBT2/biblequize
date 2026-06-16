@@ -41,22 +41,21 @@ export default function JoinByCodeBar({ onJoin, disabled, error }: Props) {
 
   return (
     <div
-      className="rounded-xl px-4 py-3 flex items-center gap-4 flex-wrap"
+      className="rounded-xl px-4 py-3 flex items-center gap-4 flex-wrap bg-bq-white shadow-bq-soft"
       style={{
-        border: '1px solid rgba(232,168,50,0.15)',
-        background: 'rgba(232,168,50,0.03)',
+        border: '1px solid #E7E4DA',
       }}
     >
       <div className="flex items-center gap-2 shrink-0">
         <div
           className="w-7 h-7 rounded-lg flex items-center justify-center"
-          style={{ background: 'rgba(232,168,50,0.12)' }}
+          style={{ background: 'rgba(245,158,11,0.14)' }}
         >
-          <span className="material-symbols-outlined" style={{ fontSize: 14, color: '#e8a832' }}>key</span>
+          <span className="material-symbols-outlined" style={{ fontSize: 14, color: '#D97F06' }}>key</span>
         </div>
         <div>
-          <div className="text-[12px] font-bold leading-tight text-white">{t('multiplayer.join.kicker')}</div>
-          <div className="text-[10px] leading-tight" style={{ color: error ? '#fca5a5' : 'rgba(255,255,255,0.45)' }}>
+          <div className="text-[12px] font-bold leading-tight text-bq-ink">{t('multiplayer.join.kicker')}</div>
+          <div className="text-[10px] leading-tight" style={{ color: error ? '#E0354B' : '#6C6A62' }}>
             {error ?? t('multiplayer.join.hint')}
           </div>
         </div>
@@ -75,15 +74,15 @@ export default function JoinByCodeBar({ onJoin, disabled, error }: Props) {
             onKeyDown={(e) => handleKeyDown(i, e)}
             onPaste={handlePaste}
             data-testid={`code-digit-${i}`}
-            className="text-center text-base font-semibold text-white outline-none transition-colors"
+            className="text-center text-base font-semibold text-bq-ink outline-none transition-colors"
             style={{
               width: 36, height: 36,
-              background: 'rgba(17,19,30,0.6)',
-              border: `1px solid ${c ? '#e8a832' : 'rgba(255,255,255,0.08)'}`,
+              background: '#F2F0E7',
+              border: `1px solid ${c ? '#D97F06' : '#E7E4DA'}`,
               borderRadius: 8,
             }}
-            onFocus={(e) => { e.currentTarget.style.borderColor = '#e8a832' }}
-            onBlur={(e) => { e.currentTarget.style.borderColor = c ? '#e8a832' : 'rgba(255,255,255,0.08)' }}
+            onFocus={(e) => { e.currentTarget.style.borderColor = '#D97F06' }}
+            onBlur={(e) => { e.currentTarget.style.borderColor = c ? '#D97F06' : '#E7E4DA' }}
           />
         ))}
       </div>
@@ -93,9 +92,9 @@ export default function JoinByCodeBar({ onJoin, disabled, error }: Props) {
         disabled={!ready}
         className="ml-auto h-9 px-4 rounded-lg text-[12px] font-semibold transition-opacity disabled:cursor-not-allowed"
         style={{
-          background: ready ? 'linear-gradient(135deg, #e8a832, #e7c268)' : 'rgba(255,255,255,0.06)',
-          color: ready ? '#11131e' : 'rgba(255,255,255,0.5)',
-          border: ready ? 'none' : '1px solid rgba(255,255,255,0.1)',
+          background: ready ? 'var(--bq-action)' : '#F2F0E7',
+          color: ready ? '#FFFFFF' : '#A8A69C',
+          border: ready ? 'none' : '1px solid #E7E4DA',
         }}
       >
         {disabled ? t('multiplayer.join.joining') : t('multiplayer.join.submit')}

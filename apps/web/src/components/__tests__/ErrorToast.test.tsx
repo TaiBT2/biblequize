@@ -41,21 +41,21 @@ describe('ErrorToast', () => {
 
   it('renders with error type by default', () => {
     const { container } = render(<ErrorToast message="Error" onClose={vi.fn()} />)
-    expect(container.innerHTML).toContain('red')
+    expect(container.innerHTML).toContain('ruby')
   })
 
   it('renders with warning type', () => {
     const { container } = render(
       <ErrorToast message="Warning" onClose={vi.fn()} type="warning" />
     )
-    expect(container.innerHTML).toContain('yellow')
+    expect(container.innerHTML).toContain('amber')
   })
 
   it('renders with info type', () => {
     const { container } = render(
       <ErrorToast message="Info" onClose={vi.fn()} type="info" />
     )
-    expect(container.innerHTML).toContain('blue')
+    expect(container.innerHTML).toContain('sapphire')
   })
 
   it('uses default duration of 5000ms', () => {

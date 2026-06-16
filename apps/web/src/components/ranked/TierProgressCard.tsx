@@ -41,20 +41,15 @@ export default function TierProgressCard({
   return (
     <section
       data-testid="ranked-tier-card"
-      className="relative overflow-hidden rounded-[22px] border border-white/[0.06] p-5 md:p-7"
-      style={{
-        background: 'rgba(50,52,64,0.35)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-      }}
+      className="relative overflow-hidden rounded-[22px] border border-bq-hair bg-bq-white shadow-bq-rub p-5 md:p-7"
     >
-      {/* Soft gold radial accents — only on md+ so mobile stays calm. */}
+      {/* Soft ruby radial accents — only on md+ so mobile stays calm. */}
       <div
         className="hidden md:block absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(60% 80% at 8% 0%, rgba(232,168,50,0.10), transparent 60%),'
-            + 'radial-gradient(50% 70% at 95% 100%, rgba(232,168,50,0.07), transparent 60%)',
+            'radial-gradient(60% 80% at 8% 0%, rgba(224,53,75,0.08), transparent 60%),'
+            + 'radial-gradient(50% 70% at 95% 100%, rgba(224,53,75,0.05), transparent 60%)',
         }}
         aria-hidden
       />
@@ -64,8 +59,7 @@ export default function TierProgressCard({
         <div className="flex items-center gap-3 md:gap-4 flex-wrap">
           <div
             data-testid="ranked-tier-badge"
-            className="inline-flex items-center gap-2.5 rounded-[14px] border border-white/[0.12] px-3 py-2 md:px-4 md:py-2.5"
-            style={{ background: 'rgba(255,255,255,0.05)' }}
+            className="inline-flex items-center gap-2.5 rounded-[14px] border border-bq-hair bg-bq-inset px-3 py-2 md:px-4 md:py-2.5"
           >
             <span
               className="grid place-items-center w-6 h-6 md:w-[26px] md:h-[26px] rounded-lg flex-shrink-0"
@@ -78,7 +72,7 @@ export default function TierProgressCard({
                 workspace_premium
               </span>
             </span>
-            <span className="text-on-surface text-[13px] md:text-[14px] font-bold tracking-tight">
+            <span className="text-bq-ink text-[13px] md:text-[14px] font-bold tracking-tight">
               {tierName}
             </span>
           </div>
@@ -90,7 +84,7 @@ export default function TierProgressCard({
                   key={i}
                   className="material-symbols-outlined text-[18px] md:text-[20px]"
                   style={{
-                    color: i < starIndex ? '#e8a832' : '#3a3c48',
+                    color: i < starIndex ? '#F59E0B' : '#E7E4DA',
                     ...(i < starIndex ? FILL_1 : undefined),
                   }}
                 >
@@ -98,8 +92,7 @@ export default function TierProgressCard({
                 </span>
               ))}
               <span
-                className="ml-1 w-[18px] h-[18px] rounded-full grid place-items-center text-[10px] font-bold border border-white/10 text-on-surface-variant/55 cursor-help"
-                style={{ background: 'rgba(255,255,255,0.06)' }}
+                className="ml-1 w-[18px] h-[18px] rounded-full grid place-items-center text-[10px] font-bold border border-bq-hair bg-bq-inset text-bq-ink3 cursor-help"
                 title={t('ranked.starsHelpHint', 'Mỗi tier có 5 sao — đạt đủ XP mới lên tier kế tiếp')}
               >
                 ?
@@ -111,23 +104,23 @@ export default function TierProgressCard({
         {/* RIGHT — next tier target */}
         {!isMaxTier ? (
           <div className="text-left md:text-right">
-            <div className="text-[10px] font-bold uppercase tracking-[1.5px] text-on-surface-variant/55 mb-1">
+            <div className="text-[10px] font-bold uppercase tracking-[1.5px] text-bq-ink3 mb-1">
               {t('ranked.nextTierEyebrow')}
             </div>
             <div
-              className="font-headline italic font-semibold text-secondary text-[20px] md:text-[22px] leading-none tracking-tight"
+              className="font-headline italic font-semibold text-bq-amberd text-[20px] md:text-[22px] leading-none tracking-tight"
               data-testid="ranked-next-tier-name"
             >
               {nextTierName}
             </div>
-            <div className="text-[12px] text-on-surface-variant/65 mt-1.5">
+            <div className="text-[12px] text-bq-ink2 mt-1.5">
               {t('ranked.pointsToNextShort', {
                 points: pointsToNext.toLocaleString('vi-VN'),
               })}
             </div>
           </div>
         ) : (
-          <div className="text-secondary text-[14px] font-semibold" data-testid="ranked-tier-progress-text">
+          <div className="text-bq-amberd text-[14px] font-semibold" data-testid="ranked-tier-progress-text">
             {t('ranked.maxTier')}
           </div>
         )}
@@ -135,25 +128,25 @@ export default function TierProgressCard({
 
       {/* Progress bar + foot */}
       <div className="relative z-10 mt-5 md:mt-6">
-        <div className="bg-white/[0.05] rounded-full h-[9px] overflow-hidden">
+        <div className="bg-bq-inset border border-bq-hair rounded-full h-[9px] overflow-hidden">
           <div
             data-testid="ranked-tier-progress-bar"
             className="h-full rounded-full transition-[width] duration-700 ease-out"
             style={{
               width: `${tierProgressPct}%`,
-              background: 'linear-gradient(90deg, #e8a832, #f0c060)',
-              boxShadow: '0 0 18px rgba(232,168,50,0.4)',
+              background: 'linear-gradient(90deg,#2D46C8,#0E8A6B 34%,#F59E0B 64%,#E0354B)',
+              boxShadow: '0 2px 10px -2px rgba(224,53,75,0.4)',
             }}
           />
         </div>
         <div className="flex items-center justify-between mt-2 text-[12px]">
-          <span data-testid="ranked-tier-progress-xp" className="text-on-surface-variant/85 font-semibold">
-            <span className="text-secondary font-extrabold text-[14px]">
+          <span data-testid="ranked-tier-progress-xp" className="text-bq-ink2 font-semibold">
+            <span className="text-bq-amberd font-extrabold text-[14px]">
               {totalPoints.toLocaleString('vi-VN')}
             </span>{' '}
             XP
           </span>
-          <span className="text-on-surface-variant/55">
+          <span className="text-bq-ink3">
             / {(nextTier ? nextTier.minPoints : totalPoints).toLocaleString('vi-VN')} XP
           </span>
         </div>

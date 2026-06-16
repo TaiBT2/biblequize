@@ -71,12 +71,12 @@ export default function Review() {
   // ── Empty state ──
   if (!stats || questions.length === 0) {
     return (
-      <div className="flex items-center justify-center py-20 px-4" data-testid="review-empty-state">
-        <div className="glass-card p-8 rounded-2xl text-center max-w-md border border-outline-variant/10">
-          <span className="material-symbols-outlined text-on-surface-variant text-5xl mb-4 block">quiz</span>
-          <h2 className="text-xl font-bold text-on-surface mb-2">{t('review.noData')}</h2>
-          <p className="text-on-surface-variant text-sm mb-6">{t('review.completeFirst')}</p>
-          <button onClick={() => navigate('/practice')} className="gold-gradient text-on-secondary font-bold px-6 py-3 rounded-xl">
+      <div className="flex items-center justify-center py-20 px-4 bg-bq-paper" data-testid="review-empty-state">
+        <div className="bg-bq-white p-8 rounded-2xl text-center max-w-md border border-bq-hair shadow-bq-soft">
+          <span className="material-symbols-outlined text-bq-ink2 text-5xl mb-4 block">quiz</span>
+          <h2 className="text-xl font-bold font-display text-bq-ink mb-2">{t('review.noData')}</h2>
+          <p className="text-bq-ink2 text-sm mb-6">{t('review.completeFirst')}</p>
+          <button onClick={() => navigate('/practice')} className="bg-bq-action text-white font-bold px-6 py-3 rounded-xl shadow-bq-action">
             {t('review.backToPractice')}
           </button>
         </div>
@@ -86,29 +86,29 @@ export default function Review() {
 
   const diffBadge = (d: string) => {
     const map: Record<string, string> = {
-      easy: 'bg-green-500/10 text-green-400 border-green-500/20',
-      medium: 'bg-secondary/10 text-secondary border-secondary/20',
-      hard: 'bg-error/10 text-error border-error/20',
+      easy: 'bg-bq-emerald/10 text-bq-emerald border-bq-emerald/20',
+      medium: 'bg-bq-amber/10 text-bq-amberd border-bq-amber/20',
+      hard: 'bg-bq-ruby/10 text-bq-ruby border-bq-ruby/20',
     }
     const label: Record<string, string> = { easy: 'Easy', medium: 'Medium', hard: 'Hard' }
     return <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wide ${map[d] ?? ''}`}>{label[d] ?? d}</span>
   }
 
   return (
-    <div data-testid="review-page" className="flex flex-col">
+    <div data-testid="review-page" className="flex flex-col bg-bq-paper">
       {/* Sticky Header — z-40 so it stays below AppLayout's fixed global header (z-50) */}
-      <header className="sticky top-0 z-40 glass-panel border-b border-outline-variant/10 -mx-8 md:-mx-14 -mt-8 md:-mt-14 mb-6">
+      <header className="sticky top-0 z-40 bg-bq-white/95 backdrop-blur border-b border-bq-hair -mx-8 md:-mx-14 -mt-8 md:-mt-14 mb-6">
           <div className="flex items-center justify-between px-6 h-16 md:h-20">
             <div className="flex items-center gap-4">
-              <button onClick={() => navigate(-1)} className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-variant transition-colors">
-                <span className="material-symbols-outlined text-on-surface">arrow_back</span>
+              <button onClick={() => navigate(-1)} className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-bq-inset transition-colors">
+                <span className="material-symbols-outlined text-bq-ink">arrow_back</span>
               </button>
               <div>
-                <h2 className="text-lg md:text-xl font-bold tracking-tight text-on-surface">{t('review.title')}</h2>
+                <h2 className="text-lg md:text-xl font-bold font-display tracking-tight text-bq-ink">{t('review.title')}</h2>
                 <div className="flex items-center gap-3 mt-0.5">
-                  <span data-testid="review-total-correct" className="text-xs font-bold text-secondary uppercase tracking-wider">{totalCorrect}/{totalQuestions} {t('review.correctLabel')} ({accuracy}%)</span>
-                  <span className="text-[10px] text-on-surface-variant/40">•</span>
-                  <span className="text-xs text-on-surface-variant/70 flex items-center gap-1">
+                  <span data-testid="review-total-correct" className="text-xs font-bold text-bq-amberd uppercase tracking-wider">{totalCorrect}/{totalQuestions} {t('review.correctLabel')} ({accuracy}%)</span>
+                  <span className="text-[10px] text-bq-ink3">•</span>
+                  <span className="text-xs text-bq-ink2 flex items-center gap-1">
                     <span className="material-symbols-outlined text-sm">schedule</span>
                     {totalMin}m {totalSec.toString().padStart(2, '0')}s
                   </span>
@@ -117,7 +117,7 @@ export default function Review() {
             </div>
             {wrongCount > 0 && (
               <button data-testid="review-retry-btn" onClick={handleRetry} disabled={retrying}
-                className="gold-gradient px-4 py-2 md:px-6 rounded-xl text-on-secondary font-bold text-sm flex items-center gap-2 shadow-lg shadow-secondary/10 active:scale-95 transition-transform disabled:opacity-50">
+                className="bg-bq-action px-4 py-2 md:px-6 rounded-xl text-white font-bold text-sm flex items-center gap-2 shadow-bq-action active:scale-95 transition-transform disabled:opacity-50">
                 <span className="material-symbols-outlined text-sm">refresh</span>
                 <span className="hidden sm:inline">{t('review.retryWrong')}</span>
               </button>
@@ -125,14 +125,14 @@ export default function Review() {
           </div>
 
           {/* Filter Tabs */}
-          <div className="px-6 flex gap-8 border-t border-outline-variant/5">
+          <div className="px-6 flex gap-8 border-t border-bq-hair">
             {([
               ['all', t('review.all', { count: totalQuestions })] as [FilterType, string],
               ['wrong', t('review.wrong', { count: wrongCount })] as [FilterType, string],
               ['correct', t('review.correct', { count: correctCount })] as [FilterType, string],
             ]).map(([key, label]) => (
               <button key={key} data-testid={`review-filter-${key}`} data-active={filter === key ? 'true' : 'false'} onClick={() => setFilter(key)}
-                className={`py-4 text-sm font-bold transition-colors ${filter === key ? 'text-on-surface border-b-2 border-secondary' : 'text-on-surface-variant/50 hover:text-on-surface'}`}>
+                className={`py-4 text-sm font-bold transition-colors ${filter === key ? 'text-bq-ink border-b-2 border-bq-amberd' : 'text-bq-ink3 hover:text-bq-ink'}`}>
                 {label}
               </button>
             ))}
@@ -144,57 +144,57 @@ export default function Review() {
           {filtered.map((q: any) => {
             const correctIdx = q.correctAnswer?.[0]
             return (
-              <article data-testid="review-question-item" key={q.id} className="bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/10 shadow-xl">
+              <article data-testid="review-question-item" key={q.id} className="bg-bq-white rounded-2xl overflow-hidden border border-bq-hair shadow-bq-soft">
                 <div className="p-5 md:p-7 space-y-6">
                   {/* Question header */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <span className="text-sm font-black text-on-surface-variant/40">{t('review.questionNumber', { number: String(q.index + 1).padStart(2, '0') })}</span>
+                      <span className="text-sm font-black text-bq-ink3">{t('review.questionNumber', { number: String(q.index + 1).padStart(2, '0') })}</span>
                       {diffBadge(q.difficulty)}
-                      <span className="text-xs font-medium text-secondary/80 bg-secondary/5 px-2 py-0.5 rounded-lg">
+                      <span className="text-xs font-medium text-bq-amberd bg-bq-amber/10 px-2 py-0.5 rounded-lg">
                         {q.book} {q.chapter ? `${t('review.chapter', { chapter: q.chapter })}` : ''}
                       </span>
                     </div>
-                    <button onClick={() => toggleBookmark(q.id)} className={`transition-colors ${bookmarks.has(q.id) ? 'text-secondary' : 'text-on-surface-variant/20 hover:text-secondary'}`}>
+                    <button onClick={() => toggleBookmark(q.id)} className={`transition-colors ${bookmarks.has(q.id) ? 'text-bq-amberd' : 'text-bq-ink3 hover:text-bq-amberd'}`}>
                       <span className="material-symbols-outlined" style={bookmarks.has(q.id) ? FILL_1 : undefined}>star</span>
                     </button>
                   </div>
 
                   {/* Question text */}
-                  <h3 className="text-lg md:text-xl font-medium leading-relaxed text-on-surface">{q.content}</h3>
+                  <h3 className="text-lg md:text-xl font-medium leading-relaxed text-bq-ink">{q.content}</h3>
 
                   {/* Answer options */}
                   <div className="space-y-3">
                     {q.options?.map((opt: string, i: number) => {
                       const isUserAnswer = i === q.userAnswer
                       const isCorrectAnswer = i === correctIdx
-                      let borderClass = 'bg-surface-variant/30 text-on-surface-variant/60'
+                      let borderClass = 'bg-bq-inset text-bq-ink2'
                       let icon = 'radio_button_unchecked'
-                      let iconColor = 'opacity-30'
+                      let iconColor = 'text-bq-ink3'
                       let badge = null
 
                       if (isCorrectAnswer && isUserAnswer) {
-                        borderClass = 'bg-surface-container-high border-l-4 border-green-500'
+                        borderClass = 'bg-bq-emerald/10 border-l-4 border-bq-emerald'
                         icon = 'check_circle'
-                        iconColor = 'text-green-500'
-                        badge = <span className="text-[10px] font-bold text-green-400 uppercase tracking-widest px-2 py-1 bg-green-500/10 rounded">{t('review.yourAnswer')}</span>
+                        iconColor = 'text-bq-emerald'
+                        badge = <span className="text-[10px] font-bold text-bq-emerald uppercase tracking-widest px-2 py-1 bg-bq-emerald/10 rounded">{t('review.yourAnswer')}</span>
                       } else if (isUserAnswer && !q.isCorrect) {
-                        borderClass = 'bg-surface-container-high border-l-4 border-error'
+                        borderClass = 'bg-bq-ruby/10 border-l-4 border-bq-ruby'
                         icon = 'cancel'
-                        iconColor = 'text-error'
-                        badge = <span className="text-[10px] font-bold text-error uppercase tracking-widest px-2 py-1 bg-error/10 rounded">{t('review.yourAnswer')}</span>
+                        iconColor = 'text-bq-ruby'
+                        badge = <span className="text-[10px] font-bold text-bq-ruby uppercase tracking-widest px-2 py-1 bg-bq-ruby/10 rounded">{t('review.yourAnswer')}</span>
                       } else if (isCorrectAnswer) {
-                        borderClass = 'bg-surface-container-high border-l-4 border-green-500'
+                        borderClass = 'bg-bq-emerald/10 border-l-4 border-bq-emerald'
                         icon = 'check_circle'
-                        iconColor = 'text-green-500'
-                        badge = <span className="text-[10px] font-bold text-green-400 uppercase tracking-widest px-2 py-1 bg-green-500/10 rounded">{t('review.correctAnswer')}</span>
+                        iconColor = 'text-bq-emerald'
+                        badge = <span className="text-[10px] font-bold text-bq-emerald uppercase tracking-widest px-2 py-1 bg-bq-emerald/10 rounded">{t('review.correctAnswer')}</span>
                       }
 
                       return (
                         <div key={i} className={`flex items-center justify-between p-4 rounded-xl ${borderClass}`}>
                           <div className="flex items-center gap-3">
                             <span className={`material-symbols-outlined text-sm ${iconColor}`}>{icon}</span>
-                            <span className={isCorrectAnswer || isUserAnswer ? 'text-on-surface font-medium' : ''}>{opt}</span>
+                            <span className={isCorrectAnswer || isUserAnswer ? 'text-bq-ink font-medium' : ''}>{opt}</span>
                           </div>
                           {badge}
                         </div>
@@ -204,10 +204,10 @@ export default function Review() {
 
                   {/* Explanation + Scripture Reference */}
                   {(q.explanation || q.verseStart) && (
-                    <div className="mt-4 p-5 bg-surface-container-low rounded-xl border border-outline-variant/5 space-y-3">
+                    <div className="mt-4 p-5 bg-bq-inset rounded-xl border border-bq-hair space-y-3">
                       {/* Scripture reference */}
                       {q.verseStart && (
-                        <div className="flex items-center gap-2 text-secondary font-medium text-sm">
+                        <div className="flex items-center gap-2 text-bq-amberd font-medium text-sm">
                           <span className="material-symbols-outlined text-base">menu_book</span>
                           <span>
                             {q.book} {q.chapter}:{q.verseStart}
@@ -219,13 +219,13 @@ export default function Review() {
                       {/* Explanation text */}
                       {q.explanation && (
                         <div className="flex items-start gap-3">
-                          <span className="material-symbols-outlined text-secondary/60 text-base mt-0.5">lightbulb</span>
-                          <p className="text-on-surface-variant leading-relaxed text-sm">{q.explanation}</p>
+                          <span className="material-symbols-outlined text-bq-amberd/70 text-base mt-0.5">lightbulb</span>
+                          <p className="text-bq-ink2 leading-relaxed text-sm">{q.explanation}</p>
                         </div>
                       )}
 
                       {q.contextNote && (
-                        <div className="flex items-center gap-2 pt-1 text-xs text-on-surface-variant/50 italic">
+                        <div className="flex items-center gap-2 pt-1 text-xs text-bq-ink3 italic">
                           <span className="material-symbols-outlined text-sm">map</span>
                           {q.contextNote}
                         </div>
@@ -238,7 +238,7 @@ export default function Review() {
           })}
 
           {filtered.length === 0 && (
-            <p className="text-center text-on-surface-variant py-16">{t('review.noQuestionsInFilter')}</p>
+            <p className="text-center text-bq-ink2 py-16">{t('review.noQuestionsInFilter')}</p>
           )}
       </div>
     </div>
