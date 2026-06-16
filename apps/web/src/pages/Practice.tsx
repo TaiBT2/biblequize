@@ -185,8 +185,13 @@ export default function Practice() {
           timePerQuestion,
         },
       })
-    } catch {
-      setErrorMsg(t('practice.errorCreate'))
+    } catch (err: unknown) {
+      // Surface the server's explicit message (e.g. range/validation/no-questions)
+      // instead of a generic "thử lại" so the failure is tường minh. BE error
+      // shape is { code, message, ... } or { error: ... }.
+      const data = (err as { response?: { data?: { message?: string; error?: string } } })?.response?.data
+      const serverMsg = data?.message ?? data?.error
+      setErrorMsg(serverMsg && serverMsg.trim() ? serverMsg : t('practice.errorCreate'))
     } finally {
       setIsLoading(false)
     }

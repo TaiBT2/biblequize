@@ -7,6 +7,7 @@
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-17 | Practice book-select: fix tên sách "chìm" (SearchableSelect → Khung Sáng) + no-book lỗi tường minh (PBS-1..2) | TODO | [detail](docs/todo/active/2026-06-17-practice-book-select-fixes.md) |
 | 2026-06-17 | Landing hero: thay ảnh Kinh Thánh tối bằng illustration phẳng Khung Sáng (LHI-1..2) | DONE | [archive](docs/todo/archive/2026-06-17-landing-hero-flat-illustration.md) |
 | 2026-06-17 | checkAuth: chỉ logout khi refresh 401, không logout khi /api/me lỗi (CKR-1) | DONE | [detail](docs/todo/active/2026-06-17-checkauth-resilient-to-me-failure.md) |
 | 2026-06-16 | Fix session-expiry infinite request loop (login chết do rate-limit 429) (SEL-1) | DONE | [detail](docs/todo/active/2026-06-16-fix-session-expiry-infinite-loop.md) |
