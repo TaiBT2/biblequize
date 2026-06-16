@@ -90,48 +90,49 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({
     case 'default':
       btnClasses = clsx('border-2', color.btnDefault)
       letterClasses = color.letterDefault
-      textClasses = 'text-on-surface'
+      textClasses = 'text-bq-ink'
       break
     case 'selected':
       btnClasses = clsx('border-2', color.btnSelected, 'gold-glow')
       letterClasses = color.letterSelected
-      textClasses = 'text-on-surface'
+      textClasses = 'text-bq-ink'
       break
     case 'correct':
-      // Mockup state ②/④: rgba(74,222,128,0.18) bg, border-2 #4ade80,
-      // green-gradient letter chip, plain emerald-400 10px badge text
-      // (NOT a pill, NOT a material icon — just "✓ ĐÚNG · BẠN CHỌN").
+      // Khung Sáng reveal: pale-emerald gradient bg, emerald jewel border,
+      // green-gradient letter chip (white letter), DARK ink answer text
+      // (light theme — white text was invisible on the pale bg), emerald
+      // 10px badge "✓ ĐÚNG · BẠN CHỌN". Ref docs/designs/biblequiz-light/quiz.css §.answer.correct.
       btnClasses = 'answer-correct-anim border-2'
-      letterClasses = 'text-white shadow-lg answer-letter-green-grad'
-      textClasses = 'text-white font-semibold'
+      letterClasses = 'text-white shadow-sm answer-letter-green-grad'
+      textClasses = 'text-bq-ink font-semibold'
       inlineStyle = {
-        background: 'rgba(74,222,128,0.18)',
-        borderColor: '#4ade80',
-        boxShadow: '0 0 24px rgba(74,222,128,0.25)',
+        background: 'linear-gradient(180deg, rgba(14,138,107,0.16), rgba(14,138,107,0.05))',
+        borderColor: '#0E8A6B',
+        boxShadow: '0 0 24px rgba(14,138,107,0.22)',
       }
       trailingIcon = (
         <span
           className="text-[10px] font-bold whitespace-nowrap"
-          style={{ color: '#4ade80' }}
+          style={{ color: '#0E8A6B' }}
         >
           ✓ {pickedByUser ? 'ĐÚNG · BẠN CHỌN' : 'ĐÁP ÁN'}
         </span>
       )
       break
     case 'wrong':
-      // Mockup state ④: rgba(239,68,68,0.15) bg, border-2 #ef4444,
-      // red-gradient letter chip, plain red-400 10px badge.
+      // Khung Sáng reveal: pale-ruby gradient bg, ruby jewel border,
+      // red-gradient letter chip (white letter), DARK ink answer text, ruby badge.
       btnClasses = 'answer-wrong-anim border-2'
-      letterClasses = 'text-white shadow-lg answer-letter-red-grad'
-      textClasses = 'text-white font-semibold'
+      letterClasses = 'text-white shadow-sm answer-letter-red-grad'
+      textClasses = 'text-bq-ink font-semibold'
       inlineStyle = {
-        background: 'rgba(239,68,68,0.15)',
-        borderColor: '#ef4444',
+        background: 'linear-gradient(180deg, rgba(224,53,75,0.14), rgba(224,53,75,0.04))',
+        borderColor: '#E0354B',
       }
       trailingIcon = (
         <span
           className="text-[10px] font-bold whitespace-nowrap"
-          style={{ color: '#f87171' }}
+          style={{ color: '#E0354B' }}
         >
           ✗ BẠN CHỌN
         </span>
@@ -140,10 +141,10 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({
     case 'eliminated':
       btnClasses = clsx('border-2', color.btnFaded, 'opacity-40 pointer-events-none')
       letterClasses = clsx(color.letterDefault, 'line-through opacity-60')
-      textClasses = 'text-on-surface-variant line-through'
+      textClasses = 'text-bq-ink3 line-through'
       trailingIcon = (
         <span
-          className="material-symbols-outlined text-on-surface-variant text-2xl opacity-60"
+          className="material-symbols-outlined text-bq-ink3 text-2xl opacity-60"
           aria-hidden="true"
         >
           close
@@ -152,12 +153,14 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({
       break
     case 'disabled':
     default:
-      // Mockup spec: border-transparent + opacity-25 (was 0.6, too loud).
-      // Per-letter color is preserved on the letter chip so the user
-      // still gets the position-color cue while the row is dimmed.
-      btnClasses = 'border border-transparent opacity-25 bg-transparent'
+      // Khung Sáng: non-picked options after reveal stay a VISIBLE card —
+      // white surface + hairline border, dimmed via opacity + desaturate so
+      // the answer text (dark ink) remains readable. The old dark-theme spec
+      // (bg-transparent + text-white + opacity-25) made the whole row vanish
+      // on the light paper background. Per-letter color cue is preserved.
+      btnClasses = 'border-2 border-bq-hair bg-bq-white opacity-50 saturate-[.65]'
       letterClasses = color.letterDefault
-      textClasses = 'text-white'
+      textClasses = 'text-bq-ink'
       break
   }
 

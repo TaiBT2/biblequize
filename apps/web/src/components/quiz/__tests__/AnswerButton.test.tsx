@@ -103,19 +103,21 @@ describe('AnswerButton', () => {
       expect(screen.getByText(/✗ BẠN CHỌN/)).toBeInTheDocument()
     })
 
-    it('correct state has the mockup green-tinted bg + 4ade80 border', () => {
+    it('correct state has the Khung Sáng emerald-tinted bg + emerald border', () => {
       render(<AnswerButton {...baseProps} state="correct" />)
       const btn = screen.getByRole('button') as HTMLButtonElement
-      // jsdom normalises rgb / hex; just verify the inline styles landed.
-      expect(btn.style.background).toContain('rgba(74, 222, 128')
-      expect(btn.style.borderColor).toMatch(/#4ade80|rgb\(74,\s*222,\s*128\)/)
+      // jsdom normalises rgb / hex; verify the light-theme emerald inline styles landed.
+      expect(btn.style.background).toContain('rgba(14,138,107')
+      expect(btn.style.borderColor).toMatch(/#0E8A6B|rgb\(14,\s*138,\s*107\)/i)
     })
 
-    it('disabled state is opacity-25 + transparent border (mockup spec)', () => {
+    it('disabled state keeps a visible (hairline) card, dimmed but readable', () => {
       render(<AnswerButton {...baseProps} state="disabled" />)
       const btn = screen.getByRole('button')
-      expect(btn.className).toContain('opacity-25')
-      expect(btn.className).toContain('border-transparent')
+      // Khung Sáng: dimmed-but-readable, NOT transparent/invisible.
+      expect(btn.className).toContain('opacity-50')
+      expect(btn.className).toContain('border-bq-hair')
+      expect(btn.className).not.toContain('border-transparent')
     })
 
     it('eliminated state is non-interactive + line-through + close icon', () => {
@@ -133,9 +135,8 @@ describe('AnswerButton', () => {
       const btn = screen.getByRole('button')
       expect(btn).toBeDisabled()
       expect(btn).toHaveAttribute('aria-disabled', 'true')
-      // Mockup spec uses opacity-25 (was 60). Asserted explicitly in
-      // the dedicated mockup test below; here just check it's faded.
-      expect(btn.className).toMatch(/opacity-(25|60)/)
+      // Khung Sáng: dimmed via opacity-50 (card stays visible/readable).
+      expect(btn.className).toMatch(/opacity-50/)
     })
   })
 
