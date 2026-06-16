@@ -49,25 +49,25 @@ describe('Admin Dashboard', () => {
       return Promise.reject(new Error('Not found'))
     })
     renderDashboard()
-    await waitFor(() => { expect(screen.getByText('Sessions hôm nay')).toBeInTheDocument() })
+    await waitFor(() => { expect(screen.getByText('Phiên hôm nay')).toBeInTheDocument() })
     // Should show "0" not "—"
-    const sessionCard = screen.getByText('Sessions hôm nay').closest('div')!
+    const sessionCard = screen.getByText('Phiên hôm nay').closest('div')!
     expect(sessionCard.textContent).toContain('0')
     expect(sessionCard.textContent).not.toContain('—')
   })
 
   it('renders Question Queue panel (pending review only)', async () => {
     renderDashboard()
-    await waitFor(() => { expect(screen.getByText('Question Queue')).toBeInTheDocument() })
-    expect(screen.getByText('Pending Review')).toBeInTheDocument()
-    expect(screen.getByText('Process Next 50')).toBeInTheDocument()
+    await waitFor(() => { expect(screen.getByText('Hàng đợi câu hỏi')).toBeInTheDocument() })
+    expect(screen.getByText('Chờ duyệt')).toBeInTheDocument()
+    expect(screen.getByText('Duyệt 50 câu tiếp')).toBeInTheDocument()
     // Removed placeholder rows
-    expect(screen.queryByText('AI Generated')).not.toBeInTheDocument()
+    expect(screen.queryByText('AI tạo')).not.toBeInTheDocument()
   })
 
   it('does not render removed placeholder panels', async () => {
     renderDashboard()
-    await waitFor(() => { expect(screen.getByText('Question Queue')).toBeInTheDocument() })
+    await waitFor(() => { expect(screen.getByText('Hàng đợi câu hỏi')).toBeInTheDocument() })
     expect(screen.queryByText('Cần xử lý')).not.toBeInTheDocument()
     expect(screen.queryByText('Hoạt động Admin')).not.toBeInTheDocument()
     expect(screen.queryByText('Sessions 7 ngày qua')).not.toBeInTheDocument()
@@ -76,7 +76,7 @@ describe('Admin Dashboard', () => {
 
   it('renders coverage chart', async () => {
     renderDashboard()
-    await waitFor(() => { expect(screen.getByText(/Question Coverage/)).toBeInTheDocument() })
+    await waitFor(() => { expect(screen.getByText(/Độ phủ câu hỏi/)).toBeInTheDocument() })
   })
 
   it('shows skeleton during loading', () => {

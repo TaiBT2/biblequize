@@ -355,12 +355,12 @@
     "dashboard": {
       "kpi": {
         "users": "Người dùng",
-        "active": "Active: {{count}}",
+        "active": "Hoạt động: {{count}}",
         "newThisWeek": "+{{count}} tuần này",
-        "sessionsToday": "Sessions hôm nay",
+        "sessionsToday": "Phiên hôm nay",
         "questions": "Câu hỏi",
-        "activeSuffix": "active",
-        "pendingChip": "{{count}} Pending",
+        "activeSuffix": "đang dùng",
+        "pendingChip": "{{count}} chờ duyệt",
         "aiToday": "AI hôm nay"
       },
       "actionItems": {
@@ -376,19 +376,19 @@
         "empty": "Các thao tác quản trị sẽ hiện ở đây"
       },
       "coverage": {
-        "title": "Question Coverage by Book",
-        "subtitle": "Lớp phủ dữ liệu (66 Books)",
-        "healthy": "Healthy",
-        "fair": "Fair",
-        "critical": "Critical",
-        "noData": "Không có dữ liệu coverage"
+        "title": "Độ phủ câu hỏi theo sách",
+        "subtitle": "Lớp phủ dữ liệu (66 sách)",
+        "healthy": "Tốt",
+        "fair": "Tạm",
+        "critical": "Thiếu",
+        "noData": "Không có dữ liệu độ phủ"
       },
       "questionQueue": {
-        "title": "Question Queue",
-        "pendingReview": "Pending Review",
-        "aiGenerated": "AI Generated",
-        "community": "Community",
-        "processNext": "Process Next 50"
+        "title": "Hàng đợi câu hỏi",
+        "pendingReview": "Chờ duyệt",
+        "aiGenerated": "AI tạo",
+        "community": "Cộng đồng",
+        "processNext": "Duyệt 50 câu tiếp"
       },
       "sessionsChart": {
         "title": "Sessions 7 ngày qua",
