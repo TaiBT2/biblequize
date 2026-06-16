@@ -112,7 +112,7 @@ export default function UserDropdown({
         onClick={() => setOpen(p => !p)}
         className={
           trigger === 'card'
-            ? 'flex items-center gap-3 w-full px-3 py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-colors text-left'
+            ? 'flex items-center gap-3 w-full px-3 py-2.5 rounded-lg bg-bq-white border border-bq-hair hover:bg-bq-inset transition-colors text-left'
             : 'w-10 h-10 rounded-full grid place-items-center transition-transform hover:scale-[1.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60'
         }
       >
@@ -134,13 +134,13 @@ export default function UserDropdown({
                   className="w-full h-full rounded-full object-cover"
                 />
               ) : (
-                <span className={!tierColorHex ? 'text-secondary' : undefined}>
+                <span className={!tierColorHex ? 'text-bq-ink' : undefined}>
                   {displayName.charAt(0).toUpperCase()}
                 </span>
               )}
             </div>
             <div className="flex-1 min-w-0">
-              <div className="text-[13px] font-semibold text-on-surface truncate">{displayName}</div>
+              <div className="text-[13px] font-semibold text-bq-ink truncate">{displayName}</div>
               {tierName ? (
                 <div
                   className="text-[10px] truncate"
@@ -149,10 +149,10 @@ export default function UserDropdown({
                   {tierName}
                 </div>
               ) : (
-                <div className="text-[10px] text-on-surface-variant/60 truncate">{user?.email}</div>
+                <div className="text-[10px] text-bq-ink3 truncate">{user?.email}</div>
               )}
             </div>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="text-on-surface-variant shrink-0">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="text-bq-ink2 shrink-0">
               <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </>
@@ -182,50 +182,50 @@ export default function UserDropdown({
         <div
           data-testid="user-dropdown-panel"
           role="menu"
-          className={`absolute ${panelAlign} ${panelVertical} z-50 w-56 bg-surface-container-high rounded-xl border border-outline-variant/20 shadow-2xl overflow-hidden`}
+          className={`absolute ${panelAlign} ${panelVertical} z-50 w-56 bg-bq-white rounded-xl border border-bq-hair shadow-bq-soft overflow-hidden`}
         >
-          <div className="p-3 border-b border-outline-variant/10">
-            <p className="font-bold text-sm text-on-surface truncate">{displayName}</p>
-            <p className="text-xs text-on-surface-variant truncate">{user?.email}</p>
+          <div className="p-3 border-b border-bq-hair">
+            <p className="font-bold text-sm text-bq-ink truncate">{displayName}</p>
+            <p className="text-xs text-bq-ink2 truncate">{user?.email}</p>
           </div>
           <div className="p-1.5">
             <Link
               to="/profile"
               onClick={() => setOpen(false)}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container transition-colors text-sm"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-bq-ink hover:bg-bq-inset transition-colors text-sm"
             >
-              <span className="material-symbols-outlined text-on-surface-variant text-lg">person</span>
+              <span className="material-symbols-outlined text-bq-ink2 text-lg">person</span>
               {t('profile.title')}
             </Link>
             <Link
               to="/achievements"
               onClick={() => setOpen(false)}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container transition-colors text-sm"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-bq-ink hover:bg-bq-inset transition-colors text-sm"
             >
-              <span className="material-symbols-outlined text-on-surface-variant text-lg">emoji_events</span>
+              <span className="material-symbols-outlined text-bq-ink2 text-lg">emoji_events</span>
               {t('profile.achievements')}
             </Link>
             <Link
               data-testid="user-dropdown-help-link"
               to="/help"
               onClick={() => setOpen(false)}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-surface-container transition-colors text-sm"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-bq-ink hover:bg-bq-inset transition-colors text-sm"
             >
-              <span className="material-symbols-outlined text-on-surface-variant text-lg">help</span>
+              <span className="material-symbols-outlined text-bq-ink2 text-lg">help</span>
               {t('nav.help', { defaultValue: 'Trợ giúp' })}
             </Link>
 
             {/* Quiz-language toggle (inline, doesn't navigate) */}
             <div data-testid="lang-toggle" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm">
-              <span className="material-symbols-outlined text-on-surface-variant text-lg">translate</span>
-              <span className="flex-1 text-on-surface-variant text-xs">{t('profile.quizLang')}</span>
-              <div className="flex gap-0.5 bg-surface-container rounded-md p-0.5">
+              <span className="material-symbols-outlined text-bq-ink2 text-lg">translate</span>
+              <span className="flex-1 text-bq-ink2 text-xs">{t('profile.quizLang')}</span>
+              <div className="flex gap-0.5 bg-bq-inset rounded-md p-0.5">
                 <button
                   data-testid="lang-toggle-vi"
                   data-active={lang === 'vi' ? 'true' : 'false'}
                   onClick={() => toggleLang('vi')}
                   className={`px-2 py-0.5 rounded text-[10px] font-bold transition-colors ${
-                    lang === 'vi' ? 'bg-secondary text-on-secondary' : 'text-on-surface-variant hover:text-on-surface'
+                    lang === 'vi' ? 'bg-bq-ink text-white' : 'text-bq-ink2 hover:text-bq-ink'
                   }`}
                 >
                   VI
@@ -235,7 +235,7 @@ export default function UserDropdown({
                   data-active={lang === 'en' ? 'true' : 'false'}
                   onClick={() => toggleLang('en')}
                   className={`px-2 py-0.5 rounded text-[10px] font-bold transition-colors ${
-                    lang === 'en' ? 'bg-secondary text-on-secondary' : 'text-on-surface-variant hover:text-on-surface'
+                    lang === 'en' ? 'bg-bq-ink text-white' : 'text-bq-ink2 hover:text-bq-ink'
                   }`}
                 >
                   EN
@@ -243,12 +243,12 @@ export default function UserDropdown({
               </div>
             </div>
 
-            <div className="mx-1 my-1 border-t border-outline-variant/10" />
+            <div className="mx-1 my-1 border-t border-bq-hair" />
             <button
               data-testid="user-dropdown-logout-btn"
               onClick={handleLogout}
               disabled={loggingOut}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-error/10 transition-colors text-sm w-full text-left text-error disabled:opacity-50"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-bq-ruby/10 transition-colors text-sm w-full text-left text-bq-ruby disabled:opacity-50"
             >
               <span className="material-symbols-outlined text-lg">logout</span>
               {loggingOut ? t('auth.loggingOut') : t('auth.logout')}

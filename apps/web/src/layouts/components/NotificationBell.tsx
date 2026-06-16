@@ -84,13 +84,13 @@ export default function NotificationBell({ wrapperClassName = '' }: Notification
         data-testid="notification-bell-btn"
         aria-label={t('header.notifications.title') as string}
         onClick={() => setOpen(p => !p)}
-        className="relative w-10 h-10 flex items-center justify-center rounded-[10px] bg-[rgba(50,52,64,0.5)] border border-white/[0.08] text-[#e8e9ed] hover:bg-[rgba(70,72,88,0.8)] hover:border-[rgba(232,168,50,0.3)] transition-colors"
+        className="relative w-10 h-10 flex items-center justify-center rounded-[10px] bg-bq-white border border-bq-hair text-bq-ink2 hover:bg-bq-inset hover:text-bq-ink transition-colors"
       >
         <span className="material-symbols-outlined text-[22px]">notifications</span>
         {unreadCount > 0 && (
           <span
             data-testid="notification-bell-badge"
-            className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-[5px] rounded-[9px] bg-[#ef6b5e] text-white text-[10px] font-bold flex items-center justify-center border-2 border-[#11131e] leading-none"
+            className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-[5px] rounded-[9px] bg-bq-ruby text-white text-[10px] font-bold flex items-center justify-center border-2 border-bq-white leading-none"
           >
             {unreadCount > 9 ? '9+' : unreadCount}
           </span>
