@@ -13,7 +13,6 @@ import { HelmetProvider } from 'react-helmet-async'
 import { initStorageSync } from './utils/localStorageClearDetector'
 import './i18n'
 import Home from './pages/Home'
-import HomeGameMock from './pages/HomeGameMock'
 import HomeKhungSangMock from './pages/HomeKhungSangMock'
 import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
@@ -134,7 +133,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Routes>
                 {/* PREVIEW-ONLY: coded mockup of the game-vibe Home redesign (v2).
                     Standalone (own chrome), no auth, no AppLayout. Remove after approval. */}
-                <Route path="/home-game-preview" element={<HomeGameMock />} />
                 <Route path="/home-khung-sang-preview" element={<HomeKhungSangMock />} />
                 {/* "/" = LandingPage for guest, Home (with AppLayout) for authenticated */}
                 <Route element={<HomeOrLanding />}>

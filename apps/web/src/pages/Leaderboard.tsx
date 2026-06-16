@@ -144,7 +144,7 @@ export default function Leaderboard() {
                   )}
                   <div
                     className={`${layout.avatar} rounded-full overflow-hidden border-2 ${isFirst ? 'shadow-[0_0_20px_rgba(232,168,50,0.4)]' : ''}`}
-                    style={{ borderColor: isFirst ? '#e8a832' : tierColor + '99' }}
+                    style={{ borderColor: isFirst ? '#D97F06' : tierColor + '99' }}
                   >
                     {(() => {
                       const r = resolveAvatar(player.avatarUrl, player.name)
@@ -165,7 +165,7 @@ export default function Leaderboard() {
                   {/* Arabic-numeral rank badge — replaces La Mã (LB-P1-2) */}
                   <div
                     className="absolute -bottom-1 md:-bottom-1.5 left-1/2 -translate-x-1/2 w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center font-medium text-[10px] md:text-xs text-bq-ink border-2 border-bq-paper"
-                    style={{ background: isFirst ? '#e8a832' : tierColor }}
+                    style={{ background: isFirst ? '#D97F06' : tierColor }}
                   >
                     {layout.rank}
                   </div>
@@ -187,7 +187,7 @@ export default function Leaderboard() {
                 >
                   <div
                     className={`${isFirst ? 'text-base md:text-2xl' : 'text-xs md:text-lg'} font-medium`}
-                    style={{ color: isFirst ? '#e8a832' : tierColor }}
+                    style={{ color: isFirst ? '#D97F06' : tierColor }}
                   >
                     {points}
                   </div>
