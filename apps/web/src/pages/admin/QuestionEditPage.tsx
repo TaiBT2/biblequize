@@ -106,9 +106,9 @@ export default function QuestionEditPage() {
         book: draft.book, chapter: draft.chapter, verseStart: draft.verseStart, verseEnd: draft.verseEnd,
       })
       if (res.data?.aiAvailable && res.data.suggestion) setAiSuggestion(res.data.suggestion)
-      else setAiMsg(res.data?.message ?? 'AI không khả dụng.')
+      else setAiMsg(res.data?.message ?? t('admin.questions.editor.aiUnavailable'))
     } catch (e: any) {
-      setAiMsg(e?.response?.data?.message ?? 'Gọi AI thất bại.')
+      setAiMsg(e?.response?.data?.message ?? t('admin.questions.editor.aiFailed'))
     } finally { setAiLoading(false) }
   }
 
@@ -129,7 +129,7 @@ export default function QuestionEditPage() {
   )
 
   const isMc = draft.type === 'multiple_choice_single' || draft.type === 'multiple_choice_multi'
-  const checks = evaluateQuestionQuality(draft)
+  const checks = evaluateQuestionQuality(draft, t)
 
   return (
     <div data-testid="question-edit-page" className="max-w-6xl mx-auto">
@@ -171,7 +171,7 @@ export default function QuestionEditPage() {
           <div className="lg:col-span-5 space-y-4 lg:sticky lg:top-4 self-start">
             {/* Heuristic checklist (live) */}
             <div data-testid="quality-eval-result" className="bg-[#1d1f29] rounded-xl border border-white/10 p-4 space-y-1.5">
-              <span className="text-xs font-semibold text-white/70 uppercase tracking-wider">Đánh giá đáp án (tự động)</span>
+              <span className="text-xs font-semibold text-white/70 uppercase tracking-wider">{t('admin.questions.editor.evalTitle')}</span>
               {checks.map((c, i) => (
                 <div key={i} className="flex items-start gap-2 text-xs pt-1">
                   <span className={c.status === 'pass' ? 'text-emerald-400' : c.status === 'warn' ? 'text-yellow-400' : 'text-sky-400'}>
@@ -185,11 +185,11 @@ export default function QuestionEditPage() {
             {/* AI suggestion */}
             <div className="bg-[#1d1f29] rounded-xl border border-white/10 p-4 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-white/70 uppercase tracking-wider">Đề xuất từ AI</span>
+                <span className="text-xs font-semibold text-white/70 uppercase tracking-wider">{t('admin.questions.editor.aiTitle')}</span>
                 <button data-testid="ai-suggest-btn" onClick={requestAiSuggestion} disabled={aiLoading}
                   className="text-xs px-3 py-1.5 rounded bg-[#e8a832]/15 border border-[#e8a832]/30 text-[#e8a832] hover:bg-[#e8a832]/25 disabled:opacity-50 flex items-center gap-1">
                   <span className="material-symbols-outlined text-sm">auto_awesome</span>
-                  {aiLoading ? 'Đang phân tích…' : 'Đề xuất cải thiện'}
+                  {aiLoading ? t('admin.questions.editor.aiAnalyzing') : t('admin.questions.editor.aiSuggestBtn')}
                 </button>
               </div>
               {aiMsg && <p className="text-xs text-white/40">{aiMsg}</p>}
@@ -206,9 +206,9 @@ export default function QuestionEditPage() {
                   {aiSuggestion.explanation && <p className="text-[11px] text-white/50 italic">{aiSuggestion.explanation}</p>}
                   <button data-testid="ai-apply-btn" onClick={() => applySuggestion(aiSuggestion)}
                     className="w-full mt-1 px-3 py-2 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold">
-                    Áp dụng đề xuất vào form
+                    {t('admin.questions.editor.applyBtn')}
                   </button>
-                  <p className="text-[10px] text-white/30">Áp dụng xong nhớ kiểm lại rồi bấm Lưu.</p>
+                  <p className="text-[10px] text-white/30">{t('admin.questions.editor.applyHint')}</p>
                 </div>
               )}
             </div>

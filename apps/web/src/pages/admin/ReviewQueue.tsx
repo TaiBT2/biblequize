@@ -291,7 +291,7 @@ export default function ReviewQueue() {
                     disabled={actioningId === q.id}
                     className="ml-auto px-5 py-2 bg-white/5 hover:bg-white/10 text-[#d5c4af] text-sm font-bold rounded-xl transition-colors disabled:opacity-50 flex items-center gap-1.5">
                     <span className="material-symbols-outlined text-base">edit</span>
-                    Sửa
+                    {t('admin.reviewQueue.editButton')}
                   </button>
                 </div>
               )}

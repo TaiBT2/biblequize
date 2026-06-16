@@ -196,6 +196,31 @@
     },
     "questions": {
       "title": "Questions",
+      "eval": {
+        "notMcq": "Quality check applies to multiple-choice questions only.",
+        "emptyOptions": "{{count}} option(s) are empty.",
+        "duplicateOptions": "Some options have duplicate content.",
+        "optionsOk": "All options present, no duplicates.",
+        "lengthBiasWarn": "Correct answer is the longest, ~{{ratio}}× the distractors → guessable. Balance the 4 option lengths.",
+        "lengthBiasInfo": "Correct answer is a bit longer (~{{ratio}}×) — acceptable, but watch it.",
+        "lengthOk": "Balanced length (correct ~{{ratio}}× distractors).",
+        "positionA": "Correct answer is at A — consider shuffling to avoid guessing.",
+        "positionOk": "Correct answer is at position {{letter}}.",
+        "explanationMissing": "Explanation is missing.",
+        "explanationShort": "Explanation too short — state why it's right AND why a tempting wrong one is wrong.",
+        "explanationOk": "Has a full explanation.",
+        "plausibility": "Are the distractors plausible 'close-but-wrong'? → needs a human/AI check."
+      },
+      "editor": {
+        "evalTitle": "Answer review (auto)",
+        "aiTitle": "AI suggestion",
+        "aiSuggestBtn": "Suggest improvement",
+        "aiAnalyzing": "Analyzing…",
+        "applyBtn": "Apply suggestion to form",
+        "applyHint": "After applying, double-check then Save.",
+        "aiUnavailable": "AI unavailable.",
+        "aiFailed": "AI call failed."
+      },
       "countSuffix": "{{count}} questions",
       "loading": "Loading...",
       "createButton": "+ New question",
@@ -539,6 +564,7 @@
       "rejectCancelButton": "Cancel",
       "approveButton": "✓ Approve",
       "rejectButton": "✗ Reject",
+      "editButton": "Edit",
       "approving": "...",
       "historyTitle": "My review history",
       "historyEmpty": "You haven't reviewed anything yet.",
@@ -546,6 +572,7 @@
       "historyRejected": "✗ Rejected",
       "toast": {
         "loadError": "Failed to load",
+        "saved": "Changes saved",
         "activated": "✅ Question activated (reached required approvals)!",
         "approvedPartial": "👍 Approved ({{current}}/{{total}}) — need {{remaining}} more admin(s)",
         "rejected": "🗑️ Question rejected",

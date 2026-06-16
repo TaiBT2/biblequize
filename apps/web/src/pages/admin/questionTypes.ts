@@ -63,10 +63,14 @@ export function optionDefaults(type: QuestionType, lang = 'vi'): string[] {
 
 export type QCheck = { status: 'pass' | 'warn' | 'info'; label: string }
 
-export function evaluateQuestionQuality(q: Partial<Question>): QCheck[] {
+/** Translator shape (i18next TFunction) — kept loose to avoid an import cycle. */
+type TFn = (key: string, opts?: Record<string, unknown>) => string
+
+export function evaluateQuestionQuality(q: Partial<Question>, t: TFn): QCheck[] {
+  const E = (k: string, o?: Record<string, unknown>) => t(`admin.questions.eval.${k}`, o)
   const type = q.type
   const isMc = type === 'multiple_choice_single' || type === 'multiple_choice_multi'
-  if (!isMc) return [{ status: 'info', label: 'Loại câu này không áp dụng kiểm tra đáp án trắc nghiệm.' }]
+  if (!isMc) return [{ status: 'info', label: E('notMcq') }]
 
   const opts = (q.options ?? []).map(o => (o ?? '').trim())
   const correct = q.correctAnswer ?? []
@@ -75,9 +79,9 @@ export function evaluateQuestionQuality(q: Partial<Question>): QCheck[] {
   // 1. Filled + distinct
   const empties = opts.filter(o => !o).length
   const distinct = new Set(opts.map(o => o.toLowerCase())).size
-  if (empties > 0) checks.push({ status: 'warn', label: `Còn ${empties} lựa chọn để trống.` })
-  else if (distinct < opts.length) checks.push({ status: 'warn', label: 'Có lựa chọn trùng nội dung nhau.' })
-  else checks.push({ status: 'pass', label: 'Đủ lựa chọn, không trùng.' })
+  if (empties > 0) checks.push({ status: 'warn', label: E('emptyOptions', { count: empties }) })
+  else if (distinct < opts.length) checks.push({ status: 'warn', label: E('duplicateOptions') })
+  else checks.push({ status: 'pass', label: E('optionsOk') })
 
   // 2. Length parity (the main "guessable" tell)
   if (correct.length && opts.length >= 2) {
@@ -88,25 +92,25 @@ export function evaluateQuestionQuality(q: Partial<Question>): QCheck[] {
     const maxLen = Math.max(...opts.map(o => o.length))
     const ratio = avg ? +(correctLen / avg).toFixed(2) : 0
     const isLongest = correctLen >= maxLen && correctLen > 0
-    if (isLongest && ratio >= 1.5) checks.push({ status: 'warn', label: `Đáp án đúng dài nhất, ~${ratio}× distractor → dễ đoán. Hãy cân bằng độ dài 4 lựa chọn.` })
-    else if (isLongest) checks.push({ status: 'info', label: `Đáp án đúng hơi dài hơn (~${ratio}×) — chấp nhận được, nhưng để ý.` })
-    else checks.push({ status: 'pass', label: `Độ dài cân bằng (đúng ~${ratio}× distractor).` })
+    if (isLongest && ratio >= 1.5) checks.push({ status: 'warn', label: E('lengthBiasWarn', { ratio }) })
+    else if (isLongest) checks.push({ status: 'info', label: E('lengthBiasInfo', { ratio }) })
+    else checks.push({ status: 'pass', label: E('lengthOk', { ratio }) })
   }
 
   // 3. Position (single-answer only) — seed data leans toward A
   if (type === 'multiple_choice_single' && correct.length === 1) {
-    if (correct[0] === 0) checks.push({ status: 'info', label: 'Đáp án đúng ở vị trí A — cân nhắc đảo vị trí để tránh đoán mò.' })
-    else checks.push({ status: 'pass', label: `Đáp án đúng ở vị trí ${String.fromCharCode(65 + correct[0])}.` })
+    if (correct[0] === 0) checks.push({ status: 'info', label: E('positionA') })
+    else checks.push({ status: 'pass', label: E('positionOk', { letter: String.fromCharCode(65 + correct[0]) }) })
   }
 
   // 4. Explanation
   const exp = (q.explanation ?? '').trim()
-  if (!exp) checks.push({ status: 'warn', label: 'Thiếu giải thích.' })
-  else if (exp.length < 40) checks.push({ status: 'warn', label: 'Giải thích quá ngắn — nên nêu vì sao đúng VÀ vì sao một đáp án sai dễ nhầm.' })
-  else checks.push({ status: 'pass', label: 'Có giải thích đầy đủ.' })
+  if (!exp) checks.push({ status: 'warn', label: E('explanationMissing') })
+  else if (exp.length < 40) checks.push({ status: 'warn', label: E('explanationShort') })
+  else checks.push({ status: 'pass', label: E('explanationOk') })
 
   // 5. Plausibility — needs human/AI judgement
-  checks.push({ status: 'info', label: 'Distractor có "đúng một phần rồi sai" (gần đúng, hợp lý) không? → cần mắt người/AI đánh giá.' })
+  checks.push({ status: 'info', label: E('plausibility') })
 
   return checks
 }

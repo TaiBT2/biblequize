@@ -196,6 +196,31 @@
     },
     "questions": {
       "title": "Câu hỏi",
+      "eval": {
+        "notMcq": "Loại câu này không áp dụng kiểm tra đáp án trắc nghiệm.",
+        "emptyOptions": "Còn {{count}} lựa chọn để trống.",
+        "duplicateOptions": "Có lựa chọn trùng nội dung nhau.",
+        "optionsOk": "Đủ lựa chọn, không trùng.",
+        "lengthBiasWarn": "Đáp án đúng dài nhất, ~{{ratio}}× distractor → dễ đoán. Hãy cân bằng độ dài 4 lựa chọn.",
+        "lengthBiasInfo": "Đáp án đúng hơi dài hơn (~{{ratio}}×) — chấp nhận được, nhưng để ý.",
+        "lengthOk": "Độ dài cân bằng (đúng ~{{ratio}}× distractor).",
+        "positionA": "Đáp án đúng ở vị trí A — cân nhắc đảo vị trí để tránh đoán mò.",
+        "positionOk": "Đáp án đúng ở vị trí {{letter}}.",
+        "explanationMissing": "Thiếu giải thích.",
+        "explanationShort": "Giải thích quá ngắn — nên nêu vì sao đúng VÀ vì sao một đáp án sai dễ nhầm.",
+        "explanationOk": "Có giải thích đầy đủ.",
+        "plausibility": "Distractor có \"đúng một phần rồi sai\" (gần đúng, hợp lý) không? → cần mắt người/AI đánh giá."
+      },
+      "editor": {
+        "evalTitle": "Đánh giá đáp án (tự động)",
+        "aiTitle": "Đề xuất từ AI",
+        "aiSuggestBtn": "Đề xuất cải thiện",
+        "aiAnalyzing": "Đang phân tích…",
+        "applyBtn": "Áp dụng đề xuất vào form",
+        "applyHint": "Áp dụng xong nhớ kiểm lại rồi bấm Lưu.",
+        "aiUnavailable": "AI không khả dụng.",
+        "aiFailed": "Gọi AI thất bại."
+      },
       "countSuffix": "{{count}} câu hỏi",
       "loading": "Đang tải...",
       "createButton": "+ Tạo câu hỏi",
@@ -539,6 +564,7 @@
       "rejectCancelButton": "Huỷ",
       "approveButton": "✓ Duyệt",
       "rejectButton": "✗ Từ chối",
+      "editButton": "Sửa",
       "approving": "...",
       "historyTitle": "Lịch sử duyệt của tôi",
       "historyEmpty": "Bạn chưa duyệt câu hỏi nào.",
@@ -546,6 +572,7 @@
       "historyRejected": "✗ Đã từ chối",
       "toast": {
         "loadError": "Không thể tải dữ liệu",
+        "saved": "Đã lưu thay đổi",
         "activated": "✅ Câu hỏi đã được kích hoạt (đủ 2 lượt duyệt)!",
         "approvedPartial": "👍 Đã duyệt ({{current}}/{{total}}) — cần thêm {{remaining}} admin nữa",
         "rejected": "🗑️ Đã từ chối câu hỏi",
