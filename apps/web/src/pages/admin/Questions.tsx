@@ -598,17 +598,18 @@ export default function QuestionsAdmin() {
                     const isMulti   = editing.type === 'multiple_choice_multi'
                     const isTF      = editing.type === 'true_false'
                     return (
-                      <div key={i} className={`flex items-center gap-2 p-2 rounded-lg border ${isCorrect ? 'border-emerald-500/50 bg-emerald-500/10' : 'border-white/10 bg-white/5'}`}>
-                        <span className="text-xs font-bold text-white/50 w-5">{String.fromCharCode(65 + i)}</span>
-                        <input
-                          className="flex-1 h-8 px-2 rounded bg-white/10 border border-white/10 text-sm"
+                      <div key={i} className={`flex items-start gap-2 p-2 rounded-lg border ${isCorrect ? 'border-emerald-500/50 bg-emerald-500/10' : 'border-white/10 bg-white/5'}`}>
+                        <span className="text-xs font-bold text-white/50 w-5 mt-2">{String.fromCharCode(65 + i)}</span>
+                        <textarea
+                          className="flex-1 min-h-[2rem] px-2 py-1.5 rounded bg-white/10 border border-white/10 text-sm resize-none leading-snug break-words"
+                          rows={Math.min(4, Math.max(1, Math.ceil((opt?.length || 0) / 46)))}
                           value={opt}
                           readOnly={isTF}
                           onChange={e => !isTF && setOption(i, e.target.value)}
                         />
                         <button type="button"
                           onClick={() => toggleCorrect(i)}
-                          className={`flex-shrink-0 w-8 h-8 rounded flex items-center justify-center text-sm font-bold transition-colors ${isCorrect ? 'bg-emerald-500 text-white' : 'bg-white/10 text-white/40 hover:bg-white/20'}`}
+                          className={`flex-shrink-0 w-8 h-8 mt-0.5 rounded flex items-center justify-center text-sm font-bold transition-colors ${isCorrect ? 'bg-emerald-500 text-white' : 'bg-white/10 text-white/40 hover:bg-white/20'}`}
                           title={isMulti ? t('admin.questions.modal.toggleCorrectTitle') : t('admin.questions.modal.pickCorrectTitle')}>
                           {isMulti ? (isCorrect ? '✓' : '○') : (isCorrect ? '●' : '○')}
                         </button>

@@ -7,6 +7,7 @@
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-16 | Sửa câu hỏi: wrap đáp án + nút đánh giá chất lượng (QEV-1..3) | TODO | [detail](docs/todo/active/2026-06-16-question-edit-quality-tools.md) |
 | 2026-06-12 | Optimize trang chủ (Home): empty-state + hero + bỏ trùng lặp + mật độ (HO-1..7) | TODO | [detail](docs/todo/active/2026-06-12-home-optimize.md) |
 | 2026-06-11 | Redesign 2 màn Quản trò: in-game host (TV presentation) + wrap-up (QTR-1..5) | DONE | [detail](docs/todo/active/2026-06-11-quan-tro-host-screens-redesign.md) |
 | 2026-06-11 | MP refactor BE: RoomModeStrategy + RoomAnswerProcessor (RMS-1..10, no behavior change) | DONE | [detail](docs/todo/active/2026-06-11-mp-refactor-be-mode-strategy.md) |
