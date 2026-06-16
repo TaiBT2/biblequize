@@ -581,6 +581,15 @@
 - **Status:** ✅ RESOLVED 2026-06-12 — user chốt canonical = **correctAnswers → avgReactionTime** (giữ code, sửa spec §3.2; xem DECISIONS.md 2026-06-12). `shouldEndGame` dead code đã xoá cùng tests của nó. Wrap-up Quản trò hiển thị "X/Y đúng" làm số chính cho BR.
 - **Related:** apps/api/DOMAIN.md §4.3.1 (as-implemented chi tiết, LOCAL-ONLY)
 
+### BL-22 — Daily Challenge: verify từng đáp án server-side (chống khai khống correctCount)
+- **Source:** 2026-06-16 — scoring rework (DECISIONS.md 2026-06-16). XP Daily giờ cao hơn (tới 150) → giá trị gian lận tăng.
+- **Issue:** `POST /api/daily-challenge/complete` nhận `correctCount` từ client; server tính XP từ đó (`DailyChallengeService.dailyXp`) nhưng KHÔNG verify client thật sự trả đúng bấy nhiêu câu. Client tampered có thể gửi `correctCount:5` để luôn nhận 150 XP. Hiện chỉ chặn out-of-range (`@Max(5)`).
+- **Mitigation hiện có:** Daily cap 1 lần/ngày (cap thiệt hại) + `/answer` đã chấm đúng/sai server-side per câu (chỉ chưa persist running count).
+- **Fix hướng:** track correct-count server-side per daily session (lưu kết quả mỗi `/answer` vào session/Redis theo `sessionId`), rồi `/complete` dùng count server thay vì trust client. Hoặc gộp `/complete` vào luồng `/answer` cuối.
+- **Effort:** M — cần session-side answer tracking (daily session hiện chỉ là client-side tracking ID).
+- **Status:** ⬜ DEFER — chấp nhận risk ngắn hạn, bump nếu có dấu hiệu abuse leaderboard.
+- **Related:** `DailyChallengeService`, `DailyChallengeController`, `CompleteDailyChallengeRequest`.
+
 ---
 
 ## Cross-references

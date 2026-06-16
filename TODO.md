@@ -3,11 +3,12 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (66)
+## Active (67)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
 | 2026-06-16 | Fix session-expiry infinite request loop (login chết do rate-limit 429) (SEL-1) | DONE | [detail](docs/todo/active/2026-06-16-fix-session-expiry-infinite-loop.md) |
+| 2026-06-16 | Daily Challenge scoring rework (0/20/40/60/100/150, bỏ flat +50) (DCS-1..5) | TODO | [detail](docs/todo/active/2026-06-16-daily-challenge-scoring-rework.md) |
 | 2026-06-16 | Seed distractor rewrite → Haladyna/NBME (VN, pilot Genesis) (SDR-1..3) | TODO | [detail](docs/todo/active/2026-06-16-seed-distractor-rewrite-haladyna.md) |
 | 2026-06-16 | AI Generator: enforce error_type cho distractor (AEQ-1..4) | TODO | [detail](docs/todo/active/2026-06-16-ai-generator-error-type-enforcement.md) |
 | 2026-06-16 | AI Generator: CSS polish đồng bộ admin pattern (AIG-1..5) | TODO | [detail](docs/todo/active/2026-06-16-ai-generator-css-polish.md) |
