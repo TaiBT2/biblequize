@@ -91,6 +91,18 @@ Trả về JSON đúng dạng:
 errorTypes là một trong: "nearby_passage", "wrong_detail", "wrong_scope", "common_misconception", "true_but_off".
 {n} errorTypes phải KHÁC nhau. almostRightIndex là chỉ số (0-based) của distractor gần đúng."""
 
+# Adversarial verify pass: a 2nd model call that flags distractors which are
+# actually defensible / synonymous with the correct answer (semantic errors the
+# static gate can't catch, e.g. "Đấng Tạo Hóa" for "Đức Chúa Trời").
+VERIFY_PROMPT = """Câu hỏi trắc nghiệm Kinh Thánh (Tin Lành): "{content}"
+Tham chiếu: {ref}
+Đáp án ĐÚNG chính thức: "{correct}"
+Các phương án sau đang được dùng làm ĐÁP ÁN SAI (distractor):
+{numbered}
+
+Với MỖI distractor, xét xem nó có SAI RÕ RÀNG cho đúng câu hỏi này không, hay nó CŨNG ĐÚNG / đồng nghĩa / bao hàm / biện minh được theo Kinh Thánh.
+Chỉ trả về JSON: {{"flagged": [i, ...]}} — danh sách index (0-based) các distractor KHÔNG ổn (cũng đúng/đồng nghĩa/biện minh được). Nếu tất cả đều sai rõ ràng: {{"flagged": []}}."""
+
 _thread_local = threading.local()
 
 
@@ -182,7 +194,21 @@ def gate(correct: str, distractors: list[str], error_types: list[str],
     return reasons
 
 
-def rewrite_one(q: dict, max_attempts: int) -> dict:
+def verify_distractors(content: str, correct: str, distractors: list[str], ref: str) -> list[int]:
+    """Adversarial pass — return indices of distractors that are actually
+    defensible/synonymous (must be rejected). Empty == all clearly wrong.
+    On call/parse error, fail-closed (flag all) so we retry rather than ship."""
+    numbered = "\n".join(f"{i}. {d}" for i, d in enumerate(distractors))
+    prompt = VERIFY_PROMPT.format(content=content, ref=ref, correct=correct, numbered=numbered)
+    try:
+        obj = parse_obj(call_bedrock(prompt, 0.0))
+        flagged = obj.get("flagged") or []
+        return [i for i in flagged if isinstance(i, int) and 0 <= i < len(distractors)]
+    except (ClientError, ValueError, json.JSONDecodeError):
+        return list(range(len(distractors)))
+
+
+def rewrite_one(q: dict, max_attempts: int, verify: bool = True) -> dict:
     """Return {status, options?, explanation?, note}."""
     correct_list = q.get("correctAnswer") or []
     if q.get("type") != "multiple_choice_single" or len(correct_list) != 1:
@@ -197,16 +223,19 @@ def rewrite_one(q: dict, max_attempts: int) -> dict:
     if n < 2:
         return {"status": "skipped", "note": "too few options"}
 
-    prompt = PROMPT_TEMPLATE.format(
+    base_prompt = PROMPT_TEMPLATE.format(
         ref=ref_of(q), content=q.get("content", ""), correct=correct, n=n,
         distractor_slots=", ".join(['"..."'] * n),
         error_type_slots=", ".join(['"..."'] * n))
 
+    avoid: set[str] = set()  # distractors rejected by verify — don't reuse
     last = ""
     for attempt in range(max_attempts):
+        prompt = base_prompt
+        if avoid:
+            prompt += "\n\nTRÁNH các phương án sau (vì cũng đúng/đồng nghĩa với đáp án đúng): " + "; ".join(sorted(avoid))
         try:
-            raw = call_bedrock(prompt, 0.6 + 0.1 * attempt)
-            obj = parse_obj(raw)
+            obj = parse_obj(call_bedrock(prompt, 0.6 + 0.1 * attempt))
         except (ClientError, ValueError, json.JSONDecodeError) as e:
             last = f"call/parse: {e}"
             time.sleep(1.5 * (attempt + 1))
@@ -218,6 +247,12 @@ def rewrite_one(q: dict, max_attempts: int) -> dict:
         if reasons:
             last = "; ".join(reasons)
             continue
+        if verify:
+            flagged = verify_distractors(q.get("content", ""), correct, distractors, ref_of(q))
+            if flagged:
+                avoid.update(distractors[i] for i in flagged)
+                last = "verify flagged: " + ", ".join(distractors[i] for i in flagged)
+                continue
         new_options = list(options)
         for slot, d in zip(distractor_slots, distractors):
             new_options[slot] = d
@@ -226,7 +261,7 @@ def rewrite_one(q: dict, max_attempts: int) -> dict:
             "options": new_options,
             "explanation": str(obj.get("explanation") or q.get("explanation") or "").strip(),
             "errorTypes": error_types,
-            "note": f"attempt {attempt + 1}",
+            "note": f"attempt {attempt + 1}" + (" (verified)" if verify else ""),
         }
     return {"status": "failed", "note": last}
 
@@ -267,7 +302,7 @@ def process_file(path: Path, progress: dict, args, report: list, lock: threading
 
     def work(item):
         i, q = item
-        res = rewrite_one(q, args.max_attempts)
+        res = rewrite_one(q, args.max_attempts, verify=not args.no_verify)
         return i, q, res
 
     with cf.ThreadPoolExecutor(max_workers=args.workers) as ex:
@@ -302,6 +337,7 @@ def main():
     ap.add_argument("--max-attempts", type=int, default=4)
     ap.add_argument("--limit", type=int, default=0, help="chỉ N câu đầu mỗi file (smoke test)")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--no-verify", action="store_true", help="bỏ lượt AI thẩm định distractor (nhanh hơn, kém an toàn)")
     args = ap.parse_args()
 
     if not SEED_DIR.exists():

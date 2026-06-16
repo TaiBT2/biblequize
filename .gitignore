@@ -51,3 +51,6 @@ tools/spec-audit/.audit-tmp/
 # seed distractor-rewrite tool artifacts
 scripts/seed/.rewrite_progress.json
 scripts/seed/rewrite_report.json
+scripts/seed/genesis_prod_update.sql
+scripts/seed/genesis_prod_backup.jsonl
+scripts/seed/genesis_review.md
