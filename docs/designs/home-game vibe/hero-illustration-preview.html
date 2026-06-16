@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hero Illustration Preview — Khung Sáng</title>
+<style>
+  :root{
+    --bq-paper:#FBFAF5; --bq-paper-sunk:#F2F0E7; --bq-white:#FFFFFF;
+    --bq-hairline:#E7E4DA; --bq-ink:#16151B; --bq-ink-soft:#6C6A62;
+    --bq-sapphire:#2D46C8; --bq-sapphire-lt:#6E86F0;
+    --bq-emerald:#0E8A6B; --bq-emerald-lt:#46C89A;
+    --bq-amber:#F59E0B; --bq-amber-deep:#D97F06;
+    --bq-ruby:#E0354B; --bq-ruby-lt:#FF7A5A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bq-paper);font-family:'Be Vietnam Pro',system-ui,sans-serif;color:var(--bq-ink);padding:48px;display:flex;flex-direction:column;align-items:center;gap:32px}
+  h1{font-size:20px;color:var(--bq-ink-soft);font-weight:600}
+  /* Mimic the hero right-column container exactly */
+  .stage{position:relative;width:600px}
+  .glow{position:absolute;inset:-16px;border-radius:2rem;background:rgba(245,158,11,.10);filter:blur(32px)}
+  .card{position:relative;width:100%;aspect-ratio:4/3;border-radius:2rem;border:1px solid var(--bq-hairline);
+        box-shadow:0 18px 48px -12px rgba(22,21,27,.18);overflow:hidden;background:var(--bq-white)}
+  .card svg{display:block;width:100%;height:100%}
+  .streak{position:absolute;bottom:-24px;left:-24px;background:#fff;padding:20px;border-radius:16px;
+          border:1px solid var(--bq-hairline);box-shadow:0 18px 48px -12px rgba(22,21,27,.18);display:flex;gap:14px;align-items:center}
+  .flame{width:48px;height:48px;border-radius:999px;background:linear-gradient(180deg,#FFC861,#F59E0B 52%,#D97F06);
+         display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;box-shadow:0 8px 20px -6px rgba(245,158,11,.7)}
+  .streak small{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--bq-amber-deep);font-weight:700;display:block}
+  .streak b{font-size:18px;color:var(--bq-ink)}
+</style>
+</head>
+<body>
+  <h1>Hero — Phương án 1: Illustration phẳng (Khung Sáng)</h1>
+
+  <div class="stage">
+    <div class="glow"></div>
+    <div class="card">
+      <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" role="img"
+           aria-label="Kinh Thánh mở với tia sáng và thẻ trắc nghiệm">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFFDF7"/>
+            <stop offset="1" stop-color="#F4F1E7"/>
+          </linearGradient>
+          <radialGradient id="halo" cx="50%" cy="42%" r="46%">
+            <stop offset="0" stop-color="#FFE7B0" stop-opacity=".95"/>
+            <stop offset="55%" stop-color="#FCD98A" stop-opacity=".35"/>
+            <stop offset="100%" stop-color="#FCD98A" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="pageL" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#FFFFFF"/>
+            <stop offset="1" stop-color="#F3EFE4"/>
+          </linearGradient>
+          <linearGradient id="pageR" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0" stop-color="#FFFFFF"/>
+            <stop offset="1" stop-color="#F3EFE4"/>
+          </linearGradient>
+          <linearGradient id="cover" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FF7A5A"/>
+            <stop offset="1" stop-color="#E0354B"/>
+          </linearGradient>
+          <linearGradient id="ray" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="#F8C65A" stop-opacity="0"/>
+            <stop offset="1" stop-color="#F8C65A" stop-opacity=".55"/>
+          </linearGradient>
+        </defs>
+
+        <!-- backdrop -->
+        <rect width="600" height="450" fill="url(#bg)"/>
+        <circle cx="300" cy="205" r="240" fill="url(#halo)"/>
+
+        <!-- light rays fanning up from the book -->
+        <g opacity=".9">
+          <polygon points="300,210 250,-30 290,-30" fill="url(#ray)"/>
+          <polygon points="300,210 305,-30 345,-30" fill="url(#ray)" opacity=".8"/>
+          <polygon points="300,210 150,-10 205,-30" fill="url(#ray)" opacity=".55"/>
+          <polygon points="300,210 400,-30 450,-10" fill="url(#ray)" opacity=".55"/>
+          <polygon points="300,210 60,80 95,30"  fill="url(#ray)" opacity=".35"/>
+          <polygon points="300,210 505,30 540,80" fill="url(#ray)" opacity=".35"/>
+        </g>
+
+        <!-- floating cross above the book -->
+        <g transform="translate(300,86)" opacity=".95">
+          <rect x="-6" y="-34" width="12" height="74" rx="6" fill="#F8C65A"/>
+          <rect x="-22" y="-12" width="44" height="12" rx="6" fill="#F8C65A"/>
+        </g>
+
+        <!-- ===== open book ===== -->
+        <g>
+          <!-- cover (peeking under pages) -->
+          <path d="M300 300 L96 268 Q86 300 118 360 L300 338 Z" fill="url(#cover)"/>
+          <path d="M300 300 L504 268 Q514 300 482 360 L300 338 Z" fill="#C92A41"/>
+          <!-- spine shadow -->
+          <path d="M300 246 L300 338" stroke="#B9213A" stroke-width="6" opacity=".25"/>
+
+          <!-- left page -->
+          <path d="M300 250 L110 282 Q124 308 138 332 L300 328 Z" fill="url(#pageL)"
+                stroke="#E7E4DA" stroke-width="1.5"/>
+          <!-- right page -->
+          <path d="M300 250 L490 282 Q476 308 462 332 L300 328 Z" fill="url(#pageR)"
+                stroke="#E7E4DA" stroke-width="1.5"/>
+          <!-- spine inner shade -->
+          <path d="M300 250 L300 328" stroke="#D9D4C6" stroke-width="3" opacity=".7"/>
+
+          <!-- text lines left -->
+          <g stroke="#CFC9BA" stroke-width="3" stroke-linecap="round" opacity=".8">
+            <line x1="160" y1="288" x2="276" y2="276"/>
+            <line x1="166" y1="300" x2="276" y2="289"/>
+            <line x1="172" y1="312" x2="276" y2="302"/>
+          </g>
+          <!-- text lines right -->
+          <g stroke="#CFC9BA" stroke-width="3" stroke-linecap="round" opacity=".8">
+            <line x1="324" y1="276" x2="440" y2="288"/>
+            <line x1="324" y1="289" x2="434" y2="300"/>
+            <line x1="324" y1="302" x2="428" y2="312"/>
+          </g>
+          <!-- bookmark ribbon -->
+          <path d="M300 250 L300 372 L290 360 L280 372 L280 252 Z" fill="#F59E0B"/>
+        </g>
+
+        <!-- ===== floating quiz answer card ===== -->
+        <g transform="translate(372,70) rotate(5)">
+          <rect x="0" y="0" width="196" height="138" rx="18" fill="#FFFFFF"
+                stroke="#E7E4DA" stroke-width="1.5" filter="drop-shadow(0 14px 26px rgba(22,21,27,.16))"/>
+          <!-- question line -->
+          <rect x="18" y="18" width="120" height="9" rx="4.5" fill="#16151B"/>
+          <rect x="18" y="33" width="86" height="7" rx="3.5" fill="#CFC9BA"/>
+          <!-- A coral -->
+          <rect x="18" y="54" width="78" height="30" rx="9" fill="#FF7A5A" opacity=".16"/>
+          <circle cx="35" cy="69" r="9" fill="#FF7A5A"/><text x="31.5" y="73" font-size="12" font-weight="700" fill="#fff">A</text>
+          <rect x="50" y="65" width="38" height="7" rx="3.5" fill="#FF7A5A" opacity=".55"/>
+          <!-- B sky -->
+          <rect x="102" y="54" width="78" height="30" rx="9" fill="#6E86F0" opacity=".16"/>
+          <circle cx="119" cy="69" r="9" fill="#6E86F0"/><text x="115.5" y="73" font-size="12" font-weight="700" fill="#fff">B</text>
+          <rect x="134" y="65" width="38" height="7" rx="3.5" fill="#6E86F0" opacity=".55"/>
+          <!-- C gold (selected/correct) -->
+          <rect x="18" y="92" width="78" height="30" rx="9" fill="#F59E0B" opacity=".22" stroke="#F59E0B" stroke-width="2"/>
+          <circle cx="35" cy="107" r="9" fill="#F59E0B"/><text x="31.5" y="111" font-size="12" font-weight="700" fill="#fff">C</text>
+          <rect x="50" y="103" width="26" height="7" rx="3.5" fill="#D97F06" opacity=".7"/>
+          <path d="M82 107 l3.5 3.5 L92 103" fill="none" stroke="#0E8A6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- D sage -->
+          <rect x="102" y="92" width="78" height="30" rx="9" fill="#46C89A" opacity=".16"/>
+          <circle cx="119" cy="107" r="9" fill="#0E8A6B"/><text x="115.5" y="111" font-size="12" font-weight="700" fill="#fff">D</text>
+          <rect x="134" y="103" width="38" height="7" rx="3.5" fill="#0E8A6B" opacity=".5"/>
+        </g>
+
+        <!-- sparkles -->
+        <g fill="#F8C65A">
+          <path d="M150 150 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5 Z"/>
+          <path d="M470 170 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 Z" opacity=".8"/>
+          <path d="M118 232 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 Z" opacity=".7"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="streak">
+      <div class="flame">&#128293;</div>
+      <div>
+        <small>Chuỗi ngày</small>
+        <b>15 Ngày Liên Tiếp</b>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

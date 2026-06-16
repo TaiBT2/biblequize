@@ -7,6 +7,7 @@
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-17 | Landing hero: thay ảnh Kinh Thánh tối bằng illustration phẳng Khung Sáng (LHI-1..2) | DONE | [archive](docs/todo/archive/2026-06-17-landing-hero-flat-illustration.md) |
 | 2026-06-17 | checkAuth: chỉ logout khi refresh 401, không logout khi /api/me lỗi (CKR-1) | DONE | [detail](docs/todo/active/2026-06-17-checkauth-resilient-to-me-failure.md) |
 | 2026-06-16 | Fix session-expiry infinite request loop (login chết do rate-limit 429) (SEL-1) | DONE | [detail](docs/todo/active/2026-06-16-fix-session-expiry-infinite-loop.md) |
 | 2026-06-16 | Daily Challenge scoring rework (0/20/40/60/100/150, bỏ flat +50) (DCS-1..5) | TODO | [detail](docs/todo/active/2026-06-16-daily-challenge-scoring-rework.md) |

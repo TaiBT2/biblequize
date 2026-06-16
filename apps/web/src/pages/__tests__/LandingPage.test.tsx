@@ -39,6 +39,13 @@ describe('LandingPage', () => {
     expect(screen.getByText(/Chơi Thử Ngay|Try Now/i)).toBeInTheDocument()
   })
 
+  it('renders the flat hero illustration (no external Bible photo)', () => {
+    renderLanding()
+    expect(
+      screen.getByRole('img', { name: /Kinh Thánh mở|Open Bible/i })
+    ).toBeInTheDocument()
+  })
+
   it('renders features grid section', () => {
     renderLanding()
     expect(screen.getByText(/6 Chế Độ Chơi|6 Game Modes/i)).toBeInTheDocument()

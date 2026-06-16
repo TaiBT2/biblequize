@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '../store/authStore'
 import PageMeta from '../components/PageMeta'
 import QuizLanguageSelect from '../components/QuizLanguageSelect'
+import HeroIllustration from '../components/HeroIllustration'
 
 /* ────────────────────────────── Guest Header ────────────────────────────── */
 
@@ -96,17 +97,10 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Right – image */}
+        {/* Right – illustration */}
         <div className="relative group">
           <div className="absolute -inset-4 bg-bq-amber/10 rounded-[2rem] blur-2xl group-hover:bg-bq-amber/20 transition-all" />
-          <img
-            alt="Bible and Light"
-            width={600}
-            height={450}
-            fetchPriority="high"
-            className="relative rounded-[2rem] shadow-bq-soft border border-bq-hair w-full object-cover aspect-[4/3]"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpEFLF4HdAAZtQmV6p7ZFtq-07HGD2UVS1ZVgbPxSev4YKp18Amt4MdHqCFGh2JrRl5z8UyUtxx7O5an0EGofE1Kkzf-lnCx_fHn2-S1-sdjas2YKfjghtOoVc-9_Vb69hY_f1Kee_27xarqfLFbHwfQelEbTOKW_ouxi_PqBWzhBFPVaR7BQBwYz9FkBO6DlHAdNGeKKuOutu3XwrKIR75hoWBmThBK6KGHpGo8uO9ZNvkcSIwpmItnWjnMcoahC_NJDQhMWkspM"
-          />
+          <HeroIllustration />
 
           {/* Floating streak card */}
           <div className="absolute -bottom-6 -left-6 bg-bq-white p-6 rounded-2xl border border-bq-hair shadow-bq-soft hidden lg:block">
