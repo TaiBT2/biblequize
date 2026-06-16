@@ -410,7 +410,7 @@
       "subtitle": "Tạo câu hỏi Kinh Thánh tự động và duyệt trước khi lưu",
       "notConfigured": "chưa cấu hình",
       "pendingChip": "{{count}} chờ duyệt",
-      "approvedChip": "{{count}} đã lưu",
+      "approvedChip": "{{count}} đã gửi duyệt",
       "saveAllSaving": "Đang lưu...",
       "saveAllButton": "Lưu tất cả ({{count}})",
       "scriptureSectionTitle": "Tham chiếu Kinh Thánh",
@@ -467,7 +467,7 @@
       "clearAllButton": "Xoá tất cả",
       "draftCard": {
         "statusPending": "Chờ duyệt",
-        "statusApproved": "✓ Đã lưu",
+        "statusApproved": "✓ Đã gửi duyệt",
         "statusRejected": "Từ chối",
         "difficultyEasy": "Dễ",
         "difficultyMedium": "TB",
@@ -483,7 +483,7 @@
         "editButton": "Sửa",
         "rejectTitle": "Từ chối",
         "restoreButton": "↩ Khôi phục",
-        "approvedFooter": "✓ Đã lưu vào cơ sở dữ liệu"
+        "approvedFooter": "✓ Đã lưu → chờ duyệt ở Review Queue"
       },
       "models": {
         "haiku45Note": "Nhanh · Rẻ",

@@ -65,17 +65,22 @@ export default function ReviewQueue() {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
 
+  // refetchOnMount:'always' so opening the tab shows freshly-saved questions
+  // (e.g. just sent from the AI generator) without a full page reload.
   const { data: items = [], isLoading: itemsLoading } = useQuery({
     queryKey: queryKeys.reviewQueue.pending(),
     queryFn: fetchPending,
+    refetchOnMount: 'always',
   })
   const { data: stats } = useQuery({
     queryKey: queryKeys.reviewQueue.stats(),
     queryFn: fetchStats,
+    refetchOnMount: 'always',
   })
   const { data: history = [] } = useQuery({
     queryKey: queryKeys.reviewQueue.history(),
     queryFn: fetchHistory,
+    refetchOnMount: 'always',
   })
 
   const [expandedId, setExpandedId] = useState<string | null>(null)
