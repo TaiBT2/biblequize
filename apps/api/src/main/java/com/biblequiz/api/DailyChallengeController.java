@@ -149,14 +149,18 @@ public class DailyChallengeController {
 
         dailyChallengeService.markCompleted(userId, req.getScore(), req.getCorrectCount());
 
-        log.info("Daily challenge completed by user {} with score={} correct={}/5",
-                userId, req.getScore(), req.getCorrectCount());
+        // Server-computed reward (ignores client score) — unified score == XP.
+        int xp = dailyChallengeService.dailyXp(req.getCorrectCount());
+
+        log.info("Daily challenge completed by user {} with correct={}/5 → {} XP",
+                userId, req.getCorrectCount(), xp);
 
         Map<String, Object> response = new LinkedHashMap<>();
         response.put("completed", true);
         response.put("alreadyCompleted", false);
         response.put("date", GameClock.today().toString());
-        response.put("score", req.getScore());
+        response.put("score", xp);
+        response.put("xpEarned", xp);
         response.put("correct", req.getCorrectCount());
         response.put("total", dailyChallengeService.getDailyQuestionCount());
         return ResponseEntity.ok(response);

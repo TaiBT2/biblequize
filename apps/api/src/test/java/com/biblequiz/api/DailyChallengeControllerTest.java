@@ -198,6 +198,9 @@ class DailyChallengeControllerTest extends BaseControllerTest {
     void complete_firstTime_shouldCallMarkCompleted() throws Exception {
         when(dailyChallengeService.hasCompletedToday("test@example.com")).thenReturn(false);
         when(dailyChallengeService.getDailyQuestionCount()).thenReturn(5);
+        // Server recomputes reward from correctCount and ignores client score —
+        // 4 correct → 100 XP (unified score == xpEarned).
+        when(dailyChallengeService.dailyXp(4)).thenReturn(100);
 
         mockMvc.perform(post("/api/daily-challenge/complete")
                         .contentType("application/json")
@@ -205,10 +208,13 @@ class DailyChallengeControllerTest extends BaseControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.completed").value(true))
                 .andExpect(jsonPath("$.alreadyCompleted").value(false))
-                .andExpect(jsonPath("$.score").value(85))
+                .andExpect(jsonPath("$.score").value(100))
+                .andExpect(jsonPath("$.xpEarned").value(100))
                 .andExpect(jsonPath("$.correct").value(4))
                 .andExpect(jsonPath("$.total").value(5));
 
+        // Client score (85) is passed through to the service but ignored there;
+        // the response reflects the server-computed reward.
         verify(dailyChallengeService).markCompleted(eq("test@example.com"), eq(85), eq(4));
     }
 

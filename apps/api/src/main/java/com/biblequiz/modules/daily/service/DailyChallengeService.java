@@ -36,12 +36,24 @@ public class DailyChallengeService {
     private static final Logger log = LoggerFactory.getLogger(DailyChallengeService.class);
 
     private static final int DAILY_QUESTION_COUNT = 5;
-    // See DECISIONS.md 2026-04-20 "Daily Challenge as secondary XP path".
-    // Kept local (not app.yml) because it's a design invariant, not a tunable.
-    private static final int DAILY_COMPLETION_XP = 50;
-    // Minimum correct answers (out of DAILY_QUESTION_COUNT) required to earn XP.
-    private static final int DAILY_XP_MIN_CORRECT = 4;
+    // Daily Challenge XP by correct-count (DECISIONS.md 2026-06-16, supersedes the
+    // flat +50 from 2026-04-20). Index = number correct (0..5). The curve
+    // accelerates at 4 (+40) and 5 (+50) to reward perfect runs; there is NO
+    // min-correct gate — XP is credited from the first correct answer. Kept local
+    // (not app.yml) because it's a design invariant, not a tunable.
+    private static final int[] DAILY_XP_BY_CORRECT = {0, 20, 40, 60, 100, 150};
     private static final String CACHE_KEY_PREFIX = "daily_challenge:";
+
+    /**
+     * XP earned for a daily completion given the number of correct answers.
+     * Clamps {@code correctCount} into [0, {@value #DAILY_QUESTION_COUNT}] and
+     * looks up {@link #DAILY_XP_BY_CORRECT}. This is the single source of truth
+     * for daily reward — both the credited XP and the unified displayed score.
+     */
+    public int dailyXp(int correctCount) {
+        int c = Math.max(0, Math.min(DAILY_QUESTION_COUNT, correctCount));
+        return DAILY_XP_BY_CORRECT[c];
+    }
 
     @Autowired
     private QuestionRepository questionRepository;
@@ -147,10 +159,10 @@ public class DailyChallengeService {
      *
      * <p>The cache value written by {@link #markCompleted} carries
      * {@code score / correct / total / completedAt}; this method
-     * augments those with the constants the FE would otherwise have to
-     * hardcode: {@code xpEarned} (the +50 XP that was credited) and
-     * {@code nextResetAt} (UTC midnight tomorrow ISO-8601 string for the
-     * countdown).
+     * augments those with {@code xpEarned} and {@code nextResetAt} (UTC
+     * midnight tomorrow ISO-8601 string for the countdown). Since the
+     * 2026-06-16 rework, {@code score} and {@code xpEarned} are the same
+     * number — the unified daily reward looked up from {@code correctCount}.
      */
     @SuppressWarnings("unchecked")
     public Map<String, Object> getResultData(String userId) {
@@ -164,21 +176,17 @@ public class DailyChallengeService {
         Map<String, Object> response = new LinkedHashMap<>();
         response.put("completed", true);
         response.put("date", dateStr);
-        response.put("score", payload.getOrDefault("score", 0));
         Object correctRaw = payload.getOrDefault("correct", 0);
         int correctCount = correctRaw instanceof Number n ? n.intValue() : 0;
+        // Recompute XP from correctCount (single source of truth) rather than
+        // trusting the cached value — survives Redis JSON-roundtrip type drift
+        // and any stale entry written before the scoring rework. score == xpEarned
+        // (unified to one displayed number per DECISIONS.md 2026-06-16).
+        int xp = dailyXp(correctCount);
+        response.put("score", xp);
         response.put("correctCount", correctCount);
         response.put("totalQuestions", payload.getOrDefault("total", DAILY_QUESTION_COUNT));
-        // Recompute xpEarned từ correctCount thay vì trust cached boolean. Lý do:
-        // (a) Một số entry cache cũ có thể có `xpEarned` deserialize không khớp
-        //     Boolean.TRUE (mismatch type sau Redis JSON roundtrip).
-        // (b) Defensive backstop: nếu cache state lệch (correctCount ≥ threshold
-        //     nhưng xpEarned=false), recompute giải cứu display. Chỉ ảnh hưởng
-        //     display — actual credit logic ở markCompleted vẫn dựa trên live
-        //     correctCount khi POST /complete được gọi lần đầu.
-        boolean xpEarned = correctCount >= DAILY_XP_MIN_CORRECT;
-        response.put("xpEarned", xpEarned ? DAILY_COMPLETION_XP : 0);
-        response.put("xpMinCorrect", DAILY_XP_MIN_CORRECT);
+        response.put("xpEarned", xp);
         response.put("completedAt", payload.get("completedAt"));
         // ISO-8601 instant — FE parses with new Date(...) for the countdown.
         // F-api-13: the reset moment is VN midnight (GameClock flips the day
@@ -198,18 +206,21 @@ public class DailyChallengeService {
      * markCompleted runs at most once per user per day — the XP is credited
      * exactly once in sync with that guarantee.
      *
-     * <p>See DECISIONS.md 2026-04-20 "Daily Challenge as secondary XP path"
-     * for why +50 XP: 20 consecutive Dailies = 1,000 XP = Tier-2 unlock,
-     * giving users who can't hit the 80%/10-answer early-unlock a
-     * retention-driven progression loop.
+     * <p>See DECISIONS.md 2026-06-16 (supersedes 2026-04-20) for the scoring
+     * curve: XP is looked up from {@code correctCount} via {@link #dailyXp}
+     * (0/20/40/60/100/150). The client-supplied {@code score} is ignored —
+     * XP/score are recomputed server-side from {@code correctCount} (bounded
+     * [0,5] by the request DTO) so a tampered client cannot inflate the reward.
      */
     @Transactional
     public void markCompleted(String userId, int score, int correctCount) {
         String dateStr = GameClock.today().toString();
         String key = CACHE_KEY_PREFIX + "completed:" + userId + ":" + dateStr;
-        boolean xpEarned = correctCount >= DAILY_XP_MIN_CORRECT;
+        // Server-side reward — ignore client `score`, derive from correctCount.
+        int xp = dailyXp(correctCount);
+        boolean xpEarned = xp > 0;
         Map<String, Object> result = new java.util.HashMap<>();
-        result.put("score", score);
+        result.put("score", xp); // unified: score == XP earned
         result.put("correct", correctCount);
         result.put("total", DAILY_QUESTION_COUNT);
         result.put("completedAt", System.currentTimeMillis());
@@ -241,7 +252,7 @@ public class DailyChallengeService {
             } else {
                 DailyCompletion completion = new DailyCompletion(
                         UUID.randomUUID().toString(), user, today,
-                        score, correctCount, DAILY_QUESTION_COUNT,
+                        xp, correctCount, DAILY_QUESTION_COUNT,
                         null, LocalDateTime.now(ZoneOffset.UTC));
                 dailyCompletionRepository.save(completion);
             }
@@ -254,10 +265,10 @@ public class DailyChallengeService {
         if (xpEarned && alreadyPersistedToday) {
             log.info("Daily completion: user={} already has today's completion row — XP not re-credited", userId);
         } else if (xpEarned) {
-            creditCompletionXp(user);
+            creditCompletionXp(user, xp);
         } else {
-            log.info("Daily completion: user={} scored {}/{} — below threshold {}, XP not credited",
-                    userId, correctCount, DAILY_QUESTION_COUNT, DAILY_XP_MIN_CORRECT);
+            log.info("Daily completion: user={} scored {}/{} correct — 0 correct, no XP credited",
+                    userId, correctCount, DAILY_QUESTION_COUNT);
         }
 
         // Daily completion extends streak (idempotent: StreakService skips
@@ -279,14 +290,14 @@ public class DailyChallengeService {
     }
 
     /**
-     * Adds {@value #DAILY_COMPLETION_XP} XP to the user's
+     * Adds {@code xp} (from {@link #dailyXp}) to the user's
      * {@link UserDailyProgress} row. Matches the shape of
      * {@code SessionService#creditNonRankedProgress} — same UDP lookup,
      * same "create fresh if absent with 100 energy" initializer — so the
      * two XP paths (Ranked sync-progress, Daily completion) feed one
      * canonical per-day points ledger.
      */
-    private void creditCompletionXp(User user) {
+    private void creditCompletionXp(User user, int xp) {
         LocalDate today = GameClock.today();
         UserDailyProgress udp = userDailyProgressRepository
                 .findByUserIdAndDate(user.getId(), today)
@@ -299,7 +310,7 @@ public class DailyChallengeService {
                     return fresh;
                 });
         int before = Optional.ofNullable(udp.getPointsCounted()).orElse(0);
-        udp.setPointsCounted(before + DAILY_COMPLETION_XP);
+        udp.setPointsCounted(before + xp);
         userDailyProgressRepository.save(udp);
 
         // LBW-4: Daily Challenge XP changes the user's daily / weekly /
@@ -308,7 +319,7 @@ public class DailyChallengeService {
         cacheService.invalidateLeaderboards();
 
         log.info("Daily completion XP: user={} +{} XP (pointsCounted {}→{})",
-                user.getId(), DAILY_COMPLETION_XP, before, before + DAILY_COMPLETION_XP);
+                user.getId(), xp, before, before + xp);
     }
 
     public int getDailyQuestionCount() {

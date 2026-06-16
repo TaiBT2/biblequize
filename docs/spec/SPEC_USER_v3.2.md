@@ -303,10 +303,21 @@ Endpoints:
 | Guest | Được chơi (xem-only mode) |
 | Smart Selection | ❌ (random fair) |
 | Completion tracking | Bảng `daily_completions(user_id, date, score, correct_count, completed_at)` |
+| **XP / điểm** | Theo số câu đúng: `0/20/40/60/100/150` (0→5 đúng). Bỏ ngưỡng — trả từ câu đúng đầu. `score` = `xpEarned` (1 con số hiển thị). |
+
+**Scoring (DECISIONS.md 2026-06-16, supersedes flat +50):**
+
+| Số đúng | 0 | 1 | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|---|---|
+| XP | 0 | 20 | 40 | 60 | **100** | **150** |
+
+- XP cộng vào `user_daily_progress.points_counted` (cùng ledger leaderboard/tier với Ranked). Tính **server-side từ `correctCount`** (`DailyChallengeService.dailyXp`); client `score` bị bỏ qua → không thể khai khống điểm. Verify từng đáp án thật → BACKLOG.
+- Mốc Tier-2 (1,000 XP): ~7-10 ngày liên tục (cũ: 20). Daily vẫn cap 1 lần/ngày → không farm.
 
 **Endpoints:**
 - `GET /api/daily-challenge` — `{ date, questions[5], alreadyCompleted, globalStats }`.
-- `POST /api/daily-challenge/complete` — body `{ score:0-10000, correctCount:0-5 }`. Idempotent same-day.
+- `POST /api/daily-challenge/complete` — body `{ score:0-10000, correctCount:0-5 }`. `score` client gửi bị bỏ qua (server recompute). Idempotent same-day.
+- `GET /api/daily-challenge/result` — `{ score, xpEarned, correctCount, ... }` với `score == xpEarned`.
 
 **Edge cases:**
 - Re-call cùng ngày → `{ alreadyCompleted: true }` không overwrite.

@@ -2,6 +2,23 @@
 
 ---
 
+## 2026-06-16 — Daily Challenge scoring: performance-based 0/20/40/60/100/150 (supersedes flat +50)
+- Quyết định: XP Daily Challenge đổi từ **flat +50 (gate ≥4 đúng)** sang **lookup theo số câu đúng**:
+
+  | Số đúng | 0 | 1 | 2 | 3 | 4 | 5 |
+  |---|---|---|---|---|---|---|
+  | XP | 0 | 20 | 40 | 60 | **100** | **150** |
+
+  Đường cong tăng tốc ở câu 4 (+40) và câu 5 (+50) để thưởng cho perfect run. **Bỏ ngưỡng `DAILY_XP_MIN_CORRECT=4`** — trả XP từ câu đúng đầu tiên.
+- Lý do: +50 flat quá thấp so với Ranked (1 câu hard nhanh = 75đ, 5 câu Ranked ≈ 290đ) → user "lười chơi Daily, thà chơi Ranked". Quan trọng hơn con số là **sự phẳng lì**: 5/5 nhanh cũng chỉ bằng vừa đủ 4/5. Model mới thưởng theo nỗ lực. Daily vẫn cap 1 lần/ngày (không farm được) + chấm đúng/sai server-side nên trả hậu hơn vẫn an toàn về lạm phát điểm.
+- Cân bằng vs Ranked: 5/5 = 150 = 30đ/câu = đúng mức **1 câu easy Ranked** → Daily "bõ công" nhưng vẫn **dưới 1 trận Ranked đầy đủ** (290+). Ranked giữ vị thế sân chính.
+- **Supersedes** quyết định 2026-04-20 ("+50 secondary XP path"). Triết lý "secondary casual path" giữ nguyên; chỉ thay con số. Mốc Tier-2: TB ~100-125 XP/ngày → 1,000 XP trong **~7-10 ngày** (cũ: 20 ngày). Chấp nhận — retention loop nhanh hơn là điểm tốt, không phụ thuộc accuracy như early-unlock.
+- Gộp hiển thị: **bỏ `score = correctCount × 20`** (max 100), chỉ còn **1 con số = XP nhận được** (0/20/40/60/100/150). `DailyCompletion.score` + cache `score` lưu chính giá trị XP để mọi nơi (result / yesterday recap / heatmap) đồng nhất.
+- Integrity: XP tính **server-side từ `correctCount`** (đã `@Max(5)` ở DTO), KHÔNG trust client `score`. Verify từng đáp án thật (chống khai khống `correctCount`) → defer BACKLOG (cần track answer server-side per daily session).
+- Implementation: `DailyChallengeService.dailyXp()` lookup; `markCompleted` + `getResultData` + BE test; FE `DailyChallenge.tsx` (lookup optimistic + 1-số display); mobile `DailyResultScreen` fallback; SPEC_USER §5.3. Task: `docs/todo/active/2026-06-16-daily-challenge-scoring-rework.md`.
+
+---
+
 ## 2026-05-01 — Leaderboard tabs + 4 liturgical seasons (LB-2 Sprint)
 - Quyết định: `/leaderboard` chỉ giữ **3 tabs** (Tuần / Mùa / Tất cả) — bỏ tab "Hôm nay". Thay khái niệm season cũ (1 mùa/năm "Mùa Xuân 2026") bằng **4 mùa Cơ-đốc** mỗi năm theo quarter calendar:
   - Q1 (Jan-Mar): **Mùa Phục Sinh** (Easter)

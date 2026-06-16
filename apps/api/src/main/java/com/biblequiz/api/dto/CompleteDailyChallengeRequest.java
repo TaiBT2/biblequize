@@ -13,11 +13,13 @@ import jakarta.validation.constraints.NotNull;
  * {@link com.biblequiz.modules.daily.service.DailyChallengeService#markCompleted}
  * so subsequent GET /api/daily-challenge calls return {@code alreadyCompleted: true}.
  *
- * <p>Server does not re-validate answers here — the client has already scored
- * locally against the sanitized question payload. This endpoint is purely for
- * completion tracking. Correctness is enforced by the 5-fixed-questions
- * design: everyone sees the same questions, so score/correctCount are
- * bounded by the question set.
+ * <p>Since the 2026-06-16 scoring rework the server recomputes XP/score from
+ * {@code correctCount} via {@code DailyChallengeService.dailyXp} and ignores
+ * the client-supplied {@code score} — so a tampered score cannot inflate the
+ * reward. {@code correctCount} is bounded [0,5] by validation; full per-answer
+ * verification (to stop a forged correctCount) is tracked in BACKLOG.
+ * Server does not re-validate individual answers here — everyone sees the same
+ * 5 fixed questions, so correctCount is naturally bounded by the question set.
  */
 @JsonIgnoreProperties(ignoreUnknown = false)
 public class CompleteDailyChallengeRequest {

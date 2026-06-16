@@ -125,11 +125,11 @@ class DailyChallengeServiceTest {
         assertTrue(dailyChallengeService.hasCompletedToday(userId));
     }
 
-    // ── Daily XP: markCompleted credits exactly +50 XP on fresh UDP ──────────
+    // ── Daily XP: 4/5 correct credits 100 XP on fresh UDP (server-computed) ──
 
     @Order(5)
     @Test
-    void markCompleted_shouldCreditPlus50XpToUserDailyProgress() {
+    void markCompleted_shouldCreditXpByCorrectCountOnFreshUdp() {
         String userId = "user-xp-1";
         User user = new User();
         user.setId(userId);
@@ -138,19 +138,21 @@ class DailyChallengeServiceTest {
         when(userDailyProgressRepository.findByUserIdAndDate(eq(userId), any(LocalDate.class)))
                 .thenReturn(Optional.empty());
 
-        dailyChallengeService.markCompleted(userId, 80, 4);
+        // Client sends a bogus score (9999) — server must IGNORE it and credit
+        // the curve value for 4 correct (= 100), proving server-side recompute.
+        dailyChallengeService.markCompleted(userId, 9999, 4);
 
         ArgumentCaptor<UserDailyProgress> saved = ArgumentCaptor.forClass(UserDailyProgress.class);
         verify(userDailyProgressRepository).save(saved.capture());
-        assertEquals(50, saved.getValue().getPointsCounted(),
-                "Fresh daily completion must credit exactly +50 XP");
+        assertEquals(100, saved.getValue().getPointsCounted(),
+                "4/5 correct must credit 100 XP regardless of client-supplied score");
     }
 
-    // ── Daily XP: existing UDP gets +50 on top of prior points ───────────────
+    // ── Daily XP: 5/5 perfect stacks 150 XP on top of prior points ───────────
 
     @Order(6)
     @Test
-    void markCompleted_shouldAdd50XpToExistingDailyProgress() {
+    void markCompleted_shouldStackPerfectXpOnExistingDailyProgress() {
         String userId = "user-xp-2";
         User user = new User();
         user.setId(userId);
@@ -167,11 +169,47 @@ class DailyChallengeServiceTest {
 
         dailyChallengeService.markCompleted(userId, 100, 5);
 
-        assertEquals(170, existing.getPointsCounted(), "Daily +50 XP stacks on top of existing XP");
+        assertEquals(270, existing.getPointsCounted(), "Perfect 5/5 (+150 XP) stacks on top of existing XP");
         // questionsCounted / livesRemaining unchanged — Daily only touches XP.
         assertEquals(8, existing.getQuestionsCounted());
         assertEquals(95, existing.getLivesRemaining());
         verify(userDailyProgressRepository).save(existing);
+    }
+
+    // ── Daily XP curve: dailyXp lookup matches DECISIONS.md 2026-06-16 ───────
+
+    @Order(16)
+    @Test
+    void dailyXp_shouldFollowCurve_0_20_40_60_100_150() {
+        assertEquals(0, dailyChallengeService.dailyXp(0));
+        assertEquals(20, dailyChallengeService.dailyXp(1));
+        assertEquals(40, dailyChallengeService.dailyXp(2));
+        assertEquals(60, dailyChallengeService.dailyXp(3));
+        assertEquals(100, dailyChallengeService.dailyXp(4));
+        assertEquals(150, dailyChallengeService.dailyXp(5));
+        // Out-of-range clamps (defensive — DTO already bounds [0,5]).
+        assertEquals(0, dailyChallengeService.dailyXp(-3));
+        assertEquals(150, dailyChallengeService.dailyXp(99));
+    }
+
+    // ── Daily XP: 0 correct credits no XP (no UDP write) ─────────────────────
+
+    @Order(17)
+    @Test
+    void markCompleted_shouldNotCreditXpWhenZeroCorrect() {
+        String userId = "user-xp-zero";
+        User user = new User();
+        user.setId(userId);
+
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+
+        dailyChallengeService.markCompleted(userId, 0, 0);
+
+        // 0 correct → xp 0 → creditCompletionXp never runs, so no UDP save.
+        verify(userDailyProgressRepository, never()).save(any());
+        // Completion is still recorded (cache + history) and streak still ticks.
+        verify(cacheService).put(anyString(), any(), any());
+        verify(streakService).recordActivity(user);
     }
 
     // ── Daily XP: unknown user falls through without throwing ────────────────
@@ -309,7 +347,8 @@ class DailyChallengeServiceTest {
         verify(dailyCompletionRepository).save(saved.capture());
         assertEquals(userId, saved.getValue().getUser().getId());
         assertEquals(5, saved.getValue().getCorrectCount());
-        assertEquals(100, saved.getValue().getScore());
+        // score is unified to XP earned (5/5 = 150), not the client-sent value.
+        assertEquals(150, saved.getValue().getScore());
     }
 
     // ── DC-3: idempotent — second call same day skips insert ────────────────
