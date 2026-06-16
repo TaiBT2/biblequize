@@ -40,9 +40,9 @@ const DIFF_LABEL_KEY: Record<string, string> = {
   hard: 'admin.reviewQueue.difficulty.hard',
 }
 const DIFF_COLOR: Record<string, string> = {
-  easy: 'bg-emerald-500/10 text-emerald-400',
-  medium: 'bg-yellow-500/10 text-yellow-400',
-  hard: 'bg-red-500/10 text-red-400',
+  easy: 'bg-bq-emerald/10 text-bq-emerald',
+  medium: 'bg-bq-amber/10 text-bq-amberd',
+  hard: 'bg-bq-ruby/10 text-bq-ruby',
 }
 
 async function fetchPending(): Promise<ReviewItem[]> {
@@ -130,60 +130,60 @@ export default function ReviewQueue() {
     <div data-testid="review-queue-page" className="space-y-6">
       {/* Toast */}
       {toast && (
-        <div className={`fixed top-4 right-4 z-50 px-4 py-3 rounded-xl shadow-lg text-sm font-bold ${
-          toast.type === 'success' ? 'bg-emerald-600 text-white' : 'bg-red-500 text-white'
+        <div className={`fixed top-4 right-4 z-50 px-4 py-3 rounded-xl shadow-bq-soft text-sm font-bold ${
+          toast.type === 'success' ? 'bg-bq-emerald text-white' : 'bg-bq-ruby text-white'
         }`}>{toast.msg}</div>
       )}
 
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-black text-[#e1e1ef]">
+        <h2 className="text-2xl font-black font-display text-bq-ink">
           {t('admin.reviewQueue.title')}
         </h2>
-        <p className="text-[#d5c4af]/60 text-sm mt-0.5">{t('admin.reviewQueue.subtitle', { count: stats?.approvalsRequired ?? 2 })}</p>
+        <p className="text-bq-ink3 text-sm mt-0.5">{t('admin.reviewQueue.subtitle', { count: stats?.approvalsRequired ?? 2 })}</p>
       </div>
 
       {/* Personalized Stats */}
       {stats && (
         <div data-testid="review-queue-stats" className="grid grid-cols-3 gap-4">
-          <div className="bg-[#1d1f29] rounded-lg p-4 border bg-yellow-500/10 border-yellow-500/20">
-            <div data-testid="review-queue-pending-count" className="text-3xl font-black text-yellow-400">{stats.pendingForMe}</div>
-            <div className="text-xs text-yellow-400/80 font-bold uppercase tracking-wider mt-1">{t('admin.reviewQueue.stats.pendingForMe')}</div>
+          <div className="rounded-lg p-4 border bg-bq-amber/10 border-bq-amber/20">
+            <div data-testid="review-queue-pending-count" className="text-3xl font-black text-bq-amberd">{stats.pendingForMe}</div>
+            <div className="text-xs text-bq-amberd/80 font-bold uppercase tracking-wider mt-1">{t('admin.reviewQueue.stats.pendingForMe')}</div>
           </div>
-          <div className="bg-[#1d1f29] rounded-lg p-4 border bg-blue-500/10 border-blue-500/20">
-            <div className="text-3xl font-black text-blue-400">{stats.totalPending}</div>
-            <div className="text-xs text-blue-400/80 font-bold uppercase tracking-wider mt-1">{t('admin.reviewQueue.stats.totalPending')}</div>
+          <div className="rounded-lg p-4 border bg-bq-sapphire/10 border-bq-sapphire/20">
+            <div className="text-3xl font-black text-bq-sapphire">{stats.totalPending}</div>
+            <div className="text-xs text-bq-sapphire/80 font-bold uppercase tracking-wider mt-1">{t('admin.reviewQueue.stats.totalPending')}</div>
             {stats.totalPending > stats.pendingForMe && (
-              <div className="text-xs text-blue-400/50 mt-1">{t('admin.reviewQueue.stats.processedHint', { count: stats.totalPending - stats.pendingForMe })}</div>
+              <div className="text-xs text-bq-sapphire/50 mt-1">{t('admin.reviewQueue.stats.processedHint', { count: stats.totalPending - stats.pendingForMe })}</div>
             )}
           </div>
-          <div className="bg-[#1d1f29] rounded-lg p-4 border bg-emerald-500/10 border-emerald-500/20">
-            <div className="text-3xl font-black text-emerald-400">{stats.myActionsToday}</div>
-            <div className="text-xs text-emerald-400/80 font-bold uppercase tracking-wider mt-1">{t('admin.reviewQueue.stats.actionsToday')}</div>
+          <div className="rounded-lg p-4 border bg-bq-emerald/10 border-bq-emerald/20">
+            <div className="text-3xl font-black text-bq-emerald">{stats.myActionsToday}</div>
+            <div className="text-xs text-bq-emerald/80 font-bold uppercase tracking-wider mt-1">{t('admin.reviewQueue.stats.actionsToday')}</div>
           </div>
         </div>
       )}
 
       {/* List */}
       {itemsLoading ? (
-        <div className="bg-[#1d1f29] rounded-lg border border-[#504535]/10 p-12 text-center text-[#d5c4af]/60">{t('admin.reviewQueue.loading')}</div>
+        <div className="bg-bq-white rounded-lg border border-bq-hair shadow-bq-soft p-12 text-center text-bq-ink3">{t('admin.reviewQueue.loading')}</div>
       ) : items.length === 0 ? (
-        <div className="bg-gradient-to-br from-emerald-500/10 to-blue-500/10 border border-emerald-500/30 rounded-2xl p-12 text-center">
+        <div className="bg-gradient-to-br from-bq-emerald/10 to-bq-sapphire/10 border border-bq-emerald/30 rounded-2xl p-12 text-center">
           <span className="text-6xl mb-4 block">🎉</span>
-          <h3 className="text-2xl font-bold text-[#e1e1ef] mb-2">{t('admin.reviewQueue.emptyTitle')}</h3>
-          <p className="text-[#d5c4af]/60">{t('admin.reviewQueue.emptyLine1')}</p>
-          <p className="text-[#d5c4af]/40 text-sm mt-4">{t('admin.reviewQueue.emptyLine2')}</p>
+          <h3 className="text-2xl font-bold font-display text-bq-ink mb-2">{t('admin.reviewQueue.emptyTitle')}</h3>
+          <p className="text-bq-ink2">{t('admin.reviewQueue.emptyLine1')}</p>
+          <p className="text-bq-ink3 text-sm mt-4">{t('admin.reviewQueue.emptyLine2')}</p>
         </div>
       ) : (
         <div className="space-y-4">
           {items.map(q => (
-            <div data-testid="review-queue-item" key={q.id} className="bg-[#1d1f29] rounded-lg p-5 border border-[#504535]/20">
+            <div data-testid="review-queue-item" key={q.id} className="bg-bq-white rounded-lg p-5 border border-bq-hair shadow-bq-soft">
               {/* Header row */}
               <div className="flex items-center gap-2 mb-3 flex-wrap">
-                <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${DIFF_COLOR[q.difficulty] ?? 'bg-white/5'}`}>
+                <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${DIFF_COLOR[q.difficulty] ?? 'bg-bq-inset'}`}>
                   {DIFF_LABEL_KEY[q.difficulty] ? t(DIFF_LABEL_KEY[q.difficulty]) : q.difficulty}
                 </span>
-                <span className="text-xs text-[#d5c4af]/60 font-medium">
+                <span className="text-xs text-bq-ink3 font-medium">
                   {q.book} {q.chapter}:{q.verseStart}–{q.verseEnd}
                 </span>
                 {/* Approval progress */}
@@ -191,26 +191,26 @@ export default function ReviewQueue() {
                   {Array.from({ length: q.approvalsRequired }).map((_, i) => (
                     <span key={i} className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${
                       i < q.approvalsCount
-                        ? 'bg-emerald-500 text-white'
-                        : 'bg-[#504535]/30 text-[#d5c4af]/50'
+                        ? 'bg-bq-emerald text-white'
+                        : 'bg-bq-inset text-bq-ink3'
                     }`}>✓</span>
                   ))}
-                  <span className="text-xs text-[#d5c4af]/60 font-medium ml-1">
+                  <span className="text-xs text-bq-ink3 font-medium ml-1">
                     {t('admin.reviewQueue.approvalsCount', { current: q.approvalsCount, total: q.approvalsRequired })}
                   </span>
                 </span>
               </div>
 
               {/* Question content */}
-              <p className="font-bold text-[#e8a832] mb-3 leading-snug">{q.content}</p>
+              <p className="font-bold text-bq-amberd mb-3 leading-snug">{q.content}</p>
 
               {/* Options */}
               <div className="grid grid-cols-2 gap-1.5 mb-3">
                 {q.options.map((opt, i) => (
                   <div key={i} className={`text-sm px-3 py-1.5 rounded-lg ${
                     (q.correctAnswer ?? []).includes(i)
-                      ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold'
-                      : 'bg-white/5 text-[#d5c4af]'
+                      ? 'bg-bq-emerald/10 border border-bq-emerald/20 text-bq-emerald font-bold'
+                      : 'bg-bq-inset text-bq-ink2'
                   }`}>
                     <span className="font-black mr-1">{String.fromCharCode(65 + i)}.</span> {opt}
                   </div>
@@ -219,11 +219,11 @@ export default function ReviewQueue() {
 
               {/* Explanation toggle */}
               <button onClick={() => setExpandedId(expandedId === q.id ? null : q.id)}
-                className="text-xs text-[#4bbf9f] font-bold mb-3">
+                className="text-xs text-bq-emerald font-bold mb-3">
                 {expandedId === q.id ? t('admin.reviewQueue.hideExplanation') : t('admin.reviewQueue.showExplanation')}
               </button>
               {expandedId === q.id && q.explanation && (
-                <p className="text-xs text-[#d5c4af] italic bg-white/5 px-3 py-2 rounded-lg mb-3">{q.explanation}</p>
+                <p className="text-xs text-bq-ink2 italic bg-bq-inset px-3 py-2 rounded-lg mb-3">{q.explanation}</p>
               )}
 
               {/* Reviewer badges */}
@@ -232,8 +232,8 @@ export default function ReviewQueue() {
                   {q.reviews.map((r, i) => (
                     <span key={i} className={`text-xs px-2 py-0.5 rounded-full font-bold ${
                       r.action === 'APPROVE'
-                        ? 'bg-emerald-500/10 text-emerald-400'
-                        : 'bg-red-500/10 text-red-400'
+                        ? 'bg-bq-emerald/10 text-bq-emerald'
+                        : 'bg-bq-ruby/10 text-bq-ruby'
                     }`}>
                       {r.action === 'APPROVE' ? '✓' : '✗'} {r.adminEmail}
                     </span>
@@ -250,15 +250,15 @@ export default function ReviewQueue() {
                     value={rejectComment}
                     onChange={e => setRejectComment(e.target.value)}
                     placeholder={t('admin.reviewQueue.rejectPlaceholder')}
-                    className="w-full bg-[#191b25] border-none rounded text-sm text-[#e1e1ef] p-3 focus:ring-1 focus:ring-[#e8a832] resize-none mb-2"
+                    className="w-full bg-bq-inset border border-bq-hair rounded text-sm text-bq-ink placeholder:text-bq-ink3 p-3 focus:ring-1 focus:ring-bq-sapphire resize-none mb-2"
                   />
                   <div className="flex gap-2">
                     <button data-testid="review-reject-confirm-btn" onClick={() => rejectMutation.mutate({ id: q.id, comment: rejectComment })} disabled={actioningId === q.id}
-                      className="px-4 py-1.5 bg-red-500 text-white text-xs font-bold rounded-lg hover:bg-red-600 disabled:opacity-50">
+                      className="px-4 py-1.5 bg-bq-ruby text-white text-xs font-bold rounded-lg hover:brightness-110 disabled:opacity-50">
                       {t('admin.reviewQueue.rejectConfirmButton')}
                     </button>
                     <button onClick={() => { setRejectingId(null); setRejectComment('') }}
-                      className="px-4 py-1.5 bg-[#32343e] text-[#d5c4af] text-xs font-bold rounded-lg">
+                      className="px-4 py-1.5 bg-bq-inset border border-bq-hair text-bq-ink2 text-xs font-bold rounded-lg">
                       {t('admin.reviewQueue.rejectCancelButton')}
                     </button>
                   </div>
@@ -270,12 +270,12 @@ export default function ReviewQueue() {
                 <div className="flex gap-2">
                   <span data-testid="review-queue-approve-btn" className="inline-flex">
                     <button data-testid="review-approve-btn" onClick={() => approveMutation.mutate(q.id)} disabled={actioningId === q.id}
-                      className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl transition-colors disabled:opacity-50">
+                      className="px-5 py-2 bg-bq-emerald hover:brightness-110 text-white text-sm font-bold rounded-xl transition-colors disabled:opacity-50">
                       {actioningId === q.id ? t('admin.reviewQueue.approving') : t('admin.reviewQueue.approveButton')}
                     </button>
                   </span>
                   <button data-testid="review-reject-btn" onClick={() => setRejectingId(q.id)} disabled={actioningId === q.id}
-                    className="px-5 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 text-sm font-bold rounded-xl transition-colors disabled:opacity-50">
+                    className="px-5 py-2 bg-bq-ruby/10 hover:bg-bq-ruby/20 text-bq-ruby text-sm font-bold rounded-xl transition-colors disabled:opacity-50">
                     {t('admin.reviewQueue.rejectButton')}
                   </button>
                 </div>
@@ -287,23 +287,23 @@ export default function ReviewQueue() {
 
       {/* My Review History */}
       <div className="mt-12">
-        <button onClick={() => setShowHistory(!showHistory)} className="text-lg font-semibold text-[#e1e1ef] flex items-center gap-2 mb-4">
-          <span className="material-symbols-outlined text-secondary">history</span>
+        <button onClick={() => setShowHistory(!showHistory)} className="text-lg font-semibold text-bq-ink flex items-center gap-2 mb-4">
+          <span className="material-symbols-outlined text-bq-amberd">history</span>
           {t('admin.reviewQueue.historyTitle')}
-          <span className="text-xs text-[#d5c4af]/50 ml-2">({history.length})</span>
+          <span className="text-xs text-bq-ink3 ml-2">({history.length})</span>
         </button>
         {showHistory && (
           <div className="space-y-2">
             {history.length === 0 ? (
-              <p className="text-[#d5c4af]/40 text-center py-8">{t('admin.reviewQueue.historyEmpty')}</p>
+              <p className="text-bq-ink3 text-center py-8">{t('admin.reviewQueue.historyEmpty')}</p>
             ) : history.map(item => (
-              <div key={item.id} className="bg-[#1d1f29] rounded-lg p-4 flex items-center justify-between border border-[#504535]/10">
+              <div key={item.id} className="bg-bq-white rounded-lg p-4 flex items-center justify-between border border-bq-hair shadow-bq-soft">
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm text-[#e1e1ef]/80 truncate">{item.questionContent ?? item.questionId}</p>
-                  <p className="text-xs text-[#d5c4af]/50 mt-1">{item.questionBook} · {new Date(item.createdAt).toLocaleString()}</p>
+                  <p className="text-sm text-bq-ink truncate">{item.questionContent ?? item.questionId}</p>
+                  <p className="text-xs text-bq-ink3 mt-1">{item.questionBook} · {new Date(item.createdAt).toLocaleString()}</p>
                 </div>
                 <span className={`px-3 py-1 rounded-full text-xs font-bold ml-3 ${
-                  item.action === 'APPROVE' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'
+                  item.action === 'APPROVE' ? 'bg-bq-emerald/20 text-bq-emerald' : 'bg-bq-ruby/20 text-bq-ruby'
                 }`}>
                   {item.action === 'APPROVE' ? t('admin.reviewQueue.historyApproved') : t('admin.reviewQueue.historyRejected')}
                 </span>

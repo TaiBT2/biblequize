@@ -50,45 +50,45 @@ export default function TestPanel() {
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-6">
       {/* Warning banner */}
-      <div className="bg-secondary/10 border border-secondary/30 rounded-xl p-4">
-        <h1 className="text-xl font-bold text-secondary flex items-center gap-2">
+      <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4">
+        <h1 className="text-xl font-display font-bold text-bq-amberd flex items-center gap-2">
           <span className="material-symbols-outlined">science</span>
           Test Panel — DEV ONLY
         </h1>
-        <p className="text-sm text-on-surface-variant mt-1">
+        <p className="text-sm text-bq-ink2 mt-1">
           Panel này chỉ enable trong dev/staging. Production sẽ không có.
         </p>
       </div>
 
       {/* User selector */}
-      <div className="glass-card flex items-center gap-3">
-        <label className="text-sm text-on-surface-variant font-medium">User ID:</label>
+      <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl p-5 flex items-center gap-3">
+        <label className="text-sm text-bq-ink2 font-medium">User ID:</label>
         <input
           type="text"
           value={userId}
           onChange={e => setUserId(e.target.value)}
           placeholder="Paste user UUID"
-          className="flex-1 bg-surface-container-high px-3 py-2 rounded-lg text-on-surface text-sm border border-outline-variant/20 focus:border-secondary outline-none"
+          className="flex-1 bg-bq-white border border-bq-hair px-3 py-2 rounded-lg text-bq-ink text-sm placeholder:text-bq-ink3 focus:ring-1 focus:ring-bq-sapphire outline-none"
         />
       </div>
 
       {/* Status */}
       {status && (
-        <div className="bg-surface-container-high rounded-lg px-4 py-2 text-xs text-on-surface-variant font-mono break-all">
+        <div className="bg-bq-inset rounded-lg px-4 py-2 text-xs text-bq-ink2 font-mono break-all">
           {status}
         </div>
       )}
 
       {/* Section 1: Tier */}
-      <section className="glass-card space-y-4">
-        <h2 className="text-lg font-bold text-on-surface flex items-center gap-2">
-          <span className="material-symbols-outlined text-secondary">emoji_events</span>
+      <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl p-5 space-y-4">
+        <h2 className="text-lg font-bold text-bq-ink flex items-center gap-2">
+          <span className="material-symbols-outlined text-bq-amberd">emoji_events</span>
           Test Tier Progression
         </h2>
         <div className="grid grid-cols-3 gap-3">
           {[1, 2, 3, 4, 5, 6].map(tier => (
             <button key={tier} onClick={() => run(`Set Tier ${tier}`, () => testApi.setTier(userId, tier))}
-              className={`${btnClass} bg-secondary/10 text-secondary border border-secondary/20 hover:bg-secondary/20`}>
+              className={`${btnClass} bg-amber-500/10 text-bq-amberd border border-amber-500/20 hover:bg-amber-500/20`}>
               Tier {tier}
             </button>
           ))}
@@ -96,18 +96,18 @@ export default function TestPanel() {
       </section>
 
       {/* Section 2: Smart Selection */}
-      <section className="glass-card space-y-4">
-        <h2 className="text-lg font-bold text-on-surface flex items-center gap-2">
-          <span className="material-symbols-outlined text-primary">psychology</span>
+      <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl p-5 space-y-4">
+        <h2 className="text-lg font-bold text-bq-ink flex items-center gap-2">
+          <span className="material-symbols-outlined text-bq-sapphire">psychology</span>
           Test Smart Question Selection
         </h2>
         <div className="grid grid-cols-2 gap-3">
           <button onClick={() => run('Reset History', () => testApi.resetHistory(userId))}
-            className={`${btnClass} bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20`}>
+            className={`${btnClass} bg-sapphire/10 text-bq-sapphire border border-sapphire/20 hover:bg-sapphire/20`}>
             Reset History
           </button>
           <button onClick={() => run('Mock 50% seen', () => testApi.mockHistory(userId, 50, 20))}
-            className={`${btnClass} bg-tertiary/10 text-tertiary border border-tertiary/20 hover:bg-tertiary/20`}>
+            className={`${btnClass} bg-emerald-500/10 text-emerald-700 border border-emerald-500/20 hover:bg-emerald-500/20`}>
             Mock 50% seen, 20% wrong
           </button>
         </div>
@@ -122,33 +122,33 @@ export default function TestPanel() {
               setStatus(`❌ Preview failed: ${e.message}`)
             }
           }}
-          className={`${btnClass} w-full bg-surface-container-highest text-on-surface border border-outline-variant/20 hover:bg-outline-variant/20`}>
+          className={`${btnClass} w-full bg-bq-inset text-bq-ink border border-bq-hair hover:bg-bq-hair/40`}>
           Preview 10 Questions
         </button>
 
         {preview && (
-          <div className="bg-surface-container-lowest rounded-lg p-4 space-y-3 text-sm">
+          <div className="bg-bq-inset rounded-lg p-4 space-y-3 text-sm">
             <div className="flex gap-4">
-              <span className="text-on-surface-variant">Pool:</span>
-              <span className="text-green-400">NEW {preview.poolBreakdown.NEW ?? 0}</span>
-              <span className="text-secondary">REVIEW {preview.poolBreakdown.REVIEW ?? 0}</span>
-              <span className="text-on-surface-variant">OLD {preview.poolBreakdown.OLD ?? 0}</span>
+              <span className="text-bq-ink2">Pool:</span>
+              <span className="text-emerald-700">NEW {preview.poolBreakdown.NEW ?? 0}</span>
+              <span className="text-bq-amberd">REVIEW {preview.poolBreakdown.REVIEW ?? 0}</span>
+              <span className="text-bq-ink2">OLD {preview.poolBreakdown.OLD ?? 0}</span>
             </div>
             <div className="flex gap-4">
-              <span className="text-on-surface-variant">Difficulty:</span>
-              <span className="text-green-400">easy {preview.difficultyBreakdown.easy ?? 0}</span>
-              <span className="text-secondary">medium {preview.difficultyBreakdown.medium ?? 0}</span>
-              <span className="text-error">hard {preview.difficultyBreakdown.hard ?? 0}</span>
+              <span className="text-bq-ink2">Difficulty:</span>
+              <span className="text-emerald-700">easy {preview.difficultyBreakdown.easy ?? 0}</span>
+              <span className="text-bq-amberd">medium {preview.difficultyBreakdown.medium ?? 0}</span>
+              <span className="text-bq-ruby">hard {preview.difficultyBreakdown.hard ?? 0}</span>
             </div>
-            <ul className="text-xs text-on-surface-variant space-y-1 max-h-40 overflow-y-auto">
+            <ul className="text-xs text-bq-ink2 space-y-1 max-h-40 overflow-y-auto">
               {preview.questions.map(q => (
                 <li key={q.id} className="flex gap-2">
-                  <span className={q.difficulty === 'hard' ? 'text-error' : q.difficulty === 'medium' ? 'text-secondary' : 'text-green-400'}>
+                  <span className={q.difficulty === 'hard' ? 'text-bq-ruby' : q.difficulty === 'medium' ? 'text-bq-amberd' : 'text-emerald-700'}>
                     [{q.difficulty}]
                   </span>
                   <span>{q.book}</span>
-                  <span className="text-on-surface-variant/60 truncate">{q.content}</span>
-                  {q.previouslySeen && <span className="text-secondary">(seen)</span>}
+                  <span className="text-bq-ink3 truncate">{q.content}</span>
+                  {q.previouslySeen && <span className="text-bq-amberd">(seen)</span>}
                 </li>
               ))}
             </ul>
@@ -157,26 +157,26 @@ export default function TestPanel() {
       </section>
 
       {/* Section 3: Utilities */}
-      <section className="glass-card space-y-4">
-        <h2 className="text-lg font-bold text-on-surface flex items-center gap-2">
-          <span className="material-symbols-outlined text-tertiary">build</span>
+      <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl p-5 space-y-4">
+        <h2 className="text-lg font-bold text-bq-ink flex items-center gap-2">
+          <span className="material-symbols-outlined text-emerald-700">build</span>
           Utilities
         </h2>
         <div className="grid grid-cols-2 gap-3">
           <button onClick={() => run('Refill Energy', () => testApi.refillEnergy(userId))}
-            className={`${btnClass} bg-secondary/10 text-secondary border border-secondary/20`}>
+            className={`${btnClass} bg-amber-500/10 text-bq-amberd border border-amber-500/20`}>
             Refill Energy
           </button>
           <button onClick={() => run('Set Streak 30', () => testApi.setStreak(userId, 30))}
-            className={`${btnClass} bg-tertiary/10 text-tertiary border border-tertiary/20`}>
+            className={`${btnClass} bg-emerald-500/10 text-emerald-700 border border-emerald-500/20`}>
             Set Streak 30
           </button>
           <button onClick={() => run('Set Streak 100', () => testApi.setStreak(userId, 100))}
-            className={`${btnClass} bg-tertiary/10 text-tertiary border border-tertiary/20`}>
+            className={`${btnClass} bg-emerald-500/10 text-emerald-700 border border-emerald-500/20`}>
             Set Streak 100
           </button>
           <button onClick={() => run('Full Reset', () => testApi.fullReset(userId))}
-            className={`${btnClass} bg-error/10 text-error border border-error/20`}>
+            className={`${btnClass} bg-bq-ruby/10 text-bq-ruby border border-bq-ruby/20`}>
             Full Reset
           </button>
         </div>
