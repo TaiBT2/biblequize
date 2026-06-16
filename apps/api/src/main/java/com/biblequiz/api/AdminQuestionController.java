@@ -6,6 +6,7 @@ import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.service.BasicQuizService;
 import com.biblequiz.modules.quiz.service.DuplicateDetectionService;
 import com.biblequiz.modules.quiz.service.DuplicateDetectionService.*;
+import com.biblequiz.modules.quiz.service.QuestionQualityChecker;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -356,6 +357,18 @@ public class AdminQuestionController {
                     }
                 }
                 seenContents.add(contentKey);
+
+                // IMP-7 (QQA-2): length-bias warning — correct answer noticeably
+                // longer than its distractors is guessable without knowledge.
+                if (qType == Question.Type.multiple_choice_single
+                        || qType == Question.Type.multiple_choice_multi) {
+                    var lb = QuestionQualityChecker.lengthBias(q.getOptions(), q.getCorrectAnswer());
+                    if (lb.biased()) {
+                        warnings.add(Map.of("index", idx, "warning", label
+                                + ": đáp án đúng dài hơn distractor ~" + lb.ratio()
+                                + "× (dễ đoán — nên cân bằng độ dài 4 lựa chọn)"));
+                    }
+                }
             }
 
             Map<String, Object> response = new LinkedHashMap<>();

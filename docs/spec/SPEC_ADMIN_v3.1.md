@@ -207,6 +207,7 @@ Tạo / sửa / xoá / import câu hỏi với guardrails: duplicate detection 3
   - IMP-3: language default `vi` nếu rỗng.
   - IMP-4: normalize tên sách Việt → English canonical (bảng map 66 sách `AdminQuestionController.java:617-656`).
   - IMP-5: 3-layer dedup vs DB (qua `DuplicateDetectionService`) + dedup trong batch (`seenContents` HashSet).
+  - IMP-7 (QQA-2): length-bias warning — nếu đáp án đúng là dài nhất VÀ ≥1.5× độ dài trung bình distractor → warning "dễ đoán" (non-block). Dùng `QuestionQualityChecker.lengthBias`.
 - **dryRun=true** → return `{ dryRun, willImport, errors, warnings, duplicates }` không lưu.
 - **dryRun=false** → lưu batch 100, status `PENDING / isActive=false / approvalsCount=0` → vào Review Queue.
 
