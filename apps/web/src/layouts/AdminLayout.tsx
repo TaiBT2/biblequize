@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '../store/authStore'
+import { setQuizLanguage } from '../utils/quizLanguage'
 
 // Nav trimmed to core + Tier B (ADM-1, DECISIONS 2026-06-16). Hidden Tier C pages
 // (rankings, events, notifications, config, export, question-quality, early-unlock)
@@ -33,10 +34,12 @@ const PAGE_TITLES: Record<string, string> = {
 }
 
 export default function AdminLayout() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { user, logout } = useAuthStore()
   const location = useLocation()
   const pageTitle = PAGE_TITLES[location.pathname] || 'Admin'
+  const lang = i18n.language === 'en' ? 'en' : 'vi'
+  const switchLang = (l: 'vi' | 'en') => { setQuizLanguage(l); i18n.changeLanguage(l) }
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `flex items-center gap-3 px-3 py-2 text-sm transition-colors duration-200 ${
@@ -73,6 +76,18 @@ export default function AdminLayout() {
             <span className="material-symbols-outlined text-xl">arrow_back</span>
             {t('admin.backToApp')}
           </Link>
+          {/* UI language toggle — admin had no own switcher; mirrors the main app */}
+          <div className="flex items-center gap-1 px-3" data-testid="admin-lang-toggle">
+            <span className="material-symbols-outlined text-base text-[#d5c4af]/50 mr-1">translate</span>
+            {(['vi', 'en'] as const).map(l => (
+              <button key={l} data-testid={`admin-lang-${l}`} onClick={() => switchLang(l)}
+                className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase transition-colors ${
+                  lang === l ? 'bg-[#e8a832] text-[#281900]' : 'text-[#d5c4af]/50 hover:text-[#e8a832]'
+                }`}>
+                {l}
+              </button>
+            ))}
+          </div>
           <div className="flex items-center gap-3 px-3 py-3 bg-[#1d1f29] rounded-lg">
             <div className="w-9 h-9 rounded-full bg-[#e8a832]/20 flex items-center justify-center text-[#e8a832] text-sm font-bold">
               {user?.name?.charAt(0)?.toUpperCase() || 'A'}

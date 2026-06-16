@@ -59,6 +59,13 @@ describe('AdminLayout', () => {
     expect(screen.getByText('ADMIN')).toBeInTheDocument()
   })
 
+  it('renders the UI language toggle (VI/EN)', () => {
+    renderLayout()
+    expect(screen.getByTestId('admin-lang-toggle')).toBeInTheDocument()
+    expect(screen.getByTestId('admin-lang-vi')).toBeInTheDocument()
+    expect(screen.getByTestId('admin-lang-en')).toBeInTheDocument()
+  })
+
   it('renders logout button', () => {
     renderLayout()
     expect(screen.getByText('logout')).toBeInTheDocument()
