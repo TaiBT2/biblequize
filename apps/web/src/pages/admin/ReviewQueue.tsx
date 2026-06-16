@@ -140,7 +140,7 @@ export default function ReviewQueue() {
         <h2 className="text-2xl font-black text-[#e1e1ef]">
           {t('admin.reviewQueue.title')}
         </h2>
-        <p className="text-[#d5c4af]/60 text-sm mt-0.5">{t('admin.reviewQueue.subtitle', { count: stats?.approvalsRequired ?? 2 })}</p>
+        <p className="text-[#d5c4af]/60 text-sm mt-0.5">{t('admin.reviewQueue.subtitle', { count: stats?.approvalsRequired ?? 1 })}</p>
       </div>
 
       {/* Personalized Stats */}

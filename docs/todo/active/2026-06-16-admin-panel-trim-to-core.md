@@ -29,12 +29,12 @@ Lý do "C ẩn": `Configuration`+`ExportCenter` = placeholder 0 API; `QuestionQu
   - **Spec strategy**: [x] (a) update SPEC_ADMIN §3 inline + DECISIONS 2026-06-16 (đảo hướng AD-1..6)
   - Checklist: [x] impl · [x] Tầng 1 (Dashboard 7/7) · [x] Tầng 3 FE (129 files/1285 tests pass) · [x] BE compile (JDK17) — no BE test refs các field bỏ · [x] spec+DECISIONS · [ ] commit
 
-- **ADM-3 Review Queue: hạ 2-approval → 1-approval (gỡ blocker team nhỏ)**
-  - Status: [ ] TODO · Files: `apps/api/.../QuestionReviewController.java` (`APPROVALS_REQUIRED`) + `apps/web/src/pages/admin/ReviewQueue.tsx` (label "x/2" → "x/1") · Test: `QuestionReviewControllerTest` + `ReviewQueue.test.tsx`
-  - ⚠️ Hiện cần 2 admin KHÁC NHAU phê duyệt → team 1 admin không bao giờ active được câu → mọi câu import/AI kẹt PENDING. Hạ `APPROVALS_REQUIRED=1` (hoặc cờ config). Verify `AdminQuestionController.create(pending=false)` vẫn active=2 nhất quán.
-  - **Spec impact**: [ ] SPEC_ADMIN §review (số phê duyệt là business rule)
-  - **Spec strategy**: [ ] (a) update SPEC_ADMIN inline (đổi 2→1) — cần user confirm qua DECISIONS nếu spec lock
-  - Checklist: impl · Tầng 1+2+3 · spec update · `audit.sh` · commit
+- **ADM-3 Review Queue: hạ 2-approval → 1-approval (gỡ blocker team nhỏ)** ✅
+  - Status: [x] DONE (2026-06-16) · Files: `QuestionReviewController.java` (`APPROVALS_REQUIRED=1`), `ReviewQueue.tsx` (fallback `?? 1`), `QuestionReviewControllerTest.java` (3 case) · FE label "x/N" tự cập nhật vì đọc `approvalsRequired` từ BE
+  - ⚠️ Trước cần 2 admin KHÁC NHAU → team 1 admin kẹt PENDING vĩnh viễn. Giờ phê duyệt đầu tiên active luôn.
+  - **Spec impact**: [x] SPEC_ADMIN §8 (updated inline)
+  - **Spec strategy**: [x] (a) update SPEC_ADMIN §8 + DECISIONS 2026-06-16
+  - Checklist: [x] impl · [x] Tầng 1 (BE 9/9 · FE ReviewQueue 6/6) · [x] Tầng 3 FE · [x] spec+DECISIONS · [ ] commit
 
 - **ADM-4 Hoàn thiện Ban: enforce ở REST (F-api-17)**
   - Status: [ ] TODO · Files: `apps/api/.../CustomUserDetailsService.java` (set `disabled`/`accountNonLocked` theo `User.isBanned`) hoặc filter; verify `JwtAuthenticationFilter` · Test: BE security test (banned user → 401/403 REST)

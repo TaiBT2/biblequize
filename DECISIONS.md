@@ -589,3 +589,9 @@
 - Liên quan task ADM (`docs/todo/active/2026-06-16-admin-panel-trim-to-core.md`): ADM-1 ẩn 7 trang Tier C khỏi nav, ADM-3 review 1-approval, ADM-4 enforce ban REST, ADM-5 xoá trang placeholder.
 - Nếu sau cần lại: wire `FeedbackRepository`/`audit_events` (F-api-16) rồi mới un-hide — KHÔNG ship panel rỗng.
 - KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-06-16 — Review Queue: 2 phê duyệt → 1 (ADM-3)
+- Quyết định: `QuestionReviewController.APPROVALS_REQUIRED` hạ từ 2 → 1. Một câu PENDING active ngay khi có 1 admin Approve (trước cần 2 admin KHÁC NHAU).
+- Lý do: Luật 2-of-N yêu cầu 2 reviewer riêng biệt (không được tự duyệt câu mình review). Team hiện ~1 admin → ngưỡng 2 không bao giờ đạt → mọi câu import/AI-generated kẹt PENDING vĩnh viễn, không bao giờ vào pool. Đây là blocker "dở dang" lớn nhất của admin panel.
+- Trade-off: Mất dual-control chống sai sót nội dung. Chấp nhận được ở quy mô hiện tại; nâng lại constant khi pool reviewer ≥2 người active. FE đọc `approvalsRequired` từ BE nên label "x/N" tự cập nhật.
+- SPEC_ADMIN §8 updated. KHÔNG thay đổi khi refactor trừ khi có lý do mới

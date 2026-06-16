@@ -326,7 +326,9 @@ Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/ve
 > Migrations V8/V9 (`question_reviews` table).
 
 ### 8.1 Mục đích
-2 admin (hoặc CONTENT_MOD) phải Approve một câu PENDING trước khi nó vào pool active. Admin từ chối → REJECTED.
+1 admin (hoặc CONTENT_MOD) Approve một câu PENDING là đủ để vào pool active. Admin từ chối → REJECTED.
+
+> **ADM-3 (DECISIONS 2026-06-16):** hạ từ 2 → 1 phê duyệt. Dual-control (2 admin khác nhau) là bất khả thi với team 1 admin → mọi câu import/AI kẹt PENDING vĩnh viễn. Nâng lại khi pool reviewer đủ lớn.
 
 ### 8.2 Endpoints
 | Method | Endpoint | Mô tả | Source |
@@ -338,9 +340,9 @@ Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/ve
 | GET | `/api/admin/review/my-history` | Lịch sử review của admin hiện tại | `QuestionReviewController.java:195` |
 
 ### 8.3 Quy tắc
-- `APPROVALS_REQUIRED = 2` (constant `QuestionReviewController.java:29`).
+- `APPROVALS_REQUIRED = 1` (constant `QuestionReviewController.java`; ADM-3 hạ từ 2).
 - Admin không được approve câu mình đã review (check `existsByQuestionIdAndAdminId`).
-- Approve → `approvalsCount++`; nếu `≥ 2` → `reviewStatus=ACTIVE, isActive=true`.
+- Approve → `approvalsCount++`; nếu `≥ 1` → `reviewStatus=ACTIVE, isActive=true` (tức ngay phê duyệt đầu tiên).
 - Reject → 1 lần duy nhất → `reviewStatus=REJECTED, isActive=false`.
 - Stats: `pendingForMe, totalPending, active, rejected, myActionsToday, approvalsRequired`.
 
