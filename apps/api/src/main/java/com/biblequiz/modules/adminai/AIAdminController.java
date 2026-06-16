@@ -198,12 +198,12 @@ public class AIAdminController {
                   + "Giữ NGUYÊN nội dung câu hỏi: \"" + req.content() + "\"\n"
                   + "Giữ NGUYÊN Ý NGHĨA đáp án đúng: \"" + correctText + "\" (có thể viết lại cho cân bằng độ dài).\n"
                   + "4 đáp án hiện tại: " + req.options() + "\n"
-                  + "Hãy viết lại 4 đáp án theo đúng các quy tắc chất lượng ở trên (cân bằng độ dài, distractor hợp lý, đảo vị trí)."
+                  + "Hãy viết lại 4 đáp án theo ĐÚNG 7 quy tắc Haladyna/NBME ở trên: đồng nhất độ dài/giọng văn, mỗi distractor một kiểu sai khác nhau, ít nhất 1 đáp án \"gần đúng\" (sai 1 chi tiết), tránh tuyệt đối hóa lộ liễu, đảo vị trí đáp án đúng."
                 : "THIS IS IMPROVING AN EXISTING QUESTION — do NOT invent a different one.\n"
                   + "Keep the question content: \"" + req.content() + "\"\n"
                   + "Keep the MEANING of the correct answer: \"" + correctText + "\" (may reword for balanced length).\n"
                   + "Current 4 options: " + req.options() + "\n"
-                  + "Rewrite the 4 options following the quality rules above (balanced length, plausible distractors, shuffled position).");
+                  + "Rewrite the 4 options following ALL 7 Haladyna/NBME rules above: homogeneous length/tone, each distractor a different error, at least one \"almost-right\" option (wrong in a single detail), no telltale absolutes, shuffled correct position.");
 
         AIGenerationContext ctx = new AIGenerationContext(
                 book, chapter, chapter, verseStart, verseEnd,

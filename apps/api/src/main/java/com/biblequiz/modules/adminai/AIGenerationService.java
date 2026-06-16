@@ -390,17 +390,45 @@ public class AIGenerationService {
         boolean isMc = type.startsWith("multiple_choice");
         if (isMc) {
             if (isVi) {
-                sb.append("Quy tắc chất lượng đáp án (BẮT BUỘC):\n");
-                sb.append("- 4 đáp án PHẢI gần bằng nhau về độ dài và cùng dạng ngữ pháp (cùng là cụm danh từ, hoặc cùng là câu). TUYỆT ĐỐI không để đáp án đúng dài hơn rõ rệt — đó là dấu hiệu dễ đoán.\n");
-                sb.append("- Đáp án SAI phải hợp lý kiểu \"đúng một phần rồi sai\": đúng sách/sai chương, đúng sự kiện/sai nhân vật, hoặc hiểu lầm phổ biến. KHÔNG dùng đáp án sai vô lý, buồn cười hay lạc đề.\n");
-                sb.append("- Vị trí đáp án đúng phải NGẪU NHIÊN giữa A/B/C/D — không luôn đặt ở A.\n");
-                sb.append("- explanation phải nêu ngắn gọn vì sao đáp án đúng đúng VÀ vì sao một đáp án sai dễ nhầm lại sai.\n\n");
+                sb.append("Quy tắc viết đáp án trắc nghiệm Kinh Thánh (chuẩn Haladyna/NBME — BẮT BUỘC):\n");
+                sb.append("MỤC TIÊU: câu hỏi test người ĐỌC KỸ văn bản, KHÔNG phải người đoán \"đáp án nào nghe đạo đức/đầy đủ nhất\". Mỗi distractor phải dụ được một người đọc lướt.\n");
+                sb.append("A. SELF-CHECK (mọi câu phải pass hết, nếu fail thì viết lại):\n");
+                sb.append("   - Che câu hỏi đi mà vẫn đoán ra đáp án → loại.\n");
+                sb.append("   - Người có nền tảng Cơ Đốc cơ bản (chưa đọc đoạn này) loại được distractor chỉ bằng kiến thức chung → distractor yếu, viết lại.\n");
+                sb.append("   - Đáp án đúng là phương án DUY NHẤT \"tích cực/đầy đủ\" → hỏng, sửa lại.\n");
+                sb.append("B. MỖI DISTRACTOR = MỘT LOẠI LỖI KHÁC NHAU. Chọn 3 loại KHÁC nhau (KHÔNG lặp) từ:\n");
+                sb.append("   1) Nhầm passage gần — trộn chi tiết từ chương/đoạn kế bên.\n");
+                sb.append("   2) Sai chi tiết — đổi người nói / con số / ngày thứ mấy / thứ tự (vd \"tốt lành\" vs \"rất tốt lành\").\n");
+                sb.append("   3) Sai phạm vi — gán một mô tả đúng cho sai đối tượng.\n");
+                sb.append("   4) Hiểu lầm phổ biến (common misconception) trong cộng đồng.\n");
+                sb.append("   5) Đúng văn bản nhưng lạc câu hỏi — chi tiết CÓ thật nhưng không trả lời đúng điều được hỏi.\n");
+                sb.append("   Nếu 2 distractor trùng loại lỗi → coi như hỏng, phải viết lại.\n");
+                sb.append("C. PHẢI có ÍT NHẤT 1 đáp án \"gần đúng\" (almost-right): đúng ~90%, chỉ sai đúng 1 chi tiết then chốt (một con số, một cái tên, một mệnh đề). Đây là bẫy giá trị nhất.\n");
+                sb.append("D. ĐỒNG NHẤT (homogeneous): 4 phương án cùng độ dài, cùng giọng văn, cùng cấu trúc ngữ pháp. Đáp án đúng TUYỆT ĐỐI không dài/đầy đủ hơn rõ rệt — đó là tell dễ đoán nhất.\n");
+                sb.append("E. KHÔNG cue lộ liễu: tránh để riêng đáp án sai chứa từ tuyệt đối (\"luôn luôn\", \"không bao giờ\", \"ngay từ đầu\", \"hoàn toàn\", \"đầy dẫy\").\n");
+                sb.append("F. THEO ĐỘ KHÓ: dễ = distractor sai rõ về thần học cơ bản; trung bình = ≥1 almost-right; khó = ≥2 almost-right, loại trừ phải nhớ chính xác câu chữ.\n");
+                sb.append("G. Vị trí đáp án đúng NGẪU NHIÊN giữa A/B/C/D — không luôn đặt ở A.\n");
+                sb.append("H. explanation: trích câu/đoạn cụ thể, nêu vì sao đáp án đúng đúng VÀ chỉ rõ TỪNG distractor sai ở đâu kèm loại lỗi của nó.\n\n");
             } else {
-                sb.append("Answer quality rules (REQUIRED):\n");
-                sb.append("- All 4 options MUST be similar in length and the same grammatical form (all noun phrases, or all sentences). NEVER make the correct answer noticeably longer — it is an obvious giveaway.\n");
-                sb.append("- Wrong options must be plausible \"close-but-wrong\": right book/wrong chapter, right event/wrong person, or a common misconception. Do NOT use absurd, joke, or off-topic distractors.\n");
-                sb.append("- Randomize the position of the correct answer across A/B/C/D — do not always put it at A.\n");
-                sb.append("- The explanation must briefly say why the correct answer is right AND why a tempting wrong answer is wrong.\n\n");
+                sb.append("Bible MCQ answer-writing rules (Haladyna/NBME standard — REQUIRED):\n");
+                sb.append("GOAL: the question must test someone who READ the text carefully, NOT someone guessing \"which option sounds most pious/complete\". Each distractor must lure a skim-reader.\n");
+                sb.append("A. SELF-CHECK (every item must pass; rewrite if it fails):\n");
+                sb.append("   - If the answer is guessable with the question hidden → reject.\n");
+                sb.append("   - If someone with basic Christian background (who hasn't read this passage) can eliminate a distractor by general knowledge → weak distractor, rewrite.\n");
+                sb.append("   - If the correct answer is the ONLY \"positive/complete\" option → broken, fix it.\n");
+                sb.append("B. EACH DISTRACTOR = A DIFFERENT ERROR TYPE. Pick 3 DISTINCT types (no repeats) from:\n");
+                sb.append("   1) Nearby-passage mixup — blend details from an adjacent chapter/passage.\n");
+                sb.append("   2) Wrong detail — change the speaker / a number / which day / the order (e.g. \"good\" vs \"very good\").\n");
+                sb.append("   3) Wrong scope — attribute a correct description to the wrong subject.\n");
+                sb.append("   4) Common misconception held in the community.\n");
+                sb.append("   5) True-but-off-question — a detail that is real in the text but does not answer what was asked.\n");
+                sb.append("   If two distractors share an error type → broken, rewrite.\n");
+                sb.append("C. MUST include AT LEAST ONE \"almost-right\" option: ~90% correct, wrong in exactly one decisive detail (a number, a name, a clause). The most valuable trap.\n");
+                sb.append("D. HOMOGENEOUS: all 4 options share length, tone and grammatical form. The correct answer must NEVER be noticeably longer/more complete — the most obvious giveaway.\n");
+                sb.append("E. NO telltale cues: do not put absolute words (\"always\", \"never\", \"from the very beginning\", \"completely\") only in the wrong options.\n");
+                sb.append("F. BY DIFFICULTY: easy = distractors clearly wrong on basic theology; medium = ≥1 almost-right; hard = ≥2 almost-right, elimination requires recalling the exact wording.\n");
+                sb.append("G. Randomize the correct answer's position across A/B/C/D — do not always put it at A.\n");
+                sb.append("H. explanation: cite the specific verse, say why the correct answer is right AND pinpoint where EACH distractor goes wrong with its error type.\n\n");
             }
         }
 
