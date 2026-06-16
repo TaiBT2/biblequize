@@ -85,13 +85,14 @@
 | 2026-04-27 | V3 Tier B/C Quality Expansion: 14 books | IN PROGRESS | [detail](docs/todo/active/2026-04-27-v3-tier-b-c-quality-expansion-14-books.md) |
 | 2026-04-19 | Global audience migration: SQL → JSON + i18n prep | PARTIALLY DONE | [detail](docs/todo/active/2026-04-19-global-audience-migration-sql-json-i18n-prep.md) |
 
-## Archive (54)
+## Archive (55)
 
-> 54 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
+> 55 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
 
 <details>
 <summary>Xem inline list (tuỳ chọn)</summary>
 
+- 2026-06-16 — Sửa câu hỏi: chuyển PAGE + AI đề xuất đáp án (QPG-1..4) · DONE · [detail](docs/todo/archive/2026-06-16-question-edit-page-ai-suggest.md)
 - 2026-06-16 — Edit câu hỏi: dùng chung modal cho Questions + Review Queue (QED-1..2) · DONE · [detail](docs/todo/archive/2026-06-16-edit-in-review-queue.md)
 - 2026-06-16 — Sửa câu hỏi: wrap đáp án + nút đánh giá chất lượng tức thời (QEV-1..2; QEV-3 AI defer) · DONE · [detail](docs/todo/archive/2026-06-16-question-edit-quality-tools.md)
 - 2026-06-16 — Admin panel: cắt về core (ẩn Tier C, dashboard số liệu thật, review 1-approval, ban REST, xoá trang placeholder) (ADM-1..5) · DONE · [detail](docs/todo/archive/2026-06-16-admin-panel-trim-to-core.md)
