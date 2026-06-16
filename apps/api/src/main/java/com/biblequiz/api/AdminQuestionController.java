@@ -117,6 +117,9 @@ public class AdminQuestionController {
             @RequestParam(value = "pending", defaultValue = "false") boolean pending,
             @RequestParam(value = "forceCreate", defaultValue = "false") boolean forceCreate) {
 
+        // Canonicalize book name (VN → English) so the pool stays consistent.
+        q.setBook(normalizeBookName(q.getBook()));
+
         // Check duplicate BEFORE save
         DuplicateCheckResult dupResult = duplicateDetectionService.checkDuplicate(
                 new DuplicateCheckRequest(
@@ -180,7 +183,7 @@ public class AdminQuestionController {
             // active → inactive transition on a Bible Basics row and trip
             // the safeguard before .save() commits.
             boolean wasActive = Boolean.TRUE.equals(q.getIsActive());
-            if (body.getBook() != null) q.setBook(body.getBook());
+            if (body.getBook() != null) q.setBook(normalizeBookName(body.getBook()));
             if (body.getChapter() != null) q.setChapter(body.getChapter());
             if (body.getVerseStart() != null) q.setVerseStart(body.getVerseStart());
             if (body.getVerseEnd() != null) q.setVerseEnd(body.getVerseEnd());
