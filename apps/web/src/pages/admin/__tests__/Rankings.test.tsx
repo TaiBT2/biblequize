@@ -33,7 +33,7 @@ describe('Rankings Admin', () => {
 
   it('shows season count', async () => {
     render(<RankingsAdmin />)
-    await waitFor(() => { expect(screen.getByText(/2 seasons/)).toBeInTheDocument() })
+    await waitFor(() => { expect(screen.getByText(/2 mùa giải/)).toBeInTheDocument() })
   })
 
   it('handles API error', () => {

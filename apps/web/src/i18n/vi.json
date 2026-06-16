@@ -180,7 +180,7 @@
       "groups": "Nhóm"
     },
     "earlyUnlock": {
-      "navLabel": "Early Unlock",
+      "navLabel": "Mở khoá sớm",
       "pageTitle": "Chỉ số Mở khóa Xếp hạng sớm",
       "subtitle": "Theo dõi số người dùng đạt mốc ≥80% độ chính xác trong Luyện tập để mở khóa Xếp hạng sớm.",
       "kpiTotal": "Tổng số đã mở khóa",
@@ -359,7 +359,7 @@
     },
     "notifications": {
       "title": "Quản lý Thông báo",
-      "subtitle": "Broadcast & automated notification management",
+      "subtitle": "Quản lý thông báo broadcast & tự động",
       "composeTitle": "Gửi thông báo",
       "titlePlaceholder": "Tiêu đề thông báo",
       "contentPlaceholder": "Nội dung thông báo...",
@@ -375,9 +375,9 @@
         "dailyChallengeSchedule": "8:00 sáng",
         "weeklySummaryName": "Tóm tắt tuần",
         "weeklySummarySchedule": "Thứ Hai 9:00",
-        "welcomeName": "Welcome new user",
+        "welcomeName": "Chào người dùng mới",
         "welcomeSchedule": "Khi đăng ký",
-        "tierUpName": "Tier up celebration",
+        "tierUpName": "Chúc mừng lên hạng",
         "tierUpSchedule": "Khi lên tier"
       },
       "historyTitle": "Lịch sử thông báo",
@@ -527,12 +527,12 @@
     },
     "questionQuality": {
       "title": "Chất lượng câu hỏi",
-      "subtitle": "Analysis of database health and engagement metrics",
+      "subtitle": "Phân tích sức khoẻ dữ liệu & chỉ số tương tác",
       "overallScoreLabel": "Điểm chất lượng tổng thể /100",
       "coverageTitle": "Coverage Map — Câu hỏi theo sách",
       "loading": "Đang tải...",
       "loadError": "Không tải được dữ liệu",
-      "bookFallback": "Book {{index}}",
+      "bookFallback": "Sách {{index}}",
       "problemTooHardTitle": "Quá khó (<20% accuracy)",
       "problemTooEasyTitle": "Quá dễ (>95% accuracy)",
       "problemUnusedTitle": "Chưa sử dụng",
@@ -598,14 +598,14 @@
       }
     },
     "events": {
-      "title": "Events & Tournaments",
-      "subtitle": "{{count}} tournaments",
+      "title": "Sự kiện & Giải đấu",
+      "subtitle": "{{count}} giải đấu",
       "createButton": "+ Tạo Tournament",
       "createNotImplemented": "Create tournament — API chưa implement",
       "loading": "Đang tải...",
       "empty": "Chưa có tournament nào",
-      "bracket": "Bracket: {{size}}",
-      "round": "Round: {{current}}/{{total}}"
+      "bracket": "Nhánh: {{size}}",
+      "round": "Vòng: {{current}}/{{total}}"
     },
     "feedback": {
       "title": "Phản hồi",
@@ -652,8 +652,8 @@
       "resolveButton": "✓ Đã xử lý"
     },
     "rankings": {
-      "title": "Seasons & Rankings",
-      "subtitle": "{{count}} seasons",
+      "title": "Mùa giải & Xếp hạng",
+      "subtitle": "{{count}} mùa giải",
       "createSeasonButton": "+ Tạo mùa mới",
       "seasonNamePlaceholder": "Tên mùa giải",
       "creating": "Đang tạo...",
