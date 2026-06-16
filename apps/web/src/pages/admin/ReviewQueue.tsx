@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useNavigate } from 'react-router-dom'
 import { api } from '../../api/client'
 import { queryKeys } from '../../api/queryKeys'
-import QuestionEditModal from './QuestionEditModal'
-import { Question, QuestionType } from './questionTypes'
+import { QuestionType } from './questionTypes'
 
 interface ReviewItem {
   id: string
@@ -63,6 +63,7 @@ async function fetchHistory(): Promise<HistoryItem[]> {
 export default function ReviewQueue() {
   const { t } = useTranslation()
   const queryClient = useQueryClient()
+  const navigate = useNavigate()
 
   const { data: items = [], isLoading: itemsLoading } = useQuery({
     queryKey: queryKeys.reviewQueue.pending(),
@@ -82,8 +83,6 @@ export default function ReviewQueue() {
   const [rejectingId, setRejectingId] = useState<string | null>(null)
   const [toast, setToast] = useState<{ msg: string; type: 'success' | 'error' } | null>(null)
   const [showHistory, setShowHistory] = useState(false)
-  // QED-2: edit a pending question in place via the shared editor
-  const [editing, setEditing] = useState<Partial<Question> | null>(null)
 
   const showToast = (msg: string, type: 'success' | 'error' = 'success') => {
     setToast({ msg, type })
@@ -283,7 +282,7 @@ export default function ReviewQueue() {
                     {t('admin.reviewQueue.rejectButton')}
                   </button>
                   <button data-testid="review-edit-btn"
-                    onClick={() => setEditing({ ...q, type: q.type as QuestionType, reviewStatus: 'PENDING' })}
+                    onClick={() => navigate(`/admin/questions/${q.id}/edit?from=review`, { state: { question: { ...q, type: q.type as QuestionType, reviewStatus: 'PENDING' } } })}
                     disabled={actioningId === q.id}
                     className="ml-auto px-5 py-2 bg-white/5 hover:bg-white/10 text-[#d5c4af] text-sm font-bold rounded-xl transition-colors disabled:opacity-50 flex items-center gap-1.5">
                     <span className="material-symbols-outlined text-base">edit</span>
@@ -324,14 +323,6 @@ export default function ReviewQueue() {
         )}
       </div>
 
-      {/* QED-2: shared editor for fixing a pending question before approving */}
-      {editing && (
-        <QuestionEditModal
-          initial={editing}
-          onClose={() => setEditing(null)}
-          onSaved={() => { setEditing(null); showToast('Đã lưu thay đổi'); invalidateAll() }}
-        />
-      )}
     </div>
   )
 }

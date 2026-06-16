@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { TFunction } from 'i18next'
+import { useNavigate } from 'react-router-dom'
 import { api } from '../../api/client'
-import QuestionEditModal from './QuestionEditModal'
-import { Question, EMPTY_QUESTION } from './questionTypes'
+import { Question } from './questionTypes'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 // Question + shared editor types/helpers now live in ./questionTypes (QED-1).
@@ -80,9 +80,7 @@ export default function QuestionsAdmin() {
   // ── selection
   const [selectedIds, setSelectedIds] = useState<Record<string, boolean>>({})
 
-  // ── edit modal (form state lives inside QuestionEditModal)
-  const [editing, setEditing]   = useState<Partial<Question> | null>(null)
-  const [saveSuccess, setSaveSuccess] = useState(false)
+  const navigate = useNavigate()
 
   // ── import modal
   const [importOpen,      setImportOpen]      = useState(false)
@@ -136,15 +134,8 @@ export default function QuestionsAdmin() {
 
   // ── CRUD ───────────────────────────────────────────────────────────────────
 
-  const openCreate = () => setEditing({ ...EMPTY_QUESTION })
-  const openEdit   = (q: Question) => setEditing({ ...q })
-
-  const onSaved = () => {
-    setEditing(null)
-    setSaveSuccess(true)
-    setTimeout(() => setSaveSuccess(false), 3000)
-    refresh()
-  }
+  const openCreate = () => navigate('/admin/questions/new')
+  const openEdit   = (q: Question) => navigate(`/admin/questions/${q.id}/edit`, { state: { question: q } })
 
   const duplicate = async (q: Question) => {
     try {
@@ -195,7 +186,6 @@ export default function QuestionsAdmin() {
     <>
     <div data-testid="admin-questions-page" className="space-y-4">
 
-      {saveSuccess && <div data-testid="admin-questions-success-toast" className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium">{t('admin.questions.saveSuccess')}</div>}
 
       {/* Header */}
       <div className="flex items-start justify-between gap-3 flex-wrap">
@@ -404,14 +394,7 @@ export default function QuestionsAdmin() {
       </div>
     </div>
 
-    {/* ── Edit / Create Modal (shared QuestionEditModal, QED-1) ── */}
-    {editing && (
-      <QuestionEditModal
-        initial={editing}
-        onClose={() => setEditing(null)}
-        onSaved={onSaved}
-      />
-    )}
+    {/* Edit/Create now happens on a dedicated page (/admin/questions/:id/edit · /new). */}
 
     {/* ── Import Modal ─────────────────────────────────────────────────────── */}
     {importOpen && (
