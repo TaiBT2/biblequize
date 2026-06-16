@@ -4,6 +4,7 @@ import type { TFunction } from 'i18next'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../api/client'
 import { Question } from './questionTypes'
+import { useBookName } from '../../hooks/useBookName'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 // Question + shared editor types/helpers now live in ./questionTypes (QED-1).
@@ -61,7 +62,9 @@ const Badge: React.FC<{ label: string; color: string }> = ({ label, color }) => 
 // ── Main Component ─────────────────────────────────────────────────────────────
 
 export default function QuestionsAdmin() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const getBookName = useBookName()
+  const lang = i18n.language === 'en' ? 'en' : 'vi'
   // ── list state
   const [data, setData]         = useState<ApiPage | null>(null)
   const [isLoading, setLoading] = useState(false)
@@ -327,7 +330,7 @@ export default function QuestionsAdmin() {
                       onChange={e => setSelectedIds(p => ({ ...p, [q.id]: e.target.checked }))} />
                   </td>
                   <td className="px-3 py-2 whitespace-nowrap">
-                    <div className="font-medium">{q.book || '—'}</div>
+                    <div className="font-medium">{q.book ? getBookName(q.book, lang) : '—'}</div>
                     {q.chapter && (
                       <div className="text-xs text-white/50">
                         {q.chapter}:{q.verseStart ?? '?'}{q.verseEnd && q.verseEnd !== q.verseStart ? `–${q.verseEnd}` : ''}
