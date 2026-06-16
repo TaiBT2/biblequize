@@ -39,11 +39,14 @@ describe('AdminLayout', () => {
     }
   })
 
-  it('renders TopNavBar with page title and search', () => {
+  it('renders TopNavBar with the New-question CTA, placeholders removed', () => {
     renderLayout()
-    expect(screen.getByPlaceholderText('Search analytics or logs...')).toBeInTheDocument()
-    expect(screen.getByText('New Quiz')).toBeInTheDocument()
-    expect(screen.getByText('history')).toBeInTheDocument()
+    const cta = screen.getByText('Câu hỏi mới')
+    expect(cta).toBeInTheDocument()
+    expect(cta.closest('a')).toHaveAttribute('href', '/admin/questions/new')
+    // non-functional header placeholders were removed
+    expect(screen.queryByPlaceholderText('Search analytics or logs...')).not.toBeInTheDocument()
+    expect(screen.queryByText('history')).not.toBeInTheDocument()
   })
 
   it('renders "Về trang chính" link', () => {

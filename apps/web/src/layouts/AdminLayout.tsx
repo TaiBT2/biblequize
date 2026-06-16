@@ -94,26 +94,12 @@ export default function AdminLayout() {
         <header className="fixed top-0 right-0 h-[56px] w-[calc(100%-240px)] z-10 bg-[#1d1f29] flex justify-between items-center px-8">
           <div className="flex items-center gap-4">
             <h1 className="text-lg font-bold tracking-tight text-[#e1e1ef]">{pageTitle}</h1>
-            <div className="flex items-center bg-[#0c0e17]/50 rounded-full px-3 py-1 ml-4 border border-[#504535]/10">
-              <span className="material-symbols-outlined text-[#d5c4af] text-sm">search</span>
-              <input className="bg-transparent border-none focus:ring-0 focus:outline-none text-xs w-48 placeholder:text-[#d5c4af]/40 text-[#e1e1ef] ml-2" placeholder="Search analytics or logs..." type="text" />
-            </div>
           </div>
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-4 text-[#d5c4af]">
-              <button className="hover:text-[#e8a832] transition-colors">
-                <span className="material-symbols-outlined">history</span>
-              </button>
-              <button className="relative hover:text-[#e8a832] transition-colors">
-                <span className="material-symbols-outlined">notifications</span>
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#e8a832] rounded-full" />
-              </button>
-            </div>
-            <Link to="/admin/questions" className="bg-[#e8a832] hover:brightness-110 transition-all text-[#281900] font-bold text-xs px-4 py-2 rounded flex items-center gap-2">
-              <span className="material-symbols-outlined text-sm">add</span>
-              New Quiz
-            </Link>
-          </div>
+          {/* history / bell / search were non-functional placeholders — removed (ADM follow-up) */}
+          <Link to="/admin/questions/new" className="bg-[#e8a832] hover:brightness-110 transition-all text-[#281900] font-bold text-xs px-4 py-2 rounded flex items-center gap-2">
+            <span className="material-symbols-outlined text-sm">add</span>
+            Câu hỏi mới
+          </Link>
         </header>
 
         {/* Content Area */}
