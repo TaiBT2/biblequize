@@ -2313,6 +2313,7 @@
     "explanation": "Explanation",
     "nextQuestion": "Next question",
     "viewResult": "View result",
+    "xpSoFar": "+{{xp}} XP total",
     "home": "Home",
     "leaderboard": "Leaderboard",
     "noQuestions": "No questions available",

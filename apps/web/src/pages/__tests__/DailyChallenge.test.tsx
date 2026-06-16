@@ -126,11 +126,11 @@ describe('Daily Challenge', () => {
   })
 
   describe('XP credit on completion', () => {
-    // Pins the contract for DECISIONS.md 2026-04-20 "Daily +50 XP":
+    // Pins the contract for DECISIONS.md 2026-06-16 "Daily scoring rework":
     // finishing the last question must POST /api/daily-challenge/complete
-    // (idempotent — backend credits +50 XP there) and invalidate both
-    // ['me'] and ['me-tier-progress'] so the Home tier banner reflects
-    // the new total without a full page reload.
+    // (idempotent — backend credits XP per the 0/20/40/60/100/150 curve, here
+    // 1 correct → 20 XP) and invalidate both ['me'] and ['me-tier-progress']
+    // so the Home tier banner reflects the new total without a full reload.
     it('POSTs /complete and invalidates tier caches when finishing last question', async () => {
       const questions = [
         { id: 'q1', book: 'Genesis', chapter: 1, content: 'Q1?', options: ['A', 'B', 'C', 'D'], correctAnswer: [0], explanation: '' },

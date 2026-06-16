@@ -2313,6 +2313,7 @@
     "explanation": "Giải thích",
     "nextQuestion": "Câu tiếp theo",
     "viewResult": "Xem kết quả",
+    "xpSoFar": "Tổng cộng +{{xp}} XP",
     "home": "Trang chủ",
     "leaderboard": "Bảng xếp hạng",
     "noQuestions": "Không có câu hỏi nào",

@@ -69,6 +69,15 @@ interface ActiveSeason {
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 const LETTERS = ['A', 'B', 'C', 'D']
 
+// Daily Challenge XP by correct-count — mirrors BE DailyChallengeService.dailyXp
+// (DECISIONS.md 2026-06-16). Used only for the optimistic result shown before
+// GET /result returns the authoritative value. score == xpEarned (one number).
+const DAILY_XP_BY_CORRECT = [0, 20, 40, 60, 100, 150]
+function dailyXp(correctCount: number): number {
+  const c = Math.max(0, Math.min(5, correctCount))
+  return DAILY_XP_BY_CORRECT[c]
+}
+
 // ─── Helpers ────────────────────────────────────────────────────────────────
 function getTodayLabel(t: (key: string) => string): string {
   const d = new Date()
@@ -374,7 +383,7 @@ const DailyChallenge: React.FC = () => {
     if (!challengeData) return
     if (currentIndex + 1 >= challengeData.questions.length) {
       const correctCount = results.filter(Boolean).length
-      const score = correctCount * 20
+      const score = dailyXp(correctCount)
       try {
         await api.post('/api/daily-challenge/complete', { score, correctCount })
       } catch { /* ignore */ }
@@ -399,14 +408,12 @@ const DailyChallenge: React.FC = () => {
       // user already played some ranked questions during the daily session.
       queryClient.invalidateQueries({ queryKey: ['ranked-status'] })
 
-      const XP_MIN_CORRECT = 4
       const localResult: DailyResult = {
         completed: true,
         score,
         correctCount,
         totalQuestions: challengeData.questions.length,
-        xpEarned: correctCount >= XP_MIN_CORRECT ? 50 : 0,
-        xpMinCorrect: XP_MIN_CORRECT,
+        xpEarned: score, // unified: score == XP earned (0/20/40/60/100/150)
         sessionId: sessionId || undefined,
         completedAt: new Date().toISOString(),
       }
@@ -625,7 +632,7 @@ const DailyChallenge: React.FC = () => {
                     {isCorrect ? t('quiz.correct') : t('quiz.incorrect')}
                   </p>
                   <p className={`text-xs font-medium leading-tight mt-0.5 ${isCorrect ? 'text-bq-emerald' : 'text-bq-ruby'}`}>
-                    {isCorrect ? t('quiz.bonusPoints', { points: 20 }) : t('quiz.noPoints')}
+                    {t('daily.xpSoFar', { xp: dailyXp(results.filter(Boolean).length) })}
                   </p>
                 </div>
               </div>
