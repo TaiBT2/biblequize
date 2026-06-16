@@ -131,16 +131,41 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       return
     }
 
+    const { api } = await import('../api/client')
+
+    // Step 1 — Refresh. This is the session validator: the backend re-checks
+    // the user against the DB, so a 401 here means the session is genuinely
+    // dead (token expired/revoked, or the user no longer exists). Only then do
+    // we clear the cached profile. Network/5xx errors are transient — keep the
+    // cached profile so the next load can retry.
+    let accessToken: string | undefined
     try {
-      const { api } = await import('../api/client')
       if (import.meta.env.DEV) {
         console.log('[AUTH_STORE] Attempting token refresh on startup')
       }
       const refreshRes = await api.post('/api/auth/refresh')
-      const { accessToken } = refreshRes.data
-      setAccessToken(accessToken)
+      accessToken = refreshRes.data?.accessToken
+      setAccessToken(accessToken ?? null)
+    } catch (err: any) {
+      setAccessToken(null)
+      const status = err?.response?.status
+      if (status === 401) {
+        localStorage.removeItem('userName')
+        localStorage.removeItem('userEmail')
+        localStorage.removeItem('userAvatar')
+      }
+      set({ user: null, isAuthenticated: false, isAdmin: false, isLoading: false })
+      if (import.meta.env.DEV) {
+        console.log('[AUTH_STORE] No valid session found', status ? `(${status})` : '')
+      }
+      return
+    }
 
-      // Fetch fresh profile
+    // Step 2 — Fetch fresh profile. The session is already valid (refresh
+    // succeeded), so a failure here is a server/transient issue (e.g. a /api/me
+    // 404 from a backend hiccup) and must NOT log the user out. Fall back to the
+    // cached profile and stay authenticated.
+    try {
       const meRes = await api.get('/api/me')
       const normalizedRole = (meRes.data?.role as string | undefined)?.toUpperCase()
       const name = localStorage.getItem('userName')
@@ -169,20 +194,21 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         console.log('[AUTH_STORE] Session restored, role:', normalizedRole)
       }
     } catch (err: any) {
-      // No valid session (refresh token missing or expired) OR /api/me said
-      // user-not-found (404 — refresh token belonged to a user no longer in
-      // DB, e.g. account deletion / DB reset). Clear the cached profile so
-      // future page loads don't keep retrying the same dead session.
-      setAccessToken(null)
-      const status = err?.response?.status
-      if (status === 404 || status === 401) {
-        localStorage.removeItem('userName')
-        localStorage.removeItem('userEmail')
-        localStorage.removeItem('userAvatar')
-      }
-      set({ user: null, isAuthenticated: false, isAdmin: false })
+      // Session is valid (refresh succeeded) but the profile fetch failed —
+      // keep the user logged in with the cached profile. Role is unknown until
+      // /api/me recovers, so default isAdmin to false.
+      const name = localStorage.getItem('userName')
+      const email = localStorage.getItem('userEmail')
+      const avatar = localStorage.getItem('userAvatar') ?? undefined
+      set({
+        user: { name: name ?? 'User', email: email ?? '', avatar },
+        isAuthenticated: true,
+        isAdmin: false,
+      })
       if (import.meta.env.DEV) {
-        console.log('[AUTH_STORE] No valid session found', status ? `(${status})` : '')
+        const status = err?.response?.status
+        console.warn('[AUTH_STORE] Session valid but /api/me failed; using cached profile',
+          status ? `(${status})` : '')
       }
     } finally {
       set({ isLoading: false })

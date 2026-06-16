@@ -271,6 +271,40 @@ describe('authStore', () => {
 
       expect(useAuthStore.getState().isLoading).toBe(false)
     })
+
+    it('stays authenticated when refresh succeeds but /api/me fails (e.g. 404)', async () => {
+      // Regression: a backend hiccup that 404s /api/me must NOT log the user
+      // out — the session is valid (refresh succeeded). Use cached profile.
+      localStorage.setItem('userName', 'Cached User')
+      localStorage.setItem('userEmail', 'cached@test.com')
+      mockApiPost.mockResolvedValue({ data: { accessToken: 'valid-token' } })
+      mockApiGet.mockRejectedValue({ response: { status: 404 } })
+
+      await act(async () => {
+        await useAuthStore.getState().checkAuth()
+      })
+
+      const state = useAuthStore.getState()
+      expect(state.isAuthenticated).toBe(true)
+      expect(state.user?.name).toBe('Cached User')
+      expect(state.isLoading).toBe(false)
+      // Cached profile must be preserved (not wiped).
+      expect(localStorage.getItem('userName')).toBe('Cached User')
+    })
+
+    it('logs out and clears cache when refresh returns 401', async () => {
+      localStorage.setItem('userName', 'Dead Session')
+      mockApiPost.mockRejectedValue({ response: { status: 401 } })
+
+      await act(async () => {
+        await useAuthStore.getState().checkAuth()
+      })
+
+      const state = useAuthStore.getState()
+      expect(state.isAuthenticated).toBe(false)
+      expect(state.isLoading).toBe(false)
+      expect(localStorage.getItem('userName')).toBeNull()
+    })
   })
 
   describe('setLoading', () => {
