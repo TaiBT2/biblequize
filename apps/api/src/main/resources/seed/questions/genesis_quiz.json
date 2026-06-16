@@ -7,15 +7,15 @@
     "type": "multiple_choice_single",
     "content": "Ai đã dựng nên trời và đất?",
     "options": [
-      "Môi-se",
-      "Đa-vít",
+      "Hơi nước",
+      "Ngày thứ nhất",
       "Đức Chúa Trời",
-      "Áp-ra-ham"
+      "Một con người"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 1:1 — 'Ban đầu, Đức Chúa Trời dựng nên trời và đất.' Đây là câu mở đầu của toàn bộ Kinh Thánh.",
+    "explanation": "Câu trả lời đúng là 'Đức Chúa Trời' vì Sáng thế ký 1:1 ghi rõ: 'Ban đầu Đức Chúa Trời dựng nên trời đất.' Distractor 'Hơi nước' là sai vì tuy Sáng thế ký 1:2 nói đến 'Thần của Đức Chúa Trời vận hành trên mặt nước', nhưng đó không phải là tác nhân tạo dựng. Distractor 'Ngày thứ nhất' là sai vì đây là một chi tiết gần đúng (thời điểm tạo dựng) nhưng không phải là chủ thể hành động. Distractor 'Một con người' là sai vì đây là một hiểu lầm phổ biến cho rằng con người tạo ra thế giới, trong khi Kinh Thánh khẳng định chỉ Đức Chúa Trời là Đấng Tạo Hóa.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -34,15 +34,15 @@
     "type": "multiple_choice_single",
     "content": "Theo Sáng Thế Ký 1:27, Đức Chúa Trời tạo dựng loài người theo gì?",
     "options": [
-      "Hình ảnh các thiên sứ",
-      "Hình ảnh loài thú",
-      "Hình ảnh đất đai",
+      "Hình ảnh của thiên sứ",
+      "Theo ý muốn của Ngài",
+      "Giống như các loài thú",
       "Hình ảnh của Ngài"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng Thế Ký 1:27 — 'Đức Chúa Trời sáng tạo loài người theo hình ảnh Ngài. Ngài sáng tạo loài người theo hình ảnh Đức Chúa Trời.'",
+    "explanation": "Sáng Thế Ký 1:27 chép: 'Đức Chúa Trời dựng nên loài người như hình Ngài; Ngài dựng nên loài người giống như hình Đức Chúa Trời'. Vì thế, đáp án đúng là 'Hình ảnh của Ngài', chỉ rõ đặc điểm độc nhất trong sự tạo dựng loài người. Các đáp án sai: (1) 'Hình ảnh của thiên sứ' là sai chi tiết (wrong_detail) vì Kinh Thánh không nói loài người được tạo theo hình thiên sứ; đây là đáp án gần đúng vì chỉ sai một từ then chốt. (2) 'Theo ý muốn của Ngài' tuy đúng về mặt tổng quát nhưng lạc trọng tâm câu hỏi (true_but_off), vì câu hỏi hỏi cụ thể 'theo gì' dựa trên nội dung câu 27. (3) 'Giống như các loài thú' phản ánh hiểu lầm phổ biến (common_misconception) rút từ việc đọc nhanh Sáng Thế Ký 1:24-25 về sự tạo dựng thú vật trước đó, nhưng câu 27 tách biệt và nâng cao sự tạo dựng loài người.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -61,14 +61,14 @@
     "content": "Đức Chúa Trời dùng gì để tạo nên con người đầu tiên?",
     "options": [
       "Nước",
-      "Đá",
-      "Gỗ",
+      "Xương sườn",
+      "Cây cỏ",
       "Bụi đất"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 2:7 — 'Giê-hô-va Đức Chúa Trời nắn loài người từ bụi đất, hà sinh khí vào lỗ mũi, và loài người trở nên một loài sinh linh.'",
+    "explanation": "Sáng Thế Ký 2:7 chép: 'Giê-hô-va Đức Chúa Trời lấy bụi đất nắn nên hình người, hà sanh khí vào lỗ mũi; thì người trở nên một loài sanh linh.' Do đó, đáp án đúng là 'Bụi đất'. Các đáp án sai: 'Nước' (sai vì dù Sáng Thế Ký 2:6 đề cập đến hơi nước, nhưng không dùng để tạo nên con người), 'Xương sườn' (sai vì xương sườn được dùng để tạo nên người nữ sau này, không phải con người đầu tiên - Sáng Thế Ký 2:21-22), 'Cây cỏ' (sai vì đây là một hiểu lầm phổ biến; cây cỏ được Đức Chúa Trời dựng nên cho con người làm thức ăn và môi trường sống, không phải là vật liệu tạo nên con người - Sáng Thế Ký 1:29-30).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -87,15 +87,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Chúa Trời dùng phần nào của A-đam để tạo nên Ê-va?",
     "options": [
-      "Bụi đất",
+      "Xương đòn",
       "Xương sườn",
-      "Xương tay",
-      "Xương chân"
+      "Xương sống",
+      "Bụi đất"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 2:21-22 — 'Giê-hô-va Đức Chúa Trời lấy một xương sườn của con người... và tạo nên một người nữ.'",
+    "explanation": "Sáng Thế Ký 2:21-22 chép rằng: 'Giê-hô-va Đức Chúa Trời làm cho A-đam ngủ mê, bèn lấy một xương sườn của người, rồi lấp thịt thế vào. Giê-hô-va Đức Chúa Trời dùng xương sườn đã lấy nơi A-đam làm nên một người nữ'. Do đó, đáp án đúng là 'Xương sườn'. Các đáp án sai: (1) 'Xương đòn' là chi tiết sai, không được Kinh Thánh đề cập. (2) 'Xương sống' là chi tiết được đề cập gần đó (xương sườn gần xương sống) nhưng không phải là phần được dùng. (3) 'Bụi đất' là một hiểu lầm phổ biến, vì A-đam được nắn từ bụi đất (Sáng Thế Ký 2:7), nhưng Ê-va thì không.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -114,15 +114,15 @@
     "type": "multiple_choice_single",
     "content": "Con vật nào cám dỗ Ê-va ăn trái cấm?",
     "options": [
-      "Sư tử",
+      "Đức Chúa Trời",
       "Con rắn",
-      "Con dê",
+      "Cây sự sống",
       "Con chim"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 3:1 — 'Vả, trong các loài thú đồng mà Giê-hô-va Đức Chúa Trời đã tạo nên, có con rắn là loài quỷ quyệt hơn hết.'",
+    "explanation": "Theo Sáng thế ký 3:1-6, con rắn (đáp án đúng) là sinh vật đã nói chuyện và cám dỗ Ê-va. Các đáp án sai: (1) 'Đức Chúa Trời' sai vì trong phân đoạn này, Đức Chúa Trời là Đấng ban mệnh lệnh, không phải là kẻ cám dỗ (sai phạm vi). (2) 'Cây sự sống' là một cây khác trong vườn được nhắc đến ở 2:9 và 3:22, nhưng không phải là tác nhân cám dỗ (nhầm passage gần). (3) 'Con chim' hoàn toàn không được đề cập trong câu chuyện này, đây là một hiểu lầm phổ biến khi người đọc nhớ nhầm sang các loài vật khác.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -141,14 +141,14 @@
     "content": "Theo Sáng Thế Ký 3:6, ai đã ăn trái cấm?",
     "options": [
       "Chỉ Ê-va",
-      "Chỉ A-đam",
+      "Chỉ con rắn",
       "Cả A-đam và Ê-va",
-      "Không ai cả"
+      "Chỉ các con của A-đam"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 3:6 — 'Người nữ... hái trái mà ăn, rồi trao cho chồng đang ở với mình, và chồng cũng ăn.' Cả hai đều ăn trái cấm.",
+    "explanation": "Sáng Thế Ký 3:6 chép: 'Người nữ thấy trái cây đó... bèn hái ăn, rồi trao cho chồng đứng gần mình, chồng cũng ăn nữa.' Đoạn Kinh Thánh này mô tả rõ ràng cả Ê-va và A-đam đều đã ăn trái cây.\n\nĐÁP ÁN ĐÚNG: 'Cả A-đam và Ê-va' là chính xác vì cả hai nhân vật đều được nêu tên trong hành động ăn trái cấm.\n\nDISTRACTOR SAI:\n1. 'Chỉ Ê-va' là một đáp án gần đúng nhưng sai chi tiết then chốt (wrong_detail). Mặc dù Ê-va ăn trước, câu Kinh Thánh tiếp theo ghi rõ A-đam cũng đã ăn.\n2. 'Chỉ con rắn' phản ánh một hiểu lầm phổ biến (common_misconception). Con rắn là kẻ cám dỗ, nhưng bản thân nó không hề ăn trái cây.\n3. 'Chỉ các con của A-đam' là sai phạm vi (wrong_scope). Hành động này xảy ra trước khi họ có con, vì vậy đáp án này hoàn toàn lạc đề với câu hỏi về sự kiện trong Sáng Thế Ký 3:6.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -165,15 +165,15 @@
     "type": "multiple_choice_single",
     "content": "Lời hứa đầu tiên về Đấng Cứu Thế (Protoevangelium) được tìm thấy ở đâu trong Sáng thế ký?",
     "options": [
-      "22:18 — khi Chúa hứa với Áp-ra-ham",
+      "3:21 — khi Chúa làm áo bằng da cho A-đam và Ê-va",
       "3:15 — khi Chúa phán với con rắn",
-      "12:3 — khi Chúa gọi Áp-ram",
-      "1:26 — khi Chúa tạo dựng con người"
+      "2:17 — khi Chúa cấm ăn trái cây biết điều thiện ác",
+      "1:26 — khi Chúa phán về việc tạo dựng loài người"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 3:15 — 'Ta sẽ đặt mối thù nghịch giữa ngươi và người nữ, giữa dòng dõi ngươi với dòng dõi người nữ; người sẽ giày đạp đầu ngươi.' Đây được xem là lời tiên tri đầu tiên về Chúa Giê-xu.",
+    "explanation": "Câu hỏi về lời hứa đầu tiên về Đấng Cứu Thế (Protoevangelium) trong Sáng thế ký. Đáp án đúng là Sáng thế ký 3:15, khi Đức Chúa Trời phán với con rắn: 'Ta sẽ làm cho mầy cùng người nữ, dòng dõi mầy cùng dòng dõi người nữ thù nghịch nhau. Người sẽ giày đạp đầu mầy, còn mầy sẽ cắn gót chân người.' Đây là lời tiên tri đầu tiên về Đấng Cứu Thế sẽ đạp đầu con rắn (Sa-tan).\n\nCác đáp án sai:\n1. '3:21 — khi Chúa làm áo bằng da cho A-đam và Ê-va' (đây là câu gần đúng về vị trí nhưng sai chi tiết: đây là hành động chuộc tội tượng trưng, không phải là lời hứa Protoevangelium cụ thể).\n2. '2:17 — khi Chúa cấm ăn trái cây biết điều thiện ác' (sai chi tiết: đây là lời cảnh báo về sự chết, không phải lời hứa cứu chuộc).\n3. '1:26 — khi Chúa phán về việc tạo dựng loài người' (sai phạm vi: đây thuộc về sự tạo dựng, xảy ra trước khi có tội lỗi, nên không thể là lời hứa về Đấng Cứu Thế).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -192,15 +192,15 @@
     "type": "multiple_choice_single",
     "content": "Ca-in dâng lễ vật gì cho Đức Chúa Trời?",
     "options": [
-      "Chiên đầu lòng",
-      "Hương liệu",
-      "Vàng bạc",
+      "Một con chiên",
+      "Đầu lòng chiên",
+      "Lễ vật từ vườn",
       "Thổ sản"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 4:3 — 'Ca-in dâng thổ sản làm lễ vật cho Đức Giê-hô-va.' Trong khi A-bên dâng chiên đầu lòng.",
+    "explanation": "Đáp án đúng là 'Thổ sản' vì Kinh Thánh chép: 'Khi gặt tới thì Ca-in dâng cho Đức Giê-hô-va một của lễ bằng thổ sản' (Sáng-thế Ký 4:3). Các distractor sai vì:\n- 'Một con chiên': Sai chi tiết; chiên là lễ vật của A-bên, không phải Ca-in.\n- 'Đầu lòng chiên': Sai chi tiết và phạm vi; đây là một chi tiết cụ thể trong lễ vật của A-bên (con đầu lòng), còn câu hỏi hỏi về Ca-in.\n- 'Lễ vật từ vườn': Gần đúng nhưng sai phạm vi; dù lễ vật từ 'thổ sản' có thể hiểu là từ vùng đất canh tác (có thể là vườn), nhưng Kinh Thánh chỉ dùng từ 'thổ sản' (fruit of the ground), không nói rõ 'từ vườn'.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -217,15 +217,15 @@
     "type": "multiple_choice_single",
     "content": "Ca-in đã giết ai?",
     "options": [
-      "Ê-nóc",
-      "Sết",
-      "A-đam",
+      "Hê-nóc",
+      "Sê-thơ",
+      "Áp-ram",
       "A-bên"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 4:8 — 'Ca-in trỗi dậy đánh A-bên, em mình, và giết đi.'",
+    "explanation": "Câu hỏi hỏi về nạn nhân của Ca-in trong Sáng Thế Ký 4:8. Câu Kinh Thánh ghi rõ: 'Ca-in nói cùng A-bên là em mình. Vả, khi hai người đang ở ngoài đồng, Ca-in xông đến A-bên là em mình, và giết đi.' (Sáng Thế Ký 4:8). Do đó, đáp án đúng là A-bên, em trai của Ca-in.\n- Distractor 'Hê-nóc' sai vì đây là tên con trai của Ca-in (Sáng Thế Ký 4:17), một nhân vật được nhắc đến trong đoạn gần đó nhưng không phải nạn nhân.\n- Distractor 'Sê-thơ' sai vì đây là người con khác của A-đam và Ê-va (Sáng Thế Ký 4:25), được sinh ra sau khi A-bên chết, nên không thể là nạn nhân.\n- Distractor 'Áp-ram' sai vì đây là một hiểu lầm phổ biến do nhầm lẫn với một nhân vật quan trọng khác (tổ phụ Áp-ra-ham) xuất hiện muộn hơn rất nhiều trong sách Sáng Thế Ký, hoàn toàn không liên quan đến sự kiện này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -242,15 +242,15 @@
     "type": "multiple_choice_single",
     "content": "Nhân vật nào trong Sáng thế ký không trải qua sự chết mà được Đức Chúa Trời đem đi?",
     "options": [
-      "Nô-ê",
       "Mê-tu-sê-la",
-      "La-méc",
+      "Gia-rết",
+      "Nô-ê",
       "Ê-nóc"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 5:24 — 'Ê-nóc đồng đi với Đức Chúa Trời, rồi mất biệt, vì Đức Chúa Trời đem ông đi.' Hê-bơ-rơ 11:5 xác nhận Ê-nóc không trải qua sự chết.",
+    "explanation": "Sáng thế ký 5:24 chép: 'Vậy, Ê-nóc đồng đi cùng Đức Chúa Trời, rồi mất biệt, bởi vì Đức Chúa Trời tiếp người đi.' Câu này xác nhận Ê-nóc đã được Đức Chúa Trời đem đi mà không trải qua sự chết.\n- **Ê-nóc** là đáp án đúng, vì Kinh Thánh ghi nhận rõ ràng việc này.\n- **Mê-tu-sê-la** là một đáp án gần đúng nhưng sai, vì ông được nhắc đến trong cùng một chương (Sáng thế ký 5) và có tuổi thọ cao nhất (969 năm), nhưng Kinh Thánh vẫn ghi nhận ông 'qua đời' (câu 27), tức là đã trải qua sự chết.\n- **Gia-rết** là sai chi tiết, vì ông là cha của Ê-nóc (Sáng thế ký 5:18-20) và được ghi là 'qua đời' (câu 20), không phải người được đem đi.\n- **Nô-ê** là một hiểu lầm phổ biến, vì ông nổi tiếng với câu chuyện hòm gỗ và sống lâu, nhưng Kinh Thánh không ghi ông được đem đi mà không chết; thay vào đó, Sáng thế ký 9:29 ghi 'người qua đời'.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -267,15 +267,15 @@
     "type": "multiple_choice_single",
     "content": "Mê-tu-sê-la sống được bao nhiêu tuổi?",
     "options": [
-      "777 tuổi",
-      "930 tuổi",
-      "905 tuổi",
+      "969 năm và 6 tháng",
+      "996 tuổi",
+      "699 tuổi",
       "969 tuổi"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 5:27 — 'Mê-tu-sê-la hưởng thọ được chín trăm sáu mươi chín tuổi, rồi qua đời.' Ông là người sống lâu nhất trong Kinh Thánh.",
+    "explanation": "Sáng thế ký 5:27 ghi rõ: 'Vậy, Mê-tu-sê-la hưởng thọ được chín trăm sáu mươi chín tuổi, rồi qua đời.' Do đó, đáp án đúng là 969 tuổi. Distractor '969 năm và 6 tháng' sai vì Kinh Thánh chỉ ghi số năm tròn, không đề cập tháng. Distractor '996 tuổi' là một lỗi nhầm lẫn với các số liệu tuổi cao khác trong cùng chương (ví dụ Mê-tu-sê-la là con của Hê-nóc, người sống 365 tuổi), nhưng không phải là số tuổi của Mê-tu-sê-la. Distractor '699 tuổi' là một hiểu lầm phổ biến do đảo ngược các con số (9-6-9 thành 6-9-9), nhưng đây là một con số không xuất hiện trong bản văn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -294,14 +294,14 @@
     "content": "Đức Chúa Trời bảo Nô-ê đóng tàu bằng loại gỗ gì?",
     "options": [
       "Gỗ gô-phe",
-      "Gỗ ô-liu",
       "Gỗ bá hương",
-      "Gỗ thông"
+      "Gỗ tùng",
+      "Gỗ bách"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Sáng thế ký 6:14 — 'Hãy đóng cho ngươi một chiếc tàu bằng gỗ gô-phe.'",
+    "explanation": "Trong Sáng Thế Ký 6:14, Đức Chúa Trời phán bảo Nô-ê rõ ràng: 'Hãy đóng một chiếc tàu bằng gỗ gô-phe'. Vì vậy, 'Gỗ gô-phe' là đáp án đúng.\n\nCác đáp án sai:\n- 'Gỗ bá hương' là một loại gỗ quý thường được nhắc đến trong Kinh Thánh (ví dụ: 1 Các Vua 10:11) nhưng không phải là loại gỗ Chúa chỉ định cho tàu của Nô-ê. Đây là một chi tiết sai.\n- 'Gỗ tùng' là loại gỗ được nhắc đến trong đoạn mô tả việc đóng tàu (câu 14: 'ngươi sẽ làm tàu những phòng, và đem rái khắp trong ngoài'), nhưng bản văn không nói đó là loại gỗ chính để đóng tàu. Đây là nhầm lẫn từ một passage gần đó.\n- 'Gỗ bách' là một loại gỗ thường được liên tưởng đến việc đóng tàu trong văn hóa dân gian hoặc các câu chuyện bên ngoài Kinh Thánh, nhưng không xuất hiện trong đoạn Kinh Thánh này. Đây là một hiểu lầm phổ biến.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -321,14 +321,14 @@
     "content": "Nô-ê đem mỗi loài thú tinh sạch vào tàu bao nhiêu cặp?",
     "options": [
       "Một cặp",
-      "Ba cặp",
+      "Mười hai cặp",
       "Bảy cặp",
-      "Năm cặp"
+      "Ba cặp"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 7:2 — \"Hãy đem theo bảy con, mỗi loài một đực một cái\" (hoặc \"bảy cặp\"). Thú không tinh sạch chỉ một cặp.",
+    "explanation": "Sáng-thế Ký 7:2-3 ghi rõ: 'Hãy đem theo mỗi loài thú sạch bảy đực bảy cái, còn thú không sạch thì một đực một cái. Cũng hãy đem theo chim trời bảy đực bảy cái...' Vì vậy, đáp án đúng là 'Bảy cặp' cho thú tinh sạch. Các đáp án sai: 'Một cặp' là số lượng dành cho thú KHÔNG tinh sạch (Sáng-thế Ký 7:2), đây là một chi tiết gần đúng nhưng sai đối tượng. 'Mười hai cặp' là một con số không có trong phân đoạn này, thuộc phạm vi sai. 'Ba cặp' là một hiểu lầm phổ biến, có thể do nhớ nhầm với các câu chuyện khác hoặc suy đoán sai từ tổng số.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -348,7 +348,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 7:12 — 'Mưa xuống mặt đất suốt bốn mươi ngày bốn mươi đêm.'",
+    "explanation": "Câu trả lời đúng là '40 ngày 40 đêm' được xác định rõ trong Sáng-thế Ký 7:12: 'Mưa cứ đổ xuống đất bốn mươi ngày và bốn mươi đêm.' (BTT).\n\nCác đáp án sai:\n- '30 ngày 30 đêm': Sai chi tiết số. Đây là đáp án 'gần đúng' nhưng sai số ngày then chốt.\n- '40 ngày và 40 ngày': Sai văn bản gần. Trong Sáng-thế Ký 7:4, Đức Chúa Trời bảo Nô-ê: 'Vì còn bảy ngày nữa, Ta sẽ đổ mưa xuống đất bốn mươi ngày và bốn mươi đêm...' (BTT). Đáp án này bắt chước cấu trúc '40 ngày và 40 đêm' nhưng lại lặp từ 'ngày' thay vì 'đêm', tạo ra một cụm từ sai không có trong Kinh Thánh.\n- '150 ngày': Sai phạm vi. Số 150 ngày là tổng thời gian nước lụt ngập đầy và rút (Sáng-thế Ký 7:24, 8:3), không phải thời gian mưa rơi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -359,10 +359,10 @@
       "Cơ bản"
     ],
     "options": [
-      "7 ngày 7 đêm",
       "30 ngày 30 đêm",
+      "40 ngày và 40 ngày",
       "40 ngày 40 đêm",
-      "70 ngày 70 đêm"
+      "150 ngày"
     ]
   },
   {
@@ -373,15 +373,15 @@
     "type": "multiple_choice_single",
     "content": "Tàu Nô-ê tựa trên núi ___.",
     "options": [
-      "Mô-ri-a",
+      "Li-băng",
       "A-ra-rát",
-      "Hê-rơ-môn",
-      "Si-nai"
+      "Sê-i-rơ",
+      "Sinai"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 8:4 — 'Ngày mười bảy tháng bảy, tàu tựa trên núi A-ra-rát.'",
+    "explanation": "Đáp án đúng là A-ra-rát vì Sáng thế ký 8:4 chép: \"Đến tháng bảy, ngày mười bảy tháng ấy, chiếc tàu tựa trên núi A-ra-rát.\" Các đáp án sai: (1) Li-băng là một dãy núi được nhắc đến nhiều trong Kinh Thánh (ví dụ: Ca 4:8) nhưng không liên quan đến sự kiện tàu tựa. (2) Sê-i-rơ là một vùng núi liên quan đến Ê-sau và dòng dõi người Ê-đôm (Sáng 36:8-9), không phải nơi tàu dừng. (3) Sinai là núi của giao ước và luật pháp (Xuất Ê-díp-tô 19), một sự kiện quan trọng sau này, nên đây là một nhầm lẫn phổ biến với một ngọn núi nổi tiếng khác trong Kinh Thánh.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -399,15 +399,15 @@
     "type": "multiple_choice_single",
     "content": "Con chim bồ câu mang gì trở về cho Nô-ê sau cơn đại hồng thủy?",
     "options": [
-      "Hạt lúa",
-      "Không mang gì",
-      "Cành hoa",
+      "Một hạt giống",
+      "Một con sâu",
+      "Một viên đá nhỏ",
       "Cành ô-liu"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 8:11 — 'Đến chiều, chim bồ câu bay về, và kìa, trong mỏ nó ngậm một lá ô-liu tươi.'",
+    "explanation": "Sáng Thế Ký 8:11 chép rõ: 'Chiều lại, chim bồ câu bay về, kìa trong mỏ nó ngậm một lá ô-liu tươi!' Vì vậy, đáp án đúng là 'Cành ô-liu' (hay lá ô-liu).\n\nCác đáp án sai:\n- 'Một hạt giống' (nearby_passage): Là chi tiết gần đúng nhưng sai. Bối cảnh nói về sự sống mới sau nước lụt và cây cối (Sáng 1:11-12, 8:22), nhưng Kinh Thánh không ghi chim bồ câu mang hạt giống.\n- 'Một con sâu' (common_misconception): Phản ánh suy đoán phổ biến rằng chim tìm thức ăn, nhưng câu hỏi hỏi về vật mang về cho Nô-ê, và Kinh Thánh không đề cập.\n- 'Một viên đá nhỏ' (true_but_off): Dựa trên chi tiết thực tế chim có thể ngậm vật nhỏ, nhưng hoàn toàn lạc với chi tiết Kinh Thánh về dấu hiệu đất khô.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -425,15 +425,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Chúa Trời dùng dấu hiệu gì làm giao ước với Nô-ê rằng sẽ không hủy diệt đất bằng nước lụt nữa?",
     "options": [
-      "Ánh sáng",
-      "Ngôi sao",
+      "Một cây ô-liu",
+      "Một đám mây trắng",
       "Cầu vồng",
-      "Đám mây"
+      "Dòng sông chảy ngược"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 9:13 — 'Ta đặt cầu vồng của Ta trên mây, dùng nó làm dấu hiệu giao ước giữa Ta với đất.'",
+    "explanation": "Kinh Thánh chép trong Sáng-thế Ký 9:13: 'Ta đặt mống của Ta trên từng mây, mống sẽ là dấu chỉ về sự giao ước của Ta với đất.' Do đó, đáp án đúng là 'Cầu vồng'. \n\n- Distractor 'Một cây ô-liu' là sai vì nó liên quan đến một dấu hiệu gần đó (chim bồ câu mang cành ô-liu về trong Sáng-thế Ký 8:11), nhưng đó không phải là dấu hiệu giao ước Chúa lập với Nô-ê. \n- Distractor 'Một đám mây trắng' là sai vì dựa trên hiểu lầm phổ biến rằng đám mây là dấu hiệu, trong khi Kinh Thánh chỉ nói cầu vồng 'trên từng mây'. \n- Distractor 'Dòng sông chảy ngược' là sai vì mặc dù là hiện tượng thiên nhiên có thể được nhắc đến trong Kinh Thánh (ví dụ: 2 Các Vua 20:11), nó hoàn toàn không liên quan đến giao ước với Nô-ê trong Sáng-thế Ký 9.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -452,15 +452,15 @@
     "type": "multiple_choice_single",
     "content": "Nô-ê nguyền rủa con cháu của ai vì sự việc sau cơn đại hồng thủy?",
     "options": [
-      "Gia-phết",
-      "Sem",
+      "Sêm (con Nô-ê)",
+      "Gia-phết (con Nô-ê)",
       "Ca-na-an (con Cham)",
-      "Cham"
+      "Ca-in (con A-đam)"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 9:25 — 'Ca-na-an đáng bị nguyền rủa! Nó sẽ làm đầy tớ của các đầy tớ cho anh em nó.' Nô-ê nguyền rủa Ca-na-an, con trai Cham.",
+    "explanation": "Trong Sáng Thế Ký 9:25, Nô-ê nói: 'Ca-na-an đáng rủa sả! Nó sẽ làm mọi cho các anh em nó.' Lời nguyền này nhằm vào Ca-na-an, con trai của Cham (Sáng Thế Ký 9:18, 22). Cham là người con đã thấy sự trần truyền của cha và báo cho hai anh em ở ngoài, nhưng chính Ca-na-an (dòng dõi của Cham) là đối tượng bị nguyền rủa. Do đó, đáp án đúng là 'Ca-na-an (con Cham)'. Các phương án sai: 1) 'Sêm (con Nô-ê)' - Sêm là anh của Cham, được Nô-ê chúc phước (Sáng Thế Ký 9:26), đây là một lời chứ không phải lời nguyền trong cùng đoạn văn gần đó. 2) 'Gia-phết (con Nô-ê)' - Gia-phết cũng là anh của Cham và được chúc phước (Sáng Thế Ký 9:27), không phải đối tượng bị nguyền rủa. 3) 'Ca-in (con A-đam)' - Đây là một nhân vật hoàn toàn khác trong Sáng Thế Ký 4, bị Đức Chúa Trời rủa sả vì giết em, không liên quan đến câu chuyện sau đại hồng thủy trong chương 9.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -480,14 +480,14 @@
     "content": "Nim-rốt được mô tả là người như thế nào trên đất?",
     "options": [
       "Thợ săn mạnh dạn",
-      "Vua công bình",
-      "Người chăn chiên giỏi",
-      "Thầy tế lễ đầu tiên"
+      "Thợ săn giỏi nhất",
+      "Vua thành Ba-by-lôn",
+      "Người đầu tiên làm vua"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Sáng thế ký 10:9 — 'Nim-rốt là một thợ săn mạnh dạn trước mặt Đức Giê-hô-va.'",
+    "explanation": "Câu hỏi hỏi về cách mô tả Nim-rốt TRONG CHÍNH ĐOẠN KINH THÁNH NÀY (Sáng 10:8-9). ĐÁP ÁN ĐÚNG: \"Thợ săn mạnh dạn\" là trích nguyên văn mô tả trong câu 9: \"Nó là một tay thợ săn mạnh dạn trước mặt Đức Giê-hô-va\" (BTT).\n\nTẠI SAO DISTRACTOR SAI:\n1. \"Thợ săn giỏi nhất\" (wrong_detail): Đoạn này KHÔNG so sánh hay dùng từ so sánh hơn nhất. Nó chỉ ghi \"thợ săn mạnh dạn\", không phải \"giỏi nhất\". Đây là distractor gần đúng (almost-right) vì rất gần với nguyên văn, chỉ sai 1 từ then chốt.\n2. \"Vua thành Ba-by-lôn\" (nearby_passage): Chi tiết này xuất hiện ở câu 10: \"Còn khởi đầu nước nó là Ba-by-lôn... trong đất Si-nê-a\". Tuy liên quan đến Nim-rốt (là kết quả của sự \"hùng mạnh\" của ông), nhưng đây KHÔNG PHẢI là mô tả \"người như thế nào\" trong câu hỏi, mà là kể về công trình/vương quốc của ông. Câu hỏi hỏi về BẢN THÂN CON NGƯỜI ông.\n3. \"Người đầu tiên làm vua\" (common_misconception): Mặc dù câu 8 nói \"Nó khởi đầu làm anh hùng trên đất\" và nhiều người suy diễn \"anh hùng\" = \"vua\", nhưng từ \"vua\" (king/melech) KHÔNG hề xuất hiện trong hai câu này. Đây là cách hiểu phổ biến từ bối cảnh lịch sử và các đoạn khác, nhưng KHÔNG PHẢI là mô tả trực tiếp trong Sáng 10:8-9.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -505,15 +505,15 @@
     "type": "multiple_choice_single",
     "content": "Người ta xây tháp Ba-bên để làm gì?",
     "options": [
-      "Thờ phượng Chúa",
-      "Làm nơi ở cho vua",
+      "Để tránh lũ lụt và có nơi trú ẩn an toàn",
+      "Để thờ phượng Đức Chúa Trời trên một đền thờ cao",
       "Để danh mình lừng lẫy và không bị tản ra",
-      "Chống lại kẻ thù"
+      "Để tìm đường lên thiên đàng và gặp gỡ Ngài"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 11:4 — 'Nào! Chúng ta hãy xây một thành phố và dựng một tháp có chóp cao đến tận trời, để làm cho danh chúng ta lừng lẫy, kẻo chúng ta bị tản ra khắp mặt đất.'",
+    "explanation": "Trong Sáng-thế Ký 11:4, con người nói: 'Hè! chúng ta hãy xây một cái thành và dựng lên một cái tháp, chót cao đến tận trời; ta hãy làm cho rạng danh ta, e khi phải tản lạc khắp trên mặt đất.' Đây là hai mục đích chính: 'làm cho rạng danh ta' (để danh mình lừng lẫy) và 'e khi phải tản lạc' (để không bị tản ra).\n\n- Đáp án đúng: 'Để danh mình lừng lẫy và không bị tản ra' trực tiếp phản ánh hai ý này.\n\n- Distractor 1 (gần đúng): 'Để tránh lũ lụt và có nơi trú ẩn an toàn' là một hiểu lầm phổ biến, thường bị nhầm lẫn với câu chuyện Nô-ê. Trong đoạn này, họ sợ bị tản lạc, không phải sợ lũ lụt.\n\n- Distractor 2: 'Để thờ phượng Đức Chúa Trời trên một đền thờ cao' sai phạm vi. Động cơ trong câu chuyện là vinh danh chính mình, không phải thờ phượng Đức Chúa Trời. Không có chi tiết nào về việc thờ phượng trong passage này.\n\n- Distractor 3: 'Để tìm đường lên thiên đàng và gặp gỡ Ngài' dựa vào một chi tiết gần ('chót cao đến tận trời') nhưng suy diễn sai mục đích. Họ muốn tháp cao để làm rạng danh mình, không phải để 'gặp gỡ' Đức Chúa Trời.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -530,15 +530,15 @@
     "type": "multiple_choice_single",
     "content": "Gia đình Áp-ram ra đi từ thành ___ xứ Canh-đê.",
     "options": [
-      "Ni-ni-ve",
-      "Ha-ran",
-      "Si-đôn",
+      "Bết-sê-ba xứ Canh-đê",
+      "Sô-đôm xứ Canh-đê",
+      "Ê-đen xứ Canh-đê",
       "U-rơ"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 11:31 — 'Tha-rê dẫn Áp-ram... ra khỏi U-rơ, xứ Canh-đê, đặng qua xứ Ca-na-an.'",
+    "explanation": "Sáng Thế Ký 11:31 chép: 'Tha-rê dẫn Áp-ram con trai mình, Lót, con trai của Ha-ran, tức cháu mình, và Sa-rai, dâu mình, vợ của Áp-ram con trai mình, ra khỏi U-rơ, xứ Canh-đê, đặng qua xứ Ca-na-an...' Do đó, đáp án đúng là 'U-rơ'.\n\n*   'Bết-sê-ba xứ Canh-đê': Sai. Bết-sê-ba là địa danh quan trọng trong hành trình của các tổ phụ, nhưng nằm ở Ca-na-an, không phải xứ Canh-đê mà gia đình Áp-ram xuất phát. Đây là nhầm lẫn với một địa danh nổi tiếng khác trong sách Sáng Thế Ký.\n*   'Sô-đôm xứ Canh-đê': Sai. Sô-đôm là một thành ở vùng đồng bằng sông Giô-đanh, sau này bị hủy diệt, không thuộc xứ Canh-đê. Đây là sai chi tiết địa lý.\n*   'Ê-đen xứ Canh-đê': Sai. Vườn Ê-đen là nơi ở ban đầu của loài người trong câu chuyện sáng thế, không phải là một thành cụ thể hay thuộc về xứ Canh-đê trong lịch sử các tổ phụ. Đây là hiểu lầm phổ biến về địa danh trong các câu chuyện sáng thế.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -556,15 +556,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Chúa Trời gọi Áp-ram rời quê hương để đi đến xứ nào?",
     "options": [
-      "Ba-by-lôn",
-      "Ai-cập",
-      "A-si-ri",
+      "Mích-ba",
+      "Bết-lê-hem",
+      "Ê-díp-tô",
       "Ca-na-an"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 12:1,5 — Đức Chúa Trời gọi Áp-ram rời quê hương đến xứ Ca-na-an, vùng đất Ngài sẽ chỉ cho ông.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Ca-na-an. Trong Sáng Thế Ký 12:1-3, Đức Chúa Trời truyền lệnh cho Áp-ram rời khỏi quê hương và đi đến một xứ mà Ngài sẽ chỉ cho. Mặc dù tên 'Ca-na-an' không được nêu trực tiếp trong 3 câu này, mệnh lệnh 'Hãy đi đến xứ ta sẽ chỉ cho ngươi' (câu 1) được làm rõ ngay sau đó là ám chỉ xứ Ca-na-an. Điều này được xác nhận trong suốt câu chuyện, bắt đầu từ Sáng Thế Ký 12:5 khi Áp-ram đi đến xứ Ca-na-an, và đặc biệt là trong Sáng Thế Ký 12:7: 'Đức Giê-hô-va hiện ra cùng Áp-ram và phán rằng: Ta sẽ ban cho dòng dõi ngươi đất nầy!' — 'đất nầy' chính là xứ Ca-na-an. Vì vậy, mệnh lệnh ban đầu trong 12:1-3 hướng tới Ca-na-an.\nDISTRACTOR SAI:\n1. 'Mích-ba': Sai vì nhầm với một địa danh khác trong Kinh Thánh. Mích-ba là nơi Gia-cốp lập một giao ước với La-ban (Sáng Thế Ký 31:49), không liên quan đến hành trình của Áp-ram trong Sáng 12.\n2. 'Bết-lê-hem': Sai vì lạc phạm vi khỏi câu chuyện Sáng Thế Ký 12. Bết-lê-hem là một thành quan trọng trong lịch sử sau này của Y-sơ-ra-ên, đặc biệt là nơi sinh của vua Đa-vít và Chúa Giê-su, nhưng chưa được đề cập trong Sáng 12.\n3. 'Ê-díp-tô': Sai vì đây là một hiểu lầm phổ biến. Mặc dù Áp-ram sau đó có xuống Ê-díp-tô vì nạn đói (Sáng Thế Ký 12:10), đó không phải là đích đến ban đầu từ mệnh lệnh của Đức Chúa Trời trong câu 1-3. Đức Chúa Trời gọi ông đi đến xứ Ca-na-an, còn việc xuống Ê-díp-tô là một sự tạm lánh sau này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -583,7 +583,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 12:4 — 'Áp-ram được bảy mươi lăm tuổi khi ông rời Ha-ran.'",
+    "explanation": "Sáng Thế Ký 12:4 chép: 'Vậy, Áp-ram đi, theo như lời Đức Giê-hô-va đã phán dạy; Lót cũng đi với người. Khi Áp-ram ra khỏi Cha-ran, tuổi người được bảy mươi lăm.' Do đó, đáp án đúng là 75 tuổi. Distractor '70 tuổi' dựa trên tuổi Áp-ram khi cha ông là Tha-rê qua đời (Sáng 11:32), là chi tiết gần nhưng không phải sự kiện rời Cha-ran. Distractor '65 tuổi' là một con số sai chi tiết, không tìm thấy trong ngữ cảnh này. Distractor '100 tuổi' là một hiểu lầm phổ biến, nhầm lẫn với tuổi của Áp-ram khi sinh Y-sác (Sáng 21:5), một sự kiện xảy ra sau đó rất lâu.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -592,9 +592,9 @@
       "Trung cấp"
     ],
     "options": [
-      "60 tuổi",
+      "70 tuổi",
       "75 tuổi",
-      "85 tuổi",
+      "65 tuổi",
       "100 tuổi"
     ]
   },
@@ -607,15 +607,15 @@
     "type": "multiple_choice_single",
     "content": "Lót chọn vùng đất nào khi chia tay Áp-ram?",
     "options": [
-      "Sa mạc Nê-ghép",
-      "Xứ Ai-cập",
+      "Núi Ê-banh",
+      "Vùng đất Hếp-rôn",
       "Đồng bằng Giô-đanh",
-      "Vùng núi Ca-na-an"
+      "Vùng đất Bết-ên và A-hi"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 13:11 — 'Lót chọn cho mình cả đồng bằng Giô-đanh.' Vùng đất này xanh tươi như vườn của Đức Giê-hô-va.",
+    "explanation": "Đáp án đúng là 'Đồng bằng Giô-đanh' vì Kinh Thánh ghi rõ: 'Lót ngước mắt lên, thấy cả đồng bằng Giô-đanh ... Lót chọn cho mình cả đồng bằng Giô-đanh' (Sáng-thế Ký 13:10-11).\nDistractor 'Núi Ê-banh' sai vì đây là một địa danh khác được nhắc đến trong các câu chuyện sau này, không liên quan đến sự kiện Lót chọn đất.\nDistractor 'Vùng đất Hếp-rôn' sai vì đây là nơi Áp-ram định cư sau khi chia tay Lót (Sáng-thế Ký 13:18), không phải lựa chọn của Lót.\nDistractor 'Vùng đất Bết-ên và A-hi' sai vì đây là nơi hai người cùng đến trước khi chia tay (Sáng-thế Ký 13:3), không phải vùng đất Lót chọn sau khi quyết định tách ra.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -634,14 +634,14 @@
     "content": "Mên-chi-xê-đéc, vua Sa-lem, mang gì ra đón Áp-ram sau trận chiến?",
     "options": [
       "Bánh và rượu",
-      "Vàng và bạc",
+      "Bánh và dầu",
       "Chiên và bò",
-      "Áo choàng và kiếm"
+      "Áo choàng và thanh gươm"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Sáng thế ký 14:18 — 'Mên-chi-xê-đéc, vua Sa-lem, sai đem bánh và rượu ra. Vua cũng là thầy tế lễ của Đức Chúa Trời Chí Cao.' Hình bóng về Chúa Giê-xu trong Hê-bơ-rơ 7.",
+    "explanation": "Trong Sáng-thế Ký 14:18, Mên-chi-xê-đéc được ghi nhận là mang \"bánh và rượu\" ra đón Áp-ram. Distractor 'Bánh và dầu' sai vì rượu được nhắc đến, không phải dầu. Distractor 'Chiên và bò' sai vì đây là một hiểu lầm phổ biến dựa trên các nghi lễ tế lễ thường thấy, không phải sự kiện này. Distractor 'Áo choàng và thanh gươm' sai vì dù gần với ngữ cảnh chiến trận, nhưng đây là chi tiết không có trong đoạn Kinh Thánh được tham chiếu.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -736,15 +736,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Chúa Trời đổi tên Áp-ram thành ___.",
     "options": [
-      "Gia-cốp",
-      "Giô-suê",
+      "Áp-ra-ham-a",
+      "Y-sác",
       "Áp-ra-ham",
-      "Y-sơ-ra-ên"
+      "Gia-cốp"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 17:5 — 'Tên ngươi không còn là Áp-ram nữa, nhưng tên ngươi sẽ là Áp-ra-ham, vì Ta đã lập ngươi làm tổ phụ của nhiều dân tộc.'",
+    "explanation": "Trong Sáng thế ký 17:5, Đức Chúa Trời phán: 'Tên ngươi sẽ chẳng còn gọi là Áp-ram nữa, nhưng Áp-ra-ham sẽ là tên ngươi.' Do đó, Áp-ra-ham là đáp án đúng. Distractor 'Áp-ra-ham-a' là sai vì thêm chữ 'a', dù gần đúng; 'Y-sác' là sai vì đây là con trai của Áp-ra-ham, xuất hiện sau trong câu chuyện; 'Gia-cốp' là sai vì là cháu nội của Áp-ra-ham, hoàn toàn khác phạm vi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -763,14 +763,14 @@
     "content": "Dấu hiệu giao ước giữa Đức Chúa Trời và Áp-ra-ham là gì?",
     "options": [
       "Phép cắt bì",
-      "Giữ ngày Sa-bát",
-      "Dựng bàn thờ",
-      "Dâng sinh tế"
+      "Lễ dâng con sinh",
+      "Dấu cầu vồng",
+      "Nghi thức rửa tội"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Sáng thế ký 17:11 — 'Các ngươi phải chịu cắt bì; đó là dấu hiệu giao ước giữa Ta với các ngươi.'",
+    "explanation": "Đáp án đúng là 'Phép cắt bì'. Sáng Thế Ký 17:10-11 chép: 'Đây là giao ước của ta mà các ngươi sẽ giữ, giao ước giữa ta với các ngươi, và dòng dõi ngươi: Mỗi một người nam trong vòng các ngươi phải chịu cắt bì; các ngươi phải chịu cắt bì nơi thịt bao quy đầu, ấy là dấu hiệu của sự giao ước giữa ta với các ngươi.'\n\n- Distractor 'Lễ dâng con sinh' SAI vì nó liên quan đến giao ước (Sáng Thế Ký 15:9-10) nhưng là một nghi thức trước đó, không phải dấu hiệu giao ước được thiết lập trong đoạn này.\n- Distractor 'Dấu cầu vồng' SAI vì đó là dấu hiệu giao ước của Đức Chúa Trời với Nô-ê và mọi loài xác thịt (Sáng Thế Ký 9:12-13), không phải với Áp-ra-ham.\n- Distractor 'Nghi thức rửa tội' SAI vì đây là một nghi thức Tân Ước, không xuất hiện trong ngữ cảnh giao ước với Áp-ra-ham.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -792,7 +792,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 18:12 — 'Sa-ra cười thầm, nói rằng: Tôi đã già rồi, lại còn hưởng được điều sung sướng nầy sao?'",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Cười thầm trong lòng' (Sáng Thế Ký 18:12). Câu Kinh Thánh ghi: 'Sa-ra cười thầm trong lòng mà nói rằng: Già như ta đây, còn có sự khoái lạc đó chăng? Còn chúa ta đã già rồi.' Đây là phản ứng trong lòng, chưa bộc lộ ra ngoài.\n\nGIẢI THÍCH CÁC ĐÁP ÁN SAI:\n1. 'Cười lớn tiếng ra ngoài': Sai vì Sa-ra chỉ cười thầm trong lòng, không cười ra tiếng tại thời điểm đó (phản ứng bên ngoài xuất hiện sau ở Sáng Thế Ký 18:15 khi bà chối).\n2. 'Khóc vì vui mừng': Sai vì đây là phản ứng cảm xúc phổ biến nhưng không được Kinh Thánh ghi nhận trong tình huống này; bà thể hiện sự nghi ngờ, không phải vui mừng.\n3. 'Lập tức tin và cảm tạ': Sai vì dù đây là phản ứng đức tin đúng đắn nói chung, nhưng không mô tả đúng phản ứng thực tế của Sa-ra trong đoạn này; bà nghi ngờ trước khi tin.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -803,10 +803,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Khóc lóc",
+      "Cười lớn tiếng ra ngoài",
       "Cười thầm trong lòng",
-      "Hét lên ca tụng",
-      "Đứng im không nói"
+      "Khóc vì vui mừng",
+      "Lập tức tin và cảm tạ"
     ]
   },
   {
@@ -817,7 +817,7 @@
     "type": "multiple_choice_single",
     "content": "Con số cuối cùng Áp-ra-ham cầu xin Đức Chúa Trời tha Sô-đôm nếu tìm được bao nhiêu người công chính?",
     "options": [
-      "Năm mươi người",
+      "Chín người",
       "Năm người",
       "Hai mươi người",
       "Mười người"
@@ -825,7 +825,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 18:32 — Áp-ra-ham xin từ 50 xuống còn 10 người công chính. Con số cuối cùng ông xin là mười người.",
+    "explanation": "Sáng Thế Ký 18:32 ghi rõ: \"Ngài đáp: 'Ta sẽ chẳng hủy diệt nó vì mười người đó.'\" Vì vậy, con số cuối cùng là mười người. Distractor 'Chín người' gần đúng vì Áp-ra-ham trước đó đã hỏi về số chín (câu 28), nhưng cuối cùng dừng lại ở mười. Distractor 'Năm người' sai chi tiết vì năm mươi là con số đầu tiên Áp-ra-ham cầu xin (câu 24), không phải cuối cùng. Distractor 'Hai mươi người' là một hiểu lầm phổ biến, có thể do nhớ nhầm một con số trung gian trong cuộc đối thoại, nhưng không phải là con số kết thúc.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -869,15 +869,15 @@
     "type": "multiple_choice_single",
     "content": "Áp-ra-ham nói Sa-ra là gì khi ở xứ Ghê-ra?",
     "options": [
-      "Người giúp việc",
-      "Em gái mình",
       "Vợ mình",
-      "Bà con xa"
+      "Em gái mình",
+      "Nàng hầu của mình",
+      "Một phụ nữ xứ Ca-na-an"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 20:2 — 'Áp-ra-ham nói về Sa-ra, vợ mình rằng: Nàng là em gái tôi.' Vua A-bi-mê-léc sai người đem Sa-ra đi.",
+    "explanation": "Sáng Thế Ký 20:2 ghi rõ: 'Áp-ra-ham nói về Sa-ra, vợ mình, rằng: Nàng là em gái tôi.' Do đó, Áp-ra-ham đã nói Sa-ra là 'em gái mình'. Đây là lần thứ hai ông dùng cách nói này (xem Sáng 12:13).\n\n- Distractor 'Vợ mình' là một hiểu lầm phổ biến vì Sa-ra thực sự là vợ ông, nhưng câu hỏi hỏi về điều ông đã 'nói' (tức lời tuyên bố sai sự thật của ông) chứ không phải sự thật.\n- Distractor 'Nàng hầu của mình' là sai chi tiết; A-ga mới là nàng hầu, không phải Sa-ra (Sáng 16:1).\n- Distractor 'Một phụ nữ xứ Ca-na-an' đúng là Sa-ra không phải người Ca-na-an, nhưng chi tiết này lạc với trọng tâm câu hỏi về lời tuyên bố cụ thể của Áp-ra-ham tại Ghê-ra.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -896,15 +896,15 @@
     "type": "multiple_choice_single",
     "content": "Con trai của Áp-ra-ham và Sa-ra tên là gì?",
     "options": [
-      "Gia-cốp",
       "Ích-ma-ên",
-      "Ê-sau",
+      "Gia-cốp",
+      "Áp-ra-ham",
       "Y-sác"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 21:3 — 'Áp-ra-ham đặt tên con trai mà Sa-ra sinh cho mình là Y-sác.'",
+    "explanation": "Sáng Thế Ký 21:3-5 ghi rõ: \"Áp-ra-ham đặt tên đứa con mà Sa-ra đã sinh cho mình là Y-sác.\" (c.3). Vì vậy, Y-sác là đáp án đúng. Distractor 'Ích-ma-ên' là con trai của Áp-ra-ham với A-ga (Sáng Thế Ký 16:15), là anh cùng cha khác mẹ của Y-sác, nên là lỗi nhầm đoạn gần. Distractor 'Gia-cốp' là cháu nội của Áp-ra-ham (con của Y-sác), nên là lỗi sai chi tiết thế hệ và tên. Distractor 'Áp-ra-ham' là tên của chính người cha, một hiểu lầm phổ biến khi đọc lướt câu hỏi về 'con trai của'.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -922,15 +922,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Chúa Trời thử Áp-ra-ham bằng cách bảo ông dâng ai làm sinh tế?",
     "options": [
-      "Một con chiên",
-      "Sa-ra",
       "Ích-ma-ên",
+      "Lót",
+      "Thiên sứ",
       "Y-sác"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 22:2 — 'Hãy bắt Y-sác, đứa con một mà con yêu quý, đi đến vùng Mô-ri-a, dâng nó làm tế lễ thiêu.'",
+    "explanation": "Câu trả lời đúng là 'Y-sác', dựa trên Sáng-thế Ký 22:2, nơi Đức Chúa Trời phán: 'Hãy bắt con một ngươi, tức Y-sác, mà ngươi yêu mến, đi đến xứ Mô-ri-a, nơi đó dâng đứa con làm của lễ thiêu...'.\n\n*   **Y-sác** là đúng vì ông là 'con một' mà Áp-ra-ham yêu mến, là đối tượng cụ thể được Đức Chúa Trời chỉ định.\n*   **Ích-ma-ên** là gần đúng nhưng sai (vì đúng đến ~90%): Ông là con trai khác của Áp-ra-ham (Sáng-thế Ký 16:15), nhưng không phải là 'con một' được hứa (Sáng-thế Ký 21:12) và không phải đối tượng trong câu chuyện này.\n*   **Lót** sai vì ông là cháu của Áp-ra-ham (Sáng-thế Ký 12:5), không phải con trai, và được nhắc đến trong các đoạn gần đó nhưng không liên quan đến mệnh lệnh này.\n*   **Thiên sứ** sai vì dù thiên sứ xuất hiện để can thiệp sau đó (Sáng-thế Ký 22:11-12), đối tượng phải dâng ban đầu vẫn là Y-sác chứ không phải thiên sứ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -948,15 +948,15 @@
     "type": "multiple_choice_single",
     "content": "Khi Áp-ra-ham sắp dâng Y-sác, Đức Chúa Trời cung cấp một con ___ thay thế.",
     "options": [
-      "chim bồ câu",
-      "dê đực",
       "bò đực",
+      "chiên cái",
+      "dê đực",
       "chiên đực"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 22:13 — 'Áp-ra-ham ngước mắt lên, thấy phía sau một con chiên đực, sừng mắc trong bụi cây. Áp-ra-ham bắt con chiên đực đó dâng làm tế lễ thiêu thay cho con mình.'",
+    "explanation": "Đáp án đúng là 'chiên đực' (chiên đực) vì Kinh Thánh chép rõ: 'Áp-ra-ham nhướng mắt lên, xem thấy sau lưng một con chiên đực, sừng mắc trong bụi cây' (Sáng-thế Ký 22:13).\n\nCác đáp án sai:\n- 'bò đực': Đây là lỗi nhầm passage gần (nearby_passage). Bò đực thường xuất hiện trong các nghi lễ dâng tế khác trong Cựu Ước (như Lê-vi Ký), nhưng không phải là con vật được cung cấp trong câu chuyện này tại Mô-ri-a.\n- 'chiên cái': Đây là đáp án gần đúng nhưng sai chi tiết then chốt (wrong_detail). Bản văn mô tả con vật là 'chiên đực' (con đực), không phải chiên cái. Đây là một chi tiết cụ thể trong câu Kinh Thánh.\n- 'dê đực': Đây là lỗi hiểu lầm phổ biến (common_misconception). Một số người đọc có thể nhớ nhầm hoặc hình dung chung về con vật dùng để tế lễ, nhưng Kinh Thánh không ghi là dê đực trong ngữ cảnh này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1002,15 +1002,15 @@
     "type": "multiple_choice_single",
     "content": "Đầy tớ Áp-ra-ham gặp Rê-bê-ca ở đâu?",
     "options": [
-      "Trên cánh đồng",
+      "Tại nhà của La-ban",
       "Bên giếng nước",
-      "Tại đền thờ",
-      "Trong thành phố"
+      "Tại cổng thành",
+      "Tại một cánh đồng"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 24:13 — 'Kìa, tôi đứng đây bên giếng nước, các thiếu nữ trong thành sắp ra múc nước.' Đầy tớ cầu nguyện và gặp Rê-bê-ca tại giếng.",
+    "explanation": "Đáp án đúng là \"Bên giếng nước\" (Sáng Thế Ký 24:11). Trong câu 11, đầy tớ đã cho lạc đà quỳ xuống bên ngoài thành, gần một giếng nước, và câu 13-15 mô tả việc ông gặp Rê-bê-ca tại đó khi nàng ra múc nước. Distractor \"Tại nhà của La-ban\" là gần đúng vì Rê-bê-ca là con của Bê-thu-ên và em của La-ban (24:29), và đầy tớ sau đó đã đến nhà họ, nhưng cuộc gặp gỡ đầu tiên xảy ra ở giếng nước. Distractor \"Tại cổng thành\" sai vì câu 11 nói ông dừng chân bên ngoài thành, gần giếng, chứ không phải ở cổng. Distractor \"Tại một cánh đồng\" sai phạm vi vì bối cảnh là khu vực có giếng nước gần thành Na-cô, không phải một cánh đồng chung chung (24:10-11).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1029,15 +1029,15 @@
     "type": "multiple_choice_single",
     "content": "Ai trở thành vợ của Y-sác?",
     "options": [
-      "Lê-a",
-      "Đi-na",
+      "Xa-ra",
       "Ra-chên",
+      "Áp-ra-ham",
       "Rê-bê-ca"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 24:15,67 — Đầy tớ Áp-ra-ham gặp Rê-bê-ca tại giếng nước, và nàng trở thành vợ Y-sác.",
+    "explanation": "Trong Sáng-thế Ký 24:15-16, người nữ trinh mà tôi tớ của Áp-ra-ham gặp tại giếng nước và sau đó trở thành vợ của Y-sác chính là Rê-bê-ca (câu 15).\n\n- Xa-ra (distractor 1) là sai vì bà là vợ của Áp-ra-ham, mẹ của Y-sác, và đã qua đời trong chương 23. Tuy là một nhân vật quan trọng gần đoạn này, nhưng bà không phải là vợ của Y-sác.\n- Ra-chên (distractor 2) là sai vì bà là vợ của Gia-cốp (cháu nội của Áp-ra-ham), xuất hiện muộn hơn rất nhiều trong sách Sáng-thế Ký. Đây là một sai lầm về chi tiết nhân vật và thứ tự thời gian.\n- Áp-ra-ham (distractor 3) là sai vì đây là một hiểu lầm phổ biến do nhầm lẫn giữa các nhân vật chính; Áp-ra-ham là cha của Y-sác, không thể là vợ của Y-sác.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1055,15 +1055,15 @@
     "type": "multiple_choice_single",
     "content": "Áp-ra-ham hưởng thọ bao nhiêu tuổi?",
     "options": [
-      "200 tuổi",
+      "180 tuổi",
       "175 tuổi",
-      "150 tuổi",
-      "180 tuổi"
+      "165 tuổi",
+      "185 tuổi"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 25:7-8 — 'Áp-ra-ham hưởng thọ một trăm bảy mươi lăm tuổi. Vậy, Áp-ra-ham tắt hơi, qua đời sau một đời hưởng phước lâu dài, và được về cùng tổ tông.'",
+    "explanation": "Sáng Thế Ký 25:7-8 chép: 'Áp-ra-ham hưởng thọ được một trăm bảy mươi lăm tuổi. Áp-ra-ham tắt hơi, băng hà, được trở về cùng tổ phụ mình, tuổi cao tác lớn và đã thỏa nguyện.' Do đó, đáp án đúng là 175 tuổi.\n\nDistractor '180 tuổi' là gần đúng nhưng sai chi tiết số năm, có thể nhầm lẫn với tuổi thọ của các tổ phụ khác trong các phân đoạn gần đó.\nDistractor '165 tuổi' là sai chi tiết số năm, có thể nhầm với tuổi thọ của một số nhân vật khác trong sách Sáng Thế Ký.\nDistractor '185 tuổi' là một hiểu lầm phổ biến, vì một số người nhớ nhầm tuổi thọ của Áp-ra-ham với các con số tương tự khác trong Kinh Thánh.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1084,7 +1084,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 25:25-26 — 'Đứa ra trước đỏ hồng... người ta đặt tên là Ê-sau. Sau đó, em nó sinh ra... người ta đặt tên là Gia-cốp.'",
+    "explanation": "Sáng Thế Ký 25:25-26 chép: 'Vả, người thứ nhứt ra... họ đặt tên là Ê-sau. Kế em nó lại ra sau... đặt tên là Gia-cốp.' Đáp án đúng là Ê-sau vì câu Kinh Thánh xác định rõ Ê-sau là người ra trước. Distractor 'Gia-cốp' là sai vì đây là em sinh ra sau, dù là nhân vật chính trong câu chuyện (gần đúng nhưng sai chi tiết then chốt). Distractor 'Ê-sau và Gia-cốp cùng lúc' là sai vì văn bản mô tả thứ tự lần lượt, đây là một hiểu lầm phổ biến về sinh đôi. Distractor 'Nô-ê' là sai vì là nhân vật hoàn toàn khác, thuộc phạm vi câu chuyện trước đó, không liên quan đến câu hỏi về con của Y-sác.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1096,8 +1096,8 @@
     "options": [
       "Gia-cốp",
       "Ê-sau",
-      "Cả hai cùng lúc",
-      "Không xác định"
+      "Ê-sau và Gia-cốp cùng lúc",
+      "Nô-ê"
     ]
   },
   {
@@ -1109,15 +1109,15 @@
     "type": "multiple_choice_single",
     "content": "Ê-sau bán quyền trưởng nam cho Gia-cốp để đổi lấy gì?",
     "options": [
-      "Vàng bạc",
-      "Áo choàng",
+      "Bánh mì và rượu",
+      "Bánh và chén nước",
       "Bánh và canh đậu đỏ",
-      "Đàn chiên"
+      "Bánh và thịt chiên"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 25:34 — 'Gia-cốp đưa cho Ê-sau bánh và canh đậu đỏ. Ê-sau ăn, uống, rồi đứng dậy đi. Ê-sau coi thường quyền trưởng nam mình như vậy.'",
+    "explanation": "Đáp án đúng là 'Bánh và canh đậu đỏ' (Sáng-thế Ký 25:34: 'Gia-cốp cho Ê-sau bánh và canh bằng đậu; người ăn uống, rồi đứng dậy mà đi'). Distractor 'Bánh mì và rượu' là gần đúng nhưng sai chi tiết về thức uống (rượu thay vì canh đậu), có thể nhầm với các bối cảnh khác. Distractor 'Bánh và chén nước' phản ánh hiểu lầm phổ biến rằng đây là một giao dịch đơn giản, nhưng Kinh Thánh ghi rõ là 'canh bằng đậu'. Distractor 'Bánh và thịt chiên' là sai chi tiết (thịt thay vì canh đậu), có thể do liên tưởng đến các câu chuyện về thức ăn khác.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1138,13 +1138,13 @@
     "options": [
       "Áp-ra-ham",
       "Lót",
-      "Gia-cốp",
-      "Nô-ê"
+      "Ê-sau",
+      "A-bi-mê-léc"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Sáng thế ký 26:18 — 'Y-sác đào lại các giếng nước đã được đào trong đời Áp-ra-ham, cha ông, vì sau khi Áp-ra-ham qua đời, người Phi-li-tin đã lấp các giếng đó.'",
+    "explanation": "Sáng-thế Ký 26:18 ghi rõ: \"Y-sác bèn đào lại mấy cái giếng nước người ta đã đào trong đời Áp-ra-ham, cha mình, mà bị người Phi-li-tin lấp lại sau khi Áp-ra-ham qua đời.\" Vì vậy, đáp án đúng là Áp-ra-ham, vì Y-sác đào lại các giếng do cha mình đã đào.\n\nCác đáp án sai:\n- 'Lót' (nearby_passage): Lót là cháu của Áp-ra-ham, được nhắc đến nhiều trong các đoạn gần đó của Sáng-thế Ký, nhưng không liên quan đến việc đào giếng trong câu hỏi.\n- 'Ê-sau' (wrong_detail): Ê-sau là con trai của Y-sác, một nhân vật quan trọng trong câu chuyện gia đình, nhưng không phải là người đã đào các giếng bị lấp mà Y-sác đào lại.\n- 'A-bi-mê-léc' (true_but_off): A-bi-mê-léc là vua của người Phi-li-tin, có liên quan đến câu chuyện (ông đã lấp giếng), nhưng ông không phải là người đã đào các giếng mà Y-sác đào lại. Câu hỏi hỏi về chủ nhân ban đầu của các giếng, không phải người đã phá hủy chúng.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1162,15 +1162,15 @@
     "type": "multiple_choice_single",
     "content": "Ai giúp Gia-cốp lừa Y-sác để nhận phước lành thay Ê-sau?",
     "options": [
-      "A-ga",
+      "Ê-sau",
       "Rê-bê-ca",
-      "Ra-chên",
-      "Đi-na"
+      "La-ban",
+      "Bếp-Ên"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 27:6-17 — Rê-bê-ca bày mưu cho Gia-cốp mặc áo Ê-sau, dùng da dê phủ tay để lừa Y-sác ban phước lành.",
+    "explanation": "Đáp án đúng là Rê-bê-ca. Sáng Thế Ký 27:5, 8-10, 14-17 ghi rõ Rê-bê-ca đã nghe lời Y-sác nói với Ê-sau, bày mưu cho Gia-cốp, chuẩn bị thức ăn và trang phục để Gia-cốp giả làm Ê-sau nhận phước. Distractor 'Ê-sau' sai vì đây là một hiểu lầm phổ biến do Ê-sau là người bị lừa và mất phước, không phải người giúp lừa. Distractor 'La-ban' sai phạm vi vì La-ban là cậu của Gia-cốp, xuất hiện chính trong các chương sau, không có trong sự kiện này. Distractor 'Bếp-Ên' sai chi tiết vì đây là tên một địa điểm (Sáng 28:19), không phải tên một nhân vật trong câu chuyện.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1189,15 +1189,15 @@
     "type": "multiple_choice_single",
     "content": "Gia-cốp nằm mơ thấy gì tại Bê-tên?",
     "options": [
-      "Dòng sông chảy từ trời",
-      "Đám mây lửa",
-      "Chiếc cầu vồng",
+      "Chiếc thang bắc xuống âm phủ",
+      "Đám mây hình chiếc thang",
+      "Một chiếc cầu vồng lớn",
       "Chiếc thang bắc lên trời"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 28:12 — 'Ông nằm mơ, thấy một chiếc thang dựng dưới đất, đầu thang chạm đến trời, và kìa, các thiên sứ của Đức Chúa Trời đi lên đi xuống trên thang đó.'",
+    "explanation": "Đáp án đúng là 'Chiếc thang bắc lên trời' vì Sáng Thế Ký 28:12 ghi rõ: 'Người nằm mộng thấy một cái thang bắc trên đất, đầu thang chạm đến trời'. Các đáp án sai: 1) 'Chiếc thang bắc xuống âm phủ' sai chi tiết (thang bắc lên trời, không phải xuống âm phủ), 2) 'Đám mây hình chiếc thang' đúng văn bản nhưng lạc câu hỏi (không thấy nói đám mây hình thang), 3) 'Một chiếc cầu vồng lớn' là hiểu lầm phổ biến (cầu vồng là dấu hiệu giao ước với Nô-ê, không liên quan giấc mơ Gia-cốp).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1245,13 +1245,13 @@
     "options": [
       "Bên-gia-min",
       "Ru-bên",
-      "Giu-đa",
+      "Lê-a",
       "Giô-sép"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 30:23-24 — 'Nàng thụ thai, sinh một con trai... đặt tên là Giô-sép.' Bên-gia-min là con thứ hai của Ra-chên.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Giô-sép. Sáng-thế Ký 30:22-24 chép: 'Đức Chúa Trời nhớ lại Ra-chên... nàng thọ thai và sanh một con trai, mà rằng: Đức Chúa Trời đã rửa sự xấu hổ tôi rồi. Nàng đặt tên đứa trai đó là Giô-sép'. Vậy Giô-sép là con trai đầu lòng của Ra-chên.\n\nDISTRACTOR SAI:\n- 'Bên-gia-min': Đây là con trai thứ hai và cũng là con trai út của Ra-chên (Sáng-thế Ký 35:16-18), không phải con đầu lòng. Đây là lỗi sai chi tiết về thứ tự, nhưng là một distractor 'gần đúng' vì cũng là con của Ra-chên.\n- 'Ru-bên': Đây là con trai đầu lòng của Gia-cốp, nhưng là con của Lê-a (Sáng-thế Ký 29:32). Đây là lỗi nhầm passage gần vì Ru-bên là con đầu lòng của Gia-cốp, nhưng không phải của Ra-chên.\n- 'Lê-a': Đây là tên chị của Ra-chên và là vợ khác của Gia-cốp, hoàn toàn không phải là tên một người con trai. Đây là lỗi sai phạm vi, đưa ra một thực thể sai loại so với yêu cầu câu hỏi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1269,15 +1269,15 @@
     "type": "multiple_choice_single",
     "content": "Ra-chên đã lấy trộm gì của La-ban khi Gia-cốp rời đi?",
     "options": [
-      "Đàn chiên",
-      "Vàng bạc",
-      "Giao ước bằng văn tự",
+      "Những chiếc nhẫn vàng",
+      "Những con chiên đực khỏe mạnh",
+      "Các bình nước và lương thực",
       "Các pho tượng thần"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 31:19 — 'Ra-chên lấy trộm các pho tượng thần của cha mình.' Đây là các thê-ra-phim, tượng thần gia đình.",
+    "explanation": "Kinh Thánh chép: 'Vả, khi Gia-cốp ở xứ Pha-đan-a-ram đi, thì Ra-chên ăn cắp các pho tượng thần của cha mình' (Sáng thế ký 31:19). Đáp án đúng là 'các pho tượng thần' vì đây chính xác là những gì Ra-chên đã lấy trộm. Distractor 'Những chiếc nhẫn vàng' là gần đúng vì nó liên quan đến đồ có giá trị và xuất hiện trong câu chuyện xung quanh (Sáng thế ký 35:4), nhưng không phải thứ bà lấy lúc này. Distractor 'Những con chiên đực khỏe mạnh' sai chi tiết vì đây là phần tài sản chính của Gia-cốp, không phải thứ Ra-chên lấy trộm. Distractor 'Các bình nước và lương thực' dựa trên hiểu lầm phổ biến về việc chuẩn bị cho cuộc hành trình, nhưng không đúng với sự kiện được hỏi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1296,15 +1296,15 @@
     "type": "multiple_choice_single",
     "content": "Gia-cốp vật lộn với thiên sứ suốt đêm tại bên bờ sông nào?",
     "options": [
-      "Sông Ơ-phơ-rát",
       "Sông Giô-đanh",
+      "Sông Ê-phơ-rát",
       "Sông Gia-bốc",
       "Sông Ni-lơ"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 32:22-24 — Gia-cốp đưa gia đình qua rạch Gia-bốc, rồi ở lại một mình và vật lộn với một người cho đến rạng đông.",
+    "explanation": "Trong Sáng-thế Ký 32:22-23, ngay trước đoạn này, Gia-cốp đưa gia đình qua Sông Gia-bốc. Câu 24-25 ghi rõ sự vật lộn xảy ra tại đó. Do đó, đáp án đúng là 'Sông Gia-bốc'. \n- 'Sông Giô-đanh' sai vì đây là một con sông lớn và nổi tiếng khác trong Kinh Thánh, được nhắc đến nhiều lần, nhưng không phải là bối cảnh của sự kiện này.\n- 'Sông Ê-phơ-rát' sai vì đây là một trong các con sông ở Ê-đen (Sáng-thế Ký 2:14) và là ranh giới của đất hứa, nhưng không liên quan đến hành trình của Gia-cốp trong đoạn này.\n- 'Sông Ni-lơ' sai vì đây là một hiểu lầm phổ biến khi liên tưởng đến các con sông lớn trong Kinh Thánh, nhưng sông Ni-lơ chủ yếu gắn với Ai Cập và không xuất hiện trong câu chuyện của các tổ phụ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1350,7 +1350,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 33:4 — 'Ê-sau chạy đến đón Gia-cốp, ôm choàng lấy cổ ông và hôn; rồi cả hai đều khóc.'",
+    "explanation": "Sáng-thế Ký 33:4 ghi: \"Ê-sau chạy đến đón người, ôm lấy cổ mà hôn, rồi hai anh em đều khóc.\" Vì vậy, đáp án đúng là cả hai ôm, hôn và cùng khóc. **Distractor 1 (gần đúng)** sai vì Kinh Thánh nói rõ \"hai anh em đều khóc\", không phải chỉ một mình Gia-cốp khóc. **Distractor 2** sai vì trái ngược hoàn toàn với thái độ hòa giải được mô tả trong phân đoạn; đây là một hiểu lầm phổ biến dựa trên sự căng thẳng trước đó của họ. **Distractor 3** sai vì đây là hành động của Gia-cốp (Sáng-thế Ký 33:3), không phải của Ê-sau.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1360,10 +1360,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Tránh mặt và đi nơi khác",
-      "Tấn công Gia-cốp",
+      "Ôm và hôn cổ Gia-cốp, nhưng chỉ một mình Gia-cốp khóc",
+      "Quay lưng bỏ đi và không nói một lời",
       "Ôm và hôn cổ Gia-cốp; cả hai cùng khóc",
-      "Đòi tiền chuộc"
+      "Lạy xuống đất bảy lần khi đến gần Gia-cốp"
     ]
   },
   {
@@ -1375,15 +1375,15 @@
     "type": "multiple_choice_single",
     "content": "Hai con trai nào của Gia-cốp tàn sát dân thành Si-chem để trả thù cho Đi-na?",
     "options": [
-      "Gát và A-se",
-      "Dan và Nép-ta-li",
+      "Giu-đa và Si-mê-ôn",
+      "Lê-vi và Giu-đa",
       "Ru-bên và Giu-đa",
       "Si-mê-ôn và Lê-vi"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 34:25 — 'Si-mê-ôn và Lê-vi, hai anh em của Đi-na, mỗi người cầm gươm xông vào thành đang yên ổn, giết tất cả đàn ông.'",
+    "explanation": "Sáng Thế Ký 34:25-26 ghi rõ: 'Xảy trong ngày thứ ba, khi họ đương đau đớn, thì hai con trai Gia-cốp, là Si-mê-ôn và Lê-vi, hai anh em của Đi-na, cầm mỗi người một cây gươm, hãm đánh thành cách dạn dĩ, và giết hết thảy người nam.' Do đó, đáp án đúng là Si-mê-ôn và Lê-vi, vì họ là hai anh em ruột của Đi-na đã trực tiếp thực hiện việc trả thù.\n\nCác đáp án sai:\n- 'Giu-đa và Si-mê-ôn' sai vì tuy Si-mê-ôn có tham gia, nhưng người còn lại là Lê-vi chứ không phải Giu-đa (sai chi tiết tên). Đây là đáp án gần đúng vì đúng một trong hai tên.\n- 'Lê-vi và Giu-đa' sai vì mặc dù Lê-vi đúng, nhưng Giu-đa không có trong đoạn mô tả sự kiện này; Giu-đa là một người anh em khác được nhắc đến nhiều ở các đoạn gần đó (nhầm passage gần).\n- 'Ru-bên và Giu-đa' sai vì cả hai đều không được Kinh Thánh ghi nhận là thủ phạm trong đoạn này; Ru-bên là con trưởng và thường xuất hiện trong các câu chuyện gia đình, nhưng không liên quan đến hành động cụ thể này (đúng văn bản nhưng lạc câu hỏi).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1403,7 +1403,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 35:10 — 'Tên ngươi là Gia-cốp, nhưng ngươi sẽ không còn mang tên Gia-cốp nữa; tên ngươi sẽ là Y-sơ-ra-ên.'",
+    "explanation": "Đáp án đúng là 'Y-sơ-ra-ên' vì Sáng Thế Ký 35:10 ghi: 'Đức Chúa Trời phán cùng người rằng: Tên ngươi là Gia-cốp, từ nay trở đi chẳng gọi là Gia-cốp nữa, nhưng tên ngươi sẽ là Y-sơ-ra-ên. Rồi Ngài đặt tên người là Y-sơ-ra-ên.' Distractor 'Gia-cốp' là tên cũ, được nhắc đến trong cùng câu Kinh Thánh nhưng không phải tên mới được xác nhận (nearby_passage). Distractor 'Bê-tên' là địa điểm xảy ra sự kiện, không phải tên mới của Gia-cốp (wrong_detail). Distractor 'Áp-ra-ham' là tên của tổ phụ khác, một hiểu lầm phổ biến do nhầm lẫn giữa các lần đổi tên trong sách Sáng Thế Ký (common_misconception).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1413,10 +1413,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Áp-ra-ham",
+      "Gia-cốp",
       "Y-sơ-ra-ên",
-      "Đa-vít",
-      "Giô-suê"
+      "Bê-tên",
+      "Áp-ra-ham"
     ]
   },
   {
@@ -1430,7 +1430,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 36:1 — 'Đây là dòng dõi Ê-sau, tức là Ê-đôm.' Ê-sau định cư tại vùng núi Sê-i-rơ, trở thành tổ phụ dân Ê-đôm.",
+    "explanation": "Sách Sáng Thế Ký 36:1, 8 xác định: 'Đây là dòng dõi của Ê-sau, tức là Ê-đôm... Ê-sau ở tại núi Sê-i-rơ. Ê-sau là Ê-đôm.' Do đó, Ê-sau là tổ phụ của dân Ê-đôm. Mô-áp (sai) là dân tộc xuất phát từ Lót (Sáng 19:37), một chi tiết được nhắc đến trong các phân đoạn gần đó nhưng không liên quan đến Ê-sau. A-si-ri (sai) là một đế quốc lớn sau này, không phải dân tộc có tổ phụ là Ê-sau trong bối cảnh này. Y-sơ-ra-ên (sai) là tên khác của Gia-cốp, em song sinh của Ê-sau (Sáng 32:28), và là tổ phụ của dân Y-sơ-ra-ên, một sự nhầm lẫn phổ biến giữa hai anh em.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1441,9 +1441,9 @@
     ],
     "options": [
       "Mô-áp",
-      "Am-môn",
+      "A-si-ri",
       "Ê-đôm",
-      "Phi-li-tin"
+      "Y-sơ-ra-ên"
     ]
   },
   {
@@ -1455,15 +1455,15 @@
     "type": "multiple_choice_single",
     "content": "Y-sơ-ra-ên (Gia-cốp) tặng Giô-sép món quà gì khiến các anh ghen tị?",
     "options": [
-      "Chiếc nhẫn vàng",
-      "Thanh gươm bạc",
+      "Một chiếc áo choàng đơn sắc",
+      "Một cây gậy chăn chiên",
       "Áo choàng nhiều màu sắc",
-      "Đàn chiên riêng"
+      "Một túi bạc"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 37:3 — 'Y-sơ-ra-ên yêu Giô-sép hơn tất cả các con trai khác... và may cho chàng một cái áo choàng nhiều màu sắc.'",
+    "explanation": "Sáng Thế Ký 37:3-4 chép rõ: 'Vả, Y-sơ-ra-ên thương Giô-sép hơn các con trai khác, vì là con muộn mình; nên may cho một cái áo dài nhiều màu sắc. Các anh thấy cha thương Giô-sép hơn bọn mình, bèn sanh lòng ganh ghét, chẳng có thế lấy lời tử tế nói cùng chàng được.' (BTT). Vì thế, đáp án đúng là 'Áo choàng nhiều màu sắc', vì đó chính là món quà được nêu trong phân đoạn này khiến các anh ghen tị.\n\n- Distractor 'Một chiếc áo choàng đơn sắc' là gần đúng nhưng sai chi tiết then chốt: Kinh văn mô tả rõ là 'áo dài nhiều màu sắc', không phải đơn sắc.\n- Distractor 'Một cây gậy chăn chiên' lấy từ passage gần: Công việc chăn chiên được nhắc đến trong câu 2 và 12, nhưng không phải là món quà gây ghen tị được nói đến trong câu 3-4.\n- Distractor 'Một túi bạc' dựa trên hiểu lầm phổ biến: Đây có thể là sự nhầm lẫn với câu chuyện sau này (ví dụ: anh em bán Giô-sép lấy bạc) hoặc với các câu chuyện khác, hoàn toàn không được đề cập trong phân đoạn này như là món quà của cha.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1509,15 +1509,15 @@
     "type": "multiple_choice_single",
     "content": "Các anh của Giô-sép bán ông cho ai?",
     "options": [
-      "Người Ca-na-an",
-      "Người Phi-li-tin",
-      "Người Ai-cập",
+      "Các người chăn chiên tại Đô-than",
+      "Các người lính Ai Cập",
+      "Một quan chức của Pha-ra-ôn",
       "Các thương buôn Ma-đi-an/Ích-ma-ên"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 37:28 — 'Các anh kéo Giô-sép lên khỏi hố, bán cho các thương buôn Ích-ma-ên với giá hai mươi miếng bạc.'",
+    "explanation": "Đáp án đúng: Các thương buôn Ma-đi-an/Ích-ma-ên (Sáng Thế Ký 37:28). Sự kiện này xảy ra tại Đô-than, và các thương buôn này chính là những người đã mua Giô-sép.\n\nGiải thích các đáp án sai:\n1. 'Các người chăn chiên tại Đô-than' (nearby_passage): Đây là đáp án gần đúng vì đúng địa điểm (Đô-than, Sáng Thế Ký 37:17), nhưng sai đối tượng. Các anh Giô-sép gặp các thương buôn, không phải người chăn chiên, để bán ông.\n2. 'Các người lính Ai Cập' (common_misconception): Sai vì đây là một hiểu lầm phổ biến từ phần sau của câu chuyện. Giô-sép sau đó bị đưa xuống Ai Cập (Sáng Thế Ký 37:28, 36), nhưng không phải bị bán trực tiếp cho lính Ai Cập.\n3. 'Một quan chức của Pha-ra-ôn' (wrong_scope): Sai vì đây là sự kiện thuộc phạm vi khác. Giô-sép sau này phục vụ cho quan chức Phô-ti-pha (Sáng Thế Ký 39:1), nhưng đây không phải là đối tượng các anh ông bán ông cho lúc ban đầu.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1563,14 +1563,14 @@
     "content": "Giô-sép làm quản gia cho ai khi đến Ai-cập?",
     "options": [
       "Pha-ra-ôn",
-      "Tư lệnh quân đội",
+      "Giô-sép cha mình",
       "Phô-ti-pha",
-      "Quan cai ngục"
+      "quan thái tử"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 39:1 — 'Phô-ti-pha, quan thị vệ của Pha-ra-ôn, người Ai-cập, mua Giô-sép.' Giô-sép được tin cậy giao quản lý cả nhà Phô-ti-pha.",
+    "explanation": "Đoạn Kinh Thánh Sáng-thế Ký 39:1-4 ghi rõ: 'Giô-sép bị dẫn đến xứ Ê-díp-tô; Phô-ti-pha, quan thị vệ của Pha-ra-ôn, làm quan cai ngục, một người Ê-díp-tô, mua chàng... Chúa ở cùng Giô-sép... chủ chàng thấy Chúa ở cùng... nên được ơn trước mặt chủ, hầu việc người; người lập chàng làm quản gia...'. Vì vậy, đáp án đúng là 'Phô-ti-pha', vì ông là chủ và quan thị vệ của Pha-ra-ôn, người đã mua và lập Giô-sép làm quản gia. Distractor 'Pha-ra-ôn' là gần đúng nhưng sai chi tiết then chốt: Pha-ra-ôn là vua, được nhắc đến trong cùng đoạn văn gần đó, nhưng không phải là chủ trực tiếp đã lập Giô-sép làm quản gia lúc này. Distractor 'Giô-sép cha mình' dựa trên hiểu lầm phổ biến về vai trò gia đình, nhưng trong bối cảnh Ai-cập, Giô-sép là nô lệ, không thể làm quản gia cho cha mình là Gia-cốt đang ở xa. Distractor 'quan thái tử' sai phạm vi: đây là một chức vụ có thật trong Kinh Thánh nhưng không hề xuất hiện hay liên quan trong câu chuyện về Giô-sép ở chương 39 này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1590,7 +1590,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 39:17-20 — Vợ Phô-ti-pha vu cáo Giô-sép xúc phạm nàng, nên Phô-ti-pha bỏ Giô-sép vào ngục.",
+    "explanation": "Giô-sép bị bỏ tù vì bị vu cáo bởi vợ Phô-ti-pha (Sáng-thế Ký 39:19-20). Bà ta vu cho Giô-sép tội cố cưỡng hiếp bà sau khi ông liên tục từ chối những lời quyến rũ của bà (Sáng-thế Ký 39:7-18).\n\nCác đáp án sai:\n1. 'Từ chối thờ lạy hình tượng của vua Ai-cập' là sự nhầm lẫn phổ biến với câu chuyện sau này của các nhân vật khác (như ba bạn Hê-bơ-rơ trong Đa-ni-ên) hoặc một hiểu lầm về lý do tôn giáo; trong bối cảnh Sáng-thế Ký 39, lý do là vu cáo về tình dục, không phải thờ phượng.\n2. 'Trộm cắp tài sản của Phô-ti-pha' sai chi tiết: vợ Phô-ti-pha dùng áo choàng của Giô-sép làm chứng cứ vu cáo tấn công tình dục, không phải trộm cắp (Sáng-thế Ký 39:13-18).\n3. 'Tự ý bỏ trốn khỏi nhà Phô-ti-pha' liên quan đến passage gần: Giô-sép đã bỏ áo lại và chạy trốn khi bị quyến rũ (Sáng-thế Ký 39:12), nhưng đó là hành động đúng đắn, không phải lý do ông bị bỏ tù; lý do bỏ tù là lời vu cáo sau sự việc đó.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1600,10 +1600,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Trộm cắp đồ vua",
+      "Từ chối thờ lạy hình tượng của vua Ai-cập",
       "Bị vu cáo bởi vợ Phô-ti-pha",
-      "Lập âm mưu phản loạn",
-      "Giải mộng sai cho vua"
+      "Trộm cắp tài sản của Phô-ti-pha",
+      "Tự ý bỏ trốn khỏi nhà Phô-ti-pha"
     ]
   },
   {
@@ -1615,15 +1615,15 @@
     "type": "multiple_choice_single",
     "content": "Trong tù, Giô-sép giải mộng cho hai người nào của Pha-ra-ôn?",
     "options": [
-      "Quan tư lệnh và quan cận vệ",
-      "Hai viên tướng quân",
+      "Quan cai ngục và quan tư dinh",
+      "Quan dâng rượu và quan tửu",
       "Quan dâng rượu và quan làm bánh",
-      "Quan tế lễ và quan coi kho"
+      "Quan kỵ binh và quan binh lính"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 40:1-2 — 'Quan dâng rượu và quan làm bánh của vua Ai-cập phạm tội.' Giô-sép giải mộng cho cả hai trong tù.",
+    "explanation": "Đoạn Kinh Thánh Sáng-thế ký 40:1-3 nói rõ: “Sau các việc ấy, quan tửu và quan thượng thiện của vua Ê-díp-tô phạm đến chủ mình. ... Người bỏ hai quan đó vào ngục, ... là nơi Giô-sép bị giam giữ.” Đáp án đúng \"Quan dâng rượu và quan làm bánh\" là tên chức vụ khác bày tỏ cùng ý nghĩa của \"quan tửu\" và \"quan thượng thiện\". Distractor 1 (Quan cai ngục và quan tư dinh) là gần đúng, sai chi tiết: Quan cai ngục xuất hiện trong cùng phân đoạn (Sáng-thế ký 39:22-40:3) nhưng không phải là người có mộng. Distractor 2 (Quan dâng rượu và quan tửu) là sai chi tiết: \"Quan tửu\" và \"quan dâng rượu\" là hai tên gọi cùng một chức quan, không phải hai người khác nhau. Distractor 3 (Quan kỵ binh và quan binh lính) là sai phạm vi: Các nhân vật này không xuất hiện trong phân đoạn hay ngữ cảnh này về câu chuyện Giô-sép trong tù.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1668,15 +1668,15 @@
     "type": "multiple_choice_single",
     "content": "Giô-sép bao nhiêu tuổi khi đứng trước mặt Pha-ra-ôn để giải mộng?",
     "options": [
-      "25 tuổi",
+      "33 tuổi",
       "30 tuổi",
-      "28 tuổi",
-      "33 tuổi"
+      "17 tuổi",
+      "40 tuổi"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 41:46 — 'Giô-sép được ba mươi tuổi khi ra mắt Pha-ra-ôn, vua Ai-cập.' So với Đa-vít cũng bắt đầu trị vì lúc 30 tuổi (2 Sa-mu-ên 5:4).",
+    "explanation": "ĐÁP ÁN ĐÚNG: 30 tuổi. Sáng-thế Ký 41:46 ghi rõ: 'Vả, Giô-sép được ba mươi tuổi khi người đứng trước mặt Pha-ra-ôn, vua xứ Ê-díp-tô.'\n\n- Distractor '33 tuổi' SAI: Đây là tuổi của Chúa Giê-xu khi bắt đầu chức vụ (Lu-ca 3:23), một con số phổ biến trong Kinh Thánh nhưng không phải tuổi của Giô-sép trong bối cảnh này. Đây là chi tiết sai.\n- Distractor '17 tuổi' SAI: Đây là tuổi của Giô-sép khi bị các anh bán sang xứ Ê-díp-tô (Sáng-thế Ký 37:2), một chi tiết trong cùng một câu chuyện nhưng ở một đoạn Kinh Thánh gần đó. Câu hỏi hỏi về thời điểm đứng trước Pha-ra-ôn, không phải lúc bị bán.\n- Distractor '40 tuổi' SAI: Đây là một con số phổ biến trong Kinh Thánh (như thời gian Môi-se ở Ma-đi-an hay dân Y-sơ-ra-ên trong đồng vắng), dẫn đến hiểu lầm phổ biến có thể áp vào nhiều nhân vật, nhưng không phải là tuổi của Giô-sép trong Sáng-thế Ký 41:46.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1696,7 +1696,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 42:24 — 'Giô-sép bắt Si-mê-ôn trói lại trước mặt anh em.' Giô-sép giữ Si-mê-ôn, không phải Ru-bên.",
+    "explanation": "Trong Sáng-thế Ký 42:24, sau khi nghe các anh em ăn năn về việc lìa bỏ mình, Giô-sép quay đi khóc. Khi trở lại, ông bắt Si-mê-ôn và trói lại trước mắt họ, rồi cho phép những người khác trở về với lương thực. Do đó, đáp án đúng là Si-mê-ôn. Các đáp án sai: (1) Lê-vi là sai chi tiết, vì ông là anh em khác, không phải người bị giữ lại (đây là distractor gần đúng vì Lê-vi là một anh em khác và cũng có thể là con tin tiềm năng, nhưng Kinh Thánh chỉ định rõ là Si-mê-ôn). (2) Giu-đa là sai vì đến từ đoạn gần (Sáng-thế Ký 44), nơi Giu-đa đứng ra bảo lãnh cho Bên-gia-min, chứ không phải người bị giữ lại ở lần gặp đầu tiên này. (3) Bên-gia-min là một hiểu lầm phổ biến, vì nhiều người nhớ Giô-sép đặc biệt yêu thương và sau này thử thách các anh về Bên-gia-min, nhưng trong sự kiện này, Bên-gia-min còn ở nhà với cha và không có mặt.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1707,10 +1707,10 @@
       "Trung cấp"
     ],
     "options": [
-      "Ru-bên",
-      "Si-mê-ôn",
       "Lê-vi",
-      "Giu-đa"
+      "Si-mê-ôn",
+      "Giu-đa",
+      "Bên-gia-min"
     ]
   },
   {
@@ -1722,15 +1722,15 @@
     "type": "multiple_choice_single",
     "content": "Tại bữa tiệc Giô-sép đãi các anh em, phần ăn của Bên-gia-min nhiều hơn bao nhiêu so với các anh khác?",
     "options": [
-      "Gấp mười",
+      "Gấp đôi",
       "Gấp năm",
-      "Gấp hai",
-      "Gấp ba"
+      "Gấp mười",
+      "Ngang bằng"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 43:34 — 'Giô-sép sai đem thức ăn từ bàn mình cho anh em, nhưng phần của Bên-gia-min nhiều gấp năm phần của các anh khác.'",
+    "explanation": "Sáng Thế Ký 43:34 chép: 'Giô-sép sai đem thức ăn trước mặt họ; phần của Bên-gia-min lại lớn gấp năm phần của mọi người khác.' Do đó, 'Gấp năm' là đáp án đúng. Distractor 'Gấp đôi' là gần đúng nhưng sai chi tiết số lượng cụ thể. 'Gấp mười' dựa trên hiểu lầm phổ biến về sự ưu ái quá mức. 'Ngang bằng' lạc câu hỏi vì dù họ được ngồi theo thứ tự (c.33), câu hỏi chỉ hỏi về phần ăn, và c.34 khẳng định rõ phần của Bên-gia-min lớn hơn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1777,7 +1777,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 45:5 — 'Bây giờ, đừng buồn rầu và cũng đừng tự trách mình vì đã bán tôi. Đức Chúa Trời đã sai tôi đến đây trước các anh để giữ gìn sự sống.'",
+    "explanation": "Trong Sáng Thế Ký 45:4-5, Giô-sép trấn an các anh: 'Các anh hãy lại gần tôi'... 'Nhưng bây giờ, đừng buồn, đừng giận mình vì đã bán tôi sang đây, vì ấy là Đức Chúa Trời sai tôi đến đây trước các anh, đặng giữ gìn sự sống chúng ta.' Đáp án đúng diễn đạt chính xác nội dung này, với chủ ngữ hành động là Đức Chúa Trời và mục đích là 'giữ gìn sự sống'.\n\nCác đáp án sai:\n1. Sai chi tiết (wrong_detail): Sai chủ thể hành động ('các anh em' thay vì 'Đức Chúa Trời'). Đây là distractor 'gần đúng' vì chỉ sai một chi tiết then chốt này.\n2. Sai phạm vi (wrong_scope): Sai mục đích ('cứu đất nước' thay vì 'giữ gìn sự sống' chung, vốn là phạm vi rộng hơn và chính xác hơn).\n3. Hiểu lầm phổ biến (common_misconception): Sai ý nghĩa của hành động Đức Chúa Trời ('trừng phạt tội lỗi' thay vì 'giữ gìn sự sống'). Đây là một suy diễn sai lệch về mục đích của Đức Chúa Trời trong đoạn này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1787,10 +1787,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Trách móc gay gắt",
-      "Đuổi họ về tay không",
+      "Bảo họ đừng buồn vì các anh em đã sai ông đến để giữ gìn sự sống",
+      "Bảo họ đừng buồn vì Đức Chúa Trời đã sai ông đến để cứu đất nước",
       "Bảo họ đừng buồn vì Đức Chúa Trời đã sai ông đến để giữ gìn sự sống",
-      "Đòi giết họ để báo thù"
+      "Bảo họ đừng buồn vì đây là ý định của Đức Chúa Trời để trừng phạt tội lỗi"
     ]
   },
   {
@@ -1802,15 +1802,15 @@
     "type": "multiple_choice_single",
     "content": "Giô-sép mời gia đình đến sống ở vùng nào của Ai-cập?",
     "options": [
-      "Thê-be",
+      "Núi Si-na-i",
       "Gô-sen",
-      "Mem-phi",
-      "Pi-thom"
+      "Bờ sông Ni-lơ",
+      "Vùng đồng bằng châu thổ"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 45:10 — 'Cha sẽ ở trong vùng Gô-sen, gần con — cha cùng các con trai, các cháu, các bầy súc vật và mọi tài sản của cha.'",
+    "explanation": "Trong Sáng Thế Ký 45:10-11, Giô-sép nói: \"Ngươi sẽ ở tại xứ Gô-sen… Ta sẽ nuôi ngươi tại đó\". Đáp án đúng là \"Gô-sen\", vì đây là vùng đất cụ thể Giô-sép chỉ định cho gia đình mình ở Ai Cập. Các đáp án sai: 1) \"Núi Si-na-i\" là địa điểm quan trọng trong Xuất Ê-díp-tô Ký, không liên quan đến lời mời này. 2) \"Bờ sông Ni-lơ\" là đáp án gần đúng vì Gô-sen có thể gần sông Ni-lơ, nhưng câu hỏi hỏi tên vùng cụ thể, không phải địa danh chung chung. 3) \"Vùng đồng bằng châu thổ\" sai phạm vi, vì Gô-sen nằm ở phía đông bắc Ai Cập, thuộc vùng châu thổ có thể không chính xác và không phải tên gọi được nêu trong câu Kinh Thánh này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1830,14 +1830,14 @@
     "content": "Tổng cộng bao nhiêu người thuộc gia đình Gia-cốp đi xuống Ai-cập?",
     "options": [
       "70 người",
-      "60 người",
-      "50 người",
-      "80 người"
+      "69 người",
+      "65 người",
+      "30 người"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Sáng thế ký 46:27 — 'Tổng số người nhà Gia-cốp đến Ai-cập là bảy mươi.' Con số 70 này cũng được nhắc trong Xuất Ê-díp-tô Ký 1:5.",
+    "explanation": "Đáp án đúng là 70 người dựa trên Sáng-thế Ký 46:26-27: \"Hết thảy các người tùy Gia-cốp đi xuống xứ Ê-díp-tô, luôn với các dâu người, cộng là sáu mươi sáu người. 27 Lại các con trai của Giô-sép đã sanh tại xứ Ê-díp-tô được hai người. Hết thảy người của nhà Gia-cốp đi xuống xứ Ê-díp-tô là bảy mươi người.\" Đây là tổng số cuối cùng (66 + 2 + chính Gia-cốp và vợ).\n\nCác đáp án sai: (1) '69 người' là sai chi tiết số học, có thể do tính nhầm tổng (ví dụ quên tính một người), dù rất gần với đáp án đúng. (2) '65 người' nhầm với một số liệu từ đoạn Kinh Thánh gần đó (Sáng-thế Ký 46:26 ghi số người 'tùy Gia-cốp' trước khi cộng thêm con cháu Giô-sép và có thể Gia-cốp). (3) '30 người' là một hiểu lầm phổ biến, có thể do đọc lướt hoặc nhớ nhầm về số lượng nhỏ hơn nhiều, không phù hợp với bối cảnh gia đình lớn của các tổ phụ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1855,15 +1855,15 @@
     "type": "multiple_choice_single",
     "content": "Gia-cốp sống ở Ai-cập được bao nhiêu năm?",
     "options": [
-      "20 năm",
-      "10 năm",
-      "30 năm",
+      "12 năm",
+      "27 năm",
+      "7 năm",
       "17 năm"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 47:28 — 'Gia-cốp sống trong xứ Ai-cập mười bảy năm. Gia-cốp hưởng thọ được một trăm bốn mươi bảy tuổi.'",
+    "explanation": "Sáng-thế Ký 47:28: 'Gia-cốp kiều ngụ trong xứ Ê-díp-tô được mười bảy năm...'. Đáp án đúng là '17 năm' vì Kinh Thánh trực tiếp ghi rõ thời gian. Distractor '12 năm' là gần đúng nhưng sai chi tiết số năm. Distractor '27 năm' là hiểu lầm phổ biến, có thể nhầm với tổng thời gian khác trong câu chuyện. Distractor '7 năm' liên quan đến một chi tiết số khác trong các phân đoạn gần đó (như 7 năm đói kém), không phải thời gian Gia-cốp sống ở Ai-cập.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1882,15 +1882,15 @@
     "type": "multiple_choice_single",
     "content": "Khi chúc phước cho hai con trai Giô-sép, Gia-cốp đặt tay phải lên đầu ai?",
     "options": [
-      "Không đặt tay lên ai",
-      "Cả hai đều tay phải",
       "Ma-na-se (con trưởng)",
+      "Giô-sép (cha của họ)",
+      "Một trong hai người con trai",
       "Ép-ra-im (con thứ)"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 48:14 — 'Y-sơ-ra-ên đưa tay phải đặt trên đầu Ép-ra-im, dù nó là con thứ, và đặt tay trái trên đầu Ma-na-se.' Gia-cốp cố ý ưu tiên con thứ.",
+    "explanation": "Trong Sáng Thế Ký 48:13-14, Giô-sép đặt hai con trai là Ép-ra-im bên tay trái và Ma-na-se bên tay phải của Gia-cốp, nhưng Gia-cốp đã vắt tay lại, đặt tay phải lên đầu Ép-ra-im là con thứ (câu 14). Đáp án đúng là 'Ép-ra-im (con thứ)' vì đúng với mô tả hành động đặt tay phải. Distractor 'Ma-na-se (con trưởng)' là gần đúng (đúng nhân vật trong đoạn) nhưng sai chi tiết then chốt vì Gia-cốp đặt tay phải lên Ép-ra-im chứ không phải Ma-na-se. Distractor 'Giô-sép (cha của họ)' sai vì đây là người cha đứng đưa con đến, không phải đối tượng được đặt tay. Distractor 'Một trong hai người con trai' sai phạm vi vì quá mơ hồ, không xác định được chính xác người nào theo yêu cầu câu hỏi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1910,15 +1910,15 @@
     "type": "multiple_choice_single",
     "content": "Ru-bên mất đặc quyền trưởng nam vì lý do gì?",
     "options": [
-      "Bán Giô-sép",
-      "Giết người vô tội",
+      "Không vâng lời cha mẹ",
+      "Không giữ hòa khí với các em",
       "Nằm với thiếp của cha",
-      "Thờ thần tượng"
+      "Lấy đất của người khác"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 49:3-4 — 'Ngươi đã lên giường cha... ngươi đã làm ô nhục giường cha.' Sự việc này được ghi ở 35:22 khi Ru-bên nằm với Bi-la, thiếp của Gia-cốp.",
+    "explanation": "Sáng Thế Ký 49:3-4 ghi lại lời của Gia-cốp với Ru-bên: 'Ru-bên, con là trưởng nam của cha, sức mạnh của cha, và là đầu tiên của sự cường thịnh cha; tư cách tôn trọng và quyền năng vốn thuộc về con. Nhưng con sôi trào như nước, nên con sẽ không được trổi hơn nữa, vì con đã lên giường cha, và làm ô uế chỗ nằm của cha.' Điều này trực tiếp chỉ ra lý do là hành vi nằm với thiếp của cha (Binh-ha, Sáng 35:22).\n- Đáp án đúng đúng vì nó mô tả chính xác hành vi được Kinh Thánh ghi lại.\n- Distractor 'Không vâng lời cha mẹ' là gần đúng (almost-right) vì nó là một lỗi chung chung và phổ biến, nhưng KHÔNG phải là lý do cụ thể được nêu trong câu hỏi.\n- Distractor 'Không giữ hòa khí với các em' liên quan đến một passage gần (bối cảnh gia đình và các anh em), nhưng không phải là tội của Ru-bên được nêu ở đây.\n- Distractor 'Lấy đất của người khác' là sai phạm vi vì liên quan đến một loại tội khác hoàn toàn, không xuất hiện trong bối cảnh này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1937,13 +1937,13 @@
     "options": [
       "Bên-gia-min",
       "Giu-đa",
-      "Ru-bên",
-      "Giô-sép"
+      "Lê-vi",
+      "Ru-bên"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 49:10 — 'Cây phủ việt sẽ không rời khỏi Giu-đa... cho đến khi Đấng Si-lô hiện đến.' Lời tiên tri về Đấng Mê-si-a đến từ chi phái Giu-đa.",
+    "explanation": "Sáng-thế Ký 49:10 chép: 'Cây phủ việt chẳng hề dời khỏi Giu-đa, Kẻ lập pháp không dứt khỏi giữa chân nó, Cho đến chừng Đấng Si-lô hiện đến, Và các dân vâng phục Đấng đó.' Câu nói này nằm trong phần lời tiên tri của Gia-cốp về tương lai mười hai chi phái cho con trai mình, và được nói riêng về Giu-đa.\n\nĐáp án đúng là Giu-đa vì câu Kinh Thánh trực tiếp trích dẫn lời tiên tri đó cho chi phái Giu-đa.\n\nCác đáp án sai:\n- 'Bên-gia-min' là sai vì đây là chi phái được nhắc đến ngay sau Giu-đa trong cùng một chương (câu 27), dễ gây nhầm lẫn do gần vị trí, nhưng lời tiên tri về 'cây phủ việt' không thuộc về Bên-gia-min.\n- 'Lê-vi' là sai vì đây là một lầm tưởng phổ biến do chi phái này có vai trò tế lễ đặc biệt và thường được nhắc đến, nhưng trong bối cảnh lời tiên tri của Gia-cốp, Lê-vi được mô tả với một sứ mạng phân tán (câu 5-7), không phải là đối tượng của lời hứa về vương quyền và Đấng Si-lô.\n- 'Ru-bên' là sai vì đây là con trưởng và được nhắc đến đầu tiên (câu 3-4), nhưng lời tiên tri cho Ru-bên nói về việc ông mất địa vị trưởng tử, không phải là lời hứa về 'cây phủ việt' và Đấng Si-lô.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1962,15 +1962,15 @@
     "type": "multiple_choice_single",
     "content": "Giô-sép nói với các anh: 'Các anh toan hại tôi, nhưng ___ lại toan làm điều ích lợi.'",
     "options": [
-      "Pha-ra-ôn",
-      "số phận",
-      "Cha chúng ta",
+      "các anh",
+      "ông chủ tôi",
+      "ông chủ ngục",
       "Đức Chúa Trời"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 50:20 — 'Các anh toan hại tôi, nhưng Đức Chúa Trời lại toan làm điều ích lợi để giữ cho nhiều người được sống.'",
+    "explanation": "Trong Sáng-thế Ký 50:20, Giô-sép nói với các anh: 'Các anh toan hại tôi, nhưng Đức Chúa Trời lại toan làm điều ích lợi.' Đây là lời tóm tắt thần học sâu sắc của Giô-sép về sự dữ mà ông phải chịu, nhận định rằng Đức Chúa Trời có chủ đích tốt lành đằng sau những hành động xấu của con người.\n\n- Đáp án sai 'các anh' là sai vì câu nói rõ ràng đối lập ý định hại ông của 'các anh' với ý định làm ích lợi của một chủ thể khác. Chọn 'các anh' sẽ khiến câu tự mâu thuẫn.\n- Đáp án sai 'ông chủ tôi' (ám chỉ Phô-ti-pha) là một hiểu lầm phổ biến, vì dù ông chủ này xuất hiện trong câu chuyện, nhưng trong bối cảnh cụ thể của câu 50:20, Giô-sép đang nói về sự kiện bị bán sang Ai Cập, và chủ đích cứu mạng được quy cho Đức Chúa Trời, không phải một con người cụ thể nào.\n- Đáp án sai 'ông chủ ngục' là một chi tiết đúng trong passage gần (chương 39-40), vì Giô-sép từng có quan hệ với chủ ngục. Tuy nhiên, trong câu 50:20, Giô-sép đang nói về mục đích tối cao của cả hành trình đau khổ của mình, không phải về một nhân vật phụ cụ thể trong một giai đoạn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1990,13 +1990,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng Thế Ký 1:3 — 'Đức Chúa Trời phán: Phải có sự sáng. Thì có sự sáng.'",
+    "explanation": "Câu hỏi hỏi về điều Đức Chúa Trời phán vào ngày sáng tạo thứ nhất (Sáng Thế Ký 1:3). Đáp án đúng là 'Phải có sự sáng' vì Kinh Thánh ghi: 'Đức Chúa Trời phán rằng: Phải có sự sáng; thì có sự sáng.' (Sáng Thế Ký 1:3). Các đáp án sai: 1) 'Phải có bầu trời' là sai vì tuy bầu trời được tạo ra trong tuần sáng tạo (Sáng Thế Ký 1:6-8), nhưng đó là vào ngày thứ hai, không phải ngày thứ nhất. Đây là distractor 'gần đúng' vì đúng bối cảnh sáng tạo nhưng sai ngày. 2) 'Phải có các vì sao' là sai vì các vì sao được tạo vào ngày thứ tư (Sáng Thế Ký 1:14-19), vượt xa phạm vi thời gian của câu hỏi (ngày thứ nhất). 3) 'Phải có các sinh vật sống' là sai vì chi tiết này thuộc về các ngày sau (ngày thứ năm và sáu, Sáng Thế Ký 1:20-25), không phải là lời phán đầu tiên.",
     "language": "vi",
     "options": [
-      "Phải có biển và đất",
-      "Phải có cây cỏ",
+      "Phải có bầu trời",
+      "Phải có các vì sao",
       "Phải có sự sáng",
-      "Phải có loài người"
+      "Phải có các sinh vật sống"
     ],
     "tags": [
       "Cựu Ước",
@@ -2017,12 +2017,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng Thế Ký 1:14-19 — Các vì sáng trên khoảng không trời được tạo dựng vào ngày thứ tư.",
+    "explanation": "Đáp án đúng là 'Ngày thứ tư' vì Sáng Thế Ký 1:14-19 thuật lại việc Đức Chúa Trời tạo dựng các vầng sáng trên trời (mặt trời, mặt trăng và các vì sao) để phân rẽ ngày với đêm, định thì tiết, ngày và năm, vào ngày thứ tư của công trình sáng tạo.\n\n- Distractor 'Ngày thứ ba' là sai vì ngày thứ ba (Sáng Thế Ký 1:9-13) là khi Đức Chúa Trời khiến đất khô và cây cỏ xuất hiện, không phải các vì sáng trên trời.\n- Distractor 'Ngày thứ nhất' là sai vì đây là một hiểu lầm phổ biến, người đọc có thể nghĩ ánh sáng (được tạo ngày thứ nhất) bao gồm mặt trời, nhưng Kinh Thánh phân biệt rõ: ánh sáng ban ngày và bóng tối ban đêm được tạo ngày thứ nhất, còn các vì sáng cụ thể (mặt trời, mặt trăng) để cai quản chúng được tạo ngày thứ tư.\n- Distractor 'Ngày thứ hai' là sai vì ngày thứ hai (Sáng Thế Ký 1:6-8) là khi Đức Chúa Trời tạo ra khoảng không (bầu trời) để phân rẽ nước với nước, không liên quan đến mặt trời, mặt trăng hay các ngôi sao.",
     "language": "vi",
     "options": [
+      "Ngày thứ ba",
       "Ngày thứ nhất",
       "Ngày thứ hai",
-      "Ngày thứ ba",
       "Ngày thứ tư"
     ],
     "tags": [
@@ -2069,13 +2069,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng Thế Ký 2:8 — 'Giê-hô-va Đức Chúa Trời lập một cảnh vườn tại Ê-đen, ở về hướng đông.'",
+    "explanation": "Kinh Thánh chép: 'Đức Giê-hô-va Đức Chúa Trời lập một cảnh vườn tại Ê-đen, ở về hướng đông' (Sáng-thế Ký 2:8). Đáp án đúng là 'Phía đông tại Ê-đen' vì câu Kinh Thánh chỉ rõ hướng 'về hướng đông'.\n\n- Distractor 'Phía tây tại Ê-đen' sai vì sai chi tiết hướng địa lý (sai 'phía tây' thay vì 'phía đông').\n- Distractor 'Trên núi cao tại Ê-đen' sai vì đây là hiểu lầm phổ biến (một số truyền thuyết mô tả vườn ở nơi cao), nhưng Kinh Thánh không mô tả vườn ở trên núi.\n- Distractor 'Trong đồng bằng phía bắc Ê-đen' sai vì mặc dù có thể có đồng bằng, chi tiết 'phía bắc' không khớp với mô tả 'hướng đông' trong câu Kinh Thánh, khiến nó đúng về văn bản (Ê-đen) nhưng lạc câu hỏi về phương hướng cụ thể.",
     "language": "vi",
     "options": [
-      "Phía nam",
-      "Phía bắc",
+      "Phía tây tại Ê-đen",
+      "Trên núi cao tại Ê-đen",
       "Phía đông tại Ê-đen",
-      "Phía tây"
+      "Trong đồng bằng phía bắc Ê-đen"
     ],
     "tags": [
       "Cựu Ước",
@@ -2121,13 +2121,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng Thế Ký 2:24 — 'Bởi vậy cho nên người nam sẽ lìa cha mẹ mà dính díu cùng vợ mình, và cả hai sẽ trở nên một thịt.'",
+    "explanation": "Sáng Thế Ký 2:24 chép: 'Vì vậy, người nam sẽ lìa cha mẹ mà dính díu với vợ mình, và cả hai sẽ trở nên một thịt.' (BTT). Đây là mô hình đầu tiên về hôn nhân do Đức Chúa Trời thiết lập. Đáp án đúng trích dẫn chính xác và trả lời đúng câu hỏi về điều người nam phải làm.\n- Distractor 1 (gần đúng) sai ở chi tiết 'một xương' thay vì 'một thịt' như Kinh Thánh ghi.\n- Distractor 2 sai về phạm vi khi thêm ý 'tôn trọng cha mẹ', làm mờ đi mệnh lệnh 'lìa cha mẹ'.\n- Distractor 3 dùng từ 'kết hợp với một người bạn đời' mơ hồ, thay vì cụ thể 'dính díu với vợ mình', và bỏ qua yếu tố 'lìa cha mẹ', nên không đúng trọng tâm câu hỏi về hành động của người nam.",
     "language": "vi",
     "options": [
-      "Ở với cha mẹ suốt đời",
+      "Lìa cha mẹ và dính díu cùng vợ, trở nên một xương",
       "Lìa cha mẹ và dính díu cùng vợ, trở nên một thịt",
-      "Lập gia đình riêng nhưng giữ lề thói cũ",
-      "Cưới nhiều vợ"
+      "Dính díu cùng vợ và tôn trọng cha mẹ, trở nên một thịt",
+      "Kết hợp với một người bạn đời, trở nên một thịt"
     ],
     "tags": [
       "Cựu Ước",
@@ -2173,13 +2173,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng Thế Ký 5:5 — 'Trọn đời A-đam sống là chín trăm ba mươi tuổi, rồi qua đời.'",
+    "explanation": "ĐÁP ÁN ĐÚNG: 930 tuổi. Sáng-thế Ký 5:5 chép rõ: 'A-đam hưởng thọ được chín trăm ba mươi tuổi, rồi qua đời.'\n\nPHÂN TÍCH CÁC ĐÁP ÁN SAI:\n- '950 tuổi': Đây là số tuổi của Nô-ê (Sáng-thế Ký 9:29), một nhân vật quan trọng khác được nhắc đến trong cùng một chương gia phả (Sáng-thế Ký 5). Đây là lỗi nhầm lẫn với một chi tiết trong đoạn văn gần đó (nearby_passage).\n- '800 tuổi': Con số này không khớp với bất kỳ chi tiết cụ thể nào về tuổi thọ của A-đam trong Kinh Thánh. Đây là một chi tiết số sai (wrong_detail) được tạo ra nhưng vẫn nằm trong phạm vi số tuổi cao để phù hợp với ngữ cảnh chung của chương.\n- '500 tuổi': Một số người đọc có thể nhớ nhầm rằng A-đam sống đến 500 tuổi vì đây là độ tuổi mà con trai ông là Sết được sinh ra khi A-đam 130 tuổi (Sáng-thế Ký 5:3), và họ có thể kết hợp sai với các con số khác. Đây là một hiểu lầm phổ biến (common_misconception) về thời gian trong cuộc đời A-đam.",
     "language": "vi",
     "options": [
-      "1.000 tuổi",
+      "950 tuổi",
       "800 tuổi",
       "930 tuổi",
-      "120 tuổi"
+      "500 tuổi"
     ],
     "tags": [
       "Cựu Ước",
@@ -2199,13 +2199,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng Thế Ký 9:6 — 'Hễ kẻ nào làm đổ máu người, thì sẽ bị người khác làm đổ máu lại; vì Đức Chúa Trời làm nên loài người như hình ảnh Ngài.'",
+    "explanation": "Sáng Thế Ký 9:6 chép: 'Kẻ nào làm đổ huyết người, thì huyết nó sẽ bị người ta làm đổ lại; vì Đức Chúa Trời đã làm nên người như hình ảnh Ngài.' (BTT). Do đó, đáp án đúng là 'Bị làm đổ máu lại (xử tử)', trực tiếp phản ánh nguyên tắc 'mạng đền mạng' trong luật lệ này.\n\nCác đáp án sai:\n- 'Bị trục xuất khỏi cộng đồng' (gần đúng, nhưng sai chi tiết then chốt): Hình phạt được quy định trong câu Kinh Thánh này là trực tiếp về huyết, không phải là sự trục xuất. Đây là một chi tiết sai.\n- 'Phải dâng của lễ chuộc tội' (hiểu lầm phổ biến): Mặc dù các luật lệ sau này có đề cập đến của lễ chuộc tội cho một số tội, nhưng mệnh lệnh cụ thể trong Sáng Thế Ký 9:6 không đề cập đến lựa chọn này; đây là sự áp dụng sai bối cảnh.\n- 'Bị lưu đày đến vùng đất khác' (nhầm passage gần): Hình phạt này thường xuất hiện trong các câu chuyện sau này (như Cain, hay dân Y-sơ-ra-ên bị lưu đày), nhưng không phải là quy định cụ thể trong giao ước với Nô-ê ở đoạn này.",
     "language": "vi",
     "options": [
-      "Bị bỏ tù",
+      "Bị trục xuất khỏi cộng đồng",
       "Bị làm đổ máu lại (xử tử)",
-      "Bị phạt tiền",
-      "Bị đuổi khỏi xứ"
+      "Phải dâng của lễ chuộc tội",
+      "Bị lưu đày đến vùng đất khác"
     ],
     "tags": [
       "Cựu Ước",
@@ -2225,12 +2225,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng Thế Ký 12:3 — 'Các chi tộc nơi thế gian sẽ nhờ ngươi mà được phước.'",
+    "explanation": "Sáng Thế Ký 12:3 chép: 'Ta sẽ ban phước cho người nào chúc phước ngươi, rủa sả kẻ nào rủa sả ngươi; và các chi tộc nơi thế gian sẽ nhờ ngươi mà được phước.' (BTT). Đáp án đúng là 'sẽ được phước nhờ ông' vì bản văn Kinh Thánh sử dụng từ 'nhờ ngươi' (qua ông, bởi ông), chỉ Áp-ram là phương tiện Chúa dùng để ban phước cho muôn dân. Distractor 'Sẽ được phước cho ông' sai vì nó đảo ngược mối quan hệ: phước lành là cho các chi tộc, không phải 'cho ông'. Distractor 'Sẽ được phước vì ông' sai vì đây là ý của câu 2 ('ta sẽ làm cho ngươi nên một dân lớn... và ngươi sẽ thành một nguồn phước'), chứ không phải lời hứa trực tiếp trong câu 3 về các chi tộc. Distractor 'Sẽ biết đến ông' sai vì mặc dù Áp-ram sẽ nổi tiếng (câu 2), nhưng lời hứa trong câu 3 cụ thể là họ 'sẽ được phước' qua ông, chứ không chỉ đơn thuần là biết đến ông.",
     "language": "vi",
     "options": [
-      "Sẽ phục dịch ông",
-      "Sẽ tản lạc xa ông",
-      "Sẽ chiến đấu với ông",
+      "Sẽ được phước cho ông",
+      "Sẽ được phước vì ông",
+      "Sẽ biết đến ông",
       "Sẽ được phước nhờ ông"
     ],
     "tags": [
@@ -2277,13 +2277,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng Thế Ký 17:17 — 'Áp-ra-ham bèn sấp mình xuống đất cười và nói trong lòng rằng: Hồ dễ người đã trăm tuổi rồi mà sinh con được sao?'",
+    "explanation": "Trong Sáng thế ký 17:17, sau khi nghe lời hứa Sa-ra sẽ sinh con, Áp-ra-ham 'sấp mặt xuống đất và cười, thầm nghĩ rằng: “Người trăm tuổi như ta còn sinh con được chăng? Còn Sa-ra, già đến chín mươi tuổi, lại còn sanh sản được sao?”'. Hành động 'sấp mặt xuống đất' là đúng, nhưng ông 'cười trong lòng' (cười và thầm nghĩ), không phải 'cầu nguyện'. Distractor 1 là 'gần đúng' nhưng sai chi tiết hành động tinh thần. Distractor 2 sai vì lấy chi tiết từ những phản ứng khác (như vui mừng) trong các đoạn gần nhưng không phải phản ứng của Áp-ra-ham tại đây. Distractor 3 phản ánh hiểu lầm phổ biến rằng ông nghi ngờ một cách công khai hoặc có thái độ tiêu cực rõ ràng, trong khi Kinh Thánh mô tả ông cười và suy nghĩ thầm.",
     "language": "vi",
     "options": [
-      "Khóc lóc",
-      "Đi cầu xin Chúa",
+      "Sấp mặt xuống đất và cầu nguyện",
+      "Đứng dậy và vui mừng khôn xiết",
       "Sấp mặt xuống đất và cười trong lòng",
-      "Tổ chức tiệc ngay"
+      "Cúi đầu và nghi ngờ lời hứa"
     ],
     "tags": [
       "Cựu Ước",
@@ -2303,13 +2303,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng Thế Ký 19:26 — 'Vợ Lót quay ngó lại đằng sau và bị hóa thành một cây trụ muối.'",
+    "explanation": "ĐÁP ÁN ĐÚNG: “Quay ngó lại sau và hóa thành trụ muối” là đúng, vì Sáng-thế Ký 19:26 ghi: ‘Vợ của Lót ở sau chót, quay lại ngó, thì hóa ra một trụ muối.’\n\nDISTRACTOR SAI 1 (‘Quay lại nhìn Sô-đôm và hóa thành lửa’): Sai vì văn bản ghi hóa thành trụ muối, không phải lửa (chi tiết sai).\n\nDISTRACTOR SAI 2 (‘Bám vào một trụ muối và hóa thành tượng’): Sai vì đây là hiểu lầm phổ biến hoặc suy diễn không có trong văn bản; Kinh Thánh không nói bà chạm vào trụ muối hay hóa thành tượng.\n\nDISTRACTOR SAI 3 (‘Ngừng chạy và khóc vì thành phố rồi hóa thành muối’): Sai vì tuy phản ứng cảm xúc có thể hợp lý, nhưng văn bản chỉ nêu rõ hành động ‘quay lại ngó’ là nguyên nhân trực tiếp, không mô tả việc khóc hay ngừng chạy trước đó (đúng văn bản nhưng lạc trọng tâm câu hỏi).",
     "language": "vi",
     "options": [
-      "Trở vào thành lấy của",
+      "Quay lại nhìn Sô-đôm và hóa thành lửa",
       "Quay ngó lại sau và hóa thành trụ muối",
-      "Đứng yên giữa đường",
-      "Cười nhạo các thiên sứ"
+      "Bám vào một trụ muối và hóa thành tượng",
+      "Ngừng chạy và khóc vì thành phố rồi hóa thành muối"
     ],
     "tags": [
       "Cựu Ước",
@@ -2329,13 +2329,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng Thế Ký 22:14 — 'Áp-ra-ham gọi chỗ đó là Giê-hô-va Di-rê — nghĩa là: Đức Giê-hô-va sẽ sắm sẵn.'",
+    "explanation": "Trong Sáng Thế Ký 22:14, Áp-ra-ham đặt tên nơi đó là 'Giê-hô-va Di-rê' (nghĩa là 'Đức Giê-hô-va sẽ sắm sẵn') sau khi Đức Giê-hô-va sắm sẵn con chiên đực thay cho Y-sác. Đáp án 'Giê-hô-va Ra-pha' (Đức Giê-hô-va là Đấng chữa lành, xuất hiện trong Xuất Ê-díp-tô Ký 15:26) là tên khác của Đức Chúa Trời nhưng không liên quan đến sự kiện này. 'Giê-hô-va Ni-xi' (Đức Giê-hô-va là Cờ Xí, xuất hiện trong Xuất Ê-díp-tô Ký 17:15) cũng là tên khác, phản ánh một hiểu lầm phổ biến khi nhầm lẫn các danh xưng đặc biệt của Đức Giê-hô-va. 'Bê-tên' (nghĩa là 'nhà Đức Chúa Trời') là tên nơi quan trọng với Áp-ra-ham và Gia-cốp (Sáng 28:19), nhưng không phải là tên được đặt trong sự kiện dâng Y-sác.",
     "language": "vi",
     "options": [
-      "Bê-tên",
-      "Mô-ri-a",
+      "Giê-hô-va Ra-pha (Jehovah-Rapha)",
+      "Giê-hô-va Ni-xi (Jehovah-Nissi)",
       "Giê-hô-va Di-rê (Jehovah-Jireh)",
-      "Bê-thê-sđa"
+      "Bê-tên (Bethel)"
     ],
     "tags": [
       "Cựu Ước",
@@ -2355,12 +2355,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng Thế Ký 25:23 — 'Hai dân tộc đang ở trong bụng ngươi... đứa lớn phải phục đứa nhỏ.'",
+    "explanation": "Trong Sáng thế ký 25:23, Đức Giê-hô-va phán cùng Rê-bê-ca: 'Hai dân tộc trong bụng ngươi, và hai thứ dân từ lòng ngươi mà ra; dân nầy mạnh hơn dân kia, và đứa lớn sẽ phục đứa nhỏ.' Vì thế, đáp án đúng là 'Đứa lớn sẽ phục đứa nhỏ', nghĩa là người anh (Ê-sau) sẽ phục vụ người em (Gia-cốp).\n\nCác đáp án sai: (1) 'Đứa lớn sẽ chỉ dạy đứa nhỏ' là gần đúng nhưng sai chi tiết then chốt — câu Kinh Thánh dùng từ 'phục' (phục vụ, phục tùng), không phải 'chỉ dạy'. (2) 'Đứa lớn sẽ giúp đỡ đứa nhỏ' tuy hợp lý nhưng lạc câu hỏi — văn bản không nói về sự giúp đỡ chung chung mà là sự phục tùng cụ thể. (3) 'Đứa lớn sẽ nhường phần đứa nhỏ' phản ánh hiểu lầm phổ biến — nhiều người nghĩ đến việc nhường quyền trưởng nam, nhưng lời tiên tri nói rõ về mối quan hệ phục tùng, không chỉ việc nhường phần.",
     "language": "vi",
     "options": [
-      "Đứa lớn sẽ cai trị đứa nhỏ",
-      "Cả hai cùng làm vua",
-      "Đứa nhỏ sẽ chết yểu",
+      "Đứa lớn sẽ chỉ dạy đứa nhỏ",
+      "Đứa lớn sẽ giúp đỡ đứa nhỏ",
+      "Đứa lớn sẽ nhường phần đứa nhỏ",
       "Đứa lớn sẽ phục đứa nhỏ"
     ],
     "tags": [
@@ -2381,13 +2381,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Sáng Thế Ký 28:19 — 'Người gọi chỗ đó là Bê-tên,' tức là 'Nhà của Đức Chúa Trời.'",
+    "explanation": "Trong Sáng Thế Ký 28:19, Gia-cốp đặt tên nơi đó là Bê-tên, nghĩa là 'Nhà của Đức Chúa Trời'. Điều này trực tiếp trả lời câu hỏi về ý nghĩa của tên gọi. Các phương án sai: (1) 'Nơi Gia-cốp thấy giấc mơ' sai vì đây mô tả sự kiện, không phải ý nghĩa tên gọi (thuộc ngữ cảnh gần); (2) 'Nơi Chúa hứa ban đất' sai vì đây là nội dung lời hứa, không phải ý nghĩa tên riêng (sai phạm vi); (3) 'Cầu thang lên trời' sai vì đây là hiểu lầm phổ biến về hình ảnh trong giấc mơ, không phải nghĩa của tên Bê-tên.",
     "language": "vi",
     "options": [
       "Nhà của Đức Chúa Trời",
-      "Cổng trời",
-      "Đá tưởng niệm",
-      "Nơi sấm sét"
+      "Nơi Gia-cốp thấy giấc mơ",
+      "Nơi Chúa hứa ban đất",
+      "Cầu thang lên trời"
     ],
     "tags": [
       "Cựu Ước",
@@ -2434,13 +2434,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng Thế Ký 32:30 — 'Gia-cốp đặt tên chỗ đó là Phê-ni-ên — nghĩa là: Tôi đã thấy Đức Chúa Trời mặt đối mặt mà linh hồn tôi được giải cứu.'",
+    "explanation": "Câu hỏi dựa trên Sáng-thế Ký 32:30: 'Gia-cốp đặt tên chỗ đó là Phê-ni-ên, vì nói rằng: Tôi đã thấy Đức Chúa Trời mặt đối mặt, mà tôi vẫn còn sống.' Từ 'Phê-ni-ên' trong tiếng Hê-bơ-rơ có nghĩa là 'mặt của Đức Chúa Trời'. Do đó, đáp án đúng là 'Mặt của Đức Chúa Trời (đã thấy Ngài mặt đối mặt)' vì nó phản ánh chính xác ý nghĩa tên gọi mà Gia-cốp đặt, giải thích lý do (đã thấy Đức Chúa Trời).\n\nCác phương án sai:\n- 'Mặt của Thiên sứ (đã thấy ngài mặt đối mặt)': Là phương án gần đúng nhưng sai chi tiết then chốt. Trong câu chuyện, người vật lộn với Gia-cốp được nhận diện là Đức Chúa Trời (câu 28, 30), không chỉ là một thiên sứ thông thường.\n- 'Chân trời của Đức Chúa Trời (nơi chờ đợi Ngài)': Sai phạm vi. Tên này không xuất hiện trong phân đoạn hay ngữ cảnh liên quan; nó là một khái niệm mơ hồ, không dựa trên chi tiết văn bản về sự kiện hay lời giải thích của Gia-cốp.\n- 'Sự xưng tội với Đức Chúa Trời (nơi đã kể lỗi)': Nhầm passage gần. Phương án này có thể gợi nhớ đến các phân đoạn khác nơi tổ phụ thú nhận tội lỗi (như trong lời cầu nguyện), nhưng không liên quan đến sự kiện vật lộn và đặt tên Phê-ni-ên trong Sáng-thế Ký 32. Hành động chính ở đây là vật lộn/đấu tranh, không phải xưng tội.",
     "language": "vi",
     "options": [
-      "Đá đứng vững",
-      "Trận đấu lớn",
+      "Mặt của Thiên sứ (đã thấy ngài mặt đối mặt)",
+      "Chân trời của Đức Chúa Trời (nơi chờ đợi Ngài)",
       "Mặt của Đức Chúa Trời (đã thấy Ngài mặt đối mặt)",
-      "Sông mạnh"
+      "Sự xưng tội với Đức Chúa Trời (nơi đã kể lỗi)"
     ],
     "tags": [
       "Cựu Ước",
@@ -2513,12 +2513,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng Thế Ký 41:42 — 'Pha-ra-ôn cởi chiếc nhẫn ra khỏi tay mình, đeo vào tay Giô-sép, mặc cho người áo lụa mịn, và đeo vòng vàng vào cổ.'",
+    "explanation": "Đáp án đúng là 'Chiếc nhẫn của vua, áo lụa, vòng vàng' vì Sáng-thế-ký 41:42 ghi: 'Pha-ra-ôn cởi chiếc nhẫn trong tay mình, đeo vào tay Giô-sép; truyền mặc áo vải gai mịn cho người, và đeo vòng vàng vào cổ người.'\n\nCác đáp án sai:\n- 'Một cây gậy vàng, áo choàng đỏ, huy hiệu hoàng gia': Sai chi tiết (Sai detail) – Kinh Thánh không đề cập những vật này trong đoạn này.\n- 'Chiếc nhẫn của vua, áo lụa, và quyền cai quản nhà tù': Sai phạm vi (Wrong scope) – Quyền cai quản nhà tù (Sáng 39:22) là chức vụ Giô-sép có trước khi gặp Pha-ra-ôn, không phải vật phẩm được ban sau khi giải mộng ở đây.\n- 'Chiếc nhẫn của vua, áo lụa, và một cỗ xe thứ hai của vua': Nhầm passage gần (Nearby passage) – Cỗ xe thứ hai (Sáng 41:43) là một hành động/cử chỉ công khai sau đó, không phải là 'vật' được ban trực tiếp làm 'dấu chứng quyền cao trọng' ngay trong câu 42.",
     "language": "vi",
     "options": [
-      "Một thanh gươm vàng",
-      "Một mũ triều thiên",
-      "Một quyển sách luật",
+      "Một cây gậy vàng, áo choàng đỏ, huy hiệu hoàng gia",
+      "Chiếc nhẫn của vua, áo lụa, và quyền cai quản nhà tù",
+      "Chiếc nhẫn của vua, áo lụa, và một cỗ xe thứ hai của vua",
       "Chiếc nhẫn của vua, áo lụa, vòng vàng"
     ],
     "tags": [
@@ -2539,13 +2539,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Sáng Thế Ký 44:33 — 'Vậy bây giờ, xin cho kẻ tôi tớ chúa ở tôi mọi thay cho đứa trẻ, đặng nó theo các anh trở lên.' Giu-đa đại diện đề nghị.",
+    "explanation": "Đáp án đúng là Giu-đa, vì trong Sáng thế ký 44:33, sau khi chiếc cốc bạc được tìm thấy trong bao lúa của Bên-gia-min, chính Giu-đa đã tiến đến gần Giô-sép và nói: 'Tôi xin ở lại làm tôi mọi cho ngài thay cho đứa trẻ này...'. Distractor 'Bên-gia-min' sai vì đây chính là người bị phát hiện có cốc, không phải người đề nghị ở lại thay. Distractor 'Ru-bên' là gần đúng nhưng sai chi tiết, vì trong Sáng thế ký 42:37, Ru-bên là người đầu tiên đề nghị bảo lãnh Bên-gia-min với cha mình, nhưng trong tình huống cụ thể ở đoạn 44, người thực sự đứng ra thương lượng và đề nghị là Giu-đa. Distractor 'Giô-sép' sai vì Giô-sép là quan tể tướng Ai Cập, người đưa ra phép thử và giữ cốc, chứ không phải người đề nghị ở lại làm tôi mọi.",
     "language": "vi",
     "options": [
       "Giu-đa",
+      "Bên-gia-min",
       "Ru-bên",
-      "Si-mê-ôn",
-      "Lê-vi"
+      "Giô-sép"
     ],
     "tags": [
       "Cựu Ước",
@@ -2565,13 +2565,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng Thế Ký 47:9 — 'Gia-cốp tâu rằng: Những năm tôi sống ở đời nầy là một trăm ba mươi năm.'",
+    "explanation": "Đáp án đúng là 130 tuổi, dựa trên Sáng thế ký 47:9: 'Gia-cốp tâu cùng Pha-ra-ôn rằng: Những năm tôi ở nơi kiều ngụ hết thảy là một trăm ba mươi năm; các năm của đời tôi lấy làm ngắn ngủi và lại nhọc nhằn, chẳng bằng những năm đời của tổ phụ tôi khi họ ở nơi kiều ngụ.' Các đáp án sai như sau:\n- '120 tuổi' (wrong_detail) là một con số gần đúng nhưng sai chi tiết then chốt; nó có thể dễ bị nhớ nhầm thành một con số tròn trăm phổ biến trong Kinh Thánh nhưng không phải là câu trả lời của Gia-cốp.\n- '110 tuổi' (nearby_passage) là tuổi thọ của Giô-sép (Sáng thế ký 50:26), một con số xuất hiện trong cùng một phần câu chuyện nhưng không phải là câu trả lời của Gia-cốp khi Pha-ra-ôn hỏi.\n- '137 tuổi' (common_misconception) là một con số sai có thể xuất hiện do nhớ nhầm với tuổi thọ của một nhân vật khác (như Lê-vi) hoặc do ước tính sai tổng thời gian; nó không có trong bối cảnh này.",
     "language": "vi",
     "options": [
-      "100 tuổi",
+      "120 tuổi",
       "130 tuổi",
-      "147 tuổi",
-      "175 tuổi"
+      "110 tuổi",
+      "137 tuổi"
     ],
     "tags": [
       "Cựu Ước",
@@ -2591,12 +2591,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng Thế Ký 49:24 — 'Cánh tay nó đã được mạnh, bởi tay Đấng Toàn Năng của Gia-cốp. Cũng do nơi Đấng Chăn Chiên, là Đá của Y-sơ-ra-ên.'",
+    "explanation": "Trong Sáng Thế Ký 49:24 (BTT), Gia-cốp nói: '...nhờ tay Đấng Toàn Năng của Gia-cốp, nhờ danh Đá của Y-sơ-ra-ên.' Vì vậy, danh xưng chính xác là 'Đấng Toàn Năng của Gia-cốp / Đá của Y-sơ-ra-ên'. Distractor 'Đấng Toàn Năng của Gia-cốp / Đá của Giu-đa' gần đúng nhưng sai chi tiết quan trọng: 'Giu-đa' thay vì 'Y-sơ-ra-ên'. Distractor 'Đấng Hằng Hữu đã nâng đỡ / Đấng Chăn Chiên của Y-sơ-ra-ên' là sự kết hợp sai từ một câu gần đó (c. 25 nói về 'Đấng Toàn Năng' và 'Đấng Hằng Hữu', còn 'Đấng Chăn Chiên' xuất hiện ở các sách khác). Distractor 'Đấng Tạo Hóa của trời đất / Đấng Toàn Năng của Y-sơ-ra-ên' tuy có từ ngữ đúng về Đức Chúa Trời nhưng không phải danh xưng cụ thể được nhắc đến trong câu 24 này, nên lạc trọng tâm câu hỏi.",
     "language": "vi",
     "options": [
-      "Đấng Tạo Hóa",
-      "Vua các vua",
-      "Cha trên trời",
+      "Đấng Toàn Năng của Gia-cốp / Đá của Giu-đa",
+      "Đấng Hằng Hữu đã nâng đỡ / Đấng Chăn Chiên của Y-sơ-ra-ên",
+      "Đấng Tạo Hóa của trời đất / Đấng Toàn Năng của Y-sơ-ra-ên",
       "Đấng Toàn Năng của Gia-cốp / Đá của Y-sơ-ra-ên"
     ],
     "tags": [
@@ -2645,13 +2645,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng 17:17 cho thấy Sa-ra 89-90 tuổi khi nghe lời hứa. Sáng 21:5 — Áp-ra-ham 100 tuổi khi Y-sác sanh, vậy Sa-ra 90 tuổi khi sanh Y-sác. Sáng 23:1 ghi Sa-ra hưởng thọ 127 tuổi. Vậy bà sống thêm 37 năm sau khi sanh con (127 - 90 = 37).",
+    "explanation": "Theo Sáng Thế Ký 17:17, Áp-ra-ham được hứa về việc Sa-ra sẽ sinh Y-sác. Sáng Thế Ký 23:1 chép: \"Sa-ra hưởng thọ được một trăm hai mươi bảy tuổi. Ấy là bao nhiêu năm của đời Sa-ra.\" Vì Y-sác sinh lúc Sa-ra 90 tuổi (Sáng 17:17), nên 127 - 90 = 37 năm. Đáp án đúng là 37 năm.\n\n- Distractor \"27 năm\" là gần đúng nhưng sai chi tiết, có thể do nhầm lẫn với các số tuổi khác trong câu chuyện.\n- Distractor \"47 năm\" là sai chi tiết số học, không phù hợp với phép tính từ văn bản.\n- Distractor \"17 năm\" là hiểu lầm phổ biến, có thể do nhớ nhầm thời gian từ các sự kiện khác trong đời Áp-ra-ham hoặc Y-sác.",
     "language": "vi",
     "options": [
-      "20 năm",
       "27 năm",
+      "47 năm",
       "37 năm",
-      "47 năm"
+      "17 năm"
     ],
     "tags": [
       "Cựu Ước",
@@ -2672,13 +2672,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng 12:7 (lần 1, tại Si-chem), 13:14-17 (lần 2, sau khi tách Lót), 15:18 (lần 3, giao ước giữa hai phần thịt) — tổng 3 lần trước Sáng 17.",
+    "explanation": "Đáp án đúng là 3 lần. Trong Sáng Thế Ký, lời hứa về đất Ca-na-an được lặp lại trước khi lập giao ước cắt bì (Sáng 17) ba lần: tại Sáng 12:7, Sáng 13:15, và Sáng 15:18-21. Distractor '1 lần' là sai chi tiết vì lời hứa được nhắc nhiều hơn một lần. Distractor '2 lần' là gần đúng (gần với đáp án đúng) nhưng sai do nhầm lẫn với các sự kiện trong các đoạn gần (ví dụ, chỉ tính hai trong ba lần). Distractor '4 lần' là sai phạm vi vì bao gồm cả lần hứa sau khi giao ước cắt bì (Sáng 17:8) hoặc trong các sách khác, vượt quá phạm vi thời gian 'trước khi' được nêu trong câu hỏi.",
     "language": "vi",
     "options": [
-      "2 lần",
+      "1 lần",
       "3 lần",
-      "4 lần",
-      "5 lần"
+      "2 lần",
+      "4 lần"
     ],
     "tags": [
       "Cựu Ước",
@@ -2700,13 +2700,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Sáng 35:1-7 — Đức Chúa Trời phán bảo Gia-cốp lên Bê-tên lập bàn thờ; ông cũng bảo gia đình bỏ các thần ngoại bang. Lần đầu (28:19) là khi chạy trốn Ê-sau và mộng thấy cây thang.",
+    "explanation": "Đáp án đúng: Sáng Thế Ký 35:1 ghi rõ Chúa phán với Gia-cốp: 'Hãy đứng dậy, đi lên Bê-tên... và lập tại đó một bàn thờ cho Đức Chúa Trời.' Các câu 2-4 sau đó mô tả việc Gia-cốp bảo gia đình bỏ các thần ngoại bang. Vậy lý do chính là theo lệnh Chúa để lập bàn thờ và bỏ thần ngoại bang.\n\nGiải thích các đáp án sai:\n- 'Để chôn cất Ra-chên, vì bà qua đời ở gần đó': Sự kiện Ra-chên qua đời khi sinh Bên-gia-min được chép ở Sáng 35:16-20, xảy ra SAU KHI họ đã rời Bê-tên, trên đường đến Ép-ra-ta. Vì vậy, đây không phải lý do đến Bê-tên lần này. Đây là lỗi nhầm passage gần (nearby_passage).\n- 'Để gặp Ê-sau, vì ông đang sống tại vùng lân cận': Cuộc gặp gỡ với Ê-sau đã xảy ra trước đó (Sáng 33). Sau đó, Ê-sau trở về Sê-i-rơ (Sáng 33:16), còn Gia-cốp đến Su-cốt rồi Si-chem (Sáng 33:17-18). Không có chi tiết nào cho thấy Ê-sau sống gần Bê-tên hay đây là lý do Gia-cốp đến. Đây là lỗi sai chi tiết (wrong_detail).\n- 'Để trốn khỏi dân Si-chem, sau khi các con trai ông trả thù': Sự kiện Si-mê-ôn và Lê-vi trả thù dân Si-chem vì Đi-na được chép ở Sáng 34, ngay trước đoạn này. Sáng 35:5 có đề cập 'sự kinh khủng của Đức Chúa Trời giáng trên các thành...' khi họ đi, cho thấy bối cảnh là sau sự việc đó. Tuy nhiên, lý do TRỰC TIẾP và được Kinh Thánh ghi lại cho việc lên Bê-tên là LỆNH CỦA CHÚA (35:1), không phải chỉ để 'trốn'. Câu hỏi hỏi 'theo chính lời Kinh Thánh ghi lại', nên đây là lỗi đúng văn bản nhưng lạc câu hỏi (true_but_off).",
     "language": "vi",
     "options": [
       "Theo lệnh Chúa, để lập bàn thờ và bỏ thần ngoại bang",
-      "Để chạy trốn sau cuộc tàn sát tại thành Si-chem",
-      "Để gặp lại anh trai mình là Ê-sau sau hai mươi năm",
-      "Để chôn cất Ra-chên người vợ yêu dấu"
+      "Để chôn cất Ra-chên, vì bà qua đời ở gần đó",
+      "Để gặp Ê-sau, vì ông đang sống tại vùng lân cận",
+      "Để trốn khỏi dân Si-chem, sau khi các con trai ông trả thù"
     ],
     "tags": [
       "Cựu Ước",
@@ -2786,13 +2786,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng 25:21 — 'Y-sác khẩn cầu Đức Giê-hô-va cho vợ mình son sẻ; Đức Giê-hô-va nhậm lời'. Với Sa-ra (16-21), Áp-ra-ham không được ghi cầu trực tiếp. Với Ra-chên (30:22), Kinh Thánh nói 'Đức Chúa Trời nhớ đến Ra-chên', không nói Gia-cốp cầu.",
+    "explanation": "Sách Sáng-thế Ký 25:21 chép: 'Vả, Y-sác khẩn nguyện Đức Giê-hô-va cho vợ mình, vì nàng son sẻ. Đức Giê-hô-va cảm động lời khẩn nguyện đó, nên cho Rê-bê-ca thọ thai.' Vì vậy, đáp án đúng là Rê-bê-ca, vì Kinh Thánh ghi rõ chồng nàng (Y-sác) đã cầu khẩn Đức Giê-hô-va và Ngài đáp lời. Distractor 'Sa-ra' là sai vì tuy bà cũng son sẻ và được Chúa hứa, nhưng chồng bà (Áp-ra-ham) không được Kinh Thánh ghi là đã 'cầu khẩn Đức Giê-hô-va' cho việc này một cách tường minh như với Y-sác (Sáng-thế Ký 21:1-2). Distractor 'Ra-chên' là sai vì đây là một hiểu lầm phổ biến, bà son sẻ và Gia-cốp có con nhờ sự can thiệp của Đức Chúa Trời, nhưng Kinh Thánh không ghi việc chồng bà 'cầu khẩn Đức Giê-hô-va' cho vợ theo cách diễn đạt tương tự (Sáng-thế Ký 30:22). Distractor 'Ha-ga' là sai vì bà không phải là vợ chính và cũng không phải là một 'bà mẹ son sẻ' trong cùng phạm vi ý nghĩa với các tổ phụ; bà là nữ tỳ của Sa-ra và có con với Áp-ra-ham, nhưng không có chỗ nào ghi việc chồng cầu khẩn Đức Giê-hô-va cho tình trạng của bà (Sáng-thế Ký 16).",
     "language": "vi",
     "options": [
       "Sa-ra",
       "Rê-bê-ca",
       "Ra-chên",
-      "Lê-a"
+      "Ha-ga"
     ],
     "tags": [
       "Cựu Ước",
@@ -2873,13 +2873,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng 37:9 — giấc mộng thứ hai của Giô-sép thiếu thời. Pha-ra-ôn mộng 7 bò 7 bông lúa (41); quan dâng rượu mộng 3 nhành nho (40); quan dâng bánh mộng 3 giỏ bánh (40).",
+    "explanation": "Đáp án đúng là 'Giấc mộng của Giô-sép thuở thiếu thời' vì Sáng Thế Ký 37:9-11 ghi rõ Giô-sép kể lại giấc mơ thấy 'mặt trời, mặt trăng, và mười một ngôi sao' sấp mình xuống trước mặt mình. Đây là giấc mơ thứ hai của ông thời trẻ, trước khi bị bán sang Ai Cập.\n\nCác đáp án sai:\n1. 'Giấc mộng của Giô-sép khi làm quan tể tướng' (wrong_scope): Sai phạm vi thời gian. Giấc mơ này xảy ra khi Giô-sép còn trẻ, ở cùng cha và các anh tại Ca-na-an, không phải khi ông đã làm tể tướng tại Ai Cập.\n2. 'Giấc mộng của Pha-ra-ôn về bảy năm đói kém' (nearby_passage): Nhầm với một giấc mơ nổi tiếng khác trong cùng sách Sáng Thế Ký (chương 41), nhưng giấc mơ đó về bảy con bò và bảy gié lúa, không có mặt trời, mặt trăng và các ngôi sao.\n3. 'Giấc mộng của các quan tửu chánh và thượng thiện' (true_but_off): Đây là giấc mơ có thật (Sáng Thế Ký 40), nhưng nội dung liên quan đến chén của Pha-ra-ôn và giỏ bánh, hoàn toàn không đề cập đến các thiên thể như trong câu hỏi, nên lạc đề.",
     "language": "vi",
     "options": [
-      "Giấc mộng của Pha-ra-ôn về 7 bò gầy",
-      "Giấc mộng của quan dâng rượu trong ngục",
+      "Giấc mộng của Giô-sép khi làm quan tể tướng",
+      "Giấc mộng của Pha-ra-ôn về bảy năm đói kém",
       "Giấc mộng của Giô-sép thuở thiếu thời",
-      "Giấc mộng của quan dâng bánh trong ngục"
+      "Giấc mộng của các quan tửu chánh và thượng thiện"
     ],
     "tags": [
       "Cựu Ước",
@@ -2929,12 +2929,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng 7:16 — chính Đức Giê-hô-va đóng cửa, không phải Nô-ê. Hành động này khẳng định cả sự cứu rỗi (đóng để bảo vệ những người trong tàu) lẫn sự phán xét (đóng để dứt khoát ngăn người ngoài vào) đều thuộc thẩm quyền tối thượng của Đức Chúa Trời.",
+    "explanation": "Sáng Thế Ký 7:16 chép: 'Các loài thú vào, đực và cái, mỗi loài, theo như Đức Chúa Trời đã phán dặn Nô-ê; đoạn, Đức Giê-hô-va đóng cửa tàu lại.'\n\nĐÁP ÁN ĐÚNG: 'Sự cứu rỗi và phán xét đều đến từ Đức Giê-hô-va, không phải con người' là đúng vì việc ĐỨC GIÊ-HÔ-VA tự tay đóng cửa nhấn mạnh rằng Ngài là Đấng chủ động và toàn quyền trong cả việc bảo vệ những người trong tàu (cứu rỗi) lẫn việc đóng cửa, chấm dứt cơ hội ăn năn cho thế gian bên ngoài (phán xét). Hành động này thuộc về Đức Chúa Trời, không phải nỗ lực hay quyết định của con người.\n\nDISTRACTOR SAI:\n1. 'Việc đóng cửa chỉ đơn thuần là hành động bảo vệ cơ học khỏi nước lụt, không mang ý nghĩa thần học' - Sai vì chỉ đúng về mặt văn bản (có tác dụng bảo vệ), nhưng hoàn toàn bỏ qua ý nghĩa thần học then chốt của hành động chủ thể là Đức Giê-hô-va, do đó lạc trọng tâm câu hỏi về 'chân lý thần học'.\n2. 'Chi tiết này nhấn mạnh rằng Nô-ê và gia đình ông phải tự mình đảm bảo an toàn cho chính mình' - Sai chi tiết, vì Kinh Thánh ghi rõ chính 'Đức Giê-hô-va đóng cửa', không phải Nô-ê hay gia đình ông. Đây là sự can thiệp trực tiếp và ân điển của Đức Chúa Trời.\n3. 'Sự cứu rỗi đến từ sự vâng lời của Nô-ê, còn sự phán xét đến từ Đức Giê-hô-va' - Sai vì đây là một hiểu lầm phổ biến, tách biệt hai phương diện. Thực tế, cả cứu rỗi lẫn phán xét trong câu chuyện đều xuất phát từ Đức Giê-hô-va: cứu rỗi là ân điển Ngài ban (dù Nô-ê vâng lời), và phán xét là quyết định tối hậu của Ngài. Việc Ngài đóng cửa thể hiện sự kiểm soát toàn bộ của Ngài đối với cả hai.",
     "language": "vi",
     "options": [
-      "Nô-ê quá yếu sức để tự đóng cửa tàu",
-      "Cửa tàu quá lớn cần Đức Chúa Trời giúp đóng",
-      "Đó là tín hiệu báo cơn mưa hồng thủy bắt đầu",
+      "Việc đóng cửa chỉ đơn thuần là hành động bảo vệ cơ học khỏi nước lụt, không mang ý nghĩa thần học",
+      "Chi tiết này nhấn mạnh rằng Nô-ê và gia đình ông phải tự mình đảm bảo an toàn cho chính mình",
+      "Sự cứu rỗi đến từ sự vâng lời của Nô-ê, còn sự phán xét đến từ Đức Giê-hô-va",
       "Sự cứu rỗi và phán xét đều đến từ Đức Giê-hô-va, không phải con người"
     ],
     "tags": [
@@ -3069,13 +3069,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Sáng 1:2 (RVV11) — 'Thần Đức Chúa Trời vận hành trên mặt nước.' Từ Hê-bơ-rơ là 'merachepheth' (lượn / ấp ủ), được dịch là 'vận hành' trong RVV11.",
+    "explanation": "Câu Kinh Thánh Sáng 1:2 (RVV11) chép: \"Đất là vô hình và trống không, sự mờ tối ở trên mặt vực; Thần Đức Chúa Trời vận hành trên mặt nước.\" Vì vậy, \"vận hành\" là đáp án đúng, mô tả hành động chủ động của Thần Đức Chúa Trời trong khung cảnh sáng tạo ban đầu.\n\nCác đáp án sai:\n- \"vận chuyển\" (nearby_passage): Từ này thường xuất hiện trong ngữ cảnh khác (như di chuyển vật thể) và không được dùng trong câu này, có thể gây nhầm lẫn vì gần về âm và chủ đề hành động.\n- \"vây phủ\" (common_misconception): Đây là đáp án gần đúng vì cũng diễn tả sự hiện diện của Thần Đức Chúa Trời, nhưng sai chi tiết then chốt; một số bản dịch hoặc hiểu lầm phổ biến có thể dùng từ tương tự, nhưng RVV11 dùng \"vận hành\".\n- \"tạo dựng\" (wrong_scope): Hành động tạo dựng đã bắt đầu từ câu 1 và tiếp tục trong những câu sau, nhưng trong câu 2 cụ thể này, Kinh Thánh không dùng từ đó để mô tả hành động trực tiếp của Thần Đức Chúa Trời lúc đó.",
     "language": "vi",
     "options": [
       "vận hành",
-      "ngự xuống",
-      "bay lượn",
-      "phán dạy"
+      "vận chuyển",
+      "vây phủ",
+      "tạo dựng"
     ],
     "tags": [
       "Cựu Ước",
@@ -3097,13 +3097,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng 3:14 (RVV11) — 'mầy sẽ bò bằng bụng và ăn bụi đất trọn cả đời mầy.' Hình ảnh nhấn mạnh sự hạ thấp và hổ thẹn của con rắn sau khi cám dỗ Ê-va.",
+    "explanation": "Căn cứ Sáng 3:14 RVV11, nguyên văn: 'Mầy sẽ bò bằng bụng, và ăn bụi đất trọn cả đời.' Đáp án đúng là 'bụng / bụi đất' vì Kinh Thánh ghi rõ ràng hai từ này.\n\nCác đáp án sai:\n- 'bụng / bụi cây': Sai chi tiết thứ hai. Dù 'bụng' đúng, nhưng 'bụi cây' là chi tiết sai; Kinh Thánh viết 'bụi đất', không phải 'bụi cây'.\n- 'lưng / cát bụi': Nhầm với passage gần hoặc từ ngữ phổ biến khác. 'Lưng' không xuất hiện trong câu này; 'cát bụi' là cụm từ thông dụng nhưng không phải từ nguyên văn Kinh Thánh trong câu rủa này.\n- 'mình / cỏ dại': Thể hiện hiểu lầm phổ biến về lời rủa (nghĩ đến việc ăn cỏ), nhưng Kinh Thánh xác định rõ ràng đối tượng là 'bụi đất'.",
     "language": "vi",
     "options": [
-      "bốn chân / cỏ xanh",
+      "bụng / bụi cây",
       "bụng / bụi đất",
-      "lưng / lá cây",
-      "đuôi / hạt giống"
+      "lưng / cát bụi",
+      "mình / cỏ dại"
     ],
     "tags": [
       "Cựu Ước",
@@ -3125,11 +3125,11 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng 6:3 — 'Thần ta sẽ chẳng hằng ở trong loài người luôn; trong điều lầm lạc, loài người chỉ là xác thịt; đời người sẽ là một trăm hai mươi năm.' Đây là lời báo trước phán xét hồng thủy.",
+    "explanation": "Đáp án đúng là '120 năm', dựa trên Kinh Thánh Sáng-thế Ký 6:3 (RVV11): 'Đức Giê-hô-va phán rằng: Thần ta sẽ chẳng ở luôn trong loài người; vì loài người chỉ là xác thịt, song đời người còn đến một trăm hai mươi năm mà thôi.'\n\nCác đáp án sai:\n- '930 năm' là sai vì đây là tuổi thọ của A-đam (Sáng 5:5), một chi tiết trong một phân đoạn gần đó, không liên quan đến giới hạn Đức Giê-hô-va phán trong câu này.\n- '70 năm' là sai vì đây là một quan niệm phổ biến về tuổi thọ trung bình của con người (dựa trên Thi-thiên 90:10), không phải là giới hạn cụ thể được Đức Giê-hô-va tuyên bố trong Sáng 6:3.\n- '150 năm' là sai vì đây là số năm nước lụt trên đất (Sáng 7:24), một chi tiết số học sai trong ngữ cảnh của câu hỏi về giới hạn tuổi thọ loài người.",
     "language": "vi",
     "options": [
+      "930 năm",
       "70 năm",
-      "100 năm",
       "120 năm",
       "150 năm"
     ],
@@ -3153,12 +3153,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng 4:15 — 'Đức Giê-hô-va bèn đánh dấu trên Ca-in, hầu cho ai gặp Ca-in thì chẳng giết.' Dấu là phương tiện bảo vệ, cho thấy lòng nhân từ của Chúa ngay cả với kẻ giết em mình.",
+    "explanation": "Sáng Thế Ký 4:15 (RVV11) chép: 'Bèn đặt một dấu trên Ca-in, hầu cho ai gặp Ca-in thì chẳng giết.' Mục đích cụ thể của dấu là để người gặp ông \"chẳng giết\" (không giết ông). Do đó, đáp án đúng là \"đánh giết ông để báo thù cho A-bên\", diễn đạt chính xác ý \"không giết\" và động cơ báo thù được ngầm hiểu từ bối cảnh (Ca-in vừa giết em là A-bên).\n\n- Distractor \"cản trở ông dâng sinh tế cho Đức Chúa Trời\" là sai vì không liên quan đến mục đích của dấu được nêu trong câu 15; việc dâng sinh tế được đề cập trước đó (câu 3-5) nhưng không phải là chức năng của dấu này (true_but_off).\n- Distractor \"tìm cách hòa giải ông với dòng dõi Sết\" là sai vì dòng dõi Sết chưa xuất hiện tại thời điểm này; đây là một chi tiết về phạm vi thời gian và mối quan hệ không phù hợp với bối cảnh trực tiếp của Sáng 4 (wrong_scope).\n- Distractor \"đuổi ông ra khỏi vùng đồng bằng thảo nguyên\" là gần đúng nhưng sai một chi tiết then chốt. Câu 12 và 14 nói đến việc Ca-in bị đuổi khỏi mặt đất và phải lưu lạc, nhưng dấu trong câu 15 không nhằm mục đích đuổi ông đi nữa (vì việc đó đã xảy ra rồi), mà để bảo vệ ông khỏi bị giết khi đang lưu lạc (nearby_passage).",
     "language": "vi",
     "options": [
-      "nhận biết được tội của ông trên gương mặt",
-      "tỏ ý thương xót và nói chuyện với ông",
-      "cho ông tị nạn nơi đất của mình ở",
+      "cản trở ông dâng sinh tế cho Đức Chúa Trời",
+      "tìm cách hòa giải ông với dòng dõi Sết",
+      "đuổi ông ra khỏi vùng đồng bằng thảo nguyên",
       "đánh giết ông để báo thù cho A-bên"
     ],
     "tags": [
@@ -3181,13 +3181,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng 11:4 — 'Nào! chúng ta hãy xây một cái thành và dựng lên một cái tháp, chót cao đến tận trời; ta hãy lo làm cho rạng danh, e khi phải tản lạc khắp trên mặt đất chăng.' Đáp án nằm trong chính câu nói của họ.",
+    "explanation": "Câu hỏi hỏi về mục đích cụ thể của việc xây tháp 'đỉnh cao đến trời' theo lời chính của dân Si-nê-a. Sáng Thế Ký 11:4 ghi lời họ: 'Hè! chúng ta hãy xây một cái thành và dựng lên một cái tháp, chót nó cao đến tận trời; ta hãy làm cho rạng danh, e khi phải tản lạc ra khắp trên mặt đất.' Đáp án đúng bám sát Kinh Thánh: mục đích là 'làm rạng danh' cho mình, kẻo bị tản lạc khắp đất.\n\nCác đáp án sai: 1) (nearby_passage) 'vì sợ bị hủy diệt bởi lụt' là một mối lo xuất hiện sau trận lụt thời Nô-ê (Sáng 9:11), không phải lý do được nêu trong Sáng 11:4; 2) (wrong_detail) 'hầu được kết hợp với các thiên sứ' là một chi tiết sai, bởi lời họ chỉ nói 'chót nó cao đến tận trời' chứ không nhắc đến việc kết hợp với thiên sứ; 3) (common_misconception) 'cho thần linh mà họ thờ phượng' là một hiểu lầm phổ biến, vì văn bản rõ ràng ghi mục đích là 'làm cho rạng danh' (cho chính họ), không phải cho thần linh nào.",
     "language": "vi",
     "options": [
-      "Để tránh một cơn hồng thủy lần thứ hai",
-      "Để có thể đến gần và thờ phượng Đức Chúa Trời",
+      "Để 'làm danh' cho mình vì sợ bị hủy diệt bởi lụt",
+      "Để 'làm rạng danh' cho mình hầu được kết hợp với các thiên sứ",
       "Để 'làm rạng danh' cho mình, kẻo bị tản lạc khắp đất",
-      "Để dâng tế lễ cho các vì sao trên trời"
+      "Để 'làm rạng danh' cho thần linh mà họ thờ phượng"
     ],
     "tags": [
       "Cựu Ước",
@@ -3263,13 +3263,13 @@
     ],
     "verseEnd": 7,
     "content": "Theo Sáng 21:5, Áp-ra-ham bao nhiêu tuổi khi Y-sác con trai lời hứa được sinh ra?",
-    "explanation": "Sáng 21:5 — 'Vả, khi Y-sác sanh ra thì Áp-ra-ham đã được một trăm tuổi'. Sa-ra 90 tuổi (17:17). Áp-ra-ham đã chờ 25 năm kể từ khi rời Ha-ran (12:4 — 75 tuổi).",
+    "explanation": "Kinh Thánh chép rõ trong Sáng Thế Ký 21:5 rằng: 'Áp-ra-ham được một trăm tuổi, khi con trai người là Y-sác, đã sanh cho người.' Do đó, đáp án đúng là 100 tuổi.\n\n- Distractor '99 tuổi' là sai vì dựa vào chi tiết gần đúng nhưng không khớp với con số 100 được ghi trong phân đoạn này. Phân đoạn trước (Sáng 17:17) có nhắc đến suy nghĩ 'trăm tuổi' của Áp-ra-ham, nhưng không phải là lúc sinh ra.\n- Distractor '86 tuổi' là sai vì đây là tuổi của Áp-ra-ham khi Ích-ma-ên được sinh ra (Sáng 16:16), không phải khi Y-sác chào đời.\n- Distractor '75 tuổi' là sai vì đây là tuổi của Áp-ra-ham khi ông rời Cha-ran theo lời Chúa gọi (Sáng 12:4), một sự kiện xảy ra nhiều năm trước khi Y-sác sinh ra. Đây là một sự nhầm lẫn phổ biến về các mốc thời gian trong cuộc đời Áp-ra-ham.",
     "language": "vi",
     "options": [
       "100 tuổi",
-      "75 tuổi",
+      "99 tuổi",
       "86 tuổi",
-      "120 tuổi"
+      "75 tuổi"
     ],
     "tags": [
       "Cựu Ước",
@@ -3373,13 +3373,13 @@
     ],
     "verseEnd": 25,
     "content": "Theo Sáng 26:18, Y-sác làm gì với các giếng nước mà cha ông Áp-ra-ham đã đào trước đó?",
-    "explanation": "Sáng 26:18 — 'Y-sác bèn đào lại các giếng người ta đã đào trong đời Áp-ra-ham, cha mình, mà bị dân Phi-li-tin lấp đất lại khi Áp-ra-ham qua đời, và đặt tên các giếng y theo tên cha mình đã đặt'.",
+    "explanation": "Sáng 26:18 chép: 'Y-sác bèn đào lại mấy cái giếng người ta đã đào trong đời của Áp-ra-ham, cha mình, mà bị người Phi-li-tin lấp lại sau khi Áp-ra-ham qua đời'. Đáp án đúng vì câu Kinh Thánh trực tiếp nói Y-sác 'đào lại' các giếng đã bị lấp. Distractor 1 (gần đúng) sai ở chi tiết 'tại các địa điểm khác' vì câu 18 cho biết ông đào lại đúng các giếng cũ của cha. Distractor 2 sai phạm vi vì không hề có thông tin về việc bán giếng trong đoạn này. Distractor 3 là hiểu lầm phổ biến dựa trên sự xung đột, nhưng hành động thực tế của Y-sác là đào lại chứ không phải lấp đi.",
     "language": "vi",
     "options": [
-      "Ông phá hủy chúng và đào giếng mới ở vị trí khác hoàn toàn",
+      "Ông đào những giếng mới tại các địa điểm khác với cha mình",
       "Ông ĐÀO LẠI những giếng mà người Phi-li-tin đã lấp lại sau khi Áp-ra-ham chết",
-      "Ông bán chúng cho A-bi-mê-léc và chuyển hết lên xứ Ca-na-an",
-      "Ông để mặc chúng và sống bằng nước mưa qua các vùng khô hạn"
+      "Ông đã bán quyền sử dụng các giếng đó cho người Phi-li-tin",
+      "Ông lấp lại các giếng đó vì chúng đã bị ô uế"
     ],
     "tags": [
       "Cựu Ước",
@@ -3400,13 +3400,13 @@
     ],
     "verseEnd": 20,
     "content": "Theo Sáng 35:16-20, Ra-chên qua đời ở đâu khi đang sinh con trai cuối cùng (Bên-gia-min)?",
-    "explanation": "Sáng 35:19-20 — 'Vậy, Ra-chên qua đời, được chôn bên con đường đi về Ê-phơ-rát, tức là Bết-lê-hem. Gia-cốp dựng một cây trụ nơi mộ người: ấy là cây trụ mộ của Ra-chên đến ngày nay'.",
+    "explanation": "Sáng Thế Ký 35:16-19 chép: 'Vả, khi đi từ Bê-tên đến, còn cách Ê-phơ-rát chừng một quãng đồng, thì Ra-chên sanh nở. Trong khi sanh nở thấy khó nhọc thay; nhưng bà mụ nói rằng: Đừng sợ chi, vì nàng còn một đứa con trai nữa. Lúc Ra-chên hấp hối, (vì đang cơn sanh nở), đặt tên đứa trai đó là Bên-ô-ni; nhưng cha đặt là Bên-gia-min. Ấy vậy, Ra-chên chết, được chôn ở trên đường đi Ê-phơ-rát, tức là Bết-lê-hem.' Đáp án đúng đúng vì Kinh Thánh ghi rõ bà qua đời 'ở trên đường đi Ê-phơ-rát' (câu 19), và câu 16 cho biết sự việc xảy ra khi họ 'còn cách Ê-phơ-rát chừng một quãng đồng', tức là chưa đến nơi. Distractor 1 sai vì nó nói 'sau khi đã đến nơi', trong khi thực tế bà qua đời trên đường, trước khi đến thành. Distractor 2 sai về phạm vi hành trình; đoạn văn chỉ nói 'đi từ Bê-tên đến' và gần tới Ê-phơ-rát, không hề nhắc đến đích đến là Ghi-bê-a. Distractor 3 là lỗi nhầm đoạn văn gần; Bê-tên là nơi họ xuất phát (câu 16) và có các sự kiện quan trọng trước đó, nhưng Ra-chên không qua đời ở đó.",
     "language": "vi",
     "options": [
       "Trên đường đi đến Ép-ra-ta (cũng là Bết-lê-hem)",
-      "Tại nhà cha mình là La-ban tại Cha-ran",
-      "Tại Hếp-rôn nơi cha chồng Y-sác đang sống",
-      "Tại đồng vắng giữa Ai-cập và xứ Ca-na-an"
+      "Trong thành Bết-lê-hem, sau khi đã đến nơi",
+      "Trên đường đi từ Bê-tên đến Ghi-bê-a",
+      "Tại Bê-tên, nơi bà cùng gia đình vừa dừng chân"
     ],
     "tags": [
       "Cựu Ước",
@@ -3482,13 +3482,13 @@
     ],
     "verseEnd": 35,
     "content": "Khi La-ban đuổi theo Gia-cốp và lục soát đồ đạc tìm thần tượng (Sáng 31:33-35), Ra-chên giấu thần tượng ở đâu?",
-    "explanation": "Sáng 31:34-35 — 'Vả, Ra-chên có lấy các pho tượng đó, để trong bành lạc đà, rồi ngồi lên trên... La-ban lục soát khắp lều mà tìm chẳng được.'",
+    "explanation": "Sáng Thế Ký 31:34 chép rằng Ra-chên đã lấy các tượng thần và để trong bành lạc đà, rồi ngồi lên trên. Đáp án đúng mô tả chính xác chi tiết này. Distractor thứ nhất sai vì nhầm người ngồi (Đi-na không được nhắc đến trong tình huống này). Distractor thứ hai sai vì mở rộng phạm vi địa điểm (trong trại, không phải trên lưng lạc đà). Distractor thứ ba sai vì phản ánh một suy đoán phổ biến (giấu trong người) nhưng không đúng với mô tả trong Kinh Thánh.",
     "language": "vi",
     "options": [
-      "Trong cái lều của các đầy tớ gái",
+      "Trong bành (bao) của lạc đà mà cô Đi-na ngồi lên",
       "Trong bành (bao) của lạc đà mà bà ngồi lên",
-      "Dưới đáy rương đựng đồ đạc của Gia-cốp",
-      "Trong giếng sâu cạnh trại Ma-ha-na-im"
+      "Dưới đống lông chiên trong trại của Gia-cốp",
+      "Trong túi áo của chính bà Ra-chên"
     ],
     "tags": [
       "Cựu Ước",
@@ -3509,12 +3509,12 @@
     ],
     "verseEnd": 11,
     "content": "Theo Sáng 33:1-11, khi Gia-cốp gặp lại Ê-sau sau 20 năm, hành vi của Ê-sau với em mình là gì?",
-    "explanation": "Sáng 33:4 — 'Ê-sau chạy đến trước mặt người, ôm choàng cổ mà hôn, rồi hai anh em đều khóc'. Cuộc tái ngộ vượt xa nỗi sợ của Gia-cốp đã chuẩn bị quà tặng để xoa dịu Ê-sau.",
+    "explanation": "Đáp án đúng dựa trên Sáng 33:4: 'Ê-sau chạy đến đón người, ôm choàng lấy cổ, hôn người, rồi hai anh em đều khóc' (BTT), mô tả đầy đủ hành động ôm, hôn và cả hai cùng khóc. Distractor 1 ('gần đúng') sai ở chi tiết 'Gia-cốp không khóc' (thực tế cả hai khóc). Distractor 2 mô tả hành vi lễ phép, thận trọng, thuộc phạm vi sai vì đó là cách Gia-cốp chuẩn bị trước khi gặp (xếp đoàn tùy tùng, đi trước cúi lạy - Sáng 33:1-3), không phải hành vi thực tế của Ê-sau khi gặp. Distractor 3 phản ánh hiểu lầm phổ biến rằng Ê-sau vẫn ôm hận (dựa trên mối đe dọa trước đó trong Sáng 27:41), nhưng đoạn Sáng 33:4-11 cho thấy ông đã tha thứ và hòa giải.",
     "language": "vi",
     "options": [
-      "Ê-sau rút gươm tấn công Gia-cốp ngay lập tức để báo thù",
-      "Ê-sau đòi Gia-cốp trả lại quyền trưởng nam và phước lành đã lừa",
-      "Ê-sau giả vờ tha thứ rồi sai người giết Gia-cốp ngầm vào ban đêm",
+      "Ê-sau chạy đến ôm cổ Gia-cốp và hôn người, nhưng Gia-cốp không khóc",
+      "Ê-sau chậm rãi tiến lại, cúi đầu chào và tặng quà cho Gia-cốp",
+      "Ê-sau nhìn thấy Gia-cốp rồi quay lưng bỏ đi vì vẫn còn giận",
       "Ê-sau chạy đến ôm cổ Gia-cốp, hôn người và cả hai khóc"
     ],
     "tags": [
@@ -3536,13 +3536,13 @@
     ],
     "verseEnd": 4,
     "content": "Theo Sáng 34, ai đã làm nhục Đi-na (con gái Lê-a) khiến Si-mê-ôn và Lê-vi tàn sát thành Si-chem để trả thù?",
-    "explanation": "Sáng 34:2 — 'Si-chem, con trai Hê-mô, người Hê-vít, hoàng tử của xứ đó, thấy nàng [Đi-na], thì bắt đem đi, nằm với nàng và làm điếm nhục cho nàng'. Si-mê-ôn và Lê-vi sau đó tàn sát thành (34:25-26).",
+    "explanation": "Trong Sáng-thế Ký 34:1-4, Đi-na bị Si-chem, con trai Hê-mô người Hê-vít, là hoàng tử của xứ đó, làm nhục (câu 2).\n\n- ĐÁP ÁN ĐÚNG: 'Si-chem, con trai Hê-mô người Hê-vít, là hoàng tử (quan trưởng) của xứ đó' — Đúng với mô tả trực tiếp trong Kinh Thánh.\n\n- DISTRACTOR 1 (gần đúng): 'Si-chem, con trai Gia-cốp người Hê-vít, là hoàng tử của xứ đó' — Sai chi tiết then chốt vì Si-chem là con trai Hê-mô, không phải con trai Gia-cốp (Sáng 34:2).\n\n- DISTRACTOR 2: 'Lê-vi, con trai Lê-a người Ít-ra-ên, là anh của Đi-na' — Sai phạm vi vì Lê-vi là anh em trả thù, không phải người làm nhục Đi-na (Sáng 34:25).\n\n- DISTRACTOR 3: 'Hê-mô, cha của Si-chem người Hê-vít, là vua của xứ đó' — Nhầm passage gần vì Hê-mô là cha của Si-chem và được gọi là 'Hê-mô người Hê-vít, cha của Si-chem' (Sáng 34:2, 26), nhưng hành động làm nhục là do con trai ông (Si-chem) gây ra.",
     "language": "vi",
     "options": [
       "Si-chem, con trai Hê-mô người Hê-vít, là hoàng tử (quan trưởng) của xứ đó",
-      "A-bi-mê-léc, vua dân Phi-li-tin tại Ghê-ra",
-      "Một thầy tế lễ ngoại bang tại đền thờ trên núi Ga-ri-xim",
-      "Một quan trưởng quân đội Pha-ra-ôn từ Ai-cập đến"
+      "Si-chem, con trai Gia-cốp người Hê-vít, là hoàng tử của xứ đó",
+      "Lê-vi, con trai Lê-a người Ít-ra-ên, là anh của Đi-na",
+      "Hê-mô, cha của Si-chem người Hê-vít, là vua của xứ đó"
     ],
     "tags": [
       "Cựu Ước",
@@ -3563,13 +3563,13 @@
     ],
     "verseEnd": 26,
     "content": "Khi Giu-đa đến với Ta-ma (giả làm kỹ nữ) trong Sáng 38, ông để lại 3 vật làm bằng chứng. Ba vật đó là gì?",
-    "explanation": "Sáng 38:18 — 'Người [Ta-ma] đáp: Cái dấu, dây và cây gậy mà chàng cầm tay'. Ba vật này khi Ta-ma trình ra đã chứng minh cha của thai nhi là Giu-đa (38:25-26).",
+    "explanation": "Trong Sáng-thế Ký 38:18, Giu-đa nói: \"Con dấu của ta, và sợi dây, và cây gậy trong tay ta đây, nầy, ta sẽ gởi cho ngươi.\" Vì vậy, đáp án đúng là con dấu, dây và cây gậy mà ông đang cầm trong tay. \n\n*   Distractor 1 sai vì thay 'cây gậy' bằng 'cái nhẫn', dù 'con dấu' và 'dây' là đúng.\n*   Distractor 2 sai vì dùng các vật dụng cá nhân khác ('áo choàng', 'giày') được đề cập ở những câu gần đó (c.19) nhưng không phải là vật làm tin trong thỏa thuận này.\n*   Distractor 3 sai vì đưa vào các yếu tố phi vật thể ('tiền bạc', 'lời hứa') dù chúng có liên quan đến ngữ cảnh, nhưng không phải là ba vật làm tin cụ thể được trao đổi.",
     "language": "vi",
     "options": [
-      "Áo choàng vương giả, đôi giày da và cây gậy chăn chiên",
-      "Túi tiền vàng, chiếc khăn lụa và con dao găm",
+      "Con dấu, dây và cái nhẫn mà ông đang đeo",
+      "Áo choàng, giày và cây gậy mà ông đang cầm trong tay",
       "Con dấu, dây và cây gậy mà ông đang cầm trong tay",
-      "Bình dầu xức, lưỡi cày và đôi dép da"
+      "Tiền bạc, lời hứa và cây gậy mà ông đang cầm trong tay"
     ],
     "tags": [
       "Cựu Ước",
@@ -3590,13 +3590,13 @@
     ],
     "verseEnd": 8,
     "content": "Khi Giô-sép tỏ chính mình cho các anh em (Sáng 45:4-8), ông nhấn mạnh điều gì về việc bị bán làm nô lệ?",
-    "explanation": "Sáng 45:5,8 — 'Bây giờ, đừng sầu não, và cũng đừng tiếc chi về điều các anh đã bán tôi đặng bị dẫn đến xứ nầy; vì để giữ gìn sự sống các anh, nên Đức Chúa Trời đã sai tôi đến đây trước các anh... Aáy chẳng phải các anh sai tôi đến đây đâu, bèn là Đức Chúa Trời'.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Dựa trên Sáng 45:5, 7-8, Giô-sép nói rõ: 'Đức Chúa Trời sai tôi đến đây trước các anh... để giữ gìn sự sống cho các anh... ấy chẳng phải các anh sai tôi đến đây, bèn là Đức Chúa Trời... Ngài sai tôi đến trước đặng... cứu sự sống cho anh em bởi sự giải cứu lớn lao nầy.' Trọng tâm là Đức Chúa Trời sai ông đi để bảo tồn sự sống, chứ không phải do ý định xấu của các anh.\n\nDISTRACTOR SAI 1 ('thử thách các anh em'): Đây là distractor 'gần đúng' nhưng sai chi tiết then chốt. Giô-sép nhấn mạnh mục đích 'giữ sự sống' (c.5,7), không phải 'thử thách'.\n\nDISTRACTOR SAI 2 ('các anh em sai mình đến trước để chuộc lỗi với cha'): Sai phạm vi và chi tiết. Giô-sép phủ nhận việc các anh sai ông (c.8), và mục đích không liên quan đến việc chuộc lỗi với Gia-cốp.\n\nDISTRACTOR SAI 3 ('học bài học khiêm nhường'): Đây là một hiểu lầm phổ biến, suy diễn ra bài học cá nhân. Đoạn văn (c.4-8) không đề cập đến việc Giô-sép học bài học khiêm nhường, mà tập trung vào kế hoạch cứu sống của Đức Chúa Trời.",
     "language": "vi",
     "options": [
-      "Ông oán giận các anh và đòi phải đền bù thiệt hại nặng nề",
+      "Ông giải thích đó là Đức Chúa Trời sai mình đến trước để thử thách các anh em",
       "Ông giải thích đó là Đức Chúa Trời sai mình đến trước để giữ sự sống nhiều người",
-      "Ông yêu cầu các anh phải tự ký giấy nhận tội rõ ràng cho Pha-ra-ôn",
-      "Ông cảnh báo các anh không được kể với cha là Gia-cốp về việc làm xấu"
+      "Ông giải thích đó là các anh em sai mình đến trước để chuộc lỗi với cha",
+      "Ông giải thích đó là để Giô-sép học bài học khiêm nhường trước khi được tôn cao"
     ],
     "tags": [
       "Cựu Ước",
@@ -3644,13 +3644,13 @@
     ],
     "verseEnd": 38,
     "content": "Theo Sáng 19:30-38, hai con gái Lót sinh hai đứa con là tổ tiên của hai dân tộc nào?",
-    "explanation": "Sáng 19:37-38 — 'Cô lớn sanh được một con trai, đặt tên là Mô-áp; ấy là tổ phụ của dân Mô-áp đến bây giờ. Người em cũng sanh đặng một con trai, đặt tên là Bên-Am-mi; ấy là tổ phụ của dân Am-môn đến bây giờ'.",
+    "explanation": "Đáp án đúng là 'Mô-áp và Am-môn', vì Sáng Thế Ký 19:37-38 ghi rõ: 'Con gái lớn sanh một con trai, đặt tên là Mô-áp; ấy là tổ của dân Mô-áp đến ngày nay. Con gái nhỏ cũng sanh một con trai, đặt tên là Bên-Am-mi; ấy là tổ của dân Am-môn đến ngày nay.' Cả hai dân tộc này thường xuất hiện như những kẻ thù của Y-sơ-ra-ên trong Kinh Thánh.\n\nCác đáp án sai: (1) 'Ê-đôm và Mô-áp' sai vì Ê-đôm là dòng dõi của Ê-sau (Sáng 36:1), không phải từ hai con gái của Lót. (2) 'A-mô-rít và Giê-bu-sít' sai vì đây là tên các dân tộc Ca-na-an khác, không liên quan đến câu chuyện này. (3) 'Mô-áp và A-si-ri' sai vì A-si-ri là một đế quốc lớn sau này, có nguồn gốc từ Sem (Sáng 10:11), không phải từ câu chuyện tại Sô-đôm.",
     "language": "vi",
     "options": [
       "Mô-áp và Am-môn — sau này là kẻ thù của dân Y-sơ-ra-ên",
-      "Ê-đôm và Ích-ma-ên — sau này là kẻ thù của dân Y-sơ-ra-ên",
-      "Phi-li-tin và Hê-tít — kẻ thù chính của Y-sơ-ra-ên",
-      "Mi-đi-an và A-ma-léc — dân tộc đánh nhau với Mô-se"
+      "Ê-đôm và Mô-áp — sau này là kẻ thù của dân Y-sơ-ra-ên",
+      "A-mô-rít và Giê-bu-sít — sau này là kẻ thù của dân Y-sơ-ra-ên",
+      "Mô-áp và A-si-ri — sau này là kẻ thù của dân Y-sơ-ra-ên"
     ],
     "tags": [
       "Cựu Ước",
@@ -3698,13 +3698,13 @@
     ],
     "verseEnd": 30,
     "content": "Theo Sáng 32:30, sau khi vật lộn với Đức Chúa Trời, Gia-cốp đặt tên nơi đó là Phê-ni-ên với ý nghĩa gì?",
-    "explanation": "Sáng 32:30 — 'Gia-cốp đặt tên chỗ đó là Phê-ni-ên, và nói rằng: Tôi đã thấy Đức Chúa Trời đối mặt cùng tôi và linh hồn tôi được giải cứu'. Phê-ni-ên trong tiếng Hê-bơ-rơ nghĩa là 'mặt của Đức Chúa Trời' (peniel).",
+    "explanation": "Đáp án đúng: 'Mặt Đức Chúa Trời' — vì 'tôi đã thấy Đức Chúa Trời mặt đối mặt mà mạng sống tôi được giữ'. Câu này trích nguyên văn từ Sáng 32:30 (BTT), thuật lại lời Gia-cốp sau khi vật lộn với Đấng lạ và được đổi tên, giải thích ý nghĩa tên địa điểm Phê-ni-ên.\n\nGiải thích các phương án sai:\n1. Distractor đầu tiên (gần đúng, sai chi tiết): Sai ở cụm 'vết thương tôi được chữa lành'. Bản văn ghi 'mạng sống tôi được giữ', không nói về việc chữa lành vết thương. Chi tiết về vết thương (trật xương hông) được đề cập ở câu 31-32, không phải trong lý do đặt tên ở câu 30.\n2. Distractor thứ hai (nhầm passage gần): Sai vì dùng cụm 'Nhà của Đức Chúa Trời' và lý do 'Thiên sứ... hiện ra'. 'Nhà của Đức Chúa Trời' (Bê-tên) là tên Gia-cốp đặt ở Sáng 28:19 sau giấc mộng thang, không phải ở Phê-ni-ên. Đấng lạ trong Sáng 32 được nhắc là 'Đức Chúa Trời' (câu 30), không phải 'Thiên sứ' trong ngữ cảnh này.\n3. Distractor thứ ba (hiểu lầm phổ biến): Sai vì đưa ra lý do 'tôi đã khẩn cầu Đức Chúa Trời giải cứu khỏi Ê-sau'. Mặc dù Gia-cốp có cầu nguyện xin giải cứu khỏi Ê-sau ở đầu chương 32 (câu 9-12), nhưng tên Phê-ni-ên được đặt cụ thể sau sự kiện vật lộn và thấy Đức Chúa Trời mặt đối mặt, không phải vì lời cầu nguyện đó.",
     "language": "vi",
     "options": [
-      "'Đức Chúa Trời chiến thắng' — kỷ niệm sự thua cuộc của Gia-cốp",
+      "'Mặt Đức Chúa Trời' — vì 'tôi đã thấy Đức Chúa Trời mặt đối mặt mà vết thương tôi được chữa lành'",
       "'Mặt Đức Chúa Trời' — vì 'tôi đã thấy Đức Chúa Trời mặt đối mặt mà mạng sống tôi được giữ'",
-      "'Đức Chúa Trời ở cùng' — kỷ niệm Đức Chúa Trời đi với Gia-cốp",
-      "'Sự gặp gỡ' — kỷ niệm cuộc gặp giữa hai anh em sau đó"
+      "'Nhà của Đức Chúa Trời' — vì 'đây là nơi Thiên sứ của Đức Chúa Trời hiện ra cùng tôi'",
+      "'Nơi tôi cầu nguyện' — vì 'tại đó tôi đã khẩn cầu Đức Chúa Trời giải cứu khỏi Ê-sau'"
     ],
     "tags": [
       "Cựu Ước",
@@ -3725,12 +3725,12 @@
     ],
     "verseEnd": 52,
     "content": "Giô-sép đặt tên cho hai con trai sinh ra ở Ai-cập với hai ý nghĩa đối ứng (Sáng 41:51-52). Hai tên đó là gì?",
-    "explanation": "Sáng 41:51-52 — 'Giô-sép đặt tên đứa đầu lòng là Ma-na-se, vì người nói rằng: Đức Chúa Trời đã làm cho ta quên điều cực nhọc, và cả nhà cha ta. Người đặt tên đứa thứ nhì là Ép-ra-im, vì nói rằng: Đức Chúa Trời làm cho ta được hưng vượng trong xứ mà ta bị khốn khổ'.",
+    "explanation": "Trong Sáng Thế Ký 41:51-52, Giô-sép nói: 'Giô-sép đặt tên con đầu lòng là Ma-na-se, vì nói rằng: Đức Chúa Trời đã làm cho ta quên hết mọi sự cực nhọc... Người đặt tên đứa thứ nhì là Ép-ra-im, vì nói rằng: Đức Chúa Trời làm cho ta hưng vượng trong xứ mà ta bị khốn khổ.' Vì vậy, đáp án đúng là Ma-na-se (làm cho quên) và Ép-ra-im (làm cho hưng vượng).\n\n- Distractor 1 sai vì dùng tên Giu-đa (con trai của Gia-cốp, không phải con Giô-sép) và ý nghĩa của nó (Sáng 29:35), dù có giữ đúng một tên (Ma-na-se) và một phần ý nghĩa. Đây là lỗi nhầm passage gần.\n- Distractor 2 sai vì đảo lộn hoàn toàn ý nghĩa của hai tên, làm thay đổi chi tiết then chốt. Đây là lỗi sai chi tiết.\n- Distractor 3 sai vì dùng hai tên của các con trai khác của Gia-cốp (Giu-đa và Si-mê-ôn, Sáng 29:33, 35), hoàn toàn không liên quan đến câu hỏi về con của Giô-sép. Đây là lỗi sai phạm vi.",
     "language": "vi",
     "options": [
-      "Ép-ra-im ('khốn khó') và Ma-na-se ('thịnh vượng')",
-      "Phi-nê-a ('lửa') và Ru-ben ('thấy con trai')",
-      "Lê-vi ('liên kết') và Ép-ra-im ('khóc lóc')",
+      "Ma-na-se (nghĩa: làm cho quên) và Giu-đa (nghĩa: được ngợi khen)",
+      "Ma-na-se (nghĩa: làm cho hưng vượng) và Ép-ra-im (nghĩa: làm cho quên)",
+      "Giu-đa (nghĩa: được ngợi khen) và Si-mê-ôn (nghĩa: nghe được)",
       "Ma-na-se (nghĩa: làm cho quên) và Ép-ra-im (nghĩa: làm cho hưng vượng)"
     ],
     "tags": [
@@ -3781,13 +3781,13 @@
     ],
     "verseEnd": 33,
     "content": "Theo Sáng 21:33, sau khi lập giao ước với A-bi-mê-léc tại Bê-e-Sê-ba, Áp-ra-ham làm hành động gì?",
-    "explanation": "Sáng 21:33 — 'Áp-ra-ham trồng một cây me tại Bê-e-Sê-ba, và ở đó người cầu khẩn danh Đức Giê-hô-va, là Đức Chúa Trời hằng-hữu'. Cây me (eshel) là biểu tượng dài lâu, kết hợp với danh 'Đức Chúa Trời hằng-hữu' (El Olam) bày tỏ sự bền vững.",
+    "explanation": "Sáng Thế Ký 21:33 chép: 'Áp-ra-ham trồng một cây me tại Bê-e-Sê-ba, và tại đó người kêu cầu danh Đức Giê-hô-va, Đức Chúa Trời hằng có.' Do đó, đáp án đúng mô tả chính xác hai hành động: trồng cây me và kêu cầu danh Đức Giê-hô-va.\n\n- Distractor 1 (Cất một bàn thờ...) sai phạm vi: Hành động dựng bàn thờ là đúng với Áp-ra-ham ở nhiều nơi khác (ví dụ Sáng 12:7, 13:18), nhưng không phải là hành động được mô tả trong câu hỏi về sự kiện tại Bê-e-Sê-ba ở Sáng 21:33.\n- Distractor 2 (dâng một con sinh tế...) nhầm passage gần: Hành động dâng sinh tế là phổ biến trong các nghi lễ và giao ước (ví dụ Sáng 15:9-10), nhưng không xuất hiện trong đoạn Kinh Thánh này mô tả sự kiện sau giao ước với A-bi-mê-léc.\n- Distractor 3 (Trồng một cây thông...) là đáp án gần đúng nhưng sai chi tiết: Nó chỉ sai một chi tiết then chốt là loại cây ('cây thông' thay vì 'cây me'), trong khi phần còn lại của câu trả lời hoàn toàn chính xác.",
     "language": "vi",
     "options": [
       "Trồng một cây me tại Bê-e-Sê-ba và kêu cầu danh Đức Giê-hô-va, Đức Chúa Trời hằng có",
-      "Xây một bàn thờ lớn bằng đá để tế lễ thường xuyên cho dân các nước",
-      "Đào một giếng rất sâu ở giữa thành Ghê-ra để dân thành dùng chung",
-      "Gửi một phái đoàn đến Pha-ra-ôn Ai-cập để báo tin việc lập giao ước"
+      "Cất một bàn thờ tại Bê-e-Sê-ba và kêu cầu danh Đức Giê-hô-va, Đức Chúa Trời hằng có",
+      "Trồng một cây me tại Bê-e-Sê-ba và dâng một con sinh tế cho Đức Giê-hô-va",
+      "Trồng một cây thông tại Bê-e-Sê-ba và kêu cầu danh Đức Giê-hô-va, Đức Chúa Trời hằng có"
     ],
     "tags": [
       "Cựu Ước",
@@ -3808,13 +3808,13 @@
     ],
     "verseEnd": 24,
     "content": "Theo Sáng 26:24, lời Đức Giê-hô-va phán cùng Y-sác tại Bê-e-Sê-ba mở đầu bằng cụm từ nào?",
-    "explanation": "Sáng 26:24 — Lời mở đầu của Đức Giê-hô-va phán với Y-sác là: 'Ta là Đức Chúa Trời của Áp-ra-ham, cha ngươi; chớ sợ chi'.",
+    "explanation": "Đoạn Kinh Thánh Sáng thế ký 26:24 viết: 'Đức Giê-hô-va hiện đến cùng người trong đêm ấy, mà phán rằng: Ta là Đức Chúa Trời của Áp-ra-ham, cha ngươi; chớ sợ chi, vì ta ở cùng ngươi, sẽ ban phước cho ngươi và vì cớ Áp-ra-ham, tôi tớ ta, mà làm cho dòng dõi ngươi thêm nhiều.'\n\nĐÁP ÁN ĐÚNG: Cụm từ mở đầu chính xác là '\"Ta là Đức Chúa Trời của Áp-ra-ham, cha ngươi; chớ sợ chi\"', trích nguyên văn.\n\nDISTRACTOR SAI 1 (\"'Ta là Đức Chúa Trời của Y-sác, con ngươi; chớ sợ chi'\"): Sai chi tiết then chốt. Lời hứa này xác nhận Đức Chúa Trời là Đức Chúa Trời của Áp-ra-ham, tổ phụ Y-sác, chứ không phải của Y-sác (con). Đây là distractor 'gần đúng' vì chỉ sai một danh từ quan trọng.\n\nDISTRACTOR SAI 2 (\"'Ta là Đức Chúa Trời của Áp-ra-ham, cha ngươi; hãy ra đi'\"): Trích chi tiết từ một phân đoạn gần (câu 2-3, khi Đức Chúa Trời phán bảo Y-sác ở lại Ca-na-an, không xuống Ê-díp-tô), nhưng không phải là lời mở đầu trong câu 24 tại Bê-e-Sê-ba.\n\nDISTRACTOR SAI 3 (\"'Ta là Đức Chúa Trời của Áp-ra-ham, cha ngươi; hãy vâng lời'\"): Đây là một mệnh lệnh có thể đúng trong ngữ cảnh rộng hơn của sự vâng phục Chúa, nhưng KHÔNG PHẢI là cụm từ mở đầu được chép trong câu 24. Nó 'lạc câu hỏi' vì không trả lời đúng yêu cầu về cụm từ mở đầu thực tế.",
     "language": "vi",
     "options": [
-      "'Hãy đi khỏi xứ này, đến xứ ta sẽ chỉ cho ngươi'",
+      "'Ta là Đức Chúa Trời của Y-sác, con ngươi; chớ sợ chi'",
       "'Ta là Đức Chúa Trời của Áp-ra-ham, cha ngươi; chớ sợ chi'",
-      "'Ngươi là con yêu dấu của ta; hãy nghe lời ta dạy'",
-      "'Hãy đem con trai ngươi mà dâng làm của lễ thiêu'"
+      "'Ta là Đức Chúa Trời của Áp-ra-ham, cha ngươi; hãy ra đi'",
+      "'Ta là Đức Chúa Trời của Áp-ra-ham, cha ngươi; hãy vâng lời'"
     ],
     "tags": [
       "Cựu Ước",
@@ -3916,13 +3916,13 @@
     ],
     "verseEnd": 14,
     "content": "Theo Sáng 18:14 (RVV11), khi Sa-ra cười vì lời hứa sinh con ở tuổi già, Đức Giê-hô-va đáp lại bằng câu hỏi tu từ nào?",
-    "explanation": "Sáng 18:14 — 'Há có điều chi Đức Giê-hô-va làm không được chăng? Đến kỳ đã định, trong một năm nữa, ta sẽ trở lại cùng ngươi, và Sa-ra sẽ có một con trai'. Câu hỏi tu từ này khẳng định toàn năng của Đức Chúa Trời.",
+    "explanation": "Câu hỏi hỏi về câu hỏi tu từ của Đức Giê-hô-va trong Sáng 18:14. Đáp án đúng là: 'Há có sự chi Đức Giê-hô-va làm không được chăng?' (RVV11), nhấn mạnh quyền năng tuyệt đối của Ngài. Distractor 1 sai vì thay chủ thể 'Đức Giê-hô-va' thành 'Sa-ra', làm mất đi trọng tâm về quyền năng của Chúa (sai chi tiết then chốt). Distractor 2 sai vì thay từ 'làm' bằng 'biết', chuyển trọng tâm từ hành động/quyền năng sang tri thức, không phù hợp với ngữ cảnh lời hứa về một việc sẽ xảy ra (sai phạm vi ý nghĩa). Distractor 3 sai vì đây là câu hỏi từ Sáng 18:13 (Đức Giê-hô-va hỏi Áp-ra-ham), không phải câu trả lời trực tiếp của Ngài trong câu 14 (nhầm passage gần).",
     "language": "vi",
     "options": [
-      "'Ai có thể đếm các vì sao trên trời cao?'",
+      "'Há có sự chi Sa-ra làm không được chăng?'",
       "'Há có sự chi Đức Giê-hô-va làm không được chăng?'",
-      "'Ngươi có thấy đất rộng lớn dưới chân ngươi không?'",
-      "'Ngươi không tin lời ta vì sao trông cậy vào sức ngươi?'"
+      "'Há có sự chi Đức Giê-hô-va biết không được chăng?'",
+      "'Ngươi há sẽ còn cười nữa chăng?'"
     ],
     "tags": [
       "Cựu Ước",
@@ -3943,13 +3943,13 @@
     ],
     "verseEnd": 15,
     "content": "Theo Sáng 28:15 (RVV11), Đức Giê-hô-va hứa cùng Gia-cốp tại Bê-tên với LỜI BẢO ĐẢM cụ thể nào?",
-    "explanation": "Sáng 28:15 — 'Nầy, ta ở cùng ngươi, ngươi đi đâu, sẽ theo gìn giữ đó, và đem ngươi về xứ nầy; vì ta không bao giờ bỏ ngươi cho đến khi ta làm xong những điều ta đã hứa cùng ngươi'. Lời bảo đảm cá nhân: hiện diện + bảo vệ + đem trở lại.",
+    "explanation": "Trong Sáng 28:15, Đức Giê-hô-va phán: 'Nầy, ta ở cùng ngươi, ngươi đi đâu, sẽ theo gìn giữ đó, và đem ngươi về xứ nầy; vì ta không bỏ ngươi đâu cho đến khi ta làm xong đều ta đã hứa cùng ngươi.' Lời hứa cụ thể là sự hiện diện ('ta ở cùng ngươi'), sự bảo vệ trên hành trình ('ngươi đi đâu, sẽ theo gìn giữ đó'), và sự đưa về ('đem ngươi về xứ nầy').\n\n- Đáp án đúng trích nguyên văn lời hứa này.\n- Distractor 1 ('TA SẼ GÌN GIỮ NGƯƠI...') là 'gần đúng' nhưng sai chi tiết then chốt: thay 'TA Ở CÙNG NGƯƠI' bằng 'TA SẼ GÌN GIỮ NGƯƠI', làm thay đổi trọng tâm lời hứa đầu tiên từ sự hiện diện sang hành động bảo vệ.\n- Distractor 2 ('...ĐẾN XỨ MỚI') phản ánh hiểu lầm phổ biến về mục đích hành trình; lời hứa là đưa về xứ Canaan (xứ nầy), chứ không phải một vùng đất mới chưa biết.\n- Distractor 3 ('ngươi ở đây, sẽ gìn giữ ngươi') thu hẹp phạm vi lời hứa: lời hứa bảo vệ áp dụng cho mọi nơi người đi ('ngươi đi đâu'), không chỉ tại chỗ ('ở đây').",
     "language": "vi",
     "options": [
-      "'Ta sẽ cho ngươi nhiều của cải hơn cha và ông ngươi'",
-      "'Ta sẽ cho ngươi cai trị các nước trên đất rộng lớn'",
+      "'Nầy, TA SẼ GÌN GIỮ NGƯƠI, ngươi đi đâu, sẽ theo bảo vệ đó, và đem ngươi VỀ XỨ NẦY'",
+      "'Nầy, TA Ở CÙNG NGƯƠI, ngươi đi đâu, sẽ theo gìn giữ đó, và đem ngươi ĐẾN XỨ MỚI'",
       "'Nầy, TA Ở CÙNG NGƯƠI, ngươi đi đâu, sẽ theo gìn giữ đó, và đem ngươi VỀ XỨ NẦY'",
-      "'Ngươi sẽ giết được anh ngươi là Ê-sau và lấy lại quyền trưởng nam'"
+      "'Nầy, TA Ở CÙNG NGƯƠI, ngươi ở đây, sẽ gìn giữ ngươi, và đem ngươi VỀ XỨ NẦY'"
     ],
     "tags": [
       "Cựu Ước",
@@ -3970,12 +3970,12 @@
     ],
     "verseEnd": 9,
     "content": "Theo Sáng 39:9 (RVV11), khi vợ Pô-ti-pha cám dỗ Giô-sép, ông từ chối với lý do thần học cốt lõi nào?",
-    "explanation": "Sáng 39:9 — 'Trong nhà nầy chẳng ai lớn hơn tôi, và chủ cũng không cấm chi tôi, trừ ra một mình ngươi, vì ngươi là vợ của chủ tôi. Thế nào tôi dám làm điều đại ác dường ấy, mà phạm tội cùng Đức Chúa Trời sao?' Giô-sép xem tội tà dâm trước hết là phạm tội với Đức Chúa Trời.",
+    "explanation": "Kinh Thánh: \"Thế nào tôi dám làm điều đại ác dường ấy mà phạm tội cùng Đức Chúa Trời?\" (Sáng 39:9 RVV11).\n\nĐÚNG: Đáp án trích nguyên văn câu Kinh Thánh, nêu đúng lý do thần học cốt lõi là hành động ấy sẽ là 'phạm tội cùng Đức Chúa Trời', thể hiện quan điểm tội lỗi trước hết là xúc phạm đến Đấng Tối Cao.\n\nSAI:\n- Distractor 1 (gần đúng): 'phản bội chủ mình' là lý do được Giô-sép đề cập ở câu trước (c.8-9), nhưng câu hỏi hỏi về 'lý do thần học cốt lõi' trong câu 9, nên đây là chi tiết từ passage gần nhưng không phải trọng tâm trả lời câu hỏi.\n- Distractor 2: 'phạm tội cùng vợ chủ' là sai chi tiết. Hành động là với vợ chủ, nhưng đối tượng bị phạm tội được Giô-sép xác định là 'Đức Chúa Trời', không phải bà ta.\n- Distractor 3: 'trái lương tâm mình' phản ánh một hiểu lầm phổ biến khi diễn giải đạo đức, nhưng không phải lý lẽ thần học cốt lõi trong câu Kinh Thánh này. Câu trả lời của Giô-sép không dựa trên lương tâm cá nhân mà dựa trên mối quan hệ với Đức Chúa Trời.",
     "language": "vi",
     "options": [
-      "'Tôi sợ chồng bà sẽ giết tôi nếu phát hiện ra việc này'",
-      "'Tôi không yêu bà; xin tha cho tôi mà về phòng tôi'",
-      "'Tôi đã được hứa hôn với một người con gái khác ở quê hương'",
+      "'Thế nào tôi dám làm điều đại ác dường ấy mà phản bội chủ mình?'",
+      "'Thế nào tôi dám làm điều đại ác dường ấy mà phạm tội cùng vợ chủ?'",
+      "'Thế nào tôi dám làm điều đại ác dường ấy mà trái lương tâm mình?'",
       "'Thế nào tôi dám làm điều đại ác dường ấy mà PHẠM TỘI cùng ĐỨC CHÚA TRỜI?'"
     ],
     "tags": [

@@ -4,6 +4,8 @@ import type { TFunction } from 'i18next'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../api/client'
 import { Question } from './questionTypes'
+import { useBookName } from '../../hooks/useBookName'
+import AdminSelect from '../../components/ui/AdminSelect'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 // Question + shared editor types/helpers now live in ./questionTypes (QED-1).
@@ -61,7 +63,9 @@ const Badge: React.FC<{ label: string; color: string }> = ({ label, color }) => 
 // ── Main Component ─────────────────────────────────────────────────────────────
 
 export default function QuestionsAdmin() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const getBookName = useBookName()
+  const lang = i18n.language === 'en' ? 'en' : 'vi'
   // ── list state
   const [data, setData]         = useState<ApiPage | null>(null)
   const [isLoading, setLoading] = useState(false)
@@ -76,6 +80,7 @@ export default function QuestionsAdmin() {
   const [qType,        setQType]        = useState('')
   const [reviewStatus, setReviewStatus] = useState('')
   const [category,     setCategory]     = useState('')
+  const [language,     setLanguage]     = useState('')
 
   // ── selection
   const [selectedIds, setSelectedIds] = useState<Record<string, boolean>>({})
@@ -100,9 +105,10 @@ export default function QuestionsAdmin() {
     if (qType)        p.set('type', qType)
     if (reviewStatus) p.set('reviewStatus', reviewStatus)
     if (category)     p.set('category', category)
+    if (language)     p.set('language', language)
     if (search.trim()) p.set('search', search.trim())
     return p.toString()
-  }, [page, pageSize, book, difficulty, qType, reviewStatus, category, search])
+  }, [page, pageSize, book, difficulty, qType, reviewStatus, category, language, search])
 
   const refresh = useCallback(async () => {
     setLoading(true); setError(null)
@@ -119,7 +125,7 @@ export default function QuestionsAdmin() {
   useEffect(() => { refresh() }, [refresh])
 
   // Reset to page 0 when filters change
-  useEffect(() => { setPage(0) }, [search, book, difficulty, qType, reviewStatus, category, pageSize])
+  useEffect(() => { setPage(0) }, [search, book, difficulty, qType, reviewStatus, category, language, pageSize])
 
   // ── Selection ──────────────────────────────────────────────────────────────
 
@@ -228,55 +234,54 @@ export default function QuestionsAdmin() {
         </div>
         <div>
           <label className="block text-xs text-white/50 mb-1">{t('admin.questions.filter.difficultyLabel')}</label>
-          <select value={difficulty} onChange={e => setDifficulty(e.target.value)}
-            className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm">
-            <option value="">{t('admin.questions.filter.difficultyAll')}</option>
-            <option value="easy">{t('admin.questions.filter.easy')}</option>
-            <option value="medium">{t('admin.questions.filter.medium')}</option>
-            <option value="hard">{t('admin.questions.filter.hard')}</option>
-          </select>
+          <AdminSelect className="w-36" value={difficulty} onChange={setDifficulty} options={[
+            { value: '', label: t('admin.questions.filter.difficultyAll') },
+            { value: 'easy', label: t('admin.questions.filter.easy') },
+            { value: 'medium', label: t('admin.questions.filter.medium') },
+            { value: 'hard', label: t('admin.questions.filter.hard') },
+          ]} />
         </div>
         <div>
           <label className="block text-xs text-white/50 mb-1">{t('admin.questions.filter.typeLabel')}</label>
-          <select value={qType} onChange={e => setQType(e.target.value)}
-            className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm">
-            <option value="">{t('admin.questions.filter.typeAll')}</option>
-            <option value="multiple_choice_single">{t('admin.questions.filter.mcSingle')}</option>
-            <option value="multiple_choice_multi">{t('admin.questions.filter.mcMulti')}</option>
-            <option value="true_false">{t('admin.questions.filter.trueFalse')}</option>
-            <option value="fill_in_blank">{t('admin.questions.filter.fillBlank')}</option>
-          </select>
+          <AdminSelect className="w-40" value={qType} onChange={setQType} options={[
+            { value: '', label: t('admin.questions.filter.typeAll') },
+            { value: 'multiple_choice_single', label: t('admin.questions.filter.mcSingle') },
+            { value: 'multiple_choice_multi', label: t('admin.questions.filter.mcMulti') },
+            { value: 'true_false', label: t('admin.questions.filter.trueFalse') },
+            { value: 'fill_in_blank', label: t('admin.questions.filter.fillBlank') },
+          ]} />
         </div>
         <div>
           <label className="block text-xs text-white/50 mb-1">{t('admin.questions.filter.statusLabel')}</label>
-          <select value={reviewStatus} onChange={e => setReviewStatus(e.target.value)}
-            className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm">
-            <option value="">{t('admin.questions.filter.statusAll')}</option>
-            <option value="ACTIVE">Active</option>
-            <option value="PENDING">Pending</option>
-            <option value="REJECTED">Rejected</option>
-          </select>
+          <AdminSelect className="w-36" value={reviewStatus} onChange={setReviewStatus} options={[
+            { value: '', label: t('admin.questions.filter.statusAll') },
+            { value: 'ACTIVE', label: 'Active' },
+            { value: 'PENDING', label: 'Pending' },
+            { value: 'REJECTED', label: 'Rejected' },
+          ]} />
         </div>
         <div>
           <label className="block text-xs text-white/50 mb-1">{t('admin.questions.filter.categoryLabel')}</label>
-          <select
-            data-testid="admin-questions-category-filter"
-            value={category}
-            onChange={e => setCategory(e.target.value)}
-            className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm"
-          >
-            <option value="">{t('admin.questions.filter.categoryAll')}</option>
-            <option value="bible_basics">{t('admin.questions.filter.categoryBibleBasics')}</option>
-          </select>
+          <AdminSelect testId="admin-questions-category-filter" className="w-40" value={category} onChange={setCategory} options={[
+            { value: '', label: t('admin.questions.filter.categoryAll') },
+            { value: 'bible_basics', label: t('admin.questions.filter.categoryBibleBasics') },
+          ]} />
+        </div>
+        <div>
+          <label className="block text-xs text-white/50 mb-1">{t('admin.questions.filter.languageLabel')}</label>
+          <AdminSelect testId="admin-questions-language-filter" className="w-36" value={language} onChange={setLanguage} options={[
+            { value: '', label: t('admin.questions.filter.languageAll') },
+            { value: 'vi', label: t('admin.questions.modal.langVi') },
+            { value: 'en', label: t('admin.questions.modal.langEn') },
+          ]} />
         </div>
         <div>
           <label className="block text-xs text-white/50 mb-1">{t('admin.questions.filter.pageSizeLabel')}</label>
-          <select value={pageSize} onChange={e => setPageSize(Number(e.target.value))}
-            className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm">
-            <option value={25}>25</option>
-            <option value={50}>50</option>
-            <option value={100}>100</option>
-          </select>
+          <AdminSelect className="w-20" value={String(pageSize)} onChange={v => setPageSize(Number(v))} options={[
+            { value: '25', label: '25' },
+            { value: '50', label: '50' },
+            { value: '100', label: '100' },
+          ]} />
         </div>
       </div>
 
@@ -312,7 +317,7 @@ export default function QuestionsAdmin() {
                       onChange={e => setSelectedIds(p => ({ ...p, [q.id]: e.target.checked }))} />
                   </td>
                   <td className="px-3 py-2 whitespace-nowrap">
-                    <div className="font-medium">{q.book || '—'}</div>
+                    <div className="font-medium">{q.book ? getBookName(q.book, lang) : '—'}</div>
                     {q.chapter && (
                       <div className="text-xs text-white/50">
                         {q.chapter}:{q.verseStart ?? '?'}{q.verseEnd && q.verseEnd !== q.verseStart ? `–${q.verseEnd}` : ''}

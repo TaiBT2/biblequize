@@ -2,6 +2,22 @@ export type Difficulty = 'easy' | 'medium' | 'hard'
 export type QuestionType = 'multiple_choice_single' | 'multiple_choice_multi' | 'true_false' | 'fill_in_blank'
 export type DraftStatus = 'pending' | 'approved' | 'rejected'
 
+// AEQ: distractor error-type metadata declared by the AI (one per wrong option).
+export type ErrorType = 'nearby_passage' | 'wrong_detail' | 'wrong_scope' | 'common_misconception' | 'true_but_off'
+export interface DistractorMeta {
+  index: number
+  errorType: ErrorType | string
+  almostRight: boolean
+}
+// AEQ: server-computed quality flags (distinct error types + almost-right minimum).
+export interface QualityFlags {
+  valid: boolean
+  duplicateErrorType: boolean
+  almostRightCount: number
+  requiredAlmostRight: number
+  reasons: string[]
+}
+
 export interface DraftQuestion {
   id: string
   status: DraftStatus
@@ -21,6 +37,8 @@ export interface DraftQuestion {
   approvedId?: string
   saveError?: string
   generatedBy?: string
+  distractors?: DistractorMeta[]
+  quality?: QualityFlags
 }
 
 export const VALID_TYPES: QuestionType[] = ['multiple_choice_single', 'multiple_choice_multi', 'true_false', 'fill_in_blank']

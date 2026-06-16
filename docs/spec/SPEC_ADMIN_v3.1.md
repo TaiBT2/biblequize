@@ -263,7 +263,9 @@ DuplicateStatus        : enum { NO_MATCH, EXACT_MATCH, SAME_VERSE_ANSWER, SIMILA
 ### 7.1 Mục đích
 Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/verse, difficulty, type, language, count) để feed Review Queue.
 
-> **Anti-guessing rules (QQA-1, 2026-06-16):** `AIGenerationService.buildPrompt` ép luật thiết kế distractor cho câu MCQ — 4 đáp án cùng độ dài + cùng dạng ngữ pháp, distractor là near-miss hợp lý (đúng sách/sai chương…), đảo vị trí đáp án đúng, explanation nêu vì sao đáp án sai. Lý do: seed audit 2026-06-16 thấy 80% câu có đáp án đúng dài nhất (~2.4× distractor) → đoán được không cần kiến thức. Ví dụ JSON dùng `correctAnswer: 2` (không neo vị trí A).
+> **Anti-guessing rules (QQA-1, nâng cấp chuẩn Haladyna/NBME 2026-06-16):** `AIGenerationService.buildPrompt` ép bộ luật thiết kế distractor cho câu MCQ (áp dụng cho cả `/generate` lẫn `/improve-question`). 8 nhóm luật: (A) self-check — che câu hỏi vẫn đoán được → loại, distractor loại được bằng nền tảng chung → viết lại, đáp án đúng không được là phương án "tích cực/đầy đủ" duy nhất; (B) **mỗi distractor một loại lỗi KHÁC nhau** chọn từ 5 kiểu (nhầm passage gần / sai chi tiết / sai phạm vi / common misconception / đúng-văn-bản-lạc-câu-hỏi), trùng loại → viết lại; (C) ≥1 đáp án "gần đúng" (almost-right, sai 1 chi tiết then chốt); (D) homogeneous (cùng độ dài/giọng văn/cấu trúc); (E) không cue tuyệt đối lộ liễu; (F) cường độ distractor theo độ khó (dễ/trung bình ≥1 almost-right/khó ≥2); (G) đảo vị trí đáp án đúng; (H) explanation nêu loại lỗi của TỪNG distractor. Lý do: seed audit 2026-06-16 thấy 80% câu có đáp án đúng dài nhất (~2.4× distractor) → đoán được không cần kiến thức; bản cũ (chỉ length-parity + near-miss) chưa đủ → AI suggestion yếu. Ví dụ JSON dùng `correctAnswer: 2` (không neo vị trí A). **Error-type enforcement (AEQ, 2026-06-16):** output MCQ thêm field `distractors[]` — mỗi phương án SAI khai `{index, errorType, almostRight}` với `errorType` ∈ 5 key `nearby_passage|wrong_detail|wrong_scope|common_misconception|true_but_off`. Server `AIGenerationService.annotateQuality` gắn `_quality` vào mỗi câu MCQ: `{valid, duplicateErrorType, almostRightCount, requiredAlmostRight (easy0/med1/hard2), reasons[]}` (lý do: `duplicate_error_type` / `insufficient_almost_right` / `missing_distractors`); gọi ở `AIAdminController.generate` (không áp cho mock). FE `DraftCard` hiện loại lỗi + tag "gần đúng" từng distractor, banner cảnh báo, và **chặn nút Duyệt** khi `quality.valid=false` (sửa draft = admin override, clear flag). `options[]` + `correctAnswer` giữ nguyên — `distractors`/`_quality` chỉ là metadata review, KHÔNG lưu vào câu hỏi. Auto reject-and-regenerate phía server (retry loop) defer.
+>
+> **Auto-eval panel (QEV, FE editor):** `evaluateQuestionQuality` (`apps/web/src/pages/admin/questionTypes.ts`) chạy heuristic tức thì (no AI, no quota) trong panel "Đánh giá đáp án (tự động)" của trình sửa câu hỏi. Kiểm phần *cơ học hoá được* của chuẩn trên: đủ/không trùng lựa chọn, length-parity (đúng dài nhất ≥1.5× → warn), vị trí (cảnh báo nếu ở A), **cue tuyệt đối lệch một phía đúng/sai (Rule E) → warn**, độ dài explanation. Phần *ngữ nghĩa* (loại lỗi khác nhau, almost-right, plausibility) để info "cần mắt người/AI".
 
 ### 7.2 Endpoints
 | Method | Endpoint | Mô tả | Source |
@@ -335,6 +337,8 @@ Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/ve
 1 admin (hoặc CONTENT_MOD) Approve một câu PENDING là đủ để vào pool active. Admin từ chối → REJECTED.
 
 > **ADM-3 (DECISIONS 2026-06-16):** hạ từ 2 → 1 phê duyệt. Dual-control (2 admin khác nhau) là bất khả thi với team 1 admin → mọi câu import/AI kẹt PENDING vĩnh viễn. Nâng lại khi pool reviewer đủ lớn.
+>
+> **Backfill (V67, 2026-06-16):** việc hạ ngưỡng chỉ áp dụng cho lượt duyệt mới — các câu đã được duyệt 1 lần (`approvalsCount≥1`) thời ngưỡng=2 vẫn kẹt PENDING (admin duy nhất không thể duyệt lại câu mình đã review). Migration `V67__activate_single_approval_pending.sql` backfill chúng sang `ACTIVE` (idempotent) để khớp luật 1-duyệt hiện hành.
 
 ### 8.2 Endpoints
 | Method | Endpoint | Mô tả | Source |
@@ -350,6 +354,7 @@ Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/ve
 - Admin không được approve câu mình đã review (check `existsByQuestionIdAndAdminId`).
 - Approve → `approvalsCount++`; nếu `≥ 1` → `reviewStatus=ACTIVE, isActive=true` (tức ngay phê duyệt đầu tiên).
 - Reject → 1 lần duy nhất → `reviewStatus=REJECTED, isActive=false`.
+- **Revert về PENDING (QED-3, 2026-06-16):** sửa câu ở tab Questions đổi `reviewStatus` ACTIVE/REJECTED → PENDING sẽ mở chu kỳ duyệt mới: `approvalsCount=0` + xoá `QuestionReview` cũ (`AdminQuestionController.update`, `@Transactional`). Tránh tình trạng câu vào lại queue nhưng vô hình ở `pendingForMe` vì review của người duyệt trước vẫn còn.
 - Stats: `pendingForMe, totalPending, active, rejected, myActionsToday, approvalsRequired`.
 - **Edit-in-place (QED-2, 2026-06-16):** mỗi câu pending có nút "Sửa" mở **chung** `QuestionEditModal` (giống tab Questions) với `reviewStatus=PENDING` → reviewer sửa-rồi-duyệt tại chỗ; save qua `PUT /api/admin/questions/{id}`. Câu ACTIVE vẫn chỉ sửa ở tab Questions (review queue chỉ chứa PENDING).
 

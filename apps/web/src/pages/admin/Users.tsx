@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { api } from '../../api/client'
+import AdminSelect from '../../components/ui/AdminSelect'
 
 interface UserItem {
   id: string; name: string; email: string; avatarUrl?: string; role: string
@@ -87,24 +88,18 @@ export default function UsersAdmin() {
           <input data-testid="admin-users-search" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && fetchUsers(0)}
             placeholder={t('admin.users.searchPlaceholder')} className="w-full h-10 bg-[#191b25] border-none rounded px-10 text-sm text-[#e1e1ef] placeholder:text-[#d5c4af]/40 focus:ring-1 focus:ring-[#e8a832] transition-all" />
         </div>
-        <select value={roleFilter} onChange={e => { setRoleFilter(e.target.value); setPage(0) }}
-          className="h-10 bg-[#191b25] border-none rounded text-sm text-[#d5c4af] px-4 focus:ring-1 focus:ring-[#e8a832]">
-          <option value="">{t('admin.users.filterRoleAll')}</option>
-          <option value="ADMIN">Admin</option>
-          <option value="USER">User</option>
-          <option value="GROUP_LEADER">Group Leader</option>
-          <option value="CONTENT_MOD">Content Mod</option>
-        </select>
-        <select value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setPage(0) }}
-          className="h-10 bg-[#191b25] border-none rounded text-sm text-[#d5c4af] px-4 focus:ring-1 focus:ring-[#e8a832]">
-          <option value="">{t('admin.users.filterStatusAll')}</option>
-          <option value="active">{t('admin.users.statusActive')}</option>
-          <option value="banned">{t('admin.users.statusBanned')}</option>
-        </select>
-        <button className="h-10 px-4 border border-[#504535]/20 flex items-center gap-2 text-[#e8a832] font-medium text-sm hover:bg-[#32343e] transition-colors rounded">
-          <span className="material-symbols-outlined text-sm">download</span>
-          {t('admin.users.exportCsv')}
-        </button>
+        <AdminSelect className="w-40" value={roleFilter} onChange={v => { setRoleFilter(v); setPage(0) }} options={[
+          { value: '', label: t('admin.users.filterRoleAll') },
+          { value: 'ADMIN', label: 'Admin' },
+          { value: 'USER', label: 'User' },
+          { value: 'GROUP_LEADER', label: 'Group Leader' },
+          { value: 'CONTENT_MOD', label: 'Content Mod' },
+        ]} />
+        <AdminSelect className="w-40" value={statusFilter} onChange={v => { setStatusFilter(v); setPage(0) }} options={[
+          { value: '', label: t('admin.users.filterStatusAll') },
+          { value: 'active', label: t('admin.users.statusActive') },
+          { value: 'banned', label: t('admin.users.statusBanned') },
+        ]} />
       </div>
 
       {/* Table */}

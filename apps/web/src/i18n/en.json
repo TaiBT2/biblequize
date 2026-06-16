@@ -206,10 +206,12 @@
         "lengthOk": "Balanced length (correct ~{{ratio}}× distractors).",
         "positionA": "Correct answer is at A — consider shuffling to avoid guessing.",
         "positionOk": "Correct answer is at position {{letter}}.",
+        "cueAsymmetric": "Absolute words ({{words}}) appear on only one side (right/wrong) → a guessing cue. Spread them out or remove.",
+        "cueOk": "No telltale absolute words.",
         "explanationMissing": "Explanation is missing.",
         "explanationShort": "Explanation too short — state why it's right AND why a tempting wrong one is wrong.",
         "explanationOk": "Has a full explanation.",
-        "plausibility": "Are the distractors plausible 'close-but-wrong'? → needs a human/AI check."
+        "plausibility": "Does each distractor use a different error type, with ≥1 'almost-right' (wrong in one detail)? → needs a human/AI check."
       },
       "editor": {
         "evalTitle": "Answer review (auto)",
@@ -247,6 +249,8 @@
         "categoryLabel": "Category",
         "categoryAll": "All",
         "categoryBibleBasics": "Bible Basics",
+        "languageLabel": "Language",
+        "languageAll": "All",
         "pageSizeLabel": "Show"
       },
       "column": {
@@ -415,6 +419,7 @@
         "healthy": "Healthy",
         "fair": "Fair",
         "critical": "Critical",
+        "summary": "books meet minimum",
         "noData": "No coverage data"
       },
       "questionQueue": {
@@ -479,6 +484,7 @@
       "missingClaudeKey": "Add ANTHROPIC_API_KEY to application.yml",
       "missingGeminiKey": "Add GEMINI_API_KEY to application.yml",
       "missingDeepseekKey": "Configure AWS credentials (IAM role or env) to enable DeepSeek Bedrock",
+      "providerLocked": "Coming soon — not available yet",
       "claudeModelsLabel": "Claude Models",
       "claudeAutoLabel": "Auto by difficulty",
       "claudeAutoNoteFast": "Fast · Cheap",
@@ -517,7 +523,22 @@
         "editButton": "Edit",
         "rejectTitle": "Reject",
         "restoreButton": "↩ Restore",
-        "approvedFooter": "✓ Saved → pending in Review Queue"
+        "approvedFooter": "✓ Saved → pending in Review Queue",
+        "almostRightTag": "almost-right",
+        "qualityWarningTitle": "Distractor quality warning",
+        "approveBlocked": "Fix the distractors before approving (duplicate error type or missing an 'almost-right' option)",
+        "errorType": {
+          "nearby_passage": "nearby-passage mixup",
+          "wrong_detail": "wrong detail",
+          "wrong_scope": "wrong scope",
+          "common_misconception": "common misconception",
+          "true_but_off": "true but off-question"
+        },
+        "reason": {
+          "duplicate_error_type": "Two distractors share an error type",
+          "insufficient_almost_right": "Missing an 'almost-right' option for this difficulty",
+          "missing_distractors": "AI did not declare distractor error types"
+        }
       },
       "models": {
         "haiku45Note": "Fast · Cheap",

@@ -2,6 +2,7 @@ package com.biblequiz.api;
 
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
+import com.biblequiz.modules.quiz.repository.QuestionReviewRepository;
 import com.biblequiz.modules.quiz.service.DuplicateDetectionService;
 import com.biblequiz.modules.quiz.service.DuplicateDetectionService.DuplicateCheckResult;
 import com.biblequiz.modules.quiz.service.DuplicateDetectionService.DuplicateStatus;
@@ -39,6 +40,11 @@ class AdminQuestionControllerTest extends BaseControllerTest {
      */
     @MockBean
     private DuplicateDetectionService duplicateDetectionService;
+
+    // Injected since the re-queue fix (ACTIVE→PENDING clears prior reviews).
+    // Must be mocked in this slice test or the context fails to load.
+    @MockBean
+    private QuestionReviewRepository reviewRepository;
 
     private Question sampleQuestion;
 
@@ -176,6 +182,46 @@ class AdminQuestionControllerTest extends BaseControllerTest {
                 .andExpect(status().isOk());
 
         verify(questionRepository).save(any(Question.class));
+    }
+
+    @Test
+    @WithMockUser(username = "admin@example.com", roles = {"ADMIN"})
+    void updateQuestion_revertActiveToPending_resetsReviewCycle() throws Exception {
+        // ACTIVE→PENDING must start a fresh review cycle: approvalsCount=0 and
+        // prior QuestionReview rows wiped, else the question is invisible in
+        // every admin's "needs my review" while still counting as pending.
+        sampleQuestion.setReviewStatus(Question.ReviewStatus.ACTIVE);
+        sampleQuestion.setApprovalsCount(2);
+        when(questionRepository.findById("q-1")).thenReturn(Optional.of(sampleQuestion));
+        when(questionRepository.save(any(Question.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        mockMvc.perform(put("/api/admin/questions/q-1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"reviewStatus\":\"PENDING\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.reviewStatus").value("PENDING"))
+                .andExpect(jsonPath("$.isActive").value(false))
+                .andExpect(jsonPath("$.approvalsCount").value(0));
+
+        verify(reviewRepository).deleteByQuestionId("q-1");
+    }
+
+    @Test
+    @WithMockUser(username = "admin@example.com", roles = {"ADMIN"})
+    void updateQuestion_alreadyPending_doesNotClearReviewsAgain() throws Exception {
+        // PENDING→PENDING (e.g. edit-in-place during review) must NOT wipe the
+        // ongoing review cycle.
+        sampleQuestion.setReviewStatus(Question.ReviewStatus.PENDING);
+        sampleQuestion.setIsActive(false);
+        when(questionRepository.findById("q-1")).thenReturn(Optional.of(sampleQuestion));
+        when(questionRepository.save(any(Question.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        mockMvc.perform(put("/api/admin/questions/q-1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"reviewStatus\":\"PENDING\",\"content\":\"tweak\"}"))
+                .andExpect(status().isOk());
+
+        verify(reviewRepository, never()).deleteByQuestionId(anyString());
     }
 
     @Test

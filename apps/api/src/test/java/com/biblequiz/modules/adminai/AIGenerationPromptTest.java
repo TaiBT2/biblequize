@@ -18,8 +18,9 @@ class AIGenerationPromptTest {
     @Test
     void mcqPrompt_vi_hasDistractorRules() {
         String p = mcqPrompt("vi");
-        assertTrue(p.contains("gần bằng nhau về độ dài"), "length-parity rule missing");
-        assertTrue(p.contains("đúng một phần rồi sai"), "plausible-distractor rule missing");
+        assertTrue(p.contains("cùng độ dài"), "homogeneous length rule missing");
+        assertTrue(p.contains("MỘT LOẠI LỖI KHÁC NHAU"), "distinct-error-type rule missing");
+        assertTrue(p.contains("gần đúng"), "almost-right rule missing");
         assertTrue(p.contains("NGẪU NHIÊN"), "randomize-position rule missing");
         // example index must not anchor on A (index 0)
         assertTrue(p.contains("\"correctAnswer\": 2"), "example correctAnswer should be non-zero");
@@ -27,11 +28,24 @@ class AIGenerationPromptTest {
     }
 
     @Test
+    void mcqPrompt_declaresErrorTypeSchema() {
+        String p = mcqPrompt("vi");
+        assertTrue(p.contains("\"distractors\""), "distractors field missing in schema");
+        assertTrue(p.contains("nearby_passage"), "errorType enum keys missing");
+        assertTrue(p.contains("true_but_off"), "errorType enum keys incomplete");
+        assertTrue(p.contains("PHẢI KHÁC nhau") || p.contains("KHÁC nhau"), "distinct-errorType rule missing");
+        String en = mcqPrompt("en");
+        assertTrue(en.contains("\"distractors\""), "distractors field missing (en)");
+        assertTrue(en.contains("MUST be DISTINCT"), "distinct-errorType rule missing (en)");
+    }
+
+    @Test
     void mcqPrompt_en_hasDistractorRules() {
         String p = mcqPrompt("en");
-        assertTrue(p.contains("similar in length"), "length-parity rule missing (en)");
-        assertTrue(p.contains("close-but-wrong"), "plausible-distractor rule missing (en)");
-        assertTrue(p.contains("Randomize the position"), "randomize-position rule missing (en)");
+        assertTrue(p.contains("HOMOGENEOUS"), "homogeneous length rule missing (en)");
+        assertTrue(p.contains("DIFFERENT ERROR TYPE"), "distinct-error-type rule missing (en)");
+        assertTrue(p.contains("almost-right"), "almost-right rule missing (en)");
+        assertTrue(p.contains("Randomize the correct answer's position"), "randomize-position rule missing (en)");
     }
 
     @Test

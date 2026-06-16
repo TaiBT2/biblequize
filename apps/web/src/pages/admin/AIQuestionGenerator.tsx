@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { api, aiApi } from '../../api/client'
 import { getChapterCount, getVerseCount } from '../../data/bibleData'
+import { useBookName } from '../../hooks/useBookName'
 import DraftCard from './ai-generator/DraftCard'
 import {
   type Difficulty, type QuestionType, type DraftQuestion,
+  type DistractorMeta, type QualityFlags,
   normalizeType, CLAUDE_MODELS, loadDraftsFromStorage, saveDraftsToStorage,
 } from './ai-generator/types'
 
@@ -35,7 +37,9 @@ Yêu cầu:
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function AIQuestionGenerator() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const getBookName = useBookName()
+  const bookLang = i18n.language === 'en' ? 'en' : 'vi'
   // Form
   const [book, setBook]               = useState('')
   const [chapter, setChapter]         = useState(1)
@@ -161,6 +165,8 @@ export default function AIQuestionGenerator() {
         tags:          Array.isArray(q.tags) ? q.tags : [],
         source:        q.source ?? t('admin.aiGenerator.sourceFallback'),
         generatedBy:   q._generatedBy,
+        distractors:   Array.isArray(q.distractors) ? (q.distractors as DistractorMeta[]) : undefined,
+        quality:       (q._quality ?? undefined) as QualityFlags | undefined,
       }))
       setDrafts(prev => [...newDrafts, ...prev])
     } catch (e: any) {
@@ -174,7 +180,9 @@ export default function AIQuestionGenerator() {
   const cancelEdit = () => { setEditingId(null); setEditData({}) }
 
   const saveEdit = () => {
-    setDrafts(prev => prev.map(d => d.id === editingId ? { ...d, ...editData } as DraftQuestion : d))
+    // Editing is an admin override: clear the AI quality flag so a manually-fixed
+    // draft is no longer gated by the (now-stale) distractor checks.
+    setDrafts(prev => prev.map(d => d.id === editingId ? { ...d, ...editData, quality: undefined } as DraftQuestion : d))
     cancelEdit()
   }
 
@@ -244,29 +252,28 @@ export default function AIQuestionGenerator() {
   return (
     <div data-testid="ai-generator-page" className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between flex-wrap gap-3">
+      <div className="flex items-start justify-between flex-wrap gap-3">
         <div>
-          <h2 className="text-3xl font-black text-[#e1e1ef] tracking-tighter flex items-center gap-3">
-            <span className="material-symbols-outlined text-[#e8a832] text-4xl">psychology</span>
+          <h2 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight flex items-center gap-2.5">
+            <span className="material-symbols-outlined text-[#e8a832] text-2xl">psychology</span>
             {t('admin.aiGenerator.title')}
           </h2>
-          <p className="text-[#d5c4af]/60 text-sm mt-0.5 flex items-center gap-2">
-            {t('admin.aiGenerator.subtitle')}
-            {aiInfo && (['deepseek', 'gemini', 'claude'] as const).map(p => {
-              const info = aiInfo.providers[p]
-              if (!info) return null
-              const label = p === 'deepseek' ? 'DeepSeek' : p === 'gemini' ? 'Gemini' : 'Claude'
-              return (
-                <span key={p} className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold border ${
-                  info.configured
-                    ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
-                    : 'bg-red-500/15 text-red-400 border-red-500/30'
-                }`}>
-                  {info.configured ? '✓' : '✗'} {label} {info.configured ? info.model : t('admin.aiGenerator.notConfigured')}
-                </span>
-              )
-            })}
-          </p>
+          <p className="text-[#d5c4af]/60 text-sm mt-1">{t('admin.aiGenerator.subtitle')}</p>
+          {aiInfo && (
+            <div className="flex flex-wrap items-center gap-1.5 mt-2">
+              {(['deepseek', 'gemini', 'claude'] as const).map(p => {
+                const info = aiInfo.providers[p]
+                if (!info) return null
+                const label = p === 'deepseek' ? 'DeepSeek' : p === 'gemini' ? 'Gemini' : 'Claude'
+                return (
+                  <span key={p} className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[11px] font-medium bg-white/[0.03] border border-white/10 text-[#d5c4af]/70">
+                    <span className={`w-1.5 h-1.5 rounded-full ${info.configured ? 'bg-emerald-400' : 'bg-red-400/70'}`} />
+                    {label} {info.configured ? info.model : t('admin.aiGenerator.notConfigured')}
+                  </span>
+                )
+              })}
+            </div>
+          )}
         </div>
         {drafts.length > 0 && (
           <div className="flex items-center gap-2 text-sm flex-wrap">
@@ -291,12 +298,12 @@ export default function AIQuestionGenerator() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 items-start">
 
         {/* ══════════════════ FORM PANEL ══════════════════ */}
-        <div className="bg-[#1d1f29] rounded-lg border border-[#504535]/10 p-6 space-y-5">
+        <div className="bg-[#1d1f29] rounded-lg border border-[#504535]/10 p-5 space-y-5">
 
           {/* Scripture ref */}
           <div data-testid="ai-scripture-selector">
-            <h3 className="text-sm font-black text-[#e8a832] uppercase tracking-wider mb-3 flex items-center gap-2">
-              <span className="text-base">📖</span> {t('admin.aiGenerator.scriptureSectionTitle')}
+            <h3 className="text-xs font-bold text-[#d5c4af]/70 uppercase tracking-wider mb-3">
+              {t('admin.aiGenerator.scriptureSectionTitle')}
             </h3>
             <div className="grid grid-cols-2 gap-3 mb-3">
               <div>
@@ -304,10 +311,10 @@ export default function AIQuestionGenerator() {
                 <select value={book} onChange={e => onBookChange(e.target.value)} className="form-select">
                   <option value="">{t('admin.aiGenerator.bookPlaceholder')}</option>
                   <optgroup label={t('admin.aiGenerator.oldTestament')}>
-                    {BOOKS.slice(0, 39).map(b => <option key={b} value={b}>{b}</option>)}
+                    {BOOKS.slice(0, 39).map(b => <option key={b} value={b}>{getBookName(b, bookLang)}</option>)}
                   </optgroup>
                   <optgroup label={t('admin.aiGenerator.newTestament')}>
-                    {BOOKS.slice(39).map(b => <option key={b} value={b}>{b}</option>)}
+                    {BOOKS.slice(39).map(b => <option key={b} value={b}>{getBookName(b, bookLang)}</option>)}
                   </optgroup>
                 </select>
               </div>
@@ -430,11 +437,16 @@ export default function AIQuestionGenerator() {
               {(['deepseek', 'gemini', 'claude'] as const).map(p => {
                 const info = aiInfo?.providers[p]
                 const configured = info?.configured ?? false
+                // Gemini & Claude tạm khoá — chưa dùng đến, sẽ làm sau.
+                const locked = p === 'gemini' || p === 'claude'
                 const labelText = p === 'deepseek' ? '★ DeepSeek' : p === 'gemini' ? '✦ Gemini' : '◆ Claude'
                 const isDefault = p === 'deepseek'
                 return (
-                  <button key={p} data-testid={`ai-provider-${p}`} onClick={() => setProvider(p)}
-                    className={`segmented-control-item flex-1 cursor-pointer${provider === p ? ' active' : ''}${!configured ? ' opacity-50' : ''}`}>
+                  <button key={p} data-testid={`ai-provider-${p}`}
+                    onClick={() => { if (!locked) setProvider(p) }}
+                    disabled={locked} aria-disabled={locked}
+                    title={locked ? t('admin.aiGenerator.providerLocked') : undefined}
+                    className={`segmented-control-item flex-1${locked ? ' opacity-50 cursor-not-allowed' : ' cursor-pointer'}${provider === p ? ' active' : ''}`}>
                     {labelText}
                     {isDefault && (
                       <span data-testid="ai-provider-default-badge"
@@ -442,7 +454,9 @@ export default function AIQuestionGenerator() {
                         DEFAULT
                       </span>
                     )}
-                    {!configured && <span className="ml-1 text-[10px]">⚠</span>}
+                    {locked
+                      ? <span className="material-symbols-outlined ml-1 text-[13px] align-middle leading-none">lock</span>
+                      : (!configured && <span className="ml-1 text-[10px]">⚠</span>)}
                   </button>
                 )
               })}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Question, QuestionType, Difficulty, ReviewStatus } from './questionTypes'
+import AdminSelect from '../../components/ui/AdminSelect'
 
 interface Props {
   draft: Partial<Question>
@@ -46,31 +47,27 @@ export default function QuestionFields({ draft, setField, setOption, toggleCorre
         </div>
         <div>
           <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.difficultyLabel')}</label>
-          <select className="w-full h-9 px-3 rounded bg-white/10 border border-white/10 text-sm"
-            value={draft.difficulty ?? 'easy'} onChange={e => setField('difficulty', e.target.value as Difficulty)}>
-            <option value="easy">{t('admin.questions.filter.easy')}</option>
-            <option value="medium">{t('admin.questions.filter.medium')}</option>
-            <option value="hard">{t('admin.questions.filter.hard')}</option>
-          </select>
+          <AdminSelect value={draft.difficulty ?? 'easy'} onChange={v => setField('difficulty', v as Difficulty)} options={[
+            { value: 'easy', label: t('admin.questions.filter.easy') },
+            { value: 'medium', label: t('admin.questions.filter.medium') },
+            { value: 'hard', label: t('admin.questions.filter.hard') },
+          ]} />
         </div>
         <div>
           <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.typeLabel')}</label>
-          <select className="w-full h-9 px-3 rounded bg-white/10 border border-white/10 text-sm"
-            value={draft.type ?? 'multiple_choice_single'}
-            onChange={e => handleTypeChange(e.target.value as QuestionType)}>
-            <option value="multiple_choice_single">{t('admin.questions.modal.mcSingleFull')}</option>
-            <option value="multiple_choice_multi">{t('admin.questions.modal.mcMultiFull')}</option>
-            <option value="true_false">{t('admin.questions.modal.trueFalseFull')}</option>
-            <option value="fill_in_blank">{t('admin.questions.modal.fillBlank')}</option>
-          </select>
+          <AdminSelect value={draft.type ?? 'multiple_choice_single'} onChange={v => handleTypeChange(v as QuestionType)} options={[
+            { value: 'multiple_choice_single', label: t('admin.questions.modal.mcSingleFull') },
+            { value: 'multiple_choice_multi', label: t('admin.questions.modal.mcMultiFull') },
+            { value: 'true_false', label: t('admin.questions.modal.trueFalseFull') },
+            { value: 'fill_in_blank', label: t('admin.questions.modal.fillBlank') },
+          ]} />
         </div>
         <div>
           <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.languageLabel')}</label>
-          <select className="w-full h-9 px-3 rounded bg-white/10 border border-white/10 text-sm"
-            value={draft.language ?? 'vi'} onChange={e => setField('language', e.target.value)}>
-            <option value="vi">{t('admin.questions.modal.langVi')}</option>
-            <option value="en">{t('admin.questions.modal.langEn')}</option>
-          </select>
+          <AdminSelect value={draft.language ?? 'vi'} onChange={v => setField('language', v)} options={[
+            { value: 'vi', label: t('admin.questions.modal.langVi') },
+            { value: 'en', label: t('admin.questions.modal.langEn') },
+          ]} />
         </div>
       </div>
 
@@ -142,13 +139,11 @@ export default function QuestionFields({ draft, setField, setOption, toggleCorre
       <div className="grid grid-cols-2 gap-3">
         <div>
           <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.reviewStatusLabel')}</label>
-          <select className="w-full h-9 px-3 rounded bg-white/10 border border-white/10 text-sm"
-            value={draft.reviewStatus ?? 'ACTIVE'}
-            onChange={e => setField('reviewStatus', e.target.value as ReviewStatus)}>
-            <option value="ACTIVE">{t('admin.questions.modal.statusActive')}</option>
-            <option value="PENDING">{t('admin.questions.modal.statusPending')}</option>
-            <option value="REJECTED">{t('admin.questions.modal.statusRejected')}</option>
-          </select>
+          <AdminSelect value={draft.reviewStatus ?? 'ACTIVE'} onChange={v => setField('reviewStatus', v as ReviewStatus)} options={[
+            { value: 'ACTIVE', label: t('admin.questions.modal.statusActive') },
+            { value: 'PENDING', label: t('admin.questions.modal.statusPending') },
+            { value: 'REJECTED', label: t('admin.questions.modal.statusRejected') },
+          ]} />
         </div>
       </div>
     </div>
