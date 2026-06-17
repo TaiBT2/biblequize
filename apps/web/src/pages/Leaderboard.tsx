@@ -95,7 +95,7 @@ export default function Leaderboard() {
     : null
 
   return (
-    <div className="px-4 md:px-10 max-w-5xl mx-auto py-6">
+    <div className="max-w-5xl mx-auto py-6">
       {/* Header & Countdown */}
       <header className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
         <div>
@@ -125,7 +125,7 @@ export default function Leaderboard() {
           ))}
         </div>
       ) : top3.length >= 3 ? (
-        <section data-testid="leaderboard-podium" className="grid grid-cols-3 gap-2 md:gap-6 items-end mb-16 px-2">
+        <section data-testid="leaderboard-podium" className="grid grid-cols-3 gap-2 md:gap-6 items-end mb-16">
           {podiumOrder.map((player, idx) => {
             const layout = PODIUM_LAYOUT[idx]
             const isFirst = layout.rank === 1
@@ -173,7 +173,7 @@ export default function Leaderboard() {
 
                 {/* Name + tier name */}
                 <p className="font-medium text-[11px] md:text-sm text-center truncate w-full text-bq-ink">{player.name}</p>
-                <p className="text-[9px] md:text-xs mb-1.5 md:mb-2 truncate w-full text-center" style={{ color: tierColor }}>
+                <p className="text-[10px] md:text-xs mb-1.5 md:mb-2 truncate w-full text-center" style={{ color: tierColor }}>
                   {t(tier.nameKey)}
                 </p>
 
@@ -191,7 +191,7 @@ export default function Leaderboard() {
                   >
                     {points}
                   </div>
-                  <div className="text-[8px] md:text-[10px] text-bq-ink2/70 mt-0.5">
+                  <div className="text-[10px] text-bq-ink2/70 mt-0.5 truncate w-full text-center">
                     {t('leaderboard.points').toLowerCase()}{questions ? ` · ${questions} câu` : ''}
                   </div>
                 </div>

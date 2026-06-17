@@ -855,7 +855,7 @@ const GroupDetail: React.FC = () => {
           ...(isLeaderOrMod ? [{ key: 'quizsets' as TabKey, label: t('groups.quizSetsTab'), count: quizSetsCount, leaderOnly: true }] : []),
         ];
         return (
-          <nav className="flex flex-nowrap items-center justify-between gap-x-2 sm:gap-x-6 sm:justify-start border-b border-bq-hair mb-4 whitespace-nowrap">
+          <nav className="flex flex-nowrap items-center justify-between gap-x-2 sm:gap-x-6 sm:justify-start border-b border-bq-hair mb-4 whitespace-nowrap overflow-x-auto">
             {TABS.map(tab => {
               const active = activeTab === tab.key;
               return (
@@ -1025,8 +1025,8 @@ const GroupDetail: React.FC = () => {
             </div>
           ) : (
             <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl overflow-hidden">
-              {/* Header row */}
-              <div className="grid grid-cols-[40px_1fr_100px_100px_100px_60px] gap-3 px-4 py-2.5 bg-bq-inset border-b-[0.5px] border-bq-hair items-center">
+              {/* Header row — desktop grid only; mobile rows use flex layout below */}
+              <div className="hidden sm:grid grid-cols-[40px_1fr_100px_100px_100px_60px] gap-3 px-4 py-2.5 bg-bq-inset border-b-[0.5px] border-bq-hair items-center">
                 <div className="text-bq-ink3 text-[9px] font-medium tracking-wider">#</div>
                 <div className="text-bq-ink3 text-[9px] font-medium tracking-wider">{t('groups.colMember')}</div>
                 <div className="text-bq-ink3 text-[9px] font-medium tracking-wider text-right">{t('groups.colWeekScore')}</div>

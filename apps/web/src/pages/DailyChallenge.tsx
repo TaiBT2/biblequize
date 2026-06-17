@@ -472,7 +472,7 @@ const DailyChallenge: React.FC = () => {
     const correctOptionText = question.options[correctAnswerIndices[0] ?? -1] ?? ''
 
     return (
-      <main className={`relative min-h-screen pt-6 px-6 flex flex-col items-center justify-center max-w-5xl mx-auto ${answered ? 'pb-56 sm:pb-44' : 'pb-12'}`}>
+      <div className={`relative flex flex-col items-center max-w-5xl mx-auto ${answered ? 'pb-56 md:pb-44' : 'pb-12'}`}>
         <div className="w-full flex items-center justify-between mb-6">
           <div>
             <h2 className="font-display text-lg font-extrabold tracking-tight text-bq-ink">{t('daily.title')}</h2>
@@ -531,7 +531,7 @@ const DailyChallenge: React.FC = () => {
             )
           })()}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
             {question.options.map((option, i) => {
               let state: AnswerState = 'default'
               // Only enter the reveal branch once the API has reported the
@@ -565,10 +565,10 @@ const DailyChallenge: React.FC = () => {
         {/* Fixed bottom dock for answered state. Combines the optional
             explanation pill/panel and the result bar in a single column
             so they share spacing and never overlap the answer grid. The
-            pad-bottom on <main> above guarantees the last answer row
+            pad-bottom on the wrapper above guarantees the last answer row
             scrolls clear of this dock. */}
         {answered && isCorrect !== null && (
-          <div className="fixed bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)] max-w-lg flex flex-col items-center gap-2">
+          <div className="fixed bottom-[calc(72px+env(safe-area-inset-bottom))] md:bottom-10 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)] max-w-lg flex flex-col items-center gap-2">
             {(!isCorrect || currentExplanation) && (
               explanationCollapsed ? (
                 <button
@@ -646,7 +646,7 @@ const DailyChallenge: React.FC = () => {
             </div>
           </div>
         )}
-      </main>
+      </div>
     )
   }
 

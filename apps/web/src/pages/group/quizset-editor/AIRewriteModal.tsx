@@ -101,7 +101,7 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
           )}
 
           {draft && (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div style={panelStyle()}>
                 <div style={headerLabelStyle()}>{t('quizSet.editor.aiRewrite.currentVersion')}</div>
                 <div style={{ fontSize: 13, color: COLOR.textSecondary, marginBottom: 10 }}>{current.content}</div>

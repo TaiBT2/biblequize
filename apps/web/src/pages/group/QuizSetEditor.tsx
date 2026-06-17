@@ -448,6 +448,11 @@ export default function QuizSetEditor({
             grid-template-columns: minmax(0, 1fr) !important;
             grid-template-rows: auto 1fr !important;
           }
+          /* Prevent iOS Safari auto-zoom on focus: fields need >=16px font.
+             Inline styles set 12-14px, so override with !important on mobile. */
+          .qse-body input, .qse-body textarea, .qse-body select {
+            font-size: 16px !important;
+          }
         }
       `}</style>
     </div>

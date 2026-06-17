@@ -309,7 +309,7 @@ export default function Home() {
         <div className="text-[11px] font-extrabold tracking-[0.24em] text-bq-amberd mb-3 uppercase">✦ {greeting}</div>
         <h1 className="font-display text-[clamp(32px,5.6vw,56px)] font-extrabold tracking-[-0.03em] leading-[1.04] text-bq-ink">
           {t('home.hero.ready', 'Sẵn sàng chưa,')}{' '}
-          <span data-testid="home-greeting-name" className="relative whitespace-nowrap">
+          <span data-testid="home-greeting-name" className="relative whitespace-normal sm:whitespace-nowrap break-words">
             {userName}?
             {/* Underline: balanced static full spectrum + a light glint sweeping across. */}
             <span aria-hidden className="absolute left-0 right-0 bottom-[6px] h-3 -z-10 rounded-full overflow-hidden">

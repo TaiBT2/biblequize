@@ -144,18 +144,18 @@ export default function OnboardingTryQuiz() {
             {/* Right: Stats + CTA card */}
             <div className="relative">
               <div className="absolute -top-20 -right-20 w-64 h-64 bg-bq-amber opacity-10 rounded-full blur-3xl" />
-              <div className="relative bg-bq-white border border-bq-hair shadow-bq-soft p-8 md:p-12 rounded-[2rem] flex flex-col space-y-10">
+              <div className="relative bg-bq-white border border-bq-hair shadow-bq-soft p-5 sm:p-8 md:p-12 rounded-[2rem] flex flex-col space-y-10">
                 {/* Stats grid */}
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-bq-inset p-5 rounded-2xl flex flex-col items-center space-y-2">
+                <div className="grid grid-cols-3 gap-2 sm:gap-4">
+                  <div className="bg-bq-inset p-3 sm:p-5 rounded-2xl flex flex-col items-center space-y-2">
                     <span className="material-symbols-outlined text-bq-emerald" style={FILL_1}>check_circle</span>
                     <span className="text-2xl font-bold text-bq-ink">{t('onboarding.tryStatCorrect', { count: correct })}</span>
                   </div>
-                  <div className="bg-bq-inset p-5 rounded-2xl flex flex-col items-center space-y-2">
+                  <div className="bg-bq-inset p-3 sm:p-5 rounded-2xl flex flex-col items-center space-y-2">
                     <span className="material-symbols-outlined text-bq-ruby">cancel</span>
                     <span className="text-2xl font-bold text-bq-ink">{t('onboarding.tryStatWrong', { count: wrong })}</span>
                   </div>
-                  <div className="bg-bq-inset p-5 rounded-2xl flex flex-col items-center space-y-2">
+                  <div className="bg-bq-inset p-3 sm:p-5 rounded-2xl flex flex-col items-center space-y-2">
                     <span className="material-symbols-outlined text-bq-sapphire">timer</span>
                     <span className="text-2xl font-bold text-bq-ink">{totalTime}s</span>
                   </div>
@@ -195,7 +195,7 @@ export default function OnboardingTryQuiz() {
         </main>
 
         {/* Footer */}
-        <footer className="relative z-10 bg-bq-paper border-t border-bq-hair flex justify-between items-center px-12 py-8 w-full">
+        <footer className="relative z-10 bg-bq-paper border-t border-bq-hair flex flex-col gap-3 sm:flex-row justify-between items-center px-6 md:px-12 py-8 w-full">
           <span className="text-bq-amberd font-semibold text-sm">© 2024 BibleQuiz. The Sacred Path.</span>
           <div className="flex gap-8">
             <a href="/privacy" className="text-bq-ink2 text-sm hover:text-bq-amberd transition-colors">Privacy</a>
@@ -308,7 +308,7 @@ export default function OnboardingTryQuiz() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 bg-bq-paper border-t border-bq-hair py-8 flex justify-between items-center px-12 w-full mt-auto">
+      <footer className="relative z-10 bg-bq-paper border-t border-bq-hair py-8 flex flex-col gap-3 sm:flex-row justify-between items-center px-6 md:px-12 w-full mt-auto">
         <span className="text-bq-amberd font-semibold text-sm">© 2024 BibleQuiz</span>
         <div className="flex gap-8">
           <a href="/privacy" className="text-bq-ink2 text-sm hover:text-bq-amberd transition-colors">Privacy</a>

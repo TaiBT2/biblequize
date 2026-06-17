@@ -97,7 +97,7 @@ export default function Review() {
   return (
     <div data-testid="review-page" className="flex flex-col bg-bq-paper">
       {/* Sticky Header — z-40 so it stays below AppLayout's fixed global header (z-50) */}
-      <header className="sticky top-0 z-40 bg-bq-white/95 backdrop-blur border-b border-bq-hair -mx-8 md:-mx-14 -mt-8 md:-mt-14 mb-6">
+      <header className="sticky top-0 z-40 bg-bq-white/95 backdrop-blur border-b border-bq-hair -mx-4 md:-mx-8 -mt-6 md:-mt-10 mb-6">
           <div className="flex items-center justify-between px-6 h-16 md:h-20">
             <div className="flex items-center gap-4">
               <button onClick={() => navigate(-1)} className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-bq-inset transition-colors">
