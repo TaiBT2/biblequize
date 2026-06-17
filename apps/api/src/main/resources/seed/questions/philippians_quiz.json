@@ -257,13 +257,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Kiểm soát suy nghĩ bằng cách tập trung vào những điều tốt đẹp của Chúa.",
+    "explanation": "Phi-líp 4:8 chép: 'Rốt lại, hỡi anh em, phàm điều chi chân thật, điều chi đáng tôn, điều chi công bình, điều chi thanh sạch, điều chi đáng yêu chuộng, điều chi có tiếng tốt, điều chi có nhân đức đáng khen, thì anh em phải nghĩ đến.' Đáp án đúng trích dẫn sáu phẩm chất đầu tiên trong câu này một cách chính xác.\n\nDistractor 1 (Thật, tôn trọng, công bình, tinh sạch, đáng yêu, có tiếng tốt, nhẫn nhục) là 'gần đúng' vì có sáu phẩm chất đầu đúng, nhưng thêm 'nhẫn nhục' là một chi tiết sai, vì đây không phải là phẩm chất được liệt kê trong câu 8.\nDistractor 2 (Ngay thẳng, tốt lành, đáng khen, chân thật, hiền hòa, trung tín) tuy chứa các từ ngữ tích cực và đạo đức, nhưng đây không phải là các từ cụ thể được sử dụng trong Phi-líp 4:8, nên lạc trọng tâm câu hỏi hỏi về nội dung câu Kinh Thánh.\nDistractor 3 (Thương xót, nhân từ, nhu mì, thánh khiết, yêu chuộng hòa bình, vui mừng) mô tả các đức tính Cơ Đốc phổ biến nhưng được lấy từ các phân đoạn Kinh Thánh khác (như Ga-la-ti 5:22-23), không phải từ Phi-líp 4:8.",
     "language": "vi",
     "options": [
-      "Chỉ điều lớn",
+      "Thật, tôn trọng, công bình, tinh sạch, đáng yêu, có tiếng tốt, nhẫn nhục",
       "Thật, tôn trọng, công bình, tinh sạch, đáng yêu, có tiếng tốt",
-      "Chỉ điều vui",
-      "Bất cứ điều gì"
+      "Ngay thẳng, tốt lành, đáng khen, chân thật, hiền hòa, trung tín",
+      "Thương xót, nhân từ, nhu mì, thánh khiết, yêu chuộng hòa bình, vui mừng"
     ],
     "tags": [
       "Tân Ước",
@@ -680,12 +680,12 @@
       3
     ],
     "content": "Theo Phi-líp 1:28-29, tín hữu được dạy đừng sợ ai? Và họ đã được ban cho những điều gì vì cớ Đấng Christ?",
-    "explanation": "Phi-líp 1:28-29: '...đừng sợ kẻ chống nghịch... vì đã được ban cho anh em không những tin Đấng Christ mà thôi, lại cũng vì Ngài mà chịu khổ nữa.' Việc 'chịu khổ vì Đấng Christ' được mô tả là một đặc ân (charis) được ban cho, ngang hàng với đức tin, trái ngược với quan điểm thần học thịnh vượng.",
+    "explanation": "Phi-líp 1:28-29 viết: \"Đừng vì họ mà sợ hãi gì, ấy đó là bằng cớ cho họ về sự hư mất, nhưng cho anh em về sự cứu rỗi, và việc đó là bởi Đức Chúa Trời. Vì anh em đã được ban cho không những tin Đấng Christ, mà lại được vì Ngài mà chịu khổ nữa.\" Vì vậy, đáp án đúng chỉ ra đối tượng 'kẻ chống nghịch' và hai ân tứ: đức tin nơi Đấng Christ và đặc ân chịu khổ vì Ngài.\n\n- Distractor 1 (gần đúng, sai chi tiết): Sai ở 'sống bình an' thay vì 'chịu khổ'. Câu Kinh Thánh nói rõ 'chịu khổ'.\n- Distractor 2 (nhầm passage gần): Sai ở 'kẻ phản bội' và 'sự cứu rỗi... niềm vui'. Cụm 'sự cứu rỗi' xuất hiện trong câu 28, nhưng liên quan đến dấu hiệu, không phải ân tứ được ban. 'Niềm vui' là chủ đề lớn trong sách Phi-líp nhưng không được nêu trong câu 29.\n- Distractor 3 (đúng văn bản nhưng lạc câu hỏi): Sai vì hỏi về 'điều gì được ban'. 'Sự hy vọng' và 'đức tin để được cứu' không phải là hai điều được liệt kê ban cho trong câu 29.",
     "language": "vi",
     "options": [
-      "Đừng sợ hoàn cảnh khó khăn — được bình an và sự che chở",
-      "Đừng sợ tổ phụ — được khôn ngoan và sức mạnh",
-      "Đừng sợ thiên sứ — được phép lạ và quyền năng",
+      "Đừng sợ kẻ thù nghịch — được ban cho không chỉ đức tin nơi Đấng Christ mà cả đặc ân sống bình an vì Ngài",
+      "Đừng sợ kẻ phản bội — được ban cho không chỉ sự cứu rỗi mà cả niềm vui trong Đấng Christ",
+      "Đừng sợ kẻ chống nghịch — được ban cho không chỉ sự hy vọng mà cả đức tin để được cứu",
       "Đừng sợ kẻ chống nghịch — được ban cho không chỉ đức tin nơi Đấng Christ mà cả đặc ân chịu khổ vì Ngài"
     ],
     "tags": [
@@ -1200,12 +1200,12 @@
       3
     ],
     "content": "Theo Phi-líp 3:11, điều Phao-lô khao khát đạt đến là gì?",
-    "explanation": "Phi-líp 3:11 — 'Mong cho tôi được đến sự sống lại từ trong kẻ chết.' Cách diễn đạt 'mong / bằng cách nào' thể hiện sự khao khát và chưa biết trước con đường (tử đạo hay sống đến ngày Chúa đến), nhưng không phải nghi ngờ về kết quả. Mục tiêu này đạt được nhờ sự kết hiệp với Đấng Christ, không phải bởi công đức riêng. 'Sự sống lại từ trong kẻ chết' là mục đích cuối cùng.",
+    "explanation": "Phi-líp 3:11 ghi: \"nếu có thể được đến sự sống lại từ trong kẻ chết.\" Đây là điều chính Phao-lô bày tỏ sự khao khát. Đáp án đúng trực tiếp trích dẫn ý này. \n\nCác đáp án sai: \n1. \"Được thông hiểu thánh linh\" phù hợp với phong cách diễn đạt nhưng sai nội dung, mượn từ ngữ liên quan tới khải thị, đức tin trong các phân đoạn gần (ví dụ tìm hiểu về Đấng Christ, được quyền năng Ngài trong Phi-líp 3). \n2. \"Được con dân của Đức Chúa Trời\" là một chi tiết sai, không có trong câu hay ngữ cảnh; nó liên tưởng xa đến chủ đề ân điển nhưng hoàn toàn không phải là đối tượng khao khát được đề cập tại câu 11. \n3. \"Được giải phóng khỏi tội lỗi\" là hiểu lầm phổ biến về mục tiêu đời sống Cơ Đốc, nhưng câu 11 cụ thể nói đến sự sống lại, chứ không phải sự tha tội hay tự do khỏi tội.",
     "language": "vi",
     "options": [
-      "Trở thành một sứ đồ vĩ đại",
-      "Có thật nhiều môn đồ",
-      "Nhận được một khải tượng đặc biệt",
+      "Được thông hiểu thánh linh",
+      "Được con dân của Đức Chúa Trời",
+      "Được giải phóng khỏi tội lỗi",
       "Được sự sống lại từ trong kẻ chết"
     ],
     "tags": [

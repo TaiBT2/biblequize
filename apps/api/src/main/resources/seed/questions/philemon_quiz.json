@@ -61,13 +61,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Phi-lê-môn 1:2 — '...và cho Hội thánh nhóm họp trong nhà anh.' Bối cảnh cho thấy đây là nhà của Phi-lê-môn, người nhận thư, mặc dù đại từ 'anh' có thể gây tranh luận. Thời kỳ đầu, Hội Thánh thường nhóm trong nhà tín hữu.",
+    "explanation": "Kinh Thánh viết trong thư gửi Phi-lê-môn câu 2: \"cùng với chị Áp-bi-a, cùng với A-chíp, là bạn cùng chiến đấu với chúng tôi, và cùng với Hội thánh nhóm họp trong nhà anh.\" Đại từ \"anh\" ở đây chỉ Phi-lê-môn, người nhận thư (xem câu 1), do đó đáp án đúng là Hội Thánh đang nhóm họp tại nhà của Phi-lê-môn. Distractor thứ nhất sai vì Áp-bi-a (Apphia) được nhắc đến cùng, nhưng Hội Thánh không nhóm tại nhà riêng của bà. Distractor thứ hai sai vì phạm vi quá rộng, sai bối cảnh; thư gửi đến Cô-lô-se nhưng nói cụ thể là nhóm tại nhà riêng, không phải một hội trường công cộng. Distractor thứ ba sai vì là một hiểu lầm phổ biến; thư do Phao-lô viết nhưng ông không ở đó cùng họ, và câu Kinh Thánh không nói Hội Thánh nhóm tại nhà của Phao-lô.",
     "language": "vi",
     "options": [
-      "Tại đền thờ Giê-ru-sa-lem",
+      "Trong nhà của Áp-bi-a",
       "Trong nhà của Phi-lê-môn",
-      "Tại nhà hội Do Thái",
-      "Ở công trường thành phố"
+      "Trong hội trường thành Cô-lô-se",
+      "Trong nhà riêng của Phao-lô"
     ],
     "tags": [
       "Tân Ước",
@@ -270,13 +270,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Phi-lê-môn 1:18 — 'Nhược bằng người có làm hại anh hoặc mắc nợ anh điều chi, thì hãy cứ kể cho tôi.' Phao-lô đảm nhận khoản nợ thay — hình ảnh sống về sự cứu chuộc của Đấng Christ gánh nợ tội nhân.",
+    "explanation": "Philemon 1:18 (BTT): \"Ví bằng người có làm hại anh, hoặc mắc nợ anh điều chi, thì cứ kể cho tôi.\" Vì vậy, đáp án đúng là 'Cứ kể cho Phao-lô' vì Phao-lô đề nghị mình sẽ chịu trách nhiệm thay cho Ô-nê-sim. Distractor 1 ('Cứ xem như tha hết cho anh ấy') là hiểu lầm phổ biến về tinh thần tha thứ trong Kinh Thánh nhưng không phải đề nghị cụ thể của Phao-lô trong câu này. Distractor 2 ('Cứ trừ vào lương hưu của Phao-lô') sai chi tiết, vì Phao-lô không đề cập đến nguồn tiền cụ thể nào như lương hưu. Distractor 3 ('Cứ để Phao-lô trả cả vốn lẫn lời') sai phạm vi, vì văn bản chỉ đề nghị 'kể cho' (ghi nhận nợ) chứ không nói rõ điều kiện trả cả lãi.",
     "language": "vi",
     "options": [
-      "Tha thứ hoàn toàn không điều kiện",
-      "Bỏ qua và quên đi",
+      "Cứ xem như tha hết cho anh ấy",
+      "Cứ trừ vào lương hưu của Phao-lô",
       "Cứ kể cho Phao-lô",
-      "Trừ dần qua công việc của Ô-nê-sim"
+      "Cứ để Phao-lô trả cả vốn lẫn lời"
     ],
     "tags": [
       "Tân Ước",

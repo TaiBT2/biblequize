@@ -35,13 +35,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giô-ên 1:4 — 'Cái gì cào cào còn để lại, sâu lột vỏ ăn; cái gì sâu lột vỏ còn để lại, sâu keo ăn; cái gì sâu keo còn để lại, châu chấu ăn.' Đàn châu chấu nối tiếp nhau ăn sạch hoa màu — hình ảnh sự đoán phạt tàn khốc.",
+    "explanation": "Đoạn Giô-ên 1:4 chép: 'Con còn lại của cào cào đã ăn, cào cào đã ăn; con còn lại của con ve đã ăn, ve đã ăn; con còn lại của con châu chấu đã ăn, châu chấu đã ăn.' Đáp án đúng là 'Các loài châu chấu nối tiếp nhau ăn sạch' vì câu này miêu tả rõ ràng bốn loài côn trùng (hoặc bốn giai đoạn tàn phá của một loài) nối tiếp nhau ăn sạch, phù hợp với ý chính của câu Kinh Thánh.\n\n- Distractor 'Một đạo binh châu chấu ăn sạch trong một lần' sai vì Kinh Thánh nhấn mạnh sự 'nối tiếp nhau' (bốn tác nhân/đợt), chứ không phải một đợt duy nhất. (Sai chi tiết: 'một' so với 'nối tiếp').\n- Distractor 'Bảy tai họa liên tiếp giáng xuống đất' sai vì nó mở rộng phạm vi sang toàn bộ một khái niệm 'bảy tai họa' (như trong Khải Huyền), không phải tai họa cụ thể được mô tả trong Giô-ên 1:4. (Sai phạm vi: ý này thuộc về đoạn khác, sách khác).\n- Distractor 'Một cơn hạn hán kéo dài khiến đất khô cằn' sai vì đây là một hiểu lầm phổ biến khi nghĩ về tai họa trong các sách tiên tri (thường có hạn hán), nhưng Giô-ên 1:4 đang mô tả cụ thể tai họa châu chấu/cào cào. (Hiểu lầm phổ biến: lẫn với các tai họa thiên nhiên khác).",
     "language": "vi",
     "options": [
-      "Đại hồng thủy",
+      "Một đạo binh châu chấu ăn sạch trong một lần",
       "Các loài châu chấu nối tiếp nhau ăn sạch",
-      "Hạn hán kéo dài nhiều năm",
-      "Quân thù xâm lược"
+      "Bảy tai họa liên tiếp giáng xuống đất",
+      "Một cơn hạn hán kéo dài khiến đất khô cằn"
     ],
     "tags": [
       "Cựu Ước",
@@ -217,13 +217,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giô-ên 2:25 — 'Ta sẽ đền bù cho các ngươi những năm đã bị cắn phá bởi cào cào, bởi sâu lột vỏ, bởi sâu keo và châu chấu, là đạo binh lớn mà ta đã sai đến giữa các ngươi.' Lời hứa mang tính đảo ngược — chính đàn châu chấu đoán phạt nay được Chúa đền lại.",
+    "explanation": "Đoạn Kinh Thánh Giô-ên 2:25 trực tiếp ghi lại lời Đức Giê-hô-va phán: 'Ta sẽ bù lại cho các ngươi về những năm đã bị cào cào cắn phá'. Vì vậy, đáp án đúng là 'Những năm đã bị cào cào cắn phá', nói đến sự phục hồi về thời gian (những năm) cùng hậu quả cụ thể do cào cào gây ra.\n\nCác đáp án sai:\n1. 'Số lượng cào cào đã tiêu diệt' - Đây là chi tiết sai. Kinh văn không hứa phục hồi số lượng cào cào, mà hứa bù lại những 'năm' đã mất do chúng gây hại.\n2. 'Đền thờ đã bị phá hủy' - Đây là sai phạm vi. Sách Giô-ên không đề cập việc đền thờ bị phá hủy trong bối cảnh này; lời hứa ở đây tập trung vào sự phục hồi nông nghiệp và thời gian.\n3. 'Những năm đã bị nạn đói tàn phá' - Đây gần đúng nhưng sai một chi tiết then chốt. Dù cào cào thường gây ra nạn đói, Kinh văn Giô-ên 2:25 xác định nguyên nhân trực tiếp và cụ thể là 'cào cào cắn phá', chứ không phải là 'nạn đói' chung chung.",
     "language": "vi",
     "options": [
       "Những năm đã bị cào cào cắn phá",
-      "Các vua trị vì đã chết",
-      "Các ngôi nhà đã bị san bằng",
-      "Các chiến sĩ đã ngã xuống"
+      "Số lượng cào cào đã tiêu diệt",
+      "Đền thờ đã bị phá hủy",
+      "Những năm đã bị nạn đói tàn phá"
     ],
     "tags": [
       "Cựu Ước",
@@ -295,12 +295,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giô-ên 2:32 — 'Bấy giờ ai cầu khẩn danh Đức Giê-hô-va thì sẽ được cứu...' Câu này được Phao-lô trích trong Rô-ma 10:13 — cầu khẩn danh Chúa là con đường cứu rỗi.",
+    "explanation": "Giô-ên 2:32 chép: 'Bấy giờ ai cầu khẩn danh Đức Giê-hô-va thì sẽ được cứu' (BTT). Đáp án đúng là 'Ai cầu khẩn danh Đức Giê-hô-va' vì câu Kinh Thánh dùng động từ 'cầu khẩn' (kêu cầu, kêu xin) như một điều kiện rõ ràng cho sự cứu rỗi.\n\nCác đáp án sai:\n1. 'Ai ghi nhớ danh Đức Giê-hô-va' (wrong_detail): Sai chi tiết then chốt. Câu Kinh Thánh nhấn mạnh hành động tích cực là 'cầu khẩn', không chỉ là 'ghi nhớ' một cách thụ động.\n2. 'Ai thờ phượng Đức Giê-hô-va' (wrong_scope): Sai phạm vi. Mặc dù thờ phượng là quan trọng, nhưng đây không phải là điều kiện cụ thể được nêu trong câu Kinh Thánh này.\n3. 'Ai trông đợi sự phán xét của Đức Giê-hô-va' (common_misconception): Thể hiện một hiểu lầm phổ biến. Bối cảnh đoạn này nói về ngày của Đức Giê-hô-va, nhưng câu 32 tập trung vào lời hứa cứu rỗi cho người cầu khẩn, không phải cho người chỉ 'trông đợi sự phán xét'.",
     "language": "vi",
     "options": [
-      "Ai dâng lễ trong đền thờ",
-      "Ai thuộc dòng dõi Lê-vi",
-      "Ai tuân giữ luật pháp trọn vẹn",
+      "Ai ghi nhớ danh Đức Giê-hô-va",
+      "Ai thờ phượng Đức Giê-hô-va",
+      "Ai trông đợi sự phán xét của Đức Giê-hô-va",
       "Ai cầu khẩn danh Đức Giê-hô-va"
     ],
     "tags": [
@@ -425,13 +425,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giô-ên 2:23 — 'Ngài đã ban mưa phải thời cho các ngươi, mưa đầu mùa và mưa cuối mùa cho các ngươi như khi trước.' Mưa đầu mùa (tháng 10-11) gieo hạt, mưa cuối mùa (tháng 3-4) làm lúa chín.",
+    "explanation": "Giô-ên 2:23 chép: 'Hỡi các con cái Si-ôn, hãy nức lòng mừng rỡ, vui vẻ nơi Giê-hô-va Đức Chúa Trời các ngươi; vì Ngài ban mưa đầu mùa cho các ngươi cách công bình, và làm cho mưa xuống cho các ngươi, tức mưa đầu mùa và mưa cuối mùa, y như lúc ban đầu.' Đáp án đúng 'Mưa đầu mùa và mưa cuối mùa' trực tiếp trích dẫn từ câu Kinh Thánh. Distractor 'Mưa đầu mùa và mưa xuân' gần đúng nhưng sai chi tiết (Kinh Thánh dùng 'mưa cuối mùa', không phải 'mưa xuân'). Distractor 'Mưa lớn và mưa nhỏ' dựa trên hiểu lầm phổ biến về phân loại mưa theo cường độ, không có trong ngữ cảnh. Distractor 'Mưa phước hạnh và mưa hình phạt' đúng với văn bản khác (mưa có thể tượng trưng phước/họa) nhưng lạc câu hỏi cụ thể về tên hai trận mưa trong câu này.",
     "language": "vi",
     "options": [
       "Mưa đầu mùa và mưa cuối mùa",
-      "Mưa xuân và mưa thu",
-      "Mưa nhẹ và mưa bão",
-      "Mưa ngày và mưa đêm"
+      "Mưa đầu mùa và mưa xuân",
+      "Mưa lớn và mưa nhỏ",
+      "Mưa phước hạnh và mưa hình phạt"
     ],
     "tags": [
       "Cựu Ước",

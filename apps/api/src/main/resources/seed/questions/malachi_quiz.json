@@ -211,14 +211,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ma-la-chi 3:2-3 - Chúa đến như thợ luyện kim để thánh tẩy (câu 3 đặc biệt nói về việc thánh tẩy con cái Lê-vi để họ dâng của lễ công bình).",
+    "explanation": "Câu hỏi tham chiếu Ma-la-chi 3:2-3 (BTT). Đáp án đúng: 'Thánh tẩy con cái Lê-vi để họ dâng của lễ công bình' dựa trực tiếp vào câu 3: 'Ngài sẽ ngồi như kẻ luyện bạc và tinh luyện bạc; Ngài sẽ thánh tẩy con cái Lê-vi và tinh luyện chúng như vàng như bạc; chúng sẽ thuộc về Đức Giê-hô-va mà dâng của lễ trong sự công bình.' Phần mục đích 'để họ dâng của lễ công bình' tóm tắt đúng ý cuối câu. \n\nVì sao các đáp án sai: \n1. 'Thánh tẩy con cái Giu-đa...' (gần đúng): Sai chi tiết tên. Đoạn văn chỉ nói đến việc thánh tẩy 'con cái Lê-vi', không phải 'con cái Giu-đa'.\n2. 'Thánh tẩy con cái Lê-vi để họ dâng vàng cùng bạc': Sai do nhầm văn bản gần. Hình ảnh 'luyện bạc' và 'tinh luyện như vàng bạc' (c.3) là ẩn dụ về quá trình thanh tẩy, không phải mục đích để họ dâng vật chất vàng bạc.\n3. 'Thanh tẩy toàn thể Y-sơ-ra-ên...': Sai phạm vi đối tượng. Đoạn văn giới hạn vào việc thánh tẩy 'con cái Lê-vi' (tức là các thầy tế lễ), không mở rộng ra toàn thể dân tộc Y-sơ-ra-ên trong ngữ cảnh trực tiếp này.",
     "language": "vi",
     "verseEnd": 3,
     "options": [
-      "Thử thách",
+      "Thánh tẩy con cái Giu-đa để họ dâng của lễ công bình",
       "Thánh tẩy con cái Lê-vi để họ dâng của lễ công bình",
-      "Hủy diệt",
-      "Phán xét"
+      "Thánh tẩy con cái Lê-vi để họ dâng vàng cùng bạc",
+      "Thanh tẩy toàn thể Y-sơ-ra-ên để họ dâng của lễ công bình"
     ],
     "tags": [
       "Cựu Ước",
@@ -494,12 +494,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ma-la-chi 4:1 — 'Vì kìa, ngày đến cháy như lò lửa. Mọi kẻ kiêu ngạo và mọi kẻ làm sự gian ác sẽ là rơm rạ.'",
+    "explanation": "Ma-la-chi 4:1 (BTT) chép: 'Vì này, ngày ấy đến, cháy như lò lửa...'. Do đó, đáp án đúng là 'Lò lửa cháy', mô tả chính xác hình ảnh so sánh trong câu Kinh Thánh.\n\n- Distractor 'Lò sưởi ấm' (gần đúng, nhưng sai chi tiết): Hình ảnh 'lò' là đúng, nhưng 'sưởi ấm' thay vì 'cháy' đã làm mất đi tính chất hủy diệt, phán xét của ngày Đức Giê-hô-va.\n- Distractor 'Nồi nước sôi': Đây là một hình ảnh so sánh khác trong Kinh Thánh (như trong Ê-xê-chi-ên 24), nhưng không phải là hình ảnh được dùng trong Ma-la-chi 4:1 cho ngày này.\n- Distractor 'Cây búa đập': Đây là một hiểu lầm phổ biến, có thể do nhớ nhầm sang hình ảnh phán xét hoặc công cụ khác, nhưng Ma-la-chi 4:1 không hề sử dụng hình ảnh này.",
     "language": "vi",
     "options": [
-      "Cơn mưa nhẹ",
-      "Tiếng hát mừng",
-      "Đêm tối lạnh",
+      "Lò sưởi ấm",
+      "Nồi nước sôi",
+      "Cây búa đập",
       "Lò lửa cháy"
     ],
     "tags": [

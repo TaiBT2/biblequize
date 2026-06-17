@@ -113,13 +113,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Tê-sa-lô-ni-ca 1:8 — '...báo thù những kẻ chẳng hề nhận biết Đức Chúa Trời, và không vâng phục Tin Lành của Đức Chúa Jêsus chúng ta.' Hai sự thiếu sót — không nhận biết Chúa và không vâng phục Tin Lành.",
+    "explanation": "Câu hỏi hỏi về đối tượng mà Đức Chúa Jêsus báo thù theo 2 Tê-sa-lô-ni-ca 1:8. Đáp án đúng là 'Chẳng nhận biết Đức Chúa Trời và không vâng phục Tin Lành', trích nguyên văn từ câu 8, mô tả chính xác hai đặc điểm của nhóm người đó.\n\nCác đáp án sai:\n1. 'Chẳng nhận biết Đức Chúa Trời và không vâng phục luật pháp' (wrong_detail): Đây là đáp án gần đúng, nhưng sai chi tiết then chốt. Câu Kinh Thánh ghi 'không vâng phục Tin Lành', không phải 'luật pháp'.\n2. 'Chẳng yêu thương anh em và không tuân giữ lời dạy' (common_misconception): Đây là một hiểu lầm phổ biến, vì tình yêu thương và tuân giữ lời dạy là những chủ đề quan trọng trong thư tín, nhưng không phải là tiêu chí cụ thể được nêu trong câu 1:8 cho sự báo thù này.\n3. 'Không tin Đức Chúa Trời và chối bỏ sự hiện đến của Ngài' (true_but_off): Mặc dù liên quan đến chủ đề chung về sự không tin và chối bỏ, đây không phải là cách diễn đạt chính xác của câu 8. Nó có thể mô tả hậu quả hoặc thái độ tương tự, nhưng lạc trọng tâm câu hỏi yêu cầu trả lời trực tiếp theo văn bản.",
     "language": "vi",
     "options": [
       "Chẳng nhận biết Đức Chúa Trời và không vâng phục Tin Lành",
-      "Chẳng giữ ngày Sa-bát theo luật",
-      "Chẳng dâng phần mười",
-      "Chẳng học thuộc Kinh Thánh"
+      "Chẳng nhận biết Đức Chúa Trời và không vâng phục luật pháp",
+      "Chẳng yêu thương anh em và không tuân giữ lời dạy",
+      "Không tin Đức Chúa Trời và chối bỏ sự hiện đến của Ngài"
     ],
     "tags": [
       "Tân Ước",
@@ -139,13 +139,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Tê-sa-lô-ni-ca 1:9 — 'Họ sẽ bị hình phạt hư mất đời đời, xa cách mặt Chúa và sự vinh hiển của quyền phép Ngài.'",
+    "explanation": "Đáp án đúng là 'Hình phạt hư mất đời đời, xa cách mặt Chúa' vì 2 Tê-sa-lô-ni-ca 1:9 chép rõ: 'Họ sẽ bị hình phạt hư mất đời đời, xa cách mặt Chúa và khỏi sự vinh hiển của quyền phép Ngài.' Cụm từ 'xa cách mặt Chúa' là yếu tố chính. 'Hình phạt đau đớn tạm thời, xa cách mặt Chúa' sai vì phạm vi thời gian (hình phạt là đời đời, không tạm thời) nhưng giữ được phần 'xa cách mặt Chúa' và cùng cấu trúc. 'Hình phạt hư mất đời đời, bị từ bỏ bởi gia đình' sai vì lạc đề: câu Kinh Thánh không nhắc đến việc này, mô tả về sự từ bỏ trong bối cảnh gia đình thuộc chỗ khác (câu chuyện hoặc đoạn khác, như sự li giáo). 'Hình phạt phải chịu tổn thất vĩnh viễn về tài sản' sai vì dựa trên hiểu lầm phổ biến cho rằng hình phạt là vật chất, trong khi trọng tâm Kinh Thánh là mất mối quan hệ với Đức Chúa Trời.",
     "language": "vi",
     "options": [
-      "Bị giam một thời gian rồi tha",
+      "Hình phạt đau đớn tạm thời, xa cách mặt Chúa",
       "Hình phạt hư mất đời đời, xa cách mặt Chúa",
-      "Bị cải tạo và phục hồi sau ngàn năm",
-      "Trở về với hư vô"
+      "Hình phạt hư mất đời đời, bị từ bỏ bởi gia đình",
+      "Hình phạt phải chịu tổn thất vĩnh viễn về tài sản"
     ],
     "tags": [
       "Tân Ước",
@@ -217,13 +217,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Tê-sa-lô-ni-ca 2:4 — 'Tức là kẻ đối địch, tôn mình lên trên mọi sự mà người ta xưng là Đức Chúa Trời hoặc người ta thờ lạy, rất đến nỗi nó ngồi trong đền Đức Chúa Trời, chính mình tự xưng là Đức Chúa Trời.'",
+    "explanation": "Câu hỏi tham chiếu trực tiếp 2 Tê-sa-lô-ni-ca 2:4: 'kẻ đó tự xưng mình là Đức Chúa Trời, ngồi trong đền Đức Chúa Trời, và tỏ mình ra là Đức Chúa Trời.' (BTT). Đáp án đúng diễn đạt trung thành ý này.  \n\n**Phân tích các phương án sai:**  \n- **'Tự xưng là Đấng Christ...' (nearby_passage):** Sai chi tiết then chốt ('Đấng Christ' thay vì 'Đức Chúa Trời'). Đây là lỗi phổ biến do nhầm lẫn giữa các danh xưng trong các đoạn tiên tri về kẻ chống nghịch.  \n- **'...cai trị trong thành phố Giê-ru-sa-lem...' (wrong_detail):** Sai chi tiết địa điểm ('thành phố Giê-ru-sa-lem' thay vì 'đền Chúa'). Kinh Thánh mô tả hành động 'ngồi' (biểu tượng quyền cai trị) diễn ra cụ thể trong đền thờ, không phải toàn thành.  \n- **'...phủ phục trước mọi thần' (wrong_scope):** Sai hoàn toàn hành động. Câu Kinh Thánh nói 'tôn mình trên' (exalt himself above), thể hiện sự kiêu ngạo và tự thần hóa; 'phủ phục trước' thể hiện sự thờ lạy, trái ngược ý nghĩa.",
     "language": "vi",
     "options": [
       "Tự xưng là Đức Chúa Trời, ngồi trong đền Chúa, tôn mình trên mọi thần",
-      "Trốn vào hoang mạc để cầu nguyện",
-      "Tổ chức lễ tạ ơn cho Chúa",
-      "Khuyên loài người tin Chúa"
+      "Tự xưng là Đấng Christ, ngồi trong đền Chúa, tôn mình trên mọi thần",
+      "Tự xưng là Đức Chúa Trời, cai trị trong thành phố Giê-ru-sa-lem, tôn mình trên mọi thần",
+      "Tự xưng là Đức Chúa Trời, ngồi trong đền Chúa, phủ phục trước mọi thần"
     ],
     "tags": [
       "Tân Ước",
@@ -321,13 +321,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Tê-sa-lô-ni-ca 2:10-11 — Vì họ không nhận lãnh sự yêu thương của lẽ thật để được cứu rỗi, nên Đức Chúa Trời cho họ mắc phải sự lầm lạc, để họ tin theo điều dối giả.",
+    "explanation": "Đoạn Kinh Thánh 2 Tê-sa-lô-ni-ca 2:11 viết: 'Vì cớ đó mà Đức Chúa Trời cho mắc phải sự lầm lạc, đặng họ tin theo sự dối trá.' Đáp án đúng trung thành với văn bản: Đức Chúa Trời sai sự lầm lạc vì họ đã từ chối lẽ thật (câu 10) và 'không tin lẽ thật' (câu 12), để họ tin theo điều dối giả (sự dối trá).\n\n- Distractor 1 (gần đúng): Sai chi tiết then chốt 'tin theo chính Ngài'. Câu Kinh Thánh nói rõ mục đích là 'tin theo sự dối trá', không phải tin theo Chúa.\n- Distractor 2: Thể hiện hiểu lầm phổ biến. Mặc dù hậu quả của sự lựa chọn tội lỗi là xa cách tình yêu Chúa, nhưng câu 11 không trực tiếp nêu lý do 'vì họ đã từ chối tình yêu thương' mà là vì họ 'không tin lẽ thật'.\n- Distractor 3: Mở rộng sai phạm vi. Câu Kinh Thánh nói mục đích là 'để họ tin theo sự dối trá', chứ không phán quyết về việc 'không còn cơ hội ăn năn' như một hệ quả tất yếu cuối cùng.",
     "language": "vi",
     "options": [
       "Đức Chúa Trời cho mắc sự lầm lạc, để họ tin theo điều dối giả",
-      "Đức Chúa Trời ban thêm sự khôn ngoan",
-      "Đức Chúa Trời tha thứ mọi tội lỗi",
-      "Đức Chúa Trời ban phước thuộc thể"
+      "Đức Chúa Trời sai sự lầm lạc, để họ tin theo chính Ngài",
+      "Đức Chúa Trời sai sự lầm lạc, vì họ đã từ chối tình yêu thương",
+      "Đức Chúa Trời sai sự lầm lạc, để họ không còn cơ hội ăn năn"
     ],
     "tags": [
       "Tân Ước",

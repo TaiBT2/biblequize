@@ -87,12 +87,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Tê-sa-lô-ni-ca 1:9 — '...làm sao anh em đã trở lại cùng Đức Chúa Trời, bỏ hình tượng đặng thờ Đức Chúa Trời hằng sống và chân thật...'",
+    "explanation": "1 Tê-sa-lô-ni-ca 1:9 ghi: 'Vì chưng chính họ thuật lại về chúng tôi thể nào chúng tôi đã vào giữa anh em, và anh em đã bỏ hình tượng đặng trở lại cùng Đức Chúa Trời hầu hầu việc Đức Chúa Trời hằng sống và chân thật.' Do đó, đáp án đúng là 'Khỏi hình tượng để thờ Đức Chúa Trời hằng sống và chân thật', mô tả chính xác hành động từ bỏ (hình tượng) và mục đích (thờ Đức Chúa Trời hằng sống và chân thật).\n\nDistractor 1 sai vì thêm 'và Đức Chúa Giê-xu' vào đối tượng thờ phượng, trong khi câu Kinh Thánh chỉ nói đến 'Đức Chúa Trời hằng sống và chân thật' (đây là distractor gần đúng, chỉ sai một chi tiết).\nDistractor 2 sai vì thay 'hình tượng' bằng 'thế gian', một khái niệm rộng hơn và không phải từ ngữ cụ thể trong câu này.\nDistractor 3 sai vì thay 'hình tượng' bằng 'ma quỷ', phản ánh một hiểu lầm phổ biến về đối tượng từ bỏ, dù có liên quan nhưng không chính xác với văn bản.",
     "language": "vi",
     "options": [
-      "Khỏi luật pháp đến Tin Lành",
-      "Khỏi nghèo đến giàu",
-      "Khỏi sự sa đọa đến đời sống đạo đức",
+      "Khỏi hình tượng để thờ Đức Chúa Trời và Đức Chúa Giê-xu",
+      "Khỏi thế gian để thờ Đức Chúa Trời hằng sống và chân thật",
+      "Khỏi ma quỷ để thờ Đức Chúa Trời hằng sống và chân thật",
       "Khỏi hình tượng để thờ Đức Chúa Trời hằng sống và chân thật"
     ],
     "tags": [
@@ -165,13 +165,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Tê-sa-lô-ni-ca 2:11 — '...anh em cũng biết rằng chúng tôi đối đãi với mỗi người trong anh em, như cha đối với con vậy.'",
+    "explanation": "Đáp án đúng là 'Như cha đối với con', vì 1 Tê-sa-lô-ni-ca 2:11 chép: 'Chúng tôi cũng khuyên bảo, an ủi và nài xin anh em, như cha đối với con cái mình'.\n\nCác đáp án sai:\n- 'Như người chăn đối với bầy': Là hình ảnh quen thuộc trong Kinh Thánh (ví dụ 1 Phi-e-rơ 5:2) và xuất hiện trong cùng bối cảnh chăn dắt, nhưng không phải là sự so sánh trực tiếp trong câu 2:11.\n- 'Như người thầy đối với môn đồ': Đây là một hiểu lầm phổ biến về vai trò của Phao-lô, nhưng trong câu này ông nhấn mạnh mối quan hệ gia đình (cha-con) chứ không phải quan hệ thầy-trò.\n- 'Như người bạn đối với bạn': Mặc dù Phao-lô bày tỏ tình bạn thân thiết (ví dụ trong 1 Tê-sa-lô-ni-ca 2:8), đây không phải phép so sánh cụ thể được dùng trong câu 2:11.",
     "language": "vi",
     "options": [
-      "Như anh với em",
-      "Như chủ với đầy tớ",
+      "Như người chăn đối với bầy",
+      "Như người thầy đối với môn đồ",
       "Như cha đối với con",
-      "Như bạn cùng đường"
+      "Như người bạn đối với bạn"
     ],
     "tags": [
       "Tân Ước",
@@ -478,13 +478,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Tê-sa-lô-ni-ca 4:13 — '...hầu cho anh em chớ buồn rầu như người khác không có sự trông cậy.'",
+    "explanation": "1 Tê-sa-lô-ni-ca 4:13 ghi: 'Hỡi anh em, chúng tôi chẳng muốn anh em không biết về phần người đã ngủ, hầu cho anh em chớ buồn rầu như người khác không có sự trông cậy.' (BTT). Đáp án đúng trích đúng cụm từ 'như người khác không có sự trông cậy' trong câu Kinh Thánh. Distractor 'Như người khác không có sự hiểu biết' là gần đúng (almost-right) vì đúng cấu trúc nhưng thay từ then chốt 'trông cậy' bằng 'hiểu biết', dù 'hiểu biết' có thể liên quan đến ngữ cảnh chung nhưng không phải từ chính xác trong câu. Distractor 'Như người khác không có đức tin' là hiểu lầm phổ biến vì nhiều người nghĩ buồn rầu là do thiếu đức tin, nhưng câu này nhấn mạnh sự 'trông cậy' về sự sống lại. Distractor 'Như người khác không có tình yêu' lạc câu hỏi vì dù đúng là Cơ Đốc nhân có tình yêu, nhưng đây không phải yếu tố được nêu trong câu 13 để phân biệt sự buồn rầu.",
     "language": "vi",
     "options": [
-      "Như các tiên tri xưa",
-      "Như những kẻ tham lam đời này",
+      "Như người khác không có sự hiểu biết",
+      "Như người khác không có đức tin",
       "Như người khác không có sự trông cậy",
-      "Như những kẻ chống đạo"
+      "Như người khác không có tình yêu"
     ],
     "tags": [
       "Tân Ước",
@@ -531,13 +531,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Tê-sa-lô-ni-ca 5:21-22 — 'Hãy thử mọi sự, điều chi lành thì giữ lấy. Bất cứ việc gì tựa như điều ác, thì phải tránh đi.'",
+    "explanation": "Đoạn Kinh Thánh 1 Tê-sa-lô-ni-ca 5:21-22 (BTT) dạy: 'Nhưng phải thử mọi sự, giữ điều thiện; phải tránh mọi hình thức của sự ác.' Do đó, đáp án đúng là 'Bất cứ việc gì tựa như điều ác', vì câu Kinh Thánh nhấn mạnh việc phải tránh mọi *hình thức* của sự ác, tức là cả những điều có dáng vẻ hay bản chất tương tự điều ác.\n\nCác đáp án sai:\n- 'Bất cứ điều gì không thuộc về Đức Thánh Linh' là gần đúng nhưng sai chi tiết then chốt: ý này dựa trên ngữ cảnh gần (câu 19 về 'dập tắt Đức Thánh Linh'), nhưng không phải là mệnh lệnh trực tiếp trong câu 21-22.\n- 'Bất cứ sự dạy dỗ nào không đến từ sứ đồ Phao-lô' là sai phạm vi: mặc dù thư tín do Phao-lô viết, nhưng mệnh lệnh này có phạm vi rộng hơn, áp dụng cho 'mọi sự' và 'mọi hình thức của sự ác', không giới hạn ở nguồn dạy dỗ.\n- 'Những việc làm không đem lại sự vui mừng' là đúng văn bản nhưng lạc câu hỏi: 'vui mừng' được nhắc ở câu 16, nhưng không liên quan trực tiếp đến mệnh lệnh 'tránh điều ác' trong câu 21-22.",
     "language": "vi",
     "options": [
       "Bất cứ việc gì tựa như điều ác",
-      "Mọi cuộc tranh luận",
-      "Mọi cuộc gặp gỡ với người ngoại",
-      "Mọi sự lao động khó nhọc"
+      "Bất cứ điều gì không thuộc về Đức Thánh Linh",
+      "Bất cứ sự dạy dỗ nào không đến từ sứ đồ Phao-lô",
+      "Những việc làm không đem lại sự vui mừng"
     ],
     "tags": [
       "Tân Ước",

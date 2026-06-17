@@ -35,13 +35,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Chúa đang làm việc ngay cả khi chúng ta không nhìn thấy hay hiểu.",
+    "explanation": "Habakkuk 1:5 chép: 'Hãy nhìn các dân tộc và kinh ngạc, vì Ta sẽ làm một việc trong thời các ngươi mà các ngươi không tin, khi nghe thuật lại cũng không tin.' Đáp án đúng trích nguyên văn 'không tin'. Distractor 1 sai chi tiết then chốt, thay 'không tin' thành 'không thấy' (dù phần lớn đúng). Distractor 2 sai phạm vi, thay 'trong thời các ngươi' thành 'ở một nơi xa'. Distractor 3 lạc câu hỏi vì nói về nội dung giảng dạy, không phải về việc Chúa làm khiến phải kinh ngạc.",
     "language": "vi",
     "options": [
       "Kinh ngạc, vì Ta sẽ làm một việc trong thời các ngươi mà các ngươi không tin",
-      "Vui mừng",
-      "Chạy trốn",
-      "Sợ hãi"
+      "Kinh ngạc, vì Ta sẽ làm một việc trong thời các ngươi mà các ngươi không thấy",
+      "Kinh ngạc, vì Ta sẽ làm một việc ở một nơi xa mà các ngươi không tin",
+      "Kinh ngạc, vì Ta kêu gọi các ngươi giảng giải cho các dân tộc"
     ],
     "tags": [
       "Cựu Ước",
@@ -238,14 +238,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ha-ba-cúc 3:3-4 - Mô tả Chúa đến trong quyền năng và vinh quang bất tận.",
+    "explanation": "Câu hỏi về cách mô tả Chúa đến trong vinh quang theo Habakkuk 3:3-4. Đáp án đúng là 'Vinh quang che trời, ánh sáng từ tay Ngài' vì Habakkuk 3:3b-4 ghi '...và vinh quang Ngài đầy dẫy các từng trời... Có sự chói sáng như ánh sáng; Hai tay Ngài ra sức mạnh'. Distractor 1 ('Vinh quang che đất, ánh sáng từ mặt Ngài') sai chi tiết: vinh quang che 'trời' (c.3) chứ không phải 'đất', và ánh sáng từ 'tay' (c.4) chứ không phải 'mặt'. Distractor 2 ('Ánh sáng lưu chuyển, đất thống khổ vì Ngài') tuy đúng văn bản về 'ánh sáng lưu chuyển' (c.4) và 'đất thống khổ' (c.5c), nhưng lạc câu hỏi vì không phải là mô tả trực tiếp về vinh quang khi Chúa 'đến' mà nói về hệ quả sau đó. Distractor 3 ('Ngài đến giữa các núi, đất ca hát ca ngợi') dùng chi tiết từ passage gần: c.3a nói 'Đức Chúa Trời đến từ Thê-man' (gắn với núi non) và c.5b nói 'đất... trỗi tiếng kêu la', nhưng không phải mô tả cốt lõi về vinh quang và ánh sáng của Ngài.",
     "language": "vi",
     "verseEnd": 4,
     "options": [
       "Vinh quang che trời, ánh sáng từ tay Ngài",
-      "Yên lặng",
-      "Không thấy",
-      "Nhỏ nhẹ"
+      "Vinh quang che đất, ánh sáng từ mặt Ngài",
+      "Ánh sáng lưu chuyển, đất thống khổ vì Ngài",
+      "Ngài đến giữa các núi, đất ca hát ca ngợi"
     ],
     "tags": [
       "Cựu Ước",
@@ -314,13 +314,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ha-ba-cúc 1:1 — 'Gánh nặng mà tiên tri Ha-ba-cúc đã thấy.' Đây là khải tượng tiên tri.",
+    "explanation": "Habakkuk 1:1 chép: 'Gánh nặng mà tiên tri Ha-ba-cúc đã thấy.' (BTT). Đáp án đúng trích dẫn chính xác cụm từ mở đầu sách này. Distractor 1 sai vì thay từ 'thấy' bằng 'nghe', dù cấu trúc gần đúng. Distractor 2 sai vì dùng cụm 'lời tiên tri' thay vì 'gánh nặng', đây là cách mô tả phổ biến ở các sách tiên tri khác (như Ô-sê, Giô-ên) nhưng không phải từ ngữ chính xác tại Habakkuk 1:1. Distractor 3 tuy có thể mô tả chung về khải tượng nhưng không phải là cụm từ mở đầu trực tiếp của sách, nên lạc trọng tâm câu hỏi về nguyên văn.",
     "language": "vi",
     "options": [
       "Gánh nặng mà tiên tri Ha-ba-cúc đã thấy",
-      "Lời cầu nguyện của vua Ê-xê-chia",
-      "Tiếng kêu khóc của các thầy tế lễ",
-      "Bài ca tạ ơn"
+      "Gánh nặng mà tiên tri Ha-ba-cúc đã nghe",
+      "Lời tiên tri mà Ha-ba-cúc đã thấy",
+      "Sự mặc khải mà Ha-ba-cúc đã nhận"
     ],
     "tags": [
       "Cựu Ước",
@@ -340,13 +340,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ha-ba-cúc 1:6 — 'Vì nầy, Ta khiến người Canh-đê nổi lên, là dân dữ tợn và lanh lẹn nầy.'",
+    "explanation": "Habakkuk 1:6 ghi rõ: 'Vì nầy, ta sẽ dấy lên dân Canh-đê, là một dân hung dữ, hay đi khắp đất, đặng chiếm những chỗ ở chẳng thuộc về mình.' Do đó, đáp án đúng là Người Canh-đê (Ba-by-lôn).\n\n- Distractor 'Người A-si-ri (A-si-ri)' là gần đúng nhưng sai chi tiết: A-si-ri là đế quốc đã từng hình phạt Y-sơ-ra-ên trước đó, nhưng trong bối cảnh sách Habakkuk, dân được Chúa dấy lên để hình phạt Giu-đa là người Canh-đê (Ba-by-lôn mới).\n- Distractor 'Người Sy-ri (Sy-ri)' sai văn bản gần: Sy-ri là một dân tộc lân bang thường xung đột với Y-sơ-ra-ên, nhưng không được đề cập trong Habakkuk 1:6 cho mục đích này.\n- Distractor 'Người Y-sơ-ra-ên (Y-sơ-ra-ên)' sai phạm vi: Y-sơ-ra-ên là anh em cùng tổ phụ với Giu-đa, không phải là công cụ hình phạt từ bên ngoài theo lời tiên tri này.",
     "language": "vi",
     "options": [
-      "A-si-ri",
+      "Người A-si-ri (A-si-ri)",
       "Người Canh-đê (Ba-by-lôn)",
-      "Ai Cập",
-      "Phi-li-tin"
+      "Người Sy-ri (Sy-ri)",
+      "Người Y-sơ-ra-ên (Y-sơ-ra-ên)"
     ],
     "tags": [
       "Cựu Ước",
@@ -366,13 +366,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ha-ba-cúc 1:13 — 'Mắt Chúa thánh sạch chẳng nhìn sự dữ, chẳng có thể nhìn được sự trái ngược.'",
+    "explanation": "Ha-ba-cúc 1:13 viết: 'mắt Chúa là thánh sạch, chẳng nhìn sự dữ, chẳng có thể nhìn sự trái ngước được.' Do đó, đáp án đúng là 'Nhìn sự dữ và sự trái ngược', trích trực tiếp và chính xác câu Kinh Thánh.\n\nDistractor 1 ('Nhìn sự kiêu ngạo và sự trái ngược'): Sai chi tiết từ. Câu Kinh Thánh nói 'sự dữ' chứ không phải 'sự kiêu ngạo'. Đây là distractor 'gần đúng' vì giữ cấu trúc và một phần nội dung.\nDistractor 2 ('Nhìn sự dối trá và sự bất chính'): Sai văn bản gần đó. Các khái niệm này có thể liên quan đến bối cảnh sách Ha-ba-cúc nhưng không phải là cụm từ được dùng trong câu này.\nDistractor 3 ('Nhìn sự khốn nạn nơi dân Ngài'): Sai phạm vi câu hỏi. Dù Ha-ba-cúc có than phiền về sự khốn nạn, câu 1:13 cụ thể nói về bản tính thanh sạch của Đức Chúa Trời, không phải đối tượng cụ thể là 'dân Ngài'.",
     "language": "vi",
     "options": [
-      "Nhìn dân Y-sơ-ra-ên",
-      "Nhìn các thiên sứ",
+      "Nhìn sự kiêu ngạo và sự trái ngược",
+      "Nhìn sự dối trá và sự bất chính",
       "Nhìn sự dữ và sự trái ngược",
-      "Nhìn các vì sao"
+      "Nhìn sự khốn nạn nơi dân Ngài"
     ],
     "tags": [
       "Cựu Ước",

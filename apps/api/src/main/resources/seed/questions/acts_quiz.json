@@ -64,13 +64,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Công Vụ 3:6: Nhân danh Chúa Giê-su Christ ở Na-xa-rét, hãy bước đi!",
+    "explanation": "Câu hỏi hỏi cụ thể về danh nào đã được dùng để chữa lành (Công vụ 3:6). Phi-e-rơ nói: 'Nhân danh Đức Chúa Jêsus Christ ở Na-xa-rét, ta biểu ngươi đứng dậy mà bước đi.' Do đó, đáp án đúng là 'Danh Chúa Giê-su Christ'.\n- Distractor 'Danh Phi-e-rơ và Giăng' sai: Dù họ là người thực hiện phép lạ (3:7), nhưng chính họ đã quy mọi quyền năng cho danh Chúa Giê-su (3:12,16), không phải danh riêng của họ.\n- Distractor 'Danh Đức Chúa Trời của Áp-ra-ham' sai: Đây là cách Phi-e-rơ mô tả Đức Chúa Trời trong bài giảng sau đó (3:13), nhưng không phải là danh được xưng ra khi chữa bệnh.\n- Distractor 'Danh Đức Chúa Trời Toàn Năng' sai: Mặc dù Đức Chúa Trời là nguồn quyền năng, nhưng trong đoạn này, danh cụ thể được dùng để bày tỏ quyền năng ấy là danh Chúa Giê-su Christ.",
     "language": "vi",
     "verseEnd": 10,
     "options": [
-      "Danh Phi-e-rơ",
-      "Danh Giăng",
-      "Danh Phao-lô",
+      "Danh Phi-e-rơ và Giăng",
+      "Danh Đức Chúa Trời của Áp-ra-ham",
+      "Danh Đức Chúa Trời Toàn Năng",
       "Danh Chúa Giê-su Christ"
     ],
     "tags": [
@@ -259,14 +259,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Công Vụ 13:2: Hãy biệt riêng Ba-na-ba và Sau-lơ cho Ta, để làm công việc Ta gọi họ.",
+    "explanation": "Đoạn Kinh Thánh Công vụ 13:1-3 liệt kê năm vị tiên tri và giáo sư tại Hội thánh An-ti-ốt: Ba-na-ba, Si-mê-ôn, Lu-si-út, Ma-na-en và Sau-lơ. Trong bối cảnh này, Thánh Linh phán: 'Hãy để riêng Ba-na-ba và Sau-lơ cho ta, để làm công việc ta đã gọi hai người đó.' (câu 2). Do đó, đáp án đúng là Ba-na-ba và Sau-lơ, là hai người được Thánh Linh trực tiếp biệt riêng ra. \n\nCác đáp án sai: 1) 'Ba-na-ba và Lu-si-út' là đáp án gần đúng, nhưng sai chi tiết quan trọng vì Thánh Linh chỉ định Ba-na-ba với Sau-lơ, không phải với Lu-si-út. 2) 'Lu-si-út, Si-mê-ôn và Ma-na-en' sai về phạm vi vì đây là tên ba người trong nhóm năm vị, nhưng không phải là những người được biệt riêng. 3) 'Si-mê-ôn và Ma-na-en' đúng là những người có mặt (câu 1) nhưng lạc câu hỏi, vì câu hỏi hỏi về những người được biệt riêng, không phải về các thành viên nói chung.",
     "language": "vi",
     "verseEnd": 3,
     "options": [
-      "Phi-e-rơ và Giăng",
+      "Ba-na-ba và Lu-si-út",
       "Ba-na-ba và Sau-lơ",
-      "Ti-mô-thê và Tít",
-      "Gia-cơ và Phi-líp"
+      "Lu-si-út, Si-mê-ôn và Ma-na-en",
+      "Si-mê-ôn và Ma-na-en"
     ],
     "tags": [
       "Tân Ước",
@@ -840,14 +840,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Công vụ 8:30-31 - Hoạn quan thừa nhận cần có người giải thích Kinh Thánh. Vai trò quan trọng của người dạy dỗ.",
+    "explanation": "Trong Công vụ 8:30-31, khi Phi-líp hỏi, hoạn quan trả lời: 'Nếu chẳng ai dạy tôi, thể nào tôi hiểu được?' (c.31). Câu trả lời này là một câu hỏi tu từ nhấn mạnh sự cần thiết của người hướng dẫn. Đáp án đúng diễn đạt lại ý đó.\n\nCác đáp án sai:\n1. 'Tôi đang đọc sách Ê-sai.' (wrong_detail): Đây là chi tiết có thật từ câu 28 và 30, nhưng nó là câu trả lời cho câu hỏi 'Ông đọc gì thế?' (c.30), không phải cho câu hỏi về sự hiểu biết trong câu 30-31.\n2. 'Làm sao hiểu được nếu không có Thánh Linh?' (common_misconception): Mặc dù sự hướng dẫn của Thánh Linh là quan trọng, câu Kinh Thánh cụ thể ở đây nhấn mạnh đến vai trò của người giải nghĩa (Phi-líp) mà Đức Chúa Trời đã sai đến, chứ không trực tiếp nói về điều kiện 'không có Thánh Linh'.\n3. 'Tôi hiểu một phần thôi.' (true_but_off): Câu trả lời này có vẻ hợp lý nhưng không khớp với văn bản. Hoạn quan không nói ông hiểu một phần; thay vào đó, ông thừa nhận hoàn toàn sự cần thiết phải có người hướng dẫn để hiểu.",
     "language": "vi",
     "verseEnd": 31,
     "options": [
-      "Không cần giúp",
+      "Tôi đang đọc sách Ê-sai.",
       "Làm sao hiểu được nếu không ai giải nghĩa?",
-      "Tôi đang học",
-      "Tôi hiểu rồi"
+      "Làm sao hiểu được nếu không có Thánh Linh?",
+      "Tôi hiểu một phần thôi."
     ],
     "tags": [
       "Tân Ước",
@@ -1135,13 +1135,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Công Vụ 5:29 — 'Phi-e-rơ và các sứ đồ trả lời rằng: Thà phải vâng lời Đức Chúa Trời còn hơn là vâng lời người ta.'",
+    "explanation": "Câu trả lời đúng: 'Thà vâng lời Đức Chúa Trời còn hơn vâng lời người ta' được trích dẫn trực tiếp từ Công vụ 5:29 (BTT), là phản ứng của Phi-e-rơ trước lệnh cấm của tòa công luận (Hội đồng Công luận Do Thái).\n\nGiải thích các đáp án sai:\n1. 'Thà vâng lời đạo lý còn hơn vâng lời người ta': Sai chi tiết từ ngữ (wrong_detail). Câu Kinh Thánh ghi rõ 'vâng lời Đức Chúa Trời', không phải 'vâng lời đạo lý'.\n2. 'Thà giảng đạo còn hơn vâng lời người ta': Đúng văn bản nhưng lạc câu hỏi (true_but_off). Ngữ cảnh là về việc giảng đạo, nhưng câu trả lời trực tiếp của Phi-e-rơ là về sự vâng lời, không phải một hành động cụ thể.\n3. 'Thà vâng lời Đức Chúa Trời còn hơn vâng lời chính quyền Rô-ma': Nhầm passage gần (nearby_passage). Đây là một 'almost-right' distractor, sai một chi tiết then chốt. Lệnh cấm trong ngữ cảnh này xuất phát từ Hội đồng Công luận Do Thái (tòa công luận), không phải chính quyền Rô-ma (Các đoạn khác như Công vụ 4:5-7, 18; 5:27-28 xác nhận người ra lệnh là các trưởng lão, thầy tế lễ cả và Hội đồng).",
     "language": "vi",
     "options": [
-      "Vâng theo lệnh tòa công luận",
+      "Thà vâng lời đạo lý còn hơn vâng lời người ta",
       "Thà vâng lời Đức Chúa Trời còn hơn vâng lời người ta",
-      "Im lặng và đi nơi khác",
-      "Đợi ý chỉ Chúa thêm"
+      "Thà giảng đạo còn hơn vâng lời người ta",
+      "Thà vâng lời Đức Chúa Trời còn hơn vâng lời chính quyền Rô-ma"
     ],
     "tags": [
       "Tân Ước",
@@ -1430,13 +1430,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Công Vụ 16:25-26 — 'Lối nửa đêm, Phao-lô và Si-la đương cầu nguyện, hát ngợi khen Đức Chúa Trời... thình lình có động đất rất lớn.'",
+    "explanation": "Câu hỏi hỏi về hành động của Phao-lô và Si-la vào nửa đêm trong nhà tù Phi-líp. ĐÁP ÁN ĐÚNG là 'Cầu nguyện và hát ngợi khen Đức Chúa Trời (động đất xảy đến)' dựa trên Kinh Thánh Công vụ 16:25-26: 'Ước chừng nửa đêm, Phao-lô và Si-la đang cầu nguyện, hát ngợi khen Đức Chúa Trời... Thình lình, đất rúng động dữ dội…'. Đây là hành động chính xác và có mối liên hệ nhân quả được ghi nhận (động đất xảy đến sau đó). CÁC PHƯƠNG ÁN SAI: 1) (wrong_detail) Sai chi tiết thời gian ('sau khi được thả ra'). Đoạn Kinh Thánh ghi họ cầu nguyện và hát ngợi khen vào nửa đêm khi còn đang bị cầm tù, trước khi động đất và các xiềng mở ra. Việc thả ra chỉ xảy ra sau đó. 2) (wrong_scope) Sai phạm vi: Họ 'kêu cầu cứu giúp từ các môn đồ' là không chính xác. Trong ngữ cảnh cụ thể, họ không kêu cầu môn đồ mà hướng về Đức Chúa Trời. Đoạn văn không đề cập đến các môn đồ khác trong tình huống này. 3) (nearby_passage) Dựa vào chi tiết từ passage gần đó: Hành động 'Ăn uống và trò chuyện với người giữ ngục' xảy ra sau khi động đất và người giữ ngục hoảng sợ (Công vụ 16:30-34), không phải vào nửa đêm khi họ còn bị giam giữ riêng.",
     "language": "vi",
     "options": [
-      "Lập kế trốn",
-      "Khóc lóc cầu xin",
+      "Cầu nguyện và hát ngợi khen Đức Chúa Trời (sau khi được thả ra)",
+      "Cầu nguyện và kêu cầu cứu giúp từ các môn đồ (động đất xảy đến)",
       "Cầu nguyện và hát ngợi khen Đức Chúa Trời (động đất xảy đến)",
-      "Đợi sáng để bị xét xử"
+      "Ăn uống và trò chuyện với người giữ ngục (động đất xảy đến)"
     ],
     "tags": [
       "Tân Ước",
@@ -1457,13 +1457,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Công Vụ 16:31 — 'Hãy tin Đức Chúa Jêsus, thì ngươi và cả nhà ngươi đều sẽ được cứu rỗi.'",
+    "explanation": "Câu trả lời đúng là 'Hãy tin Đức Chúa Jêsus, ngươi và cả nhà sẽ được cứu' (Công vụ 16:31), trực tiếp trả lời câu hỏi của người đề lao. Phao-lô không đề cập đến việc tự làm gì mà chỉ ra đức tin nơi Đấng Christ là con đường cứu rỗi.\n\nCác đáp án sai: (1) 'Hãy tin Đức Chúa Trời, chính ngươi sẽ được cứu rỗi' là gần đúng nhưng sai chi tiết then chốt (tên 'Đức Chúa Trời' thay vì 'Đức Chúa Jêsus' và bỏ 'cả nhà'). (2) 'Hãy làm việc lành...' phản ánh sự hiểu lầm phổ biến rằng cứu rỗi nhờ việc làm, trái ngược với giáo lý cứu rỗi bởi đức tin trong phân đoạn này. (3) 'Hãy chịu phép báp-têm...' lấy từ một phân đoạn gần (Công vụ 2:38, câu hỏi khác, bối cảnh khác) và không phải là câu trả lời trực tiếp của Phao-lô trong Công vụ 16:31.",
     "language": "vi",
     "options": [
-      "Hãy chịu báp-têm trước",
+      "Hãy tin Đức Chúa Trời, chính ngươi sẽ được cứu rỗi",
       "Hãy tin Đức Chúa Jêsus, ngươi và cả nhà sẽ được cứu",
-      "Hãy giữ luật pháp Môi-se",
-      "Hãy đợi đến Lễ Ngũ Tuần"
+      "Hãy làm việc lành, ngươi và cả nhà sẽ được cứu",
+      "Hãy chịu phép báp-têm, ngươi và cả nhà sẽ được cứu"
     ],
     "tags": [
       "Tân Ước",
@@ -1933,12 +1933,12 @@
     ],
     "verseEnd": 36,
     "content": "Theo Công Vụ 2:22-36, lập luận chính của Phi-e-rơ trong bài giảng Pentecost để chứng minh Chúa Jêsus là Đấng Mê-si-a là gì?",
-    "explanation": "Công Vụ 2:25-32 — Phi-e-rơ trích Thi 16:8-11 ('Chúa sẽ chẳng để linh hồn tôi nơi âm phủ'). Lập luận: Đa-vít chết + chôn (mộ vẫn còn ở Giê-ru-sa-lem), không ứng nghiệm về Đa-vít. Vậy Đa-vít TIÊN TRI về dòng dõi mình — Chúa Jêsus đã sống lại như chứng cớ. 2:36 kết: 'Đức Chúa Trời đã tôn Jêsus nầy mà các ngươi đã đóng đinh trên thập tự giá làm Chúa và Đấng Christ'.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Trong Công Vụ 2:25-31, Phi-e-rơ trích dẫn Thi-thiên 16:8-11, nơi Đa-vít nói về Đấng Mê-si-a rằng linh hồn Ngài 'không bị bỏ trong âm phủ' và xác thịt Ngài 'chẳng thấy sự hư nát'. Phi-e-rơ lập luận rằng vì Đa-vít đã chết, mộ ông vẫn còn đó (câu 29), nên lời tiên tri này phải ứng nghiệm nơi Đấng Christ, là Đấng đã sống lại (câu 31-32). Đây là lập luận chính để chứng minh Jêsus là Đấng Mê-si-a.\n\nDISTRACTOR SAI 1 (nearby_passage): Distractor này trộn lẫn lập luận chính với một chi tiết từ đoạn gần đó. Mặc dù Công Vụ 2:30 có nhắc đến lời hứa Đấng Mê-si-a từ dòng dõi Đa-vít (Thi-thiên 132:11), nhưng đây không phải là lập luận CHÍNH Phi-e-rơ dùng để chứng minh trong phần này. Lập luận chính tập trung vào sự phục sinh, chứ không phải dòng dõi.\n\nDISTRACTOR SAI 2 (wrong_detail): Distractor này thay thế chi tiết then chốt. Phi-e-rơ có nhắc đến Đấng Tiên Tri trong Công Vụ 3:22-23, nhưng không phải là trọng tâm của lập luận trong Công Vụ 2:22-36. Việc Jêsus làm phép lạ (câu 22) là bằng chứng hỗ trợ, nhưng lập luận chứng minh Ngài là Đấng Mê-si-a ở đây dựa vào sự ứng nghiệm lời tiên tri về sự phục sinh của Đấng Christ qua việc trưng dẫn Thi-thiên 16.\n\nDISTRACTOR SAI 3 (true_but_off): Distractor này nói về một sự kiện có thật (Jêsus hiện ra) và trích dẫn một câu Kinh Thánh có liên quan (Thi-thiên 2:7 được trích trong câu 34-35 về việc Chúa phán với Chúa tôi), nhưng nó không trả lời đúng trọng tâm câu hỏi. Lập luận chính của Phi-e-rơ không phải là việc 'hiện ra' hay lời tuyên bố 'Con Ta' đơn thuần, mà là lập luận từ sự kiện PHỤC SINH để chứng minh Đa-vít đã tiên tri về Đấng Mê-si-a không bị bỏ trong âm phủ, và Jêsus đã đáp ứng điều đó.",
     "language": "vi",
     "options": [
-      "Phép lạ Chúa làm khi sống",
-      "Lời chứng của 12 sứ đồ",
-      "Sự dạy dỗ trên núi",
+      "Đa-vít TIÊN TRI Mê-si-a sẽ từ Đa-vít mà đến; Đa-vít đã CHẾT và bị CHÔN, nhưng Đức Chúa Jêsus đã PHÁN rằng Ngài là Đấng ấy — đáp ứng Thi-thiên 132:11",
+      "Đa-vít TIÊN TRI Mê-si-a sẽ là một ĐẤNG TIÊN TRI; Đa-vít đã CHẾT và bị CHÔN, nhưng Đức Chúa Jêsus đã LÀM nhiều phép lạ — đáp ứng Phục-truyền 18:15",
+      "Đa-vít TIÊN TRI Mê-si-a sẽ được ĐỊNH SẴN; Đa-vít đã CHẾT và bị CHÔN, nhưng Đức Chúa Jêsus đã HIỆN RA với các môn đồ — đáp ứng Thi-thiên 2:7",
       "Đa-vít TIÊN TRI Mê-si-a sẽ KHÔNG bị bỏ trong âm phủ; Đa-vít đã CHẾT và bị CHÔN, nhưng Đức Chúa Jêsus đã SỐNG LẠI — đáp ứng Thi-thiên 16:8-11"
     ],
     "tags": [
@@ -2257,13 +2257,13 @@
     ],
     "verseEnd": 19,
     "content": "Theo Công Vụ 9:10-19, Chúa sai môn đồ nào ở Đa-mách đi đặt tay cho Sau-lơ được sáng mắt + nhận Thánh Linh + báp-têm?",
-    "explanation": "Công Vụ 9:10-17 — 'Vả, tại Đa-mách có một môn đồ tên là A-na-nia. Chúa phán cùng người trong sự hiện thấy rằng: Hỡi A-na-nia. Người thưa rằng: Lạy Chúa, có tôi đây... Chúa phán rằng: Hãy chờ dậy, đi lên đường gọi là Ngay thẳng, tìm tên Sau-lơ, người Tạt-sơ, ở nhà Giu-đa... vì người là một đồ dùng ta đã chọn lựa, để đem danh ta đồn ra trước mặt các dân ngoại, các vua, và con cái Y-sơ-ra-ên'. Lệnh truyền giáo cho dân ngoại được ban từ ĐẦU.",
+    "explanation": "Đáp án đúng là A-na-nia tại Đa-mách. Công Vụ 9:10-19 ghi rõ Chúa phán với A-na-nia trong một sự hiện thấy, sai ông đến nhà Giu-đa trên đường thẳng để đặt tay trên Sau-lơ (c.10-12). A-na-nia đã vâng lời, đặt tay lên Sau-lơ khiến Sau-lơ được sáng mắt, đầy dẫy Đức Thánh Linh và làm phép báp-têm cho ông (c.17-18).\n\nCác đáp án sai:\n1. 'A-na-nia tại Giê-ru-sa-lem' sai về chi tiết địa điểm. Mặc dù đúng tên A-na-nia và không phải là A-na-nia chồng Sa-phi-ra, nhưng sự kiện xảy ra tại Đa-mách, không phải Giê-ru-sa-lem.\n2. 'Ba-na-ba đến thăm Sau-lơ tại Đa-mách' là nhầm lẫn với sự kiện ở Công Vụ 9:26-27, khi Sau-lơ đến Giê-ru-sa-lem và các môn đồ sợ hãi, còn Ba-na-ba đem ông đến với các sứ đồ. Ba-na-ba không phải là người Chúa sai đặt tay cho Sau-lơ trong đoạn 9:10-19.\n3. 'Phi-e-rơ được Chúa sai đi từ Gióp-bê' diễn tả đúng một chi tiết trong sách Công vụ (Công Vụ 10:5, 9) nhưng lạc đề, không liên quan đến việc Chúa sai ai đặt tay cho Sau-lơ tại Đa-mách.",
     "language": "vi",
     "options": [
-      "Phi-líp",
+      "A-na-nia tại Giê-ru-sa-lem (không phải A-na-nia chồng Sa-phi-ra)",
       "A-na-nia tại Đa-mách (không phải A-na-nia chồng Sa-phi-ra)",
-      "Ba-na-ba",
-      "Sau-lơ tự đến hội đường"
+      "Ba-na-ba đến thăm Sau-lơ tại Đa-mách",
+      "Phi-e-rơ được Chúa sai đi từ Gióp-bê"
     ],
     "tags": [
       "Tân Ước",
@@ -2365,13 +2365,13 @@
     ],
     "verseEnd": 48,
     "content": "Theo Công Vụ 10:44-48 (nhà Cọt-nây), điều gì PHI THƯỜNG xảy ra khi Phi-e-rơ còn đang giảng — khiến các tín hữu Do Thái sửng sốt?",
-    "explanation": "Công Vụ 10:44-46 — 'Khi Phi-e-rơ đang nói, thì Đức Thánh Linh giáng trên mọi người nghe đạo. Các tín đồ đã chịu phép cắt bì cùng đến với Phi-e-rơ đều lấy làm lạ, vì thấy sự ban cho Đức Thánh Linh cũng đổ ra trên người ngoại nữa. Vì các tín hữu nghe họ nói tiếng ngoại quốc và khen ngợi Đức Chúa Trời'. Sự kiện này = bằng chứng KHÁCH QUAN dân ngoại được nhận vào hội thánh BÌNH ĐẲNG (Phi-e-rơ kể lại 11:15-17).",
+    "explanation": "Công Vụ 10:44-48 (BTT) ghi lại: 'Đương khi Phi-e-rơ còn đang nói, thì Đức Thánh Linh giáng trên mọi người nghe đạo. Các tín đồ đã chịu phép cắt bì, là những kẻ đồng đến với Phi-e-rơ, đều lấy làm lạ, vì thấy sự ban cho Đức Thánh Linh cũng đổ ra trên người ngoại nữa. Vì các tín đồ nghe họ nói tiếng ngoại quốc và khen ngợi Đức Chúa Trời'. Đoạn Kinh Thánh này nhấn mạnh sự kiện PHI THƯỜNG là Đức Thánh Linh giáng xuống TRONG KHI Phi-e-rơ đang giảng, TRƯỚC KHI họ chịu báp-têm (c.47-48), khiến các tín hữu Do Thái (những người chịu cắt bì) sửng sốt. Điều này chứng tỏ ơn cứu rỗi của Đức Chúa Trời cũng dành cho dân ngoại.\n\n- **PHƯƠNG ÁN ĐÚNG** đúng vì nắm bắt chính xác hai yếu tố then chốt: (1) thời điểm (Đức Thánh Linh giáng 'khi Phi-e-rơ còn đang giảng') và (2) dấu hiệu đi kèm là 'nói tiếng mới và ngợi khen Chúa', khiến các tín hữu gốc Do Thái kinh ngạc.\n- **Distractor 1 (gần đúng)** sai ở một chi tiết: Kinh văn chỉ ghi họ 'nói tiếng ngoại quốc' (BTT) hoặc 'nói tiếng mới' (BD2011), có thể hiểu là tiếng lạ (xem Công Vụ 2:4), nhưng KHÔNG ghi nhận cụ thể là 'tiếng Hê-bơ-rơ'. Việc 'thốt lên tiếng reo mừng' cũng không chính xác bằng 'khen ngợi Đức Chúa Trời'.\n- **Distractor 2** sai vì đây là một hiểu lầm phổ biến. Trong đoạn này, không có sự hiện ra của Chúa Giê-su. Sự xác nhận đến từ dấu hiệu của Đức Thánh Linh, chứ không phải từ một khải tượng hay hiện thân của Chúa.\n- **Distractor 3** sai vì nhầm lẫn với một sự kiện trong những phân đoạn khác. Trong Công Vụ 10, không có động đất. Chi tiết động đất xảy ra ở những nơi khác (ví dụ: Công Vụ 16:26 khi Phao-lô và Si-la ở ngục).",
     "language": "vi",
     "options": [
-      "Cọt-nây xin chịu cắt bì",
-      "Phi-e-rơ thấy một thiên sứ thứ hai",
+      "Đức Thánh Linh giáng trên mọi người nghe đạo (dân ngoại) — họ đều nói tiếng Hê-bơ-rơ và thốt lên tiếng reo mừng",
+      "Chúa Giê-su hiện ra giữa họ và xác nhận chức vụ của Phi-e-rơ với dân ngoại",
       "Đức Thánh Linh giáng trên mọi người nghe đạo (dân ngoại) — họ nói tiếng mới và ngợi khen Chúa",
-      "Phi-e-rơ ngất xỉu (xét trong văn cảnh câu chuyện)"
+      "Một trận động đất xảy ra và nhà của Cọt-nây bị rúng chuyển mạnh"
     ],
     "tags": [
       "Tan Uoc",
@@ -2719,13 +2719,13 @@
     ],
     "verseEnd": 12,
     "content": "Theo Công Vụ 17:10-12, dân Bê-rê được khen 'có ý hơn người Tê-sa-lô-ni-ca' vì lý do gì?",
-    "explanation": "Công Vụ 17:11 — 'Những người này có ý hẳn hoi hơn người Tê-sa-lô-ni-ca, đều sẵn lòng chịu lấy đạo, ngày nào cũng tra xem Kinh Thánh, để xét lời giảng có thật chăng. Trong bọn họ có nhiều người tin theo, với mấy người đờn bà Gờ-réc sang trọng, và đờn ông cũng khá đông'. 'Bê-rê' trở thành biểu tượng môn đồ ĐÚNG ĐẮN — vừa tiếp nhận lời, vừa kiểm tra bằng Kinh Thánh.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Được khen vì 'họ tiếp nhận đạo với tất cả lòng sốt sắng, ngày nào cũng tra cứu Kinh Thánh để xem những lời ấy có đúng không.' (Công Vụ 17:11). Cụ thể, họ không chỉ nghe nhiệt tình mà còn chủ động đối chiếu lời giảng dạy với Kinh Thánh.\n\nCÁC ĐÁP ÁN SAI:\n- Distractor 1 (GẦN ĐÚNG - nhầm passage gần): Sai vì mục đích chính của họ là 'để xét' (đối chiếu, kiểm chứng) chứ không phải 'để học thuộc lòng'. Câu Kinh Thánh mô tả động cơ tìm hiểu thẩm tra (c.11), không nói đến việc ghi nhớ máy móc.\n- Distractor 2 (hiểu lầm phổ biến): Sai vì thái độ của người Bê-rê là chủ động tìm hiểu Kinh Thánh ngay lập tức ('hằng ngày'), chứ không thụ động chờ đợi Phao-lô giảng thêm (c.11). Họ muốn tự mình kiểm chứng.\n- Distractor 3 (sai chi tiết): Sai vị trí địa lý. Sự việc xảy ra khi Phao-lô và Si-la 'lén đi đến Bê-rê' (c.10), và họ giảng trong nhà hội của người Bê-rê, không phải tại hội đường Tê-sa-lô-ni-ca.",
     "language": "vi",
     "options": [
-      "Họ giàu có hơn (đối chiếu với các phán đoán liên quan)",
-      "Họ có nhiều thầy tế lễ (theo cách trình bày của bản văn)",
+      "Họ tiếp nhận đạo cách sốt sắng, hằng ngày tra xem Kinh Thánh để học thuộc lòng.",
+      "Họ tiếp nhận đạo cách sốt sắng, hằng ngày tra xem Kinh Thánh để chờ Phao-lô giảng tiếp.",
       "Họ tiếp nhận đạo cách sốt sắng, hằng ngày tra xem Kinh Thánh để xét lời giảng.",
-      "Họ có nhiều người Hy Lạp"
+      "Họ tiếp nhận đạo cách sốt sắng, hằng ngày tra xem Kinh Thánh tại hội đường Tê-sa-lô-ni-ca."
     ],
     "tags": [
       "Tân Ước",
@@ -3015,13 +3015,13 @@
     ],
     "verseEnd": 17,
     "content": "KIỂU 1 cross-ref Acts 15:16-17 — Tại Hội nghị Giê-ru-sa-lem, Gia-cơ trích sách tiên tri Cựu Ước nào để biện minh việc TIẾP NHẬN dân ngoại không cần cắt bì?",
-    "explanation": "Công Vụ 15:16-17 — 'Rồi đó, ta sẽ trở lại, dựng lại đền tạm của Đa-vít bị đổ nát; ta sẽ dựng lại nơi đổ nát, và lập nó lên, hầu cho những người còn sót lại của loài người và hết thảy người ngoại được kêu danh ta sẽ tìm kiếm Chúa, Chúa là Đấng làm nên những việc đó' (Trích A-mốt 9:11-12 LXX). Gia-cơ giải thích: việc dân ngoại trở lại đạo là ỨNG NGHIỆM kế hoạch LÂU ĐỜI của Chúa (đã có trong A-mốt từ 8 thế kỷ trước). Đây không phải kế hoạch B do dân Y-sơ-ra-ên từ chối, mà là kế hoạch A nguyên thủy.",
+    "explanation": "Đáp án đúng là A-MỐT 9:11-12, vì Công vụ 15:16-17 trích dẫn trực tiếp đoạn này: \"Sau ấy, ta sẽ trở lại, dựng lại đền tạm của Đa-vít bị đổ nát... hầu cho những người dư lại của loài người và mọi dân ngoại... đều tìm kiếm Chúa\" (BTT), biện minh cho việc Chúa tiếp nhận dân ngoại. *Distractor 1 (Ê-sai 56:7)*: Đoạn này nói về dân ngoại được dẫn đến đền thờ, nhưng không đề cập đến việc \"dựng lại đền tạm Đa-vít\" - yếu tố then chốt trong lập luận của Gia-cơ. *Distractor 2 (Giê-rê-mi 12:15)*: Nói về việc đem dân ngoại trở về, nhưng là sau khi họ bị quăng ra, không liên quan đến khải tượng phục hồi đền tạm Đa-vít. *Distractor 3 (Giô-ên 2:32)*: Thường được dùng trong Tân Ước để nói về ơn cứu rỗi cho mọi người (Rô-ma 10:13), nhưng tại Hội nghị Giê-ru-sa-lem, Gia-cơ đặc biệt dùng A-mốt để biện minh cho việc không cần cắt bì.",
     "language": "vi",
     "options": [
-      "Mi-chê 4:1-2 — 'các dân tộc đến núi Chúa'",
+      "Ê-SAI 56:7 — \"Ta sẽ DẪN chúng nó đến núi thánh ta, và CHO CHÚNG NÓ VUI MỪNG trong nhà cầu nguyện ta, hầu cho sự cầu nguyện của chúng nó được nhậm trên bàn thờ ta\"",
       "A-MỐT 9:11-12 — \"Ta sẽ DỰNG LẠI đền tạm Đa-vít đã đổ nát; HẦU CHO PHẦN còn LẠI của LOÀI NGƯỜI và HẾT THẢY DÂN NGOẠI được kêu DANH ta tìm kiếm Chúa\"",
-      "Xa-cha-ri 8:23 — '10 dân ngoại nắm vạt áo Do Thái'",
-      "Sô-phô-ni 3:9 — 'Ta sẽ ban môi miệng tinh sạch cho các dân'"
+      "GIÊ-RÊ-MI 12:15 — \"Khi ta ĐÃ LÀM cho chúng nó bị quăng ra khỏi dân ta, rồi ta sẽ THƯƠNG XÓT chúng nó và ĐEM CHÚNG NÓ về, ai nấy đều trở về sản nghiệp mình\"",
+      "GIÔ-ÊN 2:32 — \"Bấy giờ ai CẦU KHẨN danh Đức Giê-hô-va thì sẽ được cứu; vì theo lời Đức Giê-hô-va, trên núi Si-ôn và tại Giê-ru-sa-lem sẽ có những kẻ được thoát khỏi\""
     ],
     "tags": [
       "Tan Uoc",
@@ -3148,13 +3148,13 @@
       2
     ],
     "content": "KIỂU 2 distinguish — Phao-lô bị giam tại Sê-sa-rê 2 năm (24-26) và đứng trước BA quan + vua khác nhau. Sự khác biệt vai trò của họ?",
-    "explanation": "Phao-lô đứng trước BA chính khách: (1) PHÊ-LIX (Acts 24, tổng đốc Giu-đê 52-59 SC) — cưới Đơ-ru-si (chị Ạc-ríp-ba II); 'run sợ' nghe Phao-lô (24:25) nhưng chỉ giữ Phao-lô CHỜ HỐI LỘ (24:26); rời chức để Phê-tu kế. (2) PHÊ-TU (Acts 25, kế nhiệm Phê-lix 59-62 SC); không thông Cơ-đốc giáo; xét Phao-lô không có lỗi nhưng để vừa lòng Do Thái → bàn giải đến Giê-ru-sa-lem; → Phao-lô KÊU NÀI Sê-sa (25:11) → mở đường đến Rô-ma. (3) ẠC-RÍP-BA II (Acts 26, vua bù nhìn cuối dòng Hê-rốt) — sống chung loạn luân với Bê-rê-nít; nghe Phao-lô tự bào chữa; câu nổi tiếng 'còn ít nữa ngươi khuyên ta trở nên Cơ-đốc' (26:28).",
+    "explanation": "Đáp án đúng mô tả chính xác vai trò khác biệt của ba nhân vật chính khi Phao-lô bị giam ở Sê-sa-rê theo Công vụ 24-26: **Phê-lix** (tổng đốc, Cv 24:24-27) giữ Phao-lô vì hy vọng nhận hối lộ; **Phê-tu** (người kế nhiệm, Cv 25:9-12) không hiểu rõ Cơ-đốc giáo và Phao-lô đã kêu nài lên Sê-sa; **Ạc-ríp-ba II** (vua bù nhìn, Cv 26:28) nghe và có phản ứng nổi tiếng với lời giảng của Phao-lô.\n\n**Distractor 1 (gần đúng, sai chi tiết):** Sai ở chi tiết chính: Phê-lix 'THẢ' Phao-lô. Thực tế, Phê-lix 'GIỮ' Phao-lô lại (Cv 24:27).\n**Distractor 2 (nhầm passage gần):** Sai khi thay thế 'Ạc-ríp-ba II' bằng 'Bê-rít-sin'. Bê-rít-sin (Bêr-nít) là chị của Ạc-ríp-ba II, có mặt trong đoạn (Cv 25:13, 23) nhưng không phải là vua và không nói câu đó; câu nói thuộc về vua Ạc-ríp-ba II (Cv 26:28).\n**Distractor 3 (hiểu lầm phổ biến):** Sai mô tả về Phê-tu 'rất hiểu và ủng hộ Cơ-đốc giáo'. Kinh văn (Cv 25:18-20) cho thấy Phê-tu không hiểu rõ những cáo buộc liên quan đến giáo lý Cơ-đốc và đề nghị Phao-lô lên Giê-ru-sa-lem xét xử.",
     "language": "vi",
     "options": [
-      "Tất cả 3 đều cùng án Phao-lô.",
-      "Cả 3 cùng kết tội Phao-lô.",
+      "PHÊ-LIX (24, quan tổng đốc Giu-đê 52-59 SC) — VỢ Đơ-ru-si (Do Thái) — Phê-lix run khi nghe về 'sự công bình, tiết độ, sự phán xét tương lai' và THẢ Phao-lô; PHÊ-TU (25, người KẾ NHIỆM, 59-62) — không hiểu Cơ-đốc giáo; Phao-lô KÊU NÀI Sê-sa trước Phê-tu; ẠC-RÍP-BA II (26, vua bù nhìn dòng Hê-rốt) — 'còn ít nữa ngươi khuyên ta trở nên Cơ-đốc nhân được'",
+      "PHÊ-LIX (24, quan tổng đốc Giu-đê 52-59 SC) — VỢ Đơ-ru-si (Do Thái) — Phê-lix run khi nghe về 'sự công bình, tiết độ, sự phán xét tương lai' nhưng GIỮ Phao-lô chờ HỐI LỘ; PHÊ-TU (25, người KẾ NHIỆM, 59-62) — không hiểu Cơ-đốc giáo; Phao-lô KÊU NÀI Sê-sa trước Phê-tu; BÊ-RÍT-SIN (26, vua bù nhìn dòng Hê-rốt) — 'còn ít nữa ngươi khuyên ta trở nên Cơ-đốc nhân được'",
       "PHÊ-LIX (24, quan tổng đốc Giu-đê 52-59 SC) — VỢ Đơ-ru-si (Do Thái) — Phê-lix run khi nghe về 'sự công bình, tiết độ, sự phán xét tương lai' nhưng GIỮ Phao-lô chờ HỐI LỘ; PHÊ-TU (25, người KẾ NHIỆM, 59-62) — không hiểu Cơ-đốc giáo; Phao-lô KÊU NÀI Sê-sa trước Phê-tu; ẠC-RÍP-BA II (26, vua bù nhìn dòng Hê-rốt) — 'còn ít nữa ngươi khuyên ta trở nên Cơ-đốc nhân được'",
-      "Phê-lix là vua, Phê-tu là tế lễ, Ạc-ríp-ba là tướng."
+      "PHÊ-LIX (24, quan tổng đốc Giu-đê 52-59 SC) — VỢ Đơ-ru-si (Do Thái) — Phê-lix run khi nghe về 'sự công bình, tiết độ, sự phán xét tương lai' nhưng GIỮ Phao-lô chờ HỐI LỘ; PHÊ-TU (25, người KẾ NHIỆM, 59-62) — rất hiểu và ủng hộ Cơ-đốc giáo; Phao-lô KÊU NÀI Sê-sa trước Phê-tu; ẠC-RÍP-BA II (26, vua bù nhìn dòng Hê-rốt) — 'còn ít nữa ngươi khuyên ta trở nên Cơ-đốc nhân được'"
     ],
     "tags": [
       "Tan Uoc",
@@ -3174,12 +3174,12 @@
       3
     ],
     "content": "Sách Công vụ sử dụng vài cụm từ khác nhau về Đức Thánh Linh: 'báp-têm bằng Thánh Linh', 'đầy dẫy Thánh Linh', 'nhận lãnh Thánh Linh', 'Thánh Linh giáng trên'. Sự khác biệt căn bản giữa chúng là gì?",
-    "explanation": "Sự phân biệt thuật ngữ Thánh Linh trong Công vụ: (1) BÁP-TÊM bằng Thánh Linh (1:5, 11:16) — sự kiện một lần khi tin Chúa, biến cá nhân thành chi thể trong Thân Christ (tương ứng 1 Cô-rinh-tô 12:13). (2) ĐẦY DẪY Thánh Linh (2:4, 4:8, 4:31, 9:17, 13:9) — trải nghiệm có thể lặp lại, được ban quyền năng cho công việc cụ thể; Phi-e-rơ đầy dẫy 2:4 rồi lại đầy dẫy 4:8 trước Tòa Công Luận và 4:31. (3) Thánh Linh GIÁNG TRÊN (10:44, 11:15) — biểu tượng sự đón nhận dân ngoại vào Hội thánh, thường đi kèm dấu hiệu như tại Lễ Ngũ Tuần. Cả ba thuật ngữ đều ám chỉ sự hiện diện của Thánh Linh nhưng với các sắc thái và mục đích khác nhau.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Công vụ 1:5, 2:4, 8:15-17, 10:44-45 cho thấy sự phân biệt rõ. 'Báp-têm bằng Thánh Linh' là sự kiện ban đầu, một lần (Công vụ 1:5, 11:16). 'Đầy dẫy Thánh Linh' có thể xảy ra nhiều lần (Công vụ 2:4, 4:8, 4:31). 'Thánh Linh giáng trên' đặc biệt dùng trong bối cảnh dân ngoại (người Samari, Cọt-nây) tiếp nhận Đức Thánh Linh (Công vụ 8:16, 10:44).\n\nDISTRACTOR SAI 1 (wrong_detail): Sai chi tiết then chốt về tính chất 'một lần' và 'có thể lặp lại' của hai kinh nghiệm đầu. Đã đảo ngược đặc tính của 'báp-têm' (thành có thể lặp lại) và 'đầy dẫy' (thành một lần).\n\nDISTRACTOR SAI 2 (nearby_passage): Sai về nguồn tham chiếu. 'Thánh Linh giáng trên' là cụm từ rõ ràng trong sách Công vụ (8:16, 10:44), không phải Sáng Thế Ký. Đây là lỗi nhầm sách/đoạn Kinh Thánh.\n\nDISTRACTOR SAI 3 (common_misconception): Đây là một hiểu lầm phổ biến, cho rằng các cụm từ này giống hệt nhau. Thực tế, ngữ cảnh và mục đích sử dụng trong Công vụ cho thấy chúng nhấn mạnh các khía cạnh khác nhau của kinh nghiệm về Đức Thánh Linh.",
     "language": "vi",
     "options": [
-      "Tất cả đều chỉ một thực tại giống nhau, chỉ khác cách diễn đạt theo bối cảnh câu chuyện.",
-      "Báp-têm bằng Thánh Linh chỉ dành riêng cho mười hai sứ đồ, như được mô tả trong sách.",
-      "Đầy dẫy Thánh Linh là một kinh nghiệm chỉ xảy ra một lần duy nhất trong đời sống tín đồ.",
+      "Báp-têm bằng Thánh Linh là sự kiện có thể lặp lại để tăng trưởng thuộc linh. Đầy dẫy Thánh Linh là kinh nghiệm một lần khi bắt đầu tin Chúa. Thánh Linh giáng trên nhấn mạnh đến việc tiếp nhận dân ngoại.",
+      "Báp-têm bằng Thánh Linh là sự kiện ban đầu khi tin Chúa (một lần, gắn với sự cứu rỗi). Đầy dẫy Thánh Linh là trải nghiệm có thể lặp lại để ban quyền năng phục vụ. Thánh Linh giáng trên được nói đến trong sách Sáng Thế Ký.",
+      "Báp-têm bằng Thánh Linh, đầy dẫy Thánh Linh và Thánh Linh giáng trên đều là những cụm từ đồng nghĩa trong Kinh Thánh, mô tả cùng một kinh nghiệm thuộc linh duy nhất.",
       "Báp-têm bằng Thánh Linh là sự kiện ban đầu khi tin Chúa (một lần, gắn với sự cứu rỗi). Đầy dẫy Thánh Linh là trải nghiệm có thể lặp lại để ban quyền năng phục vụ. Thánh Linh giáng trên nhấn mạnh đến việc tiếp nhận dân ngoại."
     ],
     "tags": [
@@ -3307,13 +3307,13 @@
     ],
     "verseEnd": 44,
     "content": "KIỂU 3 hiểu sâu — Bài giảng Ê-tiên (Acts 7) nhấn 4 nhân vật ở 4 ĐỊA ĐIỂM khác nhau. Chủ đề thần học SÂU SẮC nào ẩn trong cấu trúc đó?",
-    "explanation": "Cấu trúc thần học bài giảng Ê-tiên 7:2-50: (1) ÁP-RA-HAM được kêu tại MÊ-SÔ (Khả-đê) 7:2-3 — TRƯỚC khi vào Đất Hứa; (2) GIÔ-SÉP được tôn cao + Chúa ở cùng tại AI-CẬP 7:9-10; (3) MÔI-SE gặp Chúa tại BUI GAI cháy ngoài MA-ĐI-AN 7:30, nhận Luật ở SI-NAI 7:38 — TẤT CẢ ngoài Đất Hứa và đền thờ; (4) ĐA-VÍT/SA-LÔ-MÔN xây đền — nhưng câu kết 'Đấng Tối Cao chẳng ở trong nhà tay người làm' (Ê-sai 66:1-2). Chủ đề: ĐỀN THỜ KHÔNG = sự hiện diện Chúa độc quyền. Cơ-đốc giáo (Tin Lành đến TẬN CÙNG ĐẤT) là TIẾP NỐI truyền thống Chúa hiện diện KHẮP NƠI, KHÔNG phá đền thờ. Bài giảng = câu trả lời tinh vi cho cáo buộc 'Ê-tiên báng bổ đền thờ' (Acts 6:13-14).",
+    "explanation": "Đáp án đúng vì trung tâm bài giảng của Ê-tiên (Công vụ 7:9-44) là biện hộ rằng Đức Chúa Trời không bị giới hạn trong đền thờ Giê-ru-sa-lem (7:48-50), bằng cách liệt kê các nhân vật (Áp-ra-ham, Giô-sép, Môi-se) được Ngài gọi và hành động tại nhiều địa điểm ngoài Đất Hứa (Mê-sô-pô-ta-mi, Ai-cập, Ma-đi-an). Đây là chủ đề thần học sâu sắc về sự hiện diện phổ quát của Chúa.\n\nDistractor 1 (wrong_detail) sai vì nó trộn lẫn chi tiết: Áp-ra-ham dâng con (Sáng thế 22) không nằm trong Công vụ 7, và núi Mô-ri-a chính là Giê-ru-sa-lem, trái với luận điểm 'nhiều nơi khác Giê-ru-sa-lem'.\nDistractor 2 (wrong_scope) sai vì phạm vi hiểu lầm: Bài giảng của Ê-tiên (7:51-53) lên án sự cứng lòng của dân Do Thái, chứ không biện hộ cho sự độc tôn của họ; luận điểm chính là Chúa hành động cả với và qua các dân ngoại (Ai-cập, Ma-đi-an).\nDistractor 3 (true_but_off) sai vì tuy nêu đúng một số địa điểm và sự kiện (Áp-ra-ham nhận lời hứa, Môi-se nhận luật), nhưng nó lạc trọng tâm câu hỏi về 'chủ đề thần học sâu sắc'. Nó chỉ tập trung vào luật pháp, trong khi chủ đề sâu sắc của cấu trúc bốn nhân vật - bốn địa điểm là nhằm minh họa cho sự hiện diện và hành động của Chúa khắp nơi, vượt trên đền thờ.",
     "language": "vi",
     "options": [
-      "Đức Chúa Trời chỉ ở trong đền thờ Giê-ru-sa-lem",
-      "Y-sơ-ra-ên là dân tốt nhất",
+      "Đức Chúa Trời ƯU TIÊN hành động tại Giê-ru-sa-lem và đền thờ: Áp-ra-ham dâng con tại núi Mô-ri-a (7:2-3), Giô-sép mơ thấy Chúa tại Ca-na-an (7:9-16), Môi-se lập hội mạc tại đồng vắng (7:44) → Ê-tiên BIỆN HỘ cho địa vị trung tâm của đền thờ mới.",
+      "Bài giảng muốn chứng minh Đức Chúa Trời chỉ hành động qua các nhân vật Do Thái và tại các nơi thánh của Do Thái giáo: Áp-ra-ham tại Mê-sô-pô-ta-mi (7:2-3), Giô-sép tại Ai-cập (7:9-16), Môi-se tại Ma-đi-an (7:30) → Ê-tiên BIỆN HỘ cho sự độc tôn của dân tộc Do Thái.",
       "Đức Chúa Trời HÀNH ĐỘNG ở nhiều NƠI khác Giê-ru-sa-lem: Áp-ra-ham được kêu tại MÊ-SÔ-PÔ-TA-MI (7:2-3), Giô-sép tôn cao tại AI-CẬP (7:9-16), Môi-se gặp Chúa nơi BUI GAI ngoài đồng vắng MA-ĐI-AN (7:30) → ĐỀN THỜ KHÔNG độc quyền sự hiện diện Chúa; Ê-tiên BIỆN HỘ rằng Cơ-đốc giáo KHÔNG bài bác đền thờ — mà chỉ tiếp nối truyền thống Chúa hiện diện KHẮP NƠI",
-      "Y-sơ-ra-ên cần xây thêm 4 đền thờ"
+      "Cấu trúc nhấn mạnh sự cần thiết của việc tuân thủ luật pháp tại mọi địa điểm: Áp-ra-ham nhận lời hứa tại Mê-sô-pô-ta-mi (7:2-3), Giô-sép gìn giữ luật tại Ai-cập (7:9-16), Môi-se nhận luật tại Ma-đi-an (7:30) → Ê-tiên BIỆN HỘ cho thẩm quyền của luật pháp Môi-se."
     ],
     "tags": [
       "Tan Uoc",
@@ -3333,13 +3333,13 @@
       0
     ],
     "content": "KIỂU 3 hiểu sâu — Phao-lô có BA hành trình truyền giáo. Cả 3 đều xuất phát từ thành phố nào, và chủ đề chính của cấu trúc đó là gì?",
-    "explanation": "Acts 13-21 — Ba hành trình truyền giáo Phao-lô đều CĂN CỨ tại AN-TI-ỐT xứ Sy-ri (KHÔNG Giê-ru-sa-lem). (1) HÀNH TRÌNH 1 (13:1-14:28, ~46-48 SC) — An-ti-ốt → Chíp-rơ → An-ti-ốt Bi-si-đi → Lít-trơ → trở về AN-TI-ỐT; có Ba-na-ba + Mác. (2) HÀNH TRÌNH 2 (15:36-18:22, ~49-52) — An-ti-ốt → Tiểu Á → Ma-xê-đoan → A-thên → Cô-rinh-tô (18 tháng) → trở về; có Si-la + Ti-mô-thê + Lu-ca. (3) HÀNH TRÌNH 3 (18:23-21:14, ~53-57) — An-ti-ốt → Ê-phê-sô (3 năm) → Ma-xê-đoan → Hy-lạp → Mi-lê → Giê-ru-sa-lem. Sau đó: TÙ → Sê-sa-rê → RÔ-MA. Chủ đề thần học: TIN LÀNH SHIFT từ trung tâm Cựu Ước (Giê-ru-sa-lem) sang trung tâm Tân Ước DÂN NGOẠI (An-ti-ốt) → Đến tận Rô-ma (thủ đô đế quốc).",
+    "explanation": "Công vụ 13:1 ghi rõ hội thánh tại An-ti-ốt là nơi Phao-lô và Ba-na-ba được Đức Thánh Linh sai đi, và các đoạn 15:35-41, 18:22-23 cho thấy các hành trình sau cũng khởi hành/tái khởi hành từ đó. Chủ đề chính về cấu trúc là Tin Lành chuyển trung tâm từ Đền thờ Giê-ru-sa-lem (Cựu Ước) sang An-ti-ốt (hội thánh Dân Ngoại), với mỗi hành trình mở rộng hơn. DISTRACTOR 1 (Giê-ru-sa-lem) là hiểu lầm phổ biến vì Giê-ru-sa-lem là điểm khởi đầu chung (Cv 1:8), nhưng ba hành trình truyền giáo đặc thù của Phao-lô lại xuất phát từ An-ti-ốt. DISTRACTOR 2 (An-ti-ốt, sai chi tiết chủ đề) gần đúng về địa điểm nhưng sai chi tiết then chốt: chủ đề không phải 'từ An-ti-ốt ra các tỉnh La Mã' mà là sự chuyển dịch từ Đền thờ Giê-ru-sa-lem sang An-ti-ốt. DISTRACTOR 3 (Cốt-lô-ai) nhầm sang phân đoạn gần (Cv 11:26) nơi các môn đồ được gọi là Cơ Đốc nhân đầu tiên tại An-ti-ốt, nhưng thành phố đó là An-ti-ốt, không phải Cốt-lô-ai (chỉ là một phần trong câu chuyện).",
     "language": "vi",
     "options": [
       "AN-TI-ỐT xứ Sy-ri (Acts 13:1, 15:35-41, 18:22-23) — KHÔNG phải Giê-ru-sa-lem; chủ đề: TIN LÀNH lan từ ĐỀN THỜ Giê-ru-sa-lem (đại diện Cựu Ước) sang AN-TI-ỐT (đại diện hội thánh DÂN NGOẠI mới); MỖI hành trình xa hơn: 1 = Tiểu Á, 2 = qua châu ÂU, 3 = củng cố + đến Giê-ru-sa-lem rồi RÔ-MA",
-      "Giê-ru-sa-lem",
-      "Tạt-sơ",
-      "Đa-mách"
+      "GIÊ-RU-SA-LEM (Acts 1:8, 8:1, 15:2) — KHÔNG phải An-ti-ốt; chủ đề: TIN LÀNH lan từ GIÊ-RU-SA-LEM (trung tâm) ra các vùng Giu-đê, Sa-ma-ri, cho đến cùng trái đất; MỖI hành trình xa hơn: 1 = Sa-ma-ri, 2 = Tiểu Á, 3 = châu Âu",
+      "AN-TI-ỐT xứ Sy-ri (Acts 13:1, 15:35-41, 18:22-23) — KHÔNG phải Giê-ru-sa-lem; chủ đề: TIN LÀNH lan từ AN-TI-ỐT (trung tâm hội thánh) ra các tỉnh La Mã; MỖI hành trình xa hơn: 1 = Sy-ri, 2 = Si-đi-ôn, 3 đến Rô-ma",
+      "CỐT-LÔ-AI (Acts 11:26, 13:1-3) — KHÔNG phải Giê-ru-sa-lem; chủ đề: TIN LÀNH lan từ CỐT-LÔ-AI (nơi đầu tiên gọi là Cơ Đốc nhân) ra thế giới; MỖI hành trình xa hơn: 1 = đảo Síp, 2 = Ga-la-ti, 3 = A-si"
     ],
     "tags": [
       "Tan Uoc",

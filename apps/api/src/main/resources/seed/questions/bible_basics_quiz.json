@@ -7,15 +7,15 @@
     "type": "multiple_choice_single",
     "content": "Theo Ma-thi-ơ 28:19, Chúa Giê-su truyền dạy phép báp-tem được thực hiện nhân danh ai?",
     "options": [
-      "Nhân danh Đức Chúa Trời",
+      "Nhân danh Chúa Giê-su và Hội Thánh Ngài",
       "Nhân danh Ba Ngôi: Cha, Con, và Thánh Linh",
-      "Nhân danh Chúa Giê-su Christ",
-      "Nhân danh Đức Thánh Linh"
+      "Nhân danh Đức Chúa Trời và Đức Thánh Linh",
+      "Nhân danh Chúa Giê-su, Đấng Christ"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Chúa Giê-su truyền cho các môn đồ làm phép báp-tem cho muôn dân nhân danh Đức Cha, Đức Con và Đức Thánh Linh. Đây là một trong những câu Kinh Thánh quan trọng nói về Ba Ngôi (Ma-thi-ơ 28:19).",
+    "explanation": "Ma-thi-ơ 28:19 ghi rõ lệnh truyền: \"Vậy, hãy đi dạy dỗ muôn dân, hãy nhân danh Đức Cha, Đức Con, và Đức Thánh Linh mà làm phép báp-têm cho họ.\" Đáp án đúng chính xác theo Kinh Thánh là Ba Ngôi: Cha, Con, và Thánh Linh. Distractor 'Nhân danh Chúa Giê-su và Hội Thánh Ngài' mượn ý từ khải tượng về Hội Thánh, nhưng sai với câu này. Distractor 'Nhân danh Đức Chúa Trời và Đức Thánh Linh' gần đúng nhưng thiếu yếu tố 'Con', làm sai lệnh truyền trọn vẹn. Distractor 'Nhân danh Chúa Giê-su, Đấng Christ' phản ánh một hiểu lầm phổ biến rằng chỉ nhân danh Chúa Giê-su là đủ, trái với lời dạy rõ ràng trong phân đoạn.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
@@ -60,15 +60,15 @@
     "type": "multiple_choice_single",
     "content": "Câu Kinh Thánh nào dạy rõ về Ba Ngôi?",
     "options": [
-      "Sáng Thế Ký 1:1",
+      "Ma-thi-ơ 28:20 — Ta thường ở cùng các ngươi luôn cho đến tận thế",
       "Ma-thi-ơ 28:19 — nhân danh Đức Cha, Đức Con, và Đức Thánh Linh",
-      "Thi Thiên 23:1",
-      "Giăng 1:1"
+      "Ma-thi-ơ 3:16 — Đức Thánh Linh lấy hình chim bồ câu ngự xuống trên Ngài",
+      "Giăng 1:1 — Ban đầu có Ngôi Lời, Ngôi Lời ở cùng Đức Chúa Trời"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Ma-thi-ơ 28:19 là Đại Mạng Lệnh, nơi Chúa Jesus dạy phép báp-tem nhân danh ba thân vị: Đức Cha, Đức Con, và Đức Thánh Linh.",
+    "explanation": "Đáp án đúng là Ma-thi-ơ 28:19 vì câu Kinh Thánh này ghi rõ mệnh lệnh 'nhân danh Đức Cha, Đức Con, và Đức Thánh Linh', trực tiếp và rõ ràng liệt kê ba thân vị trong Ba Ngôi. Distractor 'Ma-thi-ơ 28:20' sai vì trích câu ngay sau đó, nói về sự hiện diện của Chúa nhưng không đề cập đến Ba Ngôi. Distractor 'Ma-thi-ơ 3:16' sai vì mô tả sự giáng lâm của Đức Thánh Linh trên Đức Chúa Jesus, chỉ đề cập đến hai thân vị, không trình bày đầy đủ giáo lý Ba Ngôi như một mệnh lệnh hay sự dạy dỗ rõ ràng. Distractor 'Giăng 1:1' sai vì dù đề cập đến Ngôi Lời và Đức Chúa Trời, có liên quan đến thần tính của Chúa Con, nhưng không nêu rõ ba thân vị riêng biệt của Ba Ngôi một cách trực tiếp như câu hỏi yêu cầu.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
@@ -245,15 +245,15 @@
     "type": "multiple_choice_single",
     "content": "Kinh Thánh là gì?",
     "options": [
-      "Một tập hợp các câu chuyện cổ",
-      "Một cuốn sách tốt về đạo đức",
+      "Lời được các sứ đồ viết ra, là chân lý và thẩm quyền tuyệt đối cho đời sống đức tin",
+      "Lời được Đức Chúa Trời linh cảm, là sách lịch sử và văn học có giá trị",
       "Lời được Đức Chúa Trời linh cảm, là chân lý và thẩm quyền tuyệt đối cho đời sống đức tin",
-      "Sách lịch sử của dân Do Thái"
+      "Lời được Đức Chúa Trời phán, là quyển sách về luân lý và triết lý sống"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Ti-mô-thê 3:16: 'Cả Kinh Thánh đều là bởi Đức Chúa Trời linh cảm, có ích cho sự dạy dỗ, bẻ trách, sửa trị, dạy người trong sự công bình.' Kinh Thánh là Lời Đức Chúa Trời, thẩm quyền tuyệt đối cho đức tin và đời sống.",
+    "explanation": "Câu hỏi: \"Kinh Thánh là gì?\" tham chiếu 2 Ti-mô-thê 3:16. Đáp án đúng: \"Lời được Đức Chúa Trời linh cảm, là chân lý và thẩm quyền tuyệt đối cho đời sống đức tin\" là chính xác, vì 2 Ti-mô-thê 3:16 dạy: \"Cả Kinh Thánh đều là bởi Đức Chúa Trời soi dẫn...\" (BTT).\n\nCác đáp án sai:\n1. (almost-right, wrong_detail): Sai chi tiết về tác giả. Kinh Thánh được Đức Chúa Trời linh cảm qua các tác giả loài người, không chỉ đơn thuần là lời của các sứ đồ. Câu này thay \"Đức Chúa Trời linh cảm\" bằng \"các sứ đồ viết ra\".\n2. (wrong_scope): Sai phạm vi công dụng. Kinh Thánh có chứa lịch sử và văn học, nhưng mục đích chính và trọn vẹn của nó là để \"dạy dỗ, bẻ trách, sửa trị, dạy người trong sự công bình\" (2 Ti-mô-thê 3:16), chứ không chỉ là một sách lịch sử, văn học thông thường.\n3. (true_but_off): Đúng văn bản nhưng lạc câu hỏi. Kinh Thánh có chứa luân lý và triết lý sống, nhưng câu trả lời này bỏ qua yếu tố then chốt là thẩm quyền tuyệt đối và sự linh cảm từ Đức Chúa Trời, khiến nó trở nên không đầy đủ và lạc trọng tâm so với ý nghĩa của phân đoạn được tham chiếu.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",

@@ -8,15 +8,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Giê-hô-va phán bảo Môi-se làm gì tại hoang mạc Si-na-i?",
     "options": [
-      "Chia đất Ca-na-an",
-      "Xây đền thờ",
+      "Chia đất cho các chi phái Y-sơ-ra-ên",
+      "Thiết lập hệ thống tế lễ tại hoang mạc",
       "Kiểm tra dân số Y-sơ-ra-ên",
-      "Lập bàn thờ"
+      "Tuyển chọn những người Lê-vi phục vụ đền tạm"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 1:2-3 — 'Hãy kiểm tra dân số của toàn thể hội chúng Y-sơ-ra-ên theo từng thị tộc, từng gia tộc, cứ đếm từng tên, tất cả nam giới.' Đây là lý do sách được gọi là Dân Số Ký.",
+    "explanation": "Trong Dân Số Ký 1:2-3, Đức Giê-hô-va phán bảo Môi-se: \"Hãy dựng sổ cả hội chúng Y-sơ-ra-ên... từ hai mươi tuổi sắp lên, tức là mọi người trong Y-sơ-ra-ên đi ra trận được\". Vì vậy, đáp án đúng là kiểm tra dân số (hay dựng sổ, tu bộ) toàn thể nam giới từ 20 tuổi trở lên. Các đáp án sai: (1) 'Chia đất' là việc xảy ra sau này, khi vào Ca-na-an, nên sai phạm vi thời gian. (2) 'Thiết lập hệ thống tế lễ' được mô tả chi tiết trong sách Lê-vi Ký, là việc trước đó tại núi Si-na-i, nên thuộc passage gần nhưng không phải nội dung câu hỏi. (3) 'Tuyển chọn người Lê-vi' là một việc liên quan đến kiểm tra dân số (xem Dân Số 3:15), nhưng sai chi tiết then chốt vì mệnh lệnh trong 1:2-3 là kiểm tra dân số chung, còn việc tuyển chọn người Lê-vi là một mệnh lệnh riêng, sau đó.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -141,7 +141,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 5:2-3 — 'Hãy truyền cho dân Y-sơ-ra-ên đuổi ra ngoài trại mọi người bị phong hủi, mọi người bị bệnh lậu, và mọi người bị ô uế vì xác chết.'",
+    "explanation": "Kinh Thánh chép: 'Hãy biểu dân Y-sơ-ra-ên đuổi ra ngoài trại hết thảy người mắc bệnh phong hủi... hầu cho chúng nó không làm ô uế trại mình, là nơi Ta ngự ở giữa' (Dân số ký 5:2-3). Đáp án đúng là 'Đuổi ra ngoài trại' vì Chúa truyền lệnh phải đuổi họ ra khỏi nơi cộng đồng sinh sống để giữ sự thánh khiết.\n\nCác đáp án sai: (1) 'Đưa vào khu vực cách ly riêng trong trại' là gần đúng nhưng sai chi tiết then chốt: mệnh lệnh là đuổi ra 'ngoài trại', không phải cách ly bên trong. (2) 'Dâng của lễ chuộc tội tại đền tạm' đúng với nghi thức thanh tẩy sau này (Lê-vi ký 14) nhưng lạc câu hỏi về cách đối xử ban đầu, không phải nghi lễ phục hồi. (3) 'Tắm rửa sạch sẽ và chờ bảy ngày' là chi tiết áp dụng cho người bị ô uế vì xác chết (Dân số ký 19:11-12) trong một đoạn gần, không phải cho người phong hủi trong đoạn này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -150,10 +150,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Cách ly trong nhà",
-      "Đưa đến đền thờ",
+      "Đưa vào khu vực cách ly riêng trong trại",
+      "Dâng của lễ chuộc tội tại đền tạm",
       "Đuổi ra ngoài trại",
-      "Chữa lành bằng dầu"
+      "Tắm rửa sạch sẽ và chờ bảy ngày"
     ]
   },
   {
@@ -165,15 +165,15 @@
     "type": "multiple_choice_single",
     "content": "Người Na-xi-rê phải kiêng cữ điều gì?",
     "options": [
-      "Mặc áo len",
-      "Đi ra ngoài trại",
+      "Ăn bánh mì lên men và thịt ô uế",
+      "Kiêng quan hệ vợ chồng và cạo râu",
       "Uống rượu và các sản phẩm từ nho",
-      "Ăn thịt"
+      "Không được chạm vào xác chết và cắt tóc"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 6:3-4 — 'Người ấy phải kiêng rượu và thức uống có men... không ăn bất cứ sản phẩm nào từ cây nho, từ hạt đến vỏ.'",
+    "explanation": "Đáp án đúng vì Dân số ký 6:3-4 ghi rõ: 'người phải kiêng cữ rượu và giấm làm bằng rượu hoặc làm bằng một thứ nho nào, không được uống một thứ nước nho nào, và không được ăn nho tươi hay nho khô'.\n\n- Distractor 1 (Ăn bánh mì lên men và thịt ô uế) sai: Đây là các quy định về sự tinh sạch trong Lê-vi ký (ví dụ Lê-vi ký 11, Lê-vi ký 23:6), không phải lời thề Na-xi-rê trong Dân số ký 6.\n- Distractor 2 (Kiêng quan hệ vợ chồng và cạo râu) sai: Trong thời kỳ thề nguyền, người Na-xi-rê không được cạo tóc (Dân số ký 6:5), không phải râu. Việc kiêng quan hệ vợ chồh chỉ được đề cập riêng cho thầy tế lễ trong một số dịp đặc biệt (Lê-vi ký 10:9, 21:1-12).\n- Distractor 3 (Không được chạm vào xác chết và cắt tóc) sai: Đây là những điều kiêng cữ khác của người Na-xi-rê (Dân số ký 6:5-7), nhưng câu hỏi cụ thể hỏi về điều họ 'phải kiêng cữ' được liệt kê trong các câu 1-4, tức là về rượu và sản phẩm từ nho.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -246,15 +246,15 @@
     "type": "multiple_choice_single",
     "content": "Người nào bị ô uế vì xác chết hoặc đi xa thì giữ Lễ Vượt Qua vào lúc nào?",
     "options": [
-      "Không được giữ",
-      "Tháng ba, ngày mười bốn",
+      "Tháng giêng, ngày mười bốn",
+      "Tháng hai, ngày mười lăm",
       "Tháng hai, ngày mười bốn",
-      "Tháng giêng, ngày mười bốn"
+      "Tháng ba, ngày mười bốn"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 9:10-11 — 'Người ấy phải giữ Lễ Vượt Qua vào ngày mười bốn tháng hai, lúc chiều tối.' Đây là quy định đặc biệt cho trường hợp ngoại lệ.",
+    "explanation": "Đáp án đúng 'Tháng hai, ngày mười bốn' dựa trực tiếp vào Kinh Thánh Dân Số Ký 9:10-11, nơi Đức Chúa Trời truyền lệnh cho những người bị ô uế vì xác chết hoặc đi xa được giữ Lễ Vượt Qua vào tháng hai, ngày mười bốn.\n\nCác đáp án sai: 1) 'Tháng giêng, ngày mười bốn' là gần đúng nhưng sai chi tiết then chốt vì đây là thời gian giữ Lễ Vượt Qua thông thường (Xuất Ê-díp-tô Ký 12:6), không áp dụng cho trường hợp đặc biệt này. 2) 'Tháng hai, ngày mười lăm' sai chi tiết số ngày; luật quy định rõ là ngày mười bốn. 3) 'Tháng ba, ngày mười bốn' sai phạm vi vì Kinh Thánh không đề cập đến tháng ba cho Lễ Vượt Qua trong ngữ cảnh này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -730,14 +730,14 @@
     "content": "Bò cái dùng trong nghi thức tẩy uế phải có đặc điểm gì?",
     "options": [
       "Màu đỏ, không tì vết, chưa mang ách",
-      "Bất kỳ màu nào, dưới ba tuổi",
-      "Màu trắng, không tì vết",
-      "Màu đen, một tuổi"
+      "Màu đỏ, không tì vết, không sinh sản",
+      "Màu nâu sậm, không tì vết, chưa mang ách",
+      "Màu đỏ, không tì vết, đã được dâng làm của lễ trước đó"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Dân Số Ký 19:2 — 'Hãy bảo dân Y-sơ-ra-ên đem đến cho ngươi một con bò cái màu đỏ, không tì vết, không khuyết tật, chưa hề mang ách.'",
+    "explanation": "Câu trả lời đúng là 'Màu đỏ, không tì vết, chưa mang ách' dựa trên Numbers 19:2, nơi Chúa phán dặn Môi-se và A-rôn: 'Hãy bảo dân Y-sơ-ra-ên đem đến cho ngươi một con bò cái tơ sắc đỏ, không tì vết, không có tật, và chưa từng mang ách.' Con bò này phải hội đủ cả ba điều kiện: màu sắc đỏ, không có khuyết điểm, và chưa từng bị bắt làm việc. \n\nCác đáp án sai: \n1. 'Màu đỏ, không tì vết, không sinh sản' là sai vì Kinh Thánh không đề cập đến việc con bò chưa từng sinh sản; điều kiện then chốt là 'chưa mang ách' (chưa bị sử dụng vào công việc). \n2. 'Màu nâu sậm, không tì vết, chưa mang ách' là sai vì Kinh Thánh quy định rõ màu 'đỏ', không phải nâu sậm. \n3. 'Màu đỏ, không tì vết, đã được dâng làm của lễ trước đó' là sai vì con bò phải chưa từng được sử dụng cho bất kỳ nghi lễ nào trước đó; nó được dành riêng cho nghi thức tẩy uế này lần đầu tiên.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -861,15 +861,15 @@
     "type": "multiple_choice_single",
     "content": "Con rắn đồng trong Dân Số Ký 21 được Chúa Giê-xu liên hệ với sự kiện nào trong Giăng 3:14?",
     "options": [
-      "Sự tái lâm của Ngài",
-      "Sự chịu báp-têm của Ngài",
+      "Con Người phải bị rắn độc cắn",
+      "Con Người phải xuống từ trời",
       "Con Người phải bị treo lên (thập tự giá)",
-      "Sự phục sinh của Ngài"
+      "Con Người phải được chôn trong mộ"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 21:8-9 và Giăng 3:14 — 'Như Môi-se treo con rắn lên trong hoang mạc thể nào, thì Con Người cũng phải bị treo lên thể ấy.' Đây là hình bóng về sự cứu rỗi qua thập tự giá.",
+    "explanation": "Câu hỏi hỏi về sự kiện trong Giăng 3:14 mà Chúa Giê-xu liên hệ với con rắn đồng trong Dân Số Ký 21. Đáp án đúng là 'Con Người phải bị treo lên (thập tự giá)' vì Giăng 3:14 ghi: 'Xưa Môi-se treo con rắn lên nơi đồng vắng thể nào, thì Con Người cũng phải bị treo lên dường ấy.' (BTT). \n\nCác đáp án sai: \n- 'Con Người phải bị rắn độc cắn' sai vì Giăng 3:14 không nói Ngài bị rắn cắn, mà nói về việc 'bị treo lên' (sai chi tiết then chốt, nhưng dùng đúng từ 'Con Người' và liên hệ đến câu chuyện có rắn). \n- 'Con Người phải xuống từ trời' sai vì đây là ý trong Giăng 3:13 ('... Con Người... đã từ trời xuống'), một câu gần đó, nhưng không phải là sự liên hệ trực tiếp với con rắn đồng được đề cập trong câu hỏi (nhầm passage gần). \n- 'Con Người phải được chôn trong mộ' sai vì dù Chúa Giê-xu có được chôn, đây là sự kiện sau thập tự giá; Giăng 3:14 chỉ nói về việc 'bị treo lên', không nhắc đến việc chôn cất (đúng văn bản nhưng lạc câu hỏi, không liên quan trực tiếp đến phép loại suy với con rắn đồng).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1493,14 +1493,14 @@
     "content": "Ranh giới phía nam của đất Ca-na-an kéo dài đến đâu?",
     "options": [
       "Hoang mạc Xin dọc theo Ê-đôm",
-      "Biển Đỏ",
-      "Sông Giô-đanh",
-      "Sông Ai Cập"
+      "Hoang mạc Xin dọc theo Mô-áp",
+      "Vùng đồi núi của dân A-ma-léc",
+      "Biển Sết, tức Biển Chết"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Dân Số Ký 34:3 — 'Phía nam các ngươi sẽ bắt đầu từ hoang mạc Xin, dọc theo biên giới Ê-đôm.'",
+    "explanation": "Dân Số Ký 34:2-3 chép: \"Hãy truyền cho dân Y-sơ-ra-ên rằng: Khi các ngươi vào đất Ca-na-an, đây sẽ là xứ các ngươi sẽ được bắt thăm làm sản nghiệp, tức là đất Ca-na-an, theo bờ cõi nó. Bờ cõi phía nam sẽ là từ đồng vắng Xin dọc theo Ê-đôm.\" Vì vậy, đáp án đúng là \"Hoang mạc Xin dọc theo Ê-đôm\".\n\nDistractor 1 (\"Hoang mạc Xin dọc theo Mô-áp\") sai vì tuy đúng là hoang mạc Xin, nhưng lại gắn với Mô-áp chứ không phải Ê-đôm, đây là một chi tiết địa lý sai.\nDistractor 2 (\"Vùng đồi núi của dân A-ma-léc\") sai vì đây là một hiểu lầm phổ biến về khu vực cư trú của các dân tộc khác, không liên quan đến mô tả ranh giới phía nam trong đoạn Kinh Thánh này.\nDistractor 3 (\"Biển Sết, tức Biển Chết\") sai vì mặc dù Biển Chết (Biển Sết) có liên quan đến các ranh giới khác của đất Ca-na-an, nhưng nó không phải là điểm cuối phía nam được mô tả trong Dân Số Ký 34:2-3, đây là thông tin đúng nhưng lạc câu hỏi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1595,15 +1595,15 @@
     "type": "multiple_choice_single",
     "content": "'Không có gì chuộc được tội ___ cho đất, ngoại trừ huyết của kẻ đã làm đổ máu.' (Dân Số Ký 35:33)",
     "options": [
-      "gian ác",
-      "bất trung",
-      "phạm pháp",
+      "thờ hình tượng",
+      "làm ô uế thánh địa",
+      "phạm ngày Sa-bát",
       "giết người"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 35:33 — 'Không có gì chuộc được tội giết người (đổ máu) cho đất, ngoại trừ huyết của kẻ đã làm đổ máu.' Nguyên tắc quan trọng về công lý trong luật Môi-se.",
+    "explanation": "Đáp án đúng 'giết người' dựa vào Dân Số Ký 35:33: 'Không có gì chuộc được tội giết người cho đất, ngoại trừ huyết của kẻ đã làm đổ máu.' Đây là tội đặc biệt nghiêm trọng làm ô uế đất và chỉ có thể được chuộc bằng sự sống của chính kẻ phạm tội.\n\nCác đáp án sai:\n- 'thờ hình tượng': Sai vì đây là một tội lỗi nghiêm trọng khác nhưng không phải là tội cụ thể mà câu Kinh Thánh này đề cập đến việc chuộc tội cho đất bằng huyết. (common_misconception)\n- 'làm ô uế thánh địa': Gần đúng vì liên quan đến sự ô uế, nhưng câu Kinh Thánh này nói cụ thể về tội 'giết người' làm ô uế 'đất', không phải 'thánh địa'. (wrong_scope)\n- 'phạm ngày Sa-bát': Sai vì mặc dù là một tội trong luật pháp, nhưng không liên quan trực tiếp đến ngữ cảnh của Dân Số Ký 35 về các thành ẩn náu và tội ngộ sát/cố sát. (nearby_passage - các chương gần đó nói về luật lệ chung)",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1727,15 +1727,15 @@
     "type": "multiple_choice_single",
     "content": "Khi Môi-se cầu xin Đức Chúa Trời tha thứ cho dân sự, ông trích dẫn thuộc tính nào của Đức Giê-hô-va?",
     "options": [
-      "Đấng tạo dựng muôn vật",
-      "Đấng phán xét công bình",
+      "Chậm giận, đầy lòng nhân từ, trừng phạt tội ác",
+      "Đầy lòng nhân từ, hay làm ơn, tha thứ tội ác",
       "Chậm giận, đầy lòng nhân từ, tha thứ tội ác",
-      "Đấng toàn năng và khôn ngoan"
+      "Chậm giận, đầy lòng thương xót, không quên tội ác"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 14:18 — 'Đức Giê-hô-va chậm giận, đầy lòng nhân từ, tha thứ tội ác và sự vi phạm.' Môi-se dùng chính lời Đức Chúa Trời đã tự mô tả trong Xuất 34:6-7.",
+    "explanation": "Trong Dân Số Ký 14:18, Môi-se trích dẫn lời Đức Giê-hô-va phán trong Xuất Ê-díp-tô Ký 34:6-7: 'Đức Giê-hô-va là Đức Chúa Trời chậm giận và đầy lòng nhân từ, hay tha thứ tội ác và sự vi phạm'. Do đó, đáp án đúng là 'Chậm giận, đầy lòng nhân từ, tha thứ tội ác'. Các đáp án sai: 1) Sử dụng 'trừng phạt tội ác' thay vì 'tha thứ tội ác' (sai chi tiết then chốt). 2) Thay 'chậm giận' bằng 'hay làm ơn', một thuộc tính được nhắc đến trong cùng một lời tuyên bố nhưng không phải là cụm Môi-se trích dẫn trong ngữ cảnh này (nhầm đoạn văn gần). 3) Thay 'tha thứ tội ác' bằng 'không quên tội ác', dựa trên sự hiểu lầm phổ biến rằng lòng thương xót hoàn toàn xóa bỏ sự công bình, trong khi bản văn gốc nói về việc 'nhưng cũng không kể kẻ có tội là vô tội'.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1780,15 +1780,15 @@
     "type": "multiple_choice_single",
     "content": "A-rôn dùng gì để chặn dịch bệnh giữa dân sự sau cuộc nổi loạn của Cô-ra?",
     "options": [
-      "Huyết sinh tế",
-      "Nước thánh",
+      "Lư hương với lửa hồng từ bàn thúc tế",
+      "Bình đựng máu dâng lên bàn thờ",
       "Lư hương với lửa và hương",
-      "Gậy trượng"
+      "Bầu đựng nước thanh tẩy và chiếc bình vãi lên dân sự"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 16:46-48 — 'Hãy lấy lư hương, bỏ lửa từ bàn thờ vào, rồi bỏ hương lên trên... A-rôn đứng giữa kẻ chết và kẻ sống, và dịch bệnh ngừng lại.'",
+    "explanation": "Đáp án đúng dựa trên Dân Số Ký 16:46-48, nơi Môi-se bảo A-rôn cầm lấy lư hương, bỏ lửa từ bàn thờ vào đó và thêm hương, rồi mau mau đến với hội chúng để làm lễ chuộc tội, và A-rôn đã đứng giữa kẻ chết và người sống để dịch bệnh dừng lại.\nPhương án sai thứ nhất gần đúng vì chi tiết 'lửa hồng từ bàn thúc tế' có nền tảng trong văn bản (lửa từ bàn thờ), nhưng bản văn Kinh Thánh cụ thể không dùng từ 'thur' hay 'hồng' cùng với 'bàn thúc tế' cho các chi tiết này, và đặc biệt không đề cập đến 'bàn thúc tế' trong phân đoạn đó.\nPhương án sai thứ hai thuộc sai phạm vi vì việc dùng máu để chuộc tội liên quan đến nhiều nghi lễ khác (như Lê-vi Ký 4-5), nhưng hoàn toàn không xuất hiện trong bối cảnh của Dân Số Ký 16:46-48.\nPhương án sai thứ ba phản ánh một hiểu lầm phổ biến về các nghi thức thanh tẩy, thường liên quan đến nước và rảy máu hoặc nước (ví dụ như Dân Số Ký 8:7 hay 19:9), nhưng không phải là hành động A-rôn đã làm để chặn dịch ngay lập tức trong câu chuyện này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",

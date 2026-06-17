@@ -136,13 +136,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "E-xơ-tê 3:7,13 - Tháng A-đa (tháng 12) được bốc trúng, và ngày định sẵn là ngày 13 tháng đó. Từ \"Pu-rim\" (bốc thăm) trở thành tên lễ hội kỷ niệm sự giải cứu.",
+    "explanation": "Câu hỏi hỏi về ngày Ha-man bốc thăm (Purim) để chọn tiêu diệt dân Do-thái. Đáp án đúng là 'Ngày 13 tháng A-đa (tháng 12)' dựa trên E-xơ-tê 3:7: '...tháng thứ nhất, tức là tháng Ni-san... họ bắt thăm Phu-rim... trước mặt Ha-man, ngày nầy qua ngày kia, và từ tháng nầy đến tháng kia, cho đến tháng mười hai, tức là tháng A-đa.' Kết quả cuối cùng rơi vào ngày 13 tháng A-đa (Ê-xơ-tê 3:13).\n\nCác đáp án sai:\n1. 'Ngày 13 tháng Ni-san (tháng giêng)' là gần đúng nhưng sai chi tiết then chốt. Ha-man bắt đầu bốc thăm vào tháng Ni-san (tháng giêng), nhưng kết quả cuối cùng rơi vào tháng A-đa (Ê-xơ-tê 3:7). Đây là lỗi 'wrong_detail'.\n2. 'Một ngày trong tháng Sê-bát (tháng 8)' là sai phạm vi. Kinh Thánh không đề cập tháng Sê-bát trong ngữ cảnh này. Quá trình bốc thăm diễn ra từ tháng Ni-san đến tháng A-đa, không liên quan đến tháng Sê-bát. Đây là lỗi 'wrong_scope'.\n3. 'Ngày đầu tiên của năm mới' là hiểu lầm phổ biến. Dù tháng Ni-san là tháng đầu năm theo lịch tôn giáo, và Ha-man bắt đầu bốc thăm trong tháng này, nhưng ngày được chọn không phải là ngày đầu năm (1 tháng Ni-san) mà là ngày 13 tháng A-đa. Đây là lỗi 'common_misconception'.",
     "language": "vi",
     "options": [
-      "Ngày 1 tháng 1",
+      "Ngày 13 tháng Ni-san (tháng giêng)",
       "Ngày 13 tháng A-đa (tháng 12)",
-      "Ngày 14 tháng 1",
-      "Ngày 10 tháng 7"
+      "Một ngày trong tháng Sê-bát (tháng 8)",
+      "Ngày đầu tiên của năm mới"
     ],
     "tags": [
       "Cựu Ước",

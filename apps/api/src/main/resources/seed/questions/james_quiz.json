@@ -119,12 +119,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Nghe Lời Chúa mà không làm là tự lừa mình. Đức tin cần hành động.",
+    "explanation": "Gia-cơ 1:22 chép: \"Hãy làm theo lời, chớ lấy nghe làm đủ mà lừa dối mình.\" Đáp án đúng đúng vì trọng tâm của câu Kinh Thánh là sự đối lập giữa việc chỉ nghe (bị động) với việc làm theo (hành động).\n\n- Distractor 1 (Nghe và ghi nhớ suốt đời) sai vì câu Kinh Thánh không nhấn mạnh việc ghi nhớ lâu dài mà nhấn mạnh hành động 'làm theo' ngay.\n- Distractor 2 (Nghe và giảng dạy cho người khác) sai vì phạm vi vượt quá ý chính của câu. Câu này tập trung vào phản ứng cá nhân với Lời Chúa (nghe vs. làm), chứ không bàn về việc truyền đạt cho người khác.\n- Distractor 3 (Nghe và suy ngẫm trong lòng) là đáp án 'gần đúng' nhưng vẫn sai. Mặc dù suy ngẫm là quan trọng và có thể liên quan đến ngữ cảnh rộng hơn (như suy gẫm trong Gia-cơ 1:25), câu 22 cụ thể và trực tiếp đối chiếu 'nghe' với 'làm theo', chứ không phải với 'suy ngẫm'. Chỉ dừng ở suy ngẫm vẫn chưa phải là 'làm theo' như Lời dạy.",
     "language": "vi",
     "options": [
-      "Chỉ nghe",
-      "Chỉ đọc",
-      "Chỉ học thuộc",
+      "Nghe và ghi nhớ suốt đời",
+      "Nghe và giảng dạy cho người khác",
+      "Nghe và suy ngẫm trong lòng",
       "Làm theo, không chỉ nghe suông"
     ],
     "tags": [
@@ -523,13 +523,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Gia-cơ 5:7 — 'Hỡi anh em, vậy hãy nhịn nhục cho tới ngày Chúa đến. Hãy xem kẻ làm ruộng: họ chờ đợi sản vật quí báu dưới đất cho đến chừng nào đã được mưa đầu mùa và cuối mùa.'",
+    "explanation": "Gia-cơ 5:7-8 dạy: 'Thế thì, hỡi anh em, hãy nhịn nhục cho đến kỳ Chúa đến. Kìa, người làm ruộng trông đợi sản vật quí báu của đất, hãy nhịn nhục cho đến chừng nào đã được mưa đầu mùa và cuối mùa. Anh em cũng vậy, hãy nhịn nhục và bền lòng; vì kỳ Chúa đến gần rồi.' Đáp án đúng là 'Người làm ruộng (người trồng trọt)' vì Kinh Thánh trực tiếp so sánh sự nhịn nhục của tín hữu với sự chờ đợi kiên nhẫn của người làm ruộng đối với mùa màng.\n\nCác đáp án sai:\n1. 'Người chăn chiên (người chăn bầy)' (gần đúng - nearby_passage): Đây là một hình ảnh phổ biến trong Kinh Thánh (ví dụ: Thi Thiên 23) nhưng không được đề cập trong ngữ cảnh Gia-cơ 5:7-8. Người đọc có thể nhớ nhầm sang các hình ảnh ví dụ khác.\n2. 'Người chạy đua (người vận động viên)' (common_misconception): Hình ảnh này thường được dùng để minh họa đời sống tin kính và sự chạy đua thuộc linh (ví dụ: 1 Cô-rinh-tô 9:24, Hê-bơ-rơ 12:1), nhưng không phải là hình ảnh được Gia-cơ sử dụng trong đoạn này để dạy về sự nhịn nhục chờ Chúa tái lâm.\n3. 'Người kiến trúc sư (người xây nhà)' (true_but_off): Dù Kinh Thánh có nói về việc xây dựng (ví dụ: Ma-thi-ơ 7:24), và sự kiên nhẫn có thể liên quan, nhưng đây không phải là phép loại suy được Gia-cơ chọn trong câu hỏi cụ thể về sự nhịn nhục chờ đợi.",
     "language": "vi",
     "options": [
-      "Thợ rèn",
-      "Vận động viên",
+      "Người chăn chiên (người chăn bầy)",
+      "Người chạy đua (người vận động viên)",
       "Người làm ruộng (người trồng trọt)",
-      "Người đánh cá"
+      "Người kiến trúc sư (người xây nhà)"
     ],
     "tags": [
       "Tân Ước",
@@ -549,13 +549,13 @@
       2
     ],
     "content": "Theo Gia-cơ 1:12, ai chịu nổi sự thử thách thì được ban gì?",
-    "explanation": "Gia-cơ 1:12 — 'Phước cho người bị cám dỗ; vì lúc đã chịu nổi sự thử thách rồi, thì sẽ lãnh mão triều thiên của sự sống mà Đức Chúa Trời đã hứa cho kẻ kính mến Ngài.' 'MÃO TRIỀU THIÊN' (stephanos) = vương miện chiến thắng. Khải 2:10 cùng cụm. Thử thách KHÔNG phải để hủy diệt — mà để chứng tỏ và ban thưởng đức tin chịu đựng.",
+    "explanation": "Câu hỏi trích dẫn Gia-cơ 1:12. Đáp án đúng trực tiếp dẫn từ câu Kinh Thánh: 'Phước cho người bền lòng chịu thử thách; vì khi đã chịu nổi sự thử thách rồi, thì sẽ lãnh mão triều thiên của sự sống mà Chúa đã hứa cho kẻ kính mến Ngài.' (BTT). Mão triều thiên sự sống là phần thưởng tương lai, hứa cho người kiên trì chịu thử thách và kính mến Chúa.\n\nCác đáp án sai:\n1. 'Mão triều thiên của sự công bình — Chúa hứa cho người chiến thắng cám dỗ': Là loại lỗi 'nearby_passage'. Điều này dựa trên ý từ 2 Ti-mô-thê 4:8 nói về mão triều thiên sự công bình, không phải từ Gia-cơ 1:12. Đây là distractor 'gần đúng' vì đúng đến 90% (cùng cấu trúc 'mão triều thiên của...' và 'Chúa hứa'), chỉ sai chi tiết từ 'sự sống' thành 'sự công bình' và thay đổi đối tượng được hứa.\n2. 'Được vào vương quốc thiên đàng — Chúa ban cho kẻ chịu khổ vì Danh Ngài': Là loại lỗi 'wrong_scope'. Vương quốc thiên đàng là phần thưởng lớn hơn, bao quát hơn, thường được hứa trong Tân Ước (như Ma-thi-ơ 5:10), nhưng không phải là phần thưởng cụ thể được nói đến trong Gia-cơ 1:12. Nó làm thay đổi chủ đề của phần thưởng.\n3. 'Được sự khôn ngoan và hiểu biết — Chúa sẵn lòng ban cho ai cầu xin': Là loại lỗi 'true_but_off'. Đây là một lời hứa đúng và có trong cùng phân đoạn (Gia-cơ 1:5), nhưng không liên quan đến câu hỏi về phần thưởng cho người chịu nổi sự thử thách. Nó trả lời một câu hỏi khác ('Được gì khi cầu xin?'), không phải câu hỏi này.",
     "language": "vi",
     "options": [
-      "Sự giàu có",
-      "Sự sống lâu",
+      "Mão triều thiên của sự công bình — Chúa hứa cho người chiến thắng cám dỗ",
+      "Được vào vương quốc thiên đàng — Chúa ban cho kẻ chịu khổ vì Danh Ngài",
       "Mão triều thiên sự sống — Chúa hứa cho kẻ kính mến Ngài",
-      "Sự khôn ngoan"
+      "Được sự khôn ngoan và hiểu biết — Chúa sẵn lòng ban cho ai cầu xin"
     ],
     "tags": [
       "Tân Ước",
@@ -887,13 +887,13 @@
       1
     ],
     "content": "Theo Gia-cơ 3:2, ai không lỡ lời trong nói năng thì ra sao?",
-    "explanation": "Gia-cơ 3:2 — 'Chúng ta thảy đều vấp phạm nhiều cách lắm. Nếu có ai không vấp phạm trong lời nói mình, ấy là người trọn vẹn, hay hãm cầm cả mình.' 'TRỌN VẸN' (teleios) = trưởng thành. Lập luận Gia-cơ: kẻ kiểm soát LƯỠI = kiểm soát ĐỜI MÌNH (con ngựa cương dắt → đi đâu; tàu lái dẫn → đi đâu). Lưỡi nhỏ — quyền lớn.",
+    "explanation": "Câu hỏi dựa trên Gia-cơ 3:2: 'Vì ai cũng hay vấp phạm, nhưng nếu có ai không vấp phạm trong lời nói, ấy là người trọn vẹn, hay hãm cầm cả thân mình.' Đáp án đúng diễn giải chính xác từ 'người trọn vẹn' và 'hãm cầm cả thân mình' (hình ảnh hãm cường con ngựa được sử dụng trong câu 3 để minh họa).\n\n- Distractor 1 (gần đúng) sai do nhầm sang chi tiết của câu 3:4: lưỡi như bánh lái tàu. Dù 'không lỡ lời' liên quan đến lưỡi, nhưng đặc điểm của 'người trọn vẹn' được định nghĩa ở đây là 'hãm cầm cả thân mình', không chỉ riêng lưỡi.\n- Distractor 2 sai chi tiết: 'tâm linh' xuất hiện trong Gia-cơ 2:26 ('xác chết không hồn'), không phải trong câu này. Câu 3:2 chỉ nói 'thân mình/thân thể', không nói 'tâm linh'.\n- Distractor 3 thể hiện hiểu lầm phổ biến: Nhầm lẫn 'người trọn vẹn' với 'người khôn ngoan'. Dù Gia-cơ 3:13 có nói về sự khôn ngoan, nhưng trong câu 3:2 người không lỡ lời được gọi là 'người trọn vẹn', một khái niệm khác biệt về sự trưởng thành và kiểm soát toàn diện.",
     "language": "vi",
     "options": [
-      "Sẽ được giàu có",
+      "Là người TRỌN VẸN — có thể HÃM CẦM cả lưỡi mình (như bánh lái tàu)",
       "Là người TRỌN VẸN — có thể HÃM CẦM cả thân thể (cương con ngựa)",
-      "Sẽ được vinh hiển ngay",
-      "Sẽ trở thành tiên tri"
+      "Là người TRỌN VẸN — có thể CHẾ NGỰ cả tâm linh (cương con ngựa)",
+      "Là người khôn ngoan — có thể HÃM CẦM cả thân thể (cương con ngựa)"
     ],
     "tags": [
       "Tân Ước",
@@ -1069,13 +1069,13 @@
       1
     ],
     "content": "Theo Gia-cơ 2:11, tại sao phạm một điều răn (như tà dâm hoặc giết người) thì cũng đáng tội như đã phạm trọn luật?",
-    "explanation": "Gia-cơ 2:11 — 'Vả, Đấng đã phán rằng: Chớ phạm tội tà dâm, cũng có phán rằng: Chớ giết người. Vậy nếu người không phạm tội tà dâm, nhưng phạm tội giết người, thì ngươi là kẻ phạm luật pháp.' Lập luận: vi phạm luật = vi phạm quyền uy ĐẤNG BAN. Cùng Một Đấng ban tất cả → phá một điều răn = phá thẩm quyền của Đấng ban luật.",
+    "explanation": "Câu hỏi trắc nghiệm này kiểm tra việc hiểu lý do tại sao vi phạm một điều răn lại được xem là vi phạm toàn bộ luật pháp theo Gia-cơ 2:11. ĐÁP ÁN ĐÚNG: Trích dẫn trực tiếp Gia-cơ 2:11, 'Vì Đấng đã phán: Ngươi chớ phạm tội tà dâm, cũng phán: Ngươi chớ giết người. Vậy nếu ngươi không phạm tội tà dâm, nhưng phạm tội giết người, thì ngươi cũng là kẻ phạm luật pháp.' Lý do chính là vì cả hai điều răn đều đến từ CÙNG MỘT ĐẤNG (Đức Chúa Trời). Phạm một điều là bội nghịch với chính Đấng ban luật, do đó vi phạm chính thẩm quyền và luật pháp của Ngài. DISTRACTOR 1 (gần đúng, sai chi tiết): Đúng là cả hai điều răn đều trong Mười Điều Răn, nhưng lời giải thích sai ở chi tiết 'cùng một bảng đá' và 'làm hỏng cả bảng luật'. Kinh Thánh ghi nhận Mười Điều Răn được ghi trên hai bảng đá (Xuất Ê-díp-tô Ký 31:18), và trọng tâm của Gia-cơ không phải là tính vật lý của bảng đá, mà là thẩm quyền của Đấng ban luật. DISTRACTOR 2 (hiểu lầm phổ biến): Sai vì gán luật pháp cho Môi-se. Môi-se là người truyền đạt luật, nhưng chính Đức Chúa Trời mới là Đấng ban luật (Ga-la-ti 3:19). Việc vi phạm là bội nghịch với Đức Chúa Trời, chứ không phải với Môi-se hay giao ước của ông. DISTRACTOR 3 (đúng văn bản nhưng lạc câu hỏi): Có thể đúng về mặt hệ quả hoặc quan điểm xã hội (ví dụ, cả hai tội đều nghiêm trọng), nhưng hoàn toàn lạc đề so với câu hỏi. Gia-cơ 2:11 không bàn về hình phạt trần thế hay sự tương đương của các hình phạt, mà bàn về nguyên tắc vi phạm thẩm quyền của Đấng ban luật.",
     "language": "vi",
     "options": [
-      "Vì luật là số nhiều",
+      "Vì cả hai điều răn đều nằm trong cùng một bảng đá của Mười Điều Răn, nên vi phạm bất kỳ điều nào cũng làm hỏng cả bảng luật đó.",
       "Vì cùng MỘT ĐẤNG đã phán 'CHỚ TÀ DÂM' cũng đã phán 'CHỚ GIẾT NGƯỜI' — phạm điều này = bội nghịch Đấng ấy = vi phạm luật pháp",
-      "Vì các điều răn liên kết chặt chẽ",
-      "Vì tội nào cũng nặng"
+      "Vì luật pháp được viết bởi Môi-se, và bất kỳ ai phạm một phần cũng bị xem là đã vi phạm trọn bộ giao ước của ông.",
+      "Vì phạm tội giết người hay tà dâm đều dẫn đến cùng một hình phạt trần thế, nên chúng bị xem là tội tương đương về mặt luật pháp."
     ],
     "tags": [
       "Tân Ước",

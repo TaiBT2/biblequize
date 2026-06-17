@@ -9,13 +9,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ga-la-ti 2:20 - Đời sống Cơ Đốc là để Đấng Christ sống qua chúng ta, không phải tự lực mình. Câu Kinh Thánh đầy đủ xác nhận: '...nhưng Đấng Christ sống trong tôi'.",
+    "explanation": "Trong Ga-la-ti 2:20, sứ đồ Phao-lô xác định: \"Tôi đã bị đóng đinh vào thập tự giá với Đấng Christ, mà tôi sống, không phải là tôi sống nữa, nhưng Đấng Christ sống trong tôi\" (BTTHĐ). Đây là lời khẳng định rõ ràng về sự sống mới trong Đấng Christ. \n\n- Đáp án đúng \"Đấng Christ sống trong tôi\" đúng vì trực tiếp trích dẫn từ Kinh Thánh (Ga-la-ti 2:20).\n\n- Distractor \"Đức Chúa Trời sống trong tôi\" là gần đúng nhưng sai chi tiết then chốt. Mặc dù về thần học, Đấng Christ là Đức Chúa Trời, nhưng trong ngữ cảnh cụ thể của câu này, Phao-lô đang nói về mối liên hệ cá nhân với Đấng Christ, là Đấng đã chịu đóng đinh và sống lại. Đây là lỗi \"nearby_passage\" vì có thể liên tưởng đến các phân đoạn khác nói về Đức Chúa Trời ngự trong con dân Ngài (ví dụ: I Cô-rinh-tô 3:16).\n\n- Distractor \"Thánh Linh sống trong tôi\" là một hiểu lầm phổ biến (common_misconception) về sự hiện diện của Ba Ngôi trong đời sống tín hữu. Mặc dù Kinh Thánh dạy Đức Thánh Linh ngự trong lòng tín đồ (Rô-ma 8:9, 11), nhưng trong câu Ga-la-ti 2:20 này, chủ thể được nói đến một cách rõ ràng là \"Đấng Christ\", không phải \"Thánh Linh\".\n\n- Distractor \"đức tin sống trong tôi\" sai chi tiết (wrong_detail). Phao-lô nói về một Đấng (Christ) sống trong ông, chứ không phải một phẩm chất hay nguyên tắc (đức tin). Điều này làm sai lệch chủ thể trung tâm của câu Kinh Thánh.",
     "language": "vi",
     "options": [
-      "Tôi được tự do",
-      "Tôi sống cho Chúa",
+      "Đức Chúa Trời sống trong tôi",
+      "Thánh Linh sống trong tôi",
       "Đấng Christ sống trong tôi",
-      "Tôi là tạo vật mới"
+      "đức tin sống trong tôi"
     ],
     "tags": [
       "Tân Ước",
@@ -255,13 +255,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Đóng đinh xác thịt = quyết định dứt khoát từ bỏ đời sống theo xác thịt.",
+    "explanation": "Ga-la-ti 5:24 viết: 'Nhưng những kẻ thuộc về Đấng Christ đã đóng đinh xác thịt mình cùng với các dục vọng và ham muốn rồi.' (BTT). Vì vậy, đáp án đúng trực tiếp trích dẫn hành động 'đã đóng đinh... trên thập tự giá'.\n\n- Distractor 1 ('Đã tẩy sạch... bằng huyết Chúa'): Đây là distractor 'gần đúng' vì dùng từ 'xác thịt cùng với các dục vọng và ham muốn' giống đáp án, nhưng sai chi tiết then chốt về hành động ('tẩy sạch... bằng huyết') và không đề cập đến 'thập tự giá'. Ý tưởng 'tẩy sạch bằng huyết' phổ biến trong Tân Ước (ví dụ: Hê-bơ-rơ 9:14, 1 Giăng 1:7) nhưng không phải là ngôn ngữ hay khái niệm được dùng trong Ga-la-ti 5:24.\n- Distractor 2 ('Đã để... được tự do theo đuổi'): Sai hoàn toàn về phạm vi và ý nghĩa. Cả đoạn Ga-la-ti 5 đều nói về việc chống lại xác thịt và sống bởi Thánh Linh, không khuyến khích để xác thịt tự do. Đây là một sự hiểu lầm trái ngược với giáo lý của phân đoạn.\n- Distractor 3 ('Đã chế ngự... bằng sự cầu nguyện'): Sai do hiểu lầm phổ biến. Mặc dù sự cầu nguyện là quan trọng trong đời sống thuộc linh, Ga-la-ti 5:24 không mô tả việc 'chế ngự' mà là 'đóng đinh' – một hình ảnh quyết liệt và dứt khoát hơn, gắn liền với thập tự giá. Đây là một phương cách khác không được đề cập trong câu Kinh Thánh này.",
     "language": "vi",
     "options": [
       "Đã đóng đinh xác thịt cùng với các dục vọng và ham muốn của nó trên thập tự giá.",
-      "Bỏ qua",
-      "Ẩn giấu",
-      "Từ chối"
+      "Đã tẩy sạch xác thịt cùng với các dục vọng và ham muốn của nó bằng huyết Chúa.",
+      "Đã để xác thịt cùng với các dục vọng và ham muốn của nó được tự do theo đuổi.",
+      "Đã chế ngự xác thịt cùng với các dục vọng và ham muốn của nó bằng sự cầu nguyện."
     ],
     "tags": [
       "Tân Ước",
@@ -310,13 +310,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sự công bình đến bởi đức tin, không phải bởi giữ luật pháp.",
+    "explanation": "Câu hỏi trích dẫn Ga-la-ti 3:11, trong đó Phao-lô trích dẫn Ha-ba-cúc 2:4 để khẳng định nguyên tắc xưng công bình: 'Người công bình sẽ sống bởi đức tin.' (Ga 3:11b). Do đó, ý chính của phân đoạn này là để tương phản giữa luật pháp và đức tin. Phao-lô kết luận: 'Không ai được xưng công bình trước mặt Đức Chúa Trời bởi luật pháp' (Ga 3:11a) vì 'kẻ nào làm theo những điều đó sẽ nhờ đó mà sống' (Luật pháp, Lê-vi Ký 18:5), nhưng không ai có thể giữ trọn luật pháp. Vì vậy, đáp án đúng là 'Luật pháp'.\n\nGiải thích các đáp án sai:\n1. 'phép cắt bì': Đây là đáp án gần đúng vì phép cắt bì là một điểm tranh luận chính trong thư Ga-la-ti (ví dụ: Ga 2:3, 5:2-6) và thường bị nhầm lẫn là phương cách để được xưng công bình. Tuy nhiên, trong câu hỏi này, từ khóa là 'bởi ___ ấy là điều hiển nhiên' trực tiếp trích dẫn câu 11, nơi cụm từ được dùng là 'bởi luật pháp', không phải 'bởi phép cắt bì'. Phép cắt bì là một phần của luật pháp nhưng không phải là từ chính xác trong câu Kinh Thánh này.\n2. 'của lễ': Đây là một khái niệm trong Cựu Ước liên quan đến sự chuộc tội, nhưng nó nằm ngoài phạm vi trực tiếp của lập luận trong Ga-la-ti 3. Phao-lô đang so sánh trực tiếp giữa nguyên tắc của luật pháp và nguyên tắc của đức tin, không tập trung vào hệ thống tế lễ. Vì vậy, đáp án này sai về phạm vi lập luận.\n3. 'sự hối cải': Đây là một hiểu lầm phổ biến, vì nhiều người có thể nghĩ rằng hành động ăn năn (một công việc) có thể đem lại sự xưng công bình. Tuy nhiên, trong thần học của Phao-lô ở đây, sự xưng công bình chỉ đến bởi đức tin nơi Chúa Giê-xu Christ (Ga 2:16), không phải bởi bất kỳ công việc nào của con người, kể cả sự hối cải. Đức tin dẫn đến sự hối cải, nhưng bản thân sự hối cải không phải là cơ sở để được xưng công bình.",
     "language": "vi",
     "options": [
-      "Việc làm",
-      "Tri thức",
+      "phép cắt bì",
+      "của lễ",
       "Luật pháp",
-      "Tôn giáo"
+      "sự hối cải"
     ],
     "tags": [
       "Tân Ước",
@@ -679,12 +679,12 @@
       3
     ],
     "content": "Theo Ga-la-ti 1:15-17, sau khi được kêu gọi, Phao-lô KHÔNG đi đâu trước, mà đi đâu?",
-    "explanation": "Ga-la-ti 1:15-17 — 'Nhưng khi Đức Chúa Trời, là Đấng đã để riêng tôi ra từ lúc còn trong lòng mẹ... vui lòng tỏ Con của Ngài ra trong tôi, hầu cho tôi rao truyền Con đó ra trong người ngoại đạo, thì lập tức tôi chẳng bàn với thịt và máu. Tôi cũng không lên thành Giê-ru-sa-lem, đến cùng những người đã làm sứ đồ trước tôi, song tôi đi qua xứ A-ra-bi; sau rồi trở về thành Đa-mách.' Lập luận: Tin Lành Phao-lô KHÔNG học từ ai = ĐỘC LẬP với 12 sứ đồ.",
+    "explanation": "Ga-la-ti 1:15-17 chép: 'Nhưng khi Đức Chúa Trời... đã bằng ân điển Ngài gọi tôi, thì Ngài vui lòng... bày tỏ Con Ngài trong tôi, hầu cho tôi rao truyền Con ấy cho dân ngoại. Tôi không có nài hỏi ý kiến loài người, cũng không lên thành Giê-ru-sa-lem để gặp các sứ đồ... nhưng tôi đi qua xứ A-ra-bi, rồi trở về thành Đa-mách.' Vì vậy, đáp án đúng là Phao-lô KHÔNG lên Giê-ru-sa-lem trước, mà đi qua xứ A-ra-bi rồi trở về Đa-mách.\n\nDistractor 1 (gần đúng) sai vì đảo ngược thứ tự: Kinh văn nói rõ ông KHÔNG lên Giê-ru-sa-lem trước, mà đi qua A-ra-bi.\nDistractor 2 sai vì dùng chi tiết từ những chuyến đi sau (Công vụ 13:1-3, chuyến đi truyền giáo đầu tiên khởi từ An-ti-ốt), không phải sự kiện ngay sau khi được kêu gọi trong Ga-la-ti 1.\nDistractor 3 sai vì phản ánh hiểu lầm phổ biến về tính cấp thiết; thực tế Phao-lô dành thời gian ở A-ra-bi (có thể để suy ngẫm, chuẩn bị) trước khi bắt đầu sứ vụ công khai.",
     "language": "vi",
     "options": [
-      "Đi gặp 12 sứ đồ tại Giê-ru-sa-lem ngay lập tức",
-      "Đi đến Sa-ma-ri",
-      "Đi đến Đa-mách",
+      "Không đi qua xứ A-ra-bi, mà lên Giê-ru-sa-lem gặp các sứ đồ",
+      "Không trở về Đa-mách, mà đi thẳng đến thành An-ti-ốt",
+      "Không cần chuẩn bị, mà đi rao giảng ngay cho dân ngoại",
       "Không lên Giê-ru-sa-lem, mà đi qua xứ A-ra-bi rồi trở về Đa-mách"
     ],
     "tags": [
@@ -731,13 +731,13 @@
       1
     ],
     "content": "Theo Ga-la-ti 2:1-2, Phao-lô lên Giê-ru-sa-lem lần thứ hai sau bao nhiêu năm và đem theo ai?",
-    "explanation": "Ga-la-ti 2:1-2 — 'Sau đó mười bốn năm, tôi lại lên Giê-ru-sa-lem với Ba-na-ba, có đem Tít cùng đi nữa. Tôi vâng theo lời tỏ ra mà lên đó, phô bày Tin Lành mà tôi đã giảng trong người ngoại đạo cho anh em.' Đây là Hội Đồng Giê-ru-sa-lem (Công 15) hoặc trước đó. Tít = bằng chứng SỐNG: dân ngoại được cứu KHÔNG cắt bì.",
+    "explanation": "Ga-la-ti 2:1 chép: 'Rồi mười bốn năm sau, tôi lại lên thành Giê-ru-sa-lem với Ba-na-ba, đem Tít cùng đi nữa.' Do đó, đáp án đúng là 14 năm và đem theo Ba-na-ba và Tít.\n\nCác đáp án sai:\n- '12 năm — đem theo Ba-na-ba và Tít': Sai chi tiết số năm (12 thay vì 14), nhưng phần còn lại đúng.\n- '14 năm — đem theo Phi-e-rơ và Gia-cơ': Sai chi tiết tên người; Phi-e-rơ và Gia-cơ là những sứ đồ gặp tại Giê-ru-sa-lem (câu 9), không phải những người được Phao-lô đem theo lên đường.\n- '14 năm — đem theo Ba-na-ba và Giăng': Sai chi tiết tên người; Giăng (còn gọi là Mác) được nhắc đến trong văn mạch gần (Công vụ 12:12, 25; 15:37) nhưng không phải là người được đem theo trong chuyến đi này theo Ga-la-ti 2:1.",
     "language": "vi",
     "options": [
-      "7 năm — đem theo Lu-ca",
+      "12 năm — đem theo Ba-na-ba và Tít",
       "14 năm — đem theo Ba-na-ba và Tít",
-      "20 năm — đem theo Phi-líp",
-      "5 năm — đem theo Ti-mô-thê"
+      "14 năm — đem theo Phi-e-rơ và Gia-cơ",
+      "14 năm — đem theo Ba-na-ba và Giăng"
     ],
     "tags": [
       "Tân Ước",
@@ -809,13 +809,13 @@
       0
     ],
     "content": "Theo Ga-la-ti 3:1, Phao-lô gọi tín hữu Ga-la-ti là gì?",
-    "explanation": "Ga-la-ti 3:1 — 'Hỡi người Ga-la-ti ngu muội kia, ai bùa ếm anh em là người mà trước mắt đã được rõ bày ra Đức Chúa Jêsus Christ bị đóng đinh trên cây thập tự?' (Bản Truyền Thống). 'Ngu muội' (anoetoi) nghĩa là không suy nghĩ, dại dột. 'Bùa ếm' (ebaskanen) có nghĩa là mê hoặc. Phao-lô quở trách thẳng thắn vì họ đã quên lẽ thật về sự chết của Đấng Christ.",
+    "explanation": "Đáp án đúng là: 'Hỡi người Ga-la-ti ngu muội kia, ai đã bùa ếm anh em?' (Ga-la-ti 3:1). Đây là trích dẫn chính xác ý chính khi Phao-lô trực tiếp gọi và chất vấn họ.\n\nCác đáp án sai:\n1. 'Hỡi người Ga-la-ti ngu muội kia, ai đã dẫn dắt anh em?' - Sai chi tiết: Từ 'dẫn dắt' thay vì 'bùa ếm' như trong nguyên văn, làm mất đi hình ảnh mạnh mẽ của việc bị mê hoặc.\n2. 'Hỡi những người con yêu dấu trong Đấng Christ, ai đã bùa ếm anh em?' - Sai phạm vi: Cách xưng hô 'những người con yêu dấu' là phổ biến trong các thư của Phao-lô, nhưng không phải là cách ông gọi họ trong câu 3:1 này.\n3. 'Hỡi người Ga-la-ti ngu muội kia, anh em đã làm sai lời dạy của tôi.' - Đúng văn bản nhưng lạc câu hỏi: Câu này phản ánh đúng tinh thần quở trách nhưng lại là một lời buộc tội trực tiếp của Phao-lô thay vì là một câu hỏi chất vấn 'ai đã bùa ếm anh em?' như trong câu Kinh Thánh.",
     "language": "vi",
     "options": [
       "'Hỡi người Ga-la-ti ngu muội kia, ai đã bùa ếm anh em?' (Trích dẫn chính xác ý chính)",
-      "'Hỡi anh em yêu dấu của tôi' (cách xưng hô khác, không có trong câu này)",
-      "'Hỡi các thánh đồ ở Ga-la-ti' (cách xưng hô khác, không có trong câu này)",
-      "'Hỡi con cái Áp-ra-ham' (cách xưng hô trong văn cảnh sau, không phải câu 1)"
+      "'Hỡi người Ga-la-ti ngu muội kia, ai đã dẫn dắt anh em?'",
+      "'Hỡi những người con yêu dấu trong Đấng Christ, ai đã bùa ếm anh em?'",
+      "'Hỡi người Ga-la-ti ngu muội kia, anh em đã làm sai lời dạy của tôi.'"
     ],
     "tags": [
       "Tân Ước",
@@ -861,13 +861,13 @@
       2
     ],
     "content": "Theo Ga-la-ti 3:8, Kinh Thánh đã RAO TIN LÀNH TRƯỚC cho ai? Lời hứa nào?",
-    "explanation": "Ga-la-ti 3:8 — 'Kinh Thánh cũng biết trước rằng Đức Chúa Trời sẽ xưng dân ngoại là công bình bởi đức tin, nên đã rao truyền trước cho Áp-ra-ham tin lành nầy: Các dân sẽ nhờ ngươi mà được phước.' Trích Sáng 12:3. Phao-lô đảo ngược: TIN LÀNH KHÔNG mới — đã có từ Áp-ra-ham. Luật ĐẾN SAU 430 năm (3:17). Đức tin TRƯỚC luật.",
+    "explanation": "Ga-la-ti 3:8 viết: 'Kinh Thánh cũng thấy trước rằng Đức Chúa Trời sẽ xưng dân ngoại là công bình bởi đức tin, nên đã rao tin lành trước cho Áp-ra-ham rằng: Các dân sẽ được phước trong ngươi.' Đáp án đúng trích dẫn chính xác đối tượng (Áp-ra-ham) và lời hứa ('Các dân sẽ được phước trong ngươi', trích Sáng 12:3).\n\nDistractor 1 sai vì nhầm đối tượng (Môi-se) và lời hứa (với Môi-se về việc giải cứu dân Y-sơ-ra-ên, Xuất 3:12). Distractor 2 sai vì mở rộng phạm vi lời hứa sang một giao ước khác (với Đa-vít về dòng dõi vua, 2 Sam 7:12). Distractor 3 là 'gần đúng' vì đúng đối tượng (Áp-ra-ham) nhưng trích sai lời hứa (lời hứa về dòng dõi đông đúc trong Sáng 15:5, không phải lời hứa về phước hạnh cho muôn dân như Ga-la-ti 3:8 trích dẫn).",
     "language": "vi",
     "options": [
-      "Cho Môi-se — 'Người sẽ giải phóng dân Y-sơ-ra-ên'",
-      "Cho Đa-vít — 'Một vua đời đời sẽ ngồi trên ngai'",
+      "Cho Môi-se — 'DÂN TA sẽ được phước trong ngươi' (Xuất 3:12)",
+      "Cho Đa-vít — 'CÁC VUA sẽ được phước trong ngươi' (2 Sam 7:12)",
       "Cho Áp-ra-ham — 'CÁC DÂN sẽ được phước trong ngươi' (Sáng 12:3)",
-      "Cho A-đam — 'Hậu tự ngươi sẽ giày đạp đầu rắn'"
+      "Cho Áp-ra-ham — 'CON CHÁU ngươi sẽ đông như sao trên trời' (Sáng 15:5)"
     ],
     "tags": [
       "Tân Ước",

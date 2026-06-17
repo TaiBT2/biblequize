@@ -9,13 +9,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Giu-đe 1:1 — 'Giu-đe, tôi tớ của Đức Chúa Jêsus Christ, và em Gia-cơ, đạt cho những kẻ đã được kêu gọi, được Đức Chúa Trời, là Cha, yêu thương, và được Đức Chúa Jêsus Christ giữ gìn...' Giu-đe nhấn mạnh mối quan hệ với Chúa và với Gia-cơ (em trai) hơn là danh tiếng của chính mình.",
+    "explanation": "Giu-đe 1:1 viết: 'Giu-đe, tôi tớ của Đức Chúa Jêsus Christ, em Gia-cơ, đạt cho những kẻ được kêu gọi, được Đức Chúa Trời, là Cha, yêu thương, và được Đức Chúa Jêsus Christ giữ gìn.' Câu này xác định tác giả tự xưng mình trước hết là 'tôi tớ của Đức Chúa Jêsus Christ', và sau đó xác định mối quan hệ là 'em Gia-cơ'. Đáp án đúng phản ánh chính xác thứ tự và từ ngữ này. Distractor 'Em của Đức Chúa Jêsus Christ và tôi tớ Gia-cơ' là sai vì nó đảo ngược vai trò và mối quan hệ một cách cơ bản so với Kinh Thánh. Distractor 'Tôi tớ của Đức Chúa Jêsus Christ và con Gia-cơ' là sai vì sử dụng từ 'con' thay vì 'em', một chi tiết quan hệ sai lầm. Distractor 'Tôi tớ của Đức Chúa Jêsus Christ và anh em Gia-cơ' là gần đúng nhưng lại dùng từ 'anh em' (một từ chung chung, có thể hiểu là anh em trong Chúa) thay vì 'em' (chỉ rõ mối quan hệ huyết thống cụ thể với Gia-cơ), làm mất đi sự chính xác của mối quan hệ được nêu trong câu Kinh Thánh.",
     "language": "vi",
     "options": [
       "Tôi tớ của Đức Chúa Jêsus Christ và em Gia-cơ",
-      "Sứ đồ của các sứ đồ",
-      "Trưởng lão của Giê-ru-sa-lem",
-      "Con trai của Xa-cha-ri"
+      "Em của Đức Chúa Jêsus Christ và tôi tớ Gia-cơ",
+      "Tôi tớ của Đức Chúa Jêsus Christ và con Gia-cơ",
+      "Tôi tớ của Đức Chúa Jêsus Christ và anh em Gia-cơ"
     ],
     "tags": [
       "Tân Ước",
@@ -35,13 +35,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giu-đe 1:1 — '...đạt cho những kẻ đã được kêu gọi, được Đức Chúa Trời, là Cha, yêu thương, và được Đức Chúa Jêsus Christ giữ gìn.' Ba đặc điểm: được kêu gọi, được yêu thương, được giữ gìn.",
+    "explanation": "Câu Giu-đe 1:1 chép: 'Giu-đe, tôi tớ của Đức Chúa Jêsus Christ, em Gia-cơ, đạt cho những kẻ được kêu gọi, được Đức Chúa Trời, là Cha, yêu thương, và được giữ gìn cho Đức Chúa Jêsus Christ.' Đáp án đúng phản ánh chính xác ba đặc điểm của người nhận thư: (1) được kêu gọi, (2) được Cha (Đức Chúa Trời) yêu thương, (3) được Đấng Christ (Đức Chúa Jêsus Christ) giữ gìn.\n\nDistractor 1 (gần đúng) sai chi tiết (wrong_detail): Nó đảo lộn vai trò của Đức Chúa Trời và Đấng Christ, nói 'được Đấng Christ yêu thương' và 'được Cha giữ gìn', trong khi Kinh Thánh nói rõ là được Cha yêu thương và được Đấng Christ giữ gìn.\n\nDistractor 2 sai do hiểu lầm phổ biến (common_misconception): Nó thay thế 'Cha' bằng 'Thánh Linh' trong việc yêu thương và thay 'Đấng Christ' bằng 'Thánh Linh' trong việc giữ gìn, điều này không có trong câu Kinh Thánh tham chiếu và phản ánh một sự nhầm lẫn phổ biến về vai trò của Ba Ngôi trong thư tín.\n\nDistractor 3 sai văn bản gần (nearby_passage): Cấu trúc và từ ngữ ('được yêu thương, được giữ gìn, và được kêu gọi bởi Đức Chúa Trời') nghe có vẻ giống với phong cách thư tín Tân Ước nhưng không khớp với câu 1. Cụ thể, nó gộp cả ba hành động vào chung một chủ thể là 'Đức Chúa Trời', làm mất đi sự phân biệt rõ ràng về vai trò của Cha và Đấng Christ như trong nguyên văn.",
     "language": "vi",
     "options": [
-      "Những người Do Thái kiều bào",
+      "Những kẻ được kêu gọi, được Đấng Christ yêu thương, và được Cha giữ gìn",
       "Những kẻ được kêu gọi, được Cha yêu thương, và được Đấng Christ giữ gìn",
-      "Các trưởng lão Hội Thánh tại Cô-rinh-tô",
-      "Những tân tín hữu vừa chịu báp-têm"
+      "Những kẻ được kêu gọi, được Đấng Christ yêu thương, và được Thánh Linh giữ gìn",
+      "Những kẻ được yêu thương, được giữ gìn, và được kêu gọi bởi Đức Chúa Trời"
     ],
     "tags": [
       "Tân Ước",

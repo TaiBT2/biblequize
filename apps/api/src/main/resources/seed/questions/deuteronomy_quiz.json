@@ -93,14 +93,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Phục Truyền 30:19: 'Ta đặt trước mặt ngươi sự sống và sự chết, phước lành và rủa sả; hãy chọn sự sống, hầu cho ngươi và dòng dõi ngươi được sống.' Lời kêu gọi rõ ràng là chọn 'sự sống' (và phước lành đi kèm) thay vì sự chết.",
+    "explanation": "Câu hỏi trực tiếp trích dẫn Phục Truyền 30:19: 'Ta bắt trời và đất làm chứng cho các ngươi ngày nay, ta đã đặt trước mặt ngươi sự sống và sự chết, sự phước lành và sự rủa sả. Vậy, hãy chọn sự sống, hầu cho ngươi và dòng dõi ngươi được sống.' Đây là lời kêu gọi lựa chọn rõ ràng giữa 'sự sống và phước lành' với 'sự chết và rủa sả'. \n\nDistractor 1 ('Sự sống (và sự chết) thay vì phước lành (và rủa sả)') gần đúng vì có các yếu tố chính, nhưng sai chi tiết then chốt trong cách ghép cặp: câu Kinh Thánh đặt 'sự sống' đi với 'phước lành' và 'sự chết' đi với 'rủa sả', chứ không phải đối lập chéo như distractor này. \nDistractor 2 ('Luật pháp (và công lý) thay vì sự bất tuân (và hình phạt)') là đúng về mặt văn bản vì cả đoạn (30:11-20) nói về việc vâng giữ luật pháp để được phước, nhưng nó lạc câu hỏi cụ thể về sự lựa chọn được nêu trong câu 19. \nDistractor 3 ('Đất hứa (và sự bình an) thay vì sự lưu lạc (và chiến tranh)') dựa trên một hiểu lầm phổ biến rằng sự lựa chọn chủ yếu liên quan đến đất đai vật chất; trong khi bối cảnh rộng hơn có nhắc đến đất hứa, câu 19 cụ thể chỉ nói về chọn 'sự sống' hay 'sự chết', 'phước lành' hay 'rủa sả'.",
     "language": "vi",
     "verseEnd": 20,
     "options": [
-      "Của cải",
+      "Sự sống (và sự chết) thay vì phước lành (và rủa sả)",
       "Sự sống (và phước lành) thay vì sự chết (và rủa sả)",
-      "Sức mạnh",
-      "Quyền lực"
+      "Luật pháp (và công lý) thay vì sự bất tuân (và hình phạt)",
+      "Đất hứa (và sự bình an) thay vì sự lưu lạc (và chiến tranh)"
     ],
     "tags": [
       "Cựu Ước",
@@ -205,14 +205,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Phục Truyền 15:1-11: Hết bảy năm thì tha nợ; đừng có lòng ác.",
+    "explanation": "Phân đoạn Phục truyền 15:1-11 dạy về năm tha nợ. Đáp án đúng là 'Lòng thương xót và trông cậy Chúa', vì câu 9-11 cảnh báo đừng có ác tâm mà từ chối giúp người nghèo (lòng thương xót) và câu 6 nhấn mạnh việc Chúa sẽ ban phước nếu vâng lời (trông cậy).\n\nCác đáp án sai:\n1. 'Sự tự do và trách nhiệm cá nhân': Mặc dù đoạn Kinh Thánh có nói đến việc giải phóng nô lệ (câu 12 trở đi, passage gần) và tránh ác tâm, nhưng đây không phải trọng tâm chính của câu hỏi về năm tha nợ (Shemitah) trong các câu 1-11. Đây là đáp án 'gần đúng' nhưng lạc trọng tâm (true_but_off).\n2. 'Công lý và sự báo thù nghiêm ngặt': Sai chi tiết (wrong_detail). Đoạn này nhấn mạnh lòng thương xót, tha nợ, chứ không dạy về báo thù (câu 9: 'chớ có ác tâm').\n3. 'Sự dư dật và giàu có vật chất': Sai phạm vi (wrong_scope). Mặc dù câu 6, 10 có hứa phước lành, nhưng trọng tâm không phải sự giàu có vật chất cho bản thân, mà là sự ban phước để có thể tiếp tục giúp đỡ người nghèo (câu 10-11).",
     "language": "vi",
     "verseEnd": 11,
     "options": [
-      "Chính trị công bằng",
+      "Sự tự do và trách nhiệm cá nhân",
       "Lòng thương xót và trông cậy Chúa",
-      "Kinh tế hiệu quả",
-      "Cải cách ruộng đất"
+      "Công lý và sự báo thù nghiêm ngặt",
+      "Sự dư dật và giàu có vật chất"
     ],
     "tags": [
       "Cựu Ước",
@@ -261,13 +261,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Phục Truyền 18:15: Đức Chúa Trời sẽ dấy lên cho ngươi một tiên tri như ta.",
+    "explanation": "Câu hỏi hỏi về điều được ám chỉ TRƯỚC NHẤT trong văn mạch trực tiếp của Phục Truyền 18:15-19. Đoạn Kinh Thánh nói: \"Giê-hô-va Đức Chúa Trời ngươi sẽ lấy từ giữa vòng ngươi, từ trong anh em ngươi, dấy lên một Đấng tiên tri như ta; các ngươi khá nghe theo Ngài.\" (câu 15). Trong văn mạch sách Phục Truyền, lời hứa này TRƯỚC NHẤT và TRỰC TIẾP ám chỉ một chuỗi các tiên tri sẽ được Chúa dấy lên trong lịch sử Y-sơ-ra-ên để hướng dẫn dân sự (như được thấy trong các sách tiên tri sau này), và tối hậu được ứng nghiệm trọn vẹn nơi Đấng Christ (Công Vụ 3:22-24, 7:37).\n\nĐÁP ÁN SAI 1 (Một nhà lãnh đạo quân sự...): Sai vì đây là một hiểu lầm phổ biến. Giô-suê là người kế vị Môi-se về mặt lãnh đạo, nhưng chức vụ chính của ông là lãnh đạo quân sự và dân sự, không phải là chức vụ tiên tri 'như Môi-se' theo nghĩa đặc biệt của đoạn này (làm trung gian của giao ước và truyền đạt lời Chúa một cách trực tiếp).\n\nĐÁP ÁN SAI 2 (Tiên tri đồng thời với Môi-se...): Sai vì chi tiết không đúng. A-rôn đã từng làm người phát ngôn (tiên tri) cho Môi-se (Xuất Ê-díp-tô Ký 7:1), nhưng lời hứa trong Phục Truyền 18 hướng về TƯƠNG LAI ('sẽ lấy... dấy lên'), không phải về một nhân vật đương thời đã có. Câu hỏi hỏi 'ám chỉ điều gì trước nhất', và văn mạch không hướng về A-rôn.\n\nĐÁP ÁN SAI 3 (Một tiên tri sẽ đứng trước mặt dân sự mỗi ngày): Sai vì trích dẫn một chi tiết từ đoạn Kinh Thánh GẦN đó nhưng lạc nghĩa. Phục Truyền 18:16-17 nhắc lại việc dân Y-sơ-ra-ên sợ hãi khi nghe tiếng Chúa tại Hô-rếp và ước ao có một người trung gian. Tuy nhiên, cụm từ 'đứng trước mặt' (câu 17) mô tả vai trò của Môi-se trong sự kiện quá khứ đó, KHÔNG PHẢI là mô tả về Đấng tiên tri tương lai. Lời hứa chính về Đấng tiên tri (câu 15, 18) không nói Ngài sẽ 'đứng trước mặt dân mỗi ngày'. Đây là một distractor 'gần đúng' vì dùng ngôn ngữ trong cùng phân đoạn, nhưng áp dụng sai đối tượng và thời điểm.",
     "language": "vi",
     "verseEnd": 19,
     "options": [
-      "Ê-li",
-      "Giô-suê",
-      "Ê-sai",
+      "Một nhà lãnh đạo quân sự như Giô-suê được xức dầu",
+      "Tiên tri đồng thời với Môi-se như A-rôn",
+      "Một tiên tri sẽ đứng trước mặt dân sự mỗi ngày",
       "Chuỗi tiên tri sau này, tối hậu ứng nghiệm nơi Đấng Christ"
     ],
     "tags": [
@@ -949,13 +949,13 @@
       0
     ],
     "content": "Theo Phục Truyền 5:6 (mở đầu 10 Điều Răn), Đức Chúa Trời tự xưng mình là ai?",
-    "explanation": "Phục Truyền 5:6 — 'Ta là Giê-hô-va Đức Chúa Trời ngươi, đã rút ngươi ra khỏi xứ Ê-díp-tô, tức là khỏi nhà nô lệ.' Mở đầu CỰC KỲ QUAN TRỌNG: Đức Chúa Trời nhận diện mình QUA HÀNH ĐỘNG CỨU. Nguyên tắc: TIN LÀNH (cứu) đến TRƯỚC luật pháp. Y-sơ-ra-ên KHÔNG giữ luật để được cứu — đã được cứu rồi, phải sống theo. Sách Xuất 20:2 cùng câu.",
+    "explanation": "Trong Phục truyền 5:6, Đức Chúa Trời trực tiếp tự giới thiệu: \"Ta là Giê-hô-va Đức Chúa Trời ngươi, đã đem ngươi ra khỏi xứ Ê-díp-tô, khỏi nhà nô lệ\". Đây là lời mở đầu cho Mười Điều Răn, khẳng định thẩm quyền của Ngài với tư cách là Đấng giải cứu dân Y-sơ-ra-ên. Đáp án đúng trích nguyên văn ý nghĩa này.\n\nCác đáp án sai: (1) Đây là distractor \"gần đúng\" (almost-right) nhưng sai chi tiết then chốt: Thay vì hành động \"đã đem ngươi ra khỏi xứ Ê-díp-tô\", distractor này ghi \"đã dẫn ngươi vào xứ Ca-na-an\". Việc dẫn vào Ca-na-an là lời hứa tương lai, không phải căn tính Ngài tự xưng tại chính câu này. (2) Sai do hiểu lầm phổ biến: Dùng danh xưng \"Đấng Tạo Hóa trời và đất\" (thường thấy trong Sáng Thế Ký). Tuy cũng là Đức Chúa Trời, nhưng tại đây Ngài không tự xưng bằng danh hiệu đó, mà bằng danh riêng Giê-hô-va với tư cách Đấng giải cứu khỏi Ai Cập. (3) Đúng văn bản nhưng lạc câu hỏi: Câu \"Đấng đã ban cho ngươi Mười Điều Răn này\" đúng là thuộc ngữ cảnh của đoạn, nhưng không phải là cách Ngài tự xưng trong câu 6. Câu hỏi hỏi cụ thể lời tự xưng trong câu 6.",
     "language": "vi",
     "options": [
       "TA là GIÊ-HÔ-VA Đức Chúa Trời ngươi, đã ĐEM ngươi RA khỏi xứ Ai-cập, khỏi NHÀ NÔ LỆ",
-      "Ta là Đấng Tạo Hóa",
-      "Ta là Đấng vô danh",
-      "Ta là Vua các vua"
+      "TA là GIÊ-HÔ-VA Đức Chúa Trời ngươi, đã DẪN ngươi VÀO xứ Ca-na-an, khỏi NHÀ NÔ LỆ",
+      "TA là Đấng Tạo Hóa trời và đất, đã ĐEM ngươi RA khỏi xứ Ai-cập, khỏi NHÀ NÔ LỆ",
+      "TA là Đức Chúa Trời ngươi, Đấng đã ban cho ngươi MƯỜI ĐIỀU RĂN này"
     ],
     "tags": [
       "Cựu Ước",
@@ -1183,13 +1183,13 @@
       1
     ],
     "content": "Theo Phục Truyền 1:35-38, vì cớ KHÔNG TIN, ai trong THẾ HỆ đó được vào ĐẤT HỨA?",
-    "explanation": "Phục Truyền 1:35-38 — 'Trong những người này thuộc về dòng dõi gian ác này, chẳng một ai sẽ thấy đất tốt mà ta đã thề ban cho tổ phụ các ngươi, ngoại trừ Ca-lép, con trai Giê-phu-nê. Người sẽ thấy đất đó; ta sẽ ban cho người và con cháu người xứ mà người đã đặt chân lên, bởi vì người có theo Đức Giê-hô-va cách trung tín trọn vẹn. Đức Giê-hô-va vì cớ các ngươi cũng nổi giận cùng ta, mà rằng: Ngươi cũng vậy, sẽ không vào đó đâu. Giô-suê, con trai của Nun, là người hầu việc ngươi, sẽ vào đó.' 12 thám tử (Dân Số Ký 13) — chỉ 2 trung tín được vào.",
+    "explanation": "Câu hỏi tham chiếu Phục Truyền 1:35-38. Đáp án đúng: CA-LÉP (vì hết lòng theo Chúa) + GIÔ-SUÊ (con Nun) — KHÔNG ai khác trong thế hệ ác. Lý do: Phục Truyền 1:35-38 nói rõ chỉ Ca-lép và Giô-suê (con Nun) được vào Đất Hứa trong thế hệ đó, vì Ca-lép ‘hết lòng theo Chúa’ (câu 36), còn Giô-suê được chọn kế nhiệm Môi-se (câu 38).\n\nDistractor 1 sai vì thêm Đa-vít: Đa-vít là nhân vật sau này (1 Sa-mu-ên 16), không thuộc thế hệ ra khỏi Ai Cập, nên lạc passage gần nhưng sai thời điểm.\nDistractor 2 sai vì thêm Môi-se: Phục Truyền 1:37 chỉ ra Môi-se cũng không được vào do tội của dân chúng (dù vai trò dẫn dắt), nên đây là sai chi tiết về việc Môi-se bị loại trừ.\nDistractor 3 sai vì thêm A-rôn và Mi-ri-am: A-rôn (chết ở núi Hô-rơ, Dân số 33:38) và Mi-ri-am (chết ở Ca-đe, Dân số 20:1) không được vào Đất Hứa, đây là hiểu lầm phổ biến về vai trò của họ.",
     "language": "vi",
     "options": [
-      "Tất cả 12 thám tử",
+      "Giô-suê (con Nun) — thêm Đa-vít (vì được chọn sau này)",
       "CA-LÉP (vì hết lòng theo Chúa) + GIÔ-SUÊ (con Nun) — KHÔNG ai khác trong thế hệ ác",
-      "Chỉ Môi-se",
-      "Chỉ A-rôn"
+      "Ca-lép (vì hết lòng theo Chúa) — thêm Môi-se (vì dẫn dắt dân sự)",
+      "A-rôn (vì thầy tế lễ) — thêm Mi-ri-am (vì nữ tiên tri)"
     ],
     "tags": [
       "Cựu Ước",
@@ -1391,13 +1391,13 @@
       2
     ],
     "content": "Theo Phục Truyền 8:17-18, Y-sơ-ra-ên CHỚ NÓI gì về việc họ giàu có? Phải NHỚ điều gì?",
-    "explanation": "Phục Truyền 8:17-18 — 'Vậy, ngươi chớ nói trong lòng: Ấy nhờ quyền năng ta và sức lực của tay ta mà đoạt được những sản nghiệp nầy. Hãy nhớ lại Giê-hô-va Đức Chúa Trời ngươi, vì ấy là Ngài ban cho ngươi sức lực để đoạt sản nghiệp, để làm trọn sự giao ước Ngài đã thề cùng tổ phụ ngươi, y như Ngài đã làm ngày nay.' KHÔNG có sự giàu CHO RIÊNG MÌNH — Chúa ban SỨC để đáp ứng GIAO ƯỚC. Cảnh báo về KIÊU NGẠO.",
+    "explanation": "Đáp án đúng dựa trực tiếp vào Phục Truyền 8:17-18 (BTT). Câu 18 chép: 'Hãy nhớ Giê-hô-va Đức Chúa Trời ngươi; vì ấy là Ngài ban cho ngươi sức làm ra của cải...' và cảnh báo chớ nói trong lòng rằng 'chính tay tôi và sức lực tôi đã sanh cho tôi sản nghiệp nầy.' Vì vậy, đáp án đúng tóm lược chính xác điều họ chớ nói và điều phải nhớ.\n\nDistractor 1 (gần đúng) sai vì nhầm passage gần: 'dẫn ngươi ra khỏi Ai Cập' là một hành động quyền năng của Đức Giê-hô-va được nhắc đến nhiều trong sách Phục Truyền (ví dụ 8:14), nhưng không phải là ý chính của câu 17-18 khi nói về nguồn gốc của cải.\nDistractor 2 sai về phạm vi: 'các thần ngoại bang' và 'lập giao ước' là chủ đề quan trọng trong sách, nhưng không phải là nội dung được đề cập hay ngụ ý trong hai câu hỏi cụ thể này.\nDistractor 3 sai chi tiết: 'ban mùa màng' là một phước lành cụ thể được nhắc ở những câu trước (ví dụ 8:7-10), nhưng không phải là từ ngữ hay ý chính mà câu 18 dùng để giải thích về nguồn sức làm ra của cải.",
     "language": "vi",
     "options": [
-      "Chớ nói 'tổ phụ tôi để lại của cải' — hãy nhớ ơn các bậc tiền nhân.",
-      "Chớ nói 'vua đã ban thưởng cho tôi' — hãy nhớ ơn nhà vua.",
+      "Chớ nói 'nhờ sức lực của tôi' — hãy nhớ Đức Giê-hô-va đã dẫn ngươi ra khỏi Ai Cập.",
+      "Chớ nói 'nhờ các thần ngoại bang' — hãy nhớ Đức Giê-hô-va là Đấng đã lập giao ước với ngươi.",
       "Chớ nói 'nhờ quyền năng và tài tay tôi' — hãy nhớ Đức Giê-hô-va là Đấng ban sức cho ngươi.",
-      "Chớ nói 'đất đai tự nhiên màu mỡ' — hãy nhớ ơn thiên nhiên."
+      "Chớ nói 'nhờ sự may mắn' — hãy nhớ Đức Giê-hô-va là Đấng ban mùa màng cho ngươi."
     ],
     "tags": [
       "Cựu Ước",

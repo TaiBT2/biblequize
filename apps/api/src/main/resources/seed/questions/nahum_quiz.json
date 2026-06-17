@@ -113,13 +113,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Na-hum 1:3 — '...đường lối Ngài ở trong cơn gió lốc và bão tố, những đám mây là bụi dưới chân Ngài.' Hình ảnh thần hiển (theophany) oai nghiêm — bão gió là dấu hiệu sự ngự đến của Chúa.",
+    "explanation": "Na-hum 1:3 viết: 'Đức Giê-hô-va chậm nóng giận và có quyền năng lớn, Ngài chắc không kể kẻ có tội là vô tội. Đường lối của Đức Giê-hô-va ở trong cơn gió lốc và bão tố, những đám mây là bụi dưới chân Ngài.' Vì vậy, đáp án đúng là 'Trong cơn gió lốc và bão tố' vì câu Kinh Thánh trích dẫn trực tiếp điều này. Các đáp án sai: 1) 'Trong lòng sông và biển cả' là sai vì dù sông và biển được nhắc đến trong ngữ cảnh gần (câu 4), chúng không phải là nơi chứa đường lối Ngài; 2) 'Trong cơn gió lốc và lửa hực' là gần đúng nhưng sai chi tiết ('lửa hực' không có trong câu này, dù lửa được nhắc đến ở câu 6); 3) 'Trong ánh sáng và sự yên tĩnh' là sai vì đây là một hiểu lầm phổ biến về bản tính của Đức Chúa Trời trong sách này, nhưng câu hỏi cụ thể về Na-hum 1:3 nhấn mạnh sự biểu lộ quyền năng trong cơn bão tố.",
     "language": "vi",
     "options": [
       "Trong cơn gió lốc và bão tố",
-      "Trong các cung điện nguy nga",
-      "Trong đáy biển sâu thẳm",
-      "Trong các rừng núi yên tịnh"
+      "Trong lòng sông và biển cả",
+      "Trong cơn gió lốc và lửa hực",
+      "Trong ánh sáng và sự yên tĩnh"
     ],
     "tags": [
       "Cựu Ước",
@@ -243,13 +243,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Na-hum 2:13 — 'Đức Giê-hô-va vạn quân phán rằng: Nầy, ta nghịch cùng ngươi, sẽ đốt xe cộ ngươi, và làm cho tan ra khói...' 'Giê-hô-va vạn quân' (LORD of hosts) nhấn mạnh quyền chỉ huy muôn vàn đạo binh trời.",
+    "explanation": "Đáp án đúng: 'Đức Giê-hô-va vạn quân' vì trong Na-hum 2:13, chính Đức Giê-hô-va là Đấng phán: 'Nầy, ta nghịch cùng mầy, Đức Giê-hô-va vạn quân phán vậy' (2:13a). \nCác đáp án sai: 1) 'Na-hum' là tác giả sách, nhưng đây là lời phán trực tiếp của Chúa, không phải tác giả. 2) 'Sư tử xuất ra từ bụi rậm' là hình ảnh trong câu 11, mô tả kẻ thù, không phải chủ ngữ phán câu 13. 3) 'Vua ở A-si-ri' là đối tượng bị nghịch (câu 13), không phải chủ thể tuyên bố lời nghịch đó.",
     "language": "vi",
     "options": [
-      "Vua Giu-đa",
+      "Na-hum",
       "Đức Giê-hô-va vạn quân",
-      "Tiên tri Na-hum",
-      "Vua Mê-đi"
+      "Sư tử xuất ra từ bụi rậm",
+      "Vua ở A-si-ri"
     ],
     "tags": [
       "Cựu Ước",

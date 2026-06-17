@@ -118,13 +118,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Hệ thống giá trị thế gian (dục ham muốn, dục ham mắt, sự kiêu ngạo) chống lại Chúa.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Thế gian và những điều thuộc thế gian' vì 1 Giăng 2:15 chép: 'Chớ yêu thế gian, cũng đừng yêu các vật ở thế gian. Nếu ai yêu thế gian thì sự kính mến Đức Chúa Cha chẳng ở trong người ấy.' Cụm từ 'các vật ở thế gian' chỉ 'những điều thuộc thế gian'.\n\nPHÂN TÍCH ĐÁP ÁN SAI:\n- 'Ma quỷ và những điều thuốc về ma quỷ': Sai vì đoạn 2:15-16 không đề cập đến đối tượng yêu hay ghét là ma quỷ. Đây là lỗi nhầm passage gần, có thể liên tưởng đến các đoạn khác nói về ma quỷ.\n- 'Đời nầy và những điều thuộc đời sau': Sai vì câu 16 liệt kê các điều thuộc về thế gian là 'sự mê tham của xác thịt, sự mê tham của mắt, và sự kiêu ngạo của đời', tất cả đều thuộc về 'đời nầy/đời này' chứ không phải 'đời sau'. Đây là distractor gần đúng (~90%), vì đúng từ 'đời nầy' nhưng sai chi tiết then chốt 'thuộc đời sau'.\n- 'Mọi xác thịt và những sự ham muốn của mắt': Sai vì tuy 'sự mê tham của xác thịt' và 'sự mê tham của mắt' được liệt kê trong câu 16, nhưng đây chỉ là hai phần của ba điều thế gian, không phải đối tượng chính của câu 15. Câu hỏi hỏi đối tượng 'đừng yêu' trong câu 15, nên đây là đúng văn bản nhưng lạc câu hỏi.",
     "language": "vi",
     "verseEnd": 16,
     "options": [
-      "Bạn bè",
-      "Gia đình",
-      "Công việc",
+      "Ma quỷ và những điều thuốc về ma quỷ",
+      "Đời nầy và những điều thuộc đời sau",
+      "Mọi xác thịt và những sự ham muốn của mắt",
       "Thế gian và những điều thuộc thế gian"
     ],
     "tags": [
@@ -415,13 +415,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Giăng 2:3 — 'Nầy tại sao chúng ta biết mình đã biết Ngài, ấy là tại chúng ta giữ các điều răn của Ngài.'",
+    "explanation": "1 Giăng 2:3-4 chép: 'Chúng ta biết rằng mình đã nhận biết Ngài, nếu chúng ta giữ các điều răn của Ngài. Kẻ nào nói: Ta nhận biết Ngài, mà không giữ các điều răn Ngài, là người nói dối, lẽ thật quyết không ở trong người.' Do đó, đáp án đúng là 'Bằng giữ các điều răn của Ngài' vì đây chính là tiêu chuẩn Kinh Thánh đưa ra.\n\n• Distractor 'Bằng tin rằng Ngài là Đấng Christ' là gần đúng nhưng sai chi tiết then chốt. Mặc dù tin nhận Đấng Christ là căn bản, nhưng đoạn này (và ngữ cảnh rộng hơn, như 1 Giăng 5:1-3) nhấn mạnh sự vâng giữ điều răn là bằng chứng của sự nhận biết thật, không chỉ là tuyên bố đức tin. Đây là lỗi nhầm passage gần (nearby_passage) vì ý 'tin Ngài là Đấng Christ' có trong sách (ví dụ 1 Giăng 5:1) nhưng không phải câu trả lời trực tiếp cho 2:3-4.\n• Distractor 'Bằng cầu nguyện và tham dự nhóm họp' sai vì đây là một hiểu lầm phổ biến (common_misconception) rằng các hoạt động tôn giáo bên ngoài là bằng chứng đủ. Dù quan trọng, chúng không được đề cập trong câu Kinh Thánh này như là tiêu chuẩn để 'biết mình đã nhận biết Ngài'.\n• Distractor 'Bằng đọc và suy gẫm Kinh Thánh' sai vì mặc dù đúng là việc cần làm (và có thể giúp biết điều răn), nhưng nó không phải là tiêu chuẩn trực tiếp được nêu trong 1 Giăng 2:3-4. Câu hỏi hỏi về 'bằng cách nào' dựa trên đoạn này, và câu trả lời này lạc trọng tâm câu hỏi (true_but_off).",
     "language": "vi",
     "options": [
-      "Bằng cảm xúc thuộc linh",
-      "Bằng các phép lạ",
+      "Bằng tin rằng Ngài là Đấng Christ",
+      "Bằng cầu nguyện và tham dự nhóm họp",
       "Bằng giữ các điều răn của Ngài",
-      "Bằng kiến thức Kinh Thánh"
+      "Bằng đọc và suy gẫm Kinh Thánh"
     ],
     "tags": [
       "Tân Ước",
@@ -493,12 +493,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Giăng 3:9 — 'Ai sinh bởi Đức Chúa Trời thì chẳng cứ phạm tội, vì hột giống của Đức Chúa Trời ở trong người, và người không thể phạm tội được, vì đã sinh bởi Đức Chúa Trời.' Ý câu Kinh Thánh nói người được sinh bởi Đức Chúa Trời không sống trong tội như một lối sống hay thói quen, vì có bản chất mới từ Ngài.",
+    "explanation": "Câu Kinh Thánh 1 Giăng 3:9 (BTT) viết: 'Ai sinh bởi Đức Chúa Trời, thì chẳng cứ phạm tội, vì hạt giống của Ngài ở trong người; và người không thể phạm tội được, vì đã sinh bởi Đức Chúa Trời.' ĐÁP ÁN ĐÚNG: Cụm 'chẳng cứ phạm tội' (BTT) hoặc 'không tiếp tục trong tội' diễn đạt ý một người được tái sinh không sống trong sự phạm tội cách liên tục, thường xuyên, chứ không phải hoàn toàn vô tội. DISTRACTOR SAI: 1) 'Không phạm tội một lần nào' là SAI CHI TIẾT (wrong_detail) – đây là phiên bản 'gần đúng' nhưng thừa từ 'một lần nào', làm sai ý Kinh Thánh vốn nói về một khuôn mẫu sống, không phải sự hoàn hảo tuyệt đối không phạm lỗi. 2) 'Không còn bị bản chất tội lỗi' là HIỂU LẦM PHỔ BIẾN (common_misconception) – Kinh Thánh dạy người tin Chúa có bản chất mới nhưng vẫn còn chiến đấu với xác thịt (Rô-ma 7), chưa hoàn toàn thoát khỏi bản chất tội lỗi cho đến khi được cứu chuộc trọn vẹn. 3) 'Được đảm bảo không phạm tội trong tương lai' là SAI PHẠM VI (wrong_scope) – câu này mở rộng sai ý câu Kinh Thánh, biến một lời mô tả về khuôn mẫu hiện tại thành một lời hứa bảo đảm tuyệt đối cho tương lai, điều không có trong ngữ cảnh.",
     "language": "vi",
     "options": [
-      "Vẫn phạm tội như trước",
-      "Chỉ phạm tội nhỏ",
-      "Không bao giờ buồn",
+      "Không phạm tội một lần nào",
+      "Không còn bị bản chất tội lỗi",
+      "Được đảm bảo không phạm tội trong tương lai",
       "Chẳng cứ phạm tội (không tiếp tục trong tội)"
     ],
     "tags": [
@@ -598,13 +598,13 @@
       0
     ],
     "content": "Theo 1 Giăng 1:6, ai NÓI mình thông công với Đức Chúa Trời nhưng còn BƯỚC ĐI trong sự TỐI TĂM thì sao?",
-    "explanation": "1 Giăng 1:6 — 'Ví bằng chúng ta nói mình được giao thông với Ngài, mà còn đi trong sự tối tăm, ấy là chúng ta nói dối và không làm theo lẽ thật.' 1 Giăng kiểm tra đức tin GIẢ với 3 LƯỠI: (1) 'Tôi thông công Chúa' nhưng đi tối tăm = dối; (2) 'Tôi không có tội' (1:8); (3) 'Tôi không phạm tội' (1:10). Tất cả LỜI NÓI mâu thuẫn với HÀNH VI.",
+    "explanation": "1 Giăng 1:6 viết: 'Ví bằng chúng ta nói mình được giao thông với Ngài, mà còn đi trong sự tối tăm, ấy là chúng ta nói dối và không làm theo lẽ thật.' (BTT). Đáp án đúng trực tiếp trích từ câu Kinh Thánh, mô tả chính xác hậu quả của việc tuyên bố thông công với Đức Chúa Trời trong khi sống trong tội lỗi (sự tối tăm).\n\nDistractor 1 (gần đúng) sai chi tiết: Câu Kinh Thánh chỉ rõ họ 'nói dối và không làm theo lẽ thật', không nói về việc 'không được yêu thương' – đây là một suy diễn thêm vào.\nDistractor 2 sai do hiểu lầm phổ biến: Nó mô tả họ như nạn nhân bị lừa dối và thiếu hiểu biết, trong khi Kinh Thánh nhấn mạnh hành vi chủ động 'nói dối' và 'không làm theo'.\nDistractor 3 lạc câu hỏi: Nó đưa ra lời khuyên (cần cầu nguyện, tìm kiếm) có vẻ hợp lý về mặt thuộc linh, nhưng không trả lời trực tiếp câu hỏi về bản chất của người đó theo phân đoạn này.",
     "language": "vi",
     "options": [
       "Là KẺ NÓI DỐI và KHÔNG làm theo lẽ thật",
-      "Vẫn được Chúa thương xót",
-      "Là kẻ học chậm",
-      "Là kẻ tin yếu"
+      "Là kẻ nói dối và không được Đức Chúa Trời yêu thương",
+      "Là kẻ bị lừa dối và không hiểu biết lẽ thật",
+      "Là người cần tiếp tục cầu nguyện và tìm kiếm ánh sáng"
     ],
     "tags": [
       "Tân Ước",
@@ -702,13 +702,13 @@
       0
     ],
     "content": "Theo 1 Giăng 2:17, thế gian + sự ham muốn nó thế nào? Còn ai làm theo Ý ĐỨC CHÚA TRỜI thì sao?",
-    "explanation": "1 Giăng 2:17 — 'Vả, thế gian với sự tham dục nó đều qua đi, song ai làm theo ý muốn của Đức Chúa Trời thì còn lại đời đời.' Đối lập: THẾ GIAN (qua đi) vs Ý CHÚA (đời đời). Cùng dạy Chúa Jêsus 'thế gian qua, lời Ta KHÔNG qua' (Mat 24:35). Đầu tư vào ĐỜI ĐỜI = làm theo Ý CHÚA.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 1 Giăng 2:17 chép: 'Thế gian với sự tham dục nó đều qua đi; song ai làm theo ý muốn của Đức Chúa Trời thì còn lại đời đời.' (BTT). Do đó, 'Thế gian + sự ham muốn nó ĐANG QUA ĐI — ai làm theo Ý ĐỨC CHÚA TRỜI thì CÒN LẠI ĐỜI ĐỜI' là đúng nguyên văn và ý nghĩa.\n\nGIẢI THÍCH CÁC ĐÁP ÁN SAI:\n1. 'ĐANG PHÁT TRIỂN... CÒN LẠI ĐỜI ĐỜI': Sai chi tiết then chốt. Câu Kinh Thánh khẳng định thế gian 'đang qua đi', trái ngược với 'đang phát triển'. Phần thứ hai đúng nhưng toàn bộ đáp án sai do phần đầu sai.\n2. 'ĐANG QUA ĐI... ĐƯỢC HẠNH PHÚC TRẦN GIAN': Sai phạm vi kết quả. Phần đầu đúng, nhưng phần hai thay 'còn lại đời đời' (phước hạnh vĩnh cửu) bằng 'được hạnh phúc trần gian' (phước hạnh tạm thời), thu hẹp phạm vi lời hứa.\n3. 'LÀ TỘI LỖI... CÒN LẠI ĐỜI ĐỜI': Thể hiện hiểu lầm phổ biến. Mặc dù thế gian và ham muốn nó thường được cảnh báo, nhưng từ ngữ chính xác trong câu này là 'đang qua đi', không phải 'là tội lỗi'. Đây là sự diễn giải thay vì trích dẫn chính xác.",
     "language": "vi",
     "options": [
       "Thế gian + sự ham muốn nó ĐANG QUA ĐI — ai làm theo Ý ĐỨC CHÚA TRỜI thì CÒN LẠI ĐỜI ĐỜI",
-      "Thế gian sẽ tồn tại — ai làm việc tốt sẽ được thưởng",
-      "Thế gian sẽ tốt lên — ai cộng tác sẽ được thưởng",
-      "Thế gian sẽ xấu đi — ai sống sót sẽ được thưởng"
+      "Thế gian + sự ham muốn nó ĐANG PHÁT TRIỂN — ai làm theo Ý ĐỨC CHÚA TRỜI thì CÒN LẠI ĐỜI ĐỜI",
+      "Thế gian + sự ham muốn nó ĐANG QUA ĐI — ai làm theo Ý ĐỨC CHÚA TRỜI thì ĐƯỢC HẠNH PHÚC TRẦN GIAN",
+      "Thế gian + sự ham muốn nó LÀ TỘI LỖI — ai làm theo Ý ĐỨC CHÚA TRỜI thì CÒN LẠI ĐỜI ĐỜI"
     ],
     "tags": [
       "Tân Ước",
@@ -858,13 +858,13 @@
       1
     ],
     "content": "Theo 1 Giăng 3:17, ai có CỦA cải đời này, thấy anh em mình thiếu thốn, mà ĐÓNG LÒNG MÌNH thì sao?",
-    "explanation": "1 Giăng 3:17 — 'Nếu ai có của cải đời nầy, thấy anh em mình đang cần dùng, mà chặt dạ, thì lòng yêu mến Đức Chúa Trời thể nào ở trong người ấy được!' 'ĐÓNG LÒNG' (kleisē ta splanchna) = đóng cửa LÒNG (splanchna = ruột, chỗ ở của lòng thương xót). KHÔNG CÓ tình yêu Chúa nếu không TỎ tình yêu cho anh em đang cần. Test #2 yêu thương = thực tế.",
+    "explanation": "Đoạn Kinh Thánh 1 Giăng 3:17 hỏi: 'Nhưng ai có của cải thế gian, thấy anh em mình đang thiếu thốn, mà đóng lòng mình lại, thì làm sao tình yêu Đức Chúa Trời ở trong người ấy được?' (BTT). ĐÁP ÁN ĐÚNG là nguyên văn câu Kinh Thánh, trả lời trực tiếp câu hỏi 'thì sao?'. DISTRACTOR 1 ('Người ấy sẽ bị mất hết của cải đời này') SAI vì đây là một chi tiết không có trong câu này hoặc ngữ cảnh gần; câu Kinh Thánh tập trung vào sự vắng mặt của tình yêu, không phải hình phạt vật chất tức thì. DISTRACTOR 2 ('Tình yêu Đức Chúa Trời ở trong người ấy vẫn còn') SAI vì dù trông gần đúng và phủ định ngược lại ý chính, nó trực tiếp mâu thuẫn với lời khẳng định trong Kinh Thánh rằng tình yêu Đức Chúa Trời không thể ở trong người có thái độ đó. DISTRACTOR 3 ('Người ấy đã thể hiện đức tin thật sự') SAI vì đây là một hiểu lầm phổ biến; thái độ ích kỷ này thực chất chứng tỏ đức tin không có việc làm là đức tin chết (Giacơ 2:17), chứ không phải là biểu hiện của đức tin chân thật.",
     "language": "vi",
     "options": [
-      "Vẫn được Chúa thương",
+      "Người ấy sẽ bị mất hết của cải đời này",
       "Làm sao tình yêu Đức Chúa Trời ở trong người ấy được?",
-      "Là kẻ tiết kiệm khôn ngoan",
-      "Là kẻ có quyền sở hữu"
+      "Tình yêu Đức Chúa Trời ở trong người ấy vẫn còn",
+      "Người ấy đã thể hiện đức tin thật sự"
     ],
     "tags": [
       "Tân Ước",

@@ -63,14 +63,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Các Vua 4:6 - Dầu chảy đầy mọi bình bà muốn được. Chúa nhân lên điều ít ỏi để đủ dùng.",
+    "explanation": "Đáp án đúng dựa trên 2 Các Vua 4:4-6, khi Ê-li-sê bảo bà góa mượn các bình không và đổ dầu từ bình nhỏ của mình ra. Phép lạ là dầu cứ tiếp tục chảy cho đến khi tất cả các bình mượn được đều đầy (câu 6: 'Dầu cứ chảy mãi...').\n\nDistractor 1 ('Dầu ô-liu từ một cánh đồng...') sai vì không có chi tiết nào trong đoạn Kinh Thánh nói về dầu chảy từ cánh đồng; phép lạ xuất phát từ bình dầu nhỏ của chính bà (câu 2-5). Đây là lỗi 'nearby_passage' vì có thể nhầm lẫn với các phép lạ khác liên quan đến thiên nhiên.\nDistractor 2 ('Nước từ bình chảy không hết...') sai vì chất lỏng được nhân lên là dầu ô-liu, không phải nước (câu 2: 'một bình dầu rất nhỏ'). Đây là distractor 'gần đúng' (almost-right) vì chỉ sai một chi tiết then chốt (bản chất của chất lỏng) trong khi cấu trúc phép lạ ('chảy không hết') là đúng. Lỗi thuộc loại 'wrong_detail'.\nDistractor 3 ('Bà bán bình dầu để trả nợ...') sai vì mặc dù bà được lệnh đi bán dầu để trả nợ (câu 7), đây là hành động sau phép lạ chứ không phải bản thân phép lạ mà câu hỏi đang hỏi. Lỗi thuộc loại 'true_but_off' (đúng chi tiết văn bản nhưng lạc trọng tâm câu hỏi).",
     "language": "vi",
     "verseEnd": 7,
     "options": [
-      "Con giải nợ",
-      "Vàng từ trời",
+      "Dầu ô-liu từ một cánh đồng gần đó chảy về đầy bình",
+      "Nước từ bình chảy không hết vào các bình khác",
       "Dầu ô-liu từ bình chảy không hết vào các bình khác",
-      "Bàn thờ gửi tiền"
+      "Bà bán bình dầu để trả nợ theo lời khuyên của ông"
     ],
     "tags": [
       "Cựu Ước",

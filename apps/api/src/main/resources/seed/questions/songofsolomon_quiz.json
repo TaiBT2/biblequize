@@ -425,13 +425,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Nhã Ca 7:10 — 'Tôi thuộc về lương nhân tôi, sự ước ao người hướng về tôi.'",
+    "explanation": "Câu hỏi hỏi cụ thể nội dung Nhã Ca 7:10. Đáp án đúng là: \"Tôi thuộc về lương nhân tôi, sự ước ao người hướng về tôi\". Đây là lời trực tiếp của người nữ trong câu 10, khẳng định mối quan hệ thuộc về và lòng yêu thương (sự ước ao).\n\nCác đáp án sai:\n1. \"Lương nhân tôi thuộc về tôi, sự ước ao tôi hướng về người\": Sai chi tiết quan hệ. Câu này đảo ngược chủ thể của sự \"thuộc về\" và \"sự ước ao\" so với Kinh Thánh. Trong câu 10, người nữ nói cô thuộc về lương nhân và sự ước ao (của lương nhân) hướng về cô.\n2. \"Tình yêu của người mạnh hơn rượu, sự ước ao người hướng về tôi\": Sai do lấy ý từ đoạn gần (nearby passage). Nửa đầu (\"Tình yêu của người mạnh hơn rượu\") là nội dung của Nhã Ca 1:2 và 4:10, không phải 7:10.\n3. \"Tôi thuộc về lương nhân tôi, và tình yêu người ngọt hơn mật ong\": Đúng văn bản nhưng lạc câu hỏi. Nửa đầu đúng với 7:10a, nhưng nửa sau (\"tình yêu người ngọt hơn mật ong\") là ý xuất hiện ở Nhã Ca 4:11, không phải là nội dung về \"sự ước ao\" mà câu hỏi yêu cầu tìm trong 7:10.",
     "language": "vi",
     "options": [
       "Tôi thuộc về lương nhân tôi, sự ước ao người hướng về tôi",
-      "Tôi đợi lương nhân ngoài cổng vườn",
-      "Lương nhân tôi đã đi xa rồi",
-      "Tôi sẽ tìm gặp lương nhân tôi vào sáng mai"
+      "Lương nhân tôi thuộc về tôi, sự ước ao tôi hướng về người",
+      "Tình yêu của người mạnh hơn rượu, sự ước ao người hướng về tôi",
+      "Tôi thuộc về lương nhân tôi, và tình yêu người ngọt hơn mật ong"
     ],
     "tags": [
       "Cựu Ước",

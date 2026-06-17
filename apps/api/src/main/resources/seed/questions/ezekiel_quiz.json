@@ -9,13 +9,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Exe 36:26 - Chúa hứa cất lòng bằng đá và ban cho một lòng mới, tức là lòng bằng thịt.",
+    "explanation": "Câu hỏi tham chiếu Ê-xê-chi-ên 36:26: 'Ta sẽ ban lòng mới cho các ngươi, và đặt thần mới trong các ngươi. Ta sẽ cất lòng bằng đá khỏi thịt các ngươi, và ban cho các ngươi lòng bằng thịt.' Do đó, đáp án đúng là 'Tâm lòng bằng thịt (tâm lần mới)', vì đây là lời hứa trực tiếp của Chúa. Các đáp án sai: 1) 'Một tấm lòng bằng ngọc' là sai vì chi tiết này xuất hiện trong các phân đoạn khác nói về trang sức hay sự quý giá (ví dụ: Châm ngôn 4:9), không phải trong lời hứa thay thế tâm lòng bằng đá ở Ê-xê-chi-ên. 2) 'Tâm lòng bằng cây' là sai vì đây là một hiểu lầm phổ biến, cho rằng 'tâm lòng mới' có thể hiểu theo nghĩa 'mềm mại' như gỗ, nhưng Kinh Thánh không dùng hình ảnh này trong ngữ cảnh này. 3) 'Tâm lòng bằng đồng' là gần đúng nhưng sai chi tiết then chốt; đồng tuy là kim loại bền vững và cũng được nhắc đến trong Kinh Thánh (ví dụ: Phục truyền 8:9), nhưng lời hứa cụ thể ở đây là 'bằng thịt' để đối lập với 'bằng đá', nhấn mạnh sự sống và mềm mại thay vì sự cứng cỏi.",
     "language": "vi",
     "options": [
-      "Trí khôn ngoan",
-      "Sự giàu có",
+      "Một tấm lòng bằng ngọc (tâm lòng quý giá)",
+      "Tâm lòng bằng cây (tâm lòng mềm mại)",
       "Tâm lòng bằng thịt (tâm lòng mới)",
-      "Sức mạnh"
+      "Tâm lòng bằng đồng (tâm lòng bền vững)"
     ],
     "tags": [
       "Cựu Ước",
@@ -64,12 +64,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Mỗi người chịu trách nhiệm về tội lỗi của chính mình. Không ai bị phạt vì tội người khác.",
+    "explanation": "Ê-xê-chi-ên 18:4 viết: 'Kìa, mọi linh hồn đều thuộc về ta, linh hồn của cha cũng như linh hồn của con đều thuộc về ta. Linh hồn nào phạm tội thì linh hồn ấy sẽ chết.' Đây là một tuyên bố mạnh mẽ khẳng định trách nhiệm tội lỗi là cá nhân, không phải tập thể hay di truyền.\n\nĐáp án đúng đúng bởi vì nó diễn đạt chính xác ý chính của câu Kinh Thánh: hình phạt cho tội lỗi là cái chết, và trách nhiệm đó thuộc về chính linh hồn phạm tội.\n\nDistractor 1 ({'gần đúng'}) có cấu trúc gần giống đáp án đúng nhưng sai chi tiết then chốt về hình phạt ('sẽ được tha thứ nếu ăn năn'). Cả chương dạy về cơ hội quay khỏi tội lỗi, nhưng câu 4 cụ thể không nói về sự tha thứ mà chỉ khẳng định nguyên tắc 'phạm tội thì chết'.\n\nDistractor 2 sai do trộn lẫn với một ý tưởng từ các passages gần đó hoặc liên tưởng về hình phạt liên đới. Trong ngữ cảnh, chương này đang bác bỏ quan điểm cho rằng con cái phải chịu tội của cha ông (câu 2, 3), nhưng không hề đề cập đến hình phạt 'ba đời'.\n\nDistractor 3 dựa trên một hiểu lầm thần học phổ biến về sự liên đới trong tội lỗi. Câu này và cả chương 18 đặc biệt bác bỏ quan niệm này, khẳng định: 'con sẽ không mang sự gian ác của cha' (câu 20).",
     "language": "vi",
     "options": [
-      "Cha chịu tội con",
-      "Con chịu tội cha",
-      "Cả gia đình chịu",
+      "Linh hồn nào phạm tội thì linh hồn ấy sẽ được tha thứ nếu ăn năn",
+      "Linh hồn nào phạm tội thì linh hồn ấy sẽ chết dòng dõi tới ba đời",
+      "Con cái vô tội sẽ gánh tội thay cho cha mẹ đã phạm tội",
       "Linh hồn nào phạm tội thì linh hồn ấy sẽ chết (mỗi người chịu trách nhiệm tội mình)"
     ],
     "tags": [
@@ -604,12 +604,12 @@
       3
     ],
     "content": "Theo Ê-xê-chi-ên 11:19-20, Đức Chúa Trời hứa cho dân Y-sơ-ra-ên TÂM gì THAY cho TÂM gì?",
-    "explanation": "Ê-xê-chi-ên 11:19-20 — 'Ta sẽ ban cho chúng nó một lòng đồng nhau, phú thần mới trong các ngươi; bỏ lòng đá khỏi xác thịt chúng nó, và sẽ cho chúng nó lòng thịt; để chúng nó noi theo lề luật ta, giữ và làm theo mạng lịnh ta.' Lời hứa GIAO ƯỚC MỚI — lặp lại tại 36:26. Cùng tư tưởng Giê-rê-mi 31:31-34. ĐÁ = không cảm xúc; THỊT = sống động, đáp lại. Chỉ có thể thay LÒNG bằng PHÉP LẠ Đức Chúa Trời.",
+    "explanation": "Ê-xê-chi-ên 11:19 chép: 'Ta sẽ ban cho các ngươi một lòng đồng một, và phú thần linh mới trong các ngươi. Ta sẽ cất lòng bằng đá khỏi xác thịt các ngươi và ban cho các ngươi lòng bằng thịt.' Câu 20 giải thích mục đích: 'hầu cho chúng nó noi theo luật lệ ta, giữ và làm theo mọi điều răn ta.' Do đó, đáp án đúng nêu chính xác tâm 'đồng lòng' và 'linh mới' được thay cho 'lòng đá' để trở thành 'lòng thịt', với mục đích 'bước theo điều răn Chúa'.\n\n- Distractor 1 (sai chi tiết): Gần đúng nhưng thay 'linh mới' bằng 'tâm thịt' (sai yếu tố được ban cho) và dùng từ 'thạch' thay 'đá' (cùng nghĩa nhưng không phải từ trong bản dịch) và 'vâng theo luật pháp' (tuy đúng ý nhưng không phải cụm từ chính xác nhất).\n- Distractor 2 (nhầm passage gần): Dùng cụm 'một trái tim mềm' và 'tâm linh' – đây là ý tưởng có trong các sách tiên tri khác (như Ê-xê-chi-ên 36:26 nói 'lòng mới' và 'thần mới') nhưng không phải từ ngữ chính xác trong Ê-xê-chi-ên 11:19, và 'giữ gìn quy định' là cách diễn đạt khác.\n- Distractor 3 (đúng văn bản nhưng lạc câu hỏi): Trộn lẫn thứ tự và từ ngữ ('tâm linh', 'lòng thịt', 'trái tim biết nghe'), làm mờ sự thay thế rõ ràng 'lòng đá -> lòng thịt' và đưa vào cụm 'biết nghe' không có trong đoạn này, mặc dù 'tuân theo mệnh lệnh' có ý đúng.",
     "language": "vi",
     "options": [
-      "Tâm Lê-vi thay tâm dân ngoại",
-      "Tâm tổ phụ thay tâm con cháu",
-      "Tâm vua thay tâm dân",
+      "MỘT LÒNG MỚI + TÂM THỊT; CẤT LÒNG ĐÁ khỏi xác thịt + cho LÒNG THẠCH — để vâng theo luật pháp Chúa",
+      "MỘT TRÁI TIM MỀM + TÂM LINH; CẤT LÒNG CỨNG CỎI khỏi xác thịt + cho LÒNG THỊT — để giữ gìn quy định Chúa",
+      "MỘT TÂM LINH + LÒNG THỊT; CẤT LÒNG ĐÁ khỏi thân thể + cho TRÁI TIM BIẾT NGHE — để tuân theo mệnh lệnh Chúa",
       "MỘT LÒNG MỘT (đồng lòng) + LINH MỚI; CẤT LÒNG ĐÁ khỏi xác thịt + cho LÒNG THỊT — để bước theo điều răn Chúa"
     ],
     "tags": [
@@ -943,13 +943,13 @@
       2
     ],
     "content": "Theo Ê-xê-chi-ên 17:1-10, ẩn dụ về hai con đại bàng và cây nho chủ yếu ám chỉ điều gì?",
-    "explanation": "Ê-xê-chi-ên 17:1-10 là một ẩn dụ. Đại bàng thứ nhất tượng trưng vua Nê-bu-cát-nết-sa của Ba-by-lôn, đã bắt vua Giê-hô-gia-kin (chồi cao) đem về Ba-by-lôn. Ông lập Sê-đê-kia (cây nho) làm vua. Đại bàng thứ hai tượng trưng Pha-ra-ôn Ai Cập. Sê-đê-kia phản bội giao ước với Ba-by-lôn để tìm kiếm sự giúp đỡ từ Ai Cập, dẫn đến việc bị trừng phạt và Giê-ru-sa-lem bị hủy diệt. Ê-xê-chi-ên 17:11-21 giải thích rõ ràng hơn.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Ê-xê-chi-ên 17:1-10 kể một ẩn dụ về hai con đại bàng và cây nho. Đại bàng thứ nhất (vua Ba-by-lôn/Nê-bu-cát-nết-sa - phương Bắc so với Yê-ru-sa-lem) bẻ ngọn cây tuyết tùng (bắt vua Giê-hô-gia-kin lưu đày). Nó trồng một cây nho (lập Xê-đê-kia lên làm vua chư hầu). Cây nho quay sang đại bàng thứ hai (vua Ê-díp-tô - phương Nam) tìm sự hỗ trợ, vì thế chống lại đại bàng thứ nhất và sẽ bị bứng (bị trừng phạt) (17:9-10, 15-16). Đây là lời tiên tri về mối quan hệ chính trị giữa Giu-đa với Ba-by-lôn và Ê-díp-tô. DISTRACTOR 1 SAI (wrong_detail): Gần đúng nhưng sai chi tiết then chốt 'thành công'. Câu 17:9-10, 20 khẳng định cây nho sẽ bị diệt, không thể thành công. DISTRACTOR 2 SAI (nearby_passage): Mượn ý từ 'Nước Sắt' và 'nổi loạn chống lại Đức Chúa Trời' trong cùng chương 17:19, nhưng đây là cách giải thích rộng hơn, không phải là 'ý chủ yếu' (vua phương Bắc là Ba-by-lôn, không phải 'Nước Sắt' đặc trưng). DISTRACTOR 3 SAI (true_but_off): Trích từ ẩn dụ cây tuyết tùng trong Ê-xê-chi-ên 17:22-23, là phần tiếp theo nói về sự phục hồi tương lai của Đức Chúa Trời, không phải là ý chính của ẩn dụ về hai con đại bàng và cây nho trong 17:1-10.",
     "language": "vi",
     "options": [
-      "Cuộc tranh chiến giữa các thiên sứ và Sa-tan trong thế giới thuộc linh.",
-      "Mối quan hệ tranh chấp giữa Cha và Con trong câu chuyện Kinh Thánh.",
+      "Một vua phương Bắc bắt vua Y-sơ-ra-ên, và vua kế vị liên minh với một vua phương Nam rồi trốn thoát thành công.",
+      "Một vua phương Bắc đến từ Nước Sắt, và vua kế vị Y-sơ-ra-ên nổi loạn chống lại Đức Chúa Trời.",
       "Một vua phương Bắc bắt vua Y-sơ-ra-ên, và vua kế vị liên minh với một vua phương Nam rồi bị trừng phạt.",
-      "Cuộc xung đột giữa hai đế quốc phương Bắc và Nam được mô tả trong sách tiên tri."
+      "Sự phục hồi của dân Y-sơ-ra-ên qua hình ảnh một cây tuyết tùng được mang từ Ly-ban về trồng."
     ],
     "tags": [
       "Cựu Ước",
@@ -1047,13 +1047,13 @@
       2
     ],
     "content": "Theo Ê-xê-chi-ên 37:15-28, Đức Chúa Trời truyền Ê-xê-chi-ên LÀM gì với 2 cây gậy? Ý nghĩa?",
-    "explanation": "Ê-xê-chi-ên 37:16-17, 19, 24 — 'Hỡi con người, hãy lấy một cây gậy và viết ở trên rằng: Cho Giu-đa, và cho con cái Y-sơ-ra-ên là bạn người. Hãy lấy một cây gậy khác và viết ở trên rằng: Cho Giô-sép, ấy là cây gậy của Ép-ra-im, và cả nhà Y-sơ-ra-ên là bạn nó. Rồi hãy để gậy nầy với gậy kia hiệp làm một... Khi ấy ta sẽ phán cùng chúng nó rằng: Nầy, ta sẽ lấy gậy của Giô-sép và của các chi phái Y-sơ-ra-ên là bạn người, mà ta đã giữ trong tay Ép-ra-im, sẽ hiệp lại với gậy Giu-đa, và làm thành một gậy mà thôi, và chúng nó sẽ chỉ là một trong tay ta... Tôi tớ ta là Đa-vít sẽ làm vua trên chúng nó.' Y-sơ-ra-ên + Giu-đa hợp dưới Mê-si-a.",
+    "explanation": "Ê-xê-chi-ên 37:15-28 ghi lại việc Đức Chúa Trời truyền cho Ê-xê-chi-ên lấy hai cây gậy, ghi 'Giu-đa' và 'các chi phái Y-sơ-ra-ên' trên mỗi gậy, rồi 'hãy để hai cây gậy ấy hiệp làm một trong tay ngươi' (câu 17). Đáp án đúng là ghép hai gậy thành một, tượng trưng cho sự hợp nhất của Y-sơ-ra-ên và Giu-đa dưới một vua. Phương án gần đúng (distractor 0) sai chi tiết về hành động (ghi tên đổi chỗ thay vì ghép gậy) và ý nghĩa (trao đổi quyền thế thay vì hợp nhất). Phương án 1 sai phạm vi khi đưa ra các tên vua không được nhắc đến trong đoạn và ý nghĩa kế thừa không phù hợp. Phương án 2 dựa vào ý phân chia địa lý trong các đoạn gần (nhưng không phải trong câu 15-28) và sai hành động (chôn thay vì ghép).",
     "language": "vi",
     "options": [
-      "Đập 2 gậy — chia chiến",
-      "Trồng 2 gậy — phát triển",
+      "Ghi tên Giu-đa trên gậy Y-sơ-ra-ên và ghi tên Y-sơ-ra-ên trên gậy Giu-đa, tượng trưng cho sự trao đổi quyền thế",
+      "Đưa gậy Giu-đa cho vua Bên-gia-min và gậy Y-sơ-ra-ên cho vua Đa-vít, tượng trưng cho sự kế thừa",
       "Ghép 2 gậy thành một, tượng trưng cho sự hợp nhất của Y-sơ-ra-ên và Giu-đa dưới một vua",
-      "Đốt 2 gậy — sạch tội"
+      "Chôn một gậy ở phía bắc và một gậy ở phía nam, tượng trưng cho sự tồn tại song song của hai vương quốc"
     ],
     "tags": [
       "Cựu Ước",
@@ -1151,13 +1151,13 @@
       2
     ],
     "content": "Theo Ê-xê-chi-ên 18:25-32, dân Y-sơ-ra-ên nói gì về đường lối Đức Chúa Trời? Đức Chúa Trời đáp gì?",
-    "explanation": "Ê-xê-chi-ên 18:25, 29, 31-32 — 'Các ngươi lại nói rằng: Đường lối của Chúa là không công bằng! Vậy, hỡi nhà Y-sơ-ra-ên, hãy nghe: Đường lối của ta há không công bằng sao? Há chẳng phải đường lối của các ngươi là không công bằng sao?... Hãy liệng xa các ngươi mọi sự phạm pháp mà các ngươi đã làm. Hãy làm cho mình một lòng mới và một thần mới. Vì, hỡi nhà Y-sơ-ra-ên, làm sao mà các ngươi muốn chết? Chúa Giê-hô-va phán: Ta không vui chút nào về sự chết của kẻ phải chết, vậy các ngươi hãy xây lại, mà được sống!'",
+    "explanation": "Trong Ê-xê-chi-ên 18:25-32, câu hỏi hỏi cụ thể lời dân Y-sơ-ra-ên nói và lời đáp của Đức Chúa Trời. ĐÁP ÁN ĐÚNG: trích chính xác từ Kinh Thánh (c.25, c.30-31). Dân Y-sơ-ra-ên nói: 'Đường Chúa không công bình!', và Đức Chúa Trời đáp: 'Không! Đường các ngươi mới không công bình; hãy ăn năn — tại sao các ngươi muốn chết?' (Ê-xê-chi-ên 18:25, 31-32). DISTRACTOR 1 (wrong_detail, almost-right): Sai chi tiết then chốt trong lời đáp của Chúa. Chúa KHÔNG hề đồng ý 'Phải, đường Ta không công bình', mà Ngài phủ định hoàn toàn và quy trách nhiệm cho họ. DISTRACTOR 2 (nearby_passage): Dựa vào chủ đề gần trong đoạn về 'cha ông' (Ê-xê-chi-ên 18:2, 19), nhưng lời phàn nàn cụ thể trong câu 25 là về 'đường lối Chúa' nói chung, không giới hạn vào việc đối xử với cha ông. DISTRACTOR 3 (true_but_off): Lạc câu hỏi. Dân Y-sơ-ra-ên trong ngữ cảnh này KHÔNG nói 'Chúng tôi muốn sống theo luật pháp Chúa!' (đây là ý Chúa kêu gọi, không phải lời họ thực tế nói), dù phần đáp của Chúa trích đúng.",
     "language": "vi",
     "options": [
-      "Họ nói 'đường Chúa thẳng' — Chúa khen",
-      "Họ nói 'đường Chúa khôn' — Chúa khích lệ",
+      "Họ nói 'Đường Chúa không công bình!' — Chúa đáp: 'Phải, đường Ta không công bình; nhưng Ta sẽ thương xót.'",
+      "Họ nói 'Đường Chúa không công bằng đối với cha ông chúng tôi!' — Chúa đáp: 'Không! Đường các ngươi mới không công bình; hãy ăn năn.'",
       "Họ nói 'Đường Chúa không công bình!' — Chúa đáp: 'Không! Đường các ngươi mới không công bình; hãy ăn năn — tại sao các ngươi muốn chết?'",
-      "Họ nói 'đường Chúa lạ' — Chúa giải thích"
+      "Họ nói 'Chúng tôi muốn sống theo luật pháp Chúa!' — Chúa đáp: 'Không! Đường các ngươi mới không công bình; hãy ăn năn.'"
     ],
     "tags": [
       "Cựu Ước",
@@ -1177,12 +1177,12 @@
       3
     ],
     "content": "Theo Ê-xê-chi-ên 20:25-26, Đức Chúa Trời nói GÌ KỲ LẠ về luật pháp Ngài đã ban cho Y-sơ-ra-ên?",
-    "explanation": "Ê-xê-chi-ên 20:25-26 — 'Ta cũng đã ban cho chúng nó những luật lệ chẳng lành, và những mạng lịnh mà bởi đó chúng nó không được sống. Ta làm cho chúng nó bị ô uế bởi của cúng chúng nó, khi chúng nó khiến mọi con đầu lòng qua trên lửa, hầu cho ta làm cho chúng nó ra hoang vu, đến nỗi chúng nó biết rằng ta là Đức Giê-hô-va.' Đây là một câu khó hiểu, thường được giải thích rằng vì Y-sơ-ra-ên khước từ luật thật của Chúa, nên Ngài đã để họ theo các tập tục ngoại bang tà ác (như dâng con cái qua lửa) như một hình phạt và sự xét đoán, với tư tưởng tương đồng Rô-ma 1:24-26.",
+    "explanation": "ĐÁP ÁN ĐÚNG dựa trực tiếp vào Ezekiel 20:25-26 (BTT): 'Ta cũng cho chúng nó những luật lệ chẳng lành, và mạng lịnh chẳng đưa đến sự sống. Ta để chúng nó bị ô uế bởi của lễ chúng nó, tức là bởi sự chúng nó làm cho mọi con đầu lòng phải qua lửa...'. Đây là lời phán kỳ lạ về chính luật pháp Ngài ban.\n\nDISTRACTOR 1 (gần đúng, sai chi tiết then chốt): Sai ở cụm 'cho hình tượng'. Kinh văn nói rõ là 'qua lửa' (thiêu), không phải 'cho hình tượng'. Đây là một thay đổi nhỏ nhưng làm thay đổi bản chất của hành động được mô tả.\nDISTRACTOR 2 (sai phạm vi): Sai ở 'luật lệ khó giữ' và 'phải lưu đày'. Kinh văn không nói luật lệ 'khó giữ' mà là 'chẳng lành' và 'chẳng đưa đến sự sống'. Hậu quả 'lưu đày' là hệ quả chung của tội lỗi, không phải mục đích trực tiếp của các luật lệ 'chẳng lành' này trong câu 25-26.\nDISTRACTOR 3 (nhầm passage gần): Sai ở 'vì mọi thần tượng của họ'. Ý này phản ánh sự ô uế chung do thờ hình tượng được nhắc nhiều trong sách Ê-xê-chi-ên (như chương 14, 23), nhưng không phải là nội dung cụ thể của câu 25-26 đang được hỏi, vốn chỉ nói đến ô uế bởi việc dâng con đầu lòng qua lửa.",
     "language": "vi",
     "options": [
-      "Luật pháp quá hoàn hảo.",
-      "Luật pháp là thuộc linh.",
-      "Luật pháp mới là hoàn hảo.",
+      "Ngài đã ban cho họ những luật lệ chẳng lành, khiến họ không được sống, và để họ bị ô uế bởi việc dâng con đầu lòng cho hình tượng.",
+      "Ngài đã ban cho họ những luật lệ khó giữ, khiến họ phải lưu đày, và để họ bị ô uế bởi việc dâng con đầu lòng qua lửa.",
+      "Ngài đã ban cho họ những luật lệ chẳng lành, khiến họ không được sống, và để họ bị ô uế vì mọi thần tượng của họ.",
       "Ngài đã ban cho họ những luật lệ chẳng lành, khiến họ không được sống, và để họ bị ô uế bởi việc dâng con đầu lòng qua lửa."
     ],
     "tags": [

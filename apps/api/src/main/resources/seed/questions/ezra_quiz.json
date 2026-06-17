@@ -9,13 +9,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "E-xơ-ra 1:1 — 'Năm thứ nhứt đời Si-ru, vua Phe-rơ-sơ trị vì, Đức Giê-hô-va muốn làm cho ứng nghiệm lời Ngài đã cậy miệng Giê-rê-mi mà phán ra...'",
+    "explanation": "Câu Kinh Thánh E-xơ-ra 1:1 chép: \"Năm thứ nhất đời Si-ru, vua Phe-rơ-sơ, Đức Giê-hô-va...\". Do đó, đáp án đúng là \"Phe-rơ-sơ (Ba Tư)\". Distractor \"Ba-by-lôn (Babylon)\" sai vì Si-ru đánh bại và sáp nhập đế quốc Ba-by-lôn, nhưng ông là vua của Phe-rơ-sơ. Distractor \"Giu-đa (Judah)\" sai vì đây là tên vương quốc/vùng đất của dân Do Thái bị lưu đày, không phải nước của vua Si-ru. Distractor \"Mê-đi (Media)\" sai vì Si-ru có dòng dõi và liên minh với người Mê-đi, nhưng vương quốc của ông được gọi chính thức là Phe-rơ-sơ.",
     "language": "vi",
     "options": [
       "Phe-rơ-sơ (Ba Tư)",
-      "Ba-by-lôn",
-      "Mê-đi",
-      "A-si-ri"
+      "Ba-by-lôn (Babylon)",
+      "Giu-đa (Judah)",
+      "Mê-đi (Media)"
     ],
     "tags": [
       "Cựu Ước",
@@ -427,13 +427,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "E-xơ-ra 8:22 — '...vì ta có nói với vua rằng: Tay của Đức Chúa Trời chúng tôi phù trợ mọi kẻ nào tìm kiếm Ngài; nhưng quyền năng và thạnh nộ Ngài kháng cự nhứt thiết kẻ nào lìa bỏ Ngài.'",
+    "explanation": "Câu hỏi dựa trên E-xơ-ra 8:22: 'Vì tôi đã nói với vua rằng tay của Đức Chúa Trời chúng tôi phù hộ mọi kẻ tìm kiếm Ngài; còn quyền năng và thạnh nộ Ngài kháng cự mọi kẻ lìa bỏ Ngài.' Đáp án đúng trích dẫn chính xác lý do E-xơ-ra mắc cỡ: ông đã tuyên bố với vua về sự phù trợ của Chúa cho người tìm kiếm Ngài, nên thấy ngượng khi xin binh lính trần thế.\n\nDistractor 1 (gần đúng) sai vì thay 'phù trợ' bằng 'giáng họa', trái ngược hoàn toàn với ý câu Kinh Thánh.\nDistractor 2 sai vì thay 'kẻ tìm kiếm Ngài' bằng 'kẻ vâng lời Ngài', đây là một chi tiết sai từ một sự nhầm lẫn với các câu gần đó nói về sự vâng lời.\nDistractor 3 sai vì mặc dù 'mọi người trong đoàn' có thể được hiểu ngầm, nhưng nó thu hẹp phạm vi lời tuyên bố của E-xơ-ra (vốn nói về mọi kẻ tìm kiếm Chúa nói chung) thành chỉ nhóm người cụ thể, làm lạc trọng tâm câu hỏi về lý do ông mắc cỡ.",
     "language": "vi",
     "options": [
       "Vì đã nói với vua rằng tay Chúa phù trợ mọi kẻ tìm kiếm Ngài",
-      "Vì sợ vua nghi ngờ trung thành",
-      "Vì không có tiền trả cho lính",
-      "Vì không có thẩm quyền yêu cầu"
+      "Vì đã nói với vua rằng tay Chúa giáng họa mọi kẻ tìm kiếm Ngài",
+      "Vì đã nói với vua rằng tay Chúa phù trợ mọi kẻ vâng lời Ngài",
+      "Vì đã nói với vua rằng tay Chúa phù trợ mọi người trong đoàn"
     ],
     "tags": [
       "Cựu Ước",

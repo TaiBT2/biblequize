@@ -9,13 +9,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Sunergeo (συνεργέω) có nghĩa là \"cùng làm việc\", mọi sự cùng nhau làm việc vì lợi ích của chúng ta.",
+    "explanation": "Đáp án đúng là \"Sunergeo - Cùng làm việc\". Trong Rô-ma 8:28, từ gốc Hy Lạp συνεργέω (sunergeo) có nghĩa là \"cùng làm việc\", \"hợp tác\" hoặc \"hiệp tác\", nhấn mạnh sự đồng công trong hành động. Các đáp án sai: 1) \"Sunago - Tụ họp lại\" (συνάγω) là từ Hy Lạp xuất hiện nhiều trong Tân Ước (như trong các sách Phúc Âm) với nghĩa nhóm họp, nhưng không phải từ được dùng trong câu này. 2) \"Sunistemi - Đặt cùng nhau\" (συνίστημι) thường có nghĩa là giới thiệu, chứng minh hoặc kết hợp, sai về chi tiết từ ngữ. 3) \"Kaleo - Kêu gọi\" (καλέω) là từ chỉ sự kêu gọi, mời gọi (như trong ơn gọi), một hiểu lầm phổ biến khi liên tưởng đến chủ đề \"kẻ được gọi\" trong ngữ cảnh, nhưng không liên quan đến nghĩa \"hiệp lại\" trong câu hỏi.",
     "language": "vi",
     "options": [
       "Sunergeo - Cùng làm việc",
-      "Ergon - Công việc",
-      "Synergia - Sự hợp tác",
-      "Sun - Cùng nhau"
+      "Sunago - Tụ họp lại",
+      "Sunistemi - Đặt cùng nhau",
+      "Kaleo - Kêu gọi"
     ],
     "tags": [
       "Rô-ma",
@@ -36,13 +36,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Metamorphoo (μεταμορφόω) có nghĩa là \"biến hóa từ bên trong\", như con bướm biến hóa từ sâu.",
+    "explanation": "Câu hỏi hỏi nghĩa của từ 'biến hóa' trong Rô-ma 12:2. Đáp án đúng là 'Metamorphoo - Biến hóa từ bên trong', vì động từ Hy Lạp μεταμορφοῦσθε (metamorphousthe) trong ngữ cảnh này chỉ sự biến đổi bản chất bên trong, như tâm trí và tính cách, chứ không phải thay đổi hình thức bên ngoài.\n\nCác đáp án sai:\n1. 'Metamorphoō - Biến hóa bề ngoài về hình dạng' (errorType: wrong_detail) - Từ này tuy là cùng gốc với metamorphoo, nhưng giải thích sai chi tiết then chốt. Trong bối cảnh thuộc linh Rô-ma 12:2, sự biến hóa là nội tâm, không phải ngoại hình.\n2. 'Metanoia - Biến hóa bởi sự ăn năn hoán cải' (errorType: nearby_passage) - Từ μετάνοια (metanoia) xuất hiện trong các phân đoạn gần về sự thay đổi (như Ma-thi-ơ 3:2, 4:17), nghĩa là 'ăn năn' hoặc 'thay đổi tư tưởng', nhưng KHÔNG phải từ được dùng trong Rô-ma 12:2 cho 'biến hóa'.\n3. 'Anakainoō - Đổi mới bởi việc trở nên mới mẻ' (errorType: common_misconception) - Từ ἀνακαινόω (anakainoō) nghĩa là 'làm mới lại' hoặc 'đổi mới', và xuất hiện trong các câu như 2 Cô-rinh-tô 4:16 hay Cô-lô-se 3:10. Đây là một cách hiểu lầm phổ biến vì nó liên quan đến khái niệm 'đổi mới' trong cùng câu (Rô-ma 12:2 có cụm 'sự đổi mới của tâm trí'), nhưng nó KHÔNG phải là từ 'biến hóa' mà câu hỏi đang hỏi.",
     "language": "vi",
     "options": [
       "Metamorphoo - Biến hóa từ bên trong",
-      "Metatithemi - Chuyển đổi",
-      "Metastrepho - Đảo ngược",
-      "Allasso - Thay đổi bên ngoài"
+      "Metamorphoō - Biến hóa bề ngoài về hình dạng",
+      "Metanoia - Biến hóa bởi sự ăn năn hoán cải",
+      "Anakainoō - Đổi mới bởi việc trở nên mới mẻ"
     ],
     "tags": [
       "Rô-ma",
@@ -144,14 +144,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Rô-ma 8:38-39 - Vì tôi chắc rằng bất kỳ điều gì: sự chết, sự sống, thiên sứ, kẻ cầm quyền, việc hiện tại, việc tương lai, quyền lực, chiều cao, chiều sâu, hay bất cứ tạo vật nào khác, đều không thể phân cách chúng ta khỏi tình yêu của Đức Chúa Trời trong Chúa Giê-su Christ.",
+    "explanation": "Rô-ma 8:38-39 khẳng định: “Vì tôi chắc rằng bất kỳ sự chết, sự sống, các thiên sứ, các kẻ cầm quyền, việc hiện tại, việc tương lai, quyền phép, bề cao, bề sâu, hay một vật tạo thành nào khác, đều không thể phân cách chúng ta khỏi tình yêu của Đức Chúa Trời trong Đấng Christ Jêsus, Chúa chúng ta.”\n\n- ĐÁP ÁN ĐÚNG: \"Không gì cả\" là ý chính được tóm tắt từ danh sách tất cả các yếu tố được liệt kê (sự chết, sự sống, ...), vì câu Kinh Thánh khẳng định không vật nào trong số đó có thể phân cách chúng ta.\n\n- DISTRACTOR \"Các yếu tố được liệt kê: sự chết, sự sống, thiên sứ, kẻ cầm quyền, v.v.\": Sai vì đây chính xác là những thứ mà phân đoạn nói \"không thể phân cách\" chúng ta. Đây là nhầm lẫn từ chính passage gần (nearby_passage), vì đọc lướt có thể thấy danh sách này nhưng không nắm được mệnh đề phủ định \"không thể\". Đây là distractor 'gần đúng'.\n\n- DISTRACTOR \"Sự hoài nghi và tội lỗi lâu dài của chúng ta.\": Sai vì phân đoạn Kinh Thánh này không liệt kê các tội cụ thể hay sự hoài nghi là những rào cản; đây là một hiểu lầm phổ biến (common_misconception) vì người ta thường nghĩ tội lỗi có thể cắt đứt mối quan hệ, nhưng ngữ cảnh Rô-ma 8 đang khẳng định sự an toàn trong Chúa.\n\n- DISTRACTOR \"Vì tình yêu Chúa là vô điều kiện nhưng điều ước của con người là rào cản.\": Sai vì mặc dù câu bình luận có phần đúng về tình yêu vô điều kiện, nó không trực tiếp trả lời câu hỏi về đối tượng được liệt kê trong câu Kinh Thánh này và lạc đề (true_but_off) sang một suy tưởng thần học chung hơn là đoạn văn cụ thể.",
     "language": "vi",
     "verseEnd": 39,
     "options": [
-      "Sự bội đạo",
+      "Các yếu tố được liệt kê: sự chết, sự sống, thiên sứ, kẻ cầm quyền, v.v.",
       "Không gì cả - như đã liệt kê: sự chết, sự sống, thiên sứ, kẻ cầm quyền, v.v.",
-      "Sự phản bội",
-      "Tội lỗi nghiêm trọng"
+      "Sự hoài nghi và tội lỗi lâu dài của chúng ta.",
+      "Vì tình yêu Chúa là vô điều kiện nhưng điều ước của con người là rào cản."
     ],
     "tags": [
       "Tân Ước",
@@ -280,14 +280,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Khó khăn là quá trình tạo nên tính cách và hy vọng vững chắc.",
+    "explanation": "Đoạn Rô-ma 5:3-4 (BTT) viết: 'lại chẳng những thế, còn khoe mình trong hoạn nạn nữa, vì biết rằng hoạn nạn sinh sự nhịn nhục, sự nhịn nhục sinh sự rèn tập, sự rèn tập sinh sự trông cậy.' Do đó, sự nhịn nhục sinh ra **sự rèn tập (tính cách)** trước khi dẫn đến sự trông cậy. \n\n- Distractor 'Sự trắc nghiệm (đức tin)' (wrong_detail): Đây là phương án gần đúng nhưng sai chi tiết. 1 Phi-e-rơ 1:7 nói đến sự thử thách đức tin nhưng không phải là mắt xích trong chuỗi 'nhịn nhục → rèn tập → trông cậy' ở Rô-ma 5.\n- Distractor 'Sự khon ngoan (sự khôn ngoan)' (nearby_passage): Sự khôn ngoan thường được nhắc trong sách Châm Ngôn hoặc Gia-cơ 1:5, nhưng không xuất hiện trong cấu trúc nhân quả của Rô-ma 5:3-4.\n- Distractor 'Sự yên ủi (sự yên ủi)' (true_but_off): Dù 2 Cô-rinh-tô 1:3-7 nói về sự yên ủi từ Đức Chúa Trời trong hoạn nạn, đây là một khái niệm khác, không phải kết quả trực tiếp của sự nhịn nhục trong ngữ cảnh Rô-ma 5.",
     "language": "vi",
     "verseEnd": 4,
     "options": [
-      "Sự mạnh",
-      "Sự vui",
+      "Sự trắc nghiệm (đức tin)",
+      "Sự khon ngoan (sự khôn ngoan)",
       "Sự rèn tập (tính cách)",
-      "Sự giàu"
+      "Sự yên ủi (sự yên ủi)"
     ],
     "tags": [
       "Tân Ước",
@@ -557,14 +557,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Rô-ma 1:18: Vì họ dùng sự không công bình mà ghìm giữ (bắt hiếp) lẽ thật.",
+    "explanation": "Đáp án đúng là 'Ghìm giữ lẽ thật' (Romans 1:18b) vì cơn thạnh nộ Đức Chúa Trời tỏ ra trên những kẻ 'cố ý giữ sự không công bình' sau khi 'lẽ thật về Đức Chúa Trời đã được tỏ ra trong họ' và họ 'cầm giữ lẽ thật trong sự không công bình' (Romans 1:18-19).\n\nDistractor 'Giữ lại sự công bình' là sai vì nó gần đúng nhưng lẫn lộn từ then chốt. Đoạn Kinh Thanh ở gần đó (Romans 1:17) nói đến 'sự công bình' nhưng câu hỏi chỉ hỏi lý do từ 1:18-25, nơi chính xác là họ 'giữ sự không công bình' và 'ghìm giữ lẽ thật'.\nDistractor 'Khước từ sự thờ phượng' là sai vì mặc dù Romans 1:21-25 mô tả họ 'chẳng tôn vinh Ngài và tạ ơn... mà... thờ lạy và hầu việc loài chịu dựng nọ thay cho Đấng dựng nên', nhưng đây là hậu quả của việc ghìm giữ lẽ thật, không phải nguyên nhân trực tiếp cho cơn thạnh nộ được nêu trong câu hỏi. Nó đúng văn bản nhưng lạc trọng tâm câu hỏi.\nDistractor 'Không nhận thức được quyền năng' là sai vì đây là một hiểu lầm phổ biến. Romans 1:20 nói rõ rằng 'những vật Ngài đã dựng nên... vẫn còn... cho nên họ không thể chữa mình được', nghĩa là họ đã nhận thức được quyền năng và bản tính Ngài, nhưng cố tình không tôn vinh.",
     "language": "vi",
     "verseEnd": 25,
     "options": [
       "Ghìm giữ lẽ thật",
-      "Bất trung với đồng bào",
-      "Khinh dể người nghèo",
-      "Phá hủy đền thờ"
+      "Giữ lại sự công bình",
+      "Khước từ sự thờ phượng",
+      "Không nhận thức được quyền năng"
     ],
     "tags": [
       "Tân Ước",
@@ -613,14 +613,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Rô-ma 5:18-19: Qua sự vâng phục của một người (Đấng Christ), nhiều người được xưng công bình.",
+    "explanation": "Đoạn Rô-ma 5:12-21 đối chiếu A-đam và Đấng Christ như hai nguyên thủ đại diện. Câu 12,18-19 nêu rõ: 'bởi một người mà tội lỗi vào trong thế gian' (A-đam) và 'bởi một sự công bình mà mọi người... được xưng công bình' (Đấng Christ). Đáp án đúng tóm tắt chính xác sự tương phản này.\n\nDistractor 1 ('sự tha tội') sai chi tiết: Mặc dù 'sự công chính' (justification) bao hàm ý tha tội, nhưng từ ngữ chính xác trong đoạn là 'sự công chính' (δικαίωμα) hoặc 'sự xưng công bình', được nhấn mạnh qua sự vâng phục của Đấng Christ (câu 18-19), không phải 'sự tha tội' riêng lẻ.\n\nDistractor 2 ('sự hình phạt... tự do') lạc câu hỏi: Dù liên quan đến hậu quả của tội lỗi và ân điển, nhưng đây không phải sự tương phản trực tiếp được nêu trong câu hỏi về A-đam và Đấng Christ. Câu hỏi yêu cầu so sánh trực tiếp từ đoạn, không phải hệ quả tổng quát.\n\nDistractor 3 ('Luật pháp... ân điển') nhầm passage gần: Ý này xuất hiện mạnh ở Rô-ma 6:14 hay 5:20, nhưng không phải là sự so sánh trung tâm giữa A-đam và Đấng Christ trong đoạn 5:12-21. A-đam không được mô tả là đem 'luật pháp' vào.",
     "language": "vi",
     "verseEnd": 21,
     "options": [
-      "Luật pháp tốt hơn ân điển",
+      "Tội lỗi vào bởi một người; sự tha tội bởi một người",
       "Tội lỗi vào bởi một người; sự công chính bởi một người",
-      "Dòng dõi Do Thái trổi hơn",
-      "Hy lễ quan trọng hơn"
+      "Sự hình phạt vào bởi một người; sự tự do bởi một người",
+      "Luật pháp vào bởi một người; ân điển bởi một người"
     ],
     "tags": [
       "Tân Ước",
@@ -781,14 +781,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Rô-ma 13:1-7: Quyền bính đến từ Đức Chúa Trời; phải nộp thuế và tôn trọng.",
+    "explanation": "Đoạn Rô-ma 13:1-7 dạy rõ: \"Mỗi người phải vâng phục các đấng cầm quyền trên mình; vì chẳng có quyền nào mà chẳng đến bởi Đức Chúa Trời, các quyền đều bởi Đức Chúa Trời chỉ định. Cho nên ai chống cự quyền phép, tức là đối địch với mạng lịnh Đức Chúa Trời\" (c.1-2). Đáp án đúng nhấn mạnh nguồn gốc thần thượng của nhà cầm quyền (\"chức việc của Đức Chúa Trời\").\n\nDistractor 1 (Sai chi tiết) gần đúng nhưng sai ở nguồn gốc: Kinh văn khẳng định quyền bính \"bởi Đức Chúa Trời chỉ định\", không phải \"bởi loài người\".\nDistractor 2 (Sai phạm vi) thu hẹp phạm vi vâng phục: Đoạn này dạy vâng phục trong mọi việc (kể cả nộp thuế, tôn kính - c.7), không chỉ việc thuộc linh.\nDistractor 3 (Hiểu lầm phổ biến) trái ngược với trọng tâm đoạn: Câu 2 cảnh báo \"ai chống cự quyền phép, tức là đối địch với mạng lịnh Đức Chúa Trời\", không khuyến khích đối kháng dựa trên sự đánh giá công bình của con người.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
       "Vâng phục vì là chức việc của Đức Chúa Trời",
-      "Phớt lờ thuế",
-      "Chống đối khi bất công",
-      "Chỉ vâng phục khi thuận lợi"
+      "Vâng phục vì là chức việc sắp đặt bởi loài người",
+      "Chỉ vâng phục trong các việc thuộc linh",
+      "Đối kháng khi chính quyền bất công"
     ],
     "tags": [
       "Tân Ước",
@@ -865,14 +865,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Rô-ma 11:33-36: Muôn vật đều là từ Ngài, bởi Ngài và hướng về Ngài; vinh hiển cho Ngài đời đời.",
+    "explanation": "Đoạn Kinh Thánh Rô-ma 11:33-36 là một lời tụng ca, kết luận cho phần luận giải về sự cứu rỗi của dân Y-sơ-ra-ên và các dân ngoại. Câu hỏi hỏi về điều nổi bật trong tụng ca này.\n\nĐÁP ÁN ĐÚNG: 'Sự khôn ngoan, thẩm lý và vinh hiển vô cùng' là đúng vì câu 33-36 tập trung ca ngợi sự khôn ngoan và thông biết sâu nhiệm (thẩm lý) của Đức Chúa Trời, cùng với sự vinh hiển thuộc về Ngài đời đời: 'Vì muôn vật đều là từ Ngài, bởi Ngài, và hướng về Ngài' (câu 36).\n\nDISTRACTOR SAI:\n1. 'Sự khôn ngoan, thẩm lý và tình yêu vô cùng': Đây là đáp án gần đúng, nhưng sai một chi tiết then chốt. Đoạn văn không nhấn mạnh 'tình yêu' (dù đây là thuộc tính quan trọng của Đức Chúa Trời), mà nhấn mạnh đến 'vinh hiển' (câu 36) như là thuộc tính cuối cùng được tôn cao. Đây là lỗi 'sai chi tiết'.\n2. 'Sự công bình, thánh khiết và thành tín trọn vẹn': Các thuộc tính này rất quan trọng và được đề cập ở những đoạn khác trong sách Rô-ma, nhưng không phải là trọng tâm của lời tụng ca trong 11:33-36. Đây là lỗi 'hiểu lầm phổ biến' khi áp dụng các thuộc tính chung của Đức Chúa Trời vào một đoạn văn cụ thể không đề cập chúng.\n3. 'Sự sắp đặt và hành động cứu rỗi của Ngài': Điều này mô tả đúng nội dung của các chương 9-11 (bối cảnh trước đó), nhưng lời tụng ca ở câu 33-36 không trực tiếp nêu bật 'hành động' hay 'sự sắp đặt' cụ thể, mà là sự ca ngợi phản ứng lại những hành động đó, tập trung vào chính bản tính (khôn ngoan, thẩm lý, vinh hiển) của Đức Chúa Trời. Đây là lỗi 'sai phạm vi', đưa ý của toàn bộ đoạn lớn vào thay vì trọng tâm của lời tụng ca kết thúc.",
     "language": "vi",
     "verseEnd": 36,
     "options": [
       "Sự khôn ngoan, thẩm lý và vinh hiển vô cùng",
-      "Sự chu cấp vật chất",
-      "Sự phán xét nghiêm khắc",
-      "Sự hiện diện hữu hình"
+      "Sự khôn ngoan, thẩm lý và tình yêu vô cùng",
+      "Sự công bình, thánh khiết và thành tín trọn vẹn",
+      "Sự sắp đặt và hành động cứu rỗi của Ngài"
     ],
     "tags": [
       "Tân Ước",
@@ -1001,12 +1001,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Rô-ma 2:1 — 'Vậy hỡi người kia, ngươi không có thể chữa mình được; vì trong khi đoán xét người khác, ngươi cũng tự lên án mình; bởi ngươi đoán xét họ, mà cũng làm các việc như họ.'",
+    "explanation": "Rô-ma 2:1 chép: 'Hỡi người kia, ngươi là ai, mà dám đoán xét kẻ khác? Dù ngươi đoán xét người ta, ngươi cũng không thể chữa mình được; vì trong những điều ngươi đoán xét họ, chính mình ngươi cũng phạm những điều ấy.' Đáp án đúng 'Tự lên án chính mình; vì cũng làm như họ' phản ánh chính xác ý này: người đoán xét người khác thì tự lên án chính mình vì họ cũng làm điều tương tự.\n\nCác đáp án sai:\n- 'Tự phán xét người khác; vì không có quyền đoán xét' (true_but_off): Dù câu Kinh Thánh hàm ý về việc không có quyền, nhưng trọng tâm câu hỏi là về hậu quả (tự lên án) chứ không phải nguyên nhân (không có quyền).\n- 'Tự làm chứng cho mình; vì cũng phạm tội' (wrong_detail): Đây là đáp án gần đúng, nhưng sai chi tiết then chốt: 'làm chứng cho mình' khác với 'lên án chính mình'; ý chính là sự lên án, không phải sự làm chứng.\n- 'Bị Đức Chúa Trời đoán phạt; vì không ăn năn' (common_misconception): Đây là một hiểu lầm phổ biến, nhưng câu 1 không trực tiếp nói đến sự đoán phạt từ Đức Chúa Trời hay việc không ăn năn, mà nhấn mạnh sự tự lên án.",
     "language": "vi",
     "options": [
-      "Sẽ được tha thứ",
-      "Sẽ trở nên thánh",
-      "Sẽ được khen",
+      "Tự phán xét người khác; vì không có quyền đoán xét",
+      "Tự làm chứng cho mình; vì cũng phạm tội",
+      "Bị Đức Chúa Trời đoán phạt; vì không ăn năn",
       "Tự lên án chính mình; vì cũng làm như họ"
     ],
     "tags": [
@@ -1158,13 +1158,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Rô-ma 7:7 — 'Chẳng hề như vậy! Nhưng tôi chỉ bởi luật pháp mà biết tội lỗi; tôi không biết tham lam là gì nếu luật pháp không nói: Ngươi chớ tham lam.'",
+    "explanation": "Đáp án đúng: 'Chẳng hề như vậy! Nhờ luật pháp tôi biết tội lỗi' (Rô-ma 7:7). Đây là câu trả lời trực tiếp của Phao-lô, khẳng định luật pháp không phải là tội lỗi mà là phương tiện để nhận biết tội lỗi (câu 7: '… song tôi chẳng biết tội lỗi là gì, nếu không có luật pháp…').\n\nCác đáp án sai:\n1. 'Chẳng hề như vậy! Luật pháp là sự thánh khiết': Sai chi tiết. Mặc dù Rô-ma 7:12 nói luật pháp là 'thánh', nhưng câu hỏi cụ thể về 7:7 và câu trả lời trực tiếp là 'biết tội lỗi', không phải 'là sự thánh khiết'.\n2. 'Chẳng hề như vậy! Nhờ luật pháp tôi được cứu': Phản ánh hiểu lầm phổ biến. Kinh Thánh dạy rằng sự cứu rỗi đến bởi đức tin nơi Đấng Christ, không phải bởi luật pháp (Rô-ma 3:20, 28). Luật pháp giúp nhận biết tội, nhưng không thể cứu.\n3. 'Luật pháp quả thật là tội lỗi': Đây là lặp lại chính câu hỏi giả định mà Phao-lô phủ nhận ('Luật pháp là tội lỗi sao?'). Mặc dù cụm từ này xuất hiện trong câu hỏi, nó là điều Phao-lô bác bỏ, nên nó đúng văn bản nhưng hoàn toàn lạc với câu trả lời thực tế của ông.",
     "language": "vi",
     "options": [
       "Chẳng hề như vậy! Nhờ luật pháp tôi biết tội lỗi",
-      "Đúng, luật pháp là tội",
-      "Luật pháp đã bị bãi bỏ",
-      "Luật pháp đem lại sự sống"
+      "Chẳng hề như vậy! Luật pháp là sự thánh khiết",
+      "Chẳng hề như vậy! Nhờ luật pháp tôi được cứu",
+      "Luật pháp quả thật là tội lỗi"
     ],
     "tags": [
       "Tân Ước",
@@ -1185,13 +1185,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Rô-ma 8:14-17 — 'Vì hết thảy kẻ nào được Thánh Linh của Đức Chúa Trời dắt dẫn, đều là con của Đức Chúa Trời. Vả, anh em đã chẳng nhận lấy tinh thần nô lệ đặng còn ở trong sợ hãi; nhưng đã nhận lấy tinh thần làm con nuôi, và nhờ đó chúng ta kêu rằng: A-ba! Cha! Chính Đức Thánh Linh làm chứng cho lòng chúng ta rằng chúng ta là con cái Đức Chúa Trời. Lại nếu chúng ta là con cái, thì cũng là kẻ kế tự: kẻ kế tự Đức Chúa Trời và là kẻ đồng kế tự với Đấng Christ...'",
+    "explanation": "Rô-ma 8:14-17 dạy: 'Vì hết thảy kẻ nào được Thánh Linh của Đức Chúa Trời dắt dẫn, đều là con của Đức Chúa Trời... Lại nếu chúng ta là con cái, thì cũng là kẻ kế tự: kẻ kế tự Đức Chúa Trời và kẻ đồng kế tự với Đấng Christ'. Vì vậy, đáp án đúng là 'Con của Đức Chúa Trời, đồng kế tự với Đấng Christ', vì đoạn Kinh Thánh này khẳng định trực tiếp ai được Thánh Linh dẫn dắt thì có địa vị đó.\n\nCác đáp án sai:\n1. 'Đầy tớ của Đấng Christ, kẻ phục vụ trong sự tự do' là gần đúng nhưng sai chi tiết then chốt. Dù Rô-ma 6:22 nói về việc trở nên đầy tớ để phục vụ sự công bình, và Rô-ma 8:2 nói về luật của Thánh Linh ban sự sống và tự do, nhưng đoạn 8:14-17 đặc biệt nhấn mạnh địa vị 'con' và 'kế tự', không phải 'đầy tớ'.\n2. 'Người được nên thánh, hưởng sự sống đời đời' sai phạm vi. Dù những khái niệm nên thánh và sự sống đời đời xuất hiện trong sách Rô-ma (ví dụ 6:22), chúng không phải là sự mô tả trực tiếp trong câu hỏi về kết quả của việc được Thánh Linh dẫn dẫn theo Rô-ma 8:14-17.\n3. 'Người thuộc về Đấng Christ, được kêu gọi theo ý muốn Ngài' dựa trên hiểu lầm phổ biến, trộn lẫn các giáo lý. Dù người tin Chúa thuộc về Đấng Christ (Rô-ma 1:6) và được kêu gọi theo ý muốn Ngài (Rô-ma 8:28), cụm từ này không phải là định nghĩa trực tiếp từ Rô-ma 8:14-17 cho câu hỏi 'là gì?'.",
     "language": "vi",
     "options": [
-      "Tôi tớ của Chúa",
-      "Bạn hữu của Chúa",
+      "Đầy tớ của Đấng Christ, kẻ phục vụ trong sự tự do",
+      "Người được nên thánh, hưởng sự sống đời đời",
       "Con của Đức Chúa Trời, đồng kế tự với Đấng Christ",
-      "Vương quốc của Chúa"
+      "Người thuộc về Đấng Christ, được kêu gọi theo ý muốn Ngài"
     ],
     "tags": [
       "Tân Ước",
@@ -1290,13 +1290,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Rô-ma 11:6 — 'Nhưng nếu bởi ơn thì chẳng phải bởi việc làm nữa; bằng chẳng, thì ơn không còn phải là ơn.'",
+    "explanation": "Câu hỏi tham chiếu Rô-ma 11:6 (BTT): 'Nhưng nếu bởi ơn thì không phải bởi việc làm nữa; bằng chẳng vậy, thì ơn không còn là ơn.' Đáp án đúng là **'Bởi việc làm'** vì câu Kinh Thánh trực tiếp đối lập 'ơn' (ân điển) với 'việc làm'. Các đáp án sai: 1. **'Bởi con người'** sai chi tiết (câu này không đề cập 'con người' như một nguồn cứu rỗi đối lập ân điển). 2. **'Bởi sự chọn lựa'** phản ánh hiểu lầm phổ biến (có thể nhầm sang thần học về sự tiền định, nhưng không phải đối tượng so sánh trực tiếp trong câu này). 3. **'Bởi sự hứa nguyện'** là đáp án gần đúng, dựa vào bối cảnh đoạn gần (Rô-ma 9-11 nói về giao ước và lời hứa), nhưng sai vì câu 11:6 cụ thể chỉ đối chiếu ân điển với việc làm.",
     "language": "vi",
     "options": [
-      "Bởi tổ phụ",
+      "Bởi con người",
       "Bởi việc làm",
-      "Bởi đức tin",
-      "Bởi luật pháp"
+      "Bởi sự chọn lựa",
+      "Bởi sự hứa nguyện"
     ],
     "tags": [
       "Tân Ước",
@@ -1421,13 +1421,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Rô-ma 14:13 — 'Vậy chúng ta chớ xét đoán nhau; nhưng thà nhứt định đừng để hòn đá vấp chân trước mặt anh em mình.'",
+    "explanation": "Rô-ma 14:13 viết: 'Vậy chúng ta chớ xét đoán nhau nữa; nhưng thà nhứt định đừng để hòn đá vấp phạm hoặc dịp cho anh em mình sa ngã.' (BTT). Đáp án đúng trực tiếp trích ý từ câu này: 'chớ xét đoán nhau' và 'đặt cớ vấp phạm' (tức là đừng để dịp cho anh em sa ngã).\n\nCác đáp án sai:\n- 'Chớ xét đoán nhau hoặc bỏ việc nhóm lại' sai vì bỏ việc nhóm lại (Hê-bơ-rơ 10:25) là một lời dạy khác, không nằm trong Rô-ma 14:13.\n- 'Chớ xét đoán nhau hoặc ăn uống vô độ' sai vì đây là một hiểu lầm phổ biến về vấn đề ăn uống trong chương này, nhưng câu 13 cụ thể nói về 'đặt cớ vấp phạm', không phải về sự ăn uống vô độ.\n- 'Chớ xét đoán nhau hoặc tranh luận về ngày lễ' sai vì tranh luận về ngày lễ (Rô-ma 14:5-6) là một chi tiết có trong chương, nhưng không phải là điều câu 13 khuyên tránh; câu 13 tập trung vào việc xét đoán và gây vấp phạm.",
     "language": "vi",
     "options": [
       "Chớ xét đoán nhau hoặc đặt cớ vấp phạm",
-      "Hãy phê bình thẳng thắn",
-      "Hãy báo cáo lên trưởng lão",
-      "Hãy bỏ qua không quan tâm"
+      "Chớ xét đoán nhau hoặc bỏ việc nhóm lại",
+      "Chớ xét đoán nhau hoặc ăn uống vô độ",
+      "Chớ xét đoán nhau hoặc tranh luận về ngày lễ"
     ],
     "tags": [
       "Tân Ước",
@@ -1962,13 +1962,13 @@
     ],
     "verseEnd": 20,
     "content": "Theo Rô-ma 1:18-20, vì sao Phao-lô khẳng định nhân loại 'không thể chữa mình được' (không có lý do bào chữa) trước cơn thạnh nộ của Đức Chúa Trời?",
-    "explanation": "Rô-ma 1:19-20 — 'sự gì có thể biết được về Đức Chúa Trời thì đã trình bày ra cho họ rồi: Đức Chúa Trời đã tỏ điều đó cho họ. Bởi những sự trọn lành của Ngài mắt không thấy được, tức là quyền phép đời đời và bổn tánh Ngài, thì từ buổi sáng thế vẫn sờ sờ như mắt xem thấy, khi người ta xem xét công việc của Ngài. Cho nên họ không thể chữa mình được'.",
+    "explanation": "Câu hỏi tham chiếu Rô-ma 1:18-20. Đoạn Kinh Thánh này dạy rằng cơn thạnh nộ của Đức Chúa Trời tỏ ra từ trời nghịch cùng sự không tin kính và không công bình của loài người (c.18). Lý do họ 'không thể chữa mình được' (không có lý do bào chữa) là vì 'những sự trọn lành của Ngài từ buổi sáng thế, vừa mắt xem thấy, thì đã hiểu rõ, nên họ không thể chữa mình được' (c.20, BTT). Điều này chỉ rõ những thuộc tính vô hình của Đức Chúa Trời – quyền phép đời đời và bản tính thần – đã được tỏ tường một cách rõ ràng và phổ quát qua công trình sáng tạo hữu hình, khiến mọi người đều có thể nhận biết và do đó không có lý do bào chữa.\n\nCác đáp án sai:\n1. Sai vì sai chi tiết: Đoạn văn không đề cập luật pháp Môi-se như là nguồn mặc khải duy nhất cho sự phán xét này. Ngược lại, nó nhấn mạnh sự mặc khải tự nhiên qua sự sáng tạo.\n2. Sai vì sai phạm vi: Mặc dù gần đúng với đáp án đúng, distractor này giới hạn phạm vi nhận biết chỉ cho 'một số người đặc biệt'. Rô-ma 1:19-20 khẳng định điều này rõ ràng cho mọi người ('họ', 'hết thảy'), không có ngoại lệ.\n3. Sai vì nhầm passage gần: Distractor này đưa vào yếu tố 'các tiên tri Cựu Ước', là một chủ đề phổ biến trong các thư tín khác (như Hê-bơ-rơ 1:1) hoặc khi nói về sự cứng lòng (Công vụ 7:52), nhưng không phải là lý do được nêu trong Rô-ma 1:18-20 cho sự không thể bào chữa của nhân loại nói chung. Đoạn này tập trung vào sự mặc khải phổ quát qua sự sáng tạo.",
     "language": "vi",
     "options": [
       "Vì các thuộc tính của Đức Chúa Trời (quyền phép đời đời và bản tính thần) ĐÃ TỎ TƯỜNG qua công trình tạo dựng, ai cũng có thể nhận biết",
-      "Vì hết thảy đều đã đọc luật pháp Môi-se trong các hội đường suốt nhiều thế kỷ qua",
-      "Vì Đấng Christ đã đến thế gian và mọi người đều đã có cơ hội gặp Ngài trực tiếp",
-      "Vì Đức Chúa Trời đã sai các tiên tri đến mỗi quốc gia trên đất để rao giảng đầy đủ"
+      "Vì sự phán xét của Đức Chúa Trời chỉ được bày tỏ qua luật pháp của Môi-se, không qua điều gì khác",
+      "Vì các thuộc tính của Đức Chúa Trời được tỏ tường qua công trình tạo dựng, nhưng chỉ một số người đặc biệt mới có thể nhận biết",
+      "Vì nhân loại đã nhận được sự mặc khải đầy đủ qua các tiên tri Cựu Ước, nhưng họ từ chối"
     ],
     "tags": [
       "Tân Ước",
@@ -2234,13 +2234,13 @@
     ],
     "verseEnd": 32,
     "content": "Theo Rô-ma 8:31-32 (RVV11), ý chính trong lập luận tu từ của Phao-lô để trấn an tín hữu là gì?",
-    "explanation": "Rô-ma 8:31-32 — 'Đã vậy thì chúng ta sẽ nói làm sao? Nếu Đức Chúa Trời vùa giúp chúng ta, thì còn ai nghịch với chúng ta? Ngài đã không tiếc chính Con mình, nhưng vì chúng ta hết thảy mà phó Con ấy cho, thì Ngài há chẳng cũng sẽ ban mọi sự luôn với Con ấy cho chúng ta sao?' Phao-lô dùng lập luận từ lớn xuống nhỏ (a fortiori): nếu Đức Chúa Trời đã ban điều lớn nhất (Con Ngài), thì Ngài chắc chắn sẽ ban mọi điều cần thiết khác cho chúng ta.",
+    "explanation": "Câu hỏi hỏi về ý chính trong lập luận tu từ của Phao-lô ở Rô-ma 8:31-32 (RVV11). Đoạn Kinh Thánh này viết: 'Vậy, chúng ta sẽ nói làm sao? Nếu Đức Chúa Trời vùa giúp ta, thì còn ai nghịch với ta? Ngài đã không tiếc chính Con mình, nhưng vì chúng ta hết thảy mà phó Con ấy cho, thì Ngài há chẳng cũng sẽ ban mọi sự cho chúng ta luôn với Con ấy sao?'.\n\nĐÁP ÁN ĐÚNG: Đây là trích dẫn trung tâm và chính xác từ RVV11, thể hiện lập luận tu từ của Phao-lô: (1) Khẳng định sự bảo vệ của Đức Chúa Trời, (2) Lập luận từ điều lớn nhất (Đức Chúa Trời ban Con Ngài) đến điều bao hàm (ban mọi sự), để trấn an tín hữu về sự chu cấp và bảo vệ trọn vẹn của Ngài.\n\nDISTRACTOR 1 (gần đúng, sai chi tiết): Sai ở chi tiết 'nếu chúng ta vâng phục Đức Chúa Trời'. Nguyên văn là 'nếu Đức Chúa Trời vùa giúp ta', nhấn mạnh hành động và ân điển của Đức Chúa Trời, không phải điều kiện vâng phục của con người. Điều này làm thay đổi trọng tâm lập luận.\n\nDISTRACTOR 2 (sai phạm vi): Sai ở cụm 'ban sự cứu rỗi cho ta'. Nguyên văn là 'ban mọi sự', một phạm vi rộng hơn và bao trùm, bao gồm cả sự cứu rỗi nhưng không giới hạn ở đó. Lập luận tu từ của Phao-lô nhằm khẳng định sự chu cấp toàn diện của Đức Chúa Trời sau khi đã ban điều quý nhất.\n\nDISTRACTOR 3 (hiểu lầm phổ biến): Sai ở phần bổ sung 'Nhưng điều này chỉ áp dụng cho người Do Thái.' Điều này trái với bối cảnh và thần học của sách Rô-ma (đặc biệt từ chương 3 trở đi), nơi Phao-lô khẳng định ân điển qua đức tin nơi Đấng Christ là cho mọi người tin, cả người Do Thái lẫn Dân Ngoại. Đoạn 8:31-39 là lời đảm bảo cho tất cả những ai ở trong Đấng Christ.",
     "language": "vi",
     "options": [
-      "'Nếu Đức Chúa Trời ở phía chúng ta thì các thiên sứ sẽ bảo vệ khỏi mọi nguy hiểm trên đất'",
-      "'Vì Đức Chúa Trời đã cho chúng ta luật pháp Môi-se rồi thì cớ sao vẫn còn lo sợ điều gì?'",
+      "'Nếu chúng ta vâng phục Đức Chúa Trời thì còn ai nghịch với ta? Ngài không tiếc chính Con mình, há chẳng cũng ban mọi sự cho ta?'",
+      "'Nếu Đức Chúa Trời vùa giúp ta thì còn ai nghịch với ta? Ngài không tiếc chính Con mình, há chẳng cũng ban sự cứu rỗi cho ta?'",
       "'Nếu Đức Chúa Trời vùa giúp ta thì còn ai nghịch với ta? Ngài không tiếc chính Con mình, há chẳng cũng ban mọi sự cho ta?'",
-      "'Nếu Đức Chúa Trời thương yêu ta thì Ngài chắc chắn sẽ làm ta giàu có vật chất nhanh chóng'"
+      "'Nếu Đức Chúa Trời vùa giúp ta thì còn ai nghịch với ta? Ngài không tiếc chính Con mình, há chẳng cũng ban mọi sự cho ta?' Nhưng điều này chỉ áp dụng cho người Do Thái."
     ],
     "tags": [
       "Tân Ước",
@@ -2288,12 +2288,12 @@
     ],
     "verseEnd": 2,
     "content": "Theo Rô-ma 12:2 (RVV11), Phao-lô đặt ra hai mệnh lệnh đối ứng (tiêu cực + tích cực) cho đời sống Cơ-đốc. Hai mệnh lệnh đó là gì?",
-    "explanation": "Rô-ma 12:2 — 'Đừng làm theo đời nầy, nhưng hãy biến hóa bởi sự đổi mới của tâm thần mình, để thử cho biết ý muốn tốt lành, đẹp lòng và trọn vẹn của Đức Chúa Trời là thể nào'. Cấu trúc: tiêu cực (đừng làm theo) + tích cực (hãy biến hóa) + mục đích (thử biết ý Chúa).",
+    "explanation": "Câu hỏi hỏi về hai mệnh lệnh đối ứng trong Rô-ma 12:2. Đoạn Kinh Thánh (RVV11) viết: 'Đừng làm theo đời nầy, nhưng hãy biến hóa bởi sự đổi mới của tâm thần mình' (Rô-ma 12:2).\n\n- ĐÁP ÁN ĐÚNG: 'Đừng làm theo đời nầy / Hãy biến hóa bởi sự ĐỔI MỚI của TÂM THẦN mình' khớp chính xác với văn bản.\n\n- DISTRACTOR 1 (gần đúng): 'Đừng làm theo xác thịt / Hãy biến hóa bởi sự đổi mới của tâm thần mình' SAI vì mệnh lệnh tiêu cực là 'Đừng làm theo đời nầy', không phải 'xác thịt' (một khái niệm thường gặp trong các phân đoạn khác như Rô-ma 8).\n- DISTRACTOR 2: 'Đừng làm theo đời nầy / Hãy biến hóa bởi sự khôn ngoan của Đức Chúa Trời' SAI vì mệnh lệnh tích cực trong câu là 'bởi sự đổi mới của tâm thần mình', không phải 'bởi sự khôn ngoan của Đức Chúa Trời' (một ý có thể liên tưởng từ các phân đoạn gần như Rô-ma 11:33).\n- DISTRACTOR 3: 'Đừng làm theo đời nầy / Hãy hầu việc Đức Chúa Trời cách thiêng liêng' SAI vì mặc dù 'hầu việc... cách thiêng liêng' là chủ đề chung của cả đoạn (Rô-ma 12:1), nó không phải là mệnh lệnh tích cực đối ứng trực tiếp được nêu trong câu 2.",
     "language": "vi",
     "options": [
-      "Đừng đi đến đền thờ Y-sơ-ra-ên / Hãy đi đến đền thờ La-mã của Sê-sa",
-      "Đừng giữ luật pháp Môi-se / Hãy đi theo phong tục địa phương của dân ngoại",
-      "Đừng kết bạn với người tội lỗi / Hãy chỉ kết bạn với những thầy tế lễ trong đền",
+      "Đừng làm theo xác thịt / Hãy biến hóa bởi sự đổi mới của tâm thần mình",
+      "Đừng làm theo đời nầy / Hãy biến hóa bởi sự khôn ngoan của Đức Chúa Trời",
+      "Đừng làm theo đời nầy / Hãy hầu việc Đức Chúa Trời cách thiêng liêng",
       "Đừng làm theo đời nầy / Hãy biến hóa bởi sự ĐỔI MỚI của TÂM THẦN mình"
     ],
     "tags": [
@@ -2504,12 +2504,12 @@
     ],
     "verseEnd": 13,
     "content": "Theo Rô-ma 10:13, ai sẽ được cứu?",
-    "explanation": "Rô-ma 10:13 (trích Giô-ên 2:32) — 'Vì ai kêu cầu danh Chúa thì sẽ được cứu'. Lời hứa này phổ quát cho mọi người, cả người Do-thái lẫn dân ngoại.",
+    "explanation": "Rô-ma 10:13 chép: 'Vì ai kêu cầu danh Chúa thì sẽ được cứu.' (BTT). Đây là một câu Kinh Thánh rõ ràng và trực tiếp. Đáp án đúng, 'Người kêu cầu danh Chúa', là sự diễn đạt trung thành ý nghĩa của câu Kinh Thánh đó.\n\nCác đáp án sai:\n1. 'Người được Chúa chọn từ trước' là một khái niệm quan trọng (thuyết tiền định) được đề cập trong các phân đoạn khác (ví dụ: Rô-ma 8:29-30; 9:11) nhưng không phải là điều kiện được nêu trong Rô-ma 10:13. Đây là một đáp án 'gần đúng' vì có liên quan đến chủ đề cứu rỗi trong sách Rô-ma, nhưng lại trả lời sai câu hỏi cụ thể về câu 10:13.\n2. 'Người làm theo luật pháp' phản ánh một sự hiểu lầm phổ biến rằng sự cứu rỗi đến bởi việc làm. Cả ngữ cảnh Rô-ma 10 (câu 4-5) và giáo lý tổng quát của Tân Ước đều khẳng định sự cứu rỗi bởi đức tin, không bởi việc làm theo luật pháp.\n3. 'Người đã được đền tội' mô tả một sự thật thần học (Chúa Giê-xu đã đền tội cho nhân loại) nhưng lại không trả lời đúng câu hỏi. Câu hỏi hỏi 'ai sẽ được cứu?' theo câu 13, trong khi đáp án này nói về nền tảng của sự cứu rỗi (sự đền tội), chứ không phải phản ứng của con người ('kêu cầu') như câu Kinh Thánh chỉ ra.",
     "language": "vi",
     "options": [
-      "Người Y-sơ-ra-ên giữ luật pháp",
-      "Người đã chịu phép cắt bì",
-      "Thầy tế lễ trong đền thờ Giê-ru-sa-lem",
+      "Người được Chúa chọn từ trước",
+      "Người làm theo luật pháp",
+      "Người đã được đền tội",
       "Người kêu cầu danh Chúa"
     ],
     "tags": [
@@ -2828,13 +2828,13 @@
     ],
     "verseEnd": 21,
     "content": "Theo Rô-ma 4:18-21, đức tin của Áp-ra-ham được mô tả thế nào dù tình trạng thân thể (gần 100 tuổi) đối nghịch?",
-    "explanation": "Rô-ma 4:20-21 — 'Người chẳng nghi ngờ và chẳng phải bởi không tin mà do dự về lời hứa Đức Chúa Trời, nhưng càng mạnh mẽ trong đức tin, và ngợi khen Đức Chúa Trời, vì tin chắc rằng điều chi Đức Chúa Trời đã hứa, Ngài cũng có quyền làm trọn được'.",
+    "explanation": "Trong Rô-ma 4:18-21, câu 20 đặc biệt ghi: \"người chẳng vì vô tín mà nghi ngờ lời hứa Đức Chúa Trời, nhưng càng mạnh mẽ trong đức tin\". Đáp án đúng trực tiếp trích và tóm tắt từ điểm chính này: ‘CHẲNG NGHI NGỜ’ và ‘MẠNH MẼ’.\n\n• Distractor 1 (‘ĐỨNG VỮNG’... ‘VUI MỪNG’): là dạng ‘gần đúng’ vì ‘đứng vững’ gần với ‘mạnh mẽ’, nhưng ‘vui mừng’ (cảm xúc) không phải điểm được nhấn mạnh trong đoạn này, thay vì hành động/thái độ ‘mạnh mẽ’ (câu 20).\n• Distractor 2 (‘KHÔNG YẾU ĐUỐI’... ‘TÔN VINH Đức Chúa Trời’): ‘không yếu đuối’ có thể hiểu gần với ‘mạnh mẽ’, nhưng ‘tôn vinh Đức Chúa Trời’ là kết quả/mục đích được nhắc ở câu 20 (\"và tôn vinh Đức Chúa Trời\"), không phải mô tả trực tiếp về bản chất đức tin của Áp-ra-ham trong câu hỏi (sai chi tiết trọng tâm).\n• Distractor 3 (‘SUY TÍNH’... ‘BỐI RỐI’): phản ánh một hiểu lầm phổ biến, vì người đọc có thể nghĩ Áp-ra-ham đã tính toán/suy nghĩ về thân thể mình, nhưng thực tế câu 19 nói ông \"chẳng suy tính đến thân thể mình\".",
     "language": "vi",
     "options": [
-      "Ông tuyệt vọng đầu hàng nhưng Chúa vẫn ban con cho ông",
+      "Người 'ĐỨNG VỮNG' trong lời hứa, càng VUI MỪNG trong đức tin",
       "Người 'CHẲNG NGHI NGỜ' lời hứa, càng MẠNH MẼ trong đức tin",
-      "Ông buộc Chúa phải làm theo ý mình bằng nhiều cách thuyết phục",
-      "Ông nhờ phép thuật bí mật để vượt qua tuổi già của thân thể"
+      "Người 'KHÔNG YẾU ĐUỐI' trong đức tin, càng TÔN VINH Đức Chúa Trời",
+      "Người 'SUY TÍNH' thân thể mình, càng BỐI RỐI trong đức tin"
     ],
     "tags": [
       "Tân Ước",

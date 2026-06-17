@@ -64,14 +64,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Cô 6:19: Thân thể các ngươi là đền thờ của Đức Thánh Linh.",
+    "explanation": "Câu hỏi tham chiếu 1 Cô-rinh-tô 6:19-20. Đáp án đúng là 'Đền thờ Đức Thánh Linh' vì câu Kinh Thánh trực tiếp xác định: 'Anh em há chẳng biết rằng thân thể mình là đền thờ của Đức Thánh Linh...'. Distractor 1 ('Chức vụ của Chúa') tuy có từ 'Chúa' liên quan đến bối cảnh thần học nhưng không trả lời đúng định danh của 'thân thể' mà Kinh Thánh nêu. Distractor 2 ('Kiến trúc tín ngưỡng') xuất phát từ hiểu lầm phổ biến, coi đền thờ chỉ là công trình vật chất, không đúng với khái niệm thuộc linh trong phân đoạn này. Distractor 3 ('Thân thể của sự tái sinh') gần với ý tưởng trong các phân đoạn khác (ví dụ: Rô-ma 6 về thân thể mới) nhưng không phải là tên gọi chính xác dựa trên 1 Cô-rinh-tô 6:19.",
     "language": "vi",
     "verseEnd": 20,
     "options": [
       "Đền thờ Đức Thánh Linh",
-      "Vật dơ bẩn",
-      "Lều tạm",
-      "Đền thờ Sa-lô-môn"
+      "Chức vụ của Chúa",
+      "Kiến trúc tín ngưỡng",
+      "Thân thể của sự tái sinh"
     ],
     "tags": [
       "Tân Ước",
@@ -343,14 +343,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Cô 11:24-26: Hãy làm điều này để nhớ Ta... rao truyền sự chết Ngài cho tới lúc Ngài đến.",
+    "explanation": "Đoạn Kinh Thánh 1 Cô-rinh-tô 11:23-26 trực tiếp nói về mục đích của Tiệc Thánh. Câu 24-26 cho thấy: \"Hãy làm điều nầy để nhớ đến ta... mỗi lần anh em ăn bánh nầy, uống chén nầy, thì rao sự chết của Chúa cho tới lúc Ngài đến.\" Do đó, đáp án đúng là 'Tưởng niệm Chúa và rao truyền sự chết Ngài' vì nó tóm tắt chính xác hai mục đích này.\n\n- Distractor 'Tưởng niệm Chúa và cầu nguyện cho sự phục sinh Ngài' gần đúng nhưng sai chi tiết then chốt: văn bản nhấn mạnh việc 'rao truyền sự chết' (c.26), không phải cầu nguyện cho sự phục sinh, dù phục sinh là chân lý liên quan.\n- Distractor 'Tưởng nhớ cuộc đời và các phép lạ của Chúa' sai phạm vi: nó mở rộng đối tượng tưởng nhớ ra toàn bộ cuộc đời và chức vụ của Chúa, trong khi văn bản chỉ tập trung vào sự chết của Ngài (c.26).\n- Distractor 'Nhận lãnh phước lành và sự chữa lành thuộc thể' là hiểu lầm phổ biến, thường bị gán cho Tiệc Thánh, nhưng hoàn toàn không được đề cập trong đoạn Kinh Thánh tham chiếu này.",
     "language": "vi",
     "verseEnd": 26,
     "options": [
-      "Thực hành Do Thái giáo",
+      "Tưởng niệm Chúa và cầu nguyện cho sự phục sinh Ngài",
       "Tưởng niệm Chúa và rao truyền sự chết Ngài",
-      "Chia sẻ của ăn",
-      "Gắn kết xã hội"
+      "Tưởng nhớ cuộc đời và các phép lạ của Chúa",
+      "Nhận lãnh phước lành và sự chữa lành thuộc thể"
     ],
     "tags": [
       "Tân Ước",
@@ -567,13 +567,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Nikos (νῖκος) có nghĩa là \"chiến thắng\", sự chết đã bị đánh bại bởi sự sống lại của Chúa Giê-su.",
+    "explanation": "Đáp án đúng là 'Nikos - Chiến thắng', vì từ Hy Lạp được dùng trong bản gốc của 1 Cô-rinh-tô 15:55 (τὸ νῖκος, nikos) có nghĩa chính xác là 'chiến thắng' hoặc 'sự thắng hắn'.\n\nCác đáp án sai: (1) 'Kainos - Sự mới mẻ' là từ Hy Lạp có nghĩa 'mới', xuất hiện trong các phân đoạn gần đó nói về thân thể mới (ví dụ: câu 53), nhưng không phải từ được hỏi trong câu 55. (2) 'Thanatos - Sự chết chóc' là từ Hy Lạp chỉ 'sự chết', chính là chủ thể ('Hỡi sự chết') trong câu hỏi, không phải là 'sự thắng hắn' của nó. (3) 'Aionios - Sự vĩnh cửu' là từ Hy Lạp thường dùng để chỉ 'đời đời', một khái niệm quan trọng trong chương nhưng không liên quan trực tiếp đến từ 'thắng hắn' được hỏi.",
     "language": "vi",
     "options": [
-      "Trophe - Thức ăn",
+      "Kainos - Sự mới mẻ",
       "Nikos - Chiến thắng",
-      "Broma - Thức ăn",
-      "Stinger - Cái nọc"
+      "Thanatos - Sự chết chóc",
+      "Aionios - Sự vĩnh cửu"
     ],
     "tags": [
       "1 Cô-rinh-tô",
@@ -594,13 +594,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Cô 13:4 - 'Tình yêu thương hay nhịn nhục; tình yêu thương hay nhân từ...' (BD2011). Nhịn nhục và nhân từ là những đặc tính đầu tiên được liệt kê để mô tả tình yêu thương thật.",
+    "explanation": "Câu Kinh Thánh 1 Cô-rinh-tô 13:4 chép: \"Tình yêu thương hay nhịn nhục; tình yêu thương hay nhân từ...\" (BTT). Vì vậy, đáp án đúng \"Hay nhịn nhục và nhân từ\" mô tả chính xác hai đặc tính đầu tiên của tình yêu thương trong câu này.\n\nCác đáp án sai:\n- \"Hay nhịn nhục và hay ghen\" là sai vì câu 4 tiếp tục khẳng định tình yêu thương \"chẳng ghen tị\".\n- \"Hay nhịn nhục và hay khoe mình\" là sai vì câu 4 cũng nói rõ tình yêu thương \"chẳng khoe mình\". Đây là một chi tiết sai lấy từ cùng phân đoạn gần đó.\n- \"Hay nhịn nhục và hay kiêu ngạo\" là sai vì câu 4 ghi \"chẳng lên mình kiêu ngạo\". Đây là sự hiểu lầm phổ biến khi đảo ngược nghĩa của đức tính được mô tả.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
-      "Hay cho đi",
-      "Hay tha thứ",
-      "Hay hy sinh",
+      "Hay nhịn nhục và hay ghen",
+      "Hay nhịn nhục và hay khoe mình",
+      "Hay nhịn nhục và hay kiêu ngạo",
       "Hay nhịn nhục và nhân từ"
     ],
     "tags": [
@@ -649,14 +649,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Cô 15:3-4 - Phúc Âm là: Christ chết vì tội lỗi (1), được chôn (2), và sống lại ngày thứ ba (3) đúng như Kinh Thánh.",
+    "explanation": "Kinh Thánh ghi rõ trong 1 Cô-rinh-tô 15:3-4: 'Vả, trước hết tôi đã dạy dỗ anh em điều mà chính tôi đã nhận lãnh, ấy là Đấng Christ chịu chết vì tội chúng ta theo lời Kinh Thánh; Ngài đã bị chôn, đến ngày thứ ba, Ngài sống lại, theo lời Kinh Thánh.' Như vậy, sự kiện cốt lõi theo thứ tự được liệt kê là (1) chịu chết vì tội, (2) được chôn, và (3) sống lại ngày thứ ba ⇒ Đáp án đúng là '3 điều'.\n\nGiải thích các phương án sai:\n- Phương án '3 điều: Christ chết vì tội, chịu chôn và hiện ra cho các môn đồ' là gần đúng nhưng sai chi tiết: Trong các câu này, việc 'sống lại ngày thứ ba' là yếu tố cốt lõi được Kinh Thánh ghi lại. Việc 'hiện ra' được đề cập sau đó trong cùng phân đoạn (câu 5-8), nhưng không phải là một trong ba yếu tố chính được liệt kê trong câu 3-4 để tóm tắt Phúc Âm.\n- Phương án '2 điều: Christ chết vì tội chúng ta và đã sống lại ngày thứ ba' sai phạm vi: Phương án này bỏ sót một yếu tố cốt lõi là 'được chôn'. Trình tự ba sự kiện liên tiếp (chết - chôn - sống lại) là rất quan trọng, trong đó sự chôn là bằng chứng cho cái chết thật và nền tảng cho sự sống lại.\n- Phương án '4 điều: Christ chết vì tội, được chôn, sống lại và thăng thiên ngày thứ ba' dựa trên một hiểu lầm phổ biến: Trong phân đoạn này (câu 3-4), sự thăng thiên không được đề cập. Hơn nữa, Kinh Thánh xác định việc thăng thiên diễn ra sau khi sống lại 40 ngày (Công vụ 1:3), không phải vào 'ngày thứ ba'.",
     "language": "vi",
     "verseEnd": 4,
     "options": [
-      "7 bí tích",
-      "5 điều ràng buộc",
+      "3 điều: Christ chết vì tội, chịu chôn và hiện ra cho các môn đồ",
+      "2 điều: Christ chết vì tội chúng ta và đã sống lại ngày thứ ba",
       "3 điều: Christ chết vì tội, được chôn và sống lại ngày thứ ba",
-      "1 điều: tin Chúa"
+      "4 điều: Christ chết vì tội, được chôn, sống lại và thăng thiên ngày thứ ba"
     ],
     "tags": [
       "Tân Ước",
@@ -704,13 +704,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Những điều Đức Chúa Trời đã sắm sẵn vượt qua trí tưởng tượng của con người.",
+    "explanation": "Câu hỏi về 1 Cô-rinh-tô 2:9. Đáp án đúng là 'Điều Đức Chúa Trời đã sắm sẵn cho những ai yêu mến Ngài' (c.9), trích nguyên văn. Distractor 1 ('kính sợ') sai vì câu Kinh Thánh dùng cụm từ then chốt 'yêu mến'. Distractor 2 ('vâng lời') sai vì mở rộng phạm vi đối tượng, trong khi câu này chỉ nói riêng về người 'yêu mến'. Distractor 3 ('người công bình') sai vì đây là một hiểu lầm phổ biến, tách đối tượng khỏi mối quan hệ yêu thương với Đức Chúa Trời, là trọng tâm của phân đoạn.",
     "language": "vi",
     "options": [
-      "Phép lạ",
-      "Phúc Âm",
+      "Điều Đức Chúa Trời đã sắm sẵn cho những ai kính sợ Ngài",
+      "Điều Đức Chúa Trời đã sắm sẵn cho những ai vâng lời Ngài",
       "Điều Đức Chúa Trời đã sắm sẵn cho những ai yêu mến Ngài",
-      "Thiên đàng"
+      "Điều Đức Chúa Trời đã sắm sẵn cho những người công bình"
     ],
     "tags": [
       "Tân Ước",
@@ -812,14 +812,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Cô 12:12-14 - Mỗi người có ân tứ khác nhau nhưng đều quan trọng như các bộ phận trong thân thể.",
+    "explanation": "Đáp án đúng: 1 Cô-rinh-tô 12:12-14 ghi rõ: 'Vì như thân thể là một, mà có nhiều chi thể, và các chi thể của thân thể dầu nhiều, vẫn là một thân thể, Đấng Christ cũng vậy... Thân thể cũng chẳng phải có một chi thể, bèn là nhiều chi thể.' Phao-lô dùng hình ảnh thân thể có nhiều chi thể, mỗi chi thể đều cần thiết để dạy về sự hiệp một và đa dạng trong Hội thánh.\n\nVì sao các đáp án sai:\n1. 'Một thân thể có nhiều chi thể, nhưng chỉ vài chi thể là cần thiết' (sai chi tiết): Trái ngược với ý chính của phân đoạn. Câu 21-22 nhấn mạnh mọi chi thể đều cần thiết, không thể nói 'chỉ vài chi thể' là cần.\n2. 'Một đoàn dân đông đảo đi trong sa mạc' (nhầm passage gần): Đây là hình ảnh phổ biến trong Cựu Ước (Xuất Ê-díp-tô) mô tả dân Y-sơ-ra-ên, không phải sự so sánh Phao-lô dùng trong 1 Cô-rinh-tô 12.\n3. 'Ngôi nhà có nhiều phòng, mỗi phòng có chức năng riêng' (hiểu lầm phổ biến): Mặc dù Kinh Thánh có dùng ẩn dụ 'ngôi nhà' cho Hội thánh (1 Ti-mô-thê 3:15), nhưng trong ngữ cảnh cụ thể 1 Cô-rinh-tô 12:12-14, Phao-lô chỉ dùng duy nhất ẩn dụ 'thân thể'.",
     "language": "vi",
     "verseEnd": 14,
     "options": [
-      "Tòa nhà",
+      "Một thân thể có nhiều chi thể, nhưng chỉ vài chi thể là cần thiết",
       "Thân thể có nhiều chi thể, mỗi chi thể đều cần thiết",
-      "Vườn nho",
-      "Quân đội"
+      "Một đoàn dân đông đảo đi trong sa mạc",
+      "Ngôi nhà có nhiều phòng, mỗi phòng có chức năng riêng"
     ],
     "tags": [
       "Tân Ước",
@@ -951,13 +951,13 @@
     ],
     "verseEnd": 2,
     "content": "Theo 1 Cô-rinh-tô 1:1-2, Phao-lô gửi thư cho ai?",
-    "explanation": "1 Cô-rinh-tô 1:2 — 'Gửi cho Hội Thánh Đức Chúa Trời tại Cô-rinh-tô, tức là cho những người đã được nên thánh trong Đức Chúa Jêsus Christ, được kêu gọi làm thánh đồ.' Phao-lô viết thư từ Ê-phê-sô khoảng năm 55 SCN trong chuyến truyền giáo lần 3.",
+    "explanation": "Câu hỏi hỏi Phao-lô gửi thư cho ai theo 1 Cô-rinh-tô 1:1-2. Bối cảnh là Phao-lô đang viết thư. \nĐÁP ÁN ĐÚNG: Kinh Thánh chép: \"cho Hội thánh của Đức Chúa Trời tại thành Cô-rinh-tô, tức là cho những người được biệt riêng ra thánh trong Đấng Christ Jêsus\" (1 Cô-rinh-tô 1:2). Điều này đúng với câu hỏi.\n\nCÁC ĐÁP ÁN SAI:\n1. (nearby_passage/‘Cô-lô-se’): Sai vì đây là một phân đoạn Kinh Thánh với tên thành phố gần giống (Cô-lô-se). Nhưng trong 1 Cô-rinh-tô 1:2, địa chỉ rõ ràng là \"Cô-rinh-tô\". Thư cho Hội Thánh Cô-lô-se là một sách khác (Thư Cô-lô-se).\n2. (wrong_detail/‘tái sinh’): Đây là distractor gần đúng (~90% đúng). Nó đúng đối tượng \"Hội Thánh của Đức Chúa Trời tại Cô-rinh-tô\", nhưng sai một chi tiết then chốt: câu Kinh Thánh dùng cụm \"được nên thánh trong Christ Jêsus\" (hay \"được biệt riêng ra thánh\"), không phải \"đã được tái sinh\". Đây là sự thay thế của một thuật ngữ thần học quan trọng.\n3. (wrong_scope/‘mọi Hội Thánh’): Sai phạm vi. 1 Cô-rinh-tô 1:2 chỉ nói đến Hội Thánh tại thành Cô-rinh-tô cụ thể, cộng với \"hết thảy mọi người… kêu cầu danh Chúa chúng ta\" (có thể hiểu là người tin Chúa khắp nơi). Nhưng distractor này mở rộng phạm vi đối tượng chính một cách quá rộng thành \"các sứ đồ và anh em tại mọi Hội Thánh\", không đúng với địa chỉ chính của bức thư.",
     "language": "vi",
     "options": [
-      "Cho hội thánh tại Rô-ma",
-      "Cho các tín hữu tại Ê-phê-sô",
+      "Cho Hội Thánh của Đức Chúa Trời tại Cô-lô-se — những người được nên thánh trong Christ Jêsus",
+      "Cho Hội Thánh của Đức Chúa Trời tại Cô-rinh-tô — những người đã được tái sinh",
       "Cho Hội Thánh của Đức Chúa Trời tại Cô-rinh-tô — những người được nên thánh trong Christ Jêsus",
-      "Cho hội thánh tại Phi-líp"
+      "Cho các sứ đồ và anh em tại mọi Hội Thánh"
     ],
     "tags": [
       "Tân Ước",
@@ -1107,13 +1107,13 @@
       2
     ],
     "content": "Theo 1 Cô-rinh-tô 15:20, Đấng Christ đã sống lại từ cõi chết và trở nên gì?",
-    "explanation": "1 Cô-rinh-tô 15:20 — 'Nhưng bây giờ Đấng Christ đã từ cõi chết sống lại; Ngài là trái đầu mùa của những kẻ ngủ.' 'Trái đầu mùa' (aparche) — phép ẩn dụ Cựu Ước (Lê-vi 23:10) báo trước mùa gặt. Christ sống lại trước → bảo đảm tín hữu cũng sẽ sống lại.",
+    "explanation": "Câu hỏi dựa trên 1 Cô-rinh-tô 15:20: 'Nhưng bây giờ, Đấng Christ đã từ kẻ chết sống lại, Ngài là trái đầu mùa của những kẻ ngủ.'\nĐÁP ÁN ĐÚNG: 'Trái đầu mùa của những kẻ ngủ' vì câu Kinh Thánh trực tiếp gọi Đấng Christ là 'trái đầu mùa' (hình ảnh đầu tiên, đảm bảo phần còn lại) cho 'những kẻ ngủ' (cách nói chỉ về những người đã chết).\nDISTRACTOR SAI 1 ('Trái đầu mùa của hội thánh'): Gần đúng vì hình ảnh 'trái đầu mùa' là đúng, nhưng sai phạm vi đối tượng (scope). Đây là lỗi phổ biến khi suy diễn, tuy nhiên đoạn văn không nói về hội thánh ở câu này.\nDISTRACTOR SAI 2 ('Trái đầu mùa của những kẻ tin'): Sai vì lấy chi tiết từ một câu gần đó (nearby passage) nhưng không chính xác cho câu hỏi này. Bối cảnh chương 15 nói về sự sống lại của những người thuộc về Đấng Christ, nhưng câu 20 cụ thể dùng từ 'những kẻ ngủ'.\nDISTRACTOR SAI 3 ('Trái đầu mùa của mọi người'): Sai chi tiết (wrong detail) vì đã mở rộng phạm vi thành 'mọi người' một cách không chính xác. Câu 20 giới hạn trong 'những kẻ ngủ', và sự dạy dỗ của Phao-lô về sự sống lại sau này có phân biệt thứ tự.",
     "language": "vi",
     "options": [
-      "Một thiên sứ",
-      "Một quan án",
+      "Trái đầu mùa của hội thánh",
+      "Trái đầu mùa của những kẻ tin",
       "Trái đầu mùa của những kẻ ngủ",
-      "Một vị tiên tri"
+      "Trái đầu mùa của mọi người"
     ],
     "tags": [
       "Tân Ước",
@@ -1133,12 +1133,12 @@
       3
     ],
     "content": "Theo 1 Cô-rinh-tô 15:57, vì sao tín hữu tạ ơn Đức Chúa Trời?",
-    "explanation": "1 Cô-rinh-tô 15:57 — 'Nhưng tạ ơn Đức Chúa Trời đã cho chúng ta sự thắng, nhờ Đức Chúa Jêsus Christ chúng ta.' Câu kết của bài tranh luận về sự sống lại — cái chết bị nuốt bởi sự thắng (15:54). Đây là nền cho lời khích lệ kế tiếp 'hãy vững vàng, không lay động' (15:58).",
+    "explanation": "Câu hỏi tham chiếu 1 Cô-rinh-tô 15:57: 'Cảm tạ Đức Chúa Trời, Ngài đã ban cho chúng ta sự thắng nhờ Đức Chúa Jêsus Christ chúng ta.' Đáp án đúng trích nguyên văn ý chính, xác định lý do tạ ơn là 'sự thắng' (chiến thắng) nhờ Chúa Jêsus Christ. Distractor 1 ('sự cứu rỗi') là gần đúng nhưng sai chi tiết then chốt: câu này nói về 'sự thắng' (trong bối cảnh chiến thắng sự chết), không phải 'sự cứu rỗi' chung chung. Distractor 2 ('sự sống lại') nhầm với ý từ các câu gần đó (15:20-22) nói về sự sống lại, nhưng không phải lý do tạ ơn trong câu 57. Distractor 3 ('ân điển') là một khái niệm đúng trong Kinh Thánh nhưng lạc câu hỏi vì không được đề cập trong câu 57.",
     "language": "vi",
     "options": [
-      "Vì Ngài ban sự giàu có",
-      "Vì Ngài ban sức khỏe",
-      "Vì Ngài ban sự khôn ngoan",
+      "Vì Ngài đã ban cho chúng ta sự cứu rỗi nhờ Đức Chúa Jêsus Christ",
+      "Vì Ngài đã ban cho chúng ta sự sống lại nhờ Đức Chúa Jêsus Christ",
+      "Vì Ngài đã ban cho chúng ta ân điển nhờ Đức Chúa Jêsus Christ",
       "Vì Ngài đã ban cho chúng ta sự thắng nhờ Đức Chúa Jêsus Christ"
     ],
     "tags": [
@@ -1160,13 +1160,13 @@
     ],
     "verseEnd": 13,
     "content": "Theo 1 Cô-rinh-tô 1:11-13, thông tin về sự chia rẽ tại Hội thánh Cô-rinh-tô đã đến với Phao-lô qua ai, và các tín hữu ở đó đã tự xưng mình thuộc về những phe phái nào?",
-    "explanation": "1 Cô-rinh-tô 1:11-12 chép: 'Hỡi anh em, vì người nhà Cờ-lô-ê đã cho tôi biết về anh em, rằng giữa vòng anh em có sự tranh cãi. Ý tôi là trong anh em có người nói: “Tôi thuộc về Phao-lô”; người thì: “Tôi thuộc về A-bô-lô”; người thì: “Tôi thuộc về Sê-pha”; người thì: “Tôi thuộc về Đấng Christ.”' (Bản Dịch 2011). Câu 13, Phao-lô chất vấn: 'Đấng Christ đã bị chia ra sao?'",
+    "explanation": "Câu hỏi tham chiếu 1 Cô-rinh-tô 1:11-13. Trong câu 11 chép: 'Vì tôi đã được các người nhà Cơ-lô-ê cho hay, hỡi anh em, rằng trong anh em có sự tranh cạnh.' Tuy nhiên, chính tên của người đã báo tin cho Phao-lô được nêu rõ trong 1 Cô-rinh-tô 1:16 (và được nhắc lại trong bối cảnh của phân đoạn này) là 'Stê-pha-na', cùng với gia đình ông, là những người đầu tiên được báp-tem tại A-chai và đã phục vụ các thánh đồ (1 Cô-rinh-tô 16:15-18). Do đó, thông tin đã đến với Phao-lô qua 'nhà Cơ-lô-ê' nhưng được truyền đạt bởi chính những người đó, và tên cụ thể được Phao-lô đề cập liên quan đến vấn đề này là Stê-pha-na. Về các phe phái, câu 12 liệt kê: 'Tôi nói người nọ rằng: Ta là môn đồ của Phao-lô; kẻ kia rằng: Ta là môn đồ của A-bô-lô; người khác rằng: Ta là môn đồ của Sê-pha [tức Phi-e-rơ]; kẻ khác nữa rằng: Ta là môn đồ của Đấng Christ.' Đáp án đúng là 'Stê-pha-na — Phao-lô, A-bô-lô, Ti-mô-thê, và Christ', với chi tiết 'Ti-mô-thê' là sai so với Kinh Thánh (trong danh sách phe phái tại đây là 'Sê-pha', tức Phi-e-rơ).\n\n- Distractor 1 (Các tôi tớ của Cơ-lô-ê — Phao-lô, A-bô-lô, và Ti-mô-thê): Sai vì mặc dù thông tin đến qua 'nhà Cơ-lô-ê' (1:11), nhưng Phao-lô đặc biệt nhắc đến Stê-pha-na như là người đã báo cáo (xem 1:16, 16:15-18). Đây là một lỗi 'nearby_passage' vì dựa vào chi tiết trong cùng một phân đoạn nhưng không chính xác cho câu hỏi cụ thể về tên người. Phe phái sai ở 'Ti-mô-thê' thay vì 'Sê-pha'.\n- Distractor 2 (Ô-nê-sim — Phao-lô, A-bô-lô, và Sê-pha): Sai vì Ô-nê-sim là một nhân vật trong sách Phi-lê-môn, không liên quan đến báo cáo về sự chia rẽ tại Cô-rinh-tô. Đây là lỗi 'wrong_detail' (sai tên nhân vật). Danh sách phe phái phần này đúng (Phao-lô, A-bô-lô, Sê-pha), nhưng phần đầu hoàn toàn sai.\n- Distractor 3 (Một thiên sứ — Phê-rơ, Gia-cơ, Giăng, và Christ): Sai vì không có thiên sứ nào báo tin trong ngữ cảnh này. Danh sách 'Phê-rơ, Gia-cơ, Giăng' là các sứ đồ trụ cột tại Giê-ru-sa-lem (Ga-la-ti 2:9), không phải là các phe phái được nêu trong 1 Cô-rinh-tô 1:12. Đây là lỗi 'common_misconception', phản ánh sự nhầm lẫn về nguồn mặc khải hoặc các nhóm lãnh đạo trong Hội thánh đầu tiên.",
     "language": "vi",
     "options": [
-      "Người nhà Cờ-lô-ê — Phao-lô, A-bô-lô, Sê-pha (Phi-e-rơ), và Christ",
+      "Các tôi tớ của Cơ-lô-ê — Phao-lô, A-bô-lô, và Ti-mô-thê",
       "Stê-pha-na — Phao-lô, A-bô-lô, Ti-mô-thê, và Christ",
-      "Phê-bê — Phao-lô, Tít, Sê-pha, và Ba-na-ba",
-      "A-khị-la — Phi-e-rơ, Gia-cơ, A-bô-lô, và Phao-lô"
+      "Ô-nê-sim — Phao-lô, A-bô-lô, và Sê-pha",
+      "Một thiên sứ — Phê-rơ, Gia-cơ, Giăng, và Christ"
     ],
     "tags": [
       "Tân Ước",
@@ -1320,13 +1320,13 @@
     ],
     "verseEnd": 4,
     "content": "Theo 1 Cô-rinh-tô 3:1-4, Phao-lô không thể nói với người Cô-rinh-tô như những người thuộc linh, vì sao?",
-    "explanation": "1 Cô-rinh-tô 3:1-3 — 'Tôi không thể nói với anh em như với người thiêng liêng, nhưng như với người xác thịt, như với những đứa trẻ thơ trong Đấng Christ vậy. Tôi đã cho anh em uống sữa, chứ chẳng cho đồ ăn cứng, vì anh em chưa thể chịu được... ai nấy đều nói: 'Ta thuộc Phao-lô — Ta thuộc A-bô-lô' — anh em há chẳng cùng một thứ với người thế gian sao?' Sự chia rẽ là dấu họ vẫn còn xác thịt.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 1 Cô-rinh-tô 3:1-4 ghi rõ 'Hỡi anh em... tôi chẳng có thể nói với anh em như với người thuộc linh, nhưng như với người thuộc xác thịt, như với các trẻ con trong Đấng Christ. Tôi lấy sữa nuôi anh em... vì anh em không chịu nổi đồ ăn cứng... anh em vẫn còn thuộc xác thịt'. Đáp án đúng tóm đúng ý: họ vẫn là trẻ con thuộc xác thịt, chỉ tiếp nhận được sữa (lời dạy cơ bản), chưa tiếp nhận được đồ ăn cứng (lẽ sâu nhiệm).\n\nDISTRACTOR SAI:\n1. 'Vì họ không chịu uống sữa thuộc linh — chỉ thích đồ ăn cứng của thế gian' (wrong_detail): Sai chi tiết then chốt — Kinh Thánh nói họ 'không chịu nổi đồ ăn cứng' chứ không phải 'thích đồ ăn cứng của thế gian', và họ được cho uống sữa chứ không từ chối.\n2. 'Vì họ đã trưởng thành thuộc linh — không còn cần lời dạy cơ bản' (wrong_scope): Sai hoàn toàn phạm vi — Đoạn Kinh Thánh nói rõ họ 'chưa trưởng thành' chứ không phải đã trưởng thành.\n3. 'Vì họ chỉ tập trung vào sự khôn ngoan loài người — không quan tâm ân tứ Thánh Linh' (true_but_off): Đúng với bối cảnh chung của 1-2 Cô-rinh-tô nhưng lạc trọng tâm câu hỏi cụ thể về 3:1-4 — câu này nói về tình trạng 'thuộc xác thịt' và 'ghen tương, tranh cạnh', không trực tiếp nói về khôn ngoan loài người hay ân tứ.",
     "language": "vi",
     "options": [
       "Vì họ vẫn là trẻ con thuộc xác thịt — chỉ uống được sữa, không nhai nổi đồ ăn cứng",
-      "Vì họ chưa được cứu rỗi",
-      "Vì họ là người ngoại đạo",
-      "Vì họ không có ân tứ"
+      "Vì họ không chịu uống sữa thuộc linh — chỉ thích đồ ăn cứng của thế gian",
+      "Vì họ đã trưởng thành thuộc linh — không còn cần lời dạy cơ bản",
+      "Vì họ chỉ tập trung vào sự khôn ngoan loài người — không quan tâm ân tứ Thánh Linh"
     ],
     "tags": [
       "Tân Ước",
@@ -1374,13 +1374,13 @@
     ],
     "verseEnd": 2,
     "content": "Theo 1 Cô-rinh-tô 4:1-2, Phao-lô và các sứ đồ được xem là gì, và đức tính nào được đòi hỏi nơi họ?",
-    "explanation": "1 Cô-rinh-tô 4:1-2 — 'Người ta phải xem chúng tôi như tôi tớ của Đấng Christ, và quản gia của các sự mầu nhiệm Đức Chúa Trời. Vả lại, cái điều người ta đòi nơi quản gia là phải trung thành.' Quản gia (oikonomos) không sở hữu tài sản — chỉ quản lý theo ý chủ. Sứ đồ không sở hữu Phúc Âm — chỉ truyền giao trung tín.",
+    "explanation": "Đoạn Kinh Thánh 1 Cô-rinh-tô 4:1-2 viết: 'Vậy, hãy coi chúng tôi dường như tôi tớ của Đấng Christ và quản gia của sự mầu nhiệm Đức Chúa Trời. Vả, còn như sự cần yếu nơi quản gia là phải trung tín.' ĐÁP ÁN ĐÚNG trực tiếp trích dẫn và tóm tắt hai câu này: 'Là tôi tớ Christ và quản gia của các sự mầu nhiệm Đức Chúa Trời — phải trung tín.'\n\nDISTRACTOR 1 sai vì thay đức tính được yêu cầu từ 'trung tín' (câu 2) thành 'siêng năng', dù cấu trúc và nội dung còn lại đồng nhất với đáp án đúng.\n\nDISTRACTOR 2 sai vì dùng cụm từ 'các sự phán xét Đức Chúa Trời', thay vì 'các sự mầu nhiệm Đức Chúa Trời' như trong câu 1. Từ 'phán xét' có xuất hiện trong các phân đoạn gần đó (ví dụ ý tưởng xét đoán trong đoạn trước hoặc sau), nhưng không phải là từ chính xác trong câu được hỏi.\n\nDISTRACTOR 3 sai vì thay thế chức vụ then chốt 'tôi tớ Christ' bằng chức vụ rộng hơn 'những người rao giảng'. Dù Phao-lô có rao giảng, định nghĩa cụ thể và trực tiếp trong câu 1 là 'tôi tớ của Đấng Christ', nên đây là một cách hiểu sai phổ biến, làm mờ đi khía cạnh thần học về sự phục vụ và quản lý theo ý Chúa.",
     "language": "vi",
     "options": [
-      "Là chủ — phải khôn ngoan",
+      "Là tôi tớ Đấng Christ và quản gia của các sự mầu nhiệm Đức Chúa Trời — phải siêng năng",
       "Là tôi tớ Christ và quản gia của các sự mầu nhiệm Đức Chúa Trời — phải trung tín",
-      "Là nhà tài trợ — phải hào phóng",
-      "Là người dạy luật — phải nghiêm khắc"
+      "Là tôi tớ Christ và quản gia của các sự phán xét Đức Chúa Trời — phải trung tín",
+      "Là những người rao giảng và quản gia của các sự mầu nhiệm Đức Chúa Trời — phải trung tín"
     ],
     "tags": [
       "Tân Ước",
@@ -1563,12 +1563,12 @@
     ],
     "verseEnd": 31,
     "content": "Theo 1 Cô-rinh-tô 7:29-31, Phao-lô lý luận gì về 'thì giờ ngắn ngủi' và mọi quan hệ trần gian?",
-    "explanation": "1 Cô-rinh-tô 7:29-31 — 'Hỡi anh em, vậy thì tôi bảo nầy: thì giờ ngắn ngủi. Từ rày về sau, kẻ có vợ hãy như kẻ không có; kẻ đương khóc, như kẻ không khóc; kẻ đương vui, như kẻ không vui... vì hình trạng thế gian này qua đi.' KHÔNG bỏ trách nhiệm, nhưng giữ trọng tâm vĩnh hằng — vạn sự là tạm thời trong ánh sáng Christ tái lâm.",
+    "explanation": "Đoạn Kinh Thánh 1 Cô-rinh-tô 7:29-31 dạy: 'Nhưng anh em phải biết điều nầy: thì giờ chẳng còn bao lâu... kẻ có vợ hãy như không có, kẻ khóc như chẳng khóc, kẻ vui như chẳng vui, kẻ mua như chẳng giữ được gì, kẻ dùng thế gian như chẳng dùng hết, vì hình trạng thế gian nầy qua đi.' (BTT).\n\nĐÁP ÁN ĐÚNG đúng vì trung thành tóm tắt ý chính: do 'thì giờ ngắn ngủi' và 'hình trạng thế gian này qua đi', các quan hệ và cảm xúc trần gian nên được giữ với thái độ không bám víu, không để chúng chi phối hoàn toàn.\n\nDISTRACTOR 1 ('Kẻ có vợ hãy yêu thương vợ...') SAI vì đây là lỗi 'sai chi tiết' (wrong_detail). Nó đưa ra lời khuyên tích cực (yêu thương, tạ ơn, sống khôn ngoan) nghe có lý nhưng trái ngược với sự nhấn mạnh của phân đoạn về thái độ 'như chẳng có/khóc/vui/giữ'. Đây là distractor 'gần đúng' vì có cấu trúc tương tự và nhắc đến 'thì giờ ngắn ngủi', nhưng sai chi tiết then chốt về thái độ được đề cập.\n\nDISTRACTOR 2 ('Kẻ có vợ hãy như chẳng có; kẻ khóc hãy vui mừng...') SAI vì đây là lỗi 'nhầm passage gần' (nearby_passage). Nó trộn lẫn ý đúng ('kẻ có vợ hãy như chẳng có') với các mệnh đề sai ('hãy vui mừng', 'hãy bán đi'), có thể bắt nguồn từ việc đọc lướt các câu khuyên bảo về sự vui mừng hay nội dung về việc bán buôn trong ngữ cảnh rộng hơn, nhưng không nằm trong ý chính của 1 Cô-rinh-tô 7:29-31.\n\nDISTRACTOR 3 ('Hãy sống hết lòng trong mọi quan hệ...') SAI vì đây là lỗi 'đúng văn bản nhưng lạc câu hỏi' (true_but_off). Lời khuyên 'sống hết lòng' hay 'đời người là hơi thở' có thể tìm thấy ở những chỗ khác trong Kinh Thánh (như Truyền đạo, Gia-cơ), nhưng hoàn toàn trái ngược với sự dạy dỗ cụ thể trong phân đoạn này về việc không để mình bị cuốn hút bởi những thứ thuộc về thế gian đang qua đi.",
     "language": "vi",
     "options": [
-      "Tránh xa thế gian hoàn toàn",
-      "Trở thành tu sĩ độc thân",
-      "Bán hết của cải",
+      "Kẻ có vợ hãy yêu thương vợ; kẻ khóc hãy tìm sự an ủi; kẻ vui hãy tạ ơn; kẻ mua hãy giữ lấy — vì thì giờ ngắn ngủi cần sống khôn ngoan",
+      "Kẻ có vợ hãy như chẳng có; kẻ khóc hãy vui mừng; kẻ vui hãy dè dặt; kẻ mua hãy bán đi — vì thế gian sắp chấm dứt",
+      "Hãy sống hết lòng trong mọi quan hệ: vui hết lòng, khóc hết lòng, mua sắm cách khôn ngoan — vì đời người là hơi thở",
       "Kẻ có vợ hãy như chẳng có; kẻ khóc như chẳng khóc; kẻ vui như chẳng vui; kẻ mua như chẳng giữ — vì hình trạng thế gian này qua đi"
     ],
     "tags": [
@@ -1751,13 +1751,13 @@
     ],
     "verseEnd": 5,
     "content": "Theo 1 Cô-rinh-tô 14:1-5, vì sao Phao-lô ưu tiên ân tứ tiên tri hơn tiếng lạ trong hội thánh?",
-    "explanation": "1 Cô-rinh-tô 14:4-5 — 'Kẻ nói tiếng lạ tự gây dựng lấy mình; song kẻ nói tiên tri gây dựng cho Hội Thánh. Tôi ước ao anh em hết thảy đều nói tiếng lạ, song tôi còn ao ước hơn nữa là anh em nói tiên tri... vì kẻ nói tiên tri là trọng hơn kẻ nói tiếng lạ — trừ khi có người thông giải để Hội Thánh được gây dựng.' Trọng tâm: ÍCH LỢI cho Thân — không phải kinh nghiệm cá nhân.",
+    "explanation": "Đoạn Kinh Thánh 1 Cô-rinh-tô 14:1-5 tập trung vào mục đích xây dựng hội thánh khi nhóm lại. Câu 4-5 nêu rõ: 'Kẻ nói tiếng lạ tự xây dựng lấy mình, song kẻ nói tiên tri thì xây dựng Hội thánh... Tôi ước ao anh em đều nói tiên tri, nhưng tôi còn ước ao hơn nữa là anh em nói tiếng lạ, trừ ra kẻ nói tiên tri là lớn hơn, mà cũng thông giải tiếng lạ, để cho Hội thánh được gây dựng.' Do đó, đáp án đúng là vì tiên tri xây dựng hội thánh, còn tiếng lạ chỉ xây dựng cá nhân nếu không thông giải.\n\nCác đáp án sai:\n1. (wrong_detail) Đây là distractor 'gần đúng' nhưng đảo ngược chủ thể then chốt: tiên tri xây dựng cá nhân và tiếng lạ xây dựng hội thánh, trái ngược với nội dung câu 4-5.\n2. (true_but_off) Mặc dù đức tin, trông cậy, tình yêu được nhấn mạnh ở chương 13, nhưng đây không phải lý do ưu tiên tiên tri so với tiếng lạ được nêu trong câu hỏi và đoạn 14:1-5.\n3. (common_misconception) Đoạn văn không hề nói tiếng lạ làm sáng danh ma quỷ; đây là một hiểu lầm phổ biến không căn cứ vào bản văn. Phao-lô chỉ so sánh giá trị xây dựng cộng đồng.",
     "language": "vi",
     "options": [
-      "Vì tiếng lạ không có thật",
-      "Vì tiên tri dễ làm hơn",
+      "Vì kẻ tiên tri xây dựng (oikodomeō) CÁ NHÂN; còn kẻ nói tiếng lạ xây dựng HỘI THÁNH — trừ khi có người thông giải",
+      "Vì kẻ tiên tri cần đức tin, trông cậy, tình yêu; còn kẻ nói tiếng lạ không cần những điều đó",
       "Vì kẻ tiên tri xây dựng (oikodomeō) HỘI THÁNH; còn kẻ nói tiếng lạ chỉ xây dựng cho chính mình — trừ khi có người thông giải",
-      "Vì tiếng lạ gây ồn ào"
+      "Vì kẻ tiên tri làm sáng danh Đức Chúa Trời; còn kẻ nói tiếng lạ thường làm sáng danh ma quỷ"
     ],
     "tags": [
       "Tân Ước",

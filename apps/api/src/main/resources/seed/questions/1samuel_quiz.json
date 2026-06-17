@@ -229,12 +229,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Sa 15:22 - Chúa muốn sự vâng lời từ tâm lòng hơn là hình thức tôn giáo bên ngoài.",
+    "explanation": "Đoạn Kinh Thánh 1 Samuel 15:22 ghi: \"Sa-mu-ên nói: Đức Giê-hô-va há đẹp lòng của lễ thiêu và của lễ thù ân bằng sự vâng theo lời phán của Ngài ư? Này, sự vâng lời tốt hơn của tế lễ, sự nghe theo tốt hơn mỡ chiên đực.\" (BTT)\n\n*   **Đáp án đúng 'Của tế lễ'** là chính xác vì câu này trực tiếp so sánh 'sự vâng lời' với 'của tế lễ', nhấn mạnh tấm lòng vâng phục quan trọng hơn nghi thức hiến tế.\n*   **Distractor 'Tiếng đàn hạc'** sai vì là chi tiết sai: mặc dù Đa-vít (sau này) chơi đàn hạc, nhưng chi tiết này không liên quan gì đến bối cảnh và lời nói của Sa-mu-ên ở chương 15.\n*   **Distractor 'Lời cầu nguyện'** sai vì đây là hiểu lầm phổ biến: mặc dù cầu nguyện là quan trọng, nhưng trong câu 22 này, tiêu chuẩn so sánh trực tiếp và cụ thể là 'của tế lễ', không phải 'lời cầu nguyện'. Đây là sự thay thế một khái niệm tôn giáo chung chung khác.\n*   **Distractor 'Mỡ của chiên đực'** là distractor 'gần đúng' nhưng sai chi tiết passage gần: cụm từ này có xuất hiện trong cùng câu 22 ('sự nghe theo tốt hơn mỡ của chiên đực'), nhưng câu hỏi đang hỏi về vế so sánh thứ nhất ('sự vâng lời tốt hơn ___'), nên đối tượng so sánh đúng phải là 'của tế lễ', không phải 'mỡ của chiên đực' ở vế sau.",
     "language": "vi",
     "options": [
-      "Chiến thắng",
-      "Vàng bạc",
-      "Tri thức",
+      "Tiếng đàn hạc",
+      "Lời cầu nguyện",
+      "Mỡ của chiên đực",
       "Của tế lễ"
     ],
     "tags": [
@@ -341,13 +341,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Sa-mu-ên 4:11 — 'Hòm của Đức Chúa Trời bị cướp lấy, hai con trai Hê-li, Hóp-ni và Phi-nê-a, cũng đều chết.'",
+    "explanation": "Câu hỏi hỏi về thứ bị mất cùng với hai con trai của Hê-li trong trận A-phéc (1 Sa-mu-ên 4:10-11). Đáp án đúng là 'Hòm Giao Ước' vì Kinh Thánh chép rõ: 'Hòm của Đức Chúa Trời bị cướp lấy, và hai con trai Hê-li là Hóp-ni và Phi-nê-a, đều chết' (câu 11).\n\nCác đáp án sai:\n1. 'Đền tạm tại Si-lô' là đáp án gần đúng (almost-right) vì Hòm Giao Ước thường được đặt trong Đền tạm, nhưng trong trận này, chỉ có Hòm bị mất, còn Đền tạm vẫn ở Si-lô (sai loại 'nearby_passage').\n2. 'Hai vị trưởng lão chỉ huy' là sai chi tiết: trận này có hai con trai Hê-li đi theo Hòm, nhưng họ không phải là chỉ huy duy nhất; câu hỏi hỏi 'mất gì cùng với' họ, chứ không phải bản thân họ (sai loại 'wrong_detail').\n3. 'Thành A-phéc' là đúng văn bản (địa điểm xảy ra trận) nhưng lạc câu hỏi, vì thành không bị 'mất' trong sự kiện này (sai loại 'true_but_off').",
     "language": "vi",
     "options": [
-      "Đền thờ",
+      "Đền tạm tại Si-lô",
       "Hòm Giao Ước",
-      "Vua",
-      "Đất hứa"
+      "Hai vị trưởng lão chỉ huy",
+      "Thành A-phéc"
     ],
     "tags": [
       "Cựu Ước",

@@ -272,15 +272,15 @@
     "type": "multiple_choice_single",
     "content": "Nếu người phạm tội quá nghèo, không có chim, thì dâng gì làm tế lễ chuộc tội?",
     "options": [
-      "Nước và rượu",
-      "Hương liệu",
+      "Một phần mười ê-pha bột lúa mạch",
+      "Một phần mười ê-pha hương liệu",
       "Một phần mười ê-pha bột mịn",
-      "Trái cây đầu mùa"
+      "Một phần mười sê-ken bạc cho tế lễ chuộc lỗi"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 5:11 — 'Nếu người ấy không có đủ sức mua hai con chim cu gáy hoặc hai con bồ câu con, thì phải đem một phần mười ê-pha bột mịn làm tế lễ chuộc tội.'",
+    "explanation": "Đoạn Kinh Thánh Lê-vi Ký 5:11-12 nói rõ: 'Nhưng nếu người không thế có được hai con chim cu, hay là hai bồ câu con, thì vì tội mình đã phạm, phải đem một phần mười ê-pha bột mịn làm của lễ chuộc tội, không chế dầu...' (câu 11a), nên đáp án đúng là MỘT PHẦN MƯỜI Ê-PHA BỘT MỊN. Các đáp án sai: (1) BỘT LÚA MẠCH sai chi tiết vật liệu - bột mịn trong đoạn này không nói rõ từ gì nhưng trong bối cảnh tế lễ thường là từ lúa mì, và đây là loại bột mịn nhất; (2) HƯƠNG LIỆU là vật liệu sai hoàn toàn so với sách Lê-vi chương 5 - hương liệu được nhắc ở các phần khác như lễ xông hương (Xuất Ê-díp-tô 30), không phải tế lễ chuộc tội cho người nghèo ở đây; (3) MỘT PHẦN MƯỜI SÊ-KEN BẠC là nhầm sang passage gần nói về tế lễ chuộc lỗi thuộc loại khác (Lê-vi Ký 5:15 nói về việc dâng chiên đực không tì vết hoặc bồi thường bằng bạc theo giá trị), lạc khỏi quy định cụ thể cho trường hợp quá nghèo không có chim này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -381,14 +381,14 @@
     "content": "Ai được ăn thịt tế lễ chuộc tội?",
     "options": [
       "Thầy tế lễ dâng tế lễ",
-      "Toàn dân Y-sơ-ra-ên",
-      "Người Lê-vi và gia đình",
-      "Chỉ người dâng lễ"
+      "Thầy tế lễ và gia đình người",
+      "Người đã dâng tế lễ",
+      "Bất kỳ người nào trong trại"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Lê-vi Ký 6:26 — 'Thầy tế lễ nào dâng tế lễ chuộc tội sẽ ăn thịt tế lễ ấy. Phải ăn tại một nơi thánh, trong hành lang Lều Hội Kiến.'",
+    "explanation": "Lê-vi ký 6:26 chép: 'Thầy tế lễ dâng tế lễ chuộc tội sẽ ăn thịt nó; phải ăn nó trong một nơi thánh, tức là trong hành lang của hội mạc.' Đáp án đúng vì Kinh Thánh xác định rõ chỉ có thầy tế lễ dâng tế lễ đó mới được ăn. Distractor 'Thầy tế lễ và gia đình người' là gần đúng nhưng sai chi tiết then chốt vì không bao gồm gia đình (đây là quy định cho tế lễ chuộc tội, khác với một số tế lễ khác). Distractor 'Người đã dâng tế lễ' sai phạm vi vì người dâng (thường là người phạm tội) không được ăn thịt tế lễ chuộc tội. Distractor 'Bất kỳ người nào trong trại' là hiểu lầm phổ biến, vì tế lễ này rất thánh và bị giới hạn nghiêm ngặt, không dành cho cộng đồng chung.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -852,15 +852,15 @@
     "type": "multiple_choice_single",
     "content": "Trong nghi lễ thanh tẩy người phong, cần dùng những vật liệu nào?",
     "options": [
-      "Một con bò tơ, huyết, và lửa",
+      "Hai con chim, gỗ bá hương, và chỉ đỏ",
       "Hai con chim, gỗ bá hương, chỉ đỏ, và cành bài hương",
-      "Nước sông, muối, và nhũ hương",
-      "Hai con chiên, dầu ô-liu, và bột mịn"
+      "Hai con chim, gỗ bá hương, chỉ đỏ, và nước suối",
+      "Hai con chim, gỗ bá hương, chỉ đỏ, và mảnh vải sạch"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 14:4 — 'Thầy tế lễ sẽ truyền lấy hai con chim sống và tinh sạch, gỗ bá hương, chỉ đỏ tươi, và cành bài hương cho người được thanh tẩy.'",
+    "explanation": "Lê-vi Ký 14:4-7 chép: \"thì thầy tế lễ sẽ truyền dạy lấy hai con chim sẻ còn sống tinh sạch, cây bá hương, chỉ màu đỏ sặm, và nhành kinh giới, đặng làm phép cho người được sạch...\" (BTT). Đáp án đúng liệt kê đủ bốn vật liệu theo Kinh Thánh. Distractor 1 sai vì thiếu 'cành bài hương' (nhành kinh giới). Distractor 2 sai vì thêm 'nước suối' (vật liệu không có trong phân đoạn này, dù nước được dùng trong các nghi lễ khác). Distractor 3 sai vì thay 'cành bài hương' bằng 'mảnh vải sạch' (chi tiết xuất hiện trong các phân đoạn về phong hủi ở Lê-vi 13 nhưng không phải trong nghi lễ thanh tẩy với chim ở 14:4-7).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1298,15 +1298,15 @@
     "type": "multiple_choice_single",
     "content": "Hình phạt cho ai dâng con cái cho thần Mô-lóc là gì?",
     "options": [
-      "Bị đuổi khỏi trại",
+      "Bị đuổi khỏi trại quân",
       "Bị ném đá",
-      "Phải dâng tế lễ chuộc tội",
-      "Bị đánh roi"
+      "Phải dâng một của lễ chuộc tội",
+      "Bị xử tử bằng gươm"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 20:2 — 'Bất kỳ ai trong dân Y-sơ-ra-ên hoặc ngoại kiều sống trong Y-sơ-ra-ên mà dâng con cái cho Mô-lóc phải bị xử tử; dân trong xứ phải ném đá người đó.'",
+    "explanation": "Lê-vi Ký 20:2-3 chép: 'Hễ ai trong dân Y-sơ-ra-ên hoặc khách lạ kiều ngụ trong Y-sơ-ra-ên, dâng một trong các con cái mình cho thần Mo-lóc, thì chắc sẽ bị xử tử: dân bổn xứ sẽ ném đá người đó.' Do đó, hình phạt được quy định rõ là 'bị ném đá'. Distractor 'Bị đuổi khỏi trại quân' (wrong_scope) là hình phạt cho một số tội khác (ví dụ Lê-vi Ký 13:46 về bệnh phung), không phải cho tội này. 'Phải dâng một của lễ chuộc tội' (nearby_passage) là giải pháp cho một số tội vi phạm khác có thể chuộc được (ví dụ Lê-vi Ký 5), nhưng tội thờ thần Mô-lóc này bị xem là cực kỳ nghiêm trọng và không có của lễ chuộc tội nào được đề cập. 'Bị xử tử bằng gươm' (wrong_detail) là gần đúng vì đều là hình thức xử tử, nhưng câu Kinh Thánh chỉ định rõ phương thức là 'ném đá', không phải 'bằng gươm'.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1509,15 +1509,15 @@
     "type": "multiple_choice_single",
     "content": "Lễ Ngũ Tuần (Lễ Các Tuần) được tổ chức sau Lễ Vượt Qua bao nhiêu ngày?",
     "options": [
-      "Ba mươi ngày",
+      "Mười bốn ngày",
       "Bảy ngày",
       "Năm mươi ngày",
-      "Bảy mươi ngày"
+      "Một trăm hai mươi ngày"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 23:15-16 — 'Các ngươi đếm từ ngày sau ngày sa-bát... đủ bảy tuần lễ, tức năm mươi ngày.' Đây là nguồn gốc tên 'Ngũ Tuần' (Pentecost).",
+    "explanation": "Lê-vi Ký 23:15-16 quy định: 'Các ngươi sẽ tính bảy tuần trọn, bắt đầu từ ngày sau lễ Sa-bát, tức là ngày đem bó lúa dâng đưa qua đưa lại; các ngươi sẽ tính năm mươi ngày cho đến ngày sau lễ Sa-bát thứ bảy, thì phải dâng một của lễ chay mới cho Đức Giê-hô-va.' Do đó, Lễ Ngũ Tuần (Lễ Các Tuần) được tổ chức sau Lễ Vượt Qua năm mươi ngày (từ 'ngũ tuần' nghĩa là 50 ngày).\n\nCác đáp án sai:\n- 'Mười bốn ngày' là sai chi tiết số (wrong_detail). Thời gian này thường liên quan đến các lễ khác (như Lễ Bánh Không Men kéo dài 7 ngày sau Lễ Vượt Qua) hoặc một nửa của 7 tuần, nhưng không phải thời gian chính xác.\n- 'Bảy ngày' là nhầm từ passage gần (nearby_passage). Đoạn Kinh Thánh có nhắc đến 'bảy tuần' (tức 49 ngày) và 'bảy ngày' có thể liên quan đến Lễ Bánh Không Men ngay sau Lễ Vượt Qua, nhưng không phải khoảng thời gian cho Lễ Ngũ Tuần.\n- 'Một trăm hai mươi ngày' là hiểu lầm phổ biến (common_misconception). Số ngày này thường xuất hiện trong các ngữ cảnh khác của Kinh Thánh (như thời gian nước lụt hay Môi-se trên núi), nhưng không liên quan đến thời gian giữa Lễ Vượt Qua và Lễ Ngũ Tuần.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1587,15 +1587,15 @@
     "type": "multiple_choice_single",
     "content": "Lễ Lều Tạm nhắc nhở dân Y-sơ-ra-ên về điều gì?",
     "options": [
-      "Sự sáng tạo trời đất",
-      "Giao ước tại Si-nai",
+      "Thời gian xây dựng lều tạm để thờ phượng tại Si-na-i",
+      "Thời gian sống trong lều tạm khi chiếm được Đất Hứa",
       "Thời gian sống trong lều tạm khi ra khỏi Ai-cập",
-      "Cuộc chinh phục Ca-na-an"
+      "Thời gian sống trong lều tạm để tỏ lòng ăn năn"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 23:42-43 — \"Các ngươi phải ở trong lều tạm bảy ngày... để dòng dõi các ngươi biết rằng Ta đã cho dân Y-sơ-ra-ên ở trong lều tạm khi Ta đem họ ra khỏi xứ Ai-cập.\"",
+    "explanation": "Lê-vi Ký 23:42-43 chép: 'Các ngươi phải ở trong lều trại bảy ngày... hầu cho các dòng dõi các ngươi biết rằng khi Ta đem dân Y-sơ-ra-ên ra khỏi xứ Ê-díp-tô, Ta cho chúng nó ở trong những trại.' Đáp án đúng vì Kinh Thánh nói rõ lễ này nhắc nhở về việc Đức Chúa Trời cho dân Y-sơ-ra-ên ở trong lều khi ra khỏi Ai-cập. Distractor 1 sai vì lấy chi tiết về việc xây dựng Đền Tạm để thờ phượng (Xuất Ê-díp-tô Ký 25-40), không phải ý nghĩa của Lễ Lều Tạm. Distractor 2 là đáp án gần đúng nhưng sai chi tiết then chốt: Kinh Thánh nói 'khi... ra khỏi', không phải 'khi chiếm được'. Distractor 3 sai vì đây là hiểu lầm phổ biến, gán ý nghĩa ăn năn (thường liên quan đến lễ khác như Lễ Chuộc Tội) cho Lễ Lều Tạm, trong khi Kinh Thánh tại đây chỉ nói đến kỷ niệm cuộc xuất hành.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1767,15 +1767,15 @@
     "type": "multiple_choice_single",
     "content": "Theo Lê-vi Ký 25:36-37, người Y-sơ-ra-ên có được cho anh em mình vay tiền lấy lãi không?",
     "options": [
-      "Có, miễn là lãi nhỏ",
-      "Có, nếu bằng văn tự",
+      "Không được cho anh em mình vay mượn gì cả",
+      "Chỉ được lấy lãi khi bản thân khốn cùng",
       "Không được lấy lời hay lãi từ anh em mình",
-      "Chỉ được trong năm hạn hán"
+      "Được lấy lãi nhưng phải là lãi suất thấp từ anh em mình"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 25:36-37 — 'Không được lấy lời hay lãi từ người ấy... Không được cho người ấy vay tiền lấy lời, cũng không được bán thức ăn cho người ấy để lấy lãi.'",
+    "explanation": "Đoạn Kinh Thánh Lê-vi Ký 25:35-37 dạy rõ: Nếu anh em ngươi bị nghèo túng (c.35), ngươi phải tiếp cứu, đừng lấy họ lời hay lãi (c.36-37). Câu hỏi hỏi về việc cho anh em vay lấy lãi. Đáp án đúng 'Không được lấy lời hay lãi từ anh em mình' là trích dẫn trực tiếp tinh thần c.36-37.\n\nCác đáp án sai:\n- 'Không được cho anh em mình vay mượn gì cả': Sai phạm vi (wrong_scope). Kinh Thánh không cấm cho vay, mà cấm lấy lời/lãi khi cho vay.\n- 'Chỉ được lấy lãi khi bản thân khốn cùng': Là hiểu lầm phổ biến (common_misconception). Không có điều kiện này trong đoạn; việc cấm là tuyệt đối với anh em, bất kể hoàn cảnh người cho vay.\n- 'Được lấy lãi nhưng phải là lãi suất thấp từ anh em mình': Là 'gần đúng' nhưng sai chi tiết then chốt (nearby_passage). Nó gần vì nhớ đến việc cho vay, nhưng sai căn bản vì Kinh Thánh cấm hoàn toàn ('đừng lấy...lời, cũng đừng lấy...lãi'), không phải chỉ quy định lãi suất.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1794,15 +1794,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Chúa Trời hứa phước lành gì nếu dân Y-sơ-ra-ên vâng giữ các mệnh lệnh Ngài?",
     "options": [
-      "Chiến thắng mọi kẻ thù",
+      "Chiến thắng mọi kẻ thù và mở rộng bờ cõi",
       "Mưa đúng mùa và đất sinh hoa lợi",
-      "Vàng bạc dư dật",
-      "Sống đời đời"
+      "Sự sống đời đời và phước hạnh thiên đàng",
+      "Bình an trong nước và sự mát mẻ từ nắng"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 26:3-4 — 'Nếu các ngươi bước theo các luật lệ Ta... Ta sẽ ban mưa đúng mùa cho các ngươi; đất sẽ sinh hoa lợi, cây ngoài đồng sẽ kết quả.'",
+    "explanation": "Lê-vi Ký 26:3-4 chép: 'Nếu các ngươi theo mạng lệnh ta... ta sẽ giáng mưa cho các ngươi đúng mùa... đất sẽ sanh sản vật...' Vì vậy, đáp án đúng trực tiếp mô tả phước lành vật chất cụ thể là 'mưa đúng mùa và đất sinh hoa lợi'.\n\nCác đáp án sai: 1) 'Chiến thắng mọi kẻ thù...' (sai phạm vi) - đây là phước lành khác được đề cập ở các câu sau (c.7-8), không phải ở c.3-4 trực tiếp trả lời câu hỏi. 2) 'Sự sống đời đời...' (hiểu lầm phổ biến) - đây là khái niệm Tân Ước, không phải lời hứa giao ước điều kiện trong Lê-vi Ký. 3) 'Bình an trong nước và sự mát mẻ từ nắng' (nhầm passage gần) - 'bình an trong nước' có ở c.6, còn 'sự mát mẻ từ nắng' không có trong đoạn này, khiến đáp án này gần đúng nhưng sai chi tiết và kết hợp sai.",
     "language": "vi",
     "tags": [
       "Cựu Ước",

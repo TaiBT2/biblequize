@@ -9,14 +9,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giữa đau khổ, tác giả tuyên bố rằng ân điển và sự thương xót Chúa chưa hết, chúng mới mỗi buổi sáng và sự thành tín Ngài lớn lắm.",
+    "explanation": "Câu hỏi hỏi về cách Ca thương 3:22-23 mô tả ân điển Chúa. Câu đúng là 'Chưa hết, mỗi buổi sáng đều mới, sự thành tín Ngài là lớn' (Ca thương 3:23, trích nguyên văn). Đây là mô tả cụ thể trong câu Kinh Thánh. Distractor 1 ('thương xót') là sai chi tiết: câu 22 nói 'Lòng nhơn từ Đức Giê-hô-va chưa hết', nhưng câu 23 mô tả 'sự thành tín' là 'lớn', không phải 'thương xót'. Distractor 2 ('cao cả') là nhầm passage gần: từ 'cao cả' xuất hiện trong ngữ cảnh khác (ví dụ: Ca thương 3:8 'Chúa... chẳng nghe lời cầu khẩn của tôi', hoặc nhiều chỗ khác mô tả Đức Chúa Trời), không phải trong câu 22-23 để mô tả sự thành tín. Distractor 3 ('vô cùng') là đúng văn bản nhưng lạc câu hỏi: 'vô cùng' có thể là một cách diễn giải ý nghĩa, nhưng câu hỏi yêu cầu mô tả theo nguyên văn Kinh Thánh, và nguyên văn dùng từ 'lớn'.",
     "language": "vi",
     "verseEnd": 23,
     "options": [
-      "Chỉ cho người xứng đáng",
-      "Có giới hạn",
+      "Chưa hết, mỗi buổi sáng đều mới, sự thành tín Ngài là thương xót",
+      "Chưa hết, mỗi buổi sáng đều mới, sự thành tín Ngài là cao cả",
       "Chưa hết, mỗi buổi sáng đều mới, sự thành tín Ngài là lớn",
-      "Đã hết"
+      "Chưa hết, mỗi buổi sáng đều mới, sự thành tín Ngài là vô cùng"
     ],
     "tags": [
       "Cựu Ước",
@@ -136,13 +136,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sự yên lặng và kiên nhẫn trong đợi Chúa là tốt. Không phải thụ động mà là tin cậy.",
+    "explanation": "Câu Ca thương 3:26 (BTT) dạy: 'Phàm người trông đợi Chúa, yên lặng đợi chờ sự cứu rỗi của Ngài.' Vì vậy, đáp án đúng là 'Yên lặng và đợi cho sự cứu rỗi của Chúa' vì trung thành với văn bản: thái độ là yên lặng, đối tượng chờ đợi là sự cứu rỗi của Đức Chúa Trời.\n\nCác đáp án sai:\n1. 'Yên lặng và đợi cho sự trả thù của Chúa' (wrong_detail - đúng thái độ 'yên lặng' nhưng sai chi tiết đối tượng chờ đợi, là 'sự trả thù' thay vì 'sự cứu rỗi').\n2. 'Lên tiếng và đợi cho sự cứu rỗi của Chúa' (nearby_passage - đúng đối tượng 'sự cứu rỗi' nhưng sai thái độ; Ca thương 3:28 khuyên 'ngồi một mình và nín lặng', còn câu 26 nhấn mạnh 'yên lặng').\n3. 'Nhẫn nhục và đợi cho sự phán xét của Chúa' (common_misconception - phản ánh sự hiểu lầm phổ biến cho rằng tác giả đang chờ phán xét, nhưng bối cảnh trực tiếp là chờ đợi lòng thương xót và sự cứu rỗi của Chúa).",
     "language": "vi",
     "options": [
-      "Kêu la",
-      "Giận dữ",
+      "Yên lặng và đợi cho sự trả thù của Chúa",
+      "Lên tiếng và đợi cho sự cứu rỗi của Chúa",
       "Yên lặng và đợi cho sự cứu rỗi của Chúa",
-      "Hành động ngay"
+      "Nhẫn nhục và đợi cho sự phán xét của Chúa"
     ],
     "tags": [
       "Cựu Ước",

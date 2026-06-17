@@ -168,13 +168,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Sử Ký 7:14 — '...nếu dân sự ta, là dân gọi bằng danh ta, hạ mình xuống, cầu nguyện, tìm kiếm mặt ta, và trở lại, bỏ con đường tà, thì ta ở trên trời sẽ nghe, tha thứ tội chúng nó, và cứu xứ họ khỏi tai vạ.'",
+    "explanation": "Đáp án chính xác trích nguyên văn từ 2 Sử Ký 7:14 (BTT): \"Hạ mình, cầu nguyện, tìm kiếm mặt Ta, trở lại bỏ con đường tà\", và hứa rằng Đức Chúa Trời sẽ \"nghe, tha thứ, và cứu xứ\".\n\nDistractor 1 (gần đúng - sai chi tiết) thay cụm \"tìm kiếm mặt Ta\" bằng \"thờ phượng Ta\", làm thay đổi một hành động then chốt trong điều kiện của Đức Chúa Trời.\nDistractor 2 (nhầm passage gần) giữ nguyên phần điều kiện nhưng thay đổi lời hứa \"nghe, tha thứ, và cứu xứ\" thành \"ban phước, gìn giữ, và cứu xứ\", pha trộn với ngôn ngữ từ các lời hứa phước hạnh khác trong Kinh Thánh.\nDistractor 3 (sai phạm vi) giữ nguyên phần điều kiện nhưng thay đổi lời hứa thành \"ban sự giàu có và thành công\", tập trung vào phước hạnh vật chất thay vì sự cứu rỗi thiêng liêng mà câu Kinh Thánh nhấn mạnh.",
     "language": "vi",
     "options": [
-      "Phải dâng lễ tạ ơn nhiều",
-      "Phải kiêng ăn ba ngày trọn",
+      "Hạ mình, cầu nguyện, thờ phượng Ta, trở lại bỏ con đường tà — Ta sẽ nghe, tha thứ, và cứu xứ",
+      "Hạ mình, cầu nguyện, tìm kiếm mặt Ta, trở lại bỏ con đường tà — Ta sẽ ban phước, gìn giữ, và cứu xứ",
       "Hạ mình, cầu nguyện, tìm kiếm mặt Ta, trở lại bỏ con đường tà — Ta sẽ nghe, tha thứ, và cứu xứ",
-      "Phải xây thêm đền thờ mới"
+      "Hạ mình, cầu nguyện, tìm kiếm mặt Ta, trở lại bỏ con đường tà — Ta sẽ ban sự giàu có và thành công"
     ],
     "tags": [
       "Cựu Ước",
@@ -298,12 +298,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Sử Ký 16:9 — 'Vì con mắt của Đức Giê-hô-va soi xét khắp thế gian, đặng giúp sức cho kẻ nào có lòng trọn thành đối với Ngài...'",
+    "explanation": "Đoạn Kinh Thánh 2 Sử-ký 16:9 ghi rõ: 'Vì con mắt của Đức Giê-hô-va chạy xem khắp thế gian, đặng giúp sức cho kẻ nào có lòng trọn thành đối với Ngài.' Đáp án đúng trực tiếp lấy từ câu Kinh Thánh. (WIN)\nDistractor 'Để tìm kiếm và khen thưởng người khôn ngoan trên đất' gần đúng nhưng sai ở đối tượng: Kinh Thánh nói đến 'lòng trọn thành' chứ không phải 'khôn ngoan', mặc dù có chung phạm vi 'chạy xem khắp thế gian'. (LOSE: wrong_detail)\nDistractor 'Để quan sát và xét đoán mọi việc dưới đất' mở rộng sai mục đích: Dù mắt Đức Giê-hô-va quan sát, câu này tập trung vào ý 'giúp sức', không phải mục đích tổng quát 'xét đoán'. (LOSE: wrong_scope)\nDistractor 'Để trừng phạt những người không công bình trên đất' áp dụng sai hành động: Đây là một hiểu lầm phổ biến về sự quan phòng của Chúa; câu Kinh Thánh nhấn mạnh sự 'giúp sức' cho người trọn thành, không phải sự trừng phạt. (LOSE: common_misconception)",
     "language": "vi",
     "options": [
-      "Để dò xét tội lỗi loài người",
-      "Để chọn các nhà tiên tri",
-      "Để khám phá các kho báu giấu kín",
+      "Để tìm kiếm và khen thưởng người khôn ngoan trên đất",
+      "Để quan sát và xét đoán mọi việc dưới đất",
+      "Để trừng phạt những người không công bình trên đất",
       "Để giúp sức cho kẻ có lòng trọn thành đối với Ngài"
     ],
     "tags": [

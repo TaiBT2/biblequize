@@ -493,13 +493,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Thi Thiên 121:1-2 — 'Tôi ngước mắt lên trên núi: Sự tiếp trợ tôi đến từ đâu? Sự tiếp trợ tôi đến từ Đức Giê-hô-va, là Đấng đã dựng nên trời và đất.'",
+    "explanation": "Câu hỏi hỏi nguồn gốc sự giúp đỡ theo Thi Thiên 121:1-2. Kinh văn ghi: 'Tôi ngước mắt lên trên các núi... Sự giúp đỡ tôi đến từ Đức Giê-hô-va, là Đấng dựng nên trời và đất.' (BTT). VÌ THẾ, đáp án đúng là từ Đức Giê-hô-va, Đấng dựng nên trời và đất, vì đây là sự xác tín trực tiếp của tác giả. VỀ CÁC ĐÁP ÁN SAI: (1) 'Từ các núi cao...' (nearby_passage) là sai vì các núi chỉ là nơi tác giả hướng ánh mắt để suy ngẫm, không phải nguồn giúp đỡ thực sự. (2) 'Từ phước lành...' (wrong_scope) là sai vì nội dung này không nằm trong phạm vi câu 1-2 được hỏi. (3) 'Từ sự khôn ngoan...' (common_misconception) là sai vì ngược lại với tinh thần của Thi Thiên, nơi tác giả nhìn nhận sự giúp đỡ hoàn toàn đến từ Chúa.",
     "language": "vi",
     "options": [
-      "Từ vua",
-      "Từ các thiên sứ",
+      "Từ các núi cao, nơi tác giả ngước mắt lên",
+      "Từ phước lành của sự vâng lời mà ông có được",
       "Từ Đức Giê-hô-va, Đấng dựng nên trời và đất",
-      "Từ chính sức mình"
+      "Từ sự khôn ngoan và sức mạnh của chính mình"
     ],
     "tags": [
       "Cựu Ước",
@@ -570,12 +570,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Thi Thiên 14:1 — 'Kẻ ngu dại nói trong lòng rằng: chẳng có Đức Chúa Trời.'",
+    "explanation": "Thi Thiên 14:1 chép: 'Kẻ ngu dại nói trong lòng rằng: Chẳng có Đức Chúa Trời'. Do đó, đáp án đúng là 'Chẳng có Đức Chúa Trời', diễn đạt chính xác lời của kẻ ngu dại.\n- Distractor 'Chẳng có Chúa cứu rỗi' sai vì đây là sai chi tiết: câu Kinh Thánh nói về sự phủ nhận sự tồn tại của Đức Chúa Trời, chứ không phải phủ nhận sự cứu rỗi của Ngài.\n- Distractor 'Đức Chúa Trời chẳng đoái hoài' sai vì thuộc loại sai phạm vi: đây là một thái độ khác (nghĩ rằng Đức Chúa Trời không quan tâm), trong khi câu hỏi hỏi về điều kẻ ngu dại nói về sự tồn tại của Ngài.\n- Distractor 'Đức Chúa Trời đã bỏ ta' sai vì đây là hiểu lầm phổ biến: nhiều người có thể gán cảm giác bị bỏ rơi cho câu này, nhưng thực tế câu Kinh Thánh nói về sự phủ nhận hiện hữu, không phải sự vắng mặt hay từ bỏ của Đức Chúa Trời.",
     "language": "vi",
     "options": [
-      "Ta là vua",
-      "Ta sẽ thắng",
-      "Hãy ăn, hãy uống",
+      "Chẳng có Chúa cứu rỗi",
+      "Đức Chúa Trời chẳng đoái hoài",
+      "Đức Chúa Trời đã bỏ ta",
       "Chẳng có Đức Chúa Trời"
     ],
     "tags": [
@@ -620,13 +620,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Thi Thiên 18:2 — 'Đức Giê-hô-va là hòn đá tôi, đồn lũy tôi, Đấng giải cứu tôi; Đức Chúa Trời là hòn đá tôi, nơi tôi sẽ nương náu mình.'",
+    "explanation": "Thi Thiên 18:2 viết: 'Đức Giê-hô-va là hòn đá tôi, đồn lũy tôi, Đấng giải cứu tôi, Đức Chúa Trời tôi, hòn đá tôi, nơi tôi sẽ nương náu; Ngài là cái khiên tôi, sừng cứu rỗi tôi, và nơi náu ẩn cao của tôi.' Do đó, đáp án đúng là 'Hòn đá, đồn lũy, Đấng giải cứu, nơi nương náu' vì đây là những phẩm chất được liệt kê trực tiếp và rõ ràng trong câu này để mô tả Đức Giê-hô-va.\n\nDistractor 1 ('Hòn đá, đồn lũy, Đấng giải cứu, Đấng phán xét') là gần đúng nhưng sai chi tiết (wrong_detail): Câu này không đề cập 'Đấng phán xét', thay vào đó là 'nơi nương náu'.\n\nDistractor 2 ('Hòn đá, đồn lũy, Đấng chăn giữ, nơi nương náu') sai do hiểu lầm phổ biến (common_misconception): 'Đấng chăn giữ' là hình ảnh quen thuộc trong Kinh Thánh (như Thi Thiên 23) nhưng không xuất hiện trong câu này; câu này dùng 'Đấng giải cứu'.\n\nDistractor 3 ('Hòn đá, Đấng giải cứu, nơi nương náu') sai phạm vi (wrong_scope): Đáp án này thiếu một thành phần quan trọng ('đồn lũy') so với mô tả đầy đủ trong câu.",
     "language": "vi",
     "options": [
-      "Vua chiến trận",
+      "Hòn đá, đồn lũy, Đấng giải cứu, Đấng phán xét",
       "Hòn đá, đồn lũy, Đấng giải cứu, nơi nương náu",
-      "Cha thương xót",
-      "Người chăn chiên hiền lành"
+      "Hòn đá, đồn lũy, Đấng chăn giữ, nơi nương náu",
+      "Hòn đá, Đấng giải cứu, nơi nương náu"
     ],
     "tags": [
       "Cựu Ước",
@@ -770,13 +770,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Thi Thiên 32:1 — 'Phước thay cho người nào được tha sự vi phạm mình, được khỏa lấp tội lỗi mình!'",
+    "explanation": "Thi Thiên 32:1 chép: 'Phước thay cho kẻ được tha sự vi phạm mình, được khỏa lấp tội lỗi mình!' Đáp án đúng trực tiếp trích từ câu Kinh Thánh này. Distractor 1 sai vì dùng cụm 'được dẫn dắt khỏi sự lầm lạc' và 'được giữ gìn tội lỗi' không có trong câu (wrong_detail). Distractor 2 là 'gần đúng' nhưng sai chi tiết then chốt: thay 'được khỏa lấp tội lỗi' bằng 'được minh xét công bình', một khái niệm có trong các phân đoạn gần nhưng không phải là lời của Thi 32:1 (nearby_passage). Distractor 3 mô tả người công bình nói chung (như trong Thi 24:4), nhưng đây là một hiểu lầm phổ biến khi áp dụng sai ngữ cảnh cho câu hỏi cụ thể về Thi 32:1 (common_misconception).",
     "language": "vi",
     "options": [
-      "Người công bình",
+      "Người được dẫn dắt khỏi sự lầm lạc, được giữ gìn tội lỗi",
       "Người được tha sự vi phạm, được khỏa lấp tội lỗi",
-      "Người tích lũy của cải",
-      "Người dâng nhiều tế lễ"
+      "Người được tha sự vi phạm, được minh xét công bình",
+      "Người có lòng trong sạch và tay không vấy nhơ"
     ],
     "tags": [
       "Cựu Ước",
@@ -845,13 +845,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Thi Thiên 40:1 — 'Tôi nhịn nhục trông đợi Đức Giê-hô-va, Ngài nghiêng qua nghe tiếng kêu cầu của tôi.'",
+    "explanation": "Thi Thiên 40:1 chép: 'Tôi đã nhịn nhục trông đợi Đức Giê-hô-va, Ngài nghiêng tai qua nghe tôi kêu cầu.' Đáp án đúng là 'Nhịn nhục trông đợi Đức Giê-hô-va' vì Kinh Thánh trực tiếp ghi lại hành động của tác giả là nhịn nhục trông đợi trước khi được nhậm lời. \n\nDistractor 'Kêu la lớn tiếng cùng Đức Giê-hô-va' dựa trên hành động 'kêu cầu' xuất hiện sau cùng với chi tiết 'lớn tiếng' bịa thêm, nên sai. \nDistractor 'Dâng nhiều của lễ thiêu lên Đức Giê-hô-va' liên tưởng sai đến ý của các câu 6-7 (Thi 40:6-7), sai chi tiết hành động trước khi nhậm lời. \nDistractor 'Chờ đợi phán xét từ Đức Giê-hô-va' có từ 'chờ đợi' gần đúng, nhưng sai mục đích (phán xét) vì ngữ cảnh là chờ đợi sự giải cứu/đáp lời, không phải phán xét.",
     "language": "vi",
     "options": [
       "Nhịn nhục trông đợi Đức Giê-hô-va",
-      "Hét lớn không ngừng",
-      "Dâng nhiều tế lễ",
-      "Đến đền thờ"
+      "Kêu la lớn tiếng cùng Đức Giê-hô-va",
+      "Dâng nhiều của lễ thiêu lên Đức Giê-hô-va",
+      "Chờ đợi phán xét từ Đức Giê-hô-va"
     ],
     "tags": [
       "Cựu Ước",
@@ -895,13 +895,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Thi Thiên 46:1 — 'Đức Chúa Trời là nơi nương náu và sức lực của chúng tôi, Ngài sẵn giúp đỡ trong cơn gian truân.'",
+    "explanation": "Câu Thánh Thi 46:1 viết: 'Đức Chúa Trời là nơi nương náu và sức lực của chúng tôi'. Chi tiết 'nơi nương náu' là từ chính xác trong bản văn. Distractor 1 ('Sự bảo vệ và sức lực') là gần đúng vì 'sự bảo vệ' có ý nghĩa liên quan, nhưng đã thay thế từ chính xác trong Kinh Thánh là 'nơi nương náu'. Distractor 2 ('Nơi an ủi và sức lực') sai vì tuy đúng giọng văn và 'nơi an ủi' là chức năng của Đức Chúa Trời được nhắc đến trong những phân đoạn khác (như trong Thi thiên 23), nhưng không phải là từ trong câu này. Distractor 3 ('Đấng giải cứu và sức lực') cũng sai vì đây là một nhận thức phổ biến về Đức Chúa Trời, nhưng câu 46:1 cụ thể dùng từ 'nơi nương náu' chứ không phải 'Đấng giải cứu'.",
     "language": "vi",
     "options": [
-      "Vua trên các vua",
-      "Cha trên trời",
+      "Sự bảo vệ và sức lực",
+      "Nơi an ủi và sức lực",
       "Nơi nương náu",
-      "Người chăn"
+      "Đấng giải cứu và sức lực"
     ],
     "tags": [
       "Cựu Ước",
@@ -945,13 +945,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Thi Thiên 51:10 — 'Đức Chúa Trời ôi! xin hãy dựng nên trong tôi một lòng trong sạch, và làm cho mới lại trong tôi một thần linh ngay thẳng.'",
+    "explanation": "Câu hỏi tham chiếu Thi Thiên 51:10, nguyên văn: \"Đức Chúa Trời ôi! xin hãy dựng nên trong tôi một lòng trong sạch, Và làm cho mới lại trong tôi một thần linh ngay thẳng.\" (BTT).\n\n- ĐÁP ÁN ĐÚNG (\"Lòng trong sạch và thần linh ngay thẳng\") trực tiếp trích dẫn và nối ghép chính xác hai cụm từ then chốt từ câu Kinh Thánh là \"lòng trong sạch\" và \"thần linh ngay thẳng\".\n\n- DISTRACTOR 1 (\"Lòng thương xót và tinh thần vững mạnh\") SAI vì đây là loại lỗi 'nearby_passage' (nhầm passage gần). Ý tưởng về lòng thương xót và sự vững mạnh xuất hiện nhiều trong Thi Thiên, nhưng không phải trong câu 10 này. Đa-vít cầu xin lòng trong sạch, không phải lòng thương xót; và \"thần linh ngay thẳng\" (right spirit) nhấn mạnh sự ngay thẳng/đúng đắn bên trong, không phải sự \"vững mạnh\" về sức lực hay ý chí.\n\n- DISTRACTOR 2 (\"Tấm lòng sám hối và linh hồn khiêm nhường\") là đáp án \"gần đúng\" (almost-right) nhưng SAI vì đây là loại lỗi 'common_misconception' (hiểu lầm phổ biến). Mặc dù toàn bộ Thi Thiên 51 là lời cầu nguyện sám hối sau tội lỗi của Đa-vít, và sự khiêm nhường hàm ẩn, nhưng trong câu 10 cụ thể, ông không cầu xin \"lòng sám hối\" hay \"linh hồn khiêm nhường\". Ông cầu xin sự tái tạo tích cực là \"lòng trong sạch\" và \"thần linh ngay thẳng\". Đây là một sự thay thế hợp lý nhưng không chính xác theo văn bản.\n\n- DISTRACTOR 3 (\"Trái tim hân hoan và tâm hồn thánh khiết\") SAI vì đây là loại lỗi 'true_but_off' (đúng văn bản nhưng lạc câu hỏi). Ý tưởng về \"tâm hồn thánh khiết\" gần với \"lòng trong sạch\", và \"trái tim hân hoan\" xuất hiện trong các Thi Thiên khác (ví dụ: Tv 51:12), nhưng câu hỏi cụ thể này chỉ hỏi về điều Đa-vít cầu xin trong câu 10. Do đó, đáp án này pha trộn ý từ các câu khác trong cùng chương/bài, dẫn đến sai lệch so với yêu cầu chính xác của câu hỏi.",
     "language": "vi",
     "options": [
-      "Sức lực mới",
+      "Lòng thương xót và tinh thần vững mạnh",
       "Lòng trong sạch và thần linh ngay thẳng",
-      "Ngôi vua đời đời",
-      "Bài ca mới"
+      "Tấm lòng sám hối và linh hồn khiêm nhường",
+      "Trái tim hân hoan và tâm hồn thánh khiết"
     ],
     "tags": [
       "Cựu Ước",
@@ -1145,13 +1145,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Thi Thiên 90:12 — 'Cầu xin Chúa dạy chúng tôi biết đếm các ngày chúng tôi, hầu cho chúng tôi được lòng khôn ngoan.'",
+    "explanation": "Thi thiên 90:12: \"Xin Chúa dạy chúng tôi biết đếm các ngày của đời mình, hầu cho chúng tôi được lòng khôn ngoan\". Câu Kinh Thánh ghi rõ \"các ngày\". Đáp án đúng bám sát từ ngữ. Distractor 1 (Các năm — để biết phận con người) lấy ý từ câu 10 gần đó (tuổi thọ là 70-80 năm) và thay đổi mục đích, không phải là nội dung câu 12. Distractor 2 thay đổi từ khóa \"các ngày\" thành \"các năm\", làm sai lệch đối tượng cần đếm. Distractor 3 tuy đúng đối tượng \"các ngày\" nhưng thay đổi mục đích \"được lòng khôn ngoan\" thành \"biết phận con người\", thuộc phạm vi ý nghĩa khác.",
     "language": "vi",
     "options": [
-      "Của cải",
-      "Bạn bè",
+      "Các năm — để biết phận con người",
+      "Các năm — để được lòng khôn ngoan",
       "Các ngày — để được lòng khôn ngoan",
-      "Các kẻ thù"
+      "Các ngày — để biết phận con người"
     ],
     "tags": [
       "Cựu Ước",
@@ -1646,13 +1646,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Thi Thiên 130:1 — 'Đức Giê-hô-va ôi! từ nơi sâu thẳm tôi cầu khẩn Ngài.'",
+    "explanation": "Câu trả lời đúng là 'Từ nơi sâu thẳm (out of the depths)' vì Thi Thiên 130:1 nguyên văn ghi: 'Hỡi Đức Giê-hô-va, tôi từ nơi sâu thẳm kêu cầu Ngài'. \n\nĐáp án sai 1 ('Từ nơi nguy hiểm') là gần đúng vì 'sự sâu thẳm' trong Kinh Thánh thường gợi đến cơn nguy hiểm hoặc khốn cùng, nhưng không phải là từ ngữ chính xác trong câu này. \n\nĐáp án sai 2 ('Từ trên đỉnh cao') là sai chi tiết; nó phản nghĩa trực tiếp với 'nơi sâu thẳm' và mô tả một vị trí hoàn toàn khác. \n\nĐáp án sai 3 ('Từ nơi thanh vắng') thể hiện sự hiểu lầm phổ biến rằng lời cầu nguyện thường đến từ nơi yên tĩnh, nhưng bối cảnh của Thi Thiên này là tiếng kêu cầu từ sự khốn khổ, không nhất thiết là không gian vật lý yên lặng.",
     "language": "vi",
     "options": [
       "Từ nơi sâu thẳm (out of the depths)",
-      "Từ trên núi cao",
-      "Từ trong đền thờ",
-      "Từ chiến trường"
+      "Từ nơi nguy hiểm (out of danger)",
+      "Từ trên đỉnh cao (from the heights)",
+      "Từ nơi thanh vắng (from a quiet place)"
     ],
     "tags": [
       "Cựu Ước",
@@ -1796,13 +1796,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Thi Thiên 143:10 — 'Xin dạy tôi làm theo ý muốn Chúa, vì Chúa là Đức Chúa Trời tôi; nguyện Thánh Linh tốt lành Chúa dắt tôi vào đất bằng thẳng.'",
+    "explanation": "Thi Thiên 143:10 ghi lời cầu nguyện của Đa-vít: \"Xin dạy tôi làm theo ý muốn Chúa\". Đáp án đúng trực tiếp trích từ câu này. Distractor 'Làm theo ý muốn con' sai vì thay đổi chủ thể then chốt ('Chúa' thành 'con'), làm lệch ý nghĩa cầu xin. Distractor 'Làm theo lẽ công bình' là gần đúng nhưng sai chi tiết; nó xuất hiện trong cùng bối cảnh (câu 1) nhưng không phải là nội dung cầu xin cụ thể trong câu 10. Distractor 'Làm theo luật pháp Chúa' sai do hiểu lầm phổ biến, dù liên quan nhưng không khớp với từ ngữ chính xác trong câu Kinh Thánh được hỏi.",
     "language": "vi",
     "options": [
       "Làm theo ý muốn Chúa",
-      "Cách thắng kẻ thù",
-      "Cách trở nên giàu có",
-      "Lời tiên tri tương lai"
+      "Làm theo ý muốn con",
+      "Làm theo lẽ công bình",
+      "Làm theo luật pháp Chúa"
     ],
     "tags": [
       "Cựu Ước",
@@ -1821,13 +1821,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Thi Thiên 145:18 — 'Đức Giê-hô-va ở gần mọi người cầu khẩn Ngài, tức ở gần mọi người có lòng thành thực cầu khẩn Ngài.'",
+    "explanation": "Câu hỏi hỏi về ai là người được Đức Giê-hô-va ở gần. Thi-thiên 145:18 viết: 'Đức Giê-hô-va ở gần mọi người cầu khẩn Ngài, Tức ở gần mọi người có lòng thành thực cầu khẩn Ngài.' (BTT). Vì vậy, đáp án đúng đề cập chính xác đối tượng là 'mọi người cầu khẩn Ngài có lòng thành thực'.\n\n- Distractor 1 ('Mọi người dâng sinh tế có lòng thành thực') là gần đúng nhưng sai chi tiết then chốt: Mặc dù Cựu Ước có nói về việc dâng sinh tế, nhưng câu Kinh Thánh này cụ thể nói về 'cầu khẩn' (kêu cầu, cầu nguyện), không phải về hành động dâng sinh tế. Đây là lỗi nhầm passage gần, thay thế một hành động tương tự nhưng không chính xác.\n\n- Distractor 2 ('Mọi người tuân giữ luật pháp Ngài cách trọn vẹn') là một hiểu lầm phổ biến: Nhiều người có thể nghĩ rằng Chúa ở gần những người hoàn hảo hoặc tuân giữ luật pháp một cách trọn vẹn. Tuy nhiên, câu Kinh Thánh này không đặt điều kiện là sự trọn vẹn trong việc giữ luật, mà là sự thành thực trong lòng khi cầu khẩn.\n\n- Distractor 3 ('Mọi người có tấm lòng khiêm nhường và nhu mì') là đúng văn bản nhưng lạc câu hỏi: Mặc dù Kinh Thánh nói nhiều về việc Chúa ở cùng người khiêm nhường (ví dụ: Ê-sai 57:15), nhưng câu hỏi cụ thể về Thi-thiên 145:18 chỉ đề cập đến tiêu chí 'cầu khẩn với lòng thành thực'. Phẩm chất khiêm nhường có thể liên quan nhưng không phải là điều kiện được nêu trong câu Kinh Thánh này.",
     "language": "vi",
     "options": [
-      "Mọi người sống công bình",
-      "Chỉ tổ phụ",
+      "Mọi người dâng sinh tế có lòng thành thực",
+      "Mọi người tuân giữ luật pháp Ngài cách trọn vẹn",
       "Mọi người cầu khẩn Ngài có lòng thành thực",
-      "Chỉ thầy tế lễ"
+      "Mọi người có tấm lòng khiêm nhường và nhu mì"
     ],
     "tags": [
       "Cựu Ước",
@@ -1896,13 +1896,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Thi Thiên 150:6 — 'Phàm vật chi thở, hãy ngợi khen Đức Giê-hô-va! Halleluia!'",
+    "explanation": "Thi Thiên 150:6 chính xác ghi: 'Phàm vật chi thở, hãy ngợi khen Đức Giê-hô-va! Halleluia!' (BTT). Đây là câu kết của cả sách Thi Thiên. Một số bản dịch khác cũng ghi tương tự. Các phương án sai: (1) Sai chi tiết từ 'Halleluia' thành 'Amen!' – đây là lỗi gần đúng chỉ sai một từ kết thúc quan trọng. (2) Sai phạm vi đối tượng, thay 'vật chi thở' (mọi sinh vật có hơi thở) bằng 'vô-sanh trên đất' (vật không sống), đi ngược lại ý câu Kinh Thánh. (3) Đúng ý tinh thần ngợi khen nhưng sai văn bản cụ thể (câu này không có trong Thi 150:6), là cách diễn đạt chung chung lạc với yêu cầu trích dẫn chính xác.",
     "language": "vi",
     "options": [
-      "Hỡi Si-ôn, hãy hát",
+      "Phàm vật chi thở, hãy ngợi khen Đức Giê-hô-va! Amen!",
       "Phàm vật chi thở, hãy ngợi khen Đức Giê-hô-va! Halleluia!",
-      "Cảm tạ Đức Giê-hô-va",
-      "Vinh hiển thuộc về Ngài đời đời"
+      "Phàm vô-sanh trên đất, hãy ngợi khen Đức Giê-hô-va! Halleluia!",
+      "Ngợi khen Đức Giê-hô-va vì mọi sự tốt lành của Ngài! Halleluia!"
     ],
     "tags": [
       "Cựu Ước",
@@ -1971,13 +1971,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Thi Thiên 25:4-5 — 'Hỡi Đức Giê-hô-va, xin cho tôi biết các đường lối Ngài, dạy tôi các nẻo đàng Ngài. Xin hãy dẫn tôi trong lẽ thật của Ngài, và dạy dỗ tôi.'",
+    "explanation": "Trong Thi thiên 25:4-5, câu 4 chép: \"Hỡi Đức Giê-hô-va, xin chỉ cho tôi biết các đường lối Ngài, Và dạy tôi các nẻo đàng Ngài.\" Câu 5 tiếp theo: \"Xin hãy dắt tôi trong lẽ thật Ngài, và dạy dỗ tôi...\" Do đó, lời cầu xin của Đa-vít là \"Biết các đường lối Chúa, dạy tôi nẻo đàng và dẫn trong lẽ thật\".\n\n- Distractor 1 (\"sự công bình\") là ĐÁP ÁN GẦN ĐÚNG, nhưng sai ở một chi tiết quan trọng: Thi thiên 25:4-5 nói về \"lẽ thật\", trong khi \"sự công bình\" là chủ đề của các câu khác (ví dụ câu 9).\n- Distractor 2 (\"giữ tôi\") dùng động từ sai so với văn bản, câu 5 viết là \"dắt tôi\" (lead me) chứ không phải \"giữ tôi\" (keep me), nên đây là một chi tiết bị nhầm từ các phân đoạn lân cận nói về sự bảo vệ.\n- Distractor 3 (\"chỉ cho tôi đường đi\") mặc dù có ý tương tự và có thể hợp lý trong ngữ cảnh cầu nguyện khác, nhưng nó không trực tiếp trả lời cụ thể cho câu hỏi về nội dung chính xác của Thi thiên 25:4-5.",
     "language": "vi",
     "options": [
-      "Chiến thắng kẻ thù",
-      "Của cải dư dật",
+      "Biết các đường lối Chúa, dạy tôi nẻo đàng và dẫn trong sự công bình",
+      "Biết các đường lối Chúa, dạy tôi nẻo đàng và giữ tôi trong lẽ thật",
       "Biết các đường lối Chúa, dạy tôi nẻo đàng và dẫn trong lẽ thật",
-      "Tuổi thọ dài"
+      "Biết các đường lối Chúa, dạy tôi nẻo đàng và chỉ cho tôi đường đi"
     ],
     "tags": [
       "Cựu Ước",
@@ -2071,13 +2071,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Thi Thiên 67:1-2 — 'Nguyện Đức Chúa Trời thương xót chúng tôi, và ban phước cho chúng tôi, soi sáng mặt Ngài trên chúng tôi, để đường lối Chúa được biết trên đất, và sự cứu rỗi của Chúa được biết giữa các dân.'",
+    "explanation": "Thi Thiên 67:1 (BTT) viết: 'Nguyện Đức Chúa Trời thương xót chúng tôi, ban phước cho chúng tôi, Và soi sáng mặt Ngài trên chúng tôi.' Câu này trả lời trực tiếp câu hỏi: tác giả cầu xin Đức Chúa Trời làm ba việc cụ thể (thương xót, ban phước, soi sáng mặt Ngài) 'trên chúng tôi' (tức dân Y-sơ-ra-ên, chủ thể cầu nguyện) để qua đó đường lối Ngài được biết khắp đất.\n\nCác phương án sai:\n1. 'Thương xót, ban phước, và khiến chúng tôi rao truyền sự vinh hiển Ngài' - Sai vì câu 1 chỉ ghi lời cầu xin Chúa hành động (thương xót, ban phước, soi sáng), chứ không phải cầu xin cho họ được rao truyền. Mục đích 'biết đường lối Chúa khắp đất' là kết quả từ việc Chúa đáp lời cầu xin này, chứ không phải là hành động họ làm. Đây là lạc câu hỏi (đúng văn bản nhưng lệch trọng tâm).\n2. 'Thương xót, ban phước, và soi sáng mặt Ngài trên mọi nước' - Sai về phạm vi. Câu 1 cầu xin Chúa soi sáng mặt Ngài 'trên chúng tôi' (dân Y-sơ-ra-ên), không phải 'trên mọi nước'. Ước muốn 'mọi nước được biết ơn Chúa' là kết quả (câu 2-7), không phải đối tượng trực tiếp của lời cầu xin trong câu 1.\n3. 'Đoán xét, thương xót, và soi sáng mặt Ngài trên chúng tôi' - Sai chi tiết. Chữ 'đoán xét' (hay 'phán xét') xuất hiện ở câu 4: 'Các dân sẽ vui mừng... vì Chúa sẽ... đoán xét...', không phải trong lời cầu xin ba việc ở câu 1. Đây là nhầm lẫn với một chi tiết ở câu khác trong đoạn.",
     "language": "vi",
     "options": [
       "Thương xót, ban phước, và soi sáng mặt Ngài trên chúng tôi",
-      "Trừng phạt các dân",
-      "Lập đền thờ mới",
-      "Ban quyền lực cho vua"
+      "Thương xót, ban phước, và khiến chúng tôi rao truyền sự vinh hiển Ngài",
+      "Thương xót, ban phước, và soi sáng mặt Ngài trên mọi nước",
+      "Đoán xét, thương xót, và soi sáng mặt Ngài trên chúng tôi"
     ],
     "tags": [
       "Cựu Ước",
@@ -2271,12 +2271,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Thi Thiên 104:24 — 'Hỡi Đức Giê-hô-va, công việc Ngài nhiều biết bao! Ngài đã làm hết thảy cách khôn ngoan; Trái đất đầy dẫy các tạo vật Ngài.'",
+    "explanation": "Thi Thiên 104:24 viết: \"Hỡi Đức Giê-hô-va, công việc Ngài thật nhiều thay! Ngài đã làm hết thảy cách khôn ngoan; Trái đất đầy dẫy các tạo vật Ngài.\" Đáp án đúng là \"Các tạo vật Ngài\" vì câu này tuyên bố trực tiếp rằng đất đầy dẫy những vật Ngài đã tạo ra.\n\nCác đáp án sai:\n1. \"Các món quà Ngài\": Sai vì dù trong văn cảnh gần của Thi Thiên (ví dụ đoạn 106-107 hoặc Gia-cơ 1:17) có nói về ơn phước và quà tặng của Đức Chúa Trời, câu hỏi này trực tiếp trích lời của Thi Thiên 104:24, cụ thể nói về \"các tạo vật\", không phải \"các món quà\".\n2. \"Các tình yêu Ngài\": Sai vì đây là một hiểu lầm phổ biến, áp dụng một đặc tính của Chúa (nhân từ/yêu thương) vào một câu văn nói về vật thọ tạo hữu hình. Trái đất trong câu này chứa đầy các loài thọ tạo cụ thể, chứ không phải chứa đầy phẩm chất vô hình là tình yêu của Ngài.\n3. \"Các tạo vật hại Ngài\": Đây là đáp án gần đúng nhưng sai một chi tiết then chốt. Từ \"hại\" là thêm vào và hoàn toàn sai lệch với nguyên văn. Nguyên văn viết trái đất đầy các tạo vật (thọ tạo) của Ngài, chứ không phải là những tạo vật gây hại cho Ngài. Từ \"hại\" làm biến đổi hoàn toàn ý nghĩa tích cực và sở hữu của cụm từ nguyên bản.",
     "language": "vi",
     "options": [
-      "Sự phán xét",
-      "Quyền năng",
-      "Lòng yêu thương",
+      "Các món quà Ngài",
+      "Các tình yêu Ngài",
+      "Các tạo vật hại Ngài",
       "Các tạo vật Ngài"
     ],
     "tags": [
@@ -2296,13 +2296,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Thi Thiên 107:1 — 'Hãy ngợi khen Đức Giê-hô-va, vì Ngài là thiện; sự nhân từ Ngài còn đến đời đời.'",
+    "explanation": "Câu trả lời đúng trực tiếp trích từ Thi Thiên 107:1: 'Hãy cảm tạ Đức Giê-hô-va, vì Ngài là thiện; Sự nhân từ Ngài còn đến đời đời'.\n\n- Distractor thứ nhất sai vì thay đổi chi tiết trọng tâm: trong câu Kinh Thánh là 'còn đến đời đời', nhưng phương án này lại ghi 'khắp trên đất', làm thay đổi ý nghĩa về sự vĩnh cửu.\n- Distractor thứ hai sai do thay thế thuộc tính then chốt: câu Kinh Thánh ghi 'vì Ngài là thiện', không phải 'vì Ngài là thánh'. Đây là một nhầm lẫn phổ biến vì cả hai từ đều được dùng để ca ngợi Đức Chúa Trời.\n- Distractor thứ ba sai vì trích dẫn từ ngữ cảnh sai: đây là lý do cảm tạ được nêu ở các câu sau (ví dụ câu 2 về việc Ngài chuộc họ khỏi kẻ thù), không phải là câu trả lời trực tiếp cho câu 1.",
     "language": "vi",
     "options": [
-      "Vì Ngài giàu lòng nghiêm khắc",
+      "Vì Ngài là thiện; sự nhân từ Ngài khắp trên đất",
       "Vì Ngài là thiện; sự nhân từ Ngài còn đến đời đời",
-      "Vì Ngài đáng sợ",
-      "Vì Ngài chỉ giúp một số ít"
+      "Vì Ngài là thánh; sự nhân từ Ngài còn đến đời đời",
+      "Vì Ngài cứu họ khỏi kẻ thù nghịch"
     ],
     "tags": [
       "Cựu Ước",
@@ -2321,13 +2321,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Thi Thiên 112:1 — 'Phước thay cho người nào kính sợ Đức Giê-hô-va, hết sức ưa thích các điều răn của Ngài!'",
+    "explanation": "Thi Thiên 112:1 chép: 'Hạnh phúc thay cho người kính sợ Đức Giê-hô-va, Vui thích về các điều răn Ngài lắm!' (BTT). Đáp án đúng nêu chính xác hai điều kiện: 'kính sợ Đức Giê-hô-va' và 'ưa thích điều răn Ngài'. \n\n- Distractor 1 sai vì thay 'ưa thích điều răn Ngài' thành 'ưa thích sự ban cho của Ngài', làm mất trọng tâm về sự vui thích trong Lời Chúa.\n- Distractor 2 sai vì thay 'kính sợ Đức Giê-hô-va' bằng 'tìm sự giàu có', hoàn toàn lệch phạm vi đức tính được đề cao trong cả Thi Thiên 112.\n- Distractor 3 sai vì tham chiếu 'những chương trước' (có thể gây hiểu lầm từ ngữ cảnh gần), trong khi câu hỏi chỉ hỏi về câu 1 và không liên quan đến cấu trúc sách.",
     "language": "vi",
     "options": [
       "Người kính sợ Đức Giê-hô-va, ưa thích điều răn Ngài",
-      "Người giàu có và mạnh mẽ",
-      "Người được nhiều bạn bè",
-      "Người sống lâu năm"
+      "Người kính sợ Đức Giê-hô-va, ưa thích sự ban cho của Ngài",
+      "Người tìm sự giàu có, ưa thích điều răn Ngài",
+      "Người kính sợ Đức Giê-hô-va, ưa thích những chương trước"
     ],
     "tags": [
       "Cựu Ước",
@@ -2396,13 +2396,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Thi Thiên 119:130 — 'Sự bày giải lời Chúa, soi sáng cho, Ban sự hiểu biết cho kẻ đơn sơ.' (Bản Truyền Thống).",
+    "explanation": "Câu hỏi tham chiếu Thi Thiên 119:130 (BTT): 'Sự bày giải lời Chúa soi sáng, Ban sự thông hiểu cho người thật thà.' Do đó, đáp án đúng phải là 'Soi sáng và ban sự thông hiểu', vì đây là tác động trực tiếp và tích cực được nêu trong câu Kinh Thánh.\n\n- Distractor 'Soi sáng và ban sự sợ hãi' là gần đúng (almost-right) nhưng sai chi tiết then chốt: câu Kinh Thánh nói 'ban sự thông hiểu', không phải 'sự sợ hãi'.\n- Distractor 'Khiến run sợ và ban sự thông hiểu' sai vì trộn lẫn với tâm trạng thường thấy trong các passage gần khi gặp Đức Chúa Trời (ví dụ: sự kính sợ), nhưng câu 130 không hề đề cập 'khiến run sợ'.\n- Distractor 'Làm khiếp đảm và sửa dạy' là sai phạm vi: mặc dù đúng là Lời Chúa có thể sửa dạy (như 2 Ti-mô-thê 3:16), nhưng tác động cụ thể cho 'người thật thà' trong câu 130 là 'soi sáng' và 'ban sự thông hiểu', không phải 'khiếp đảm' hay 'sửa dạy'.",
     "language": "vi",
     "options": [
       "Soi sáng và ban sự thông hiểu",
-      "Làm họ giàu có",
-      "Tạo nên các tiên tri",
-      "Làm họ trở nên thầy"
+      "Soi sáng và ban sự sợ hãi",
+      "Khiến run sợ và ban sự thông hiểu",
+      "Làm khiếp đảm và sửa dạy"
     ],
     "tags": [
       "Cựu Ước",
@@ -2421,13 +2421,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Thi Thiên 119:165 — 'Phàm kẻ nào yêu mến luật pháp Chúa được bình yên lớn; chẳng có sự gì gây cho họ sa ngã.'",
+    "explanation": "Đáp án đúng là: 'Sự bình yên lớn — chẳng có sự gì gây họ sa ngã', trích nguyên văn Thi Thiên 119:165 (BTT): 'Người nào yêu mến luật pháp Chúa thì có sự bình yên lớn, Chẳng có sự gì gây họ sa ngã được.'\n\n- Distractor 1 (gần đúng): 'Sự bình yên lớn — chẳng có sự gì gây họ nên làm' là gần đúng vì vế đầu đúng, nhưng vế sau sai chi tiết then chốt (sai cụm từ 'nên làm' thay vì 'sa ngã'), dựa trên việc đọc lướt hoặc nhớ nhầm đoạn gần.\n- Distractor 2: 'Sự giàu có lớn — chẳng có sự gì thiếu thốn nơi họ' là sai chi tiết vì đoạn này không nói về sự giàu có vật chất; nó áp đặt một hiểu lầm phổ biến rằng phước hạnh thuộc linh luôn đi kèm sự thịnh vượng vật chất.\n- Distractor 3: 'Sự hiểu biết lớn — chẳng có sự gì họ không thông suốt' là hiểu lầm phổ biến vì dù luật pháp Chúa đem lại sự khôn ngoan, câu hỏi cụ thể ở câu 165 hỏi về điều 'có' (sự bình yên), không phải sự hiểu biết toàn diện.",
     "language": "vi",
     "options": [
-      "Quyền lực lớn",
+      "Sự bình yên lớn — chẳng có sự gì gây họ nên làm",
       "Sự bình yên lớn — chẳng có sự gì gây họ sa ngã",
-      "Của cải lớn",
-      "Sự khôn ngoan lớn"
+      "Sự giàu có lớn — chẳng có sự gì thiếu thốn nơi họ",
+      "Sự hiểu biết lớn — chẳng có sự gì họ không thông suốt"
     ],
     "tags": [
       "Cựu Ước",
@@ -3415,13 +3415,13 @@
     ],
     "verseEnd": 14,
     "content": "Theo Thi 19:14 (RVV11), lời cầu xin kết thúc thi thiên là gì? Hai chỗ trống điền chính xác: 'Nguyện ___ của miệng tôi và ___ của lòng tôi được đẹp ý Ngài'.",
-    "explanation": "Thi 19:14 (RVV11) — \"Hỡi Đức Giê-hô-va là hòn đá tôi, và là Đấng cứu chuộc tôi, nguyện lời nói của miệng tôi, sự suy gẫm của lòng tôi, được đẹp ý Ngài!\" Hai chỗ trống là \"lời nói\" và \"sự suy gẫm\" — kết hợp lời nói bên ngoài và suy gẫm bên trong.",
+    "explanation": "Thi Thiên 19:14 chép: 'Nguyện lời nói của miệng tôi và sự suy gẫm của lòng tôi được đẹp ý Ngài, hỡi Đức Giê-hô-va, hòn đá tôi và Đấng cứu chuộc tôi!' (RVV11).\n\n- Đáp án đúng 'Lời nói / sự suy gẫm' chính xác vì phù hợp với nguyên văn Kinh Thánh.\n\n- Distractor 'Lời nói / sự cầu nguyện' là gần đúng nhưng sai chi tiết then chốt: câu này đề cập đến 'sự suy gẫm của lòng tôi', không phải 'sự cầu nguyện'.\n\n- Distractor 'Việc làm / sự suy gẫm' sai phạm vi: câu hỏi hỏi về 'của miệng tôi' và 'của lòng tôi', nhưng 'việc làm' không phải là thứ xuất phát từ 'miệng'.\n\n- Distractor 'Lời nguyện / tư tưởng' nhầm với passage gần hoặc khái niệm tương tự: 'lời nguyện' thường gặp trong ngữ cảnh cầu nguyện nhưng không phải từ dùng trong câu này, và 'tư tưởng' tuy gần với 'suy gẫm' nhưng không phải từ chính xác được dùng.",
     "language": "vi",
     "options": [
-      "Lời nói / suy tư",
-      "Tiếng hát / ca khúc",
+      "Lời nói / sự cầu nguyện",
+      "Việc làm / sự suy gẫm",
       "Lời nói / sự suy gẫm",
-      "Tiếng nói / quyết định"
+      "Lời nguyện / tư tưởng"
     ],
     "tags": [
       "Cựu Ước",
@@ -3442,12 +3442,12 @@
     ],
     "verseEnd": 1,
     "content": "Theo Thi 23:1 (RVV11), câu mở đầu chính xác và đầy đủ là gì?",
-    "explanation": "Thi 23:1 (RVV11) — 'Đức Giê-hô-va là Đấng chăn giữ tôi: tôi sẽ chẳng thiếu thốn gì'. Câu nhấn mạnh sự cung cấp đầy đủ của Đức Chúa Trời, không nhất thiết là sự giàu có vật chất, mà là 'không thiếu thốn' điều cần thiết.",
+    "explanation": "Đáp án đúng là 'Đức Giê-hô-va là Đấng chăn giữ tôi: tôi sẽ chẳng thiếu thốn gì' bởi vì đây là nguyên văn câu mở đầu (câu 1) của Thi Thiên 23 theo RVV11. ***Các phương án sai:*** (1) 'Đấng chăn chiên là Chúa tôi: tôi sẽ chẳng thiếu thốn gì' **sai chi tiết** vì đã thay tên gọi 'Đức Giê-hô-va' bằng cụm 'Đấng chăn chiên là Chúa tôi', thay đổi hình ảnh chủ đạo. (2) 'Đức Giê-hô-va là Đấng bảo vệ tôi: tôi sẽ chẳng thiếu thốn gì' **sai do hiểu lầm phổ biến** vì tuy đúng đối tượng & hứa hẹn, nhưng đã thay đổi hình ảnh 'Đấng chăn giữ' (shepherd) quan trọng và đặc trưng của Thi Thiên nàу bằng từ rộng hơn 'Đấng bảo vệ' (guardian/protector), làm mất đi sự chính xác của hình ảnh Kinh Thánh. (3) 'Đức Giê-hô-va là Đấng chăn giữ tôi, tôi ở trong đồng cỏ xanh tươi' **sai vì nhầm sang đoạn gần** do đã ghép nửa đầu câu 1 (đúng) với hình ảnh 'đồng cỏ xanh tươi' là nội dung của câu 2 trong Thi Thiên 23.",
     "language": "vi",
     "options": [
-      "'Đức Giê-hô-va là Đấng chăn giữ tôi; lương thực tôi sẽ đầy đủ luôn'",
-      "'Đức Giê-hô-va là Đấng chăn giữ tôi; tôi sẽ giàu có cả đời này'",
-      "'Đức Giê-hô-va là Đấng chăn giữ tôi; tôi sẽ không bao giờ chết'",
+      "'Đấng chăn chiên là Chúa tôi: tôi sẽ chẳng thiếu thốn gì'",
+      "'Đức Giê-hô-va là Đấng bảo vệ tôi: tôi sẽ chẳng thiếu thốn gì'",
+      "'Đức Giê-hô-va là Đấng chăn giữ tôi, tôi ở trong đồng cỏ xanh tươi'",
       "'Đức Giê-hô-va là Đấng chăn giữ tôi: tôi sẽ chẳng thiếu thốn gì'"
     ],
     "tags": [
@@ -3469,13 +3469,13 @@
     ],
     "verseEnd": 1,
     "content": "Theo Thi 27:1 (RVV11), Đa-vít tuyên bố ba danh hiệu của Đức Giê-hô-va. Ba danh hiệu đó là?",
-    "explanation": "Thi 27:1 — 'Đức Giê-hô-va là ánh sáng và là sự cứu rỗi tôi: tôi sẽ sợ ai? Đức Giê-hô-va là nơi bảo vệ của mạng sống tôi: tôi sẽ hãi hùng ai?' Ba danh hiệu: ánh sáng (soi đường), cứu rỗi (giải cứu), nơi bảo vệ (đồn lũy/bảo vệ).",
+    "explanation": "Thi Thiên 27:1 viết: 'Đức Giê-hô-va là ánh sáng và sự cứu rỗi tôi: tôi sẽ sợ ai? Đức Giê-hô-va là đồn lũy của mạng sống tôi: tôi sẽ kinh khiếp ai?' (RVV11). Ba danh hiệu tương đương được Đa-vít tuyên bố là 'ÁNH SÁNG', 'SỰ CỨU RỖI', và 'NƠI BẢO VỆ' (hoặc đồn lũy/pháo đài).\n\nĐáp án đúng trực tiếp trích ra ba danh hiệu này.\n\nCác distractor sai do:\n1. (Gần đúng) Thay 'SỰ CỨU RỖI' bằng 'TẢNG ĐÁ VỮNG BỀN' – 'tảng đá vững bền' là hình ảnh phổ biến (như Thi 18:2) trong Kinh Thánh, nhưng không phải ba danh hiệu được nêu trong Thi 27:1.\n2. Thay 'NƠI BẢO VỆ của tôi' bằng 'CÁNH LỰC của dân Ngài' – đây mở rộng phạm vi sang 'dân Ngài' và dùng hình ảnh khác (cánh lực), làm sai nội dung cụ thể của câu.\n3. Gán nhầm các danh hiệu cho 'Đa-vít' thay vì 'Đức Giê-hô-va' – một sự nhầm lẫn chủ thể phổ biến khi đọc lướt.",
     "language": "vi",
     "options": [
       "'Đức Giê-hô-va là ÁNH SÁNG / SỰ CỨU RỖI / NƠI BẢO VỆ của tôi'",
-      "'Đức Giê-hô-va là VUA / TIÊN TRI / THẦY TẾ LỄ của tôi'",
-      "'Đức Giê-hô-va là CHA / CON / THÁNH LINH của tôi'",
-      "'Đức Giê-hô-va là PHƯỚC / ƠN / VINH HIỂN của tôi'"
+      "'Đức Giê-hô-va là ÁNH SÁNG / NƠI BẢO VỆ / TẢNG ĐÁ VỮNG BỀN của tôi'",
+      "'Đức Giê-hô-va là ÁNH SÁNG / SỰ CỨU RỖI / CÁNH LỰC của dân Ngài'",
+      "'Đa-vít là NƠI BẢO VỆ / ÁNH SÁNG / SỰ CỨU RỖI của tôi'"
     ],
     "tags": [
       "Cựu Ước",
@@ -3523,13 +3523,13 @@
     ],
     "verseEnd": 12,
     "content": "Theo Thi 51:10-12 (RVV11), Đa-vít cầu xin Đức Chúa Trời điều gì sau khi ăn năn?",
-    "explanation": "Thi 51:10-12 — 'Đức Chúa Trời ôi! xin hãy dựng nên trong tôi một lòng trong sạch, và làm cho mới lại trong tôi một thần linh ngay thẳng. Xin chớ từ bỏ tôi khỏi trước mặt Chúa, cũng đừng cất khỏi tôi Thánh Linh Chúa. Xin hãy ban lại cho tôi sự vui vẻ về sự cứu rỗi của Chúa, và lấy thần linh sẵn lòng mà nâng đỡ tôi.' Lời cầu mang ý 'tạo dựng mới' (động từ bara — chỉ Chúa làm).",
+    "explanation": "Thi Thiên 51:10-12 (RVV11) ghi: 'Đức Chúa Trời ôi! xin hãy dựng nên trong tôi một lòng trong sạch, / Và làm cho mới lại trong tôi một thần linh ngay thẳng. / Xin chớ từ bỏ tôi, / Chớ cất khỏi tôi Thánh Linh Chúa. / Xin hãy ban lại cho tôi sự vui vẻ về sự cứu rỗi Chúa, / Và lấy thần linh sẵn lòng mà nâng đỡ tôi.' \nĐáp án ĐÚNG: Trích nguyên văn phần đầu của câu 10: cầu xin một lòng trong sạch và lòng vững chắc.\nDistractor 1 SAI (gần đúng, lỗi nearby_passage): Thay cụm 'một lòng trong sạch' bằng 'một tâm thần ngay thẳng', là chi tiết từ nửa sau của câu 10.\nDistractor 2 SAI (lỗi wrong_detail): Thay mục tiêu 'làm cho tôi lại có lòng vững chắc' bằng 'và tha hết thảy gian ác tôi', một chi tiết không có trong đoạn 10-12 (ý cầu xin tha thứ nằm ở các câu trước).\nDistractor 3 SAI (lỗi wrong_scope): Trộn lẫn các yếu tố chính xác từ câu 12 nhưng thay thế hoàn toàn nội dung cầu xin cốt lõi của câu 10, làm lệch trọng tâm câu hỏi.",
     "language": "vi",
     "options": [
-      "'Xin Chúa cho tôi nhiều của cải để bù đắp cho gia đình U-ri tôi đã hại'",
-      "'Xin Chúa cho tôi đánh thắng kẻ thù để chứng minh tôi vẫn là vua được chọn'",
+      "'Đức Chúa Trời ôi! xin hãy DỰNG NÊN TRONG TÔI MỘT TÂM THẦN NGAY THẲNG, làm cho tôi lại có lòng vững chắc'",
+      "'Xin hãy DỰNG NÊN TRONG TÔI MỘT LÒNG TRONG SẠCH, và tha hết thảy gian ác tôi'",
       "'Đức Chúa Trời ôi! xin hãy DỰNG NÊN TRONG TÔI MỘT LÒNG TRONG SẠCH, làm cho tôi lại có lòng vững chắc'",
-      "'Xin Chúa cho tôi sống đến trăm tuổi để tôi có đủ thời gian sửa đổi đời mình'"
+      "'Xin hãy cho tôi lại được vui về sự cứu rỗi Chúa, và xin lấy Thần linh sẵn lòng mà nâng đỡ tôi'"
     ],
     "tags": [
       "Cựu Ước",
@@ -4092,13 +4092,13 @@
     ],
     "verseEnd": 20,
     "content": "Theo Thi 49:16-20, người khôn ngoan KHÔNG nên lo ngại điều gì về kẻ giàu?",
-    "explanation": "Thi 49:17 — 'Vì khi người chết chẳng đem đi gì được, sự vinh hiển người cũng không theo người xuống mồ đâu'. Triết lý khôn ngoan: tiền bạc chỉ là tạm.",
+    "explanation": "Câu hỏi hỏi về điều người khôn ngoan không nên lo ngại về kẻ giàu, dựa trên Thi Thiên 49:16-20. Đoạn Kinh Thánh này nhấn mạnh rằng khi chết, người giàu không thể mang theo của cải hay vinh hiển của mình (câu 17-18). ĐÁP ÁN ĐÚNG diễn đạt đúng ý này: 'Sự giàu có của họ — vì khi họ CHẾT, KHÔNG MANG ĐƯỢC GÌ; vinh hiển không xuống mộ'. Các đáp án sai: 1) 'Sự giàu có của họ — vì khi họ chết, mọi người sẽ khen ngợi họ' (SAI CHI TIẾT – câu 18 nói 'khi nó chết, chẳng đem gì theo', và không có việc mọi người khen ngợi sau khi chết trong ngữ cảnh này). 2) 'Sự giàu có của họ — vì họ sẽ được xưng là có phước đời đời' (HIỂU LẦM PHỔ BIẾN – đoạn văn không nói người giàu được xưng có phước đời đời; ngược lại nó cảnh báo về sự hư không). 3) 'Sự giàu có của họ — vì họ có thể dùng nó để chuộc tội lỗi' (ĐÚNG VĂN BẢN NHƯNG LẠC CÂU HỎI – câu 7-8 nói về việc không ai có thể chuộc người khác, nhưng ngữ cảnh câu 16-20 là về cái chết và của cải, không trực tiếp về chuộc tội, và đây không phải lý do người khôn ngoan không nên lo ngại).",
     "language": "vi",
     "options": [
-      "Sự giàu có của họ ban cho mình các lợi ích vật chất ngay đời này",
+      "Sự giàu có của họ — vì khi họ chết, mọi người sẽ khen ngợi họ",
       "Sự giàu có của họ — vì khi họ CHẾT, KHÔNG MANG ĐƯỢC GÌ; vinh hiển không xuống mộ",
-      "Sự khôn ngoan đời này họ học được trong các trường lớp danh tiếng",
-      "Quyền lực chính trị họ có trong xã hội thời đại của các vua chúa"
+      "Sự giàu có của họ — vì họ sẽ được xưng là có phước đời đời",
+      "Sự giàu có của họ — vì họ có thể dùng nó để chuộc tội lỗi"
     ],
     "tags": [
       "Cựu Ước",
@@ -4254,13 +4254,13 @@
     ],
     "verseEnd": 9,
     "content": "Thi 69:9 nói về 'sự sốt sắng' về điều gì? Câu này được Tân Ước trích dẫn ở đâu?",
-    "explanation": "Thi 69:9 — 'Vì sự sốt sắng về nhà Chúa thiêu nuốt tôi'. Giăng 2:17 áp dụng phần này cho Chúa Jêsus khi Ngài dọn đền thờ.",
+    "explanation": "Thi Thiên 69:9 ghi: 'Vì sự sốt sắng về nhà Chúa đã nuốt tôi' (BTT). Câu này được trích dẫn trực tiếp trong Giăng 2:17, khi các môn đồ nhớ lại lời Kinh Thánh sau khi Chúa Jêsus dọn sạch đền thờ. Đây là sự ứng nghiệm về tấm lòng sốt sắng của Đấng Christ đối với sự thánh khiết của nhà Đức Chúa Trời.\n\nCác đáp án sai:\n1. 'Sự sốt sắng về luật pháp...' — Sai chi tiết: Câu gốc trong Thi Thiên nói về 'nhà Chúa', không phải 'luật pháp Chúa'.\n2. '...trích trong Mác 11:17...' — Gần đúng nhưng sai passage: Mác 11:17 thuật lại việc Chúa dọn đền thờ nhưng không trích dẫn câu Thi Thiên này. Chỉ có Giăng 2:17 mới ghi lại lời trích dẫn cụ thể.\n3. '...trích trong Rô-ma 15:3...' — Đúng văn bản nhưng lạc câu hỏi: Rô-ma 15:3 có trích dẫn Thi Thiên 69:9 nhưng để nói về sự gánh tội của Đấng Christ, không phải trong bối cảnh dọn đền thờ như câu hỏi đang hỏi.",
     "language": "vi",
     "options": [
       "'SỰ SỐT SẮNG về NHÀ Chúa đã NUỐT TÔI' — trích trong Giăng 2:17 khi Chúa Jêsus dọn đền thờ",
-      "'Sự sốt sắng về quê hương Y-sơ-ra-ên' — trích trong Lu-ca",
-      "'Sự sốt sắng về luật pháp Môi-se' — trích trong Ma-thi-ơ",
-      "'Sự sốt sắng về vinh hiển' — trích trong Khải Huyền"
+      "'SỰ SỐT SẮNG về LUẬT PHÁP Chúa đã NUỐT TÔI' — trích trong Giăng 2:17 khi Chúa Jêsus dọn đền thờ",
+      "'SỰ SỐT SẮNG về NHÀ Chúa đã NUỐT TÔI' — trích trong Mác 11:17 khi Chúa Jêsus dạy dỗ trong đền thờ",
+      "'SỰ SỐT SẮNG về NHÀ Chúa đã NUỐT TÔI' — trích trong Rô-ma 15:3 khi nói về sự gánh tội"
     ],
     "tags": [
       "Cựu Ước",
@@ -4445,12 +4445,12 @@
     ],
     "verseEnd": 8,
     "content": "Thi 101 là lời tự lập 'mục tiêu sống' của Đa-vít làm vua. Mục tiêu đó là gì?",
-    "explanation": "Thi 101:2,4-5 — 'Tôi sẽ ăn ở cách khôn ngoan trong đường trọn vẹn... tôi sẽ lấy lòng trọn vẹn mà ăn ở trong nhà tôi. Tôi sẽ chẳng để điều gì đê tiện trước mặt tôi... ai vu khống kẻ lân cận mình cách kín đáo, tôi sẽ diệt nó'.",
+    "explanation": "Câu hỏi hỏi mục tiêu sống của Đa-vít được nêu trong Thi Thiên 101:1-8. Đáp án đúng trích dẫn trực tiếp câu 2b và câu 5a (BTT): 'Bước đi cách trọn vẹn trong nhà tôi' (c.2) và 'Chẳng dung kẻ vu khống' (c.5).\n\nĐáp án đúng đúng vì nó khớp với lời cam kết cụ thể của Đa-vít trong phân đoạn.\n\nCác đáp án sai:\n- 'chẳng dung kẻ gian ác' (sai chi tiết): Câu 4 nói về việc lìa bỏ kẻ gian ác, nhưng đây không phải là chi tiết then chốt được nêu cùng với lời cam kết 'bước đi... trọn vẹn' như một mục tiêu tổng thể. Mục tiêu chính được nêu rõ là không dung kẻ vu khống (c.5).\n- 'chẳng dung kẻ nói dối' (đúng văn bản nhưng lạc câu hỏi): Câu 7 có nói 'kẻ nói dối sẽ không được đứng vững trước mặt tôi', nhưng đây là một hệ quả hoặc biểu hiện cụ thể, không phải là phần chính của mục tiêu được nêu trực tiếp trong câu hỏi. Câu hỏi tập trung vào mục tiêu tổng quát, nên phương án này tuy đúng theo văn bản nhưng không trúng trọng tâm.\n- 'chẳng dung kẻ kiêu ngạo' (nhầm passage gần): Tinh thần bài thi thiên có thể liên quan, nhưng trong Thi 101:1-8 không có câu nào trực tiếp nói 'chẳng dung kẻ kiêu ngạo'. Đây là một đặc điểm thường được nhắc đến trong các bài thi thiên khác (ví dụ: Thi 101:5 nói về mắt kiêu ngạo, nhưng đối tượng bị loại trừ chính được nêu là kẻ vu khống).",
     "language": "vi",
     "options": [
-      "Tham vọng đánh bại hết các nước ngoại bang",
-      "Tích lũy nhiều tài sản trong cung điện hoàng cung",
-      "Có nhiều con cháu nối ngôi sau ông",
+      "'BƯỚC ĐI cách TRỌN VẸN trong nhà tôi với TẤM LÒNG TRỌN VẸN'; chẳng dung kẻ gian ác",
+      "'BƯỚC ĐI cách TRỌN VẸN trong nhà tôi với TẤM LÒNG TRỌN VẸN'; chẳng dung kẻ nói dối",
+      "'BƯỚC ĐI cách TRỌN VẸN trong nhà tôi với TẤM LÒNG TRỌN VẸN'; chẳng dung kẻ kiêu ngạo",
       "'BƯỚC ĐI cách TRỌN VẸN trong nhà tôi với TẤM LÒNG TRỌN VẸN'; chẳng dung kẻ vu khống"
     ],
     "tags": [

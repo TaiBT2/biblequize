@@ -117,13 +117,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Kinh Thánh ghi: \"Phước cho những kẻ có lòng khó khăn, vì nước thiên đàng là của những kẻ ấy!\" (Ma-thi-ơ 5:3).",
+    "explanation": "Ma-thi-ơ 5:3 chép: 'Phước cho những kẻ có lòng khó khăn, vì nước thiên đàng là của những kẻ ấy!' Đây là phước đầu tiên trong Bài Giảng Trên Núi. Distractor 'Phước cho những kẻ khóc lóc' (gần đúng) là phước thứ hai (c.4), sai về thứ tự. Distractor 'Phước cho những kẻ đói khát sự công bình' là phước thứ tư (c.6), sai chi tiết vị trí. Distractor 'Phước cho những kẻ được xưng công bình' là một hiểu lầm phổ biến về kết quả của sự công bình hóa, không phải là phước đầu tiên được Chúa Giê-xu công bố.",
     "language": "vi",
     "options": [
-      "Phước cho những kẻ đói khát sự công bình",
+      "Phước cho những kẻ khóc lóc",
       "Phước cho những kẻ có lòng khó khăn",
-      "Phước cho những kẻ nhu mì",
-      "Phước cho những kẻ than khóc"
+      "Phước cho những kẻ đói khát sự công bình",
+      "Phước cho những kẻ được xưng công bình"
     ],
     "tags": [
       "Tân Ước",
@@ -171,12 +171,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Kinh Thánh ghi: \"Em-ma-nu-ên, nghĩa là: Đức Chúa Trời ở cùng chúng ta\" (Ma-thi-ơ 1:23).",
+    "explanation": "Đáp án đúng là 'Đức Chúa Trời ở cùng chúng ta' vì Ma-thi-ơ 1:23 trích dẫn Ê-sai 7:14 và giải thích rõ: 'Này, một gái đồng trinh sẽ chịu thai, và sinh một con trai, rồi người ta sẽ đặt tên con trai đó là Em-ma-nu-ên; nghĩa là: Đức Chúa Trời ở cùng chúng ta.'\n\nCác đáp án sai:\n- 'Đức Chúa Trời cứu chúng ta': Sai vì đây là ý nghĩa của tên 'Giê-su' (Ma-thi-ơ 1:21), một tên khác được nhắc đến trong cùng phân đoạn gần đó, không phải ý nghĩa của 'Em-ma-nu-ên'.\n- 'Đức Chúa Trời ở trên chúng ta': Sai về chi tiết từ khóa 'ở cùng' so với 'ở trên'. Văn bản dùng 'ở cùng' (ở với, cùng với), thể hiện sự hiện diện đồng hành, không phải vị trí cao hơn.\n- 'Đức Chúa Trời yêu thương chúng ta': Sai vì đây là một hiểu lầm phổ biến dựa trên bản chất của Đức Chúa Trời, nhưng không phải là ý nghĩa ngữ nguyên được Kinh Thánh đưa ra cho tên riêng 'Em-ma-nu-ên' trong ngữ cảnh này.",
     "language": "vi",
     "options": [
       "Đức Chúa Trời cứu chúng ta",
-      "Đức Chúa Trời tha thứ chúng ta",
-      "Đức Chúa Trời yêu chúng ta",
+      "Đức Chúa Trời ở trên chúng ta",
+      "Đức Chúa Trời yêu thương chúng ta",
       "Đức Chúa Trời ở cùng chúng ta"
     ],
     "tags": [
@@ -306,13 +306,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Kinh Thánh ghi: \"Chim trời không gieo, không gặt, không thâu trữ vào kho; song Cha các ngươi ở trên trời nuôi nó\" (Ma-thi-ơ 6:26).",
+    "explanation": "Ma-thi-ơ 6:26 viết: 'Hãy xem loài chim trời: các ngươi không gieo, không gặt, cũng không thâu trữ vào kho tàng, mà Cha các ngươi trên trời nuôi nó. Các ngươi há chẳng quý trọng hơn loài chim sao?' (BTT).\n\nĐÁP ÁN ĐÚNG: 'Cha các ngươi ở trên trời' là chính xác, vì câu Kinh Thánh trích dẫn trực tiếp từ lời Chúa Giê-su, chỉ ra Đấng nuôi chim trời là Cha Thiên Thượng.\n\nDISTRACTOR SAI 1 ('Cha các ngươi ở dưới đất'): Sai chi tiết then chốt 'trên trời' thành 'dưới đất'. Đây là distractor 'gần đúng' vì chỉ sai một yếu tố vị trí.\n\nDISTRACTOR SAI 2 ('Các thiên sứ trên trời'): Nhầm với passage gần (các chủ đề về thiên sứ trong Kinh Thánh), nhưng trong câu này không hề đề cập đến thiên sứ.\n\nDISTRACTOR SAI 3 ('Những người gieo và gặt'): Phản ánh hiểu lầm phổ biến, cho rằng con người (đang được nhắc đến trong ngữ cảnh) là đối tượng nuôi chim, trong khi câu Kinh Thánh nhấn mạnh sự tương phản: chim không làm những việc đó nhưng vẫn được Cha trên trời nuôi.",
     "language": "vi",
     "options": [
-      "Đức Chúa Trời",
+      "Cha các ngươi ở dưới đất",
       "Cha các ngươi ở trên trời",
-      "Thiên nhiên",
-      "Cả ba câu trên"
+      "Các thiên sứ trên trời",
+      "Những người gieo và gặt"
     ],
     "tags": [
       "Tân Ước",
@@ -387,13 +387,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Kinh Thánh ghi: \"Vả, để các ngươi biết Con người ở dưới đất có quyền tha tội\" (Ma-thi-ơ 9:6). Chữa bệnh là dấu lạ Ngài làm để chứng minh quyền này.",
+    "explanation": "Trong Ma-thi-ơ 9:6, Chúa Giê-su trực tiếp tuyên bố: \"Vả, để cho các ngươi biết Con người ở thế gian có quyền tha tội...\", xác nhận quyền tha tội là câu trả lời đúng. Các đáp án sai: (1) 'Chữa bệnh' là hành động Ngài thực hiện ngay sau đó (câu 7) trong cùng sự kiện, nhưng không phải quyền được tuyên bố trong câu 6. (2) 'Đuổi quỷ' là quyền năng Ngài thường thể hiện, nhưng không phải nội dung của câu hỏi về Ma-thi-ơ 9:6. (3) 'Làm phép lạ' là một hiểu lầm phổ biến khi mô tả quyền năng tổng quát của Ngài, nhưng trong ngữ cảnh này, phép lạ chữa bệnh chỉ là bằng chứng để chứng minh quyền tha tội, không phải là quyền được tuyên bố.",
     "language": "vi",
     "options": [
       "Tha tội",
       "Chữa bệnh",
-      "Cả quyền tha tội và chữa bệnh",
-      "Xét đoán"
+      "Đuổi quỷ",
+      "Làm phép lạ"
     ],
     "tags": [
       "Tân Ước",
@@ -576,13 +576,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ptochos (πτωχός) có nghĩa là \"nghèo khó về tinh thần\", nhận biết sự cần thiết của mình trước Đức Chúa Trời.",
+    "explanation": "Trong bối cảnh Bài Giảng Trên Núi (Ma-thi-ơ 5-7), từ Hy Lạp \"ptōchos\" chỉ về sự nghèo khó sâu sắc. Tuy nhiên, sự nhấn mạnh chính của Chúa Giê-su ở đây là bản chất tâm linh (Ma-thi-ơ 5:3). Phước lành được hứa không chỉ dành cho sự thiếu thốn vật chất thuần túy, mà cho những ai có tinh thần tự nhận mình thiếu thốn và hoàn toàn phụ thuộc vào Đức Chúa Trời. Điều này được nối tiếp bởi các phước lành khác (như kẻ than khóc, kẻ nhu mì) cho thấy chủ đề thuộc linh rõ ràng. Đáp án sai 1 (phương án almost-right) hạn chế ý nghĩa vào vật chất, trong khi đây là một cách hiểu phổ biến nhưng chưa trọn vẹn. Đáp án sai 2 mở rộng sai phạm vi sang các vấn đề địa vị xã hội và chính trị, không phải là sự nhấn mạnh trực tiếp của câu này. Đáp án sai 3, mặc dù miêu tả một khía cạnh của sự nghèo khó vật chất, lại lạc trọng tâm câu hỏi, vốn hỏi về nghĩa của từ trong bối cảnh này chứ không phải là các biểu hiện cụ thể của nghèo đói nói chung.",
     "language": "vi",
     "options": [
-      "Elaion - Cần sự giúp đỡ",
-      "Penichros - Thiếu thốn vật chất",
+      "Ptochos - Nghèo khó về vật chất, chỉ không có của cải trần gian",
+      "Ptochos - Thấp kém về vị thế xã hội và quyền lực chính trị",
       "Ptochos - Nghèo khó về tinh thần",
-      "Apenes - Không có gì"
+      "Ptochos - Không có lương thực và nơi trú ẩn để tồn tại"
     ],
     "tags": [
       "Ma-thi-ơ",
@@ -603,13 +603,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ma 1:21 - Giê-su (Yeshua) có nghĩa là \"Giê-hô-va cứu rỗi\". Tên Ngài bày tỏ mục đích đến thế gian.",
+    "explanation": "Ma-thi-ơ 1:21 ghi lại lời thiên sứ phán: \"Người sẽ sanh một trai, mà ngươi khá đặt tên là Jêsus, vì chính con trai ấy sẽ cứu dân mình ra khỏi tội lỗi.\" Tên \"Giê-su\" (Yeshua) là dạng Hy Lạp hóa của tên Hê-bơ-rơ \"Yehoshua\" hoặc \"Yeshua\", có nghĩa là \"Giê-hô-va (hay Đức Giê-hô-va) là sự cứu rỗi\" hoặc \"Giê-hô-va cứu rỗi\", trực tiếp liên hệ đến sứ mạng cứu chuộc của Ngài.\n\n- Giê-hô-va cứu rỗi: ĐÚNG. Đây là ý nghĩa nguyên thủy của tên Giê-su, phù hợp với lời giải thích trong câu Kinh Thánh.\n- Giê-hô-va yêu thương: SAI. Mặc dù tình yêu thương của Đức Chúa Trời là nền tảng cho sự cứu rỗi (Giăng 3:16), ý nghĩa trực tiếp của tên Giê-su trong bối cảnh Ma-thi-ơ 1:21 là về sự cứu rỗi, không phải tình yêu thương. Đây là một chi tiết then chốt bị thay đổi.\n- Đức Chúa Trời hằng sống: SAI. Đây là một danh xưng mô tả bản tính của Đức Chúa Trời (ví dụ: Giê-rê-mi 10:10), nhưng không phải là ý nghĩa của tên riêng \"Giê-su\". Đáp án này đúng về mặt thần học nhưng lạc đề so với câu hỏi về ý nghĩa của một tên riêng.\n- Đấng Mê-si-a đến: SAI. Đây là một hiểu lầm phổ biến. \"Đấng Mê-si-a\" (Đấng được xức dầu) là một chức vụ, chứ không phải là ý nghĩa của tên \"Giê-su\". Mặc dù Giê-su là Đấng Mê-si-a, câu hỏi hỏi về ý nghĩa của tên Ngài, không phải chức vụ của Ngài.",
     "language": "vi",
     "options": [
-      "Đấng được xức dầu",
+      "Giê-hô-va yêu thương",
       "Giê-hô-va cứu rỗi",
-      "Đức Chúa Trời ở cùng chúng ta",
-      "Vua của muôn vua"
+      "Đức Chúa Trời hằng sống",
+      "Đấng Mê-si-a đến"
     ],
     "tags": [
       "Tân Ước",
@@ -739,14 +739,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ma 6:9 - Chúa Giê-su dạy chúng ta gọi Chúa là Cha, thể hiện mối quan hệ gần gũi với Ngài.",
+    "explanation": "Ma-thi-ơ 6:9 chép rõ: 'Lạy Cha chúng con ở trên trời', đây là cụm từ mở đầu Bài Cầu Nguyện Chung. Distractor thứ nhất sai chi tiết 'ở dưới đất' thay vì 'ở trên trời', đây là dạng gần đúng nhưng sai một yếu tố then chốt. Distractor thứ hai thể hiện một hiểu lầm phổ biến khi dùng 'Con' thay vì 'Cha', sai nội dung căn bản. Distractor thứ ba trích dẫn sai phạm vi, lấy ý từ Sáng Thế Ký về việc tạo dựng (chẳng hạn Sáng 1:1) chứ không liên quan đến lời mở đầu của Bài Cầu Nguyện Chung.",
     "language": "vi",
     "verseEnd": 13,
     "options": [
-      "Lạy Đấng Toàn Năng",
-      "Lạy Chúa",
+      "Lạy Cha chúng con ở dưới đất",
+      "Lạy Con chúng con ở trên trời",
       "Lạy Cha chúng con ở trên trời",
-      "Lạy Đức Chúa Trời"
+      "Lạy Đức Chúa Trời xin tạo dựng trời và đất"
     ],
     "tags": [
       "Tân Ước",
@@ -795,13 +795,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ma 16:16 - Đây là lời tuyên xưng đức tin quan trọng nhất của Phi-e-rơ, được Chúa Giê-su khen ngợi.",
+    "explanation": "Ma-thi-ơ 16:16 ghi lại lời tuyên xưng của Phi-e-rơ: \"Thầy là Đấng Christ, Con Đức Chúa Trời hằng sống.\"\n- ĐÁP ÁN ĐÚNG khớp hoàn toàn với nguyên văn Kinh Thánh.\n- Distractor 1 (\"Đấng Christ, Con Đức Chúa Trời đã được sai đến\") gần đúng, nhưng sai chi tiết: \"hằng sống\" (bản chất vĩnh cửu) bị thay bằng \"đã được sai đến\" (mặc dù đúng chức vụ, nhưng không phải từ ngữ trong câu).\n- Distractor 2 (\"Đấng tiên tri, Con Đức Chúa Trời hằng sống\") trích từ nhầm passage: trong Ma-thi-ơ 16:14, người ta nghĩ Chúa Giê-su là một trong các tiên tri (như Giăng Báp-tít, Ê-li), nhưng đây không phải lời tuyên xưng đúng của Phi-e-rơ.\n- Distractor 3 (\"Người Con, Đấng Mê-si của Đức Chúa Trời\") dựa trên hiểu lầm phổ biến: \"Đấng Mê-si\" và \"Đấng Christ\" đồng nghĩa (cùng chỉ Đấng được xức dầu), nhưng distractor này đảo thứ tự và thay thế từ, không khớp với cách diễn đạt chính xác trong câu Kinh Thánh.",
     "language": "vi",
     "options": [
-      "Vua Y-sơ-ra-ên",
+      "Đấng Christ, Con Đức Chúa Trời đã được sai đến",
       "Đấng Christ, Con Đức Chúa Trời hằng sống",
-      "Thầy giáo vĩ đại",
-      "Một vị tiên tri"
+      "Đấng tiên tri, Con Đức Chúa Trời hằng sống",
+      "Người Con, Đấng Mê-si của Đức Chúa Trời"
     ],
     "tags": [
       "Tân Ước",
@@ -906,14 +906,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Mat 18:22 - Tha thứ không có giới hạn. 70 lần 7 nghĩa là luôn luôn tha thứ.",
+    "explanation": "Ma-thi-ơ 18:22 cho biết Chúa Giê-su đáp: 'Ta không nói cùng ngươi rằng đến bảy lần đâu, nhưng đến bảy mươi lần bảy.' (70 lần 7). Câu này dạy về sự tha thứ không giới hạn, không phải là phép tính 490 lần. Distractor '7 lần 70 (giới hạn rộng)' sai vì đảo ngược thứ tự các con số (70 lần 7). Distractor '7 lần (số lần đủ)' sai vì đây là đề xuất ban đầu của Phi-e-rơ (câu 21), không phải câu trả lời của Chúa. Distractor '7 lần 7 (giới hạn cụ thể)' sai vì trích nhầm ý từ Cựu Ước (Sáng-thế Ký 4:24 nói về sự báo thù của Ca-in) hoặc hiểu sai phép tính, không phải lời dạy của Chúa Giê-su trong ngữ cảnh này.",
     "language": "vi",
     "verseEnd": 22,
     "options": [
       "70 lần 7 (không giới hạn)",
-      "100 lần",
-      "7 lần",
-      "3 lần"
+      "7 lần 70 (giới hạn rộng)",
+      "7 lần (số lần đủ)",
+      "7 lần 7 (giới hạn cụ thể)"
     ],
     "tags": [
       "Tân Ước",
@@ -1355,13 +1355,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ma-thi-ơ 6:14-15 — 'Vả, nếu các ngươi tha lỗi cho người ta, thì Cha các ngươi ở trên trời cũng sẽ tha thứ các ngươi. Song nếu không tha lỗi cho người ta, thì Cha các ngươi cũng sẽ không tha lỗi cho các ngươi.' Phân đoạn này, trong ngữ cảnh dạy về sự cầu nguyện, nhấn mạnh mối liên hệ thiết yếu giữa thái độ tha thứ của chúng ta với người khác và việc chúng ta nhận được sự tha thứ từ Cha.",
+    "explanation": "Ma-thi-ơ 6:14-15 viết: 'Vì nếu các ngươi tha lỗi cho người ta, thì Cha các ngươi ở trên trời cũng sẽ tha thứ các ngươi. Nhưng nếu các ngươi chẳng tha lỗi cho người ta, thì Cha các ngươi ở trên trời cũng sẽ chẳng tha lỗi cho các ngươi.' Đoạn Kinh Thánh này thiết lập một điều kiện rõ ràng: sự tha thứ của Đức Chúa Trời dành cho chúng ta có liên hệ trực tiếp với thái độ tha thứ của chúng ta đối với người khác. Do đó, đáp án đúng 'Chúng ta được tha thứ khi và chỉ khi chúng ta tha thứ cho người khác' là chính xác.\n\nCác đáp án sai được giải thích như sau:\n1. 'Chúng ta được tha thứ bất kể chúng ta có tha thứ cho người khác hay không' (common_misconception): Sai vì điều này trái ngược hoàn toàn với lời dạy rõ ràng trong câu Kinh Thánh, nơi nhấn mạnh điều kiện 'nếu'.\n2. 'Chúng ta được tha thứ vì chúng ta đã tha thứ cho người khác trước đó' (nearby_passage): Sai và là đáp án 'gần đúng' vì nó đúng về hành động tha thứ nhưng sai về bản chất mối quan hệ. Kinh Thánh nói đến một mối liên hệ điều kiện (khi và chỉ khi), không phải một mối quan hệ nhân quả đơn thuần hay thứ tự thời gian ('trước đó'), như thể hành động của chúng ta 'mua' được sự tha thứ của Đức Chúa Trời.\n3. 'Sự tha thứ của chúng ta cho người khác là tấm gương của sự tha thứ từ Cha trên trời' (true_but_off): Sai vì mặc dù ý tưởng này có thể đúng về mặt thần học hoặc được suy ra từ các phần Kinh Thánh khác, nó không trực tiếp trả lời câu hỏi về mối liên hệ 'được mô tả như thế nào' trong Ma-thi-ơ 6:14-15. Câu Kinh Thánh cụ thể này mô tả một điều kiện hỗ tương, không phải một phép so sánh hay hình ảnh 'tấm gương'.",
     "language": "vi",
     "options": [
-      "Phải dâng tế lễ",
-      "Phải đi đền thờ",
+      "Chúng ta được tha thứ bất kể chúng ta có tha thứ cho người khác hay không",
+      "Chúng ta được tha thứ vì chúng ta đã tha thứ cho người khác trước đó",
       "Chúng ta được tha thứ khi và chỉ khi chúng ta tha thứ cho người khác",
-      "Phải ăn năn nhiều lần"
+      "Sự tha thứ của chúng ta cho người khác là tấm gương của sự tha thứ từ Cha trên trời"
     ],
     "tags": [
       "Tân Ước",
@@ -1750,12 +1750,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ma-thi-ơ 12:31-32 — 'Mọi tội lỗi và lời nói phạm thượng của loài người sẽ được tha; song lời phạm thượng đến Đức Thánh Linh thì sẽ chẳng được tha đâu.'",
+    "explanation": "Ma-thi-ơ 12:31 chép: 'Ấy vậy, ta bảo các ngươi, các tội lỗi và lời phạm thượng của người ta đều sẽ được tha; nhưng lời phạm thượng đến Đức Thánh Linh thì sẽ chẳng được tha đâu.' Do đó, đáp án đúng là 'Lời phạm thượng đến Đức Thánh Linh' vì Kinh Thánh xác định đây là tội duy nhất không được tha. Distractor 'Lời phạm thượng đến Đức Chúa Cha' là gần đúng nhưng sai chi tiết then chốt, vì câu này chỉ đặc biệt nêu Đức Thánh Linh. Distractor 'Lời phạm thượng đến Đức Chúa Jesus' dựa trên ngữ cảnh gần (các câu trước nói về phạm thượng Con người), nhưng câu 31 chỉ rõ đối tượng là Đức Thánh Linh. Distractor 'Tội giết người có chủ ý' tuy là tội nghiêm trọng (Xuất Ê-díp-tô Ký 20:13) và không được tha trong một số ngữ cảnh Cựu Ước, nhưng lạc với câu hỏi cụ thể về Ma-thi-ơ 12:31, nơi chỉ đề cập tội phạm thượng.",
     "language": "vi",
     "options": [
-      "Tội giết người",
-      "Tội trộm cắp",
-      "Tội ngoại tình",
+      "Lời phạm thượng đến Đức Chúa Cha",
+      "Lời phạm thượng đến Đức Chúa Jesus",
+      "Tội giết người có chủ ý",
       "Lời phạm thượng đến Đức Thánh Linh"
     ],
     "tags": [
@@ -1963,13 +1963,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ma-thi-ơ 15:28 — 'Đức Chúa Jêsus phán rằng: Hỡi đàn bà kia, ngươi có đức tin lớn; việc phải xảy ra theo ý ngươi muốn! Cũng một giờ đó, con gái người liền được lành.'",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Đức tin lớn' (Ma-thi-ơ 15:28) — Câu 28 ghi rõ: 'Hỡi đàn bà kia, ngươi có đức tin lớn; việc phải xảy ra theo ý ngươi muốn!'. Đây là lời Chúa Jêsus trực tiếp khen ngợi bà.\n\nPHÂN TÍCH ĐÁP ÁN SAI:\n1. 'Sự thật lòng' (sai chi tiết) — Dù bà thể hiện lòng thành thật qua thái độ tôn kính ('Lạy Chúa, xin Chúa giúp tôi cùng!'), nhưng Chúa Jêsus không dùng cụm từ này để khen bà. Câu hỏi hỏi cụ thể về lời khen của Ngài.\n2. 'Sự nhận biết đúng' (hiểu lầm phổ biến) — Nhiều người nhớ rằng bà nhận biết Chúa là 'Con vua Đa-vít' (câu 22) và thừa nhận địa vị của dân Y-sơ-ra-ên ('mấy con chó nhỏ được ăn những mụn bánh từ bàn chủ nó rớt xuống', câu 27). Tuy đây là một phần trong cuộc đối thoại, nhưng Chúa Jêsus không khen bà bằng cụm từ 'sự nhận biết đúng'.\n3. 'Đức tin nhỏ' (đoạn văn gần) — Đây là phương án gần đúng (almost-right) nhưng sai chi tiết then chốt. Cụm từ 'đức tin nhỏ' xuất hiện trong Ma-thi-ơ 17:20, khi Chúa Jêsus nói về đức tin hạt cải. Trong đoạn này, Chúa Jêsus lại khen đức tin của bà là LỚN, trái ngược với 'nhỏ'.",
     "language": "vi",
     "options": [
-      "Đức tin nhỏ nhưng đủ",
-      "Đức tin trung bình",
+      "Sự thật lòng",
+      "Sự nhận biết đúng",
       "Đức tin lớn",
-      "Không đủ đức tin"
+      "Đức tin nhỏ"
     ],
     "tags": [
       "Tân Ước",
@@ -2359,13 +2359,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ma-thi-ơ 21:13 — 'Có lời chép: Nhà Ta sẽ gọi là nhà cầu nguyện; nhưng các ngươi thì làm cho nhà ấy thành ra ổ trộm cướp.'",
+    "explanation": "Câu hỏi hỏi về lời quở trách được trực tiếp ghi lại trong Ma-thi-ơ 21:13: 'Ngài phán cùng họ rằng: Có lời chép: Nhà ta sẽ được gọi là nhà cầu nguyện; nhưng các ngươi thì làm thành ổ trộm cướp.' Do đó, đáp án đúng là 'Ổ trộm cướp'.\n\nCác đáp án sai:\n1. 'Của tế lễ': Đây là đáp án 'gần đúng' nhưng sai chi tiết then chốt. Trong ngữ cảnh gần của sự kiện, Chúa Jêsus đánh đổ bàn của những người đổi bạc và ghế của kẻ bán bồ câu (câu 12), liên quan đến việc buôn bán vật tế lễ. Tuy nhiên, từ ngữ cụ thể trong lời quở trách là 'ổ trộm cướp', không phải 'của tế lễ'.\n2. 'Những kẻ kiêu ngạo': Đây là lỗi sai phạm vi. Dù Chúa Jêsus từng quở trách sự giả hình và kiêu ngạo của các thầy thông giáo và người Pha-ri-si trong các phân đoạn khác (ví dụ: Ma-thi-ơ 23), nhưng trong đoạn Kinh Thánh cụ thể này (21:12-13), lời quở trách trực tiếp là về việc biến nhà Chúa thành 'ổ trộm cướp'.\n3. 'Nơi hội họp ồn ào': Đây là một hiểu lầm phổ biến dựa trên ấn tượng về sự hỗn loạn tại nơi buôn bán, nhưng không phải là từ ngữ chính xác trong Kinh Thánh. Lời quở trách tập trung vào bản chất trộm cướp (tội lỗi, bóc lột), chứ không chỉ đơn thuần là sự ồn ào.",
     "language": "vi",
     "options": [
       "Ổ trộm cướp",
-      "Sàn bán hàng",
-      "Nhà tù",
-      "Tòa án"
+      "Của tế lễ",
+      "Những kẻ kiêu ngạo",
+      "Nơi hội họp ồn ào"
     ],
     "tags": [
       "Tân Ước",
@@ -2463,13 +2463,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ma-thi-ơ 24:14 — 'Tin Lành nầy về nước Đức Chúa Trời sẽ được giảng ra khắp đất, để làm chứng cho muôn dân. Bấy giờ sự cuối cùng sẽ đến.'",
+    "explanation": "Ma-thi-ơ 24:14 chép: 'Tin Lành nầy về nước Đức Chúa Trời sẽ được giảng ra khắp đất, để làm chứng cho muôn dân, rồi sự cuối cùng sẽ đến.' (BTT). ĐÁP ÁN ĐÚNG: 'Tin Lành về nước Đức Chúa Trời' là trích dẫn trực tiếp và chính xác từ câu Kinh Thánh cho câu hỏi.\n\nDISTRACTOR SAI và LÝ DO:\n1. 'Tin lành về sự xưng công bình': Đây là sai chi tiết (wrong_detail). Mặc dù 'sự xưng công bình' là một phần quan trọng trong thông điệp Cơ Đốc giáo (vd: Rô-ma 1:16-17), Ma-thi-ơ 24:14 không hề đề cập đến cụm từ này mà nói rõ là 'Tin Lành... về nước Đức Chúa Trời'.\n2. 'Tin lành về vương quốc loài người': Đây là phạm vi sai (wrong_scope) và là phương án 'gần đúng'. Nó chỉ sai một chi tiết then chốt: thay thế 'Đức Chúa Trời' bằng 'loài người'. Ma-thi-ơ 24:14 nhấn mạnh vương quốc (nước) thuộc về Đức Chúa Trời, không phải loài người.\n3. 'Tin lành đã được hoàn tất': Đây là một hiểu lầm phổ biến (common_misconception) về thời điểm. Ma-thi-ơ 24:14 nói đến việc Tin Lành 'sẽ được giảng ra' như một điều kiện trước khi sự cuối cùng đến, ngụ ý một quá trình chưa hoàn tất, chứ không khẳng định nó 'đã được hoàn tất'.",
     "language": "vi",
     "options": [
-      "Sự khôn ngoan loài người",
-      "Luật pháp Môi-se",
+      "Tin lành về sự xưng công bình",
+      "Tin lành về vương quốc loài người",
       "Tin Lành về nước Đức Chúa Trời",
-      "Lời cầu nguyện"
+      "Tin lành đã được hoàn tất"
     ],
     "tags": [
       "Tân Ước",
@@ -2569,13 +2569,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ma-thi-ơ 25:40 — 'Quả thật, ta nói cùng các ngươi, hễ các ngươi đã làm việc đó cho một người trong những anh em rất nhỏ nầy của Ta, ấy là đã làm cho chính mình Ta vậy.'",
+    "explanation": "Ma-thi-ơ 25:40 ghi: 'Vua sẽ trả lời rằng: Quả thật, ta nói cùng các ngươi, hễ các ngươi đã làm việc đó cho một người trong những anh em rất nhỏ nầy của ta, ấy là đã làm cho chính mình ta vậy.' Đáp án đúng là 'Rất nhỏ nầy của Ta', vì Chúa Giê-su trực tiếp xác định những người đó thuộc về Ngài.\n\nDistractor 'Rất nhỏ nầy của Cha' (sai chi tiết) sai vì trong ngữ cảnh cụ thể này, Chúa Giê-su không dùng từ 'Cha' để chỉ mối liên hệ với những người nhỏ bé, mà là 'của ta'.\nDistractor 'Rất nhỏ nầy của các ngươi' (sai phạm vi) sai vì nó thu hẹp đối tượng vào phạm vi của những người đang nghe, trong khi ý của câu Kinh Thánh là những người thuộc về Chúa.\nDistractor 'Rất nhỏ nầy của chúng nó' (hiểu lầm phổ biến) sai vì có thể do người đọc liên tưởng đến người ngoài hoặc nhóm người khác, nhưng bản văn nhấn mạnh mối liên hệ trực tiếp giữa những người nhỏ bé này với Chúa.",
     "language": "vi",
     "options": [
-      "Lớn nhất nầy",
-      "Trung bình nầy",
+      "Rất nhỏ nầy của Cha",
+      "Rất nhỏ nầy của các ngươi",
       "Rất nhỏ nầy của Ta",
-      "Sang trọng nhất nầy"
+      "Rất nhỏ nầy của chúng nó"
     ],
     "tags": [
       "Tân Ước",
@@ -3051,13 +3051,13 @@
     ],
     "verseEnd": 33,
     "content": "Ma-thi-ơ 22 ghi lại các cuộc đối thoại khi các nhóm tôn giáo gài bẫy Chúa Jêsus. Người Sa-đu-sê hỏi điều gì?",
-    "explanation": "Ma-thi-ơ 22:23-28 — Sa-đu-sê (không tin sự sống lại) hỏi câu hỏi giả thiết về 'người đàn bà 7 lần chồng' để bài bác sự sống lại. Pha-ri-si hỏi về thuế Sê-sa (22:15-22) và một thầy dạy luật hỏi về điều răn lớn nhất (22:34-40).",
+    "explanation": "Trong Ma-thi-ơ 22:23-33, người Sa-đu-sê (một nhóm không tin sự sống lại) đã đưa ra tình huống về một người đàn bà theo luật kế tự kết hôn lần lượt với bảy anh em, rồi qua đời. Họ hỏi: 'Vậy đến lúc sống lại, người đàn bà đó sẽ là vợ ai trong bảy người?' (câu 28). Câu hỏi này nhằm gài bẫy, chế nhạo niềm tin về sự sống lại.\n\nĐÁP ÁN ĐÚNG: 'Người đàn bà bảy lần chồng, khi sống lại sẽ là vợ ai' chính xác tóm tắt câu hỏi của họ.\n\nDISTRACTOR 1 (Người đàn bà... sẽ trở về với chồng đầu tiên): Đây là distractor 'gần đúng' (gần 90% đúng). Tình huống Kinh Thánh mô tả người đàn bà lấy cả bảy anh em, nhưng không hề có chi tiết nào chỉ định khi sống lại, bà sẽ thuộc về chồng đầu tiên. Đây là một chi tiết sai được thêm vào.\n\nDISTRACTOR 2 (Chúa Jêsus có phải là Đấng Christ...): Đây là nội dung đúng (xem Ma-thi-ơ 22:41-46) nhưng được hỏi bởi người Pha-ri-si sau đó, hoàn toàn lạc với câu hỏi của người Sa-đu-sê trong đoạn 22:23-33.\n\nDISTRACTOR 3 (Nên nộp thuế cho Sê-sa hay không): Đây là câu hỏi gài bẫy khác, được người Pha-ri-si hỏi Chúa Jêsus trong cùng chương 22 (câu 15-22), không phải là câu hỏi của người Sa-đu-sê.",
     "language": "vi",
     "options": [
-      "Có nên nộp thuế cho Sê-sa hay không nộp",
-      "Quyền phép nào cho phép Ngài làm các việc trong đền thờ",
+      "Người đàn bà bảy lần chồng, khi sống lại sẽ trở về với chồng đầu tiên",
+      "Chúa Jêsus có phải là Đấng Christ, Con Đức Chúa Trời không",
       "Người đàn bà bảy lần chồng, khi sống lại sẽ là vợ ai",
-      "Điều răn lớn nhất trong cả luật pháp Môi-se là điều nào"
+      "Nên nộp thuế cho Sê-sa hay không"
     ],
     "tags": [
       "Tân Ước",
@@ -3271,13 +3271,13 @@
     ],
     "verseEnd": 8,
     "content": "Ma-thi-ơ 12:8 — Chúa Jêsus tuyên bố: 'Con người là Chúa của ngày Sa-bát'. Tuyên bố này hàm ý điều gì về thẩm quyền của Ngài?",
-    "explanation": "Ma-thi-ơ 12:1-8 — Pha-ri-si trách môn đồ bứt bông lúa ngày Sa-bát. Chúa đáp bằng tiền lệ Đa-vít ăn bánh trần thiết và lao động của thầy tế lễ trong đền thờ. 'Lord of the Sabbath' = thẩm quyền tối thượng giải nghĩa, không phải hủy bỏ.",
+    "explanation": "Ma-thi-ơ 12:8 ghi lại lời trực tiếp của Chúa Jêsus: 'Vì Con người là Chúa của ngày Sa-bát.' Trong văn mạch (câu 1-8), Chúa Jêsus không phủ nhận ngày Sa-bát nhưng đang minh họa thẩm quyền của Ngài để giải thích đúng và áp dụng tinh thần thật của luật pháp (đáp án đúng).\n- Distractor 1 SAI: Lỗi 'wrong_detail'. Câu hàn ý rằng Ngài là 'Chúa' (chủ nhân) của chính ngày Sa-bát, chứ không phải là người có thẩm quyền cao nhất trong nhóm môn đồ về ngày này. Điều này sai về chi tiết bản chất thẩm quyền.\n- Distractor 2 SAI: Lỗi 'wrong_scope'. Câu mở rộng phạm vi thẩm quyền sang việc thiết lập một ngày Sa-bát mới thay thế. Trong toàn bộ phân đoạn, Chúa Jêsus không đề cập việc thay thế hay lập ra một ngày mới, mà là quyền giải thích và áp dụng luật hiện có. Sai về phạm vi chức năng.\n- Distractor 3 SAI: Lỗi 'common_misconception'. Đây là một hiểu lầm phổ biến (gần đúng ~90%) rằng Chúa Jêsus chỉ có thẩm quyền giảng dạy lý thuyết. Tuy nhiên, lời tuyên bố 'là Chúa của ngày Sa-bát' hàm ý quyền giải thích VÀ áp dụng thực tế (như minh họa qua sự kiện môn đồ đói bứt lúa để ăn). Vì vậy, distractor này đúng về một nửa chức năng (giảng giải) nhưng sai khi tước bỏ quyền áp dụng, là chi tiết then chốt của đáp án đúng.",
     "language": "vi",
     "options": [
       "Ngài có thẩm quyền tối thượng giải thích đúng và áp dụng luật ngày Sa-bát",
-      "Ngài đã hủy bỏ hoàn toàn ngày Sa-bát; môn đồ không cần giữ nữa",
-      "Ngài chỉ có thẩm quyền chữa bệnh trong ngày Sa-bát mà thôi",
-      "Ngài đặt một ngày Sa-bát mới hoàn toàn khác ngày Sa-bát cũ"
+      "Ngài có thẩm quyền thức nhất trong số các môn đồ về ngày Sa-bát",
+      "Ngài có thẩm quyền lập ra ngày Sa-bát mới để thay thế ngày Sa-bát cũ",
+      "Ngài chỉ có thẩm quyền giảng giải luật ngày Sa-bát chứ không được áp dụng"
     ],
     "tags": [
       "Tân Ước",
@@ -3407,13 +3407,13 @@
     ],
     "verseEnd": 17,
     "content": "Theo Ma-thi-ơ 3:17 (RVV11), tiếng từ trời phán khi Chúa Jêsus chịu báp-têm là gì?",
-    "explanation": "Ma-thi-ơ 3:17 — 'Nầy là Con yêu dấu của ta, đẹp lòng ta mọi đường'. Phương án 'Hãy nghe lời người' là tiếng phán tại Sự Hóa Hình (17:5), KHÁC với báp-têm. 'Hôm nay ta đã sanh ra ngươi' là Thi Thiên 2:7 (Lu-ca có dị bản, không phải Ma-thi-ơ).",
+    "explanation": "Trong Ma-thi-ơ 3:17 (RVV11), tiếng từ trời phán: 'Nầy là Con yêu dấu của ta, đẹp lòng ta mọi đường'.\n\n- Đáp án đúng đúng vì trích nguyên văn từ Kinh Thánh.\n\n- Distractor 1 sai vì dùng từ 'mọi phần', trong khi nguyên văn là 'mọi đường'. Đây là một sai chi tiết nhỏ, tạo thành đáp án 'gần đúng'.\n- Distractor 2 sai vì đây là một mẫu câu trích từ các phân đoạn khác (ví dụ: Ê-phê-sô 1, nói về sự chọn sẵn), không phải từ sự kiện báp-têm. Nó thuộc nhầm passage gần.\n- Distractor 3 sai vì nó phản ánh một hiểu lầm phổ biến – nghĩ rằng Đức Chúa Cha tuyên bố một mục đích cụ thể hoặc sự định trước, trong khi nguyên văn chỉ tuyên bố sự hài lòng của Ngài.",
     "language": "vi",
     "options": [
       "'Nầy là Con yêu dấu của ta, đẹp lòng ta mọi đường'",
-      "'Hôm nay ta đã sanh ra ngươi; hãy xin ta, ta sẽ ban các nước'",
-      "'Hãy nghe lời người, đây là Con yêu dấu của ta'",
-      "'Ngươi là Đấng Mê-si-a, Con của Đức Chúa Trời hằng sống'"
+      "'Nầy là Con yêu dấu của ta, đẹp lòng ta mọi phần'",
+      "'Nầy là Con yêu dấu của ta, đẹp lòng ta mọi phận'",
+      "'Nầy là Con yêu dấu của ta, ta đã định sẵn điều này'"
     ],
     "tags": [
       "Tân Ước",
@@ -4221,13 +4221,13 @@
     ],
     "verseEnd": 39,
     "content": "Theo Ma-thi-ơ 26:39, lời cầu nguyện của Chúa Jêsus tại vườn Ghết-sê-ma-nê là gì?",
-    "explanation": "Ma-thi-ơ 26:39 — 'Rồi Ngài bước tới một ít, sấp mặt xuống đất mà cầu nguyện rằng: Cha ơi! nếu có thể được, xin cho chén nầy lìa khỏi Con! Song không theo ý muốn Con, mà theo ý muốn Cha'. Đây là cầu nguyện thứ nhất; Ngài cầu 3 lần (26:42, 44).",
+    "explanation": "Ma-thi-ơ 26:39 chép: 'Ngài bèn bước tới một ít, sấp mặt xuống đất mà cầu nguyện rằng: Cha ôi! nếu có thể được, xin cho chén nầy lìa khỏi Con! Song không theo ý muốn Con, mà theo ý muốn Cha.' Đây là lời cầu nguyện trực tiếp của Chúa Jêsus trong bối cảnh Ngài đối diện sự thương khó sắp đến, thể hiện sự vâng phục trọn vẹn ý muốn của Đức Chúa Trời.\n\n- **Distractor 1 sai** vì đảo ngược ý chính: thay vì 'theo ý muốn Cha', nó ghi 'theo ý muốn Con', làm thay đổi hoàn toàn ý nghĩa của sự vâng phục. Đây là lỗi sai chi tiết then chốt.\n- **Distractor 2 sai** vì đó là lời cầu nguyện của Chúa Jêsus trên thập tự giá (Lu-ca 23:34), không phải lời cầu nguyện tại vườn Ghết-sê-ma-nê. Đây là lỗi nhầm passage gần.\n- **Distractor 3 sai** vì trộn lẫn ý từ lời cầu nguyện chung trong Kinh Thánh (như Ma-thi-ơ 6:10) và áp dụng sai ngữ cảnh cho Chúa Jêsus trong vườn Ghết-sê-ma-nê. Đây là một hiểu lầm phổ biến.",
     "language": "vi",
     "options": [
-      "'Cha ôi, xin tha tội cho họ, vì họ không biết mình làm gì'",
-      "'Cha ôi, sao Cha bỏ tôi? Sao Cha quên tôi trong giờ khốn khó?'",
+      "'Cha ôi! nếu có thể được, xin cho chén nầy lìa khỏi Con! Song không theo ý muốn Cha, mà THEO Ý MUỐN CON'",
+      "'Cha ôi! xin tha thứ cho họ, vì họ không biết mình làm điều gì'",
       "'Cha ôi! nếu có thể được, xin cho chén nầy lìa khỏi Con! Song không theo ý muốn Con, mà THEO Ý MUỐN CHA'",
-      "'Cha ôi, hãy đoán phạt kẻ thù của Con đang vây quanh đây'"
+      "'Cha ôi! xin cho ý muốn của Con được nên trên đất như trên trời'"
     ],
     "tags": [
       "Tân Ước",
@@ -4275,13 +4275,13 @@
     ],
     "verseEnd": 7,
     "content": "Theo Ma-thi-ơ 28:5-7, lời thiên sứ phán cho các phụ nữ tại ngôi mộ trống là gì?",
-    "explanation": "Ma-thi-ơ 28:5-7 — 'Thiên sứ nói cùng đàn bà rằng: Các ngươi đừng sợ chi cả; vì ta biết các ngươi tìm Đức Chúa Jêsus là Đấng bị đóng đinh trên thập tự giá. Ngài không ở đây đâu; Ngài sống lại rồi, như lời Ngài đã phán. Hãy đến xem chỗ Ngài đã nằm; và đi mau nói cho môn đồ Ngài hay rằng Ngài đã từ kẻ chết sống lại'.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Đừng sợ chi cả; vì ta biết các ngươi tìm Đức Chúa Jêsus là Đấng bị đóng đinh trên thập tự giá. NGÀI KHÔNG Ở ĐÂY ĐÂU; NGÀI SỐNG LẠI rồi' (Ma-thi-ơ 28:5-6). Câu hỏi hỏi cụ thể lời thiên sứ phán, và đây là nội dung trực tiếp từ các câu 5-6.\n\nCÁC ĐÁP ÁN SAI:\n1. Distractor 'Đừng sợ... Hãy đến xem chỗ Ngài đã nằm.' (gần đúng) có lỗi 'nearby_passage'. Lời mời 'Hãy đến xem...' có thật (câu 6), nhưng phần kết 'NGÀI KHÔNG Ở ĐÂY ĐÂU; NGÀI SỐNG LẠI rồi' bị thiếu, làm thay đổi ý nghĩa chính yếu của thông điệp.\n2. Distractor '...Ngài đã sống lại, và đã sống lại cho các ngươi.' có lỗi 'wrong_detail'. Việc lặp lại 'đã sống lại' và thêm cụm 'cho các ngươi' không có trong Kinh Thánh, đây là một chi tiết bịa đặt.\n3. Distractor 'Đức Chúa Jêsus đã phán trước...' có lỗi 'true_but_off'. Mặc dù đúng rằng Chúa Jêsus đã phán trước về sự sống lại và thiên sứ bảo đi báo tin, nhưng cách diễn đạt này không phải là lời trích dẫn trực tiếp của thiên sứ cho các phụ nữ tại ngôi mộ.",
     "language": "vi",
     "options": [
       "'Đừng sợ chi cả; vì ta biết các ngươi tìm Đức Chúa Jêsus là Đấng bị đóng đinh trên thập tự giá. NGÀI KHÔNG Ở ĐÂY ĐÂU; NGÀI SỐNG LẠI rồi'",
-      "'Hãy chạy đến cho Phi-lát biết Chúa đã sống lại để ông ta có thể hối lỗi'",
-      "'Hãy đi tìm thân thể Chúa trong vườn vì người ta đã đem đi giấu chỗ khác'",
-      "'Đừng nói với ai về việc này, hãy giữ bí mật để không bị bắt'"
+      "'Đừng sợ chi cả; vì ta biết các ngươi tìm Đức Chúa Jêsus là Đấng bị đóng đinh trên thập tự giá. Hãy đến xem chỗ Ngài đã nằm.'",
+      "'Đừng sợ chi cả; vì ta biết các ngươi tìm Đức Chúa Jêsus là Đấng bị đóng đinh trên thập tự giá. Ngài đã sống lại, và đã sống lại cho các ngươi.'",
+      "'Đức Chúa Jêsus đã phán trước rằng Ngài sẽ sống lại. Hãy đi báo cho các môn đồ rằng Ngài không còn ở đây.'"
     ],
     "tags": [
       "Tân Ước",

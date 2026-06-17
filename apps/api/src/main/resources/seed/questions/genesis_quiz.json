@@ -1536,15 +1536,15 @@
     "type": "multiple_choice_single",
     "content": "Trong hai con trai sinh đôi của Giu-đa và Ta-ma, ai thò tay ra trước nhưng lại sinh sau?",
     "options": [
-      "Phê-rết",
+      "Pha-rết",
       "Sê-rách",
-      "Xê-la",
-      "Hê-rơ"
+      "Ê-nóc",
+      "Hết-lôn"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 38:28-30 — Khi sinh, một đứa thò tay ra, bà mụ buộc sợi chỉ đỏ, nhưng rút tay lại; đứa kia sinh ra trước. Đứa sinh trước được đặt tên là Phê-rết, đứa sinh sau có sợi chỉ đỏ là Sê-rách.",
+    "explanation": "Câu hỏi dựa vào Sáng-thế Ký 38:27-30. Khi Ta-ma sinh đôi, một đứa thò tay ra trước, bà mụ cột chỉ đỏ vào tay nó và đặt tên là Sê-rách (câu 28). Tuy nhiên, đứa này rút tay lại, và em nó lại ra trước. Bà mụ nói: 'Sao ngươi xé lấn như vậy?' nên đứa em được đặt tên là Pha-rết (câu 29). Cuối cùng, đứa có chỉ đỏ ở tay mới sinh sau và được đặt tên là Sê-rách (câu 30). Vì vậy, đứa 'thò tay ra trước nhưng lại sinh sau' chính là Sê-rách.\n\nCác đáp án sai:\n- 'Pha-rết' (nearby_passage): Là em sinh đôi, nhưng là người thực sự sinh ra trước (câu 29), không phải người thò tay ra trước rồi sinh sau.\n- 'Ê-nóc' (common_misconception): Là một tên phổ biến trong Sáng-thế Ký (vd: con trai của Ca-in, con trai của Gia-rết), nhưng không liên quan đến câu chuyện sinh đôi của Giu-đa và Ta-ma trong chương 38.\n- 'Hết-lôn' (wrong_detail): Là con trai của Giu-đa với con gái của Sua (Sáng-thế Ký 38:3-5), anh trai của hai đứa sinh đôi, không phải là một trong hai đứa trẻ sinh đôi được đề cập trong câu hỏi.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1644,7 +1644,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 41:29-30 — 'Sẽ có bảy năm được mùa lớn trong toàn cõi Ai-cập. Nhưng sau đó sẽ có bảy năm đói kém.'",
+    "explanation": "Trong Sáng Thế Ký 41:29-30, Giô-sép giải thích giấc mơ của Pha-ra-ôn: 'Hãy nghe lời giải nghĩa. Bảy con bò mập tốt đó là bảy năm; bảy gié lúa chắc tốt đó cũng là bảy năm: ấy chỉ đồng một giấc mơ vậy. Kế sau lại có bảy con bò khác xấu dữ gầy guộc lên theo, ấy là bảy năm; và bảy gié lúa lép cùng bị gió đông cháy héo đi, ấy là bảy năm đói kém.' Đoạn này xác định rõ thứ tự và bản chất: bảy năm được mùa sẽ đến trước, rồi mới đến bảy năm đói kém.\n\n- Đáp án đúng: 'Bảy năm được mùa rồi bảy năm đói kém' khớp chính xác với mô tả trong Kinh Thánh.\n- Distractor 1 (Bảy năm đói kém rồi bảy năm được mùa) sai vì đảo ngược thứ tự then chốt được nêu rõ trong câu 30.\n- Distractor 2 (Bảy năm được mùa rồi bảy năm chiến tranh) sai vì thay thế 'đói kém' bằng một tai họa khác không được nhắc đến trong đoạn Kinh Thánh này (phạm vi sai).\n- Distractor 3 (Một năm được mùa và một năm đói kém) sai vì thay đổi con số 'bảy năm' thành 'một năm', đây là một sự hiểu lầm phổ biến về quy mô thời gian của lời tiên tri.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1654,10 +1654,10 @@
       "Trung cấp"
     ],
     "options": [
-      "Bảy năm chiến tranh liên tiếp",
+      "Bảy năm đói kém rồi bảy năm được mùa",
       "Bảy năm được mùa rồi bảy năm đói kém",
-      "Mười năm phước lành",
-      "Hai năm hạn hán"
+      "Bảy năm được mùa rồi bảy năm chiến tranh",
+      "Một năm được mùa và một năm đói kém"
     ]
   },
   {
@@ -1749,14 +1749,14 @@
     "content": "Giô-sép sai giấu chiếc ___ bạc trong bao lương thực của Bên-gia-min.",
     "options": [
       "cốc",
-      "kiếm",
-      "dĩa",
-      "nhẫn"
+      "thỏi",
+      "chai",
+      "túi"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Sáng thế ký 44:2 — 'Hãy để chiếc cốc bạc của ta vào miệng bao lương thực của đứa út.' Đây là kế hoạch thử lòng các anh em.",
+    "explanation": "Trong Sáng Thế Ký 44:2, Giô-sép truyền lệnh: 'Hãy đặt cái cốc bạc của ta ở miệng bao của đứa nhỏ nhất'. Đáp án đúng là 'cốc' vì đây là dụng cụ uống nước cụ thể được nhắc đến trong đoạn văn. Distractor 'thỏi' sai vì một thỏi bạc là kim loại nguyên khối, không phải vật dụng được dùng để uống nước. Distractor 'chai' là một lỗi hiểu lầm phổ biến; mặc dù là vật chứa, chai thường làm bằng thủy tinh hoặc gốm, không phải là chiếc cốc bằng bạc được mô tả. Distractor 'túi' đúng là một vật chứa được nhắc đến trong câu chuyện (bao lương thực), nhưng nó lạc đề với câu hỏi vì câu hỏi hỏi về vật được GIẤU TRONG bao, chứ không phải bản thân cái bao.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -2460,13 +2460,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng Thế Ký 35:18 — 'Trong cơn hấp hối, nàng đặt tên đứa con trai là Bên-Ô-ni; còn cha nó lại đặt tên là Bên-gia-min.'",
+    "explanation": "Trong Sáng-thế Ký 35:18, khi sắp qua đời, Ra-chên đặt tên cho con trai là Bên-Ô-ni (có nghĩa 'con trai của sự đau đớn tôi'), nhưng Gia-cốp, cha của đứa trẻ, đã đổi tên con là Bên-gia-min (có nghĩa 'con trai của tay hữu tôi' hoặc 'con trai của những ngày may mắn'). Do đó, đáp án 'Bên-gia-min' là chính xác. Distractor 'Bên-Ô-ni' là tên mẹ đặt, không phải tên cha đặt, nên sai dù thông tin có trong câu Kinh Thánh. 'Bên-gia-ram' là tên sai, không xuất hiện trong ngữ cảnh này. 'Bên-gia-kim' là một tên gần giống nhưng sai chi tiết, có thể gây nhầm lẫn với các nhân vật khác trong Kinh Thánh.",
     "language": "vi",
     "options": [
-      "Giô-sép",
+      "Bên-Ô-ni",
       "Bên-gia-min",
-      "Đan",
-      "Lê-vi"
+      "Bên-gia-ram",
+      "Bên-gia-kim"
     ],
     "tags": [
       "Cựu Ước",
@@ -3209,13 +3209,13 @@
     ],
     "verseEnd": 16,
     "content": "Theo Sáng 14, sự kiện gì xảy ra khiến Áp-ram phải dẫn 318 người nhà tinh nhuệ ra trận?",
-    "explanation": "Sáng 14:11-16 — Bốn vua phương Đông (do Kết-rô-Lao-me dẫn đầu) cướp bóc Sô-đôm và Gô-mô-rơ, bắt Lót cùng tài sản đem đi (c.12). Khi Áp-ram nghe tin, ông dẫn 318 người nhà tinh nhuệ rượt theo đến tận Đan và giải cứu (c.14-16).",
+    "explanation": "ĐÁP ÁN ĐÚNG: \"Bốn vua Ê-lam liên minh bắt Lót và tài sản đem đi khỏi Sô-đôm\" là chính xác vì Sáng-thế ký 14:14-16 (BTT) chép rằng khi Áp-ram nghe tin người anh em mình (Lót) bị bắt, ông đã dẫn 318 người nhà tinh nhuệ đuổi theo. Sự kiện dẫn đến điều này là việc bốn vua phương Đông, do Kết-rô-Lao-me vua Ê-lam dẫn đầu, đánh bại các vua Sô-đôm và đồng minh, bắt giữ tù binh và cướp tài sản, trong đó có Lót (Sáng 14:1-12).\n\nGIẢI THÍCH CÁC ĐÁP ÁN SAI:\n1. \"Ba vua Cửa sông liên minh bắt Lót...\": Sai chi tiết. Đây là distractor gần đúng (~90% đúng) nhưng sai một chi tiết then chốt: số lượng là bốn vua chứ không phải ba, và liên minh do vua Ê-lam (phương Đông) cầm đầu, không phải \"Cửa sông\" (một tên gọi khác cho Si-nê-a, nhưng không phải là tên liên minh trong ngữ cảnh này).\n2. \"Dân Sô-đôm và Gô-mô-rơ làm loạn...\": Sai phạm vi. Sự kiện này không xảy ra trong Sáng 14. Nó có thể gây nhầm lẫn với các xung đột khác trong Sáng-thế ký (như Sáng 13, 19) nhưng không phải là nguyên nhân khiến Áp-ram phải ra trận trong chương 14.\n3. \"Áp-ram tranh chấp quyền chăn thả với Lót...\": Hiểu lầm phổ biến. Đây là sự kiện xảy ra trong Sáng 13:5-12 (Áp-ram và Lót chia tay vì đất đai), không phải nguyên nhân dẫn đến việc Lót bị bắt trong chương 14. Người đọc có thể nhầm lẫn giữa hai sự kiện này.",
     "language": "vi",
     "options": [
-      "Pha-ra-ôn Ai-cập tấn công vùng đất Áp-ram đang sống cùng vợ con",
-      "A-bi-mê-léc vua Ghê-ra cướp bò chiên của Áp-ram tại Bê-e-Sê-ba",
+      "Ba vua Cửa sông liên minh bắt Lót và tài sản đem đi khỏi Sô-đôm",
+      "Dân Sô-đôm và Gô-mô-rơ làm loạn, bắt Lót và tài sản đem đi khỏi thành",
       "Bốn vua Ê-lam liên minh bắt Lót và tài sản đem đi khỏi Sô-đôm",
-      "Người Hê-tít tấn công đoàn của Sa-rai khi bà đi lấy nước"
+      "Áp-ram tranh chấp quyền chăn thả với Lót, khiến Lót bị bắt và tài sản bị cướp"
     ],
     "tags": [
       "Cựu Ước",
@@ -3236,13 +3236,13 @@
     ],
     "verseEnd": 5,
     "content": "Đức Chúa Trời lặp lại lời hứa về dòng dõi Áp-ra-ham 'đông như ___' trong Sáng 15:5 và sau này thêm 'như cát bờ biển' trong Sáng 22:17. Hình ảnh đầu tiên là gì?",
-    "explanation": "Sáng 15:5 — 'Hãy ngó lên trời, và nếu ngươi đếm được các ngôi sao thì hãy đếm đi... Dòng dõi ngươi cũng sẽ như vậy'. Sáng 22:17 thêm 'như cát bờ biển' sau khi Áp-ra-ham vâng phục dâng Y-sác.",
+    "explanation": "Trong Sáng Thế Ký 15:5, Đức Chúa Trời phán với Áp-ra-ham: '... Hãy ngước mắt lên trời và đếm các ngôi sao, nếu đếm được. ... Dòng dõi ngươi cũng sẽ như vậy.' Vì thế, đáp án đúng là 'Như sao trên trời'. Phương án 'Như số chiên gia súc' dẫn đến cảnh tượng khác trong phân đoạn; ở đây Đức Chúa Trời hứa về dòng dõi chứ không nói về tài sản. Phương án 'Như hạt lúa mì' xuất phát từ sự lầm lẫn phổ biến về các hình ảnh dòng dõi trong Kinh Thánh, nhưng không xuất hiện trong ngữ cảnh này. Phương án 'Như những kẻ xung quanh trại' gần đúng vì bối cảnh câu chuyện là Áp-ra-ham đang ở trong trại, nhưng đây chỉ là chi tiết phụ, không phải lời hứa so sánh về số lượng dòng dõi.",
     "language": "vi",
     "options": [
-      "Như cây cối trong rừng",
+      "Như số chiên gia súc",
       "Như sao trên trời",
-      "Như muối của biển",
-      "Như châu chấu trên cánh đồng"
+      "Như hạt lúa mì",
+      "Như những kẻ xung quanh trại"
     ],
     "tags": [
       "Cựu Ước",
@@ -3862,13 +3862,13 @@
     ],
     "verseEnd": 18,
     "content": "Theo Sáng 2:18 (RVV11), Đức Chúa Trời phán: 'Loài người ở một mình thì không tốt; ta sẽ làm nên một ___ cho người'.",
-    "explanation": "Sáng 2:18 — 'Loài người ở một mình thì không tốt; ta sẽ làm nên một kẻ giúp đỡ giống như nó'. 'Kẻ giúp đỡ' (ezer) là từ Kinh Thánh dùng cả cho Đức Chúa Trời (Thi 33:20) — không hàm ý kém cấp.",
+    "explanation": "Sáng Thế Ký 2:18 ghi: 'Giê-hô-va Đức Chúa Trời phán: Loài người ở một mình thì không tốt; ta sẽ làm nên một kẻ giúp đỡ giống như nó.' (RVV11). Đáp án đúng trích nguyên văn 'kẻ giúp đỡ giống như nó' (giống như nó' là cụm từ then chốt).\n\n- Distractor 'kẻ giúp đỡ khác với nó' sai vì thay đổi chi tiết then chốt 'giống như' thành 'khác với', trái với ý chỉ một người tương xứng, đồng loại.\n- Distractor 'kẻ giúp đỡ cho muôn loài' sai vì mở rộng phạm vi sai: câu Kinh Thánh chỉ nói làm người giúp đỡ cho A-đam, không phải cho muôn loài.\n- Distractor 'kẻ giúp đỡ từ bụi đất' sai vì nhầm sang chi tiết của câu 19 (tạo thú vật từ đất) hoặc câu 7 (tạo A-đam từ bụi đất), không phải mô tả trong câu 18.",
     "language": "vi",
     "options": [
       "kẻ giúp đỡ giống như nó",
-      "tôi tớ trung thành phục vụ",
-      "đầy tớ làm việc đồng áng",
-      "bạn thân để chuyện trò"
+      "kẻ giúp đỡ khác với nó",
+      "kẻ giúp đỡ cho muôn loài",
+      "kẻ giúp đỡ từ bụi đất"
     ],
     "tags": [
       "Cựu Ước",

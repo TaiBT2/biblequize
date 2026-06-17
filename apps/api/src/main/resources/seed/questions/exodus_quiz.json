@@ -88,7 +88,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Xuất Hành 2:10 — 'Công chúa đặt tên đứa trẻ là Môi-se, vì nói rằng: Ta đã vớt nó lên khỏi nước.'",
+    "explanation": "Xuất Ê-díp-tô ký 2:10 viết: 'Vì nàng vớt nó khỏi nước, nên đặt tên là Môi-se, mà nói rằng: Ta đã vớt nó khỏi nước.' Do đó, tên Môi-se được đặt trực tiếp vì hành động 'vớt nó lên khỏi nước'.\n\nPhương án 1 sai vì mặc dù đúng là bà tìm thấy đứa bé trong đám sậy (2:5-6), chi tiết này không phải lý do đặt tên được ghi nhận trong câu 10.\nPhương án 2 sai vì Kinh Thánh ghi đứa bé khóc (2:6), nhưng đó không phải là lý do cho tên gọi Môi-se.\nPhương án 3 sai vì mặc dù có thể phù hợp với bối cảnh lịch sử, chi tiết này hoàn toàn không được đề cập trong phân đoạn Kinh Thánh này và không liên quan đến nguyên do đặt tên.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -99,9 +99,9 @@
     ],
     "options": [
       "Vì bà đã vớt nó lên khỏi nước",
-      "Vì đứa bé thông minh",
-      "Vì truyền thống dòng dõi",
-      "Vì lệnh của vua"
+      "Vì bà thấy đứa bé nằm trong đám sậy bờ sông",
+      "Vì đứa bé đã khóc khi bà nhìn thấy nó",
+      "Vì đó là thời kỳ của triều đại Hatshepsut"
     ]
   },
   {
@@ -325,15 +325,15 @@
     "type": "multiple_choice_single",
     "content": "Đức Chúa Trời phán rằng Ngài đã hiện ra với Áp-ra-ham, Y-sác và Gia-cốp bằng danh nào?",
     "options": [
-      "Đấng Chí Cao",
-      "Đức Giê-hô-va",
+      "Đức Chúa Trời Hằng Sống",
+      "Đấng Giải Cứu",
       "Đức Chúa Trời Toàn Năng",
-      "Đấng Tự Hữu Hằng Hữu"
+      "Đức Chúa Trời của Giao Ước"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 6:3 — 'Ta đã hiện ra cùng Áp-ra-ham, Y-sác, và Gia-cốp với danh Đức Chúa Trời Toàn Năng, nhưng Ta chưa cho họ biết danh Ta là Giê-hô-va.'",
+    "explanation": "Câu hỏi tham chiếu Xuất Ê-díp-tô Ký 6:3. Trong câu này, Đức Chúa Trời phán với Môi-se: 'Ta đã hiện ra cùng Áp-ra-ham, Y-sác, và Gia-cốp với danh Đức Chúa Trời Toàn Năng (Ên-bê-sa-đai).' Do đó, đáp án đúng là 'Đức Chúa Trời Toàn Năng'. Các đáp án sai: (1) 'Đức Chúa Trời Hằng Sống' là một tên gọi hợp Kinh Thánh nhưng không phải là danh được nhắc đến trong Xuất Ê-díp-tô 6:3 (có thể bị nhầm với các phân đoạn khác). (2) 'Đấng Giải Cứu' là một chức vụ hoặc thuộc tính của Đức Chúa Trời, nhưng đây không phải là danh Đức Chúa Trời tự xưng trong ngữ cảnh giao ước với các tổ phụ ở câu này. (3) 'Đức Chúa Trời của Giao Ước' đúng là mối quan hệ của Ngài với các tổ phụ, nhưng nó mô tả phạm vi/bản chất mối quan hệ, không phải là danh cụ thể được Ngài dùng để 'hiện ra' như câu hỏi đặt ra.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -492,15 +492,15 @@
     "type": "multiple_choice_single",
     "content": "Tai vạ dịch lệ giáng trên loại sinh vật nào?",
     "options": [
-      "Cá dưới sông",
+      "Loài người",
       "Súc vật",
-      "Chim trời",
-      "Côn trùng"
+      "Bồ câu",
+      "Loài bò sát"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 9:3 — 'Tay Đức Giê-hô-va sẽ giáng dịch lệ rất nặng trên các súc vật của ngươi ngoài đồng: ngựa, lừa, lạc đà, bò và chiên.'",
+    "explanation": "Đáp án đúng là 'Súc vật' vì Xuất Ê-díp-tô Ký 9:3-6 ghi rõ tai vạ này giáng trên những súc vật của người Ai Cập ở ngoài đồng, gồm ngựa, lừa, lạc đà, bò và chiên, làm chúng chết rất nhiều. Distractor 'Loài người' sai vì tai vạ này không nhắm vào người (lậu dịch xảy ra sau đó). Distractor 'Bồ câu' sai vì mặc dù là sinh vật nhưng không được liệt kê; đây là chi tiết 'gần đúng' vì chim chóc là một phần của tai vạ khác (mưa mưa đá, 9:19-25). Distractor 'Loài bò sát' sai vì vượt phạm vi Kinh Thánh; không có chi tiết nào trong đoạn này nói đến bò sát.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1564,14 +1564,14 @@
     "content": "Ai được Đức Chúa Trời chọn và ban cho khả năng nghệ thuật để xây Đền Tạm?",
     "options": [
       "A-rôn",
-      "Hu-rơ",
-      "Giô-suê",
+      "Môi-se",
+      "Ô-hô-li-áp, con của A-hi-sa-mạc",
       "Bết-sa-lê-ên"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 31:2-3 — 'Ta đã kêu gọi đích danh Bết-sa-lê-ên... Ta đã ban cho người đầy dẫy Thần Linh của Đức Chúa Trời, sự khôn ngoan, thông sáng.'",
+    "explanation": "Xuất Ê-díp-tô Ký 31:2-5 ghi rõ: \"...Ta đã kêu tên Bết-sa-lê-ên, con trai của U-ri, cháu của Hu-rơ, trong chi phái Giu-đa. Ta đã lấy Thần của Đức Chúa Trời đầy dẫy lòng nó, sự khôn ngoan, sự thông sáng, và hiểu biết để làm mọi thứ nghề thợ...\" Vì vậy, Bết-sa-lê-ên là người được Đức Chúa Trời chọn và ban khả năng nghệ thuật cách trực tiếp và rõ ràng để xây Đền Tạm.\n\nCác đáp án sai:\n- 'A-rôn': Đây là một hiểu lầm phổ biến vì A-rôn là thầy tế lễ thượng phẩm, một nhân vật quan trọng trong cuộc hành trình. Tuy nhiên, Kinh Thánh không ghi ông được ban khả năng nghệ thuật xây Đền Tạm. Chức năng của ông là tế lễ.\n- 'Môi-se': Môi-se là người lãnh đạo, người nhận chỉ dẫn từ Đức Chúa Trời về kiểu mẫu Đền Tạm, nhưng chính Bết-sa-lê-ên và phụ tá của ông là những người được ban tài năng thực hành công việc thủ công nghệ thuật (Xuất Ê-díp-tô Ký 31:6). Đây là lỗi sai phạm vi, nhầm lẫn giữa người nhận chỉ thị và người thực thi nghệ thuật.\n- 'Ô-hô-li-áp, con của A-hi-sa-mạc': Trong Xuất Ê-díp-tô Ký 31:6, Đức Chúa Trời cũng chỉ định Ô-hô-li-áp làm phụ tá cho Bết-sa-lê-ên. Tuy nhiên, câu hỏi hỏi về người được CHỌN VÀ BAN CHO KHẢ NĂNG NGHỆ THUẬT. Đoạn Kinh Thánh tham chiếu (c.2-5) chỉ nói rõ việc này với Bết-sa-lê-ên. Việc thêm tên cha ('con của A-hi-sa-mạc') là một chi tiết sai, vì câu hỏi chỉ yêu cầu tên người. Đây là đáp án 'gần đúng' vì Ô-hô-li-áp cũng được nhắc đến trong cùng bối cảnh và có kỹ năng, nhưng không phải là nhân vật trung tâm được mô tả là được Đức Chúa Trời đầy dẫy Thần Ngài để làm mọi thứ nghề thợ như Bết-sa-lê-ên.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1615,14 +1615,14 @@
     "content": "Khi Môi-se ở lâu trên núi, dân Y-sơ-ra-ên đúc tượng gì để thờ?",
     "options": [
       "Bò con vàng",
-      "Tượng rắn bằng đồng",
-      "Tượng đại bàng",
-      "Tượng sư tử"
+      "Chim vàng",
+      "Tượng người bằng bạc",
+      "Voi bằng ngọc"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Xuất Hành 32:4 — 'A-rôn nhận vàng từ tay họ, dùng dụng cụ đúc thành một bò con bằng vàng đúc.'",
+    "explanation": "Theo Xuất Ê-díp-tô Ký 32:4 (BTT), A-rôn đúc một tượng bò con bằng vàng. Do đó, đáp án 'Bò con vàng' là chính xác. Distractor 'Chim vàng' là sai vì đây là chi tiết gần đúng (đồng thời vàng) nhưng sai về loại tượng; Kinh Thánh đôi khi nhắc đến tượng chim trong các ngữ cảnh khác, nhưng không ở đây. Distractor 'Tượng người bằng bạc' là sai chi tiết về cả chất liệu và đối tượng. Distractor 'Voi bằng ngọc' là một hiểu lầm phổ biến (nhầm với các nền văn hóa thờ lạc khác), không có trong câu chuyện này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1853,15 +1853,15 @@
     "type": "multiple_choice_single",
     "content": "Ai đã đóng Hòm Giao Ước bằng gỗ si-tim?",
     "options": [
-      "Ô-hô-li-áp",
+      "Môi-se",
       "Bết-sa-lê-ên",
       "A-rôn",
-      "Môi-se"
+      "Hòm Giao Ước được dệt bằng vải gai mịn"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Xuất Hành 37:1 — 'Bết-sa-lê-ên đóng hòm bằng gỗ si-tim.'",
+    "explanation": "Xuất Ê-díp-tô Ký 37:1 chép rõ: 'Bết-sa-lê-ên đóng hòm bằng cây si-tim' (BTT). Đây là việc làm cụ thể của ông. Distractor 'Môi-se' là sai vì tuy Môi-se là người lãnh đạo và nhận chỉ dẫn về Hòm Giao Ước (Xh 25:10-22), nhưng người thực hiện công việc thủ công này là Bết-sa-lê-ên. Distractor 'A-rôn' là sai vì A-rôn được xức dầu làm thầy tế lễ (Xh 28:1), không phải là thợ thủ công chính đóng Hòm. Distractor 'Hòm Giao Ước được dệt bằng vải gai mịn' là sai vì chi tiết này mô tả các tấm màn của Đền Tạm (Xh 36:8), không liên quan đến việc đóng Hòm Giao Ước bằng gỗ.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1881,15 +1881,15 @@
     "type": "multiple_choice_single",
     "content": "Tấm thẻ vàng thánh gắn trên mũ tế lễ được khắc dòng chữ gì?",
     "options": [
-      "THẦY TẾ LỄ CHÍ CAO",
-      "VINH HIỂN ĐỜI ĐỜI",
-      "ĐỨC CHÚA TRỜI TOÀN NĂNG",
+      "THÁNH CHO MÔI-SE",
+      "THÁNH CHO DÂN Y-SƠ-RA-ÊN",
+      "THÁNH CHO ĐỀN TẠM",
       "THÁNH CHO ĐỨC GIÊ-HÔ-VA"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 39:30-31 — Họ làm một tấm thẻ bằng vàng ròng, là mão thánh, và khắc trên đó như kiểu con dấu: THÁNH CHO ĐỨC GIÊ-HÔ-VA. Rồi họ buộc nó bằng một sợi dây màu xanh trên mũ, y như Đức Giê-hô-va đã phán dặn Môi-se.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'THÁNH CHO ĐỨC GIÊ-HÔ-VA' là chính xác vì Xuất Ê-díp-tô Ký 39:30-31 ghi rõ: 'Làm một cái thẻ bằng vàng ròng, tức là tràng thánh, và trên đó có đọc những chữ như ở trên con dấu, rằng: THÁNH CHO ĐỨC GIÊ-HÔ-VA'.\n\nDISTRACTOR ('THÁNH CHO MÔI-SE') SAI: Sai chi tiết tên, dù Môi-se là người lãnh đạo, nhưng tấm thẻ được biệt riêng cho Đức Giê-hô-va.\n\nDISTRACTOR ('THÁNH CHO DÂN Y-SƠ-RA-ÊN') SAI: Đây là một quan niệm sai phổ biến vì dân Y-sơ-ra-ên là dân được chọn, nhưng biểu tượng trên trán thầy tế lễ dành riêng cho Đức Chúa Trời.\n\nDISTRACTOR ('THÁNH CHO ĐỀN TẠM') SAI: Sai phạm vi đối tượng, đền tạm là nơi thánh, nhưng dòng chữ khắc biệt riêng cho chính Đức Giê-hô-va.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1907,15 +1907,15 @@
     "type": "multiple_choice_single",
     "content": "Khi xây xong Đền Tạm, dân Y-sơ-ra-ên đã làm như thế nào so với mệnh lệnh của Đức Giê-hô-va?",
     "options": [
-      "Bỏ sót vài chi tiết",
-      "Thêm thắt theo ý mình",
+      "Đúng mọi điều như Ngài đã phán dặn A-rôn",
+      "Đúng theo những điều chính Môi-se thêm thắt",
       "Đúng mọi điều như Ngài đã phán dặn Môi-se",
-      "Trễ hạn vài năm"
+      "Chỉ làm đúng phần công việc của mình"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 39:32 — 'Mọi công việc của Đền Tạm, tức Lều Hội Kiến, đã hoàn thành. Dân Y-sơ-ra-ên đã làm đúng mọi điều Đức Giê-hô-va phán dặn Môi-se.'",
+    "explanation": "Câu hỏi hỏi về việc dân Y-sơ-ra-ên đã làm thế nào so với mệnh lệnh của Đức Giê-hô-va khi xây xong Đền Tạm. Đáp án đúng là 'Đúng mọi điều như Ngài đã phán dặn Môi-se' vì Xuất Ê-díp-tô Ký 39:32 ghi: 'Vậy, hết thảy các công việc của Đền Tạm, Trại Hội Kiến, đều làm xong; dân Y-sơ-ra-ên làm y như mọi điều Đức Giê-hô-va đã phán dặn Môi-se.'\n\nCác đáp án sai: 1) 'Đúng mọi điều như Ngài đã phán dặn A-rôn' là sai vì Kinh Thánh ghi rõ mệnh lệnh được truyền qua Môi-se, không phải A-rôn. 2) 'Đúng theo những điều chính Môi-se thêm thắt' là hiểu lầm phổ biến, vì Môi-se chỉ trung thành truyền lại mệnh lệnh của Đức Giê-hô-va, không tự ý thêm thắt (Xem Xuất Ê-díp-tô 25:9, 40). 3) 'Chỉ làm đúng phần công việc của mình' là đúng văn bản (mỗi người/chi phái có phần việc riêng) nhưng lạc câu hỏi, vì câu hỏi hỏi về kết quả tổng thể so với mệnh lệnh, không phải về sự phân công công việc.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1961,15 +1961,15 @@
     "type": "multiple_choice_single",
     "content": "Khi Đền Tạm dựng xong, điều gì xảy ra?",
     "options": [
-      "Thiên sứ hiện ra",
-      "Lửa từ trời giáng xuống",
+      "Mây che phủ Lều Hội Kiến và đám lửa thiêu sạch Đền Tạm",
+      "Mây che phủ Lều Hội Kiến và vinh quang Đức Giê-hô-va đầy dẫy bàn thờ",
       "Mây che phủ Lều Hội Kiến và vinh quang Đức Giê-hô-va đầy dẫy Đền Tạm",
-      "Sấm sét vang dội"
+      "Môi-se và các thầy tế lễ bắt đầu dâng tế lễ trong Đền Tạm"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 40:34 — 'Đám mây bao phủ Lều Hội Kiến và vinh quang của Đức Giê-hô-va đầy dẫy Đền Tạm.'",
+    "explanation": "Xuất Ê-díp-tô Ký 40:34-35 ghi: 'Bấy giờ mây bao phủ Lều Hội Kiến, và vinh quang Đức Giê-hô-va đầy dẫy Đền Tạm.' Đây là sự kiện đánh dấu việc Đức Chúa Trời ngự xuống và chấp nhận công trình. Đáp án đúng mô tả chính xác hai yếu tố: mây che phủ và vinh quang Đức Giê-hô-va đầy dẫy Đền Tạm. Distractor 1 sai vì thay 'vinh quang' bằng 'đám lửa thiêu sạch' – chi tiết không có trong đoạn này. Distractor 2 là 'gần đúng' nhưng sai phạm vi: vinh quang đầy dẫy toàn bộ Đền Tạm (câu 35), không chỉ riêng bàn thờ. Distractor 3 mô tả một hoạt động (dâng tế lễ) có thể hợp lý về ngữ cảnh nhưng xảy ra sau (xem Lê-vi Ký 8-9), không phải là sự kiện trực tiếp xảy ra 'khi dựng xong' được hỏi trong câu.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -2368,13 +2368,13 @@
     ],
     "verseEnd": 15,
     "content": "Theo Xuất 3:13-15, Môi-se hỏi Đức Chúa Trời tên Ngài. Đức Chúa Trời đáp gì? (Câu này KHÁC với Hard 3:14 'TA LÀ ĐẤNG TỰ HỮU')",
-    "explanation": "Xuất 3:15 — 'Đức Chúa Trời lại phán cùng Môi-se rằng: Ngươi sẽ nói cho dân Y-sơ-ra-ên như vầy: GIÊ-HÔ-VA, Đức Chúa Trời của tổ phụ các ngươi, Đức Chúa Trời của Áp-ra-ham, Đức Chúa Trời của Y-sác, Đức Chúa Trời của Gia-cốp, sai ta đến cùng các ngươi. Aáy là danh đời đời của ta, ấy sẽ là kỷ niệm của ta trải qua các đời'.",
+    "explanation": "Xuất 3:13-15 ghi rằng khi Môi-se hỏi danh Đức Chúa Trời, Ngài đáp: \"Hãy nói cùng dân Y‑sơ‑ra‑ên rằng: Đức Giê‑hô‑va, Đức Chúa Trời của tổ phụ các ngươi... đã sai ta đến cùng các ngươi. Ấy đó là danh đời đời của ta, và đó là kỷ niệm của ta trải qua các thế đại\". Câu 15 trích dẫn trọn vẹn: \"Đức Chúa Trời của tổ phụ các ngươi, Đức Chúa Trời của Áp‑ra‑ham, Đức Chúa Trời của Y‑sác, Đức Chúa Trời của Gia‑cốp\". **ĐÁP ÁN ĐÚNG** trung thành với ý và từ ngữ của câu 15, nêu rõ danh Ngài gắn với các tổ phụ. \n**Distractor 1** (gần đúng, loại 'nearby_passage') trích câu 14 '\"Ta là Đấng Tự Hữu\"' thay vì dùng tên liên hệ đến các tổ phụ như câu 15, dù câu 14 cũng là câu trả lời của Đức Chúa Trời nhưng KHÔNG PHẢI đáp án cho câu hỏi này (câu hỏi yêu cầu tránh câu 14). \n**Distractor 2** (loại 'wrong_detail') thay thế tên tổ phụ Áp-ra-ham bằng 'các con trai Y-sác, Giu-đa', không đúng với danh sách tổ phụ nguyên bản trong Kinh Thánh. \n**Distractor 3** (loại 'true_but_off') lấy nội dung từ phần hứa của Đức Chúa Trời về việc giải cứu (trong ngữ cảnh rộng hơn của đoạn), nhưng đây KHÔNG PHẢI là danh Ngài được hỏi và trả lời trực tiếp trong câu 13-15.",
     "language": "vi",
     "options": [
-      "'Ta là Cha của Áp-ra-ham'",
-      "'Ta là Đấng Chăn dắt'",
+      "'Ta là Đấng Tự Hữu — đó là DANH NGÀI ĐỜI ĐỜI'",
+      "'Ta là Đức Chúa Trời của các con trai Y-sác, Giu-đa, Gia-cốp — đó là DANH NGÀI ĐỜI ĐỜI'",
       "'Ta là Đức Chúa Trời của tổ phụ các ngươi: Áp-ra-ham, Y-sác, Gia-cốp — đó là DANH NGÀI ĐỜI ĐỜI'",
-      "'Ta là Đấng Tạo Hóa muôn vật'"
+      "'Ta sẽ ở cùng các ngươi trong cuộc xuất hành khỏi Ai Cập — đó là DANH NGÀI ĐỜI ĐỜI'"
     ],
     "tags": [
       "Cựu Ước",
@@ -2476,13 +2476,13 @@
     ],
     "verseEnd": 15,
     "content": "Theo Xuất 8:1-15, tai họa THỨ HAI là gì?",
-    "explanation": "Xuất 8:6 — 'A-rôn giơ tay mình trên các sông rạch xứ Ê-díp-tô, ếch nhái bò lên lan khắp xứ Ê-díp-tô'. 8:3 — 'sông sẽ sanh đầy ếch nhái... vào trong cung điện, phòng ngủ, và trên giường ngươi'.",
+    "explanation": "Trong Xuất Ê-díp-tô Ký, tai họa thứ hai được Đức Chúa Trời phán qua Môi-se để trừng phạt Pha-ra-ôn là Ếch nhái (Xuất 8:1-15). Đáp án đúng mô tả đúng hiện tượng này: Ếch nháy từ sông lên, tràn vào cung điện, phòng ngủ, lò bếp và cả trên người (c.3, c.13-14).\n\nCác đáp án sai:\n1. 'NƯỚC BIẾN THÀNH MÁU': Đây là tai họa thứ nhất (Xuất 7:14-25), không phải thứ hai → sai thứ tự chi tiết.\n2. 'RUỒI MÒNG khắp nơi': Đây là tai họa thứ tư (Xuất 8:20-32), được mô tả trong một đoạn gần kề nhưng không phải là tai họa thứ hai → nhầm passage gần.\n3. 'BỤI BIẾN THÀNH MUỖI': Đây là tai họa thứ ba (Xuất 8:16-19). Nhiều người dễ nhầm lẫn thứ tự giữa các tai họa do chúng liên tiếp xảy ra → hiểu lầm phổ biến.",
     "language": "vi",
     "options": [
-      "Muỗi mòng khắp người và súc vật",
-      "Bóng tối dày 3 ngày",
+      "NƯỚC BIẾN THÀNH MÁU — sông, ao, hồ nước đều hóa thành máu",
+      "RUỒI MÒNG khắp nơi — bay vào nhà, đậu trên người, vật dụng",
       "ẾCH NHÁI ngập tràn — tràn vào nhà, lò bếp, giường ngủ",
-      "Châu chấu ăn hết cây cỏ"
+      "BỤI BIẾN THÀNH MUỖI — bụi đất nổi lên thành muỗi cắn người và súc vật"
     ],
     "tags": [
       "Cựu Ước",
@@ -2557,12 +2557,12 @@
     ],
     "verseEnd": 7,
     "content": "Theo Xuất 11:4-7, tai họa thứ 10 (cuối cùng) là gì? Vào lúc nào?",
-    "explanation": "Xuất 11:4-5 — 'Lối nửa đêm, ta sẽ ra tuần hành xứ Ê-díp-tô. Hết thảy con trưởng nam trong xứ Ê-díp-tô sẽ chết, từ thái tử của Pha-ra-ôn ngồi trên ngai mình, cho đến con cả của con đòi xay cối, và luôn mọi con đầu lòng của súc vật nữa'.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Mọi CON ĐẦU LÒNG Ai-cập (người và súc vật) chết / vào nửa đêm. Điều này đúng vì Xuất 11:4-7 ghi rõ: 'Môi-se nói: Đức Giê-hô-va có phán như vầy: Chừng nửa đêm, ta sẽ ra tuần hành xứ Ê-díp-tô. Hết thảy con trưởng nam trong xứ Ê-díp-tô sẽ chết... sẽ có tiếng kêu la inh ỏi trong khắp xứ Ê-díp-tô...' (Xuất 11:4-6). Sự kiện xảy ra vào nửa đêm.\n\nGIẢI THÍCH TỪNG DISTRACTOR:\n1. (Sai chi tiết) : Sai vì Kinh Thánh ghi rõ thời điểm là 'nửa đêm' (câu 4), không phải 'lúc hừng đông'.\n2. (Sai phạm vi) : Sai vì Kinh Thánh chỉ đặc biệt nhấn mạnh 'con trưởng nam' (con đầu lòng), không phải 'mọi con cái' (toàn bộ trẻ em).\n3. (Hiểu lầm phổ biến) : Sai vì đây chỉ là một phần của tai họa. Tai họa áp dụng cho 'hết thảy con trưởng nam trong xứ Ê-díp-tô' (câu 5), tức tất cả các con đầu lòng của người và súc vật Ai Cập, không chỉ con của Pha-ra-ôn.",
     "language": "vi",
     "options": [
-      "Sông máu / lúc bình minh",
-      "Ung nhọt / vào lễ hội Ai-cập",
-      "Châu chấu / vào mùa thu hoạch",
+      "Mọi CON ĐẦU LÒNG Ai-cập (người và súc vật) chết / vào lúc hừng đông",
+      "Mọi con cái Ai-cập (người và súc vật) chết / vào nửa đêm",
+      "Con ĐẦU LÒNG của Pha-ra-ôn chết / vào nửa đêm",
       "Mọi CON ĐẦU LÒNG Ai-cập (người và súc vật) chết / vào nửa đêm"
     ],
     "tags": [
@@ -2935,13 +2935,13 @@
     ],
     "verseEnd": 11,
     "content": "Theo Xuất 24:3-8, sau khi đọc 'Sách Giao Ước', Môi-se làm gì để xác lập giao ước với dân Y-sơ-ra-ên?",
-    "explanation": "Xuất 24:7-8 — 'Đoạn, người cầm sách giao ước đọc cho dân nghe, thì dân nói rằng: Chúng tôi sẽ làm và vâng theo mọi lời Đức Giê-hô-va phán chỉ. Môi-se bèn lấy huyết rảy trên mình dân sự mà nói rằng: Đây là huyết giao ước của Đức Giê-hô-va đã lập cùng các ngươi căn cứ theo các lời nầy'.",
+    "explanation": "Xuất 24:8 ghi chép: \"Môi-se lấy phân nửa huyết đựng trong chậu, còn phân nửa thì rảy trên bàn thờ. Người cầm quyển sách giao ước đọc cho dân nghe, họ nói: 'Chúng tôi sẽ làm theo và vâng theo mọi điều Đức Giê-hô-va phán dạy.' Rồi Môi-se lấy huyết rảy lên trên dân, và nói: 'Đây là huyết giao ước của Đức Giê-hô-va đã lập với anh em theo đúng tất cả những lời nầy.'\" Đáp án đúng chính xác vì Môi-se rảy huyết *trên dân* để xác lập giao ước (c.8).\n\nDistractor 1 sai (gần đúng): Xuất 24:6 cho biết Môi-se lấy phân nửa huyết rảy trên bàn thờ, nhưng đó không phải là hành động cuối cùng để xác lập giao ước với dân. Việc rảy trên bàn thờ là một phần của trình tự, nhưng câu hỏi hỏi về hành động xác lập giao ước, được hoàn thành bằng việc rảy huyết trên dân (c.8).\n\nDistractor 2 sai: Trong đoạn này, Môi-se không rảy huyết trên các trưởng lão. Các trưởng lão được nhắc đến ở câu 1 và 9-11 trong bối cảnh khác (lên cho Đức Chúa Trời), không phải là đối tượng nhận huyết giao ước trong nghi lễ mô tả ở câu 3-8.\n\nDistractor 3 sai: Việc dựng 12 cây trụ đá được mô tả trong Xuất 24:4, đó là hành động sau khi Môi-se thuật lại các điều răn của Chúa (c.3). Tuy nhiên, câu hỏi hỏi về hành động sau khi đọc 'Sách Giao Ước' (c.7) để xác lập giao ước, tức là nghi lễ với huyết (c.8). Do đó, dù việc dựng trụ đá có thật, nhưng nó không phải là hành động xác lập giao ước được thực hiện sau khi đọc sách.",
     "language": "vi",
     "options": [
       "Lấy MÁU bò RẢY trên dân — gọi là 'huyết của giao ước', dân tuyên bố 'Chúng tôi sẽ làm và VÂNG THEO mọi điều'",
-      "Đốt một cây nến lớn trên đỉnh núi",
-      "Cho dân uống nước từ giếng giao ước",
-      "Yêu cầu mỗi người hôn chân Môi-se"
+      "Lấy máu bò rảy trên bàn thờ — gọi là 'huyết của giao ước', dân tuyên bố 'Chúng tôi sẽ làm và vâng theo mọi điều'",
+      "Lấy máu bò rảy trên các trưởng lão — gọi là 'huyết của giao ước', dân tuyên bố 'Chúng tôi sẽ làm và vâng theo mọi điều'",
+      "Dựng 12 cây trụ đá — gọi là 'sự chứng ước', dân tuyên bố 'Chúng tôi sẽ làm và vâng theo mọi điều'"
     ],
     "tags": [
       "Cựu Ước",
@@ -3016,13 +3016,13 @@
     ],
     "verseEnd": 8,
     "content": "Theo Xuất 27:1-8, BÀN THỜ DÂNG TẾ LỄ THIÊU đặt ở SÂN NGOÀI Đền Tạm có cấu tạo và kích thước thế nào?",
-    "explanation": "Xuất 27:1-2 — 'Ngươi cũng hãy đóng một cái bàn thờ bằng cây si-tim, hình vuông, năm thước bề dài, năm thước bề ngang, và bề cao ba thước. Nơi bốn góc bàn thờ hãy làm sừng ló ra; rồi bọc bàn thờ bằng đồng'. Bốn sừng quan trọng — kẻ trốn nắm sừng được tha (1 Vua 1:50).",
+    "explanation": "Xuất 27:1-8 mô tả bàn thờ dâng tế lễ thiêu: 'Ngươi cũng hãy đóng một bàn thờ bằng cây si-tim, hình vuông, năm thước bề dài, năm thước bề ngang, và bề cao ba thước. Nơi bốn góc bàn thờ hãy làm sừng... Ngươi hãy bọc đồng cho bàn thờ...' (c.1-2). Do đó, đáp án đúng mô tả chính xác kích thước, chất liệu (gỗ si-tim bọc đồng) và các sừng. Distractor 1 sai vì thay 'bọc đồng' bằng 'bọc vàng' (vàng dùng cho các vật dụng trong Đền Tạm, còn đồng cho vật ngoài sân). Distractor 2 sai về phạm vi vị trí—bàn thờ này đặt ở sân ngoài (c.9,16), không phải trong Nơi Thánh. Distractor 3 phản ánh hiểu lầm phổ biến (tưởng bằng đá, như Xuất 20:25), nhưng đoạn này quy định rõ bằng gỗ bọc đồng.",
     "language": "vi",
     "options": [
       "BÀN THỜ vuông 5x5 cubit, CAO 3 cubit; cây si-tim BỌC ĐỒNG; có 4 sừng ở 4 góc",
-      "Tròn 10 cubit, gỗ rừng nguyên chất",
-      "Hình bát giác 7 cubit, đá vôi",
-      "Hình chữ nhật 3x2x1, gỗ ô-liu"
+      "BÀN THỜ vuông 5x5 cubit, CAO 3 cubit; cây si-tim BỌC VÀNG; có 4 sừng ở 4 góc",
+      "BÀN THỜ vuông 5x5 cubit, CAO 3 cubit; cây si-tim BỌC ĐỒNG; có 4 sừng ở 4 góc, đặt trong Nơi Thánh",
+      "BÀN THỜ vuông 5x5 cubit, CAO 3 cubit; bằng ĐÁ NGUYÊN KHỐI; có 4 sừng ở 4 góc"
     ],
     "tags": [
       "Cựu Ước",
@@ -3340,13 +3340,13 @@
     ],
     "verseEnd": 11,
     "content": "Theo Xuất 20:8-11, điều răn THỨ TƯ về NGÀY SA-BÁT có lý do thần học cốt lõi là gì?",
-    "explanation": "Xuất 20:11 — 'Vì trong sáu ngày Đức Giê-hô-va đã dựng nên trời, đất, biển, và muôn vật ở trong đó, qua ngày thứ bảy thì Ngài nghỉ; vậy nên Đức Giê-hô-va đã ban phước cho ngày nghỉ và làm nên ngày thánh'. Phục Truyền 5:15 thêm lý do thứ 2: kỷ niệm thoát Ai-cập — kết hợp tạo dựng + cứu rỗi.",
+    "explanation": "Xuất Ê-díp-tô Ký 20:8-11 (BTT) ghi rõ: \"Hãy nhớ ngày nghỉ đặng làm nên ngày thánh. ... Vì trong sáu ngày Đức Giê-hô-va đã dựng nên trời, đất, biển, và muôn vật ở trong đó, qua ngày thứ bảy thì Ngài nghỉ; vậy nên Đức Giê-hô-va đã ban phước cho ngày nghỉ và làm nên ngày thánh.\"\nĐÁP ÁN ĐÚNG: Trực tiếp trích dẫn và tóm tắt lý do thần học cốt lõi: việc Chúa tạo dựng trong 6 ngày và nghỉ ngơi ngày thứ 7 là nền tảng cho mệnh lệnh về ngày Sa-bát.\n\nDISTRACTOR SAI:\n1. (wrong_detail) Distractor đầu tiên (gần đúng) sai chi tiết then chốt: Kinh Thánh nói rõ Chúa tạo dựng trong 6 ngày và nghỉ ngày thứ 7 (Xuất 20:11), không phải 7 ngày tạo dựng và nghỉ ngày thứ 8.\n2. (wrong_scope) Distractor thứ hai mở rộng/sai phạm vi: Đoạn Kinh Thánh này không giới hạn việc ban phước và biệt riêng ngày Sa-bát chỉ cho dân Y-sơ-ra-ên; đây là điều răn phổ quát dựa trên khuôn mẫu sáng tạo.\n3. (true_but_off) Distractor thứ ba đúng văn bản nhưng lạc câu hỏi: Việc 'làm giao ước' có thể liên quan đến bối cảnh rộng hơn, nhưng không phải là lý do thần học cốt lõi được nêu TRỰC TIẾP trong Xuất 20:8-11 cho điều răn thứ tư; trọng tâm ở đây là khuôn mẫu sáng tạo.",
     "language": "vi",
     "options": [
-      "Vì đó là ngày tạo dựng A-đam",
+      "Vì TRONG 7 NGÀY Đức Chúa Trời TẠO DỰNG trời đất, NGÀY THỨ 8 NGHỈ — nên Ngài 'BAN PHƯỚC ngày Sa-bát và biệt riêng ra THÁNH'",
       "Vì TRONG 6 NGÀY Đức Chúa Trời TẠO DỰNG trời đất, NGÀY THỨ 7 NGHỈ — nên Ngài 'BAN PHƯỚC ngày Sa-bát và biệt riêng ra THÁNH'",
-      "Vì là ngày dân Y-sơ-ra-ên ra khỏi Ai-cập",
-      "Vì là ngày Môi-se sinh ra"
+      "Vì TRONG 6 NGÀY Đức Chúa Trời TẠO DỰNG trời đất, NGÀY THỨ 7 NGHỈ — nên Ngài 'BAN PHƯỚC ngày Sa-bát và biệt riêng ra THÁNH' cho dân Y-sơ-ra-ên mà thôi",
+      "Vì TRONG 6 NGÀY Đức Chúa Trời TẠO DỰNG trời đất, NGÀY THỨ 7 NGHỈ — nên Ngài 'BAN PHƯỚC ngày Sa-bát và biệt riêng ra THÁNH' để làm giao ước với dân sự"
     ],
     "tags": [
       "Cựu Ước",
@@ -3367,13 +3367,13 @@
     ],
     "verseEnd": 17,
     "content": "Theo Xuất 20:12-17, 6 ĐIỀU RĂN sau (về CON NGƯỜI) bắt đầu bằng điều răn nào? Có lời hứa gì kèm theo?",
-    "explanation": "Xuất 20:12 — 'Hãy hiếu kính cha mẹ ngươi, hầu cho ngươi được sống lâu trên đất mà Giê-hô-va Đức Chúa Trời ngươi ban cho'. Phao-lô trong Ê-phê-sô 6:2-3 nhấn mạnh: 'điều răn THỨ NHẤT CÓ KÈM THEO LỜI HỨA' — sống lâu trên đất.",
+    "explanation": "Xuất 20:12-17 liệt kê 6 điều răn liên quan đến quan hệ giữa con người với nhau, bắt đầu bằng điều răn 'Hãy hiếu kính cha mẹ ngươi' (câu 12). Chỉ duy nhất điều răn này có kèm theo một lời hứa rõ ràng: 'hầu cho ngươi được sống lâu trên đất mà Giê-hô-va Đức Chúa Trời ngươi ban cho'. Đáp án đúng hoàn toàn chính xác.\n\nCác phương án sai: (1) 'Ngươi chớ giết người' (câu 13) là điều răn sai chi tiết — nó đúng là bảo vệ sự sống nhưng không có lời hứa nào được ghi kèm. (2) 'Ngươi chớ tham lam' là một hiểu lầm phổ biến — cụm từ 'chớ tham lam' thường dùng để tóm tắt, nhưng trong phân đoạn này (câu 17) cụ thể là 'chớ tham ...', và không có lời hứa kèm theo. (3) 'Ngươi chớ làm chứng dối' (câu 16) là thông tin đúng văn bản nhưng lạc câu hỏi — nó đúng là điều răn về lời nói, nhưng không phải là điều răn khởi đầu của 6 điều răn này và cũng không có lời hứa.",
     "language": "vi",
     "options": [
       "'Hãy HIẾU KÍNH CHA MẸ ngươi, để được SỐNG LÂU trên đất' — điều răn DUY NHẤT có lời hứa",
-      "'Chớ trộm cắp' — không có lời hứa",
-      "'Chớ giết người' — không có lời hứa",
-      "'Chớ tham lam' — không có lời hứa"
+      "'Ngươi chớ giết người' — điều răn DUY NHẤT bảo vệ sự sống có lời hứa",
+      "'Ngươi chớ tham lam' — điều răn DUY NHẤT về lòng tham có lời hứa",
+      "'Ngươi chớ làm chứng dối' — điều răn DUY NHẤT về lời nói có lời hứa"
     ],
     "tags": [
       "Cựu Ước",
@@ -3612,13 +3612,13 @@
     ],
     "verseEnd": 25,
     "content": "KIỂU 1 cross-ref 10 tai họa Ai-cập — Đức Chúa Trời phán xét những thần GÌ của Ai-cập? (xem Xuất 12:12)",
-    "explanation": "Xuất 12:12 — 'Đêm đó ta sẽ đi qua xứ Ê-díp-tô, hành hại mọi con đầu lòng xứ Ê-díp-tô, từ người ta cho đến súc vật; ta sẽ xét đoán các thần của xứ Ê-díp-tô. Ta là Đức Giê-hô-va!' Mỗi tai họa nhắm vào 1 thần Ai-cập: Tai họa 1 (sông máu) → Hapi/Khnum thần sông Nin. 2 (ếch) → Heqet thần ếch. 7 (mưa đá) → Nut thần trời. 9 (bóng tối) → Ra thần mặt trời. 10 (con đầu lòng) → Pha-ra-ôn (xem là thần sống). Tai họa = TUYÊN CHIẾN với hệ thống thần Ai-cập.",
+    "explanation": "Đáp án đúng dựa vào Xuất 12:12: 'Ta sẽ làm sự đoán xét trên các thần của Ê-díp-tô'. Câu này nêu rõ mục tiêu của các tai họa là sự phán xét các thần của Ai Cập. Distractor 1 (almost-right) trích dẫn Xuất 7:15, một câu gần ngay đầu đoạn tai họa đầu tiên, nhưng lại nói về việc dùng cây gậy đoán xét Pha-ra-ôn chứ không phải các thần, do đó sai trọng tâm câu hỏi. Distractor 2 trích dẫn chi tiết về tai họa con đầu lòng (Xuất 12:29), là một hành động đoán xét trực tiếp trên dân chúng, không phải trên các thần. Distractor 3 trích dẫn một câu đúng văn bản (Xuất 18:11, sau biến cố vượt Biển Đỏ) thể hiện sự so sánh, nhưng nó là lời của Giê-trô sau sự kiện, không phải mục đích trực tiếp của các tai họa, nên lạc câu hỏi.",
     "language": "vi",
     "options": [
       "Xuất 12:12 — 'TA SẼ làm SỰ ĐOÁN XÉT TRÊN CÁC THẦN của Ê-DÍP-TÔ' — 10 tai họa nhằm vào các thần (Hapi sông Nin, Heqet ếch, Khepri ruồi, Hathor bò, Ra mặt trời...)",
-      "Chỉ phán xét các vua Pha-ra-ôn",
-      "Phán xét các thầy phù thủy bằng phép lạ",
-      "Không phán xét gì — chỉ giải thoát dân"
+      "Xuất 7:15 — 'ĐỨC GIÊ-HÔ-VA PHÁN: Ta SẼ dùng CÂY GẬY để đoán xét Pha-ra-ôn dưới sông' — tai họa biến nước thành huyết nhằm vào vua chứ không phải thần.",
+      "Xuất 12:29 — 'ĐỨC GIÊ-HÔ-VA sẽ HÀNH HẠ các CON ĐẦU LÒNG của Ê-díp-tô' — tai họa sau cùng nhằm vào dân chúng chứ không phải thần.",
+      "Xuất 18:11 — 'Giê-trô nói: BÂY GIỜ TA BIẾT ĐỨC GIÊ-HÔ-VA LỚN HƠN các thần' — một lời tuyên bố về uy quyền, không phải sự đoán xét trực tiếp các thần Ai Cập."
     ],
     "tags": [
       "Cựu Ước",

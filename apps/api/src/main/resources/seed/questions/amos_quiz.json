@@ -347,13 +347,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "A-mốt 7:14 — 'A-mốt trả lời cho A-ma-xia rằng: Tôi không phải là đấng tiên tri, cũng không phải con đấng tiên tri; nhưng tôi là một kẻ chăn, sửa soạn những cây vả rừng.'",
+    "explanation": "Kinh Thánh A-mốt 7:14 chép: 'A-mốt đáp rằng: Ta chẳng phải là đấng tiên tri, cũng chẳng phải con đấng tiên tri; nhưng ta là kẻ chăn chiên, và sửa soạn cây vả rừng.' Do đó, đáp án đúng là A-mốt tự nhận mình trước đây là 'Kẻ chăn chiên và sửa soạn cây vả rừng — không phải tiên tri hay con tiên tri', phản ánh chính xác nghề nghiệp trước khi ông được kêu gọi và sự phân biệt rõ ràng với gốc gác nhà tiên tri.\n\n- Distractor 1 ('Một người chăn chiên và vô cùng giàu có – không phải tiên tri hay con tiên tri'): Sai chi tiết (wrong_detail). Mặc dù đúng là kẻ chăn chiên và không phải tiên tri, nhưng việc thêm 'vô cùng giàu có' là chi tiết không có trong phân đoạn này và làm thay đổi ý nghĩa. Đây là distractor gần đúng (almost-right).\n- Distractor 2 ('Một nhà tiên tri được Đức Chúa Trời kêu gọi từ lúc thơ ấu – không phải kẻ chăn chiên hay sửa soạn cây vả rừng'): Sai phạm vi (wrong_scope). Phương án này đảo ngược và mâu thuẫn trực tiếp với tuyên bố của A-mốt, vì ông khẳng định mình không phải là tiên tri hay con tiên tri từ thuở nhỏ, mà là một người làm nghề chăn chiên.\n- Distractor 3 ('Một thầy tế lễ tại Bê-tên – không phải tiên tri hay người chăn chiên'): Nhầm passage gần (nearby_passage). Chi tiết này liên quan đến A-ma-xia, thầy tế lễ tại Bê-tên, người đối chất với A-mốt (tham chiếu A-mốt 7:10-13), chứ không phải nghề nghiệp trước đây của A-mốt.",
     "language": "vi",
     "options": [
-      "Một thầy tế lễ tại Bê-tên",
+      "Một người chăn chiên và vô cùng giàu có – không phải tiên tri hay con tiên tri",
       "Kẻ chăn chiên và sửa soạn cây vả rừng — không phải tiên tri hay con tiên tri",
-      "Một con trai vua tại Giu-đa",
-      "Một người Lê-vi tại Si-lô"
+      "Một nhà tiên tri được Đức Chúa Trời kêu gọi từ lúc thơ ấu – không phải kẻ chăn chiên hay sửa soạn cây vả rừng",
+      "Một thầy tế lễ tại Bê-tên – không phải tiên tri hay người chăn chiên"
     ],
     "tags": [
       "Cựu Ước",
@@ -399,12 +399,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "A-mốt 8:11 — 'Chúa Giê-hô-va phán: Nầy, những ngày sẽ đến, là khi ta khiến sự đói kém đến trong đất, chẳng phải là đói về bánh, cũng chẳng phải khát về nước, bèn là về sự nghe lời của Đức Giê-hô-va.'",
+    "explanation": "A-mốt 8:11 chép: 'Chúa Giê-hô-va phán: Nầy, những ngày đến, bấy giờ ta sẽ sai sự đói kém đến trong đất, chẳng phải là đói về bánh, cũng chẳng phải khát về nước, bèn là về nghe lời của Đức Giê-hô-va.' Vì vậy, đáp án đúng là cơn đói về sự nghe lời của Đức Giê-hô-va. \n\n- Distractor 'Đói về sự nghe lời của tiên tri A-mốt' (gần đúng) sai vì câu Kinh Thánh chỉ rõ 'lời của Đức Giê-hô-va', không phải lời của một tiên tri cụ thể.\n- Distractor 'Đói về thực phẩm và nước uống' sai vì bản văn loại trừ rõ ràng: 'chẳng phải là đói về bánh, cũng chẳng phải khát về nước'.\n- Distractor 'Đói về sự bình an trong xã hội' sai vì không được đề cập trong đoạn này; đây là một hiểu lầm phổ biến khi áp dụng suy rộng các lời tiên tri về sự phán xét.",
     "language": "vi",
     "options": [
-      "Đói về thịt và cá",
-      "Đói về bánh và sữa",
-      "Đói về dầu và rượu",
+      "Đói về sự nghe lời của tiên tri A-mốt",
+      "Đói về thực phẩm và nước uống",
+      "Đói về sự bình an trong xã hội",
       "Đói về sự nghe lời của Đức Giê-hô-va"
     ],
     "tags": [
@@ -503,12 +503,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "A-mốt 5:14-15 — 'Hãy tìm điều lành và đừng tìm điều dữ, hầu cho các ngươi được sống... Hãy ghét điều dữ mà ưa điều lành; hãy lập sự công bình nơi cửa thành. Của có lẽ Giê-hô-va Đức Chúa Trời vạn quân sẽ ra ơn cho những kẻ còn sót lại của Giô-sép.'",
+    "explanation": "Câu hỏi tham chiếu A-mốt 5:14: 'Hãy tìm điều thiện, chớ đừng tìm điều ác, hầu cho các ngươi được sống, thì Giê-hô-va, Đức Chúa Trời vạn quân, sẽ ở cùng các ngươi, như các ngươi nói.' Đáp án đúng là 'Để được sống và Chúa ra ơn cho dân sót Giô-sép' vì câu 15 tiếp theo nói '... hầu cho Đức Giê-hô-va, Đức Chúa Trời vạn quân, ra ơn cho dân sót của Giô-sép', khớp với mục đích được sống và được Chúa ra ơn cho một nhóm dân cụ thể là dân sót Giô-sép. Các đáp án sai: 1) 'dân sự Giu-đa' là sai chi tiết (sai tên), vì đoạn này nhấn mạnh 'dân sót Giô-sép' (ám chỉ vương quốc phía Bắc, Y-sơ-ra-ên). 2) 'phước hạnh và Chúa ở cùng họ mọi nơi' là sai phạm vi, mở rộng ý 'ở cùng' thành 'mọi nơi' và thay 'sống' bằng 'phước hạnh' chung chung, không đúng trọng tâm câu Kinh Thánh. 3) 'tha thứ mọi tội lỗi và vào nước thiên đàng' là hiểu lầm phổ biến, áp dụng khái niệm ân điển Tân Ước hay sự cứu rỗi cá nhân vào bối cảnh tiên tri Cựu Ước này, vốn nói về sự sống còn và ơn Chúa trong lịch sử dân tộc.",
     "language": "vi",
     "options": [
-      "Được sự khôn ngoan",
-      "Được sự giàu có vật chất",
-      "Được tuổi thọ cao",
+      "Để được sống và Chúa ra ơn cho dân sự Giu-đa",
+      "Để được phước hạnh và Chúa ở cùng họ mọi nơi",
+      "Để được tha thứ mọi tội lỗi và vào nước thiên đàng",
       "Để được sống và Chúa ra ơn cho dân sót Giô-sép"
     ],
     "tags": [

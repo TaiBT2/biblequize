@@ -138,13 +138,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giona 3:5 - Cả thành ăn năn từ vua đến dân! Sự ăn năn lớn nhất trong Cựu Ước.",
+    "explanation": "Đáp án đúng là 'Tin Đức Chúa Trời, kiêng ăn và ăn năn' vì Kinh Thánh Giona 3:5 chép rõ: 'Dân thành Ni-ni-ve tin Đức Chúa Trời; họ rao ra sự kiêng ăn, và mặc bao gai, từ người lớn nhất đến người nhỏ nhất.' Hành động kiêng ăn và mặc bao gai biểu thị sự ăn năn thật.\n\nCác đáp án sai:\n1. 'Tin Đức Chúa Trời và lập tức dâng tế lễ' là gần đúng nhưng sai chi tiết: Kinh văn không ghi nhận họ dâng tế lễ ngay lập tức, mà là công bố kiêng ăn và ăn năn.\n2. 'Không tin, tiếp tục sống trong tội lỗi' là hiểu lầm phổ biến về phản ứng của dân thành Ni-ni-ve, nhưng thực tế họ đã tin và ăn năn ngay lập tức.\n3. 'Tin Đức Chúa Trời và ra lệnh bắt giam Giona' tuy đúng là họ tin, nhưng lạc câu hỏi vì hành động này không hề xảy ra trong văn bản; trái lại, vua và dân chúng đều tiếp nhận sứ điệp.",
     "language": "vi",
     "options": [
-      "Cười nhạo",
-      "Giận dữ",
+      "Tin Đức Chúa Trời và lập tức dâng tế lễ",
+      "Không tin, tiếp tục sống trong tội lỗi",
       "Tin Đức Chúa Trời, kiêng ăn và ăn năn",
-      "Bỏ mặc"
+      "Tin Đức Chúa Trời và ra lệnh bắt giam Giona"
     ],
     "tags": [
       "Cựu Ước",
@@ -214,13 +214,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giona 4:11 - Chúa thương xót thành Ni-ni-ve lớn, cho thấy tình yêu và lòng thương xót của Ngài vượt trên ranh giới dân tộc.",
+    "explanation": "Đáp án đúng trích Jonah 4:11 nguyên văn đầy đủ (BTT): 'Còn ta, ta lại không thương xót thành Ni-ni-ve lớn kia sao, là thành có hơn mười hai vạn người không phân biệt được tay hữu và tay tả, và lại có nhiều thú vật?'\n\nCác lỗi:\n- Distractor 1 (gần đúng, lỗi wrong_detail): Sai chi tiết số 'mười vạn' (100,000) so với đúng 'mười hai vạn' (120,000) trong câu 11.\n- Distractor 2 (lỗi nearby_passage): Trộn lẫn câu 10 ('Ngươi nổi giận vì cây thầu dầu đã bị sâu đo cắn phải') với phần đầu của ý câu 11, tạo thành một câu hỏi khác, không phải là câu hỏi kết thúc sách.\n- Distractor 3 (lỗi wrong_scope): Đổi chủ ngữ từ 'ta' (Chúa) sang 'Ngươi' (Giona), làm biến đổi hoàn toàn ý nghĩa và không còn là câu hỏi của Chúa nữa.",
     "language": "vi",
     "options": [
-      "Ngươi ở đâu?",
+      "Còn ta, ta lại không thương xót thành Ni-ni-ve lớn kia sao, là thành có hơn mười vạn người không phân biệt được tay hữu và tay tả, và lại có nhiều thú vật?",
       "Còn ta, ta lại không thương xót thành Ni-ni-ve lớn kia sao, là thành có hơn mười hai vạn người không phân biệt được tay hữu và tay tả, và lại có nhiều thú vật?",
-      "Ngươi có vui không?",
-      "Ngươi có vâng lời không?"
+      "Ngươi nổi giận vì cây thầu dầu đã bị sâu đo cắn phải đi, còn ta, ta lại không thương xót thành Ni-ni-ve lớn sao?",
+      "Ngươi không thương những người Ni-ni-ve, là dân sự không phân biệt được tay hữu và tay tả, và lại có nhiều thú vật phải không?"
     ],
     "tags": [
       "Cựu Ước",
@@ -474,12 +474,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giô-na 4:6 — 'Giê-hô-va Đức Chúa Trời sắm sẵn một dây dưa, làm cho mọc lên ở trên Giô-na, đặng phủ bóng trên đầu người, và cứu cho người khỏi sự khổ cực.'",
+    "explanation": "Giô-na 4:6 viết: 'Đức Giê-hô-va Đức Chúa Trời sắm sẵn một dây dưa, khiến nó mọc lên trên Giô-na đặng che bóng trên đầu người...' (Bản dịch 1926). Đây là một loại cây dầu thầu dầu nhanh lớn, được Đức Giê-hô-va sắm sẵn cách siêu nhiên với mục đích cụ thể là che mát cho Giô-na. Therefore, đáp án đúng là 'Một dây dưa (cây dầu thầu dầu)'.\nCác đáp án sai:\n- 'Một cây nho che mát': Đây là đáp án gần đúng vì nho có thể cho bóng mát, nhưng đoạn Kinh Thánh đang xét (Giô-na 4) không hề nhắc đến cây nho (nhầm passage gần, có thể từ các sách khác như I Các Vua 4:25 nói về sự an bình dưới cây nho).\n- 'Một cây bí che bóng': Đây là một hiểu lầm phổ biến do các bản dịch cũ hoặc ký ức từ các câu chuyện khác, nhưng Kinh Thánh không dùng từ 'cây bí' ở đây.\n- 'Một chùm cây kinh giới dại': Mặc dù từ 'dầu' (kikayon) có thể liên hệ đến một loại cây có dầu như kinh giới dại, và điều này có thể đúng về thực vật học, nhưng cụm từ này không mô tả chính xác loại cây được sắm sẵn trong văn cảnh Giô-na 4:6 (đúng văn bản song lạc câu hỏi, vì nó không phải mô tả trực tiếp từ đoạn).",
     "language": "vi",
     "options": [
-      "Cây vả",
-      "Cây nho",
-      "Cây ô-liu",
+      "Một cây nho che mát",
+      "Một cây bí che bóng",
+      "Một chùm cây kinh giới dại",
       "Một dây dưa (cây dầu thầu dầu)"
     ],
     "tags": [
