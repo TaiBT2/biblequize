@@ -150,7 +150,7 @@ export default function Leaderboard() {
                       const r = resolveAvatar(player.avatarUrl, player.name)
                       if (r.kind === 'img') return <img alt={`Rank ${layout.rank}`} className="w-full h-full object-cover" src={r.src} />
                       if (r.kind === 'preset') return (
-                        <div className="w-full h-full flex items-center justify-center text-base md:text-2xl" style={{ background: r.preset.bg }} aria-hidden>{r.preset.emoji}</div>
+                        <div className="w-full h-full flex items-center justify-center text-2xl md:text-4xl leading-none" style={{ background: r.preset.bg }} aria-hidden>{r.preset.emoji}</div>
                       )
                       return (
                         <div
@@ -340,7 +340,7 @@ function LeaderboardListRow({ rank, name, points, avatarUrl, streak, trend, isMe
   const renderAvatarBody = () => {
     if (resolved.kind === 'img') return <img alt={name} className="w-full h-full object-cover" src={resolved.src} />
     if (resolved.kind === 'preset') return (
-      <div className="w-full h-full flex items-center justify-center text-base md:text-xl" style={{ background: resolved.preset.bg }} aria-hidden>{resolved.preset.emoji}</div>
+      <div className="w-full h-full flex items-center justify-center text-xl md:text-2xl leading-none" style={{ background: resolved.preset.bg }} aria-hidden>{resolved.preset.emoji}</div>
     )
     return resolved.initial
   }

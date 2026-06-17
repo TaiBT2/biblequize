@@ -114,7 +114,7 @@ export function EditProfileModal({ open, onClose, profile }: {
               <img alt="" src={resolved.src} className="w-full h-full object-cover" />
             )}
             {resolved.kind === 'preset' && (
-              <span className="text-5xl leading-none" aria-hidden>{resolved.preset.emoji}</span>
+              <span className="text-[72px] leading-none" aria-hidden>{resolved.preset.emoji}</span>
             )}
             {resolved.kind === 'initial' && (
               <span

@@ -54,7 +54,7 @@ export function HeroCompact({ profile, tierEmoji, tierName, tierLevel }: {
             <img alt="User avatar" className="w-full h-full object-cover" src={resolved.src} />
           )}
           {resolved.kind === 'preset' && (
-            <span className="text-5xl leading-none" aria-hidden>{resolved.preset.emoji}</span>
+            <span className="text-[70px] leading-none" aria-hidden>{resolved.preset.emoji}</span>
           )}
           {resolved.kind === 'initial' && (
             <span

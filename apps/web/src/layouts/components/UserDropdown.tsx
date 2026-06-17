@@ -139,7 +139,7 @@ export default function UserDropdown({
                 />
               ) : resolved.kind === 'preset' ? (
                 <span
-                  className="w-full h-full rounded-full flex items-center justify-center text-base"
+                  className="w-full h-full rounded-full flex items-center justify-center text-[26px] leading-none"
                   style={{ background: resolved.preset.bg }}
                   aria-hidden
                 >
@@ -178,7 +178,7 @@ export default function UserDropdown({
         ) : resolved.kind === 'preset' ? (
           <span
             data-testid="user-dropdown-avatar-preset"
-            className="w-full h-full rounded-full flex items-center justify-center text-[20px] border border-[rgba(232,168,50,0.35)]"
+            className="w-full h-full rounded-full flex items-center justify-center text-[30px] leading-none border border-[rgba(232,168,50,0.35)]"
             style={{ background: resolved.preset.bg }}
             aria-hidden
           >

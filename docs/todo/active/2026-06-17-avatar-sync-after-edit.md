@@ -23,6 +23,9 @@
   - **Spec impact**: [x] None
   - **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · Tầng 1+2+3 pass · commit
+- ASE-5 Phóng to emoji preset để lấp đầy khung tròn (bớt nền tối)
+  - Status: [x] DONE · Files: HeroCompact (48→70px), EditProfileModal preview (48→72px), UserDropdown (compact 20→30, card 16→26), Leaderboard (podium/list bump)
+  - **Spec impact**: [x] None (CSS sizing) · **Spec strategy**: [x] (c) [no-spec-impact]
 - ASE-3 Leaderboard sticky my-rank row hiển thị avatar user (đang hardcode `undefined`)
   - Status: [x] DONE · Files: `apps/web/src/pages/Leaderboard.tsx` · Test: Leaderboard.test.tsx
   - Root cause: `/my-rank` BE không trả `avatarUrl`; sticky row (rank > 20) hardcode `avatarUrl={undefined}` → luôn hiện chữ cái đầu. Dùng `myRank.avatarUrl ?? user?.avatar` (authStore đã sync ở ASE-1/2).
