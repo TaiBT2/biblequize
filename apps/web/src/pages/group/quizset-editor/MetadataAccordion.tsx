@@ -120,7 +120,7 @@ export default function MetadataAccordion({
         </div>
       )}
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
           .qse-meta-grid { grid-template-columns: minmax(0, 1fr) !important; }
         }
       `}</style>

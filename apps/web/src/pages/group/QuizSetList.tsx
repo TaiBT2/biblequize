@@ -190,16 +190,16 @@ export default function QuizSetList() {
   }, [nonDrafts, activeFolder])
 
   return (
-    <div className="bg-bq-paper min-h-screen lg:flex">
-      {/* Mobile header (lg:hidden) */}
-      <div className="lg:hidden">
+    <div className="bg-bq-paper min-h-screen md:flex">
+      {/* Mobile header (md:hidden) */}
+      <div className="md:hidden">
         <MobileHeader
           groupId={groupId!} t={t} totalCount={items.length}
         />
       </div>
 
       {/* Desktop folder sidebar (hidden:lg:flex) */}
-      <aside className="hidden lg:flex w-[240px] shrink-0 border-r border-bq-hair flex-col bg-bq-inset">
+      <aside className="hidden md:flex w-[240px] shrink-0 border-r border-bq-hair flex-col bg-bq-inset">
         <div className="px-4 py-3 border-b border-bq-hair">
           <div className="text-[10px] font-semibold text-bq-ink3 uppercase tracking-wider mb-2">Danh mục</div>
           <button
@@ -267,7 +267,7 @@ export default function QuizSetList() {
       {/* MAIN content */}
       <div className="flex-1 flex flex-col bg-bq-paper min-h-screen">
         {/* Desktop toolbar */}
-        <div className="hidden lg:block px-6 py-4 border-b border-bq-hair bg-bq-white">
+        <div className="hidden md:block px-6 py-4 border-b border-bq-hair bg-bq-white">
           <div className="flex items-center justify-between mb-3">
             <div>
               <div className="text-[10px] text-bq-ink3 uppercase font-semibold tracking-wider">
@@ -379,7 +379,7 @@ export default function QuizSetList() {
         </div>
 
         {/* Mobile filter chips + search */}
-        <div className="lg:hidden px-5 mb-3">
+        <div className="md:hidden px-5 mb-3">
           <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl px-3 py-2.5 flex items-center gap-2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="text-bq-ink3">
               <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
@@ -475,7 +475,7 @@ export default function QuizSetList() {
           {/* Mobile-only "Tạo thư mục" footer (desktop has it in sidebar) */}
           <button
             onClick={handleCreateFolder}
-            className="lg:hidden w-full mt-3 py-2 rounded-xl bg-bq-white border border-dashed border-bq-hair text-xs text-bq-ink2 hover:text-bq-amberd hover:border-bq-amber/40"
+            className="md:hidden w-full mt-3 py-2 rounded-xl bg-bq-white border border-dashed border-bq-hair text-xs text-bq-ink2 hover:text-bq-amberd hover:border-bq-amber/40"
           >{t('quizSet.list.createFolder')}</button>
         </div>
       </div>
@@ -603,7 +603,7 @@ function CardGrid({
 }) {
   const cls = viewMode === 'list'
     ? 'grid grid-cols-1 gap-3'
-    : 'grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-5'
+    : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5'
   const isMember = myRole != null
   return (
     <div className={cls}>
@@ -662,7 +662,7 @@ function QuizSetCard({
       className="qs-fade-in cursor-pointer block"
     >
       {/* Desktop: cover on top (hidden when list view forced) */}
-      <div className={`${forceCompact ? 'hidden' : 'hidden lg:block'} transition rounded-xl overflow-hidden shadow-bq-soft ${
+      <div className={`${forceCompact ? 'hidden' : 'hidden md:block'} transition rounded-xl overflow-hidden shadow-bq-soft ${
         idx === 0 ? 'bg-bq-white border border-bq-amber/30' : 'bg-bq-white border border-bq-hair'
       }`}>
         <div className="h-28 relative overflow-hidden" style={{ background: gradient }}>
@@ -710,7 +710,7 @@ function QuizSetCard({
       </div>
 
       {/* Mobile / list view: compact horizontal */}
-      <div className={`${forceCompact ? 'block' : 'lg:hidden'} bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl mb-2 overflow-hidden`}>
+      <div className={`${forceCompact ? 'block' : 'md:hidden'} bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl mb-2 overflow-hidden`}>
         <div className="flex p-3 gap-3">
           <div className="w-14 h-14 rounded-lg flex items-center justify-center text-2xl shrink-0 bg-bq-inset">{cover}</div>
           <div className="flex-1 min-w-0">
@@ -822,7 +822,7 @@ function DraftCard({ groupId, qs }: { groupId: string; qs: QuizSet }) {
       className="block rounded-xl mb-2 overflow-hidden border border-bq-hair shadow-bq-soft qs-fade-in bg-bq-inset"
     >
       {/* Desktop: cover on top */}
-      <div className="hidden lg:block">
+      <div className="hidden md:block">
         <div className="h-28 relative bg-bq-white flex items-center justify-center">
           <div className="text-5xl opacity-30">📝</div>
           <div className="absolute top-2 left-2"><span className="qs-badge-status qs-badge-draft">Nháp</span></div>
@@ -846,7 +846,7 @@ function DraftCard({ groupId, qs }: { groupId: string; qs: QuizSet }) {
       </div>
 
       {/* Mobile: compact horizontal */}
-      <div className="lg:hidden flex p-3 gap-3">
+      <div className="md:hidden flex p-3 gap-3">
         <div className="w-14 h-14 rounded-lg flex items-center justify-center text-2xl shrink-0 bg-bq-white">📝</div>
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between">

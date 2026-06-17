@@ -320,7 +320,7 @@ export default function QuestionEditor({
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
           .qse-grid { grid-template-columns: 1fr !important; }
           .qse-editor-pane { padding: 14px 12px !important; }
         }
