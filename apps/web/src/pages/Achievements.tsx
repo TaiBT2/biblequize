@@ -213,9 +213,9 @@ const Achievements: React.FC = () => {
       </header>
 
       {/* -- Main Grid Layout ---------------------------------------- */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
         {/* Left Column: Content */}
-        <div className="lg:col-span-9 space-y-10">
+        <div className="md:col-span-8 lg:col-span-9 space-y-10">
           {/* Filter Tabs */}
           <div className="flex flex-wrap gap-2 pb-2 border-b border-bq-hair">
             {visibleCategories.map((cat) => {
@@ -341,7 +341,7 @@ const Achievements: React.FC = () => {
         </div>
 
         {/* Right Column: Sidebar Stats */}
-        <aside className="lg:col-span-3 space-y-8">
+        <aside className="md:col-span-4 lg:col-span-3 space-y-8">
           {/* Recently Unlocked */}
           <section className="bg-bq-white border border-bq-hair shadow-bq-soft p-6 rounded-2xl">
             <h2 className="text-lg font-bold text-bq-ink mb-6 flex items-center gap-2">
