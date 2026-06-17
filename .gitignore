@@ -57,3 +57,8 @@ scripts/seed/genesis_review.md
 scripts/seed/prod_update_all.sql
 scripts/seed/prod_backup_all.jsonl
 scripts/seed/rewrite_full.log
+scripts/seed/.translate_progress.json
+scripts/seed/translate_report.json
+scripts/seed/prod_update_en.sql
+scripts/seed/prod_backup_en.jsonl
+scripts/seed/manual_fixes.json

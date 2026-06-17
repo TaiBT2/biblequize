@@ -9,13 +9,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Joshua 1:9 - Be strong and courageous. Do not be afraid, for the Lord your God is with you wherever you go.",
+    "explanation": "THE CORRECT ANSWER is 'Be strong and courageous'. In the focal passage Joshua 1:8-9, the LORD's command to Joshua is 'Be strong and courageous' (verse 9), which is a direct and central command before he leads the people into the promised land.\n\nINCORRECT ANSWERS:\n1. 'Humility' is a common misconception about a biblical leadership quality, but it is not the precise word used in God's command here.\n2. 'Submission' is a correct biblical principle, but it misses the specific focus of the question on the command in Joshua 1:9.\n3. 'Prayer' is a close answer because it is intimately related to the spiritual context. However, it is an implied practice (see verse 8 about meditating on the law) and not the direct wording of the command 'Be strong...' in verse 9.",
     "language": "en",
     "verseEnd": 9,
     "options": [
-      "Patient",
-      "Humble",
-      "Wise",
+      "Humility",
+      "Submission",
+      "Prayer",
       "Courageous"
     ],
     "tags": [
@@ -36,14 +36,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Joshua 6:3-4 - They marched once a day for 6 days; on the 7th day they marched around 7 times, blew the trumpets, and shouted, and the walls fell.",
+    "explanation": "According to Joshua 6:3-5, the LORD commanded: 'All of you, the fighting men, are to march around the city once. Do this for six days. On the seventh day, march around the city seven times, and the priests shall blow the trumpets.' Therefore, the Israelites had to march around the city for 6 days, and on the 7th day (after marching seven times) the walls collapsed. Thus, the total number of days of marching before the walls fell is 7 days.\n\n- The distractor '6 days' is incorrect because it only counts the days of marching once per day, overlooking that the 7th day is when the walls actually fell after marching seven times.\n- The distractor '40 days' is incorrect because this is the number of days the Israelites spied out the city (Numbers 13:25), unrelated to the event of marching around Jericho.\n- The distractor '3 days' is incorrect because it is a common misunderstanding based on other events in the Bible (such as the preparation time before crossing the Jordan River), not found in the account of Jericho.",
     "language": "en",
     "verseEnd": 5,
     "options": [
+      "6 days",
       "40 days",
-      "3 days",
       "7 days",
-      "12 days"
+      "3 days"
     ],
     "tags": [
       "Old Testament",
@@ -63,13 +63,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Joshua 1:3 - Every place where you set your foot I have given you. But they still had to walk in order to receive it.",
+    "explanation": "The question references Joshua 1:3: 'Every place that the sole of your foot shall tread upon, that have I given unto you, as I said unto Moses.' This promise was reiterated by God to Joshua as the new leader of the entire nation. The CORRECT ANSWER 'the Israelites' is accurate because the promise of the land was given to the entire Israelite people, not just to an individual or a small group. WRONG DISTRACTOR: 1) 'The tribe of Judah' (wrong_scope) is incorrect because the promise has a scope for all 12 tribes, not this tribe alone. 2) 'His warriors' (common_misconception) is incorrect because although they were the instruments of conquest, the promise belongs to the whole people, including women, children, and those not directly fighting. 3) 'Joshua himself' (wrong_detail) is incorrect because the promise was given to Joshua as a representative and for the benefit of the people, not as his personal property.",
     "language": "en",
     "options": [
-      "Only the warriors",
-      "Joshua alone",
+      "The tribe of Judah",
+      "His warriors",
       "The people of Israel",
-      "The tribe of Judah"
+      "Joshua himself"
     ],
     "tags": [
       "Old Testament",
@@ -90,13 +90,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Joshua 2:4 - Rahab hid the 2 spies on her rooftop. She trusted God and was saved when the city fell (Hebrews 11:31).",
+    "explanation": "The question asks who helped hide the two spies. The correct answer is 'Rahab, the prostitute' (Joshua 2:4-6). The king of Jericho was the one who ordered their capture (2:2-3), not the one who hid them. 'The messengers' is a term used for the spies in verses 1 and 3, but they were the ones being hidden, not the ones doing the hiding. 'The two spies' were precisely the ones who were hidden (2:1), so this answer misinterprets the question.",
     "language": "en",
     "verseEnd": 6,
     "options": [
-      "A merchant",
-      "A city official",
-      "A priest",
+      "The king of Jericho, the ruler",
+      "The messengers, the informants",
+      "The two spies, the Israelites",
       "Rahab, the prostitute"
     ],
     "tags": [
@@ -118,14 +118,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Joshua 2:18 - A scarlet cord, like the blood of the Passover lamb. A foretype of salvation through the blood.",
+    "explanation": "In Joshua 2:18, the spies instructed Rahab: 'Bind this line of scarlet thread in the window which you did let us down by.' (Joshua 2:18, NKJV). This was the sign for the Israelite army to recognize and spare her household when attacking Jericho (Joshua 2:12-14, 21). The correct answer 'A scarlet cord (thread)' is accurate because the text directly describes the cord as scarlet or crimson. The distractor 'An ordinary cloak' is a 'nearby_passage' error because, while it relates to personal items, the text never mentions Rahab hanging a cloak. 'A white flag' is the closest 'almost-right' distractor, a 'wrong_detail' error, because it is a common surrender signal, but the Bible specifies a scarlet cord, not a flag or the color white. 'A staff' is a 'common_misconception' error because it might be confused with other miraculous items in the Bible but is completely unrelated to this story.",
     "language": "en",
     "verseEnd": 21,
     "options": [
       "A scarlet (red) cord",
-      "A pillar of smoke",
-      "An oil lamp",
-      "A white flag"
+      "An ordinary cloak",
+      "A white flag",
+      "A staff"
     ],
     "tags": [
       "Old Testament",
@@ -146,14 +146,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Joshua 3:15-17 - The Jordan River parted when the priests' feet touched the water, just like the Red Sea.",
+    "explanation": "In Joshua 3:14-17, when the priests carrying the Ark of the Covenant stepped into the water's edge, the Jordan River (verse 15) stopped flowing and stood up in a heap, allowing the Israelites to cross on dry ground. The correct answer is the Jordan River.\n\n*   **The River** is incorrect because this is the name of another river mentioned in the Bible (e.g., the River of Egypt), but it is not the river in this specific story. This is an error of confusing a nearby passage.\n*   **The Nile River** is incorrect because this is the famous river in Egypt, where miracles occurred in the book of Exodus. Many people might confuse the parting of the waters with the Nile River. This is a common misconception.\n*   **The Amazon River** is incorrect because while it is a major river, it is not mentioned in the Bible at all and is unrelated to the Israelites' journey. This is an error of having the correct text type but being off-topic (belonging to general geography, not the biblical context).",
     "language": "en",
     "verseEnd": 17,
     "options": [
       "The Jordan River",
-      "The Red Sea",
-      "The Euphrates River",
-      "The Nile River"
+      "The River",
+      "The Nile River",
+      "The Amazon River"
     ],
     "tags": [
       "Old Testament",
@@ -174,13 +174,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Joshua 4:7 - Whenever their children asked, parents would recount God's miracle of parting the Jordan River.",
+    "explanation": "Joshua 4:6-7 clearly states the purpose of the twelve stones: '...to be a memorial...so that when your children ask...you shall say...the waters of the Jordan were cut off...' (vv.6-7). The correct answer, 'To serve as a memorial so future generations would remember God's miracle,' directly reflects this command. Distractor 1 ('To build an altar...') is close because altars are also related to worship and remembrance, but in Joshua 4, the stones are set up as a memorial heap, not an altar (stone altars are mentioned in other chapters). Distractor 2 ('To serve as boundary markers...') is incorrect in scope because the purpose is not related to marking territory, but to spiritual memory. Distractor 3 ('To be used as building materials...') is a common misunderstanding, as the stones were taken from the riverbed but not used for city construction; they formed a separate memorial heap.",
     "language": "en",
     "verseEnd": 7,
     "options": [
-      "To build city walls",
-      "To make an altar",
-      "To make weapons",
+      "To build an altar to offer sacrifices to the LORD",
+      "To serve as boundary markers for the tribes' territories",
+      "To be used as building materials for the city of Jericho",
       "As a memorial so children would remember God's miracle"
     ],
     "tags": [
@@ -202,13 +202,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Joshua 5:14 - The commander of the Lord's army appeared, and Joshua fell down to worship. This may be a pre-incarnate appearance of Jesus.",
+    "explanation": "In Joshua 5:13-15, Joshua saw a man with a drawn sword in his hand and asked, 'Are you for us or for our adversaries?' The man replied, 'No; but I am the commander of the army of the LORD. Now I have come.' Therefore, the correct answer is 'Commander of the army of the LORD.'\n\nThe incorrect answers:\n1. 'Commander of the army of Jericho' (almost-right) is wrong because this person was not from Jericho but from the army of the LORD.\n2. 'An Israelite spy' is wrong because the passage does not mention spying; this is a supernatural figure.\n3. 'Moses appearing with a sword' is wrong because Moses had already died (Joshua 1:1-2) and is not mentioned in 5:13-15; this is a common misunderstanding due to confusion about leadership.",
     "language": "en",
     "verseEnd": 15,
     "options": [
-      "A warrior",
-      "The prophet Moses",
-      "The angel Gabriel",
+      "Commander of the army of Jericho",
+      "An Israelite spy",
+      "Moses appearing with a sword",
       "The commander of the Lord's army"
     ],
     "tags": [
@@ -230,13 +230,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Joshua 7:20-21 - Achan hid a robe, silver, and gold. One person's sin affected the whole community.",
+    "explanation": "The correct answer is 'Achan, because he took the forbidden items from Jericho' based on Joshua 7:20-21, where Achan admits to taking a beautiful cloak from Shinar, two hundred shekels of silver, and a bar of gold from Jericho, violating God's command (Joshua 6:18-19). This brought sin and caused Israel's defeat at Ai (verses 11-12).\n\nThe incorrect options:\n- 'Joshua, because he did not consult God before the campaign': This is a common misunderstanding. Although Joshua may have made an error in assessing the situation (Joshua 7:3-4), Scripture clearly attributes the failure to Achan's sin (verse 11).\n- 'Dan, because he took the forbidden items from Jericho': This is a 'close but incorrect' option. Achan was from the tribe of Judah (verse 1), not the tribe of Dan. This option is correct about the action but wrong about the identity of the sinner.\n- 'The entire people, because they did not consecrate themselves for the battle': Incorrect in scope. Scripture does not say the entire people sinned at this time. The responsibility lay with the individual Achan, and the judgment affected the community, but the initiating cause was one man's sin.",
     "language": "en",
     "verseEnd": 21,
     "options": [
-      "The people, because of fear",
-      "The priests, because they did not pray",
-      "Joshua, because of wrong tactics",
+      "Joshua, because he did not consult God before the campaign",
+      "Dan, because he took the forbidden items from Jericho",
+      "The entire people, because they did not consecrate themselves for the battle",
       "Achan, because he took forbidden things from Jericho"
     ],
     "tags": [
@@ -258,14 +258,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Joshua 10:13 - The sun stood still in the middle of the sky all day so Israel could complete the victory.",
+    "explanation": "Joshua 10:12-13 records: Then Joshua prayed before the Israelites and said in their presence: 'Sun, stand still over Gibeon; moon, stop in the Valley of Aijalon.' The sun stood still, the moon stopped... The correct answer is because the Bible states both the sun and the moon stood still to prolong the battle. Distractor 1 is incorrect because the moon also stopped, not just 'set early'. Distractor 2 is incorrect because this is a common misunderstanding; the Bible does not say they moved in opposite directions. Distractor 3 is incorrect because the hail was a different miracle that occurred in the same battle (Joshua 10:11), but it is not the miracle referred to when 'Joshua fought' and prayed here.",
     "language": "en",
     "verseEnd": 13,
     "options": [
-      "Fire from heaven",
+      "The sun stood still and the moon set early",
       "The sun and moon stood still",
-      "An earthquake",
-      "A storm"
+      "The sun and the moon moved in opposite directions",
+      "Hail rained down on the enemy"
     ],
     "tags": [
       "Old Testament",
@@ -286,14 +286,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Joshua 14:12 - Caleb asked for the hardest place because he trusted God. At 85 he was still strong and ready to fight.",
+    "explanation": "Joshua 14:12 clearly records Caleb requesting 'this mountain country' (that is, Hebron), a place inhabited by the Anakim and containing large, fortified cities. This is the correct answer because it matches the detail of him requesting a mountainous region with giants. Distractor 1 is incorrect because it mistakenly refers to the fertile plains near Jericho, an area mentioned elsewhere but not the place Caleb requested. Distractor 2 is 'close but incorrect' on a key detail: Caleb specifically requested the mountainous region of Hebron (which had fortified cities), not a general fortified land in the south. Distractor 3 is incorrect because it is based on a common misunderstanding of the 'land flowing with milk and honey,' describing a land with rivers, while Caleb specifically requested a rugged, mountainous region inhabited by the Anakim.",
     "language": "en",
     "verseEnd": 12,
     "options": [
       "The hill country where the Anakim giants lived",
-      "The fertile plains",
-      "The coastline",
-      "Jerusalem"
+      "The fertile plains near Jericho",
+      "A fortified land in the southern region",
+      "A land with flowing rivers surrounding it"
     ],
     "tags": [
       "Old Testament",
@@ -314,13 +314,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Joshua 23:14 - Joshua testified that not one of the Lord's promises had failed. He urged the people to remain faithful.",
+    "explanation": "In Joshua 23:14, Joshua's final statement is: 'Now behold, today I am going the way of all the earth, and you know in all your hearts and in all your souls that not one word of all the good words which the LORD your God spoke concerning you has failed; all have been fulfilled for you...' (NASB). The correct answer is accurate because it summarizes the main point: it emphasizes God's faithfulness in keeping every promise and calls the people to respond with faithfulness.\n\nDistractor 1 (close but wrong detail) correctly identifies the first part about God's faithfulness but errs in the detail 'the tribes must unite as one'. The issue of tribal unity is mentioned elsewhere (e.g., 22:1-34) and is not the focus of 23:14.\n\nDistractor 2 (wrong scope) is incorrect in scope: 'sacrificial rituals' are part of the Law, but verse 23:14 does not specifically emphasize rituals; it emphasizes the general relationship and faithfulness to God.\n\nDistractor 3 (common misconception) is based on a common misunderstanding: the book of Joshua records many battles, but this final statement in chapter 23 emphasizes God's faithfulness and covenant, not a call to 'continue to go into battle'.",
     "language": "en",
     "options": [
-      "Build many cities",
+      "God is faithful, and therefore the tribes must unite as one",
       "God is faithful and keeps all His promises, so be faithful to Him",
-      "Increase the army",
-      "Keep fighting"
+      "God is faithful, so diligently keep the sacrificial rituals",
+      "God always punishes enemies, so continue to go into battle"
     ],
     "tags": [
       "Old Testament",
@@ -342,13 +342,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Joshua 1:1-2 — 'After the death of Moses the servant of the LORD, the LORD said to Joshua the son of Nun, Moses' assistant.'",
+    "explanation": "The question asks about the event that opens the book of Joshua. Joshua 1:1-2 records: 'After the death of Moses the servant of the LORD, the LORD said to Joshua...: \"Moses my servant is dead...\"'. The CORRECT ANSWER is 'Moses', because the Scripture directly follows his death. WRONG DISTRACTORS: 1) 'Joshua' is close but incorrect in a key detail (he is the main character of the book, not the one who just died). 2) 'Aaron' is incorrect in detail (Moses's brother, who died earlier on Mount Hor, recorded in Numbers 20:28, not the event opening the book of Joshua). 3) 'Joseph' is a common misunderstanding (another important biblical figure who died long before this period, unrelated to the immediate context).",
     "language": "en",
     "options": [
-      "Abraham",
+      "Joshua",
       "Moses",
-      "Joseph",
-      "Aaron"
+      "Aaron",
+      "Joseph"
     ],
     "tags": [
       "Old Testament",
@@ -368,13 +368,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Joshua 1:7 — 'Only be strong and very courageous, being careful to do according to all the law that Moses my servant commanded you.'",
+    "explanation": "Joshua 1:7: 'Only be strong and very courageous, being careful to do according to all the law that Moses my servant commanded you. Do not turn from it to the right hand or to the left, that you may have good success wherever you go.' This verse directly answers the question: The LORD commanded Joshua to 'be strong and very courageous' (in spirit) and to 'do according to all the law' (in action) to have good success (prosperity).\n\n- Distractor 1 (Seeking wisdom from the elders) is 'close but incorrect' in a key detail. This is a 'nearby_passage' error because this idea appears in the nearby context (e.g., the people promising to obey Joshua as they obeyed Moses), but it is NOT the direct command from the LORD to Joshua for success in verse 1:7.\n- Distractor 2 (Relying on the strength of soldiers) is a 'wrong_scope' error. This might seem reasonable in the context of conquest, but it is completely outside the scope of the LORD's specific command in this passage. The focus here is on spiritual obedience and courage, not military strength.\n- Distractor 3 (Working diligently and storing up food) is a 'common_misconception' error. This is a common misunderstanding when thinking about 'success' in material terms and mere practical preparation, but it is not mentioned in the LORD's command here. Success in this passage is tied to obedience to God's Word.",
     "language": "en",
     "options": [
-      "Increase the army",
-      "Build fortified cities",
+      "Seeking wisdom from the elders",
+      "Relying on the strength of soldiers",
       "Be strong and courageous and obey the law",
-      "Form alliances with kings"
+      "Working diligently and storing up food"
     ],
     "tags": [
       "Old Testament",
@@ -394,13 +394,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Joshua 6:20 — 'The people shouted a great shout, and the wall fell down flat, so that the people went up into the city, every man straight before him, and they captured the city.'",
+    "explanation": "Joshua 6:20 records: 'So the people shouted, and the priests blew the trumpets. And it came to pass, when the people heard the sound of the trumpet, and the people shouted with a great shout, that the wall fell down flat, so that the people went up into the city, every man straight before him, and they took the city.' Therefore, the correct answer is 'The city wall collapsed' because the Scripture clearly states this happened immediately. The distractor 'The city wall shook violently' is close but incorrect in the key detail (shaking instead of collapsing). The distractor 'Cracks appeared in the city wall' is based on a detail not present in this biblical passage (confusion with a nearby passage). The distractor 'The city wall remained standing' is based on a common misunderstanding that the miracle did not occur or the wall did not fall, which is completely contrary to the text.",
     "language": "en",
     "options": [
       "The wall fell down flat",
-      "The gate opened",
-      "The wall caught fire",
-      "The wall vanished"
+      "The city wall shook violently",
+      "Cracks appeared in the city wall",
+      "The city wall remained standing"
     ],
     "tags": [
       "Old Testament",
@@ -420,12 +420,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Joshua 8:18 — 'Then the LORD said to Joshua, Stretch out the javelin that is in your hand toward Ai, for I will give it into your hand.'",
+    "explanation": "The correct answer is 'Raise the spear toward Ai' because Joshua 8:18 records: 'The LORD said to Joshua, \"Hold out toward Ai the javelin that is in your hand, for into your hand I will deliver the city.\"' Here, 'the javelin' (or 'spear') is the object Joshua had to raise.\n\nThe incorrect answers:\n- 'Raise the bow toward Ai' (incorrect detail): The text clearly states 'the javelin' (spear), not a bow. This is an error of changing a key detail.\n- 'Lower the spear to the ground' (common misunderstanding): This action is the opposite of the command to 'hold out.' Some readers might confuse it with other biblical situations where lowering a weapon signifies an end, but not in this context.\n- 'Hold the spear pointing backward' (misremembered nearby passage): This may stem from skimming or misremembering the tactic, where part of Israel's army was in ambush behind the city, but the LORD's direct command to Joshua was to hold out the spear 'toward' (i.e., forward, toward the city of) Ai.",
     "language": "en",
     "options": [
-      "Burn the city of Ai",
-      "March around it seven times",
-      "Pray on the mountain",
+      "Raise the bow toward Ai",
+      "Lower the spear to the ground",
+      "Hold the spear pointing backward",
       "Stretch out the javelin toward Ai"
     ],
     "tags": [
@@ -447,13 +447,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Joshua 9:14 — 'So the men took some of their provisions, but did not ask counsel from the LORD.'",
+    "explanation": "Joshua 9:14-15 records: 'So the men of Israel took some of their provisions, but did not ask counsel of the LORD. And Joshua made peace with them and made a covenant with them, to let them live, and the leaders of the congregation swore to them.' The correct answer is because the Scripture clearly states they 'did not ask counsel of the LORD' before making the decision. Distractor 1 ('Did not consult the elders') is close but incorrect in a key detail: verse 14 speaks of not asking the LORD, while the elders only appear after the decision was made (verse 15). Distractor 2 is incorrect in detail: the inspection of the provisions (dry bread, old wineskins) was PERFORMED by the Israelites (verses 12-13), not something they failed to do. Distractor 3 is textually accurate but misses the point of the question: inquiring about their origin is mentioned (verse 8), but the question specifically asks about the action NOT taken before MAKING THE COVENANT, whereas this inquiry occurred during the initial contact, not as the final step that was omitted.",
     "language": "en",
     "options": [
       "Did not consult the elders",
-      "Did not examine the supplies",
+      "Did not inspect their provisions",
       "Did not ask counsel from the LORD",
-      "Did not verify their origin"
+      "Did not inquire about their origin"
     ],
     "tags": [
       "Old Testament",
@@ -473,13 +473,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Joshua 10:11 — 'The LORD threw down large stones from heaven on them... There were more who died because of the hailstones than the sons of Israel killed with the sword.'",
+    "explanation": "Joshua 10:11 records: '...the LORD cast down great stones from heaven...' so the correct answer is 'Large hailstones (hail).' The distractor 'A great rain of fire' is close but incorrect in the specific material (fire instead of stones). 'Large stones from the mountains' is incorrect because the Bible clearly states the stones came from heaven, not from the mountains (a confusion with the nearby geographical context). 'Great thunder and lightning' is a common misunderstanding about God's method of intervention, but it is not mentioned in this passage.",
     "language": "en",
     "options": [
-      "Fire from heaven",
+      "A great rain of fire",
       "Large hailstones",
-      "Violent thunderbolts",
-      "An army of angels"
+      "Large stones from the mountains",
+      "Great thunder and lightning"
     ],
     "tags": [
       "Old Testament",
@@ -500,13 +500,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Joshua 22:10 — 'They built there an altar by the Jordan, an altar of imposing size.' Later explained as a witness altar.",
+    "explanation": "Joshua 22:10-12 records that they built 'a great altar to see to' (v. 10) on the side of the Jordan River, which made the other tribes think they were setting up a separate altar for offering sacrifices, contrary to the law (vv. 11, 16).\n\n- The correct answer is valid because the Scripture clearly states it was 'a great altar'.\n- The distractor 'A watchtower' is incorrect because this passage does not mention a defensive structure; the tribes were concerned about improper worship.\n- The distractor 'A meeting house' is incorrect because, while gathering is important, this detail is not in the passage; the misunderstanding stemmed from building an altar.\n- The distractor 'A memorial monument' is close because it is also a built structure to mark an event, but it misses the key detail: the Scripture explicitly says it was an 'altar', not just a general memorial monument.",
     "language": "en",
     "options": [
       "A great altar",
-      "A fortified city",
-      "A false temple",
-      "A victory monument"
+      "A watchtower",
+      "A meeting house",
+      "A memorial monument"
     ],
     "tags": [
       "Old Testament",
@@ -526,12 +526,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Joshua 24:15 — 'Choose this day whom you will serve... But as for me and my house, we will serve the LORD.'",
+    "explanation": "Joshua 24:15 records: 'But as for me and my household, we will serve the LORD.' This is Joshua's famous statement, expressing the decisive choice of him and his family to worship God.\n\n- Distractor 1 is wrong because it replaces 'the LORD' with 'idols,' which is completely contrary to the meaning of the Bible verse.\n- Distractor 2 is wrong because it changes the subject from 'me and my household' (Joshua and his family) to 'him and his household' (referring to someone else), shifting away from Joshua's personal choice.\n- Distractor 3 is 'close' but incorrect in detail: it replaces 'my household' (family) with 'my people' (all the people of Israel), while the context shows Joshua is speaking about his personal and family decision before calling the people to make their choice.",
     "language": "en",
     "options": [
-      "Go and build the temple",
-      "Follow the gods of Egypt",
-      "Keep the law of Moses",
+      "But as for me and my household, we will serve idols.",
+      "But as for him and his household, they will serve the LORD.",
+      "But as for me and my people, we will serve the LORD.",
       "As for me and my house, we will serve the LORD"
     ],
     "tags": [

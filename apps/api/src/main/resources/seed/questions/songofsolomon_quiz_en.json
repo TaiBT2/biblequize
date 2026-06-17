@@ -9,13 +9,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Song of Solomon 1:1 — 'The Song of Songs, which is Solomon's.' The traditional title 'Song of Songs' means the supreme song.",
+    "explanation": "The Bible verse Song of Solomon 1:1 clearly states: 'The song of songs, which is Solomon's.' (KJV). Therefore, the correct answer is 'Solomon', as the text itself identifies the authorship/ownership as his.\n\nThe incorrect answers:\n- 'David': This is a common misunderstanding because Solomon was the son of David, and many other books in the Bible are associated with David, but Song of Solomon 1:1 does not mention him.\n- 'Rehoboam': This is an error in name detail. Rehoboam was the son of Solomon, but he is not the author credited in this verse.\n- 'Jeroboam': This is a confusion with a nearby passage/context. Jeroboam was a figure in the book of Kings, related to the northern kingdom after Solomon's time, and is not connected to the content of Song of Solomon 1:1.",
     "language": "en",
     "options": [
       "Solomon",
       "David",
-      "Asaph",
-      "Heman"
+      "Rehoboam",
+      "Jeroboam"
     ],
     "tags": [
       "Old Testament",
@@ -35,13 +35,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Song of Solomon 1:5 — 'I am very dark, but lovely, O daughters of Jerusalem, like the tents of Kedar, like the curtains of Solomon.' Her darkness is from outdoor labor — not a defect.",
+    "explanation": "In Song of Solomon 1:5, the woman says: 'I am dark, but lovely, O daughters of Jerusalem, like the tents of Kedar, like the curtains of Solomon.' (NKJV). Therefore, the correct answer is 'I am dark, but lovely'. The distractor 'I am white, but lovely' is incorrect because it changes the key detail 'dark' to 'white'. The distractor 'I am neither dark nor lovely' is incorrect because it is completely opposite to the description in the text. The distractor 'The daughters of Jerusalem are dark and lovely' is incorrect because it misinterprets the subject; the Scripture verse is about the woman, not about the daughters of Jerusalem.",
     "language": "en",
     "options": [
-      "I am beautiful as the sun",
+      "I am white, but lovely",
       "I am very dark, but lovely",
-      "I am weak but gentle",
-      "I am wealthy and noble"
+      "I am neither dark nor lovely",
+      "The daughters of Jerusalem are dark and lovely"
     ],
     "tags": [
       "Old Testament",
@@ -61,13 +61,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Song of Solomon 2:1 — 'I am a rose of Sharon, a lily of the valleys.' Two simple yet purely beautiful flowers from Sharon, Israel's coastal plain.",
+    "explanation": "In Song of Solomon 2:1, the woman says: 'I am the rose of Sharon, and the lily of the valleys.' (KJV). This is a humble declaration by her, comparing herself to beautiful but common flowers. The correct option accurately describes these two images.\n- Distractor 1 (almost correct) is wrong in the detail 'the lily of the hill,' while the Scripture records 'of the valleys.'\n- Distractor 2 is incorrect in scope because it uses the images 'the vineyard' and 'the rose,' which are metaphors appearing in other passages of the book (Song of Solomon 1:6; 2:1-2) but are not the woman's self-comparison in 2:1.\n- Distractor 3 confuses elements from nearby Scripture verses (possibly misremembering with other flower and place images in the book), reversing the order and details ('the lily of Sharon,' 'the rose of the valley') compared to the original text.",
     "language": "en",
     "options": [
-      "Cedar of Lebanon",
-      "Vine on the mountain",
+      "The rose of Sharon, the lily of the hill",
+      "The vineyard of the valley, the rose of the hill",
       "A rose of Sharon, a lily of the valleys",
-      "Palm tree in the desert"
+      "The lily of Sharon, the rose of the valley"
     ],
     "tags": [
       "Old Testament",
@@ -87,12 +87,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Song of Solomon 2:2 — 'As a lily among brambles, so is my love among the young women.' Her purity stands out among the ordinary.",
+    "explanation": "In Song of Solomon 2:2, the beloved says: 'As a lily among thorns, so is my love among the daughters.' Therefore, the correct answer is 'Among thorns'.\n\nIncorrect answers:\n- 'Among the bushes': Incorrect detail. Although 'thorns' might suggest a thorny bush, the text specifically uses 'thorns' and not the general term 'bushes'.\n- 'Among the meadows': Incorrect scope. Meadows are typically lush and pleasant, while the image of 'thorns' in the verse creates a clear contrast to emphasize outstanding beauty.\n- 'Among the flowers': Correct text but misaligned with the question. The phrase 'among the daughters' in the verse is compared to 'among the flowers,' but the question specifically asks what the lily is compared to being among, not what the beloved is compared to being among.",
     "language": "en",
     "options": [
-      "Among rivers",
-      "Among gardens",
-      "Among mountains",
+      "Among the bushes",
+      "Among the meadows",
+      "Among the flowers",
       "Among brambles"
     ],
     "tags": [
@@ -113,13 +113,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Song of Solomon 2:4 — 'He brought me to the banqueting house, and his banner over me was love.'",
+    "explanation": "Song of Solomon 2:4 says: 'He brought me to the banqueting house, and his banner over me was love.' (KJV). Therefore, the banner is specifically described as 'love'.\n\nThe incorrect answers:\n- 'Glory': This is a common theme in other books (like Isaiah), but it is not mentioned in this context in the Song of Solomon.\n- 'Victory': One might associate this with the image of a 'banner' and warfare, but this is out of scope because the Song of Solomon focuses on personal love, not military victory.\n- 'Faithfulness': This is an important virtue and could be inferred by some readers in the context of a relationship, but it is not the precise word used in this Bible verse.",
     "language": "en",
     "options": [
       "Love",
-      "Righteousness",
-      "Wisdom",
-      "Peace"
+      "Glory",
+      "Victory",
+      "Faithfulness"
     ],
     "tags": [
       "Old Testament",
@@ -139,13 +139,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Song of Solomon 2:7 — 'I adjure you, O daughters of Jerusalem, by the gazelles or the does of the field, that you not stir up or awaken love until it pleases.' A warning about awakening love before its time.",
+    "explanation": "Song of Solomon 2:7 says: 'Daughters of Jerusalem, I charge you by the gazelles and by the does of the field: Do not arouse or awaken love until it so desires.' The correct answer correctly states the condition given: 'until it so desires.' Distractor 1 is wrong because it changes the key detail about the timing to 'until it is dark,' a detail not present in this verse. Distractor 2 incorrectly expands the scope, interpreting 'do not awaken' as 'while it is sleeping,' which is an inference not found in the original text. Distractor 3 reflects a common misunderstanding about actively encouraging love, which is completely opposite to the command 'do not arouse or awaken' in the Bible verse.",
     "language": "en",
     "options": [
-      "Do not speak of it in public",
+      "Do not stir up or awaken love until it is dark",
       "Do not stir up or awaken love until it pleases",
-      "Do not learn from the elders' experience",
-      "Do not ever try it"
+      "Do not stir up or awaken love while it is sleeping",
+      "Be faithful and encourage love at all times"
     ],
     "tags": [
       "Old Testament",
@@ -165,13 +165,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Song of Solomon 2:15 — 'Catch the foxes for us, the little foxes that spoil the vineyards, for our vineyards are in blossom.' An image of small things destroying a relationship.",
+    "explanation": "Song of Solomon 2:15 says: 'Catch for us the foxes, the little foxes that ruin the vineyards, for our vineyards are in bloom.' Therefore, the correct answer is 'Destroying vineyards'. The distractor 'Destroying wheat fields' is close because wheat is a common crop in the Bible, but this verse specifically mentions vineyards. The distractor 'Destroying orchards' is incorrect as it is a common misinterpretation that broadens 'vineyards' to include other types of gardens. The distractor 'Destroying sheep pastures' might be associated with the pastoral setting of the book, but it completely misses the specific content of the question and this Bible verse.",
     "language": "en",
     "options": [
-      "Damaging the flock",
-      "Damaging the wheat",
+      "Destroying wheat fields",
+      "Destroying orchards",
       "Damaging the vineyards",
-      "Damaging the berry gardens"
+      "Destroying sheep pastures"
     ],
     "tags": [
       "Old Testament",
@@ -191,12 +191,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Song of Solomon 2:16 — 'My beloved is mine, and I am his; he grazes among the lilies.'",
+    "explanation": "In Song of Solomon 2:16, the bride says: 'My beloved is mine, and I am his; He grazes among the lilies.' Therefore, the correct answer is the first part of verse 16, which accurately and fully expresses the mutual belonging in their relationship. Distractor 1 is incorrect because it adds details from the latter part of verse 16, misplacing the focus of the question on mutual belonging. Distractor 2 is incorrect because it borrows the idea of belonging but incorrectly combines it with the imagery 'the rose of Sharon' from a different chapter (2:1), thus not correctly answering the question about the statement in 2:16. Distractor 3 is incorrect because it completely changes the meaning into a plea (taken from 2:17), which is a common misunderstanding when readers misremember the passage.",
     "language": "en",
     "options": [
-      "We are one body together",
-      "Love is everything to me",
-      "I will follow him to the end of the earth",
+      "My beloved is mine, and he grazes among the lilies day and night",
+      "I belong to my beloved, and I am the rose of Sharon",
+      "Awaken me, my beloved belongs to me",
       "My beloved is mine, and I am his"
     ],
     "tags": [
@@ -217,13 +217,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Song of Solomon 3:1 — 'On my bed by night I sought him whom my soul loves; I sought him, but found him not.'",
+    "explanation": "Quotation: \"By night on my bed I sought him whom my soul loveth: I sought him, but I found him not.\" (Song of Solomon 3:1). The correct answer is 'On my bed' because the Scripture clearly states the first location she searched was on her own bed at night. The distractor 'In the king's palace' is close because it relates to the palace setting mentioned later in the passage, but this is not the first place of searching mentioned in verse 1. The distractor 'In the streets' is incorrect because she only went out into the streets after not finding him on her bed (verse 2). The distractor 'In the vineyards' is incorrect because this is a common setting in the Song of Solomon but is not mentioned in this context of the night search.",
     "language": "en",
     "options": [
       "On her bed",
-      "In the vineyard",
-      "At the temple",
-      "Out in the wilderness"
+      "In the king's palace",
+      "In the streets",
+      "In the vineyards"
     ],
     "tags": [
       "Old Testament",
@@ -243,13 +243,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Song of Solomon 4:7 — 'You are altogether beautiful, my love; there is no flaw in you.'",
+    "explanation": "Song of Solomon 4:7 records: 'You are altogether beautiful, my love; there is no flaw in you.' Therefore, the correct answer is the complete affirmation of flawless beauty. The first distractor is wrong because it adds the detail 'except for a slight flaw' (incorrect detail), contradicting the meaning of 'there is no flaw in you' in the Bible. The second distractor is wrong because it expands the scope of comparison with 'no one can compare' (incorrect scope), an idea not present in the verse in question. The third distractor is wrong because, while it comments on beauty, it shifts the focus to 'the heart' (correct text but off-topic), not directly answering the man's statement about physical beauty in this verse.",
     "language": "en",
     "options": [
-      "You are beautiful as the sun",
+      "I am altogether beautiful, except for a slight flaw",
       "You are altogether beautiful, my love; there is no flaw in you",
-      "You are precious as fine gold",
-      "You are radiant as the stars"
+      "I am the most beautiful person, no one can compare",
+      "I am beautiful, but the heart is what truly matters"
     ],
     "tags": [
       "Old Testament",
@@ -269,13 +269,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Song of Solomon 1:9 — 'I compare you, my love, to a mare among Pharaoh's chariots.' A highly honored comparison — the prized mare of Pharaoh's chariots.",
+    "explanation": "In Song of Solomon 1:9, the beloved says: 'I compare you, my darling, to a mare among Pharaoh's chariots.' This is a compliment on the beauty and nobility of the lover. The first distractor is incorrect because it changes the detail 'mare' to 'stallion'. The second distractor is incorrect because it broadens the scope to 'the chariots of Israel', not Pharaoh's chariot. The third distractor is incorrect because it mistakenly shifts to a nearby context (Solomon), but this passage does not mention the horses of his chariots.",
     "language": "en",
     "options": [
-      "Vine on the high mountain",
-      "Dove in the cleft of the rock",
+      "The stallion of Pharaoh's chariot",
+      "The mare of the chariots of Israel",
       "A mare among Pharaoh's chariots",
-      "The moon among the stars"
+      "The mare of Solomon's chariots"
     ],
     "tags": [
       "Old Testament",
@@ -295,12 +295,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Song of Solomon 4:9 — 'You have captivated my heart, my sister, my bride; you have captivated my heart with one glance of your eyes, with one jewel of your necklace.'",
+    "explanation": "Song of Solomon 4:9 (KJV) reads: 'My sister, my spouse, thou hast ravished my heart...'. The correct answer quotes these two titles verbatim from Scripture.\n\n• The distractor 'My sister, my enclosed garden' is INCORRECT because 'enclosed garden' is an image used in verse 12 (same chapter 4), describing the beloved's privacy and beauty, not a direct title in verse 9.\n• The distractor 'My sister, my chariot' is INCORRECT because 'chariot' belongs to the imagery comparing beauty in verses 4 and 6:8, referring to Pharaoh's, not a title or form of address in verse 9.\n• The distractor 'My love, my bride' is INCORRECT because the first part 'My love' is a common term of endearment in the book (e.g., 1:9, 1:15, 4:1...), but it is not the phrase used in verse 9, which specifically uses 'My sister'.",
     "language": "en",
     "options": [
-      "Companion of the way",
-      "Once-beloved",
-      "Faithful servant",
+      "My sister, my enclosed garden",
+      "My sister, my chariot",
+      "My love, my bride",
       "My sister, my bride"
     ],
     "tags": [
@@ -321,13 +321,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Song of Solomon 4:12 — 'A garden locked is my sister, my bride, a spring locked, a fountain sealed.' An image of purity and exclusive devotion to her husband.",
+    "explanation": "The question references Song of Solomon 4:12 (BTT). The correct answer is 'A locked garden, a sealed spring, a fountain sealed' because the Scripture clearly states: 'A garden locked is my sister, my bride, a spring locked, a fountain sealed.' (Song of Solomon 4:12 ESV).\n\nThe incorrect answers:\n1. 'An open garden, a flowing spring, a wide stream' is INCORRECT because it describes the complete opposite of 'locked', 'sealed', 'sealed' in the Scripture (incorrect key detail).\n2. 'A locked garden, a sealed spring, a dammed lake' is INCORRECT because it uses 'lake' instead of 'fountain' as in the original text; 'lake' does not appear in the immediate context of the question (misidentifies the immediate passage).\n3. 'A beautiful garden, a clear stream' is INCORRECT because it only gives a general description, completely lacking the key elements of 'locked/sealed/sealed' from the Scripture, therefore it does not correctly answer the focus of the question (incorrect scope).",
     "language": "en",
     "options": [
       "A garden locked, a spring locked, a fountain sealed",
-      "A vine bearing abundant fruit",
-      "A green meadow flourishing",
-      "A dove in the valley"
+      "An open garden, a flowing spring, a wide stream",
+      "A locked garden, a sealed spring, a dammed lake",
+      "A beautiful garden, a clear stream"
     ],
     "tags": [
       "Old Testament",
@@ -347,13 +347,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Song of Solomon 5:2 — 'I slept, but my heart was awake. A sound! My beloved is knocking...' An image of the heart always turned to the beloved.",
+    "explanation": "In Song of Solomon 5:2, the woman says: 'I sleep, but my heart is awake' (KJV). Therefore, 'My heart' is the correct answer, as the text directly identifies her heart/inner being as what is awake. The incorrect answers: 1) 'My eyes' is wrong because this is a detail from verse 12 (describing the eyes), not the part that is awake in verse 2. 2) 'My voice' is wrong because it is not mentioned in this context; the beloved knocks and speaks, not her voice. 3) 'My faith' is wrong because this is a concept not present in the Song of Solomon; it is a common misunderstanding from applying other spiritual themes to this love poem.",
     "language": "en",
     "options": [
       "My eyes",
       "My heart",
-      "My hand",
-      "My voice"
+      "My voice",
+      "My faith"
     ],
     "tags": [
       "Old Testament",
@@ -373,13 +373,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Song of Solomon 5:16 — 'His mouth is most sweet, and he is altogether desirable. This is my beloved and this is my friend, O daughters of Jerusalem.'",
+    "explanation": "The question asks about the words of the woman describing her beloved in Song of Solomon 5:16. The correct answer is 'His mouth is very sweet; he is altogether lovely.' (Song 5:16) because this is the exact quotation of the woman's description. Distractor 1 is incorrect because it changes the key detail 'sweet' to 'bitter', completely reversing the positive meaning of the description. Distractor 2 is incorrect because it uses an idea from verse 5:8 ('the one whom my soul loves'), but it is not the specific description in verse 16 about being 'altogether' lovely. Distractor 3 is incorrect because it replaces 'lovely' with 'worthy of esteem'; while both are positive, it is not the exact wording and shifts the focus away from the question about the precise quotation.",
     "language": "en",
     "options": [
-      "He is king of kings",
-      "He is mighty and majestic",
+      "His mouth is very bitter; he is altogether lovely.",
+      "His mouth is very sweet; he is the one I love.",
       "His mouth is most sweet; he is altogether desirable",
-      "He is the wealthiest in the land"
+      "His mouth is very sweet; he is altogether worthy of esteem."
     ],
     "tags": [
       "Old Testament",
@@ -399,12 +399,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Song of Solomon 6:3 — 'I am my beloved's and my beloved is mine; he grazes among the lilies.'",
+    "explanation": "The correct answer is 'I belong to my beloved, and my beloved belongs to me' because this is the mutual belonging statement quoted verbatim in Song of Solomon 6:3 (also appearing in 2:16), expressing the characteristic reciprocal relationship. Distractor 1 is incorrect because it replaces 'me' with 'the woman' in the second clause, altering the subject and meaning. Distractor 2 is incorrect because it adds the phrase 'the one who is dearly loved,' expanding the scope of the sentence compared to the text in question. Distractor 3 is incorrect because it changes the subject of the first clause to 'The woman'; this is an expression found in a nearby context (for example, in the beloved's words) but is not the mutual belonging statement repeated in 6:3.",
     "language": "en",
     "options": [
-      "I know him, and he knows me",
-      "I help him, and he helps me",
-      "I pray for him, and he prays for me",
+      "I belong to my beloved, and my beloved belongs to the woman",
+      "I belong to my beloved, and my beloved belongs to me, the one who is dearly loved",
+      "The woman belongs to my beloved, and my beloved belongs to me",
       "I am my beloved's and my beloved is mine"
     ],
     "tags": [
@@ -425,13 +425,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Song of Solomon 7:10 — 'I am my beloved's, and his desire is for me.'",
+    "explanation": "The question specifically asks for the content of Song of Solomon 7:10. The correct answer is: 'I am my beloved's, and his desire is for me.' This is the direct speech of the woman in verse 10, affirming the relationship of belonging and love (desire).\n\nThe incorrect answers:\n1. 'My beloved is mine, and my desire is for him': Incorrect in the detail of the relationship. This statement reverses the subject of 'belonging' and 'desire' compared to Scripture. In verse 10, the woman says she belongs to her beloved and his desire is for her.\n2. 'His love is better than wine, and his desire is for me': Incorrect because it borrows an idea from a nearby passage. The first half ('His love is better than wine') is the content of Song of Solomon 1:2 and 4:10, not 7:10.\n3. 'I am my beloved's, and his love is sweeter than honey': Has correct text but misses the point of the question. The first half is correct with 7:10a, but the second half ('his love is sweeter than honey') is an idea that appears in Song of Solomon 4:11, not the content about 'desire' that the question asks for in 7:10.",
     "language": "en",
     "options": [
       "I am my beloved's, and his desire is for me",
-      "I wait for my beloved at the garden gate",
-      "My beloved has gone far away",
-      "I will meet my beloved tomorrow morning"
+      "My beloved is mine, and my desire is for him",
+      "His love is better than wine, and his desire is for me",
+      "I am my beloved's, and his love is sweeter than honey"
     ],
     "tags": [
       "Old Testament",
@@ -451,13 +451,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Song of Solomon 8:6 — 'Set me as a seal upon your heart, as a seal upon your arm, for love is strong as death...' The seal — symbol of permanent ownership.",
+    "explanation": "In Song of Solomon 8:6, the woman pleads: 'Set me as a seal upon your heart, as a seal upon your arm.' Therefore, the correct answer is 'On the heart and on the arm.'\n\nThe incorrect answers: 1) 'On the forehead and on the arm' is close but incorrect in detail (the seal is on the heart, not the forehead). 2) 'On the heart and on the shoulder' confuses the imagery with other passages (e.g., Exodus 28:12 speaks of stones on the ephod placed on the shoulders), not Song of Solomon 8:6. 3) 'Within the heart and in the mind,' while capturing the symbolic meaning of remembrance, is an interpretation of the meaning, not the literal, specific location the question asks for.",
     "language": "en",
     "options": [
-      "Upon the forehead and lips",
+      "On the forehead and on the arm",
       "Upon the heart and the arm",
-      "Upon the head and feet",
-      "Upon the chest and shoulder"
+      "On the heart and on the shoulder",
+      "Within the heart and in the mind"
     ],
     "tags": [
       "Old Testament",
@@ -477,13 +477,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Song of Solomon 8:6 — '...for love is strong as death, jealousy is fierce as the grave. Its flashes are flashes of fire, the very flame of the LORD.'",
+    "explanation": "Song of Solomon 8:6 states: 'For love is as strong as death' (KJV). The correct answer is 'Like death' because the Scripture directly compares the strength of love to death. The distractor 'Like the flame of the LORD' is close but inaccurate in detail; verse 6 also says 'jealousy is cruel as the grave' and 'the coals thereof are coals of fire, which hath a most vehement flame', but the object compared to 'love is strong' is specifically 'death'. The distractor 'Like water' is drawn from nearby imagery in Song of Solomon (e.g., 4:15, 8:7) but is not the simile for 'love is strong' in verse 6. The distractor 'Like life' is based on a common misunderstanding that incorrectly opposes 'death', whereas the text affirms a similarity in strength, not an opposition.",
     "language": "en",
     "options": [
-      "As the shining sun",
-      "As the vast ocean",
+      "Like the flame of the LORD",
+      "Like water",
       "As death",
-      "As granite stone"
+      "Like life"
     ],
     "tags": [
       "Old Testament",
@@ -503,12 +503,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Song of Solomon 8:7 — 'Many waters cannot quench love, neither can floods drown it. If a man offered for love all the wealth of his house, he would be utterly despised.'",
+    "explanation": "The correct answer is 'Many waters and rivers' (Song of Solomon 8:7). This is correct because the Scripture clearly states: 'Many waters cannot quench love; rivers cannot sweep it away.'\n- The distractor 'Many waters and the sea' is incorrect because, although it includes 'Many waters,' the detail 'the sea' is not in this Bible verse (incorrect detail).\n- The distractor 'Rivers and streams' is incorrect because, while 'rivers' is in the verse, 'streams' is a term used in other passages (such as Song of Solomon 4:12, 15), not in 8:7 (confusion with a nearby passage).\n- The distractor 'Fire and flame' is incorrect because this is a common misunderstanding. Although verse 8:6 says 'For love is as strong as death... its jealousy unyielding as the grave. It burns like blazing fire, like a mighty flame,' verse 8:7, which directly answers the question 'what... cannot quench,' is not fire but water and rivers (common misunderstanding).",
     "language": "en",
     "options": [
-      "Wisdom",
-      "Wealth",
-      "Power",
+      "Many waters and the sea",
+      "Rivers and streams",
+      "Fire and flame",
       "Many waters and floods"
     ],
     "tags": [
@@ -530,13 +530,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Song of Solomon 3:7-8 — 'Behold, it is the litter of Solomon! Around it are sixty mighty men, some of the mighty men of Israel, all of them wearing swords and expert in war, each with his sword at his thigh, against terror by night.'",
+    "explanation": "Song of Solomon 3:7-8 (KJV) records: 'Behold his bed, which is Solomon's; threescore valiant men are about it, of the valiant of Israel.' Therefore, the correct answer is 'Sixty mighty men of Israel'.\n- The distractor 'Sixty mighty men of Judah' is incorrect because the text identifies them as being of Israel, not limited to the tribe of Judah.\n- The distractor 'Sixty mighty men from other tribes' is incorrect because, while broadly they could be understood as from various tribes, the text directly calls them 'of Israel,' making this a detail that is accurate but not a direct answer and potentially misleading.\n- The distractor 'Thirty mighty men of Israel' is a close but incorrect answer, as it is wrong in quantity (thirty instead of sixty); this is a common numerical discrepancy when skimming biblical passages with numbers.",
     "language": "en",
     "options": [
       "Sixty mighty men of Israel",
-      "Twelve messengers",
-      "Forty commanders",
-      "One hundred priests"
+      "Sixty mighty men of Judah",
+      "Sixty mighty men from other tribes",
+      "Thirty mighty men of Israel"
     ],
     "tags": [
       "Old Testament",

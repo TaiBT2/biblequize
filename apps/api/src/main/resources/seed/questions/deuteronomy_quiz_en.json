@@ -9,14 +9,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Deuteronomy 6:4-5 — 'Hear, O Israel: The LORD our God, the LORD is one.'",
+    "explanation": "In Deuteronomy 6:4-9, verse 4 begins with 'Hear, O Israel: The LORD our God, the LORD is one.' This opening Scripture is called the 'Shema' (from the Hebrew word meaning 'hear'), which is the central confession of faith for Israel regarding the uniqueness of God.\n\n*   'The Ten Commandments' (Incorrect): This is a central teaching but was given in Exodus 20 and repeated in Deuteronomy 5; it is not the specific name for the passage 6:4-9.\n*   'The Book of the Covenant' (Incorrect): This phrase typically refers to the entire body of law in Deuteronomy or the covenant stipulations in Exodus (e.g., Exodus 24:7); its scope is too broad and it is not the proper name for this confession.\n*   'The Song of Moses' (Incorrect): This is the name of a different passage within the same book of Deuteronomy (chapter 32), located near the end of the book, and is unrelated to the confession in chapter 6.",
     "language": "en",
     "verseEnd": 9,
     "options": [
-      "Kaddish",
+      "The Ten Commandments",
       "Shema",
-      "Haggadah",
-      "Halakha"
+      "The Book of the Covenant",
+      "The Song of Moses"
     ],
     "tags": [
       "Old Testament",
@@ -37,14 +37,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Deuteronomy 8:2 — To humble and test you, to know what was in your heart.",
+    "explanation": "Deuteronomy 8:2-5 clearly states the purpose of the 40 years in the wilderness: 'to humble you, to test you, to know what was in your heart' (verse 2), meaning to humble, test, and reveal what is in the heart. This was a process of God's discipline as a father disciplines his son (verse 5), not a destructive punishment.\n\nIncorrect Answer 1 ('For the Israelites to conquer the surrounding nations'): Scope error. Conquest was the goal after the journey (Deuteronomy 9:1-6), not the main purpose of the 40 years in the wilderness stated in verses 2-5. This is a 'close but incorrect' choice because it relates to the overall objective but is wrong regarding the question's specific scope.\n\nIncorrect Answer 2 ('To punish Pharaoh and the land of Egypt'): Wrong passage error. This was the purpose of the earlier plagues (Book of Exodus), not of the 40 years in the wilderness. Those events occurred earlier and focused on Egypt.\n\nIncorrect Answer 3 ('To provide all physical needs for the Israelites'): Textually accurate but misses the point. Providing manna and clothes that did not wear out (verses 3-4) were God's provisions, but the purpose of this provision was so that He might 'make you know' (verse 3), pointing to the spiritual element and testing. This was not the core purpose being asked about.",
     "language": "en",
     "verseEnd": 5,
     "options": [
       "To humble, test, and know what was in their heart",
-      "Punishment",
-      "Training for war",
-      "Accumulating wealth"
+      "For the Israelites to conquer the surrounding nations",
+      "To punish Pharaoh and the land of Egypt",
+      "To provide all physical needs for the Israelites"
     ],
     "tags": [
       "Old Testament",
@@ -65,14 +65,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Deuteronomy 10:12-13 — A summary of what the LORD requires.",
+    "explanation": "Deuteronomy 10:12-13 records: 'And now, Israel, what does the LORD your God require of you? Only to fear the LORD your God, to walk in all his ways, to love him, to serve the LORD your God with all your heart and with all your soul, and to keep the commandments and statutes of the LORD, which I command you today for your good.' The correct answer directly quotes the key verbs from this Scripture.\n\nDistractor 1 ('...offer many sacrifices') is close but incorrect in one detail: the text requires 'keep the commandments,' not 'offer many sacrifices,' although sacrifices were part of the law, they are not the specific point in this question.\nDistractor 2 ('...the commandments of other gods') is incorrect in scope: the text clearly states to keep the commandments of 'the LORD your God,' not of other gods.\nDistractor 3 ('Fast, assemble, pray, and give offerings') is biblically accurate but off-topic: these activities may be mentioned elsewhere in Scripture but are not what God directly requires in Deuteronomy 10:12-13.",
     "language": "en",
     "verseEnd": 13,
     "options": [
-      "Choose a king",
-      "Build a temple",
+      "Fear, follow, love, serve, and offer many sacrifices",
+      "Fear, follow, love, serve, and keep the commandments of other gods",
       "Fear, walk in His ways, love, serve, and keep His commandments",
-      "Give possessions"
+      "Fast, assemble, pray, and give offerings"
     ],
     "tags": [
       "Old Testament",
@@ -93,14 +93,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Deuteronomy 30:19 — I have set before you life and death, blessing and curse; therefore choose life.",
+    "explanation": "The question directly quotes Deuteronomy 30:19: 'I call heaven and earth to witness against you today, that I have set before you life and death, blessing and curse. Therefore choose life, that you and your offspring may live.' This is a clear call to choose between 'life and blessing' and 'death and curse'.\n\nDistractor 1 ('Life (and death) instead of blessing (and curse)') is close because it contains the key elements, but it is incorrect in the crucial detail of pairing: the Scripture pairs 'life' with 'blessing' and 'death' with 'curse', not the cross-opposition suggested by this distractor.\n\nDistractor 2 ('Law (and justice) instead of disobedience (and punishment)') is textually accurate because the broader passage (30:11-20) speaks of obeying the law to receive blessing, but it misses the specific question about the choice presented in verse 19.\n\nDistractor 3 ('Promised land (and peace) instead of wandering (and war)') is based on a common misunderstanding that the choice primarily concerns physical land; while the broader context mentions the promised land, verse 19 specifically speaks only of choosing 'life' or 'death,' 'blessing' or 'curse'.",
     "language": "en",
     "verseEnd": 20,
     "options": [
-      "Wealth",
+      "Life (and death) instead of blessing (and curse)",
       "Life and blessing",
-      "Strength",
-      "Power"
+      "Law (and justice) instead of disobedience (and punishment)",
+      "Promised land (and peace) instead of wandering (and war)"
     ],
     "tags": [
       "Old Testament",
@@ -121,13 +121,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Deuteronomy 4:7-8 — What nation has its God so near, and statutes so righteous?",
+    "explanation": "The question references Deuteronomy 4:5-8. The correct answer is 'A just law and the nearness of God' because verses 6-8 clearly state that the nations will praise Israel as wise and understanding because they have a righteous law, and because God is near to them. Distractor 1 ('mighty idols') is textually accurate but misdirects the question because verse 7 speaks about God, not idols. Distractor 2 ('large population') is incorrect in detail because the text does not mention population size as a reason for praise. Distractor 3 ('material promises') is a common misunderstanding because many think material blessings are a sign, but the context of this passage focuses on the law and the relationship with God.",
     "language": "en",
     "verseEnd": 8,
     "options": [
-      "Fertile land",
-      "Strong army",
-      "Wise king",
+      "A just law and mighty idols of the nation",
+      "A just law and the large population of Israel",
+      "A just law and material promises",
       "The righteous law and the nearness of God"
     ],
     "tags": [
@@ -149,14 +149,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Deuteronomy 12:2-14 — Tear down the high places; seek the place the LORD chooses to put His Name.",
+    "explanation": "CORRECT ANSWER: This aligns with the command in Deuteronomy 12:2-4, 13-14 to completely destroy the worship places of the nations that Israel would drive out, and to offer sacrifices only at the single place the LORD would choose within their tribes. This was to prevent syncretistic worship (idolatry) and unite the entire nation in worshiping the true God.\n\nINCORRECT ANSWER 1 (Out of scope): Deuteronomy 12 emphasizes the command for centralized worship, not for the tribes to freely choose. This point completely contradicts the instruction 'only at the place he will choose' (verse 14).\n\nINCORRECT ANSWER 2 (Misapplied nearby passage - CLOSE BUT INCORRECT): Although Deuteronomy contains many regulations concerning the ministry and inheritance of the Levites (e.g., Deuteronomy 18:1-8), this is NOT the primary reason given in Deuteronomy 12:1-14 for destroying the high places and worshiping at only one place. The main reason in this passage is to avoid idolatry and obey God's command.\n\nINCORRECT ANSWER 3 (Common misconception): The Scripture passage does not mention economic reasons or costs. The focus is on spiritual matters (obedience, avoiding idols, unity in worship) not material reasons.",
     "language": "en",
     "verseEnd": 14,
     "options": [
       "To prevent idolatry and unite worship",
-      "To collect taxes",
-      "For convenience",
-      "To control the people"
+      "So that the tribes could freely choose their own worship locations",
+      "Because the Levites needed a fixed dwelling place to serve",
+      "To save construction and maintenance costs for multiple temples"
     ],
     "tags": [
       "Old Testament",
@@ -177,14 +177,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Deuteronomy 13:1-3 — Even if a sign occurs, if it leads to other gods, do not listen.",
+    "explanation": "Deuteronomy 13:1-5 clearly teaches: if a prophet or a dreamer arises, performs a sign or wonder, and that sign comes true, but that person then incites the people to follow and serve other gods, they must not be heeded. The sign is only a test of the people's loyalty to God. The correct answer is correct because it summarizes the core of the warning: the ultimate standard is not the miracle, but whether it leads to the worship of other gods. Distractor 1 (close but incorrect) is wrong in scope: the Scripture does not condition judgment on the prophet's ethnic origin, but on the content of their teaching. Distractor 2 is wrong in detail: the Scripture does not specify that the sign must be performed 'in the presence of the people' as a condition for judgment, but assumes a sign has occurred. Distractor 3 reflects a common misunderstanding: this passage does not link judging a false prophet to tribe or priestly office, but applies to anyone who claims to be a prophet.",
     "language": "en",
     "verseEnd": 5,
     "options": [
-      "Because we must obey the king",
-      "Because the sign is fake",
+      "If that prophet is not from the people of Israel",
+      "If that sign is not performed in the presence of the people",
       "If it leads to other gods, it must be rejected",
-      "Because a council must judge"
+      "If that prophet is not from the tribe of Levi"
     ],
     "tags": [
       "Old Testament",
@@ -205,14 +205,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Deuteronomy 15:1-11 — Every seven years cancel debts; have no evil heart.",
+    "explanation": "The passage Deuteronomy 15:1-11 teaches about the Year of Release (Shemitah). The correct answer is 'Mercy and trust in the LORD,' because verses 9-11 warn against having a wicked heart and refusing to help the poor (mercy), and verse 6 emphasizes that the LORD will bless if you obey (trust).\n\nThe incorrect answers:\n1. 'Freedom and personal responsibility': Although the Scripture mentions freeing slaves (verse 12 onward, a nearby passage) and avoiding a wicked heart, this is not the main focus of the question about the Year of Release in verses 1-11. This is a 'close but off-topic' answer (true_but_off).\n2. 'Justice and strict retribution': Incorrect detail (wrong_detail). This passage emphasizes mercy and debt cancellation, not retribution (verse 9: 'Beware lest there be a wicked thought in your heart').\n3. 'Abundance and material wealth': Incorrect scope (wrong_scope). Although verses 6 and 10 promise blessing, the focus is not on personal material wealth, but on being blessed so you can continue to help the poor (verses 10-11).",
     "language": "en",
     "verseEnd": 11,
     "options": [
-      "Political fairness",
+      "Freedom and personal responsibility",
       "Mercy and trust in God",
-      "Economic efficiency",
-      "Land reform"
+      "Justice and strict retribution",
+      "Abundance and material wealth"
     ],
     "tags": [
       "Old Testament",
@@ -233,14 +233,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Deuteronomy 17:16-17 — Limits on power so the king fears the LORD.",
+    "explanation": "Deuteronomy 17:16-17 lists three specific limitations for the king: 'He must not acquire many horses for himself... And he shall not acquire many wives for himself... Also he shall not acquire for himself excessive silver and gold.' The correct answer accurately summarizes these three things. Distractor 1 ('Not many horses, not much silver and gold, not many cattle') is close but incorrect in a key detail: it replaces 'many wives' with 'many cattle' (cattle are not mentioned in these limitations). Distractor 2 ('Not many wives, not many chariots, not many servants') incorrectly expands the scope: 'chariots' and 'servants' are not in the list of limitations here. Distractor 3 ('Do not make alliances, do not worship other gods, do not forsake the tabernacle') draws ideas from nearby passages (laws on worship, general warnings) but are not the specific limitations for the king set forth in Deuteronomy 17:14-20.",
     "language": "en",
     "verseEnd": 20,
     "options": [
-      "No fighting",
+      "Not many horses, not much silver and gold, not many cattle",
       "No multiplying horses, wives, silver, or gold",
-      "No building temples",
-      "No collecting taxes"
+      "Not many wives, not many chariots, not many servants",
+      "Do not make alliances, do not worship other gods, do not forsake the tabernacle"
     ],
     "tags": [
       "Old Testament",
@@ -261,13 +261,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Deuteronomy 18:15 — God will raise up for you a prophet like me.",
+    "explanation": "The question asks about what is FIRST implied in the immediate context of Deuteronomy 18:15-19. The Scripture says: 'The LORD thy God will raise up unto thee a Prophet from the midst of thee, of thy brethren, like unto me; unto him ye shall hearken' (verse 15). In the context of Deuteronomy, this promise FIRST and DIRECTLY refers to a succession of prophets whom the LORD would raise up throughout Israel's history to guide the people (as seen in the later prophetic books), and is ultimately fulfilled completely in Christ (Acts 3:22-24, 7:37).\n\nINCORRECT ANSWER 1 (A military leader...): Incorrect because this is a common misunderstanding. Joshua was Moses' successor in leadership, but his primary role was military and civil leadership, not the prophetic office 'like Moses' in the special sense of this passage (as covenant mediator and direct communicator of God's word).\n\nINCORRECT ANSWER 2 (A prophet contemporary with Moses...): Incorrect because the detail is inaccurate. Aaron had served as a spokesman (prophet) for Moses (Exodus 7:1), but the promise in Deuteronomy 18 points to the FUTURE ('will raise up'), not to a contemporary figure who already existed. The question asks 'what is first implied,' and the context does not point to Aaron.\n\nINCORRECT ANSWER 3 (A prophet who would stand before the people every day): Incorrect because it quotes a detail from a NEARBY passage but misapplies the meaning. Deuteronomy 18:16-17 recalls the Israelites' fear when hearing God's voice at Horeb and their desire for a mediator. However, the phrase 'stand before' (verse 17) describes Moses' role in that past event, NOT a description of the future Prophet. The main promise about the Prophet (verses 15, 18) does not say He would 'stand before the people every day.' This is a 'close but incorrect' distractor because it uses language from the same passage but applies it to the wrong subject and time.",
     "language": "en",
     "verseEnd": 19,
     "options": [
-      "Elijah",
-      "Joshua",
-      "Isaiah",
+      "A military leader like Joshua being anointed",
+      "A prophet contemporary with Moses like Aaron",
+      "A prophet who would stand before the people every day",
       "The line of later prophets, ultimately fulfilled in Christ"
     ],
     "tags": [
@@ -289,14 +289,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Deuteronomy 21:23 — A hanged man is cursed by God (Paul applies this in Galatians 3:13).",
+    "explanation": "Deuteronomy 21:22-23 teaches: 'If a man has committed a sin worthy of death and he is put to death, and you hang him on a tree, his body shall not remain all night on the tree, but you shall surely bury him the same day; for he who is hanged is accursed of God.' The CORRECT ANSWER is 'Cursed by God' because the Scripture directly states it as such.\n\nThe incorrect answers:\n1. 'Deserving of the crime committed' is INCORRECT because this is the reason for execution (verse 22), but the question asks about the meaning of 'being hanged on a tree' according to verse 23.\n2. 'Cursed by people' is INCORRECT because the Scripture clearly states the one cursing is 'God,' not 'people.'\n3. 'Becoming a curse to the land' is INCORRECT because this idea is close to verse 23 (related to 'defiling the land'), but the text does not use the term 'curse to the land'; it directly affirms that the person is 'accursed of God.'",
     "language": "en",
     "verseEnd": 23,
     "options": [
-      "Loses inheritance",
-      "Excluded from assembly",
+      "Deserving of the crime committed",
+      "Cursed by people",
       "Cursed by God",
-      "Temporarily unclean"
+      "Becoming a curse to the land"
     ],
     "tags": [
       "Old Testament",
@@ -317,13 +317,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Deuteronomy 24:19-22 — Leave the gleanings for the poor and the sojourner.",
+    "explanation": "CORRECT ANSWER: Deuteronomy 24:19-22 teaches that when harvesting, one should not go back over the fields to gather what remains, but leave it for the foreigner, the fatherless, and the widow. This directly reveals God's heart of caring for, providing for, and protecting the most vulnerable and needy in society.\n\nEXPLANATION OF INCORRECT ANSWERS:\n1. (\"To reward diligent workers for their labor and harvest\" - common_misconception): Incorrect. This law is not intended to reward the landowner or workers for their labor, but rather requires them to intentionally leave a portion of the produce for others, demonstrating selfless concern.\n2. (\"Only for native Israelites within the community\" - wrong_detail): Close but incorrect in a key detail. This is a \"close but wrong\" distractor because while the law applies to the Israelites, the beneficiaries are clearly listed as including \"the foreigner\" (aliens), showing concern that extends beyond ethnic boundaries.\n3. (\"To preserve the environment and natural resources\" - true_but_off): While not harvesting completely might have this side effect, the primary purpose and focus of the law in the biblical context is social and ethical (justice, mercy), not ecological conservation. The question asks about \"God's heart,\" so this answer misses the central point.",
     "language": "en",
     "verseEnd": 22,
     "options": [
-      "Mere law-keeping",
-      "Fair competition",
-      "Productivity",
+      "To reward diligent workers for their labor and harvest",
+      "Only for native Israelites within the community",
+      "To preserve the environment and natural resources",
       "Concern for the poor, sojourner, fatherless, widow"
     ],
     "tags": [
@@ -345,12 +345,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Deuteronomy 29:29 — We are responsible for what has been revealed.",
+    "explanation": "The question quotes Deuteronomy 29:29: 'The secret things belong to the LORD our God, but the things that are revealed belong to us and to our children forever, that we may do all the words of this law.' The correct answer is 'Limitation of revelation and responsibility of obedience' because this verse presents two realms: the secret things (hidden) belong to God and are beyond human understanding, while the things that have been revealed (through the law) belong to humans with the responsibility to obey. Distractor 1 ('Limitation of responsibility and freedom of revelation') is close but incorrect in key details: it reverses and distorts the meaning of 'limitation of revelation' into 'freedom of revelation' and replaces 'responsibility of obedience' with 'limitation of responsibility'. Distractor 2 ('Both the secret things and the revealed things belong to us') is wrong because it is based on a careless misreading that overlooks the crucial opening phrase 'belong to the LORD'. Distractor 3 ('Only what is revealed belongs to the LORD') represents a common misunderstanding of God's sovereignty, as the Scripture states the opposite: the secret things (not yet revealed) belong to Him.",
     "language": "en",
     "options": [
-      "Esoteric secrecy",
-      "No need to study",
-      "Permission to divine",
+      "Limitation of responsibility and freedom of revelation",
+      "Both the secret things and the revealed things belong to us",
+      "Only what is revealed belongs to the LORD",
       "Limits of revelation and the duty of obedience"
     ],
     "tags": [
@@ -372,14 +372,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Deuteronomy 4 — History and revelation experience confirm that God is one.",
+    "explanation": "CORRECT ANSWER: 'Salvation history and revelation on Sinai' is correct. The passage (verses 32-34, 36) emphasizes God's uniqueness, demonstrated through the historical act of delivering Israel from Egypt (salvation history) and His direct speech to them from within the fire at Sinai (special revelation). THIS IS THE FOUNDATION mentioned in the question.\n\nINCORRECT DISTRACTOR 1 ('Salvation history and revelation at Ararat'): Incorrect on the key detail of the revelation's location. The passage clearly states the revelation occurred 'on Sinai' (verse 36), not Ararat (a mountain related to Noah's story, not connected to the Exodus event or covenant).\n\nINCORRECT DISTRACTOR 2 ('Covenant with the patriarchs and human laws'): Incorrect in scope and detail. The passage does not focus on the covenant with the patriarchs; its emphasis is on the redemptive act and revelation to the entire nation at Sinai. Furthermore, the law mentioned here is from God (verses 35-36, 40), not 'human laws'.\n\nINCORRECT DISTRACTOR 3 ('Omnipotence in creation and wisdom in the seasons'): Although verse 32 mentions 'since the day God created man' and great works, the direct focus of passage 32-40, in answering the question about the foundation for God's uniqueness, is NOT general creation or the seasons, but the specific historical events of the deliverance and revelation at Sinai (verses 33-38). This option is textually present but misses the focus of the question.",
     "language": "en",
     "verseEnd": 40,
     "options": [
       "Salvation history and revelation at Sinai",
-      "Greek philosophy",
-      "Many serving deities",
-      "Astronomy"
+      "Salvation history and revelation at Ararat",
+      "Covenant with the patriarchs and human laws",
+      "Omnipotence in creation and wisdom in the seasons"
     ],
     "tags": [
       "Old Testament",
@@ -400,13 +400,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Deuteronomy 10:16 — Be no longer stubborn; an image of inner transformation.",
+    "explanation": "The correct answer is 'Set apart your heart for God and stop being stiff-necked' because Deuteronomy 10:16 clearly states: 'Circumcise therefore the foreskin of your heart, and be no more stiffnecked.' This is a metaphorical command, calling the people to dedicate their heart (i.e., their will, spirit) completely to God and to abandon stubbornness and disobedience ('stiff-necked').\n\nDistractor 1 ('Cut away the excess flesh...') is WRONG because it is a common misunderstanding, interpreting the Scripture in a literal, physical/medical sense in an absurd way, while the context is a spiritual admonition.\n\nDistractor 2 ('Use a circumcision knife to open your heart...') is WRONG because, although it contains the element of 'opening your heart' related to attitude, it misses the core focus of the question. The question asks for the meaning of the phrase 'circumcise the foreskin of your heart,' while this answer shifts to a practical application (toward your neighbor) instead of explaining the meaning (which is directed toward God).\n\nDistractor 3 ('Perform the physical circumcision ritual...') is WRONG because it gets a key detail wrong. Physical circumcision was a real ritual in the Old Testament, but here the Scripture is speaking of the 'foreskin of your heart' (the heart, the spirit) and not a physical ritual for 'everyone in the household.'",
     "language": "en",
     "options": [
       "Set the heart apart for God; cease being stiff-necked",
-      "Take a vow",
-      "Fast",
-      "Physical circumcision"
+      "Cut away the excess flesh around the heart to purify it",
+      "Use a circumcision knife to open your heart to your neighbor",
+      "Perform the physical circumcision ritual for everyone in the household"
     ],
     "tags": [
       "Old Testament",
@@ -427,14 +427,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Deuteronomy 18:22 and 13:1-3 — Two criteria: fulfillment and faithfulness to the LORD.",
+    "explanation": "Deuteronomy 18:20-22 establishes two criteria for testing a prophet: (1) What is spoken in the name of the LORD must come to pass (verse 22); (2) The prophet must not lead the people to follow other gods (verse 20). The correct answer summarizes both these criteria. The incorrect answers: Distractor 1 (close but incorrect) mixes the criteria with the role of priests (Deuteronomy 17:9-11) and omits the fulfillment requirement; Distractor 2 introduces criteria about motive (compassion, lack of self-interest) which, while positive, are not the biblical criteria given in this passage; Distractor 3 reflects a common misunderstanding that miracles or public recognition are the standard, while Scripture emphasizes the fulfillment of the prophecy.",
     "language": "en",
     "verseEnd": 22,
     "options": [
       "The word comes to pass and does not lead to other gods",
-      "Approval of the king",
-      "Performing miracles",
-      "Popularity with the people"
+      "Words that align with priestly teaching and do not proclaim predictions",
+      "Words spoken with compassion and without seeking personal gain",
+      "Words consistent with past miracles and publicly acknowledged by the people"
     ],
     "tags": [
       "Old Testament",
@@ -455,14 +455,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Deuteronomy 23:1-8 — Boundaries shaped by holiness theology and history with Ammon and Moab.",
+    "explanation": "Correct answer: 'The holiness of the assembly and historical enmity' is accurate. Deuteronomy 23:1-8 lists restrictions regarding eunuchs, illegitimate children, Ammonites, and Moabites, emphasizing the holiness of the Covenant community ('the assembly of the LORD,' verses 1-2) and decisions based on historical enmity when those nations did not meet Israel with bread and water (verses 3-4).\n\nAnalysis of incorrect answers:\n1. 'The equality of all Gentiles and moral standards': Incorrect because this is a 'close but wrong' distractor. The passage does mention standards (eunuchs, verse 1) and different treatment of Gentiles (Edomites, Egyptians are treated differently, verses 7-8), but it is not about 'the equality of all Gentiles.' The main focus is holiness and history, not universal equality.\n2. 'The privileges of the upper class and class discrimination': Completely incorrect. The Scripture passage does not mention an upper class or social class discrimination. The restrictions are based on physical condition, ethnic origin, and historical behavior, not socioeconomic status.\n3. 'The readiness to accept everyone and universal mercy': Incorrect because this is a common misunderstanding, completely opposite to the passage's content. This passage establishes clear restrictions (not entering the assembly of the LORD) rather than demonstrating unconditional openness to acceptance.",
     "language": "en",
     "verseEnd": 8,
     "options": [
-      "Economic concerns",
+      "The equality of all Gentiles and moral standards",
       "The holiness of the assembly and a hostile history",
-      "Class distinctions",
-      "Custom"
+      "The privileges of the upper class and class discrimination",
+      "The readiness to accept everyone and universal mercy"
     ],
     "tags": [
       "Old Testament",
@@ -483,14 +483,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Deuteronomy 27:11-26 — The curses pronounced for those who do not obey.",
+    "explanation": "CORRECT ANSWER: Deuteronomy 27:11-26 describes a ceremony with six tribes standing on Mount Gerizim to proclaim blessings and six tribes standing on Mount Ebal to proclaim curses. The twelve curses relate to specific covenant violations (such as idolatry, dishonoring parents, sexual immorality, moving boundary markers...), emphasizing the SERIOUS CONSEQUENCES of either OBEYING or DISOBEYING the covenant terms, thereby reinforcing the people's commitment to the Law.\n\nEXPLANATION OF INCORRECT ANSWERS:\n1. 'The importance of dividing the tribes on the two mountains': This is an organizational detail of the ceremony described in verses 12-13, but it is only the METHOD of performance, not the FOCUS or CORE MEANING that the ceremony aims to emphasize (incorrect type: 'nearby_passage').\n2. 'The meaning of building an altar of uncut stones': This detail is mentioned in Deuteronomy 27:5-7 (part of the section preceding 27:11-26), relating to building an altar on Mount Ebal after crossing the Jordan. It is NOT the focus of the curse ceremony described in 27:11-26 (incorrect type: 'wrong_detail', taking a detail from a nearby passage but not in the correct context of the question).\n3. 'The significance of the 'Amen' declaration from all Israel': The people's response of 'Amen' (verses 15-26) is part of the ceremony, showing agreement and self-imprecation if they violate it. However, this is an ELEMENT WITHIN the ceremony, not the MAIN POINT that the entire ceremony aims to EMPHASIZE. This ceremony, overall, seeks to impress the consequences of keeping or breaking the covenant (incorrect type: 'true_but_off' – it is indeed in the text but does not directly answer the question's focus on 'what is emphasized').",
     "language": "en",
     "verseEnd": 26,
     "options": [
       "The seriousness of covenant obedience/disobedience",
-      "Tribal tradition",
-      "Religious tourism",
-      "The agricultural calendar"
+      "The importance of dividing the tribes on the two mountains",
+      "The meaning of building an altar of uncut stones",
+      "The significance of the 'Amen' declaration from all Israel"
     ],
     "tags": [
       "Old Testament",
@@ -511,14 +511,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Deuteronomy 32 — A song to bear witness to Israel about her sinful path and God's grace.",
+    "explanation": "Correct answer: 'Testify to the covenant, warn against unfaithfulness, and promise restoration' because the song (Deuteronomy 32:1-43) is a witness from heaven and earth against the Israelites (v.1, v.46), condemning the sins of rebellion and idolatry (v.15-18, v.21), and promising that God will take vengeance on His enemies and atone for His people's land (v.35-36, v.39, v.43).\n\nDistractor 1 ('Record prophecies about the coming Messiah in the future') is incorrect because although the song mentions redemption, it does not focus on specific prophecies about the Messiah; the emphasis is on covenant and judgment.\n\nDistractor 2 ('Provide a detailed account of the Israelites' journey in the wilderness') is incorrect because the song is poetic and declarative, not a historical or journey narrative; previous chapters (e.g., Deuteronomy 1-3) have already recorded that journey.\n\nDistractor 3 ('Compile new laws for the soon-to-be-established kingdom') is incorrect because the song does not introduce new laws; it is a sermon in poetic form, while the laws were presented earlier (from Deuteronomy 12-26).",
     "language": "en",
     "verseEnd": 43,
     "options": [
-      "Recount genealogy",
+      "Record prophecies about the coming Messiah in the future",
       "Witness covenant indictment, warn of unfaithfulness, promise restoration",
-      "Praise victory",
-      "Guide ritual"
+      "Provide a detailed account of the Israelites' journey in the wilderness",
+      "Compile new laws for the soon-to-be-established kingdom"
     ],
     "tags": [
       "Old Testament",
@@ -622,12 +622,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Acts 3:22-23 — Peter affirms this prophecy is fulfilled in Jesus, the greatest Prophet.",
+    "explanation": "Deuteronomy 18:15 records Moses saying: 'The LORD your God will raise up for you a prophet like me from among you, from your fellow Israelites. You must listen to him.' This verse is seen as a prophecy about the Messiah. In the New Testament, the apostles (Acts 3:22-23, 7:37) quoted and applied this directly to the Lord Jesus Christ, affirming He is that supreme Prophet.\n\nThe incorrect options:\n- 'Joshua, Moses' successor': This option is close but misses a key detail. Joshua was Moses' leadership successor (Deuteronomy 31:1-8), but he was not the special prophet 'like Moses' whom God promised to raise up in the future.\n- 'The prophet Samuel': This option is incorrect in scope. Although Samuel was an important prophet who lived after Moses and fulfilled a different ministry, the prophecy in Deuteronomy 18:15-18 has a future, broader scope pointing to a unique and ultimate figure.\n- 'The prophet Elijah': This option is based on a common misunderstanding. Some Jews in Jesus' time expected Elijah to return before the Messiah (Malachi 4:5). However, Jesus explained that John the Baptist came in the spirit and power of Elijah (Matthew 11:13-14), and Jesus Himself is the promised Prophet.",
     "language": "en",
     "options": [
-      "Samuel",
-      "Elijah",
-      "Joshua",
+      "Joshua, Moses' successor",
+      "The prophet Samuel",
+      "The prophet Elijah",
       "Jesus Christ"
     ],
     "tags": [
@@ -676,12 +676,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Deuteronomy 7:7-8 — God chose Israel not because they were many or great, but because of His love and the covenant with the patriarchs.",
+    "explanation": "Deuteronomy 7:6-8 clearly explains the reason God chose Israel: 'For you are a holy people to the LORD your God; the LORD your God has chosen you to be a people for His own possession out of all the peoples who are on the face of the earth. The LORD did not set His love on you nor choose you because you were more in number than any of the peoples... but because the LORD loved you and kept the oath which He swore to your forefathers...' (NASB). Therefore, the correct answer correctly states the two main reasons: God's love and His promise to the forefathers, while negating the reason 'because they were numerous'.\n\n- Distractor 1 (Because they were the most numerous people in that region) is INCORRECT because Deuteronomy 7:7 directly denies this: 'The LORD did not set His love on you nor choose you because you were more in number than any of the peoples...' (NASB). This is a wrong_detail error.\n- Distractor 2 (Because they had kept His commandments first) is INCORRECT because Scripture does not record this; on the contrary, they were chosen before receiving and keeping the law. This is a common_misconception about the origin of the election. This distractor is 'close' because it relates to virtue/obedience, but is wrong about the crucial timing ('first').\n- Distractor 3 (Because He wanted to demonstrate their holiness to all nations) is INCORRECT because although Israel is called a 'holy people' and has a mission (see Isaiah 49:6), Deuteronomy 7:6-8 does not give this as the reason for the initial choice. The question asks 'for what reason' (the cause/origin), while this distractor speaks of a subsequent purpose. This is a true_but_off error.",
     "language": "en",
     "options": [
-      "Because they were strongest",
-      "Because they were best",
-      "Because they were most numerous",
+      "Because they were the most numerous people in that region",
+      "Because they had kept His commandments first",
+      "Because He wanted to demonstrate their holiness to all nations",
       "Because of His love and promise to the fathers, not because of size"
     ],
     "tags": [
@@ -703,14 +703,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Deuteronomy 10:12 — A summary of the entire law in one verse: fear, love, and serve the LORD.",
+    "explanation": "The correct answer directly quotes Deuteronomy 10:12: 'And now, Israel, what does the LORD your God require of you, but to fear the LORD your God, to walk in all his ways, and to love him, and to serve the LORD your God with all your heart and with all your soul?' (KJV). Verse 13 speaks of keeping the commandments for the people's blessing, not what the LORD 'requires' directly in verse 12. Distractor 1 is wrong because it replaces 'love him, and to serve the LORD your God with all your heart' with the detail 'keep his commandments and statutes' (incorrect key detail, but close). Distractor 2 is wrong because it omits the element 'fear the LORD' and 'walk in all his ways', focusing only on part of the question's scope (incorrect scope). Distractor 3 is wrong because it takes ideas from verse 13 and other parts, completely replacing the core content of verse 12 (wrong nearby passage).",
     "language": "en",
     "verseEnd": 13,
     "options": [
-      "Build a temple",
+      "Fear the LORD, walk in all his ways, keep his commandments and statutes",
       "Fear the LORD, walk in His ways, love and serve Him with all your heart",
-      "Conquer the nations",
-      "Bring many sacrifices"
+      "Love the LORD, serve him with all your heart, and keep his commandments",
+      "Walk in his ways, love him, and keep all his statutes he has commanded"
     ],
     "tags": [
       "Old Testament",
@@ -731,13 +731,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Deuteronomy 11:18-20 — God's Word should saturate every aspect of life: personal, family, society.",
+    "explanation": "The correct answer is: 'Bind them on your hands, wear them on your foreheads, teach them to your children, write them on the doors' (Deuteronomy 11:18-19). In these verses, Moses instructs the people to lay up God's words in their heart and soul, bind them as a sign on their hand, and as frontlets between their eyes. They are also to teach them to their children and write them on the doorposts of their houses and on their gates.\n\n- The first distractor ('Bind them on your hands, wear them on your foreheads, teach them to your children, write them on the doorposts') is close but incorrect in one detail: God's words are taught to be written 'on the doorposts of your houses and on your gates,' not just 'on the doorposts.'\n- The second distractor ('Bind them on your hands, wear them on your foreheads, worship daily, write them on the doors') describes a ritual detail from a different passage in Deuteronomy, not the specific instruction from verses 18-19.\n- The third distractor ('Keep them in your heart, wear them on your body, remind each other constantly, write them at the tabernacle') expands beyond the actions listed in verses 18-19, including keeping them in the heart (mentioned but not as a 'must-do' action) and the location 'tabernacle' (not mentioned here).",
     "language": "en",
     "verseEnd": 19,
     "options": [
-      "Only priests learn it",
-      "Only read it on Sabbath",
-      "Keep it locked in the Ark of the Covenant",
+      "Bind them on your hands, wear them on your foreheads, teach them to your children, write them on the doorposts",
+      "Bind them on your hands, wear them on your foreheads, worship daily, write them on the doors",
+      "Keep them in your heart, wear them on your body, remind each other constantly, write them at the tabernacle",
       "Bind on hand, on forehead, teach children, write on doors"
     ],
     "tags": [
@@ -759,14 +759,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Deuteronomy 28:1-2 — If you obey the voice of the LORD, all blessings will come upon you and overtake you.",
+    "explanation": "The blessings in Deuteronomy 28:1-6 are specifically promised to those who 'diligently obey the voice of the LORD your God... to keep and to do all his commandments' (v.1-2). The correct answer, 'The one who obeys the voice of the LORD,' accurately summarizes this condition.\n\nThe incorrect answers:\n1. 'The one who cries out to the LORD': Incorrect because, although crying out is a pious act, this passage emphasizes 'hearing' and 'keeping,' not merely crying out (v.1). This is a 'close' distractor as it relates to the idea of relating to God, but misses the key detail.\n2. 'The one who offers many sacrifices': Incorrect because this Scripture passage does not mention sacrifices as the condition for these blessings, but rather obedience. This is a detail outside the scope of the question.\n3. 'The one who commits no criminal offense': Incorrect because the condition in the Scripture verse is wholehearted covenantal obedience, a broader and more spiritual category than merely avoiding criminal offenses in the common legal sense.",
     "language": "en",
     "verseEnd": 6,
     "options": [
       "The one who obeys the voice of the LORD",
-      "Priests",
-      "Kings",
-      "The wealthy"
+      "The one who cries out to the LORD",
+      "The one who offers many sacrifices",
+      "The one who commits no criminal offense"
     ],
     "tags": [
       "Old Testament",
@@ -787,13 +787,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Deuteronomy 29:29 — Some things God keeps hidden, and others He reveals. We are responsible for what is revealed.",
+    "explanation": "Deuteronomy 29:29 says: 'The secret things belong to the LORD our God, but the things that are revealed belong to us and to our children forever, that we may do all the words of this law.' This verse clearly distinguishes: 'The secret things' (referring to God's ultimate counsel and purpose) belong to God, while 'the things that are revealed' (the law, the commands He has disclosed) belong to people, so that they may obey them.\n\nWRONG ANSWER 1 (close but incorrect): It misstates the key detail of ownership. The Scripture says the secret things belong to the LORD, the revealed things belong to us, not the other way around.\n\nWRONG ANSWER 2: This reflects a common theological misunderstanding, imposing a division between law and grace (a New Testament theme) onto an Old Testament verse about revelation and human responsibility.\n\nWRONG ANSWER 3: While this may be true in a broader context (God knows the future fully), it is not the distinction this particular Bible verse is making. The question asks specifically about the distinction in Deuteronomy 29:29, so this answer misses the point of the question.",
     "language": "en",
     "options": [
-      "Old Testament and New Testament",
-      "Heaven and earth",
+      "The secret things belong to us, the revealed things belong to the LORD",
+      "The things that belong to the law, the things that belong to grace",
       "Secret things belong to the LORD; things revealed belong to us",
-      "Law and grace"
+      "The things that have happened in the past, the things that will happen in the future"
     ],
     "tags": [
       "Old Testament",
@@ -814,13 +814,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Deuteronomy 30:19 — Moses sets before the people two paths: life and death, blessing and curse. Choose life!",
+    "explanation": "The passage Deuteronomy 30:19 records: 'I call heaven and earth to record this day against you, that I have set before you life and death, blessing and cursing: therefore choose life, that both thou and thy seed may live.' (KJV). The question asks what Moses called the people to CHOOSE. The correct answer is 'Life and blessing (instead of death and curse)', because Moses presents two contrasting pairs (life/death, blessing/curse) and calls them to CHOOSE life and blessing.\n\nThe incorrect answers:\n1. 'Life and death (instead of blessing and curse)': Incorrect in detail. The passage presents two pairs of choices, but the call to choose is to choose the positive pair (life, blessing) instead of the negative pair (death, curse). This answer mixes up the elements between the two pairs.\n2. 'Blessing and curse (instead of life and death)': Incorrect in scope. This is one pair mentioned, but the focus of the call is to choose 'life' (and accompanying blessing). This answer narrows the choice to only one pair and overlooks the key element of 'life' emphasized in the Scripture.\n3. 'Keep the commandments (instead of calling on other gods)': Textually accurate but off-topic for the question. In the broader context (such as Deuteronomy 30:16), keeping the commandments is linked to life and blessing, and turning to other gods is warned against. However, the specific question from verse 19 is about the choice between what is 'set before you' (life/death, blessing/curse), not directly about the action of 'keeping the commandments'.",
     "language": "en",
     "options": [
       "Life and blessing (rather than death and curse)",
-      "The Promised Land",
-      "War",
-      "A king"
+      "Life and death (instead of blessing and curse)",
+      "Blessing and curse (instead of life and death)",
+      "Keep the commandments (instead of calling on other gods)"
     ],
     "tags": [
       "Old Testament",
@@ -841,12 +841,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Deuteronomy 33:27 — The eternal God is your dwelling place, and underneath are the everlasting arms.",
+    "explanation": "Deuteronomy 33:27 correctly describes: 'The eternal God is your refuge, and underneath are the everlasting arms' (NIV). Therefore, 'Eternal refuge, everlasting arms underneath supporting' is correct.\n- Distractor 1 (close but incorrect) is wrong because it replaces 'everlasting' with 'mighty,' losing the crucial eternal quality.\n- Distractor 2 is wrong because it takes the imagery 'A firm rock, a secure refuge' from other verses (like Deuteronomy 32:4,15,18), not from verse 33:27.\n- Distractor 3 is wrong because it describes God with the role of guiding in the wilderness, a common misunderstanding of the book's main theme, but it is not a direct description from this verse.",
     "language": "en",
     "options": [
-      "Warrior",
-      "King on a throne",
-      "Judge",
+      "Eternal refuge, mighty arms underneath supporting",
+      "A firm rock, a secure refuge",
+      "The guide in the wilderness, a refuge",
       "Eternal dwelling place; underneath the everlasting arms"
     ],
     "tags": [
@@ -896,13 +896,13 @@
       2
     ],
     "content": "According to Deuteronomy 1:1, where did Moses speak these words?",
-    "explanation": "Deuteronomy 1:1 — 'These are the words that Moses spoke to all Israel beyond the Jordan in the wilderness, in the Arabah opposite Suph, between Paran and Tophel, Laban, Hazeroth, and Dizahab.' Deuteronomy = Moses's FAREWELL words before death. Israel was on the plains of Moab, about to enter Canaan. The JORDAN divides: Israel on the EAST side; Canaan on the WEST.",
+    "explanation": "Deuteronomy 1:1 clearly states: 'These are the words that Moses spoke to all Israel beyond the Jordan in the wilderness, in the Arabah opposite Suph...' (ESV). Therefore, the correct answer is: 'BEYOND THE JORDAN, in the wilderness of ARABAH, opposite Suph'.\n\n- Distractor 1 ('...opposite Baal') is incorrect because it replaces the detail 'Suph' with 'Baal', a different location mentioned in Deuteronomy 4:46.\n- Distractor 2 ('ON THE BANK OF THE JORDAN...') is incorrect because it replaces 'beyond' with 'on the bank of', a common error when skimming the relative position.\n- Distractor 3 ('IN THE WILDERNESS OF SIN... near Mount Sinai') is incorrect because it describes a different geographical scope and context (Exodus 16:1; 19:1-2), not the place where Moses spoke these words in the book of Deuteronomy.",
     "language": "en",
     "options": [
-      "On Mt. Sinai",
-      "In Egypt",
+      "BEYOND THE JORDAN, in the wilderness of ARABAH, opposite Baal",
+      "ON THE BANK OF THE JORDAN, in the wilderness of ARABAH, opposite Suph",
       "BEYOND the JORDAN, in the wilderness ARABAH, opposite Suph",
-      "In Canaan"
+      "IN THE WILDERNESS OF SIN, opposite Suph, near Mount Sinai"
     ],
     "tags": [
       "Old Testament",
@@ -948,13 +948,13 @@
       0
     ],
     "content": "According to Deuteronomy 5:6 (opening of 10 Commandments), how does God identify himself?",
-    "explanation": "Deuteronomy 5:6 — 'I am the LORD your God, who brought you out of the land of Egypt, out of the house of slavery.' EXTREMELY IMPORTANT preface: God identifies himself BY his REDEMPTIVE ACT. Principle: GOSPEL (redemption) comes BEFORE law. Israel does NOT keep law to be saved — already saved, then lives accordingly. Same as Exodus 20:2.",
+    "explanation": "In Deuteronomy 5:6, God directly introduces Himself: 'I am the LORD your God, who brought you out of the land of Egypt, out of the house of bondage.' This is the opening statement of the Ten Commandments, affirming His authority as the deliverer of Israel. The correct answer quotes this meaning verbatim.\n\nThe incorrect answers: (1) This is an 'almost-right' distractor but with a key detail wrong: Instead of the action 'who brought you out of the land of Egypt,' this distractor states 'who brought you into the land of Canaan.' Bringing them into Canaan was a future promise, not the identity He declares in this specific verse. (2) Incorrect due to a common misunderstanding: It uses the title 'Creator of heaven and earth' (often seen in Genesis). While this is also God, here He does not identify Himself by that title, but by His personal name, the LORD, as the deliverer from Egypt. (3) Correct in text but irrelevant to the question: The phrase 'who has given you these Ten Commandments' is indeed part of the context of the passage, but it is not how He identifies Himself in verse 6. The question specifically asks for His self-identification in verse 6.",
     "language": "en",
     "options": [
       "I am the LORD your God, who BROUGHT you OUT of Egypt, out of the HOUSE of SLAVERY",
-      "I am Creator",
-      "I am unnamed",
-      "I am King of kings"
+      "I am the LORD your God, who brought you into the land of Canaan, out of the house of bondage.",
+      "I am the Creator of heaven and earth, who brought you out of the land of Egypt, out of the house of bondage.",
+      "I am your God, who has given you these Ten Commandments."
     ],
     "tags": [
       "Old Testament",
@@ -974,13 +974,13 @@
       1
     ],
     "content": "According to Deuteronomy 6:6, where must the words Moses commands today be placed?",
-    "explanation": "Deuteronomy 6:6 — 'And these words that I command you today shall be on your heart.' Part of the Shema (6:4-9). 'ON HEART' (Hebrew: ʿal-lebab) — the center of being. NOT just memorize — but UNDERSTAND + LOVE. Deuteronomy 6:7 verbs: 'teach diligently to children' = speak of law when SITTING, WALKING, LYING DOWN, RISING UP.",
+    "explanation": "Deuteronomy 6:6 states: 'These words that I command you today shall be on your heart.' Therefore, the correct answer is 'In your HEART,' as the Scripture specifically indicates the location as 'on your heart.'\n\n- The distractor 'In your house' is incorrect: although Deuteronomy 6:9 mentions writing these words on the doorposts of your house and on your gates, verse 6 specifically asks about the location 'on your heart.'\n- The distractor 'On your neck' is incorrect: this refers to binding them on your hand and making them as frontlets between your eyes (Deuteronomy 6:8), not on your neck.\n- The distractor 'In your book' is incorrect: although God's words are recorded in books, the question asks about the location according to the specific instruction of Deuteronomy 6:6, not about the general medium of preservation.",
     "language": "en",
     "options": [
-      "In the book",
+      "In your house",
       "On your HEART",
-      "In hand",
-      "In house"
+      "On your neck",
+      "In your book"
     ],
     "tags": [
       "Old Testament",
@@ -1000,13 +1000,13 @@
       2
     ],
     "content": "According to Deuteronomy 7:1-2, on entering Canaan, how many nations will God DRIVE OUT? What must Israel do?",
-    "explanation": "Deuteronomy 7:1-2 — 'When the LORD your God brings you into the land that you are entering to take possession of it, and clears away many nations before you... seven nations more numerous and mightier than you, and when the LORD your God gives them over to you, and you defeat them, then you must devote them to complete destruction. You shall make no covenant with them and show no mercy to them.' Strict commands: NO alliances + NO marriages. Reason: 7:4 — keep descendants from idolatry.",
+    "explanation": "Deuteronomy 7:1-2 clearly states: 'When the LORD your God brings you into the land you are entering to possess... and when the LORD your God delivers them over to you, you shall conquer them and utterly destroy them. You shall make no covenant with them nor show mercy to them.' The seven nations listed are: the Hittites, Girgashites, Amorites, Canaanites, Perizzites, Hivites, and Jebusites.\n\nCORRECT ANSWER: Exactly seven nations are listed, and Israel must utterly destroy them, make no covenant, and show no mercy.\n\nINCORRECT DISTRACTOR 1 (Incorrect detail - close): Lists only 6 nations, omitting the Jebusites; the subsequent commands are correct. This is an error in the number/name detail.\nINCORRECT DISTRACTOR 2 (Common misunderstanding): Lists the correct 7 nations, but completely misstates the commands (defeat, make a covenant, show mercy), which contradicts the Scripture.\nINCORRECT DISTRACTOR 3 (Correct text but misses the point): Lists the correct 7 nations, but uses 'drive them out' instead of 'utterly destroy' (the precise verb in verse 2 is 'utterly destroy'), and adds 'may show mercy,' which is wrong compared to the absolute command 'show no mercy.'",
     "language": "en",
     "options": [
-      "3 — ally with",
-      "5 — teach",
+      "6 NATIONS (Hittites, Girgashites, Amorites, Canaanites, Perizzites, Hivites) — must UTTERLY DESTROY them + MAKE NO COVENANT + SHOW NO MERCY",
+      "7 NATIONS (Hittites, Girgashites, Amorites, Canaanites, Perizzites, Hivites, Jebusites) — must DEFEAT them + MAKE A COVENANT + SHOW MERCY",
       "7 NATIONS (Hittites, Girgashites, Amorites, Canaanites, Perizzites, Hivites, Jebusites) — DEVOTE them to destruction + NO COVENANT + NO MERCY",
-      "10 — intermarry"
+      "7 NATIONS (Hittites, Girgashites, Amorites, Canaanites, Perizzites, Hivites, Jebusites) — must DRIVE THEM OUT + MAKE NO COVENANT, but MAY SHOW MERCY"
     ],
     "tags": [
       "Old Testament",
@@ -1026,12 +1026,12 @@
       3
     ],
     "content": "According to Deuteronomy 7:9, by what attributes is God described?",
-    "explanation": "Deuteronomy 7:9 — 'Know therefore that the LORD your God is God, the faithful God who keeps covenant and steadfast love with those who love him and keep his commandments, to a thousand generations.' '1000 GENERATIONS' (eleph dor) = forever, no limit. Contrast: a few generations for the WICKED (5:9), 1000 for those who LOVE. God's love GREATLY exceeds his judgment.",
+    "explanation": "Deuteronomy 7:9 states: 'Know therefore that the LORD your God is God; he is the faithful God, keeping his covenant of love to a thousand generations of those who love him and keep his commandments.' Therefore, the correct answer accurately describes the three characteristics: faithfulness, keeping His covenant, and showing mercy to those who love Him and keep His commandments, along with the scope 'for a thousand generations.'\n\nDistractor 1 (close but incorrect) is wrong because it replaces the phrase 'those who love Him' with 'those who obey Him,' altering a key detail from Scripture. Distractor 2 is incorrect in scope because it limits 'for a thousand generations' to 'in the present,' which does not match the 'thousand generations' in the original verse. Distractor 3 borrows details from other nearby passages (many verses speak of God's righteousness, but not in 7:9) and substitutes 'mercy' with 'righteousness,' thus providing incorrect information.",
     "language": "en",
     "options": [
-      "God of strength",
-      "God of wisdom",
-      "God of righteousness",
+      "God is FAITHFUL – keeping His covenant and mercy with those who obey Him and keep His commandments – for a THOUSAND GENERATIONS",
+      "God is FAITHFUL – keeping His covenant and mercy with those who love Him and keep His commandments – in the PRESENT",
+      "God is FAITHFUL – keeping His covenant and righteousness with those who love Him and keep His commandments – for a THOUSAND GENERATIONS",
       "FAITHFUL God — keeps covenant + steadfast love with those who love him + keep his commandments — to a THOUSAND GENERATIONS"
     ],
     "tags": [
@@ -1052,13 +1052,13 @@
       0
     ],
     "content": "According to Deuteronomy 8:7-9, how is CANAAN described?",
-    "explanation": "Deuteronomy 8:7-9 — 'For the LORD your God is bringing you into a good land, a land of brooks of water, of fountains and springs, flowing out in the valleys and hills, a land of wheat and barley, of vines and fig trees and pomegranates, a land of olive trees and honey, a land in which you will eat bread without scarcity, in which you will lack nothing, a land whose stones are iron, and out of whose hills you can dig copper.' The promised land = a RICH LAND. The '7 species' (wheat + barley + grape + fig + pomegranate + olive + honey) = SHIVAT HAMINIM in Jewish tradition.",
+    "explanation": "The Scripture passage Deuteronomy 8:7-9 describes Canaan as 'a good land' (v.7), with these features: it has wadis, springs, and deep waters gushing out in valleys and on hills (v.7); it produces wheat, barley, vines, fig trees, pomegranates, olive trees, and honey (v.8); it is a land where you will lack no food (v.9a); and its rocks are iron, and from its hills you can dig copper (v.9b).\n\nThe CORRECT ANSWER accurately summarizes all these features.\n\nDISTRACTOR 1 (almost correct) is wrong because it replaces the detail 'copper' with 'silver' (v.9 clearly states iron and copper, not silver).\n\nDISTRACTOR 2 is wrong because it uses descriptions from other passages about the land (like desert, rain from heaven, wild animals) that are not in Deuteronomy 8:7-9.\n\nDISTRACTOR 3 is wrong because it presents a common misconception (great river, tribes contending) that this passage does not mention; instead, it focuses on God's provision and blessing.",
     "language": "en",
     "options": [
       "A GOOD land — brooks + fountains + springs flowing in valleys + hills; wheat + barley + vines + figs + pomegranates + olive trees + honey; land of NO scarcity; stones are iron + copper from hills",
-      "Dry + rocky + waterless",
-      "Flat + mountainless",
-      "Distant + cold"
+      "A GOOD land — with wadis + springs + deep waters gushing in valleys + hills; wheat + barley + vines + fig trees + pomegranates + olive trees + honey; a land where you will lack nothing; its rocks are iron + silver from the mountains",
+      "An OPEN land — with desert + grassy hills + rain from heaven; barley + date palms + olive trees; a land FULL of wild animals; its rocks are limestone",
+      "A FERTILE land — with a great river flowing through, growing all kinds of fruit trees, having many minerals, a place where tribes contend"
     ],
     "tags": [
       "Old Testament",
@@ -1078,13 +1078,13 @@
       1
     ],
     "content": "According to Deuteronomy 14:22, how much of the field's produce must be tithed yearly?",
-    "explanation": "Deuteronomy 14:22 — 'You shall tithe all the yield of your seed that comes from the field year by year.' THE TITHE (ma'aser) — already given by Abraham (Gen 14:20) to Melchizedek, by Jacob (Gen 28:22). Mosaic law formalized: 1/10 to the LEVITES (Num 18:21). Also a 'feast tithe' (14:22-26) + 'poor tithe' every 3 years (14:28-29). Mal 3:10 reminds.",
+    "explanation": "Deuteronomy 14:22 states: 'You shall tithe all the yield of your seed that comes from the field year by year.' Therefore, the correct answer is 'A TENTH'. \n- Distractor 1 is incorrect because it states 'A fifth', which is a wrong detail in quantity (wrong_detail) but the structure and remaining description are 'almost correct'. \n- Distractor 2 is incorrect because it states 'A seventh', a detail that could be confused with other time-related regulations (like the Sabbath year) in nearby biblical passages (nearby_passage). \n- Distractor 3 is incorrect because while the content 'All the yield...' matches the text, it fails to answer the question about the specific portion to be given, thus missing the focus of the question (true_but_off).",
     "language": "en",
     "options": [
-      "A fifth",
+      "A tenth (all the yield of the seed of the field)",
       "A TENTH (of all your seed-yield from the field)",
-      "A third",
-      "A first"
+      "A seventh (all the yield of the seed of the field)",
+      "All the yield of the seed of the field (no specific portion stated)"
     ],
     "tags": [
       "Old Testament",
@@ -1104,13 +1104,13 @@
       2
     ],
     "content": "According to Deuteronomy 24:1-4, the LAW of WRITING a CERTIFICATE of DIVORCE — after divorce + remarriage, if 2nd husband DIES or DIVORCES — can the FIRST husband take her back?",
-    "explanation": "Deuteronomy 24:1-4 — 'When a man takes a wife and marries her, if then she finds no favor in his eyes because he has found some indecency in her, and he writes her a certificate of divorce... then her former husband, who sent her away, may not take her again to be his wife, after she has been defiled, for that is an abomination before the LORD.' Jesus cites this in Mt 19:7-8.",
+    "explanation": "The correct answer is based on Deuteronomy 24:4, which states that after a divorced wife marries another man and is then divorced again or widowed, 'her former husband, who sent her away, may not take her again to be his wife... for that is an abomination before the LORD.' (v.4). This confirms that taking her back is absolutely forbidden.\n\n- Distractor 1 (YES, she can be taken back — if both sets of parents agree) is WRONG because this law does not mention or permit any exception based on parental consent; this is a common misunderstanding of applying social customs to divine law.\n- Distractor 2 (YES, she can be taken back — after redeeming her from the subsequent husband) is WRONG because the text never mentions redemption or any procedure to nullify the prohibition; this is an incorrect, fabricated detail not found in Scripture.\n- Distractor 3 (YES, she can be taken back — there is nothing prohibiting it in this law) is WRONG because although the law primarily describes the sequence of divorce and remarriage, verse 4 clearly concludes that taking her back is 'an abomination,' meaning it is forbidden. This distractor misses the point by focusing only on the descriptive part while ignoring the key concluding command.",
     "language": "en",
     "options": [
-      "Yes if she agrees",
-      "Wait 1 year then back",
+      "YES, she can be taken back — if both sets of parents agree",
+      "YES, she can be taken back — after redeeming her from the subsequent husband",
       "NO — that is an ABOMINATION before the LORD",
-      "Ask priest"
+      "YES, she can be taken back — there is nothing prohibiting it in this law"
     ],
     "tags": [
       "Old Testament",
@@ -1130,12 +1130,12 @@
       3
     ],
     "content": "According to Deuteronomy 31:6, what should believers be when entering battle? What does God promise?",
-    "explanation": "Deuteronomy 31:6 — 'Be strong and courageous. Do not fear or be in dread of them, for it is the LORD your God who goes with you. He will not leave you or forsake you.' An encouragement to Israel before entering Canaan. ALSO QUOTED in Heb 13:5 ('I will never leave you nor forsake you') applied to NT BELIEVERS. Repeated 31:8 to Joshua.",
+    "explanation": "The question asks about the attitude and promise in Deuteronomy 31:6. THE CORRECT ANSWER: 'BE STRONG + COURAGEOUS; DO NOT FEAR + DO NOT BE TERRIFIED — for the LORD your God GOES WITH YOU; HE will NOT LEAVE + NOT FORSAKE YOU' perfectly matches the biblical text (literal translation). WRONG DISTRACTOR 1 ('PRAY...GIVES STRENGTH...NOT FORSAKE...NOT DELIVER'): while spiritually reasonable, this is a general inference, not an exact quote from the asked verse (true_but_off error). WRONG DISTRACTOR 2 ('...GIVES VICTORY...'): is a 'close but incorrect' distractor because the first part about attitude is correct, but the key detail in the promise is wrong: the original text says 'GOES WITH YOU', not 'GIVES YOU VICTORY' (wrong_detail error). WRONG DISTRACTOR 3 ('FIGHT...GOES BEFORE...'): describes a more active attitude and uses the phrase 'GOES BEFORE', similar to the idea in nearby verses (like verse 8) about God going ahead, but it is not the exact content of verse 6 (nearby_passage error).",
     "language": "en",
     "options": [
-      "Afraid — strong enemy",
-      "Praying — God hears",
-      "Prepared — God helps",
+      "PRAY + BE PATIENT; DO NOT WORRY + DO NOT GIVE UP — for the LORD your God GIVES YOU STRENGTH; HE will NOT FORSAKE + NOT DELIVER YOU",
+      "BE STRONG + COURAGEOUS; DO NOT FEAR + DO NOT BE TERRIFIED — for the LORD your God GIVES YOU VICTORY; HE will NOT LEAVE + NOT FORSAKE YOU",
+      "FIGHT + BE BRAVE; DO NOT RETREAT + DO NOT AVOID — for the LORD your God GOES BEFORE YOU; HE will NOT LEAVE + NOT FORSAKE YOU",
       "BE STRONG + COURAGEOUS; do NOT FEAR + DO NOT BE in DREAD — for the LORD your God GOES with you; he will NOT LEAVE + NOT FORSAKE you"
     ],
     "tags": [
@@ -1156,13 +1156,13 @@
       0
     ],
     "content": "According to Deuteronomy 1:6-8, what did God say to Israel at Mt. HOREB?",
-    "explanation": "Deuteronomy 1:6-8 — 'The LORD our God said to us in Horeb, \"You have stayed long enough at this mountain. Turn and take your journey, and go to the hill country of the Amorites...\" See, I have set the land before you. Go in and take possession of the land that the LORD swore to your fathers.' Command to MOVE — time doesn't stand still. Result: Israel DIDN'T BELIEVE, wandered 40 years. Deuteronomy teaches the NEW generation lessons from the OLD.",
+    "explanation": "CORRECT ANSWER: Deuteronomy 1:6-8 records God's words at Mount Horeb: 'You have stayed at THIS MOUNTAIN LONG ENOUGH! BREAK CAMP + GO INTO the hill country of the AMORITES + Canaan + the PROMISED LAND for your ANCESTORS' (correct meaning, paraphrased). The question specifically asks about the content of the speech at Mount Horeb, and this answer is faithful to the text.\n\nINCORRECT DISTRACTORS:\n1. 'You have stayed at MOUNT HOREB LONG ENOUGH...' - This is an almost-right distractor but wrong in a key detail. In the Bible verse, God says 'this mountain' (referring to Mount Horeb), and does not repeat the proper name 'Horeb' in the speech. Replacing 'this mountain' with 'Mount Horeb' changes the original phrasing. (Error type: wrong_detail)\n2. '...GO INTO the land of MOAB...' - Wrong geographical detail. The command in Deuteronomy 1:6-8 directs them toward 'the hill country of the Amorites', 'Canaan', not 'the land of Moab'. The land of Moab is a location that appears in later journeys (e.g., Deuteronomy 2:9), not in this initial command. (Error type: nearby_passage)\n3. '...take the PROMISED LAND RIGHT NOW' - This is a common misconception about timing. The command in this passage is to set out and go in, but there is no 'right now' or sense of immediate urgency in the original text. This adds a hurried tone not present in the passage. (Error type: common_misconception)",
     "language": "en",
     "options": [
       "You have STAYED LONG ENOUGH at this MOUNTAIN! TURN + GO to the AMORITE + Canaan + the LAND PROMISED to FATHERS",
-      "Stay 40 more years",
-      "Return to Egypt",
-      "Ascend to heaven"
+      "You have stayed at MOUNT HOREB LONG ENOUGH! BREAK CAMP + GO INTO the hill country of the AMORITES + Canaan + the PROMISED LAND for your ANCESTORS",
+      "You have stayed at THIS MOUNTAIN LONG ENOUGH! BREAK CAMP + GO INTO the land of MOAB + Canaan + the PROMISED LAND for your ANCESTORS",
+      "You have stayed at THIS MOUNTAIN LONG ENOUGH! BREAK CAMP + GO INTO the hill country of the AMORITES and take the PROMISED LAND RIGHT NOW"
     ],
     "tags": [
       "Old Testament",
@@ -1182,13 +1182,13 @@
       1
     ],
     "content": "According to Deuteronomy 1:35-38, due to UNBELIEF, who from that generation entered the PROMISED LAND?",
-    "explanation": "Deuteronomy 1:35-38 — 'Not one of these men of this evil generation shall see the good land that I swore to give to your fathers, except Caleb the son of Jephunneh. He shall see it, and to him and to his children I will give the land on which he has trodden, because he has wholly followed the LORD!... Joshua the son of Nun, who stands before you, he shall enter.' 12 spies (Numbers 13) — only the 2 faithful entered.",
+    "explanation": "The question references Deuteronomy 1:35-38. The correct answer is: CALEB (because he followed the LORD wholeheartedly) + JOSHUA (son of Nun) — NO ONE ELSE from that wicked generation. Reason: Deuteronomy 1:35-38 clearly states that only Caleb and Joshua (son of Nun) would enter the Promised Land from that generation, because Caleb 'followed the LORD wholeheartedly' (verse 36), and Joshua was chosen to succeed Moses (verse 38).\n\nDistractor 1 is wrong because it adds David: David is a later figure (1 Samuel 16), not part of the Exodus generation, so it's a passage that is close but wrong in timing.\nDistractor 2 is wrong because it adds Moses: Deuteronomy 1:37 indicates that Moses also would not enter due to the sin of the people (despite his leadership role), so this is an error regarding Moses's exclusion.\nDistractor 3 is wrong because it adds Aaron and Miriam: Aaron (died at Mount Hor, Numbers 33:38) and Miriam (died at Kadesh, Numbers 20:1) did not enter the Promised Land; this is a common misunderstanding about their roles.",
     "language": "en",
     "options": [
-      "All 12 spies",
+      "Joshua (son of Nun) — plus David (because he was chosen later)",
       "CALEB (wholly followed) + JOSHUA (son of Nun) — none else of the wicked generation",
-      "Only Moses",
-      "Only Aaron"
+      "Caleb (because he followed the LORD wholeheartedly) — plus Moses (because he led the people)",
+      "Aaron (because he was the priest) — plus Miriam (because she was a prophetess)"
     ],
     "tags": [
       "Old Testament",
@@ -1208,13 +1208,13 @@
       2
     ],
     "content": "According to Deuteronomy 2:30, why did SIHON king of HESHBON refuse Israel passage?",
-    "explanation": "Deuteronomy 2:30 — 'But Sihon the king of Heshbon would not let us pass by him, for the LORD your God hardened his spirit and made his heart obstinate, that he might give him into your hand, as he is this day.' Same principle as Pharaoh (Ex 7:3 'I will harden Pharaoh's heart'). God SOVEREIGNLY rules even pagan kings' MINDS. Same teaching Prov 21:1.",
+    "explanation": "Question: 'According to Deuteronomy 2:30, why did SIHON king of HESHBON not allow Israel to pass through his land?'\n\nThe correct answer: 'Because the LORD your God had made his spirit stubborn + his heart obstinate, to deliver him into your hand (as seen)' is accurate, because Deuteronomy 2:30 clearly states the reason is that the LORD had made King Sihon's spirit stubborn and his heart obstinate, so that He might deliver him into the hand of Israel.\n\nExplanation of incorrect answers:\n1. Distractor 1 (close but incorrect detail): This option has the correct structure and most of the content, but it is wrong on one key detail: instead of 'his spirit stubborn' it says 'his spirit weak', which is completely opposite to the biblical meaning.\n2. Distractor 2 (common misconception): This is a reasonable inference about political-economic motives in ancient times that a reader might assume, but the Bible does not mention this reason in verse 30.\n3. Distractor 3 (correct text but misses the question): Although Israel drawing near and camping is recorded in previous verses (like verse 26), this is not the direct and specific reason answered by Deuteronomy 2:30 for the question 'why'.",
     "language": "en",
     "options": [
-      "Feared Israel's number",
-      "Moab asked him to block",
+      "Because the LORD your God had made his spirit weak + his heart obstinate, to deliver him into your hand (as seen)",
+      "Because Sihon king of Heshbon did not want to lose control of important trade routes in the region",
       "The LORD your God HARDENED his SPIRIT + made his HEART OBSTINATE — to give him into your hand (as has come)",
-      "Ancestral prophecy"
+      "Because the Israelites had drawn near and camped in his land, making King Sihon feel threatened"
     ],
     "tags": [
       "Old Testament",
@@ -1234,12 +1234,12 @@
       3
     ],
     "content": "According to Deuteronomy 3:11, King OG of Bashan was the last of REPHAIM (gigantic). How is his bed described?",
-    "explanation": "Deuteronomy 3:11 — 'For only Og the king of Bashan was left of the remnant of the Rephaim. Behold, his bed was a bed of iron. Is it not in Rabbah of the Ammonites? Nine cubits was its length, and four cubits its breadth, according to the common cubit.' 'Cubit' ~ 45cm. Og's bed ~ 4m × 1.8m. REPHAIM = giant race (same ancestors as Anak in Gen 6:4). Goliath also from Rephaim.",
+    "explanation": "Deuteronomy 3:11 describes King Og's bed as 'a bedstead of iron... nine cubits was the length thereof, and four cubits the breadth of it... (behold, it is in Rabbah of the children of Ammon)' (KJV). Thus, the correct answer accurately states its material, dimensions, and location.\n\n- Distractor 1 (close but incorrect) is wrong in the numbers: it reduces the bed's dimensions (length 4, width 2 cubits) compared to the correct ones (9 and 4).\n- Distractor 2 is wrong in a common association: beds and many ancient furnishings in the Bible are often made of stone, but this passage specifies 'of iron'.\n- Distractor 3 is wrong in scope: although it states the correct material and dimensions, it is wrong about the location of preservation (Jerusalem instead of Rabbah of the Ammonites).",
     "language": "en",
     "options": [
-      "Gold - 3 cubits",
-      "Stone - 5 cubits",
-      "Wood - 7 cubits",
+      "Made of IRON — LENGTH 4 cubits (~1.8m) + WIDTH 2 cubits (~0.9m); and it is in Rabbah of the Ammonites",
+      "Made of STONE — LENGTH 9 cubits (~4m) + WIDTH 4 cubits (~1.8m); and it is in Rabbah of the Ammonites",
+      "Made of IRON — LENGTH 9 cubits (~4m) + WIDTH 4 cubits (~1.8m); but it was placed in Jerusalem",
       "IRON - 9 cubits LONG (~4m) + 4 cubits WIDE (~1.8m); still in Rabbah of Ammon"
     ],
     "tags": [
@@ -1260,13 +1260,13 @@
       0
     ],
     "content": "According to Deuteronomy 4:9, what must believers do with what their EYES have seen? Especially with whom?",
-    "explanation": "Deuteronomy 4:9 — 'Only take care, and keep your soul diligently, lest you forget the things that your eyes have seen, and lest they depart from your heart all the days of your life. Make them known to your children and your children's children.' LESSON: MEMORY + INHERITANCE OF FAITH. Deuteronomy continuously stresses: teach CHILDREN about the COVENANT. Same teaching 6:7, 11:19. Faith DIES when not transmitted.",
+    "explanation": "Deuteronomy 4:9 says: 'Only take heed to yourself, and diligently keep your soul, lest you forget the things your eyes have seen... and teach them to your children and your grandchildren.' The correct answer is a direct quote of the instruction: be careful to keep, do not forget, and especially must teach 'your children and grandchildren.' Distractor 1 is wrong because it changes the detail of the teaching audience from 'children and grandchildren' to 'your nation,' though the idea 'be careful... do not forget' is correct. Distractor 2 is wrong because although 'writing it down' is important in another context (like Deuteronomy 31:19), it is not what this verse specifically emphasizes when asking about what 'must be done' with what the eyes have seen; the question focuses on the action 'teach your children.' Distractor 3 is wrong because it narrows the scope: the Scripture verse clearly extends the responsibility to the next generation ('teach your children'), not just keeping it in one's own heart.",
     "language": "en",
     "options": [
       "KEEP CAREFULLY + GUARD your SOUL — do NOT FORGET; TEACH your children + grandchildren",
-      "Forget - start fresh",
-      "Just keep in book",
-      "Tell only outsiders"
+      "BE CAREFUL + KEEP YOUR SOUL from forgetting — you must TEACH your nation",
+      "BE CAREFUL + KEEP YOUR SOUL from forgetting — you must WRITE IT DOWN in a book",
+      "ONLY BE CAREFUL in your own heart — no need to teach anyone"
     ],
     "tags": [
       "Old Testament",
@@ -1286,13 +1286,13 @@
       1
     ],
     "content": "According to Deuteronomy 5:32, what must believers do after receiving the law?",
-    "explanation": "Deuteronomy 5:32 — 'You shall be careful therefore to do as the LORD your God has commanded you. You shall not turn aside to the right hand or to the left. You shall walk in all the way that the LORD your God has commanded you.' NOT RIGHT, NOT LEFT = no adding/subtracting from the law. Same teaching 4:2 ('You shall not add to the word that I command you, nor take from it'), Rev 22:18-19.",
+    "explanation": "\"MUST keep and do EXACTLY as God has commanded — do NOT turn to the RIGHT + do NOT turn to the LEFT\" is the correct answer, because Deuteronomy 5:32 clearly states: 'So be careful to do what the LORD your God has commanded you; do not turn aside to the right or to the left.' This is a direct command after receiving the law.\n\nDistractor 1 (close but incorrect) is wrong because it replaces the phrase 'do NOT turn to the LEFT' with 'do NOT turn your back' — the text never mentions 'turning your back'.\nDistractor 2 is wrong because it introduces the element 'do NOT turn BACKWARD' — this is a direction or action not found in this Bible verse, possibly implying a different movement.\nDistractor 3 is wrong because it suggests an attitude of 'only memorize' instead of 'keep and do' — this is a common misunderstanding that knowing the law is more important than obeying it, while the verse emphasizes 'keep and do'.",
     "language": "en",
     "options": [
-      "Self-change law",
+      "MUST keep and do EXACTLY as God has commanded — do NOT turn to the RIGHT + do NOT turn your back",
       "DO as the LORD has COMMANDED — DO NOT TURN aside to the right hand or to the left",
-      "Drop part",
-      "Translate"
+      "MUST keep and do EXACTLY as God has commanded — do NOT turn BACKWARD + do NOT turn to the LEFT",
+      "MUST only memorize the command — do NOT turn to the RIGHT + do NOT turn to the LEFT"
     ],
     "tags": [
       "Old Testament",
@@ -1312,13 +1312,13 @@
       2
     ],
     "content": "According to Deuteronomy 6:13, whom only must believers SWEAR by + FEAR + SERVE?",
-    "explanation": "Deuteronomy 6:13 — 'It is the LORD your God you shall fear. Him you shall serve and by his name you shall swear.' Jesus QUOTED THIS at the SECOND temptation in the wilderness (Mt 4:10) — 'You shall worship the Lord your God and HIM ONLY shall you serve.' NO polytheism — the LORD ALONE.",
+    "explanation": "The question references Deuteronomy 6:13 (KJV): 'Thou shalt fear the LORD thy God, and serve him, and shalt swear by his name.'\n- The CORRECT ANSWER is correct because the Scripture clearly identifies the sole object for swearing, fearing, and serving as 'the LORD thy God' and that swearing is to be done 'by his name'.\n- DISTRACTOR 1 (close) is WRONG because it changes a key detail: the Scripture says 'his name,' not 'the name of his saints.'\n- DISTRACTOR 2 is WRONG because it reflects a common misunderstanding: the Scripture does not condition swearing by the LORD's name on 'when you come to the Temple.'\n- DISTRACTOR 3 is WRONG because it incorrectly broadens the scope: the Scripture uses the terms 'shalt' and 'by his name,' completely excluding swearing by 'other gods.'",
     "language": "en",
     "options": [
-      "Only ancestors",
-      "Only king",
+      "Only the LORD your God — and swear only in the name of HIS SAINTS",
+      "Only the LORD your God — and swear only in HIS NAME when you come to the Temple",
       "Only the LORD your God — and SWEAR only by HIS NAME",
-      "Only priest"
+      "Only the LORD your God — and swear only in HIS NAME or other gods"
     ],
     "tags": [
       "Old Testament",
@@ -1364,13 +1364,13 @@
       0
     ],
     "content": "According to Deuteronomy 7:7-8, WHY did God CHOOSE Israel?",
-    "explanation": "Deuteronomy 7:7-8 — 'It was not because you were more in number than any other people that the LORD set his love on you and chose you, for you were the fewest of all peoples, but it is because the LORD loves you and is keeping the oath that he swore to your fathers, that the LORD has brought you out with a mighty hand and redeemed you from the house of slavery.' NO MERIT — only ELECTING GRACE. Romans 9 elaborates.",
+    "explanation": "Deuteronomy 7:7-8 states: 'It was not because you were more in number than any other people that the LORD set his love on you and chose you... but it is because the LORD loves you and is keeping the oath that he swore to your fathers...' Therefore, the correct answer is 'Because He loved them and kept His oath to their forefathers,' directly from God's motive as stated in Scripture.\n\nDistractor 1 is incorrect because it contradicts verse 7, which affirms that the Israelites were NOT numerous or stronger.\nDistractor 2 is 'close but incorrect' in a key detail: the question asks about the reason GOD chose them, while verse 8 indicates His love and oath as the initiating cause, not the people's prior obedience.\nDistractor 3 is incorrect because this reason is not mentioned in the related Scripture passage; it presents a secular reason that does not fit the context and the question.",
     "language": "en",
     "options": [
       "NOT because more than nations — Israel was the FEWEST — but because the LORD LOVES + KEEPS his OATH to fathers — brought you out by mighty hand",
-      "Richer",
-      "Wiser",
-      "More beautiful"
+      "Because they were a numerous and stronger people than all others",
+      "Because they had previously obeyed and kept His covenant",
+      "Because their land was rich in resources and favorable"
     ],
     "tags": [
       "Old Testament",
@@ -1390,13 +1390,13 @@
       2
     ],
     "content": "According to Deuteronomy 8:17-18, what must Israel NOT SAY about their wealth? What to REMEMBER?",
-    "explanation": "Deuteronomy 8:17-18 — 'Beware lest you say in your heart, \"My power and the might of my hand have gotten me this wealth.\" You shall remember the LORD your God, for it is he who gives you power to get wealth, that he may confirm his covenant that he swore to your fathers, as it is this day.' NO wealth FOR YOURSELF — God gives POWER to fulfill the COVENANT. Warning against PRIDE.",
+    "explanation": "The correct answer is based directly on Deuteronomy 8:17-18 (BTT). Verse 18 states: 'But remember the LORD your God, for it is he who gives you the ability to produce wealth...' and warns against saying in your heart, 'My power and the strength of my hands have produced this wealth for me.' Therefore, the correct answer accurately summarizes what they should not say and what they must remember.\n\nDistractor 1 (close but incorrect) is wrong because it confuses a nearby passage: 'brought you out of Egypt' is a mighty act of the LORD mentioned frequently in Deuteronomy (e.g., 8:14), but it is not the main point of verses 17-18 concerning the source of wealth.\nDistractor 2 is wrong in scope: 'foreign gods' and 'made a covenant' are important themes in the book, but they are not the content addressed or implied in these two specific verses.\nDistractor 3 is wrong in detail: 'gives you the harvest' is a specific blessing mentioned in earlier verses (e.g., 8:7-10), but it is not the wording or main point verse 18 uses to explain the source of the ability to produce wealth.",
     "language": "en",
     "options": [
-      "Not 'my father's wealth' — remember",
-      "Not 'king helped me' — remember",
+      "Do not say 'by my own strength' — remember that the LORD brought you out of Egypt.",
+      "Do not say 'by foreign gods' — remember that the LORD is the one who made a covenant with you.",
       "Not 'MY POWER AND HAND made me wealthy' — REMEMBER the LORD your God who GIVES you POWER to GET WEALTH — to confirm his COVENANT sworn to fathers",
-      "Not 'angel helped' — remember"
+      "Do not say 'by luck' — remember that the LORD is the one who gives you the harvest."
     ],
     "tags": [
       "Old Testament",
@@ -1416,13 +1416,13 @@
       1
     ],
     "content": "According to Deuteronomy 9:5, why does Israel enter Canaan NOT? Why YES?",
-    "explanation": "Deuteronomy 9:5 — 'Not because of your righteousness or the uprightness of your heart are you going in to possess their land, but because of the wickedness of these nations the LORD your God is driving them out from before you, and that he may confirm the word that the LORD swore to your fathers, to Abraham, to Isaac, and to Jacob.' NO personal merit — God does this for HIS NAME. Humbling principle.",
+    "explanation": "The question asks for the MAIN (primary) reason according to Deuteronomy 9:5. The Scripture passage states: 'It is not because of your righteousness or the uprightness of your heart that you go in to possess their land, but because of the wickedness of these nations... and that He may fulfill the word which the LORD swore to your fathers...' (NKJV).\n\nCORRECT ANSWER: Correctly affirms the two main reasons stated in the verse: (1) the wickedness of the Canaanite peoples, and (2) so that God might fulfill the oath to the patriarchs.\n\nDISTRACTOR 1 (close but incorrect in detail): Incorrect in the detail 'goodness of the Israelites'. Verse 9:5 clearly emphasizes 'It is not because of your righteousness or the uprightness of your heart', directly denying this. The second part of this answer is correct, but the first part being incorrect makes the whole answer wrong.\n\nDISTRACTOR 2 (common misunderstanding): Incorrect because it adds 'the obedience of the Israelites' as a reason. This is a common misunderstanding, but this very Scripture verse is strongly negating that they received the land due to their own merit or obedience.\n\nDISTRACTOR 3 (textually true but misses the point of the question): Incorrect because it describes a truth found elsewhere in Scripture (God rewards faith), but it is NOT the MAIN reason stated in Deuteronomy 9:5. This verse specifically excludes reasons stemming from the Israelites themselves, focusing instead on the wickedness of Canaan and the oath to the patriarchs.",
     "language": "en",
     "options": [
-      "For ancestors + kings",
+      "Because of the goodness of the Israelites and so that God might fulfill the oath to the patriarchs.",
       "NOT because of YOUR RIGHTEOUSNESS or UPRIGHTNESS — but because of WICKEDNESS of these NATIONS + to FULFILL God's OATH to fathers",
-      "For army",
-      "For leaders' wisdom"
+      "Because of the wickedness of the Canaanite peoples and because of the obedience of the Israelites.",
+      "Because God wanted to directly reward the Israelites for their faith."
     ],
     "tags": [
       "Old Testament",
@@ -1468,13 +1468,13 @@
       0
     ],
     "content": "According to Deuteronomy 14:21, what must Israel NOT eat? Why?",
-    "explanation": "Deuteronomy 14:21 — 'You shall not eat anything that has died naturally. You may give it to the sojourner who is within your towns, that he may eat it, or you may sell it to a foreigner. For you are a people holy to the LORD your God. You shall not boil a young goat in its mother's milk.' KOSHER law. NATURALLY DEAD ANIMAL = blood not drained ritually. The 'NOT BOIL KID IN MOTHER'S MILK' is repeated 3x (Ex 23:19, 34:26, Deut 14:21) = basis for KOSHER prohibition of mixing meat + milk.",
+    "explanation": "Deuteronomy 14:21 states: 'You shall not eat anything that dies of itself; you may give it to the alien who is within your towns, that he may eat it, or you may sell it to a foreigner. For you are a people holy to the LORD your God.' Therefore, the correct answer is 'an animal that dies of itself,' as this is directly prohibited. The incorrect answers: 1) 'Meat from animals that do not chew the cud' is incorrect because this is mentioned in the same passage (verses 7-8) concerning unclean animals, not verse 21; 2) 'Meat from animals with cloven hooves' is incorrect because this is a criterion for clean animals (verse 6), not something forbidden to eat in verse 21; 3) 'Meat from animals that have been sacrificed' is incorrect because this is a common misunderstanding—laws concerning sacrifices are mentioned elsewhere (such as Leviticus 7), not in this verse.",
     "language": "en",
     "options": [
       "NOT what dies NATURALLY — for you are HOLY PEOPLE for the LORD; nor BOIL a kid in its MOTHER's MILK",
-      "Not seaweed",
-      "Not big fish",
-      "Not birds"
+      "Meat from animals that do not chew the cud",
+      "Meat from animals with cloven hooves",
+      "Meat from animals that have been sacrificed"
     ],
     "tags": [
       "Old Testament",
@@ -1494,13 +1494,13 @@
       2
     ],
     "content": "According to Deuteronomy 16:18-20, what must Israel APPOINT in their towns? Requirements?",
-    "explanation": "Deuteronomy 16:18-20 — 'You shall appoint judges and officers in all your towns that the LORD your God is giving you, according to your tribes, and they shall judge the people with righteous judgment. You shall not pervert justice. You shall not show partiality, and you shall not accept a bribe, for a bribe blinds the eyes of the wise and subverts the cause of the righteous. Justice, and only justice, you shall follow, that you may live and inherit the land that the LORD your God is giving you.' JUSTICE! repeated 2x = strongest emphasis.",
+    "explanation": "Deuteronomy 16:18-20 directly instructs: 'You shall appoint judges and officers in all your towns... that they may judge the people with righteous judgment. You shall not pervert justice... nor take a bribe.' Therefore, the correct answer is that they must appoint 'judges and officers' to judge righteously, without partiality or bribery.\n\nThe incorrect answers:\n1. (wrong_scope) Incorrect because it shifts the focus to priestly roles (priests, Levites) and ritual criteria, while this passage specifically addresses the civil judicial system.\n2. (wrong_detail) This is a 'close' distractor as it includes the correct phrase 'judges and officers,' but it errs in the key detail about the manner of judgment: Scripture requires righteous, impartial judgment, not according to the people's will or local favoritism.\n3. (nearby_passage) Incorrect because it uses roles (prophets, scribes) and methods of judgment (direct revelation) often found in other parts of Scripture, but they are not mentioned in this specific passage of 16:18-20.",
     "language": "en",
     "options": [
-      "Markets — fair price",
-      "Schools — teach law",
+      "The priests and Levites — to judge according to ritual purity and temple hierarchy",
+      "Judges and officers — to judge according to the people's will and local favoritism",
       "JUDGES + officers in every town — JUDGE the people with RIGHTEOUS judgment; NOT PARTIAL, NOT take BRIBE — bribe BLINDS the wise; JUSTICE! JUSTICE! you shall pursue",
-      "Temple — worship"
+      "The prophets and scribes — to judge through direct revelation and prophecy"
     ],
     "tags": [
       "Old Testament",
@@ -1520,13 +1520,13 @@
       1
     ],
     "content": "According to Deuteronomy 19:15, how many WITNESSES needed to convict any CRIME?",
-    "explanation": "Deuteronomy 19:15 — 'A single witness shall not suffice against a person for any crime or for any wrong in connection with any offense that he has committed. Only on the evidence of two witnesses or of three witnesses shall a charge be established.' Basic OT legal principle. Same teaching 17:6, Num 35:30. NT also applies to the Church: Mt 18:16 (dispute resolution), 2 Cor 13:1, 1 Tim 5:19. Protects against FALSE ACCUSATION.",
+    "explanation": "Deuteronomy 19:15 states: 'One witness shall not rise up against a man for any iniquity, or for any sin, in any sin that he sinneth: at the mouth of two witnesses, or at the mouth of three witnesses, shall the matter be established.' Therefore, the correct answer is 'At least two or three witnesses are required,' as this is the specific number given in Scripture.\n\n- The distractor 'Only one witness is sufficient' (incorrect detail) is close but misses the key detail: Scripture clearly states that one witness is NOT sufficient.\n- The distractor 'At least four witnesses are required' (misplaced passage) is incorrect because it is not found in this passage; it may be confused with other standards in Old Testament law.\n- The distractor 'At least twelve witnesses are required' (common misconception) is incorrect because the number twelve is often associated with the number of tribes or disciples, not the witness standard in the criminal law of Deuteronomy 19.",
     "language": "en",
     "options": [
-      "1 witness suffices",
+      "Only one witness is sufficient",
       "On the EVIDENCE of 2 or 3 WITNESSES — a charge will be ESTABLISHED",
-      "5 witnesses",
-      "10 witnesses"
+      "At least four witnesses are required",
+      "At least twelve witnesses are required"
     ],
     "tags": [
       "Old Testament",
@@ -1546,12 +1546,12 @@
       3
     ],
     "content": "According to Deuteronomy 20:1, when Israel goes to BATTLE against an enemy with MORE CHARIOTS + LARGER ARMY — what to do?",
-    "explanation": "Deuteronomy 20:1 — 'When you go out to war against your enemies, and see horses and chariots and an army larger than your own, you shall not be afraid of them, for the LORD your God is with you, who brought you up out of the land of Egypt.' Same principle as 31:6 (LORD goes with). Remember the EXODUS — evidence God FIGHTS for his people. Then (20:5-9): who may go home (new house, new betrothal, new vineyard, fearful).",
+    "explanation": "QUESTION: According to Deuteronomy 20:1, when Israel goes to war and sees that the enemy has more chariots and a larger population, what must they do?\n\nCORRECT ANSWER: 'Do not be afraid, for the LORD your God is with you.' (Deuteronomy 20:1). This verse directly answers the scenario presented in the question: when facing a stronger force, Israel is commanded not to fear because the fundamental reason is that the LORD, their God, is with them.\n\nEXPLANATION OF INCORRECT OPTIONS:\n1. 'Do not be afraid, for the LORD your God brought you out of the land of Egypt.' (incorrect - 'nearby_passage' error type): While this is an important truth mentioned in a broader context (e.g., Deuteronomy 1:30, 20:1) and is a reason to trust the LORD, it is NOT the direct and specific response that Deuteronomy 20:1 gives for this battle situation. Verse 20:1 only cites the reason 'is with you.'\n2. 'Do not be afraid, for we have a mightier people.' (incorrect - 'wrong_detail' error type): This option directly contradicts the question's premise (the enemy has 'a larger population') and the spirit of the passage. The biblical instruction is not based on comparative military strength, but on the presence of God.\n3. 'Do not be afraid, but seek help from allied nations.' (incorrect - 'wrong_scope' error type): This option suggests an action not mentioned in Deuteronomy 20:1-4. The focus of this passage is reliance on the LORD, not seeking military alliances from outside.",
     "language": "en",
     "options": [
-      "Be afraid - inferior",
-      "Retreat - weaker",
-      "Call allies - help",
+      "Do not be afraid, for the LORD your God brought you out of the land of Egypt.",
+      "Do not be afraid, for we have a mightier people.",
+      "Do not be afraid, but seek help from allied nations.",
       "Do NOT be AFRAID — for the LORD your God (who BROUGHT you OUT of Egypt) is WITH you"
     ],
     "tags": [
@@ -1572,13 +1572,13 @@
       0
     ],
     "content": "According to Deuteronomy 22:5, women NOT wear what? Men NOT wear what?",
-    "explanation": "Deuteronomy 22:5 — 'A woman shall not wear a man's garment, nor shall a man put on a woman's cloak, for whoever does these things is an abomination to the LORD your God.' DESIGN DISTINCTION between male + female (Gen 1:27). 'Abomination' (toebah) = strongest OT word for what God HATES. May relate to pagan worship that also reversed sex distinctions. Applies the principle of protecting creation order.",
+    "explanation": "Deuteronomy 22:5 states: 'A woman shall not wear a man's garment, nor shall a man put on a woman's cloak, for whoever does these things is an abomination to the LORD your God.' The CORRECT ANSWER faithfully reflects the text, accurately naming the two prohibited items: men's clothing and women's clothing.\n\nINCORRECT ANSWERS:\n- Distractor 1 (nearby_passage type): Incorrect in detail. It confuses the verse with regulations about mixed fabrics (22:11) and priestly garments, not the main content of verse 5.\n- Distractor 2 (common_misconception type): Fundamentally incorrect. This is a common misunderstanding, imposing an idea of strangeness/familiarity not present in the text. The Scripture does not mention the relationship to the clothing's owner.\n- Distractor 3 (true_but_off type): Off-topic. Although the Bible speaks of new/old in other contexts (e.g., a new heart), this is completely unrelated to the command about gender-specific clothing in the question.",
     "language": "en",
     "options": [
       "Women NOT wear MEN'S CLOTHING — Men NOT wear WOMEN'S CLOTHING — whoever does is an ABOMINATION to the LORD",
-      "Women not red",
-      "Men not white",
-      "Both not black"
+      "Women shall not wear wool, and men shall not wear mixed fabrics",
+      "Women shall not wear the clothing of strangers, and men shall not wear the clothing of relatives",
+      "Women shall not wear old clothing, and men shall not wear new clothing"
     ],
     "tags": [
       "Old Testament",
@@ -1598,13 +1598,13 @@
       2
     ],
     "content": "According to Deuteronomy 23:21-23, if you VOW to the LORD — what?",
-    "explanation": "Deuteronomy 23:21-23 — 'If you make a vow to the LORD your God, you shall not delay fulfilling it, for the LORD your God will surely require it of you, and you will be guilty of sin. But if you refrain from vowing, you will not be guilty of sin. You shall be careful to do what has passed your lips, for you have voluntarily vowed to the LORD your God what you have promised with your mouth.' NOT VOWING = NO SIN. Vowing = must FULFILL. Same teaching Eccl 5:4-5.",
+    "explanation": "Deuteronomy 23:21-23 clearly teaches: 'When you make a vow to the LORD your God, do not be slow to fulfill it... you must be sure to do what you have vowed to the LORD.' Therefore, the correct answer is to fulfill it promptly, without delay.\n\nDistractor 1 (close but incorrect) is wrong because this passage does not mention offering an additional sin offering for delay, but emphasizes not delaying from the start.\nDistractor 2 is wrong because the commandment applies to all vows made to the LORD, not limited by location.\nDistractor 3 reflects a common misunderstanding but is wrong, because verse 23 clearly states: 'you must be sure to do what you have vowed,' not allowing arbitrary substitution.",
     "language": "en",
     "options": [
-      "Can forget",
-      "Must vow again to atone",
+      "Must offer an additional sin offering if delayed",
+      "Only required to fulfill if vowed at the temple",
       "FULFILL it without DELAY — for the LORD will require it of you; if you do NOT vow, NO sin",
-      "Vow with priest"
+      "May substitute with an offering of equivalent value"
     ],
     "tags": [
       "Old Testament",
@@ -1624,13 +1624,13 @@
       1
     ],
     "content": "According to Deuteronomy 24:14-15, regarding the POOR DAY-LABORER, the EMPLOYER must do what?",
-    "explanation": "Deuteronomy 24:14-15 — 'You shall not oppress a hired worker who is poor and needy, whether he is one of your brothers or one of the sojourners who are in your land within your towns. You shall give him his wages on the same day, before the sun sets (for he is poor and counts on it), lest he cry against you to the LORD, and you be guilty of sin.' PROTECTING the POOR. They have NO savings — live DAY BY DAY. James 5:4 echoes this threat to wicked employers.",
+    "explanation": "The question is based on Deuteronomy 24:14-15. The correct answer is 'Pay them their wages on the same day, before sunset' because verse 15 clearly states: 'You shall give him his wages on the same day, before the sun sets, for he is poor and his heart is set on it.' Distractor 1 ('Pay them their wages on the same day, before sunrise') is close but incorrect in a key detail (sunrise instead of sunset). Distractor 2 ('Pay them at the end of the week, before the day of rest') has the idea of a deadline but deviates from the specific 'on the same day' requirement of the question, and the Bible does not mention 'the end of the week' here. Distractor 3 ('Allow them to rest and provide them with food') describes a different humanitarian principle that can be found in nearby passages (such as laws about Sabbath rest or general treatment of the poor), but it is not the specific command about paying wages stated in Deuteronomy 24:14-15.",
     "language": "en",
     "options": [
-      "Pay end of month",
+      "Pay them their wages on the same day, before sunrise",
       "PAY WAGES the SAME DAY — do NOT let sun set on WAGES; the POOR depends on WAGES; if not, he CRIES to the LORD, you SIN",
-      "Pay end of year",
-      "May not pay if little"
+      "Pay them at the end of the week, before the day of rest",
+      "Allow them to rest and provide them with food"
     ],
     "tags": [
       "Old Testament",
@@ -1650,12 +1650,12 @@
       3
     ],
     "content": "According to Deuteronomy 26:1-11, on entering the land, each brings FIRSTFRUITS — to where? Recites what?",
-    "explanation": "Deuteronomy 26:5-9 — 'And you shall make response before the LORD your God, \"A wandering Aramean was my father. And he went down into Egypt and sojourned there... And the Egyptians treated us harshly and humiliated us... Then we cried to the LORD... and the LORD heard our voice... And the LORD brought us out of Egypt with a mighty hand and an outstretched arm... And now, behold, I bring the first of the fruit of the ground.\"' ISRAEL'S CONFESSION at tithing = remembering redemption.",
+    "explanation": "Deuteronomy 26:2-5 records: 'You shall take some of the first of all the fruit... and you shall go to the place that the LORD your God will choose, to make his name to dwell there... And you shall declare...: \"A wandering Aramean was my father... And the LORD brought us out of Egypt...\"'. Therefore, the correct answer is right because it specifies only the place God chooses (v.2) and the content of the declaration (v.5).\n- Distractor 1 is wrong (wrong_detail): It is true that the offering is to the LORD (v.10), but it is WRONG IN DETAIL regarding the location (a local altar instead of the place God chooses) and the content of the declaration (a general thanksgiving from v.10 instead of the historical salvation testimony from vv.5-9).\n- Distractor 2 is wrong (nearby_passage): The detail 'the priest' appears in vv.3-4 regarding handing over the basket, but it is WRONG because the destination is the place God chooses (v.2), not the priest's house; and the declaration is wrong (the covenant with Abraham is not the content in this passage).\n- Distractor 3 is wrong (true_but_off): The phrase 'the land that You have given' reflects the idea in v.10, but it is OUT OF SCOPE because the location 'the entrance of your tent' is incorrect (it must be the place God chooses), and the declaration is overly simple, lacking the mandatory historical salvation testimony (vv.5-9).",
     "language": "en",
     "options": [
-      "To Sinai — read law",
-      "Home — private thanks",
-      "Border — thank king",
+      "Bring it to the altar at your local place — recite 'Give to the LORD your God because He has given this land...' (a general thanksgiving for the land)",
+      "Bring it to the house of the priest who is serving — recite 'My father Abraham went from Ur to... was promised many descendants...' (a testimony about the covenant with the patriarch)",
+      "Bring it to the entrance of your tent — recite 'Here, I bring the firstfruits from the land that You have given me' (a simple declaration when offering)",
       "Bring to PLACE God CHOSE — recite 'My father was a wandering ARAMEAN... led out of Egypt...' (summary creed of Israel's redemption)"
     ],
     "tags": [
@@ -1676,13 +1676,13 @@
       0
     ],
     "content": "According to Deuteronomy 4:24, what is the LORD your God? + GOD of what?",
-    "explanation": "Deuteronomy 4:24 — 'For the LORD your God is a consuming fire, a jealous God.' 'JEALOUS' (qanna) = will not share his throne with any other god. 'CONSUMING FIRE' = trait of ABSOLUTE HOLINESS — does not tolerate sin. CITED in Hebrews 12:29 to warn NT believers. The God OF the new covenant is still the CONSUMING FIRE God.",
+    "explanation": "Deuteronomy 4:24 states: 'For the LORD your God is a consuming fire, a jealous God.' The correct answer quotes the two key phrases that describe the nature of the LORD in the context of a warning against idolatry. Distractor 1 ('LOVING') is incorrect because it replaces the characteristic 'jealous' with an attribute that is true but not the wording of this verse, thereby losing the main point about absolute holiness and judgment. Distractor 2 ('ROCK OF STABILITY') is incorrect because it takes a common image from other passages (such as Deuteronomy 32:4, 31) to describe God, but it is not the simile used in verse 4:24. Distractor 3 ('WICKED God') is incorrect because it is a common misunderstanding and completely contrary to the nature of God in Scripture; this is an inaccurate and absurd description.",
     "language": "en",
     "options": [
       "A CONSUMING FIRE — a JEALOUS God",
-      "Tall trees",
-      "Tall mountain",
-      "Deep river"
+      "A CONSUMING FIRE — a LOVING God",
+      "A ROCK OF STABILITY — a JEALOUS God",
+      "A FAITHFUL ONE — a WICKED God"
     ],
     "tags": [
       "Old Testament",
@@ -1702,13 +1702,13 @@
       2
     ],
     "content": "According to Deuteronomy 7:25-26, what must Israel do with Canaanite IDOLS? May they take the silver + gold?",
-    "explanation": "Deuteronomy 7:25-26 — 'The carved images of their gods you shall burn with fire. You shall not covet the silver or the gold that is on them or take it for yourselves, lest you be ensnared by it, for it is an abomination to the LORD your God. And you shall not bring an abominable thing into your house and become devoted to destruction like it. You shall utterly detest and abhor it, for it is devoted to destruction.' The story of ACHAN (Joshua 7) — VIOLATED this principle.",
+    "explanation": "Deuteronomy 7:25-26 teaches: 'The carved images of their gods you shall burn with fire. You shall not covet the silver or the gold that is on them or take it for yourselves, lest you be ensnared by it, for it is an abomination to the LORD your God. And you shall not bring an abominable thing into your house and become devoted to destruction like it. You shall utterly detest and abhor it, for it is devoted to destruction.' (ESV). THE CORRECT ANSWER is correct because it fully states the commands: must burn, do not covet the gold and silver, do not bring into your house, and must utterly abhor. DISTRACTOR 1 (close) is wrong on a key detail: instead of 'utterly abhor' it says 'set aside separately,' contradicting the command to consider it devoted to destruction. DISTRACTOR 2 is wrong because it confuses the command with the command to smash carved images elsewhere (e.g., Deuteronomy 12:3), and permits taking the gold and silver, contrary to the prohibition 'do not covet.' DISTRACTOR 3 is based on the common misunderstanding that defiled items can be purified, but Scripture here teaches absolute avoidance and abhorrence, with no 'purification' exception.",
     "language": "en",
     "options": [
-      "Keep gold + silver — destroy figure",
-      "Sell to foreigners — profit",
+      "MUST BURN — do not COVET the silver + gold covering them — do not BRING them into your house (lest you BE SWALLOWED by them) — must SET ASIDE separately",
+      "MUST SMASH — MAY take the silver + gold covering them — do not BRING them into your house (lest you BE SWALLOWED by them) — must UTTERLY ABHOR",
       "MUST BURN — do NOT covet silver + gold on them — do NOT bring into house (lest you BE SNARED) — must UTTERLY DETEST",
-      "Mix with food"
+      "MUST BURY — do not COVET the silver + gold covering them — but MAY bring them into your house (if purified) — must UTTERLY ABHOR"
     ],
     "tags": [
       "Old Testament",
@@ -1728,12 +1728,12 @@
       3
     ],
     "content": "According to Deuteronomy 13:6-11, IF a CLOSE one (brother + child + wife + dear friend) SECRETLY ENTICES to other gods — what?",
-    "explanation": "Deuteronomy 13:6-11 — 'If your brother... or your son or your daughter or the wife you embrace or your friend who is as your own soul entices you secretly, saying, \"Let us go and serve other gods\"... you shall not yield to him or listen to him, nor shall your eye pity him, nor shall you spare him, nor shall you conceal him. But you shall kill him. Your hand shall be first against him to put him to death, and afterward the hand of all the people. So all Israel shall hear and fear and never again do any such wickedness as this among you.' STRICT to protect COVENANT PURITY.",
+    "explanation": "The correct answer faithfully reflects Deuteronomy 13:6-11, summarizing the command: do not yield, do not listen, show no pity or compassion, and you must put the enticer to death. You must be the first (your hand shall be first) to lay hands on them to put them to death, then all the people shall stone them. The reason is because they have tried to turn you away from the LORD your God. Distractor 1 (close but incorrect) omits the detail 'all the people shall stone them,' an important part of the execution process stated in verses 9-10. Distractor 2 uses 'stone them to death' from other execution laws (e.g., Deuteronomy 21:21), while this passage simply records 'stone them' (v.10) and emphasizes the personal role of the accuser in initiating the killing. Distractor 3 reflects a common misunderstanding of the general judicial process, but this passage specifically emphasizes the personal duty to report and take active part in the execution, not merely reporting to the authorities.",
     "language": "en",
     "options": [
-      "Persuade — with love",
-      "Overlook — they're family",
-      "Take to court — normal trial",
+      "Do not yield to them, do not listen to them, show no pity or compassion; you must put them to death—your hand shall be first against them to put them to death—because they have tried to turn you away from the LORD your God.",
+      "Do not yield to them, do not listen to them, show no pity or compassion; you must put them to death—all the people shall stone them—because they have tried to turn you away from the LORD your God.",
+      "Secretly report them to the priest and the judge so they may judge, then all the people shall stone that person—because they have tried to turn you away from the LORD your God.",
       "Do NOT consent + DO NOT listen + DO NOT pity + DO NOT spare; you must KILL them — your HAND first, then ALL the people stone; for they tried to LURE you from the LORD"
     ],
     "tags": [
@@ -1754,13 +1754,13 @@
       1
     ],
     "content": "According to Deuteronomy 15:7-11, regarding the POOR among Israel, what must the wealthy DO?",
-    "explanation": "Deuteronomy 15:7-11 — 'If among you, one of your brothers should become poor... you shall not harden your heart or shut your hand against your poor brother, but you shall open your hand to him and lend him sufficient for his need... Take care lest there be an unworthy thought in your heart and you say, \"The seventh year, the year of release is near,\" and your eye look grudgingly on your poor brother, and you give him nothing, and he cry to the LORD against you, and you be guilty of sin.' PRINCIPLE: do NOT exploit the POOR through financial planning.",
+    "explanation": "In Deuteronomy 15:7-11, the question asks about what the Israelites MUST DO regarding the poor. The correct answer is based on verses 7-8, 9, and 11, summarizing the commands: do not harden your heart or close your hand; you must open your hand and lend sufficiently according to the need; do not refuse because the year of release is near, for the poor will cry out and you will be guilty.\n\n- DISTRACTOR 1 (Incorrect detail): It is incorrect in the phrase 'FINED.' The Scripture only warns they will 'be guilty' before the LORD (v.9) and does not prescribe a specific monetary penalty in this passage.\n\n- DISTRACTOR 2 (Incorrect scope): It is incorrect in 'give outright.' This Scripture passage (v.8) speaks of 'lending' sufficiently, not 'giving' outright. The scope of the command is altered to a different form of assistance not specified in the question.\n\n- DISTRACTOR 3 (Common misunderstanding): The actions 'praise and intercede,' while good, are not what this law in Deuteronomy 15:7-11 requires. This is a common misunderstanding of applying general ethical principles (like encouragement, prayer) to a specific command about material action.",
     "language": "en",
     "options": [
-      "Stay away",
+      "Do not harden your heart or close your hand—you must open your hand wide and lend enough to meet the person's need; do not think 'the seventh year is near' (the year of release) and refuse to give—for the poor will cry out to the LORD, and you will be guilty AND FINED.",
       "DO NOT HARDEN HEART + DO NOT SHUT HAND — OPEN your hand + lend ENOUGH for what they NEED; do NOT think 'year 7 is NEAR' (debt cancellation) and refuse — the POOR will CRY to LORD, you'll BE GUILTY",
-      "Judge each person",
-      "Sell to them immediately"
+      "Do not harden your heart—you must give outright; do not think 'the seventh year is near' and refuse to give—for the poor will cry out to the LORD, and you will be guilty.",
+      "You must praise the poor and intercede for them; do not think 'the seventh year is near' and refuse to give—for the poor will cry out to the LORD, and you will be guilty."
     ],
     "tags": [
       "Old Testament",
@@ -1780,13 +1780,13 @@
       2
     ],
     "content": "According to Deuteronomy 17:8-13, DIFFICULT JUDGMENTS (disputes, manslaughter, lawsuits) — bring where? Final RULING by whom?",
-    "explanation": "Deuteronomy 17:8-13 — 'If any case arises requiring decision between one kind of homicide and another, one kind of legal right and another, or one kind of assault and another, any case within your towns that is too difficult for you, then you shall arise and go up to the place that the LORD your God will choose. And you shall come to the Levitical priests and to the judge who is in office in those days, and you shall consult them, and they shall declare to you the decision.' Highest court = place of worship. Anti-rebellion (17:12-13).",
+    "explanation": "The correct answer is based on Deuteronomy 17:8-13. Difficult cases for judgment must be brought to the place God chooses (v.8). There, the Levitical priests and the judge in office shall inquire and declare the verdict (v.9-11). The person who acts presumptuously and does not obey that verdict shall die (v.12-13).\n\nDistractor 1 (go to the local altar — the elders) is wrong because it mistakenly applies the scope of ordinary judgment (as in Deuteronomy 16:18-20, 21:1-9) to these special 'cases too difficult for you,' which must be taken to the central authority.\n\nDistractor 2 (only the judges) is a 'close but incorrect' answer because it has the right location but is wrong about the ruling authority, omitting the crucial role of the Levitical priests clearly stated in verses 9 and 12.\n\nDistractor 3 (they consult; the people decide for themselves) is wrong because it misunderstands the nature of the verdict. The Scripture (v.10-11) emphasizes that the people must act according to what they instruct, not decide for themselves; this is a command, not a consultation.",
     "language": "en",
     "options": [
-      "Market — majority decides",
-      "Field — king decides",
+      "Go to the local ALTAR — the elders in the city — they JUDGE disputes; whoever does NOT obey WILL be punished",
+      "Go to the PLACE GOD CHOOSES — only the JUDGES — they ISSUE a verdict; whoever does NOT obey WILL be reprimanded",
       "To the PLACE God CHOSE — Levitical PRIESTS + JUDGE — they DECIDE the verdict; disobedience = DEATH",
-      "Patriarch's house — patriarch decides"
+      "Go to the PLACE GOD CHOOSES — the Levitical PRIESTS + the JUDGES — they CONSULT; the people DECIDE FOR THEMSELVES according to their own will"
     ],
     "tags": [
       "Old Testament",
@@ -1806,13 +1806,13 @@
       0
     ],
     "content": "According to Deuteronomy 22:6-7, if you find a NEST with mother bird sitting — what may you do + NOT do?",
-    "explanation": "Deuteronomy 22:6-7 — 'If you come across a bird's nest in any tree or on the ground, with young ones or eggs and the mother sitting on the young or on the eggs, you shall not take the mother with the young. You shall let the mother go, but the young you may take for yourself, that it may go well with you, and that you may live long.' NATURE PROTECTION LAW. Conservation: release mother → more offspring. BLESSING for not being greedy. Same spirit as Lev 22:28 (NOT slaughter mother + young same day), Ex 23:19 (NOT boil kid in mother's milk).",
+    "explanation": "Deuteronomy 22:6-7 teaches: 'If you come across a bird's nest beside the road, either in a tree or on the ground, and the mother is sitting on the young or on the eggs, do not take the mother with the young. You may take the young, but be sure to let the mother go, so that it may go well with you and you may have a long life.' (NIV).\n\n- CORRECT ANSWER: Matches Scripture — you are permitted to take the young/eggs, you are not permitted to take the mother bird, and you must let the mother bird go to receive blessing and long life.\n\n- DISTRACTOR 1 (close but incorrect in detail): Incorrect because it reverses the object — Scripture forbids taking the mother bird, not the young birds. The command to 'let go' also applies to the mother bird, not the young birds.\n- DISTRACTOR 2 (incorrect in scope): Incorrect because it expands the permission — Scripture only permits taking the young/eggs; it does not permit taking the mother bird. 'Destroying the nest' is not mentioned as a specifically forbidden action in this question's context.\n- DISTRACTOR 3 (common misunderstanding): Incorrect because it adds a non-existent ritual — Scripture states the purpose is to 'be blessed and live long' through the obedient act of letting the mother bird go; it never requires offering the mother bird as a sacrifice.",
     "language": "en",
     "options": [
       "May take the YOUNG + eggs — but NOT take the MOTHER + young — must LET the MOTHER GO for BLESSING + long life",
-      "Take both mother + young",
-      "Leave all",
-      "Take only mother"
+      "You may take the mother bird or the eggs — but DO NOT take the young birds that are with their mother — you must let the young birds go so that you may be blessed and live long",
+      "You may take the mother bird and the young birds — but DO NOT destroy the nest — you must leave the nest intact so that you may be blessed and live long",
+      "You may take the young birds or the eggs — but DO NOT take the mother bird that is with her young/eggs — you must offer the mother bird to the LORD so that you may be blessed"
     ],
     "tags": [
       "Old Testament",
@@ -1832,12 +1832,12 @@
       3
     ],
     "content": "According to Deuteronomy 25:5-10, the LEVIRATE LAW — if a husband DIES without sons — the brother-in-law must do what?",
-    "explanation": "Deuteronomy 25:5-10 — 'If brothers dwell together, and one of them dies and has no son, the wife of the dead man shall not be married outside the family to a stranger. Her husband's brother shall go in to her and take her as his wife and perform the duty of a husband's brother to her. And the first son whom she bears shall succeed to the name of his dead brother... And if the man does not wish to take his brother's wife, then his brother's wife shall go up to the gate to the elders... Then his brother's wife shall go up to him in the presence of the elders and pull his sandal off his foot and spit in his face. And she shall answer and say, \"So shall it be done to the man who does not build up his brother's house.\" And the name of his house shall be called in Israel, \"The house of him who had his sandal pulled off.\"' RUTH + Boaz (Ruth 4) applies this. TAMAR's story (Gen 38) before the Mosaic law.",
+    "explanation": "The correct answer is based on Deuteronomy 25:5-6: 'If brethren dwell together, and one of them die... her husband's brother shall... take her to him to wife, and perform the duty of an husband's brother unto her. And it shall be, that the firstborn which she beareth shall succeed in the name of his brother which is dead, that his name be not put out of Israel.' (KJV). This clearly states the duty to marry the widow and that the firstborn son must bear the dead brother's name. The distractors are incorrect as follows: (1) Detail error: this option is correct in structure and the consequence of refusal, but incorrect in stating 'second child' instead of 'firstborn' (verse 6). (2) Scope error: this describes a different regulation concerning divorce or inheritance (see Deuteronomy 24:1-4, 21:15-17), not the levirate marriage law. (3) Common misunderstanding: the primary purpose is for the dead brother's name and lineage not to be blotted out, not merely for general continuation of the line; and the child must bear the dead brother's name, not the living brother's own name (verse 6).",
     "language": "en",
     "options": [
-      "Leave widow alone",
-      "Sell to another family",
-      "Make new marriage — for practical reasons",
+      "MUST MARRY HIS BROTHER'S WIFE (establish a family) — the SECOND CHILD bears the DEAD BROTHER'S NAME — so the FAMILY NAME is NOT LOST; if REFUSED: the WIFE removes his SANDAL, spits in his FACE, and his FAMILY is called 'THE HOUSE OF HIM THAT HATH HIS SHOE LOOSED'",
+      "MUST LET HIS BROTHER'S WIFE RETURN TO HER PARENTS' HOUSE — the INHERITANCE is DIVIDED — to PROTECT the property; if REFUSED: the WIFE removes his SANDAL, spits in his FACE, and his FAMILY is called 'THE HOUSE OF HIM THAT HATH HIS SHOE LOOSED'",
+      "MUST MARRY HIS BROTHER'S WIFE (establish a family) — the FIRSTBORN CHILD bears HIS OWN NAME — so the FAMILY LINE CONTINUES; if REFUSED: the WIFE removes his SANDAL, spits in his FACE, and his FAMILY is called 'THE HOUSE OF HIM THAT HATH HIS SHOE LOOSED'",
       "MARRY BROTHER'S WIDOW — first SON named after DECEASED BROTHER — preserve name; if REFUSE: widow REMOVES SHOE, SPITS in face, family becomes 'HOUSE of the UNSANDALED'"
     ],
     "tags": [
@@ -1858,13 +1858,13 @@
       1
     ],
     "content": "According to Deuteronomy 33:26-29, MOSES blessed Israel — NO one (NATION) is LIKE whom?",
-    "explanation": "Deuteronomy 33:26-29 — 'There is none like God, O Jeshurun, who rides through the heavens to your help... Happy are you, O Israel! Who is like you, a people saved by the LORD, the shield of your help, and the sword of your triumph! Your enemies shall come fawning to you, and you shall tread upon their backs.' Conclusion of Moses's BLESSING for the 12 tribes (33:1-25). Before Moses dies.",
+    "explanation": "The question asks about Moses's blessing in Deuteronomy 33:26-29, specifically emphasizing the uniqueness of Israel. The correct answer is from Deuteronomy 33:26, 29: 'There is no one like the God of Jeshurun... Blessed are you, O Israel!...' and 'the LORD is your shield and helper, and the sword of your glory.' The phrase 'sword of your glory' is accurate.\n\nDistractor 1 (close but incorrect detail): Replaces 'sword of your glory' with 'sword of your triumph.' While the idea is similar, the original text uses 'glory.'\n\nDistractor 2 (incorrect scope): Replaces 'Israel' with 'O tribes.' Although Israel comprises the tribes, the blessing in this verse directly addresses 'Israel' as a whole, not individually as 'the tribes.'\n\nDistractor 3 (common misunderstanding): Replaces 'Israel' with 'the LORD.' This is a common misreading, as the preceding verse says 'There is no one like the God...', but the question and answer are about which 'people' is like no other, i.e., Israel, not the LORD.",
     "language": "en",
     "options": [
-      "No one like Abraham",
+      "There is no one like Israel—a people saved by God—the LORD is your shield and helper, and the sword of your triumph; blessed are you, Israel!",
       "NO NATION like ISRAEL — saved by God — the LORD is your SHIELD + the SWORD of GLORY; HAPPY are you, ISRAEL!",
-      "No one like Moses",
-      "No one like David"
+      "There is no one like Israel—a people saved by God—the LORD is your shield and helper, and the sword of glory; blessed are you, O tribes!",
+      "There is no one like the LORD—a people saved by God—the LORD is your shield and helper, and the sword of glory; blessed are you, Israel!"
     ],
     "tags": [
       "Old Testament",

@@ -9,13 +9,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Timothy 1:2 — 'To Timothy, my beloved child: Grace, mercy, and peace from God the Father and Christ Jesus our Lord.'",
+    "explanation": "Correct answer: 2 Timothy 1:2 clearly states: 'Paul, an apostle of Jesus Christ... to Timothy, my dearly beloved son.' Therefore, 'my dearly beloved son' is accurate.\n\nExplanation of incorrect answers:\n- 'Faithful son' (wrong_detail): The phrase 'faithful son' appears in 1 Corinthians 4:17, not in the opening greeting of 2 Timothy. This is an incorrect detail.\n- 'Beloved fellow worker' (nearby_passage): The phrase 'beloved fellow worker' is used in Romans 16:3, 12 or Philemon 1. In the context of Paul's epistolary openings (e.g., Philippians 1:1), this is a nearby passage error.\n- 'True child' (common_misconception): This phrase describes a general spiritual relationship but is not the specific form of address Paul uses for Timothy in verse 1:2. This is a common misconception about epistolary language.",
     "language": "en",
     "options": [
       "My beloved child",
-      "Fellow worker",
-      "Elder of the church",
-      "Trusted associate"
+      "Faithful son",
+      "Beloved fellow worker",
+      "True child"
     ],
     "tags": [
       "New Testament",
@@ -35,13 +35,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Timothy 1:5 — 'I am reminded of your sincere faith, a faith that dwelt first in your grandmother Lois and your mother Eunice and now, I am sure, dwells in you as well.'",
+    "explanation": "The correct answer is 'his grandmother Lois and his mother Eunice' because **2 Timothy 1:5 records**: '...I am reminded of your sincere faith, which first lived in your grandmother Lois and in your mother Eunice and, I am persuaded, now lives in you also.' The question specifically asks about those who had this faith BEFORE Timothy, and the Scripture clearly identifies them as his grandmother and mother.\n\nThe incorrect answers:\n- 'His grandmother Lois and his great-grandmother' is incorrect because the Scripture only mentions his grandmother Lois; it never mentions a 'great-grandmother.' This adds a detail not present in the text.\n- 'His mother Eunice and Paul's sister' is incorrect because this detail is drawn from a nearby passage, as Paul mentions his family in **2 Timothy 4:19,21 ('Greet...the household of Aquila and Priscilla...Erastus and Quartus')**, but it has no relation to the faith of Timothy's family discussed in 1:5.\n- 'Timothy himself from infancy' is incorrect because this is a true statement about the nature of Timothy's faith (Paul was persuaded it also lived in him), but it misses the point of the question. The question asks about those who had the faith BEFORE Timothy, not about Timothy himself.",
     "language": "en",
     "options": [
-      "Grandmother Sarah and mother Deborah",
+      "His grandmother Lois and his great-grandmother",
       "Grandmother Lois and mother Eunice",
-      "Grandfather Timothius and father Paul",
-      "Brothers Epaphroditus and Tychicus"
+      "His mother Eunice and Paul's sister",
+      "Timothy himself from infancy"
     ],
     "tags": [
       "New Testament",
@@ -61,13 +61,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Timothy 1:6 — 'For this reason I remind you to fan into flame the gift of God, which is in you through the laying on of my hands.'",
+    "explanation": "2 Timothy 1:6 says: 'For this reason I remind you to fan into flame the gift of God, which is in you through the laying on of my hands.' CORRECT ANSWER: 'The gift of God received through the laying on of Paul's hands' because the Scripture clearly identifies this as the gift of God and received through the laying on of Paul's own hands. DISTRACTOR 1 WRONG (wrong_detail): Incorrect detail of the method ('prayer' instead of 'laying on of hands'), though the rest is nearly correct. DISTRACTOR 2 WRONG (common_misconception): Replaces 'the gift of God' with the metaphorical image 'flame of zeal' and associates it with the ordination ceremony, which is a common misunderstanding of the meaning of 'fan into flame'. DISTRACTOR 3 WRONG (true_but_off): Although Timothy received teaching (2 Timothy 1:13; 3:14), this is not what Paul is referring to in verse 6, so it misses the focus of the question.",
     "language": "en",
     "options": [
-      "His first zeal at conversion",
-      "Unceasing prayer",
+      "The gift of God received through Paul's prayer",
+      "The flame of zeal when being ordained",
       "The gift of God received through Paul's laying on of hands",
-      "Memory of departed kin"
+      "The teaching of truth received from a teacher"
     ],
     "tags": [
       "New Testament",
@@ -87,12 +87,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Timothy 1:7 — 'For God gave us a spirit not of fear but of power and love and self-control.'",
+    "explanation": "2 Timothy 1:7 (KJV) clearly states: 'For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind.' The correct answer accurately quotes the three characteristics God gives. Distractor 1 ('fear, discipline, and self-control') is incorrect because it is a common interpretation based on reasoning about virtues, but the Scripture contrasts 'fear' with 'power' and does not mention 'discipline, self-control'. Distractor 2 ('power, discipline, and joy') is close but incorrect in detail: it replaces 'love' with 'discipline' and 'sound mind' with 'joy', though 'discipline' and 'joy' are themes found in nearby passages (e.g., 2 Timothy 1:3-4) but are not the answer to this question. Distractor 3 ('humility, peace, and patience') is incorrect because, while they are good virtues, they are not the words used in 2 Timothy 1:7; this is a misunderstanding of details from virtues emphasized in other passages.",
     "language": "en",
     "options": [
-      "A spirit of fear",
-      "A spirit of judgment",
-      "A spirit of indifference",
+      "a spirit of fear, discipline, and self-control",
+      "a spirit of power, discipline, and joy",
+      "a spirit of humility, peace, and patience",
       "A spirit of power, love, and self-control"
     ],
     "tags": [
@@ -113,13 +113,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Timothy 1:9 — '...who saved us and called us to a holy calling, not because of our works but because of his own purpose and grace, which he gave us in Christ Jesus before the ages began.'",
+    "explanation": "2 Timothy 1:9 says: '...who has saved us and called us with a holy calling, not according to our works, but according to His own purpose and grace which was given to us in Christ Jesus before time began.' The correct answer is right because the Scripture directly states that salvation is based on God's own purpose and grace given before time began, not on human works.\n\nDistractor 1 is wrong because it adds the phrase 'and according to our calling' (it is true that He called us with a holy calling, but the verse does not present that calling as the basis for salvation; the basis is His purpose and grace). This is a 'nearby_passage' error because it takes a correct detail from the same passage but incorrectly combines it as the basis of salvation.\n\nDistractor 2 is wrong because it mentions 'obedience and righteous works,' which completely contradicts the 'not according to our works' spirit of the verse. This is a 'common_misconception' error, thinking that people are saved by good works.\n\nDistractor 3 is wrong because it uses the terms 'election and fulfilled prophecy,' which are concepts not mentioned in this verse. This is a 'wrong_detail' error, introducing an element not present in the text.",
     "language": "en",
     "options": [
       "His own purpose and grace given before the ages, not our works",
-      "Our good works",
-      "Faithful family lineage",
-      "Promises of the patriarchs"
+      "According to His own purpose and grace given before time began, and according to our calling",
+      "According to our obedience and righteous works",
+      "According to election and fulfilled prophecy from before"
     ],
     "tags": [
       "New Testament",
@@ -139,13 +139,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Timothy 1:10 — '...our Savior Christ Jesus, who abolished death and brought life and immortality to light through the gospel.'",
+    "explanation": "The Scripture 2 Timothy 1:10 says: '... but has now been revealed by the appearing of our Savior Christ Jesus, who abolished death and brought life and immortality to light through the gospel.' Therefore, the correct answer is 'Abolish death and reveal life and immortality through the Gospel,' which directly describes Christ's work. Distractor 1 is wrong because it replaces 'death' with 'disease,' altering a key detail. Distractor 2 is wrong because it uses similar words and ideas from other passages (like 1 Corinthians 15:54-57, which speaks of 'victory' and 'eternal life'), but it misidentifies the exact passage and method ('through prophecy' instead of 'through the Gospel'). Distractor 3 is wrong because, while it aligns with theological themes (Christ abolishing sin and revealing salvation), it is not the direct description from 2 Timothy 1:10, thus missing the focus of the question.",
     "language": "en",
     "options": [
-      "Delayed death and brought material blessings to light",
+      "Abolish disease and reveal life and immortality through the Gospel",
       "Abolished death and brought life and immortality to light through the gospel",
-      "Restored the old order and brought the law to light",
-      "Reformed the world and brought wealth to light"
+      "Conquer death and bring eternal life to light through prophecy",
+      "Abolish sin and reveal salvation and grace through the Gospel"
     ],
     "tags": [
       "New Testament",
@@ -165,13 +165,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Timothy 2:2 — 'And what you have heard from me in the presence of many witnesses entrust to faithful men, who will be able to teach others also.' A four-generation principle of spiritual succession.",
+    "explanation": "2 Timothy 2:2 says, 'And the things that you have heard from me among many witnesses, commit these to faithful men who will be able to teach others also.' The correct answer precisely identifies the target as those who are both faithful and capable of teaching others. Distractor 1 (The faithful among the elders) is a 'wrong_detail' type: while 'faithful' is correct, adding 'among the elders' narrows the scope not found in the Scripture and may imply other leadership roles. Distractor 2 (The faithful among all servants) is a 'wrong_scope' type: adding 'among all servants' broadens the target vaguely, not the specific criterion 'able to teach' that Paul emphasizes. Distractor 3 (All the faithful) is a 'nearby_passage' type: 'faithful' is correct, but 'all' omits the crucial requirement of 'able to teach others,' potentially confused with general teachings on faithfulness elsewhere.",
     "language": "en",
     "options": [
-      "Anyone, without distinction",
-      "Only the children in the church",
+      "The faithful among the elders",
+      "The faithful among all servants",
       "Faithful men who will be able to teach others",
-      "Only the elders at Jerusalem"
+      "All the faithful"
     ],
     "tags": [
       "New Testament",
@@ -191,12 +191,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Timothy 2:3 — 'Share in suffering as a good soldier of Christ Jesus.'",
+    "explanation": "The question is based on 2 Timothy 2:3: 'Thou therefore endure hardness, as a good soldier of Jesus Christ.' The correct answer is 'A good soldier of Jesus Christ' because the Scripture directly uses this imagery. The incorrect answers: (1) 'A good soldier of Paul' is close but misses the key detail (the object of service is Paul instead of Christ). (2) 'A good workman' is a correct image from the same passage (verse 15) but is not the answer to the question 'endure hardness as what?' in verse 3; this is a near-passage confusion error. (3) 'A faithful martyr' is a common misunderstanding; while the image of martyrdom is related to suffering, verse 3 does not use this term; it expands the meaning beyond the specific imagery in the verse.",
     "language": "en",
     "options": [
-      "A weary traveler",
-      "An imprisoned criminal",
-      "A solitary shepherd",
+      "A good soldier of Paul",
+      "A good workman of Jesus Christ",
+      "A faithful martyr",
       "A good soldier of Christ Jesus"
     ],
     "tags": [
@@ -217,13 +217,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Timothy 2:8 — 'Remember Jesus Christ, risen from the dead, the offspring of David, as preached in my gospel.'",
+    "explanation": "2 Timothy 2:8 says: 'Remember Jesus Christ, raised from the dead, descended from David. This is my gospel.' Therefore, the correct answer is 'Born of the line of David, rose from the dead,' as it directly summarizes Paul's command.\n\n- Distractor 1 ('Born of the line of David, ascended to heaven and sat down at the right hand of God') is incorrect because the first half is correct but the second half ('ascended to heaven') is a biblical truth (Acts 1:9, Hebrews 1:3) but is not mentioned in this verse. This is a 'nearby_passage' error (using a detail from a nearby/different passage).\n- Distractor 2 ('Born in Bethlehem, rose from the dead') is incorrect because the second half is correct but the first half ('born in Bethlehem') is a detail not mentioned in 2 Timothy 2:8 (though related to the line of David). This is a 'wrong_detail' error (incorrect specific detail).\n- Distractor 3 ('Is the Christ, bore the sins of the world') is incorrect because although true according to general doctrine (John 1:29), it is completely not the content Paul instructs to remember in this verse. This is a 'true_but_off' error (textually true but off-topic).",
     "language": "en",
     "options": [
       "Risen from the dead, offspring of David",
-      "Born in Bethlehem",
-      "Had twelve devoted apostles",
-      "Performed the feeding of five thousand"
+      "Born of the line of David, ascended to heaven and sat down at the right hand of God",
+      "Born in Bethlehem, rose from the dead",
+      "Is the Christ, bore the sins of the world"
     ],
     "tags": [
       "New Testament",
@@ -243,13 +243,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Timothy 2:9 — '...for which I am suffering, bound with chains as a criminal. But the word of God is not bound!'",
+    "explanation": "2 Timothy 2:9 says: 'for which I am suffering even to the point of being chained like a criminal. But God’s word is not chained.' (NIV). The correct answer 'Is not chained' directly reflects the contrast Paul makes: though he is bound, God's word remains free. Distractor 1 ('Temporarily hindered') is close but misses the key detail, as the Scripture strongly affirms 'is not chained,' not a temporary hindrance. Distractor 2 ('Also bound along with him') is a common misunderstanding, suggesting the apostle's imprisonment would restrain the truth, which is completely opposite to the verse's meaning. Distractor 3 ('Restrained together with him') takes the correct idea from the context (Paul being chained) but misapplies it to God's word, thus missing the point about the unchained nature of the word.",
     "language": "en",
     "options": [
-      "It is also imprisoned with him",
+      "Temporarily hindered",
       "It is not bound",
-      "It must temporarily be silent",
-      "It can only be passed orally"
+      "Also bound along with him",
+      "Restrained together with him"
     ],
     "tags": [
       "New Testament",
@@ -269,13 +269,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Timothy 2:15 — 'Do your best to present yourself to God as one approved, a worker who has no need to be ashamed, rightly handling the word of truth.'",
+    "explanation": "CORRECT ANSWER: 2 Timothy 2:15 states, 'Do your best to present yourself to God as one approved, a worker who does not need to be ashamed and who correctly handles the word of truth.' The correct answer accurately quotes the key phrase, describing how a worker must handle the word of truth.\n\nINCORRECT DISTRACTORS:\n1. 'Teach the word of grace with integrity' (wrong_detail): Incorrectly changes the key word 'truth' to 'grace.' Grace is an important concept, but this substitutes the original wording incorrectly.\n2. 'Suffer for the truth with integrity' (nearby_passage): This idea comes from the nearby context (2 Timothy 2:3, 9) about suffering, but it is not the handling of the word of truth asked about in verse 15.\n3. 'Study the word of truth with wisdom' (common_misconception): A common misconception (from other passages like Colossians 4:5), but this verse emphasizes 'teaching,' not just 'studying.'",
     "language": "en",
     "options": [
-      "Keep it hidden for himself",
-      "Apply selectively as occasion permits",
+      "Teach the word of grace with integrity",
+      "Suffer for the truth with integrity",
       "Rightly handle the word of truth",
-      "Mix it with human tradition"
+      "Study the word of truth with wisdom"
     ],
     "tags": [
       "New Testament",
@@ -295,12 +295,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Timothy 2:19 — '...God's firm foundation stands, bearing this seal: \"The Lord knows those who are his,\" and, \"Let everyone who names the name of the Lord depart from iniquity.\"'",
+    "explanation": "The correct answer is: 'The Lord knows those who are his' and 'Let everyone who calls on the name of the Lord depart from evil' (2 Timothy 2:19). These are the two inscriptions clearly stated in the verse, describing the firm foundation of God. The first incorrect answer ('be patient and wait for the Lord') contains a key detail error compared to the original ('depart from evil'), which is an **almost-right** error. The second incorrect answer ('Depart from evil' and 'Obey the Lord's command') goes beyond the scope of the question by introducing content not found in 2 Timothy 2:19, making it a **wrong_scope** error. The third incorrect answer ('Everyone who calls on the name of the Lord will be saved' and 'The righteous shall live by faith') borrows ideas from nearby biblical passages (such as Romans 10:13 and Romans 1:17) but is entirely incorrect in the context of this question, constituting a **nearby_passage** error.",
     "language": "en",
     "options": [
-      "Faith and works",
-      "Love and mercy",
-      "Prayer and fasting",
+      "'The Lord knows those who are his' and 'Let everyone who calls on the name of the Lord be patient and wait for the Lord'",
+      "'Depart from evil' and 'Obey the Lord's command'",
+      "'Everyone who calls on the name of the Lord will be saved' and 'The righteous shall live by faith'",
       "'The Lord knows those who are His' and 'Let everyone who names the name of the Lord depart from iniquity'"
     ],
     "tags": [
@@ -321,13 +321,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Timothy 2:22 — 'So flee youthful passions and pursue righteousness, faith, love, and peace, along with those who call on the Lord from a pure heart.'",
+    "explanation": "Correct answer: 2 Timothy 2:22: 'Flee also youthful lusts: but follow righteousness, faith, charity, peace, with them that call on the Lord out of a pure heart.' Therefore, the correct answer clearly identifies what to avoid as 'youthful lusts' (the broad meaning of 'youthful passions') and what to pursue as 'righteousness, faith, love, peace.'\n\nDistractor 1 is incorrect: This is a 'close but not exact' distractor, wrong in only one key detail. Instead of 'peace,' this answer lists 'obedience.' 'Obedience' does not appear in this verse; while it may be a good virtue, it is not the precise wording of the passage.\n\nDistractor 2 is incorrect: This is a 'nearby passage' error. What to avoid is 'greed,' a sin warned against elsewhere in Scripture (e.g., 1 Timothy 6:10), but it is not the focus of 2 Timothy 2:22, which specifically addresses 'youthful lusts.'\n\nDistractor 3 is incorrect: This is a 'common misunderstanding' or incorrect synthesis. The virtues 'wisdom, holiness, patience, peace' are all important Christian qualities and may be mentioned in other passages, but they are not the specific set of four virtues listed in 2 Timothy 2:22.",
     "language": "en",
     "options": [
       "Flee youthful passions; pursue righteousness, faith, love, peace",
-      "Flee wealth; pursue power",
-      "Flee learning; pursue natural wisdom",
-      "Flee the church; pursue solitary life"
+      "Avoid youthful lusts; pursue righteousness, faith, love, obedience.",
+      "Avoid greed; pursue righteousness, faith, love, peace.",
+      "Avoid youthful lusts; pursue wisdom, holiness, patience, peace."
     ],
     "tags": [
       "New Testament",
@@ -347,13 +347,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Timothy 3:1 — 'But understand this, that in the last days there will come times of difficulty.'",
+    "explanation": "2 Timothy 3:1 states: 'But know this, that in the last days perilous times will come.' Therefore, the correct answer is 'Perilous times' because the Bible directly speaks of the times (perilous times) that will come.\n- The distractor 'Times of prosperity' is INCORRECT because it is completely opposite to the meaning of 'perilous' in the Scripture.\n- The distractor 'Times of transition' is INCORRECT because while it might sound plausible with 'the last days,' the Bible does not use this term but specifically identifies 'perilous times.'\n- The distractor 'Wicked leaders' is INCORRECT because this is a detail described in the following verses (e.g., 2 Timothy 3:2-5 speaks about people's behavior), not what is said 'will come' in verse 1.",
     "language": "en",
     "options": [
-      "All people will repent",
+      "Times of prosperity",
       "Times of difficulty",
-      "The church grows without obstacle",
-      "All nations worship the LORD"
+      "Times of transition",
+      "Wicked leaders"
     ],
     "tags": [
       "New Testament",
@@ -373,13 +373,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Timothy 3:12 — 'Indeed, all who desire to live a godly life in Christ Jesus will be persecuted.'",
+    "explanation": "2 Timothy 3:12 states: 'Indeed, all who desire to live a godly life in Christ Jesus will be persecuted.' The correct answer is correct because it matches the biblical text. The incorrect answers: 1) Incorrect scope ('does not want to live a godly life') contradicts the meaning of the Bible verse. 2) This is a common misunderstanding but is incorrect on a key detail: the object of persecution is the person living a godly life 'in Christ Jesus', not 'in the world'. 3) Incorrect detail ('live in a self-indulgent way') instead of 'live a godly life', which completely changes the meaning.",
     "language": "en",
     "options": [
-      "Only the apostles and prophets",
-      "Only those in Jerusalem",
+      "Everyone does not want to live a godly life in Christ Jesus",
+      "Everyone wants to live a godly life in the world",
       "All who desire to live a godly life in Christ Jesus",
-      "Only those guilty of grave sins"
+      "Everyone wants to live in a self-indulgent way in Christ Jesus"
     ],
     "tags": [
       "New Testament",
@@ -399,12 +399,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Timothy 3:15 — '...from childhood you have been acquainted with the sacred writings, which are able to make you wise for salvation through faith in Christ Jesus.'",
+    "explanation": "CORRECT ANSWER: 2 Timothy 3:15 says: '... from infancy you have known the Holy Scriptures, which are able to make you wise for salvation through faith in Christ Jesus.' (NIV). The correct answer faithfully quotes the purpose of Scripture as leading to salvation through faith in Christ.\n\nINCORRECT DISTRACTORS:\n1. 'Makes you wise to be taken up by faith in Christ' - Incorrect key detail: The original verse says 'for salvation,' not 'to be taken up' (often related to the doctrine of the Rapture). This is an almost-right distractor, incorrect only in one crucial word.\n2. 'Makes you wise to be saved by faith and works' - Incorrect theological scope: This passage emphasizes salvation by faith in Christ, not mentioning works. This distractor reflects a common misconception about the condition for salvation.\n3. 'Makes you holy to be saved by faith in Christ' - Incorrect functional scope: The question asks what Scripture 'is able to do' according to this verse, and the direct answer is 'make... wise for salvation.' 'Sanctify' is another function of God's Word (e.g., John 17:17) but is not what verse 15 states.",
     "language": "en",
     "options": [
-      "Grant eloquence",
-      "Reveal future details",
-      "Bring material wealth",
+      "Makes you wise to be taken up by faith in Christ",
+      "Makes you wise to be saved by faith and works",
+      "Makes you holy to be saved by faith in Christ",
       "Make you wise for salvation through faith in Christ"
     ],
     "tags": [
@@ -425,13 +425,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Timothy 3:16 — 'All Scripture is breathed out by God and profitable for teaching, for reproof, for correction, and for training in righteousness.'",
+    "explanation": "Correct answer: 'By God's inspiration' is based directly on 2 Timothy 3:16 (KJV): 'All scripture is given by inspiration of God...'.\n\nExplanation of incorrect answers:\n- 'By the apostles writing it': Incorrect because although the apostles were human authors of many New Testament books, this Scripture verse affirms the ultimate source is from God's inspiration, not merely from the apostles' work.\n- 'By human research': Incorrect because this is a common misunderstanding; the Bible clearly teaches its origin is supernatural, not merely the result of purely human research.\n- 'By religious traditions': Incorrect because although tradition played a role in preservation and transmission, the question asks about the fundamental origin as the Bible itself testifies, which is God's inspiration, not from tradition.",
     "language": "en",
     "options": [
       "Breathed out by God (God-inspired)",
-      "Wisdom of the prophets",
-      "Tradition of the fathers",
-      "Compilation of ancient sources"
+      "By the apostles writing it",
+      "By human research",
+      "By religious traditions"
     ],
     "tags": [
       "New Testament",
@@ -451,13 +451,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Timothy 4:2 — 'Preach the word; be ready in season and out of season; reprove, rebuke, and exhort, with complete patience and teaching.'",
+    "explanation": "The correct answer is taken from 2 Timothy 4:2: 'Preach the word; be prepared in season and out of season; correct, rebuke and encourage—with great patience and careful teaching.' Analysis: Preaching must be done at all times, not only when convenient, accompanied by the right attitude and methods. The incorrect answers: (1) Incorrect detail 'in convenient seasons'—contradicts the command 'in season and out of season.' (2) Confused with nearby verses in context (e.g., 2 Timothy 4:5 emphasizes the work and 2 Timothy 3:16 speaks about the usefulness of Scripture)—it omits the full elements 'correct, rebuke, and encourage.' (3) Off-topic with the theme of 'witnessing'—the question asks about the direct command to Timothy regarding preaching, not about assigning tasks to others.",
     "language": "en",
     "options": [
-      "Preach only at major festivals",
+      "Preach the word in convenient seasons, with patience, rebuke, and exhortation",
       "Preach the word, in season and out of season; reprove, rebuke, exhort with patience",
-      "Preach only when assemblies gather",
-      "Preach only to believers"
+      "Preach the word in season and out of season, with patience and teaching",
+      "Let others preach, but you should focus on witnessing"
     ],
     "tags": [
       "New Testament",
@@ -477,13 +477,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Timothy 4:7 — 'I have fought the good fight, I have finished the race, I have kept the faith.'",
+    "explanation": "The question specifically asks for the three phrases Paul uses to summarize his life in 2 Timothy 4:7. The correct answer is the exact wording: 'I have fought the good fight, I have finished the race, I have kept the faith'.\n\n- Distractor 1 ('I have fought the good fight, I have kept the faith, I have finished the ministry'): Incorrect because it replaces 'I have finished the race' with 'I have finished the ministry'. 'I have finished the ministry' is an idea from verse 4:5 ('fulfill your ministry'), not one of the three summary phrases in verse 4:7. This is a close distractor because it keeps the first two parts correct, with only one detail wrong.\n- Distractor 2 ('I have fought the good fight, I have won the race, I have kept the faith'): Incorrect because it changes the detail from 'finished' to 'won'. The original text says 'finished', not 'won'.\n- Distractor 3 ('I have fought the good fight, I have finished the race, I have completed the ministry'): Incorrect because it replaces 'I have kept the faith' with 'I have completed the ministry'. Although 'completing the ministry' is a command Paul reminds Timothy of and is a related theme, it is not one of the three phrases summarizing Paul's own life in verse 4:7, so it misses the focus of the question.",
     "language": "en",
     "options": [
-      "I was rich, I was famous, I was honored",
-      "I have written, I have spoken, I have judged",
+      "I have fought the good fight, I have kept the faith, I have finished the ministry",
+      "I have fought the good fight, I have won the race, I have kept the faith",
       "I have fought the good fight, I have finished the race, I have kept the faith",
-      "I have urged, I have reproved, I have asked"
+      "I have fought the good fight, I have finished the race, I have completed the ministry"
     ],
     "tags": [
       "New Testament",
@@ -503,12 +503,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Timothy 4:8 — 'Henceforth there is laid up for me the crown of righteousness, which the Lord, the righteous Judge, will award to me on that Day, and not only to me but also to all who have loved his appearing.'",
+    "explanation": "2 Timothy 4:8 says: 'Now there is in store for me the crown of righteousness, which the Lord, the righteous Judge, will award to me on that day—and not only to me, but also to all who have longed for his appearing.' Therefore, the correct answer is 'the crown of righteousness,' as this is the specific reward promised to Paul and those who await the Lord.\n\nThe distractor 'the crown of life' is incorrect because although this phrase appears in other books (such as James 1:12, Revelation 2:10), it is NOT in 2 Timothy 4:8. This is a nearby passage error.\nThe distractor 'the crown of glory' is incorrect because although 'glory' is a related theme, in this verse, the precise term is 'righteousness.' This is a wrong detail error.\nThe distractor 'the crown of salvation' is incorrect because salvation is the foundation, but the reward specifically promised in this verse is for righteousness and faithfulness in ministry/expectation, not salvation itself. This is a common misconception error due to confusing reward concepts.",
     "language": "en",
     "options": [
-      "A throne to rule",
-      "An eternal name",
-      "Abundant material wealth",
+      "the crown of life",
+      "the crown of glory",
+      "the crown of salvation",
       "The crown of righteousness"
     ],
     "tags": [
@@ -529,13 +529,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Timothy 4:10 — 'For Demas, in love with this present world, has deserted me and gone to Thessalonica.'",
+    "explanation": "2 Timothy 4:10 records: 'For Demas hath forsaken me, having loved this present world, and is departed unto Thessalonica.' The correct answer is 'Because he loved this present world,' directly quoting the reason given in Scripture.\n\nThe incorrect answers:\n- 'Because he encountered dangerous persecution' (nearby_passage): Incorrect. Although the surrounding context (verses 6-18) mentions Paul's suffering and persecution, verse 10 does not state this as the reason Demas forsook him.\n- 'Because he disagreed with Paul's doctrine' (common_misconception): Incorrect. This is a common speculation but has no basis in this passage. Scripture clearly states the reason is 'loved this present world,' not a doctrinal dispute.\n- 'Because he wanted to go preach the gospel elsewhere' (true_but_off): Incorrect. Although Demas went to Thessalonica, the motive stated in the verse is not ministry but 'loved this present world.' The act of going was a consequence, not the root cause.",
     "language": "en",
     "options": [
       "In love with this present world",
-      "Out of fear of persecution",
-      "From doctrinal dispute",
-      "Due to severe illness"
+      "Because he encountered dangerous persecution",
+      "Because he disagreed with Paul's doctrine",
+      "Because he wanted to go preach the gospel elsewhere"
     ],
     "tags": [
       "New Testament",

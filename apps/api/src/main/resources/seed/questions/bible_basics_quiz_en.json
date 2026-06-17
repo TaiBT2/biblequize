@@ -7,17 +7,23 @@
     "type": "multiple_choice_single",
     "content": "How does God exist?",
     "options": [
-      "As one single Person",
+      "In the name of Jesus and His Church",
       "As the Trinity: Father, Son, and Holy Spirit",
-      "As two Persons: Father and Son",
-      "As many different deities"
+      "In the name of God and the Holy Spirit",
+      "In the name of Jesus Christ"
     ],
-    "correctAnswer": [1],
-    "explanation": "God exists as the Trinity: the Father, the Son, and the Holy Spirit — three Persons in one divine essence. This is the foundation of Christian faith (Matthew 28:19).",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Matthew 28:19 clearly records the command: 'Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit.' The correct answer, precisely according to Scripture, is the Trinity: the Father, the Son, and the Holy Spirit. The distractor 'In the name of Jesus and His Church' borrows from the vision of the Church but is incorrect for this verse. The distractor 'In the name of God and the Holy Spirit' is close but lacks the element of the 'Son,' distorting the full command. The distractor 'In the name of Jesus Christ' reflects a common misunderstanding that baptizing in Jesus' name alone is sufficient, contrary to the clear teaching in the passage.",
     "language": "en",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Doctrine", "Trinity", "God"]
+    "tags": [
+      "Doctrine",
+      "Trinity",
+      "God"
+    ]
   },
   {
     "book": "Psalms",
@@ -33,12 +39,17 @@
       "Omnipotent, omniscient, omnipresent, loving and holy",
       "Just a spiritual concept"
     ],
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Scripture teaches that God is omnipotent (all-powerful), omniscient (all-knowing), omnipresent (everywhere), loving and holy (Psalm 139:7-12).",
     "language": "en",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Doctrine", "Attributes of God"]
+    "tags": [
+      "Doctrine",
+      "Attributes of God"
+    ]
   },
   {
     "book": "Matthew",
@@ -48,17 +59,23 @@
     "type": "multiple_choice_single",
     "content": "Which Bible verse clearly teaches the Trinity?",
     "options": [
-      "Genesis 1:1",
+      "Matthew 28:20 — I am with you always, even to the end of the age.",
       "Matthew 28:19 — in the name of the Father, Son, and Holy Spirit",
-      "Psalm 23:1",
-      "John 1:1"
+      "Matthew 3:16 — The Holy Spirit descended like a dove and rested on Him.",
+      "John 1:1 — In the beginning was the Word, and the Word was with God."
     ],
-    "correctAnswer": [1],
-    "explanation": "Matthew 28:19 is the Great Commission, where Jesus commands baptism in the name of three Persons: Father, Son, and Holy Spirit.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "The correct answer is Matthew 28:19 because this Scripture verse clearly records the command 'in the name of the Father and of the Son and of the Holy Spirit,' directly and explicitly listing the three persons of the Trinity. The distractor 'Matthew 28:20' is incorrect because it quotes the very next verse, speaking about the Lord's presence but not mentioning the Trinity. The distractor 'Matthew 3:16' is incorrect because it describes the descent of the Holy Spirit upon Jesus, mentioning only two persons, and does not present the full doctrine of the Trinity as a clear command or teaching. The distractor 'John 1:1' is incorrect because although it mentions the Word and God, relating to the deity of the Son, it does not explicitly name the three distinct persons of the Trinity as directly as the question requires.",
     "language": "en",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Doctrine", "Trinity", "Great Commission"]
+    "tags": [
+      "Doctrine",
+      "Trinity",
+      "Great Commission"
+    ]
   },
   {
     "book": "Colossians",
@@ -68,17 +85,23 @@
     "type": "multiple_choice_single",
     "content": "Who is Jesus Christ?",
     "options": [
-      "A great prophet",
-      "A moral teacher",
+      "God in concept, the Son of God, the Savior",
+      "The incarnate one of the creatures, the Son of God, the Savior",
       "God incarnate, the Son of God, the Savior",
-      "A special angel"
+      "The messenger of God, the Son of God, the Savior"
     ],
-    "correctAnswer": [2],
-    "explanation": "Colossians 2:9 teaches: 'For in Christ all the fullness of the Deity lives in bodily form.' Jesus is fully God and fully man, the Son of God who became flesh to save humanity.",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "The correct answer is 'God incarnate, the Son of God, the Savior'. Colossians 2:9 states: 'For in him dwelleth all the fulness of the Godhead bodily,' confirming that the Lord Jesus is God incarnate and the Son of God in His role as the Savior. The first distractor is incorrect because it replaces 'incarnate' with 'in concept,' losing the true physical reality of the incarnation. The second distractor is incorrect because it says 'of the creatures,' narrowing the scope and diminishing His supremacy as the Creator. The third distractor is incorrect due to the common misunderstanding that Jesus is merely a messenger, equating Him with an angel or a prophet instead of being God Himself.",
     "language": "en",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Doctrine", "Christology", "Jesus"]
+    "tags": [
+      "Doctrine",
+      "Christology",
+      "Jesus"
+    ]
   },
   {
     "book": "Mark",
@@ -93,12 +116,18 @@
       "To establish an earthly kingdom",
       "To free Israel from Rome"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Mark 10:45: 'For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many.' The primary purpose of Jesus' coming was to die in place of sinners.",
     "language": "en",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Doctrine", "Atonement", "Soteriology"]
+    "tags": [
+      "Doctrine",
+      "Atonement",
+      "Soteriology"
+    ]
   },
   {
     "book": "1 Corinthians",
@@ -109,17 +138,23 @@
     "type": "multiple_choice_single",
     "content": "What happened after Jesus died?",
     "options": [
-      "His disciples buried Him and He stayed in the tomb forever",
+      "He rose from the dead on the first day",
       "He rose from the dead on the third day",
-      "His soul went to heaven, body remained",
-      "He turned into an angel"
+      "He was made Lord immediately after His death",
+      "He was buried in a rich man's tomb"
     ],
-    "correctAnswer": [1],
-    "explanation": "1 Corinthians 15:3-4: Christ died for our sins according to the Scriptures, was buried, and was raised on the third day. The resurrection is the central event of Christian faith.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "According to 1 Corinthians 15:3-4, the core message passed down is: 'Christ died for our sins according to the Scriptures; he was buried, and he rose again on the third day according to the Scriptures.' Therefore, the correct answer accurately states the resurrection event and the clearly defined biblical timeframe of 'the third day'.\n\nThe incorrect answers:\n1. 'He rose from the dead on the first day' is incorrect because the resurrection occurred on 'the third day,' not 'the first day' (incorrect numerical detail).\n2. 'He was made Lord immediately after His death' is incorrect because although Paul mentions Christ being exalted (for example, in other epistles), the referenced Scripture passage (verses 3-4) does not mention this event happening 'immediately after' death; the question's scope asks only about what happened 'after Jesus died' within the direct context of 1 Corinthians 15:3-4, and this passage lists only: died, was buried, rose again on the third day.\n3. 'He was buried in a rich man's tomb' is incorrect because although this is an accurate detail according to the Gospels (such as Matthew 27:57-60), it is not found in the referenced passage 1 Corinthians 15:3-4; this passage only states generally 'he was buried' without describing details about the tomb. Furthermore, the burial is an event that occurred before, not 'after He died' according to the question's interpretive sequence.",
     "language": "en",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Doctrine", "Resurrection", "Christology"]
+    "tags": [
+      "Doctrine",
+      "Resurrection",
+      "Christology"
+    ]
   },
   {
     "book": "Genesis",
@@ -129,17 +164,23 @@
     "type": "multiple_choice_single",
     "content": "How were humans created?",
     "options": [
-      "Evolved from apes",
-      "Appeared randomly",
+      "God created humanity in the image of angels",
+      "Human beings were formed gradually through an evolutionary process",
       "God created them in His own image",
-      "Created by angels"
+      "Humanity is the result of the efforts of ancestral creatures"
     ],
-    "correctAnswer": [2],
-    "explanation": "Genesis 1:27 teaches that God directly created humans in His own image (imago Dei), distinct from all other creatures.",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "The correct answer is 'God created humanity in His own image' because Genesis 1:27 clearly states: 'God created mankind in his own image.' The incorrect options: 1) 'in the image of angels' is a crucial detail error, as the Bible (Genesis 1:27) only says 'his image' (God's), not that of angels. 2) 'through an evolutionary process' is a common misunderstanding based on a naturalistic theory, contrary to the Bible's record of direct creation (Genesis 1:26-27). 3) 'from the efforts of ancestral creatures,' while an explanation of origins in some theories, does not correspond to the direct question about how humanity was created according to Genesis 1:27.",
     "language": "en",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Doctrine", "Creation", "Imago Dei"]
+    "tags": [
+      "Doctrine",
+      "Creation",
+      "Imago Dei"
+    ]
   },
   {
     "book": "Romans",
@@ -154,12 +195,18 @@
       "Because people don't know enough Bible",
       "Because life has too many difficulties"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Romans 3:23 clearly states: 'For all have sinned and fall short of the glory of God.' Sin separates humanity from God, and everyone needs salvation.",
     "language": "en",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Doctrine", "Sin", "Hamartiology"]
+    "tags": [
+      "Doctrine",
+      "Sin",
+      "Hamartiology"
+    ]
   },
   {
     "book": "Ephesians",
@@ -170,17 +217,24 @@
     "type": "multiple_choice_single",
     "content": "How can a person be saved?",
     "options": [
-      "By doing many good deeds",
-      "By keeping the law and going to church regularly",
+      "By good works and keeping the law",
+      "By faith in Jesus and by works",
       "By faith in Jesus Christ, not by works",
-      "By being morally perfect"
+      "By human choice and decision"
     ],
-    "correctAnswer": [2],
-    "explanation": "Ephesians 2:8-9 teaches: 'For it is by grace you have been saved, through faith — and this is not from yourselves, it is the gift of God — not by works, so that no one can boast.'",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ephesians 2:8-9 clearly teaches: 'For by grace you have been saved through faith. And this is not your own doing; it is the gift of God, not a result of works, so that no one may boast.' Therefore, the correct answer is 'By faith in Jesus, not by works,' because salvation is a gift of grace received through faith, not something earned by human merit.\n\nDistractor 1 ('By good works and keeping the law') is INCORRECT because it contradicts the principle 'not a result of works' in verse 9; this is a common misunderstanding.\n\nDistractor 2 ('By faith in Jesus and by works') is INCORRECT because it adds the element of 'works' to faith, distorting the clear teaching of this passage, even though it may sound close to being correct.\n\nDistractor 3 ('By human choice and decision') is INCORRECT because it expands the scope beyond the focus of the passage (grace and faith), emphasizing human effort instead of God's gift.",
     "language": "en",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Doctrine", "Salvation", "Grace", "Soteriology"]
+    "tags": [
+      "Doctrine",
+      "Salvation",
+      "Grace",
+      "Soteriology"
+    ]
   },
   {
     "book": "2 Timothy",
@@ -190,16 +244,22 @@
     "type": "multiple_choice_single",
     "content": "What is the Bible?",
     "options": [
-      "A collection of ancient stories",
-      "A good book about morality",
+      "The Word written by the apostles, which is truth and absolute authority for the life of faith",
+      "The Word inspired by God, which is a valuable historical and literary book",
       "God-inspired Word, the absolute truth and authority for faith and life",
-      "A history book of the Jewish people"
+      "The Word spoken by God, which is a book about morality and life philosophy"
     ],
-    "correctAnswer": [2],
-    "explanation": "2 Timothy 3:16 teaches: 'All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness.' The Bible is God's Word, the absolute authority for faith and life.",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "The question 'What is the Bible?' references 2 Timothy 3:16. The correct answer: 'The Word inspired by God, which is truth and absolute authority for the life of faith' is accurate, because 2 Timothy 3:16 teaches: 'All Scripture is given by inspiration of God...' (NKJV).\n\nThe incorrect answers:\n1. (almost-right, wrong_detail): Incorrect detail about authorship. The Bible was inspired by God through human authors, not merely the words of the apostles. This option replaces 'inspired by God' with 'written by the apostles'.\n2. (wrong_scope): Incorrect scope of purpose. The Bible contains history and literature, but its primary and complete purpose is for 'teaching, rebuking, correcting and training in righteousness' (2 Timothy 3:16), not merely as an ordinary historical or literary book.\n3. (true_but_off): Textually true but misses the point. The Bible contains morality and life philosophy, but this answer omits the key elements of absolute authority and divine inspiration, making it incomplete and off-topic compared to the meaning of the referenced passage.",
     "language": "en",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Doctrine", "Bible", "Bibliology"]
+    "tags": [
+      "Doctrine",
+      "Bible",
+      "Bibliology"
+    ]
   }
 ]

@@ -36,13 +36,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Kings 2:9 — A double portion (the inheritance of the firstborn) shows Elisha desired to fully continue the ministry.",
+    "explanation": "In 2 Kings 2:9, Elisha requested: 'Let a double portion of your spirit be upon me.' This refers to the share of the firstborn according to custom (Deuteronomy 21:17), signifying his desire to inherit Elijah's spiritual position and power. The incorrect answers: (1) 'A single portion of the Spirit' is incorrect in quantity—Elisha asked for a double portion, not a single one. (2) 'To inherit his master's property' is incorrect in scope—the question concerns the direct request made before Elijah was taken up, not about material possessions. (3) 'To become a prophet in his master's place' is a common misunderstanding—while this was the outcome, it was not the literal request made by Elisha.",
     "language": "en",
     "options": [
-      "Wealth",
+      "A single portion of the Spirit",
       "A double portion of Elijah's spirit",
-      "Long life",
-      "Power"
+      "To inherit his master's property",
+      "To become a prophet in his master's place"
     ],
     "tags": [
       "Old Testament",
@@ -63,14 +63,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Kings 4:6 — Oil flowed and filled every jar she brought. God multiplies what little there is to be enough.",
+    "explanation": "The correct answer is based on 2 Kings 4:4-6, where Elisha told the widow to borrow empty jars and pour oil from her small jar. The miracle was that the oil kept flowing until all the borrowed jars were full (verse 6: 'the oil stayed...').\n\nDistractor 1 ('Olive oil from a nearby field...') is incorrect because there is no detail in the Scripture passage about oil flowing from a field; the miracle originated from the woman's own small jar of oil (verses 2-5). This is a 'nearby_passage' error, as it might be confused with other miracles involving natural elements.\n\nDistractor 2 ('Water from the jar flowed without ceasing...') is incorrect because the multiplied liquid was olive oil, not water (verse 2: 'a little jar of oil'). This is an 'almost-right' distractor because it is only wrong on one key detail (the nature of the liquid) while the structure of the miracle ('flowed without ceasing') is correct. The error type is 'wrong_detail'.\n\nDistractor 3 ('The woman sold the jar of oil to pay her debts...') is incorrect because although she was told to sell the oil to pay her debts (verse 7), this was the action after the miracle, not the miracle itself that the question is asking about. The error type is 'true_but_off' (a true textual detail but off the focus of the question).",
     "language": "en",
     "verseEnd": 7,
     "options": [
-      "A son to settle the debt",
-      "Gold from heaven",
+      "Olive oil from a nearby field flowed and filled all the jars",
+      "Water from the jar flowed without ceasing into the other jars",
       "Olive oil flowed without ceasing into other jars",
-      "An altar that produced money"
+      "The woman sold the jar of oil to pay her debts as the prophet advised"
     ],
     "tags": [
       "Old Testament",
@@ -91,13 +91,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Kings 4:34 — Elisha lay upon him, mouth to mouth, eyes to eyes. The boy sneezed seven times and revived.",
+    "explanation": "Based on 2 Kings 4:33-34, the sequence is clearly recorded: Elisha 'went in alone, shut the door behind the two of them, and prayed to the LORD... Then he got on the bed and lay on the boy, mouth to mouth, eyes to eyes, hands to hands... The boy's body grew warm. Elisha turned away and walked back and forth in the room and then got on the bed and stretched out on him once more.' The correct and complete action according to the text is lying on the child and praying (a combined action, with prayer explicitly mentioned in the passage).\n* The correct answer is correct because it accurately describes the two main actions and is textually supported.\n* Distractor 1 ('Lay on the child and perform CPR') is wrong: While it correctly describes the posture 'lay on' (~90% accurate), the detail 'perform CPR' is a wrong_detail, a modernized interpretation, instead of the textual actions of 'praying' and 'transferring warmth'.\n* Distractor 2 ('Walk around the room and pray') is wrong: This is a true_but_off detail from the text (Elisha did 'walk back and forth in the room'), but it misses the point of the question, which asks 'What did Elisha do to... bring him back to life?' — the 'walking' occurred during the recovery process, not as the main and direct action that revived the child.\n* Distractor 3 ('Place the staff on the child and pray') is wrong: This is a detail from a nearby_passage — earlier (verses 29, 31) Elisha had sent Gehazi with his staff to place on the child, but it was ineffective. Therefore, it was not the action Elisha performed to revive the child in this specific passage.",
     "language": "en",
     "verseEnd": 35,
     "options": [
-      "Called another prophet",
-      "Read the law aloud",
-      "Offered a sacrifice",
+      "Lay on the child and perform CPR.",
+      "Walk around the room and pray.",
+      "Place the staff on the child and pray.",
       "Lay upon the child and prayed"
     ],
     "tags": [
@@ -119,14 +119,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Kings 5:14 — Naaman bathed seven times at Elisha's word. He was at first angry, thinking the method too simple.",
+    "explanation": "According to 2 Kings 5:10, 14, Elisha sent a messenger to tell Naaman: 'Go, wash in the Jordan seven times... and your flesh shall be restored, and you shall be clean.' Naaman obeyed, washed seven times, and was healed. The correct answer accurately describes the action and the number of times as instructed by the prophet.\n\nDistractor 1 is wrong (wrong_scope) because in this passage, Elisha does not directly anoint or pray for Naaman; he only conveys instructions through a messenger.\nDistractor 2 is wrong (wrong_detail) but close, because Naaman had to bathe exactly seven times in the Jordan River, not once.\nDistractor 3 is wrong (common_misconception) because there is no detail in this Bible passage about Elisha prescribing a medicine to drink; the healing method is entirely a bathing ritual as directed.",
     "language": "en",
     "verseEnd": 14,
     "options": [
       "Bathed seven times in the Jordan",
-      "Drank medicine",
-      "Offered a sacrifice",
-      "Prayed"
+      "Anointed and prayed for by the prophet Elisha",
+      "Bathe once in the Jordan River",
+      "Drink a medicine prescribed by the prophet Elisha"
     ],
     "tags": [
       "Old Testament",
@@ -147,14 +147,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Kings 6:17 — There is a spiritual realm where the LORD's army protects. What the natural eye cannot see.",
+    "explanation": "2 Kings 6:17 records: 'Then the LORD opened the eyes of the young man, and he saw, and behold, the mountain was full of horses and chariots of fire all around Elisha.' Therefore, the correct answer accurately describes the key detail of 'chariots of fire and horses of fire' surrounding him. Distractor 1 is wrong because it replaces 'chariots of fire and horses of fire' with 'chariots and soldiers' (incorrect key detail). Distractor 2 is wrong because describing 'angels and glory' is a common misunderstanding imagining a heavenly scene, while the Scripture clearly states chariots and horses of fire. Distractor 3 is wrong because describing Elisha's action ('standing praying on the mountain'), while possibly correct in another context, does not answer the question 'what did he see?' when his eyes were opened.",
     "language": "en",
     "verseEnd": 17,
     "options": [
-      "A great army",
-      "Angels",
+      "The mountain was full of chariots and soldiers surrounding it",
+      "The mountain was full of angels and glory surrounding it",
       "The mountain full of horses and chariots of fire surrounding them",
-      "A bright cloud"
+      "Elisha was standing praying on the mountain"
     ],
     "tags": [
       "Old Testament",
@@ -175,12 +175,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Kings 17:6 — Assyria carried Israel into captivity. The ten tribes were scattered and never recovered.",
+    "explanation": "2 Kings 17:6 records: 'In the ninth year of Hoshea, the king of Assyria captured Samaria and carried Israel away into exile to Assyria...' This is the historical event of 722 BC, when the Assyrian Empire under King Sargon II destroyed the northern kingdom.\n\n- Correct answer: 'Assyria' is accurate according to Scripture.\n- Distractor 'Babylon' (close but incorrect): Wrong because Babylon was the empire that destroyed the kingdom of Judah (the southern kingdom) around 586 BC, a later event and a common misunderstanding.\n- Distractor 'Egypt': Wrong because Egypt in this period was not a powerful empire invading Israel, but was often an ally or a source of appeal for help (2 Kings 17:4).\n- Distractor 'Sidon': Wrong because Sidon was a small city-state/power in Phoenicia, mentioned nearby (2 Kings 17:9) regarding Israel imitating their sins, but it was not the empire that destroyed them.",
     "language": "en",
     "options": [
       "Babylon",
-      "Persia",
       "Egypt",
+      "Sidon",
       "Assyria"
     ],
     "tags": [
@@ -201,14 +201,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Kings 22:8 — The rediscovery of the Book of the Law led to the greatest reform in Judah's history.",
+    "explanation": "In 2 Kings 22:8, the high priest Hilkiah said to Shaphan the secretary, 'I have found the Book of the Law in the temple of the LORD.' (v.8). This is confirmed when King Josiah hears the Book of the Law read (vv.10-11). Therefore, the correct answer is 'The Book of the Law (Torah)'. The incorrect answers: - 'A holy anointing oil flask': Incorrect because this is a holy item commonly found in the temple (e.g., used for anointing), but it is not what was found and reported in this passage of Scripture. - 'Lost silver cups': Incorrect because this is a detail error (material/purpose). The passage does not mention finding silver items. - 'The book of the chronicles of the kings': Close but incorrect in a key detail. While historical books existed, the specific item found in the temple that caused a great stir was 'the Book of the Law', not a book of history.",
     "language": "en",
     "verseEnd": 11,
     "options": [
       "The Book of the Law (Torah)",
-      "Gold and silver",
-      "The Ark of the Covenant",
-      "Priestly garments"
+      "A holy anointing oil flask",
+      "Lost silver cups",
+      "The book of the chronicles of the kings"
     ],
     "tags": [
       "Old Testament",
@@ -229,13 +229,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Kings 23:25 — Before or after Josiah, no king turned to the LORD with his whole heart as he did.",
+    "explanation": "2 Kings 23:25 clearly states: 'Neither before nor after Josiah was there a king like him who turned to the LORD with all his heart and with all his soul and with all his strength, according to all the Law of Moses.' This praise is specifically for King Josiah. Hezekiah (a close distractor) was also a good king (2 Kings 18:5-6), but Scripture does not use the absolute comparative language 'there was no king like him before or after' as it does for Josiah. Jotham is commended for doing what was right (2 Kings 15:34) but is not described with the intensity of 'with all his heart and with all his soul and with all his strength.' Asa is noted for his upright heart (1 Kings 15:14), but this question specifically refers to the commendation in 2 Kings 23:25, a passage that speaks only of Josiah.",
     "language": "en",
     "options": [
       "Hezekiah",
-      "David",
+      "Jotham",
       "Josiah",
-      "Solomon"
+      "Asa"
     ],
     "tags": [
       "Old Testament",
@@ -256,14 +256,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Kings 20:6 — The LORD heard Hezekiah's prayer and added fifteen years to his life.",
+    "explanation": "In 2 Kings 20:6, the LORD says: 'I will heal you... I will add fifteen years to your life.' Therefore, the correct answer is 15 years. The distractor '10 years' is incorrect because it cites a number of years not found in the nearby passage (2 Kings 20:1-11). The distractor '20 years' is incorrect because this number does not appear at all in the story. The distractor '5 years' is incorrect because it is a common misunderstanding of the length of time added, not based on the text.",
     "language": "en",
     "verseEnd": 6,
     "options": [
       "15 years",
-      "40 years",
       "10 years",
-      "7 years"
+      "20 years",
+      "5 years"
     ],
     "tags": [
       "Old Testament",
@@ -284,14 +284,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Kings 25:8-9 — Nebuchadnezzar burned the temple, broke down the walls, and carried the people into Babylonian exile.",
+    "explanation": "According to 2 Kings 25:8-11, on the seventh day of the fifth month in the nineteenth year of King Nebuchadnezzar, Nebuzaradan, the captain of the guard of the king of Babylon, came to Jerusalem, destroyed the temple, the palace, and all the great houses in the city. This event occurred in 586 BC under the Babylonian Empire, with King Nebuchadnezzar as the ruler. Therefore, the correct answer is 'Babylon (Nebuchadnezzar).'\n\n- The distractor 'Babylon (under Belshazzar)' is incorrect because Belshazzar was a Babylonian king who appears later in the book of Daniel, not the king during the temple destruction in 586 BC (nearby_passage).\n- The distractor 'Assyria (Sennacherib)' is incorrect because Sennacherib, king of Assyria, attacked Judah and besieged Jerusalem during the reign of King Hezekiah (around 701 BC, 2 Kings 18-19), not the temple destruction event of 586 BC (wrong_detail).\n- The distractor 'Egypt (Pharaoh)' is incorrect because this is a common misconception; Pharaoh is the title of the Egyptian king, but Egypt was not the empire that destroyed the Jerusalem temple in 586 BC. Historically, Egypt often opposed Babylon but did not carry out this attack (common_misconception).",
     "language": "en",
     "verseEnd": 11,
     "options": [
-      "Assyria",
-      "Egypt",
+      "Babylon (under Belshazzar)",
+      "Assyria (Sennacherib)",
       "Babylon (Nebuchadnezzar)",
-      "Persia"
+      "Egypt (Pharaoh)"
     ],
     "tags": [
       "Old Testament",
@@ -311,14 +311,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Kings 4:44 — One hundred ate and there was leftover. A foreshadowing of Jesus' miracle of feeding 5,000.",
+    "explanation": "In 2 Kings 4:42-44, a man brought 20 loaves of barley bread. Elisha commanded, 'Give it to the people to eat.' The servant said, 'How can I set this before a hundred men?' But Elisha said, 'Give it to the people to eat. For this is what the LORD says: \"They will eat and have some left over.\"' So the servant set it before them, and they ate and had some left over, according to the word of the LORD. Therefore, the correct answer is '100 people and some left over'.\n\n*   Why the distractor '20 people and none left over' is WRONG: It is incorrect in both the number of people and the outcome. The number 20 refers to the loaves, not the number of people who ate, and the Scripture clearly states there was food left over.\n*   Why the distractor '50 people and some left over' is WRONG: This is a close but incorrect answer, mistaken on a key detail. It confuses this miracle with another (2 Kings 4:38-41, where a poisonous stew is made safe, which does not specify the number of people fed) or possibly misremembers the quantity from a similar story.\n*   Why the distractor '200 people and just enough' is WRONG: This is a common misunderstanding, possibly due to confusion with Jesus' miracle of feeding the multitude (e.g., Matthew 14:13-21, where He fed 5,000) or an incorrect assumption that the small number of loaves could only feed a smaller group. The text clearly states it was 100 people and there was food left over.",
     "language": "en",
     "verseEnd": 44,
     "options": [
       "100 men with leftovers",
-      "1,000 men",
-      "50 men",
-      "200 men"
+      "20 people and none left over",
+      "50 people and some left over",
+      "200 people and just enough"
     ],
     "tags": [
       "Old Testament",
@@ -339,13 +339,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Kings 13:21 — Even after death, Elisha's bones still bore the power of resurrection. A demonstration of God's power.",
+    "explanation": "2 Kings 13:21 records: 'As they were burying a man, behold, they saw a band of Moabites raiding; so they threw the man's body into the grave of Elisha, and fled. And when the man touched the bones of Elisha, he revived and stood on his feet.' Therefore, the correct answer is 'The dead man came back to life'.\n- The distractor 'The corpse turned to dust' is incorrect because the Scripture does not describe this; it is a common misunderstanding based on other stories.\n- The distractor 'The dead man was given an honorable burial' is incorrect because although a burial is mentioned, this is not the direct result of the corpse touching Elisha's bones; this answer misses the focus of the question.\n- The distractor 'Elisha's bones were defiled' is a close but incorrect answer due to a key detail: according to Old Testament law, touching a dead body causes defilement (Numbers 19:11), but the miracle in this story emphasizes God's power through Elisha, not the defilement of his bones.",
     "language": "en",
     "options": [
-      "A loud sound",
-      "The grave glowed",
+      "The corpse turned to dust",
+      "The dead man was given an honorable burial",
       "The dead man came to life",
-      "The earth shook"
+      "Elisha's bones were defiled"
     ],
     "tags": [
       "Old Testament",
@@ -366,12 +366,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Kings 1:10 — 'Elijah said, If I am a man of God, let fire come down from heaven and consume you and your fifty. Then fire came down from heaven and consumed him and his fifty.'",
+    "explanation": "The correct answer is based on 2 Kings 1:10: 'Elijah answered the captain of fifty, \"If I am a man of God, let fire come down from heaven and consume you and your fifty.\" Then fire came down from heaven and consumed him and his fifty.'\n- Distractor 1 (They were swallowed up when the earth split open) is INCORRECT because this is the miracle that happened to Korah and his followers (Numbers 16:31-32), not in this story.\n- Distractor 2 (They were consumed by fire that rose up from the earth) is INCORRECT because although it involves 'fire' and 'consumption,' the Bible specifies the fire came 'down from heaven' (verse 10), not up from the earth.\n- Distractor 3 (They were killed by a hailstorm that Elijah prayed for) is INCORRECT because this is a common misconception, possibly confusing it with other punitive hailstorms in the Old Testament (such as Exodus 9:22-25), but in this event, Elijah called for and fire came down from heaven.",
     "language": "en",
     "options": [
-      "They captured Elijah",
-      "They spared Elijah",
-      "They returned to the king",
+      "They were swallowed up when the earth split open",
+      "They were consumed by fire that rose up from the earth",
+      "They were killed by a hailstorm that Elijah prayed for",
       "Fire came down from heaven and consumed them"
     ],
     "tags": [
@@ -393,13 +393,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Kings 9:33 — 'He (Jehu) said, Throw her down. So they threw her down. And some of her blood splattered on the wall and on the horses, and they trampled on her.'",
+    "explanation": "The Scripture passage 2 Kings 9:33 clearly states that after Jezebel was thrown down from the window, horses trampled her, and her blood spattered on the wall and on the horses. This occurred before the dogs ate her flesh (verses 35-36).\n\nThe incorrect answers are wrong because:\n1. 'Thrown down from the window and buried immediately beneath the city wall' - This is partially correct regarding being thrown from the window, but incorrect in detail: The Bible records that only her skull, feet, and the palms of her hands remained when they came to bury her (verse 35), meaning she was not buried intact immediately afterward.\n2. 'Thrown down from the window and stabbed with a sword before death' - Incorrect detail: There is no record of her being stabbed with a sword; her death resulted from being thrown down and trampled by horses.\n3. 'Thrown down from the window and burned to death by fire' - Off-topic: Although fire is mentioned in the context (verses 36-37 relate to prophecy), it was not the means of Jezebel's death. The question asks 'how she died' according to the direct description in verses 33-34.",
     "language": "en",
     "options": [
-      "Poisoned",
+      "Thrown down from the window and buried immediately beneath the city wall",
       "Thrown down from the window and trampled by horses",
-      "Burned",
-      "Died of old age"
+      "Thrown down from the window and stabbed with a sword before death",
+      "Thrown down from the window and burned to death by fire"
     ],
     "tags": [
       "Old Testament",
@@ -420,13 +420,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Kings 11:2-3 — 'Jehosheba, the daughter of King Joram, sister of Ahaziah, took Joash... and stole him from among the king's sons... And he remained with her six years, hidden in the house of the LORD.'",
+    "explanation": "The correct answer is 'Jehosheba, aunt of Joash' because 2 Kings 11:2 clearly states: 'But Jehosheba, the daughter of King Joram, sister of Ahaziah, took Joash... and hid him from Athaliah.' Jehosheba was the sister of Joash's father (Ahaziah), so she was Joash's aunt.\n\nThe incorrect answers:\n- 'Jehoshabeath, father of Joash' is incorrect because it is a confusion of name and relationship. 2 Kings 11:2 only mentions Jehosheba, not Jehoshabeath, and Joash's father was Ahaziah (who was killed by Athaliah, 2 Kings 11:1). This is a 'close but wrong' distractor because the name sounds similar.\n- 'High priest of the temple' is incorrect because there is no information that anyone other than Jehosheba hid Joash. The high priest only appears later in proclaiming Joash as king (2 Kings 11:4-12).\n- 'A maidservant in the temple' is incorrect because this Scripture passage does not mention any maidservant related to hiding Joash. This is an unsupported speculation from the text.",
     "language": "en",
     "options": [
-      "Joash's nurse",
-      "Elisha the prophet",
+      "Jehoshabeath, father of Joash",
+      "High priest of the temple",
       "Jehosheba, Joash's aunt",
-      "Jehoiada the priest alone"
+      "A maidservant in the temple"
     ],
     "tags": [
       "Old Testament",
@@ -447,13 +447,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Kings 18:5 — 'He trusted in the LORD, the God of Israel, so that there was none like him among all the kings of Judah after him, nor among those who were before him.'",
+    "explanation": "Correct answer: 2 Kings 18:5-6 records: 'Hezekiah trusted in the LORD, the God of Israel; there was no one like him among all the kings of Judah after him' (v.5). The specific emphasis is on 'trusted in the LORD,' and the scope of comparison is 'among all the kings of Judah after him.'\n\nExplanation of incorrect answers:\n- Distractor 1 (Given wisdom by the LORD...): Is 'close' because the structure and scope of comparison are similar, but it is incorrect on the key detail: The Scripture does not say God gave him wisdom, but rather speaks of Hezekiah's own 'trust.'\n- Distractor 2 (Trusted in the LORD — and all previous kings were like him): Incorrect in the scope of comparison. The Scripture affirms there was NO king like him, specifically 'among all the kings of Judah after him,' not 'all previous kings were like him.'\n- Distractor 3 (Given riches by the LORD...): Based on a common misunderstanding that a king blessed by God is often wealthy. However, the distinctive point recorded here is about faith (trust), not material wealth.",
     "language": "en",
     "options": [
-      "Most handsome",
+      "Given wisdom by the LORD — no king was like him",
       "Trusted in the LORD — no king was like him",
-      "Wealthiest",
-      "Longest-lived"
+      "Trusted in the LORD — and all previous kings were like him",
+      "Given riches by the LORD — no king was like him"
     ],
     "tags": [
       "Old Testament",
@@ -473,12 +473,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Kings 19:35 — 'And that night the angel of the LORD went out and struck down 185,000 in the camp of the Assyrians.'",
+    "explanation": "2 Kings 19:35 records: 'And it came to pass that night, that the angel of the LORD went out, and smote in the camp of the Assyrians a hundred fourscore and five thousand: and when they arose early in the morning, behold, they were all dead corpses.' Therefore, the accurate number is 185,000 people in the Assyrian camp who were killed. The distractor '18,500 people' is incorrect in the quantity detail (missing a '0' digit). The distractor '185,000 inhabitants of the city' is incorrect regarding the scope of the subjects (the question asks about people in the camp, not inhabitants of the city). The distractor 'A large, countless army' reflects a common misunderstanding that the number was too large to be counted, while the Bible records a specific figure.",
     "language": "en",
     "options": [
-      "10,000",
-      "50,000",
-      "100,000",
+      "18,500 people",
+      "185,000 inhabitants of the city",
+      "A large, countless army",
       "185,000"
     ],
     "tags": [
@@ -500,12 +500,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Kings 21:7 — 'And the carved image of Asherah that he had made he set in the house.' Manasseh reigned 55 years and did evil.",
+    "explanation": "In 2 Kings 21:1-9, Manasseh is described as doing more evil than all the Amorites who preceded him, provoking the LORD to anger and setting up an Asherah pole in the temple (verses 3,7). The answer Amon is incorrect because Amon was Manasseh's son and successor, mentioned later in this chapter (21:19-23), but he was not the one who set up the Asherah pole in the temple as the question asks. The answer Josiah is incorrect because Josiah was Manasseh's grandson, known for his religious reforms to destroy idols (2 Kings 23), not for setting them up. The answer Ahaz is incorrect because Ahaz was an earlier king of Judah (2 Kings 16) who also did evil, but Scripture does not record him setting up an Asherah pole in the temple.",
     "language": "en",
     "options": [
-      "Ahaz",
+      "Amon",
       "Josiah",
-      "Zedekiah",
+      "Ahaz",
       "Manasseh"
     ],
     "tags": [
@@ -527,13 +527,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Kings 24:14-15 — 'He carried away all Jerusalem... about 10,000... And he carried away Jehoiachin to Babylon.'",
+    "explanation": "The correct answer is based on 2 Kings 24:14-15: 'He [Nebuchadnezzar] carried into exile all Jerusalem: all the officials and fighting men, and all the skilled workers and artisans... He took Jehoiachin captive to Babylon.' This passage clearly states King Jehoiachin and the specific groups (officials, fighting men, craftsmen, metalworkers), totaling about 10,000 people.\n\nDistractor 1 (close but incorrect) is wrong because it replaces King Jehoiachin with King Zedekiah. Zedekiah was the king who succeeded after this exile (2 Kings 24:17), not the king captured in the event of 24:14-15.\nDistractor 2 is wrong because it replaces 'the officials and fighting men' with 'the priests and Levites'. Details about priests and Levites are mentioned in other passages (such as 2 Kings 25:18-21) describing a later capture, not in 2 Kings 24:14-15.\nDistractor 3 is wrong because it expands the scope to 'all the inhabitants of Jerusalem'. The Scripture passage only mentions carrying away all the officials, fighting men, craftsmen, metalworkers, and the strong men (about 10,000 people), not the entire population; some of the poor people remained in the land (2 Kings 24:14).",
     "language": "en",
     "options": [
       "King Jehoiachin and about 10,000 people",
-      "Only the priests",
-      "All the people of Jerusalem",
-      "Only the youth"
+      "King Zedekiah, the officials, warriors, craftsmen, and metalworkers (about 10,000 people)",
+      "King Jehoiachin, the priests, Levites, craftsmen, and metalworkers (about 10,000 people)",
+      "King Jehoiachin, the officials, warriors, and all the inhabitants of Jerusalem"
     ],
     "tags": [
       "Old Testament",

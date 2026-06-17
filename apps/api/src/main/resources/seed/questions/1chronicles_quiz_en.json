@@ -6,14 +6,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 1:1, with which genealogy does the book begin?",
-    "correctAnswer": [0],
-    "explanation": "1 Chronicles 1:1 — 'Adam, Seth, Enosh.' Chronicles opens with a genealogy from Adam — placing Israel's history within the frame of all humanity.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The correct answer is Adam, because 1 Chronicles 1:1 records: 'Adam, Seth, Enosh.' (BTT). The incorrect answers: (1) 'Noah' is an important patriarch and appears immediately afterward in 1 Chronicles 1:4, but is not the beginning of this genealogy. (2) 'Abraham' is the patriarch of the Israelites, appearing much later in the genealogy (1 Chronicles 1:27), so he is not the starting point. (3) 'Shelah' is a figure in the genealogy (1 Chronicles 1:24), but is not the first person listed.",
     "language": "en",
     "options": [
       "Adam, Seth, Enosh",
-      "Abraham, Isaac, Jacob",
-      "David, Solomon, Rehoboam",
-      "Noah, Shem, Abraham"
+      "Noah",
+      "Abraham",
+      "Shelah"
     ],
     "tags": [
       "Old Testament",
@@ -30,14 +32,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 4:10, what did Jabez ask of God?",
-    "correctAnswer": [1],
-    "explanation": "1 Chronicles 4:10 — 'Jabez called upon the God of Israel, saying, \"Oh that you would bless me and enlarge my border, and that your hand might be with me, and that you would keep me from harm so that it might not bring me pain!\" And God granted what he asked.'",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Chronicles 4:10 records the prayer of Jabez: 'Oh, that You would bless me indeed, and enlarge my territory, that Your hand would be with me, and that You would keep me from evil, that I may not cause pain!' The correct answer faithfully summarizes the four main requests in this verse.\n\n- Distractor 1 (close but incorrect) is wrong because it replaces the final detail 'that I may not cause pain' (the purpose) with 'so that I may become wealthy'—a detail not found in Scripture.\n- Distractor 2 is wrong because it omits the request 'enlarge my territory' and adds 'grant me peace'; although it contains many correct elements, it does not fully answer the question about the recorded prayer.\n- Distractor 3 is wrong because it replaces 'let Your hand be with me' with 'give me numerous descendants'; this is a common wish in other stories (such as the promise to Abraham) but does not appear in 1 Chronicles 4:10.",
     "language": "en",
     "options": [
-      "Asked for many descendants",
+      "Lord, bless me, enlarge my territory, let Your hand be with me, so that I may become wealthy",
       "Asked God to bless him, enlarge his border, His hand to be with him, keep him from harm",
-      "Asked for abundant food",
-      "Asked to be made king"
+      "Lord, bless me, let Your hand be with me, keep me from harm, grant me peace",
+      "Lord, bless me, enlarge my territory, give me numerous descendants, keep me from harm"
     ],
     "tags": [
       "Old Testament",
@@ -55,14 +59,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 10:13-14, why did Saul die?",
-    "correctAnswer": [2],
-    "explanation": "1 Chronicles 10:13-14 — 'So Saul died for his breach of faith. He broke faith with the LORD in that he did not keep the command of the LORD, and also consulted a medium, seeking guidance. He did not seek guidance from the LORD. Therefore the LORD put him to death and turned the kingdom over to David the son of Jesse.'",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "The Scripture passage 1 Chronicles 10:13-14 directly states the reason for Saul's death: 'So Saul died for his unfaithfulness which he committed against the LORD, because he did not keep the word of the LORD, and also because he consulted a medium for guidance, and did not inquire of the LORD...' (vv. 13-14). Thus, the correct answer is unfaithfulness, disobedience, and consulting a medium.\n\n- Distractor 1 (close but incorrect in detail): This passage does not say Saul worshiped idols. The primary sins are 'unfaithfulness,' disobedience, and consulting a medium. This is a key detail error.\n- Distractor 2 (confusing nearby events): Being defeated by the Philistines and dying in battle are the consequences/events described in the preceding verses (10:1-12), but they are NOT the 'reason' or root cause explained in verses 13-14.\n- Distractor 3 (correct textually but off-topic): Although Saul did try to kill David (1 Samuel 18-26), this is NOT the reason given in 1 Chronicles 10:13-14 to explain his death. The question specifically asks according to this passage.",
     "language": "en",
     "options": [
-      "Died of old age and natural illness",
-      "Was deceived and ambushed by enemies",
+      "Because of the sin of idolatry — setting up idols and worshiping them",
+      "Because he was defeated by the Philistines in the final battle",
       "For unfaithfulness — he did not keep the LORD's command and consulted a medium instead of the LORD",
-      "Was murdered by his own servant"
+      "Because he broke his oath to David and tried to kill him"
     ],
     "tags": [
       "Old Testament",
@@ -79,13 +85,15 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 11:3, where was David anointed king over Israel?",
-    "correctAnswer": [3],
-    "explanation": "1 Chronicles 11:3 — 'So all the elders of Israel came to the king at Hebron, and David made a covenant with them at Hebron before the LORD, and they anointed David king over Israel...'",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Chronicles 11:3 records: 'And all the elders of Israel came to the king at Hebron, and David made a covenant with them at Hebron before the LORD; and they anointed David king over Israel.' Therefore, the correct answer is 'In Hebron'. The distractor 'In Bethlehem' is incorrect because this is David's hometown (1 Samuel 16), not where he was anointed king over all Israel. The distractor 'In Jerusalem' is close but incorrect in a key detail; Jerusalem is where David later established his capital and was anointed again (2 Samuel 5), while the event in the question occurred at Hebron. The distractor 'On Mount Sinai' is incorrect in scope because this is associated with Moses and the covenant, completely unrelated to the anointing of King David.",
     "language": "en",
     "options": [
-      "At Bethlehem",
-      "At Shiloh",
-      "At Jerusalem",
+      "In Bethlehem",
+      "In Jerusalem",
+      "On Mount Sinai",
       "At Hebron"
     ],
     "tags": [
@@ -104,14 +112,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 11:4-7, from whom did David capture the stronghold of Zion (Jerusalem)?",
-    "correctAnswer": [0],
-    "explanation": "1 Chronicles 11:4-5 — 'David and all Israel went to Jerusalem, that is, Jebus, where the Jebusites were, the inhabitants of the land. The inhabitants of Jebus said to David, \"You will not come in here.\" Nevertheless, David took the stronghold of Zion, that is, the city of David.'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The question specifically asks whom David captured the stronghold of Zion (Jerusalem) from, as recorded in 1 Chronicles 11:4-7. The Scripture clearly states: 'David and all Israel went to Jerusalem, that is Jebus... The Jebusites... David took the stronghold of Zion' (1 Chronicles 11:4-5). Therefore, the correct answer is 'The Jebusites'.\n\n- The distractor 'The Amorites' is incorrect because this is the name of a different people group mentioned in nearby passages (such as in books from the earlier period), but they were not the inhabitants of Jerusalem in this event.\n- The distractor 'The Canaanites' is incorrect because this is a general name for many peoples in the Promised Land (the scope is too broad), not the specific name of the group occupying Jerusalem at that time.\n- The distractor 'The Philistines' is incorrect due to a common misunderstanding; they were frequent enemies of David, but they were not the possessors of Jerusalem in the event being asked about.",
     "language": "en",
     "options": [
       "The Jebusites",
-      "The Philistines",
       "The Amorites",
-      "The Moabites"
+      "The Canaanites",
+      "The Philistines"
     ],
     "tags": [
       "Old Testament",
@@ -128,14 +138,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 11:9, why did David grow greater and greater?",
-    "correctAnswer": [1],
-    "explanation": "1 Chronicles 11:9 — 'And David became greater and greater, for the LORD of hosts was with him.'",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Chronicles 11:9 records: 'And David became greater and greater, for the LORD of hosts was with him.' Therefore, the correct answer is 'Because the LORD of hosts was with him'. The incorrect answers: 1) 'Because the leaders of Israel were with him' is an incorrect detail (confused with another event, as in 1 Chronicles 11:10). 2) 'Because Joab, the son of Zeruiah, was with him' is textually accurate (Joab is mentioned in the same chapter) but misses the core reason of the question. 3) 'Because the LORD of hosts was with his people' is close but incorrect in scope (the Scripture says 'was with him' (David), not 'was with his people').",
     "language": "en",
     "options": [
-      "Because of clever military strategy",
+      "Because the leaders of Israel were with him",
       "Because the LORD of hosts was with him",
-      "Because of many foreign alliances",
-      "Because of abundant gold and silver"
+      "Because Joab, the son of Zeruiah, was with him",
+      "Because the LORD of hosts was with his people"
     ],
     "tags": [
       "Old Testament",
@@ -153,14 +165,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 13:9-10, why did Uzzah die?",
-    "correctAnswer": [2],
-    "explanation": "1 Chronicles 13:9-10 — 'And when they came to the threshing floor of Chidon, Uzzah put out his hand to take hold of the ark, for the oxen stumbled. And the anger of the LORD was kindled against Uzzah, and he struck him down because he put out his hand to the ark, and he died there before God.'",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Chronicles 13:9-10 records: When they came to the threshing floor of Kidon, Uzzah reached out his hand and took hold of the ark of God, because the oxen stumbled. The LORD's anger burned against Uzzah, and He struck him down because he had put his hand on the ark. So Uzzah died there before God. The correct answer is: 'Because he reached out his hand and took hold of the ark of the LORD,' directly from verses 9-10. Distractor 1 ('Because he struck the oxen pulling the cart carrying the ark with a rod') is incorrect because this passage does not mention Uzzah striking the oxen; the oxen stumbled; this is a related detail in the overall story but not the cause of death (nearby_passage). Distractor 2 ('Because he did not hold the straps of the ark of the LORD') is close but misses the key detail: the text says Uzzah 'reached out his hand and took hold of' (i.e., touched) the ark, not a failure to hold the straps (straps are a detail from the instructions for transporting the ark found elsewhere, not in this passage) (wrong_detail). Distractor 3 ('Because he obstructed the sacrificial ritual from taking place') is incorrect because this passage does not mention any sacrificial ritual taking place when the incident occurred; this is an element not present in the question and the referenced Scripture passage (true_but_off).",
     "language": "en",
     "options": [
-      "For despising the offering",
-      "For not rallying the people",
+      "Because he struck the oxen pulling the cart carrying the ark with a rod",
+      "Because he did not hold the straps of the ark of the LORD",
       "For putting out his hand to take hold of the ark of the LORD",
-      "For resisting David's command"
+      "Because he obstructed the sacrificial ritual from taking place"
     ],
     "tags": [
       "Old Testament",
@@ -177,13 +191,15 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 15:13, what reason does David give for the disaster on the first attempt?",
-    "correctAnswer": [3],
-    "explanation": "1 Chronicles 15:13 — '...the Levites did not carry it the first time, and the LORD our God broke out against us, because we did not seek him according to the rule.'",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "The correct answer is directly quoted from 1 Chronicles 15:13 (ESV): David said, 'Because you did not carry it the first time, the LORD our God broke out against us, because we did not seek him according to the rule.' This clearly indicates the fault was 'not seeking him according to the rule,' meaning the Levites did not carry the ark according to the LORD's ordinance. Distractor 1 (close but incorrect) draws details about joy and singing from nearby verses (15:16, 25-28), but these describe the second, successful ark-moving, not the reason for the disaster in the first attempt. Distractor 2 ('did not consult the leaders') is an incorrect detail not found in this passage. Distractor 3 ('not a feast day') is a common misunderstanding, as carrying the ark was not bound to a specific feast day, but to proper ordinance and ritual.",
     "language": "en",
     "options": [
-      "Because Uzzah was inexperienced",
-      "Because too few Levites were present",
-      "Because of bad weather",
+      "Because the Levites carried the ark without joy and singing",
+      "Because they did not consult the leaders the first time",
+      "Because they carried the ark on a day that was not a feast day",
       "Because the Levites did not carry the ark according to the rule"
     ],
     "tags": [
@@ -201,14 +217,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 16:8, David calls the people to give thanks and to do what?",
-    "correctAnswer": [0],
-    "explanation": "1 Chronicles 16:8 — 'Oh give thanks to the LORD; call upon his name; make known his deeds among the peoples!'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Chronicles 16:8 records David's words: 'Give thanks to the LORD, call upon his name; make known among the nations what he has done.' Therefore, the correct answer is 'Call upon the name of the LORD and proclaim among the nations His deeds,' which matches the text exactly. Distractor 1 ('Bring an offering...') is close but incorrect in a key detail; although bringing offerings appears in nearby passages and is a common practice, it is not what is called for in this specific verse. Distractor 2 replaces 'deeds' with 'laws,' which is an incorrect detail, as the question asks about proclaiming specifically 'the deeds' of the LORD. Distractor 3 narrows the scope from 'among the nations' to 'among your family,' distorting the broad proclamation purpose stated in the Scripture verse.",
     "language": "en",
     "options": [
       "Call upon His name and make known His deeds among the peoples",
-      "Build new sheepfolds and ox-stalls",
-      "Equip the army with weapons",
-      "Lay the foundation of a new palace"
+      "Bring an offering to the LORD and proclaim among the nations His deeds",
+      "Call upon the name of the LORD and proclaim among the nations His laws",
+      "Call upon the name of the LORD and proclaim among your family His deeds"
     ],
     "tags": [
       "Old Testament",
@@ -225,14 +243,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 16:11, what does David urge the people to seek?",
-    "correctAnswer": [1],
-    "explanation": "1 Chronicles 16:11 — 'Seek the LORD and his strength; seek his presence continually!'",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "The question asks about David's advice in 1 Chronicles 16:11. The Scripture records: 'Seek the LORD and His strength; Seek His face continually.' (NKJV). Therefore, the correct answer is 'Seek the LORD and His strength, seek His face continually.' Distractor 1 is incorrect because it replaces 'His strength' with 'His peace,' a detail not present in this verse. Distractor 2 is incorrect as it deviates significantly, focusing on seeking material things ('wealth') and a human figure ('the king') instead of the LORD. Distractor 3 is incorrect because it references a related idea from the same passage (e.g., verses 12-15 speak of remembering His works and commandments) but is not the direct answer to the question about 1 Chronicles 16:11.",
     "language": "en",
     "options": [
-      "Seek human wisdom",
+      "Seek the LORD and His peace, seek His face continually",
       "Seek the LORD and His strength; seek His presence continually",
-      "Seek new lands",
-      "Seek wealth and labor"
+      "Seek wealth and strength, seek the king's face continually",
+      "Seek His law and His commandments"
     ],
     "tags": [
       "Old Testament",
@@ -250,14 +270,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 17:11-14, what does God promise David about his offspring and throne?",
-    "correctAnswer": [2],
-    "explanation": "1 Chronicles 17:12-14 — '...He shall build a house for me, and I will establish his throne forever. I will be to him a father, and he shall be to me a son... but I will confirm him in my house and in my kingdom forever, and his throne shall be established forever.'",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Correct answer: 1 Chronicles 17:11-14 records God's promise to David that 'when your days are fulfilled... one of your sons... he shall build a house for me... I will establish his throne forever' (vv.11-12). This promise indicates that David's own descendant (son) will build the temple and his throne (Solomon and the Messiah) will be established permanently.\n\nIncorrect distractor 1 (close, type 'wrong_detail'): Wrong about the timeframe '100 years'. The text says 'forever' (vv.12,14), not a specific number.\nIncorrect distractor 2 (type 'nearby_passage'): Based on God saying He will build a house for David (v.10, figurative meaning about descendants), but misapplied to the detail 'personally build the temple'. In the text, Solomon (David's son) is the one who builds the physical temple (v.12).\nIncorrect distractor 3 (type 'common_misconception'): Completely contradicts the passage. The promise in this passage affirms the eternal establishment of David's lineage and throne (v.14), not judgment or transfer to another tribe.",
     "language": "en",
     "options": [
-      "David himself will build the temple",
-      "David's line will rule only one generation",
+      "David's children will directly succeed him and the throne will last 100 years",
+      "God will personally build the temple and establish David's throne",
       "David's offspring will build the temple and the throne will be established forever",
-      "David will divide the kingdom into twelve parts"
+      "God will judge David's descendants and give the throne to another tribe"
     ],
     "tags": [
       "Old Testament",
@@ -274,13 +296,15 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 17:13, what does God say about His relationship with David's line?",
-    "correctAnswer": [3],
-    "explanation": "1 Chronicles 17:13 — 'I will be to him a father, and he shall be to me a son. I will not take my steadfast love from him, as I took it from him who was before you.'",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "The Scripture passage 1 Chronicles 17:13 clearly states: 'I will be his father, and he will be my son.' This is the promise of a special, spiritual father-son relationship between God and the line of David, which is also repeated in 2 Samuel 7:14.\n\n- Distractor 1 (close but incorrect) is wrong because it replaces the 'father-son' relationship with 'master-servant.' Although a king is sometimes called a servant of the Lord, in this verse, the promised relationship is specifically father and son.\n- Distractor 2 is wrong because it replaces 'be a father' with 'be a king' and retains 'servant,' completely distorting the meaning of the promised relationship.\n- Distractor 3 is wrong because it borrows the idea from the common promise 'I will be with you' (as with Moses or Joshua), but this is not the specific content of verse 13 in this passage for the line of David.",
     "language": "en",
     "options": [
-      "I will be a friend to him",
-      "I will be a teacher to him",
-      "I will be an elder brother to him",
+      "He will be my servant, and I will be his master",
+      "I will be his king, and he will be my servant",
+      "I will be with him, and he will be with me",
       "I will be a father to him, and he shall be a son to Me"
     ],
     "tags": [
@@ -298,14 +322,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 21:1, who incited David to number Israel?",
-    "correctAnswer": [0],
-    "explanation": "1 Chronicles 21:1 — 'Then Satan stood against Israel and incited David to number Israel.'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The correct answer is 'Satan' (1 Chronicles 21:1).\n\n- The distractor 'God' is incorrect because in the parallel passage 2 Samuel 24:1, it states 'the anger of the LORD was kindled against Israel, and he moved David...'. This is a notable difference between the two books, and this question is based on 1 Chronicles 21:1. This is a common misunderstanding when reading both passages.\n- The distractor 'An angel of the LORD' is close because an angel appears later in the story (1 Chronicles 21:15-16) to execute judgment, but it is not the entity that 'stood up and incited' David in verse 1.\n- The distractor 'One of David's servants' is incorrect because the story does not mention any servant initiating this; the scope of this incitement is spiritual, not from an earthly subordinate.",
     "language": "en",
     "options": [
       "Satan",
-      "Joab the commander",
-      "The prophet Nathan",
-      "Abiathar the priest"
+      "God",
+      "An angel of the LORD",
+      "One of David's servants"
     ],
     "tags": [
       "Old Testament",
@@ -322,14 +348,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 21:13, when forced to choose, into whose hand does David choose to fall?",
-    "correctAnswer": [1],
-    "explanation": "1 Chronicles 21:13 — 'Then David said to Gad, \"I am in great distress. Let me fall into the hand of the LORD, for his mercy is very great, but do not let me fall into the hand of man.\"'",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Correct answer: In 1 Chronicles 21:13, David said, 'I am in great distress. Please let me fall into the hand of the LORD, for His mercies are very great; but do not let me fall into the hand of man.' This is David's direct choice. The first distractor is wrong because the object 'the people' (man) is what David prayed to avoid. The second distractor is wrong because 'the enemy' (though possibly man) is not specifically mentioned in the choice of three calamities. The third distractor is 'close' but wrong in a key detail: David chose based on the great 'mercy' of the LORD, not His 'judgment'.",
     "language": "en",
     "options": [
-      "Into the hand of man",
+      "Into the hands of the people because their mercy is very great",
       "Into the hand of the LORD, for His mercy is very great",
-      "Into the hand of neighboring enemies",
-      "Into the hand of three years' famine"
+      "Into the hands of the enemy because His mercy is very great",
+      "Into the hands of the LORD because His judgment is very great"
     ],
     "tags": [
       "Old Testament",
@@ -347,14 +375,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 21:18-25, whose threshing floor did David buy to build an altar (later the temple site)?",
-    "correctAnswer": [2],
-    "explanation": "1 Chronicles 21:18-25 — '...the angel of the LORD commanded Gad to say to David that David should go up and raise an altar to the LORD on the threshing floor of Ornan the Jebusite.' This threshing floor later became the site of Solomon's temple.",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "In 1 Chronicles 21:18-25, verses 18 and 25 identify that David bought the threshing floor from **Ornan the Jebusite** to build an altar. This is the correct answer.\n\n**Why are the other options incorrect?**\n1. **Ornan the Gibeonite** is incorrect: The name Ornan is correct, but he was a **Jebusite**, not a Gibeonite (1 Chronicles 21:18).\n2. **Ethiop the Jebusite** is incorrect: There is no character named Ethiop in this passage. The owner of the threshing floor was Ornan (verses 18, 20-25).\n3. **Priest Zadok** is incorrect: Zadok was a prominent priest (1 Chronicles 16:39, 29:22) but was not involved in the sale of the threshing floor in this passage. The question asks about the person who sold the threshing floor to David.",
     "language": "en",
     "options": [
-      "Abner son of Ner",
-      "Uriah the Hittite",
+      "Ornan the Gibeonite",
+      "Ethiop the Jebusite",
       "Ornan the Jebusite",
-      "Mephibosheth son of Jonathan"
+      "Priest Zadok"
     ],
     "tags": [
       "Old Testament",
@@ -371,13 +401,15 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 22:8, why was David not allowed to build the temple for the LORD?",
-    "correctAnswer": [3],
-    "explanation": "1 Chronicles 22:8 — '...You have shed much blood and have waged great wars. You shall not build a house to my name, because you have shed so much blood before me on the earth.'",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Chronicles 22:8 records: 'But the word of the LORD came to me, saying, \"You have shed much blood and have waged great wars; you shall not build a house to my name, because you have shed so much blood before me on the earth.\"' Therefore, the correct answer is that David 'had shed much blood and waged great wars,' a condition unsuitable for the one who would build the temple for God, the God of peace.\n\n- Distractor 'Because David did not have enough offerings and had not prepared the materials' is INCORRECT: Although the preparation of materials is mentioned in nearby verses (22:2-5), the direct reason given by the LORD through Nathan is the issue of bloodshed and warfare, not a material issue.\n- Distractor 'Because David was young and lacked experience in building a holy temple' is INCORRECT: This is an inaccurate detail. David was an older king at that time, no longer young. Scripture does not mention lack of construction experience as a reason.\n- Distractor 'Because David had shed much blood and committed the sin of idolatry' is INCORRECT: This is a close but incorrect distractor. The 'shed much blood' part is correct (half the answer), but 'committed the sin of idolatry' is a common misunderstanding. David's famous sin with Bathsheba and Uriah might be misremembered, but the reason in this verse relates only to bloodshed and warfare, not idolatry.",
     "language": "en",
     "options": [
-      "Because David was not yet wealthy enough",
-      "Because David was not yet wise enough",
-      "Because David had not yet been made king",
+      "Because David did not have enough offerings and had not prepared the materials",
+      "Because David was young and lacked experience in building a holy temple",
+      "Because David had shed much blood and committed the sin of idolatry",
       "Because David had shed much blood and waged great wars"
     ],
     "tags": [
@@ -395,14 +427,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 22:9, what does God say about Solomon — the son who will build the temple?",
-    "correctAnswer": [0],
-    "explanation": "1 Chronicles 22:9 — '...Behold, a son shall be born to you who shall be a man of rest. I will give him rest from all his surrounding enemies. For his name shall be Solomon, and I will give peace and quiet to Israel in his days.' The name Solomon (Shelomoh) is from shalom — peace.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The correct answer directly quotes and expresses the idea from 1 Chronicles 22:9 (KJV): '...behold, a son shall be born to thee, who shall be a man of rest; and I will give him rest from all his enemies... and I will give peace and quietness unto Israel in his days.' God declared that Solomon would be a man of peace and He would grant peace to Israel. Distractor 1 is incorrect because it says Solomon is a 'man of war,' contrary to 'man of peace' in Scripture. Distractor 2 is incorrect in scope, stating the LORD gave peace to 'Judah,' while the text clearly says to 'Israel.' Distractor 3 is close but incorrect in a key detail, replacing 'peace' with 'wisdom,' even though this is a famous characteristic of Solomon, it is not what was specifically promised in this verse.",
     "language": "en",
     "options": [
       "He shall be a man of rest; Solomon — God will give peace to Israel in his days",
-      "He shall be the greatest warrior",
-      "He shall reign twice as long as David",
-      "He shall conquer all neighboring nations"
+      "He will be a man of war; Solomon — The LORD gave victory to Israel in his days",
+      "He will be a man of peace; Solomon — The LORD gave peace to Judah in his days",
+      "He will be a man of peace; Solomon — The LORD gave wisdom to Israel in his days"
     ],
     "tags": [
       "Old Testament",
@@ -419,14 +453,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 28:9, what crucial charge does David give Solomon?",
-    "correctAnswer": [1],
-    "explanation": "1 Chronicles 28:9 — 'And you, Solomon my son, know the God of your father and serve him with a whole heart and with a willing mind, for the LORD searches all hearts and understands every plan and thought. If you seek him, he will be found by you, but if you forsake him, he will cast you off forever.'",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "CORRECT ANSWER: \"Acknowledge the God of your father and serve Him with all your heart and a willing mind\" (1 Chronicles 28:9). The Scripture clearly records David's instruction to Solomon: \"And you, Solomon my son, know the God of your father and serve him with a whole heart and a willing mind\" (ESV). The phrase \"willing mind\" (or \"a mind that is willing\") is key.\n\nWHY THE DISTRACTORS ARE WRONG:\n• Distractor 1 (\"in fear\"): This is a \"nearby_passage\" error. While \"fear\" is an important biblical theme (Proverbs 9:10) and appears in the broader context of the book, it is not the precise wording in this verse. Verse 9 uses \"willing mind,\" not \"fear.\"\n• Distractor 2 (\"in obedience\"): This is a \"wrong_detail\" error. The word \"obedience\" is a related concept but an incorrect detail. The Scripture emphasizes the attitude of a \"willing mind\" (voluntary, joyful) in service, not merely dutiful obedience.\n• Distractor 3 (\"Be wise in judging... build a temple\"): This is a \"wrong_scope\" error. This reminder takes details from other commands David gave to Solomon (such as building the temple, 1 Chronicles 28:10, 20) or from Solomon's later request for wisdom (1 Kings 3:9). It mixes ideas from different verses and events, not within the scope of the specific instruction asked about in 1 Chronicles 28:9.",
     "language": "en",
     "options": [
-      "Build a great temple",
+      "Acknowledge the God of your father and serve Him with all your heart in fear",
       "Know the God of your father and serve Him with a whole heart and willing mind",
-      "Build a strong army",
-      "Expand the borders of the kingdom"
+      "Acknowledge the God of your father and serve Him with all your heart in obedience",
+      "Be wise in judging the people of Israel and build a temple for God"
     ],
     "tags": [
       "Old Testament",
@@ -443,14 +479,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 28:20, how does David encourage Solomon about building the temple?",
-    "correctAnswer": [2],
-    "explanation": "1 Chronicles 28:20 — 'Then David said to Solomon his son, \"Be strong and courageous and do it. Do not be afraid and do not be dismayed, for the LORD God, even my God, is with you. He will not leave you or forsake you, until all the work for the service of the house of the LORD is finished.\"'",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "The correct answer is based on 1 Chronicles 28:20, which records: 'David said to Solomon his son, “Be strong and courageous, and do the work. Do not be afraid or discouraged, for the LORD God, my God, is with you. He will not fail you or forsake you until all the work for the service of the temple of the LORD is finished.”' The central encouragement relies on God's promise to be present, not on the support of the people or other worldly conditions.\n\nDistractor 1 (close but incorrect in a key detail) is wrong because: In the nearby context (such as 1 Chronicles 28:11-19), it mentions David giving Solomon the plans for the project, but verse 20 does not advise Solomon to 'be careful to study the law first.' This is a detail taken from a nearby passage but misapplied to the question about the encouragement.\n\nDistractor 2 is wrong because: Although it correctly uses the first part of the Scripture ('Be strong and courageous, and do the work; do not be afraid'), it replaces the foundation 'God will be with you' with 'the people will support you.' This reflects a common misunderstanding, thinking that success depends on human support rather than divine help.\n\nDistractor 3 is wrong because: It is completely opposite to the spirit of 'do the work' immediately and 'do not be afraid' in the Scripture. This is a scope error in understanding the entire command—the practical advice is to encourage immediate action, not to delay.",
     "language": "en",
     "options": [
-      "Hire skilled foreign craftsmen",
-      "Wait until you are rich enough to begin",
+      "Be careful to study the law first—then begin the construction",
+      "Be strong and courageous, and do the work; do not be afraid—for the people will support you",
       "Be strong and courageous and do it; do not be afraid — God will not leave you until it is finished",
-      "Let the commander do it for you"
+      "You should postpone this task until the kingdom is truly stable"
     ],
     "tags": [
       "Old Testament",
@@ -467,13 +505,15 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 29:11, what does David ascribe to the LORD?",
-    "correctAnswer": [3],
-    "explanation": "1 Chronicles 29:11 — 'Yours, O LORD, is the greatness and the power and the glory and the victory and the majesty, for all that is in the heavens and in the earth is yours. Yours is the kingdom, O LORD, and you are exalted as head above all.'",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "The question is based on 1 Chronicles 29:11 (KJV): 'Thine, O LORD, is the greatness, and the power, and the glory, and the victory, and the majesty...'. The correct answer lists the exact five attributes David praises. The first distractor ('life') is incorrect in detail: this verse does not mention 'life'; that term appears in the broader prayer context. The second distractor ('wisdom') is drawn from a nearby passage (verse 12): 'Both riches and honour come of thee... thou reignest over all; and in thine hand is power and might...', but it is not the answer to the specific question about the praise in verse 11. The third distractor ('healing') is based on a common misunderstanding of God's qualities but is not present in this passage.",
     "language": "en",
     "options": [
-      "Wisdom and creativity",
-      "Righteousness and love",
-      "Mercy and forgiveness",
+      "Greatness, power, glory, victory, life",
+      "Greatness, power, glory, wisdom, majesty",
+      "Greatness, power, healing, victory, majesty",
       "Greatness, power, glory, victory, majesty"
     ],
     "tags": [
@@ -491,14 +531,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 1 Chronicles 29:14, what humble truth does David acknowledge about himself and the people in their offering?",
-    "correctAnswer": [0],
-    "explanation": "1 Chronicles 29:14 — 'But who am I, and what is my people, that we should be able thus to offer willingly? For all things come from you, and of your own have we given you.'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The question asks about David's humility in giving. The correct answer quotes 1 Chronicles 29:14 verbatim: 'Who am I and who are my people? Everything comes from the LORD; what we offer already belongs to the LORD,' showing the recognition that everything is from and belongs to the LORD. Distractor 1 (close but incorrect) is wrong in a key detail: it replaces 'comes from the LORD;... already belongs to the LORD' with 'comes from us;... is our own,' completely reversing the humble meaning. Distractor 2 is wrong in scope: it acknowledges things come from the LORD but claims the offerings still belong to people, contradicting the idea of 'already belongs to.' Distractor 3 is partially correct in text but off-topic: it adds the idea 'deserve praise' not present in the humble context of the question.",
     "language": "en",
     "options": [
       "Who am I and what is my people? All things come from You; of Your own we have given You",
-      "David alone is worthy as king",
-      "The people have repaid an ancestral debt",
-      "The people offer from accumulated experience"
+      "Who am I and who are my people? Everything comes from us; what we offer is our own",
+      "Who am I and who are my people? Everything comes from the LORD; what we offer still belongs to us",
+      "Everything comes from the LORD; what we offer already belongs to the LORD, so we deserve praise"
     ],
     "tags": [
       "Old Testament",
@@ -516,7 +558,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to 1 Chronicles 16:8-12 (David's psalm through Asaph), what are believers called to do? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "1 Chronicles 16:8-12 — 'Oh give thanks to the LORD; call upon his name; make known his deeds among the peoples! Sing to him, sing praises to him... Seek the LORD and his strength; seek his presence continually! Remember the wondrous works that he has done...' Many actions; 'worship foreign gods' contradicts.",
     "language": "en",
     "options": [
@@ -541,7 +587,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to 1 Chronicles 22:8-9, what reasons does God give for David not building the temple and Solomon doing so? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "1 Chronicles 22:8-9 — '...You have shed much blood... You shall not build a house to my name. Behold, a son shall be born to you who shall be a man of rest. I will give him rest from all his surrounding enemies. For his name shall be Solomon, and I will give peace and quiet to Israel in his days.' Three reasons; 'David had not yet been anointed' is incorrect.",
     "language": "en",
     "options": [
@@ -565,7 +615,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to 1 Chronicles 28:9, what does David charge Solomon to do? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "1 Chronicles 28:9 — '...Know the God of your father and serve him with a whole heart and with a willing mind... If you seek him, he will be found by you...' Three things; 'enforce the law by force on everyone' is not in this verse.",
     "language": "en",
     "options": [
@@ -590,7 +644,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to 1 Chronicles 29:11-12, what does David's prayer ascribe to the LORD? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "1 Chronicles 29:11-12 — 'Yours, O LORD, is the greatness and the power and the glory and the victory and the majesty, for all that is in the heavens and in the earth is yours... Both riches and honor come from you, and you rule over all...' Three parts; 'the LORD belongs to mankind' inverts the truth.",
     "language": "en",
     "options": [

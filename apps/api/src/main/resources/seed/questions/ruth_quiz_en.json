@@ -9,13 +9,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ruth 1:16 - Ruth chose to cling to Naomi and to her God. Ruth's faithfulness is a model of faith.",
+    "explanation": "Ruth 1:16 records Ruth saying to Naomi: 'Your God will be my God.' Therefore, the correct answer is **my God**, as this is the phrase Ruth used to refer to the God she accepted from Naomi.\n\n*   The distractor 'Orpah's God' is INCORRECT because in the context, only Ruth and Naomi are mentioned; there is no indication that Orpah accepted the God of Israel (Ruth 1:15).\n*   The distractor 'the daughter-in-law's God' is INCORRECT because although Ruth was Naomi's daughter-in-law, the statement does not use the relationship 'daughter-in-law' to profess faith, but uses the intimate relationship of 'my' and 'your'. This is a close distractor because it touches on the relationship but uses the wrong direct phrase.\n*   The distractor 'the god of the land of Moab' is INCORRECT because the story affirms that Ruth forsook the gods of the land of Moab (Ruth 1:15) to follow the God of Israel.",
     "language": "en",
     "options": [
       "my God",
-      "the Almighty",
-      "the Lord",
-      "the God of all people"
+      "Orpah's God",
+      "the daughter-in-law's God",
+      "the god of the land of Moab"
     ],
     "tags": [
       "Old Testament",
@@ -35,14 +35,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ruth 4:17 - Ruth gave birth to Obed, Obed fathered Jesse, and Jesse fathered David. Ruth is also in the genealogy of Jesus (Matthew 1:5).",
+    "explanation": "Ruth 4:13-17 records that Ruth gave birth to Obed, Obed fathered Jesse, and Jesse fathered David. Therefore, Ruth is the great-grandmother (mother of the grandfather) of King David (verse 17: '...Obed the father of Jesse, and Jesse the father of David').\n\n- The distractor 'King Saul' is incorrect because Saul was the first king of Israel, from the tribe of Benjamin, not descended from Ruth who was of the tribe of Judah (1 Samuel 9:1-2).\n- The distractor 'King Solomon' is close but incorrect on a key detail: Solomon was the son of David, making him the great-great-grandson of Ruth, not her great-grandson as the question specifies (1 Kings 2:12).\n- The distractor 'King Joseph' is incorrect due to a common misunderstanding: Joseph was an important patriarch in the book of Genesis, but he was not a king and is not related to the lineage of Ruth (Genesis 37-50).",
     "language": "en",
     "verseEnd": 17,
     "options": [
       "King Saul",
       "King David",
       "King Solomon",
-      "King Josiah"
+      "King Joseph"
     ],
     "tags": [
       "Old Testament",
@@ -62,13 +62,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ruth 1:1 - A famine in Bethlehem (which means \"house of bread\") drove Elimelech's family to the land of Moab.",
+    "explanation": "Ruth 1:1 states: 'In the days when the judges ruled, there was a famine in the land.' This is the direct reason Naomi's family left Bethlehem. The incorrect options: (1) 'War' is a false detail; the text does not mention war at this time. (2) 'Exile' is a common misunderstanding; they left voluntarily due to famine, not by force. (3) 'A royal decree' is accurate historical context but irrelevant to the question, as it is not the reason for their departure in Ruth 1:1.",
     "language": "en",
     "verseEnd": 2,
     "options": [
-      "Seeking work",
       "War",
-      "They were invited",
+      "Exile",
+      "A royal decree",
       "Famine"
     ],
     "tags": [
@@ -89,13 +89,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ruth 1:4 - Naomi's two sons married Ruth and Orpah in Moab.",
+    "explanation": "Ruth 1:4-5 states: 'These took Moabite wives; the name of the one was Orpah and the name of the other Ruth.' Therefore, the correct answer is Ruth and Orpah. The distractor 'Ruth and Micah' is close but incorrect in one detail: Micah is the name of a different person (see the Book of Judges), not a daughter-in-law of Naomi. The distractor 'Orpah and Bela' is out of scope: Bela was a son of Benjamin (Genesis 46:21), entirely unrelated to this story. The distractor 'Ruth and Jacob' is wrong because it confuses a character from a nearby passage (the patriarch Jacob), not from the Book of Ruth.",
     "language": "en",
     "verseEnd": 5,
     "options": [
-      "Orpah and Miriam",
-      "Ruth and Rahab",
-      "Ruth and Deborah",
+      "Ruth and Micah",
+      "Orpah and Bela",
+      "Ruth and Jacob",
       "Ruth and Orpah"
     ],
     "tags": [
@@ -116,14 +116,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ruth 1:14-16 - Orpah chose safety; Ruth chose faithfulness. Two choices led to two very different lives.",
+    "explanation": "The question asks about the different reactions of Orpah and Ruth when Naomi urged them to return. The correct answer is 'Orpah returned to Moab, Ruth stayed with Naomi' because Ruth 1:14 states, 'Then Orpah kissed her mother-in-law goodbye, but Ruth clung to her,' and Ruth 1:16 records Ruth's decision to stay with Naomi. The distractor 'Both returned to Moab, but Ruth later came back' is close but incorrect in a key detail: Ruth did not return to Moab at that time. The distractor 'Both stayed with Naomi and went together to Bethlehem' is wrong because it confuses the passage (Ruth 1:7,19) that describes the journey to Bethlehem by Naomi and Ruth, while Orpah had already returned to Moab (verse 14). The distractor 'Orpah stayed with Naomi, Ruth returned to Moab' is the reverse of the text (this is an inversion), so although it describes two opposite actions, it does not match the actual story, thus missing the question's requirement for the real reactions.",
     "language": "en",
     "verseEnd": 16,
     "options": [
-      "Ruth returned; Orpah stayed",
-      "Both stayed",
+      "Both returned to Moab, but Ruth later came back",
+      "Both stayed with Naomi and went together to Bethlehem",
       "Orpah returned to Moab; Ruth stayed and followed Naomi",
-      "Both returned"
+      "Orpah stayed with Naomi, Ruth returned to Moab"
     ],
     "tags": [
       "Old Testament",
@@ -143,14 +143,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ruth 1:20 - Naomi (meaning \"pleasant\") changed her name to Mara (meaning \"bitter\") after losing her husband and two sons.",
+    "explanation": "In Ruth 1:20-21, Naomi says: 'Do not call me Naomi; call me Mara, for the Almighty has dealt very bitterly with me.' Thus, 'Mara' directly means 'bitter,' reflecting her sense of loss and suffering. The incorrect options: 'Forgotten' is a condition that can be inferred from the context but is not the meaning of the name; 'Happy' is completely opposite to the described mood; 'Empty' accurately describes the feeling Naomi expresses (Ruth 1:21), but this is the reason she changed her name, not the meaning of the name 'Mara' itself.",
     "language": "en",
     "verseEnd": 21,
     "options": [
-      "Joyful",
+      "Forgotten",
       "Bitter",
-      "Hopeful",
-      "Peaceful"
+      "Happy",
+      "Empty"
     ],
     "tags": [
       "Old Testament",
@@ -171,14 +171,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ruth 2:2 - Ruth gleaned grain under the law that allowed the poor to gather leftover grain in the fields (Leviticus 19:9).",
+    "explanation": "The Scripture passage Ruth 2:2-3 clearly states: 'Ruth... asked to go out to the fields and glean... She came to a field and gleaned behind the harvesters... As it turned out, she found herself working in a field belonging to Boaz.' Therefore, the correct answer is that Ruth went to glean grain (gather leftover grain) in the fields to obtain food.\n- Distractor 1 (Gleaning grapes in Boaz's vineyard) is close but incorrect in detail: Ruth gleaned grain in the field, not grapes in a vineyard.\n- Distractor 2 (Asking Naomi for bread to eat) is out of scope: Although both were in need, the story focuses on Ruth's proactive action of going to work, not her passively asking her mother-in-law for bread.\n- Distractor 3 (Selling her jewelry at the market) is a common misunderstanding: No detail in the book of Ruth indicates she still had jewelry to sell; the context is one of extreme poverty.",
     "language": "en",
     "verseEnd": 3,
     "options": [
-      "Tended sheep",
+      "Gleaning grapes in Boaz's vineyard",
       "Gleaned (gathered leftover grain) in the fields",
-      "Baked bread",
-      "Sold goods in the market"
+      "Asking Naomi for bread to eat",
+      "Selling her jewelry at the market"
     ],
     "tags": [
       "Old Testament",
@@ -198,14 +198,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ruth 2:11-12 - Boaz recognized Ruth's faith and loyalty. The Lord cares for those who come to take refuge under His wings.",
+    "explanation": "Explanation: Ruth 2:11-12 quotes Boaz: 'It has been fully reported to me, all that you have done for your mother-in-law since the death of your husband, and how you have left your father and your mother and the land of your birth, and have come to a people whom you did not know before. The LORD repay your work, and a full reward be given you by the LORD God of Israel, under whose wings you have come for refuge.' Therefore, the correct answer accurately summarizes the two reasons: filial devotion to her mother-in-law Naomi (from the specific actions reported) and faith in leaving her homeland to take refuge under God's wings. The distractors are incorrect: (1) This is a 'close but incorrect' distractor, as her field work is acknowledged, but 'worship at the temple' is a wrong detail, not present in this passage and anachronistic to the story's timeframe. (2) Incorrect details: Ruth had not yet married someone from Bethlehem (this is a city name, not a person) and there is no detail about divorcing idols. (3) Textually accurate but off-topic: The wisdom in consulting and offering barley are actions of Naomi or Boaz in other passages, not Boaz's praise for Ruth here.",
     "language": "en",
     "verseEnd": 12,
     "options": [
-      "Her beauty",
-      "Her wealth",
+      "Her diligence in working in the field and her worship at the temple in Jerusalem",
+      "Her choice to marry someone from Bethlehem and her courage in divorcing Moabite idols",
       "Leaving her homeland to follow her mother-in-law to a foreign land, taking refuge under the Lord's wings",
-      "Her wisdom"
+      "Her wisdom in consulting the elders and her reverence in offering barley"
     ],
     "tags": [
       "Old Testament",
@@ -226,13 +226,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ruth 3:9 - \"Spread the corner of your garment over your servant, for you are a kinsman-redeemer (go'el).\" This is a picture of the Lord redeeming us.",
+    "explanation": "The question is based on Ruth 3:9, when Ruth was at the threshing floor at night. The correct answer is 'Become her kinsman-redeemer (go-el)' because Ruth directly says to Boaz: 'I am Ruth, your maidservant. Spread the corner of your garment over me, since you are a kinsman-redeemer.' (Ruth 3:9). The distractor 'Let her stay as a reaper in the field' is close but incorrect in scope; although she had worked in the field (Ruth 2), this was not her specific request at the threshing floor that night. The distractor 'Help her return to her homeland of Moab' is incorrect in detail; the context shows she had decided to stay with Naomi (Ruth 1:16-17). The distractor 'Protect her from the other reapers' relates to a nearby passage; Boaz had told his servants not to touch her (Ruth 2:9,15-16), but this was not Ruth's request in Ruth 3:9.",
     "language": "en",
     "options": [
-      "Marry her",
-      "Protect her",
+      "Let her stay as a reaper in the field",
+      "Help her return to her homeland of Moab",
       "Act as her kinsman-redeemer (go'el)",
-      "Feed her"
+      "Protect her from the other reapers"
     ],
     "tags": [
       "Old Testament",
@@ -253,14 +253,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Boaz acts as go'el: he redeems the land, marries Ruth, and preserves the family line. Jesus acts as go'el: He redeems us from sin, marries the Church, and gives us life.",
+    "explanation": "In Ruth 3:12-13, Boaz mentions the right of a closer relative (another 'goel'). The concept of the 'goel' (kinsman-redeemer) throughout the book of Ruth, particularly through Boaz's ultimate role, is seen as a foreshadowing of the atonement of Jesus Christ. The CORRECT ANSWER is because Jesus is described in the New Testament as the Redeemer (e.g., Galatians 3:13), fulfilling the spiritual meaning of the 'goel' foreshadow. DISTRACTOR 1 is INCORRECT because it accurately describes only Boaz's earthly, historical role in the story, but misses the typological connection to Jesus—which the question is asking about. DISTRACTOR 2 is INCORRECT because Moses was a national deliverer from physical slavery, not a 'goel' in the legal and functional sense as described in Ruth. DISTRACTOR 3 is INCORRECT because 'the Messiah' and 'the Savior' are correct titles for Jesus, but the phrase 'of the people of Israel' narrows the scope; the 'goel' foreshadow in Ruth points to a Redeemer for all people (including Gentiles like Ruth).",
     "language": "en",
     "verseEnd": 13,
     "options": [
       "Jesus - our Redeemer",
-      "Moses",
-      "David",
-      "Abraham"
+      "Boaz - the kinsman-redeemer in the historical narrative",
+      "Moses - the deliverer who led the Israelites out of Egypt",
+      "The Messiah - the Savior of the people of Israel"
     ],
     "tags": [
       "Old Testament",
@@ -281,13 +281,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ruth 4:6 - The closer kinsman-redeemer refused because he feared it would jeopardize his own inheritance. Boaz was willing to sacrifice.",
+    "explanation": "In Ruth 4:5-6, Boaz states that redeeming the land also means marrying Ruth 'to raise up the name of the dead upon his inheritance.' At that, the nearer kinsman replies: 'I cannot redeem it for myself, lest I mar mine own inheritance.' The primary reason is his concern that providing for Ruth and any future children would disperse or diminish his existing wealth (inheritance).\n- The correct answer is accurate because: the Scripture directly quotes his words: 'lest I mar mine own inheritance' (Ruth 4:6).\n- Distractor 1 is incorrect: No detail in the passage indicates he lacked money; he only feared marring his inheritance, not financial inability.\n- Distractor 2 is incorrect: Although he was financially concerned, the passage does not mention any specific other plans for the redemption money; this is an extrapolation beyond the text.\n- Distractor 3 is incorrect: This is a common misunderstanding, but in reality, he did not want to give all his material inheritance to Boaz; he merely did not want to take on additional responsibility that could affect his current estate. This distractor is on the right track regarding inheritance but completely wrong about intention and action.",
     "language": "en",
     "verseEnd": 6,
     "options": [
-      "He had no money",
-      "He was ill",
-      "He did not like Ruth",
+      "Unable to redeem due to lack of money",
+      "Had plans to use the redemption money for other purposes",
+      "Wanted to give all his material inheritance to Boaz",
       "He feared it would endanger his own inheritance"
     ],
     "tags": [
@@ -309,14 +309,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ruth 4:9-10 - Boaz redeemed the entire estate and married Ruth to preserve the name of the deceased.",
+    "explanation": "In Ruth 4:9-10, Boaz declares before the elders: 'Today I have bought from Naomi all that belonged to Elimelech and all that belonged to Chilion and Mahlon' and 'I have also acquired Ruth the Moabite, Mahlon's widow, as my wife.' The property being redeemed belonged to Elimelech, Naomi's husband, and his sons Chilion and Mahlon. The distractor 'Mahlon, son of Naomi' is close because Mahlon was indeed a son of Elimelech and Naomi, but the original inheritance belonged to the father, Elimelech. The distractor 'Malon, brother of Mahlon' confuses a similar name (in the Bible, Naomi's second son is Mahlon, not Malon) and reverses the sibling roles. The distractor 'Ruth, daughter-in-law of Naomi' correctly identifies Ruth as a daughter-in-law, but the question asks about whose property, and Ruth was the one Boaz married, not the original owner of the inheritance.",
     "language": "en",
     "verseEnd": 10,
     "options": [
       "Elimelech, Naomi's husband",
-      "Naomi",
-      "Orpah",
-      "A stranger"
+      "Mahlon, son of Naomi",
+      "Malon, brother of Mahlon",
+      "Ruth, daughter-in-law of Naomi"
     ],
     "tags": [
       "Old Testament",
@@ -337,13 +337,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ruth 4:17 - Obed was the father of Jesse, the grandfather of David. Ruth was the great-grandmother of the royal line and of Jesus.",
+    "explanation": "Ruth 4:17 records: 'The women living there said, \"Naomi has a son!\" And they named him Obed.' Therefore, the child was named Obed.\n- Boaz: Incorrect because this is the name of the child's father, not the child's own name (Ruth 4:13).\n- Naomi: Incorrect because this is the name of the child's grandmother, an important figure in the book of Ruth, but not the name of the son born to Boaz and Ruth (Ruth 1:2).\n- Mahlon: Incorrect because this is the name of Ruth's first, deceased husband (Ruth 1:2,5), not the name of the son she bore to Boaz.",
     "language": "en",
     "options": [
       "Obed",
-      "Jesse",
-      "David",
-      "Solomon"
+      "Boaz",
+      "Naomi",
+      "Mahlon"
     ],
     "tags": [
       "Old Testament",
@@ -365,13 +365,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ruth 1:6 — 'She had heard in the fields of Moab that the LORD had visited his people and given them food.'",
+    "explanation": "Question: 'Why did Naomi decide to return to Judah?'\n\nIn Ruth 1:6-7, the Scripture clearly states: 'Naomi... had heard in the country of Moab that the LORD had visited his people and given them food.' (verse 6). This is the direct and specific reason for Naomi's decision to return.\n\n- The correct answer is correct because: It directly and accurately quotes the reason from verse 6: the LORD's visitation and provision of food.\n\nIncorrect answers:\n1. 'Because she heard that the situation in Judah had become safe and peaceful again' (nearby_passage): This is a 'close but incorrect' detail because it relates to 'hearing' and 'returning,' but it misses the key detail. The Scripture does not mention 'safe and peaceful' but rather the LORD providing food.\n2. 'Because both her daughters-in-law had died, and she had no one left to rely on' (wrong_detail): This contains a crucial factual error. In this passage, her daughters-in-law (Ruth and Orpah) were still alive and traveling with her (verse 7). Only her husband and two sons had died (mentioned in earlier verses).\n3. 'Because she wanted to return to her homeland to be buried next to her husband' (true_but_off): This sentiment may be emotionally plausible and is indirectly related to themes in the book (homeland, lineage), but it is not the direct reason stated in the specific question from verses 1:6-7. The question asks about her 'decision to return' at that moment, and the reason Scripture records is the LORD's provision of food.",
     "language": "en",
     "options": [
-      "She ran out of money",
-      "Because of war",
+      "Because she heard that the situation in Judah had become safe and peaceful again",
+      "Because both her daughters-in-law had died, and she had no one left to rely on",
       "She heard the LORD had visited His people and given food",
-      "Royal order"
+      "Because she wanted to return to her homeland to be buried next to her husband"
     ],
     "tags": [
       "Old Testament",
@@ -391,13 +391,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ruth 1:22 — 'They came to Bethlehem at the beginning of barley harvest.'",
+    "explanation": "Ruth 1:22 states: 'So Naomi returned from the country of Moab with Ruth the Moabite, her daughter-in-law, and they came to Bethlehem at the beginning of barley harvest.' Therefore, the correct answer is 'At the beginning of barley harvest'.\n\n- The distractor 'At the end of the barley harvest' is incorrect because the Bible clearly says 'at the beginning of barley harvest,' not the end.\n- The distractor 'When Elimelech died' is incorrect because this event is recorded in Ruth 1:3, occurring while the family was still in Moab, long before their return to Bethlehem.\n- The distractor 'At the beginning of spring' is incorrect because although the barley harvest typically occurs in spring, the Bible does not use this general seasonal description but specifically identifies it as 'the beginning of barley harvest,' an important agricultural and religious event.",
     "language": "en",
     "options": [
       "At the beginning of barley harvest",
-      "At Passover",
-      "In summer",
-      "Late autumn"
+      "At the end of the barley harvest",
+      "When Elimelech died",
+      "At the beginning of spring"
     ],
     "tags": [
       "Old Testament",
@@ -418,13 +418,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ruth 2:8 — 'Now, listen, my daughter, do not go to glean in another field or leave this one, but keep close to my young women.'",
+    "explanation": "The question references Ruth 2:8-9. The correct answer is 'the young women' (v.8: '...keep close to my young women').\n\n- The distractor 'The young men' is close but incorrect in detail: Boaz specifically instructed Ruth to stay close to 'my young women', not the young men.\n- The distractor 'Boaz' is incorrect in scope: Although Boaz was the field owner and spoke to Ruth, he did not tell her to stay close to himself, but to stay close to his young women.\n- The distractor 'The reapers' misses the point of the question: In v.9, Boaz told the reapers not to touch Ruth, but the group he designated for her to 'keep close to' while gleaning was his young women, not the entire group of reapers.",
     "language": "en",
     "options": [
       "The young men",
       "His young women",
-      "His relatives",
-      "The elders"
+      "Boaz",
+      "The reapers"
     ],
     "tags": [
       "Old Testament",
@@ -444,12 +444,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ruth 2:14 — 'And at mealtime Boaz said to her, Come here and eat some bread and dip your morsel in the wine.'",
+    "explanation": "The correct answer is based on Ruth 2:14: 'And Boaz said unto her, At mealtime come thou hither, and eat of the bread, and dip thy morsel in the vinegar.' This is the direct purpose of the invitation. Distractor 1 is incorrect because it replaces the detail 'vinegar' with 'oil'. Distractor 2 is incorrect because although Ruth does receive barley (an action that occurs later), this is not the purpose of the mealtime invitation. Distractor 3 is incorrect because it describes a general activity (resting) present in the context but not the specific content of the invitation as recorded in this verse.",
     "language": "en",
     "options": [
-      "Meet the elders",
-      "Get water to drink",
-      "Return to Moab",
+      "Come near to eat bread and dip it in oil",
+      "Come near to receive some of the harvested barley",
+      "Come near to sit and rest with the harvesters",
       "Come, eat bread and dip in wine vinegar"
     ],
     "tags": [
@@ -471,13 +471,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ruth 3:3-4 — 'Wash and anoint yourself, and put on your cloak and go down to the threshing floor... When he lies down, observe the place where he lies. Then go and uncover his feet and lie down.'",
+    "explanation": "The question asks for the specific location Naomi told Ruth to go to meet Boaz at night, based on Ruth 3:1-4. The correct answer is 'To the threshing floor,' because verses 2-3 clearly state: '...wash, anoint yourself, put on your cloak, and go down to the threshing floor...'. The distractor 'To the barley storage house' is incorrect because this is a detail not present in the passage; while thematically related, it is not the specified location. The distractor 'To the hill near Bethlehem' is incorrect because this is a different location, unrelated to the main context (verses 1-4 do not mention a hill). The distractor 'To the water source where the servants drink' is incorrect because this is a detail from Ruth 2:9 (a nearby passage), not from the instructions in Ruth 3:1-4.",
     "language": "en",
     "options": [
-      "The temple",
-      "The city gate",
+      "To the barley storage house",
+      "To the hill near Bethlehem",
       "The threshing floor",
-      "The well"
+      "To the water source where the servants drink"
     ],
     "tags": [
       "Old Testament",
@@ -497,12 +497,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ruth 4:7 — 'Now this was the custom in former times in Israel concerning redeeming and exchanging: to confirm a transaction, the one drew off his sandal and gave it to the other.'",
+    "explanation": "Ruth 4:7 states: 'Now in earlier times in Israel, for the redemption and transfer of property to become final, one party took off his sandal and gave it to the other. This was the method of legalizing transactions in Israel.' (NIV). Therefore, the correct answer is 'A sandal (taking off a sandal and handing it over)', as this is the specific item described for witnessing. Distractor 1 ('A ring') is close because it is also a personal item used in transactions, but the Bible clearly specifies 'sandal', not 'ring'. Distractor 2 ('A lamb') is incorrect due to a common misunderstanding, confusing it with other sacrificial rituals unrelated to the witnessing ceremony for redemption in this context. Distractor 3 ('A covenant document') is incorrect because, although the redemption has a covenantal nature, verse 7 specifically describes a symbolic act (removing a sandal) for immediate witnessing, not the signing of a written document.",
     "language": "en",
     "options": [
-      "A gold seal",
-      "A belt",
-      "A signed paper",
+      "A ring (giving a ring as evidence)",
+      "A lamb (sacrificing a lamb)",
+      "A covenant document (signing a covenant)",
       "A sandal (drawing off and giving)"
     ],
     "tags": [
@@ -524,13 +524,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ruth 4:22 — 'Obed fathered Jesse, and Jesse fathered David.' Ruth concludes with the genealogy leading to King David.",
+    "explanation": "The genealogy in Ruth 4:18-22 is summarized as follows: Perez fathered Hezron, Hezron fathered Ram, Ram fathered Amminadab, Amminadab fathered Nahshon, Nahshon fathered Salmon, Salmon fathered Boaz, Boaz fathered Obed (by Ruth), Obed fathered Jesse, Jesse fathered David. Therefore, the genealogy ends with the name of David. The incorrect answers: (1) 'Boaz' is an important figure in the book and the grandfather of David, but the genealogy does not stop with him (nearby_passage). (2) 'Solomon' is the son and successor of King David, appearing after this time, so he is not the conclusion of the genealogy in the book of Ruth (wrong_scope). (3) 'Elimelech' is the husband of Naomi and appears at the beginning of the book; he is not included in the final genealogy (common_misconception).",
     "language": "en",
     "options": [
       "David",
+      "Boaz",
       "Solomon",
-      "Saul",
-      "Samuel"
+      "Elimelech"
     ],
     "tags": [
       "Old Testament",

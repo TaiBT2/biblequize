@@ -9,13 +9,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Samuel 12:7 - The prophet Nathan used the parable of the little lamb to lead David to condemn himself, then declared: \"You are the man!\"",
+    "explanation": "The correct answer is Nathan. In 2 Samuel 12:7, Nathan directly says to David: 'You are the man!'. He is the prophet who told the parable and confronted David about the Bathsheba incident.\n- Gilead is incorrect because it is the name of a region (a land), not the name of a prophet.\n- Ahijah was a prophet (1 Kings 11:29-30), but he lived and ministered later during the time of King Jeroboam, and was not the one who confronted David about this sin. This is a 'close' distractor because he was indeed a prophet, but from the wrong period and event.\n- Jeremiah was a major prophet, but he lived and worked many centuries after David's time, so he could not have been the person in this event.",
     "language": "en",
     "options": [
-      "Samuel",
+      "Gilead",
       "Nathan",
-      "Gad",
-      "Asaph"
+      "Ahijah",
+      "Jeremiah"
     ],
     "tags": [
       "Old Testament",
@@ -36,13 +36,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Samuel 5:4-5 - David became king at age 30 and reigned for 40 years.",
+    "explanation": "2 Samuel 5:4-5 states: 'David was thirty years old when he began to reign, and he reigned forty years. In Hebron he reigned over Judah seven years and six months, and in Jerusalem he reigned thirty-three years over all Israel and Judah.' Therefore, David's total reign was 40 years. The correct answer is the valid combination of the numbers in the Scripture. The incorrect answers: (1) '42 years...' is close but incorrect in the detail of years in Jerusalem (35 instead of 33). (2) '33 years...' narrows the scope, taking only the years in Jerusalem while ignoring the time in Hebron. (3) '7 years...' is based on a common misunderstanding that David was only king in Hebron, not accounting for his entire reign.",
     "language": "en",
     "verseEnd": 5,
     "options": [
-      "50 years",
-      "20 years",
-      "30 years",
+      "42 years (7 years in Hebron, 35 years in Jerusalem)",
+      "33 years (no specific breakdown)",
+      "7 years (only in Hebron, before moving to Jerusalem)",
       "40 years (7 years in Hebron, 33 years in Jerusalem)"
     ],
     "tags": [
@@ -64,14 +64,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Samuel 6:14 - David danced before the Lord with all his might, without worrying about his kingly image. Wholehearted worship.",
+    "explanation": "The Scripture passage 2 Samuel 6:14-15 describes: 'David, wearing a linen ephod, danced before the LORD with all his might... So David and all the house of Israel brought up the ark of the LORD with shouting and with the sound of the trumpet.' The correct answer is because the text directly says David 'danced with all his might.' Distractor 1 (Offering thanksgiving prayer) is close because David had a reverent attitude, but the specific action recorded is dancing, not praying at that moment. Distractor 2 (Standing still solemnly) is a common misunderstanding about worship posture, but the text describes energetic dancing. Distractor 3 (Offering a burnt sacrifice) is incorrect in detail; the offering of sacrifices (as in verse 13) occurred earlier on the journey, not as David's action right when the Ark was brought to Jerusalem as the question asks.",
     "language": "en",
     "verseEnd": 15,
     "options": [
       "Danced before the Lord with all his might",
-      "Read the Law",
-      "Offered silent sacrifices",
-      "Sat on the throne"
+      "Offering thanksgiving prayer before the Ark of the Covenant",
+      "Standing still solemnly and worshiping",
+      "Offering a burnt sacrifice immediately on the spot"
     ],
     "tags": [
       "Old Testament",
@@ -92,13 +92,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Samuel 7:12-13 - The everlasting throne of David's lineage is fulfilled in Jesus Christ (Luke 1:32-33).",
+    "explanation": "2 Samuel 7:12-13 records God's promise to David through the prophet Nathan: 'When your days are fulfilled, and you rest with your fathers, I will set up your seed after you... I will establish the throne of his kingdom forever.' This is the crucial promise of an everlasting royal dynasty, fulfilled perfectly in the Messiah.\n\nThe correct answer is correct because it directly summarizes the promise of an everlasting throne for David's descendants.\n\nDistractor 1 is wrong because that was David's initial intention (to build a temple for God, mentioned at the beginning of chapter 7), not God's promise to David.\n\nDistractor 2 is wrong because the promise of a permanent land was central to the covenant with Abraham (Genesis 15:18) and the people of Israel, not the main point of the Davidic covenant in this passage.\n\nDistractor 3 (close but incorrect) is wrong because it errs on one key detail: the promise is 'forever' (everlasting), not limited only to 'the end of the period of the judges' (an earlier period in Israel's history).",
     "language": "en",
     "verseEnd": 13,
     "options": [
-      "Israel would always win battles",
-      "David would live forever",
-      "The temple would never be destroyed",
+      "David will have a sturdy cedar house built for him",
+      "David's descendants will be given a vast land forever",
+      "The throne of David's line will last until the end of the period of the judges",
       "The throne of David's lineage would endure forever"
     ],
     "tags": [
@@ -120,14 +120,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Samuel 9:7 - Mephibosheth was lame in both feet but was invited by David to eat at the king's table for the rest of his life.",
+    "explanation": "In 2 Samuel 9:1-7, David asks, 'Is there still anyone left of the house of Saul, that I may show him kindness for Jonathan's sake?' (verse 1). Ziba the servant informs him that there is a son of Jonathan named Mephibosheth (verse 3). Therefore, the correct answer is 'Mephibosheth, son of Jonathan'.\n\n- The distractor 'Bathsheba, daughter of Saul' (wrong_detail) is incorrect because Bathsheba is one of Saul's two daughters (2 Samuel 21:8), not the person David treated kindly in this passage.\n- The distractor 'Ish-bosheth, son of Saul' (wrong_scope) is incorrect because Ish-bosheth is another son of Saul who had died before this event (2 Samuel 4), not the subject of the inquiry in 9:1-7.\n- The distractor 'Shimei, of the house of Saul' (common_misconception) is incorrect because Shimei was from the tribe of Benjamin and the house of Saul (2 Samuel 16:5), but he is not mentioned in this passage and was not the one treated kindly for Jonathan's sake.",
     "language": "en",
     "verseEnd": 7,
     "options": [
-      "Abner",
-      "Saul",
+      "Bathsheba, daughter of Saul",
+      "Ish-bosheth, son of Saul",
       "Mephibosheth, son of Jonathan",
-      "Shimei"
+      "Shimei, of the house of Saul"
     ],
     "tags": [
       "Old Testament",
@@ -148,14 +148,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Samuel 11:1-2 - In the season when kings went out to battle, David stayed home. Idleness led to temptation and sin.",
+    "explanation": "Correct answer: 'When David stayed in Jerusalem instead of going to battle' (2 Samuel 11:1) – This is the initial context that led to all subsequent wrongful actions, when the king was not in his proper leadership position on the battlefield. Distractor 1 (close): 'When David sent someone to inquire about her' (v.3) – This action occurred immediately after, but the sin had already begun with the decision to stay. Distractor 2: 'When David sent someone to bring her to the palace' (v.4) – This is the next action, part of the sequence, not the starting point. Distractor 3: 'When David committed adultery with her' (v.4) – This is the climax of the sin, not when it began.",
     "language": "en",
     "verseEnd": 4,
     "options": [
-      "During a feast",
-      "While inspecting the land",
+      "When David sent someone to inquire about her",
+      "When David sent someone to bring her to the palace",
       "When David remained in Jerusalem instead of going to battle",
-      "While taking an afternoon nap"
+      "When David committed adultery with her"
     ],
     "tags": [
       "Old Testament",
@@ -176,14 +176,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Samuel 11:15 - David wrote a letter to Joab to place Uriah in the most dangerous position. One sin led to another - indirect murder.",
+    "explanation": "The Scripture passage 2 Samuel 11:14-17 clearly states: David wrote a letter to Joab, commanding him to 'set Uriah in the forefront of the hottest battle, and retreat from him, that he may be struck and die.' (verse 15). Therefore, the correct answer is that David arranged for Uriah to die in battle.\n\nThe incorrect answers: (1) 'Personally killing her husband Uriah at home' is close but incorrect in a key detail: David did not kill Uriah with his own hands but used a scheme in battle (11:15, 17). (2) 'Putting Uriah on a list of soldiers to be expelled' is incorrect in scope: this does not appear in the nearby passage; the passage only mentions Uriah being sent back to the battlefield with a secret letter (11:14). (3) 'Publicly confessing and asking for forgiveness' is a common misunderstanding based on a later event (2 Samuel 12, after Nathan's rebuke), but it was not the action David used to 'cover up' his sin in the immediate context of the question (11:14-17).",
     "language": "en",
     "verseEnd": 17,
     "options": [
-      "Sent Uriah far away",
-      "Fled from Jerusalem",
+      "Personally killing her husband Uriah at home",
+      "Putting Uriah on a list of soldiers to be expelled",
       "Arranged for her husband Uriah to die in battle",
-      "Reassigned Uriah's route"
+      "Publicly confessing and asking for forgiveness"
     ],
     "tags": [
       "Old Testament",
@@ -204,13 +204,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Samuel 12:23 - David believed he would meet his son in the afterlife. Hope of life after death.",
+    "explanation": "2 Samuel 12:23 records David's words: 'I shall go to him, but he shall not return to me.' This is the correct answer because David expresses his personal hope that he will meet his son again (after death), while acknowledging the reality that the child cannot come back to life. The incorrect options: 1) 'He will live again, but I will not meet him' is wrong because it misrepresents a key detail — in Scripture, David does not say the child will live again; 2) 'I will wait for him, and he will return to me' misses the point — while emotionally plausible, it is not what David actually said; 3) 'I cannot go to him anymore' misinterprets a nearby passage — this contradicts the mood of acceptance and hope expressed by David in the context.",
     "language": "en",
     "options": [
       "I shall go to him, but he shall not return to me",
-      "God will give another child",
-      "I will mourn no more",
-      "I will forget about it"
+      "He will live again, but I will not meet him",
+      "I will wait for him, and he will return to me",
+      "I cannot go to him anymore"
     ],
     "tags": [
       "Old Testament",
@@ -231,14 +231,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Samuel 15:13-14 - Absalom rebelled, and David had to flee from Jerusalem. A consequence of family sin.",
+    "explanation": "2 Samuel 15:13-14 records a messenger reporting to David: 'The hearts of the people of Israel are with Absalom.' and David said to his servants in Jerusalem: 'Arise, and let us flee; or else none of us will escape from Absalom. Make haste to depart, lest he overtake us quickly...' This passage describes the rebellion of Absalom, David's son, who declared himself king.\n- The correct answer 'Absalom' is David's son who rebelled and declared himself king as described in 2 Samuel 15:13-14.\n- Distractor 'Solomon' is incorrect because Solomon was David's son who succeeded to the throne legitimately, not through rebellion (this is a close distractor, only incorrect regarding the nature of the event).\n- Distractor 'Amnon' is incorrect because Amnon was David's son who was killed by his half-brother Absalom in revenge for raping his sister, not someone who rebelled and declared himself king.\n- Distractor 'Joab' is incorrect because Joab was the commander of David's army, not David's son, so he could not be the rebel in the context of the question.",
     "language": "en",
     "verseEnd": 14,
     "options": [
-      "Adonijah",
+      "Solomon",
       "Amnon",
       "Absalom",
-      "Solomon"
+      "Joab"
     ],
     "tags": [
       "Old Testament",
@@ -259,12 +259,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Samuel 18:33 - Although Absalom had rebelled, David was still a grieving father. \"O Absalom, my son, my son!\"",
+    "explanation": "In 2 Samuel 18:33 (KJV), David wept bitterly and said, 'O my son Absalom, my son, my son Absalom! would God I had died for thee, O Absalom, my son, my son!' The correct answer accurately describes this reaction: weeping and wishing to die in his son's place. The incorrect answers: 1) 'Rejoicing...' is wrong because David was deeply grieved, not joyful; this is a common misunderstanding that the king would be pleased at the rebel's death. 2) 'Remaining silent...' is wrong because Scripture clearly records that David wept and cried out loudly. 3) 'Praying for God to have mercy...' is a plausible detail (showing compassion), but misses the key point: the text does not record this prayer but records David's wish to die instead; this distractor borrows from other grieving reactions in Scripture but is not the reaction recorded in this passage.",
     "language": "en",
     "options": [
-      "Rejoiced that the rebellion was over",
-      "Remained silent",
-      "Became angry",
+      "Rejoicing because the rebel had been punished",
+      "Remaining silent and showing no emotion",
+      "Praying for God to have mercy on his soul",
       "Wept and wished he had died in his son's place"
     ],
     "tags": [
@@ -286,14 +286,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Samuel 23:5 - David affirmed the everlasting covenant that God had made with his house.",
+    "explanation": "The Scripture passage 2 Samuel 23:5 quotes David: 'Is not my house right with God? Has he not made with me an everlasting covenant, arranged and secured in every part? Will he not bring to fruition my salvation...' This verse emphasizes the 'everlasting' and 'secure for all my house' nature of the covenant.\n\nCORRECT ANSWER: 'An everlasting covenant, secure for all his house' — matches the content of verse 5, speaking of a permanent and safe covenant for all David's descendants.\n\nINCORRECT DISTRACTORS:\n1. 'A firm covenant, based on David's righteousness' (wrong_detail): While verses 3-4 mention the ruler's righteousness, the covenant emphasized here is based on God's promise, not on David's merit.\n2. 'A covenant that applies only to David himself' (wrong_scope): Completely contrary to the 'for all his house' meaning in verse 5, this covenant extends to all his descendants.\n3. 'A covenant guaranteeing immediate material prosperity for his descendants' (common_misconception): This is a common misinterpretation when explaining covenant promises; this passage emphasizes spiritual salvation and stability, not immediate material blessings.",
     "language": "en",
     "verseEnd": 5,
     "options": [
       "An everlasting covenant, unchanging",
-      "Conditional",
-      "Temporary",
-      "Only for Solomon"
+      "A firm covenant, based on David's righteousness",
+      "A covenant that applies only to David himself",
+      "A covenant guaranteeing immediate material prosperity for his descendants"
     ],
     "tags": [
       "Old Testament",
@@ -314,13 +314,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Samuel 24:24 - True sacrifice requires cost. He would not offer to God something that cost him nothing.",
+    "explanation": "In 2 Samuel 24:24, David replied to Araunah: 'I will not offer burnt offerings to the LORD my God that cost me nothing.' (NIV). This verse expresses the idea 'I do not want to offer a burnt offering to the LORD without paying the price.' THE CORRECT ANSWER is because it accurately reflects David's spirit of paying the full price.\n\nDISTRACTOR 1 ('I will buy this threshing floor at a cheap price to offer to the LORD.') is WRONG because David did not bargain for a cheap price; he paid the full price (50 shekels of silver) and emphasized not taking something that cost him nothing (v. 24). This is a 'close but incorrect' distractor because it has the correct context of buying the threshing floor but is wrong on the key detail of the attitude of paying the full price.\n\nDISTRACTOR 2 ('I want to offer a burnt offering to the LORD but do not want to pay the price.') is WRONG because it is completely opposite to David's spirit, who insisted on paying the price to make the offering meaningful. This is a common misunderstanding about the attitude of giving.\n\nDISTRACTOR 3 ('I do not want to offer a burnt offering to the LORD without making a sacrifice.') is WRONG because the question asks about the reason when buying the threshing floor, which relates to paying the price, not the act of sacrifice itself. This answer is textually correct (it involves offering a burnt offering) but misses the focus of the question.",
     "language": "en",
     "options": [
-      "The Lord deserves everything",
-      "I give everything",
+      "I will buy this threshing floor at a cheap price to offer to the LORD.",
+      "I want to offer a burnt offering to the LORD but do not want to pay the price.",
       "I will not offer to the Lord sacrifices that cost me nothing",
-      "I will pay the best price"
+      "I do not want to offer a burnt offering to the LORD without making a sacrifice."
     ],
     "tags": [
       "Old Testament",
@@ -342,13 +342,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Samuel 1:17 — 'And David lamented with this lamentation over Saul and Jonathan his son.'",
+    "explanation": "The correct answer is 'Compose a lament for Saul and Jonathan,' because 2 Samuel 1:17 records: 'David took up this lament concerning Saul and his son Jonathan.' The incorrect answers: 1) 'Sing a hymn of thanksgiving' is wrong because the immediate context (1:18) only mentions David commanding that this lament be taught to the people of Judah; its content is mourning, not praise/thanksgiving. 2) 'Write a letter rebuking the people of Judah' is incorrect in detail, as in this passage David does not write any letter of rebuke. 3) 'Hold a funeral ceremony' is incorrect in scope; this is not mentioned in 1:17-27; David only mourns through the song, as the actual funeral had already been performed earlier by the people of Jabesh (1 Samuel 31:11-13).",
     "language": "en",
     "options": [
-      "Rejoiced at becoming king",
+      "Sing a hymn of thanksgiving to God",
       "Composed a lament for Saul and Jonathan",
-      "Immediately attacked the Philistines",
-      "Took the throne at Hebron at once"
+      "Write a letter rebuking the people of Judah",
+      "Hold a funeral ceremony for Saul and Jonathan"
     ],
     "tags": [
       "Old Testament",
@@ -368,13 +368,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Samuel 2:4 — 'And the men of Judah came, and there they anointed David king over the house of Judah.' At Hebron.",
+    "explanation": "The correct answer is 'Hebron' because 2 Samuel 2:4 clearly states: 'Then the men of Judah came to Hebron and there they anointed David king over the house of Judah.'\n\nThe incorrect answers:\n- 'Bethlehem' is incorrect because this is David's hometown (1 Samuel 17:12), but it is not where he was anointed king of Judah; this is a mistake of confusing it with a nearby detail.\n- 'Jerusalem' is incorrect because this is the city David later captured and made the capital of all Israel (2 Samuel 5:6-7), not the initial place where he was anointed king of Judah; this is a common misunderstanding.\n- 'Jericho' is incorrect because this is another famous city, unrelated to this anointing event; this is an error of detail (name).",
     "language": "en",
     "options": [
       "Hebron",
       "Bethlehem",
       "Jerusalem",
-      "Shiloh"
+      "Jericho"
     ],
     "tags": [
       "Old Testament",
@@ -394,12 +394,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Samuel 5:7 — 'Nevertheless, David took the stronghold of Zion, that is, the city of David.'",
+    "explanation": "2 Samuel 5:7 records: 'Nevertheless, David captured the stronghold of Zion; that is, the city of David.' This is the place David chose as his capital, later known as Jerusalem. The correct answer is 'the stronghold of Zion (Jerusalem)' because the Bible clearly records this event.\n\nIncorrect answers:\n- 'Gibeath (Saul's hometown)': Incorrect detail. Gibeath was Saul's city (1 Samuel 10:26), not the place David captured as his capital. This is a plausible distractor as it is an important city from this period, but it involves the wrong person and key event.\n- 'Jericho (the first city conquered)': Biblically accurate but irrelevant to the question. Jericho was conquered under Joshua (Joshua 6) and is unrelated to David establishing his capital.\n- 'Rabbah (the capital of Ammon)': Incorrect scope. Rabbah was the capital of the Ammonites, conquered by David later (2 Samuel 12:26-31), not the place he initially chose as his capital.",
     "language": "en",
     "options": [
-      "Hebron",
-      "Bethel",
-      "Samaria",
+      "Gibeath (Saul's hometown)",
+      "Jericho (the first city conquered)",
+      "Rabbah (the capital of Ammon)",
       "The stronghold of Zion (Jerusalem)"
     ],
     "tags": [
@@ -421,13 +421,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Samuel 6:6-7 — 'Uzzah put out his hand to the ark of God and took hold of it... And the anger of the LORD was kindled against Uzzah, and God struck him down there.'",
+    "explanation": "The correct answer is Uzzah. According to 2 Samuel 6:6-7, Uzzah reached out to steady the Ark of the Covenant when the oxen stumbled, and God's anger burned against Uzzah, striking him dead there. Distractor 'Ahio' is incorrect because Ahio was walking in front of the Ark (verse 4), not the one who died. Distractor 'David' is incorrect because David was the king overseeing the transportation of the Ark (verse 5), not the one who died in this incident. Distractor 'Solomon' is incorrect because Solomon was David's son, appears after this event, and is not related to the story of moving the Ark in 2 Samuel 6.",
     "language": "en",
     "options": [
       "Ahio",
       "Uzzah",
-      "Joab",
-      "Abinadab"
+      "David",
+      "Solomon"
     ],
     "tags": [
       "Old Testament",
@@ -447,12 +447,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Samuel 13:14 — Amnon, David's firstborn, violated his half-sister Tamar. The event led to Absalom's revenge against Amnon.",
+    "explanation": "The question asks about the tragedy in David's family specifically described in 2 Samuel 13. The correct answer is 'Amnon and Tamar' because the entire chapter 13 focuses on Amnon's rape of his half-sister Tamar (2 Samuel 13:1-22). The distractor 'Absalom and Amnon' is close because Absalom was Tamar's full brother and later killed Amnon in revenge, but the central pair in the tragedy is Amnon and Tamar. The distractor 'David and Bathsheba' is out of scope because that story occurs in chapter 11 and is a different tragedy. The distractor 'Jonathan and Tamar' is a common misunderstanding, as Jonathan was David's friend and is not involved in the tragedy of chapter 13.",
     "language": "en",
     "options": [
-      "Absalom and Solomon",
-      "Mephibosheth and Michal",
-      "Abishai and Joab",
+      "Absalom and Amnon",
+      "David and Bathsheba",
+      "Jonathan and Tamar",
       "Amnon and Tamar"
     ],
     "tags": [
@@ -474,13 +474,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Samuel 14:2 — 'Joab sent to Tekoa and brought from there a wise woman and said to her, Pretend to be a mourner.'",
+    "explanation": "CORRECT ANSWER: 'A wise woman from Tekoa' (2 Samuel 14:2). Joab sent a wise woman from Tekoa to King David, instructing her to tell a parable so the king would agree to let Absalom return.\n\nINCORRECT DISTRACTOR 1 ('A wise woman from Bethlehem'): Incorrect location detail. Bethlehem was David's hometown (1 Samuel 16:1), but this woman was from Tekoa (2 Samuel 14:2).\n\nINCORRECT DISTRACTOR 2 ('A wise woman who was a relative of Joab'): Incorrect scope. The Scripture never mentions any family relationship between this woman and Joab; she was only enlisted by Joab to help (2 Samuel 14:1-2).\n\nINCORRECT DISTRACTOR 3 ('A wise woman hired by Joab for money'): Common misunderstanding of motive. The Scripture does not say Joab paid her money; he only 'sent to Tekoa and brought from there a wise woman' and 'instructed her what to say' (2 Samuel 14:2-3).",
     "language": "en",
     "options": [
       "A wise woman of Tekoa",
-      "The prophet Nathan",
-      "Bathsheba",
-      "Zadok the priest"
+      "A wise woman from Bethlehem",
+      "A wise woman who was a relative of Joab",
+      "A wise woman hired by Joab for money"
     ],
     "tags": [
       "Old Testament",
@@ -501,13 +501,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Samuel 16:5-7 — 'Shimei, the son of Gera... came out, cursing continually as he came.'",
+    "explanation": "The correct answer is Shimei, son of Gera, based on 2 Samuel 16:5-13, which describes Shimei cursing and throwing stones at David as he fled. Absalom was the enemy David was fleeing from, but he was not the one cursing him (common mistake). Joab was a loyal general of David and did not curse him in this passage (out of scope). Ahithophel was Absalom's counselor and appears in the same story but was not the one cursing (nearby passage confusion).",
     "language": "en",
     "options": [
-      "Ahithophel",
+      "Absalom, son of David",
       "Shimei son of Gera",
-      "Hushai",
-      "Mephibosheth"
+      "Joab, son of Zeruiah",
+      "Ahithophel, the Gilonite"
     ],
     "tags": [
       "Old Testament",
@@ -528,13 +528,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Samuel 22:2-3 — 'The LORD is my rock and my fortress and my deliverer... my shield, and the horn of my salvation, my stronghold.'",
+    "explanation": "The question specifically asks about the titles David calls the LORD in 2 Samuel 22:2-3. The Scripture records: 'The LORD is my rock, my fortress, and my deliverer; my God is my rock, in whom I take refuge, my shield and the horn of my salvation, my stronghold.' Therefore, the correct answer is 'The rock, the fortress, the deliverer, the shield, the high tower' (with 'high tower' corresponding to 'my stronghold').\n\nThe incorrect answers: (1) '... and the Shepherd' is an incorrect detail, as the title 'Shepherd' does not appear in this passage (though it is common in other Psalms). (2) '... and the Almighty' mistakes a nearby passage, as the title 'the Almighty' (El Shaddai) is not found in 2 Samuel 22:2-3. (3) 'The Redeemer, the Protector, and the Guide,' while possibly theologically accurate in meaning, misses the point of the question because they are not the titles listed in this specific passage.",
     "language": "en",
     "options": [
-      "Creator and judge",
-      "King of kings, Lord of lords",
+      "The rock, the fortress, the deliverer, the shield, the high tower, and the Shepherd",
+      "The rock, the fortress, the deliverer, and the Almighty",
       "Rock, fortress, deliverer, shield, stronghold",
-      "Father and Mother"
+      "The Redeemer, the Protector, and the Guide"
     ],
     "tags": [
       "Old Testament",

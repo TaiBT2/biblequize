@@ -9,13 +9,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Samuel 3:10 - Eli taught Samuel how to respond to the Lord's voice. This shows readiness to listen and obey.",
+    "explanation": "The correct answer 'Speak, Lord, for your servant is listening' is from 1 Samuel 3:10, recording Samuel's response to the LORD after being instructed by Eli. The incorrect options: 'Here I am, for I am in the tabernacle' is a near-miss confusion, based on earlier verses (3:4–8) when Samuel mistakenly thought it was Eli calling; 'Here I am, for I am in the tabernacle' is incorrect in detail about the reason for responding, not based on the text; 'O Lord, please forgive my sins' is a common misunderstanding, applying a similar reaction as Isaiah's (6:5) or expressing fear of sin when facing God, not Samuel's reaction in this context.",
     "language": "en",
     "options": [
       "Speak, Lord, for your servant is listening",
-      "I am listening",
-      "Here I am",
-      "Please wait, Lord"
+      "Here I am, for I am in the tabernacle",
+      "Here I am, for I am in the tabernacle",
+      "O Lord, please forgive my sins"
     ],
     "tags": [
       "Old Testament",
@@ -36,13 +36,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Samuel 16:7 - Man looks at the outward appearance, but the Lord looks at the heart. David was chosen because his heart was turned toward the Lord.",
+    "explanation": "Correct answer: 'The LORD looks at the heart, not outward appearance' is based directly on 1 Samuel 16:7, where the LORD says to Samuel: 'For the LORD sees not as man sees: man looks on the outward appearance, but the LORD looks on the heart.'\n\nIncorrect distractor 1 ('The LORD looks at outward appearance, not the heart'): This is a 'close but wrong' distractor that completely reverses the main point of the Scripture. The context shows Samuel was impressed by Eliab's stature, but the LORD taught the opposite lesson.\n\nIncorrect distractor 2 ('The LORD chooses based on loyalty to the previous dynasty'): This is a common misunderstanding or inference not present in the passage. The selection of David was not related to loyalty to King Saul or the previous dynasty, but was based entirely on God's standard.\n\nIncorrect distractor 3 ('The LORD evaluates through boldness in the face of enemies'): This detail is true of David (e.g., fighting Goliath) but occurred after the selection event in 1 Samuel 16. It is irrelevant to the specific question about the lesson the LORD taught Samuel at the moment of selection.",
     "language": "en",
     "options": [
-      "Choose the strongest one",
-      "Choose the firstborn",
+      "The LORD looks at outward appearance, not the heart",
+      "The LORD chooses based on loyalty to the previous dynasty",
       "The Lord looks at the heart, not the outward appearance",
-      "Choose the youngest one"
+      "The LORD evaluates through boldness in the face of enemies"
     ],
     "tags": [
       "Old Testament",
@@ -63,14 +63,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Samuel 17:49-50 - David used a stone and a sling, trusting the Lord to fight the battle for him.",
+    "explanation": "According to 1 Samuel 17:45-50, David said to Goliath: 'I come to you in the name of the LORD of hosts...' (verse 45) and affirmed that the victory belongs to the LORD. In the battle, 'David put his hand in his bag and took out a stone; and he slung it and struck the Philistine in his forehead' (verse 49). Afterwards, he used Goliath's own sword to finish him (verse 51). Therefore, the weapon David USED TO FELL (i.e., to bring down, defeat) Goliath was 'the stone and the sling'.\n\nThe incorrect answers:\n1. 'The sword and the shield' is incorrect because these are the weapons David refused when Saul equipped him (1 Samuel 17:38-39). He only used Goliath's sword after felling the opponent with the sling and stone (verse 51). This is a nearby_passage error.\n2. 'The bow and arrows' is incorrect because they are not mentioned in the passage describing the duel. This is a common_misconception about the warfare weapons of that era, not the weapons David used.\n3. 'The staff and the stone' is close but incorrect on a key detail. David did carry a staff (1 Samuel 17:40), but the staff was not the weapon used to fell Goliath. He used only the sling and the stone. This is a wrong_detail error.",
     "language": "en",
     "verseEnd": 47,
     "options": [
-      "Sword",
+      "The sword and the shield",
       "A stone and a sling",
-      "Bow and arrow",
-      "Spear"
+      "The bow and arrows",
+      "The staff and the stone"
     ],
     "tags": [
       "Old Testament",
@@ -91,13 +91,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Samuel 1:11 - Hannah prayed with tears and vowed to dedicate her son to the Lord. The Lord answered her prayer.",
+    "explanation": "Correct answer: 'A son and a promise to dedicate him to the LORD' based on 1 Samuel 1:11, where Hannah vows: '...give your servant a son, then I will give him to the LORD all the days of his life...'.\n\nIncorrect answers:\n1. 'A son and a promise to keep him at home' (wrong_detail): Incorrect on the key detail of the vow to dedicate the son to God. This is a 'close but wrong' distractor because it correctly identifies the request for a son but is wrong about the accompanying promise.\n2. 'Deliverance from disgrace and an offering' (true_but_off): While Hannah was disgraced for being childless (vv.6-7) and Samuel's parents later brought an offering (v.25), these were not what she directly asked for in the passage 1:10-11, so it misses the focus of the question.\n3. 'A son to carry on the family line and wealth' (common_misconception): Reflects a common misconception about the motivation for having children (lineage, economics), but in this context, Hannah's request came with a vow to dedicate the child to God's service, with no mention of wealth or family lineage.",
     "language": "en",
     "verseEnd": 11,
     "options": [
-      "Wealth",
-      "Victory",
-      "Health",
+      "A son and a promise to keep him at home",
+      "Deliverance from disgrace and an offering",
+      "A son to carry on the family line and wealth",
       "A son, vowing to dedicate him to the Lord"
     ],
     "tags": [
@@ -119,13 +119,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Samuel 2:12-17 - They did not know the Lord, stole the offerings, and lived immorally. The consequence: both died on the same day.",
+    "explanation": "In 1 Samuel 2:12-17, Eli's sons Hophni and Phinehas are rebuked for treating the LORD's offering with contempt (v. 17). They sent a servant to take meat from the pot before the fat was offered (v. 15) and demanded raw or cooked meat as they pleased (vv. 15-16), an act described as 'stealing the sacrifice.' Their overall attitude and behavior are characterized as 'wicked' and sinful (vv. 12, 17), reflecting 'godless conduct.'\n\nDistractor 1 is incorrect due to inaccurate detail: the passage does not mention stealing money from the ark of the covenant or idol worship; their sin directly involves the sacrifices.\nDistractor 2 is incorrect due to scope error: they did not refuse the priesthood; they were still performing priestly duties but in a wrongful manner (vv. 13-16).\nDistractor 3 (close but incorrect) is wrong in detail: they did not 'keep the meat before offering it all'; instead, they took meat before the *fat* was specifically offered to the LORD (vv. 15-16), and they also demanded raw or cooked meat as desired, not merely 'keeping it.'",
     "language": "en",
     "verseEnd": 17,
     "options": [
-      "Ran away",
-      "Worshiped idols",
-      "Rebelled against the king",
+      "Stealing money from the ark of God and worshiping idols",
+      "Refusing to serve as priests and rejecting God",
+      "Keeping the sacrificial meat for themselves before offering it all to the LORD",
       "Stole the offerings and lived immorally"
     ],
     "tags": [
@@ -147,14 +147,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Samuel 8:7 - The Lord said: They have not rejected you, but they have rejected me as their king. The people chose man over the Lord.",
+    "explanation": "The Israelites said to Samuel, 'Now appoint a king to lead us, such as all the other nations have' (1 Samuel 8:5). This is what led the LORD to tell Samuel, '... it is not you they have rejected, but they have rejected me as their king' (verse 7).\n\n- The correct answer is correct because it accurately expresses the people's request.\n- Distractor 1 (close) is wrong because the people did not request a new prophet; they asked for a king to replace the system of judges (represented by Samuel), which is a contextual detail that is close but not the actual request.\n- Distractor 2 is wrong because freedom from slavery is a common theme in Israel's history, but it is not the request in this Bible passage.\n- Distractor 3 is wrong because requesting a temple is a theme from a different context (such as later periods under King David or Solomon), unrelated to the request in 1 Samuel 8.",
     "language": "en",
     "verseEnd": 7,
     "options": [
       "A king like the other nations",
-      "Great wealth",
-      "A new prophet",
-      "Victory in battle"
+      "Request a prophet to replace Samuel",
+      "Request freedom from slavery",
+      "Request a temple for worship"
     ],
     "tags": [
       "Old Testament",
@@ -175,12 +175,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Samuel 9:2 - Saul had an impressive outward appearance, but his heart was not steadfast.",
+    "explanation": "The correct answer is 'Taller than everyone from the shoulders up, handsome' because 1 Samuel 9:2 records: 'And he had a son, whose name was Saul, a choice young man, and a goodly: and there was not among the children of Israel a goodlier person than he: from his shoulders and upward he was higher than any of the people.'\n\nThe incorrect answers:\n1. 'Taller than everyone from the head up' is incorrect in detail (wrong_detail) because the Bible clearly says 'from his shoulders and upward,' not 'from the head up.'\n2. 'Shorter than everyone from the shoulders up, plain-faced' is a common misconception (common_misconception) because it completely contradicts the biblical description of Saul's handsomeness and tall stature.\n3. 'Stronger than everyone in battle, courageous' may be true about Saul at a later stage (true_but_off), but it is not the specific description in 1 Samuel 9:2 for this question; it misses the focus of the question about his initial physical description.",
     "language": "en",
     "options": [
-      "The richest",
-      "The strongest",
-      "The wisest",
+      "Taller than everyone from the head up, handsome",
+      "Shorter than everyone from the shoulders up, plain-faced",
+      "Stronger than everyone in battle, courageous",
       "Taller than anyone else from the shoulders up, and handsome"
     ],
     "tags": [
@@ -202,13 +202,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Samuel 13:14 - The Lord sought a man after his own heart. David was called a man after God's own heart (Acts 13:22).",
+    "explanation": "In 1 Samuel 13:14, the prophet Samuel tells Saul: 'The LORD has sought out a man after his own heart' (ESV). The correct answer is 'A man after God's own heart,' because the Scripture emphasizes God's standard of finding a man according to His will, meaning one who pleases Him. The distractor 'A man after the people's heart' is close but misses the key detail, as the verse says 'after his own heart' (God's), not 'the people's heart.' The distractor 'A man of courage' is a common misunderstanding based on typical kingly imagery, but it is not the criterion stated in this verse. The distractor 'A man who obeys Saul' is textually accurate in that Saul was punished for disobedience (1 Samuel 13:13), but it misses the point of the question, which asks about Saul's replacement, not about a trait for serving Saul.",
     "language": "en",
     "options": [
-      "The strongest man",
-      "A man of royal descent",
+      "A man after the people's heart",
+      "A man of courage",
       "A man after God's own heart",
-      "The wisest man"
+      "A man who obeys Saul"
     ],
     "tags": [
       "Old Testament",
@@ -229,12 +229,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Samuel 15:22 - The Lord desires obedience from the heart rather than outward religious formality.",
+    "explanation": "The Scripture passage 1 Samuel 15:22 records: 'And Samuel said, Hath the LORD as great delight in burnt offerings and sacrifices, as in obeying the voice of the LORD? Behold, to obey is better than sacrifice, and to hearken than the fat of rams.' (KJV)\n\n*   The correct answer 'Sacrifice' is accurate because this verse directly compares 'obeying' with 'sacrifice', emphasizing that a heart of obedience is more important than ritual offerings.\n*   The distractor 'The sound of the harp' is incorrect because it is an erroneous detail: although David (later) played the harp, this detail is unrelated to the context and Samuel's words in chapter 15.\n*   The distractor 'Prayer' is incorrect because it is a common misunderstanding: although prayer is important, in this specific verse 22, the direct and specific standard of comparison is 'sacrifice', not 'prayer'. This distractor substitutes a different, more general religious concept.\n*   The distractor 'The fat of rams' is a 'near-miss' distractor but is the wrong detail from the immediate passage: this phrase does appear in the same verse 22 ('to hearken than the fat of rams'), but the question asks about the first comparison ('to obey is better than ___'). Therefore, the correct object of comparison must be 'sacrifice', not 'the fat of rams' from the latter part of the verse.",
     "language": "en",
     "options": [
-      "Victory",
-      "Gold and silver",
-      "Knowledge",
+      "The sound of the harp",
+      "Prayer",
+      "The fat of rams",
       "Sacrifice"
     ],
     "tags": [
@@ -256,14 +256,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Samuel 18:1 - Jonathan loved David as himself. A faithful friendship that endured regardless of circumstances.",
+    "explanation": "The CORRECT answer is 'David and Jonathan' because 1 Samuel 18:1-3 clearly states: 'Now it came about when he had finished speaking to Saul, that the soul of Jonathan was knit to the soul of David, and Jonathan loved him as himself. ... Then Jonathan made a covenant with David because he loved him as himself.', describing the beginning of the most famous friendship.\n- The distractor 'David and Saul' is INCORRECT because although the two had a relationship (king-subject, later enemies), it was not the famous friendship; it was specifically David with Jonathan (Saul's son).\n- The distractor 'Jonathan and Saul' is INCORRECT because this is a father-son relationship, not the famous friendship emphasized in this Scripture passage.\n- The distractor 'Elijah and Elisha' is INCORRECT because this is a mentor-disciple, prophet-successor relationship (2 Kings 2), which, while important, is not the most famous friendship asked about in the context of 1 Samuel 18.",
     "language": "en",
     "verseEnd": 3,
     "options": [
-      "David and Samuel",
+      "David and Saul",
       "David and Jonathan",
-      "Abraham and Lot",
-      "Moses and Aaron"
+      "Jonathan and Saul",
+      "Elijah and Elisha"
     ],
     "tags": [
       "Old Testament",
@@ -284,14 +284,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Samuel 24:5-7 - David honored Saul as the Lord's anointed, even though Saul sought to kill him. A lesson about respecting authority.",
+    "explanation": "In 1 Samuel 24:4-7, David's men urged him to kill Saul because God had delivered the king into his hand. David only secretly cut off a corner of Saul's robe (v. 4). Immediately afterward, David's heart struck him (v. 5) because he had cut off the robe of the king, the LORD's anointed. He said to his men, 'The LORD forbid that I should do this thing to my lord, the LORD's anointed, to stretch out my hand against him!' (v. 6). The correct answer is accurate because it describes David's exact action (cutting off the robe corner) and his immediate reaction (remorseful conviction).\n\n- Distractor 1 is wrong because the detail 'felt pleased' is incorrect. The text clearly states David's heart 'struck him' (remorse), not pleasure. This is a 'close but wrong' distractor because the action is correct but the reaction is completely wrong.\n- Distractor 2 is wrong because the detail 'feared Saul's soldiers' is not in this passage. The real reason was David's reverence for the LORD and the king as His anointed. This is a plausible reason in another context but not the reason in this text.\n- Distractor 3 is wrong because it confuses a different event (1 Samuel 26:7-12, where David and Abishai entered Saul's camp and Abishai wanted to kill the king). In this cave incident (1 Samuel 24), only Saul is present, and no attendant is mentioned as being harmed.",
     "language": "en",
     "verseEnd": 7,
     "options": [
-      "Captured Saul",
+      "Cut off a corner of Saul's robe and felt pleased about doing so",
       "Only cut the corner of Saul's robe and was stricken with remorse for doing so",
-      "Ran away",
-      "Killed Saul"
+      "Drew his sword but did not strike because he feared Saul's soldiers",
+      "Killed Saul's attendant instead of the king"
     ],
     "tags": [
       "Old Testament",
@@ -312,14 +312,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Samuel 26:11-12 - David continued to honor Saul's life, taking only the spear and water jug as proof.",
+    "explanation": "In 1 Samuel 26:11-12, David took the spear and water jug from beside Saul's head, but did not kill him. The correct answer is accurate because it correctly describes the two items David took. The distractor 'Saul's spear and robe' is close but incorrect in detail (the robe is not mentioned in this specific situation; it is a detail from a nearby passage about a previous encounter). The distractor 'Only a water jug of Saul' is incorrect in both quantity and item (it lacks the spear). The distractor 'A branch and a piece of cloth' matches the text (branch and cloth are mentioned) but is off-topic because it relates to a different detail in the story, not the items David took on this occasion.",
     "language": "en",
     "verseEnd": 11,
     "options": [
-      "A sword",
-      "The crown",
+      "Saul's spear and robe",
+      "Only a water jug of Saul",
       "Saul's spear and water jug",
-      "The robe"
+      "A branch and a piece of cloth"
     ],
     "tags": [
       "Old Testament",
@@ -341,13 +341,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Samuel 4:11 — 'And the ark of God was captured, and the two sons of Eli, Hophni and Phinehas, died.'",
+    "explanation": "The question asks what was lost along with Eli's two sons in the battle of Aphek (1 Samuel 4:10-11). The correct answer is 'the Ark of the Covenant' because the Scripture clearly states: 'the ark of God was taken, and the two sons of Eli, Hophni and Phinehas, died' (verse 11).\n\nThe incorrect answers:\n1. 'The tabernacle at Shiloh' is an almost-right answer because the Ark of the Covenant was usually placed in the tabernacle, but in this battle, only the Ark was lost; the tabernacle remained at Shiloh (error type: 'nearby_passage').\n2. 'Two leading elders' is a wrong detail: this battle involved Eli's two sons accompanying the Ark, but they were not the sole commanders; the question asks 'what was lost along with' them, not about them personally (error type: 'wrong_detail').\n3. 'The city of Aphek' is textually true (the location of the battle) but off-topic, as the city was not 'lost' in this event (error type: 'true_but_off').",
     "language": "en",
     "options": [
-      "The temple",
+      "The tabernacle at Shiloh",
       "The Ark of the Covenant",
-      "The king",
-      "The promised land"
+      "Two leading elders",
+      "The city of Aphek"
     ],
     "tags": [
       "Old Testament",
@@ -368,13 +368,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Samuel 5:4 — 'Behold, Dagon had fallen face downward on the ground before the ark of the LORD, and the head of Dagon and both his hands were lying cut off on the threshold.'",
+    "explanation": "The correct answer is based directly on 1 Samuel 5:3-4. When the Philistines placed the Ark of the Covenant beside the idol of Dagon in Ashdod, the next morning they found the idol of Dagon fallen face down on the ground before the Ark. They set it back up, but the following morning, it had fallen again with its head and both hands cut off, lying on the threshold; only the trunk of Dagon remained.\n\n- Distractor 1 (The Ark of the Covenant shone...): Incorrect because this Bible passage does not describe a luminous phenomenon or the idol turning to dust; this is a common misunderstanding based on other miracles.\n- Distractor 2 (Dagon fell face down; his entire body shattered...): Close but incorrect in a key detail. The idol falling is correct, but the Bible clearly states only the head and hands were cut off, not the entire body shattered into pieces.\n- Distractor 3 (The Ark of the Covenant opened...): Incorrect because, although the Ark is associated with God's power, the specific details of lightning and the Ark opening are not described in this event; this is accurate information in a different context but misplaced for the question about what happened at Dagon's temple.",
     "language": "en",
     "options": [
-      "Dagon laughed",
-      "Dagon stood firm",
+      "The Ark of the Covenant shone with a blinding light; Dagon turned to dust",
+      "Dagon fell face down; his entire body shattered into pieces",
       "Dagon fell face down; his head and hands were cut off",
-      "Dagon vanished"
+      "The Ark of the Covenant opened; lightning struck the idol"
     ],
     "tags": [
       "Old Testament",
@@ -394,13 +394,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Samuel 7:12 — 'Then Samuel took a stone... and called its name Ebenezer; for he said, Till now the LORD has helped us.'",
+    "explanation": "1 Samuel 7:12 records: 'Then Samuel took a stone and set it up between Mizpah and Shen. He named it Ebenezer, saying, \"Thus far the LORD has helped us.\"' The name Ebenezer means 'stone of help,' referring to the help of the LORD, so the correct answer is 'Stone of help (the LORD has helped).' The incorrect answers: 'Stone of victory (the Israelites had won)': Incorrect detail. Although related to the context after the victory over the Philistines, the stone's name does not emphasize the people's victory but emphasizes the help from the LORD. 'Stone of remembrance (a boundary marker)': Off-topic. Although stones could be memorials, the question asks about the specific meaning of the name, not the general function of stones in the Bible; furthermore, it did not mark a boundary. 'Stone of prayer (where Samuel prayed)': Misplaced context. This is based on the earlier context in 1 Samuel 7:5-9, where Samuel prayed and offered a sacrifice at Mizpah, but the Ebenezer stone was set up afterward and its name is not directly related to prayer.",
     "language": "en",
     "options": [
       "Stone of help (Till now the LORD has helped us)",
-      "Stone of glory",
-      "Stone of memorial",
-      "Stone of boundary"
+      "Stone of victory (the Israelites had won)",
+      "Stone of remembrance (a boundary marker)",
+      "Stone of prayer (where Samuel prayed)"
     ],
     "tags": [
       "Old Testament",
@@ -420,12 +420,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Samuel 10:1 — 'Then Samuel took a flask of oil and poured it on his head and kissed him and said, Has not the LORD anointed you to be prince over his people Israel?'",
+    "explanation": "The correct answer is Saul, because 1 Samuel 10:1 clearly records: 'Then Samuel took a flask of oil and poured it on his head and kissed him and said, \"Has not the LORD anointed you to be prince over his people Israel?\"'\n\nIncorrect answers:\n- 'David': This is a common misunderstanding because David is the most famous king, but he was anointed after Saul (1 Samuel 16:13).\n- 'Samuel': Although Samuel performed the anointing in this verse, he was the prophet, not the one anointed to be king. This answer is textually accurate but misses the point of the question.\n- 'Jonathan': Jonathan was Saul's son, an important figure, but he was never anointed as king. This is an error regarding the character's name.",
     "language": "en",
     "options": [
       "David",
+      "Samuel",
       "Jonathan",
-      "Solomon",
       "Saul"
     ],
     "tags": [
@@ -446,13 +446,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Samuel 16:13 — 'Then Samuel took the horn of oil and anointed him in the midst of his brothers. And the Spirit of the LORD rushed upon David from that day forward.'",
+    "explanation": "1 Samuel 16:13 records: 'Then Samuel took the horn of oil and anointed him in the midst of his brothers. And the Spirit of the LORD rushed upon David from that day forward.' Therefore, the correct answer is 'the Spirit of the LORD'. The incorrect options: 'The peace of the LORD' is incorrect because while 'peace' is an important theme and can be associated with the LORD in Scripture, this passage specifically describes the 'Spirit' rushing upon him; 'The spirit of David' is incorrect because the passage does not speak of David's own spirit but the Spirit of the LORD coming upon him; 'The joy of a king' is incorrect as this is a common misunderstanding of the result of the anointing, but the passage does not describe an immediate emotion of joy but the event of the Spirit of the LORD coming.",
     "language": "en",
     "options": [
-      "Wealth",
-      "Wisdom",
+      "The peace of the LORD",
+      "The spirit of David",
       "The Spirit of the LORD",
-      "Special strength"
+      "The joy of a king"
     ],
     "tags": [
       "Old Testament",
@@ -473,13 +473,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Samuel 25:32-33 — 'Blessed be the LORD... blessed be your discretion, and blessed be you, who have kept me this day from bloodguilt and from working salvation with my own hand.'",
+    "explanation": "CORRECT ANSWER: 'Shedding blood and taking vengeance with his own hand' (1Sa 25:33). David blessed Abigail because she came in time and prevented his act of personal vengeance ('...for you have come to meet me in time to keep me from shedding blood and avenging myself with my own hand.' – 1Sa 25:33).\n\nINCORRECT DISTRACTOR 1 ('Plundering all of Nabal's property'): Incorrect detail. Although David had intended to kill Nabal and every male in his household (1Sa 25:34), and later Nabal died, God struck him, and David took Abigail as his wife, the primary reason stated in the blessing was to prevent him from 'shedding blood' and 'avenging himself with his own hand,' not to prevent plundering property.\n\nINCORRECT DISTRACTOR 2 ('Disrespecting the covenant with Saul'): Common misunderstanding/wrong context. This is a separate event from David's relationship with Saul. Abigail's intervention focused on David incurring guilt for shedding blood without cause, unrelated to any covenant or agreement with Saul.\n\nINCORRECT DISTRACTOR 3 ('Choosing to rely on his own strength'): Textually accurate but misses the question's focus. Although Abigail advised David that the LORD would establish a lasting house for him and that the LORD would fight his enemies (1Sa 25:28-31), implying trust in God, the specific question asks what Abigail 'prevented him from doing.' The specific action prevented was 'shedding blood and avenging himself with his own hand,' not the general attitude of 'relying on his own strength.'",
     "language": "en",
     "options": [
       "Bloodguilt and avenging by his own hand",
-      "Forsaking the right path",
-      "Becoming king too early",
-      "Returning to Saul"
+      "Plundering all of Nabal's property",
+      "Disrespecting the covenant with Saul",
+      "Choosing to rely on his own strength"
     ],
     "tags": [
       "Old Testament",
@@ -500,12 +500,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Samuel 28:7-8 — 'Then Saul said to his servants, Seek out for me a woman who is a medium... And his servants said, Behold, there is a medium at En-dor.'",
+    "explanation": "The correct answer is 'The medium (spiritist) at Endor' because 1 Samuel 28:7-8 records that Saul told his servants to find him a medium, and they directed him to the woman at Endor. The distractor 'The prophet Samuel at Ramah' is close because Samuel was someone Saul had previously inquired of, but he had already died (v.3) and was not at Ramah at this time; this confuses a nearby passage. The distractor 'The priest Ahimelech at Nob' is incorrect in detail because Ahimelech was killed by Saul earlier (22:18-19), not the person Saul sought the night before the battle. The distractor 'The false prophet at Jericho' is off-topic because 'false prophet' and 'Jericho' do not appear in the context of 1 Samuel 28.",
     "language": "en",
     "options": [
-      "A high priest",
-      "Samuel still alive",
-      "King David",
+      "The prophet Samuel at Ramah",
+      "The priest Ahimelech at Nob",
+      "The false prophet at Jericho",
       "The medium (witch) at En-dor"
     ],
     "tags": [

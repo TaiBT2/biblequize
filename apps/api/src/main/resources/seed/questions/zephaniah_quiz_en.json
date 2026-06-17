@@ -6,14 +6,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Whose son was Zephaniah?",
-    "correctAnswer": [0],
-    "explanation": "Zephaniah 1:1 — 'The word of the LORD that came to Zephaniah the son of Cushi, son of Gedaliah, son of Amariah, son of Hezekiah...' The four-generation genealogy back to King Hezekiah suggests a royal lineage.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The correct answer is 'Cushi' because Zephaniah 1:1 clearly states: 'The word of the LORD which came unto Zephaniah the son of Cushi...'. The distractor 'Amos' is incorrect because Amos is the name of another prophet mentioned in a nearby book (the book of Amos), not the name of Zephaniah's father. The distractor 'Jeremiah' is incorrect because this is the name of a major prophet from the same period (the late Kingdom of Judah), a common misunderstanding due to readers' familiarity with this name, but it is not related to Zephaniah's family relationship. The distractor 'Joshua' is incorrect because this is the name of an important leader in Israel's history (the book of Joshua), belonging to a completely different time period and context far removed from Zephaniah.",
     "language": "en",
     "options": [
       "Cushi",
-      "Gedaliah",
-      "Amariah",
-      "Hezekiah"
+      "Amos",
+      "Jeremiah",
+      "Joshua"
     ],
     "tags": [
       "Old Testament",
@@ -30,14 +32,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "During which king of Judah did Zephaniah prophesy?",
-    "correctAnswer": [1],
-    "explanation": "Zephaniah 1:1 — '...in the days of Josiah the son of Amon, king of Judah.' Josiah was the reforming king (2 Kings 22-23); Zephaniah may have supported his reforms.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Zephaniah 1:1 records: 'The word of the LORD that came to Zephaniah the son of Cushi, son of Gedaliah, son of Amariah, son of Hezekiah, in the days of Josiah the son of Amon, king of Judah.' The correct answer is Josiah. The distractor 'Hezekiah' is a name that appears in the prophet's lineage, but he is an ancestor of Zephaniah, not the contemporary king (nearby_passage). The distractor 'Amaziah' is the name of another king of Judah, but he lived long before this period (wrong_detail). The distractor 'Manasseh' is the king before Josiah, a common confusion because Manasseh is the grandfather of Josiah, but Zephaniah prophesied during the reign of King Josiah, not Manasseh (common_misconception).",
     "language": "en",
     "options": [
-      "Ahaz",
+      "Hezekiah",
       "Josiah",
-      "Manasseh",
-      "Zedekiah"
+      "Amaziah",
+      "Manasseh"
     ],
     "tags": [
       "Old Testament",
@@ -54,14 +58,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Zephaniah 1:7, what is the reason to be silent before the Lord GOD?",
-    "correctAnswer": [2],
-    "explanation": "Zephaniah 1:7 — 'Be silent before the Lord GOD! For the day of the LORD is near...'",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Zephaniah 1:7 states: 'Be silent before the Lord GOD! For the day of the LORD is near; the LORD has prepared a sacrifice and consecrated his guests.' (ESV). The correct answer is 'Because the day of the LORD is near' – the exact opening phrase of the verse. *Distractor 1* ('Because the day of fasting is near') alters a crucial detail (day of the LORD → day of fasting), which is a factual error. *Distractor 2* ('Because the LORD has prepared a program') borrows the phrase 'has prepared' from the latter half of the verse, which the question does not address, but changes the purpose (sacrifice → program) – this is an error of using a nearby phrase but misrepresenting its content. *Distractor 3* ('Because everyone must prepare offerings') is a common misunderstanding, leading learners to think that being silent relates to preparing personal offerings, while Scripture indicates God's people are the invited guests and He Himself is the one who prepares.",
     "language": "en",
     "options": [
-      "Because Passover approaches",
-      "Because prophecy has ceased",
+      "Because the day of fasting is near",
+      "Because the LORD has prepared a program",
       "Because the Day of the LORD is near",
-      "Because harvest is beginning"
+      "Because everyone must prepare offerings"
     ],
     "tags": [
       "Old Testament",
@@ -78,13 +84,15 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Zephaniah 1:12, what do the complacent say in their hearts?",
-    "correctAnswer": [3],
-    "explanation": "Zephaniah 1:12 — 'At that time I will search Jerusalem with lamps, and I will punish the men who are complacent... those who say in their hearts, \"The LORD will not do good, nor will he do ill.\"' Spiritual apathy — believing God neither cares nor acts.",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Zephaniah 1:12 records: 'And it shall come to pass at that time, that I will search Jerusalem with candles, and punish the men that are settled on their lees: that say in their heart, The LORD will not do good, neither will he do evil.'\n\nCORRECT ANSWER: 'The LORD will not do good, neither will he do evil' is the exact quotation of what they said in their heart, reflecting an indifferent attitude that denies God's intervention.\n\nINCORRECT DISTRACTORS:\n1. 'The LORD has done good, and will do harm' (wrong_detail): Incorrect on a key detail. The text states they said He 'will not do good, neither will he do evil,' while this option changes it to an affirmation that He has and will act.\n2. 'The LORD will do good, and will do no harm' (common_misconception): Represents a common misconception that God is only good and does not judge, contrary to the context of warning about judgment in the book of Zephaniah.\n3. 'The LORD does no good, only harm' (true_but_off): While the part 'does no good' aligns with the text, 'only harm' is a complete distortion of the original meaning ('neither will he do evil'), making the answer incorrect for a question asking about what they said in their heart.",
     "language": "en",
     "options": [
-      "God will bless us greatly",
-      "God will destroy everything",
-      "God is only merciful, never judging",
+      "The LORD has done good, and will do harm",
+      "The LORD will do good, and will do no harm",
+      "The LORD does no good, only harm",
       "The LORD will not do good, nor will He do ill"
     ],
     "tags": [
@@ -102,14 +110,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Zephaniah 1:14, how is the great day of the LORD described?",
-    "correctAnswer": [0],
-    "explanation": "Zephaniah 1:14 — 'The great day of the LORD is near, near and hastening fast...' The repetition 'near, near' emphasizes urgency.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Zephaniah 1:14 states: 'The great day of the LORD is near, it is near, and hasteth greatly.' Therefore, the correct answer is 'It is near, hastening greatly' because it is faithful to the text, emphasizing its nearness and urgency.\n- The distractor 'It is near, but still far off' is incorrect because adding the idea 'still far off' contradicts 'hasteth greatly' in the Scripture (incorrect key detail).\n- The distractor 'It has already passed, no longer coming' is incorrect because the day of the LORD is described as forthcoming, not as having already passed (incorrect time scope).\n- The distractor 'It is still a long way off' is incorrect because this is a common misunderstanding, opposite to the 'near' and 'hastening' nature emphasized in the verse.",
     "language": "en",
     "options": [
       "Near and hastening fast",
-      "Still far, unknown to any",
-      "Postponed to a later generation",
-      "Coming in secret darkness"
+      "It is near, but still far off",
+      "It has already passed, no longer coming",
+      "It is still a long way off"
     ],
     "tags": [
       "Old Testament",
@@ -126,14 +136,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "How does Zephaniah 1:15 describe the Day of the LORD?",
-    "correctAnswer": [1],
-    "explanation": "Zephaniah 1:15 — 'A day of wrath is that day, a day of distress and anguish, a day of ruin and devastation, a day of darkness and gloom, a day of clouds and thick darkness.'",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "The question quotes Zephaniah 1:15 (KJV): 'That day is a day of wrath, a day of trouble and distress, a day of wasteness and desolation, a day of darkness and gloominess...'. Therefore, the correct answer fully describes the characteristics: 'wrath, trouble, distress, darkness'.\n- Distractor 1 ('brightness') is close but incorrect in detail: the Scripture uses 'darkness and gloominess', not 'brightness'.\n- Distractor 2 ('blessing, joy...') is a common misunderstanding: many think 'the day of the LORD' is a positive day, but in this context (Zephaniah 1) it is a day of judgment.\n- Distractor 3 ('trumpet sound, shouting...') confuses a nearby passage: these sounds often appear in descriptions of the day of judgment (as in the book of Revelation or Isaiah), but they are not the specific description in Zephaniah 1:15.",
     "language": "en",
     "options": [
-      "A day of peace and feasting",
+      "A day of wrath, trouble, distress, brightness",
       "A day of wrath, distress, anguish, and darkness",
-      "A day of grace and universal deliverance",
-      "A day of quietness and forgiveness"
+      "A day of blessing, joy, peace, hope",
+      "A day of trumpet sound, shouting, wind sound, rain sound"
     ],
     "tags": [
       "Old Testament",
@@ -150,14 +162,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Zephaniah 1:18, what cannot deliver them from God's wrath?",
-    "correctAnswer": [2],
-    "explanation": "Zephaniah 1:18 — 'Neither their silver nor their gold shall be able to deliver them on the day of the wrath of the LORD...'",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "See Zephaniah 1:18. CORRECT ANSWER: 'Silver and gold' because the Scripture clearly states: 'Neither their silver nor their gold shall be able to deliver them in the day of the LORD's wrath.' INCORRECT ANSWERS: (1) 'Holiness and prayer' is incorrect because it falls outside the scope and context of this verse; verse 18 focuses solely on the futility of material wealth. (2) 'Prophets and offerings' is close but incorrect in detail; these are elements often mentioned in other prophetic books concerning judgment, but they are not the specific things mentioned in this particular verse 18. (3) 'Repentance and sacrifice' is a common misunderstanding; although these are important matters, they are not the subject of this verse, which emphasizes that even the most precious wealth cannot atone for sin when the LORD's wrath has come.",
     "language": "en",
     "options": [
-      "Sharp weapons",
-      "Powerful alliances",
+      "Holiness and prayer",
+      "Prophets and offerings",
       "Silver and gold",
-      "The king's promises"
+      "Repentance and sacrifice"
     ],
     "tags": [
       "Old Testament",
@@ -174,13 +188,15 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Zephaniah 2:3, what three things must the humble seek?",
-    "correctAnswer": [3],
-    "explanation": "Zephaniah 2:3 — 'Seek the LORD, all you humble of the land, who do his just commands; seek righteousness; seek humility...' Three 'seek' commands in one verse — a classic prophetic pattern.",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Zephaniah 2:3 says: 'Seek the LORD, all you humble of the land, who do his just commands; seek righteousness; seek humility.' Therefore, the correct answer is the three objects of seeking: the LORD, righteousness, and humility. The incorrect answers: 1) 'holiness' is an important attribute but is not listed in this verse, incorrectly replacing 'humility'. 2) 'salvation' is a broad and important concept, but it is not among the three specific things called for here, and it also lacks 'the LORD'. 3) 'peace' is a theme often found in nearby prophetic contexts (like promises of restoration), but it is not the precise wording in Zephaniah 2:3.",
     "language": "en",
     "options": [
-      "Wealth, power, honor",
-      "Temple, sacrifice, altar",
-      "Land, estate, children",
+      "the LORD, righteousness, holiness",
+      "righteousness, meekness, salvation",
+      "the LORD, peace, meekness",
       "The LORD, righteousness, and humility"
     ],
     "tags": [
@@ -198,14 +214,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Zephaniah 2:13, which land will the LORD make desolate?",
-    "correctAnswer": [0],
-    "explanation": "Zephaniah 2:13 — 'And he will stretch out his hand against the north and destroy Assyria, and he will make Nineveh a desolation...'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The question specifically asks about the land made desolate in Zephaniah 2:13. The Scripture states: 'The LORD will stretch out His hand against the north and destroy Assyria; He will make Nineveh a desolation, as dry as the wilderness.' Therefore, the correct answer is 'Assyria and Nineveh' (the place of destruction).\n\nThe incorrect answers:\n- 'Moab and Ammon': This is a close answer because they are neighboring peoples judged in the same chapter (Zephaniah 2:8-11), but they are not the land mentioned in verse 13. Error type: 'misplaced passage'.\n- 'Babylon and Tyre': These are famous empires/cities judged in other prophetic books (like Isaiah, Jeremiah), but they are not mentioned in Zephaniah 2:13. Error type: 'incorrect detail (name)'.\n- 'Judah and Jerusalem': These are the primary recipients of warning in the book of Zephaniah, but the question asks about the land made desolate according to verse 13, not about God's own people. Error type: 'incorrect scope'.",
     "language": "en",
     "options": [
       "Assyria and Nineveh",
-      "Egypt and Cush",
-      "Babylon and Ur",
-      "Philistia and Gaza"
+      "Moab and Ammon",
+      "Babylon and Tyre",
+      "Judah and Jerusalem"
     ],
     "tags": [
       "Old Testament",
@@ -222,14 +240,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Zephaniah 3:12, what kind of people will the LORD leave among His people?",
-    "correctAnswer": [1],
-    "explanation": "Zephaniah 3:12 — 'But I will leave in your midst a people humble and lowly. They shall seek refuge in the name of the LORD.' Humble and lowly — bowed down, relying wholly on the LORD.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Zephaniah 3:12 (NIV) states: 'But I will leave within you the meek and humble. The remnant of Israel will trust in the name of the LORD.' Therefore, the correct answer is 'Afflicted and poor, taking refuge in the name of the Lord,' describing the people God will leave behind.\n\n- The distractor 'Noble and wealthy, taking refuge in God's protection.' is incorrect because it contradicts the text, which speaks of 'poor and afflicted' rather than 'noble and wealthy.' This error belongs to misremembering a nearby passage, as other parts of Scripture sometimes mention protection for believers but not the specific characteristic here.\n\n- The distractor 'Afflicted and inferior, hiding in the name of the Lord.' is close but incorrect in key details: the text uses 'afflicted' (humble/afflicted) paired with 'poor' (poor/needy), not 'inferior' (lowly), and 'taking refuge' differs from 'hiding' (avoiding). This error belongs to incorrect detail.\n\n- The distractor 'Afflicted and poor, anointed by the Lord.' is incorrect because, while it has the first two characteristics right, 'anointed by the Lord' is an action of God not mentioned in this verse; the question asks for the characteristics of the people, and the verse only describes them as 'taking refuge in the name of the Lord.' This error belongs to correct text but misaligned with the question, as 'anointed' may appear in other contexts but not here.",
     "language": "en",
     "options": [
-      "Wealthy and powerful",
+      "Noble and wealthy, taking refuge in God's protection.",
       "Humble and lowly, seeking refuge in the name of the LORD",
-      "Populous and many-descended",
-      "Learned and honored"
+      "Afflicted and inferior, hiding in the name of the Lord.",
+      "Afflicted and poor, anointed by the Lord."
     ],
     "tags": [
       "Old Testament",
@@ -246,14 +266,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Zephaniah 1:2, the LORD will utterly sweep away everything from where?",
-    "correctAnswer": [2],
-    "explanation": "Zephaniah 1:2 — 'I will utterly sweep away everything from the face of the earth, declares the LORD.' Language akin to the Flood — total judgment.",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Zephaniah 1:2 states: 'I will utterly consume all things from off the land, saith the LORD.' Therefore, the correct answer is 'From the face of the earth,' as the Scripture directly quotes it.\n\nIncorrect answers: (1) 'From the face of man' is close but incorrect in a key detail (the Scripture says 'the land,' not 'man'). (2) 'From the face of the sun' is a confusion with imagery in nearby passages (such as 1:4 mentioning the sun god) but is not what is removed in verse 2. (3) 'From under the earth' is incorrect in scope, as 'the face of the earth' refers to the surface/area of habitation, while 'under the earth' typically denotes Sheol or burial places, not the meaning of this verse.",
     "language": "en",
     "options": [
-      "From the house of God",
-      "From Jerusalem",
+      "From the face of man",
+      "From the face of the sun",
       "From the face of the earth",
-      "From southern Judah"
+      "From under the earth"
     ],
     "tags": [
       "Old Testament",
@@ -270,13 +292,15 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Zephaniah 3:9, what will God give to the peoples?",
-    "correctAnswer": [3],
-    "explanation": "Zephaniah 3:9 — 'For at that time I will change the speech of the peoples to a pure speech, that all of them may call upon the name of the LORD and serve him with one accord.' A prophecy of the nations worshiping God — reversing Babel.",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "In Zephaniah 3:9, God declares: 'For then I will restore to the peoples pure lips, That they all may call on the name of the LORD.' The correct answer is correct because it accurately quotes the promise of 'pure lips to call on the name of the Lord'. Distractor 1 is close but incorrect in purpose ('to proclaim salvation', while the original text says 'to call on the name of the LORD'); this is an error of confusing a nearby passage or misremembering the purpose. Distractor 2 is incorrect in a key detail because it changes what is given ('a pure heart' instead of 'pure lips'). Distractor 3, although it mentions purity and the Lord's name, has the purpose 'to give thanks for His grace', which is a different aspect of worship and is not found in this Bible verse.",
     "language": "en",
     "options": [
-      "New weapons",
-      "Gold and treasures",
-      "A magnificent temple",
+      "Lips purified to proclaim salvation",
+      "A pure heart to call on the name of the Lord",
+      "Lips purified to give thanks for His grace",
       "A pure speech to call upon the name of the LORD"
     ],
     "tags": [
@@ -294,14 +318,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Zephaniah 3:13, what will the remnant of Israel NOT do?",
-    "correctAnswer": [0],
-    "explanation": "Zephaniah 3:13 — 'Those who are left in Israel; they shall do no injustice and speak no lies, nor shall there be found in their mouth a deceitful tongue...' Character transformed — no injustice, lies, or deceit.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The correct answer is 'wickedness, lying, deceitful tongues' because Zephaniah 3:13 states: 'The remnant of Israel shall not do iniquity, nor speak lies; neither shall a deceitful tongue be found in their mouth.' The first distractor ('Idolatry...') is incorrect because, although these are common sins, they are not the specific things listed in this verse. The second distractor ('Wickedness, lying, worship') is close but incorrect in a key detail: the Scripture says 'deceitful tongue,' not 'worship' (true worship is actually what should be done). The third distractor ('Sorrow...') is incorrect because, although the book's context speaks of judgment and hope, these are not the sinful behaviors that the remnant will 'not do' according to verse 13.",
     "language": "en",
     "options": [
       "Injustice, lies, and deceitful speech",
-      "Offer sacrifice and prayer",
-      "Seek the LORD and worship Him",
-      "Teach the law to their children"
+      "Idolatry, ritual sacrifices, prayers",
+      "Wickedness, lying, worship",
+      "Sorrow, lamentation, weeping"
     ],
     "tags": [
       "Old Testament",
@@ -318,14 +344,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Whom does Zephaniah 3:14 call to sing for joy?",
-    "correctAnswer": [1],
-    "explanation": "Zephaniah 3:14 — 'Sing aloud, O daughter of Zion; shout, O Israel! Rejoice and exult with all your heart, O daughter of Jerusalem!'",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Zephaniah 3:14 says: 'Sing, O daughter of Zion; shout, O Israel; be glad and rejoice with all the heart, O daughter of Jerusalem' (KJV). The correct answer is because this verse directly calls 'the daughter of Zion,' 'Israel,' and 'the daughter of Jerusalem' to sing. Distractor 1 is incorrect because it uses the names 'Bethlehem' and 'the son of Judah,' which are not mentioned in this context (they are closer to other passages about Judah). Distractor 2 is a 'close but incorrect' answer, as it adds 'the priests'—a group not included in this Bible verse. Distractor 3 is incorrect in scope because it expands the audience to 'the Gentiles' and 'the kings,' while the call is specifically for God's people, referred to with symbolic titles.",
     "language": "en",
     "options": [
-      "The neighboring nations",
+      "The son of Judah, the people of Bethlehem, the daughter of Judah",
       "Daughter of Zion, Israel, daughter of Jerusalem",
-      "The angels in the heavens",
-      "The patriarchal ancestors"
+      "The daughter of Zion, the priests, the daughters of Jerusalem",
+      "The Gentiles, the kings of the earth, all living people"
     ],
     "tags": [
       "Old Testament",
@@ -342,14 +370,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Zephaniah 3:15, where is the King of Israel — the LORD?",
-    "correctAnswer": [2],
-    "explanation": "Zephaniah 3:15 — '...The King of Israel, the LORD, is in your midst; you shall never again fear evil.' God's presence is the security of His people.",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Zephaniah 3:15 clearly states: 'The LORD, the King of Israel, is in your midst.' This is a direct promise of God's presence among His people.\n- The correct answer 'In your midst' is the exact quotation from the Scripture.\n- The distractor 'In the high heavens' is incorrect because it reflects a common misconception about God's dwelling place, but it is not the declaration of this verse. This verse emphasizes God's direct and intimate presence.\n- The distractor 'In the holy temple' is incorrect because it is an idea that can be found in other nearby passages speaking of God's presence, but it is not the content of Zephaniah 3:15.\n- The distractor 'At your borders' is an almost-right answer but is wrong in a key detail. It mimics the structure 'in your...' but replaces 'midst' with 'borders', completely altering the meaning regarding a central position and intimate presence.",
     "language": "en",
     "options": [
-      "Far in the highest heavens",
-      "In the house of the prophets",
+      "In the high heavens",
+      "In the holy temple",
       "In your midst",
-      "Has departed far away"
+      "At your borders"
     ],
     "tags": [
       "Old Testament",
@@ -366,12 +396,14 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Zephaniah 3:17, the LORD your God in your midst is what kind of One who 'will save'?",
-    "correctAnswer": [3],
-    "explanation": "Zephaniah 3:17 — 'The LORD your God is in your midst, a mighty one who will save; he will rejoice over you with gladness...'",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "The correct answer is 'the Mighty One' because Zephaniah 3:17 states: 'The LORD your God is in your midst, a mighty one who will save.' The errors: 1) 'The merciful One' is an attribute of God mentioned nearby, but it is not the specific term in this verse. 2) 'The One who is with you' appears in the first part of the verse (God 'is in your midst'), but it misses the key verb—He is 'a mighty one who will save,' not merely 'with you.' 3) 'The Judge' is incorrect in context—chapter 3 of Zephaniah previously speaks of judgment, but verse 17 emphasizes salvation and rejoicing in God's love.",
     "language": "en",
     "options": [
-      "The Creator",
-      "The Shepherd",
+      "The merciful One",
+      "The One who is with you",
       "The Judge",
       "A mighty one"
     ],
@@ -390,14 +422,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Zephaniah 3:17, what does God do 'over you with gladness'?",
-    "correctAnswer": [0],
-    "explanation": "Zephaniah 3:17 — '...he will rejoice over you with gladness; he will quiet you by his love; he will exult over you with loud singing.' A unique image — God sings over His people.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The question references Zephaniah 3:17 (BTT). The Scripture states: 'The LORD your God is with you, the Mighty Warrior who saves. He will take great delight in you...' (Zephaniah 3:17a). The correct answer is 'will take great delight in you' because this is the action directly described in the Scripture. The incorrect answers: 1) 'will be quiet in his love for you' is close but misses the key detail (the Scripture says 'take great delight,' not 'be quiet'), possibly misunderstood from the surrounding context about God's peaceful presence; 2) 'will be angry with great zeal for you' reflects a common misunderstanding of God's character in the prophetic books, while this passage's context is about restoration and love; 3) 'will heal with great power for you,' though a biblical truth, is not what this specific verse 17 mentions, thus missing the focus of the question.",
     "language": "en",
     "options": [
       "Rejoice over you with gladness",
-      "Hide His face from you",
-      "Judge strictly",
-      "Rest in righteousness"
+      "will be quiet in his love for you",
+      "will be angry with great zeal for you",
+      "will heal with great power for you"
     ],
     "tags": [
       "Old Testament",
@@ -414,7 +448,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Zephaniah 2:3, what must the humble of the land seek? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Zephaniah 2:3 — 'Seek the LORD, all you humble of the land... seek righteousness; seek humility...' Three things to seek; 'seek wealth and power' contradicts the passage.",
     "language": "en",
     "options": [
@@ -438,7 +476,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Zephaniah 1:15, the Day of the LORD is described by which pairs of images? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Zephaniah 1:15 — 'A day of wrath... a day of distress and anguish, a day of ruin and devastation, a day of darkness and gloom, a day of clouds and thick darkness.' Four bleak pairs; 'day of joy and wedding feast' contradicts.",
     "language": "en",
     "options": [
@@ -462,7 +504,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Zephaniah 3:17, what does God do for His people? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Zephaniah 3:17 — '...he will rejoice over you with gladness; he will quiet you by his love; he will exult over you with loud singing.' Three actions; 'rebuke without ceasing' contradicts the flow of love in this verse.",
     "language": "en",
     "options": [

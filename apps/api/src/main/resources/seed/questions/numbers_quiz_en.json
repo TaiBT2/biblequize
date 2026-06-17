@@ -8,15 +8,15 @@
     "type": "multiple_choice_single",
     "content": "What did the LORD command Moses to do in the wilderness of Sinai?",
     "options": [
-      "Divide the land of Canaan",
-      "Build a temple",
+      "Allocating land to the tribes of Israel",
+      "Establishing the sacrificial system in the wilderness",
       "Take a census of Israel",
-      "Set up an altar"
+      "Selecting the Levites to serve the tabernacle"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 1:2-3 — 'Take a census of all the congregation of the people of Israel, by clans, by fathers' houses, according to the number of names, every male, head by head.' This is why the book is called Numbers.",
+    "explanation": "In Numbers 1:2-3, the LORD commanded Moses: 'Take a census of the whole Israelite community... all the men in Israel twenty years old or more who are able to serve in the army.' Therefore, the correct answer is taking a census (or numbering, registering) of all males aged twenty and above. The incorrect answers: (1) 'Allocating land' occurred later, upon entering Canaan, so it is out of the time scope. (2) 'Establishing the sacrificial system' is detailed in the book of Leviticus, an earlier event at Mount Sinai, so it belongs to a nearby passage but not the question's content. (3) 'Selecting the Levites' is related to the census (see Numbers 3:15), but it misses the key detail because the command in 1:2-3 is for a general census, while the selection of the Levites is a separate, subsequent command.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -34,15 +34,15 @@
     "type": "multiple_choice_single",
     "content": "What was the total of males 20 years old and upward able to go to war in the first census?",
     "options": [
-      "503,550",
-      "601,730",
-      "625,000",
+      "603,500",
+      "603,550³",
+      "463,550",
       "603,550"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 1:46 — 'All those listed were 603,550.' This is the total of males 20 years and older able to go to war.",
+    "explanation": "The correct answer is 603,550 based on Numbers 1:46: 'So all those numbered of the children of Israel, by their fathers’ houses, from twenty years old and above, all who were able to go to war in Israel— all those numbered were six hundred and three thousand five hundred and fifty.'\n\nThe incorrect options:\n- '603,500' (close approximation): Incorrect in the last digit; this is a typographical error or misremembered detail from the same Bible verse.\n- '603,550³': Correct text but with an added mathematical symbol that is inappropriate, straying from the context of counting people in the question.\n- '463,550': Incorrect in the first digit; this may be a common confusion with the figure for a specific tribe or another census count.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -61,13 +61,13 @@
     "options": [
       "Reuben",
       "Judah",
-      "Ephraim",
+      "Levi",
       "Dan"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 2:3 — 'Those to camp on the east side toward the sunrise shall be of the standard of the camp of Judah by their companies.' Judah led on the east.",
+    "explanation": "The Israelites camped around the Tabernacle by their tribes, with three tribes on each side. Numbers 2:3 records: 'On the east side, toward the sunrise, the camp of Judah shall pitch under their standard...' Therefore, the correct answer is Judah.\n\n- Reuben (Numbers 2:10) camped on the south side, not the east. This is a neighboring tribe in the camping structure, but in the wrong direction.\n- The tribe of Levi (Numbers 1:47-53) was set apart to serve the Tabernacle and did not camp among the four directions like the other tribes, so it is not included among the tribes asked about camp positions by direction.\n- Dan (Numbers 2:25) camped on the north side, not the east.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -113,15 +113,15 @@
     "type": "multiple_choice_single",
     "content": "What ages of Levites served at the tent of meeting?",
     "options": [
-      "20 to 50",
-      "25 to 50",
+      "25 to 45 years old",
+      "20 to 60 years old",
       "30 to 50",
-      "25 to 60"
+      "from 25 years old and above"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 4:3 — 'From thirty years old up to fifty years old, all who can come on duty, to do the work in the tent of meeting.'",
+    "explanation": "Numbers 4:3 clearly states: 'From thirty years old and upward even until fifty years old, all that enter into the host, to do the work in the tabernacle of the congregation.' Therefore, the correct age range is 30 to 50. The distractor '25 to 45 years old' is incorrect in specific numbers (both the starting and ending ages are wrong). The distractor '20 to 60 years old' incorrectly expands the range beyond the specific regulation. The distractor 'from 25 years old and above' reflects a common misunderstanding (because the Levites began their service at 25 years old according to Numbers 8:24, but that was for joining the service work, whereas serving at the tabernacle of the congregation in the Kohathite duties began at 30 years old).",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -141,7 +141,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 5:2-3 — 'Command the people of Israel that they put out of the camp everyone who is leprous or has a discharge, and everyone who is unclean through contact with the dead.'",
+    "explanation": "The Scripture says: 'Command the children of Israel that they put out of the camp every leper... that they defile not their camps, in the midst whereof I dwell' (Numbers 5:2-3). The correct answer is 'Put them out of the camp' because the LORD commanded they be expelled from the community's living area to preserve holiness.\n\nThe incorrect answers: (1) 'Place them in a separate isolation area within the camp' is close but misses the key detail: the command is to put them 'out of the camp', not to isolate them inside. (2) 'Offer a sin offering at the tabernacle' is correct for the later purification ritual (Leviticus 14) but misdirects from the question about the initial treatment, not the restoration ceremony. (3) 'Wash thoroughly and wait seven days' is a detail that applies to someone unclean from a dead body (Numbers 19:11-12) in a nearby passage, not to a leper in this passage.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -150,10 +150,10 @@
       "Basic"
     ],
     "options": [
-      "Quarantined at home",
-      "Brought to the temple",
+      "Place them in a separate isolation area within the camp",
+      "Offer a sin offering at the tabernacle",
       "Sent outside the camp",
-      "Healed with oil"
+      "Wash thoroughly and wait seven days"
     ]
   },
   {
@@ -165,15 +165,15 @@
     "type": "multiple_choice_single",
     "content": "What must a Nazirite abstain from?",
     "options": [
-      "Wearing wool",
-      "Going outside the camp",
+      "Eating leavened bread and unclean meat",
+      "Abstaining from marital relations and shaving the beard",
       "Wine and grape products",
-      "Eating meat"
+      "Not touching a dead body and cutting hair"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 6:3-4 — 'He shall separate himself from wine and strong drink... He shall eat nothing that is produced by the grapevine, not even the seeds or the skins.'",
+    "explanation": "The correct answer is because Numbers 6:3-4 clearly states: 'they must abstain from wine and other fermented drink and must not drink vinegar made from wine or other fermented drink. They must not drink grape juice or eat grapes or raisins.'\n- Distractor 1 (Eating leavened bread and unclean meat) is incorrect: These are regulations concerning cleanness in Leviticus (e.g., Leviticus 11, Leviticus 23:6), not the Nazirite vow in Numbers 6.\n- Distractor 2 (Abstaining from marital relations and shaving the beard) is incorrect: During the vow period, a Nazirite was not to shave their head (Numbers 6:5), not the beard. Abstaining from marital relations is specifically mentioned only for priests on certain special occasions (Leviticus 10:9, 21:1-12).\n- Distractor 3 (Not touching a dead body and cutting hair) is incorrect: These are other restrictions for a Nazirite (Numbers 6:5-7), but the specific question asks about what they 'must abstain from' as listed in verses 1-4, namely concerning wine and grape products.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -191,15 +191,15 @@
     "type": "multiple_choice_single",
     "content": "What did the leaders of Israel offer when the Tabernacle was set up?",
     "options": [
-      "Thirty bushels of wheat flour",
-      "Ten lambs and five goats",
+      "Twelve covered wagons and six oxen",
+      "Six covered wagons and twelve sheep",
       "Six covered wagons and twelve oxen",
-      "Gold and silver"
+      "Six golden altars and twelve water basins"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 7:3 — 'They brought their offerings before the LORD: six wagons and twelve oxen.' Two leaders together brought one wagon.",
+    "explanation": "CORRECT ANSWER: Numbers 7:1-3 clearly records that when Moses had finished setting up the Tabernacle, the leaders of Israel presented an offering consisting of six covered wagons and twelve oxen for transporting the Tabernacle (verse 3).\n\nDISTRACTOR \"Twelve covered wagons and six oxen\": Incorrect in the quantity details. The Bible records six wagons and twelve oxen, not twelve wagons and six oxen.\n\nDISTRACTOR \"Six covered wagons and twelve sheep\": Incorrect due to a common misunderstanding about sacrificial offerings. This was an offering of transportation equipment (wagons and oxen) presented upon the completion of the Tabernacle's setup, not a regular sacrificial offering like sheep.\n\nDISTRACTOR \"Six golden altars and twelve water basins\": Confused with other items mentioned in nearby biblical passages concerning the making and dedication of holy articles (e.g., Exodus 30:1-3, 17-18), but these were not the offering presented by the leaders when the Tabernacle was completed according to Numbers 7.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -219,15 +219,15 @@
     "type": "multiple_choice_single",
     "content": "What covered the Tabernacle by day and night?",
     "options": [
-      "A cloud day and night",
+      "A cloud by day and by night",
       "A cloud by day, fire by night",
-      "An angelic guard",
-      "Light day and night"
+      "A pillar of fire by day, a cloud by night",
+      "A radiance by day, darkness by night"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 9:15-16 — 'The cloud covered the tabernacle... and at evening it was over the tabernacle like the appearance of fire until morning.'",
+    "explanation": "The Israelites saw the pillar of cloud resting over the tabernacle by day and the pillar of fire by night (Numbers 9:15-16). Therefore, the correct answer is 'A cloud by day, a pillar of fire by night' because it accurately describes the two distinct phenomena covering them at their respective times. The incorrect answers: (1) 'A cloud by day and by night' is wrong because Scripture clearly states it was a pillar of fire at night, not a cloud. (2) 'A pillar of fire by day, a cloud by night' is wrong because it reverses the timing details compared to the biblical description. (3) 'A radiance by day, darkness by night' is wrong because this is a common misconception or general inference, not the accurate description from the passage.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -246,15 +246,15 @@
     "type": "multiple_choice_single",
     "content": "When does someone unclean from a corpse or on a journey keep the Passover?",
     "options": [
-      "They cannot keep it",
-      "Third month, day fourteen",
+      "The first month, the fourteenth day",
+      "The second month, the fifteenth day",
       "Second month, day fourteen",
-      "First month, day fourteen"
+      "The third month, the fourteenth day"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 9:10-11 — 'He shall keep the Passover... in the second month on the fourteenth day at twilight.' This is a special provision.",
+    "explanation": "The correct answer 'The second month, the fourteenth day' is based directly on Numbers 9:10-11, where God commands those who are unclean because of a dead body or are on a distant journey to keep the Passover on the second month, the fourteenth day.\n\nIncorrect answers: 1) 'The first month, the fourteenth day' is close but incorrect in a key detail, as this is the usual time for keeping the Passover (Exodus 12:6) and does not apply to this special case. 2) 'The second month, the fifteenth day' is incorrect in the day number; the law clearly specifies the fourteenth day. 3) 'The third month, the fourteenth day' is incorrect in scope, as the Bible does not mention the third month for the Passover in this context.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -272,14 +272,14 @@
     "content": "Of what material did the LORD command Moses to make two trumpets?",
     "options": [
       "Gold",
-      "Ram's horn",
       "Bronze",
+      "Acacia wood",
       "Silver"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 10:2 — 'Make two silver trumpets. Of hammered work you shall make them, and you shall use them for summoning the congregation and for breaking camp.'",
+    "explanation": "The Bible verse Numbers 10:2 clearly states: 'Make two trumpets of hammered silver.' Therefore, the correct answer is 'Silver'. The distractor 'Gold' is incorrect because although gold is a familiar metal in the tabernacle, the specific detail in this verse is silver. The distractor 'Bronze' is incorrect due to a common misunderstanding, as bronze was often used for other items, but not for the trumpets according to this instruction. The distractor 'Acacia wood' is incorrect because although acacia wood was used for many tabernacle objects, this question specifically asks about the material of the trumpets, and the Scripture specifies silver, not wood.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -297,15 +297,15 @@
     "type": "multiple_choice_single",
     "content": "What food did Israel long for from Egypt?",
     "options": [
-      "Bread and butter",
-      "Beef and lamb",
+      "Beef, cucumbers, melons",
+      "Fish, wheat, melons",
       "Fish, cucumbers, melons",
-      "Grapes and figs"
+      "Frogs, cucumbers, melons"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 11:5 — 'We remember the fish we ate in Egypt that cost nothing, the cucumbers, the melons, the leeks, the onions, and the garlic.'",
+    "explanation": "The Israelites complained, remembering the fish, cucumbers, and melons they had in Egypt (Numbers 11:5: 'We remember the fish we ate in Egypt at no cost—also the cucumbers, melons,...'). - A is incorrect because replacing 'fish' with 'beef' is a key detail error, even though cucumbers and melons are correct. - B is incorrect because 'wheat' appears in other passages about complaints (such as Exodus 16) but is not the food remembered in this verse. - C is incorrect because 'frogs' (the third plague event) were present in Egypt but are unrelated to the complaint about food in Numbers 11:5.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -325,15 +325,15 @@
     "type": "multiple_choice_single",
     "content": "What kind of bird did the LORD send for the people to eat when they demanded meat?",
     "options": [
-      "Doves",
+      "Sparrow",
       "Quail",
-      "Eagles",
-      "Sparrows"
+      "Coot",
+      "Dove"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 11:31 — 'Then a wind from the LORD sprang up, and it brought quail from the sea.' But a plague struck because of their craving.",
+    "explanation": "The correct answer is 'Quail'. Numbers 11:31-33 clearly states: 'Now a wind went out from the LORD and drove quail in from the sea. It scattered them up to two cubits deep all around the camp...'. Therefore, quail is the precise type of bird the LORD provided for the people. The incorrect answers: (1) 'Sparrow' is incorrect because while it is a common bird in the Bible (Matthew 10:29), it is not the bird mentioned in this context in Numbers 11. (2) 'Coot' is incorrect as it may be a common misunderstanding of the provided bird, but the Bible clearly identifies it as quail. (3) 'Dove' is incorrect because although doves appear in many biblical passages (e.g., Leviticus 1:14, Matthew 3:16) and may be associated with provision, it is not the bird the LORD sent in this story in Numbers 11.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -351,15 +351,15 @@
     "type": "multiple_choice_single",
     "content": "How many elders did the LORD tell Moses to choose to share the burden of leadership?",
     "options": [
-      "Seventy-two",
-      "One hundred",
+      "Twelve",
+      "Seven",
       "Seventy",
-      "Twelve"
+      "Seventy-two"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 11:16 — 'Gather for me seventy men of the elders of Israel.' Some of the Spirit on Moses was given to them.",
+    "explanation": "The correct answer is 'Seventy,' based on Numbers 11:16-17: 'The LORD said to Moses: \"Gather for me seventy men of the elders of Israel... I will come down and talk with you there. And I will take some of the Spirit that is on you and put it on them, and they shall bear the burden of the people with you, so that you may not bear it yourself alone.\"'\n\nThe incorrect answers:\n- 'Twelve' is incorrect because this refers to the number of tribes (a nearby context), not the number of elders chosen by command in this passage.\n- 'Seven' is incorrect as it is a different number, not the seventy specified by God.\n- 'Seventy-two' is incorrect because, although close to the correct number, the Scripture clearly states seventy, not seventy-two; this is a common misunderstanding from other traditions.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -378,15 +378,15 @@
     "type": "multiple_choice_single",
     "content": "Who spoke against Moses because of his Cushite wife?",
     "options": [
-      "Nadab and Abihu",
-      "Korah and Dathan",
-      "Joshua and Caleb",
+      "Miriam and the elders",
+      "Some strangers to Moses",
+      "Aaron and Dathan along with Abiram",
       "Miriam and Aaron"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 12:1 — 'Miriam and Aaron spoke against Moses because of the Cushite woman whom he had married.'",
+    "explanation": "Numbers 12:1-2 clearly states: 'Miriam and Aaron spoke against Moses because of the Ethiopian woman whom he had married...'. The correct answer is Miriam and Aaron because both of them together spoke out against Moses.\n\nThe incorrect answers: (1) 'Miriam and the elders' is wrong because the Bible does not mention the elders participating in this event (incorrect detail). (2) 'Some strangers to Moses' is wrong, because those who spoke against him are clearly identified as close family members, not strangers (correct text but misses the point of the question). (3) 'Aaron and Dathan along with Abiram' is wrong because Dathan and Abiram were participants in a different rebellion (Numbers 16:1), not in this event (confused with a nearby passage).",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -406,7 +406,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 12:10 — 'When the cloud removed from over the tent, behold, Miriam was leprous, like snow.'",
+    "explanation": "Based on Numbers 12:10, when the pillar of cloud departed from the camp, Miriam became 'leprous, as white as snow,' confirming the punishment was leprosy.\n\n- **Distractor 1 (close but incorrect in detail):** 'Lost her voice and was driven out of the camp'. In the passage, she was put outside the camp for seven days (verses 14-15) as a consequence of the leprosy, not as the direct or sole punishment. It is incorrect because it replaces the main affliction (leprosy) with a consequence (loss of voice & expulsion).\n- **Distractor 2 (incorrect detail):** 'Suffered from boils all over her body'. This description is closer to other plagues or punishments in the Bible (such as Exodus 9:9-10), but it is not the specific description of Miriam's affliction in Numbers 12:10.\n- **Distractor 3 (common misconception):** 'Was afflicted with paralysis and loss of strength'. This is a common image of severe punishment or illness, but it is not mentioned in this passage; the verse clearly describes leprosy.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -416,10 +416,10 @@
       "Basic"
     ],
     "options": [
-      "A plague",
+      "Lost her voice and was driven out of the camp",
       "Leprosy (white as snow)",
-      "Blindness",
-      "Deafness"
+      "Suffered from boils all over her body",
+      "Was afflicted with paralysis and loss of strength"
     ]
   },
   {
@@ -430,15 +430,15 @@
     "type": "multiple_choice_single",
     "content": "How many men did Moses send to spy out the land of Canaan?",
     "options": [
-      "40 men",
+      "10 men",
       "12 men",
-      "70 men",
-      "10 men"
+      "11 men",
+      "40 men"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 13:2 — 'Send men to spy out the land of Canaan.' One man from each tribe, twelve in all.",
+    "explanation": "Numbers 13:2 records: 'Send men to spy out the land of Canaan, which I am giving to the people of Israel. From each tribe of their fathers you shall send a man, every one a chief among them.' Since there were 12 tribes (not counting the tribe of Levi in the matter of land division), Moses sent exactly 12 men. The distractor '11 men' is close but incorrect in one numerical detail. The distractor '10 men' is another incorrect number. The distractor '40 men' is a common misunderstanding, as 40 is the number of years they wandered in the wilderness after this event, not the number of spies sent.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -457,15 +457,15 @@
     "type": "multiple_choice_single",
     "content": "What kind of fruit did the spies bring back from the Valley of Eshcol?",
     "options": [
-      "A large cluster of grapes",
+      "A cluster of grapes, pomegranates, and apples",
       "Cluster of grapes, pomegranates, and figs",
-      "Olives and dates",
-      "Figs and pomegranates"
+      "Jujubes, figs, and pomegranates",
+      "A cluster of grapes, pomegranates, figs, and olives"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 13:23 — 'They cut down from there a branch with a single cluster of grapes... They also brought some pomegranates and figs.' The cluster was so big it had to be carried on a pole between two men.",
+    "explanation": "The question references Numbers 13:23. The spies cut down a branch with a single cluster of grapes from the Valley of Eshcol and also brought back some pomegranates and figs. The correct answer is 'A cluster of grapes, pomegranates, and figs'.\n- Distractor 1 (A cluster of grapes, pomegranates, and apples) is INCORRECT because the detail 'apples' replaces 'figs,' which is not in the biblical account. This is an error of detail but is a 'close' choice as it differs by only one fruit.\n- Distractor 2 (Jujubes, figs, and pomegranates) is INCORRECT because these are fruits mentioned in Deuteronomy 8:8 (a land of wheat, barley, vines, fig trees, pomegranates, olive oil, and honey) and not in the specific spying story of Numbers 13:23. This is an error of using a nearby but incorrect biblical context.\n- Distractor 3 (A cluster of grapes, pomegranates, figs, and olives) is INCORRECT because it adds 'olives' to the list, expanding the scope incorrectly: olives are not mentioned as having been brought back from this spying mission. This is an error of scope.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -484,15 +484,15 @@
     "type": "multiple_choice_single",
     "content": "Besides Joshua, who was the other spy who believed Israel could conquer Canaan?",
     "options": [
-      "Phinehas",
-      "Eleazar",
+      "Moses",
+      "Ahiman",
       "Caleb",
-      "Aaron"
+      "Seth"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 13:30 — 'But Caleb quieted the people before Moses and said, Let us go up at once and occupy it, for we are well able to overcome it.'",
+    "explanation": "In Numbers 13:30, Caleb spoke up to quiet the people before Moses and said, 'We should go up and take possession of the land, for we can certainly do it.' This shows he, along with Joshua (see verses 13:16, 30 and 14:6-9), believed the Israelites could conquer the land.\n\nThe incorrect answers: (1) 'Moses' is incorrect because he was not one of the twelve spies sent out (Numbers 13:1-16), though he is present in the narrative. (2) 'Ahiman' is incorrect because this is the name of a giant, a descendant of Anak, mentioned by the other spies as part of their fear (verses 13:22, 28), not the name of a faithful spy. (3) 'Seth' is incorrect because this is the name of a figure in Genesis 5:3, completely unrelated to the scouting of Canaan.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -512,15 +512,15 @@
     "type": "multiple_choice_single",
     "content": "How many years did Israel wander in the wilderness because of unbelief?",
     "options": [
-      "20 years",
-      "10 years",
+      "38 years",
       "30 years",
+      "10 years",
       "40 years"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 14:33-34 — 'Your children shall be shepherds in the wilderness forty years... a year for each day, forty days, forty years.'",
+    "explanation": "The Israelites had to wander in the wilderness for 40 years (the correct answer) because of their lack of trust and complaints after hearing the spies' report (Numbers 14:33-34). Specifically, God declared: 'Your children shall be shepherds in the wilderness forty years and bear the penalty of your faithlessness, until the last of your dead bodies lies in the wilderness. According to the number of the days in which you spied out the land, forty days, a year for each day, you shall bear your iniquity forty years, and you shall know my displeasure.' (ESV).\n\n- The distractor '38 years' (close but incorrect) is wrong because this figure is not mentioned in the relevant passage; it is a number close to 40 years but not accurate.\n- The distractor '30 years' is wrong because it is an incorrect detail, not referenced in the context of this punishment.\n- The distractor '10 years' is wrong because it is a common misunderstanding based on confusion with the spying period (40 days) or other timeframes, not the duration of the wandering punishment.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -568,15 +568,15 @@
     "type": "multiple_choice_single",
     "content": "What color cord did the LORD command Israel to put on the tassels of their garments?",
     "options": [
-      "Scarlet",
+      "Crimson",
       "Blue",
-      "Purple",
-      "White"
+      "Pure white",
+      "Gold"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 15:38 — 'Speak to the people of Israel, and tell them to make tassels on the corners of their garments throughout their generations, and to put a cord of blue on the tassel of each corner.' To remember to keep the commandments.",
+    "explanation": "Numbers 15:38-39: 'Speak to the people of Israel and tell them to make tassels on the corners of their garments throughout their generations, and to put a cord of blue on the tassel of each corner...' This is a specific command for the Israelites to always remember the commandments. The correct answer is 'Blue' because it is the color specified in this Scripture. The incorrect answers: 1) 'Crimson' is a common and significant color in rituals (like the red heifer or dye), but the Bible does not mention it in the context of the garment tassels in this passage. 2) 'Pure white' is often associated with purity, but it is not the specific command recorded here. 3) 'Gold' might be confused with details of the priestly garments or Tabernacle decorations, but it is not the color of the cord for the tassels for all the people.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -596,15 +596,15 @@
     "type": "multiple_choice_single",
     "content": "Who led the rebellion against Moses and Aaron?",
     "options": [
-      "On",
+      "Eliab",
       "Korah",
-      "Dathan",
-      "Abiram"
+      "Nethanel",
+      "Miriam"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 16:1-3 — 'Now Korah... and Dathan and Abiram... rose up before Moses.' Korah was the principal figure in this rebellion.",
+    "explanation": "Numbers 16:1-3 clearly states: 'Now Korah, the son of Izhar, the son of Kohath, the son of Levi, with Dathan and Abiram, the sons of Eliab, and On, the son of Peleth, sons of Reuben, took men and rose up against Moses.' Therefore, the leader of the rebellion was Korah. The incorrect option 'Eliab' (almost-right) is the name of the father of two participants (Dathan and Abiram), not the leader, which is a common misunderstanding. The option 'Nethanel' is incorrect in detail, as he was the leader of the tribe of Issachar (Numbers 1:8) and unrelated to this event. The option 'Miriam' is a confusion with a nearby passage, as she, along with Aaron, spoke against Moses in an earlier incident (Numbers 12:1), but not in the rebellion of Numbers 16.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -626,7 +626,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 16:32 — 'And the earth opened its mouth and swallowed them up, with their households and all the people who belonged to Korah and all their goods.'",
+    "explanation": "The correct answer is based on Numbers 16:31-33, which describes the earth opening up and swallowing Korah, Dathan, Abiram, their families, and their possessions. Distractor 1 (close but incorrect) is wrong because fire from the sanctuary consumed the 250 men offering incense (v. 35), not Korah and his family. Distractor 2 is incorrect in detail and scope; the plague that killed 14,700 people occurred later (v. 49), not as a direct punishment for Korah. Distractor 3 is incorrect in scope; stoning was a method of execution under the law, but it is not described in this passage for the event involving Korah.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -635,10 +635,10 @@
       "Basic"
     ],
     "options": [
-      "They were burned by fire",
+      "They were consumed by fire from the sanctuary along with their families and possessions.",
       "The earth opened and swallowed them with their households and goods",
-      "They became leprous",
-      "They were driven from camp"
+      "They were struck by a plague that killed 14,700 people among the congregation.",
+      "They were stoned to death by the congregation outside the camp."
     ]
   },
   {
@@ -649,15 +649,15 @@
     "type": "multiple_choice_single",
     "content": "Whose staff budded, blossomed, and bore fruit to confirm the priesthood?",
     "options": [
-      "Joshua",
-      "Caleb",
+      "Moses",
+      "Korah",
       "Aaron",
-      "Moses"
+      "Nadab"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 17:8 — 'The staff of Aaron for the house of Levi had sprouted and put forth buds and produced blossoms, and it bore ripe almonds.'",
+    "explanation": "Numbers 17:8 clearly records: 'And it came to pass, that on the morrow Moses went into the tabernacle of witness; and, behold, the rod of Aaron for the house of Levi was budded, and brought forth buds, and bloomed blossoms, and yielded almonds.' Therefore, the correct answer is Aaron, the head of the tribe of Levi, whom God chose to be the high priest. The incorrect answers: (1) 'Moses' is incorrect because although he was the one who placed the rods before the LORD and announced the result, his rod did not bud (error of misremembering a nearby passage). (2) 'Korah' is incorrect because he led a rebellion against Aaron's priesthood and was punished (Numbers 16); his rod did not have this miracle, this is a common misunderstanding due to the related event (common misconception error). (3) 'Nadab' is incorrect because he was a son of Aaron, a priest, but not the owner of this particular rod (detail error).",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -675,15 +675,15 @@
     "type": "multiple_choice_single",
     "content": "Aaron's staff budded and bore ___.",
     "options": [
-      "figs",
+      "fragrant resin",
       "almonds",
-      "grapes",
-      "olives"
+      "rose",
+      "grape"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 17:8 — 'The staff of Aaron for the house of Levi had sprouted and put forth buds and produced blossoms, and it bore ripe almonds.'",
+    "explanation": "Numbers 17:8 records: 'The next day Moses entered the tent of the covenant law, and saw that Aaron's staff, which represented the tribe of Levi, had not only sprouted but had budded, blossomed and produced almonds.' Therefore, 'almond' is the correct answer, directly describing the actual fruit that appeared.\n\n- Distractor 'fragrant resin' is incorrect (wrong_detail): This is a type of resin (incense) used in the temple, but it has no relation to the fruit produced from Aaron's staff in this miracle.\n- Distractor 'rose' is incorrect but close (nearby_passage): In the entire story of the sign confirming the priesthood, only Aaron's staff sprouted, blossomed, and bore the specific fruit of almonds. 'Rose' is both the wrong type of fruit and not mentioned, but it is close to the idea of 'blossoming' in the story.\n- Distractor 'grape' is incorrect (common_misconception): This is a common fruit in the Bible, often symbolizing the abundance of the Promised Land, but it is completely unrelated to the fruit described in the miracle of Aaron's staff.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -701,15 +701,15 @@
     "type": "multiple_choice_single",
     "content": "The Levites received tithes from the people, but how much must they offer back to the priests?",
     "options": [
-      "One half",
-      "One fifth",
-      "One third",
+      "One-tenth of the total amount",
+      "Half of the tithe",
+      "The entire tithe",
       "A tithe of the tithe"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 18:26 — 'When you take from the people of Israel the tithe... then you shall present a contribution from it to the LORD, a tithe of the tithe.'",
+    "explanation": "Numbers 18:26 says: 'Moreover, you shall speak to the Levites and say to them, \"When you take from the people of Israel the tithe that I have given you from them for your inheritance, then you shall present a contribution from it to the LORD, a tithe of the tithe.\"' This is a clear command from the Lord. The correct answer is 'A tithe of the tithe' because it directly follows this Scripture.\n\nThe distractor 'One-tenth of the total amount' is close but misses the key detail: the offering is a tithe of the tithe they received, not a tithe of the original total from the people.\nThe distractor 'Half of the tithe' is incorrect in quantity; the Bible specifies a tithe, not half.\nThe distractor 'The entire tithe' reflects a common misunderstanding that the Levites had to give it all back, but the Bible only requires a tithe from it.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -729,14 +729,14 @@
     "content": "What kind of heifer was used in the cleansing ritual?",
     "options": [
       "Red, without blemish, never yoked",
-      "Any color, under three years old",
-      "White, without blemish",
-      "Black, one year old"
+      "Red, without blemish, has not given birth",
+      "Dark brown, without blemish, has never been yoked",
+      "Red, without blemish, has previously been offered as a sacrifice"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Numbers 19:2 — 'Tell the people of Israel to bring you a red heifer without defect, in which there is no blemish, and on which a yoke has never come.'",
+    "explanation": "The correct answer is 'Red, without blemish, has never been yoked' based on Numbers 19:2, where the LORD commanded Moses and Aaron: 'Speak to the people of Israel, that they bring you a red heifer without defect, in which there is no blemish, and on which a yoke has never come.' This heifer must meet all three conditions: red color, without blemish, and never having been used for work.\n\nThe incorrect answers:\n1. 'Red, without blemish, has not given birth' is incorrect because the Bible does not mention that the heifer has never given birth; the key condition is 'has never been yoked' (never used for labor).\n2. 'Dark brown, without blemish, has never been yoked' is incorrect because the Bible specifies the color 'red,' not dark brown.\n3. 'Red, without blemish, has previously been offered as a sacrifice' is incorrect because the heifer must not have been used in any previous ritual; it is consecrated specifically for this purification rite for the first time.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -755,7 +755,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 20:1 — 'And the people of Israel, the whole congregation, came into the wilderness of Zin in the first month, and the people stayed in Kadesh. And Miriam died there and was buried there.'",
+    "explanation": "The correct answer is 'Kadesh (in the Wilderness of Zin)' because Numbers 20:1 clearly states: 'Then the children of Israel, the whole congregation, came into the Wilderness of Zin in the first month, and the people stayed in Kadesh; and Miriam died there and was buried there.' (NKJV).\n\n- Distractor 'Mount Hor (in the Wilderness of Zin)' is incorrect: Mount Hor is where Aaron died and was buried (Numbers 20:22-28, 33:38), not Miriam. This is a confusion with a nearby event in the same chapter.\n- Distractor 'Ezion Geber (in the Wilderness of Zin)' is incorrect: Ezion Geber was a campsite located in the south, near the Gulf of Aqaba (Numbers 33:35), not the place where Miriam died and was buried at Kadesh.\n- Distractor 'Edom (in the Wilderness of Zin)' is incorrect: Edom is the name of a land/kingdom that the Israelites passed by (Numbers 20:14-21), not a specific location for Miriam's burial.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -764,10 +764,10 @@
       "Basic"
     ],
     "options": [
-      "Mount Sinai",
-      "Bethel",
+      "Mount Hor (in the Wilderness of Zin)",
+      "Ezion Geber (in the Wilderness of Zin)",
       "Kadesh (in the wilderness of Zin)",
-      "Hebron"
+      "Edom (in the Wilderness of Zin)"
     ]
   },
   {
@@ -780,14 +780,14 @@
     "content": "What sin kept Moses from entering Canaan?",
     "options": [
       "Striking the rock instead of speaking to it",
-      "Fleeing the camp",
-      "Idolatry",
-      "Refusing to lead the people"
+      "Speaking to the rock instead of striking it",
+      "Not leading the people into the land of Canaan",
+      "Praying to the rock instead of striking it"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Numbers 20:11-12 — 'Moses lifted up his hand and struck the rock with his staff twice... And the LORD said, Because you did not believe in me, to uphold me as holy in the eyes of the people of Israel, therefore you shall not bring this assembly into the land.'",
+    "explanation": "In Numbers 20:11-12, God said to Moses: 'Take the rod, and gather thou the assembly together, thou, and Aaron thy brother, and speak ye unto the rock before their eyes; and it shall give forth his water.' However, Moses 'lifted up his hand, and with his rod he smote the rock twice' (verse 11). This action of 'striking the rock,' instead of 'speaking to it' as the LORD commanded, showed a lack of faith and failure to honor God as holy in the eyes of the Israelites (verse 12).\n\n- Distractor 1 is incorrect because it reverses the action (speaking instead of striking), while Moses's error was striking instead of speaking. This misstates a key detail.\n- Distractor 2 is incorrect because it broadens the scope of the issue (relating to leading the people), while the question only asks about the specific sinful act at that location.\n- Distractor 3 is incorrect because it is based on a detail not present in this passage ('praying to'); the commanded action was to 'speak to' the rock, not to 'pray to' it.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -808,14 +808,14 @@
     "content": "On what mountain did Aaron die?",
     "options": [
       "Mount Sinai",
-      "Mount Seir",
       "Mount Nebo",
+      "Mount Moriah",
       "Mount Hor"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 20:27-28 — 'Moses did as the LORD commanded. And they went up Mount Hor... And Aaron died there on the top of the mountain.' Eleazar succeeded to the priesthood.",
+    "explanation": "According to Numbers 20:25-28, God commanded Moses and Aaron to go up Mount Hor. There, Moses removed Aaron's priestly garments and put them on Eleazar, his son. Afterwards, Aaron died on the top of that mountain. Therefore, the correct answer is Mount Hor.\n\nThe incorrect answers:\n- 'Mount Sinai' (incorrect detail): This is where God gave the Law (Exodus 19), not where Aaron died.\n- 'Mount Nebo' (confusion with a nearby passage): This is where Moses died (Deuteronomy 34:1-5), a similar event but involving a different person and location, which can cause confusion.\n- 'Mount Moriah' (correct text but off-topic): This mountain is associated with Abraham offering Isaac (Genesis 22:2) and later the temple, and is not related to Aaron's death.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -835,14 +835,14 @@
     "content": "What did the LORD tell Moses to do to save those bitten by snakes?",
     "options": [
       "Lift up a bronze serpent on a pole",
-      "Sprinkle blood on the people",
-      "Pray all night",
-      "Offer a sin sacrifice"
+      "Tell the people to look at the silver snake hung on a pole",
+      "Tell the people to pray sincerely to be healed",
+      "Set up a small shrine to worship the bronze snake"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Numbers 21:8-9 — 'Make a fiery serpent and set it on a pole, and everyone who is bitten, when he sees it, shall live.' Jesus alluded to this in John 3:14.",
+    "explanation": "Correct answer: 'Hang a bronze snake on a pole' (Numbers 21:8-9). This is the direct command the LORD gave to Moses, the specific means for the people to look up and be healed.\n\nExplanation of incorrect answers:\n- Distractor 1 (Incorrect detail): It is correct to hang it on a pole, but the material is 'bronze' (the Bible specifies clearly), not silver. This is a key detail that has been changed.\n- Distractor 2 (Common misunderstanding): Although prayer is important, this was not the specific instruction God gave in this Bible passage. The prescribed means of healing was to look at the bronze snake.\n- Distractor 3 (Correct text but off-topic): A later Bible passage (2 Kings 18:4) tells that this bronze snake was later destroyed by King Hezekiah because the people were burning incense to it. However, this was not the LORD's original command to Moses when saving the people from snake bites.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -860,15 +860,15 @@
     "type": "multiple_choice_single",
     "content": "What does Jesus connect the bronze serpent of Numbers 21 with in John 3:14?",
     "options": [
-      "His Second Coming",
-      "His baptism",
+      "The Son of Man must be bitten by a poisonous snake",
+      "The Son of Man must come down from heaven",
       "The Son of Man being lifted up (the cross)",
-      "His resurrection"
+      "The Son of Man must be buried in a tomb"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 21:8-9 and John 3:14 — 'As Moses lifted up the serpent in the wilderness, so must the Son of Man be lifted up.' This is a type of salvation through the cross.",
+    "explanation": "The question asks about the event in John 3:14 where Jesus compares Himself to the bronze serpent in Numbers 21. The correct answer is 'The Son of Man must be lifted up (on the cross)' because John 3:14 states: 'Just as Moses lifted up the snake in the wilderness, so the Son of Man must be lifted up.' (NIV).\n\nThe incorrect answers:\n- 'The Son of Man must be bitten by a poisonous snake' is wrong because John 3:14 does not say He was bitten by a snake, but speaks of being 'lifted up' (incorrect on a key detail, though it uses the correct term 'Son of Man' and relates to the story involving a snake).\n- 'The Son of Man must come down from heaven' is wrong because this is the idea in John 3:13 ('...the Son of Man... who came from heaven'), a nearby verse, but it is not the direct comparison to the bronze serpent referenced in the question (confuses a nearby passage).\n- 'The Son of Man must be buried in a tomb' is wrong because although Jesus was buried, this is an event after the crucifixion; John 3:14 only speaks of being 'lifted up' and does not mention burial (textually accurate but misses the point of the question, not directly related to the analogy with the bronze serpent).",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -887,15 +887,15 @@
     "type": "multiple_choice_single",
     "content": "Whom did King Balak invite to curse Israel?",
     "options": [
-      "Jethro",
+      "King Moses",
       "Balaam",
-      "Korah",
-      "Melchizedek"
+      "King of Edom",
+      "King Sihon"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 22:5-6 — 'Balak sent messengers to Balaam... Come now, curse this people for me, since they are too mighty for me.'",
+    "explanation": "The Scripture says: 'And he sent messengers to Balaam the son of Beor at Pethor, which is by the river of the land of the children of his people, to call him, saying, Behold, there is a people come out from Egypt: behold, they cover the face of the earth, and they abide over against me: Come now therefore, I pray thee, curse me this people...' (Numbers 22:5-6). The correct answer is 'Balaam' because he is the one whom King Balak sent messengers to invite to curse the Israelites. The distractor 'King Moses' is incorrect in detail because Moses was the leader of the Israelites, not the one invited. The distractor 'King of Edom' is incorrect in scope because this is another king (of Edom) unrelated to this event. The distractor 'King Sihon' is close (related to the narrative) but still incorrect because he was an Amorite king whom the Israelites had previously defeated (Numbers 21:21-25), not the one invited.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -915,7 +915,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 22:28 — 'Then the LORD opened the mouth of the donkey, and she said to Balaam, What have I done to you, that you have struck me these three times?'",
+    "explanation": "The question is about Numbers 22:28. The correct answer is 'the LORD opened its mouth and it spoke in human language' because the Scripture states: 'the LORD opened the mouth of the donkey...'. Distractor 1 ('It roared loudly and fell dead...') is close because it involves the donkey and a cry, but misses the key details of 'speaking in human language' and 'death' (the donkey did not actually die). This is a near-passage confusion error. Distractor 2 ('It suddenly flew up to heaven...') is a common misconception, as no such supernatural detail appears in the story. Distractor 3 ('It turned its head and bit Balaam's leg...') is textually plausible but off-topic, because the story includes the donkey crushing Balaam's foot (v.25) and being beaten, but it never bit him.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -924,10 +924,10 @@
       "Basic"
     ],
     "options": [
-      "It turned into a horse",
-      "It could fly",
+      "It roared loudly and fell dead before Balaam",
+      "It suddenly flew up to heaven and vanished from sight",
       "The LORD opened its mouth and it spoke human words",
-      "It became invisible"
+      "It turned its head and bit Balaam's leg, injuring him"
     ]
   },
   {
@@ -939,15 +939,15 @@
     "type": "multiple_choice_single",
     "content": "What did Balaam's donkey see on the road that Balaam did not?",
     "options": [
-      "The LORD in a cloud",
-      "A wall of fire",
+      "An angel holding a staff",
+      "A fiery serpent on the road",
       "An angel with a drawn sword",
-      "A lion"
+      "A pillar of fire from heaven"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 22:23 — 'And the donkey saw the angel of the LORD standing in the road, with a drawn sword in his hand.' The donkey turned aside but Balaam did not see.",
+    "explanation": "The correct answer is 'An angel holding a sword' because the Bible records: 'the LORD set an angel with a drawn sword in the road to oppose Balaam' (Numbers 22:23). The incorrect answers: 1) 'An angel holding a staff' is wrong in the weapon detail (sword, not staff). 2) 'A fiery serpent on the road' is a common misunderstanding from other stories (like in Exodus). 3) 'A pillar of fire from heaven' is taken from nearby passages (like phenomena in Exodus or 1 Kings 18:38) but is not the vision in this passage.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -964,15 +964,15 @@
     "type": "multiple_choice_single",
     "content": "'God is not ___ that he should lie, or a son of man, that he should change his mind.'",
     "options": [
-      "an idol",
+      "prophet",
       "man",
-      "wicked",
-      "an angel"
+      "living being",
+      "Creator"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 23:19 — 'God is not man, that he should lie, or a son of man, that he should change his mind.' Balaam blesses instead of cursing.",
+    "explanation": "The passage Numbers 23:19 states: 'God is not a man, that he should lie; neither the son of man, that he should repent.' Therefore, the correct answer is 'man,' as this verse emphasizes the contrast between God's unchanging and faithful nature and the changeable and imperfect nature of mankind.\n- Distractor 'prophet' is incorrect because, although the context involves Balaam's prophecy, this term does not appear in the quoted verse.\n- Distractor 'living being' is incorrect as it is a common misunderstanding when thinking of creation, but the Scripture specifically compares to mankind (man), not creation in general.\n- Distractor 'Creator' is incorrect because although God is the Creator, this term is not used in this question; using it obscures the specific contrast between God and man presented in the Bible verse.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -992,7 +992,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 23:8 — 'How can I curse whom God has not cursed? How can I denounce whom the LORD has not denounced?' Balaam could only speak what God put in his mouth.",
+    "explanation": "Correct answer: 'No — he could only speak what God put in his mouth.' This is based on Balaam's words in Numbers 23:12: 'Must I not take heed to speak what the LORD has put in my mouth?' (NKJV), showing he was merely God's mouthpiece.\n\nDistractor 1 is incorrect ('No — he could only speak what King Balak put in his mouth.') because it misstates the key detail: Balaam received instruction from God, not from King Balak, who hired him.\nDistractor 2 is incorrect ('Yes — he later carried out the curse according to the king's will.') because it reflects a common misunderstanding of the outcome; in fact, in this passage (and the entire chapter) Balaam only blessed, never cursed.\nDistractor 3 is incorrect ('Yes — he was free to choose his own prophetic words.') because it describes a freedom he did not have; verse 12 shows he was bound by God's word, even if he might have wished otherwise (refer to Balaam's attitude in the narrative).",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1002,10 +1002,10 @@
       "Advanced"
     ],
     "options": [
-      "Yes, easily",
-      "Yes, after many sacrifices",
+      "No — he could only speak what King Balak put in his mouth.",
+      "Yes — he later carried out the curse according to the king's will.",
       "No — he could only speak what God put in his mouth",
-      "Partially"
+      "Yes — he was free to choose his own prophetic words."
     ]
   },
   {
@@ -1017,14 +1017,14 @@
     "content": "Balaam's prophecy 'A star shall come out of Jacob' is understood to refer to whom?",
     "options": [
       "The Messiah (Christ)",
-      "Samuel",
       "King David",
-      "Joshua"
+      "The prophet Moses",
+      "An angel of the LORD"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Numbers 24:17 — 'A star shall come out of Jacob, and a scepter shall rise out of Israel.' This is a Messianic prophecy, though near-term it can refer to David.",
+    "explanation": "In Numbers 24:17, Balaam prophesies: 'I see him, but not now; I behold him, but not near: a star shall come out of Jacob, and a scepter shall rise out of Israel...'. The phrases 'scepter' and 'star' are commonly understood as symbols of ruling authority and glory. In Jewish and Christian tradition, this prophecy is applied to the Messiah, who is to come and reign. The correct answer is 'the Messiah (Christ)' because this is the New Testament interpretation (see Matthew 2:2) and the orthodox tradition. The distractor 'King David' is a common misunderstanding because David was a famous king from the line of Jacob, but this prophecy points to a more distant future and an eternal kingdom. The distractor 'The prophet Moses' is incorrect in detail because Moses was a leader and prophet, but he was from the tribe of Levi and is not directly connected to the 'star' or 'scepter' imagery in this prophecy. The distractor 'An angel of the LORD' draws from the immediate context because in previous chapters, the angel of the LORD had appeared to Balaam (Numbers 22:31), but the specific prophecy in verse 17 is not about an angel.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1044,14 +1044,14 @@
     "content": "What idol did Israel worship at Shittim?",
     "options": [
       "Baal of Peor",
-      "Dagon",
-      "Molech",
-      "Chemosh"
+      "Baal of Beel",
+      "Goddess Asherah",
+      "Molech"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Numbers 25:3 — 'So Israel yoked himself to Baal of Peor. And the anger of the LORD was kindled against Israel.'",
+    "explanation": "The Israelites sinned by worshiping 'Baal of Peor' (Numbers 25:3). This is the specific name of the Baal worshiped at Peor. The distractor 'Baal of Beel' is a common general name for the god Baal in the Bible, appearing in many other books (e.g., Judges) but is not the specific name at Shittim. The distractor 'Goddess Asherah' is another idol often mentioned alongside Baal (Judges 3:7), but is not referenced in this passage. The distractor 'Molech' is another idol associated with child sacrifice (Leviticus 18:21) and is not the god the people worshiped in the incident at Shittim.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1071,15 +1071,15 @@
     "type": "multiple_choice_single",
     "content": "Who acted decisively to stop the plague at Shittim, after 24,000 had died?",
     "options": [
-      "Joshua",
       "Moses",
-      "Eleazar",
+      "Joshua",
+      "Caleb",
       "Phinehas"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 25:7-8 — 'When Phinehas... saw it, he rose and left the congregation and took a spear in his hand and went after the man of Israel into the chamber.' His action stopped the plague.",
+    "explanation": "The correct answer is 'Phinehas' because Numbers 25:7-9 clearly records that Phinehas, the son of Eleazar the priest, stabbed the Israelite man and the Midianite woman, causing the LORD's wrath to subside and the plague to stop (verse 8).\n\nThe incorrect answers:\n- 'Moses' (close, but incorrect in detail): Moses was the leader in the passage (verses 5-6), but it was Phinehas who carried out this decisive action.\n- 'Joshua' (out of scope): Joshua was Moses' successor, but he does not appear or is mentioned in this specific event at Shittim (Numbers 25).\n- 'Caleb' (common misunderstanding): Caleb was another faithful leader, but he is not related to this event; learners may confuse him with other prominent figures of faith in the Book of Numbers.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1096,15 +1096,15 @@
     "type": "multiple_choice_single",
     "content": "What was the total of males in the second census?",
     "options": [
-      "625,000",
-      "603,550",
+      "601,708",
+      "699,434",
       "601,730",
-      "600,000"
+      "1,010,000"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 26:51 — 'This was the list of the people of Israel, 601,730.' Slightly less than the first census (603,550).",
+    "explanation": "The correct answer is '601,730', which is accurately recorded in Numbers 26:51 as the total number of the Israelites after the second census in the plains of Moab by the Jordan across from Jericho. The distractor '601,708' is close but incorrect in detail (wrong_detail); the slightly smaller number may come from a memory error. The distractor '699,434' is incorrect in scope (wrong_scope); this is the total number of men counted in the first census (Numbers 1:46), not the second. The distractor '1,010,000' is a common misconception; this larger number does not correspond to the data in the book of Numbers, possibly due to a mistaken estimate of the total population size.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1124,7 +1124,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 26:64-65 — 'But among these there was not one of those listed by Moses and Aaron the priest... Not one of them was left, except Caleb the son of Jephunneh and Joshua the son of Nun.'",
+    "explanation": "Numbers 26:64-65 clearly states that in the second census, no one (except Caleb and Joshua) remained from the people counted in the first census. The correct answer is Caleb and Joshua, because only these two, among those twenty years old and above from the first census at Sinai, were allowed to enter the Promised Land. Distractor 1 is wrong because it adds Moses (he did not die in the wilderness but also did not enter the Promised Land after the second census, and Scripture does not list him as 'still alive' from the first census in this specific context). Distractor 2 is wrong because the order of names is not the main issue; the key error is still adding Moses, a detail often mentioned near this passage. Distractor 3 is wrong because it expands the scope too broadly, completely contradicting the passage's emphasis that most of the people had died.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1133,10 +1133,10 @@
       "Intermediate"
     ],
     "options": [
-      "Only Moses and Aaron",
-      "Only the elders",
+      "Moses, Caleb, and Joshua",
+      "Caleb, Joshua, and Moses",
       "Only Caleb and Joshua",
-      "About half the generation"
+      "All those from the first census"
     ]
   },
   {
@@ -1148,15 +1148,15 @@
     "type": "multiple_choice_single",
     "content": "What did the daughters of Zelophehad ask Moses?",
     "options": [
-      "Tax exemption",
-      "To marry outside their tribe",
+      "Exempted from military service",
+      "Allowed to marry within the tribe",
       "To inherit their father's land",
-      "To serve at the Tabernacle"
+      "Allowed to stand before Moses to pray"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 27:4 — 'Why should the name of our father be taken away from his clan because he had no son? Give to us a possession among our father's brothers.' The LORD granted it.",
+    "explanation": "The Scripture passage Numbers 27:1-7 records the daughters of Zelophehad (Mahlah, Noah, Hoglah, Milcah, and Tirzah) coming before Moses, Eleazar, the leaders, and the whole congregation to present their case: their father had died without a son. They feared their father's name would be removed from his tribe because he had no son to carry on his name, so they requested, 'Give us a possession among our father's brothers' (verse 4). This means they asked to inherit their father's portion of land, and the LORD spoke to Moses, granting this request (verses 6-7).\n\n- The correct answer is correct because it directly expresses their request for an inheritance (land).\n- The distractor 'Exempted from military service' is wrong because this passage does not mention military duty; it is an incorrect detail.\n- The distractor 'Allowed to marry within the tribe' is almost-right because it relates to preserving the inheritance within the tribe, but this was not what they directly asked for in this passage. The requirement to marry within the tribe is mentioned later (Numbers 36) to address the consequence of this inheritance, not the content of their initial petition.\n- The distractor 'Allowed to stand before Moses to pray' is wrong because although they did stand before Moses (verse 2), this was the act of presenting their case, not the content of their request. This is a correct detail in the text but irrelevant to the question about what they asked for.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1175,15 +1175,15 @@
     "type": "multiple_choice_single",
     "content": "Who was chosen as Moses' successor to lead Israel?",
     "options": [
-      "Eleazar",
-      "Phinehas",
+      "Caleb",
+      "Aaron",
       "Joshua",
-      "Caleb"
+      "Hezron"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 27:18 — 'So the LORD said to Moses, Take Joshua the son of Nun, a man in whom is the Spirit, and lay your hand on him.'",
+    "explanation": "According to Numbers 27:18-20, the LORD said to Moses: 'Take Joshua son of Nun, a man in whom is the spirit of leadership, and lay your hand on him. Have him stand before Eleazar the priest and the entire assembly and commission him in their presence.' Therefore, Joshua was the chosen successor.\n\n- Distractor 'Caleb' is incorrect: Caleb, along with Joshua, was one of the two faithful spies (Numbers 14:6-9) and later received an inheritance of land (Joshua 14:13-14), but he was not chosen to succeed Moses as the leader of all the people.\n- Distractor 'Aaron' is incorrect: Aaron was Moses' brother and the first high priest (Exodus 28:1), but he died before Moses on Mount Hor (Numbers 20:28) and thus could not be the successor.\n- Distractor 'Hezron' is incorrect: Hezron was a clan leader of the tribe of Judah (Numbers 26:21), did not have a role leading all the people, and is not mentioned in the context of succeeding Moses.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1203,15 +1203,15 @@
     "type": "multiple_choice_single",
     "content": "How many year-old lambs were in the daily burnt offering?",
     "options": [
-      "Four",
-      "Three",
-      "One",
+      "One lamb",
+      "Four lambs",
+      "A pair (male and female)",
       "Two"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 28:3 — 'This is the food offering that you shall offer to the LORD: two male lambs a year old without blemish, day by day, as a regular offering.'",
+    "explanation": "The question is based on Numbers 28:3-4, where God spoke to Moses: 'This is the burnt offering you are to present to the LORD: a year-old male lamb without defect, two each day...' Therefore, the correct answer is 'Two lambs'.\n\nThe incorrect answers:\n- 'One lamb' is incorrect because the Scripture clearly specifies two each day. This is an incorrect numerical detail, but it is close to the correct answer (off by only one unit), making it a 'close' distractor.\n- 'Four lambs' is incorrect because that is the number of lambs offered in the daily burnt offering on the Sabbath day (Numbers 28:9), not the number for each ordinary day. This is a mistake of confusing it with a nearby passage.\n- 'A pair (male and female)' is incorrect because although the Bible often specifies gender in some offerings, this specific passage (verses 3-4) does not mention that the two lambs must be a male and female pair for the daily burnt offering. This is a common misunderstanding from imposing details from other sacrificial regulations onto this one.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1232,7 +1232,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 28:16 — 'On the fourteenth day of the first month is the LORD's Passover.'",
+    "explanation": "Numbers 28:16-17 clearly states: 'But on the fourteenth day of the first month is the Passover of the LORD.' Therefore, the correct answer is 'The 14th day of the first month'. The incorrect answers: (1) 'The 15th day of the first month' is incorrect in detail, because the 15th day is the first day of the Feast of Unleavened Bread (Leviticus 23:6), not the Passover. (2) 'The 14th day of the seventh month' is incorrect in scope, because this day is related to the Feast of Tabernacles (Leviticus 23:34), not the Passover in the first month. (3) 'The first day of the first month' is a common misunderstanding, because the first day of the month (the new moon) has its own rituals (Numbers 28:11), but it is not the day for observing the Passover.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1241,10 +1241,10 @@
       "Basic"
     ],
     "options": [
-      "The 1st of the first month",
+      "The 15th day of the first month",
       "The 14th of the first month",
-      "The 15th of the first month",
-      "The 14th of the seventh month"
+      "The 14th day of the seventh month",
+      "The first day of the first month"
     ]
   },
   {
@@ -1255,15 +1255,15 @@
     "type": "multiple_choice_single",
     "content": "What is the special meaning of the first day of the seventh month (Feast of Trumpets)?",
     "options": [
-      "Day to free slaves",
-      "Day to divide the land",
-      "Day of fasting",
+      "A day for storing food and preparing for winter",
+      "A day for offering a burnt offering with seven bulls",
+      "A day commemorating the exodus from Egypt",
       "Holy convocation, no laborious work"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 29:1 — 'On the first day of the seventh month you shall have a holy convocation. You shall not do any ordinary work. It is a day for you to blow the trumpets.'",
+    "explanation": "In Numbers 29:1, the LORD said to Moses, 'On the first day of the seventh month you shall have a holy convocation. You shall not do any ordinary work. It is a day for you to blow the trumpets.' Therefore, the correct answer is a day of holy assembly and refraining from laborious work.\n\nThe incorrect answers:\n1. 'A day for storing food and preparing for winter' is wrong (wrong_scope) because this is not the meaning stated in the passage; it falls under the scope of other practical activities unrelated to the ritual.\n2. 'A day for offering a burnt offering with seven bulls' is close but incorrect in detail (wrong_detail); Numbers 29:2 specifies offerings, but the number of bulls is one, not seven. Seven bulls are offered on the fifteenth day of the seventh month (the Feast of Booths, v.32).\n3. 'A day commemorating the exodus from Egypt' is wrong due to a common misconception (common_misconception); the Passover (in the first month) commemorates this event, not the Feast of Trumpets in the seventh month.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1282,7 +1282,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 30:2 — 'If a man vows a vow to the LORD, or swears an oath to bind himself by a pledge, he shall not break his word. He shall do according to all that proceeds out of his mouth.'",
+    "explanation": "Correct answer: Numbers 30:2 says, 'When a man makes a vow to the LORD, or swears an oath to bind himself by a pledge, he shall not break his word. He shall do according to all that proceeds out of his mouth.' (ESV). Therefore, the correct answer is 'Must not break the promise — must do everything that was said'.\n\nIncorrect answers:\n1. 'Must offer a burnt offering to redeem the vow' is incorrect because it is close but mixes in regulations about offerings from other books (like Leviticus), not the specific requirement in Numbers 30:2 for a man's vow. This answer is wrong on the key detail about the required action.\n2. 'Must report the vow to the priest' is incorrect because this is a regulation that applies to some other cases (like in Leviticus for declaring cleanness), not a universal requirement in this passage for every vow by a man.\n3. 'Only have to keep the vow if approved by one's father' is incorrect because this is a regulation that applies to a woman still in her father's house (see verses 3-5), not to the scope of the man being asked about in verse 2.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1291,10 +1291,10 @@
       "Basic"
     ],
     "options": [
-      "He may change it if hard",
-      "He may seek release",
+      "Must offer a burnt offering to redeem the vow",
+      "Must report the vow to the priest",
       "He must not break his word — he must do all he has said",
-      "He must renew after seven days"
+      "Only have to keep the vow if approved by one's father"
     ]
   },
   {
@@ -1306,15 +1306,15 @@
     "type": "multiple_choice_single",
     "content": "Under the law of vows, who has authority to annul the vow of a young woman?",
     "options": [
-      "Only she herself can annul it",
-      "The high priest",
-      "The elders of the city",
+      "Her husband",
+      "Her mother",
+      "The priest",
       "Her father"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 30:5 — 'But if her father opposes her on the day that he hears of it, no vow of hers, no pledge by which she has bound herself, shall stand.' The father has authority on the day he hears.",
+    "explanation": "The question revolves around the law concerning the vows of a young woman as stipulated in Numbers 30:3-5 (BTT). The correct answer is 'Her father' because according to this passage (verses 3-5), if a young woman, still living in her father's household, makes a vow or a binding pledge, her father, upon hearing it, has the authority to nullify her vow.\n\nThe incorrect answers:\n1. 'Her husband': This answer is out of scope. The authority to annul the vow of a young woman (still in her father's house) belongs to her father, not her husband. The law pertaining to a husband is addressed later (verses 6-8) and applies to a married woman.\n2. 'Her mother': This answer is close but misses a key detail. In the cited Scripture passage, only the father's authority is explicitly stated. There is no mention of a similar authority granted to the mother to annul her young daughter's vow.\n3. 'The priest': This is a common misunderstanding regarding roles in legal matters. Although priests had roles in teaching and adjudicating the law, in this specific regulation concerning the vows of a young woman in her father's house, the direct decision-making authority rests with her father, not the priest.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1333,15 +1333,15 @@
     "type": "multiple_choice_single",
     "content": "Whom did the LORD tell Moses to wage war against before he died?",
     "options": [
-      "The Edomites",
-      "The Midianites",
       "The Amorites",
-      "The Amalekites"
+      "The Midianites",
+      "The Moabites",
+      "The Israelites"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 31:1-2 — 'The LORD said to Moses, Avenge the people of Israel on the Midianites. Afterward you shall be gathered to your people.'",
+    "explanation": "The correct answer is 'The Midianites' because the LORD said to Moses, 'Take vengeance on the Midianites for the Israelites' before Moses died (Numbers 31:1-2).\n\nThe incorrect answers:\n- 'The Amorites' is incorrect because this was a people defeated in earlier chapters (Numbers 21), not the target of this final command.\n- 'The Moabites' is a close but incorrect detail: the Moabites were involved (the king of Midian and the elders of Moab plotted together in Numbers 22:4), but the direct command was to attack the Midianites.\n- 'The Israelites' is incorrect due to a common misunderstanding; Moses was commanded to take vengeance for the Israelites, not to attack them.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1361,7 +1361,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 31:8 — 'They also killed Balaam the son of Beor with the sword.' Balaam died with the five kings of Midian.",
+    "explanation": "Numbers 31:8 records: '... and they slew with the sword the kings of Midian, ... and Balaam the son of Beor.' This passage confirms that Balaam was killed by the sword along with the kings of Midian in the battle, so the correct answer is 'Killed by the sword along with the five kings of Midian'.\n\n- Distractor 1 ('Killed by the sword but only with one king of Midian') is incorrect because the Bible clearly states that Balaam was killed along with the kings of Midian (more than one), and the specific number of kings listed is five (Evi, Rekem, Zur, Hur, and Reba).\n- Distractor 2 ('Captured alive and taken as a prisoner of war') is incorrect because the text does not describe Balaam being captured alive; on the contrary, verse 8 affirms that he was 'slew with the sword'.\n- Distractor 3 ('Escaped and survived the battle') is incorrect because it completely contradicts the information in the Bible, which records his fate as being killed in that battle.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1370,10 +1370,10 @@
       "Advanced"
     ],
     "options": [
-      "He escaped safely",
-      "He returned to King Balak",
+      "Killed by the sword but only with one king of Midian",
+      "Captured alive and taken as a prisoner of war",
       "He was killed by the sword along with the five kings of Midian",
-      "Israel spared him"
+      "Escaped and survived the battle"
     ]
   },
   {
@@ -1386,14 +1386,14 @@
     "content": "Which tribes asked to settle east of the Jordan because they had many livestock?",
     "options": [
       "Reuben and Gad",
-      "Ephraim and Manasseh",
-      "Judah and Benjamin",
-      "Simeon and Levi"
+      "Reuben and Manasseh",
+      "Reuben, Gad and Dan",
+      "Benjamin and Gad"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Numbers 32:1-5 — 'Now the people of Reuben and the people of Gad had a very great number of livestock... If we have found favor in your sight, let this land be given to your servants for a possession. Do not take us across the Jordan.'",
+    "explanation": "Correct answer: Reuben and Gad (Numbers 32:1-2). In the passage, the Reubenites and Gadites had large herds of livestock. Seeing that the land of Jazer and Gilead was suitable for livestock, they asked Moses to let them settle on the east side of the Jordan River (verses 4-5).\n\nExplanation of incorrect answers:\n- 'Reuben and Manasseh': Incorrect detail. Half the tribe of Manasseh was only allotted land after they agreed to help the other tribes conquer the land (Numbers 32:33); they were not among the initial petitioners.\n- 'Reuben, Gad and Dan': Incorrect scope. The tribe of Dan is not mentioned in this event. They received their inheritance on the west side of the Jordan River (Joshua 19:40-48).\n- 'Benjamin and Gad': Wrong nearby passage. The tribe of Benjamin received land near the Jordan River, but on the west side (Joshua 18:11-20), and was not involved in the request to remain east of the Jordan due to livestock.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1412,15 +1412,15 @@
     "type": "multiple_choice_single",
     "content": "What was the condition for Reuben and Gad to settle east of the Jordan?",
     "options": [
-      "Build fortresses for all Israel",
+      "Must go to battle to help the other tribes conquer Canaan afterward",
       "Go armed before the LORD to fight with the other tribes to conquer Canaan first",
-      "Send men to guard the Tabernacle",
-      "Pay double tithes"
+      "Must stay behind to protect their territory east of the Jordan first",
+      "Must give a portion of the spoils from Canaan"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 32:20-22 — 'If you will arm yourselves before the LORD for the war... until he has driven out his enemies from before him... then you shall be free of obligation to the LORD and to Israel.'",
+    "explanation": "The question is based on Numbers 32:20-22. The correct answer is: 'Must go to battle to help the other tribes conquer Canaan first' (vv. 20-22: 'If you will arm yourselves for war before the LORD... until the LORD has driven out his enemies from before him and the land is subdued before the LORD; then after that you shall return...').\n\nDistractor 1 is wrong because it changes the key detail 'first' to 'afterward,' while the condition is to fight BEFORE they may stay (v. 22: 'then after that you shall return').\nDistractor 2 is wrong because it misstates the scope: the condition is to 'go to battle' with them, not to 'stay behind to protect' their own territory.\nDistractor 3 is wrong because it is a common misconception (not found in this Scripture passage); there is no condition about giving spoils, but about participating in the fighting.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1440,7 +1440,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 33:1-2 — 'These are the stages of the people of Israel, when they went out of the land of Egypt... Moses wrote down their starting places, stage by stage, by command of the LORD.'",
+    "explanation": "Numbers 33:1-2 clearly states: 'These are the journeys of the children of Israel... when they went forth out of the land of Egypt' (KJV), so the correct answer is 'The stages of the Israelites' journey from Egypt.' Distractor 1 is incorrect because it replaces the point of departure 'Egypt' with 'Canaan,' a key detail that is reversed. Distractor 2 is incorrect because it describes another major theme of the book (the censuses, as in chapters 1, 26), not the main content of chapter 33. Distractor 3 is incorrect because this content is more fitting for the legal passages in Leviticus or other parts of Numbers (such as chapters 28-29), not chapter 33.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1451,10 +1451,10 @@
       "Basic"
     ],
     "options": [
-      "Worship laws",
+      "The stages of the Israelites' journey from Canaan",
       "The stages of Israel's journey from Egypt",
-      "Tribal genealogies",
-      "Daily sacrifices"
+      "The censuses of the Israelites in the wilderness",
+      "The laws and rituals for the Israelites in the wilderness"
     ]
   },
   {
@@ -1466,15 +1466,15 @@
     "type": "multiple_choice_single",
     "content": "The LORD told Israel to ___ all the inhabitants of Canaan when they entered the land.",
     "options": [
-      "make a covenant with",
-      "tax",
-      "enslave",
+      "accept",
+      "convert",
+      "protect",
       "drive out"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 33:52 — 'Then you shall drive out all the inhabitants of the land from before you and destroy all their figured stones and destroy all their metal images and demolish all their high places.'",
+    "explanation": "The correct answer is 'drive out'. Numbers 33:52-53 clearly records the command: 'then you shall drive out all the inhabitants of the land from before you... and take possession of the land and dwell in it'. The phrase 'drive out all the inhabitants' refers to the action of forcing them to leave, not allowing them to remain.\n- The distractor 'accept' is incorrect because it is completely contrary to the command; the LORD instructed them to drive out the people, not to tolerate or live alongside the idolatrous nations in the land.\n- The distractor 'convert' is an almost-right option but incorrect on a key detail: although there is a command to destroy their idols and high places (v.52), which relates to removing idolatry, the direct command concerning the inhabitants is to 'drive them out', not to 'convert' them.\n- The distractor 'protect' is incorrect because the command is to take possession of the land and drive out its current inhabitants, not to protect them. This is a correct detail in a different context (e.g., protecting the Levites), but it is completely irrelevant to the command in this question.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1495,14 +1495,14 @@
     "content": "How far does the southern boundary of the land of Canaan extend?",
     "options": [
       "Wilderness of Zin along Edom",
-      "The Red Sea",
-      "The Jordan River",
-      "The Brook of Egypt"
+      "The Wilderness of Zin along Moab",
+      "The hill country of the Amalekites",
+      "The Salt Sea, that is, the Dead Sea"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Numbers 34:3 — 'Your south side shall be from the wilderness of Zin alongside Edom.'",
+    "explanation": "Numbers 34:2-3 records: 'Command the people of Israel, and say to them, When you enter the land of Canaan (this is the land that shall fall to you for an inheritance, the land of Canaan as defined by its borders), your south side shall be from the wilderness of Zin alongside Edom.' Therefore, the correct answer is 'the wilderness of Zin alongside Edom'.\n\nDistractor 1 ('The Wilderness of Zin along Moab') is incorrect because, while it correctly identifies the Wilderness of Zin, it incorrectly associates it with Moab instead of Edom; this is an inaccurate geographical detail.\n\nDistractor 2 ('The hill country of the Amalekites') is incorrect because this is a common misunderstanding about the settlement area of other peoples and is not related to the description of the southern border in this biblical passage.\n\nDistractor 3 ('The Salt Sea, that is, the Dead Sea') is incorrect because although the Dead Sea (the Salt Sea) is related to other borders of the land of Canaan, it is not the southern endpoint described in Numbers 34:2-3; this is correct information but irrelevant to the question.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1521,15 +1521,15 @@
     "type": "multiple_choice_single",
     "content": "The two men assigned to divide Canaan among the tribes are the priest Eleazar and ___.",
     "options": [
-      "Moses son of Amram",
-      "Phinehas son of Eleazar",
       "Caleb son of Jephunneh",
+      "Moses",
+      "Aaron",
       "Joshua son of Nun"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 34:17 — 'These are the names of the men who shall divide the land to you for inheritance: Eleazar the priest and Joshua the son of Nun.'",
+    "explanation": "The Bible clearly teaches: 'These are the names of the men who shall divide the land to you for inheritance: Eleazar the priest and Joshua the son of Nun.' (Numbers 34:17). Therefore, the correct answer is 'Joshua son of Nun'.\n\nThe incorrect answers:\n- 'Caleb son of Jephunneh' is incorrect because although Caleb was the leader representing the tribe of Judah (Numbers 34:19) and would receive his own portion of land, he was not assigned the primary task of dividing the general land for all the tribes.\n- 'Moses' is incorrect because Moses was not allowed to enter the Promised Land (Numbers 20:12), so this responsibility was given to his successors.\n- 'Aaron' is incorrect because Aaron was the first high priest, but he died on Mount Hor (Numbers 20:28) before this event; his son Eleazar was the one assigned the task.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1550,14 +1550,14 @@
     "content": "How many cities of refuge were appointed for the unintentional manslayer?",
     "options": [
       "6 cities",
-      "10 cities",
       "3 cities",
-      "12 cities"
+      "12 cities",
+      "8 cities"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Numbers 35:6 — 'The cities that you give to the Levites shall be the six cities of refuge.' Three on each side of the Jordan.",
+    "explanation": "The question asks about the number of cities of refuge for someone who kills a person unintentionally. The correct answer is 6 cities (Numbers 35:6), based on the command: 'Among the forty-eight cities that you give to the Levites, you must set aside six cities of refuge.'\n- Distractor '3 cities' is incorrect due to a mistaken detail in quantity, possibly from confusion with the number of cities belonging to a specific tribe or another region.\n- Distractor '12 cities' is incorrect because it broadens the scope to the total number of tribes (12), not the number of cities specifically designated for this purpose.\n- Distractor '8 cities' is a close but still incorrect answer (close to 6); it may stem from misremembering the number of cities for another group (such as the cities of the descendants of Merari) or data from nearby passages.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1574,15 +1574,15 @@
     "type": "multiple_choice_single",
     "content": "According to Numbers 35, how many witnesses are required to convict a murderer?",
     "options": [
-      "Three witnesses",
-      "One witness",
-      "Four witnesses",
+      "Only one witness is needed",
+      "At least three witnesses are needed",
+      "No witnesses are needed if there is material evidence",
       "At least two witnesses"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 35:30 — 'If anyone kills a person, the murderer shall be put to death on the evidence of witnesses. But no person shall be put to death on the testimony of one witness.'",
+    "explanation": "Numbers 35:30 states: 'Anyone who kills a person is to be put to death as a murderer only on the testimony of witnesses. But no one is to be put to death on the testimony of only one witness.' Therefore, to sentence a murderer to death, at least two witnesses are required. The option 'Only one witness is needed' is incorrect because it directly contradicts the Scripture. The option 'At least three witnesses are needed' is close but incorrect in the specific number (at least two are required, not three). The option 'No witnesses are needed if there is material evidence' is incorrect because it is a common misunderstanding; the law in this passage emphasizes the requirement for witnesses and does not mention an exception for material evidence.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1599,15 +1599,15 @@
     "type": "multiple_choice_single",
     "content": "'No atonement can be made for the land for the ___ that is shed in it, except by the blood of the one who shed it.'",
     "options": [
-      "evil",
-      "unfaithfulness",
-      "transgression",
+      "idolatry",
+      "defiling the sanctuary",
+      "violating the Sabbath",
       "blood"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 35:33 — 'No atonement can be made for the land for the blood that is shed in it, except by the blood of the one who shed it.' A key principle of justice in Mosaic law.",
+    "explanation": "The correct answer 'murder' is based on Numbers 35:33: 'No atonement can be made for the land on which blood has been shed, except by the blood of the one who shed it.' This is a uniquely severe sin that defiles the land and can only be atoned for by the life of the perpetrator.\n\nIncorrect answers:\n- 'idolatry': Incorrect because this is another serious sin, but it is not the specific sin this verse addresses as requiring atonement for the land by blood. (common_misconception)\n- 'defiling the sanctuary': Close, as it involves defilement, but this verse specifically refers to 'murder' defiling the 'land,' not the 'sanctuary.' (wrong_scope)\n- 'violating the Sabbath': Incorrect because, although it is a sin under the law, it is not directly related to the context of Numbers 35 concerning cities of refuge and manslaughter/murder. (nearby_passage - surrounding chapters discuss general statutes)",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1627,15 +1627,15 @@
     "type": "multiple_choice_single",
     "content": "Within what limit must the daughters of Zelophehad marry?",
     "options": [
-      "Only within the priestly line",
+      "In any tribe of Israel",
       "Only within their father's tribe",
-      "Only Levites",
-      "Any tribe"
+      "In their mother's tribe",
+      "In the tribe of their first husband"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 36:6 — 'Let them marry whom they think best, only they shall marry within the clan of the tribe of their father.' So inheritance does not move to another tribe.",
+    "explanation": "In Numbers 36:6-8, Moses relayed the LORD's command: the daughters of Zelophehad 'must marry within their father's tribe' (verse 6), meaning they could only marry within their father's tribe (the tribe of Manasseh). This was to ensure the inheritance would not pass from one tribe to another (verses 7-8).\n\nThe incorrect answers:\n- 'In any tribe of Israel' is wrong because the scope is too broad, contrary to the command to keep the inheritance within the tribe.\n- 'In their mother's tribe' is close but incorrect in a key detail; the law specifically states the father's tribe, not the mother's.\n- 'In the tribe of their first husband' reflects a common misunderstanding that this law relates to a previous marriage, while the text only speaks about future marriage within the father's tribe.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1655,7 +1655,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 36:10-12 — 'The daughters of Zelophehad did as the LORD commanded Moses... They were married into the clans of the people of Manasseh.'",
+    "explanation": "Numbers 36:10-12 records that the daughters of Zelophehad obeyed the LORD's command, 'marrying their cousins' (v. 11), that is, within the tribe of Manasseh, their father's tribe (v. 12).\n\n*   **Correct answer:** The daughters married within the tribe of Manasseh (their father's tribe), in accordance with the command to keep the inheritance from passing to another tribe.\n*   **Distractor 1 (Within the tribe of Judah) is incorrect:** This is a misplaced detail from a nearby passage. While the event occurs in the Book of Numbers, and Judah is one of the main tribes, it is not relevant to the specific command and inheritance issue concerning Zelophehad's daughters.\n*   **Distractor 2 (Within the tribe of their mother's family) is incorrect:** The specific command was to marry within their father's tribe (Manasseh), not within the tribe of their mother's family. This error is a 'scope violation', applying the wrong regulation to the subjects.\n*   **Distractor 3 (Within any tribe of Israel) is incorrect:** This notion directly contradicts the purpose of the command, which was to restrict marriage outside the tribe of Manasseh to preserve the inheritance. It is a common misunderstanding that they had free choice.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1666,9 +1666,9 @@
       "Basic"
     ],
     "options": [
-      "Benjamin",
-      "Judah",
-      "Levi",
+      "Within the tribe of Judah",
+      "Within the tribe of their mother's family",
+      "Within any tribe of Israel",
       "Manasseh (their father's tribe)"
     ]
   },
@@ -1682,7 +1682,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 6:5 — 'All the days of his vow of separation, no razor shall touch his head. Until the time is completed for which he separates himself to the LORD, he shall be holy. He shall let the locks of hair of his head grow long.'",
+    "explanation": "This question is about the law for the Nazirite in Numbers 6:5. CORRECT ANSWER: 'No — no razor shall touch his head; he shall let the hair of his head grow long' is accurate because verse 5 clearly states: 'All the days of the vow of his separation there shall no razor come upon his head: until the days be fulfilled, in the which he separateth himself unto the LORD, he shall be holy, and shall let the locks of the hair of his head grow.' DISTRACTOR 1 IS WRONG (common_misconception): This is a cultural inference (neatness, reverence) but contradicts the explicit command that 'no razor shall come upon his head.' DISTRACTOR 2 IS WRONG (nearby_passage - close but incorrect): It draws the idea 'not shaved bald' from verse 9 (if someone dies suddenly nearby, the Nazirite must shave his head), but that is an exception after becoming unclean, not the rule during the normal vow period. DISTRACTOR 3 IS WRONG (wrong_detail): It confuses details with another prohibition; verse 5 forbids shaving the head (hair), while verse 9 discusses shaving when defiled, and it does not relate to the beard or permission to cut hair.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1691,10 +1691,10 @@
       "Intermediate"
     ],
     "options": [
-      "Yes, once a month",
-      "Yes, on the Sabbath",
+      "Yes — it should be trimmed neatly to show reverence",
+      "Yes — as long as it's not shaved bald, trimming is allowed",
       "No — no razor to touch the head; the hair must grow long",
-      "Only at the priest's command"
+      "Yes — only shaving the beard is forbidden, but hair may be cut"
     ]
   },
   {
@@ -1705,15 +1705,15 @@
     "type": "multiple_choice_single",
     "content": "Scripture describes Moses as more ___ than any man on the face of the earth.",
     "options": [
-      "righteous",
+      "strong",
       "humble",
-      "wise",
-      "courageous"
+      "holy",
+      "wise"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 12:3 — 'Now the man Moses was very meek, more than all people who were on the face of the earth.'",
+    "explanation": "Numbers 12:3 states: 'Now the man Moses was very meek, above all the men which were upon the face of the earth.' Therefore, 'meek' is the correct answer, directly describing Moses's character in this verse. The incorrect answers: (1) 'strong' is incorrect because although the Bible speaks of Moses's strength (such as in Exodus regarding the miracles), this is not the virtue mentioned in Numbers 12:3 (wrong nearby passage). (2) 'holy' is close but incorrect in a key detail; the Scripture emphasizes 'meekness,' not 'holiness' in a moral or ceremonial sense (wrong scope). (3) 'wise' is incorrect as it is a common misconception based on Moses being a wise leader, but the specific wording in this verse is not 'wise' (common misconception).",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1731,15 +1731,15 @@
     "type": "multiple_choice_single",
     "content": "When Moses prayed for God to forgive the people, what attribute of the LORD did he cite?",
     "options": [
-      "Creator of all",
-      "Just judge",
+      "Slow to anger, abounding in love, punishing iniquity",
+      "Abounding in love, showing kindness, forgiving iniquity",
       "Slow to anger, abounding in steadfast love, forgiving iniquity",
-      "Almighty and wise"
+      "Slow to anger, abounding in mercy, not forgetting iniquity"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 14:18 — 'The LORD is slow to anger and abounding in steadfast love, forgiving iniquity and transgression.' Moses cited God's own self-revelation in Exodus 34:6-7.",
+    "explanation": "In Numbers 14:18, Moses quotes the LORD's words from Exodus 34:6-7: 'The LORD is slow to anger and abounding in steadfast love, forgiving iniquity and transgression.' Therefore, the correct answer is 'Slow to anger, abounding in love, forgiving iniquity.' The incorrect options: 1) Uses 'punishing iniquity' instead of 'forgiving iniquity' (incorrect key detail). 2) Replaces 'slow to anger' with 'showing kindness,' an attribute mentioned in the same declaration but not the phrase Moses quotes in this context (misplaced proximity). 3) Replaces 'forgiving iniquity' with 'not forgetting iniquity,' based on a common misunderstanding that mercy completely overrides justice, whereas the original text speaks of 'but who will by no means clear the guilty.'",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1758,15 +1758,15 @@
     "type": "multiple_choice_single",
     "content": "How was the man who gathered sticks on the Sabbath punished?",
     "options": [
-      "Banished from the camp seven days",
+      "Beaten and fined",
       "Stoned to death",
-      "Made a slave",
-      "Fined money"
+      "Sentenced to seven years of slavery",
+      "Punished by being driven out of the camp"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 15:35-36 — 'And the LORD said to Moses, The man shall be put to death; all the congregation shall stone him with stones outside the camp.' Showing the seriousness of breaking the Sabbath.",
+    "explanation": "In Numbers 15:32-36, a man was caught gathering wood on the Sabbath day. According to the LORD's command relayed by Moses, he was stoned to death by the assembly outside the camp (verses 35-36). This is the clear punishment.\n\nIncorrect options:\n1. 'Beaten and fined': Incorrect detail. Some other laws in the book of Leviticus mention punishments like beating or restitution, but this is not the penalty for Sabbath violation in this passage.\n2. 'Sentenced to seven years of slavery': Incorrect due to confusion with nearby passages. Some laws concerning slavery or debt appear in the Law books, but they are not mentioned in this specific situation.\n3. 'Punished by being driven out of the camp': Incorrect due to a common misunderstanding. Some sins were punished by expulsion from the community or camp, but the specific penalty in this Scripture passage is execution, not merely banishment.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1784,15 +1784,15 @@
     "type": "multiple_choice_single",
     "content": "What did Aaron use to stop the plague among the people after Korah's rebellion?",
     "options": [
-      "The blood of a sacrifice",
-      "Holy water",
+      "A censer with glowing coals from the altar of incense",
+      "A vessel containing blood to offer on the altar",
       "A censer with fire and incense",
-      "His staff"
+      "A container of purifying water and a sprinkling bowl for the people"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 16:46-48 — 'Take your censer, and put fire on it from off the altar, and lay incense on it... And he stood between the dead and the living, and the plague was stopped.'",
+    "explanation": "The correct answer is based on Numbers 16:46-48, where Moses told Aaron to take a censer, put fire from the altar in it, add incense, and quickly go to the congregation to make atonement, and Aaron stood between the dead and the living so the plague stopped. The first distractor is close because the detail 'glowing coals from the altar of incense' has a basis in the text (fire from the altar), but the specific biblical text does not use the word 'glowing' or 'coals' together with 'altar of incense' for these details, and notably does not mention the 'altar of incense' in that passage. The second distractor is out of scope because the use of blood for atonement relates to many other rituals (such as Leviticus 4-5), but does not appear at all in the context of Numbers 16:46-48. The third distractor reflects a common misunderstanding about purification rites, often involving water and sprinkling of blood or water (e.g., Numbers 8:7 or 19:9), but is not the action Aaron took to immediately stop the plague in this story.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1813,7 +1813,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 20:21 — 'Thus Edom refused to give Israel passage through his territory, so Israel turned away from him.' Although Edom descends from Esau, Jacob's brother.",
+    "explanation": "The Scripture passage Numbers 20:14-21 records that the king of Edom refused Israel's request, threatening to meet them with the sword if they passed through, forcing Israel to go around (verses 18, 21). The correct answer is correct because it accurately reflects the refusal and the result that Israel had to take another route.\n\n- Distractor 1 is incorrect because the king of Edom did not agree with any conditions; he refused completely and threatened with force. This is a false detail, creating a 'close but incorrect' version that changes the key action.\n- Distractor 2 is incorrect because it borrows the element of 'fighting for them' from negotiations with other peoples (as in Deuteronomy 2) and not from this passage, where the king of Edom did not propose any conditions.\n- Distractor 3 is incorrect because it is a common misunderstanding, completely opposite to the hostile attitude described; there is no detail about agreement or providing support.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1823,10 +1823,10 @@
       "Intermediate"
     ],
     "options": [
-      "Permitted them and provided food",
-      "Permitted with conditions",
+      "Agreed, but only allowed passage through the northern part of the land",
+      "Agreed, on the condition that Israel would fight for them",
       "Refused, forcing Israel to go around",
-      "Allied with Israel"
+      "Agreed immediately and provided provisions"
     ]
   },
   {
@@ -1839,14 +1839,14 @@
     "content": "Israel defeated King Sihon of which people?",
     "options": [
       "The Moabites",
-      "The Philistines",
+      "The Edomites",
       "The Amorites",
-      "The Midianites"
+      "The Canaanites"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 21:21-25 — 'Then Israel sent messengers to Sihon king of the Amorites... Israel defeated him with the edge of the sword and took possession of his land.'",
+    "explanation": "The passage Numbers 21:21-25 records the Israelites asking permission to pass through the territory of King Sihon, king of the Amorites, but he refused and came out to fight Israel at Jahaz. Israel defeated King Sihon and took the land of the Amorites from the Arnon to the Jabbok (verse 24).\n\nCORRECT ANSWER: 'The Amorites' is accurate because in verse 21, Sihon is identified as the king of the Amorites.\n\nINCORRECT DISTRACTORS:\n1. 'The Moabites': This is an 'almost-right' distractor. In verse 26, Scripture mentions that Sihon had previously fought against the king of Moab and taken his land. However, the specific question asks about the people of whom Sihon was king (according to the excerpt), and that is the Amorites, not the Moabites. This is a wrong_detail error regarding the people's name, based on nearby information in the passage.\n2. 'The Edomites': Earlier (Numbers 20:14-21), the Israelites had asked to pass through the territory of Edom but were refused, so they went around. This question is specifically about the battle with Sihon in Numbers 21, unrelated to Edom. This is a wrong_scope error because it introduces a people from a different event.\n3. 'The Canaanites': In a broader context, the Amorites can be seen as part of the peoples in Canaan, and there is sometimes an association. However, in the specific excerpt Numbers 21:21-25, the text consistently refers to the object as 'the Amorites' (verses 21, 25, 31), not 'the Canaanites'. This is a nearby_passage error because it uses a broader, related term that is not accurate for the detail in the passage.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1864,15 +1864,15 @@
     "type": "multiple_choice_single",
     "content": "Balaam exclaimed: 'How lovely are your ___, O Jacob, your dwelling places, O Israel!'",
     "options": [
-      "cities",
-      "temples",
-      "lands",
+      "your temple",
+      "your city",
+      "your field",
       "tents"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Numbers 24:5 — 'How lovely are your tents, O Jacob, your encampments, O Israel!' Balaam blesses instead of cursing.",
+    "explanation": "In Numbers 24:5, Balaam exclaims: 'How beautiful are your tents, O Jacob, your dwelling places, O Israel!'. He uses 'your tents' to describe the goodness of the Israelites during their wilderness journey. The distractor 'your temple' is close but incorrect because it refers to the temple, a fixed structure, while the context here is a mobile camp (similar to 'tent' but was specified to avoid). 'Your city' is inaccurate in detail because the Israelites had not yet settled in fortified cities at this time. 'Your field' is incorrect in scope as it is unrelated to the wilderness context and the agricultural livelihood of the story.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1918,14 +1918,14 @@
     "content": "On what object must Aaron light the seven lamps?",
     "options": [
       "The lampstand",
-      "The table of showbread",
-      "The Ark of the Covenant",
-      "The altar of incense"
+      "Altar of incense",
+      "Bronze altar",
+      "Table of the Bread of the Presence"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Numbers 8:2 — 'When you set up the lamps, the seven lamps shall give light in front of the lampstand.'",
+    "explanation": "Numbers 8:2 records: 'Speak to Aaron and say to him, When you set up the lamps, the seven lamps shall give light in front of the lampstand.' Therefore, the correct answer is 'Lampstand,' as that is the specific item mentioned in the question. The incorrect answers: (1) 'Altar of incense' is another sacred item in the Holy Place (Exodus 30:1-10), located near the lampstand, so this is an error of confusing nearby passages. (2) 'Bronze altar' is an item in the courtyard of the tabernacle, not where the lamps are placed, so this is an error of scope. (3) 'Table of the Bread of the Presence,' while also in the Holy Place (Exodus 25:23-30), is not the item for holding the lamps; the question specifically asks about the item for setting up the lamps, so this answer, while biblically accurate, is irrelevant to the question.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1943,15 +1943,15 @@
     "type": "multiple_choice_single",
     "content": "When the people complained, what did the LORD send down?",
     "options": [
-      "Plague",
+      "Hail",
       "Fire",
-      "Storm",
-      "Earthquake"
+      "Plague",
+      "Locusts"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Numbers 11:1 — 'And the people complained in the hearing of the LORD about their misfortunes, and when the LORD heard it, his anger was kindled, and the fire of the LORD burned among them and consumed some outlying parts of the camp.'",
+    "explanation": "The correct answer is 'Fire' because Numbers 11:1 clearly states: 'And when the people complained... the anger of the LORD was kindled; and the fire of the LORD burnt among them, and consumed them that were in the uttermost parts of the camp.'\n\nThe incorrect answers:\n- 'Hail' is incorrect because this is a plague that appears in other passages (such as Exodus 9:18-26), not in this event in Numbers 11.\n- 'Plague' is incorrect because although this is a common punishment in the Old Testament when the people complained (for example Numbers 14:37, 25:9), this specific Scripture passage (Numbers 11:1) does not mention a plague.\n- 'Locusts' is incorrect because although locusts are a plague in other stories (such as Exodus 10:12-15), it is not related to the event asked about in Numbers 11:1.",
     "language": "en",
     "tags": [
       "Old Testament",
@@ -1971,14 +1971,14 @@
     "content": "How many times did Balaam's donkey turn aside before speaking?",
     "options": [
       "Twice",
-      "Once",
+      "Never",
       "Three times",
       "Four times"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Numbers 22:32-33 — 'Why have you struck your donkey these three times?' The donkey saw the angel three times and turned aside three times before the LORD opened her mouth.",
+    "explanation": "In Numbers 22:32-33, the angel of the LORD said to Balaam, 'If the donkey had not turned aside from me, surely I would have killed you by now.' This was spoken after the donkey had turned aside three times (as specifically described in verses 22:23-33). Therefore, the correct answer is 'Three times'. The distractor 'Twice' is close but incorrect in the number of times. The distractor 'Never' is a common misunderstanding, thinking the donkey only reacted upon seeing the angel, but it actually turned aside three times before speaking. The distractor 'Four times' is incorrect in scope, imposing a number not present in this biblical passage.",
     "language": "en",
     "tags": [
       "Old Testament",

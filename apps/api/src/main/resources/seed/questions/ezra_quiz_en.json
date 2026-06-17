@@ -6,14 +6,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Ezra 1:1, of which kingdom is Cyrus king?",
-    "correctAnswer": [0],
-    "explanation": "Ezra 1:1 — 'In the first year of Cyrus king of Persia, that the word of the LORD by the mouth of Jeremiah might be fulfilled, the LORD stirred up the spirit of Cyrus king of Persia...'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The Scripture Ezra 1:1 records: 'In the first year of Cyrus king of Persia, the LORD...'. Therefore, the correct answer is 'Persia'. The distractor 'Babylon' is incorrect because Cyrus conquered and absorbed the Babylonian empire, but he was the king of Persia. The distractor 'Judah' is incorrect because this is the name of the kingdom/land of the exiled Jewish people, not the nation of King Cyrus. The distractor 'Media' is incorrect because Cyrus had ancestry and an alliance with the Medes, but his kingdom was officially called Persia.",
     "language": "en",
     "options": [
       "Persia",
       "Babylon",
-      "Media",
-      "Assyria"
+      "Judah",
+      "Media"
     ],
     "tags": [
       "Old Testament",
@@ -30,14 +32,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Ezra 1:1, in which year of Cyrus's reign was the decree issued?",
-    "correctAnswer": [1],
-    "explanation": "Ezra 1:1 — 'In the first year of Cyrus king of Persia... the LORD stirred up the spirit of Cyrus king of Persia, so that he made a proclamation throughout all his kingdom...'",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ezra 1:1 records: 'In the first year of Cyrus king of Persia...'. Therefore, the correct answer is 'The first year' because the Bible clearly states the time. The distractor 'The second year' is close but incorrect in the specific year number. The distractor 'The final year' is incorrect in the time scope because it refers to the initial decree, not the end of the reign. The distractor 'After conquering Babylon', while describing a related historical event, does not correctly answer the question about the specific regnal year in the book of Ezra.",
     "language": "en",
     "options": [
-      "Third year",
+      "The second year",
       "First year",
-      "Fifth year",
-      "Tenth year"
+      "The final year",
+      "After conquering Babylon"
     ],
     "tags": [
       "Old Testament",
@@ -54,14 +58,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Ezra 1:2, what did Cyrus declare God had charged him to build, and where?",
-    "correctAnswer": [2],
-    "explanation": "Ezra 1:2 — '...The LORD, the God of heaven, has given me all the kingdoms of the earth, and he has charged me to build him a house at Jerusalem, which is in Judah.'",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "The question references Ezra 1:2. The correct answer is 'A temple in Jerusalem,' because Cyrus says: 'The LORD God of heaven has given me all the kingdoms of the earth, and he has charged me to build him a house at Jerusalem, which is in Judah.'\n\n- The distractor 'A temple in Babylon' is incorrect because of the wrong location detail (Babylon instead of Jerusalem). This is a 'close but incorrect' distractor as it only misses one key detail (the location).\n- The distractor 'An altar in Jerusalem' is incorrect because it narrows the scope (an altar is only a part, while the Scripture verse clearly states 'a house' [temple]).\n- The distractor 'A wall in Jerusalem' is incorrect because it is based on a common misunderstanding (another important construction in Jerusalem, but the building of the wall was a later period, related to Nehemiah, not the decree of Cyrus in Ezra 1).",
     "language": "en",
     "options": [
-      "A palace at Susa",
-      "A new city in Persia",
+      "A temple in Babylon",
+      "An altar in Jerusalem",
       "A house (temple) at Jerusalem",
-      "A great road from Babylon"
+      "A wall in Jerusalem"
     ],
     "tags": [
       "Old Testament",
@@ -78,13 +84,15 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Ezra 1:7, what did Cyrus restore to the people of Israel?",
-    "correctAnswer": [3],
-    "explanation": "Ezra 1:7 — 'Cyrus the king also brought out the vessels of the house of the LORD that Nebuchadnezzar had carried away from Jerusalem and placed in the house of his gods.'",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "The question references Ezra 1:7: 'Moreover, King Cyrus brought out the vessels of the house of the LORD, which Nebuchadnezzar had carried away from Jerusalem and placed in the house of his gods.' The correct answer is 'The vessels of the house of the LORD,' as the Scripture clearly states that King Cyrus returned these sacred items. Distractor 1 is incorrect because it changes the location from 'the house of the LORD' to 'the temple in Babylon,' even though the vessels were stored there, that was not their rightful place. Distractor 2 is incorrect because it broadens the scope to a different topic (the tribes), unrelated to the specific act of return in this verse. Distractor 3 is incorrect because it reflects a common misunderstanding about the temple reconstruction; the Bible verse speaks of returning existing vessels, not providing new materials for construction.",
     "language": "en",
     "options": [
-      "Gold and silver wealth",
-      "Ancestral lands",
-      "Protective soldiers",
+      "The temple vessels in Babylon",
+      "The tribes of Israel",
+      "The building materials for the new temple",
       "Vessels of the house of the LORD that Nebuchadnezzar had carried away"
     ],
     "tags": [
@@ -102,14 +110,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Ezra 1:8, to whom did Cyrus deliver the vessels for return to Judah?",
-    "correctAnswer": [0],
-    "explanation": "Ezra 1:8 — 'Cyrus king of Persia brought these out in the charge of Mithredath the treasurer, who counted them out to Sheshbazzar the prince of Judah.'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ezra 1:8 records: 'King Cyrus entrusted these articles to Mithredath the treasurer, who counted them out to Sheshbazzar, the leader of Judah.' Therefore, the correct answer is Sheshbazzar, the leader of Judah.\n\n- The distractor 'Sheshbazzar, the leader of Israel' is incorrect because, although the name (Sheshbazzar) is correct, the title is inaccurate in detail; the Bible clearly states he was 'the leader of Judah,' not of all Israel.\n- The distractor 'Jehoiachin, the leader of Judah' is incorrect because this is the name of a former king who was taken into exile (2 Kings 24:15), unrelated to the event in Ezra 1:8.\n- The distractor 'The priests who served in the temple' is incorrect because, although these articles were for the temple and priests were involved, the specific question asks about the person Cyrus entrusted them to via Mithredath for delivery to Judah, not the group who would later use them.",
     "language": "en",
     "options": [
       "Sheshbazzar, the prince of Judah",
-      "Darius, king of the Medes",
-      "Artaxerxes who came later",
-      "Mordecai of Benjamin"
+      "Sheshbazzar, the leader of Israel",
+      "Jehoiachin, the leader of Judah",
+      "The priests who served in the temple"
     ],
     "tags": [
       "Old Testament",
@@ -126,14 +136,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Ezra 2:64, what was the total number of the first returning assembly?",
-    "correctAnswer": [1],
-    "explanation": "Ezra 2:64 — 'The whole assembly together was 42,360, besides their male and female servants...'",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ezra 2:64 clearly states: 'The whole assembly together was forty-two thousand three hundred sixty.' (42,360). This is the total number after checking the genealogical records, not including the separate servants and singers listed afterward.\n\n- Distractor 'Forty-three thousand six hundred forty (43,640)' is INCORRECT because it transposes the thousands and hundreds digits compared to the accurate number.\n- Distractor 'Fifty-two thousand three hundred sixty (52,360)' is INCORRECT as it might be a common misestimation of the scale of the returning exiles, but it does not match the Scripture.\n- Distractor 'Forty-two thousand three hundred (42,300)' is INCORRECT because this is a number that appears nearby (the total of some specific groups in the list, as in Ezra 2:3-35), but it is missing the 'sixty' (60) people to form the final overall total.",
     "language": "en",
     "options": [
-      "Twelve thousand three hundred",
+      "Forty-three thousand six hundred forty (43,640)",
       "Forty-two thousand three hundred sixty (42,360)",
-      "One hundred thousand",
-      "Ninety thousand"
+      "Fifty-two thousand three hundred sixty (52,360)",
+      "Forty-two thousand three hundred (42,300)"
     ],
     "tags": [
       "Old Testament",
@@ -150,14 +162,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Ezra 3:2, who was the priest and who was the governor leading the work of building the altar?",
-    "correctAnswer": [2],
-    "explanation": "Ezra 3:2 — 'Then arose Jeshua the son of Jozadak, with his fellow priests, and Zerubbabel the son of Shealtiel with his kinsmen, and they built the altar of the God of Israel...'",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ezra 3:2 records: 'Then Jeshua son of Jehozadak and his fellow priests and Zerubbabel son of Shealtiel and his associates began to build the altar of the God of Israel.' Therefore, the correct answer is Jeshua son of Jehozadak (the priest) and Zerubbabel (the leader).\n\n- Distractor 1 is incorrect because it swaps the roles of the two figures: Jeshua was the priest, not the leader, and Zerubbabel was the leader, not the priest.\n- Distractor 2 is incorrect because it replaces Zerubbabel with Nehemiah. Nehemiah is the main figure in a different book and appears later than this event; he was not the leader in the rebuilding of the altar according to Ezra 3:2.\n- Distractor 3 is incorrect because it replaces both figures. Ezra was a priest but arrived in Jerusalem after this event (Ezra 7), and Nehemiah was not the leader in the altar rebuilding as described in this passage.",
     "language": "en",
     "options": [
-      "Aaron (priest) and Moses (governor)",
-      "Jehoiada (priest) and David (governor)",
+      "Jeshua son of Jehozadak (the leader) and Zerubbabel (the priest)",
+      "Jeshua son of Jehozadak (the priest) and Nehemiah (the leader)",
       "Jeshua son of Jozadak (priest) and Zerubbabel (governor)",
-      "Paul (priest) and Peter (governor)"
+      "Ezra (the priest) and Nehemiah (the leader)"
     ],
     "tags": [
       "Old Testament",
@@ -175,13 +189,15 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Ezra 3:11-13, when the foundation of the temple was laid, how did the people respond?",
-    "correctAnswer": [3],
-    "explanation": "Ezra 3:12-13 — 'But many of the priests and Levites and heads of fathers' houses, old men who had seen the first house, wept with a loud voice when they saw the foundation of this house being laid... while many shouted aloud for joy...' Older men wept remembering Solomon's temple; younger men rejoiced over the new beginning.",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "The Scripture passage (Ezra 3:11-13) describes: 'And all the people shouted with a great shout... But many of the priests and Levites and heads of fathers' houses, old men who had seen the first house... wept with a loud voice... so that the people could not distinguish the sound of the joyful shout from the sound of the people's weeping...'. Therefore, the correct answer is 'The elders wept with a loud voice (remembering the former temple), the young shouted for joy'. The incorrect answers are: 1. (wrong_detail) Incorrect detail about the groups and emotions. In the passage, the elders wept and the young shouted for joy; this answer reverses the two groups and the stated reason for weeping (missing parents) is not given. 2. (wrong_scope) Incorrect scope, describing only a single reaction. In reality, two opposite reactions (weeping and shouting for joy) occurred simultaneously. 3. (nearby_passage) Confused with another activity in the same context. The people did sing (verse 11), but were not silent beforehand; the primary reaction asked about is the weeping and shouting for joy when the foundation was laid, not a sequence of silence then singing.",
     "language": "en",
     "options": [
-      "All were silent",
-      "All wept",
-      "All rejoiced together",
+      "The elders shouted for joy, the young wept (missing their parents)",
+      "They all shouted together with one voice of joyful acclamation",
+      "They remained silent, then afterward began to sing a new song",
       "Old men wept loudly (remembering the first house), young men shouted for joy"
     ],
     "tags": [
@@ -199,14 +215,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Ezra 4:24, until what year and reign was the work on the temple halted?",
-    "correctAnswer": [0],
-    "explanation": "Ezra 4:24 — 'Then the work on the house of God that is in Jerusalem stopped, and it ceased until the second year of the reign of Darius king of Persia.'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ezra 4:24 records: 'Thus the work on the house of God in Jerusalem came to a standstill until the second year of the reign of Darius king of Persia.' Therefore, the correct answer is 'The second year of Darius king of Persia'.\n\n- The distractor 'The second year of Zerubbabel the governor' is incorrect because although Zerubbabel was the leader of the project (Ezra 3:8), the time of cessation referenced in this Scripture specifically points to a king's reign, not a governor's term.\n- The distractor 'The second year of Cyrus king of Persia' is incorrect because King Cyrus issued the initial decree permitting the construction (Ezra 1:1-2), while the cessation lasted until the later time of King Darius.\n- The distractor 'The sixth year of Darius king of Persia' is a 'close but incorrect' answer, as it misses the key numerical detail; the Scripture clearly states 'the second year,' not the sixth year.",
     "language": "en",
     "options": [
       "Second year of Darius king of Persia",
-      "Fifth year of Cyrus",
-      "Tenth year of Artaxerxes",
-      "Fourth year of Solomon"
+      "The second year of Zerubbabel the governor",
+      "The second year of Cyrus king of Persia",
+      "The sixth year of Darius king of Persia"
     ],
     "tags": [
       "Old Testament",
@@ -223,14 +241,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Ezra 5:1, which two prophets prophesied to encourage the people to continue building?",
-    "correctAnswer": [1],
-    "explanation": "Ezra 5:1 — 'Now the prophets, Haggai and Zechariah the son of Iddo, prophesied to the Jews who were in Judah and Jerusalem, in the name of the God of Israel who was over them.'",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "In Ezra 5:1, the Scripture clearly states: 'Now Haggai the prophet and Zechariah the prophet, the son of Iddo, prophesied to the Jews who were in Judah and Jerusalem in the name of the God of Israel, who was over them.' Therefore, the correct answer is Haggai and Zechariah.\n\n- The distractor 'Haggai and Jeremiah' is incorrect because Jeremiah was a prophet from an earlier period (the time of the exile) and is not mentioned in this context (Ezra 5). This is an error of confusing nearby passages.\n- The distractor 'Ezra and Nehemiah' is incorrect because these were leaders in priestly and gubernatorial roles, not the two prophets named in this Scripture verse. This is an error of scope, introducing characters from other historical books.\n- The distractor 'Zechariah and Malachi' is incorrect because Malachi was a prophet from a later period, unrelated to the temple rebuilding events described in Ezra 5. This is an error of detail regarding names and chronological order.",
     "language": "en",
     "options": [
-      "Jeremiah and Ezekiel",
+      "Haggai and Jeremiah",
       "Haggai and Zechariah",
-      "Hosea and Amos",
-      "Isaiah and Micah"
+      "Ezra and Nehemiah",
+      "Zechariah and Malachi"
     ],
     "tags": [
       "Old Testament",
@@ -248,14 +268,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Ezra 6:15, in which year of Darius was the temple completed?",
-    "correctAnswer": [2],
-    "explanation": "Ezra 6:15 — 'And this house was finished on the third day of the month of Adar, in the sixth year of the reign of Darius the king.' The Second Temple was completed about 516 BC, after roughly seventy years of ruin.",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ezra 6:15 records: 'So the temple was finished on the third day of the month of Adar, in the sixth year of the reign of King Darius.' This is the direct and accurate answer.\n- Distractor 'The fourth year' is incorrect: Previous passages (Ezra 4:24, 6:7) mention the second year and the resumption of work under Darius, which can cause confusion about the completion date.\n- Distractor 'The third year' is incorrect: This is an inaccurate numerical detail compared to Scripture, not fitting the context of the prolonged construction.\n- Distractor 'The seventh year' is incorrect: This is a common misunderstanding, possibly due to misremembering other events in Israelite history, such as the seventh year of another king or a different time marker.",
     "language": "en",
     "options": [
-      "Second year",
-      "Fourth year",
+      "The fourth year",
+      "The third year",
       "Sixth year",
-      "Eighth year"
+      "The seventh year"
     ],
     "tags": [
       "Old Testament",
@@ -272,13 +294,15 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Ezra 6:19, what feast did the returning exiles celebrate after the temple was completed?",
-    "correctAnswer": [3],
-    "explanation": "Ezra 6:19 — 'On the fourteenth day of the first month, the returned exiles kept the Passover.' The first feast in the new temple — commemorating the LORD's deliverance from Egypt, now applied to deliverance from Babylon.",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Question: 'According to Ezra 6:19, after the temple was completed, what feast did the returned exiles celebrate?'\n\nThe correct answer is 'the Passover' because Ezra 6:19-20 clearly states: 'On the fourteenth day of the first month, the returned exiles celebrated the Passover.' This was the feast celebrated immediately after the construction work on the temple was finished (see verses 14-15).\n\nIncorrect answers:\n1. 'Feast of Tabernacles': This is an almost-right answer because the Feast of Tabernacles is a major, important feast mentioned many times in Scripture (e.g., Leviticus 23:33-43) and is related to worship, but it is incorrect on the key detail. Ezra 6:19 specifically mentions the Passover, not the Feast of Tabernacles. This error is of the 'nearby_passage' type, as the student might be remembering other feasts in a similar worship context.\n2. 'Feast of the Temple's Foundation': This is an answer with an incorrect detail. Scripture does not record a feast specifically named the 'Feast of the Temple's Foundation' in this context. The event of the temple's completion is recorded (verses 14-15), but the feast celebrated immediately afterward was the Passover. This error is of the 'wrong_detail' type.\n3. 'Feast of Dedication': This is a textually true but off-topic answer. The dedication of the temple (e.g., the dedication of Solomon's temple in 1 Kings 8) is an important event, but it is not the feast celebrated as described in Ezra 6:19. The question asks specifically about the event in verse 19, so this answer is not accurate for this question.",
     "language": "en",
     "options": [
-      "Tabernacles",
-      "Pentecost",
-      "Day of Atonement",
+      "Feast of Tabernacles",
+      "Feast of the Temple's Foundation",
+      "Feast of Dedication",
       "Passover"
     ],
     "tags": [
@@ -296,14 +320,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Ezra 7:6, how is Ezra described?",
-    "correctAnswer": [0],
-    "explanation": "Ezra 7:6 — '...this Ezra went up from Babylonia. He was a scribe skilled in the Law of Moses that the LORD, the God of Israel, had given, and the king granted him all that he asked, for the hand of the LORD his God was on him.'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The question references Ezra 7:6. Ezra 7:6 states: 'this Ezra... was a scribe skilled in the Law of Moses.' Therefore, the correct answer is 'A scribe skilled in the Law of Moses.' The first incorrect answer is 'close' but has a crucial incorrect detail: 'from the time of Saul' instead of 'of Moses' (even though David and Saul are nearby figures). The second incorrect answer broadens the scope of error: 'a law professor teaching in the temple' is a different function, not the precise description in this verse. The third incorrect answer, while mentioning a related aspect of Ezra (he recorded genealogies in other books), is not relevant to the question about the specific description in Ezra 7:6.",
     "language": "en",
     "options": [
       "A scribe skilled in the Law of Moses",
-      "A high priest",
-      "A military commander",
-      "A famous diviner"
+      "A scribe skilled in the law from the time of Saul",
+      "A law professor teaching in the temple",
+      "An expert in the genealogies of the priests"
     ],
     "tags": [
       "Old Testament",
@@ -320,14 +346,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Ezra 7:9, why was Ezra's journey successful?",
-    "correctAnswer": [1],
-    "explanation": "Ezra 7:9 — '...for the good hand of his God was on him.' The phrase 'the good hand of God' is repeated several times in the book.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "The question asks for the reason for the successful journey according to Ezra 7:9. The Scripture clearly states: 'for the good hand of his God was upon him.' (Ezra 7:9b). Therefore, the correct answer is 'Because the good hand of God was upon him.'\n\nThe incorrect answers:\n1. 'Because the good hand of King Artaxerxes was upon him': This is close but incorrect in a key detail. Verses 6-7 mention King Artaxerxes issuing a decree, but verse 9 specifies that the direct cause of the journey's success was GOD, not the king.\n2. 'Because he was devout and prayed frequently': This is a common misunderstanding, inferred from the general image of Ezra as a scribe (verses 6, 10). However, verse 9 does not mention his devotion or prayer as the reason for the successful journey.\n3. 'Because he was protected by the accompanying priests': This confuses a detail from the nearby passage. Priests are mentioned in the list of those who went with him (Ezra 7:7), but they are not given as the reason for the journey's success in verse 9.",
     "language": "en",
     "options": [
-      "Because a large Persian army escorted him",
+      "Because the good hand of King Artaxerxes was upon him",
       "Because the good hand of his God was on him",
-      "Because all neighboring nations were friendly",
-      "Because the weather was favorable"
+      "Because he was devout and prayed frequently",
+      "Because he was protected by the accompanying priests"
     ],
     "tags": [
       "Old Testament",
@@ -344,14 +372,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Ezra 7:10, what three things had Ezra set his heart to do?",
-    "correctAnswer": [2],
-    "explanation": "Ezra 7:10 — 'For Ezra had set his heart to study the Law of the LORD, and to do it and to teach his statutes and rules in Israel.' Study, practice, then teach — the essential order.",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ezra 7:10 records: 'For Ezra had set his heart to study the Law of the LORD, and to do it and to teach his statutes and rules in Israel.' The correct answer faithfully reflects Scripture, listing three things Ezra set his heart to do: (1) study the Law, (2) keep and do it, and (3) teach in Israel.\n\nDistractor 1 (close but incorrect) is wrong because it replaces 'teach in Israel' with 'offer sacrifices in the temple.' Although Ezra was associated with the temple, verse 10 does not mention offering sacrifices.\nDistractor 2 is wrong because it replaces 'the Law of the LORD' with 'the prophecies about the Messiah.' Ezra's focus here is on the Law (Torah), not Messianic prophecies.\nDistractor 3 is wrong because it replaces 'keep and do it' with 'worship Him' and changes the target from 'Israel' to 'the Gentiles.' Although worship and teaching are important, verse 10 specifically mentions 'keeping and doing' the Law and teaching 'Israel.'",
     "language": "en",
     "options": [
-      "Pray, fast, and offer sacrifices",
-      "Record, compile, and lecture",
+      "Study the law of the LORD, keep and do it, and offer sacrifices in the temple",
+      "Study the prophecies about the Messiah, keep and do them, and teach Israel",
       "Study the Law of the LORD, do it, and teach in Israel",
-      "Resist enemies, build the city, appoint commanders"
+      "Study the law of the LORD, worship Him, and teach the Gentiles"
     ],
     "tags": [
       "Old Testament",
@@ -368,13 +398,15 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Ezra 8:21, where did Ezra proclaim a fast before setting out?",
-    "correctAnswer": [3],
-    "explanation": "Ezra 8:21 — 'Then I proclaimed a fast there, at the river Ahava, that we might humble ourselves before our God, to seek from him a safe journey for ourselves, our children, and all our goods.'",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ezra 8:21 records: 'I proclaimed a fast there at the river Ahava, that we might humble ourselves before our God, to seek from him a safe journey for ourselves, our children, and all our goods.' Therefore, the correct answer is 'At the river Ahava'. The incorrect answers: (1) 'At the Jordan River' is wrong because it is another famous biblical location, but not where this event took place. (2) 'In the city of Jerusalem' is wrong because this event occurred before the group set out for Jerusalem, not in the city itself. (3) 'At the temple gate' is wrong because it is a place where other religious events often occurred, but the group had not yet reached the temple when this fast was proclaimed.",
     "language": "en",
     "options": [
-      "At Susa",
-      "At Babylon",
-      "At Jerusalem",
+      "At the Jordan River",
+      "In the city of Jerusalem",
+      "At the temple gate",
       "At the river Ahava"
     ],
     "tags": [
@@ -392,14 +424,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Ezra 8:22, why was Ezra ashamed to ask the king for soldiers?",
-    "correctAnswer": [0],
-    "explanation": "Ezra 8:22 — '...for I was ashamed to ask the king for a band of soldiers and horsemen to protect us against the enemy on our way, since we had told the king, \"The hand of our God is for good on all who seek him, and the power of his wrath is against all who forsake him.\"'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The question is based on Ezra 8:22: 'For I was ashamed to ask the king for a band of soldiers and horsemen to protect us against the enemy on the way, because we had told the king, \"The hand of our God is for good on all who seek him, and the power of his wrath is against all who forsake him.\"' The correct answer quotes the exact reason Ezra was ashamed: he had declared to the king about God's help for those who seek Him, so he felt embarrassed to ask for earthly soldiers.\n\nDistractor 1 (close but incorrect) is wrong because it replaces 'helps' with 'brings disaster,' completely opposite to the meaning of the Scripture verse.\nDistractor 2 is wrong because it replaces 'those who seek Him' with 'those who obey Him,' which is an incorrect detail from confusion with nearby verses about obedience.\nDistractor 3 is wrong because although 'everyone in the company' might be implicitly understood, it narrows the scope of Ezra's declaration (which speaks about all who seek God in general) to only the specific group, shifting the focus away from the question's point about his reason for shame.",
     "language": "en",
     "options": [
       "Because he had told the king the hand of God is for good on all who seek Him",
-      "Because he feared the king might suspect his loyalty",
-      "Because he had no money to pay soldiers",
-      "Because he had no authority to ask"
+      "Because he had told the king that the hand of God brings disaster on all who seek Him",
+      "Because he had told the king that the hand of God helps all who obey Him",
+      "Because he had told the king that the hand of God helps everyone in the company"
     ],
     "tags": [
       "Old Testament",
@@ -416,14 +450,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Ezra 9:3, when Ezra heard about the foreign marriages, how did he react?",
-    "correctAnswer": [1],
-    "explanation": "Ezra 9:3 — 'As soon as I heard this, I tore my garment and my cloak and pulled hair from my head and beard and sat appalled.'",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "CORRECT ANSWER: 'Tore his clothes, pulled out his hair and beard, and sat down appalled.' According to Ezra 9:3: 'When I heard this, I tore my tunic and cloak, pulled hair from my head and beard and sat down appalled.' This reaction demonstrates deep grief and repentance over the people's sin.\n\nEXPLANATION OF INCORRECT ANSWERS:\n1. 'Tore his clothes, pulled out his hair and beard, and immediately went down to the water': Incorrect detail. The action 'went down to the water' is not in verse 3. The action 'sat down appalled' is described, after which Ezra prayed (verse 5).\n2. 'Tore his clothes, pulled out his hair and beard, and stood up to pray': Incorrect nearby passage. Although Ezra did pray in repentance (Ezra 9:5-15), the first action recorded in verse 3 is 'sat down appalled.' 'Stood up to pray' occurred afterward, not the immediate action asked about.\n3. 'Tore his clothes, pulled out his hair and beard, and went up to the temple to offer a sacrifice': Common misunderstanding. In other scenes of repentance in Scripture, offering a sacrifice can be part of repentance, but it is not the action described in Ezra 9:3. The question specifically asks about Ezra's direct action upon hearing the news, which is described as sitting down appalled.",
     "language": "en",
     "options": [
-      "Ordered immediate expulsion",
+      "Tore his clothes, pulled out his hair and beard, and immediately went down to the water",
       "Tore his garment, pulled hair from his head and beard, sat appalled",
-      "Stayed silent without reaction",
-      "Held a feast with the elders"
+      "Tore his clothes, pulled out his hair and beard, and stood up to pray",
+      "Tore his clothes, pulled out his hair and beard, and went up to the temple to offer a sacrifice"
     ],
     "tags": [
       "Old Testament",
@@ -440,14 +476,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Ezra 9:6, how did Ezra begin his prayer of intercession?",
-    "correctAnswer": [2],
-    "explanation": "Ezra 9:6 — '...O my God, I am ashamed and blush to lift my face to you, my God, for our iniquities have risen higher than our heads, and our guilt has mounted up to the heavens.'",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ezra 9:6 records: 'O Lord, I am ashamed and blush to lift up my face to you; our iniquities have risen higher than our heads.' This is the opening of Ezra's prayer.\n- The correct answer quotes the exact wording.\n- Distractor 1 ('grown up to the heavens') is a detail present in the prayer but in a later part (verse 7), not the opening of verse 6.\n- Distractor 2 ('piled up like a mountain') is a different figurative expression, not the exact wording.\n- Distractor 3 describes an action (hurriedly knelt down) found in the context (verse 5) but is not the opening words of the prayer.",
     "language": "en",
     "options": [
-      "O Lord, why have You let this happen?",
-      "O Lord, grant us victory",
+      "O Lord, I am ashamed and blush to lift up my face to you; our trespass has grown up to the heavens",
+      "O Lord, I am ashamed and blush to lift up my face to you; our wickedness is piled up like a mountain",
       "O my God, I am ashamed and blush to lift my face — our iniquities have risen above our heads",
-      "O Lord, hear my cry"
+      "O Lord, I hurriedly knelt down, offering up to you a prayer for the people"
     ],
     "tags": [
       "Old Testament",
@@ -464,13 +502,15 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Ezra 10:1, who gathered to Ezra in great number while he was praying?",
-    "correctAnswer": [3],
-    "explanation": "Ezra 10:1 — 'While Ezra prayed and made confession, weeping and casting himself down before the house of God, a very great assembly of men, women, and children, gathered to him out of Israel...'",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ezra 10:1 states: 'While Ezra was praying and confessing, weeping and throwing himself down before the house of God, a large crowd of Israelites—men, women and children—gathered around him, for the people wept bitterly.' Therefore, the correct answer is 'Men, women, and children — a very large crowd,' because the Scripture lists all three groups. The distractor 'Men, women, and elders — a very large crowd' is close but replaces the detail 'children' with 'elders,' a group that appears elsewhere in the book but is not mentioned in this verse. The distractor 'Only men — a very large crowd' is incorrect in scope because it narrows the participants, while the verse explicitly includes women and children. The distractor 'Israelites and foreigners — a very large crowd' is based on a common misunderstanding of the context, as the crowd that gathered consisted only of Israelites, not foreigners.",
     "language": "en",
     "options": [
-      "Only priests and Levites",
-      "Only the elders",
-      "Only the officials",
+      "Men, women, and elders — a very large crowd",
+      "Only men — a very large crowd",
+      "Israelites and foreigners — a very large crowd",
       "Men, women, and children — a very great assembly"
     ],
     "tags": [
@@ -488,14 +528,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Ezra 10:11, what is the people called to do to set right their sin?",
-    "correctAnswer": [0],
-    "explanation": "Ezra 10:11 — '...make confession to the LORD, the God of your fathers, and do his will. Separate yourselves from the peoples of the land and from the foreign wives.'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "In Ezra 10:11, the specific call is: 'Now therefore make confession unto the LORD God of your fathers, and do his pleasure: and separate yourselves from the people of the land, and from the strange wives.' The correct answer fully reflects these three actions.\n\nThe incorrect answers:\n- Distractor 1 (close): It is wrong in one crucial detail. While 'confess your sins' and 'do God's will' are correct, 'circumcise your sons' is not in this verse (this idea may relate to other passages like Genesis 17).\n- Distractor 2: 'Pray continually' is a common pious action but is not the direct call in this Scripture verse; the question asks about what they 'were called to do' according to the passage.\n- Distractor 3: 'Offer a sin offering' is an action commonly seen in Leviticus and other sacrificial contexts, but it is not mentioned in the call of Ezra 10:11.",
     "language": "en",
     "options": [
       "Confess, do God's will, separate from the peoples of the land and foreign wives",
-      "Offer large compensatory sacrifices",
-      "Build a new temple",
-      "Travel to high places to pray"
+      "Confess your sins, do God's will, and circumcise your sons",
+      "Confess your sins, pray continually, and separate yourselves from the peoples",
+      "Offer a sin offering, do God's will, and separate yourselves from the foreigners"
     ],
     "tags": [
       "Old Testament",
@@ -513,7 +555,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Ezra 1:2-3, what does Cyrus's decree include? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Ezra 1:2-3 — '...The LORD, the God of heaven, has given me all the kingdoms of the earth, and he has charged me to build him a house at Jerusalem... Whoever is among you of all his people... let him go up to Jerusalem... and rebuild the house of the LORD...' Three core elements; 'abolishing the law of Moses' is not in the decree.",
     "language": "en",
     "options": [
@@ -538,7 +584,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Ezra 6:14-15, by what factors was the Second Temple completed? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Ezra 6:14-15 — '...the elders of the Jews built and prospered through the prophesying of Haggai the prophet and Zechariah the son of Iddo. They finished their building by decree of the God of Israel and by decree of Cyrus and Darius and Artaxerxes king of Persia...' 'Aid of the god Bel' is contrary.",
     "language": "en",
     "options": [
@@ -562,7 +612,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Ezra 7:10, what three things in order had Ezra set his heart to do? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Ezra 7:10 — 'For Ezra had set his heart to study the Law of the LORD, and to do it and to teach his statutes and rules in Israel.' Three steps in order: study, practice, teach. 'Punish offenders immediately' is not the goal here.",
     "language": "en",
     "options": [
@@ -587,7 +641,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Ezra 9:1-2, from which peoples had Israel failed to separate? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Ezra 9:1-2 — '...the people of Israel and the priests and the Levites have not separated themselves from the peoples of the lands with their abominations, from the Canaanites, the Hittites, the Perizzites, the Jebusites, the Ammonites, the Moabites, the Egyptians, and the Amorites.' 'The Pharisees' is a later Jewish sect, not in the list.",
     "language": "en",
     "options": [
