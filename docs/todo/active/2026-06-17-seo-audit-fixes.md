@@ -21,13 +21,13 @@ lỗi đang hỏng production + thiếu sót. Sửa hết phần low-risk, no-ne
   - Checklist: impl · vitest pass · commit
 
 - SEO-3 sitemap.xml + robots.txt cleanup (bỏ /landing trùng canonical, thêm lastmod + public pages, bỏ Allow /share/ ảo)
-  - Status: [ ] TODO · Files: `public/sitemap.xml`, `public/robots.txt`, `seo-meta.test.ts` · Test: sitemap valid + robots/sitemap nhất quán
+  - Status: [x] DONE · Files: `public/sitemap.xml`, `public/robots.txt`, `seo-meta.test.ts` · Test: sitemap valid + robots/sitemap nhất quán
   - **Spec impact**: [x] None
   - **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · vitest pass · commit
 
 - SEO-4 PageMeta.tsx: thêm og:url, og:type, twitter:card/title/description/image
-  - Status: [ ] TODO · Files: `src/components/PageMeta.tsx`, `src/components/__tests__/PageMeta.test.tsx` (new) · Test: render emits đủ tags
+  - Status: [x] DONE · Files: `src/components/PageMeta.tsx`, `src/components/__tests__/PageMeta.test.tsx` (new) · Test: render emits đủ tags
   - **Spec impact**: [x] None
   - **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · vitest pass · commit
