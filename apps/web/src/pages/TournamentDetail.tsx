@@ -479,7 +479,8 @@ const TournamentDetail: React.FC = () => {
         {/* Trophy watermark */}
         <div className="absolute -top-5 -right-5 opacity-[0.06] text-[180px] pointer-events-none select-none">🏆</div>
 
-        <div className="flex items-start gap-4 relative">
+        <div className="flex flex-col sm:flex-row items-start gap-4 relative">
+          <div className="flex items-start gap-4 flex-1 min-w-0 w-full">
           {/* Trophy icon */}
           <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(245,158,11,0.18)', border: '1.5px solid var(--bq-amber)' }}>
             <span className="text-3xl">🏆</span>
@@ -516,9 +517,10 @@ const TournamentDetail: React.FC = () => {
               </div>
             )}
           </div>
+          </div>
 
           {/* CTA panel */}
-          <div className="flex flex-col items-end gap-2 flex-shrink-0">
+          <div className="flex flex-col items-stretch sm:items-end gap-2 flex-shrink-0 w-full sm:w-auto">
             {/* Participant counter */}
             <div className="rounded-lg px-3 py-2 text-center" style={{ background: 'var(--bq-paper-sunk)', border: '1px solid rgba(245,158,11,0.3)' }}>
               <div className="text-[9px] tracking-wider mb-0.5" style={{ color: 'var(--bq-amber-deep)' }}>NGƯỜI THAM GIA</div>
@@ -597,7 +599,7 @@ const TournamentDetail: React.FC = () => {
       </div>
 
       {/* ── Tab Navigation ── */}
-      <div className="flex items-center gap-1" style={{ borderBottom: '1px solid var(--bq-hairline)' }}>
+      <div className="flex items-center gap-1 overflow-x-auto" style={{ borderBottom: '1px solid var(--bq-hairline)' }}>
         {([
           ['bracket', '🌳 Bracket'],
           ['players', `👥 Người chơi (${participantCount}/${maxParticipants})`],
@@ -607,7 +609,7 @@ const TournamentDetail: React.FC = () => {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className="px-4 py-2.5 text-sm transition-all"
+            className="px-4 py-2.5 text-sm transition-all whitespace-nowrap flex-shrink-0"
             style={activeTab === tab
               ? { color: 'var(--bq-amber-deep)', borderBottom: '2px solid var(--bq-amber)', fontWeight: 500, marginBottom: -1 }
               : { color: 'var(--bq-ink-soft)', border: 'none' }

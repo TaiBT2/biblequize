@@ -406,8 +406,8 @@ const TournamentMatch: React.FC = () => {
               </div>
             )}
 
-            {/* 3-column VS layout */}
-            <div className="grid items-center gap-3" style={{ gridTemplateColumns: '1fr auto 1fr' }}>
+            {/* VS layout — stacks vertically on mobile, 3-column row on sm+ */}
+            <div className="grid items-center gap-3 grid-cols-1 sm:grid-cols-[1fr_auto_1fr]">
               {/* Player 1 */}
               {p1 ? (
                 <PlayerCard
