@@ -24,8 +24,17 @@ Quyết định kỹ thuật (từ spike):
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
 - PRE-3 `scripts/prerender.mjs` + wire vào `build` script + verify dist output
-  - Status: [ ] TODO · Files: `apps/web/scripts/prerender.mjs` (new), `apps/web/package.json` (build script) · Test: build → dist/landing/index.html chứa rendered meta
+  - Status: [!] BLOCKED · Files: `apps/web/scripts/prerender.mjs`, `apps/web/package.json` (build script)
+  - **BLOCKER**: jsdom renderer (đã duyệt) **không execute ES module** → app không boot trong jsdom,
+    prerender chụp `<div id="root"></div>` rỗng. Test thực nghiệm: **0/5 routes**. Đây là giới hạn cố hữu
+    của jsdom với Vite ESM build. Script đã xoá (không commit).
+  - **Hướng xử lý**: `@prerenderer/renderer-puppeteer` (Chromium thật execute được ESM) — nhưng cần
+    cài Chromium vào `infra/docker/web.Dockerfile` (apk add chromium + PUPPETEER_EXECUTABLE_PATH).
+    Đây là cam kết infra lớn hơn jsdom → **chờ user duyệt**.
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
+
+> **NOTE**: deps `@prerenderer/prerenderer` (PRE-1) vẫn giữ — core này dùng chung cho cả puppeteer renderer.
+> `@prerenderer/renderer-jsdom` sẽ thay bằng `-puppeteer` nếu user duyệt; nếu defer thì gỡ sau.
 
 ### Out of scope
 - Prerender `/` (auth-dependent) — homepage static meta trong index.html đã đúng.
