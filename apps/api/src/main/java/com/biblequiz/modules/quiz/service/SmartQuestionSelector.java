@@ -43,7 +43,7 @@ public class SmartQuestionSelector {
         LocalDateTime now = LocalDateTime.now();
 
         if (filter.difficulty() != null) {
-            List<String> ids = selectIdsWithSmartHistory(count, filter, historyById, now);
+            List<String> ids = selectIdsFromMetas(count, findMetaByFilter(filter), historyById, now);
             return fetchInOrder(ids);
         }
 
@@ -54,19 +54,30 @@ public class SmartQuestionSelector {
         int mediumCount = (int) Math.round(count * dist.mediumPercent() / 100.0);
         int hardCount = count - easyCount - mediumCount;
 
+        // One meta query for all difficulties, then partition in-memory — replaces
+        // the previous 3 per-difficulty queries (+1 fallback).
+        List<QuestionMeta> allMetas = findMetaByFilter(
+                new QuestionFilter(filter.books(), null, filter.language()));
+        List<QuestionMeta> easy = new ArrayList<>();
+        List<QuestionMeta> medium = new ArrayList<>();
+        List<QuestionMeta> hard = new ArrayList<>();
+        for (QuestionMeta m : allMetas) {
+            if (m.difficulty() == Question.Difficulty.easy) easy.add(m);
+            else if (m.difficulty() == Question.Difficulty.medium) medium.add(m);
+            else if (m.difficulty() == Question.Difficulty.hard) hard.add(m);
+        }
+
         List<String> selectedIds = new ArrayList<>();
-        selectedIds.addAll(selectIdsWithSmartHistory(easyCount,
-                new QuestionFilter(filter.books(), "easy", filter.language()), historyById, now));
-        selectedIds.addAll(selectIdsWithSmartHistory(mediumCount,
-                new QuestionFilter(filter.books(), "medium", filter.language()), historyById, now));
-        selectedIds.addAll(selectIdsWithSmartHistory(hardCount,
-                new QuestionFilter(filter.books(), "hard", filter.language()), historyById, now));
+        selectedIds.addAll(selectIdsFromMetas(easyCount, easy, historyById, now));
+        selectedIds.addAll(selectIdsFromMetas(mediumCount, medium, historyById, now));
+        selectedIds.addAll(selectIdsFromMetas(hardCount, hard, historyById, now));
 
         if (selectedIds.size() < count) {
             int remaining = count - selectedIds.size();
             Set<String> already = new HashSet<>(selectedIds);
-            List<String> extra = selectIdsWithSmartHistory(remaining,
-                    new QuestionFilter(filter.books(), null, filter.language()), historyById, now);
+            // Fallback over the full pool (any difficulty) — same set the previous
+            // null-difficulty query returned, now reused from allMetas.
+            List<String> extra = selectIdsFromMetas(remaining, allMetas, historyById, now);
             for (String id : extra) {
                 if (!already.contains(id)) {
                     selectedIds.add(id);
@@ -100,17 +111,15 @@ public class SmartQuestionSelector {
     }
 
     /**
-     * Smart selection on metadata-only projection.
+     * Smart selection over a pre-fetched metadata list (no queries here).
      * Prioritizes: unseen → need review → seen long ago → seen recently.
-     * Classifies against the pre-loaded {@code historyById} map (no queries here).
+     * Classifies against the pre-loaded {@code historyById} map.
      * Returns selected IDs (in priority order). Caller batch-fetches full Question entities.
      */
-    private List<String> selectIdsWithSmartHistory(int count, QuestionFilter filter,
-                                                   Map<String, HistoryMeta> historyById,
-                                                   LocalDateTime now) {
+    private List<String> selectIdsFromMetas(int count, List<QuestionMeta> allMetas,
+                                            Map<String, HistoryMeta> historyById,
+                                            LocalDateTime now) {
         if (count <= 0) return List.of();
-
-        List<QuestionMeta> allMetas = findMetaByFilter(filter);
 
         List<QuestionMeta> neverSeen = new ArrayList<>();
         List<QuestionMeta> needReview = new ArrayList<>();

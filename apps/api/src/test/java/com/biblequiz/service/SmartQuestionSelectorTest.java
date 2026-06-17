@@ -215,12 +215,9 @@ class SmartQuestionSelectorTest {
 
         List<Question> allTierQs = new ArrayList<>();
         allTierQs.addAll(easyQs); allTierQs.addAll(medQs); allTierQs.addAll(hardQs);
-        when(questionRepository.findMetaByLanguageAndDifficulty("vi", Question.Difficulty.easy))
-                .thenReturn(easyQs.stream().map(q -> new QuestionMeta(q.getId(), q.getBook(), q.getDifficulty())).toList());
-        when(questionRepository.findMetaByLanguageAndDifficulty("vi", Question.Difficulty.medium))
-                .thenReturn(medQs.stream().map(q -> new QuestionMeta(q.getId(), q.getBook(), q.getDifficulty())).toList());
-        when(questionRepository.findMetaByLanguageAndDifficulty("vi", Question.Difficulty.hard))
-                .thenReturn(hardQs.stream().map(q -> new QuestionMeta(q.getId(), q.getBook(), q.getDifficulty())).toList());
+        // Tier path (null difficulty) loads all-difficulty meta once, partitions in-memory.
+        when(questionRepository.findMetaByLanguage("vi"))
+                .thenReturn(allTierQs.stream().map(q -> new QuestionMeta(q.getId(), q.getBook(), q.getDifficulty())).toList());
         when(questionRepository.findAllById(anyIterable())).thenAnswer(invocation -> {
             Iterable<String> ids = invocation.getArgument(0);
             Set<String> idSet = new HashSet<>();
