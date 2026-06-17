@@ -3,6 +3,7 @@ package com.biblequiz.api;
 import com.biblequiz.modules.adminai.provider.AIGenerationContext;
 import com.biblequiz.modules.adminai.provider.AIGenerationResult;
 import com.biblequiz.modules.adminai.provider.AIProviderException;
+import com.biblequiz.modules.adminai.AIGenerationService;
 import com.biblequiz.modules.adminai.provider.AIProviderRouter;
 import com.biblequiz.modules.adminai.quota.AIQuotaService;
 import com.biblequiz.modules.user.entity.User;
@@ -46,6 +47,7 @@ public class QuestionSetController {
     @Autowired private QuestionSetService service;
     @Autowired private UserRepository userRepository;
     @Autowired private AIProviderRouter aiProviderRouter;
+    @Autowired private AIGenerationService aiGenerationService;
     @Autowired private AIQuotaService aiQuotaService;
 
     // ── Create ────────────────────────────────────────────────────────────────
@@ -374,12 +376,23 @@ public class QuestionSetController {
                 }
             }
 
+            // AEU-1: annotate MCQ drafts with distractor-quality flags (parity with
+            // the admin path). `_quality`/`distractors` are transient — not persisted —
+            // so we zip them onto the editor response by saved-question id below.
+            aiGenerationService.annotateQuality(drafts);
+
             List<UserQuestion> saved = service.attachAIQuestions(
                     id, user.getId(), drafts, book, chapter, verseStart, verseEnd, language);
+            // saved is returned in draft order → pair saved[i] with drafts[i] for quality.
+            Map<String, Map<String, Object>> qualityById = new LinkedHashMap<>();
+            for (int i = 0; i < saved.size() && i < drafts.size(); i++) {
+                qualityById.put(saved.get(i).getId(), drafts.get(i));
+            }
             List<QuestionSetItem> items = service.getItems(id);
             List<Map<String, Object>> editorQuestions = items.stream()
                     .filter(it -> saved.stream().anyMatch(s -> s.getId().equals(it.getUserQuestion().getId())))
-                    .map(this::toEditorQuestion).toList();
+                    .map(it -> toEditorQuestion(it, qualityById.get(it.getUserQuestion().getId())))
+                    .toList();
 
             AIQuotaService.Usage u = aiQuotaService.snapshot();
             return ResponseEntity.ok(Map.of("success", true,
@@ -501,6 +514,15 @@ public class QuestionSetController {
 
     /** Map a set item → EditorQuestion shape used by the shared QuizSetEditor (FE). */
     private Map<String, Object> toEditorQuestion(QuestionSetItem item) {
+        return toEditorQuestion(item, null);
+    }
+
+    /**
+     * AEU-1: same mapping, but when an AI draft is supplied, carry its transient
+     * {@code _quality}/{@code distractors} metadata onto the response so the FE can
+     * surface distractor-quality warnings (parity with the admin draft review).
+     */
+    private Map<String, Object> toEditorQuestion(QuestionSetItem item, Map<String, Object> aiDraft) {
         UserQuestion q = item.getUserQuestion();
         var dto = new java.util.HashMap<String, Object>();
         dto.put("id",            q.getId());
@@ -517,6 +539,10 @@ public class QuestionSetController {
         dto.put("explanation",   q.getExplanation() != null ? q.getExplanation() : "");
         dto.put("source",        q.getSource() != null ? q.getSource().name().toLowerCase() : "manual");
         dto.put("language",      q.getLanguage() != null ? q.getLanguage() : "vi");
+        if (aiDraft != null) {
+            if (aiDraft.get("distractors") != null) dto.put("distractors", aiDraft.get("distractors"));
+            if (aiDraft.get("_quality") != null)    dto.put("_quality", aiDraft.get("_quality"));
+        }
         return dto;
     }
 

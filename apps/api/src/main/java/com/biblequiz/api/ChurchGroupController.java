@@ -1581,13 +1581,21 @@ public class ChurchGroupController {
                 }
             }
 
+            // AEU-2: annotate MCQ drafts with distractor-quality flags (parity with
+            // admin). `_quality`/`distractors` are transient — carried onto the
+            // response dto below, not persisted on the Question entity.
+            aiGenerationService.annotateQuality(allDrafts);
+
             List<String> ids = mutableQuestionIds(set);
             List<Map<String, Object>> savedDtos = new ArrayList<>();
             for (Map<String, Object> draft : allDrafts) {
                 Question q = buildQuestionFromMap(draft, "ai-group");
                 questionRepository.save(q);
                 ids.add(q.getId());
-                savedDtos.add(questionToMap(q));
+                Map<String, Object> dto = new LinkedHashMap<>(questionToMap(q));
+                if (draft.get("distractors") != null) dto.put("distractors", draft.get("distractors"));
+                if (draft.get("_quality") != null)    dto.put("_quality", draft.get("_quality"));
+                savedDtos.add(dto);
             }
             set.setQuestionIds(ids);
             set.setTotalQuestions(ids.size());

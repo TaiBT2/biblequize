@@ -62,6 +62,13 @@ public class GeminiQuizGeneratorAdapter implements QuizGeneratorPort {
                 difficulty, "multiple_choice_single", language,
                 count, null, customPrompt);
 
+        // AEU-3: run the same distractor-quality validation as the admin path so this
+        // path has behavioural parity. The personal-bank endpoint persists to
+        // UserQuestion (no quality column) and currently has no FE consumer, so the
+        // flags are surfaced via log rather than carried on the DTO.
+        aiGenerationService.annotateQuality(raw);
+        logQualityIssues(raw);
+
         return mapToDTO(raw, book, chapterStart);
     }
 
@@ -90,6 +97,22 @@ public class GeminiQuizGeneratorAdapter implements QuizGeneratorPort {
             }
         }
         return result;
+    }
+
+    /** AEU-3: log any MCQ whose declared distractors fail the Haladyna/NBME quality flags. */
+    private void logQualityIssues(List<Map<String, Object>> questions) {
+        int flagged = 0;
+        for (Map<String, Object> q : questions) {
+            if (q.get("_quality") instanceof Map<?, ?> quality
+                    && Boolean.FALSE.equals(quality.get("valid"))) {
+                flagged++;
+                log.warn("[QuizGenerator] Weak distractors: reasons={}", quality.get("reasons"));
+            }
+        }
+        if (flagged > 0) {
+            log.info("[QuizGenerator] {}/{} generated questions flagged for distractor quality",
+                    flagged, questions.size());
+        }
     }
 
     private String normalizeDifficulty(String d) {

@@ -733,4 +733,62 @@ class ChurchGroupControllerTest extends BaseControllerTest {
                 .andExpect(jsonPath("$.success").value(false));
         verify(aiQuotaService, never()).tryAcquire(anyInt());
     }
+
+    // ── AEU-2: quiz-set AI generate carries distractor-quality to the response ──
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    @SuppressWarnings("unchecked")
+    void quizSetAiGenerate_annotatesQuality_andPassesDistractorsThrough() throws Exception {
+        GroupMember leader = new GroupMember();
+        leader.setRole(GroupMember.GroupRole.LEADER);
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.of(leader));
+
+        ChurchGroup group = new ChurchGroup();
+        group.setId("group-1");
+        GroupQuizSet qs = new GroupQuizSet();
+        qs.setId("qs-1");
+        qs.setGroup(group);
+        qs.setQuestionIds(new java.util.ArrayList<>());
+        when(groupQuizSetRepository.findById("qs-1")).thenReturn(Optional.of(qs));
+
+        when(aiQuotaService.tryAcquire(anyInt())).thenReturn(true);
+        when(aiQuotaService.snapshot()).thenReturn(
+                new com.biblequiz.modules.adminai.quota.AIQuotaService.Usage(1, 200, 199));
+
+        // AI draft includes the declared distractors metadata.
+        Map<String, Object> draft = new LinkedHashMap<>();
+        draft.put("content", "Q1");
+        draft.put("options", List.of("A", "B", "C", "D"));
+        draft.put("correctAnswer", 2);
+        draft.put("distractors", List.of(
+                Map.of("index", 0, "errorType", "nearby_passage", "almostRight", false),
+                Map.of("index", 1, "errorType", "wrong_detail", "almostRight", true),
+                Map.of("index", 3, "errorType", "true_but_off", "almostRight", false)));
+        when(aiProviderRouter.generate(any(), any())).thenReturn(
+                new com.biblequiz.modules.adminai.provider.AIGenerationResult(
+                        List.of(draft), 100, 50, "deepseek"));
+
+        // Stub annotateQuality to mutate drafts in place like the real implementation.
+        doAnswer(inv -> {
+            List<Map<String, Object>> qList = inv.getArgument(0);
+            for (Map<String, Object> q : qList) {
+                q.put("_quality", Map.of("valid", true, "duplicateErrorType", false,
+                        "almostRightCount", 1, "requiredAlmostRight", 1, "reasons", List.of()));
+            }
+            return null;
+        }).when(aiGenerationService).annotateQuality(any());
+
+        String body = "{\"countMedium\":1,\"book\":\"John\",\"chapterFrom\":3}";
+        mockMvc.perform(post("/api/groups/group-1/quiz-sets/qs-1/ai-generate")
+                        .contentType(MediaType.APPLICATION_JSON).content(body))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.questions[0].distractors.length()").value(3))
+                .andExpect(jsonPath("$.questions[0].distractors[1].errorType").value("wrong_detail"))
+                .andExpect(jsonPath("$.questions[0]._quality.valid").value(true));
+
+        verify(aiGenerationService).annotateQuality(any());
+    }
 }
