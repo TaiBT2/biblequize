@@ -38,8 +38,8 @@ lỗi đang hỏng production + thiếu sót. Sửa hết phần low-risk, no-ne
   - **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · vitest pass · commit
 
-- SEO-6 manifest.json completeness (id, scope, lang, categories, maskable icon, orientation)
-  - Status: [ ] TODO · Files: `public/manifest.json`, `seo-meta.test.ts` · Test: required PWA fields present
+- SEO-6 manifest.json completeness (id, scope, lang, categories, orientation; maskable deferred — logo thiếu safe-zone)
+  - Status: [x] DONE · Files: `public/manifest.json`, `seo-meta.test.ts` · Test: required PWA fields present
   - **Spec impact**: [x] None
   - **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · vitest pass · commit

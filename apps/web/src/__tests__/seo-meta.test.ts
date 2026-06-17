@@ -79,3 +79,26 @@ describe('SEO: sitemap.xml + robots.txt', () => {
     expect(robots).toContain('Disallow: /admin/')
   })
 })
+
+describe('SEO: manifest.json (PWA installability)', () => {
+  const manifest = JSON.parse(readRoot('public/manifest.json'))
+
+  it('declares the required install metadata', () => {
+    expect(manifest.id).toBe('/')
+    expect(manifest.scope).toBe('/')
+    expect(manifest.start_url).toBe('/')
+    expect(manifest.display).toBe('standalone')
+    expect(manifest.name).toBeTruthy()
+    expect(manifest.short_name).toBeTruthy()
+    expect(manifest.theme_color).toBe('#11131e')
+    expect(manifest.background_color).toBe('#11131e')
+    expect(Array.isArray(manifest.categories)).toBe(true)
+  })
+
+  it('ships 192px and 512px PNG icons', () => {
+    const sizes = manifest.icons.map((i: { sizes: string }) => i.sizes)
+    expect(sizes).toContain('192x192')
+    expect(sizes).toContain('512x512')
+    for (const icon of manifest.icons) expect(icon.type).toBe('image/png')
+  })
+})
