@@ -13,6 +13,6 @@
 - MRF-6 TournamentDetail: hero 3-cột → `flex-col` mobile + tab `overflow-x-auto` + bracket affordance. Files: `pages/TournamentDetail.tsx:~482,~600,~261`
 - MRF-7 Onboarding: slide nav offset + journey visual `px-12/min-h-[700px]` density mobile. Files: `pages/Onboarding.tsx:~148,~320`
 - MRF-8 DailyChallenge: immersive `min-h-screen` lồng AppLayout → bỏ double main + dock clear `MobileBottomTabs`. Files: `pages/DailyChallenge.tsx:~475,~571` (structural — cẩn thận, không đụng gameplay logic)
-  - Status mỗi task: [ ] TODO · Test: vitest page test nếu có + build + Tầng 3 cuối
+  - Status: [x] ALL DONE · commits: `71e37cd3` (MRF-1/2/3), `320cf010` (MRF-4/5/6), `c896800d` (MRF-8), + Onboarding (MRF-7)
+  - Test: Tầng 3 full FE **1285 pass** (≥ baseline 1277) + web build exit 0
   - **Spec impact**: [x] None (visual/responsive) · **Spec strategy**: [x] (c) `[no-spec-impact]`
-  - Checklist mỗi task: impl · build pass · commit (EN) · cuối nhóm: Tầng 3 + push

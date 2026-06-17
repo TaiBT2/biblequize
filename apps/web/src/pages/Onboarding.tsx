@@ -154,7 +154,7 @@ export default function Onboarding() {
 
       {/* Main */}
       <main className="relative z-10 flex-grow flex items-center justify-center pt-16 px-6 md:px-12">
-        <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-12 min-h-[700px] items-center">
+        <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-12 md:min-h-[700px] items-center">
           {/* Left: Visual */}
           <SlideVisual step={step} />
 
@@ -245,7 +245,7 @@ export default function Onboarding() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 bg-bq-paper border-t border-bq-hair flex justify-between items-center px-12 py-8 w-full">
+      <footer className="relative z-10 bg-bq-paper border-t border-bq-hair flex flex-col gap-3 sm:flex-row justify-between items-center px-6 md:px-12 py-8 w-full">
         <span className="text-bq-amberd font-semibold text-sm">© 2024 BibleQuiz. The Sacred Path.</span>
         <div className="flex gap-8">
           <a href="/privacy" className="text-bq-ink2 text-sm hover:text-bq-amberd transition-colors">Privacy</a>
@@ -317,7 +317,7 @@ function SlideVisual({ step }: { step: number }) {
         <path d="M200,0 Q350,150 200,300 T200,600 T200,900" stroke="#F59E0B" strokeDasharray="10 10" strokeWidth="2" />
       </svg>
 
-      <div className="relative w-full max-w-2xl px-12 py-24 grid grid-cols-4 sm:grid-cols-6 gap-6 justify-items-center">
+      <div className="relative w-full max-w-2xl px-4 py-10 sm:px-12 sm:py-24 grid grid-cols-4 sm:grid-cols-6 gap-6 justify-items-center">
         {BOOK_ICONS.map((icon, i) => (
           <div
             key={i}
