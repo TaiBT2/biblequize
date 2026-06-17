@@ -6,7 +6,7 @@
 ## Stack
 - Backend: Spring Boot 3.3.0 (Java 17), port 8080
 - Frontend: Vite 5 + React 18 + TypeScript 5.4, port 5173
-- Mobile: Expo 54 + React Native 0.81.5
+- Mobile: _đã gỡ 2026-06-17 — `apps/mobile` removed để viết lại bản mới (stack sẽ chốt lại khi khởi động)_
 - DB: MySQL 8.0 (Docker, port 3307)
 - Cache: Redis 7 (Docker, port 6379)
 - Unit Test: Vitest 4.1 (happy-dom) + @testing-library/react

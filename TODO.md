@@ -3,10 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (73)
+## Active (74)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-17 | Group Collective Growth "Cùng nhau thuộc Lời" — differentiator (BL-23, CG-1 DONE, CG-2..8) | IN PROGRESS | [detail](docs/todo/active/2026-06-17-group-collective-growth.md) |
 | 2026-06-17 | SEO audit fixes forbible.org (og-image vỡ, locale `el`→`en`, sitemap/robots, PageMeta, JSON-LD) (SEO-1..7) | TODO | [detail](docs/todo/active/2026-06-17-seo-audit-fixes.md) |
 | 2026-06-17 | Fix avatar không đồng bộ sau khi sửa hồ sơ (header/sidebar) (ASE-1..2) | DONE | [detail](docs/todo/active/2026-06-17-avatar-sync-after-edit.md) |
 | 2026-06-17 | Ranked selector follow-ups: meta-query merge + dependency inversion (RSO-1..2) | DONE | [archive](docs/todo/archive/2026-06-17-ranked-selector-followups.md) |
@@ -41,23 +42,14 @@
 | 2026-05-20 | Home: hide FeaturedDailyCard when MotivationCard shows (dedupe new-user CTA) | TODO | [detail](docs/todo/active/2026-05-20-home-hide-daily-card-when-motivation-shows.md) |
 | 2026-05-20 | Group Detail mobile redesign (compact header + 3-dot menu + drop Phân tích) | TODO | [detail](docs/todo/active/2026-05-20-group-detail-mobile-redesign.md) |
 | 2026-05-20 | Quiz Set Editor i18n (group + personal shared, 8 files) | TODO | [detail](docs/todo/active/2026-05-20-quizset-editor-i18n.md) |
-| 2026-05-20 | Mobile RankedResultScreen redesign (3 state A/B/C + review modal, mockup) | TODO | [detail](docs/todo/active/2026-05-20-mobile-ranked-result-screen-redesign.md) |
-| 2026-05-20 | Mobile RankedScreen redesign → web parity (5 sections) | TODO | [detail](docs/todo/active/2026-05-20-mobile-ranked-intro-redesign-web-parity.md) |
 | 2026-05-20 | Ranked result screen redesign (3 state A/B/C + review modal) | DONE | [detail](docs/todo/active/2026-05-20-ranked-result-screen-redesign.md) |
 | 2026-05-20 | Ranked spec catch-up: tier-difficulty + UserQuestionHistory write (BL-20, BL-21) | DONE | [detail](docs/todo/active/2026-05-20-ranked-spec-catchup-difficulty-history.md) |
-| 2026-05-20 | Mobile Quiz: unified scroll cho question + answers (fix ngột ngạt) | TODO | [detail](docs/todo/active/2026-05-20-mobile-quiz-unified-scroll.md) |
-| 2026-05-20 | Mobile Daily "Xem lại" → route đúng sang Review (không phải Start) | TODO | [detail](docs/todo/active/2026-05-20-mobile-daily-xem-lai-routes-to-review.md) |
-| 2026-05-20 | Mobile: query `/api/me/tier-progress` để totalPoints hiển thị thực (web parity) | TODO | [detail](docs/todo/active/2026-05-20-mobile-tier-progress-totalpoints.md) |
-| 2026-05-20 | Mobile Daily +0 XP race fix (FE result-bar gate + BE getResultData backstop) | TODO | [detail](docs/todo/active/2026-05-20-mobile-daily-xp-race-fix.md) |
-| 2026-05-20 | Mobile Ranked endpoint migration → `/api/ranked/sessions` (fix stuck loading + XP pipeline) | TODO | [detail](docs/todo/active/2026-05-20-mobile-ranked-endpoint-migration.md) |
-| 2026-05-20 | Mobile: invalidate `['me']` sau finish Ranked/Practice (XP không cộng vào HomeBanner/Leaderboard) | TODO | [detail](docs/todo/active/2026-05-20-mobile-quiz-finish-invalidate-me.md) |
 | 2026-05-20 | Ranked DESKTOP redesign v2 (mockup_ranked_desktop_v2.html, 5 sub-tasks) | DONE | [detail](docs/todo/active/2026-05-20-ranked-desktop-redesign-v2.md) |
 | 2026-05-20 | Fix score ≠ XP leaderboard mismatch (Rank + Daily) | DONE | [detail](docs/todo/active/2026-05-20-fix-scoring-xp-mismatch.md) |
 | 2026-05-20 | Ranked timer: 90s/câu flat (SPEC §3.2 update) | DONE | [detail](docs/todo/active/2026-05-20-ranked-timer-90s.md) |
 | 2026-05-20 | Ranked intro screen slim + redesign (4 sub-tasks) | DONE | [detail](docs/todo/active/2026-05-20-ranked-intro-slim-redesign.md) |
 | 2026-05-20 | Fix Quiz (rank) explanation auto-shows + pill covers answer D | DONE | [detail](docs/todo/active/2026-05-20-fix-quiz-explanation-hidden-by-default.md) |
 | 2026-05-19 | Daily Challenge: Dedupe & Slim Redesign (DC-1..6) | DONE | [detail](docs/todo/active/2026-05-19-daily-challenge-dedupe-slim.md) |
-| 2026-05-19 | Mobile Daily Challenge parity: done-page + season chip + streak heatmap | TODO | [detail](docs/todo/active/2026-05-19-mobile-daily-challenge-parity.md) |
 | 2026-05-19 | HomeBanner: revert desktop 3-col, mobile-only full-width progress | DONE | [detail](docs/todo/active/2026-05-19-home-banner-revert-desktop-keep-mobile-fullwidth.md) |
 | 2026-05-19 | HomeBanner unified stack layout (mobile parity) | SUPERSEDED | [detail](docs/todo/active/2026-05-19-home-banner-unified-stack-layout.md) |
 | 2026-05-19 | HomeBanner mobile restructure: show greet+name, full-width progress | DONE | [detail](docs/todo/active/2026-05-19-home-banner-mobile-restructure.md) |
@@ -67,15 +59,6 @@
 | 2026-05-19 | Quiz Results: hiển thị tổng điểm trong hero block | DONE | [detail](docs/todo/active/2026-05-19-quiz-results-show-score.md) |
 | 2026-05-19 | Rebrand production domain → `forbible.org` | TODO | [detail](docs/todo/active/2026-05-19-rebrand-prod-domain-to-forbible-org.md) |
 | 2026-05-18 | Avatar preset rework: people + Bible characters | TODO | [detail](docs/todo/active/2026-05-18-avatar-preset-bible-characters.md) |
-| 2026-05-18 | Mobile rewrite roadmap (RN Expo + monorepo, MVP-first) | PLANNED | [detail](docs/todo/active/2026-05-18-mobile-rewrite-roadmap.md) |
-| 2026-05-18 | Mobile rewrite S0: monorepo + packages/shared setup | DONE | [detail](docs/todo/active/2026-05-18-mobile-rewrite-s0-monorepo-setup.md) |
-| 2026-05-19 | Mobile rewrite S1: polish 5 stubs + useStomp foundation | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s1-polish-stubs.md) |
-| 2026-05-19 | Mobile rewrite S2: beta launch internal (EAS + Sentry + branding) | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s2-beta-internal.md) |
-| 2026-05-19 | Mobile rewrite S3: multiplayer realtime full (5 modes + Quản trò + chat + analytics) | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s3-multiplayer-realtime.md) |
-| 2026-05-19 | Mobile rewrite S4: Quiz Set workflow (personal MVP + group list) | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s4-quiz-set-workflow.md) |
-| 2026-05-19 | Mobile rewrite S5: Scheduled quiz + Tournament detail + Group analytics | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s5-scheduled-tournament.md) |
-| 2026-05-19 | Mobile rewrite S6: Cosmetics + Help + a11y polish | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s6-cosmetics-help-polish.md) |
-| 2026-05-19 | Mobile HomeScreen redesign — port từ web Modern Spiritual | DONE | [detail](docs/todo/active/2026-05-19-mobile-home-redesign-port-from-web.md) |
 | 2026-05-18 | Profile Edit modal redesign (Sacred Modernist + avatar preset) | DONE | [detail](docs/todo/active/2026-05-18-profile-edit-modal-redesign-sacred-modernist.md) |
 | 2026-05-18 | Fix Daily Missions "Trả lời đúng 3 câu" + "combo 3" không tick | DONE | [detail](docs/todo/active/2026-05-18-fix-daily-missions-tracking.md) |
 | 2026-05-18 | Fix Daily Challenge button "Vào chơi" còn hiện sau khi đã hoàn thành | TODO | [detail](docs/todo/active/2026-05-18-fix-daily-challenge-stale-cta.md) |
@@ -99,12 +82,14 @@
 | 2026-04-27 | V3 Tier B/C Quality Expansion: 14 books | IN PROGRESS | [detail](docs/todo/active/2026-04-27-v3-tier-b-c-quality-expansion-14-books.md) |
 | 2026-04-19 | Global audience migration: SQL → JSON + i18n prep | PARTIALLY DONE | [detail](docs/todo/active/2026-04-19-global-audience-migration-sql-json-i18n-prep.md) |
 
-## Archive (56)
+## Archive (75)
 
-> 56 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
+> 75 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
 
 <details>
 <summary>Xem inline list (tuỳ chọn)</summary>
+
+- 2026-05-18..20 — **Mobile RN app rewrite (S0–S6 + ranked/daily/quiz fixes, 19 file)** · SUPERSEDED 2026-06-17 — `apps/mobile` đã gỡ để viết lại bản mới · [folder](docs/todo/archive/)
 
 - 2026-06-16 — Quét i18n admin: dịch chuỗi VI còn English + tên sách coverage (AIS-1..2) · DONE · [detail](docs/todo/archive/2026-06-16-admin-i18n-sweep.md)
 - 2026-06-16 — Sửa câu hỏi: chuyển PAGE + AI đề xuất đáp án (QPG-1..4) · DONE · [detail](docs/todo/archive/2026-06-16-question-edit-page-ai-suggest.md)

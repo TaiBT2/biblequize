@@ -79,24 +79,6 @@ apps/web/tests/e2e/         # Playwright e2e tests (xem PLAYWRIGHT_CODE_CONVENTI
 
 ---
 
-## Mobile structure
+## Mobile
 
-```
-apps/mobile/src/
-├── screens/                # auth, main, multiplayer, onboarding, progress, quiz, social, system, user
-├── logic/                  # Business logic functions (BẮT BUỘC tách ra)
-├── utils/                  # Utility functions
-└── components/             # Shared UI components
-```
-
-### Mobile Code Rules
-- TẤT CẢ business logic PHẢI nằm trong `src/logic/` hoặc `src/utils/`
-- Components CHỈ chứa UI render + gọi logic functions
-- Mỗi logic file PHẢI có test file tương ứng
-- KHÔNG viết logic trong component
-
-### Mobile Testing Rules
-1. **Logic test cho MỌI function trong `src/logic/` và `src/utils/`** — `npm test`, target 100% coverage
-2. **Component test cho MỌI screen và component mới/sửa** — render test (text, elements) + interaction test (press, input, navigation)
-3. **Snapshot test cho MỌI screen** — tạo lần đầu, verify không thay đổi ngoài ý muốn
-4. **TypeScript strict — no any** — `"strict": true` trong tsconfig.json
+> **Đã gỡ 2026-06-17.** `apps/mobile` (RN Expo) và bản backup cũ đã bị remove để viết lại bản mới từ đầu. Lịch sử rewrite S0–S6 lưu ở `docs/todo/archive/2026-05-*-mobile-*`. Section này sẽ được dựng lại khi bản mobile mới khởi động.
