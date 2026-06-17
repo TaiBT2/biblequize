@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './styles/global.css'
@@ -13,72 +13,80 @@ import ErrorBoundary from './components/ErrorBoundary'
 import { HelmetProvider } from 'react-helmet-async'
 import { initStorageSync } from './utils/localStorageClearDetector'
 import './i18n'
-import Home from './pages/Home'
-import HomeKhungSangMock from './pages/HomeKhungSangMock'
-import LandingPage from './pages/LandingPage'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Profile from './pages/Profile'
-import Practice from './pages/Practice'
-import Quiz from './pages/Quiz'
-import Cosmetics from './pages/Cosmetics'
-import WeeklyQuiz from './pages/WeeklyQuiz'
-import MysteryMode from './pages/MysteryMode'
-import SpeedRound from './pages/SpeedRound'
-import Ranked from './pages/Ranked'
-import BasicQuiz from './pages/BasicQuiz'
-import Rooms from './pages/Rooms'
-import AuthCallback from './pages/AuthCallback'
-import AdminLayout from './layouts/AdminLayout'
-import AppLayout from './layouts/AppLayout'
-import AIQuestionGenerator from './pages/admin/AIQuestionGenerator'
-import ReviewQueue from './pages/admin/ReviewQueue'
-import QuestionsAdmin from './pages/admin/Questions'
-import QuestionEditPage from './pages/admin/QuestionEditPage'
-import UsersAdmin from './pages/admin/Users'
-import RankingsAdmin from './pages/admin/Rankings'
-import EventsAdmin from './pages/admin/Events'
-import FeedbackAdmin from './pages/admin/Feedback'
-import AdminDashboard from './pages/admin/Dashboard'
-import GroupsAdmin from './pages/admin/Groups'
-import NotificationsAdmin from './pages/admin/Notifications'
-import QuestionQuality from './pages/admin/QuestionQuality'
-import EarlyUnlockMetrics from './pages/admin/EarlyUnlockMetrics'
-import TestPanel from './pages/admin/TestPanel'
+import PageLoader from './components/PageLoader'
 import RequireAdmin from './contexts/RequireAdmin'
-import Review from './pages/Review'
-import Achievements from './pages/Achievements'
-import Leaderboard from './pages/Leaderboard'
-import RoomLobby from './pages/RoomLobby'
-import RoomQuiz from './pages/RoomQuiz'
-import RoomQuizHost from './pages/room/RoomQuizHost'
-import RoomAnalytics from './pages/RoomAnalytics'
-import CreateRoom from './pages/CreateRoom'
-import JoinRoom from './pages/JoinRoom'
-import Multiplayer from './pages/Multiplayer'
-import DailyChallenge from './pages/DailyChallenge'
-import Groups from './pages/Groups'
-import GroupDetail from './pages/GroupDetail'
-import ScheduledQuizCreate from './pages/ScheduledQuizCreate'
-import ScheduledQuizDetail from './pages/ScheduledQuizDetail'
-import ScheduledQuizPlay from './pages/ScheduledQuizPlay'
-import GroupAnalytics from './pages/GroupAnalytics'
-import QuizSetList from './pages/group/QuizSetList'
-import QuizSetEditor from './pages/group/GroupQuizSetEditor'
-import QuizSetDetail from './pages/group/QuizSetDetail'
-import Tournaments from './pages/Tournaments'
-import TournamentDetail from './pages/TournamentDetail'
-import TournamentMatch from './pages/TournamentMatch'
-import NotFound from './pages/NotFound'
-import PrivacyPolicy from './pages/PrivacyPolicy'
-import TermsOfService from './pages/TermsOfService'
+
+// EAGER — critical / first-paint path. These render on initial load (the "/"
+// dashboard or guest landing) so they belong in the entry chunk; lazy-loading
+// them would add a round-trip to FCP/LCP.
+import AppLayout from './layouts/AppLayout'
+import Home from './pages/Home'
+import LandingPage from './pages/LandingPage'
 import Onboarding from './pages/Onboarding'
 import { useOnboardingStore } from './store/onboardingStore'
-import OnboardingTryQuiz from './pages/OnboardingTryQuiz'
-import Journey from './pages/Journey'
-import Help from './pages/Help'
-import MySets from './pages/MySets'
-import PersonalQuizSetEditor from './pages/PersonalQuizSetEditor'
+
+// LAZY — every other route is split into its own chunk (loaded on navigation).
+// This shrinks the entry bundle from ~1.5 MB (all pages) to just the shell.
+const HomeKhungSangMock = lazy(() => import('./pages/HomeKhungSangMock'))
+const Login = lazy(() => import('./pages/Login'))
+const Register = lazy(() => import('./pages/Register'))
+const Profile = lazy(() => import('./pages/Profile'))
+const Practice = lazy(() => import('./pages/Practice'))
+const Quiz = lazy(() => import('./pages/Quiz'))
+const Cosmetics = lazy(() => import('./pages/Cosmetics'))
+const WeeklyQuiz = lazy(() => import('./pages/WeeklyQuiz'))
+const MysteryMode = lazy(() => import('./pages/MysteryMode'))
+const SpeedRound = lazy(() => import('./pages/SpeedRound'))
+const Ranked = lazy(() => import('./pages/Ranked'))
+const BasicQuiz = lazy(() => import('./pages/BasicQuiz'))
+const Rooms = lazy(() => import('./pages/Rooms'))
+const AuthCallback = lazy(() => import('./pages/AuthCallback'))
+const AdminLayout = lazy(() => import('./layouts/AdminLayout'))
+const AIQuestionGenerator = lazy(() => import('./pages/admin/AIQuestionGenerator'))
+const ReviewQueue = lazy(() => import('./pages/admin/ReviewQueue'))
+const QuestionsAdmin = lazy(() => import('./pages/admin/Questions'))
+const QuestionEditPage = lazy(() => import('./pages/admin/QuestionEditPage'))
+const UsersAdmin = lazy(() => import('./pages/admin/Users'))
+const RankingsAdmin = lazy(() => import('./pages/admin/Rankings'))
+const EventsAdmin = lazy(() => import('./pages/admin/Events'))
+const FeedbackAdmin = lazy(() => import('./pages/admin/Feedback'))
+const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'))
+const GroupsAdmin = lazy(() => import('./pages/admin/Groups'))
+const NotificationsAdmin = lazy(() => import('./pages/admin/Notifications'))
+const QuestionQuality = lazy(() => import('./pages/admin/QuestionQuality'))
+const EarlyUnlockMetrics = lazy(() => import('./pages/admin/EarlyUnlockMetrics'))
+const TestPanel = lazy(() => import('./pages/admin/TestPanel'))
+const Review = lazy(() => import('./pages/Review'))
+const Achievements = lazy(() => import('./pages/Achievements'))
+const Leaderboard = lazy(() => import('./pages/Leaderboard'))
+const RoomLobby = lazy(() => import('./pages/RoomLobby'))
+const RoomQuiz = lazy(() => import('./pages/RoomQuiz'))
+const RoomQuizHost = lazy(() => import('./pages/room/RoomQuizHost'))
+const RoomAnalytics = lazy(() => import('./pages/RoomAnalytics'))
+const CreateRoom = lazy(() => import('./pages/CreateRoom'))
+const JoinRoom = lazy(() => import('./pages/JoinRoom'))
+const Multiplayer = lazy(() => import('./pages/Multiplayer'))
+const DailyChallenge = lazy(() => import('./pages/DailyChallenge'))
+const Groups = lazy(() => import('./pages/Groups'))
+const GroupDetail = lazy(() => import('./pages/GroupDetail'))
+const ScheduledQuizCreate = lazy(() => import('./pages/ScheduledQuizCreate'))
+const ScheduledQuizDetail = lazy(() => import('./pages/ScheduledQuizDetail'))
+const ScheduledQuizPlay = lazy(() => import('./pages/ScheduledQuizPlay'))
+const GroupAnalytics = lazy(() => import('./pages/GroupAnalytics'))
+const QuizSetList = lazy(() => import('./pages/group/QuizSetList'))
+const QuizSetEditor = lazy(() => import('./pages/group/GroupQuizSetEditor'))
+const QuizSetDetail = lazy(() => import('./pages/group/QuizSetDetail'))
+const Tournaments = lazy(() => import('./pages/Tournaments'))
+const TournamentDetail = lazy(() => import('./pages/TournamentDetail'))
+const TournamentMatch = lazy(() => import('./pages/TournamentMatch'))
+const NotFound = lazy(() => import('./pages/NotFound'))
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
+const TermsOfService = lazy(() => import('./pages/TermsOfService'))
+const OnboardingTryQuiz = lazy(() => import('./pages/OnboardingTryQuiz'))
+const Journey = lazy(() => import('./pages/Journey'))
+const Help = lazy(() => import('./pages/Help'))
+const MySets = lazy(() => import('./pages/MySets'))
+const PersonalQuizSetEditor = lazy(() => import('./pages/PersonalQuizSetEditor'))
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -124,6 +132,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <ErrorProvider>
           <ToastProvider>
             <BrowserRouter>
+              <Suspense fallback={<PageLoader fullScreen />}>
               <Routes>
                 {/* PREVIEW-ONLY: coded mockup of the game-vibe Home redesign (v2).
                     Standalone (own chrome), no auth, no AppLayout. Remove after approval. */}
@@ -213,6 +222,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 {/* Catch-all 404 */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
+              </Suspense>
             </BrowserRouter>
           </ToastProvider>
         </ErrorProvider>
