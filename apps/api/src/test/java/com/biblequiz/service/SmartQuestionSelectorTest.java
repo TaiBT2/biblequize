@@ -1,5 +1,6 @@
 package com.biblequiz.service;
 
+import com.biblequiz.modules.quiz.dto.DifficultyDistribution;
 import com.biblequiz.modules.quiz.dto.HistoryMeta;
 import com.biblequiz.modules.quiz.dto.QuestionMeta;
 import com.biblequiz.modules.quiz.entity.Question;
@@ -7,8 +8,7 @@ import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
 import com.biblequiz.modules.quiz.service.SmartQuestionSelector;
 import com.biblequiz.modules.quiz.service.SmartQuestionSelector.QuestionFilter;
-import com.biblequiz.modules.ranked.service.TierDifficultyConfig;
-import com.biblequiz.modules.ranked.service.UserTierService;
+import com.biblequiz.modules.quiz.service.TierDifficultyProvider;
 import com.biblequiz.modules.user.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,10 +35,7 @@ class SmartQuestionSelectorTest {
     private UserQuestionHistoryRepository historyRepository;
 
     @Mock
-    private TierDifficultyConfig tierDifficultyConfig;
-
-    @Mock
-    private UserTierService userTierService;
+    private TierDifficultyProvider tierDifficultyProvider;
 
     @InjectMocks
     private SmartQuestionSelector selector;
@@ -192,9 +189,8 @@ class SmartQuestionSelectorTest {
         // Use null difficulty to trigger tier-based distribution
         QuestionFilter noDiffFilter = new QuestionFilter((String) null, null, "vi");
 
-        when(userTierService.getTierLevel(USER_ID)).thenReturn(3);
-        when(tierDifficultyConfig.getDistribution(3))
-                .thenReturn(new TierDifficultyConfig.DifficultyDistribution(35, 45, 20, 25));
+        when(tierDifficultyProvider.distributionFor(USER_ID))
+                .thenReturn(new DifficultyDistribution(35, 45, 20, 25));
 
         // Create questions per difficulty
         List<Question> easyQs = IntStream.range(0, 50).mapToObj(i -> {
@@ -237,15 +233,13 @@ class SmartQuestionSelectorTest {
 
     @Test
     void getTimerSeconds_returnsTierBasedValue() {
-        when(userTierService.getTierLevel(USER_ID)).thenReturn(1);
-        when(tierDifficultyConfig.getDistribution(1))
-                .thenReturn(new TierDifficultyConfig.DifficultyDistribution(70, 25, 5, 30));
+        when(tierDifficultyProvider.distributionFor(USER_ID))
+                .thenReturn(new DifficultyDistribution(70, 25, 5, 30));
 
         assertThat(selector.getTimerSeconds(USER_ID)).isEqualTo(30);
 
-        when(userTierService.getTierLevel(USER_ID)).thenReturn(6);
-        when(tierDifficultyConfig.getDistribution(6))
-                .thenReturn(new TierDifficultyConfig.DifficultyDistribution(5, 35, 60, 18));
+        when(tierDifficultyProvider.distributionFor(USER_ID))
+                .thenReturn(new DifficultyDistribution(5, 35, 60, 18));
 
         assertThat(selector.getTimerSeconds(USER_ID)).isEqualTo(18);
     }

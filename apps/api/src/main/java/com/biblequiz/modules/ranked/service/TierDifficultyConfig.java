@@ -1,5 +1,6 @@
 package com.biblequiz.modules.ranked.service;
 
+import com.biblequiz.modules.quiz.dto.DifficultyDistribution;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,11 +21,4 @@ public class TierDifficultyConfig {
             default -> new DifficultyDistribution(50, 35, 15, 30);
         };
     }
-
-    public record DifficultyDistribution(
-            int easyPercent,
-            int mediumPercent,
-            int hardPercent,
-            int timerSeconds
-    ) {}
 }

@@ -1,13 +1,11 @@
 package com.biblequiz.modules.quiz.service;
 
+import com.biblequiz.modules.quiz.dto.DifficultyDistribution;
 import com.biblequiz.modules.quiz.dto.HistoryMeta;
 import com.biblequiz.modules.quiz.dto.QuestionMeta;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
-import com.biblequiz.modules.ranked.service.TierDifficultyConfig;
-import com.biblequiz.modules.ranked.service.TierDifficultyConfig.DifficultyDistribution;
-import com.biblequiz.modules.ranked.service.UserTierService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -18,17 +16,14 @@ public class SmartQuestionSelector {
 
     private final QuestionRepository questionRepository;
     private final UserQuestionHistoryRepository historyRepository;
-    private final TierDifficultyConfig tierDifficultyConfig;
-    private final UserTierService userTierService;
+    private final TierDifficultyProvider tierDifficultyProvider;
 
     public SmartQuestionSelector(QuestionRepository questionRepository,
                                  UserQuestionHistoryRepository historyRepository,
-                                 TierDifficultyConfig tierDifficultyConfig,
-                                 UserTierService userTierService) {
+                                 TierDifficultyProvider tierDifficultyProvider) {
         this.questionRepository = questionRepository;
         this.historyRepository = historyRepository;
-        this.tierDifficultyConfig = tierDifficultyConfig;
-        this.userTierService = userTierService;
+        this.tierDifficultyProvider = tierDifficultyProvider;
     }
 
     /**
@@ -47,8 +42,7 @@ public class SmartQuestionSelector {
             return fetchInOrder(ids);
         }
 
-        int tierLevel = userTierService.getTierLevel(userId);
-        DifficultyDistribution dist = tierDifficultyConfig.getDistribution(tierLevel);
+        DifficultyDistribution dist = tierDifficultyProvider.distributionFor(userId);
 
         int easyCount = (int) Math.round(count * dist.easyPercent() / 100.0);
         int mediumCount = (int) Math.round(count * dist.mediumPercent() / 100.0);
@@ -94,8 +88,7 @@ public class SmartQuestionSelector {
      * Get the timer seconds for a user based on their tier.
      */
     public int getTimerSeconds(String userId) {
-        int tierLevel = userTierService.getTierLevel(userId);
-        return tierDifficultyConfig.getDistribution(tierLevel).timerSeconds();
+        return tierDifficultyProvider.distributionFor(userId).timerSeconds();
     }
 
     /**

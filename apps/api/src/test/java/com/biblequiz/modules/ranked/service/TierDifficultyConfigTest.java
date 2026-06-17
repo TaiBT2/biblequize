@@ -1,6 +1,6 @@
 package com.biblequiz.modules.ranked.service;
 
-import com.biblequiz.modules.ranked.service.TierDifficultyConfig.DifficultyDistribution;
+import com.biblequiz.modules.quiz.dto.DifficultyDistribution;
 
 import org.junit.jupiter.api.Test;
 
