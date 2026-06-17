@@ -20,6 +20,10 @@ interface AuthState {
   logout: () => Promise<void>
   checkAuth: () => Promise<void>
   setLoading: (loading: boolean) => void
+  // Sync in-memory user + localStorage cache after an in-app profile edit
+  // (PATCH /api/me) so header dropdown / sidebar reflect the new name/avatar
+  // immediately, without waiting for the next checkAuth (page reload).
+  updateProfile: (updates: { name?: string; avatar?: string | null }) => void
 }
 
 export const useAuthStore = create<AuthState>((set, get) => ({
@@ -29,6 +33,23 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   isAdmin: false,
 
   setLoading: (loading: boolean) => set({ isLoading: loading }),
+
+  updateProfile: (updates) => {
+    const current = get().user
+    if (!current) return
+    const next: User = { ...current }
+    if (updates.name !== undefined) {
+      next.name = updates.name
+      localStorage.setItem('userName', updates.name)
+    }
+    if (updates.avatar !== undefined) {
+      // Empty string / null = cleared avatar → fall back to initial elsewhere.
+      next.avatar = updates.avatar || undefined
+      if (updates.avatar) localStorage.setItem('userAvatar', updates.avatar)
+      else localStorage.removeItem('userAvatar')
+    }
+    set({ user: next })
+  },
 
   login: (tokens) => {
     // Access token stored in memory only — not localStorage (XSS protection)

@@ -5,6 +5,7 @@ import { api } from '../../api/client'
 import type { UserProfile } from './types'
 import { AVATAR_PRESETS, isPresetValue, toPresetValue } from '../../data/avatars'
 import { isOAuthAvatarUrl, resolveAvatar } from '../../utils/avatar'
+import { useAuthStore } from '../../store/authStore'
 
 const NAME_MAX = 50
 // "Khung Sáng" amber accent (light theme). amber-deep is contrast-safe on
@@ -18,6 +19,7 @@ export function EditProfileModal({ open, onClose, profile }: {
 }) {
   const { t } = useTranslation()
   const queryClient = useQueryClient()
+  const updateProfile = useAuthStore(s => s.updateProfile)
   const initialAvatar = profile.avatarUrl ?? ''
   const [name, setName] = useState(profile.name)
   const [pendingAvatar, setPendingAvatar] = useState(initialAvatar)
@@ -38,7 +40,13 @@ export function EditProfileModal({ open, onClose, profile }: {
   const mutation = useMutation({
     mutationFn: (updates: { name: string; avatarUrl: string }) =>
       api.patch('/api/me', updates).then(r => r.data),
-    onSuccess: () => {
+    onSuccess: (data, variables) => {
+      // Sync header dropdown + sidebar (read authStore.user) right away so the
+      // new name/avatar don't lag behind the profile page until next reload.
+      updateProfile({
+        name: data?.name ?? variables.name,
+        avatar: data?.avatarUrl ?? variables.avatarUrl,
+      })
       queryClient.invalidateQueries({ queryKey: ['profile'] })
       onClose()
     },

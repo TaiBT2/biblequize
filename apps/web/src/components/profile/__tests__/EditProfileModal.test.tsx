@@ -3,6 +3,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { EditProfileModal } from '../EditProfileModal'
 import type { UserProfile } from '../types'
+import { useAuthStore } from '../../../store/authStore'
 
 const mockPatch = vi.fn()
 vi.mock('../../../api/client', () => ({
@@ -85,6 +86,18 @@ describe('EditProfileModal', () => {
     const { onClose } = renderModal(BASE_PROFILE)
     fireEvent.click(screen.getByTestId('edit-profile-close'))
     expect(onClose).toHaveBeenCalled()
+  })
+
+  it('syncs authStore (header/sidebar) avatar on successful save', async () => {
+    useAuthStore.setState({
+      user: { name: 'Trần Văn B', email: 'b@test.com', avatar: undefined },
+    })
+    mockPatch.mockResolvedValue({ data: { name: 'Trần Văn B', email: 'b@test.com', avatarUrl: 'preset:king' } })
+    renderModal(BASE_PROFILE)
+    fireEvent.click(screen.getByTestId('edit-profile-avatar-toggle'))
+    fireEvent.click(screen.getByTestId('edit-profile-preset-king'))
+    fireEvent.click(screen.getByTestId('edit-profile-submit'))
+    await waitFor(() => expect(useAuthStore.getState().user?.avatar).toBe('preset:king'))
   })
 
   it('blocks submit when name is empty', () => {

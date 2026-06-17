@@ -307,6 +307,55 @@ describe('authStore', () => {
     })
   })
 
+  describe('updateProfile', () => {
+    beforeEach(() => {
+      act(() => {
+        useAuthStore.getState().login({
+          accessToken: 'token',
+          name: 'Old Name',
+          email: 'u@test.com',
+          avatar: 'preset:disciple',
+        })
+      })
+    })
+
+    it('updates in-memory user name + avatar and localStorage cache', () => {
+      act(() => {
+        useAuthStore.getState().updateProfile({ name: 'New Name', avatar: 'preset:king' })
+      })
+      const state = useAuthStore.getState()
+      expect(state.user?.name).toBe('New Name')
+      expect(state.user?.avatar).toBe('preset:king')
+      expect(localStorage.getItem('userName')).toBe('New Name')
+      expect(localStorage.getItem('userAvatar')).toBe('preset:king')
+    })
+
+    it('clears avatar (in-memory + localStorage) when set to empty string', () => {
+      act(() => {
+        useAuthStore.getState().updateProfile({ avatar: '' })
+      })
+      expect(useAuthStore.getState().user?.avatar).toBeUndefined()
+      expect(localStorage.getItem('userAvatar')).toBeNull()
+    })
+
+    it('leaves untouched fields unchanged (partial update)', () => {
+      act(() => {
+        useAuthStore.getState().updateProfile({ name: 'Only Name' })
+      })
+      const state = useAuthStore.getState()
+      expect(state.user?.name).toBe('Only Name')
+      expect(state.user?.avatar).toBe('preset:disciple')
+    })
+
+    it('is a no-op when there is no logged-in user', () => {
+      act(() => {
+        useAuthStore.setState({ user: null })
+        useAuthStore.getState().updateProfile({ name: 'Ghost' })
+      })
+      expect(useAuthStore.getState().user).toBeNull()
+    })
+  })
+
   describe('setLoading', () => {
     it('updates isLoading state', () => {
       act(() => {
