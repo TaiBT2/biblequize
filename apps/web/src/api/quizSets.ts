@@ -254,6 +254,24 @@ export function getModeAvailability(mode: RoomMode, total: number): { available:
 export type QuestionDifficulty = 'easy' | 'medium' | 'hard'
 export type QuestionSource = 'admin' | 'ai-generated' | 'ai-group' | 'group-custom' | string
 
+// AEU: distractor error-type metadata declared by the AI (one per wrong option),
+// plus server-computed quality flags. Transient — only present on freshly AI-generated
+// questions (parity with the admin draft review); absent on saved/reloaded questions.
+export type DistractorErrorType =
+  'nearby_passage' | 'wrong_detail' | 'wrong_scope' | 'common_misconception' | 'true_but_off'
+export interface DistractorMeta {
+  index: number
+  errorType: DistractorErrorType | string
+  almostRight: boolean
+}
+export interface QualityFlags {
+  valid: boolean
+  duplicateErrorType: boolean
+  almostRightCount: number
+  requiredAlmostRight: number
+  reasons: string[]
+}
+
 export interface EditorQuestion {
   id: string
   book: string
@@ -268,6 +286,8 @@ export interface EditorQuestion {
   explanation: string | null
   source: QuestionSource
   language: string
+  distractors?: DistractorMeta[]
+  quality?: QualityFlags
 }
 
 export interface QuizSetFull extends QuizSet {

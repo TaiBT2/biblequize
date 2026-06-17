@@ -232,10 +232,15 @@ export default function QuizSetEditor({
         topic: req.topic || topic || undefined,
         language: ((quizSet.language || 'vi').toLowerCase() === 'en' ? 'en' : 'vi'),
       })
+      // AEU-5: BE sends quality flags as `_quality`; normalise to `quality` for the editor.
+      const generated = res.questions.map(q => {
+        const raw = q as EditorQuestion & { _quality?: EditorQuestion['quality'] }
+        return raw._quality && !raw.quality ? { ...raw, quality: raw._quality } : raw
+      })
       setQuizSet(prev => prev ? {
         ...prev,
-        questions: [...prev.questions, ...res.questions],
-        questionIds: [...prev.questionIds, ...res.questions.map(q => q.id)],
+        questions: [...prev.questions, ...generated],
+        questionIds: [...prev.questionIds, ...generated.map(q => q.id)],
         totalQuestions: res.totalQuestions,
       } : prev)
       setAiQuota({ used: res.used, limit: res.limit, remaining: res.remaining })

@@ -7,6 +7,7 @@
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-17 | AI distractor-quality parity cho user paths (quiz set + personal bank) (AEU-1..5) | DONE | [archive](docs/todo/archive/2026-06-17-ai-quality-parity-user-paths.md) |
 | 2026-06-17 | Practice book-select: fix tên sách "chìm" (SearchableSelect → Khung Sáng) + no-book lỗi tường minh (PBS-1..2) | TODO | [detail](docs/todo/active/2026-06-17-practice-book-select-fixes.md) |
 | 2026-06-17 | Landing hero: thay ảnh Kinh Thánh tối bằng illustration phẳng Khung Sáng (LHI-1..2) | DONE | [archive](docs/todo/archive/2026-06-17-landing-hero-flat-illustration.md) |
 | 2026-06-17 | checkAuth: chỉ logout khi refresh 401, không logout khi /api/me lỗi (CKR-1) | DONE | [detail](docs/todo/active/2026-06-17-checkauth-resilient-to-me-failure.md) |

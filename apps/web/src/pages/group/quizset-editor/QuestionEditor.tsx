@@ -44,6 +44,10 @@ export default function QuestionEditor({
     ? question.difficulty as Difficulty : 'medium'
   const correctIndex = question.correctAnswer?.[0] ?? -1
 
+  // AEU-5: distractor error-type metadata (transient, only on freshly AI-generated Qs).
+  const metaByIndex = new Map((question.distractors ?? []).map(d => [d.index, d] as const))
+  const quality = question.quality
+
   const onScriptureBlur = () => {
     const txt = scriptureInput.trim()
     // Parse "Book 1:2-3" / "Book 1:2" / "Book 1"
@@ -220,12 +224,39 @@ export default function QuestionEditor({
                     wordBreak: 'break-word',
                   }}
                 />
+                {!isCorrect && metaByIndex.get(i) && (
+                  <span style={{
+                    flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: 4,
+                    padding: '2px 7px', borderRadius: 5, fontSize: 10, fontWeight: 500,
+                    background: COLOR.inputBg, border: `1px solid ${COLOR.borderSubtle}`, color: COLOR.textMuted,
+                  }}>
+                    {t(`admin.aiGenerator.draftCard.errorType.${metaByIndex.get(i)!.errorType}`)}
+                    {metaByIndex.get(i)!.almostRight && (
+                      <span style={{ color: COLOR.gold }}>★ {t('admin.aiGenerator.draftCard.almostRightTag')}</span>
+                    )}
+                  </span>
+                )}
               </div>
             )
           })}
         </div>
         {issueByKind.has('no_correct') && (
           <div style={{ fontSize: 10, color: COLOR.warning, marginTop: 6 }}>{t('quizSet.editor.question.noCorrectHint')}</div>
+        )}
+        {quality && !quality.valid && (
+          <div role="alert" style={{
+            marginTop: 8, padding: '8px 11px', borderRadius: 8,
+            background: COLOR.goldBg, border: `1px solid rgba(245,158,11,0.30)`,
+          }}>
+            <div style={{ fontSize: 11, fontWeight: 600, color: COLOR.gold, marginBottom: 3 }}>
+              ⚠ {t('admin.aiGenerator.draftCard.qualityWarningTitle')}
+            </div>
+            <ul style={{ margin: 0, paddingLeft: 16, fontSize: 10.5, color: COLOR.textMuted, lineHeight: 1.6 }}>
+              {quality.reasons.map(r => (
+                <li key={r}>{t(`admin.aiGenerator.draftCard.reason.${r}`)}</li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
 
