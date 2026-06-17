@@ -15,7 +15,7 @@ lỗi đang hỏng production + thiếu sót. Sửa hết phần low-risk, no-ne
   - Checklist: impl · vitest pass ≥ baseline · commit
 
 - SEO-2 Fix locale sai `el`(Hy Lạp)→`en` trong index.html + bỏ hreflang URL `/el` không tồn tại
-  - Status: [ ] TODO · Files: `index.html`, `src/__tests__/seo-meta.test.ts` (new) · Test: no 'el'/'el_GR'/'/el', inLanguage=[vi,en]
+  - Status: [x] DONE · Files: `index.html`, `src/__tests__/seo-meta.test.ts` (new) · Test: no 'el'/'el_GR'/'/el', inLanguage=[vi,en]
   - **Spec impact**: [x] None (C4 = 50/50 VN/EN, không có Greek)
   - **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · vitest pass · commit

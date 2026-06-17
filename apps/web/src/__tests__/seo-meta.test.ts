@@ -38,3 +38,44 @@ describe('SEO: index.html language/locale correctness', () => {
     expect(html).not.toContain('og-image.svg')
   })
 })
+
+describe('SEO: sitemap.xml + robots.txt', () => {
+  const sitemap = readRoot('public/sitemap.xml')
+  const robots = readRoot('public/robots.txt')
+  const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
+  const disallows = robots
+    .split('\n')
+    .map((l) => l.trim())
+    .filter((l) => l.toLowerCase().startsWith('disallow:'))
+    .map((l) => l.slice('disallow:'.length).trim())
+    .filter(Boolean)
+
+  it('lists the core public pages, all under forbible.org', () => {
+    expect(locs.length).toBeGreaterThanOrEqual(4)
+    for (const loc of locs) expect(loc).toMatch(/^https:\/\/forbible\.org\//)
+  })
+
+  it('does not advertise the /landing duplicate of /', () => {
+    expect(locs).not.toContain('https://forbible.org/landing')
+  })
+
+  it('every <url> carries a <lastmod>', () => {
+    const blocks = [...sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => m[1])
+    expect(blocks.length).toBe(locs.length)
+    for (const block of blocks) expect(block).toMatch(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/)
+  })
+
+  it('no sitemap URL is blocked by a robots Disallow rule', () => {
+    for (const loc of locs) {
+      const path = loc.replace('https://forbible.org', '') || '/'
+      const blocked = disallows.find((d) => path.startsWith(d))
+      expect(blocked, `${path} blocked by Disallow: ${blocked}`).toBeUndefined()
+    }
+  })
+
+  it('robots points at the sitemap and drops the phantom /share/ allow', () => {
+    expect(robots).toMatch(/Sitemap:\s*https:\/\/forbible\.org\/sitemap\.xml/)
+    expect(robots).not.toContain('/share/')
+    expect(robots).toContain('Disallow: /admin/')
+  })
+})

@@ -1,23 +1,40 @@
 # BibleQuiz — robots.txt
-# Chỉ cho phép crawl các trang public, không cần login
+# Public marketing/content pages are crawlable; app + auth-gated + interactive
+# routes carry no SEO value and are kept out of the index.
 
 User-agent: *
 Allow: /
-Allow: /landing
-Allow: /daily
-Allow: /share/
 
+# Admin
 Disallow: /admin/
+
+# Auth / account
+Disallow: /auth/
+Disallow: /login
+Disallow: /register
+Disallow: /profile
+Disallow: /settings
+Disallow: /onboarding
+
+# Gameplay / interactive (no indexable content, often auth-gated)
 Disallow: /quiz
 Disallow: /ranked
 Disallow: /practice
-Disallow: /profile
-Disallow: /groups
-Disallow: /tournaments
-Disallow: /room/
+Disallow: /basic-quiz
+Disallow: /weekly-quiz
+Disallow: /mystery-mode
+Disallow: /speed-round
 Disallow: /review
 Disallow: /achievements
+Disallow: /journey
+Disallow: /cosmetics
+
+# Social / groups / multiplayer
+Disallow: /groups
+Disallow: /tournaments
 Disallow: /multiplayer
-Disallow: /settings
+Disallow: /rooms
+Disallow: /room/
+Disallow: /my-sets
 
 Sitemap: https://forbible.org/sitemap.xml
