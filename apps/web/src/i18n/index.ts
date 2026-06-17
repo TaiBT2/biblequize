@@ -21,4 +21,14 @@ i18n
     },
   })
 
+// Keep <html lang> in sync with the active language for SEO + a11y.
+// index.html ships a static lang="vi"; English users must get lang="en".
+const syncHtmlLang = (lng?: string) => {
+  if (typeof document !== 'undefined') {
+    document.documentElement.lang = (lng || 'vi').split('-')[0]
+  }
+}
+syncHtmlLang(i18n.language)
+i18n.on('languageChanged', syncHtmlLang)
+
 export default i18n

@@ -33,7 +33,7 @@ lỗi đang hỏng production + thiếu sót. Sửa hết phần low-risk, no-ne
   - Checklist: impl · vitest pass · commit
 
 - SEO-5 `<html lang>` đồng bộ động theo i18n (vi↔en) cho SEO/a11y
-  - Status: [ ] TODO · Files: `src/i18n/index.ts`, `src/i18n/__tests__/html-lang-sync.test.ts` (new) · Test: changeLanguage → documentElement.lang
+  - Status: [x] DONE · Files: `src/i18n/index.ts`, `src/i18n/__tests__/html-lang-sync.test.ts` (new) · Test: changeLanguage → documentElement.lang
   - **Spec impact**: [x] None
   - **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · vitest pass · commit
