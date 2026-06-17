@@ -592,6 +592,24 @@
 
 ---
 
+## Added 2026-06-17 (Group differentiator — Collective Growth)
+
+### BL-23 — Group Collective Growth ("Cùng nhau thuộc Lời") — anti-leaderboard shared progress
+- **Source:** 2026-06-17 — khảo sát + đánh giá Group ("không có điểm nổi bật": đủ cơ chế nhưng kẹt giữa pivot — leaderboard cạnh tranh đã sunset (Q-A / GD-1 / BL-16) còn hook thay thế (BL-17 Feed, BL-18 Pulse) đều defer).
+- **Concept:** *anti-leaderboard*. KHÔNG xếp hạng cá nhân — một con số chung cả nhóm cùng lấp đầy: "Nhóm đã cùng thuộc **N** câu Lời Chúa" + thanh tiến tới cột mốc + breakdown theo bộ câu hỏi. Hợp văn hóa Tin Lành "cùng nhau lớn lên".
+- **Q-A SAFE:** dùng `GroupQuizSetMastery` (solo practice), aggregate thành chỉ số tập thể *không-ranking* → KHÔNG đụng `ChurchGroupService.getLeaderboard` (BL-16). Bổ sung BL-17/BL-18, không trùng.
+- **Decisions locked (D1–D5, default 2026-06-17 — DECISIONS.md):** D1 hero = `SUM(questionsLearned)` (UNION v2) · D2 nguồn mastery-only (group-play v2) · D3 hero trong Activity tab · D4 group goal v2 (v1 milestone tự động) · D5 mọi member thấy.
+- **Implementation (idiom codebase):** repo trả `List<Object[]>` aggregate · service trả `Map<String,Object>` (như mastery/scheduled service) · test Mockito (group module không có Testcontainers/@DataJpaTest). **v1 KHÔNG cần Flyway migration** (read-only).
+- **Cần làm (CG-1..8):**
+  - ✅ CG-1: `GroupQuizSetMasteryRepository.aggregateGrowthByGroupId` (SUM / COUNT DISTINCT user / COUNT completed, over PUBLISHED) + `GroupCollectiveGrowthService.getCollectiveGrowth` (hero + milestone band 50→10000) + 5 unit test pass.
+  - ⬜ CG-2 per-set breakdown · CG-3 endpoint `GET /api/groups/{id}/collective-growth` (member-visible) · CG-4 Q-A guard test · CG-5..7 FE (hook + `CollectiveGrowthCard` + Activity tab + i18n) · CG-8 SPEC_GROUP §X + Tầng 3.
+- **Effort:** M (~1.5–2 ngày).
+- **Status:** 🚧 IN PROGRESS — CG-1 DONE; D1–D5 locked.
+- **Spec impact:** [SPEC_GROUP_v1.3.md §X new](SPEC_GROUP_v1.3.md) (author ở CG-8). Related: BL-16, BL-17, BL-18.
+- **Ref:** task `docs/todo/active/2026-06-17-group-collective-growth.md`.
+
+---
+
 ## Cross-references
 - Canonical specs: [SPEC_USER_v3.2.md](SPEC_USER_v3.2.md), [SPEC_MULTIPLAYER.md](SPEC_MULTIPLAYER.md), [SPEC_ADMIN_v3.1.md](SPEC_ADMIN_v3.1.md), [SPEC_GROUP_v1.3.md](SPEC_GROUP_v1.3.md) (Sprint 5)
 - Roadmap (defer features): [SPEC_ROADMAP.md](SPEC_ROADMAP.md)

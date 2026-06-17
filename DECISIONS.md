@@ -2,6 +2,20 @@
 
 ---
 
+## 2026-06-17 — Group Collective Growth "Cùng nhau thuộc Lời" (BL-23): anti-leaderboard, D1–D5 locked
+- Quyết định: thêm chỉ số **tập thể không-ranking** cho Group — "Nhóm đã cùng thuộc N câu Lời Chúa" + thanh tiến tới cột mốc — làm "điểm nổi bật" thay cho leaderboard cạnh tranh đã sunset (Q-A / GD-1 / BL-16). Triết lý: hợp văn hóa Tin Lành "cùng nhau lớn lên", KHÔNG "ai thắng".
+- Nguồn: gộp `GroupQuizSetMastery` (Q-A SAFE — solo practice các bộ câu hỏi của nhóm). KHÔNG đọc/ghi UserDailyProgress hay group leaderboard → không tái sinh leaderboard đã bỏ.
+- D1–D5 (locked default, user chốt 2026-06-17):
+  - D1 Hero = **SUM(questionsLearned)** ("lượt câu") — con số đếm tiến tới cột mốc, KHÔNG phải phân số trên tổng câu. UNION distinct câu → v2.
+  - D2 Nguồn = **chỉ mastery (solo practice)** v1; cộng group-play (live room + scheduled) → v2.
+  - D3 Vị trí = **hero card trong Activity tab**.
+  - D4 Group goal (leader đặt mục tiêu) = **v2**; v1 chỉ milestone tự động (50/100/250/500/1000/2000/5000/10000; vượt bảng bước 5000).
+  - D5 Visibility = **mọi member** (niềm tự hào chung), không leader-only.
+- Hệ quả kỹ thuật: v1 KHÔNG cần Flyway migration (read-only aggregation). Theo idiom codebase: repo trả `List<Object[]>`, service trả `Map<String,Object>` (như mastery/scheduled service), test Mockito (module group không có Testcontainers/@DataJpaTest).
+- Implementation: BL-23 · task `docs/todo/active/2026-06-17-group-collective-growth.md` (CG-1..8). CG-1 DONE (repo `aggregateGrowthByGroupId` + `GroupCollectiveGrowthService` + 5 unit test pass).
+
+---
+
 ## 2026-06-16 — Daily Challenge scoring: performance-based 0/20/40/60/100/150 (supersedes flat +50)
 - Quyết định: XP Daily Challenge đổi từ **flat +50 (gate ≥4 đúng)** sang **lookup theo số câu đúng**:
 
