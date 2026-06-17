@@ -3,10 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (74)
+## Active (75)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-17 | Mobile app (Capacitor wrap web) — chỉ trang User (MOB-0..5, Android trước) | TODO | [detail](docs/todo/active/2026-06-17-mobile-capacitor.md) |
 | 2026-06-17 | Group Collective Growth "Cùng nhau thuộc Lời" — differentiator (BL-23, CG-1 DONE, CG-2..8) | IN PROGRESS | [detail](docs/todo/active/2026-06-17-group-collective-growth.md) |
 | 2026-06-17 | SEO audit fixes forbible.org (og-image vỡ, locale `el`→`en`, sitemap/robots, PageMeta, JSON-LD) (SEO-1..7) | TODO | [detail](docs/todo/active/2026-06-17-seo-audit-fixes.md) |
 | 2026-06-17 | Fix avatar không đồng bộ sau khi sửa hồ sơ (header/sidebar) (ASE-1..2) | DONE | [detail](docs/todo/active/2026-06-17-avatar-sync-after-edit.md) |
