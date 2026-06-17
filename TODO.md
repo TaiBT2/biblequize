@@ -3,10 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (72)
+## Active (73)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-17 | SEO audit fixes forbible.org (og-image vỡ, locale `el`→`en`, sitemap/robots, PageMeta, JSON-LD) (SEO-1..7) | TODO | [detail](docs/todo/active/2026-06-17-seo-audit-fixes.md) |
 | 2026-06-17 | Fix avatar không đồng bộ sau khi sửa hồ sơ (header/sidebar) (ASE-1..2) | DONE | [detail](docs/todo/active/2026-06-17-avatar-sync-after-edit.md) |
 | 2026-06-17 | Ranked selector follow-ups: meta-query merge + dependency inversion (RSO-1..2) | DONE | [archive](docs/todo/archive/2026-06-17-ranked-selector-followups.md) |
 | 2026-06-17 | Ranked selector: gộp history load + bỏ N+1 query (RSH-1..2) | DONE | [archive](docs/todo/archive/2026-06-17-ranked-selector-history-query-optimization.md) |
