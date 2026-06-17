@@ -209,9 +209,9 @@ export default function RoomAnalytics() {
                     <Th>Người chơi</Th>
                     <Th align="right">Điểm</Th>
                     <Th align="right">Đúng</Th>
-                    <Th align="right">Trả lời</Th>
-                    <Th align="right">Chính xác</Th>
-                    <Th>Trạng thái</Th>
+                    <Th align="right" className="hidden sm:table-cell">Trả lời</Th>
+                    <Th align="right" className="hidden sm:table-cell">Chính xác</Th>
+                    <Th className="hidden sm:table-cell">Trạng thái</Th>
                   </tr>
                 </thead>
                 <tbody>
@@ -250,13 +250,13 @@ export default function RoomAnalytics() {
                         <Td align="right" className="tabular-nums" style={{ color: '#0E8A6B' }}>
                           {p.correctAnswers}
                         </Td>
-                        <Td align="right" className="tabular-nums" style={{ color: '#6C6A62' }}>
+                        <Td align="right" className="tabular-nums hidden sm:table-cell" style={{ color: '#6C6A62' }}>
                           {p.totalAnswered}/{room.questionCount}
                         </Td>
-                        <Td align="right" className="tabular-nums" style={{ color: accPct >= 70 ? '#0E8A6B' : accPct >= 40 ? '#D97F06' : '#E0354B' }}>
+                        <Td align="right" className="tabular-nums hidden sm:table-cell" style={{ color: accPct >= 70 ? '#0E8A6B' : accPct >= 40 ? '#D97F06' : '#E0354B' }}>
                           {accPct}%
                         </Td>
-                        <Td>
+                        <Td className="hidden sm:table-cell">
                           <span
                             className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded"
                             style={{
@@ -410,8 +410,8 @@ const SummaryCell: React.FC<{ label: string; value: string; divider?: boolean }>
   </div>
 );
 
-const Th: React.FC<{ children: React.ReactNode; align?: 'left' | 'right' }> = ({ children, align = 'left' }) => (
-  <th className={`px-4 py-3 font-semibold text-${align}`}>{children}</th>
+const Th: React.FC<{ children: React.ReactNode; align?: 'left' | 'right'; className?: string }> = ({ children, align = 'left', className }) => (
+  <th className={`px-4 py-3 font-semibold text-${align} ${className ?? ''}`}>{children}</th>
 );
 
 const Td: React.FC<{

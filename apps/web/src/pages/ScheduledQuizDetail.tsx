@@ -131,9 +131,9 @@ const ScheduledQuizDetailPage: React.FC = () => {
             <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 text-xl">👑</span>
             {winner.name[0]?.toUpperCase()}
           </div>
-          <div>
+          <div className="min-w-0">
             <div className="text-[10px] font-bold uppercase tracking-wider text-bq-amberd mb-0.5">🏆 {t('scheduledQuiz.winner')}</div>
-            <div className="text-base font-bold">{winner.name}</div>
+            <div className="text-base font-bold truncate">{winner.name}</div>
             <div className="text-bq-ink2 text-[11px]">
               {winner.correctCount}/{winner.totalQuestions} đúng · {fmtTime(winner.timeSeconds)} phút · {winner.attemptsUsed} lần thử
             </div>

@@ -13,6 +13,15 @@
 - MRF-6 TournamentDetail: hero 3-cột → `flex-col` mobile + tab `overflow-x-auto` + bracket affordance. Files: `pages/TournamentDetail.tsx:~482,~600,~261`
 - MRF-7 Onboarding: slide nav offset + journey visual `px-12/min-h-[700px]` density mobile. Files: `pages/Onboarding.tsx:~148,~320`
 - MRF-8 DailyChallenge: immersive `min-h-screen` lồng AppLayout → bỏ double main + dock clear `MobileBottomTabs`. Files: `pages/DailyChallenge.tsx:~475,~571` (structural — cẩn thận, không đụng gameplay logic)
-  - Status: [x] ALL DONE · commits: `71e37cd3` (MRF-1/2/3), `320cf010` (MRF-4/5/6), `c896800d` (MRF-8), + Onboarding (MRF-7)
+  - Status: [x] ALL DONE · commits: `71e37cd3` (MRF-1/2/3), `320cf010` (MRF-4/5/6), `c896800d` (MRF-8), `075645e9` (MRF-7)
   - Test: Tầng 3 full FE **1285 pass** (≥ baseline 1277) + web build exit 0
   - **Spec impact**: [x] None (visual/responsive) · **Spec strategy**: [x] (c) `[no-spec-impact]`
+
+### Tasks — Fair group (round 2)
+- MRF-9 OnboardingTryQuiz: results stats `grid-cols-3` dày + footer `px-12`. Files: `pages/OnboardingTryQuiz.tsx`
+- MRF-10 ScheduledQuizDetail: winner name `min-w-0` + leaderboard fixed-px grid. Files: `pages/ScheduledQuizDetail.tsx`
+- MRF-11 Achievements: sidebar split `xl`→`lg`. Files: `pages/Achievements.tsx`
+- MRF-12 QuizSetEditor: input fontSize ≥16px (chống iOS zoom) + AIRewriteModal diff stack mobile. Files: `pages/group/quizset-editor/{styles.ts,QuestionEditor.tsx,MetadataAccordion.tsx,AIRewriteModal.tsx}`
+- MRF-13 LandingPage: 12-col leaderboard preview reflow mobile. Files: `pages/LandingPage.tsx`
+- MRF-14 RoomAnalytics: 7-col player table → card reflow mobile. Files: `pages/RoomAnalytics.tsx`
+  - Status: [x] ALL DONE · Test: Tầng 3 full FE **1285 pass** + build exit 0 · **Spec impact**: [x] None · **Spec strategy**: [x] (c)

@@ -273,9 +273,9 @@ function LeaderboardPreview() {
           {/* Header row */}
           <div className="grid grid-cols-12 px-4 sm:px-8 py-3 sm:py-4 bg-bq-inset text-[10px] sm:text-xs font-bold text-bq-ink2 uppercase tracking-widest">
             <div className="col-span-2">{t('landing.rank')}</div>
-            <div className="col-span-6">{t('landing.warrior')}</div>
-            <div className="col-span-2">XP</div>
-            <div className="col-span-2 text-right">{t('landing.titleHeader')}</div>
+            <div className="col-span-7 sm:col-span-6">{t('landing.warrior')}</div>
+            <div className="col-span-3 sm:col-span-2">XP</div>
+            <div className="hidden sm:block sm:col-span-2 text-right">{t('landing.titleHeader')}</div>
           </div>
 
           <div className="divide-y divide-bq-hair">
@@ -289,7 +289,7 @@ function LeaderboardPreview() {
                   <div className={`col-span-2 ${entry.top ? 'font-black text-xl sm:text-2xl text-bq-amberd' : 'font-bold text-bq-ink2'}`}>
                     {entry.rank}
                   </div>
-                  <div className="col-span-6 flex items-center gap-2 sm:gap-4 min-w-0">
+                  <div className="col-span-7 sm:col-span-6 flex items-center gap-2 sm:gap-4 min-w-0">
                     <div
                       className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs sm:text-base flex-shrink-0 ${
                         entry.top
@@ -301,11 +301,11 @@ function LeaderboardPreview() {
                     </div>
                     <span className={`font-bold truncate text-sm sm:text-base text-bq-ink ${entry.top ? 'sm:text-lg' : ''}`}>{entry.name}</span>
                   </div>
-                  <div className={`col-span-2 font-mono text-xs sm:text-base ${entry.top ? 'text-bq-amberd' : 'text-bq-ink2'}`}>
+                  <div className={`col-span-3 sm:col-span-2 font-mono text-xs sm:text-base ${entry.top ? 'text-bq-amberd' : 'text-bq-ink2'}`}>
                     {entry.xp}
                   </div>
                   <div
-                    className={`col-span-2 text-right text-[9px] sm:text-xs font-bold uppercase truncate ${
+                    className={`hidden sm:block sm:col-span-2 text-right text-[9px] sm:text-xs font-bold uppercase truncate ${
                       entry.top ? 'text-bq-amberd' : idx < 3 ? 'text-bq-sapphire' : 'text-bq-ink2'
                     }`}
                   >
