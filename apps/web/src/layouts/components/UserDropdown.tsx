@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '../../store/authStore'
 import { setQuizLanguage, type QuizLanguage } from '../../utils/quizLanguage'
+import { resolveAvatar } from '../../utils/avatar'
 
 interface UserDropdownProps {
   /** Position of the dropdown panel relative to the trigger.
@@ -78,7 +79,10 @@ export default function UserDropdown({
   }, [open])
 
   const displayName = user?.name || t('home.defaultName')
-  const showAvatarImg = Boolean(user?.avatar) && !avatarBroken
+  // Resolve the avatar through the shared union so presets (`preset:<id>`)
+  // render as emoji — not as a broken <img> that falls back to the initial.
+  const resolved = resolveAvatar(user?.avatar, displayName)
+  const showAvatarImg = resolved.kind === 'img' && !avatarBroken
   const lang = (i18n.language === 'en' ? 'en' : 'vi') as QuizLanguage
 
   const handleLogout = async () => {
@@ -128,11 +132,19 @@ export default function UserDropdown({
             >
               {showAvatarImg ? (
                 <img
-                  src={user!.avatar}
+                  src={resolved.kind === 'img' ? resolved.src : undefined}
                   alt={displayName}
                   onError={() => setAvatarBroken(true)}
                   className="w-full h-full rounded-full object-cover"
                 />
+              ) : resolved.kind === 'preset' ? (
+                <span
+                  className="w-full h-full rounded-full flex items-center justify-center text-base"
+                  style={{ background: resolved.preset.bg }}
+                  aria-hidden
+                >
+                  {resolved.preset.emoji}
+                </span>
               ) : (
                 <span className={!tierColorHex ? 'text-bq-ink' : undefined}>
                   {displayName.charAt(0).toUpperCase()}
@@ -158,11 +170,20 @@ export default function UserDropdown({
           </>
         ) : showAvatarImg ? (
           <img
-            src={user!.avatar}
+            src={resolved.kind === 'img' ? resolved.src : undefined}
             alt={displayName}
             onError={() => setAvatarBroken(true)}
             className="w-full h-full rounded-full object-cover border border-[rgba(232,168,50,0.35)]"
           />
+        ) : resolved.kind === 'preset' ? (
+          <span
+            data-testid="user-dropdown-avatar-preset"
+            className="w-full h-full rounded-full flex items-center justify-center text-[20px] border border-[rgba(232,168,50,0.35)]"
+            style={{ background: resolved.preset.bg }}
+            aria-hidden
+          >
+            {resolved.preset.emoji}
+          </span>
         ) : (
           <span
             data-testid="user-dropdown-avatar-initial"
