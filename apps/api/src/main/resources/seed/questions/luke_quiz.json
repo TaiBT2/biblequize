@@ -844,13 +844,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Lu-ca 12:15 - Sự sống thật không phụ thuộc tài sản. Bài học trong dụ ngôn người giàu ngu dại.",
+    "explanation": "Lu-ca 12:15 (BTT) ghi: \"Hãy giữ mình về mọi thứ tham lam, vì sự sống của một người không ở tại sự dư dật của cải mình.\"\n\n- ĐÁP ÁN ĐÚNG khớp với Kinh Thánh, cảnh báo cụ thể về 'tham lam' và lý do 'vì sự sống không ở tại sự dư dật'.\n\n- DISTRACTOR 1 (GẦN ĐÚNG - wrong_detail): Sai một chi tiết then chốt. Nó gần đúng nhưng đảo ngược ý nghĩa ('...ở nơi sự dư dật'), trong khi Kinh Thánh dạy 'không ở tại'.\n\n- DISTRACTOR 2 (common_misconception): 'Tội lỗi' là một khái niệm quá rộng, không phải từ ngữ cụ thể Chúa Giê-su dùng trong câu này, mặc dù tham lam là một tội.\n\n- DISTRACTOR 3 (true_but_off): 'Lo lắng' là chủ đề trong đoạn kế tiếp (c.22-34), không phải là từ khóa trực tiếp cho lời cảnh báo 'hãy giữ mình' trong câu 15.",
     "language": "vi",
     "options": [
       "Tham lam, vì sự sống không ở tại sự dư dật",
-      "Kiêu ngạo",
-      "Ghen tị",
-      "Sợ hãi"
+      "Tham lam, vì sự sống ở nơi sự dư dật của cải",
+      "Tội lỗi, vì sự sống không ở tại sự giàu có",
+      "Lo lắng, vì sự sống không ở tại của cải"
     ],
     "tags": [
       "Tân Ước",
@@ -1007,13 +1007,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Lu-ca 1:42 — 'Ngươi có phước trong đám đàn bà, thai trong lòng ngươi cũng được phước.'",
+    "explanation": "Đáp án đúng dựa trực tiếp vào Lu-ca 1:42: 'Ê-li-sa-bét cất tiếng kêu lớn và nói rằng: Ngươi có phước trong đám đàn bà; thai trong lòng ngươi cũng được phước.'\n\nCác đáp án sai:\n1. 'Ma-ri, con dòng họ Giu-đa, được phước giữa các thị tộc' sai vì đây là một chi tiết không có trong phân đoạn này (dòng họ Giu-đa và 'các thị tộc' là thông tin khác, không phải lời chào của Ê-li-sa-bét).\n2. 'Thưa bà, tôi được phước vì được thấy mặt bà' sai vì mặc dù Ê-li-sa-bét nói về phước của chính mình (Lu-ca 1:43), nhưng đây không phải là lời chào ban đầu của bà khi Ma-ri vừa đến.\n3. 'Thai trong lòng bà được phước, và tôi sẽ hạ sinh một tiên tri' sai vì đây là một hiểu lầm phổ biến; phần 'tôi sẽ hạ sinh một tiên tri' là về con trai Ê-li-sa-bét (Giang Báp-tít), không phải là lời chào dành cho Ma-ri, và câu chào đầy đủ không có phần này.",
     "language": "vi",
     "options": [
       "Ngươi có phước trong đám đàn bà; thai trong lòng ngươi cũng được phước",
-      "Ngươi đến từ Na-xa-rét sao?",
-      "Hãy chờ Giô-sép đến",
-      "Tôi đã nghe điều này"
+      "Ma-ri, con dòng họ Giu-đa, được phước giữa các thị tộc",
+      "Thưa bà, tôi được phước vì được thấy mặt bà",
+      "Thai trong lòng bà được phước, và tôi sẽ hạ sinh một tiên tri"
     ],
     "tags": [
       "Tân Ước",
@@ -2329,12 +2329,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Lu-ca 21:2-4 — 'Cũng thấy một mụ góa nghèo bỏ vào hai đồng tiền... vì mọi người kia lấy của dư mình mà bỏ vào, còn mụ nầy thì lấy sự thiếu thốn mình mà bỏ vào hết của mình có để nuôi mình.'",
+    "explanation": "Lu-ca 21:1-4 ghi lại việc Chúa Giê-su thấy một bà góa nghèo bỏ vào hòm tiền hai đồng tiền nhỏ (câu 2). Chúa Giê-su nói rằng bà đã bỏ vào nhiều hơn tất cả, vì mọi người khác lấy của dư mà bỏ vào, còn bà nầy thì lấy sự thiếu thốn mình mà bỏ vào hết của mình có để nuôi sống (câu 3-4). Do đó, đáp án đúng là 'Hai đồng tiền — của mình có mà thôi'.\n\nCác đáp án sai:\n- 'Một đồng tiền — của mình có mà thôi': Sai về chi tiết số lượng (sai 1 đồng so với Kinh Thánh).\n- 'Hai đồng tiền — vừa mới nhận được': Dựa trên hiểu lầm phổ biến rằng bà có thể vừa nhận được tiền, nhưng Kinh Thánh không nói điều này mà nhấn mạnh đây là tất cả của bà.\n- 'Một đồng tiền — là phần dâng một phần mười': Mặc dù việc dâng một phần mười là đúng trong ngữ cảnh tôn giáo, nhưng chi tiết này không được đề cập trong đoạn Kinh Thánh này và số tiền cũng sai, nên lạc trọng tâm câu hỏi.",
     "language": "vi",
     "options": [
-      "Một đồng vàng",
-      "Mười đồng bạc",
-      "Một bó hoa",
+      "Một đồng tiền — của mình có mà thôi",
+      "Hai đồng tiền — vừa mới nhận được",
+      "Một đồng tiền — là phần dâng một phần mười",
       "Hai đồng tiền — của mình có mà thôi"
     ],
     "tags": [
@@ -2539,13 +2539,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Lu-ca 23:43 — 'Quả thật, Ta nói cùng ngươi, hôm nay ngươi sẽ được ở với Ta trong nơi Ba-ra-đi.'",
+    "explanation": "Câu trả lời đúng: 'Hôm nay ngươi sẽ được ở với Ta trong nơi Ba-ra-đi' chính xác trích từ Lu-ca 23:43 (BTT), ghi lại lời hứa của Chúa Jêsus với tên trộm trên thập tự giá.\n\nGiải thích các đáp án sai:\n1. 'Hôm nay ngươi sẽ được ở trong nơi Ba-ra-đi' là đáp án gần đúng nhưng sai chi tiết then chốt: thiếu cụm từ 'với Ta', làm mất đi sự hiệp thông cá nhân và trực tiếp với Chúa, vốn là trọng tâm của lời hứa.\n2. 'Hôm nay ngươi sẽ được ở với người trong nơi Ba-ra-đi' là nhầm lẫn với passage gần: từ 'người' là một sự thay thế sai, không có trong văn bản. Trong ngữ cảnh này, đại từ 'Ta' (Chúa Jêsus) là rõ ràng và độc đáo.\n3. 'Hôm nay ngươi sẽ sống lại với Ta trong nơi Ba-ra-đi' phản ánh một hiểu lầm phổ biến: lời hứa là về sự hiện diện ngay lập tức ('hôm nay') trong Ba-ra-đi (nơi nghỉ ngơi của linh hồn người công bình), không phải về sự sống lại thân thể, là một sự kiện tương lai.",
     "language": "vi",
     "options": [
-      "Hãy chờ ngày sau cùng",
-      "Đức tin ngươi đã chữa ngươi",
+      "Hôm nay ngươi sẽ được ở trong nơi Ba-ra-đi",
+      "Hôm nay ngươi sẽ được ở với người trong nơi Ba-ra-đi",
       "Hôm nay ngươi sẽ được ở với Ta trong nơi Ba-ra-đi",
-      "Ta tha tội cho ngươi"
+      "Hôm nay ngươi sẽ sống lại với Ta trong nơi Ba-ra-đi"
     ],
     "tags": [
       "Tân Ước",
@@ -2753,13 +2753,13 @@
     ],
     "verseEnd": 7,
     "content": "Theo Lu-ca 2:1-7, vì sao Giô-sép và Ma-ri phải đi từ Na-xa-rét đến Bết-lê-hem trước khi sinh Chúa?",
-    "explanation": "Lu-ca 2:1-4 — 'Lúc ấy, Sê-sa Au-gút-tơ ra chiếu chỉ phải lập sổ dân trong cả thiên hạ. Việc lập sổ dân nầy là trước hết, và nhằm khi Qui-ri-niu làm quan tổng đốc xứ Sy-ri. Ai nấy đều đến thành mình mà khai tên'.",
+    "explanation": "Câu hỏi: 'Theo Lu-ca 2:1-7, vì sao Giô-sép và Ma-ri phải đi từ Na-xa-rét đến Bết-lê-hem trước khi sinh Chúa?'\n\nĐáp án đúng: 'Theo lệnh Sê-sa Au-gút-tơ KÊ KHAI dân toàn cõi đế quốc — Giô-sép thuộc dòng dõi Đa-vít, phải về Bết-lê-hem' là chính xác. Lu-ca 2:1-5 nêu rõ Sê-sa Au-gút-tơ ra chiếu chỉ kê khai dân số toàn đế quốc, mọi người phải về nguyên quán. Giô-sép thuộc dòng Đa-vít nên phải về Bết-lê-hem, thành của Đa-vít (Lu-ca 2:4).\n\nDistractor 1 sai: Đây là hiểu lầm phổ biến, tưởng rằng họ bị đuổi đi. Kinh văn không hề nói đến việc quân đội đuổi họ; nguyên nhân là do chiếu chỉ kê khai dân số.\n\nDistractor 2 sai: Sai chi tiết. Ma-ri nhận báo mộng về việc thai nghén (Lu-ca 1:26-38), nhưng không có báo mộng nào bảo bà phải về Bết-lê-hem để sinh con nơi đền thờ. Đền thờ ở Giê-ru-sa-lem, không phải Bết-lê-hem.\n\nDistractor 3 sai: Nhầm sang đoạn gần (sự kiện khác). Lu-ca 2:41-42 ghi lại việc gia đình lên Giê-ru-sa-lem dự lễ Vượt Qua hằng năm, nhưng đó là sau này, khi Chúa Giê-xu đã 12 tuổi, không phải lý do cho chuyến đi trước khi Ngài sinh ra.",
     "language": "vi",
     "options": [
-      "Để dâng tế lễ tại đền thờ Giê-ru-sa-lem",
+      "Vì quân đội La Mã đuổi họ khỏi Na-xa-rét buộc phải di chuyển đến Bết-lê-hem",
       "Theo lệnh Sê-sa Au-gút-tơ KÊ KHAI dân toàn cõi đế quốc — Giô-sép thuộc dòng dõi Đa-vít, phải về Bết-lê-hem",
-      "Để chạy trốn Hê-rốt",
-      "Để dự lễ Vượt Qua hằng năm"
+      "Vì Ma-ri được báo mộng phải về thành Đa-vít để sinh con nơi đền thờ",
+      "Vì họ đi dự lễ Vượt Qua hằng năm tại Giê-ru-sa-lem và dừng chân ở Bết-lê-hem"
     ],
     "tags": [
       "Tân Ước",
@@ -3347,13 +3347,13 @@
       1
     ],
     "content": "Theo Lu-ca 22:14-20, điểm độc đáo nào trong lời phán của Chúa Jêsus khi lập Tiệc Thánh chỉ được ghi lại trong sách Lu-ca?",
-    "explanation": "Lu-ca 22:19-20 ghi lại lời phán của Chúa Jêsus: 'Nầy là thân thể ta, đã vì các ngươi mà phó cho; hãy làm sự nầy để nhớ đến ta' và 'Chén nầy là giao ước mới trong huyết ta vì các ngươi mà đổ ra'. Cụm 'Hãy làm sự nầy để nhớ đến ta' là điểm đặc biệt, chỉ xuất hiện trong Lu-ca và 1 Cô-rinh-tô 11:24-25 (thư tín), mà không có trong các sách Phúc âm khác.",
+    "explanation": "**Câu hỏi:** Theo Lu-ca 22:14-20, điểm độc đáo nào trong lời phán của Chúa Jêsus khi lập Tiệc Thánh chỉ được ghi lại trong sách Lu-ca?\n\n**Đáp án đúng:** 'Chúa Jêsus truyền dạy \"Hãy làm sự nầy để nhớ đến ta\" khi phân phát bánh và chén.'\n- **Tại sao đúng?** Lu-ca 22:19 (sau khi cầm lấy bánh) ghi: \"Nầy là thân thể ta, vì các ngươi mà phó cho; hãy làm sự nầy để nhớ đến ta.\" Câu 20 cũng lặp lại mệnh lệnh này liên quan đến chén. Trong bốn sách Phúc Âm, chỉ riêng sách Lu-ca (và 1 Cô-rinh-tô 11, thư tín Phao-lô) ghi chép cụ thể mệnh lệnh \"hãy làm sự nầy để nhớ đến ta\" trong bối cảnh Tiệc Thánh.\n\n**Phân tích các đáp án sai:**\n1.  'Chúa Jêsus truyền dạy \"Nước Cha được đến\" khi phân phát bánh và chén.' **Sai vì:** 'Nước Cha được đến' (câu 18) là lời Chúa phán liên quan đến chén, nhưng TRƯỚC khi Ngài lập giao ước bằng huyết (câu 20). Đây là lời phán đúng theo văn bản, nhưng không phải là điểm độc đáo CHỈ có trong Lu-ca; câu hỏi tập trung vào mệnh lệnh 'nhớ đến ta' trong hành động phân phát bánh/chén. Do đó, đáp án này **lạc trọng tâm câu hỏi (true_but_off)**.\n2.  'Chúa Jêsus truyền dạy \"Hãy làm sự nầy để nhớ đến ta\" khi rửa chân cho các môn đồ.' **Sai vì:** Việc rửa chân được ghi chép trong Giăng 13:1-20, không phải trong sách Lu-ca và cũng không liên quan đến việc lập Tiệc Thánh. Đây là một **sai phạm vi (wrong_scope)** khi đưa một sự kiện từ sách Phúc Âm khác vào.\n3.  'Chúa Jêsus truyền dạy \"Hãy làm sự nầy để nhớ đến ta\" trước khi bánh và chén được phân phát.' **Sai vì:** Lu-ca 22:19-20 cho thấy mệnh lệnh \"hãy làm sự nầy để nhớ đến ta\" được phán ra NGAY SAU KHI Ngài cầm lấy bánh (c.19) và NGAY SAU KHI lập lại giao ước bằng chén (c.20), tức là TRONG lúc phân phát hoặc ngay trước khi phân phát chúng. Chi tiết \"trước khi\" là **sai về thời điểm/thứ tự chi tiết (wrong_detail)**. Đây là đáp án **gần đúng**, chỉ sai một chi tiết then chốt về thời điểm so với phân đoạn Kinh Thánh.",
     "language": "vi",
     "options": [
-      "Chúa Jêsus dùng bánh không men và rượu nho đặc biệt, khác với các sách khác.",
+      "Chúa Jêsus truyền dạy 'Nước Cha được đến' khi phân phát bánh và chén.",
       "Chúa Jêsus truyền dạy 'Hãy làm sự nầy để nhớ đến ta' khi phân phát bánh và chén.",
-      "Chúa Jêsus chỉ lập Tiệc Thánh với riêng sứ đồ Phi-e-rơ và Gio-an.",
-      "Chúa Jêsus phán rằng chén này tượng trưng cho giao ước cũ được lập lại."
+      "Chúa Jêsus truyền dạy 'Hãy làm sự nầy để nhớ đến ta' khi rửa chân cho các môn đồ.",
+      "Chúa Jêsus truyền dạy 'Hãy làm sự nầy để nhớ đến ta' trước khi bánh và chén được phân phát."
     ],
     "tags": [
       "Tân Ước",
@@ -3810,13 +3810,13 @@
     ],
     "verseEnd": 20,
     "content": "Sự khác biệt cốt lõi trong trình thuật Tiệc Ly của Lu-ca (22:19-20) so với Ma-thi-ơ 26:26-29 và Mác 14:22-25 là gì?",
-    "explanation": "Lu-ca 22:19-20 độc đáo: (1) Cụm 'HÃY LÀM SỰ NẦY ĐỂ NHỚ ĐẾN TA' — chỉ Lu-ca và 1 Cô-rinh-tô 11:24-25 có. Cụm này là cơ sở thần học cho việc cử hành Tiệc Thánh liên tục trong hội thánh. (2) Lu-ca có HAI chén: 22:17-18 (chén Lễ Vượt Qua truyền thống) và 22:20 (chén Giao Ước Mới trong huyết Đấng Christ). Ma-thi-ơ và Mác chỉ mô tả một chén. Lu-ca làm rõ sự chuyển tiếp từ Lễ Vượt Qua Cựu Ước sang Tiệc Thánh Tân Ước.",
+    "explanation": "ĐÁP ÁN ĐÚNG như trên vì dựa trực tiếp vào Lu-ca 22:19-20 (BTT): (19) Đoạn, Ngài lấy bánh, tạ ơn, bẻ ra trao cho môn đồ, mà phán rằng: Nầy là thân-thể ta, đã vì các ngươi mà phó cho; hãy làm sự nầy để nhớ đến ta. (20) Kế sau bữa ăn tối, Ngài cũng làm như vậy, lấy chén mà phán rằng: Chén nầy là giao-ước mới trong huyết ta vì các ngươi mà đổ ra. Sự khác biệt cốt lõi là: (a) Từ ngữ HÃY LÀM SỰ NẦY ĐỂ NHỚ ĐẾN TA chỉ có ở Lu-ca (không có trong Ma-thi-ơ/Mác), cho thấy mệnh lệnh cử hành liên tục; (b) Lu-ca ghi nhận hai chén (chén thứ nhất trong 22:17 liên quan đến Lễ Vượt Qua, chén thứ hai trong 22:20 là chén của Giao Ước Mới), trong khi các sách kia chỉ đề cập một chén là chén của Giao Ước Mới sau bữa ăn. --- CÁC ĐÁP ÁN SAI: (1) Sai chi tiết: Distractor này đúng khi nhắc đến 'hai chén' và lời hứa về ngày uống mới, nhưng SAI vì đảo ngược thứ tự chức năng của hai chén; chén thứ nhất (22:17) gắn với Lễ Vượt Qua, chén thứ hai (22:20) mới là Giao Ước Mới. (2) Đúng văn bản nhưng lạc câu hỏi: Việc nói 'cái chén sau bữa ăn' và khuyết chi tiết 'Hãy cầm lấy mà ăn' không phải là sự khác biệt cốt lõi về thần học và cấu trúc trong câu hỏi so sánh; chúng thuộc về khác biệt nhỏ trong diễn đạt, không thay đổi ý nghĩa trọng tâm. (3) Sai phạm vi: Distractor này đặt sự khác biệt sai chỗ; Lu-ca không 'mô tả đầy đủ lễ nghi' mà chỉ trình thuật riêng, và việc 'bao trùm' các đoạn kia là không đúng -- mỗi sách có thuật riêng, không có sự bao trùm này.",
     "language": "vi",
     "options": [
-      "Lu-ca không có trình thuật về Tiệc Ly (xét trong văn cảnh, trình tự câu chuyện và đối chiếu với các phân đoạn liên quan).",
+      "Lu-ca NHẤN MẠNH lời hứa 'sẽ không uống nho này nữa cho đến ngày được uống mới với các con' — ngụ ý sự kiện sau phục sinh; và có hai chén (22:17 + 22:20) — chén thứ nhất là Giao Ước Mới, chén thứ hai là Lễ Vượt Qua.",
       "Lu-ca THÊM cụm 'HÃY LÀM SỰ NẦY ĐỂ NHỚ ĐẾN TA' (22:19) — ngụ ý việc cử hành Tiệc Thánh liên tục; và có hai chén (22:17 + 22:20) — chén thứ nhất là Lễ Vượt Qua, chén thứ hai là Giao Ước Mới.",
-      "Lu-ca mô tả có 5 chén thay vì 1 chén (theo cách trình bày của văn bản và nội dung gốc).",
-      "Lu-ca không nhắc đến bánh, mà chỉ mô tả chén."
+      "Lu-ca SỬ DỤNG cụm 'cái chén sau bữa ăn' (22:20) — ngụ ý bữa ăn đã kết thúc; và khuyết chi tiết 'Hãy cầm lấy mà ăn' trước khi nói về chén.",
+      "Lu-ca MÔ TẢ ĐẦY ĐỦ hệ thống lễ nghi của người Do Thái tại bữa ăn, bao trùm các đoạn 14:22-25 và 26:26-29 mà Matthew và Mark chỉ thuật ngắn."
     ],
     "tags": [
       "Tân Ước",
@@ -4107,13 +4107,13 @@
     ],
     "verseEnd": 14,
     "content": "KIỂU 4 verse precision Lu 2:14 — bài hát thiên sứ vào đêm Chúa Giáng Sinh — câu chính xác?",
-    "explanation": "Lu-ca 2:14 (RVV11) — 'Sáng danh Chúa trên các từng trời rất cao, Bình an dưới đất, ân trạch cho loài người'. Bản RVV11 cũ có 'cho LOÀI NGƯỜI', nhưng các bản chép tay HI-LẠP TỐT NHẤT (Sinaiticus, Vaticanus) có 'eudokias' (genitive) = 'NGƯỜI HÀI LÒNG VỚI Chúa' = 'MEN OF GOOD WILL' / 'NGƯỜI ĐƯỢC ƠN'. Bản ESV: 'and on earth peace among those with whom he is pleased!'. Câu này định khung TIN LÀNH: GIÁNG SINH mang BÌNH AN — không cho mọi người vô điều kiện, mà cho NHỮNG NGƯỜI ĐƯỢC ƠN.",
+    "explanation": "Câu hỏi yêu cầu câu chính xác trong Lu-ca 2:14. Đáp án đúng là: 'Sáng danh Chúa trên các từng trời rất cao, Bình an dưới đất, ân trạch cho loài người' (BTT). Distractor 1 sai vì thêm cụm 'cho người Chúa chọn' không có trong nguyên văn, đây là một chi tiết sai. Distractor 2 sai vì bỏ cụm 'rất cao' sau 'các từng trời', đây là một chi tiết từ một phân đoạn gần (cụ thể từ một bản dịch khác hoặc sự nhớ nhầm). Distractor 3 sai vì đảo thứ tự 'Bình an dưới đất' lên trước 'Sáng danh Chúa...' và thay 'loài người' bằng 'mọi người'; mặc dù ý nghĩa tương tự, nó không phải là câu chính xác được hỏi, đây là một câu đúng về ý nhưng lạc yêu cầu về độ chính xác nguyên văn.",
     "language": "vi",
     "options": [
-      "'Vinh hiển trên trời, bình an dưới đất' (rất rút gọn)",
-      "'A-MEN, A-LÊ-LU-IA, MỪNG CHÚA' (sai)",
+      "'Sáng danh Chúa trên các từng trời rất cao, Bình an cho người Chúa chọn, ân trạch cho loài người'",
+      "'Sáng danh Chúa trên các từng trời, Bình an dưới đất, ân trạch cho loài người'",
       "'Sáng danh Chúa trên các từng trời rất cao, Bình an dưới đất, ân trạch cho loài người'",
-      "'Một thiên sứ duy nhất hát một bài đơn giản'"
+      "'Bình an dưới đất, sáng danh Chúa trên trời, ân trạch cho mọi người'"
     ],
     "tags": [
       "Tân Ước",

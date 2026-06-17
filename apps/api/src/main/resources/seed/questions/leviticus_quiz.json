@@ -88,7 +88,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 2:11 — 'Tất cả tế lễ chay dâng cho Đức Giê-hô-va đều không được pha men, vì các ngươi không được xông men hay mật ong làm tế lễ dùng lửa dâng lên Đức Giê-hô-va.'",
+    "explanation": "Lê-vi ký 2:11 quy định rõ: \"Chớ dâng cho Đức Giê-hô-va một của lễ chay pha men; vì các ngươi không được phép dâng men hay mật lên như một của lễ dùng lửa dâng cho Đức Giê-hô-va.\" Vì vậy, đáp án đúng là KHÔNG BAO GIỜ — không được pha men hay mật ong. Distractor 1 sai vì nó thêm chi tiết 'trong các tế lễ chay đặc biệt dâng lên hương thơm' – Kinh Thánh không cho phép ngoại lệ này. Distractor 2 sai vì nó thể hiện một hiểu lầm phổ biến – không chỉ men, mà mật ong cũng bị cấm. Distractor 3 sai vì nó áp đặt việc 'luôn luôn phải pha men', điều này trái ngược hoàn toàn với mệnh lệnh và lạc đề so với câu hỏi về việc 'có được phép' hay không.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -98,10 +98,10 @@
       "Trung cấp"
     ],
     "options": [
-      "Có, nếu là dịp đặc biệt",
+      "Có thể pha men trong các tế lễ chay đặc biệt dâng lên hương thơm",
       "Không bao giờ — không được pha men hay mật ong",
-      "Tùy thầy tế lễ quyết định",
-      "Chỉ pha một ít"
+      "Được phép pha men nếu đó là mật ong",
+      "Luôn luôn phải pha men để lên men trước khi dâng"
     ]
   },
   {
@@ -407,15 +407,15 @@
     "type": "multiple_choice_single",
     "content": "Thịt tế lễ tạ ơn phải được ăn trong bao lâu?",
     "options": [
-      "Trong hai ngày",
-      "Trong ba ngày",
-      "Trong một tuần",
+      "Trong ngày dâng, và phần còn thừa có thể ăn ngày hôm sau",
+      "Trong vòng ba ngày, không để đến ngày thứ tư",
+      "Phải được ăn ngay trước khi mặt trời lặn",
       "Trong ngày dâng, không để đến sáng hôm sau"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 7:15 — 'Thịt của tế lễ tạ ơn thuộc về tế lễ bình an phải ăn trong ngày dâng lễ vật, không được để lại đến sáng hôm sau.'",
+    "explanation": "Lê-vi Ký 7:15 (BTT) chép: 'Thịt của con sinh tế cầu an dâng lên để tạ ơn thì phải ăn trong ngày dâng lên, không nên để dành chi đến sáng hôm sau.' Do đó, đáp án 'Trong ngày dâng, không để đến sáng hôm sau' là chính xác.\n\nCác phương án sai:\n1. 'Trong ngày dâng, và phần còn thừa có thể ăn ngày hôm sau' là gần đúng nhưng sai chi tiết then chốt. Lời Chúa quy định rõ là 'không nên để dành chi đến sáng hôm sau', tức là không được ăn phần thừa vào ngày hôm sau.\n2. 'Trong vòng ba ngày, không để đến ngày thứ tư' là nhầm lẫn với quy định về thịt tế lễ cầu an dâng vì một lời khấn nguyện hoặc lạc ý, được quy định ăn trong hai ngày ở phân đoạn gần đó (Lê-vi Ký 7:16-18).\n3. 'Phải được ăn ngay trước khi mặt trời lặn' phản ánh một hiểu lầm phổ biến về thời điểm 'trong ngày', nhưng Kinh Thánh không quy định cụ thể là phải ăn trước khi mặt trời lặn; điểm nhấn mạnh là 'không để đến sáng hôm sau'.",
     "language": "vi",
     "tags": [
       "Cựu Ước",

@@ -265,12 +265,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Dù đang trốn Chúa, Giona vẫn tuyên xưng Ngài là Đấng Sáng Tạo trên trời, đã làm nên biển và đất khô.",
+    "explanation": "Dựa trên Giô-na 1:9, câu trả lời đúng trích nguyên văn: 'Trời, Đấng đã làm biển và đất khô'. Đáp án này mô tả chính xác Đức Chúa Trời mà Giô-na thờ phượng.\n\nCác đáp án sai:\n1. 'Trời, Đấng đã làm nên núi và biển' - Sai chi tiết (thay 'đất khô' bằng 'núi'). Tuy câu này cấu trúc tương tự nhưng thay đổi một yếu tố then chốt trong công trình sáng tạo được nêu.\n2. 'Đất, Đấng đã làm nên biển và trời' - Sai phạm vi (đổi 'Trời' thành 'Đất' làm chủ ngữ). Điều này thay đổi hoàn toàn đối tượng mà Giô-na tuyên xưng là Đấng ngự trị.\n3. 'Trời, Đấng đã làm nên biển và sa mạc' - Nhầm passage gần (dùng từ 'sa mạc' thay vì 'đất khô'). 'Sa mạc' tuy là dạng đất khô nhưng không phải từ ngữ chính xác trong câu Kinh Thánh này.",
     "language": "vi",
     "options": [
-      "Các thần",
-      "Núi",
-      "Mọi vật",
+      "Trời, Đấng đã làm nên núi và biển",
+      "Đất, Đấng đã làm nên biển và trời",
+      "Trời, Đấng đã làm nên biển và sa mạc",
       "Trời, Đấng đã làm biển và đất khô"
     ],
     "tags": [
@@ -342,13 +342,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giô-na 1:5-6 — 'Các thủy thủ đều sợ hãi, ai nấy kêu cầu thần mình, và quăng các đồ đạc trong tàu xuống biển, để cho nhẹ bớt đi... Người trưởng phái nói với Giô-na: Hỡi người ngủ kia, làm sao vậy? Khá chỗi dậy, hãy kêu cầu Đức Chúa Trời ngươi!' Hành động chính được hỏi là 'kêu cầu thần mình' (c.5), xảy ra đồng thời với việc ném đồ đạc, trước khi thuyền trưởng đánh thức Giô-na (c.6).",
+    "explanation": "Đoạn Kinh Thánh Giô-na 1:5-6 ghi: 'Các bạn tàu đều sợ hãi, và ai nấy kêu cầu thần mình.' Vì vậy, đáp án đúng là 'Mỗi người kêu cầu thần mình', vì họ cầu cứu các thần riêng của mình. Distractor 'Mỗi người kêu cầu vua của mình' sai vì không có chi tiết này trong đoạn, họ kêu cầu thần chứ không phải vua (sai chi tiết). Distractor 'Mỗi người kêu cầu thuyền trưởng' sai vì câu 6 cho thấy thuyền trưởng đến bảo Giô-na kêu cầu Đức Chúa Trời, không phải các thủy thủ kêu cầu ông ấy (nhầm passage gần). Distractor 'Mọi người cùng kêu cầu thần của Giô-na' sai vì họ kêu cầu thần riêng của mỗi người, không phải thần của Giô-na (hiểu lầm phổ biến về đối tượng cầu nguyện).",
     "language": "vi",
     "options": [
-      "Cầu nguyện cùng Đức Giê-hô-va",
-      "Đánh thức Giô-na không cần đến thần",
+      "Mỗi người kêu cầu vua của mình",
+      "Mỗi người kêu cầu thuyền trưởng",
       "Mỗi người kêu cầu thần mình",
-      "Bỏ chạy ra khỏi tàu"
+      "Mọi người cùng kêu cầu thần của Giô-na"
     ],
     "tags": [
       "Cựu Ước",

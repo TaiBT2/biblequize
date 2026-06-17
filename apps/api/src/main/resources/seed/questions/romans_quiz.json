@@ -117,13 +117,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Rô-ma 6:23 - Tội lỗi dẫn đến sự chết, nhưng món quà miễn phí của Chúa là sự sống đời đời qua Chúa Giê-su.",
+    "explanation": "Rô-ma 6:23 chép: 'Vì tiền công của tội lỗi là sự chết; nhưng sự ban cho của Đức Chúa Trời là sự sống đời đời trong Đức Chúa Jêsus Christ, Chúa chúng ta.' Đáp án đúng là 'Sự sống đời đời trong Chúa Giê-su Christ' vì nó trích nguyên văn phần sau của câu, chỉ định rõ ràng ân điển của Đức Chúa Trời được thể hiện cụ thể là sự sống đời đời trong và qua Chúa Giê-su Christ, không phải một khái niệm chung chung.\n\nDistractor 'Sự sống đời đời cho những người được chọn' là phiên bản GẦN ĐÚNG nhưng sai chi tiết then chốt: câu Kinh Thánh không đề cập đến thuyết chọn lựa (predestination) hay nhóm người cụ thể nào ở đây, mà là 'trong Đức Chúa Jêsus Christ'.\nDistractor 'Ân điển vô điều kiện từ Đức Chúa Trời' phản ánh một HIỂU LẦM PHỔ BIẾN về ân điển. Dù ân điển của Đức Chúa Trời là quà tặng (không do việc làm), câu này không mô tả bản chất 'vô điều kiện' của nó mà mô tả nội dung cụ thể của ân điển đó là 'sự sống đời đời trong Chúa Giê-su Christ'.\nDistractor 'Sự tha thứ tội lỗi qua sự hy sinh' là một khẳng định ĐÚNG VĂN BẢN NHƯNG LẠC CÂU HỎI. Dù sự tha thứ và hy sinh của Chúa Giê-su là trọng tâm của Phúc Âm (Rô-ma 3:24-25), nhưng không phải là câu trả lời trực tiếp cho cách chép của Rô-ma 6:23. Câu hỏi hỏi cụ thể về cách kết thúc câu Rô-ma 6:23.",
     "language": "vi",
     "options": [
       "Sự sống đời đời trong Chúa Giê-su Christ",
-      "Sự khôn ngoan",
-      "Sự bình an",
-      "Sự tha thứ"
+      "Sự sống đời đời cho những người được chọn",
+      "Ân điển vô điều kiện từ Đức Chúa Trời",
+      "Sự tha thứ tội lỗi qua sự hy sinh"
     ],
     "tags": [
       "Tân Ước",
@@ -753,14 +753,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Rô-ma 11:17-24: Cành dại được tháp vào gốc tốt - dân ngoại được dự phần nhờ đức tin.",
+    "explanation": "CÂU HỎI: \"Hình ảnh ghép cây ô-liu nhằm dạy về điều gì?\" \n\nGIẢI THÍCH:\n\n- ĐÁP ÁN ĐÚNG (Giữ nguyên ý nghĩa): \"Dân ngoại được tháp vào\" là đúng.\n  Lý do: Ro-ma 11:17-24 mô tả việc các nhánh ô-liu hoang (tượng trưng cho dân ngoại) được tháp vào cây ô-liu tốt (tượng trưng cho dân Y-sơ-ra-ên/ân điển của Chúa), bóng gió về cách dân ngoại được tiếp nhận vào sự cứu rỗi và trở thành một phần của dân Đức Chúa Trời (cụ thể: câu 17, 19, 24).\n\n- DISTRACTOR SAI 1 (\"Dân Do Thái được huấn luyện mới\"): Sai chi tiết. Văn bản không nhắc đến việc \"huấn luyện mới\" cho dân Do Thái trong đoạn này, mà tập trung vào việc dân ngoại được tháp vào và cảnh báo cho họ về sự kiêu ngạo (lỗi wrong_detail).\n\n- DISTRACTOR SAI 2 (\"Nhánh ô-liu hoang được tháp cải thiện\"): Gần đúng nhưng sai chi tiết then chốt. Đây là distractor \"gần đúng\" vì nhắc đúng đối tượng \"nhánh ô-liu hoang (dân ngoại)\" và hành động \"tháp\", nhưng sai mục đích chính của hình ảnh. Đoạn này dạy về việc họ được tháp vào để chia sẻ nhựa tươi của gốc ô-liu (ân điển), không phải về việc bản thân nhánh hoang \"được cải thiện\" như một chủ đề riêng (lỗi nearby_passage, do kết hợp sai ý từ ngữ cảnh gần: câu 24 nói về sự tháp của nhánh hoang, nhưng trọng tâm dạy về sự tiếp nhận của dân ngoại và bài học về ân điển/kiêu ngạo, không phải mô tả quá trình \"cải thiện\" của nhánh đó).\n\n- DISTRACTOR SAI 3 (\"Các nhánh tự nhiên được tái phục hồi\"): Đúng văn bản nhưng lạc câu hỏi. Điều này được nhắc đến trong câu 23-24 (về khả năng dân Y-sơ-ra-ên được tháp lại nếu không cứng lòng), nhưng đó KHÔNG PHẢI là điều hình ảnh chính \"nhằm dạy về\" ở đây. Câu hỏi hỏi về mục đích dạy dỗ chung của toàn hình ảnh ghép cây, mà chủ đề chính là sự tháp vào của dân ngoại và lời cảnh báo cho họ (câu 17-22), việc các nhánh tự nhiên có thể được tháp lại chỉ là một phần phụ trong lập luận (lỗi true_but_off).",
     "language": "vi",
     "verseEnd": 24,
     "options": [
       "Dân ngoại được tháp vào",
-      "Cắt bỏ dân Do Thái",
-      "Cây mới thay cây cũ",
-      "Phải trồng thêm cây"
+      "Dân Do Thái được huấn luyện mới",
+      "Nhánh ô-liu hoang được tháp cải thiện",
+      "Các nhánh tự nhiên được tái phục hồi"
     ],
     "tags": [
       "Tân Ước",
@@ -1132,12 +1132,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Rô-ma 6:4 — 'Vậy chúng ta đã bị chôn với Ngài bởi phép báp-têm trong sự chết Ngài, hầu cho Đấng Christ nhờ vinh hiển của Cha được từ kẻ chết sống lại thể nào, thì chúng ta cũng sống trong đời mới thể ấy.'",
+    "explanation": "Rô-ma 6:4 (BTT) chép: 'Vậy chúng ta đã bị chôn với Ngài bởi phép báp-têm trong sự chết Ngài, hầu cho Đấng Christ nhờ vinh hiển của Cha được từ kẻ chết sống lại thể nào, thì chúng ta cũng sống trong đời mới thể ấy.' Câu này dạy rõ báp-têm tượng trưng cho việc chúng ta được chôn với Đấng Christ trong sự chết của Ngài và sống lại để bước đi trong 'đời mới'.\n\nĐáp án đúng đúng vì nó trực tiếp trích dẫn và tóm tắt ý chính của câu Kinh Thánh: 'Chôn với Đấng Christ trong sự chết và sống lại trong đời mới'.\n\nDistractor 1 ('...sự tha tội'): Mặc dù sự tha tội là kết quả quan trọng của sự chết và sống lại của Đấng Christ, và được nhắc đến trong các câu gần đó (như Rô-ma 6:6-7), nhưng nó không phải là điều Rô-ma 6:4 nói báp-têm 'tượng trưng cho'. Câu 4 cụ thể nói về biểu tượng của sự chết, chôn, sống lại và 'đời mới', không phải 'sự tha tội'.\n\nDistractor 2 ('...sự thánh khiết'): 'Sự thánh khiết' là một chủ đề được thảo luận sau trong chương này (ví dụ Rô-ma 6:19, 22) như là kết quả của việc sống trong đời mới, nhưng nó không phải là từ ngữ chính xác mà câu 4 dùng để mô tả biểu tượng của báp-têm. Câu 4 dùng cụm từ 'sống trong đời mới'.\n\nDistractor 3 ('...sự vinh hiển'): Điều này nhầm lẫn chi tiết. Câu 4 có nhắc đến 'vinh hiển của Cha' như là quyền năng khiến Đấng Christ sống lại, nhưng mục đích cho chúng ta là 'sống trong đời mới', chứ không phải báp-têm tượng trưng cho việc sống lại 'trong sự vinh hiển'. Sự vinh hiển thường liên quan đến trạng thái tương lai (Rô-ma 8:17-18), không phải thực tại hiện tại của 'đời mới' được nói trong câu 4.",
     "language": "vi",
     "options": [
-      "Cắt bì cũ",
-      "Lễ tạ ơn",
-      "Sự gia nhập đoàn thể",
+      "Chôn với Đấng Christ trong sự chết và sống lại trong sự tha tội",
+      "Chôn với Đấng Christ và sống lại trong sự thánh khiết",
+      "Chôn với Đấng Giê-xu trong sự chết và sống lại trong sự vinh hiển",
       "Chôn với Đấng Christ trong sự chết và sống lại trong đời mới"
     ],
     "tags": [
@@ -1796,13 +1796,13 @@
     ],
     "verseEnd": 5,
     "content": "Theo Rô-ma 5:1-5, ngay khi được xưng công bình bởi đức tin, tín hữu nhận BA điều ích lợi cụ thể. Ba điều đó là gì?",
-    "explanation": "Rô-ma 5:1-2 — Vậy, chúng ta đã được xưng công bình bởi đức tin, thì được hòa thuận với Đức Chúa Trời (1), bởi Đức Chúa Jêsus Christ chúng ta, là Đấng đã làm cho chúng ta cậy đức tin vào trong ơn này, tức là ơn chúng ta hiện đang đứng vững (2: được vào và đứng vững trong ân điển); và chúng ta khoe mình trong sự trông cậy về vinh hiển Đức Chúa Trời (3).",
+    "explanation": "Câu hỏi hỏi ba điều ích lợi cụ thể theo Rô-ma 5:1-5. Đáp án đúng là: (1) 'Hòa thuận với Đức Chúa Trời' (câu 1: 'được hòa thuận với Đức Chúa Trời'), (2) 'được vào ơn này' (câu 2: 'chúng ta... được vào ơn này'), và (3) 'khoe trong sự trông cậy' (câu 2: 'chúng ta... khoe mình trong sự trông cậy về vinh hiển Đức Chúa Trời').\n\nDistractor 1 ('Hòa thuận với người lân cận...') SAI vì dùng ý 'yêu người lân cận' từ những phân đoạn khác (như Rô-ma 13:9), không phải trong Rô-ma 5:1-5. Đoạn này chỉ nói đến hòa thuận với Đức Chúa Trời. Đây là lỗi 'nearby_passage'.\nDistractor 2 ('Hòa thuận với Đức Chúa Trời / được cứu rỗi...') SAI vì 'được cứu rỗi' là kết quả tổng quát hơn, không phải cụm từ 'được vào ơn này' được dùng trong câu 2. Đây là lỗi 'wrong_detail'.\nDistractor 3 ('...khoe trong sự đau đớn') SAI vì Rô-ma 5:3 nói 'khoe mình trong hoạn nạn', chứ không phải là một trong BA điều ích lợi ngay khi được xưng công bình. Câu hỏi hỏi ba điều ích lợi trực tiếp, còn 'khoe trong hoạn nạn' là kết quả của một quá trình (câu 3-4) dẫn đến sự trông cậy. Đây là lỗi 'common_misconception' khi nhầm lẫn thứ tự và phạm vi. Distractor này là 'gần đúng' vì có hai phần đầu đúng và phần ba liên quan nhưng sai ngữ cảnh câu hỏi.",
     "language": "vi",
     "options": [
-      "Của cải vật chất / sức khỏe thân thể / địa vị xã hội cao trọng",
-      "Bãi bỏ luật pháp Môi-se / chuyển sang dân ngoại / nhận đền thờ mới",
+      "Hòa thuận với người lân cận / được vào sự vui mừng / khoe trong sự trông cậy",
+      "Hòa thuận với Đức Chúa Trời / được cứu rỗi / khoe trong sự trông cậy",
       "Hòa thuận với Đức Chúa Trời / được vào ơn này / khoe trong sự trông cậy",
-      "Tránh được sự chết thân xác / không bị bệnh tật / không bao giờ thử thách"
+      "Hòa thuận với Đức Chúa Trời / được vào ơn này / khoe trong sự đau đớn"
     ],
     "tags": [
       "Tân Ước",
@@ -2099,13 +2099,13 @@
     ],
     "verseEnd": 5,
     "content": "Theo Rô-ma 13:1-5, Phao-lô dạy tín hữu phải vâng phục bậc cầm quyền vì lý do thần học cốt yếu nào?",
-    "explanation": "Rô-ma 13:1-2 — 'Mọi người phải vâng phục các đấng cầm quyền trên mình; vì chẳng có quyền nào mà không đến bởi Đức Chúa Trời, các quyền đều bởi Đức Chúa Trời chỉ định. Cho nên ai chống cự quyền phép, tức là đối địch với mạng lệnh Đức Chúa Trời đã lập'.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Vì \"chẳng có quyền nào mà không đến bởi Đức Chúa Trời\" — quyền cầm quyền do Đức Chúa Trời lập' (Rô-ma 13:1) — Lý do thần học cốt yếu là nguồn gốc quyền lực thuộc về Đức Chúa Trời, Ngài thiết lập các bậc cầm quyền. Đây là nguyên tắc nền tảng trước các lý do thực tiễn về hình phạt hay lương tâm được đề cập sau.\n\nDISTRACTOR 1 (gần đúng - sai chi tiết): Sai vì thay đổi cụm từ then chốt 'bởi Đức Chúa Trời' thành 'bởi sự ủy nhiệm của dân chúng' (Rô-ma 13:1). Bản văn khẳng định nguồn gốc thần học, không phải nguồn gốc xã hội hay chính trị.\n\nDISTRACTOR 2 (hiểu lầm phổ biến): Sai vì sáng tạo một câu không có trong đoạn Kinh Thánh ('ai vâng phục... thì được đẹp lòng'). Mặc dù vâng phục có thể đẹp lòng Chúa, nhưng đây không phải 'lý do thần học cốt yếu' mà Phao-lô nêu trong Rô-ma 13:1-5.\n\nDISTRACTOR 3 (đúng văn bản nhưng lạc câu hỏi): Câu 'các bậc cầm quyền là kẻ đầy tớ đắc lực của Chúa' xuất hiện trong Rô-ma 13:4, nhưng nó giải thích về vai trò của nhà cầm quyền (công cụ của Chúa để thưởng phạt), không phải là lý do CỐT YẾU nhất cho sự vâng phục được nêu trong câu 1. Câu hỏi yêu cầu lý do nền tảng nhất.",
     "language": "vi",
     "options": [
       "Vì 'chẳng có quyền nào mà không đến bởi Đức Chúa Trời' — quyền cầm quyền do Đức Chúa Trời lập",
-      "Vì người La-mã có quyền trừng phạt nặng nề đối với những ai phản loạn",
-      "Vì các quan La-mã đều là tín hữu yêu mến Hội thánh tại La-mã thời đó",
-      "Vì luật pháp Môi-se đòi hỏi phải vâng phục mọi quan chức trên đất"
+      "Vì 'chẳng có quyền nào mà không đến bởi sự ủy nhiệm của dân chúng' — quyền cầm quyền do con người trao",
+      "Vì 'ai vâng phục quyền phép thì được đẹp lòng Đức Chúa Trời' — vâng phục để nhận sự chấp nhận về tâm linh",
+      "Vì 'các bậc cầm quyền là kẻ đầy tớ đắc lực của Chúa' — vâng phục để hỗ trợ công việc mục vụ của họ"
     ],
     "tags": [
       "Tân Ước",
@@ -3154,13 +3154,13 @@
     ],
     "verseEnd": 9,
     "content": "Theo Rô-ma 14:7-8, lý do thần học tại sao tín hữu không nên xét đoán anh em yếu đức tin là gì?",
-    "explanation": "Rô-ma 14:7-8 — 'Vả, chẳng có người nào trong chúng ta vì chính mình mà sống, cũng chẳng có người nào trong chúng ta vì chính mình mà chết; vì nếu chúng ta sống, là sống cho Chúa, và nếu chúng ta chết, là chết cho Chúa. Vậy nên chúng ta hoặc sống hoặc chết, đều thuộc về Chúa cả'.",
+    "explanation": "Câu hỏi hỏi lý do thần học từ Rô-ma 14:7-8. Đáp án đúng trích nguyên văn và ý từ câu 8: 'Vì nếu chúng ta sống, là sống cho Chúa, mà nếu chúng ta chết, cũng là chết cho Chúa. Vậy nên, dù sống hay chết, chúng ta đều thuộc về Chúa.' (Rô-ma 14:8). Lý do là đời sống và sự chết của tín hữu đều thuộc về Chúa, vì Ngài, nên việc xét đoán thuộc về quyền tể trị của Ngài, không phải của chúng ta.\n\nCác đáp án sai:\n1. '...vì Hội Thánh' (Sai chi tiết): Đoạn Kinh Thánh này không hề đề cập đến Hội Thánh là chủ thể của sự sống/chết. Đây là một chi tiết sai, mặc dù cấu trúc câu gần như giống hệt đáp án đúng.\n2. '...vì anh em' (Đúng văn bản nhưng lạc câu hỏi): Dù cả đoạn văn (Rô-ma 14) nói về mối quan hệ với anh em, nhưng câu 7-8 cụ thể đưa ra nền tảng là 'vì Chúa', không phải 'vì anh em'. Lý luận này lạc trọng tâm câu hỏi về lý do thần học căn bản từ câu 7-8.\n3. '...vì CỨU RỖI' (Hiểu lầm phổ biến): Đây là một khái niệm thần học quan trọng, nhưng không phải là lý do trực tiếp được nêu trong Rô-ma 14:7-8. Đoạn này tập trung vào chủ quyền của Chúa trong đời sống tín hữu, không phải mục đích của sự cứu rỗi.",
     "language": "vi",
     "options": [
       "Vì 'không ai trong ta vì mình mà SỐNG hoặc CHẾT' — ta SỐNG/CHẾT vì CHÚA",
-      "Vì xét đoán anh em là tội lớn nhất trong tất cả các tội của loài người",
-      "Vì không một ai trên đất này biết được tâm hồn của người khác cả",
-      "Vì xét đoán anh em làm hại danh tiếng của Hội thánh trước người ngoại"
+      "Vì 'không ai trong ta vì mình mà SỐNG hoặc CHẾT' — ta SỐNG/CHẾT vì Hội Thánh",
+      "Vì 'không ai trong ta vì mình mà SỐNG hoặc CHẾT' — ta SỐNG/CHẾT vì anh em",
+      "Vì 'không ai trong ta vì mình mà SỐNG hoặc CHẾT' — ta SỐNG và CHẾT vì CỨU RỖI"
     ],
     "tags": [
       "Tân Ước",
@@ -3181,13 +3181,13 @@
     ],
     "verseEnd": 3,
     "content": "Theo Rô-ma 15:1-3, Phao-lô khuyên những người 'mạnh' về đức tin làm gì với kẻ 'yếu'?",
-    "explanation": "Rô-ma 15:1-3 — 'Vậy, chúng ta là kẻ mạnh, phải gánh vác sự yếu đuối cho những kẻ kém sức, chớ làm cho đẹp lòng mình. Mỗi người trong chúng ta nên làm đẹp lòng kẻ lân cận mình, đặng làm điều ích và nên gương tốt. Vì Đấng Christ cũng không làm cho đẹp lòng mình'.",
+    "explanation": "Trong Rô-ma 15:1-3, sứ đồ Phao-lô nói rõ: 'Vậy, chúng ta là kẻ mạnh, phải gánh lấy sự yếu đuối của những kẻ yếu, chớ làm cho đẹp lòng mình. Mỗi người trong chúng ta nên làm đẹp lòng kẻ lân cận mình, đặng làm điều ích và nên gương tốt. Vì Đấng Christ cũng không làm đẹp lòng chính mình.' Đáp án đúng trung thành với câu 2-3: thay vì làm vừa lòng/chính mình, phải làm vừa lòng 'kẻ lân cận' hay 'anh em'. - Distractor 1 sai chi tiết: tuy đúng cấu trúc 'gánh yếu đuối' nhưng thay mục tiêu 'làm vừa lòng anh em' bằng 'làm vừa lòng Đức Chúa Trời' (vẫn là đạo đức chung nhưng không đúng ý cụ thể của đoạn). - Distractor 2 sai phạm vi/lạc câu hỏi: dùng động từ 'nhường nhịn' (suy diễn chung) thay vì 'gánh yếu đuối' (yêu cầu cụ thể, trực tiếp từ câu 1). - Distractor 3 hiểu lầm phổ biến: thêm ý 'làm vừa lòng cả mình lẫn anh em', mâu thuẫn với tinh thần đoạn Kinh Thánh là từ bỏ ý riêng (câu 3 nhắc đến Đấng Christ 'cũng không làm đẹp lòng chính mình').",
     "language": "vi",
     "options": [
-      "Phải dạy cho kẻ yếu mọi giáo lý sâu sắc của ơn cứu rỗi của Đấng Christ",
+      "Phải gánh yếu đuối của kẻ yếu, không làm vừa lòng mình mà làm vừa lòng Đức Chúa Trời",
       "Phải GÁNH yếu đuối của kẻ yếu, không làm vừa lòng MÌNH mà làm vừa lòng ANH EM",
-      "Phải để kẻ yếu một mình tự lo liệu trong đời sống đức tin của họ",
-      "Phải chứng minh kẻ yếu là sai lầm trong đức tin và buộc họ thay đổi"
+      "Phải nhường nhịn kẻ yếu, không làm vừa lòng mình mà làm vừa lòng anh em",
+      "Phải gánh yếu đuối của kẻ yếu, đồng thời làm vừa lòng cả mình lẫn anh em"
     ],
     "tags": [
       "Tân Ước",

@@ -147,14 +147,14 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Cô 15:3-4 trình bày cốt lõi Tin Lành.",
+    "explanation": "Câu hỏi hỏi cốt lõi Tin Lành THEO 1 Cô-rinh-tô 15. Khúc Kinh Thánh này (câu 3-4) nêu rõ: \"Vả trước hết tôi đã dạy dỗ anh em... rằng Đấng Christ vì tội chúng ta chịu chết, theo lời Kinh Thánh; Ngài đã bị chôn, đến ngày thứ ba, Ngài sống lại, theo lời Kinh Thánh.\" Vì vậy, đáp án đúng gói gọn sự kiện: chịu chết, chôn và sống lại ngày thứ ba. \n\n1. Distractor 'Đấng Christ chịu chết, chôn và sống lại ngày thứ bảy' SAI vì sai chi tiết then chốt 'thứ bảy' thay vì 'thứ ba' (lỗi wrong_detail). Đây là distractor gần đúng vì chỉ sai một yếu tố số. \n2. Distractor 'Đấng Christ yêu thương thế gian và cứu những kẻ tội nhân' SAI vì tuy mô tả Tin Lành chung, nhưng KHÔNG phải là trọng tâm TƯƠNG ĐƯƠNG được Phao-lô nhấn mạnh trong 1 Cô 15:3-4 (lỗi true_but_off).\n3. Distractor 'Đức Chúa Trời tạo dựng trời đất và muôn vật bởi lời Ngài' SAI vì đề cập đến Sáng Thế Ký 1 - một khúc passage khác (gần chỗ nói về Đấng Christ là A-đam sau cùng), nhưng KHÔNG liên quan đến cốt lõi Tin Lành về sự chết và sống lại trong 1 Cô 15 (lỗi nearby_passage).",
     "language": "vi",
     "verseEnd": 4,
     "options": [
-      "Xây đền thờ",
-      "Ăn chay cầu nguyện",
+      "Đấng Christ chịu chết, chôn và sống lại ngày thứ bảy",
+      "Đấng Christ yêu thương thế gian và cứu những kẻ tội nhân",
       "Đấng Christ chịu chết, chôn và sống lại ngày thứ ba",
-      "Giữ luật pháp"
+      "Đức Chúa Trời tạo dựng trời đất và muôn vật bởi lời Ngài"
     ],
     "tags": [
       "Tân Ước",
@@ -259,14 +259,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Cô 7:7: Mỗi người có ơn riêng của mình bởi Đức Chúa Trời.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Tùy ân tứ mỗi người' dựa trên I Cô-rinh-tô 7:7, nơi Phao-lô nói: 'Tôi ước ao mọi người đều như tôi; nhưng mỗi người có ân tứ riêng của mình, người nầy thể nầy, kẻ kia thể khác.' Ông khẳng định việc lựa chọn độc thân hay kết hôn phụ thuộc vào ân tứ đặc biệt Chúa ban cho từng cá nhân.\n\nDISTRACTOR SAI 1 ('Không được kết hôn vì thời kỳ khó khăn'): Sai phạm vi. Mặc dù Phao-lô đề cập đến 'cơn khốn khó' (câu 26) và khuyên 'ở vậy' là tốt trong hoàn cảnh đó, nhưng đây không phải là lời khuyên chung hay mệnh lệnh tuyệt đối cho mọi người. Ông vẫn công nhận hôn nhân là hợp lệ (câu 2, 28). Câu hỏi hỏi về lời khuyên chung, còn distractor này thu hẹp vào một bối cảnh cụ thể.\n\nDISTRACTOR SAI 2 ('Mọi người đều phải có ân tứ độc thân'): Hiểu lầm phổ biến. Điều này trái ngược với ý chính của phân đoạn. Phao-lô ước mọi người có ân tứ độc thân như ông (câu 7), nhưng ngay sau đó ông thừa nhận thực tế là 'mỗi người có ân tứ riêng', nghĩa là không phải ai cũng được ban cho ân tứ đó. Distractor này biến điều ước ao thành mệnh lệnh bắt buộc cho tất cả.\n\nDISTRACTOR SAI 3 ('Kết hôn để tránh tà dâm là bắt buộc'): Sai chi tiết then chốt. Phao-lô nói: 'Vì cớ tà dâm, mỗi người đàn ông nên có vợ, mỗi người đàn bà nên có chồng' (câu 2) và 'nếu không tiết độ được thì nên kết hôn' (câu 9). Tuy nhiên, đây là lời khuyên thực tế, không phải là mệnh lệnh bắt buộc phổ quát. Ông vẫn dành chỗ cho sự lựa chọn độc thân nếu có ân tứ (câu 7). Distractor này thay đổi sắc thái 'nên' thành 'bắt buộc', bỏ qua nguyên tắc 'tùy ân tứ'.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
       "Tùy ân tứ mỗi người",
-      "Mọi người nên cưới",
-      "Mọi người nên độc thân",
-      "Do hoàn cảnh kinh tế"
+      "Không được kết hôn vì thời kỳ khó khăn",
+      "Mọi người đều phải có ân tứ độc thân",
+      "Kết hôn để tránh tà dâm là bắt buộc"
     ],
     "tags": [
       "Tân Ước",
@@ -287,14 +287,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Cô 8:1-13: Kiến thức sinh kiêu ngạo, tình yêu gây dựng; đừng dùng sự tự do của mình làm cớ vấp phạm cho kẻ yếu đuối.",
+    "explanation": "ĐÁP ÁN ĐÚNG: 'Tình yêu gây dựng, đừng làm cớ vấp phạm cho kẻ yếu' (câu 13). Phao-lô xác định thần tượng chẳng là gì, đồ cúng tự nó không tội (câu 4, 8), nhưng cần vì tình yêu thương mà kiêng cữ để không làm cớ vấp phạm cho người yếu đức tin (câu 9-13).\n\nDISTRACTOR SAI 1 ('Không được ăn đồ cúng vì thần tượng là thật và mạnh'): Sai vì Phao-lô khẳng định ngược lại: 'thần tượng chẳng là gì trên đời' và 'chẳng có thần nào khác' (câu 4). Đây là hiểu lầm phổ biến.\n\nDISTRACTOR SAI 2 ('Ăn đồ cúng trước mặt người yếu đức tin để giải thích cho họ'): Sai chi tiết then chốt. Phao-lô dạy tránh ăn trước mặt họ để không làm họ vấp phạm (câu 10, 13), không phải dùng dịp đó để giải thích.\n\nDISTRACTOR SAI 3 ('Được phép ăn đồ cúng vì chỉ có một Đức Chúa Trời'): Đây là ý 'gần đúng' nhưng sai phạm vi. Đây là lý lẽ được nêu (câu 4, 6), nhưng không phải là nguyên tắc chính được rút ra; nguyên tắc chính là về tình yêu và tránh gây vấp phạm (câu 9-13).",
     "language": "vi",
     "verseEnd": 13,
     "options": [
       "Tình yêu gây dựng, đừng làm cớ vấp phạm cho kẻ yếu",
-      "Tự do là tối thượng",
-      "Chỉ cần cầu nguyện trước khi ăn",
-      "Kiến thức quan trọng hơn"
+      "Không được ăn đồ cúng vì thần tượng là thật và mạnh",
+      "Ăn đồ cúng trước mặt người yếu đức tin để giải thích cho họ",
+      "Được phép ăn đồ cúng vì chỉ có một Đức Chúa Trời"
     ],
     "tags": [
       "Tân Ước",
@@ -1428,12 +1428,12 @@
     ],
     "verseEnd": 13,
     "content": "Theo 1 Cô-rinh-tô 5:9-13, Phao-lô KHÔNG bảo tránh người ngoại — mà bảo không giao thiệp với ai?",
-    "explanation": "1 Cô-rinh-tô 5:11-12 — 'Nhưng tôi viết bảo anh em đừng làm bạn với kẻ nào tự xưng là anh em mà tà dâm, tham lam, thờ thần tượng, chửi rủa, say sưa hoặc lừa đảo... có phải là anh em nên đoán xét những người ở trong sao?' Phao-lô phân biệt: tín hữu phải SỐNG TRONG thế gian không tin Chúa, nhưng KHÔNG dung túng tội ngay TRONG hội thánh.",
+    "explanation": "Trong 1 Cô-rinh-tô 5:11, Phao-lô viết: 'Nhưng nói rằng, nếu người nào xưng là anh em, mà là kẻ dâm dục, hoặc tham lam, hoặc thờ hình tượng, hoặc chửi rủa, hoặc say sưa, hoặc chắt bóp, thì chớ giao thiệp với người đó, và cũng đừng ăn chung với người ấy nữa.' Câu này xác định rõ ràng phạm vi răn dạy là chỉ với những người 'xưng là anh em' (tức là người trong Hội thánh), nhưng lại có các tội lỗi kể trên, chứ không phải người ngoại (câu 10). Đáp án đúng tóm tắt chính xác phạm vi này. Distractor 1 sai vì mở rộng sai phạm vi, bao gồm cả người không xưng mình là Cơ Đốc nhân, đối lập với lời dạy không tránh người ngoại trong các câu 9-10. Distractor 2 sai vì gài vào cụm 'theo luật pháp thế gian', một khái niệm không có trong phân đoạn này (trong đoạn này, sự liên kết với 'người hành nghề dâm dục của đời nầy' chỉ được nhắc đến ở câu 9-10, và không được lặp lại trong mệnh lệnh ở câu 11). Distractor 3 sai vì mô tả một hiểu lầm phổ biến: rằng mệnh lệnh tránh né này nhằm vào người ngoại đạo, trong khi điểm chính của phân đoạn là chỉ răn dạy với người trong Hội thánh.",
     "language": "vi",
     "options": [
-      "Không giao thiệp với người nghèo",
-      "Không giao thiệp với người ngoại đạo",
-      "Không giao thiệp với người thu thuế hoặc người ngoại bang",
+      "Không giao thiệp với bất kỳ người nào tà dâm, tham lam, thờ thần tượng, chửi rủa, say sưa, hoặc lừa đảo ngay cả khi họ không xưng mình là Cơ Đốc nhân",
+      "Không giao thiệp với những người phạm tội tà dâm theo luật pháp thế gian, cụ thể là tà dâm, tham lam, thờ thần tượng, chửi rủa, say sưa, hoặc lừa đảo",
+      "Không giao thiệp với người ngoại đạo có các hành vi gian ác như tà dâm, tham lam, thờ thần tượng, chửi rủa, say sưa, hoặc lừa đảo",
       "Không giao thiệp với người gọi là anh em mà tà dâm, tham lam, thờ thần tượng, chửi rủa, say sưa, hoặc lừa đảo"
     ],
     "tags": [
@@ -1909,13 +1909,13 @@
       1
     ],
     "content": "Theo 1 Cô-rinh-tô 4:7, những câu hỏi tu từ Phao-lô đặt ra để đập tan sự kiêu ngạo của người Cô-rinh-tô là gì?",
-    "explanation": "1 Cô-rinh-tô 4:7 — 'Bởi vì, ai phân biệt ngươi với người khác? Ngươi há có điều chi mà chẳng đã nhận lãnh sao? Nếu ngươi đã nhận lãnh, thì sao còn khoe mình như chẳng từng nhận lãnh?' Phao-lô dùng những câu hỏi này để nhấn mạnh rằng mọi điều họ có (ân tứ, sự khôn ngoan, vị trí) đều là ân tứ từ Chúa. Việc khoe khoang là phủ nhận nguồn gốc của những ân tứ ấy.",
+    "explanation": "1 Cô-rinh-tô 4:7 (BTT) chép: 'Vì ai làm cho anh khác với kẻ khác? Anh có gì mà không phải là đã nhận lãnh? Nếu anh đã nhận lãnh, thì sao còn tự hào như chẳng hề nhận lãnh?' Ba câu hỏi tu từ này trực tiếp nhắm vào sự kiêu ngạo của người Cô-rinh-tô, nhắc họ rằng mọi điều họ có đều là nhận lãnh từ Chúa, nên không có cơ sở để tự tôn.\n\n- Đáp án sai thứ nhất (gần đúng) dựa trên ý gần trong ngữ cảnh (như 1 Cô-rinh-tô 4:3-5 về sự xét đoán) và thay đổi cụm 'đã nhận lãnh' thành 'đã được ban cho', làm mất đi sự nhấn mạnh vào việc 'nhận lãnh' chủ động từ Chúa.\n- Đáp án sai thứ hai thay đổi chi tiết then chốt: 'chưa nhận được' thay vì 'đã nhận lãnh', làm sai hoàn toàn ý nghĩa câu Kinh Thánh.\n- Đáp án sai thứ ba phản ánh một hiểu lầm phổ biến khi diễn giải ý chung về ân điển nhưng thay thế các câu hỏi cụ thể của Phao-lô bằng những câu hỏi khái quát hóa, không trung thành với nguyên văn.",
     "language": "vi",
     "options": [
-      "Anh em là ai? Đến từ đâu? Đi về đâu?",
+      "Ai có thể xét đoán người khác? Anh đã nhận gì mà không phải là đã được ban cho? Vì sao anh còn khoe mình như thể tự mình có?",
       "Ai làm anh em hơn người khác? Anh có gì mà chẳng đã nhận lãnh? Nếu anh đã nhận lãnh, sao còn khoe như chẳng nhận?",
-      "Anh tin gì? Anh làm gì? Anh đi đâu?",
-      "Ai gọi anh? Ai gửi anh? Ai chu cấp?"
+      "Ai khiến anh em trở nên khác biệt? Anh có điều gì mà anh chưa nhận được? Nếu anh đã nhận, tại sao lại tự hào như thể chưa nhận?",
+      "Anh em nghĩ mình là ai? Anh có gì mà không phải là ân điển? Nếu đã nhận ân điển, sao còn tự tôn như thể tự mình làm nên?"
     ],
     "tags": [
       "Tân Ước",

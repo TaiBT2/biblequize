@@ -243,13 +243,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Tít 2:13 — '...đương chờ đợi sự trông cậy hạnh phước của chúng ta, và sự hiện ra của sự vinh hiển Đức Chúa Trời lớn và Cứu Chúa chúng ta, là Đức Chúa Jêsus Christ.'",
+    "explanation": "Câu hỏi tham chiếu trực tiếp Tít 2:13: 'trông đợi sự trông cậy hạnh phước và sự hiện ra vinh hiển của Đức Chúa Trời lớn và Cứu Chúa chúng ta là Đức Chúa Jêsus Christ'. Đáp án đúng tóm lược chính xác hai đối tượng của sự trông đợi là 'sự trông cậy hạnh phước' và 'sự hiện ra của Cứu Chúa Jêsus Christ'.\n\nCác đáp án sai:\n1. 'Sự trông cậy hạnh phước và sự hiện ra của Đức Chúa Trời toàn năng' (wrong_detail): Sai chi tiết về tên/tước hiệu. Câu Kinh Thánh nói rõ sự hiện ra là của 'Đức Chúa Trời lớn và Cứu Chúa chúng ta là Đức Chúa Jêsus Christ', gộp chung trong một nhân vật, không phải riêng 'Đức Chúa Trời toàn năng' tách biệt.\n2. 'Sự trông cậy hạnh phước và sự tái lâm của Nước Đấng Christ' (wrong_scope): Sai phạm vi khái niệm. Dù liên quan, câu hỏi hỏi cụ thể về điều được 'trông đợi' trong Tít 2:13, không phải về 'Nước Đấng Christ' – một khái niệm rộng hơn không được nhắc đến trong câu này.\n3. 'Sự hiện ra của Cứu Chúa Jêsus Christ và sự sống đời đời' (nearby_passage): Nhầm passage gần. 'Sự sống đời đời' là một lời hứa quan trọng và phổ biến trong Tân Ước (như Tít 1:2; 3:7), nhưng không phải là điều được liệt kê cùng 'sự hiện ra' trong Tít 2:13.",
     "language": "vi",
     "options": [
-      "Sự giàu có vật chất",
+      "Sự trông cậy hạnh phước và sự hiện ra của Đức Chúa Trời toàn năng",
       "Sự trông cậy hạnh phước và sự hiện ra của Cứu Chúa Jêsus Christ",
-      "Một vị tiên tri mới",
-      "Sự sụp đổ của Rô-ma"
+      "Sự trông cậy hạnh phước và sự tái lâm của Nước Đấng Christ",
+      "Sự hiện ra của Cứu Chúa Jêsus Christ và sự sống đời đời"
     ],
     "tags": [
       "Tân Ước",

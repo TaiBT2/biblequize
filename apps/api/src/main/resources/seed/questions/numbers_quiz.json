@@ -625,15 +625,15 @@
     "type": "multiple_choice_single",
     "content": "Cô-ra và những người theo hắn bị Đức Chúa Trời phán xét như thế nào?",
     "options": [
-      "Bị thiêu chết bằng lửa",
+      "Họ bị lửa từ nơi thánh thiêu hủy cùng gia đình và tài sản",
       "Đất nứt ra nuốt họ với gia đình và tài sản",
-      "Bị bệnh phong",
-      "Bị đuổi khỏi trại"
+      "Họ bị một trận dịch chết 14.700 người trong dân sự",
+      "Họ bị đá của hội chúng ném chết ngoài trại quân"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 16:32 — 'Đất hả miệng ra nuốt họ với gia đình, mọi người theo Cô-ra, cùng tất cả tài sản của họ.'",
+    "explanation": "Đáp án đúng dựa trên Dân số Ký 16:31-33, mô tả đất nứt ra và nuốt chửng Cô-ra, Đa-than, A-bi-ram, gia đình và tài sản của họ. Distractor 1 (gần đúng) sai vì lửa từ nơi thánh thiêu hủy 250 người cầm lư hương (câu 35), không phải Cô-ra và gia đình. Distractor 2 sai chi tiết số người và phạm vi; trận dịch chết 14.700 người xảy ra sau đó (câu 49), không phải hình phạt trực tiếp cho Cô-ra. Distractor 3 sai phạm vi; việc ném đá là cách xử tử theo luật, nhưng không được mô tả trong đoạn này cho sự kiện Cô-ra.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -781,14 +781,14 @@
     "content": "Môi-se phạm tội gì khiến ông không được vào đất Ca-na-an?",
     "options": [
       "Đánh vào vầng đá thay vì nói với nó",
-      "Bỏ chạy khỏi trại",
-      "Thờ hình tượng",
-      "Từ chối lãnh đạo dân sự"
+      "Nói với vầng đá thay vì đánh vào nó",
+      "Không đưa dân vào đất Ca-na-an",
+      "Cầu nguyện với vầng đá thay vì đánh vào nó"
     ],
     "correctAnswer": [
       0
     ],
-    "explanation": "Dân Số Ký 20:11-12 — 'Môi-se giơ tay lên, đánh vào vầng đá hai lần... Đức Giê-hô-va phán: Vì các ngươi không tin Ta, không tôn Ta là thánh trước mắt dân Y-sơ-ra-ên, nên các ngươi sẽ không đưa hội chúng nầy vào xứ.'",
+    "explanation": "Trong Dân số Ký 20:11-12, Đức Chúa Trời phán với Môi-se: 'Hãy cầm gậy ngươi và cùng A-rôn, anh ngươi, nhóm hội chúng lại; trước mặt chúng nó, ngươi hãy truyền cho hòn đá đó, thì nó sẽ ra nước.' Tuy nhiên, Môi-se 'giơ tay lên, dùng gậy đập hòn đá hai lần' (câu 11). Hành động 'đánh vào vầng đá' này, thay vì 'nói với nó' như Chúa đã truyền, thể hiện sự không tin kính và không tôn thánh Đức Chúa Trời giữa dân Y-sơ-ra-ên (câu 12).\n\n- Distractor 1 sai vì đảo ngược hành động (nói thay vì đánh), trong khi lỗi của Môi-se là đánh thay vì nói. Đây là sai một chi tiết then chốt.\n- Distractor 2 sai vì mở rộng phạm vi vấn đề (liên quan đến việc đưa dân), trong khi câu hỏi chỉ hỏi về hành vi phạm tội cụ thể tại nơi đó.\n- Distractor 3 sai vì dựa trên một chi tiết không có trong phân đoạn này ('cầu nguyện với'); hành động được truyền là 'truyền cho' (nói với) hòn đá, không phải 'cầu nguyện với' nó.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -916,7 +916,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 22:28 — 'Đức Giê-hô-va mở miệng con lừa và nó nói với Ba-la-am: Tôi đã làm gì cho ông mà ông đánh tôi ba lần?'",
+    "explanation": "Câu hỏi về Dân Số Ký 22:28. Đáp án đúng là 'Đức Giê-hô-va mở miệng nó và nó nói tiếng người' vì câu Kinh Thánh ghi: 'Đức Giê-hô-va bèn mở miệng con lừa...'. Distractor 1 ('Nó cất tiếng rống lên và lăn ra chết...') là gần đúng vì liên quan đến con lừa và tiếng kêu, nhưng sai chi tiết then chốt là 'nói tiếng người' và 'chết' (thực tế con lừa không chết). Đây là lỗi nhầm passage gần. Distractor 2 ('Nó đột nhiên bay lên trời...') là hiểu lầm phổ biến, vì không có chi tiết siêu nhiên nào như vậy trong câu chuyện. Distractor 3 ('Nó quay đầu lại cắn vào chân...') là đúng văn bản nhưng lạc câu hỏi, vì câu chuyện có chi tiết con lừa đè chân Ba-la-am (c.25) và bị đánh, nhưng không hề cắn.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -925,10 +925,10 @@
       "Cơ bản"
     ],
     "options": [
-      "Nó biến thành ngựa",
-      "Nó bay được",
+      "Nó cất tiếng rống lên và lăn ra chết trước mặt Ba-la-am",
+      "Nó đột nhiên bay lên trời và biến mất khỏi tầm nhìn",
       "Đức Giê-hô-va mở miệng nó và nó nói tiếng người",
-      "Nó tàng hình"
+      "Nó quay đầu lại cắn vào chân Ba-la-am làm ông bị thương"
     ]
   },
   {
@@ -1097,15 +1097,15 @@
     "type": "multiple_choice_single",
     "content": "Tổng số nam giới trong cuộc kiểm tra dân số lần thứ hai là bao nhiêu?",
     "options": [
-      "625.000",
-      "603.550",
+      "601.708",
+      "699.434",
       "601.730",
-      "600.000"
+      "1.010.000"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 26:51 — 'Tổng số nam giới Y-sơ-ra-ên: sáu trăm lẻ một ngàn bảy trăm ba mươi.' Giảm so với lần kiểm tra đầu tiên (603.550).",
+    "explanation": "Đáp án đúng là '601.730', được ghi chép chính xác trong Dân Số Ký 26:51 rằng đây là tổng số của Y-sơ-ra-ên sau cuộc kiểm tra dân số lần thứ hai ở đồng bằng Mô-áp, cạnh sông Giô-đanh đối ngang Giê-ri-cô.  \nDistractor '601.708' là gần đúng nhưng sai chi tiết số (wrong_detail); con số nhỏ hơn một chút có thể đến từ việc nhớ nhầm.  \nDistractor '699.434' là sai phạm vi (wrong_scope); đây là tổng số nam giới được kiểm tra lần thứ nhất (Dân Số Ký 1:46) chứ không phải lần thứ hai.  \nDistractor '1.010.000' là hiểu lầm phổ biến (common_misconception); con số này lớn hơn và không tương ứng với dữ liệu trong sách Dân Số Ký, có thể do ước lượng sai về quy mô tổng dân số.",
     "language": "vi",
     "tags": [
       "Cựu Ước",

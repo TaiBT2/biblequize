@@ -64,13 +64,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Mác 2:5 ghi lại lời đầu tiên Chúa Giê-su phán với người bại liệt là: \"Hỡi con, tội lỗi con đã được tha.\" Sau đó Ngài mới truyền lệnh chữa lành thân thể (câu 11-12).",
+    "explanation": "Trong Mác 2:5, Chúa Giê-su phán với người bại liệt: 'Hỡi con, tội lỗi con đã được tha.' Đây là lời đầu tiên của Ngài trước khi chữa lành thể xác. Các đáp án sai: 'Con muốn được lành bệnh chăng' là một hiểu lầm phổ biến (dù Chúa hỏi điều tương tự ở Giăng 5:6 nhưng không phải trong phân đoạn này). 'Bình an cho con' xuất hiện trong các phân đoạn chữa lành khác (như Mác 5:34, Lu-ca 7:50) nhưng không phải ở đây. 'Con đã được chữa lành' gần đúng vì đề cập đến sự chữa lành, nhưng sai chi tiết: đây là lời Chúa phán sau đó (câu 11), không phải lời đầu tiên.",
     "language": "vi",
     "verseEnd": 12,
     "options": [
-      "Đức tin con đã cứu con",
-      "Hãy đi rửa ở hồ Si-lô-ê",
-      "Hãy đứng dậy đi",
+      "Con muốn được lành bệnh chăng",
+      "Bình an cho con",
+      "Con đã được chữa lành",
       "Tội lỗi con đã được tha"
     ],
     "tags": [
@@ -344,13 +344,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Mác 7:20-23: Chúa Giê-su phán, 'Ấy đó là những điều từ bên trong ra, và những điều đó làm ô uế người.' Ngài liệt kê các tư tưởng xấu như trộm cắp, giết người, tà dâm, tham lam, độc ác...",
+    "explanation": "Trong Mác 7:14-23, Chúa Giê-su dạy rằng: \"Chẳng có gì từ bên ngoài vào trong người mà có thể làm ô uế người được; nhưng sự vật từ trong người ra, đó là những điều làm ô uế người\" (câu 15). Ngài giải thích thêm: \"Vì từ bên trong, tức là từ lòng người, mà ra những ác tưởng... Tất cả những điều xấu đó đều từ bên trong ra và làm ô uế người\" (câu 21-23). Do đó, đáp án đúng là những điều xấu từ trong lòng ra.\n\nCác đáp án sai:\n1. \"Những thức ăn không thanh sạch vào miệng\": Đây là quan niệm của người Pha-ri-si mà Chúa Giê-su đang sửa (câu 18-19). Tuy có trong phân đoạn nhưng không phải câu trả lời của Chúa, nên lạc câu hỏi.\n2. \"Những điều xấu từ bên ngoài vào trong\": Sai chi tiết then chốt. Chúa Giê-su nói rõ điều ô uế là từ trong ra, không phải từ ngoài vào (câu 15, 18, 23).\n3. \"Việc không rửa tay trước khi ăn\": Đây là hiểu lầm phổ biến, vì việc này là bối cảnh dẫn đến lời dạy (câu 1-5) nhưng Chúa Giê-su đã chỉ ra vấn đề thực sự nằm ở tấm lòng, không phải nghi thức bên ngoài.",
     "language": "vi",
     "verseEnd": 23,
     "options": [
-      "Không rửa tay",
-      "Ăn đồ cấm",
-      "Món ăn chưa rửa sạch",
+      "Những thức ăn không thanh sạch vào miệng",
+      "Những điều xấu từ bên ngoài vào trong",
+      "Việc không rửa tay trước khi ăn",
       "Những điều xấu từ trong lòng ra"
     ],
     "tags": [
@@ -1132,12 +1132,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Mác 5:9 — 'Ngài lại hỏi rằng: Mầy tên gì? Thưa rằng: Tên tôi là Quân đội (Legion); vì chúng tôi đông lắm.'",
+    "explanation": "Trong Mác 5:9, khi Chúa Jêsus hỏi: 'Ngươi tên gì?', tà ma đáp: 'Tên tôi là Quân đội; vì chúng tôi đông lắm.' (BTT). 'Quân đội' (Legion) là đáp án đúng, chỉ một đơn vị quân đội La Mã rất đông. Distractor 'Đại đội (Cohort)' gần đúng nhưng sai chi tiết: một cohort là một đơn vị quân đội nhỏ hơn legion, không phải tên tà ma tự xưng. 'Hằng hà sa số (Myriad)' sai vì đây là một từ chỉ số lượng rất lớn trong Kinh Thánh (ví dụ: Khải huyền 5:11), nhưng không phải tên tự xưng trong phân đoạn này. 'Bệnh tật (Infirmity)' lạc câu hỏi: người này bị quỷ ám (c.2), nhưng tà ma không tự xưng là bệnh tật.",
     "language": "vi",
     "options": [
-      "Bê-ên-xê-bun",
-      "A-ba-đôn",
-      "A-pôl-li-ôn",
+      "Đại đội (Cohort)",
+      "Hằng hà sa số (Myriad)",
+      "Bệnh tật (Infirmity)",
       "Quân đội (Legion)"
     ],
     "tags": [
@@ -1688,13 +1688,13 @@
     ],
     "verseEnd": 10,
     "content": "Theo Mác 11:1-7, khi vào Giê-ru-sa-lem khải hoàn, Chúa Jêsus cưỡi con vật gì?",
-    "explanation": "Mác 11:7 — 'Hai người dắt lừa con đến cho Đức Chúa Jêsus, lấy áo mình trải trên nó; thì Ngài cỡi'. Câu 11:2 chỉ rõ 'một con lừa con đang cột tại đó, chưa có ai cưỡi'.",
+    "explanation": "Đáp án đúng: 'Một con lừa con chưa ai cưỡi' dựa trên Mác 11:2,7, nơi Chúa Jêsus bảo môn đồ tìm và dắt về 'một con lừa con chưa ai cưỡi', và họ đặt áo trên nó để Ngài cưỡi.\n\nCác đáp án sai:\n- 'Một con ngựa đực chưa ai cưỡi' (wrong_detail): Đoạn Kinh Thánh không hề đề cập đến ngựa. Đây là một chi tiết sai, mặc dù cấu trúc 'chưa ai cưỡi' giống với mô tả trong câu chuyện.\n- 'Một con lừa mẹ đang cưỡi' (nearby_passage): Sai chi tiết then chốt. Mác 11:2 nói đến 'một con lừa con', và câu 4 cho biết con lừa con đó đang 'cột ở ngoài trước cửa', chứ không phải 'lừa mẹ' và cũng không phải 'đang cưỡi'.\n- 'Một con la chưa ai cưỡi' (common_misconception): Đây là một hiểu lầm phổ biến, vì một số người có thể nghĩ đến con la (con của lừa đực và ngựa cái). Tuy nhiên, văn bản rõ ràng chỉ nói đến 'lừa con' (Mác 11:2).",
     "language": "vi",
     "options": [
-      "Một con ngựa trắng",
+      "Một con ngựa đực chưa ai cưỡi",
       "Một con lừa con chưa ai cưỡi",
-      "Một con bò mộng",
-      "Một xe ngựa của vua"
+      "Một con lừa mẹ đang cưỡi",
+      "Một con la chưa ai cưỡi"
     ],
     "tags": [
       "Tân Ước",
@@ -2934,13 +2934,13 @@
     ],
     "verseEnd": 30,
     "content": "'Bí mật Mê-si-a' (Messianic Secret) là chủ đề khoa học gọi tên đặc trưng độc đáo của Phúc âm Mác. Câu nào sau đây minh họa rõ nhất chủ đề này?",
-    "explanation": "Mác 8:30 (sau Phi-e-rơ xưng 'Thầy là Đấng Christ') — 'Đức Chúa Jêsus bèn cấm ngặt môn đồ chớ nói sự mình cùng ai hết'. Tương tự 1:34 (cấm tà ma nói tên Ngài), 1:43-45, 5:43, 7:36, 9:9 — 'Chớ thuật lại sự mình đã thấy cho ai hay cho đến khi Con người sống lại'. William Wrede (1901) đặt tên 'Messianic Secret' — Mác cấu trúc câu chuyện: chỉ sau thập tự + sống lại, danh tính Mê-si-a mới được công khai.",
+    "explanation": "ĐÁP ÁN ĐÚNG là: 'Sau Phi-e-rơ xưng nhận tại Sê-sa-rê Phi-líp (8:29-30), Chúa CẤM môn đồ NÓI VỚI AI về Ngài.' Đây là ví dụ mẫu mực của 'Bí mật Mê-si-a' khi Chúa Giê-su trực tiếp ra lệnh cấm tiết lộ danh tính Mê-si-a sau lời tuyên xưng then chốt (Mác 8:29-30). \n\nCÁC ĐÁP ÁN SAI: \n- Distractor 1 ('Sau khi chữa lành người mù tại Bết-sai-đa...'): Dù đúng sự kiện Chúa chữa lành và ra lệnh im lặng (8:26), chi tiết 'dặn người đó đừng nói với ai' bị thay đổi thành 'sống cách xa làng cũ', làm mất minh họa trực tiếp cho chủ đề Bí mật. \n- Distractor 2 ('Sau khi hóa bánh lần thứ hai...'): Sự kiện này không liên quan đến lệnh cấm nói về danh tính Mê-si-a, chỉ tập trung vào việc giải tán đám đông sau phép lạ, nên không minh họa được chủ đề. \n- Distractor 3 ('Sau khi tranh luận với người Pha-ri-si...'): Vị trí địa lý bị sai (cuộc tranh luận diễn ra ở vùng Đa-li-mã-nu-tha, không phải Đa-mách) và hành động 'rời bỏ' không phải là mệnh lệnh im lặng đặc trưng của chủ đề này.",
     "language": "vi",
     "options": [
-      "Chúa khoe khoang phép lạ với đám đông để thu hút môn đồ",
-      "Chúa giảng đạo công khai cho mọi người mà không giấu danh tính",
+      "Sau khi chữa lành người mù tại Bết-sai-đa (8:22-26), Chúa dặn người mù sống cách xa làng cũ",
+      "Sau khi hóa bánh lần thứ hai tại vùng Đê-ca-bô-lơ (8:1-10), Chúa truyền đám đông nên về nhà ngay",
       "Sau Phi-e-rơ xưng nhận tại Sê-sa-rê Phi-líp (8:29-30), Chúa CẤM môn đồ NÓI VỚI AI về Ngài",
-      "Chúa luôn tự xưng mình là Mê-si-a tại tất cả các thành"
+      "Sau khi tranh luận với người Pha-ri-si tại Đa-mách (8:11-13), Chúa quyết định rời bỏ vùng này"
     ],
     "tags": [
       "Tân Ước",

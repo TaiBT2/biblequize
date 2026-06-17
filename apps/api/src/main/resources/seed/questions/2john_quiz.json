@@ -62,13 +62,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Giăng 1:1-2 — '...mà tôi thật yêu dấu, không phải chỉ một mình tôi yêu thôi, nhưng hết thảy những người đã biết lẽ thật cũng yêu nữa, điều đó, vì cớ chính lẽ thật ở trong chúng ta, lại sẽ ở với chúng ta đời đời.' Tình yêu Cơ Đốc phát xuất từ lẽ thật cư trú trong lòng.",
+    "explanation": "2 Giăng 1:2 chép: 'vì cớ lẽ thật ở trong chúng ta, và sẽ ở với chúng ta đời đời.' Đây chính xác là lý do (nền tảng) cho tình yêu được nêu ở câu 1. \n\nDistractor 1 sai vì nó mở rộng phạm vi ('mọi người tin nhận') và không nêu đặc điểm then chốt là lẽ thật 'ở trong chúng ta' và 'đời đời' như trong câu Kinh Thánh. \nDistractor 2 sai vì nó trích dẫn một ý đúng (nhận biết Đức Chúa Trời, vâng giữ điều răn) từ ngữ cảnh rộng hơn (như 1 Giăng) nhưng không phải là lý do được nêu trong 2 Giăng 1:1-2 cho câu hỏi này. \nDistractor 3 sai về chi tiết: câu 4 nói 'tôi đã được rất vui mừng, vì thấy trong con cái ngươi có kẻ đi theo lẽ thật,' đây là kết quả/hệ quả chứ không phải nền tảng của tình yêu được hỏi ở câu 1-2.",
     "language": "vi",
     "options": [
-      "Mối quan hệ họ hàng",
-      "Sự quen biết lâu năm",
+      "Vì lẽ thật đã được bày tỏ cho mọi người tin nhận",
+      "Vì họ đã nhận biết Đức Chúa Trời và vâng giữ điều răn Ngài",
       "Lẽ thật ở trong chúng ta và sẽ ở với chúng ta đời đời",
-      "Công việc chung đã làm trước đây"
+      "Vì người nhận và con cái người nhận đều đi trong lẽ thật"
     ],
     "tags": [
       "Tân Ước",
@@ -400,12 +400,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Giăng 1:12 — 'Ta còn nhiều điều muốn viết cho các ngươi; ta không muốn viết bằng giấy và mực, nhưng ta ước ao đi thăm các ngươi, và đối mặt nói chuyện cùng nhau, hầu cho sự vui mừng của chúng ta được đầy dẫy.'",
+    "explanation": "Câu trả lời đúng dựa trên 2 Giăng 1:12, cho thấy trưởng lão không muốn viết nhiều 'vì tôi có nhiều điều muốn viết cho anh em, nhưng không muốn viết bằng giấy mực, mà tôi ước ao đến thăm anh em, và đối mặt trò chuyện, hầu cho niềm vui chúng ta được đầy dẫy.' Vì vậy, lý do chính là ngài ước ao đối mặt trò chuyện để niềm vui được đầy dẫy. Các phương án sai: 1) 'Vì ước ao dùng trang viết để niềm vui được đầy dẫy' là sai, vì trọng tâm là phương thức *đối mặt*, không phải trang viết. 2) 'Vì sắp có việc đi thăm và muốn tiết kiệm giấy mực' là sai, vì tuy câu 12 nói đến việc ước ao đến thăm, nhưng lý do chính là để đối mặt trò chuyện và có niềm vui đầy dẫy, chứ không phải tiết kiệm (đây là chi tiết không có trong văn bản). 3) 'Vì truyền thống của kỳ trưởng lão thường nói trực tiếp' là sai, vì câu Kinh Thánh không đề cập đến truyền thống nào như vậy; đây chỉ là suy đoán phổ biến chứ không phải thông tin từ Kinh Thánh.",
     "language": "vi",
     "options": [
-      "Vì giấy mực quá đắt đỏ",
-      "Vì sợ bị kẻ thù đọc được",
-      "Vì muốn giữ bí mật sự mặc khải",
+      "Vì ước ao dùng trang viết để niềm vui được đầy dẫy",
+      "Vì sắp có việc đi thăm và muốn tiết kiệm giấy mực",
+      "Vì truyền thống của kỳ trưởng lão thường nói trực tiếp",
       "Vì ước ao đối mặt trò chuyện để niềm vui được đầy dẫy"
     ],
     "tags": [

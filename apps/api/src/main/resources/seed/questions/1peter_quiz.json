@@ -146,13 +146,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Chịu khổ vì Chúa là đặc ân, không phải bất hạnh. Khi Ngài hiện ra sẽ được vui mừng.",
+    "explanation": "Câu hỏi tham chiếu 1 Phi-e-rơ 4:12-13. Đáp án đúng trích dẫn trực tiếp câu 13: 'Hãy vui mừng vì được dự phần đau khổ của Chúa'. Đây là mệnh lệnh trực tiếp khi đối diện với sự thử thách vì Danh Chúa.\n\n- Distractor 1 ('Hãy vui mừng vì được dự phần phước hạnh của Chúa') là lỗi sai chi tiết. Nó bắt chước cấu trúc và từ ngữ của đáp án đúng nhưng thay từ then chốt 'đau khổ' (theo Kinh Thánh) bằng 'phước hạnh', làm sai lệch hoàn toàn ý chính của phân đoạn.\n- Distractor 2 ('Hãy than khóc và cầu nguyện để Chúa cất đi hoạn nạn') là hiểu lầm phổ biến. Nhiều người nghĩ đến phản ứng tự nhiên là cầu xin Chúa dẹp khó khăn, nhưng phân đoạn này không khuyên điều đó mà kêu gọi thái độ vui mừng và nhận biết ý nghĩa của sự chịu khổ.\n- Distractor 3 ('Hãy tìm cách lánh mặt để tránh khỏi những đau khổ') là đáp án đúng văn bản nhưng lạc câu hỏi. Mặc dù việc tránh né đau khổ có thể là một phản ứng tự nhiên được đề cập ở nơi khác, nó hoàn toàn trái ngược với mệnh lệnh trong câu Kinh Thánh này, là phải đối diện và vui mừng trong hoạn nạn.",
     "language": "vi",
     "verseEnd": 13,
     "options": [
-      "Giận dữ",
-      "Buồn rầu",
-      "Bỏ cuộc",
+      "Hãy vui mừng vì được dự phần phước hạnh của Chúa",
+      "Hãy than khóc và cầu nguyện để Chúa cất đi hoạn nạn",
+      "Hãy tìm cách lánh mặt để tránh khỏi những đau khổ",
       "Hãy vui mừng vì được dự phần đau khổ của Chúa"
     ],
     "tags": [
@@ -1068,13 +1068,13 @@
       1
     ],
     "content": "Theo 1 Phi-e-rơ 2:4-5, Christ là HÒN ĐÁ SỐNG bị loài người loại ra — các tín hữu được dựng lên thành gì?",
-    "explanation": "1 Phi-e-rơ 2:4-5 — 'Hãy đến gần Ngài, là hòn đá sống, bị người ta loại ra, song được chọn và quí trước mặt Đức Chúa Trời, và anh em cũng như đá sống, được xây nên nhà thiêng liêng, làm chức tế lễ thánh, đặng dâng của tế lễ thiêng liêng, nhờ Đức Chúa Jêsus Christ mà đẹp ý Đức Chúa Trời.' MỖI tín hữu = ĐÁ SỐNG; cộng đoàn = ĐỀN THỜ; tất cả = THẦY TẾ LỄ. Khác Cựu Ước (chỉ Lê-vi). Khái niệm 'thầy tế lễ chung' (priesthood of all believers).",
+    "explanation": "Căn cứ vào 1 Phi-e-rơ 2:4-5 (BTT): 'Hãy đến cùng Ngài, là hòn đá sống, bị loài người loại ra, nhưng được chọn và quý trước mặt Đức Chúa Trời, và anh em là những hòn đá sống, được xây nên nhà thiêng liêng, làm chức tế lễ thánh, đặng dâng của tế lễ thiêng liêng, nhờ Đức Chúa Jêsus Christ mà đẹp ý Đức Chúa Trời.' Đáp án đúng diễn đạt chính xác hình ảnh 'nhà thuộc linh' (nhà thiêng liêng) và 'chức tế lễ thánh' cùng mục đích dâng 'của tế lễ thuộc linh'.\n\nCác đáp án sai:\n- 'Một nền tảng vững chắc — một hội thánh được xây dựng — ...' (nearby_passage): Sai vì dùng hình ảnh 'nền tảng' và 'hội thánh' từ các câu 6-8 về hòn đá góc, trong khi câu hỏi hỏi về chính các tín hữu trong câu 5.\n- 'Một hòn đá góc — một dân tộc được chọn — ...' (wrong_detail): Sai ở hai chi tiết: (1) 'hòn đá góc' là danh hiệu của Đấng Christ (câu 6-7), không phải của tín hữu; (2) 'của tế thực tế' trái với 'tế lễ thuộc linh' trong văn bản.\n- 'Một ngôi nhà tạm — một chức tế lễ tạm thời — ...' (common_misconception): Sai vì áp đặt hình ảnh Cựu Ước (nhà tạm, chức tế lễ tạm theo luật pháp) vào bối cảnh Tân Ước nói về thực tại thuộc linh vĩnh viễn qua Đấng Christ.",
     "language": "vi",
     "options": [
-      "Một dân tộc tự do",
+      "Một nền tảng vững chắc — một hội thánh được xây dựng — để dâng lời cầu nguyện và ca ngợi Đức Chúa Trời nhờ Đấng Christ",
       "Một nhà thuộc linh — một chức tế lễ thánh — để dâng các của tế lễ thuộc linh (đẹp lòng) Đức Chúa Trời nhờ Đấng Christ",
-      "Một quân đội thiêng liêng",
-      "Một hội đồng tôn giáo"
+      "Một hòn đá góc — một dân tộc được chọn — để dâng các của tế thực tế lên Đức Chúa Trời nhờ Đấng Christ",
+      "Một ngôi nhà tạm — một chức tế lễ tạm thời — để dâng các của tế lễ theo luật pháp (đẹp lòng) Đức Chúa Trời nhờ Đấng Christ"
     ],
     "tags": [
       "Tân Ước",
@@ -1276,13 +1276,13 @@
       2
     ],
     "content": "Theo 1 Phi-e-rơ 4:19, ai chịu khổ theo Ý ĐỨC CHÚA TRỜI thì phải làm gì với linh hồn mình?",
-    "explanation": "1 Phi-e-rơ 4:19 — 'Vậy những kẻ chịu khổ theo ý muốn Đức Chúa Trời, thì hãy cứ làm lành mà phó linh hồn mình cho Đấng Tạo Hóa thành tín.' 'PHÓ' (paratithesthōsan) = giao gửi cho ai bảo quản. Cùng từ Lu 23:46 'Cha ơi, tôi giao linh hồn tôi trong tay Cha'. 'ĐẤNG TẠO HÓA THÀNH TÍN' (pistos ktistēs) = nhãn hiệu DUY NHẤT này trong Tân Ước. Đức Chúa Trời tạo bạn — biết cách giữ bạn.",
+    "explanation": "1 Phi-e-rơ 4:19 chép: 'Vậy, những kẻ chịu khổ theo ý muốn Đức Chúa Trời, hãy cứ phó linh hồn mình cho Đấng Tạo Hóa thành tín mà làm lành.' Đáp án đúng trực tiếp trích dẫn và diễn đạt trung thành mệnh lệnh này: 'giao linh hồn mình cho Đấng Tạo Hóa thành tín và làm điều lành'.\n\n- Distractor 1 ('Kỷ luật... chờ đợi...') sai vì diễn đạt ý từ các câu gần đó (như về sự chờ đợi, tỉnh thức) nhưng không phải là mệnh lệnh cụ thể trong câu 19.\n- Distractor 2 ('Giao... hãm mình lại') là phương án 'gần đúng', đúng phần đầu nhưng sai chi tiết then chốt: thay 'làm điều lành' bằng 'hãm mình lại', một khái niệm có trong sách nhưng không phải là hành động được chỉ định trong câu này.\n- Distractor 3 ('Giữ linh hồn mình cho chính mình...') sai do hiểu lầm phổ biến, trái ngược hoàn toàn với tinh thần 'phó thác' của câu Kinh Thánh, biến nó thành hành động tự cậy.",
     "language": "vi",
     "options": [
-      "Cầu xin sự giải thoát bằng mọi cách",
-      "Đối phó với hoàn cảnh bằng kế hoạch riêng",
+      "Kỷ luật linh hồn mình trong sự chờ đợi và làm điều lành",
+      "Giao linh hồn mình cho Đấng Tạo Hóa thành tín và hãm mình lại",
       "Giao linh hồn mình cho Đấng Tạo Hóa thành tín và làm điều lành",
-      "Phàn nàn với Hội Thánh"
+      "Giữ linh hồn mình cho chính mình mà làm điều lành"
     ],
     "tags": [
       "Tân Ước",

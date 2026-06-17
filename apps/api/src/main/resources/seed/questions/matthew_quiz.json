@@ -225,13 +225,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Kinh Thánh ghi: \"Có tiếng từ trời phán rằng: Nầy là Con yêu dấu của ta, đẹp lòng ta mọi đường\" (Ma-thi-ơ 3:17).",
+    "explanation": "Ma-thi-ơ 3:17 chép: 'Nầy là Con yêu dấu của ta'. Đáp án đúng là trích dẫn chính xác lời từ trời phán sau khi Chúa Giê-su chịu phép báp-têm, trực tiếp trả lời câu hỏi. Ba đáp án sai phân biệt như sau: 1) 'Nầy là đầy tớ mà ta đã hài lòng' là near-miss, dùng cụm từ tương tự nhưng sai từ then chốt (đầy tớ thay vì Con), và vay mượn ý từ các đoạn nói về Đầy tớ Đức Chúa Trời (như Ê-sai 42:1); 2) 'Người nầy thật là tiên tri vĩ đại' phản ánh một hiểu lầm phổ biến thời đó về danh tính của Chúa Giê-su (xem Ma-thi-ơ 16:14, Giăng 6:14), nhưng không phải lời từ trời phán trong cảnh này; 3) 'Hãy nghe lời Con yêu dấu của ta' là một câu nói thật trong Kinh Thánh (Ma-thi-ơ 17:5, trong cảnh hóa hình), nhưng sai ngữ cảnh, thuộc đoạn khác và trả lời một câu hỏi khác.",
     "language": "vi",
     "options": [
-      "Nầy là Vua của ta",
-      "Nầy là Đấng được chọn",
+      "Nầy là đầy tớ mà ta đã hài lòng",
+      "Người nầy thật là tiên tri vĩ đại",
       "Nầy là Con yêu dấu của ta",
-      "Nầy là Đấng cứu thế"
+      "Hãy nghe lời Con yêu dấu của ta"
     ],
     "tags": [
       "Tân Ước",
@@ -1119,12 +1119,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ma-thi-ơ 3:11 — 'Còn Đấng đến sau ta... Ngài sẽ làm phép báp-têm cho các ngươi bằng Đức Thánh Linh và bằng lửa.'",
+    "explanation": "Trong Ma-thi-ơ 3:11, Giăng Báp-tít nói: 'Ta làm phép báp-têm cho các ngươi bằng nước để ăn năn; song Đấng đến sau ta ... sẽ làm phép báp-têm cho các ngươi bằng Đức Thánh Linh và bằng lửa.' Do đó, đáp án đúng là 'Bằng Đức Thánh Linh và bằng lửa'.\n\nCác đáp án sai:\n- 'Bằng Đức Thánh Linh và bằng nước': Sai chi tiết (wrong_detail). Đây là đáp án 'gần đúng' vì có 'Đức Thánh Linh', nhưng thay 'lửa' bằng 'nước'. Chính Giăng làm báp-têm bằng nước, còn Đấng Christ sẽ làm bằng Đức Thánh Linh và lửa.\n- 'Bằng nước và bằng lửa': Nhầm passage gần (nearby_passage). Đây là sự trộn lẫn giữa phương tiện báp-têm của Giăng (nước) và một yếu tố trong lời hứa về Đấng Christ (lửa), nhưng thiếu mất 'Đức Thánh Linh'.\n- 'Bằng quyền năng và bằng lửa': Hiểu lầm phổ biến (common_misconception). 'Quyền năng' là một khái niệm liên quan đến Đức Thánh Linh (Công vụ 1:8) nhưng không phải là từ ngữ chính xác được dùng trong câu Kinh Thánh này.",
     "language": "vi",
     "options": [
-      "Chỉ bằng nước",
-      "Bằng dầu xức",
-      "Bằng máu",
+      "Bằng Đức Thánh Linh và bằng nước",
+      "Bằng nước và bằng lửa",
+      "Bằng quyền năng và bằng lửa",
       "Bằng Đức Thánh Linh và bằng lửa"
     ],
     "tags": [
@@ -1198,12 +1198,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ma-thi-ơ 4:23 — 'Đức Chúa Jêsus đi khắp xứ Ga-li-lê, dạy dỗ trong các nhà hội, giảng Tin Lành của nước Đức Chúa Trời, và chữa lành mọi thứ tật bịnh trong dân.'",
+    "explanation": "Ma-thi-ơ 4:23 chép: 'Đức Chúa Jêsus đi khắp xứ Ga-li-lê, dạy dỗ trong các nhà hội, giảng Tin Lành của nước Đức Chúa Trời, và chữa lành mọi thứ tật bệnh trong dân.' Vì vậy, ba việc chính được nêu cụ thể trong câu này là: dạy dỗ, giảng Tin Lành và chữa lành.\n\nĐáp án sai 1 ('Dạy dỗ, giảng Tin Lành, kiêng ăn') là gần đúng nhưng sai một chi tiết then chốt: 'kiêng ăn' (fasting) không phải là một trong ba hoạt động chính được liệt kê ở Ma-thi-ơ 4:23, mặc dù việc kiêng ăn được đề cập trong những ngữ cảnh khác (như Ma-thi-ơ 6:16-18).\n\nĐáp án sai 2 ('Dạy dỗ, giảng Tin Lành, chọn mười hai sứ đồ') sai về phạm vi thời gian: việc chọn mười hai sứ đồ được ghi lại sau đó, ở Ma-thi-ơ 10:1-4, không phải là một phần trong mô tả hoạt động tổng quát ban đầu tại xứ Ga-li-lê trong đoạn này.\n\nĐáp án sai 3 ('Chữa bệnh, đuổi quỷ, làm phép lạ') tuy chứa các hoạt động có thật của Chúa Jêsus nhưng 'lạc câu hỏi' (true_but_off): câu hỏi yêu cầu ba việc chính theo Ma-thi-ơ 4:23, trong khi 'đuổi quỷ' và 'làm phép lạ' không được liệt kê ở đây (dù 'chữa bệnh' thì có, nhưng cụm này thay thế hai việc chính khác là 'dạy dỗ' và 'giảng Tin Lành' bằng những hoạt động khác).",
     "language": "vi",
     "options": [
-      "Cầu nguyện, ăn chay, dâng tế lễ",
-      "Lãnh đạo, xét đoán, ban phước",
-      "Giảng đạo, làm phép báp-têm, chỉ định môn đồ",
+      "Dạy dỗ, giảng Tin Lành, kiêng ăn",
+      "Dạy dỗ, giảng Tin Lành, chọn mười hai sứ đồ",
+      "Chữa bệnh, đuổi quỷ, làm phép lạ",
       "Dạy dỗ, giảng Tin Lành, chữa lành"
     ],
     "tags": [
@@ -1486,12 +1486,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ma-thi-ơ 7:24-25 — 'Kẻ nào nghe và làm theo lời Ta phán đây, thì giống như một người khôn ngoan cất nhà mình trên hòn đá.'",
+    "explanation": "Ma-thi-ơ 7:24-25: 'Vậy, kẻ nào nghe lời ta phán đây mà làm theo, thì ta ví sánh với người khôn ngoan, cất nhà mình trên hòn đá.' Đáp án đúng là 'Trên hòn đá (vầng đá)' vì Chúa Giê-xu trực tiếp dùng hình ảnh này để minh họa người khôn ngoan xây đời sống trên nền tảng vững chắc là Lời Ngài.\n\nCác distractor sai vì:\n1. 'Trên cát (nền cát)' là sai (nearby_passage): Đây là nền người dại khờ xây nhà, được mô tả trong câu 26, không phải người khôn ngoan trong câu hỏi.\n2. 'Trên sỏi (đất sỏi)' là sai (wrong_detail): Kinh Thánh không đề cập 'sỏi' trong ngụ ngôn này; đây là một chi tiết sai do suy đoán từ sự tương phản đá-cát.\n3. 'Trên gỗ (tấm ván gỗ)' là sai (common_misconception): Đây là một hiểu lầm phổ biến, có thể do liên tưởng đến vật liệu xây dựng khác, nhưng không hề xuất hiện trong bản văn Ma-thi-ơ 7:24-27.",
     "language": "vi",
     "options": [
-      "Trên cát",
-      "Trên đồng bằng",
-      "Trên núi cao",
+      "Trên cát (nền cát)",
+      "Trên sỏi (đất sỏi)",
+      "Trên gỗ (tấm ván gỗ)",
       "Trên hòn đá (vầng đá)"
     ],
     "tags": [
@@ -2332,12 +2332,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ma-thi-ơ 21:7 — 'Hai môn đồ dẫn lừa cái và lừa con về, trải áo mình trên lưng lừa, và nâng Ngài cỡi lên.' Ứng nghiệm Xa-cha-ri 9:9.",
+    "explanation": "Đáp án đúng là 'Con lừa con' vì Kinh Thánh chép: 'Các môn đồ... dắt lừa cái và lừa con đến... Ngài cỡi lên trên chúng nó' (Ma-thi-ơ 21:6-7). Đây là ứng nghiệm lời tiên tri về Đấng Mết-si-a. Các đáp án sai: 1) 'Con ngựa chiến' là một hiểu lầm phổ biến (common_misconception) về hình ảnh một vua đến trong chiến thắng, nhưng Chúa Jêsus đến trong hòa bình và khiêm nhường; 2) 'Con lừa mẹ' là một chi tiết sai (wrong_detail) từ chính đoạn Kinh Thánh này — các môn đồ đã dắt cả lừa mẹ và lừa con đến, nhưng Chúa Jêsus cỡi trên lừa con (câu 7); 3) 'Chân Ngài đi bộ' đúng là Chúa Jêsus đã đi bộ trong nhiều dịp khác (true_but_off), nhưng cụ thể trong sự kiện vào thành Giê-ru-sa-lem này (Ma-thi-ơ 21:1-11), Ngài đã ngồi trên lừa con để ứng nghiệm lời tiên tri (Xa-cha-ri 9:9), vì vậy phương án này lạc trọng tâm câu hỏi.",
     "language": "vi",
     "options": [
-      "Ngựa trắng",
-      "Lạc đà",
-      "Đi bộ",
+      "Con ngựa chiến",
+      "Con lừa mẹ",
+      "Chân Ngài đi bộ",
       "Con lừa con"
     ],
     "tags": [
@@ -3136,13 +3136,13 @@
     ],
     "verseEnd": 46,
     "content": "Hai cảnh phán xét trong Ma-thi-ơ 7:21-23 và 25:31-46 đều có lời 'Hãy lui ra khỏi ta'. Điểm KHÁC nhau cốt lõi giữa hai cảnh là gì?",
-    "explanation": "Ma-thi-ơ 7:21-23 — Chúa loại bỏ kẻ tự xưng 'Lạy Chúa, lạy Chúa', làm tiên tri, đuổi quỷ, vì 'không làm theo ý muốn Cha'. 25:31-46 — phán xét toàn dân các nước về cách đối đãi với 'một trong những người rất hèn mọn' (đói, khát, lạ, trần truồng, đau, tù).",
+    "explanation": "Câu hỏi yêu cầu tìm điểm khác nhau cốt lõi giữa hai cảnh phán xét trong Ma-thi-ơ 7:21-23 và 25:31-46, dù cả hai đều có lời 'Hãy lui ra khỏi ta'.\n\nĐÁP ÁN ĐÚNG: 'Cảnh 7 lên án người tự xưng môn đồ làm phép lạ; cảnh 25 lên án sự thờ ơ với người túng thiếu' là chính xác. Ma-thi-ơ 7:22-23 tập trung vào những người nhân danh Chúa làm phép lạ (nói tiên tri, đuổi quỷ) nhưng không làm theo ý muốn Cha. Ma-thi-ơ 25:41-45 lên án những người không thực hiện các việc thiết thực cho 'những kẻ rất hèn mọn nhất' (cho ăn, cho uống, tiếp khách...), tức là sự thờ ơ, thiếu lòng thương xót đối với người túng thiếu.\n\nDISTRACTOR SAI 1 ('Cảnh 7 lên án người giữ hình thức tôn giáo; cảnh 25 lên án người không giữ đạo đức cá nhân'): Đây là distractor 'gần đúng' (almost-right) nhưng thuộc loại lỗi 'true_but_off' (đúng văn bản nhưng lạc câu hỏi). Mặc dù Ma-thi-ơ 7 có đề cập đến người giả hình (ví dụ: cầu nguyện nơi đường phố), nhưng đoạn 7:21-23 cụ thể lên án những người 'tự xưng môn đồ' và khoe khoang việc làm phép lạ. Distractor này mô tả chung chung hơn và không bắt được điểm cụ thể của câu hỏi về sự tương phản giữa 'làm phép lạ' và 'thờ ơ với người túng thiếu'. Phần về cảnh 25 cũng sai vì nó không chỉ về 'đạo đức cá nhân' chung chung, mà là sự thờ ơ cụ thể đối với nhu cầu của người khác.\n\nDISTRACTOR SAI 2 ('Cảnh 7 lên án sự thờ ơ với người túng thiếu; cảnh 25 lên án người tự xưng môn đồ làm phép lạ'): Thuộc loại lỗi 'nearby_passage' (nhầm passage gần). Distractor này đảo ngược hoàn toàn nội dung của hai phân đoạn, gây nhầm lẫn cho người đọc nhớ mang máng. Chủ đề 'thờ ơ với người túng thiếu' thuộc về Ma-thi-ơ 25, không phải Ma-thi-ơ 7. Còn việc 'tự xưng môn đồ làm phép lạ' là trọng tâm của Ma-thi-ơ 7:21-23, không phải của Ma-thi-ơ 25.\n\nDISTRACTOR SAI 3 ('Cảnh 7 lên án người không thực hiện công việc Chúa; cảnh 25 lên án người không rao giảng Phúc Âm'): Thuộc loại lỗi 'wrong_scope' (sai phạm vi). Distractor này đưa ra những lời buộc tội không phù hợp với nội dung cụ thể của hai phân đoạn. Ma-thi-ơ 7:21-23 không nói về 'công việc Chúa' chung chung, mà nói cụ thể về việc làm phép lạ nhân danh Chúa. Ma-thi-ơ 25:31-46 không hề đề cập đến việc 'rao giảng Phúc Âm', mà tập trung vào các hành động yêu thương, phục vụ thể chất cho những người đang cần.",
     "language": "vi",
     "options": [
-      "Cảnh 7 nhắm vào dân ngoại, cảnh 25 nhắm vào riêng dân Y-sơ-ra-ên",
-      "Cảnh 7 ở thiên đàng trong khi cảnh 25 xảy ra dưới đất giữa loài người",
+      "Cảnh 7 lên án người giữ hình thức tôn giáo; cảnh 25 lên án người không giữ đạo đức cá nhân",
+      "Cảnh 7 lên án sự thờ ơ với người túng thiếu; cảnh 25 lên án người tự xưng môn đồ làm phép lạ",
       "Cảnh 7 lên án người tự xưng môn đồ làm phép lạ; cảnh 25 lên án sự thờ ơ với người túng thiếu",
-      "Cảnh 7 chỉ áp dụng cho Pha-ri-si, còn cảnh 25 chỉ cho Sa-đu-sê"
+      "Cảnh 7 lên án người không thực hiện công việc Chúa; cảnh 25 lên án người không rao giảng Phúc Âm"
     ],
     "tags": [
       "Tân Ước",
@@ -3217,13 +3217,13 @@
     ],
     "verseEnd": 14,
     "content": "Trong Ma-thi-ơ 7:13-14, Chúa Jêsus dạy về 'cửa hẹp' và 'cửa rộng'. Lý do thần học cốt yếu để chọn cửa hẹp là gì theo chính lời Kinh Thánh?",
-    "explanation": "Ma-thi-ơ 7:13-14 — 'Cửa rộng và đường khoảng khoát dẫn đến sự hư mất; nhiều người đi vào đó. Còn cửa hẹp và đường chật dẫn đến sự sống; kẻ kiếm được thì ít'. Chọn cửa hẹp vì nó dẫn đến sự sống, còn cửa rộng dẫn đến sự hư mất.",
+    "explanation": "Trong Ma-thi-ơ 7:14, Chúa Jêsus tuyên bố: 'Còn cửa hẹp và đường chật dẫn đến sự sống, kẻ kiếm được thì ít.' Ngài cũng đã mô tả cửa rộng là dẫn đến sự hư mất (c.13). Do đó, lý do thần học cốt yếu để chọn cửa hẹp là vì nó dẫn vào sự sống, trái ngược với sự hư mất của cửa rộng. \n\n- Distractor 1 sai vì nó chỉ mô tả đặc điểm tên gọi của cửa mà không nêu lên hậu quả tối hậu (sự sống/hư mất) như Kinh Thánh nói, đây là lỗi sai phạm vi.\n- Distractor 2 gần đúng vì Ma-thi-ơ 7:14 nói đường chật (cùng chủ đề với cửa hẹp) 'kẻ kiếm được thì ít', nhưng câu hỏi hỏi về 'lý do thần học cốt yếu', là hậu quả (sự sống), chứ không phải mức độ khó tìm. Đây là lỗi trích dẫn từ đoạn văn gần mà không đúng trọng tâm câu hỏi.\n- Distractor 3 sai vì đây là một suy diễn thần học phổ biến (liên hệ cửa hẹp với sự vâng phục), nhưng không phải là lý do cốt yếu được nêu trực tiếp trong chính Ma-thi-ơ 7:13-14. Đây là lỗi hiểu lầm phổ biến.",
     "language": "vi",
     "options": [
-      "Vì cửa hẹp dẫn đến sự sung túc về vật chất ngay trong đời này",
+      "Vì cửa hẹp dẫn đến sự hẹp, còn cửa rộng dẫn đến sự rộng",
       "Vì cửa hẹp dẫn vào sự sống, còn cửa rộng dẫn đến sự hư mất",
-      "Vì cửa hẹp dễ tìm hơn, ai đi cũng tìm được lối vào",
-      "Vì cửa hẹp tránh được sự bắt bớ của người Pha-ri-si lúc đó"
+      "Vì cửa hẹp khó tìm thấy, còn cửa rộng thì dễ tìm thấy",
+      "Vì cửa hẹp đại diện cho sự vâng phục, còn cửa rộng đại diện cho sự phản loạn"
     ],
     "tags": [
       "Tân Ước",
@@ -3841,12 +3841,12 @@
     ],
     "verseEnd": 17,
     "content": "Theo Ma-thi-ơ 16:15-17, Phi-e-rơ xưng nhận Chúa Jêsus là gì khi Ngài hỏi 'còn các ngươi xưng ta là ai?'",
-    "explanation": "Ma-thi-ơ 16:16 — 'Si-môn Phi-e-rơ thưa rằng: Chúa là Đấng Christ, Con Đức Chúa Trời hằng sống'. Chúa đáp: 'Hỡi Si-môn, con Giô-na, ngươi có phước đó; vì chẳng phải thịt và huyết tỏ cho ngươi biết điều nầy đâu, bèn là Cha ta ở trên trời'.",
+    "explanation": "Đáp án đúng dựa trên Ma-thi-ơ 16:16: 'Si-môn Phi-e-rơ thưa rằng: Chúa là Đấng Christ, Con Đức Chúa Trời hằng sống'. Phi-e-rơ tuyên xưng Chúa Jêsus chính xác là Đấng Christ (Mết-si-a) và là Con của Đức Chúa Trời hằng sống.\n\n*   Đáp án sai 1 (*Chúa là Đấng Christ, Con của Đức Chúa Giê-hô-va hằng sống*) là phương án 'gần đúng' nhưng sai một chi tiết quan trọng: trong bản văn, Phi-e-rơ dùng từ **'Đức Chúa Trời'** chứ không phải **'Đức Chúa Giê-hô-va'**. Đây là một sự nhầm lẫn phổ biến về danh xưng (tuy cùng chỉ một Đức Chúa Trời) nhưng không khớp với Kinh Thánh được trích dẫn.\n*   Đáp án sai 2 (*Đấng Tiên tri cao trọng hơn hết của Đức Chúa Trời hằng sống*) dựa trên sự hiểu lầm phổ biến. Một số người (xem Ma-thi-ơ 16:14) từng nghĩ Chúa Jêsus là một trong các tiên tri, nhưng đây không phải là sự xưng nhận chính xác và đầy đủ của Phi-e-rơ trong câu Kinh Thánh này.\n*   Đáp án sai 3 (*Thầy dạy tốt lành được Đức Chúa Trời sai đến và hằng sống*) tuy chứa một số yếu tố có thể đúng về Chúa Jêsus (như là một Thầy dạy được Đức Chúa Trời sai đến), nhưng nó lạc đề và không trả lời trực tiếp câu hỏi. Sự xưng nhận này quá chung chung và thiếu mất hai danh hiệu then chốt mà Phi-e-rơ đã tuyên xưng: **'Đấng Christ'** và **'Con Đức Chúa Trời'**.",
     "language": "vi",
     "options": [
-      "'Thầy là tiên tri vĩ đại nhất trong các tiên tri của Đức Chúa Trời'",
-      "'Thầy là vua dân Giu-đa, đã đến để cứu Y-sơ-ra-ên khỏi La-mã'",
-      "'Thầy là Đấng Mê-si-a được hứa từ thời Áp-ra-ham đến giờ'",
+      "Chúa là Đấng Christ, Con của Đức Chúa Giê-hô-va hằng sống",
+      "Đấng Tiên tri cao trọng hơn hết của Đức Chúa Trời hằng sống",
+      "Thầy dạy tốt lành được Đức Chúa Trời sai đến và hằng sống",
       "Chúa là Đấng Christ, Con Đức Chúa Trời hằng sống"
     ],
     "tags": [
@@ -4111,12 +4111,12 @@
     ],
     "verseEnd": 12,
     "content": "Theo Ma-thi-ơ 23:8-12, trong lời quở trách Pha-ri-si về sự khoa trương danh hiệu, Chúa Jêsus dạy môn đồ điều gì?",
-    "explanation": "Ma-thi-ơ 23:8-10 — 'Nhưng các ngươi đừng chịu ai gọi mình bằng thầy; vì các ngươi chỉ có một Thầy, và các ngươi hết thảy đều là anh em. Cũng đừng gọi ai trên đất là cha mình; vì các ngươi chỉ có một Cha, là Đấng ở trên trời. Cũng đừng chịu ai gọi mình là chủ; vì các ngươi chỉ có một Chủ, là Đấng Christ'.",
+    "explanation": "Đoạn Kinh Thánh Ma-thi-ơ 23:8-12 ghi lại lời dạy trực tiếp của Chúa Jêsus: 'Các ngươi đừng gọi ai ở thế gian là thầy; vì các ngươi chỉ có một Thầy, và các ngươi hết thảy đều là anh em. Cũng đừng gọi ai ở thế gian là cha; vì các ngươi chỉ có một Cha, ở trên trời. Cũng đừng chịu ai gọi mình là chủ; vì các ngươi chỉ có một Chủ, là Đấng Christ.' (c.8-10). Đáp án đúng tóm tắt chính xác mệnh lệnh này: đừng để ai gọi mình bằng các danh hiệu 'thầy', 'cha', 'sư phụ' (chủ, người dẫn dắt), vì chỉ có Một Thầy và Một Cha thật. Distractor 1 (gần đúng) sai vì thêm các điều kiện (đủ mười năm, có con, được xức dầu) không có trong văn bản, làm sai lệch mệnh lệnh tuyệt đối. Distractor 2 sai vì khuyến khích điều ngược lại với tinh thần bài học về sự khiêm nhường và chỉ tôn cao Đức Chúa Trời, đây là một hiểu lầm phổ biến khi áp dụng sai ngữ cảnh. Distractor 3 sai vì lấy chi tiết từ ngữ cảnh gần (sự chỉ trích về việc khoa trương của người Pha-ri-si) nhưng lại đưa ra ngoại lệ ('người ngoại') không hề được đề cập, đồng thời bỏ sót danh hiệu 'chủ' và lý do thần học cốt lõi.",
     "language": "vi",
     "options": [
-      "Phải kính trọng các thầy thông giáo và gọi họ là 'thầy' tự nhiên",
-      "Phải gọi cha thiêng liêng là 'tổ phụ' để bày tỏ sự kính trọng",
-      "Phải dùng tên 'Mê-si-a' khi xưng nhận lẫn nhau trong hội thánh",
+      "Hãy gọi mình là 'thầy' chỉ khi đã dạy đủ mười năm / 'cha' chỉ khi có con / 'sư phụ' chỉ khi được xức dầu",
+      "Hãy tôn trọng những ai được gọi là 'thầy' và 'cha', vì họ là người dẫn dắt thuộc linh quan trọng",
+      "Đừng để ai gọi mình là 'rabbi' hay 'cha', nhưng có thể chấp nhận tước hiệu 'sư phụ' từ người ngoại",
       "Đừng để ai gọi mình là 'thầy' (Rabbi) / 'cha' / 'sư phụ' — vì có MỘT THẦY và MỘT CHA"
     ],
     "tags": [

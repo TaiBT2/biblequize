@@ -90,13 +90,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ê-sai 6:3 - Thánh thay (Kadosh) được lặp lại 3 lần, nhấn mạnh sự thánh khiết tuyệt đối của Chúa.",
+    "explanation": "Theo Ê-sai 6:3, các Sê-ra-phim kêu lên rằng: \"Thánh thay, thánh thay, thánh thay là Đức Giê-hô-va vạn quân; khắp đất đầy dẫy sự vinh hiển của Ngài.\" Đáp án đúng trích dẫn chính xác lời tuyên bố ba lần 'Thánh thay' và danh xưng 'Đức Giê-hô-va vạn quân'. \n\n- Distractor 1 (gần đúng) thay từ 'Thánh' bằng 'Sáng láng', một từ đồng nghĩa gần nhưng không chính xác với nguyên văn. \n- Distractor 2 dùng 'chúc tôn' thay vì 'thánh' và 'toàn năng' thay vì 'vạn quân', đây là một sự diễn đạt phổ biến nhưng không đúng bản văn. \n- Distractor 3 lấy ý từ nửa sau của câu 3 ('vinh hiển của Đức Giê-hô-va') để thay thế cho danh xưng chính xác, dù cụm từ này xuất hiện trong cùng phân đoạn.",
     "language": "vi",
     "verseEnd": 3,
     "options": [
-      "Vinh hiển cho Chúa",
-      "Ha-lê-lu-gia",
-      "A-men",
+      "Sáng láng thay, sáng láng thay, sáng láng thay là Đức Giê-hô-va vạn quân",
+      "Chúc tôn thay, chúc tôn thay, chúc tôn thay là Đức Giê-hô-va toàn năng",
+      "Thánh thay, thánh thay, thánh thay là vinh hiển của Đức Giê-hô-va",
       "Thánh thay, thánh thay, thánh thay là Đức Giê-hô-va vạn quân"
     ],
     "tags": [
@@ -703,12 +703,12 @@
       3
     ],
     "content": "Theo Ê-sai 40:3, có tiếng kêu trong đồng vắng: 'Hãy ___ đường của Đức Giê-hô-va; Hãy LÀM THẲNG đường cái trong đồng bằng cho Đức Chúa Trời chúng ta'?",
-    "explanation": "Ê-sai 40:3 — 'Có tiếng kêu rằng: Hãy mở đường trong đồng vắng cho Đức Giê-hô-va, hãy ban bằng đường cái trong đồng bằng cho Đức Chúa Trời chúng ta!' Cả 4 sách Phúc âm trích áp dụng cho Giăng Báp-tít — sứ giả dọn đường Christ. Mở đầu phần 2 của Ê-sai (40-66) đặc trưng 'sứ điệp an ủi'.",
+    "explanation": "Câu hỏi trích dẫn Ê-sai 40:3, yêu cầu điền từ trong lời tiên tri về một tiếng kêu trong đồng vắng. Đáp án đúng là 'DỌN đường' vì đó là động từ chính xác trong bản dịch BTT cho chỗ trống. Phần giải thích đi kèm cũng đúng, vì lời này được trích dẫn cho sứ mạng của Giăng Báp-tít trong cả bốn sách Phúc âm (Ma-thi-ơ 3:3, Mác 1:3, Lu-ca 3:4, Giăng 1:23).\n\nCác đáp án sai: 1) Sai chi tiết số lượng: Distractor này có đúng từ 'DỌN' và bối cảnh, nhưng lại nói 'trong 3 Phúc âm', trong khi thực tế là cả 4 sách Phúc âm đều trích dẫn. 2) Đúng văn bản nhưng lạc câu hỏi: Distractor này có phần giải thích trích dẫn chính xác, nhưng từ điền vào chỗ trống là 'SỬA' — một từ đồng nghĩa gần nhưng không phải là từ chính xác trong văn bản Kinh Thánh được hỏi đến. 3) Hiểu lầm phổ biến: Distractor này dùng đúng từ 'DỌN', nhưng lại cho rằng lời này 'được trích cho Ê-sai', trong khi thực tế lời tiên tri của Ê-sai được Tân Ước trích dẫn để áp dụng cho Giăng Báp-tít.",
     "language": "vi",
     "options": [
-      "Tránh đường",
-      "Đốt đường",
-      "Phá đường",
+      "DỌN đường — Lời này được trích cho Giăng Báp-tít trong 3 Phúc âm (Mat 3:3, Mác 1:3, Lu-ca 3:4)",
+      "SỬA đường — Lời này được trích cho Giăng Báp-tít trong cả 4 Phúc âm (Mat 3:3, Mác 1:3, Lu-ca 3:4, Giăng 1:23)",
+      "DỌN đường — Lời này được trích cho Ê-sai trong cả 4 Phúc âm (Mat 3:3, Mác 1:3, Lu-ca 3:4, Giăng 1:23)",
       "DỌN đường — Lời này được trích cho Giăng Báp-tít trong cả 4 Phúc âm (Mat 3:3, Mác 1:3, Lu-ca 3:4, Giăng 1:23)"
     ],
     "tags": [
@@ -860,13 +860,13 @@
       2
     ],
     "content": "Theo Ê-sai 55:1, lời mời gọi cho người KHÁT là gì?",
-    "explanation": "Ê-sai 55:1 — 'Hỡi những kẻ nào khát, hãy đến suối nước! Còn người nào không có tiền bạc, hãy đến, mua mà ăn! Hãy đến, mua rượu và sữa mà không cần tiền, không trả giá'. Lời mời gọi MIỄN PHÍ — không bao gồm trong giáo lý 'cứu rỗi bởi việc làm'. Nguồn cảm hứng cho Khải Huyền 22:17 ('Ai khát hãy đến...miễn phí').",
+    "explanation": "Trong Ê-sai 55:1, tiên tri kêu gọi: 'Hãy đến, hỡi các ngươi hết thảy khát-khao, hãy đến dưới nước; và các ngươi không có tiền-bạc, hãy đến, mua và ăn; hãy đến, mua rượu và sữa mà không cần tiền, không cần giá.' Đáp án đúng trích dẫn chính xác phần cuối của lời mời trực tiếp cho người khát: 'Hãy đến, mua rượu và sữa mà không cần tiền'. Distractor 1 ('Hãy đến, mua lúa mì và sữa mà không cần tiền') sai vì thay từ 'rượu' bằng 'lúa mì', đây là một chi tiết sai so với văn bản gốc. Distractor 2 ('Hãy đến, mua rượu và sữa với giá rẻ') sai vì biểu đạt một quan niệm sai phổ biến là 'với giá rẻ', trong khi văn bản nhấn mạnh 'không cần tiền, không cần giá' (hoàn toàn miễn phí). Distractor 3 ('Hãy đến, lấy nước mà không cần tiền') là gần đúng vì đúng với tinh thần lời mời (đến và nhận lãnh miễn phí) và xuất hiện từ 'nước' trong câu đầu, nhưng đã lạc câu hỏi — câu hỏi hỏi cụ thể lời mời cho người 'khát', và lời mời đó là 'mua rượu và sữa' chứ không phải chỉ 'lấy nước'.",
     "language": "vi",
     "options": [
-      "'Hãy đi tìm vàng'",
-      "'Hãy mua nhiều thức ăn'",
+      "'Hãy đến, mua lúa mì và sữa mà không cần tiền'",
+      "'Hãy đến, mua rượu và sữa với giá rẻ'",
       "'Hãy đến, mua rượu và sữa mà không cần tiền'",
-      "'Hãy giàu có'"
+      "'Hãy đến, lấy nước mà không cần tiền'"
     ],
     "tags": [
       "Cuu Uoc",
@@ -1150,13 +1150,13 @@
       2
     ],
     "content": "Theo Ê-sai 7:14, dấu Đức Giê-hô-va ban cho A-cha trong cơn nguy hiểm của Sy-ri và Y-sơ-ra-ên là gì?",
-    "explanation": "Ê-sai 7:14 — 'Vậy nên, chính Chúa sẽ ban một dấu cho các ngươi: nầy, một gái đồng trinh sẽ chịu thai, sanh ra một trai, và đặt tên là Em-ma-nu-ên'. Mat 1:22-23 trích dẫn và áp dụng lời tiên tri này cho Chúa Giê-xu Christ. Lời tiên tri có hai tầng ứng nghiệm: (1) Ứng nghiệm trước mắt: một con trai được sinh ra trong thời A-cha (Ê-sai 7:16, 8:3-4); (2) Ứng nghiệm trọn vẹn: Chúa Giê-xu Christ sinh bởi nữ đồng trinh Ma-ri. Em-ma-nu-ên nghĩa là 'Đức Chúa Trời ở cùng chúng ta', chỉ về Chúa Giê-xu là Đức Chúa Trời nhập thể.",
+    "explanation": "Ê-sai 7:14 viết: 'Vì vậy, chính Chúa sẽ ban cho các ngươi một dấu: Nầy, một gái đồng trinh sẽ chịu thai, sinh một con trai, và đặt tên là Em-ma-nu-ên.' Do đó, đáp án đúng mô tả chính xác lời hứa về Đấng Mê-si trong văn cảnh này.\n\nCác đáp án sai:\n- Distractor 1 là 'gần đúng' nhưng sai chi tiết then chốt: Kinh Thánh ghi rõ 'sinh một con trai,' không phải 'con gái.'\n- Distractor 2 dựa vào nhầm lẫn với các câu chuyện khác về lửa từ trời trong Cựu Ước (ví dụ: Ê-li), không phải là dấu lạ được hứa trong Ê-sai 7:14 cho A-cha.\n- Distractor 3 phản ánh một sự hiểu lầm phổ biến về cách Chúa cứu giúp; ở đây, dấu lạ là một sự giáng sinh siêu nhiên, không phải sự trỗi dậy của một nhà lãnh đạo quân sự.",
     "language": "vi",
     "options": [
-      "Mưa lửa từ trời",
-      "Một vì sao mới xuất hiện",
+      "Một gái đồng trinh sẽ chịu thai, sinh một con gái và đặt tên là Em-ma-nu-ên",
+      "Đức Giê-hô-va sẽ sai lửa từ trời xuốn thiêu đốt các kẻ thù của A-cha và dân Giu-đa",
       "Một gái đồng trinh sẽ chịu thai, sinh một con trai và đặt tên là Em-ma-nu-ên",
-      "Một thiên sứ hiện ra giải cứu"
+      "Một người đàn ông trẻ tuổi sẽ được chỉ định lên nắm quyền để giải cứu dân sự"
     ],
     "tags": [
       "Cựu Ước",
@@ -1838,13 +1838,13 @@
       1
     ],
     "content": "Theo Ê-sai 48:22 (lặp 57:21), CÂU lặp 2 lần kết phần làm sao?",
-    "explanation": "Ê-sai 48:22 + 57:21 — 'Đức Giê-hô-va phán: chẳng có bình an cho những kẻ dữ'. CÂU LẶP 2 lần kết phần — 48:22 kết PHẦN 40-48 (= 9 chương BABYLON); 57:21 kết PHẦN 49-57 (= 9 chương Tôi Tớ). Cấu trúc Ê-sai 40-66 chia 3 phần × 9 chương; mỗi phần kết bằng tuyên bố không có bình an cho kẻ dữ.",
+    "explanation": "Ê-sai 48:22 (lặp 57:21) ghi: \"Đức Giê-hô-va phán: Chẳng có bình an cho những kẻ dữ.\" Đáp án đúng trích nguyên văn cụm từ then chốt 'CHẲNG có BÌNH AN cho NHỮNG KẺ DỮ' và chỉ rõ nguồn gốc lời tuyên bố là 'Đức Giê-hô-va PHÁN'.\n\nDistractor #1 sai vì thay thế đối tượng (những kẻ dữ) thành người công bình, làm đảo ngược hoàn toàn ý nghĩa của câu Kinh Thánh.\nDistractor #2 sai vì mở rộng phạm vi đối tượng một cách mơ hồ thành 'dân nầy', không khớp với cụm từ cụ thể 'những kẻ dữ' được dùng trong câu.\nDistractor #3 (phương án gần đúng) có ý nghĩa tương tự nhưng sai về mặt trích dẫn: nó dùng từ ngữ diễn giải ('Sự bình an không có') và thiếu cụm 'Đức Giê-hô-va phán' vốn là phần quan trọng chỉ ra nguồn gốc của lời tuyên bố, khiến câu trả lời không đầy đủ so với yêu cầu trích dẫn chính xác của câu hỏi.",
     "language": "vi",
     "options": [
-      "'Phước cho người công bình'",
+      "'BÌNH AN CHO NGƯỜI CÔNG BÌNH' — Đức Giê-hô-va PHÁN",
       "'CHẲNG có BÌNH AN cho NHỮNG KẺ DỮ' — Đức Giê-hô-va PHÁN",
-      "'Phước cho người trung tín'",
-      "'Đức Chúa Trời ở khắp mọi nơi'"
+      "'CHẲNG có BÌNH AN cho DÂN NẦY' — Đức Giê-hô-va PHÁN",
+      "'SỰ BÌNH AN KHÔNG CÓ cho KẺ DỮ'"
     ],
     "tags": [
       "Cuu Uoc",
@@ -2100,13 +2100,13 @@
       0
     ],
     "content": "KIỂU 1 cross-ref — Ê-sai 53 được Tân Ước trích NHIỀU LẦN. Liệt kê CÁC trích chính cho Christ?",
-    "explanation": "Ê-sai 53 = đoạn Cựu Ước được TRÍCH NHIỀU NHẤT trong Tân Ước cho Christ. Các trích chính: (1) Mat 8:17 trích 53:4 áp dụng cho mục vụ chữa lành; (2) Acts 8:32-35 — hoạn quan Ê-thi-ô-bi đọc 53:7-8 'như chiên đến hàng làm thịt'; Phi-líp giảng Tin Lành; (3) 1 Phi-e-rơ 2:21-25 trích 53:4-12 dày đặc về sự đại diện; (4) Lu-ca 22:37 trích 53:12 'kể với phạm tội'; (5) Rô-ma 10:16 trích 53:1; (6) Giăng 12:38 trích 53:1 về việc dân không tin. KHÔNG ĐOẠN CỰU ƯỚC NÀO được áp dụng nhiều hơn cho Christ chịu khổ.",
+    "explanation": "Đáp án đúng liệt kê các trích dẫn chính của Ê-sai 53 trong Tân Ước áp dụng trực tiếp cho Chúa Giê-su Christ: Ma-thi-ơ 8:17 (53:4 về mang bệnh tật), Công vụ 8:32-35 (53:7-8 về sự chịu nạn, được Phi-líp giải thích), 1 Phi-e-rơ 2:24 (53:5 về sự chữa lành bởi lằn roi), Lu-ca 22:37 (53:12 về bị liệt vào hàng phạm nhân), và Rô-ma 10:16 (53:1 về sự vâng phục đức tin).\n\nDistractor 1 (wrong_detail) gần đúng vì chứa 3 trích dẫn đúng (Giăng 12:38, Lu-ca 22:37, Rô-ma 10:16) nhưng thêm Mác 15:28, một câu không có trong nhiều bản văn cổ quan trọng và thường được chú thích, nên không phải là trích dẫn 'chính' rõ ràng.\nDistractor 2 (wrong_scope) sai vì Ma-thi-ơ 13:14-15 trích Ê-sai 6 (chương khác), Giăng 1:29 và Hê-bơ-rơ 9:28 không phải là trích dẫn trực tiếp từ Ê-sai 53, còn 1 Cô-rinh-tô 15:3-4 là giải nghĩa tổng quát.\nDistractor 3 (true_but_off) sai vì mặc dù các câu này liên quan đến sự chết của Đấng Christ (Rô-ma 4:25 về sự sống lại, Ma-thi-ơ 27:57-60 về mai táng, Mác 15:24 về chia áo, Giăng 19:33-34 về xương không bị gãy), nhưng không phải là các trích dẫn Tân Ước trực tiếp từ Ê-sai 53, nên lạc trọng tâm câu hỏi yêu cầu 'các trích chính'.",
     "language": "vi",
     "options": [
       "Mat 8:17 (53:4 'mang sự đau ốm'), Acts 8:32-35 (Phi-líp giảng Ê-sai 53 cho hoạn quan Ê-thi-ô-bi), 1 Phi-e-rơ 2:24 (53:5 'lằn roi'), Lu-ca 22:37 (53:12 'kể với phạm tội'), Rô-ma 10:16 (53:1 'ai tin lời chúng ta')",
-      "Chỉ trong Phúc âm Mat",
-      "Chỉ trong Phúc âm Giăng",
-      "Chỉ trong Hê-bơ-rơ"
+      "Giăng 12:38 (53:1 'ai tin lời chúng ta'), Lu-ca 22:37 (53:12 'kể với phạm tội'), Rô-ma 10:16 (53:1 'ai tin lời chúng ta'), Mác 15:28 (53:12 'kể với phạm tội')",
+      "Ma-thi-ơ 13:14-15 (Ê-sai 6:9-10 'nghe mà không hiểu'), Giăng 1:29 ('Chiên Con'), 1 Cô-rinh-tô 15:3-4 (sự chết và sống lại), Hê-bơ-rơ 9:28 (đến lần thứ hai)",
+      "Rô-ma 4:25 (sự sống lại), Ma-thi-ơ 27:57-60 (mai táng), Mác 15:24 (bắt thăm áo xống), Giăng 19:33-34 (không giương xương)"
     ],
     "tags": [
       "Cuu Uoc",
@@ -2598,12 +2598,12 @@
       3
     ],
     "content": "Ê-sai 26:3 — câu CHÍNH XÁC là gì?",
-    "explanation": "Ê-sai 26:3 (RVV11) — 'Người nào để trí mình nương dựa nơi Ngài, thì Ngài sẽ gìn giữ người trong sự bình yên trọn vẹn, vì người nhờ cậy Ngài'. Trong tiếng Hê-bơ-rơ, 'shalom shalom' (bình an bình an) nhấn mạnh sự bình an hoàn toàn, trọn vẹn. Điều kiện là có tâm trí kiên định, nương cậy nơi Chúa.",
+    "explanation": "Ê-sai 26:3 (BTT) chép chính xác: 'Người nào để trí mình nương dựa nơi Ngài, thì Ngài sẽ gìn giữ người trong sự bình yên trọn vẹn, vì người nhờ cậy Ngài'. Đáp án đúng trích nguyên văn.\n\nCác đáp án sai:\n1. Sai chi tiết: Thay 'bình yên trọn vẹn' bằng 'bình an' và 'nhờ cậy' bằng 'tin cậy', làm thay đổi từ ngữ chính xác.\n2. Nhầm passage gần: Dùng từ 'ban cho' thay vì 'gìn giữ', đây là sự diễn đạt khác có thể xuất hiện trong ngữ cảnh gần nhưng không phải văn bản gốc của câu này.\n3. Hiểu lầm phổ biến: Thay 'trí mình' bằng 'lòng mình', một sự thay thế phổ biến do cách diễn giải ý nghĩa, nhưng không đúng nguyên tác.",
     "language": "vi",
     "options": [
-      "'Người được phước'",
-      "'Đức Chúa Trời ban phước'",
-      "'Hãy nhịn nhục'",
+      "'Người nào để trí mình nương dựa nơi Ngài, thì Ngài sẽ gìn giữ người trong sự bình an, vì người tin cậy Ngài'",
+      "'Người nào để trí mình nương dựa nơi Ngài, thì Ngài sẽ ban cho người sự bình yên trọn vẹn, vì người nhờ cậy Ngài'",
+      "'Người nào để lòng mình nương dựa nơi Ngài, thì Ngài sẽ gìn giữ người trong sự bình yên trọn vẹn, vì người nhờ cậy Ngài'",
       "'Người nào để trí mình nương dựa nơi Ngài, thì Ngài sẽ gìn giữ người trong sự bình yên trọn vẹn, vì người nhờ cậy Ngài'"
     ],
     "tags": [

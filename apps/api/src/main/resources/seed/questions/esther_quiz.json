@@ -238,14 +238,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "E-xơ-tê 7:3-4 - E-xơ-tê bày tỏ thân phận Do-thái và tố cáo Ha-man. Sự can đảm cứu cả dân tộc.",
+    "explanation": "Trong Ê-xơ-tê 7:3-4, E-xơ-tê đáp với vua: 'Nếu tôi được ơn trước mặt vua, và nếu vua lấy làm thiện, xin hãy nhậm cho tôi được sống, và xin hãy ban cho dân tộc tôi.' Bà xin cứu mạng bà và dân tộc bà (người Do Thái). Đáp án sai 1 ('Cứu mạng bà và các con trai bà') gần đúng nhưng sai chi tiết: bà xin cho dân tộc, không chỉ con trai riêng. Đáp án sai 2 ('Trừng phạt Ha-man vì dám thân cận vua') lạc đề: dù Ha-man bị trừng phạt, đây không phải điều bà trực tiếp xin tại tiệc này. Đáp án sai 3 ('Được phép thờ phượng Đức Chúa Trời của bà') nhầm passage gần: liên quan đến chủ đề đức tin nhưng không phải nội dung câu 3-4.",
     "language": "vi",
     "verseEnd": 4,
     "options": [
       "Cứu mạng bà và dân tộc bà",
-      "Vàng bạc",
-      "Quyền lực",
-      "Đất đai"
+      "Cứu mạng bà và các con trai bà",
+      "Trừng phạt Ha-man vì dám thân cận vua",
+      "Được phép thờ phượng Đức Chúa Trời của bà"
     ],
     "tags": [
       "Cựu Ước",
@@ -366,13 +366,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ê-xơ-tê 2:5-6 — 'Tại Su-sơ, kinh đô có một người Giu-đa, tên là Mạc-đô-chê... bị bắt làm phu tù từ Giê-ru-sa-lem cùng với Giê-cô-nia, vua Giu-đa.'",
+    "explanation": "Đáp án đúng là 'Người Giu-đa, bị bắt từ Giê-ru-sa-lem' vì trong E-xơ-tê 2:5-6 rõ ràng mô tả Mạc-đô-chê là 'người Giu-đa' và 'bị bắt từ Giê-ru-sa-lem' cùng với Giê-chô-nia, vua Giu-đa. Các đáp án sai: 1) 'Người Giu-đa, bị bắt từ thành Su-sơ' sai vì thành Su-sơ là nơi ông sống trong thời kỳ câu chuyện, không phải nơi ông bị bắt đi. 2) 'Người Bên-gia-min, bị bắt từ Giê-ru-sa-lem' sai vì mặc dù đoạn 2:5 có nói ông thuộc chi phái Bên-gia-min, nhưng câu hỏi hỏi về 'dân tộc' (nationality/people), và trong ngữ cảnh Kinh Thánh, 'người Giu-đa' (Jew) là từ chỉ dân tộc chính xác, còn 'Bên-gia-min' là chi phái; hơn nữa, đây là một chi tiết ở ngay passage gần có thể gây nhầm lẫn. 3) 'Người Do Thái, sống tại thành Su-sơ' sai vì mặc dù 'Do Thái' thường đồng nghĩa với 'Giu-đa' và ông sống ở Su-sơ, nhưng câu hỏi hỏi cụ thể về nơi ông 'đến từ đâu' (nơi bị bắt), không phải nơi ông đang sống; đáp án này đúng một phần thông tin nhưng lạc trọng tâm câu hỏi.",
     "language": "vi",
     "options": [
-      "Người Ai-cập từ A-lê-xan-đri",
-      "Người La-mã từ Rô-ma",
+      "Người Giu-đa, bị bắt từ thành Su-sơ",
+      "Người Bên-gia-min, bị bắt từ Giê-ru-sa-lem",
       "Người Giu-đa, bị bắt từ Giê-ru-sa-lem",
-      "Người Hy Lạp từ A-thên"
+      "Người Do Thái, sống tại thành Su-sơ"
     ],
     "tags": [
       "Cựu Ước",

@@ -61,13 +61,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Kinh Thánh ghi: \"Phước cho người nào chẳng theo mưu kế của kẻ ác, chẳng đứng trong đường tội nhân, không ngồi trong chỗ của kẻ nhạo báng\" (Thi 1:1). Đây là mô tả đầy đủ về người được phước.",
+    "explanation": "Đáp án đúng là \"Cả ba đặc điểm trên\", vì Thi-thiên 1:1 mô tả đầy đủ người được phước là người không đi trong mưu kế của kẻ dữ, không đứng trong đường của tội nhân, và không ngồi trong chỗ của kẻ nhạo báng. Phương án sai thứ nhất (\"Chỉ không đi trong đường của kẻ ác\") là sai phạm vi, vì bỏ sót hai đặc điểm còn lại. Phương án sai thứ hai (\"Chỉ không đứng trong đường tội nhân và không ngồi chỗ kẻ nhạo báng\") là sai chi tiết then chốt (gần đúng ~90%), vì thiếu điều kiện \"không đi trong mưu kế kẻ dữ\". Phương án sai thứ ba (\"Là người ghi nhớ và làm theo Kinh Luật cả đêm lẫn ngày\") tuy mô tả đúng tâm tình người được phước trong câu 2, nhưng lạc câu hỏi vì câu hỏi chỉ hỏi mô tả ở câu 1.",
     "language": "vi",
     "options": [
-      "Người không đi theo mưu kế của kẻ ác",
-      "Người không đứng trong đường tội nhân",
+      "Chỉ không đi trong đường của kẻ ác",
+      "Chỉ không đứng trong đường tội nhân và không ngồi chỗ kẻ nhạo báng",
       "Cả ba đặc điểm trên",
-      "Người không ngồi trong chỗ của kẻ nhạo báng"
+      "Là người ghi nhớ và làm theo Kinh Luật cả đêm lẫn ngày"
     ],
     "tags": [
       "Cựu Ước",
@@ -192,13 +192,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Rapha (רפה) có nghĩa là \"buông tay, thả lỏng\", không chỉ im lặng mà còn buông bỏ sự lo lắng.",
+    "explanation": "Câu trả lời đúng là 'Rapha - Buông tay, thả lỏng'. Trong Thi Thiên 46:10, từ Hê-bơ-rơ được dùng là 'רְפוּ' (raphu), là dạng mệnh lệnh của gốc 'רפה' (raphah), có nghĩa chính là 'nới lỏng', 'buông ra' hoặc 'thả lỏng', hàm ý ngừng chiến đấu, từ bỏ sự cố gắng và đầu phục Chúa.\n\nCác câu trả lời sai:\n1. 'Dâman - Ngừng nói, giữ im lặng': Đây là một lỗi 'nearby_passage'. Mặc dù 'Dâman' (דָּמַם) có nghĩa là 'im lặng' hoặc 'ngừng nói' và xuất hiện trong các ngữ cảnh tương tự về sự tĩnh lặng (như trong Thi Thiên 62:1, 5), nhưng nó không phải là từ được dùng trong Thi Thiên 46:10.\n2. 'Shâbat - Ngừng lao động, nghỉ ngơi': Đây là một lỗi 'wrong_detail'. Từ 'Shâbat' (שָׁבַת) thường liên quan đến việc ngừng lao động, như trong ngày Sa-bát, hoặc sự ngưng nghỉ. Nó sai về mặt chi tiết từ vựng so với từ 'Rapha' trong câu.\n3. 'Chârâsh - Thụt lùi, lánh xa': Đây là một lỗi 'common_misconception'. Một số người có thể hiểu lầm rằng 'yên lặng' trong văn cảnh này có nghĩa là rút lui hoặc lánh xa khỏi một tình huống. Tuy nhiên, 'Chârâsh' (חָרַשׁ) thực tế có nghĩa chính là 'cày', 'làm thợ' hoặc 'im lặng' (theo nghĩa không nói), không phải là 'thụt lùi', và cũng không phải từ dùng trong câu này.",
     "language": "vi",
     "options": [
-      "Chashah - Dừng lại",
+      "Dâman - Ngừng nói, giữ im lặng",
       "Rapha - Buông tay, thả lỏng",
-      "Dumah - Im lặng",
-      "Shabbat - Nghỉ ngơi"
+      "Shâbat - Ngừng lao động, nghỉ ngơi",
+      "Chârâsh - Thụt lùi, lánh xa"
     ],
     "tags": [
       "Thi Thiên",
@@ -995,13 +995,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Thi Thiên 55:22 — 'Hãy trao gánh nặng ngươi cho Đức Giê-hô-va, Ngài sẽ nâng đỡ ngươi; Ngài sẽ chẳng hề cho người công bình bị rúng động.'",
+    "explanation": "Thi Thiên 55:22 viết: \"Hãy trao gánh nặng mình cho Đức Giê-hô-va, Ngài sẽ nâng đỡ ngươi; Ngài chẳng hề để người công bình bị rúng động.\" (BTT). Do đó, đáp án đúng là trao cho Đức Giê-hô-va và Ngài hứa sẽ nâng đỡ.\n\nCác đáp án sai: 1) Sai chi tiết đối tượng - Kinh Thánh khuyên trao cho Đức Giê-hô-va, không phải cho cộng đồng. 2) Hiểu lầm phổ biến - Kinh Thánh không đặt điều kiện 'khi cảm thấy sẵn sàng', mà khuyên làm điều đó. 3) Đúng văn bản nhưng lạc câu hỏi - mặc dù Đức Chúa Trời có thể dạy dỗ, nhưng lời hứa cụ thể trong câu này là 'Ngài sẽ nâng đỡ', không phải chỉ dạy cách tự giải quyết.",
     "language": "vi",
     "options": [
-      "Bỏ đi",
+      "Trao gánh nặng cho cộng đồng — họ sẽ nâng đỡ",
       "Trao gánh nặng cho Đức Giê-hô-va — Ngài sẽ nâng đỡ",
-      "Tự gánh đến cùng",
-      "Chia với bạn bè"
+      "Trao gánh nặng cho Đức Giê-hô-va khi cảm thấy sẵn sàng",
+      "Trao gánh nặng cho Đức Giê-hô-va để Ngài dạy bạn cách tự mình giải quyết"
     ],
     "tags": [
       "Cựu Ước",
@@ -2703,13 +2703,13 @@
     ],
     "verseEnd": 19,
     "content": "Thi Thiên 1 và Thi Thiên 73 cả hai đều xét về 'kẻ ác' và 'người công bình'. Sự khác biệt cốt lõi của Thi 73 so với Thi 1 là gì?",
-    "explanation": "Thi 73:2-12 — A-sáp ghen tỵ vì kẻ ác hưng thịnh, gần đến chỗ trượt ngã. 73:16-17 — 'Khi tôi suy gẫm để hiểu biết điều ấy, bèn thấy là việc lao khổ quá cho tôi, cho đến khi tôi VÀO NƠI THÁNH của Đức Chúa Trời, suy lượng về sự cuối cùng của chúng nó'. Crisis đức tin được giải đáp qua thờ phượng.",
+    "explanation": "Câu hỏi yêu cầu tìm sự khác biệt cốt lõi của Thi Thiên 73 so với Thi Thiên 1. Thi Thiên 1 trình bày một sự so sánh rõ ràng, tĩnh tại giữa đường lối của người công bình và kẻ ác (Thi 1:4-6). Trong khi đó, Thi Thiên 73 mô tả một CUỘC KHỦNG HOẢNG (crisis) đức tin cá nhân của tác giả khi thấy kẻ ác thịnh vượng (Thi 73:2-3, 12-14), và sự giải đáp cho khủng hoảng này chỉ đến khi tác giả VÀO ĐỀN THÁNH ĐỨC CHÚA TRỜI và nhìn mọi sự từ quan điểm đời đời (Thi 73:17). Do đó, đáp án đúng nêu bật yếu tố 'crisis' và điểm mấu chốt 'khi vào đền thánh'.\n\nCác đáp án sai:\n1. (Đáp án gần đúng, errorType: true_but_off) Đáp án này đúng về cấu trúc và chủ đề nhưng sai ở chi tiết then chốt. Nó thay từ 'crisis' (khủng hoảng) bằng 'sự an ủi' và nói 'từ lúc bắt đầu đến cuối bài'. Thực tế, tác giả trải qua sự bối rối, ghen tức (Thi 73:3, 13) trước khi tìm được sự an ủi, và sự an ủi chỉ đến ở phần sau sau khi vào đền thánh.\n2. (errorType: wrong_detail) Đáp án này sao chép cấu trúc của đáp án đúng nhưng thay chi tiết quan trọng 'đền thánh' bằng 'rừng vắng'. Trong bối cảnh Kinh Thánh, 'đền thánh' (nơi thánh) là nơi gặp gỡ Đức Chúa Trời và nhận lãnh sự mặc khải (Thi 73:17), không phải 'rừng vắng'.\n3. (errorType: common_misconception) Đáp án này đưa ra một cách giải quyết phổ biến trong tưởng tượng (giấc mơ), nhưng không dựa trên văn bản. Sự giải đáp trong Thi 73 đến từ việc 'vào đền thánh' và hiểu được sự cuối cùng của kẻ ác (Thi 73:17-19), không phải qua một giấc mơ.",
     "language": "vi",
     "options": [
-      "Thi 73 phủ nhận quan điểm của Thi 1 và nói kẻ ác sẽ không bao giờ bị phán xét",
+      "Thi 73 mô tả sự an ủi của tác giả khi thấy kẻ ác hưng thịnh, từ lúc bắt đầu đến cuối bài",
       "Thi 73 mô tả CRISIS đức tin của tác giả khi thấy kẻ ác hưng thịnh, được giải đáp khi VÀO ĐỀN THÁNH",
-      "Thi 73 chỉ nói về cá nhân Đa-vít, không có ứng dụng cho dân Y-sơ-ra-ên cả",
-      "Thi 73 đồng nhất với Thi 1, chỉ khác là dùng tiếng Hê-bơ-rơ thay vì A-ram"
+      "Thi 73 mô tả sự bình an của tác giả khi thấy kẻ ác hưng thịnh, được giải đáp khi VÀO RỪNG VẮNG",
+      "Thi 73 mô tả sự suy ngẫm của tác giả về kẻ ác hưng thịnh, được giải đáp qua một GIẤC MƠ"
     ],
     "tags": [
       "Cựu Ước",
@@ -2838,13 +2838,13 @@
     ],
     "verseEnd": 11,
     "content": "Thi 95:7-11 cảnh báo: 'Ngày nay nếu các ngươi nghe tiếng Ngài, chớ cứng lòng như tại Mê-ri-ba'. Tác giả Hê-bơ-rơ áp dụng câu này nhiều lần (Hê 3:7-11; 4:1-11) để dạy điều gì?",
-    "explanation": "Hê-bơ-rơ 3:7-15, 4:1-11 mở rộng ý 'ngày nay' của Thi 95: thời điểm vâng lời là HIỆN TẠI, không phải tương lai. Sự yên nghỉ thật là sự yên nghỉ thuộc linh trong Đấng Christ, không chỉ là vùng đất hứa thời Giô-suê.",
+    "explanation": "Đáp án đúng dựa trên Hê-bơ-rơ 3:13, 15 và 4:9-11, nhấn mạnh sự khẩn cấp của việc vâng lời 'ngày nay' (today) để được vào sự yên nghỉ Sa-bát còn lại cho dân Chúa. Distractor 1 sai vì thay 'ngày nay' bằng 'ngày mai' (sai chi tiết then chốt về thời gian khẩn cấp). Distractor 2 sai vì trích đúng văn bản về sự nghỉ ngơi sau sáng tạo (Hê 4:4) nhưng lạc trọng tâm câu hỏi về sự áp dụng 'ngày nay' cho sự yên nghỉ còn lại. Distractor 3 sai vì mở rộng phạm vi sang khái niệm yên nghỉ đời đời sau khi chết, không phải trọng tâm của đoạn này vốn nói về sự yên nghỉ Sa-bát cho dân Chúa trong hiện tại.",
     "language": "vi",
     "options": [
-      "Phải giữ ngày Sa-bát theo mọi nghi thức Cựu Ước trong tuần",
-      "Phải kiêng ăn ít nhất một ngày trong tuần để được vào sự yên nghỉ",
+      "Phải vâng lời 'NGÀY MAI' (tomorrow) — vì có sự yên nghỉ Sa-bát còn lại cho dân Đức Chúa Trời",
+      "Phải vâng lời 'NGÀY NAY' (today) — vì Đức Chúa Trời đã nghỉ ngơi sau sự sáng tạo",
       "Phải vâng lời 'NGÀY NAY' (today) — vì có sự yên nghỉ Sa-bát còn lại cho dân Đức Chúa Trời",
-      "Phải đến đền thờ Giê-ru-sa-lem ít nhất ba lần mỗi năm theo luật"
+      "Phải vâng lời 'NGÀY NAY' (today) — vì có sự yên nghỉ đời đời sau khi chết"
     ],
     "tags": [
       "Cựu Ước",
@@ -3114,13 +3114,13 @@
     ],
     "verseEnd": 9,
     "content": "'Thi thiên rủa sả' (imprecatory psalms) cầu xin Đức Chúa Trời phán xét kẻ thù. Thi 137 là ví dụ nổi bật vì câu rủa sả nào (137:8-9)?",
-    "explanation": "Thi 137:8-9 — 'Hỡi con gái Ba-by-lôn, là kẻ phải bị diệt, phước cho người báo trả ngươi! Phước cho người bắt con nhỏ ngươi, đem chà nát vào hòn đá!' Đây là phản ứng đầy đau khổ của dân lưu đày sau khi Giê-ru-sa-lem bị Ba-by-lôn phá hủy (586 TCN).",
+    "explanation": "Thi Thiên 137:8-9 (BTT) ghi: 'Hỡi con gái Ba-by-lôn, là kẻ sẽ bị tàn hại, phước cho người báo trả ngươi như ngươi đã báo trả chúng ta! Phước cho người bắt con nhỏ ngươi mà đem chà nát vào hòn đá!' Đoạn này gọi Ba-by-lôn là đối tượng bị báo trả (137:8), lời cầu nguyện cụ thể ở 137:9 là về việc chà nát con trẻ Ba-by-lôn. Đáp án đúng nêu đúng đối tượng Ba-by-lôn và hành động 'chà nát'.\n\nCác đáp án sai:\n1. Sai vì nhầm với câu rủa sả gần đó: Câu 7 có nhắc đến Ê-đôm ('Hãy nhớ lại, Đức Giê-hô-va... về ngày thành Giê-ru-sa-lem bị phá...'), nhưng lời cầu cụ thể 'bắt con nhỏ... chà nát' ở câu 9 hướng đến Ba-by-lôn, không phải Ê-đôm.\n2. Sai về phạm vi: Dù Thi Thiên 137 có bối cảnh than khóc về việc lưu đày (cầu xin sự cứu chuộc), nhưng câu hỏi chỉ hỏi cụ thể về lời rủa sả trong 137:8-9, nơi tập trung vào sự báo trả Ba-by-lôn, không phải lời cầu xin cứu chuộch chung cho I-sơ-ra-ên.\n3. Sai chi tiết: Sai hành động trong câu Kinh Thánh. Nguyên văn là 'bắt... đem chà nát vào hòn đá', không phải 'bảo vệ... khỏi hòn đá'. Đây là sự đảo ngược ý nghĩa của câu gốc.",
     "language": "vi",
     "options": [
-      "Cầu xin Chúa giết các vua dân ngoại sống chung với Y-sơ-ra-ên trên đất hứa Ca-na-an",
+      "Cầu xin Chúa BÁO TRẢ Ê-đôm — 'Phước cho người bắt con nhỏ chúng nó đem chà nát vào hòn đá'",
       "Cầu xin Chúa BÁO TRẢ Ba-by-lôn — 'Phước cho người bắt con nhỏ ngươi đem chà nát vào hòn đá'",
-      "Cầu xin Chúa giết tất cả vua A-si-ri vì đã đổ máu các tiên tri Cựu Ước",
-      "Cầu xin Chúa hủy diệt thành Sô-đôm và Gô-mô-rơ vì sự gian ác của họ"
+      "Cầu xin Chúa CỨU CHUỘC I-sơ-ra-ên — 'Phước cho người bắt con nhỏ ngươi đem chà nát vào hòn đá'",
+      "Cầu xin Chúa BÁO TRẢ Ba-by-lôn — 'Phước cho người bảo vệ con nhỏ ngươi khỏi hòn đá'"
     ],
     "tags": [
       "Cựu Ước",
@@ -3631,13 +3631,13 @@
     ],
     "verseEnd": 4,
     "content": "Theo Thi 6:1, Đa-vít cầu xin Chúa điều gì khi cảm thấy bị sửa phạt?",
-    "explanation": "Thi 6:1 — 'Đức Giê-hô-va ôi! xin chớ nổi thạnh nộ mà quở trách tôi, cũng đừng nóng giận mà sửa phạt tôi'. Đây là một trong bảy thi thiên sám hối.",
+    "explanation": "Thi Thiên 6:1 ghi lại lời cầu nguyện của Đa-vít: 'Lạy Đức Giê-hô-va, xin chớ quở trách tôi trong cơn giận Chúa, Cũng đừng sửa phạt tôi trong cơn nóng nảy của Ngài.' Do đó, đáp án đúng là 'Đừng quở trách trong cơn giận, đừng sửa phạt trong cơn thạnh nộ'.\n\n- Distractor 1 ('Đừng sửa phạt trong cơn giận, đừng quở trách trong cơn thạnh nộ') sai vì đã đảo lộn chi tiết then chốt: hành động 'quở trách' và 'sửa phạt' không tương ứng chính xác với trạng thái 'cơn giận' và 'cơn thạnh nộ' như trong Kinh Thánh.\n- Distractor 2 ('Đừng quở trách trong cơn thạnh nộ, đừng sửa phạt trong cơn giận') sai vì dựa vào một cách hiểu sai phạm vi từ các câu gần đó (như Thi Thiên 6:2-4 nói về thân xác yếu đuối và linh hồn bị rối loạn) nhưng không đúng với nội dung cụ thể của câu 1.\n- Distractor 3 ('Hãy sửa phạt con trong tình yêu thương') sai vì thể hiện một hiểu lầm phổ biến, mặc dù Chúa sửa phạt vì yêu thương (như trong Châm ngôn 3:12), nhưng đây không phải là lời cầu xin của Đa-vít trong ngữ cảnh cụ thể này; ông cầu xin Chúa đừng sửa phạt trong cơn thạnh nộ.",
     "language": "vi",
     "options": [
-      "Ban thêm sức mạnh thân thể trong cuộc chiến với kẻ thù",
-      "Cho gặp lại bạn hữu thân thiết tại Giê-ru-sa-lem",
+      "Đừng sửa phạt trong cơn giận, đừng quở trách trong cơn thạnh nộ",
+      "Đừng quở trách trong cơn thạnh nộ, đừng sửa phạt trong cơn giận",
       "Đừng quở trách trong cơn giận, đừng sửa phạt trong cơn thạnh nộ",
-      "Đem con cháu đông đảo cho dòng dõi mình mãi mãi"
+      "Hãy sửa phạt con trong tình yêu thương"
     ],
     "tags": [
       "Cựu Ước",
@@ -3820,12 +3820,12 @@
     ],
     "verseEnd": 7,
     "content": "Theo Thi 20:7, sự đối lập về điều mà người công bình tin cậy là gì?",
-    "explanation": "Thi 20:7 — 'Kẻ nầy nhờ cậy xe cộ, kẻ khác nhờ cậy ngựa, nhưng chúng tôi nhờ cậy danh Giê-hô-va, là Đức Chúa Trời chúng tôi'. Đối lập nương cậy vật chất quân đội (xe, ngựa) vs nhờ cậy danh Chúa.",
+    "explanation": "Thi Thiên 20:7 chép: 'Kẻ nầy nhờ cậy xe cộ, kẻ kia nhờ cậy ngựa, Nhưng chúng tôi nhờ cậy danh Giê-hô-va, là Đức Chúa Trời chúng tôi.' Câu hỏi hỏi về sự đối lập với điều người công bình tin cậy. Đáp án đúng 'Xe cộ / hay ngựa — không phải Chúa' đúng vì câu Kinh Thánh nêu rõ những thứ người khác nhờ cậy, đối lập với việc 'chúng tôi' nhờ cậy danh Chúa.\n\nCác đáp án sai: 1) 'Vũ khí / hay khiên thuẫn — không phải Chúa' sai vì mặc dù là thứ thường được nhờ cậy trong chiến trận và gần đúng với ngữ cảnh, nhưng câu Kinh Thánh cụ thể nói 'xe cộ' và 'ngựa', không phải vũ khí hay khiên thuẫn. 2) 'Binh lính / hay vua chúa — không phải Chúa' sai vì ý này có thể suy diễn từ các phân đoạn khác nói về sức mạnh quân sự (nearby passage), nhưng không phải là từ ngữ trực tiếp trong Thi Thiên 20:7. 3) 'Tài nguyên / hay sự giàu có — không phải Chúa' sai vì dù là một hiểu lầm phổ biến về thứ người ta thường nhờ cậy, nó lạc đề so với những gì được nêu cụ thể trong câu Kinh Thánh này (true_but_off).",
     "language": "vi",
     "options": [
-      "Vàng bạc / hay vũ khí — không phải Chúa",
-      "Sức người / hay thần ngoại — không phải Chúa",
-      "Tiên tri / hay luật pháp — không phải Chúa",
+      "Vũ khí / hay khiên thuẫn — không phải Chúa",
+      "Binh lính / hay vua chúa — không phải Chúa",
+      "Tài nguyên / hay sự giàu có — không phải Chúa",
       "Xe cộ / hay ngựa — không phải Chúa"
     ],
     "tags": [
@@ -4555,13 +4555,13 @@
     ],
     "verseEnd": 8,
     "content": "Thi 124 mở đầu với cấu trúc giả thiết nổi tiếng. Câu mở đầu là gì?",
-    "explanation": "Thi 124:1-3 — 'Y-sơ-ra-ên đáng nói: Nếu Đức Giê-hô-va chẳng binh vực chúng ta, khi loài người dấy lên nghịch chúng ta, ắt chúng nó đã nuốt sống chúng ta'. Một trong các Bài Ca Đi Lên (Songs of Ascent).",
+    "explanation": "Câu hỏi tập trung vào câu mở đầu chính xác của Thi Thiên 124. Đáp án đúng trực tiếp trích từ Thi Thiên 124:1: 'NẾU CHẲNG PHẢI Chúa BÊNH VỰC ta thì kẻ thù đã NUỐT ta SỐNG'. \n\n- Distractor 1 sai vì thay 'ta' bằng 'chúng tôi' – đây là lỗi 'nearby_passage', vì 'ta' và 'chúng tôi' xuất hiện xen kẽ trong đoạn trước đó (Thi Thiên 123), gây nhầm lẫn. Đây là distractor 'gần đúng'. \n- Distractor 2 sai vì thay 'kẻ thù' bằng 'dân ngoại' (Thi Thiên 124:5 có 'nước' nhưng không phải 'dân ngoại'), đây là lỗi 'wrong_detail' tự đặt ra chứ không có trong ngữ cảnh. \n- Distractor 3 sai vì thay 'BÊNH VỰC' bằng 'CHE CHỞ', đây là lỗi 'true_but_off' vì từ 'che chở' diễn ý tương tự nhưng KHÔNG phải từ chính xác trong câu mở đầu của Thi Thiên 124, nên không đúng câu hỏi đòi hỏi trích dẫn chính xác.",
     "language": "vi",
     "options": [
-      "'Đức Giê-hô-va là Đấng chăn giữ chúng tôi' (giống Thi 23 đã viết trước)",
-      "'Phước cho người nào không theo mưu kẻ ác' (giống mở Thi 1)",
+      "'NẾU CHẲNG PHẢI Chúa BÊNH VỰC chúng tôi thì kẻ thù đã NUỐT ta SỐNG'",
+      "'NẾU CHẲNG PHẢI Chúa BÊNH VỰC ta thì dân ngoại đã NUỐT ta SỐNG'",
       "'NẾU CHẲNG PHẢI Chúa BÊNH VỰC ta thì kẻ thù đã NUỐT ta SỐNG'",
-      "'Hãy ngợi khen Đức Giê-hô-va vì Ngài là tốt lành' (giống Thi 100)"
+      "'NẾU CHẲNG PHẢI Chúa CHE CHỞ ta thì kẻ thù đã NUỐT ta SỐNG'"
     ],
     "tags": [
       "Cựu Ước",

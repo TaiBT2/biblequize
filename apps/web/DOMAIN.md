@@ -6,7 +6,7 @@
 > **Business rule thuộc backend — trỏ về apps/api/DOMAIN.md.**
 >
 > **Nhãn tin cậy:** `[OBS]` quan sát trong code · `[CANDIDATE]` suy luận · `[?]` chưa rõ · `[✔]` đã xác nhận.
-> Draft 2026-06-11, branch `feat/liturgical-coverage`. **LOCAL-ONLY — không commit.**
+> Draft 2026-06-11, branch `feat/liturgical-coverage`. **Git-tracked** (chia sẻ team từ commit 5170ada).
 > ⚠️ Số dòng dễ trôi; nav theo **symbol** (Serena project `web`).
 
 ---

@@ -137,13 +137,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Nê-hê-mi 6:3 - Nê-hê-mi từ chối bị phân tâm bởi kẻ thù. Tập trung vào sứ mệnh Chúa giao.",
+    "explanation": "Đáp án đúng: 'Tôi đang làm việc lớn, không thể xuống được' (trích ý từ Nê-hê-mi 6:3: 'Tôi bèn sai người đáp với chúng nó rằng: Tôi đương làm công việc lớn, không thể xuống được; công việc sẽ dừng lại trong khi tôi lìa nó đặng xuống cùng các ngươi sao?'). Đây là lời Nê-hê-mi từ chối lời mời của kẻ thù (San-ba-lát, Tô-bi-gia, và Ghê-sem) nhằm làm ông phân tâm khỏi việc xây lại tường thành Giê-ru-sa-lem. Distractor 1 (gần đúng) sai vì dù Nê-hê-mi có quan tâm đến việc thờ phượng, câu trả lời cụ thể trong bối cảnh này là về 'công việc lớn' (xây tường thành), không phải 'việc thờ phượng'. Distractor 2 sai vì mặc dù ông có cùng dân chúng làm việc, câu trả lời của ông nhấn mạnh bản thân công việc ('công việc lớn'), không phải việc đang làm cùng ai. Distractor 3 sai vì Nê-hê-mi không hề đề cập đến thời điểm sẽ xuống hay điều kiện hoàn tất; ông khẳng định dứt khoát là không thể xuống được ngay lúc đó.",
     "language": "vi",
     "options": [
       "Tôi đang làm việc lớn, không thể xuống được",
-      "Gửi người thay",
-      "Tôi sẽ đến ngay",
-      "Để tôi suy nghĩ"
+      "Tôi đang lo việc thờ phượng, không thể xuống được",
+      "Tôi đang cùng dân chúng xây, không thể xuống được",
+      "Tôi sẽ xuống ngay khi hoàn tất công việc này"
     ],
     "tags": [
       "Cựu Ước",
@@ -265,14 +265,14 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Nê-hê-mi 13:15-22 - Nê-hê-mi thấy dân chúng ép nho, chở các lương thực (lúa mì, rượu, nho, trái vả) và buôn bán vào ngày Sa-bát. Ông quở trách họ, đóng cổng thành và cấm việc mang hàng hóa, buôn bán trong ngày đó.",
+    "explanation": "Đoạn Kinh Thánh Nê-hê-mi 13:15-18 ghi rõ Nê-hê-mi thấy người Giu-đa đạp nho, chất chở lúa mì, rượu, nho, trái vả và đủ thứ hàng hóa, rồi đem vào Giê-ru-sa-lem trong ngày Sa-bát. Ông khiển trách và cấm việc buôn bán này (c.15-16). Vì vậy, đáp án đúng là \"Buôn bán và vận chuyển hàng hóa\", phản ánh các hoạt động cụ thể được mô tả. Distractor \"Sản xuất và phân phối hàng hóa\" gần đúng nhưng sai chi tiết then chốt: văn bản nói đến việc chất chở và đem bán (buôn bán, vận chuyển), không nói đến sản xuất hay phân phối tổng quát. Distractor \"Cầu nguyện và dâng tế lễ\" là hiểu lầm phổ biến về các hoạt động thường bị cấm, nhưng ngày Sa-bát lại là thời gian thích hợp cho việc thờ phượng. Distractor \"Trồng trọt và thu hoạch mùa màng\" thuộc đoạn gần (liên quan đến công việc đồng áng, được đề cập trong các luật về Sa-bát khác), nhưng không phải là hành động cụ thể Nê-hê-mi cấm trong đoạn này.",
     "language": "vi",
     "verseEnd": 18,
     "options": [
-      "Nấu ăn",
+      "Sản xuất và phân phối hàng hóa",
       "Buôn bán và vận chuyển hàng hóa",
-      "Nói chuyện",
-      "Đi bộ"
+      "Cầu nguyện và dâng tế lễ",
+      "Trồng trọt và thu hoạch mùa màng"
     ],
     "tags": [
       "Cựu Ước",

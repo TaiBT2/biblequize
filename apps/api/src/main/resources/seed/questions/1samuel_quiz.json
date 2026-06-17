@@ -9,13 +9,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Sa-mu-ên 3:10 - Sa-mu-ên đáp: \"Xin Chúa hãy phán, vì tôi tớ Ngài đang nghe.\" Đây là sự sẵn sàng lắng nghe và vâng phục.",
+    "explanation": "Câu trả lời đúng 'Xin Chúa hãy phán, vì đây tôi tớ Chúa đang nghe' trích từ 1 Sa-mu-ên 3:10, ghi lại lời Sa-mu-ên đáp lại Đức Giê-hô-va sau khi được Hê-li hướng dẫn. Các phương án sai: 'Thưa Hê-li...' là nhầm lẫn gần đúng, dựa trên các câu trước (3:4–8) khi Sa-mu-ên lầm tưởng tiếng gọi của Hê-li; 'Con đây, vì con đang ở trong đền tạm' sai chi tiết về lý do phản hồi, không dựa trên văn bản; 'Lạy Chúa, xin Ngài hãy tha thứ tội lỗi con' là một hiểu lầm phổ biến, áp dụng phản ứng tương tự như của Ê-sai (6:5) hoặc thể hiện sự sợ hãi tội lỗi khi đối diện Chúa, không phải phản ứng của Sa-mu-ên trong ngữ cảnh này.",
     "language": "vi",
     "options": [
       "Xin Chúa hãy phán, vì đây tôi tớ Chúa đang nghe",
-      "Con đang nghe",
-      "Đây con đây",
-      "Xin Chúa đợi"
+      "Thưa Hê-li, tôi tớ Chúa đang nghe đây",
+      "Con đây, vì con đang ở trong đền tạm",
+      "Lạy Chúa, xin Ngài hãy tha thứ tội lỗi con"
     ],
     "tags": [
       "Cựu Ước",
@@ -91,13 +91,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Sa 1:11 - An-ne cầu nguyện trong nước mắt và hứa dâng con cho Chúa. Chúa nhậm lời bà.",
+    "explanation": "Đáp án đúng: \"Một đứa con trai và hứa dâng nó cho Chúa\" dựa trên 1 Sa-mu-ên 1:11, nơi An-ne khấn hứa: \"... xin ban cho con đầy tớ Ngài một đứa con trai, thì con sẽ phú dâng nó trọn đời cho Đức Giê-hô-va...\".\n\nCác đáp án sai:\n1. \"Một đứa con trai và hứa sẽ giữ nó trong nhà\" (wrong_detail): Sai chi tiết then chốt là lời hứa dâng con cho Chúa. Đây là distractor \"gần đúng\" vì đúng về việc cầu xin con trai, nhưng sai lời hứa đi kèm.\n2. \"Được giải thoát khỏi sự sỉ nhục và một của lễ\" (true_but_off): Dù An-ne bị sỉ nhục vì không con (c.6-7) và cha mẹ Sa-mu-ên sau đó dâng của lễ (c.25), nhưng đây không phải điều bà trực tiếp cầu xin trong đoạn 1:10-11, nên lạc trọng tâm câu hỏi.\n3. \"Một đứa con trai để nối dõi và của cải\" (common_misconception): Phản ánh hiểu lầm phổ biến về động cơ sinh con (nối dõi, kinh tế), nhưng trong ngữ cảnh này, An-ne cầu xin với lời hứa dâng con phục vụ Chúa, không nhắc đến của cải hay dòng dõi gia tộc.",
     "language": "vi",
     "verseEnd": 11,
     "options": [
-      "Sự giàu có",
-      "Chiến thắng",
-      "Sức khỏe",
+      "Một đứa con trai và hứa sẽ giữ nó trong nhà",
+      "Được giải thoát khỏi sự sỉ nhục và một của lễ",
+      "Một đứa con trai để nối dõi và của cải",
       "Một đứa con trai và hứa dâng nó cho Chúa"
     ],
     "tags": [
@@ -119,13 +119,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Sa 2:12-17 - Họ không biết Chúa, cướp của lễ và sống vô đạo đức. Hậu quả: cả hai chết cùng ngày.",
+    "explanation": "Trong 1 Sa-mu-ên 2:12-17, hai con trai Hê-li là Hốp-ni và Phi-nê-a bị khiển trách vì xem thường của lễ dâng cho Đức Giê-hô-va (câu 17). Họ sai tôi tớ lấy thịt từ nồi trước khi phần mỡ được dâng lên (câu 15) và đòi lấy thịt sống hoặc thịt đã nấu theo ý mình (câu 15-16), hành động này là 'ăn trộm của lễ'. Thái độ và hành vi của họ tổng thể được mô tả là 'đáng gớm' và tội lỗi (câu 12, 17), thể hiện sự 'sống vô đạo đức'.\n\nDistractor 1 sai vì sai chi tiết: đoạn văn không đề cập việc trộm tiền từ hòm giao ước hay thờ thần tượng; tội của họ liên quan trực tiếp đến của lễ.\nDistractor 2 sai vì sai phạm vi: họ không từ chối chức tế lễ; họ vẫn đang hành lễ nhưng một cách sai trái (câu 13-16).\nDistractor 3 (gần đúng) sai vì chi tiết: họ không 'giữ lại thịt trước khi dâng hết'; thay vào đó, họ lấy thịt trước khi phần *mỡ* được dâng riêng cho Đức Giê-hô-va (câu 15-16), và họ còn đòi lấy thịt sống hoặc thịt đã nấu theo ý muốn, chứ không chỉ đơn giản là 'giữ lại'.",
     "language": "vi",
     "verseEnd": 17,
     "options": [
-      "Bỏ trốn",
-      "Thờ tượng",
-      "Chống lại vua",
+      "Trộm tiền trong hòm của Đức Chúa Trời và thờ thần tượng",
+      "Từ chối làm chức tế lễ và chối bỏ Đức Chúa Trời",
+      "Giữ lại thịt của lễ cho mình trước khi dâng hết cho Đức Giê-hô-va",
       "Ăn trộm của lễ và sống vô đạo đức"
     ],
     "tags": [

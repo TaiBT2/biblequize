@@ -711,15 +711,15 @@
     "type": "multiple_choice_single",
     "content": "A-ga sinh cho Áp-ram một con trai tên là gì?",
     "options": [
-      "Ê-sau",
+      "Hát-lai",
       "Ích-ma-ên",
-      "Y-sác",
-      "Gia-cốp"
+      "Bết-lê-hem",
+      "Ghi-đê-ôn"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 16:15 — 'A-ga sinh cho Áp-ram một con trai, và Áp-ram đặt tên con trai mà A-ga sinh cho mình là Ích-ma-ên.'",
+    "explanation": "Đáp án đúng: 'Ích-ma-ên' theo Sáng thế ký 16:15. Đáp án sai: 'Hát-lai' là tên sai (Sáng thế ký 16:11-12 ghi tên con trai mà Chúa phán với A-ga sẽ là Ích-ma-ên, không phải Hát-lai). 'Bết-lê-hem' là tên một địa điểm sau này, không liên quan đến con trai của A-ga và Áp-ram. 'Ghi-đê-ôn' là tên một quan xét sau này trong Kinh Thánh, không liên quan đến câu chuyện này.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -2095,12 +2095,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng Thế Ký 2:17 — 'Nhưng về cây biết điều thiện và điều ác thì chớ hề ăn đến; vì một mai ngươi ăn, chắc sẽ chết.'",
+    "explanation": "Theo Sáng-thế Ký 2:17, Đức Chúa Trời phán với A-đam: 'Về trái của cây biết điều thiện và điều ác thì ngươi chớ hề ăn đến; vì một mai ngươi ăn, chắc sẽ chết.' Đáp án đúng là 'Cây biết điều thiện và điều ác' vì đây chính xác là tên cây được Chúa cấm.\n\n- Distractor 'Cây phát sinh các thứ cây trái trên đất' sai vì nó ám chỉ đến một mô tả về cây cối nói chung trong công trình sáng tạo (Sáng-thế Ký 1:11-12), chứ không phải cây bị cấm cụ thể.\n- Distractor 'Trái cây của vườn Ê-đen nơi có sông chảy ra' sai vì phạm vi quá rộng và không cụ thể; vườn Ê-đen có nhiều cây và sông, nhưng chỉ một cây đặc biệt bị cấm.\n- Distractor 'Cây Đức Chúa Trời trồng trong vườn' sai vì đây là một hiểu lầm phổ biến—Chúa trồng nhiều cây trong vườn (Sáng-thế Ký 2:8-9), không phải tất cả đều bị cấm, và tên cây cụ thể mới là then chốt. Distractor này 'gần đúng' vì đúng là cây do Chúa trồng, nhưng sai vì thiếu tên chính xác.",
     "language": "vi",
     "options": [
-      "Cây sự sống",
-      "Cây vả",
-      "Cây nho",
+      "Cây phát sinh các thứ cây trái trên đất",
+      "Trái cây của vườn Ê-đen nơi có sông chảy ra",
+      "Cây Đức Chúa Trời trồng trong vườn",
       "Cây biết điều thiện và điều ác"
     ],
     "tags": [
@@ -2758,12 +2758,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng 25:23 — 'đứa lớn sẽ phục đứa nhỏ'. Sáng 27:29 — 'các anh em mình sẽ quỳ xuống trước mặt mình'. Hai câu khớp ở việc anh phục em.",
+    "explanation": "Trong Sáng 25:23, Đức Giê-hô-va phán với Rê-bê-ca: \"Hai dân tộc ở trong bụng ngươi, và hai thứ dân sẽ ly khai nhau; dân nầy mạnh hơn dân kia, và đứa lớn phải phục dịch đứa nhỏ.\" Lời tiên tri đó ứng nghiệm trực tiếp trong lời chúc phước của Y-sác dành cho Gia-cốp (khi ngỡ là Ê-sau) trong Sáng 27:29: \"Các dân phải phục dịch ngươi, các nước phải quì lạy ngươi; ngươi hãy được quyền chủ các anh em ngươi, các con trai mẹ ngươi phải quì lạy ngươi.\" Trong đó, cụm \"anh em... phải quì lạy ngươi\" (tức phục dịch Gia-cốp) là sự hiện thực hóa cụ thể của tiên tri \"đứa lớn phải phục dịch đứa nhỏ\".\n- Distractor 1 (gần đúng, thuộc loại 'nearby_passage'): Đây là câu gần đúng nhất, chỉ sai về đối tượng thụ nhận lời chúc. Lời chúc chính xác là cho Gia-cốp, nhưng người nói là Y-sác. Distractor này dễ gây nhầm lẫn do văn cảnh liên quan đến Y-sác.\n- Distractor 2 (loại 'wrong_detail'): Sai hoàn toàn mối quan hệ. Lời tiên tri và lời chúc đều chỉ rằng Gia-cốp sẽ được phục vụ, không phải đi phục vụ người khác.\n- Distractor 3 (loại 'true_but_off'): Câu này trích gần đúng nhưng sai đối tượng quan trọng. Lời chúc nói anh em phục dịch Gia-cốp, không phải Ê-sau. Ê-sau là anh trai, thuộc về nhóm 'anh em' phải phục dịch Gia-cốp chứ không phải đối tượng được phục dịch.",
     "language": "vi",
     "options": [
-      "Đất hứa Ca-na-an thuộc về Gia-cốp",
-      "Dòng dõi Gia-cốp đông như sao trời",
-      "Gia-cốp được Đức Giê-hô-va chúc phước trực tiếp",
+      "Các dân tộc sẽ quỳ xuống và phục dịch Y-sác",
+      "Gia-cốp sẽ quỳ xuống và phục dịch anh em mình",
+      "Anh em sẽ quỳ xuống và phục dịch Ê-sau",
       "Anh em sẽ quỳ xuống và phục dịch Gia-cốp"
     ],
     "tags": [
@@ -3290,13 +3290,13 @@
     ],
     "verseEnd": 27,
     "content": "Trong Sáng 24, Áp-ra-ham sai đầy tớ đi tìm vợ cho Y-sác. Đầy tớ đặt dấu hiệu nào để Đức Chúa Trời chỉ ra đúng cô gái?",
-    "explanation": "Sáng 24:14 — 'Tôi sẽ nói cùng người gái trẻ rằng: Xin nàng hãy nghiêng bình, đặng cho tôi uống. Nếu nàng đáp: Hãy uống đi, tôi cũng sẽ cho các lạc đà ngươi uống nữa, thì ấy là người mà Chúa đã định cho Y-sác'. Rê-bê-ca thực hiện đúng (24:18-20).",
+    "explanation": "ĐÁP ÁN ĐÚNG: Dấu hiệu là cô gái cho đầy tớ uống nước VÀ tự nguyện múc nước cho lạc đà uống (c.14, 18-20).\n\n- Distractor 1 (gần đúng): Sai chi tiết then chốt. Rê-bê-ca đã cho đầy tớ uống và múc nước cho lạc đà, không phải 'cúi đầu chào' (c.18, 20).\n- Distractor 2: Nhầm passage gần. Hành động 'cầu nguyện' là của đầy tớ trước đó (c.12-13), không phải là dấu hiệu đặt ra cho cô gái.\n- Distractor 3: Đúng văn bản nhưng lạc câu hỏi. Rê-bê-ca là người được hỏi 'xin cho tôi uống' (c.17), không phải cô ấy xin đầy tớ; vì vậy, mô tả này không khớp với dấu hiệu đầy tớ cầu xin.",
     "language": "vi",
     "options": [
-      "Cô gái nào dâng nước trước cho đầy tớ trước khi cho lạc đà",
-      "Cô gái nào tự giới thiệu là họ hàng của Áp-ra-ham trước",
+      "Cô gái nào cho đầy tớ uống nước VÀ cúi đầu chào đầy tớ",
+      "Cô gái nào múc nước cho lạc đà uống VÀ cầu nguyện trước giếng",
       "Cô gái nào cho đầy tớ uống nước VÀ tự nguyện múc nước cho lạc đà uống",
-      "Cô gái nào hát một bài tôn vinh Đức Chúa Trời tại bờ giếng"
+      "Cô gái nào xin đầy tớ cho uống nước VÀ múc nước cho lạc đà uống"
     ],
     "tags": [
       "Cựu Ước",
@@ -3427,13 +3427,13 @@
     ],
     "verseEnd": 28,
     "content": "Theo Sáng 19:24-28, Đức Chúa Trời phá hủy Sô-đôm và Gô-mô-rơ bằng phương tiện cụ thể nào?",
-    "explanation": "Sáng 19:24 — 'Đoạn, Đức Giê-hô-va từ trên trời giáng mưa lưu hoàng và lửa xuống thành Sô-đôm và Gô-mô-rơ. Ngài hủy diệt hai thành nầy, cả đồng bằng, hết thảy dân sự các thành ấy, cùng cây cối ngoài đồng'.",
+    "explanation": "ĐÁP ÁN ĐÚNG: Theo Sáng 19:24-28, \"Đức Giê-hô-va giáng mưa lưu huỳnh và lửa từ nơi Đức Giê-hô-va trên trời xuống\" (c.24), hủy diệt Sô-đôm và Gô-mô-rơ. Điều này mô tả phương tiện cụ thể là lưu huỳnh và lửa trực tiếp từ trời do chính Đức Giê-hô-va thực hiện.\n\nPHÂN TÍCH CÁC ĐÁP ÁN SAI:\n1. 'Lưu hoàng và lửa từ đất phun lên do cơn thịnh nộ của Đấng Toàn Năng': Đây là đáp án gần đúng (almost-right) nhưng sai chi tiết then chốt. Kinh Thánh nói rõ lửa và lưu huỳnh \"từ nơi Đức Giê-hô-va trên trời xuống\" (c.24), không phải từ đất phun lên. Ngoài ra, 'Đấng Toàn Năng' là danh xưng chung, trong khi bản văn dùng danh xưng riêng 'Đức Giê-hô-va'.\n2. 'Một thảm họa động đất lớn do Đức Chúa Trời khiến xảy ra': Sai phạm vi (wrong_scope). Mặc dù có những đoạn Kinh Thánh khác nói về động đất khi Đức Chúa Trời phán xét, nhưng đoạn kinh văn cụ thể trong Sáng 19:24-28 không hề đề cập đến động đất mà chỉ mô tả mưa lưu huỳnh và lửa từ trời.\n3. 'Chấn động núi lửa và mưa lưu huỳnh từ các đám mây đen': Sai chi tiết (wrong_detail). Bản văn không đề cập đến 'chấn động núi lửa' hay 'các đám mây đen'. Đây là một cách giải thích tự nhiên hóa phổ biến nhưng không chính xác so với trình thuật Kinh Thánh về một sự kiện siêu nhiên trực tiếp từ Đức Giê-hô-va.",
     "language": "vi",
     "options": [
-      "Một cơn động đất lớn nuốt cả hai thành xuống đất",
-      "Một trận lụt lớn từ Biển Chết tràn lên ngập cả hai thành",
+      "Lưu hoàng và lửa từ đất phun lên do cơn thịnh nộ của Đấng Toàn Năng",
+      "Một thảm họa động đất lớn do Đức Chúa Trời khiến xảy ra",
       "Lưu hoàng và lửa từ trời do Đức Giê-hô-va giáng xuống",
-      "Một đoàn quân thiên sứ với gươm tiêu diệt từng nhà"
+      "Chấn động núi lửa và mưa lưu huỳnh từ các đám mây đen"
     ],
     "tags": [
       "Cựu Ước",
@@ -3835,13 +3835,13 @@
     ],
     "verseEnd": 27,
     "content": "Theo Sáng 1:26 (RVV11), Đức Chúa Trời phán điều gì về việc tạo dựng loài người?",
-    "explanation": "Sáng 1:26 — 'Đức Chúa Trời phán rằng: Chúng ta hãy làm nên loài người như hình ta và theo tượng ta, đặng quản trị loài cá biển, loài chim trời, loài súc vật, loài côn trùng bò trên mặt đất'. Đại từ ngôi 1 số nhiều ('chúng ta') đặc biệt chỉ ra sự đa-vị-cách trong Đức Chúa Trời.",
+    "explanation": "Đáp án đúng trích nguyên văn Sáng 1:26 (RVV11): 'Chúng ta hãy làm nên loài người như hình ảnh chúng ta, theo tượng chúng ta', là lời phán trực tiếp của Đức Chúa Trời trong câu 26 về việc tạo dựng loài người.\n\nDistractor 1 (gần đúng) sai vì thay thế cụm 'theo tượng chúng ta' bằng 'để quản trị muôn loài'. Dù 'để quản trị muôn loài' có trong câu 26 (là mục đích), nhưng câu hỏi yêu cầu nội dung lời phán về việc tạo dựng, không phải mục đích.\nDistractor 2 sai vì đảo trật tự và thay thế 'như hình ảnh chúng ta' bằng 'để quản trị muôn loài'. Lời phán trong câu 26 có cả hai yếu tố 'như hình ảnh' và 'theo tượng'.\nDistractor 3 sai vì thay đổi đại từ 'CHÚNG TA' thành 'HÃY', làm thay đổi chủ ngữ của hành động tạo dựng từ Đức Chúa Trời (số nhiều) sang một mệnh lệnh chung chung.",
     "language": "vi",
     "options": [
-      "'Hãy có loài người trong xứ Ê-đen vì ta đã tạo dựng cảnh đẹp'",
-      "'Loài người sẽ là tôi tớ trên đất, hầu việc các thiên sứ trên trời'",
+      "'CHÚNG TA hãy làm nên loài người như HÌNH ẢNH chúng ta, để QUẢN TRỊ muôn loài'",
+      "'CHÚNG TA hãy làm nên loài người theo TƯỢNG chúng ta, để QUẢN TRỊ muôn loài'",
       "'CHÚNG TA hãy làm nên loài người NHƯ HÌNH ẢNH chúng ta, theo TƯỢNG chúng ta'",
-      "'Loài người là vật thấp hèn nhất trong các vật ta đã tạo'"
+      "'HÃY làm nên loài người như HÌNH ẢNH chúng ta, theo TƯỢNG chúng ta'"
     ],
     "tags": [
       "Cựu Ước",

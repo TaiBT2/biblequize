@@ -9,13 +9,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ha-ba-cúc 1:2-3 - Tiên tri thật thà than vãn với Chúa vì Ngài dường như không nghe lời kêu van về sự bất công và bạo ngược. Chúa cho phép sự trò chuyện chân thật này.",
+    "explanation": "Đáp án đúng: \"Sự bạo ngược và bất công, cùng việc Chúa dường như không nghe lời kêu van của ông.\" Điều này đúng vì trong Ha-ba-cúc 1:2-3, tiên tri kêu lên: \"Hỡi Đức Giê-hô-va! Tôi kêu van mà Chúa chẳng nghe tôi cho đến chừng nào? Tôi vì sự bạo ngược kêu van cùng Ngài, mà Ngài chẳng giải cứu! Sao Chúa khiến tôi thấy sự gian ác, và Ngài nhìn xem sự trái ngược? Sự hủy diệt bạo ngược ở trước mặt tôi; sự tranh đấu và cãi lẫy dấy lên.\" Ông trực tiếp than phiền về tình trạng bạo lực, bất công mà ông chứng kiến và cảm giác Chúa không đáp lời.  \n  \nCác đáp án sai:  \n1. \"Sự chậm trễ của mùa màng và nạn đói đang đe dọa dân sự Giu-đa.\" (Sai phạm vi - wrong_scope): Đoạn Kinh Thánh này không đề cập đến vấn đề mùa màng hay nạn đói. Trọng tâm của Ha-ba-cúc ở đây là sự bạo ngược và tội lỗi của con người, không phải thảm họa nông nghiệp.  \n2. \"Việc dân Ba-by-lôn thờ lạy thần tượng và phá hủy đền thánh.\" (Nhầm passage gần - nearby_passage): Đây là một chi tiết gần đúng nhưng sai về then chốt. Sách Ha-ba-cúc sau đó có nói về người Canh-đê (Ba-by-lôn) như một công cụ đoán phạt (Habakkuk 1:6), và việc thờ thần tượng, phá hủy là đặc trưng của họ, nhưng KHÔNG PHẢI là nội dung Ha-ba-cúc than vãn với Chúa trong 1:2-3. Trong hai câu cụ thể này, ông than về sự bạo ngược chung chung ông thấy trong dân mình, chưa nói đến Ba-by-lôn.  \n3. \"Sự thất bại của các tiên tri khác trong việc cảnh báo dân sự.\" (Hiểu lầm phổ biến - common_misconception): Mặc dù đây là một vấn đề được đề cập trong các sách tiên tri khác (như Giê-rê-mi), nó không phải là nội dung Ha-ba-cúc trình bày với Chúa trong phân đoạn này. Ông đang tập trung vào sự dữ và sự im lặng của Đức Chúa Trời, không phải vào hiệu quả chức vụ của các tiên tri đồng nghiệp.",
     "language": "vi",
     "verseEnd": 3,
     "options": [
-      "Chúa ở đâu?",
-      "Tại sao tôi khổ?",
-      "Khi nào Chúa đến?",
+      "Sự chậm trễ của mùa màng và nạn đói đang đe dọa dân sự Giu-đa.",
+      "Việc dân Ba-by-lôn thờ lạy thần tượng và phá hủy đền thánh.",
+      "Sự thất bại của các tiên tri khác trong việc cảnh báo dân sự.",
       "Sự bạo ngược và bất công, cùng việc Chúa dường như không nghe lời kêu van của ông."
     ],
     "tags": [
@@ -111,12 +111,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ngay cả khi Chúa phán xét, Ha-ba-cúc xin Ngài nhớ sự thương xót.",
+    "explanation": "Câu hỏi trích dẫn Ha-ba-cúc 3:2 (BTT). Trong bản văn, sứ đồ cầu xin Chúa nhớ đến sự thương xót \"trong cơn thạnh nộ (giận dữ)\" (Habakkuk 3:2). Đáp án đúng là \"Thạnh nộ (giận dữ)\" vì nó trực tiếp mô tả bối cảnh cơn đoán phạt hay sự phán xét của Đức Chúa Trời mà tiên tri đã đề cập. \n\nCác phương án sai:\n- \"Thử thách (khó khăn)\": Sai phạm vi (wrong_scope) — từ này thường mô tả hoàn cảnh chung của con người, không đặc thù cho bối cảnh cơn đoán phạt hay thạnh nộ của Đức Chúa Trời trong câu Kinh Thánh này.\n- \"Buồn rầu (sầu não)\": Hiểu lầm phổ biến (common_misconception) — người đọc có thể liên tưởng đến cảm xúc buồn bã trong lời cầu nguyện, nhưng từ gốc trong câu không phải là một trạng thái cảm xúc chủ quan mà là hành động thạnh nộ của Đức Chúa Trời.\n- \"Bình an (yên ổn)\": Nhầm passage gần (nearby_passage) — trong chương 3, Ha-ba-cúc cũng nói về sự vui mừng và tin cậy (câu 18), nhưng đây không phải từ cần điền trong câu 2; phương án này trái ngược hoàn toàn với ý \"cơn thạnh nộ\".",
     "language": "vi",
     "options": [
-      "Chiến tranh",
-      "Vui vẻ",
-      "Bình an",
+      "Thử thách (khó khăn)",
+      "Buồn rầu (sầu não)",
+      "Bình an (yên ổn)",
       "Thạnh nộ (giận dữ)"
     ],
     "tags": [

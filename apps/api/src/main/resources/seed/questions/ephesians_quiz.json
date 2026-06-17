@@ -282,13 +282,13 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Chiến trận thật sự là thuộc linh, chống lại các thế lực tối tăm thuộc linh, không phải con người.",
+    "explanation": "Ê-phê-sô 6:12 viết: 'Vì chúng ta đánh trận, chẳng phải cùng thịt và huyết, bèn là cùng chủ quyền, cùng thế lực, cùng vua chúa của thế gian mờ tối nầy, cùng các thần dữ ở các miền trên trời.' (BTT). Đáp án đúng trích đầy đủ các đối tượng mà Cơ Đốc nhân chiến đấu thuộc linh chống lại: các quan trư��ng (chủ quyền), các quyền năng (thế lực), các vua chúa của thế gian mờ tối, cùng các thần dữ trên trời (ở các miền trên trời).\n- Distractor 0 ('...dưới đất') sai vì thay đổi chi tiết then chốt 'trên trời' thành 'dưới đất', trái với Kinh Thánh mô tả các thần dữ ở 'các miền trên trời'.\n- Distractor 1 ('...thiên sứ canh giữ') dựa vào ý tưởng về thiên sứ trong Kinh Thánh (như Ê-phê-sô 3:10) nhưng không phải là đối tượng của sự chiến đấu trong câu này, đây là nhầm lẫn với một khái niệm gần (passage gần) nhưng sai bối cảnh.\n- Distractor 2 ('...thế gian nầy') sai phạm vi: dùng cụm 'thế gian nầy' thay vì 'thế gian mờ tối' như trong nguyên văn, làm mất đi sắc thái đặc trưng về thuộc linh tối tăm của các thế lực đối nghịch.",
     "language": "vi",
     "options": [
-      "Chính phủ",
+      "Các quan trưởng, các quyền năng, các vua chúa của thế gian mờ tối, cùng các thần dữ dưới đất",
       "Các quan trưởng, các quyền năng, các vua chúa của thế gian mờ tối, cùng các thần dữ trên trời",
-      "Bạn bè",
-      "Con người"
+      "Các quan trưởng, các quyền năng, các vua chúa của thế gian mờ tối, cùng các thiên sứ canh giữ",
+      "Các quan trưởng, các quyền năng, các vua chúa của thế gian nầy, cùng các thần dữ trên trời"
     ],
     "tags": [
       "Tân Ước",
@@ -604,12 +604,12 @@
       3
     ],
     "content": "Theo Ê-phê-sô 4:1, Phao-lô (kẻ tù vì Chúa) khuyên các tín hữu phải làm gì?",
-    "explanation": "Ê-phê-sô 4:1 — 'Vậy, tôi là kẻ tù trong Chúa, khuyên anh em phải ăn ở một cách xứng đáng với chức phận mà Chúa đã gọi anh em.' Đây là CÂU CHUYỂN trong sách: chương 1-3 = giáo lý (anh em LÀ AI trong Christ); chương 4-6 = sống (anh em phải LÀM GÌ).",
+    "explanation": "Ê-phê-sô 4:1 chép: 'Vậy, tôi là kẻ tù trong Chúa, khuyên anh em phải ăn ở cách xứng đáng với chức phận mà anh em đã được gọi.' Đáp án đúng trung thành với câu Kinh Thánh, nhấn mạnh sự kêu gọi (đã được gọi) của tín hữu.\n\nDistractor 1 (sai chi tiết): Sai ở cụm 'đang cầu xin' thay vì 'đã được gọi'. Đây là một thay đổi chi tiết nhỏ nhưng làm thay đổi ý nghĩa thần học (chủ động cầu xin vs. thụ động nhận sự kêu gọi).\nDistractor 2 (hiểu lầm phổ biến): 'đã được cứu' là một khái niệm thần học liên quan và phổ biến, nhưng không phải từ ngữ chính xác trong câu này. Đây là distractor gần đúng vì rất sát với ý tưởng ân điển, chỉ sai một từ then chốt.\nDistractor 3 (nhầm passage gần): Ý 'cách xa những sự hư không' phản ánh tinh thần của Ê-phê-sô 4:17 hoặc những phần khác, không phải là mệnh lệnh trực tiếp trong câu 4:1, nên lạc trọng tâm câu hỏi về 'ăn ở xứng đáng với chức phận'.",
     "language": "vi",
     "options": [
-      "Phải dâng nhiều của lễ",
-      "Phải tách biệt khỏi xã hội",
-      "Phải học thuộc luật pháp",
+      "Phải ăn ở xứng đáng với chức phận mình đang cầu xin",
+      "Phải ăn ở xứng đáng với chức phận mình đã được cứu",
+      "Phải ăn ở cách xa những sự hư không của đời nầy",
       "Phải ăn ở xứng đáng với chức phận mình đã được gọi"
     ],
     "tags": [
@@ -1228,13 +1228,13 @@
       2
     ],
     "content": "Theo Ê-phê-sô 1:14, Đức Thánh Linh là gì cho tín hữu cho đến khi cứu chuộc cơ nghiệp?",
-    "explanation": "Ê-phê-sô 1:14 — 'Đấng ấy làm của cầm về cơ nghiệp chúng ta, cho đến kỳ chuộc lấy những kẻ mà Ngài đã được lấy làm dân riêng, đặng làm cho sự vinh hiển của Ngài được khen ngợi.' 'CỦA TIN' (arrabōn) = tiếng Hi-bơ-rơ → tiếng Hi Lạp → tiếng Việt: tiền đặt cọc. Ý: nếu Đức Chúa Trời đã đặt cọc — Ngài CHẮC CHẮN sẽ trả hết. Hoán đổi với 'ấn chứng' 1:13.",
+    "explanation": "Ê-phê-sô 1:14 viết: 'Ngài là cái ấn của sự cứu chuộc chúng ta, cho đến khi kỳ chuộc lại sản nghiệp mà chúng ta đã được phước, đặng ngợi khen sự vinh hiển của Ngài.' (BTT). Đáp án đúng trung thành với ý Kinh Thánh: Đức Thánh Linh là của tin (cầm cố, đặt cọc), bảo đảm cơ nghiệp, nhưng chỉ cho đến khi sự cứu chuộc được trọn vẹn (tương lai). \n\nDistractor 1 (gần đúng) sai chi tiết: Kinh Thánh không dạy cơ nghiệp đã được thừa hưởn trọn vẹn 'ngay bây giờ', mà là 'cho đến khi'.\nDistractor 2 sai văn bản gần đó: Khái niệm 'chìa khóa' không xuất hiện trong Ê-phê-sô 1; nó có thể bắt nguồn từ sự liên tưởng đến các đoạn khác (ví dụ: Khải Huyền).\nDistractor 3 phản ánh hiểu lầm phổ biến: tuy đúng là Đức Thánh Linh hướng dẫn, nhưng Ê-phê-sô 1:14 nhấn mạnh chức năng đảm bảo cơ nghiệp như của tin, không phải chức năng hướng dẫn đạo đức.",
     "language": "vi",
     "options": [
-      "Là dấu hiệu trọng đại",
-      "Là sự ban cho ngẫu nhiên",
+      "Là CỦA TIN (đặt cọc) — bảo đảm cơ nghiệp đã được thừa hưởng trọn vẹn ngay bây giờ",
+      "Là CHÌA KHÓA — mở cánh cửa cơ nghiệp để chúng ta thừa hưởng",
       "Là CỦA TIN (đặt cọc) — bảo đảm cơ nghiệp đến khi sự cứu chuộc của vật mua chuộc trọn vẹn",
-      "Là sức mạnh tạm thời"
+      "Là SỰ HƯỚNG DẪN — dẫn dắt chúng ta sống xứng đáng trước khi cứu chuộc"
     ],
     "tags": [
       "Tân Ước",

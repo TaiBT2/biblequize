@@ -399,12 +399,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giu-đe 1:24 — 'Vả, nguyền Đấng có thể gìn giữ anh em khỏi vấp phạm và khiến anh em đứng trước mặt vinh hiển mình cách rất vui mừng, không chỗ trách được...'",
+    "explanation": "Câu hỏi trích dẫn Giu-đe 1:24: \"Nguyền xin sự vinh hiển, quyền năng, vinh quang thuộc về Đấng có thể gìn giữ anh em khỏi vấp ngã... đổ cho Đức Chúa Trời...\" Đáp án đúng là 'Đức Chúa Trời — Đấng có thể gìn giữ anh em khỏi vấp phạm' vì (1) bản văn trực tiếp nói Đức Chúa Trời là Đấng gìn giữ, và (2) cụm 'khỏi vấp ngã/vấp phạm' là trích ý chính xác từ câu Kinh Thánh.\n\nCÁC ĐÁP ÁN SAI:\n- 'Đức Chúa Trời — Đấng có thể gìn giữ anh em trong sự vấp ngã': Sai chi tiết then chốt (wrong_detail). Từ 'trong' thay vì 'khỏi' làm đảo ngược hoàn toàn ý nghĩa của câu Kinh Thánh (gìn giữ trong tình trạng vấp ngã so với gìn giữ để không vấp ngã). Đây là distractor 'gần đúng' vì chỉ sai một từ nhưng làm thay đổi nghĩa căn bản.\n- 'Đức Chúa Jesus — Đấng có thể gìn giữ anh em khỏi vấp phạm': Sai do nhầm passage gần (nearby_passage). Mặc dù trong toàn bộ thư tín, công việc gìn giữ có liên quan đến Đức Chúa Jesus, nhưng câu 24 cụ thể này quy sự gìn giữ cho Đức Chúa Trời. Đây là một hiểu lầm phổ biến khi áp dụng chức năng của Ba Ngôi.\n- 'Đấng Thánh Linh — Đấng có thể gìn giữ anh em khỏi vấp phạm': Sai vì đúng văn bản nhưng lạc câu hỏi (true_but_off). Dù Đấng Thánh Linh có vai trò gìn giữ và thánh hóa tín hữu (Rô-ma 8:11, 26-27), câu hỏi này yêu cầu xác định Đấng được nêu cụ thể trong Giu-đe 1:24, chứ không phải hỏi về thần học tổng quát.",
     "language": "vi",
     "options": [
-      "Các thiên sứ canh giữ",
-      "Sức tự lực của tín hữu",
-      "Các trưởng lão trung tín",
+      "Đức Chúa Trời — Đấng có thể gìn giữ anh em trong sự vấp ngã",
+      "Đức Chúa Jesus — Đấng có thể gìn giữ anh em khỏi vấp phạm",
+      "Đấng Thánh Linh — Đấng có thể gìn giữ anh em khỏi vấp phạm",
       "Đức Chúa Trời — Đấng có thể gìn giữ anh em khỏi vấp phạm"
     ],
     "tags": [

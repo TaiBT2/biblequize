@@ -135,14 +135,14 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Mi-che 1:5 - Cả hai kinh đô đều phạm tội và cả hai sẽ bị phán xét. Chúa công bình với mọi người.",
+    "explanation": "Mi-chê 1:5 nêu rõ: 'Vì sự vi phạm của Gia-cốp là bởi nó, và tội lỗi của nhà Y-sơ-ra-ên là bởi Sa-ma-ri và Giê-ru-sa-lem.' Đây là hai thủ đô tượng trưng cho cả hai vương quốc Y-sơ-ra-ên và Giu-đa, nên đáp án đúng là 'Sa-ma-ri và Giê-ru-sa-lem'. Distractor 'Bết-lê-hem và Ga-li-lê' sai vì lấy tên từ các vùng lân cận trong ngữ cảnh Kinh Thánh nhưng không phải là trọng tâm của đoạn này. Distractor 'Giu-đa và Bên-gia-min' sai vì mở rộng phạm vi thành các chi phái thay vì các thành cụ thể được nêu trong câu hỏi. Distractor 'Sô-đôm và Gô-mô-rơ' sai vì đây là hiểu lầm phổ biến khi liên tưởng đến các thành bị phán xét trong Cựu Ước, nhưng chúng không được nhắc đến trong Mi-chê 1:3-5.",
     "language": "vi",
     "verseEnd": 5,
     "options": [
       "Sa-ma-ri và Giê-ru-sa-lem",
-      "Chỉ Sa-ma-ri",
-      "Chỉ Giê-ru-sa-lem",
-      "Ni-ni-ve"
+      "Bết-lê-hem và Ga-li-lê",
+      "Giu-đa và Bên-gia-min",
+      "Sô-đôm và Gô-mô-rơ"
     ],
     "tags": [
       "Cựu Ước",
@@ -472,12 +472,12 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Mi-chê 6:14 — 'Ngươi sẽ ăn nhưng không no; ngươi sẽ gieo nhưng không gặt; sẽ đạp nho mà không uống rượu.'",
+    "explanation": "Đoạn Kinh Thánh Mi-chê 6:14-15 (BTT) mô tả trực tiếp hậu quả: \"...14 Ngươi sẽ ăn nhưng không no... 15 Ngươi sẽ gieo nhưng không gặt...\" Vì vậy, đáp án đúng là 'Ăn nhưng không no, gieo nhưng không gặt'.\n\nCác đáp án sai:\n1. 'Ăn nhưng không no, gieo nhưng không có mưa': Đây là đáp án gần đúng, nhưng sai chi tiết then chốt. Câu 14-15 nói về việc 'không gặt', trong khi 'không có mưa' là yếu tố khác có thể dẫn đến hậu quả này nhưng không được nêu trực tiếp trong câu hỏi.\n2. 'Bị đày đến Ba-by-lôn, mất đền thờ': Sai phạm vi. Hậu quả này liên quan đến các sự kiện lịch sử và sách tiên tri khác, không phải điều được mô tả trong Mi-chê 6:14-15.\n3. 'Được cảnh báo nhưng không bị hậu quả gì': Đúng ý trong văn bản rằng có cảnh báo (ngữ cảnh), nhưng lạc câu hỏi vì câu hỏi hỏi về 'hậu quả giáng trên', còn đáp án này phủ nhận hậu quả.",
     "language": "vi",
     "options": [
-      "Được ăn no đầy",
-      "Gặt mùa dư dật",
-      "Sống bình an",
+      "Ăn nhưng không no, gieo nhưng không có mưa",
+      "Bị đày đến Ba-by-lôn, mất đền thờ",
+      "Được cảnh báo nhưng không bị hậu quả gì",
       "Ăn nhưng không no, gieo nhưng không gặt"
     ],
     "tags": [
