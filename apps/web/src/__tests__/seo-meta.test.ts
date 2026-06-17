@@ -102,3 +102,27 @@ describe('SEO: manifest.json (PWA installability)', () => {
     for (const icon of manifest.icons) expect(icon.type).toBe('image/png')
   })
 })
+
+describe('SEO: JSON-LD structured data', () => {
+  const blocks = [
+    ...indexHtml().matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g),
+  ].map((m) => m[1])
+
+  it('every ld+json block is valid JSON', () => {
+    expect(blocks.length).toBeGreaterThanOrEqual(2)
+    for (const b of blocks) expect(() => JSON.parse(b)).not.toThrow()
+  })
+
+  it('declares SoftwareApplication, Organization and WebSite', () => {
+    const types = new Set<string>()
+    for (const b of blocks) {
+      const data = JSON.parse(b)
+      for (const node of data['@graph'] ?? [data]) {
+        if (node['@type']) types.add(node['@type'])
+      }
+    }
+    expect(types).toContain('SoftwareApplication')
+    expect(types).toContain('Organization')
+    expect(types).toContain('WebSite')
+  })
+})

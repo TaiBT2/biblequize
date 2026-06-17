@@ -45,7 +45,7 @@ lỗi đang hỏng production + thiếu sót. Sửa hết phần low-risk, no-ne
   - Checklist: impl · vitest pass · commit
 
 - SEO-7 JSON-LD: thêm WebSite + Organization graph (rich result) vào index.html
-  - Status: [ ] TODO · Files: `index.html`, `seo-meta.test.ts` · Test: tất cả ld+json parse được + có WebSite/Organization/SoftwareApplication
+  - Status: [x] DONE · Files: `index.html`, `seo-meta.test.ts` · Test: tất cả ld+json parse được + có WebSite/Organization/SoftwareApplication
   - **Spec impact**: [x] None
   - **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · vitest pass · commit

@@ -91,6 +91,30 @@
       }
     }
   </script>
+
+  <!-- Organization + WebSite graph (linked via @id) for richer entity results -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://forbible.org/#organization",
+          "name": "BibleQuiz",
+          "url": "https://forbible.org",
+          "logo": "https://forbible.org/android-chrome-512x512.png"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://forbible.org/#website",
+          "name": "BibleQuiz",
+          "url": "https://forbible.org",
+          "inLanguage": ["vi", "en"],
+          "publisher": { "@id": "https://forbible.org/#organization" }
+        }
+      ]
+    }
+  </script>
 </head>
 
 <body class="text-[#e1e1f1] antialiased">
