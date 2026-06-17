@@ -1,5 +1,7 @@
+import { Suspense } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
+import PageLoader from '../components/PageLoader'
 import { useTranslation } from 'react-i18next'
 import OfflineBanner from '../components/OfflineBanner'
 import NotificationBell from './components/NotificationBell'
@@ -93,7 +95,9 @@ export default function AppLayout() {
       </header>
 
       <main className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-6 md:py-10">
-        <Outlet />
+        <Suspense fallback={<PageLoader />}>
+          <Outlet />
+        </Suspense>
         <div className="h-20 md:hidden" />
       </main>
 

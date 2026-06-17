@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '../store/authStore'
 import { setQuizLanguage } from '../utils/quizLanguage'
+import PageLoader from '../components/PageLoader'
 
 // Nav trimmed to core + Tier B (ADM-1, DECISIONS 2026-06-16). Hidden Tier C pages
 // (rankings, events, notifications, config, export, question-quality, early-unlock)
@@ -90,7 +91,9 @@ export default function AdminLayout() {
           current page; the bar otherwise held only redundant/placeholder controls). */}
       <main className="ml-[240px] flex-1 flex flex-col min-h-screen bg-[#11131c]">
         <div className="p-8 space-y-8 max-w-[1600px] mx-auto w-full">
-          <Outlet />
+          <Suspense fallback={<PageLoader />}>
+            <Outlet />
+          </Suspense>
         </div>
       </main>
     </div>
