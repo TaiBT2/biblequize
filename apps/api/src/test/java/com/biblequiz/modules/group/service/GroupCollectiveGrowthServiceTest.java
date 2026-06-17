@@ -1,5 +1,7 @@
 package com.biblequiz.modules.group.service;
 
+import com.biblequiz.modules.group.entity.ChurchGroup;
+import com.biblequiz.modules.group.repository.ChurchGroupRepository;
 import com.biblequiz.modules.group.repository.GroupQuizSetMasteryRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -24,6 +27,7 @@ import static org.mockito.Mockito.when;
 class GroupCollectiveGrowthServiceTest {
 
     @Mock private GroupQuizSetMasteryRepository masteryRepository;
+    @Mock private ChurchGroupRepository churchGroupRepository;
     @InjectMocks private GroupCollectiveGrowthService service;
 
     /** Stub a single aggregate row: SUM, COUNT(DISTINCT user), COUNT(completed). */
@@ -78,5 +82,29 @@ class GroupCollectiveGrowthServiceTest {
         assertEquals(100L, GroupCollectiveGrowthService.milestoneTarget(50));
         assertEquals(0L, GroupCollectiveGrowthService.milestoneFloor(49));
         assertEquals(50L, GroupCollectiveGrowthService.milestoneFloor(50));
+    }
+
+    @Test
+    void perSet_mappedWithAvgMasteryAndMemberCount() {
+        stub("g1", 30L, 3L, 1L);
+        ChurchGroup g = new ChurchGroup();
+        g.setMemberCount(10);
+        when(churchGroupRepository.findById("g1")).thenReturn(Optional.of(g));
+        List<Object[]> setRows = new ArrayList<>();
+        setRows.add(new Object[]{"qs1", "Phúc Âm Giăng", 10, 3L, 18L, 1L}); // 18/3/10 = 60%
+        setRows.add(new Object[]{"qs2", "Sáng Thế", 20, 1L, 5L, 0L});       // 5/1/20 = 25%
+        when(masteryRepository.aggregatePerSetByGroupId(eq("g1"), any())).thenReturn(setRows);
+
+        Map<String, Object> r = service.getCollectiveGrowth("g1");
+
+        assertEquals(10, r.get("memberCount"));
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> perSet = (List<Map<String, Object>>) r.get("perSet");
+        assertEquals(2, perSet.size());
+        assertEquals("Phúc Âm Giăng", perSet.get(0).get("name"));
+        assertEquals(3L, perSet.get(0).get("participants"));
+        assertEquals(1L, perSet.get(0).get("completions"));
+        assertEquals(60, perSet.get(0).get("avgMasteryPct"));
+        assertEquals(25, perSet.get(1).get("avgMasteryPct"));
     }
 }

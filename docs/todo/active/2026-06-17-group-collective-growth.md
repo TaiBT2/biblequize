@@ -31,11 +31,11 @@
   - Query: `SUM(questionsLearned)` + `COUNT(DISTINCT userId)` + `COUNT(completedMastery=true)` over PUBLISHED sets (JOIN `GroupQuizSet.group.id`) → `List<Object[]>`. Service → `Map<String,Object>` {totalLearned, contributors, masteryCompletions, milestoneFloor, nextMilestone, milestonePct}. Hero = SUM (D1); milestone band 50→10000, vượt bảng bước 5000.
   - **Spec impact**: [x] None (read-only) · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl ✅ · Tầng 1 ✅ · commit (chờ user)
-- CG-2 BE: per-set breakdown (repo GROUP BY + extend service)
-  - Status: [ ] TODO · Files: `GroupQuizSetMasteryRepository.java` (per-set GROUP BY), `GroupCollectiveGrowthService.java`, `GroupQuizSetRepository` (totalQuestions PUBLISHED) · Test: Mockito service test
-  - Thêm `perSet[]` vào Map của CG-1: quizSetId, name, contributors/memberCount, avg(questionsLearned/totalQuestions).
-  - **Spec impact**: [ ] None · **Spec strategy**: [ ] (c) [no-spec-impact]
-  - Checklist: impl · Tầng 1 · commit
+- CG-2 BE: per-set breakdown + group memberCount (repo GROUP BY + extend service)
+  - Status: [x] DONE (6/6 Mockito + Tầng 3 BE 1072 pass) · Files: `GroupQuizSetMasteryRepository.java` (`aggregatePerSetByGroupId` GROUP BY, totalQuestions lấy từ JOIN), `GroupCollectiveGrowthService.java` (+`ChurchGroupRepository` memberCount + `buildPerSet`) · Test: Mockito service test
+  - Map thêm: `memberCount` + `perSet[]` {quizSetId, name, totalQuestions, participants, completions, avgMasteryPct}. avgMasteryPct = SUM(learned)/participants/totalQuestions (cap 100).
+  - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
+  - Checklist: impl ✅ · Tầng 1 ✅ · Tầng 3 ✅ · commit
 - CG-3 BE: endpoint `GET /api/groups/{id}/collective-growth`
   - Status: [ ] TODO · Files: `modules/group/.../ChurchGroupController.java` · Test: controller/integration test
   - Member-visible (require membership; D5). Trả Map từ service (house style — KHÔNG DTO).

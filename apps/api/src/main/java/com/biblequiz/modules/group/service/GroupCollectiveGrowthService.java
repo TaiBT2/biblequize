@@ -1,9 +1,12 @@
 package com.biblequiz.modules.group.service;
 
+import com.biblequiz.modules.group.entity.ChurchGroup;
 import com.biblequiz.modules.group.entity.GroupQuizSet;
+import com.biblequiz.modules.group.repository.ChurchGroupRepository;
 import com.biblequiz.modules.group.repository.GroupQuizSetMasteryRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,9 +29,12 @@ public class GroupCollectiveGrowthService {
     private static final long STEP_BEYOND = 5000;
 
     private final GroupQuizSetMasteryRepository masteryRepository;
+    private final ChurchGroupRepository groupRepository;
 
-    public GroupCollectiveGrowthService(GroupQuizSetMasteryRepository masteryRepository) {
+    public GroupCollectiveGrowthService(GroupQuizSetMasteryRepository masteryRepository,
+                                        ChurchGroupRepository groupRepository) {
         this.masteryRepository = masteryRepository;
+        this.groupRepository = groupRepository;
     }
 
     public Map<String, Object> getCollectiveGrowth(String groupId) {
@@ -45,14 +51,42 @@ public class GroupCollectiveGrowthService {
         int pct = target <= floor ? 100
                 : (int) Math.round((totalLearned - floor) * 100.0 / (target - floor));
 
+        int memberCount = groupRepository.findById(groupId)
+                .map(ChurchGroup::getMemberCount).orElse(0);
+
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("totalLearned", totalLearned);
         map.put("contributors", contributors);
         map.put("masteryCompletions", completions);
+        map.put("memberCount", memberCount);
         map.put("milestoneFloor", floor);
         map.put("nextMilestone", target);
         map.put("milestonePct", pct);
+        map.put("perSet", buildPerSet(groupId));
         return map;
+    }
+
+    /** Per-set breakdown: mỗi bộ PUBLISHED đã có người ôn → participants, completions, % thuộc TB. */
+    private List<Map<String, Object>> buildPerSet(String groupId) {
+        List<Object[]> setRows = masteryRepository.aggregatePerSetByGroupId(
+                groupId, GroupQuizSet.PublishStatus.PUBLISHED);
+        List<Map<String, Object>> perSet = new ArrayList<>();
+        for (Object[] r : setRows) {
+            long total = asLong(r, 2);
+            long participants = asLong(r, 3);
+            long sumLearned = asLong(r, 4);
+            int avgMasteryPct = (total <= 0 || participants <= 0) ? 0
+                    : (int) Math.min(100L, Math.round(sumLearned * 100.0 / (participants * total)));
+            Map<String, Object> s = new LinkedHashMap<>();
+            s.put("quizSetId", r[0]);
+            s.put("name", r[1]);
+            s.put("totalQuestions", total);
+            s.put("participants", participants);
+            s.put("completions", asLong(r, 5));
+            s.put("avgMasteryPct", avgMasteryPct);
+            perSet.add(s);
+        }
+        return perSet;
     }
 
     /** Cột mốc kế tiếp strictly &gt; total; vượt bảng thì bước theo lưới STEP_BEYOND. */
