@@ -309,4 +309,28 @@ describe('Leaderboard', () => {
     await waitFor(() => { expect(screen.getByText('Player 4')).toBeInTheDocument() })
     expect(screen.getByTestId('leaderboard-my-rank-sticky')).toBeInTheDocument()
   })
+
+  it('sticky my-rank row renders current user avatar from authStore (sync after edit)', async () => {
+    authState.user = { name: 'Test User', email: 'a@b.com', avatar: 'https://example.com/me.png' } as any
+    const ENTRIES_WITHOUT_ME = [
+      { userId: 'u2', name: 'Player 1', points: 15820, avatarUrl: null },
+      { userId: 'u3', name: 'Player 2', points: 12450, avatarUrl: null },
+      { userId: 'u4', name: 'Player 3', points: 11200, avatarUrl: null },
+      { userId: 'u5', name: 'Player 4', points: 9840, avatarUrl: null },
+    ]
+    mockApiGet.mockImplementation((url: string) => {
+      if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 23, points: 1131 } })
+      if (url.includes('/leaderboard/')) return Promise.resolve({ data: ENTRIES_WITHOUT_ME })
+      if (url.includes('/seasons')) return Promise.resolve({ data: null })
+      if (url.includes('/api/me/tier-progress')) return Promise.resolve({ data: { totalPoints: 1131 } })
+      return Promise.reject(new Error('Not found'))
+    })
+    renderLeaderboard()
+    const sticky = await screen.findByTestId('leaderboard-my-rank-sticky')
+    const img = sticky.querySelector('img')
+    expect(img).not.toBeNull()
+    expect(img?.getAttribute('src')).toBe('https://example.com/me.png')
+    // Reset shared mock state for other tests.
+    authState.user = { name: 'Test User', email: 'a@b.com' } as any
+  })
 })

@@ -248,7 +248,9 @@ export default function Leaderboard() {
                 rank={myRank.rank ?? 0}
                 name={myRank.name ?? user?.name ?? '?'}
                 points={myRank.points ?? 0}
-                avatarUrl={undefined}
+                // Sticky row is always the current user; /my-rank doesn't return
+                // avatarUrl, so use authStore.user.avatar (kept in sync on edit).
+                avatarUrl={myRank.avatarUrl ?? user?.avatar}
                 streak={myRank.streak}
                 trend={myRank.trend}
                 isMe

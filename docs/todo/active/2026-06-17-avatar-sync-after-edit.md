@@ -17,3 +17,9 @@
   - **Spec impact**: [x] None
   - **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · Tầng 1+2+3 pass · commit
+- ASE-3 Leaderboard sticky my-rank row hiển thị avatar user (đang hardcode `undefined`)
+  - Status: [x] DONE · Files: `apps/web/src/pages/Leaderboard.tsx` · Test: Leaderboard.test.tsx
+  - Root cause: `/my-rank` BE không trả `avatarUrl`; sticky row (rank > 20) hardcode `avatarUrl={undefined}` → luôn hiện chữ cái đầu. Dùng `myRank.avatarUrl ?? user?.avatar` (authStore đã sync ở ASE-1/2).
+  - **Spec impact**: [x] None
+  - **Spec strategy**: [x] (c) [no-spec-impact]
+  - Checklist: impl · Tầng 1+2+3 pass · commit
