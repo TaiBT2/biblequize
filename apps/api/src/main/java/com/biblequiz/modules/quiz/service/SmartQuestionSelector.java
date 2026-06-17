@@ -1,5 +1,6 @@
 package com.biblequiz.modules.quiz.service;
 
+import com.biblequiz.modules.quiz.dto.HistoryMeta;
 import com.biblequiz.modules.quiz.dto.QuestionMeta;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
@@ -35,8 +36,14 @@ public class SmartQuestionSelector {
      * If filter already specifies a difficulty, uses that. Otherwise distributes by tier.
      */
     public List<Question> selectQuestions(String userId, int count, QuestionFilter filter) {
+        // Load the user's whole history once, index by question id. Every bucket
+        // below classifies against this map in-memory — no per-bucket aggregate
+        // queries, no per-question N+1.
+        Map<String, HistoryMeta> historyById = loadHistory(userId);
+        LocalDateTime now = LocalDateTime.now();
+
         if (filter.difficulty() != null) {
-            List<String> ids = selectIdsWithSmartHistory(userId, count, filter);
+            List<String> ids = selectIdsWithSmartHistory(count, filter, historyById, now);
             return fetchInOrder(ids);
         }
 
@@ -48,18 +55,18 @@ public class SmartQuestionSelector {
         int hardCount = count - easyCount - mediumCount;
 
         List<String> selectedIds = new ArrayList<>();
-        selectedIds.addAll(selectIdsWithSmartHistory(userId, easyCount,
-                new QuestionFilter(filter.books(), "easy", filter.language())));
-        selectedIds.addAll(selectIdsWithSmartHistory(userId, mediumCount,
-                new QuestionFilter(filter.books(), "medium", filter.language())));
-        selectedIds.addAll(selectIdsWithSmartHistory(userId, hardCount,
-                new QuestionFilter(filter.books(), "hard", filter.language())));
+        selectedIds.addAll(selectIdsWithSmartHistory(easyCount,
+                new QuestionFilter(filter.books(), "easy", filter.language()), historyById, now));
+        selectedIds.addAll(selectIdsWithSmartHistory(mediumCount,
+                new QuestionFilter(filter.books(), "medium", filter.language()), historyById, now));
+        selectedIds.addAll(selectIdsWithSmartHistory(hardCount,
+                new QuestionFilter(filter.books(), "hard", filter.language()), historyById, now));
 
         if (selectedIds.size() < count) {
             int remaining = count - selectedIds.size();
             Set<String> already = new HashSet<>(selectedIds);
-            List<String> extra = selectIdsWithSmartHistory(userId, remaining,
-                    new QuestionFilter(filter.books(), null, filter.language()));
+            List<String> extra = selectIdsWithSmartHistory(remaining,
+                    new QuestionFilter(filter.books(), null, filter.language()), historyById, now);
             for (String id : extra) {
                 if (!already.contains(id)) {
                     selectedIds.add(id);
@@ -81,16 +88,27 @@ public class SmartQuestionSelector {
     }
 
     /**
+     * Load the user's whole question history, indexed by question id, in one query.
+     * Replaces the previous per-bucket {@code findQuestionIdsByUserId} +
+     * {@code findNeedReviewQuestionIds} + per-question {@code findByUserIdAndQuestionId}.
+     */
+    private Map<String, HistoryMeta> loadHistory(String userId) {
+        List<HistoryMeta> rows = historyRepository.findHistoryMetaByUserId(userId);
+        Map<String, HistoryMeta> byId = new HashMap<>(Math.max(16, rows.size() * 2));
+        for (HistoryMeta h : rows) byId.put(h.questionId(), h);
+        return byId;
+    }
+
+    /**
      * Smart selection on metadata-only projection.
      * Prioritizes: unseen → need review → seen long ago → seen recently.
+     * Classifies against the pre-loaded {@code historyById} map (no queries here).
      * Returns selected IDs (in priority order). Caller batch-fetches full Question entities.
      */
-    private List<String> selectIdsWithSmartHistory(String userId, int count, QuestionFilter filter) {
+    private List<String> selectIdsWithSmartHistory(int count, QuestionFilter filter,
+                                                   Map<String, HistoryMeta> historyById,
+                                                   LocalDateTime now) {
         if (count <= 0) return List.of();
-
-        Set<String> seenIds = new HashSet<>(historyRepository.findQuestionIdsByUserId(userId));
-        Set<String> reviewIds = new HashSet<>(
-                historyRepository.findNeedReviewQuestionIds(userId, LocalDateTime.now()));
 
         List<QuestionMeta> allMetas = findMetaByFilter(filter);
 
@@ -99,22 +117,18 @@ public class SmartQuestionSelector {
         List<QuestionMeta> seenLongAgo = new ArrayList<>();
         List<QuestionMeta> seenRecently = new ArrayList<>();
 
-        LocalDateTime thirtyDaysAgo = LocalDateTime.now().minusDays(30);
+        LocalDateTime thirtyDaysAgo = now.minusDays(30);
 
         for (QuestionMeta q : allMetas) {
-            if (!seenIds.contains(q.id())) {
+            HistoryMeta h = historyById.get(q.id());
+            if (h == null) {
                 neverSeen.add(q);
-            } else if (reviewIds.contains(q.id())) {
+            } else if (h.needsReview(now)) {
                 needReview.add(q);
+            } else if (h.lastSeenAt() != null && h.lastSeenAt().isBefore(thirtyDaysAgo)) {
+                seenLongAgo.add(q);
             } else {
-                historyRepository.findByUserIdAndQuestionId(userId, q.id())
-                        .ifPresent(h -> {
-                            if (h.getLastSeenAt().isBefore(thirtyDaysAgo)) {
-                                seenLongAgo.add(q);
-                            } else {
-                                seenRecently.add(q);
-                            }
-                        });
+                seenRecently.add(q);
             }
         }
 

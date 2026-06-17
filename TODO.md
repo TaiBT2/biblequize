@@ -3,10 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (69)
+## Active (70)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-17 | Ranked selector: gộp history load + bỏ N+1 query (RSH-1..2) | DONE | [archive](docs/todo/archive/2026-06-17-ranked-selector-history-query-optimization.md) |
 | 2026-06-17 | AI distractor-quality parity cho user paths (quiz set + personal bank) (AEU-1..5) | DONE | [archive](docs/todo/archive/2026-06-17-ai-quality-parity-user-paths.md) |
 | 2026-06-17 | Practice book-select: fix tên sách "chìm" (SearchableSelect → Khung Sáng) + no-book lỗi tường minh (PBS-1..2) | TODO | [detail](docs/todo/active/2026-06-17-practice-book-select-fixes.md) |
 | 2026-06-17 | Landing hero: thay ảnh Kinh Thánh tối bằng illustration phẳng Khung Sáng (LHI-1..2) | DONE | [archive](docs/todo/archive/2026-06-17-landing-hero-flat-illustration.md) |

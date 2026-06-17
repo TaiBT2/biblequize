@@ -1,8 +1,8 @@
 package com.biblequiz.service;
 
+import com.biblequiz.modules.quiz.dto.HistoryMeta;
 import com.biblequiz.modules.quiz.dto.QuestionMeta;
 import com.biblequiz.modules.quiz.entity.Question;
-import com.biblequiz.modules.quiz.entity.UserQuestionHistory;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
 import com.biblequiz.modules.quiz.service.SmartQuestionSelector;
@@ -85,6 +85,18 @@ class SmartQuestionSelectorTest {
         });
     }
 
+    // History projection helpers (commit RSH-2 refactor): selector now loads the
+    // whole history once via findHistoryMetaByUserId and classifies in-memory.
+    /** Seen recently, answered right → classifies as "seen recently" (not review). */
+    private static HistoryMeta recent(String id) {
+        return new HistoryMeta(id, LocalDateTime.now().minusDays(1), null, 1, 0);
+    }
+
+    /** timesWrong > timesCorrect, no scheduled slot → classifies as "need review". */
+    private static HistoryMeta review(String id) {
+        return new HistoryMeta(id, LocalDateTime.now().minusDays(1), null, 0, 2);
+    }
+
     @Test
     void selectQuestions_prioritizesUnseenQuestions() {
         // User has seen 10 questions, DB has 100
@@ -92,8 +104,8 @@ class SmartQuestionSelectorTest {
                 .mapToObj(i -> "q-" + i).toList();
 
         stubMetaForDifficulty(Question.Difficulty.easy, allQuestions);
-        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(seenIds);
-        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
+        when(historyRepository.findHistoryMetaByUserId(USER_ID))
+                .thenReturn(seenIds.stream().map(SmartQuestionSelectorTest::recent).toList());
 
         List<Question> selected = selector.selectQuestions(USER_ID, 10, defaultFilter);
 
@@ -107,15 +119,13 @@ class SmartQuestionSelectorTest {
 
     @Test
     void selectQuestions_includesReviewQuestions() {
-        // 5 questions need review
-        List<String> seenIds = IntStream.range(0, 20)
-                .mapToObj(i -> "q-" + i).toList();
-        List<String> reviewIds = IntStream.range(0, 5)
-                .mapToObj(i -> "q-" + i).toList();
+        // q-0..q-4 need review, q-5..q-19 seen recently
+        List<HistoryMeta> history = new ArrayList<>();
+        for (int i = 0; i < 5; i++) history.add(review("q-" + i));
+        for (int i = 5; i < 20; i++) history.add(recent("q-" + i));
 
         stubMetaForDifficulty(Question.Difficulty.easy, allQuestions);
-        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(seenIds);
-        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(reviewIds);
+        when(historyRepository.findHistoryMetaByUserId(USER_ID)).thenReturn(history);
 
         List<Question> selected = selector.selectQuestions(USER_ID, 10, defaultFilter);
 
@@ -130,14 +140,11 @@ class SmartQuestionSelectorTest {
                 .mapToObj(i -> "q-" + i).toList();
 
         stubMetaForDifficulty(Question.Difficulty.easy, smallPool);
-        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(seenIds);
-        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
-        for (String qId : seenIds) {
-            UserQuestionHistory h = new UserQuestionHistory();
-            h.setLastSeenAt(LocalDateTime.now().minusDays(5));
-            when(historyRepository.findByUserIdAndQuestionId(USER_ID, qId))
-                    .thenReturn(Optional.of(h));
-        }
+        // All seen 5 days ago → "seen recently" bucket (within 30-day window).
+        when(historyRepository.findHistoryMetaByUserId(USER_ID)).thenReturn(
+                seenIds.stream()
+                        .map(id -> new HistoryMeta(id, LocalDateTime.now().minusDays(5), null, 1, 0))
+                        .toList());
 
         List<Question> selected = selector.selectQuestions(USER_ID, 10, defaultFilter);
 
@@ -147,8 +154,7 @@ class SmartQuestionSelectorTest {
     @Test
     void selectQuestions_neverReturnsLessThanRequested_ifPoolSufficient() {
         stubMetaForDifficulty(Question.Difficulty.easy, allQuestions);
-        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
-        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
+        when(historyRepository.findHistoryMetaByUserId(USER_ID)).thenReturn(List.of());
 
         List<Question> selected = selector.selectQuestions(USER_ID, 10, defaultFilter);
 
@@ -160,8 +166,7 @@ class SmartQuestionSelectorTest {
         List<Question> smallPool = allQuestions.subList(0, 5);
 
         stubMetaForDifficulty(Question.Difficulty.easy, smallPool);
-        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
-        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
+        when(historyRepository.findHistoryMetaByUserId(USER_ID)).thenReturn(List.of());
 
         List<Question> selected = selector.selectQuestions(USER_ID, 10, defaultFilter);
 
@@ -171,8 +176,7 @@ class SmartQuestionSelectorTest {
     @Test
     void selectQuestions_noDuplicates() {
         stubMetaForDifficulty(Question.Difficulty.easy, allQuestions);
-        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
-        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
+        when(historyRepository.findHistoryMetaByUserId(USER_ID)).thenReturn(List.of());
 
         List<Question> selected = selector.selectQuestions(USER_ID, 20, defaultFilter);
 
@@ -223,8 +227,7 @@ class SmartQuestionSelectorTest {
             ids.forEach(idSet::add);
             return allTierQs.stream().filter(q -> idSet.contains(q.getId())).toList();
         });
-        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
-        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
+        when(historyRepository.findHistoryMetaByUserId(USER_ID)).thenReturn(List.of());
 
         List<Question> selected = selector.selectQuestions(USER_ID, 10, noDiffFilter);
 

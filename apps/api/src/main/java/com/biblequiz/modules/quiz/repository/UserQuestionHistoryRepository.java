@@ -22,6 +22,17 @@ public interface UserQuestionHistoryRepository extends JpaRepository<UserQuestio
            "AND (h.nextReviewAt IS NULL OR h.nextReviewAt <= :now)")
     List<String> findNeedReviewQuestionIds(@Param("userId") String userId, @Param("now") LocalDateTime now);
 
+    /**
+     * Whole-history projection for {@link com.biblequiz.modules.quiz.service.SmartQuestionSelector}:
+     * one query returns every row's classification fields so the selector indexes
+     * them in-memory instead of re-running the aggregate queries per difficulty
+     * bucket and a per-question lookup (the previous N+1).
+     */
+    @Query("SELECT new com.biblequiz.modules.quiz.dto.HistoryMeta(" +
+           "h.question.id, h.lastSeenAt, h.nextReviewAt, h.timesCorrect, h.timesWrong) " +
+           "FROM UserQuestionHistory h WHERE h.user.id = :userId")
+    List<com.biblequiz.modules.quiz.dto.HistoryMeta> findHistoryMetaByUserId(@Param("userId") String userId);
+
     @Query("SELECT h.question.book, COUNT(h) FROM UserQuestionHistory h " +
            "WHERE h.user.id = :userId GROUP BY h.question.book")
     List<Object[]> countSeenByBook(@Param("userId") String userId);
