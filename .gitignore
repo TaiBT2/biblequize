@@ -62,3 +62,6 @@ scripts/seed/translate_report.json
 scripts/seed/prod_update_en.sql
 scripts/seed/prod_backup_en.jsonl
 scripts/seed/manual_fixes.json
+scripts/seed/label_strip_pairs.json
+scripts/seed/prod_label_strip.sql
+scripts/seed/prod_backup_labels.jsonl
