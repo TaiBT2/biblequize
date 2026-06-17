@@ -47,6 +47,8 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@prerenderer/prerenderer": "1.2.5",
+    "@prerenderer/renderer-jsdom": "1.1.9",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
