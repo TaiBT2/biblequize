@@ -9,7 +9,7 @@ lỗi đang hỏng production + thiếu sót. Sửa hết phần low-risk, no-ne
 ### Tasks
 
 - SEO-1 Render `og-image.png` (1200×630) từ `og-image.svg` — social preview đang vỡ ảnh
-  - Status: [ ] TODO · Files: `scripts/generate-favicons.mjs`, `public/og-image.png` (new), `src/__tests__/seo-assets.test.ts` (new) · Test: assert PNG signature + 1200×630
+  - Status: [x] DONE · Files: `scripts/generate-favicons.mjs`, `public/og-image.png` (new), `src/__tests__/seo-assets.test.ts` (new) · Test: assert PNG signature + 1200×630
   - **Spec impact**: [x] None
   - **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · vitest pass ≥ baseline · commit

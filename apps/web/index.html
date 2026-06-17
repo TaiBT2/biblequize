@@ -12,11 +12,14 @@
   <meta name="author" content="BibleQuiz" />
   <meta name="theme-color" content="#11131e" />
 
-  <!-- Canonical + Language Alternates -->
-  <!-- Canonical set per-page via react-helmet-async PageMeta -->
-  <link rel="alternate" hreflang="vi" href="https://forbible.org" />
-  <link rel="alternate" hreflang="el" href="https://forbible.org/el" />
-  <link rel="alternate" hreflang="x-default" href="https://forbible.org" />
+  <!--
+    Canonical is set per-page via react-helmet-async (PageMeta) — no static
+    <link rel="canonical"> here, or it would conflict with the per-page tag.
+    No hreflang link annotations: the app serves both vi + en at the SAME URL
+    (i18next language-detector, no per-locale URL routing). hreflang REQUIRES
+    distinct per-language URLs, so emitting them would point crawlers at 404s.
+    Re-add hreflang once locale-prefixed routes (/en, /vi) exist.
+  -->
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -26,7 +29,7 @@
   <meta property="og:url" content="https://forbible.org" />
   <meta property="og:site_name" content="BibleQuiz" />
   <meta property="og:locale" content="vi_VN" />
-  <meta property="og:locale:alternate" content="el_GR" />
+  <meta property="og:locale:alternate" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -76,7 +79,7 @@
       "description": "Nen tang hoc Kinh Thanh qua gamification — trac nghiem, thi dau, nhom hoi thanh",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Web",
-      "inLanguage": ["vi", "el"],
+      "inLanguage": ["vi", "en"],
       "offers": {
         "@type": "Offer",
         "price": "0",
