@@ -16,11 +16,11 @@ Quyết định kỹ thuật (từ spike):
 ### Tasks
 
 - PRE-1 Thêm devDeps `@prerenderer/prerenderer` + `@prerenderer/renderer-jsdom`
-  - Status: [ ] TODO · Files: `apps/web/package.json`, `pnpm-lock.yaml` · Test: `pnpm install --frozen-lockfile` clean
+  - Status: [x] DONE · Files: `apps/web/package.json`, `pnpm-lock.yaml` · Test: `pnpm install --frozen-lockfile` clean
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
 - PRE-2 Thêm PageMeta (title/description/canonical) cho PrivacyPolicy + TermsOfService + Help
-  - Status: [ ] TODO · Files: `pages/PrivacyPolicy.tsx`, `pages/TermsOfService.tsx`, `pages/Help.tsx` · Test: render emits per-page title
+  - Status: [x] DONE · Files: `pages/PrivacyPolicy.tsx`, `pages/TermsOfService.tsx`, `pages/Help.tsx` · Test: render emits per-page canonical
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
 - PRE-3 `scripts/prerender.mjs` + wire vào `build` script + verify dist output

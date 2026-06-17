@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import PageMeta from '../components/PageMeta'
 
 export default function TermsOfService() {
   const { i18n } = useTranslation()
@@ -8,6 +9,15 @@ export default function TermsOfService() {
 
   return (
     <div className="min-h-screen bg-bq-paper text-bq-ink">
+      <PageMeta
+        title={isVi ? 'Điều khoản Sử dụng' : 'Terms of Service'}
+        description={
+          isVi
+            ? 'Điều khoản sử dụng dịch vụ BibleQuiz.'
+            : 'BibleQuiz terms of service.'
+        }
+        canonicalPath="/terms"
+      />
       <div className="max-w-3xl mx-auto px-6 py-12">
         <Link to="/" className="text-bq-sapphire text-sm hover:underline mb-6 inline-block">
           &larr; {t('common.back')}

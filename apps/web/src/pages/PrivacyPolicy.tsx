@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import PageMeta from '../components/PageMeta'
 
 export default function PrivacyPolicy() {
   const { t, i18n } = useTranslation()
@@ -7,6 +8,15 @@ export default function PrivacyPolicy() {
 
   return (
     <div className="min-h-screen bg-bq-paper text-bq-ink">
+      <PageMeta
+        title={isVi ? 'Chính sách Bảo mật' : 'Privacy Policy'}
+        description={
+          isVi
+            ? 'Chính sách bảo mật của BibleQuiz — cách chúng tôi thu thập, sử dụng và bảo vệ dữ liệu của bạn.'
+            : 'BibleQuiz privacy policy — how we collect, use and protect your data.'
+        }
+        canonicalPath="/privacy"
+      />
       <div className="max-w-3xl mx-auto px-6 py-12">
         <Link to="/" className="text-bq-sapphire text-sm hover:underline mb-6 inline-block">
           &larr; {t('common.back')}
