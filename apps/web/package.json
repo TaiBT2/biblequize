@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@prerenderer/prerenderer": "1.2.5",
-    "@prerenderer/renderer-jsdom": "1.1.9",
+    "@prerenderer/renderer-puppeteer": "1.2.4",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
@@ -66,6 +66,7 @@
     "happy-dom": "^20.8.9",
     "jsdom": "^27.0.1",
     "postcss": "^8.4.32",
+    "puppeteer": "^23.11.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.4.5",

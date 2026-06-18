@@ -23,18 +23,21 @@ Quyết định kỹ thuật (từ spike):
   - Status: [x] DONE · Files: `pages/PrivacyPolicy.tsx`, `pages/TermsOfService.tsx`, `pages/Help.tsx` · Test: render emits per-page canonical
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
-- PRE-3 `scripts/prerender.mjs` + wire vào `build` script + verify dist output
-  - Status: [!] BLOCKED · Files: `apps/web/scripts/prerender.mjs`, `apps/web/package.json` (build script)
-  - **BLOCKER**: jsdom renderer (đã duyệt) **không execute ES module** → app không boot trong jsdom,
-    prerender chụp `<div id="root"></div>` rỗng. Test thực nghiệm: **0/5 routes**. Đây là giới hạn cố hữu
-    của jsdom với Vite ESM build. Script đã xoá (không commit).
-  - **Hướng xử lý**: `@prerenderer/renderer-puppeteer` (Chromium thật execute được ESM) — nhưng cần
-    cài Chromium vào `infra/docker/web.Dockerfile` (apk add chromium + PUPPETEER_EXECUTABLE_PATH).
-    Đây là cam kết infra lớn hơn jsdom → **chờ user duyệt**.
+- PRE-3 `scripts/prerender.mjs` (puppeteer) + `scripts/seo-dedupe.mjs` + unit test
+  - Status: [x] DONE · Files: `scripts/prerender.mjs`, `scripts/seo-dedupe.mjs` (new), `src/__tests__/prerender-dedupe.test.ts` (new)
+  - jsdom (PRE-1 ban đầu) **không chạy ESM → 0/5**; đổi sang `@prerenderer/renderer-puppeteer` + `puppeteer`
+    (executablePath = Playwright chrome local / apk chromium Docker; pnpm bỏ qua postinstall → không tải Chromium).
+    Local test: **5/5 routes render** (content + per-page meta). Dedupe content-aware (React 19 hoist tạo
+    duplicate title/og + canonical rỗng) + force canonical per-route. Unit test 3/3 pass.
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
-> **NOTE**: deps `@prerenderer/prerenderer` (PRE-1) vẫn giữ — core này dùng chung cho cả puppeteer renderer.
-> `@prerenderer/renderer-jsdom` sẽ thay bằng `-puppeteer` nếu user duyệt; nếu defer thì gỡ sau.
+- PRE-4 web.Dockerfile: apk chromium + PRERENDER_CHROMIUM env + RUN prerender sau build
+  - Status: [x] DONE · Files: `infra/docker/web.Dockerfile` · Chromium chỉ trong build stage (final nginx image không có)
+  - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
+
+- PRE-5 Rebuild FE image (clean worktree) + verify prerendered dist + redeploy + verify prod
+  - Status: [ ] TODO · Files: deploy only
+  - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
 ### Out of scope
 - Prerender `/` (auth-dependent) — homepage static meta trong index.html đã đúng.
