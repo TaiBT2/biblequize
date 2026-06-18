@@ -84,12 +84,14 @@ export default function Leaderboard() {
   // 0 points would falsely flag the lowest tier as theirs.
   const userTierId = isAuthenticated ? getTierByPoints(userPoints).id : null
 
-  const rawList: any[] = Array.isArray(entries) ? entries : []
-  // Defensive dedup: if BE returns duplicate rows for same userId, keep first occurrence.
-  // Root-cause investigation pending — see TODO LB-1.2 for backend follow-up.
-  const list = rawList.filter(
-    (row, idx, arr) => arr.findIndex((r) => r.userId === row.userId) === idx,
-  )
+  // LBF-2 (2026-06-18): no FE dedup. Investigation conclusion — the board
+  // cannot return a userId twice: `user_daily_progress` has
+  // UNIQUE(user_id, date) so the daily query yields one row per user, and
+  // weekly/all-time GROUP BY u.id (the PK). The old "defensive dedup +
+  // investigation pending" guard masked an impossible state; a real duplicate
+  // should now surface loudly (React duplicate-key warning) as a schema/query
+  // regression rather than being silently swallowed.
+  const list: any[] = Array.isArray(entries) ? entries : []
   const top3 = list.slice(0, 3)
   const rest = list.slice(3)
   const podiumOrder = [top3[1], top3[0], top3[2]].filter(Boolean) // 2, 1, 3

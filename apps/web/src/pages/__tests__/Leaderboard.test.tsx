@@ -192,27 +192,9 @@ describe('Leaderboard', () => {
   // season tab + its /leaderboard/season fetch test were removed. BE endpoint
   // stays dormant.
 
-  // LB-1.2 — duplicate row prevention (regression guard)
-  it('LB-1.2: dedupes user appearing twice in BE response', async () => {
-    const DUPLICATE_ENTRIES = [
-      { userId: 'u2', name: 'Player 1', points: 15820, avatarUrl: null },
-      { userId: 'u3', name: 'Player 2', points: 12450, avatarUrl: null },
-      { userId: 'u1', name: 'Test User', points: 4520, avatarUrl: null }, // duplicate #1
-      { userId: 'u1', name: 'Test User', points: 4520, avatarUrl: null }, // duplicate #2
-      { userId: 'u4', name: 'Player 3', points: 3000, avatarUrl: null },
-    ]
-    mockApiGet.mockImplementation((url: string) => {
-      if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 3, points: 4520 } })
-      if (url.includes('/leaderboard/')) return Promise.resolve({ data: DUPLICATE_ENTRIES })
-      if (url.includes('/seasons')) return Promise.resolve({ data: null })
-      if (url.includes('/api/me/tier-progress')) return Promise.resolve({ data: { totalPoints: 4520 } })
-      return Promise.reject(new Error('Not found'))
-    })
-    renderLeaderboard()
-    await waitFor(() => { expect(screen.getByText('Player 3')).toBeInTheDocument() })
-    // Test User name should appear exactly once (FE defensive dedup)
-    expect(screen.getAllByText('Test User')).toHaveLength(1)
-  })
+  // LBF-2 (2026-06-18): the "dedupes duplicate BE rows" test was removed with
+  // the dead FE dedup guard — UNIQUE(user_id, date) + GROUP BY u.id make a
+  // repeated userId impossible, so the test simulated a state the BE can't emit.
 
   it('LB-1.2: hides sticky my-rank row when current user IS in displayed list', async () => {
     // Test User (u1) is in MOCK_ENTRIES at idx 4 (rank 5) → no sticky needed

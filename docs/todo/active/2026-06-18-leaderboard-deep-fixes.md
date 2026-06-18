@@ -26,7 +26,7 @@ P0 (correctness): LBF-1, LBF-2 · P1: LBF-11 (launch-blocking presentation), LBF
   - Checklist: impl · Tầng 1+2+3 BE pass · spec §22 ghi tie-break · `audit.sh` no NEW broken · commit
 
 - LBF-2 (P0) BE: điều tra root-cause duplicate rows (gỡ band-aid FE LB-1.2)
-  - Status: [ ] TODO · Files: `UserDailyProgressRepository.java` (queries), `Leaderboard.tsx` (dedup filter) · Test: JUnit reproduce + assert no dup
+  - Status: [x] DONE · Kết luận: **impossible by schema** — `user_daily_progress` có `UNIQUE(user_id, date)` (daily 1 row/user) + weekly/all-time `GROUP BY u.id` (PK). Không query nào dupe được → gỡ dead guard + test LB-1.2 dedup. Files: `Leaderboard.tsx`, `Leaderboard.test.tsx` · Test: FE 1333 pass
   - Detail: FE `Leaderboard.tsx:89-93` lọc trùng `userId` "phòng khi BE trả duplicate". `GROUP BY u.id,...` về lý thuyết unique theo id. Điều tra: có user trùng (cùng email nhiều row `users`?) / join nở / cache cũ? Tìm root-cause → fix BE → gỡ dedup phòng thủ FE (hoặc giữ + comment lý do nếu là edge thật). KHÔNG để band-aid che bug (memory: defensive_any_cast_hides_bugs).
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · Tầng 1+2+3 (BE+FE) pass · commit
