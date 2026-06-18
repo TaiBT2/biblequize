@@ -148,7 +148,7 @@ export default function CreateRoom() {
         </div>
 
         {/* ── Main grid ── */}
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] gap-6 items-start">
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] gap-6 items-start">
 
           {/* ═════ LEFT COLUMN ═════ */}
           <div className="space-y-4">

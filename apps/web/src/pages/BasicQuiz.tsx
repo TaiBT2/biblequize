@@ -47,7 +47,7 @@ function formatMmSs(totalSeconds: number): string {
 /* ── Skeleton ── */
 function QuizSkeleton() {
   return (
-    <div data-testid="basic-quiz-skeleton" className="max-w-3xl mx-auto py-12 space-y-6 animate-pulse">
+    <div data-testid="basic-quiz-skeleton" className="max-w-4xl mx-auto py-12 space-y-6 animate-pulse">
       <div className="h-3 w-full rounded-full bg-bq-inset" />
       <div className="h-32 rounded-2xl bg-bq-inset" />
       <div className="space-y-3">
@@ -201,7 +201,7 @@ export default function BasicQuiz() {
 
   // ── Playing phase ──
   return (
-    <div data-testid="basic-quiz-page" className="max-w-3xl mx-auto py-8 space-y-6">
+    <div data-testid="basic-quiz-page" className="max-w-4xl mx-auto py-8 space-y-6">
       {/* Header + progress */}
       <header className="space-y-3">
         <div className="flex items-center justify-between">
@@ -234,7 +234,7 @@ export default function BasicQuiz() {
             {currentQuestion.content}
           </h2>
 
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {currentQuestion.options.map((option, idx) => {
               const isSelected = answers[currentIndex] === idx
               return (
@@ -404,7 +404,7 @@ function PassScreen({
 }) {
   const { t } = useTranslation()
   return (
-    <div data-testid="basic-quiz-result-pass" className="max-w-3xl mx-auto py-10 space-y-6">
+    <div data-testid="basic-quiz-result-pass" className="max-w-4xl mx-auto py-10 space-y-6">
       <header className="text-center space-y-4">
         <div className="text-7xl">🎉</div>
         <div className="space-y-2">
@@ -460,7 +460,7 @@ function FailScreen({
 }) {
   const { t } = useTranslation()
   return (
-    <div data-testid="basic-quiz-result-fail" className="max-w-3xl mx-auto py-10 space-y-6">
+    <div data-testid="basic-quiz-result-fail" className="max-w-4xl mx-auto py-10 space-y-6">
       <header className="text-center space-y-3">
         <div className="text-6xl">😅</div>
         <h2 className="font-display text-2xl font-black text-bq-ink">

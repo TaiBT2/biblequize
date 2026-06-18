@@ -39,7 +39,7 @@ export default function PreviewPanel({
   const setMissing = questionSource === 'CUSTOM' && !selectedSet
 
   return (
-    <div className="lg:sticky lg:top-[86px]">
+    <div className="md:sticky md:top-[86px]">
       <div className="rounded-[20px] overflow-hidden bg-bq-white border border-bq-hair shadow-bq-soft">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 bg-bq-inset border-b border-bq-hair">
