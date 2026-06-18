@@ -36,7 +36,10 @@ Quyết định kỹ thuật (từ spike):
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
 - PRE-5 Rebuild FE image (clean worktree) + verify prerendered dist + redeploy + verify prod
-  - Status: [ ] TODO · Files: deploy only
+  - Status: [x] DONE (2026-06-18) · Build prerender 5/5 trong Docker (apk chromium 149). nginx `$uri/index.html`
+    → serve clean URL không 301. Smoke-test: clean URLs 200, SPA fallback intact, Playwright 0 console errors.
+    Deploy `biblequiz-web` (image 142f5e4). **Prod verified**: `forbible.org/landing` per-page title +
+    canonical=/ + content "Learn the Bible"; `/privacy` 200; `/` vẫn SPA shell.
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
 ### Out of scope
