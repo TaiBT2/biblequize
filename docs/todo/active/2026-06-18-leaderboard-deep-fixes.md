@@ -80,7 +80,7 @@ P0 (correctness): LBF-1, LBF-2 · P1: LBF-11 (launch-blocking presentation), LBF
   - Checklist: impl · Tầng 3 FE · spec §22 cập nhật + DECISIONS.md entry · `audit.sh` · commit
 
 - LBF-12 (P2) FE: ẩn SeasonCard trên trang Ranked (D)
-  - Status: [ ] TODO · Files: `components/ranked/SeasonCard.tsx` (ẩn render), nơi mount (`Ranked.tsx`/`useRankedPage.ts`), tests liên quan · Test: Vitest (Ranked không render season card)
+  - Status: [x] DONE · Files: `Ranked.tsx` (gỡ import + mount; giữ `SeasonCard.tsx` để bật lại) · Test: Vitest full 1334 pass
   - Detail: SeasonCard phơi "Hạng mùa #N / Điểm mùa N / còn X đến 1000đ" + chip ×1.5 + badge "Vinh Quang Mùa" (×1.5 đang OFF, badge chưa trao) → đúng loại số yếu cần né. Ẩn card (gate bằng cờ FE hoặc gỡ mount). Không gọi `/api/seasons/{id}/my-rank` nữa. Giữ component file để bật lại sau.
   - **Spec impact**: [x] None (ẩn UI, no business change) · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · Tầng 3 FE · commit

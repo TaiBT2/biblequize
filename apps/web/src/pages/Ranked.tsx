@@ -16,7 +16,6 @@ import TierProgressCard from '../components/ranked/TierProgressCard'
 import CoverageCard from '../components/ranked/CoverageCard'
 import PoolExhaustedModal from '../components/ranked/PoolExhaustedModal'
 import BadgeAwardModal from '../components/ranked/BadgeAwardModal'
-import SeasonCard from '../components/ranked/SeasonCard'
 import RankedActionFooter from '../components/ranked/RankedActionFooter'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
@@ -402,7 +401,10 @@ export default function Ranked() {
           </section>
         </div>
 
-        <SeasonCard />
+        {/* LBF-12 (2026-06-18): SeasonCard hidden for early launch — it exposed
+            weak season numbers ("Hạng mùa #N / Điểm mùa N / còn X đến 1000đ")
+            + advertised a ×1.5 bonus + "Vinh Quang Mùa" badge that are flag-OFF.
+            Component kept at components/ranked/SeasonCard.tsx for re-enable. */}
       </div>
 
       {/* Mobile sticky CTA — hidden on md+ since the Action card above
