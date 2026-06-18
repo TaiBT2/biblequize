@@ -65,9 +65,9 @@ export default defineConfig(({ mode }) => {
           // runtime or the translation bundles). Lazy route chunks are emitted
           // automatically by the React.lazy() imports in main.tsx.
           manualChunks(id) {
-            // Translation JSON (vi 143kB + en 127kB) — eager via i18n init, but
-            // kept out of the entry JS and cached on its own (rarely changes).
-            if (id.includes('/src/i18n/') && id.endsWith('.json')) return 'locales'
+            // NB: translation JSON is intentionally NOT bucketed here — each
+            // locale is a dynamic import() in src/i18n, so Rollup emits one
+            // chunk per language and only the active one loads on first paint.
             if (id.includes('node_modules')) {
               if (id.includes('react-router')) return 'router'
               if (/[\\/]react(-dom)?[\\/]|[\\/]scheduler[\\/]/.test(id)) return 'react-vendor'

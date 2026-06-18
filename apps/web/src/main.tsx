@@ -12,7 +12,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import ErrorBoundary from './components/ErrorBoundary'
 import { HelmetProvider } from 'react-helmet-async'
 import { initStorageSync } from './utils/localStorageClearDetector'
-import './i18n'
+import { i18nReady } from './i18n'
 import PageLoader from './components/PageLoader'
 import RequireAdmin from './contexts/RequireAdmin'
 
@@ -124,6 +124,9 @@ function HomeOrLanding() {
   return <AppLayout />
 }
 
+// Wait for the active-language bundle before first paint so the UI never
+// flashes raw i18n keys (translations now load as chunks, not inlined).
+i18nReady.then(() => {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ErrorBoundary>
@@ -231,5 +234,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </ErrorBoundary>
   </React.StrictMode>
 )
+})
 
 
