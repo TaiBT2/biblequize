@@ -113,6 +113,7 @@ export default function UserDropdown({
         data-testid="user-dropdown-toggle"
         aria-haspopup="menu"
         aria-expanded={open}
+        aria-label={trigger === 'card' ? undefined : t('nav.userMenu')}
         onClick={() => setOpen(p => !p)}
         className={
           trigger === 'card'

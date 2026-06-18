@@ -24,6 +24,7 @@ export function SoundHapticsSettings() {
             {soundEnabled && (
               <input
                 type="range"
+                aria-label={t('profile.volumeLabel')}
                 min="0"
                 max="100"
                 value={volume}
@@ -37,6 +38,7 @@ export function SoundHapticsSettings() {
             )}
             {soundEnabled && <span className="text-xs font-bold text-bq-amberd w-8 text-right">{volume}%</span>}
             <Toggle
+              label={t('profile.soundEffectsLabel')}
               on={soundEnabled}
               onChange={(next) => {
                 setSoundEnabled(next)
@@ -48,19 +50,20 @@ export function SoundHapticsSettings() {
         </div>
         <div className="flex items-center justify-between py-3 gap-4">
           <span className="text-sm text-bq-ink">{t('profile.hapticsLabel')}</span>
-          <Toggle on={hapticsOn} onChange={(next) => { setHapticsOn(next); setHapticsEnabled(next) }} />
+          <Toggle label={t('profile.hapticsLabel')} on={hapticsOn} onChange={(next) => { setHapticsOn(next); setHapticsEnabled(next) }} />
         </div>
       </div>
     </section>
   )
 }
 
-function Toggle({ on, onChange }: { on: boolean; onChange: (next: boolean) => void }) {
+function Toggle({ on, onChange, label }: { on: boolean; onChange: (next: boolean) => void; label: string }) {
   return (
     <button
       onClick={() => onChange(!on)}
       className={`w-10 h-[22px] rounded-full relative transition-colors ${on ? 'bg-bq-action shadow-bq-action' : 'bg-bq-hair'}`}
       aria-pressed={on}
+      aria-label={label}
     >
       <span className={`absolute top-[3px] w-4 h-4 rounded-full bg-white shadow transition-all ${on ? 'right-[3px]' : 'left-[3px]'}`} />
     </button>
