@@ -32,7 +32,7 @@ untouched**.
 
 | Concern | Web | Mobile (Capacitor) |
 |---|---|---|
-| API base | same-origin / proxy | absolute `https://be.quize.top` (`.env.capacitor`); `getApiBaseUrl()` throws if empty |
+| API base | same-origin / proxy | absolute `https://be.forbible.org` (`.env.capacitor`); `getApiBaseUrl()` throws if empty |
 | CORS | browser CORS | `CapacitorHttp` native layer bypasses CORS |
 | Auth | httpOnly refresh cookie | `/api/auth/mobile/{login,refresh,google}`, token-in-body |
 | Refresh token | cookie | `@capacitor/preferences` (`mobileTokenStore.ts`) |

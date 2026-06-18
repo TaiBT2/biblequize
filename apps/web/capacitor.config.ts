@@ -11,7 +11,7 @@ const config: CapacitorConfig = {
   },
   plugins: {
     // Route native fetch/XHR through the native HTTP layer so cross-origin
-    // calls to the API (https://be.quize.top) bypass browser CORS entirely.
+    // calls to the API (https://be.forbible.org) bypass browser CORS entirely.
     // See MOB-0b: mobile auth uses token-in-body, no cookies needed.
     CapacitorHttp: {
       enabled: true,
