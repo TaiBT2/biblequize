@@ -35,6 +35,12 @@
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · Tầng 3 full FE · commit
 
+- LBG-7 FE: CTA "bảng đầy đủ" → /login (thay vì guest /leaderboard)
+  - Status: [x] DONE · Files: `apps/web/src/pages/LandingPage.tsx`, `LandingPage.test.tsx`, i18n vi/en · Test: Vitest
+  - Detail: guest /leaderboard thiếu "hạng của bạn" → trông cụt. Đổi CTA landing preview sang `/login` + nhãn "Đăng nhập để xem bảng đầy đủ" để funnel khách vào login thay vì trang guest trống. Trang guest /leaderboard vẫn giữ (vào thẳng URL không lỗi).
+  - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
+  - Checklist: impl · Tầng 3 full FE · commit
+
 - LBG-6 FE: "Giới thiệu" scroll tới Features + scroll-spy 3 mục
   - Status: [x] DONE · Files: `apps/web/src/pages/LandingPage.tsx`, `LandingPage.test.tsx` · Test: Vitest
   - Detail: thêm `id="features"` cho FeaturesGrid; "Giới thiệu" → smooth-scroll tới đó. Observer theo dõi cả `#features` + `#leaderboard` (band `-45%` center, không dùng `-50%` zero-area flaky) → highlight home/features/leaderboard theo vị trí cuộn. Verified live: cuộn tới board giữ `board=true` ổn định.

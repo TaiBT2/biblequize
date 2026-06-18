@@ -401,11 +401,14 @@ function LeaderboardPreview() {
         </div>
 
         <div className="text-center mt-8">
+          {/* Guests see only the public teaser; the full board (with "your rank",
+              tiers, seasons) needs an account, so funnel them to login rather
+              than the bare guest /leaderboard view. */}
           <Link
-            to="/leaderboard"
+            to="/login"
             className="inline-flex items-center gap-1.5 text-bq-amberd font-bold hover:underline"
           >
-            {t('leaderboard.viewFullBoard')}
+            {t('leaderboard.loginToViewBoard')}
             <span className="material-symbols-outlined text-lg">arrow_forward</span>
           </Link>
         </div>

@@ -88,9 +88,10 @@ describe('LandingPage', () => {
     expect(document.getElementById('features')).not.toBeNull()
   })
 
-  it('preview has a "view full board" link to /leaderboard', () => {
+  it('preview "full board" CTA funnels guests to /login (not the bare guest /leaderboard)', () => {
     renderLanding()
-    expect(document.querySelector('a[href="/leaderboard"]')).not.toBeNull()
+    expect(screen.getByText(/Đăng nhập để xem bảng đầy đủ|Log in to see the full board/i)).toBeInTheDocument()
+    expect(document.querySelector('a[href="/leaderboard"]')).toBeNull()
   })
 
   it('preview shows live board data from the public endpoint when available', async () => {
