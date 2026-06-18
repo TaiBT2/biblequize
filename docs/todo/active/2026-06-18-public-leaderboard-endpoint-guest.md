@@ -28,3 +28,9 @@
   - Detail: nav "Xếp hạng" → smooth-scroll tới section preview (id="leaderboard"), bỏ Link sang /leaderboard. `LeaderboardPreview` query `/api/public/leaderboard?period=all-time&size=10` (TanStack) hiện top-N thật (fallback hardcode khi loading/empty), tier từ `getTierByPoints`. Thêm nút "Xem bảng đầy đủ" → /leaderboard.
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · Tầng 3 full FE · commit
+
+- LBG-5 FE: LandingPage nav scroll-spy highlight
+  - Status: [x] DONE · Files: `apps/web/src/pages/LandingPage.tsx`, `LandingPage.test.tsx` · Test: Vitest
+  - Detail: IntersectionObserver theo dõi `#leaderboard` → highlight "Xếp hạng" khi cuộn tới, "Trang chủ" khi ở đầu trang; "Trang chủ" click → scroll top. Guard `typeof IntersectionObserver` tránh crash test.
+  - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
+  - Checklist: impl · Tầng 3 full FE · commit

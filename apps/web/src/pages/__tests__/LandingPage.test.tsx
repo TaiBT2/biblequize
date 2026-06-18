@@ -74,6 +74,14 @@ describe('LandingPage', () => {
     expect(document.getElementById('leaderboard')).not.toBeNull()
   })
 
+  it('nav highlights "Trang chủ" by default (top of page), not "Xếp hạng"', () => {
+    renderLanding()
+    const home = document.querySelector('a[href="#"]')
+    const board = document.querySelector('a[href="#leaderboard"]')
+    expect(home?.className).toContain('border-bq-amber')
+    expect(board?.className).not.toContain('border-bq-amber')
+  })
+
   it('preview has a "view full board" link to /leaderboard', () => {
     renderLanding()
     expect(document.querySelector('a[href="/leaderboard"]')).not.toBeNull()
