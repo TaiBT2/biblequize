@@ -604,8 +604,8 @@ export default function LandingPage() {
   return (
     <div data-testid="landing-page" className="bg-bq-paper font-body text-bq-ink selection:bg-bq-amber selection:text-white min-h-screen">
       <PageMeta
-        title="Học Kinh Thánh qua Quiz & Thi đấu"
-        description="Quiz Kinh Thánh tiếng Việt — trắc nghiệm tương tác, thi đấu multiplayer, nhóm hội thánh. Hoàn toàn miễn phí."
+        title="Trắc Nghiệm Kinh Thánh – Câu Đố Kinh Thánh Online"
+        description="Trắc nghiệm Kinh Thánh & câu đố Kinh Thánh Tin Lành online miễn phí — học Lời Chúa qua quiz tương tác, thi đấu cùng cộng đồng và nhóm hội thánh Việt Nam."
         canonicalPath="/"
       />
       <GuestHeader />
