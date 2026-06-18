@@ -54,15 +54,15 @@
 - MOB-2e Persist refresh token: `mobileTokenStore` (`@capacitor/preferences`), rotate trong mobileRefresh.
   - Status: [x] DONE · Files: `api/mobileTokenStore.ts`
 
-## Phase 3 — Native shell polish
-- MOB-3a Safe-area: `viewport-fit=cover` + `env(safe-area-inset-*)` cho TopBar/BottomTabs.
-  - Status: [ ] TODO
-- MOB-3b StatusBar + SplashScreen + app icon/launch (brand `#11131e`/gold).
-  - Status: [ ] TODO
-- MOB-3c Haptics native: `@capacitor/haptics` thay `navigator.vibrate` khi target=capacitor (`utils/haptics.ts`).
-  - Status: [ ] TODO
-- MOB-3d UX webview: chặn overscroll/pull-refresh, disable text-select, keyboard resize.
-  - Status: [ ] TODO
+## Phase 3 — Native shell polish — ✅ DONE 2026-06-18
+- MOB-3a Safe-area: `viewport-fit=cover` (index.html) + `env(safe-area-inset-top)` (MobileTopBar; BottomTabs đã có sẵn bottom inset).
+  - Status: [x] DONE
+- MOB-3b StatusBar (overlay off, dark, #11131e) + SplashScreen.hide + Keyboard resize (`initNative.ts`). App icon/splash: brand open-book gold/#11131e SVG → `sharp` → `@capacitor/assets generate --android` (148 res files). Generator: `scripts/gen-app-assets.mjs`, source `assets/icon-*.png`+`splash*.png`.
+  - Status: [x] DONE
+- MOB-3c Haptics native: `nativeHaptics.ts` (@capacitor/haptics impact/notification), branch trong `utils/haptics.ts` (web vibrate giữ nguyên → 5 haptics tests pass).
+  - Status: [x] DONE
+- MOB-3d Webview UX: `html.capacitor` CSS (overscroll none, user-select none + opt-in cho input/.select-text, tap-highlight off) trong global.css; Keyboard resize Native.
+  - Status: [x] DONE
 
 ## Phase 4 — Admin gating + responsive còn thiếu
 - MOB-4a Loại admin khỏi bundle mobile (conditional route + lazy khi `VITE_TARGET!=='capacitor'`).

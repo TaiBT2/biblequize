@@ -32,6 +32,7 @@ import AuthCallback from './pages/AuthCallback'
 import AdminLayout from './layouts/AdminLayout'
 import AppLayout from './layouts/AppLayout'
 import CapacitorBackButton from './platform/CapacitorBackButton'
+import { initNative } from './platform/initNative'
 import AIQuestionGenerator from './pages/admin/AIQuestionGenerator'
 import ReviewQueue from './pages/admin/ReviewQueue'
 import QuestionsAdmin from './pages/admin/Questions'
@@ -116,6 +117,9 @@ function HomeOrLanding() {
   }
   return <AppLayout />
 }
+
+// Native shell setup (status bar, splash, keyboard) — no-op on web.
+initNative()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
