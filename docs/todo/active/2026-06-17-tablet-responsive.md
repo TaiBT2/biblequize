@@ -23,4 +23,7 @@
 ### P2 — Fair, low priority (nới max-w / tier)
 - TBL-13 RankedQuizResults `md:max-w-xl`; Practice filter `lg`→`md`; Weekly/Mystery/Speed `lg:max-w-3xl`; ScheduledQuizCreate/Detail; TournamentDetail info `lg:grid-cols-4`; RoomQuizHost 2-col `md`; RankedActionFooter bỏ `md:left-72`
 
-Status: [ ] in progress · Test: build mỗi wave + Tầng 3 cuối · **Spec impact** [x] None · **Spec strategy** [x] (c)
+Status: [x] DONE (P0+P1+P2). Deferred: RoomLobby chat-dock (isMobile risk → realtime CTA), RoomQuizHost (TV-intent), GroupDetail member-table sm→md (table-at-768 shows all data — không rõ tốt hơn), RankedActionFooter left-72 (dead `md:hidden`).
+Commits: `22ed4afd` (W1 P0 group), `d299ced3` (W2 P0 rooms), `e406109d` (W3 P1), + W4 P2.
+Test: Tầng 3 full FE **1297 pass** (≥ baseline 1277) + build exit 0.
+**Spec impact** [x] None · **Spec strategy** [x] (c) `[no-spec-impact]`

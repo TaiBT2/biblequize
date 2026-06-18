@@ -31,7 +31,7 @@ export default function MysteryMode() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto space-y-8" data-testid="mystery-page">
+    <div className="max-w-2xl lg:max-w-3xl mx-auto space-y-8" data-testid="mystery-page">
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="w-20 h-20 mx-auto rounded-2xl bg-bq-sapphire/10 border border-bq-sapphire/20 flex items-center justify-center">

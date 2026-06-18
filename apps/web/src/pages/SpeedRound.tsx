@@ -29,7 +29,7 @@ export default function SpeedRound() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto space-y-8" data-testid="speed-round-page">
+    <div className="max-w-2xl lg:max-w-3xl mx-auto space-y-8" data-testid="speed-round-page">
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="w-20 h-20 mx-auto rounded-2xl bg-bq-ember/10 border border-bq-ember/20 flex items-center justify-center">

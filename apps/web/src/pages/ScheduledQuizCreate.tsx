@@ -110,7 +110,7 @@ const ScheduledQuizCreate: React.FC = () => {
   if (!groupId) return null
 
   return (
-    <div className="min-h-screen bg-bq-paper text-bq-ink px-4 py-6 max-w-2xl mx-auto" data-testid="scheduled-quiz-create">
+    <div className="min-h-screen bg-bq-paper text-bq-ink px-4 py-6 max-w-3xl mx-auto" data-testid="scheduled-quiz-create">
       <div className="mb-5 flex items-center gap-3">
         <button onClick={() => navigate(`/groups/${groupId}`)} className="text-bq-ink2 hover:text-bq-ink" aria-label="Back">
           <span className="material-symbols-outlined">arrow_back</span>
