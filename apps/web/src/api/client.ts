@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import i18n from 'i18next'
 import { getApiBaseUrl, isDebug } from './config'
 import { getAccessToken, setAccessToken } from './tokenStore'
+import { isCapacitor } from '../platform/capacitor'
 
 export const api = axios.create({
   baseURL: getApiBaseUrl(),
@@ -53,13 +54,23 @@ api.interceptors.response.use(
       originalRequest._retry = true
 
       try {
-        // Refresh token is in httpOnly cookie — no need to send it in body
-        const response = await axios.post(`${api.defaults.baseURL}/api/auth/refresh`, {}, {
-          withCredentials: true
-        })
+        let accessToken: string | undefined
 
-        const { accessToken } = response.data
-        setAccessToken(accessToken)
+        if (isCapacitor()) {
+          // Mobile: refresh via the stored refresh token (no cookie).
+          const { mobileRefresh } = await import('./mobileAuth')
+          const result = await mobileRefresh()
+          if (!result) throw new Error('mobile refresh failed')
+          accessToken = result.accessToken
+        } else {
+          // Web: refresh token is in httpOnly cookie — no body needed.
+          const response = await axios.post(`${api.defaults.baseURL}/api/auth/refresh`, {}, {
+            withCredentials: true
+          })
+          accessToken = response.data?.accessToken
+        }
+
+        setAccessToken(accessToken ?? null)
 
         // Retry the original request with new token
         if (!originalRequest.headers) originalRequest.headers = {}

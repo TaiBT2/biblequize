@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../store/authStore'
 import PageMeta from '../components/PageMeta'
+import { isCapacitor } from '../platform/capacitor'
 
 export default function Login() {
   const { t } = useTranslation()
@@ -42,8 +43,35 @@ export default function Login() {
     }
   }, [isAuthenticated, navigate])
 
-  const handleGoogleLogin = () => {
+  const handleGoogleLogin = async () => {
+    setError(null)
     setIsGoogleLoading(true)
+
+    // Mobile (Capacitor): native Google Sign-In → idToken → backend verify.
+    // A full-page OAuth redirect would navigate the WebView away from the app.
+    if (isCapacitor()) {
+      try {
+        const { nativeGoogleIdToken } = await import('../api/nativeGoogleAuth')
+        const { mobileGoogle } = await import('../api/mobileAuth')
+        const idToken = await nativeGoogleIdToken()
+        const result = await mobileGoogle(idToken)
+        login({
+          accessToken: result.accessToken,
+          name: result.name,
+          email: result.email,
+          avatar: result.avatar || undefined,
+          role: result.role,
+        })
+        navigate('/', { replace: true })
+      } catch (err: any) {
+        setError(err?.message || t('auth.errorOAuthFailed'))
+      } finally {
+        setIsGoogleLoading(false)
+      }
+      return
+    }
+
+    // Web: redirect to the backend's OAuth2 authorization endpoint.
     window.location.href = `${import.meta.env.VITE_API_BASE_URL || ''}/oauth2/authorization/google`
   }
 
@@ -53,6 +81,21 @@ export default function Login() {
     setIsLoading(true)
 
     try {
+      if (isCapacitor()) {
+        // Mobile: token-in-body login endpoint (persists refresh token).
+        const { mobileLogin } = await import('../api/mobileAuth')
+        const result = await mobileLogin(email.trim(), password)
+        login({
+          accessToken: result.accessToken,
+          name: result.name,
+          email: result.email,
+          avatar: result.avatar || undefined,
+          role: result.role,
+        })
+        navigate('/', { replace: true })
+        return
+      }
+
       const { api } = await import('../api/client')
       const res = await api.post('/api/auth/login', {
         email: email.trim(),

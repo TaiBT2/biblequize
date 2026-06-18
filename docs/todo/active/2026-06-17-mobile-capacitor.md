@@ -31,25 +31,28 @@
   - Status: [x] DONE
   - Admin = 1 block sạch `main.tsx:195-211` + imports 34-47 → MOB-4a chỉ cần gate cả block sau `VITE_TARGET!=='capacitor'`. Trang user = phần còn lại. Loại khỏi mobile: `/home-khung-sang-preview` (dev preview, line 130), `/auth/callback` (OAuth web redirect — thừa khi dùng native Google). Không có admin leak nào khác.
 
-## Phase 1 — Scaffold Capacitor
-- MOB-1a Tạo `apps/mobile` Capacitor (appId `org.forbible.app`, webDir `../web/dist`, server scheme `https`); thêm vào `pnpm-workspace.yaml`.
-  - Status: [ ] TODO · **Spec strategy**: [x] (c)
-- MOB-1b Build pipeline: `.env.capacitor` (API/WS absolute `https://be.quize.top`/`wss://`), script `build:capacitor` + `cap copy`.
-  - Status: [ ] TODO
-- MOB-1c `cap add android`; build APK debug; smoke trên emulator (home + 1 quiz + STOMP wss).
-  - Status: [ ] TODO
+## Phase 1 — Scaffold Capacitor — ✅ DONE 2026-06-18 (commit 325b5172)
+> **Quyết định kỹ thuật**: Capacitor co-located **trong `apps/web`** (không phải `apps/mobile`) vì plugins được import từ `apps/web/src` → deps + config + `android/` phải cùng package. Capacitor **8.4**.
+> **⚠️ Build requires JDK 21** (Cap8 AGP). Backend dùng JDK 17. Local build: `JAVA_HOME="C:\Program Files\Android\Android Studio\jbr"` (JBR 21).
+- MOB-1a Capacitor trong `apps/web` (appId `org.forbible.app`, webDir `dist`, androidScheme `https`, CapacitorHttp enabled).
+  - Status: [x] DONE · **Spec strategy**: [x] (c)
+- MOB-1b `.env.capacitor` (API/WS absolute) + scripts `build:capacitor` / `cap:sync` / `cap:android`.
+  - Status: [x] DONE
+- MOB-1c `cap add android` (7 plugins) + build debug APK (`app-debug.apk` 11MB, JDK21). Smoke emulator → Phase 5b.
+  - Status: [x] DONE (APK built; device smoke deferred to MOB-5b)
 
-## Phase 2 — Sửa blocker (target-aware: `VITE_TARGET=capacitor`)
-- MOB-2a API base tuyệt đối: guard `getApiBaseUrl()` throw nếu rỗng khi target=capacitor (tránh same-origin ngầm).
-  - Status: [ ] TODO · Files: `api/config.ts`
-- MOB-2b Hardware back: `@capacitor/app` backButton → React Router history; exit-confirm ở root.
-  - Status: [ ] TODO · Files: `AppLayout.tsx` (nhạy cảm → Tầng 3)
-- MOB-2c Auth path mobile: khi target=capacitor → email/pw dùng `/api/auth/mobile/login`; refresh dùng `/api/auth/mobile/refresh` (token từ Preferences).
-  - Status: [ ] TODO · Files: `api/client.ts`, `tokenStore.ts`, `authStore.ts` (nhạy cảm → Tầng 3)
-- MOB-2d Native Google Sign-In: plugin `@codetrix-studio/capacitor-google-auth` (hoặc tương đương) → idToken → `/api/auth/mobile/google`. Thay `window.location.href` ở Login khi target=capacitor.
-  - Status: [ ] TODO · Files: `Login.tsx`
-- MOB-2e Persist refresh token: `@capacitor/preferences` setter/getter, wire vào authStore checkAuth.
-  - Status: [ ] TODO · Files: `tokenStore.ts`/new `mobileTokenStore.ts`
+## Phase 2 — Sửa blocker (target-aware: `isCapacitor()`) — ✅ DONE 2026-06-18
+> Foundation: `src/platform/capacitor.ts` `isCapacitor()` (env flag `VITE_TARGET`). Mobile code dynamic-imported → tree-split, web bundle/tests không đổi. Test: `src/api/__tests__/mobileAuth.test.ts` (7 tests).
+- MOB-2a API base guard: `getApiBaseUrl()` throw khi rỗng + target=capacitor.
+  - Status: [x] DONE · Files: `api/config.ts`
+- MOB-2b Hardware back: `CapacitorBackButton` (render trong BrowserRouter) → `@capacitor/app` backButton → `navigate(-1)`, exitApp ở root paths.
+  - Status: [x] DONE · Files: `platform/CapacitorBackButton.tsx`, `main.tsx`
+- MOB-2c Auth path mobile: `mobileLogin`/`mobileRefresh`/`mobileGoogle` → `/api/auth/mobile/*`; branch trong `authStore.checkAuth`/`logout` + `client.ts` interceptor 401.
+  - Status: [x] DONE · Files: `api/mobileAuth.ts`, `authStore.ts`, `client.ts`
+- MOB-2d Native Google Sign-In: `@capgo/capacitor-social-login` (Cap8-compat) → idToken → `mobileGoogle`. Login.tsx branch.
+  - Status: [x] DONE · Files: `api/nativeGoogleAuth.ts`, `Login.tsx`
+- MOB-2e Persist refresh token: `mobileTokenStore` (`@capacitor/preferences`), rotate trong mobileRefresh.
+  - Status: [x] DONE · Files: `api/mobileTokenStore.ts`
 
 ## Phase 3 — Native shell polish
 - MOB-3a Safe-area: `viewport-fit=cover` + `env(safe-area-inset-*)` cho TopBar/BottomTabs.

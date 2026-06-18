@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { setAccessToken } from '../api/tokenStore'
 import { notifyRankedDataCleared } from '../utils/localStorageClearDetector'
+import { isCapacitor } from '../platform/capacitor'
 
 interface User {
   name: string
@@ -120,6 +121,17 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       console.warn('[AUTH_STORE] Logout request failed:', error)
     }
 
+    // Mobile: drop the persisted refresh token (web uses the httpOnly cookie,
+    // already cleared by /api/auth/logout above).
+    if (isCapacitor()) {
+      try {
+        const { setRefreshToken } = await import('../api/mobileTokenStore')
+        await setRefreshToken(null)
+      } catch (error) {
+        console.warn('[AUTH_STORE] Failed to clear mobile refresh token:', error)
+      }
+    }
+
     // Clear in-memory access token
     setAccessToken(null)
     // Clear profile data from localStorage
@@ -135,6 +147,36 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   checkAuth: async () => {
+    // Mobile (Capacitor): the session validator is the persisted refresh token,
+    // not the httpOnly cookie. mobileRefresh() returns the profile too, so no
+    // separate /api/me round-trip is needed on startup.
+    if (isCapacitor()) {
+      const { mobileRefresh } = await import('../api/mobileAuth')
+      const result = await mobileRefresh()
+      if (!result) {
+        setAccessToken(null)
+        set({ user: null, isAuthenticated: false, isAdmin: false, isLoading: false })
+        return
+      }
+      setAccessToken(result.accessToken)
+      const normalizedRole = result.role?.toUpperCase()
+      localStorage.setItem('userName', result.name)
+      localStorage.setItem('userEmail', result.email)
+      if (result.avatar) localStorage.setItem('userAvatar', result.avatar)
+      set({
+        user: {
+          name: result.name,
+          email: result.email,
+          avatar: result.avatar || undefined,
+          role: normalizedRole,
+        },
+        isAuthenticated: true,
+        isAdmin: normalizedRole === 'ADMIN',
+        isLoading: false,
+      })
+      return
+    }
+
     // Skip refresh if user was never logged in (no cached profile)
     // This avoids a 401 console error on guest/landing pages
     const hadSession = localStorage.getItem('userName')

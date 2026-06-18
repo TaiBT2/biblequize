@@ -31,6 +31,7 @@ import Rooms from './pages/Rooms'
 import AuthCallback from './pages/AuthCallback'
 import AdminLayout from './layouts/AdminLayout'
 import AppLayout from './layouts/AppLayout'
+import CapacitorBackButton from './platform/CapacitorBackButton'
 import AIQuestionGenerator from './pages/admin/AIQuestionGenerator'
 import ReviewQueue from './pages/admin/ReviewQueue'
 import QuestionsAdmin from './pages/admin/Questions'
@@ -124,6 +125,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <ErrorProvider>
           <ToastProvider>
             <BrowserRouter>
+              <CapacitorBackButton />
               <Routes>
                 {/* PREVIEW-ONLY: coded mockup of the game-vibe Home redesign (v2).
                     Standalone (own chrome), no auth, no AppLayout. Remove after approval. */}
