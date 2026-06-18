@@ -53,5 +53,7 @@ lỗi đang hỏng production + thiếu sót. Sửa hết phần low-risk, no-ne
 ### Out of scope (cần quyết định của user — KHÔNG tự làm)
 - **#3 Prerender/SSR cho route public** — cần **dependency mới** (`vite-plugin-prerender`/`react-snap`).
   CLAUDE.md cấm tự thêm dep. Đây là hạng mục tác động SEO lớn nhất nhưng phải hỏi trước.
-- **#8 nginx 301 www→apex + ép HTTPS** — đụng infra prod (`deploy/biblequiz.nginx.conf`),
-  chưa rõ tầng TLS terminate ở đâu → rủi ro break prod. Cần xác nhận trước khi sửa.
+- **#8 nginx 301 www→apex** — ✅ DONE (2026-06-18). Certbot đã lo HTTP→HTTPS + TLS + cert (cover cả www).
+  Chỉ thêm block `:443 www → 301 apex` trên live host (`/etc/nginx/sites-available/forbible`), guard bằng
+  `nginx -t` + backup `.bak-seo-www`. Verify: `www.forbible.org` → 301 → apex; apex 200. Repo reference
+  `deploy/biblequiz.nginx.conf` đã sync khớp live.
