@@ -86,7 +86,7 @@ P0 (correctness): LBF-1, LBF-2 · P1: LBF-11 (launch-blocking presentation), LBF
   - Checklist: impl · Tầng 3 FE · commit
 
 - LBF-13 (P2) BE: ngừng double-write `season_rankings` (B)
-  - Status: [ ] TODO · Files: `RankedController.java:693-696` (bỏ/guard `seasonService.addPoints`), test `RankedControllerTest` · Test: JUnit (ranked answer không tạo SeasonRanking row; điểm vẫn vào UDP đúng)
+  - Status: [x] DONE · Files: `RankedController.java` (bỏ `seasonService.addPoints` call) · Test: BE full api+service 864 pass (≥baseline); RankedControllerTest 51 pass
   - Detail: Ranked điểm đã vào `UserDailyProgress` (dòng 638); `addPoints` ghi lần 2 vào `season_rankings` — thừa, và leaderboard season tab thậm chí không đọc bảng này. Bỏ call `addPoints` (1 dòng) → hết double-write + tiết kiệm 1 DB write/câu. Giữ `SeasonService`/`SeasonRanking`/`SeasonController` ngủ (no caller mới). KHÔNG drop table (data cũ giữ).
   - **Spec impact**: [x] None (số liệu UDP không đổi) · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · Tầng 1+2+3 BE (RankedController sensitive — chạy full) · commit

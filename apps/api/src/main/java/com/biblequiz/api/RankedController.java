@@ -690,10 +690,15 @@ public class RankedController {
                         // Invalidate leaderboard cache after score update
                         cacheService.invalidateLeaderboards();
 
-                        // Update season ranking if active season exists
-                        if (earned > 0) {
-                            seasonService.addPoints(user, earned, 1);
-                        }
+                        // LBF-13 (2026-06-18): season_rankings double-write stopped.
+                        // Ranked points already land in user_daily_progress above
+                        // (line ~638); the competitive-season surfaces that read
+                        // season_rankings (leaderboard "Mùa" tab, Ranked SeasonCard)
+                        // are hidden (LBF-9/12), so the parallel ledger was pure
+                        // duplicate accounting + an extra DB write per answer. The
+                        // table/entity/endpoint stay dormant for easy re-enable.
+                        // NOTE: leaderboard "Mùa" tab reads window-sum UDP, NOT this
+                        // table — so hiding it loses no board data.
 
                         // Check achievements
                         try {
