@@ -692,8 +692,8 @@ const DailyChallenge: React.FC = () => {
   return (
     <div data-testid="daily-page" className="max-w-5xl mx-auto p-2">
       <PageMeta
-        title="Thu thach hang ngay"
-        description="5 cau hoi Kinh Thanh moi ngay — thu suc voi cong dong va chia se ket qua."
+        title="Thử thách Kinh Thánh hàng ngày"
+        description="5 câu hỏi Kinh Thánh mỗi ngày — thử sức với cộng đồng và chia sẻ kết quả."
         canonicalPath="/daily"
       />
 

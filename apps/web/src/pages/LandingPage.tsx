@@ -337,7 +337,7 @@ function ChurchGroupShowcase() {
         <div className="order-2 lg:order-1 relative">
           <div className="absolute -inset-10 bg-bq-emerald/10 rounded-full blur-[100px]" />
           <img
-            alt="Group studying together"
+            alt="Nhóm bạn trẻ học Kinh Thánh qua trắc nghiệm"
             width={600}
             height={400}
             loading="lazy"
@@ -470,6 +470,9 @@ function Footer() {
         </p>
       </div>
       <div className="flex gap-8">
+        <a className="font-body text-sm text-bq-ink2 hover:text-bq-amberd transition-colors" href="/help">
+          {t('nav.help')}
+        </a>
         <a className="font-body text-sm text-bq-ink2 hover:text-bq-amberd transition-colors" href="/privacy">
           {t('landing.privacy')}
         </a>
