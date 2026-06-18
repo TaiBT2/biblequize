@@ -1,18 +1,18 @@
 # Spec Audit Report
 
-**Generated:** 2026-06-18T09:59:32Z
+**Generated:** 2026-06-18T10:33:22Z
 **Specs scanned:** 8 files in `docs/spec/`
 
 ## Summary
 
 | Metric | Count |
 |---|---|
-| Total spec sections | 672 |
+| Total spec sections | 673 |
 | Sections with code refs | 190 |
 | Total code refs | 426 |
 | Unique code files referenced | 199 |
 | **Broken refs (HIGH)** | **100** |
-| Orphan sections (MEDIUM) | 482 |
+| Orphan sections (MEDIUM) | 483 |
 | Undocumented business files (MEDIUM) | 233 |
 
 ## Stats — file-level coverage
@@ -128,8 +128,8 @@
 | SPEC_USER_v3.2.md | 20. Achievements | `pages/Achievements.tsx` | (no line) | 1956 | file_not_found |
 | SPEC_USER_v3.2.md | 21. Profile & Stats | `pages/Profile.tsx` | (no line) | 1979 | file_not_found |
 | SPEC_USER_v3.2.md | 22. Leaderboard | `pages/Leaderboard.tsx` | (no line) | 2016 | file_not_found |
-| SPEC_USER_v3.2.md | 25.4 Bible book names | `apps/web/src/data/bookNames.ts` | (no line) | 2167 | file_not_found |
-| SPEC_USER_v3.2.md | 25.5 Validator | `apps/web/scripts/validate-i18n.ts` | (no line) | 2174 | file_not_found |
+| SPEC_USER_v3.2.md | 25.4 Bible book names | `apps/web/src/data/bookNames.ts` | (no line) | 2171 | file_not_found |
+| SPEC_USER_v3.2.md | 25.5 Validator | `apps/web/scripts/validate-i18n.ts` | (no line) | 2178 | file_not_found |
 
 ## Orphan Sections (MEDIUM)
 

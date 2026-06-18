@@ -20,7 +20,7 @@ P0 (correctness): LBF-1, LBF-2 · P1: LBF-11 (launch-blocking presentation), LBF
 ### Tasks
 
 - LBF-1 (P0) BE: rank tie-break nhất quán giữa `/my-rank` và bảng
-  - Status: [ ] TODO · Files: `LeaderboardController.java`, `UserDailyProgressRepository.java`, test `LeaderboardControllerTest` · Test: JUnit (tie case: 3 user cùng điểm, khác questions → rank đúng vị trí bảng)
+  - Status: [x] DONE · Files: `LeaderboardController.java` (5 my-rank methods truyền questions+createdAt), `UserDailyProgressRepository.java` (4 count queries 3-tầng tie-break), `LeaderboardControllerTest`, `UserDailyProgressRepositoryTest` (+4 lock tests), `SPEC_USER §22.5` · Test: BE api+service 864 + repo lock 12 pass
   - Detail: Bảng `ORDER BY points DESC, questions DESC, created_at ASC` (3 tầng tie-break) nhưng `countUsersAhead*` chỉ đếm `points > X` → rank cá nhân lệch vị trí thật khi trùng điểm. Sửa các `countUsersAhead*` để áp dụng cùng tie-break (đếm thêm user cùng điểm nhưng questions cao hơn, hoặc questions bằng + created_at sớm hơn). Cần truyền thêm `questions` + `createdAt` của user vào count query.
   - **Spec impact**: [ ] None [x] SPEC_USER §22.3 (rank semantics — clarify) · **Spec strategy**: [ ] (a) update inline (ghi rõ tie-break trong §22)
   - Checklist: impl · Tầng 1+2+3 BE pass · spec §22 ghi tie-break · `audit.sh` no NEW broken · commit

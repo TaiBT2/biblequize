@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,18 +34,45 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
     List<UserDailyProgress> findByUserIdAndDateBetween(@Param("userId") String userId,
             @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
-    // Count users with strictly more points on a given date (for daily rank)
-    @Query("SELECT COUNT(DISTINCT udp.user.id) FROM UserDailyProgress udp WHERE udp.date = :date AND COALESCE(udp.pointsCounted, 0) > :points")
-    long countUsersAheadOnDate(@Param("date") LocalDate date, @Param("points") int points);
+    // Count users strictly AHEAD on a given date (for daily rank).
+    // LBF-1 (2026-06-18): mirror the board tie-break (points DESC, questions
+    // DESC, created_at ASC) so /my-rank matches the user's real board position.
+    // Without the questions/created_at tiers, equal-point users all collapsed
+    // to the same rank, which disagreed with the sequential board ordering.
+    @Query("SELECT COUNT(DISTINCT udp.user.id) FROM UserDailyProgress udp WHERE udp.date = :date AND ("
+            + "COALESCE(udp.pointsCounted, 0) > :points "
+            + "OR (COALESCE(udp.pointsCounted, 0) = :points AND COALESCE(udp.questionsCounted, 0) > :questions) "
+            + "OR (COALESCE(udp.pointsCounted, 0) = :points AND COALESCE(udp.questionsCounted, 0) = :questions "
+            + "AND udp.user.createdAt < :createdAt))")
+    long countUsersAheadOnDate(@Param("date") LocalDate date, @Param("points") int points,
+            @Param("questions") int questions, @Param("createdAt") LocalDateTime createdAt);
 
-    // Count users with strictly more total points in a date range (for weekly rank)
-    @Query(value = "SELECT COUNT(*) FROM (SELECT SUM(COALESCE(points_counted, 0)) AS total FROM user_daily_progress WHERE date BETWEEN :startDate AND :endDate GROUP BY user_id HAVING total > :points) t", nativeQuery = true)
+    // Count users strictly AHEAD in a date range (weekly / monthly / season rank).
+    // LBF-1: same 3-tier tie-break as the board (see findWeeklyLeaderboard).
+    @Query(value = "SELECT COUNT(*) FROM ("
+            + "SELECT SUM(COALESCE(udp.points_counted, 0)) AS total, "
+            + "SUM(COALESCE(udp.questions_counted, 0)) AS tq, u.created_at AS cat "
+            + "FROM user_daily_progress udp JOIN users u ON udp.user_id = u.id "
+            + "WHERE udp.date BETWEEN :startDate AND :endDate "
+            + "GROUP BY udp.user_id, u.created_at "
+            + "HAVING total > :points "
+            + "OR (total = :points AND tq > :questions) "
+            + "OR (total = :points AND tq = :questions AND u.created_at < :createdAt)) t", nativeQuery = true)
     long countUsersAheadInDateRange(@Param("startDate") LocalDate startDate,
-            @Param("endDate") LocalDate endDate, @Param("points") int points);
+            @Param("endDate") LocalDate endDate, @Param("points") int points,
+            @Param("questions") int questions, @Param("createdAt") LocalDateTime createdAt);
 
-    // Count users with strictly more total points all time (for all-time rank)
-    @Query(value = "SELECT COUNT(*) FROM (SELECT SUM(COALESCE(points_counted, 0)) AS total FROM user_daily_progress GROUP BY user_id HAVING total > :points) t", nativeQuery = true)
-    long countUsersAheadAllTime(@Param("points") int points);
+    // Count users strictly AHEAD all time (for all-time rank). LBF-1 tie-break.
+    @Query(value = "SELECT COUNT(*) FROM ("
+            + "SELECT SUM(COALESCE(udp.points_counted, 0)) AS total, "
+            + "SUM(COALESCE(udp.questions_counted, 0)) AS tq, u.created_at AS cat "
+            + "FROM user_daily_progress udp JOIN users u ON udp.user_id = u.id "
+            + "GROUP BY udp.user_id, u.created_at "
+            + "HAVING total > :points "
+            + "OR (total = :points AND tq > :questions) "
+            + "OR (total = :points AND tq = :questions AND u.created_at < :createdAt)) t", nativeQuery = true)
+    long countUsersAheadAllTime(@Param("points") int points,
+            @Param("questions") int questions, @Param("createdAt") LocalDateTime createdAt);
 
     // Paginated daily leaderboard — single query with JOIN.
     // Tie-break order (PL-2): primary by points DESC; users with the same
@@ -90,12 +118,20 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
             + "LIMIT :limit OFFSET :offset", nativeQuery = true)
     List<Object[]> findAllTimeLeaderboard(@Param("limit") int limit, @Param("offset") int offset);
 
-    // Count users with strictly more total points in a date range (for monthly rank)
-    @Query(value = "SELECT COUNT(*) FROM (SELECT SUM(COALESCE(points_counted, 0)) AS total "
-            + "FROM user_daily_progress WHERE date BETWEEN :startDate AND :endDate "
-            + "GROUP BY user_id HAVING total > :points) t", nativeQuery = true)
+    // Count users strictly AHEAD in a month (for monthly rank). LBF-1 tie-break
+    // (identical shape to countUsersAheadInDateRange; kept separate for clarity).
+    @Query(value = "SELECT COUNT(*) FROM ("
+            + "SELECT SUM(COALESCE(udp.points_counted, 0)) AS total, "
+            + "SUM(COALESCE(udp.questions_counted, 0)) AS tq, u.created_at AS cat "
+            + "FROM user_daily_progress udp JOIN users u ON udp.user_id = u.id "
+            + "WHERE udp.date BETWEEN :startDate AND :endDate "
+            + "GROUP BY udp.user_id, u.created_at "
+            + "HAVING total > :points "
+            + "OR (total = :points AND tq > :questions) "
+            + "OR (total = :points AND tq = :questions AND u.created_at < :createdAt)) t", nativeQuery = true)
     long countUsersAheadInMonth(@Param("startDate") LocalDate startDate,
-            @Param("endDate") LocalDate endDate, @Param("points") int points);
+            @Param("endDate") LocalDate endDate, @Param("points") int points,
+            @Param("questions") int questions, @Param("createdAt") LocalDateTime createdAt);
 
     // Group streak: distinct active dates in a date range across a member set
     // (member is "active" on a date if they have a UDP row with questions_counted > 0).

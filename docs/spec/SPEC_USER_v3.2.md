@@ -2037,6 +2037,10 @@ Grid layout, locked = grayscale + lock icon. Click → modal hiện điều ki�
 - `LeaderboardSeasonWidget` — season standing.
 - `EmptyLeaderboardCTA` — khi user chưa có điểm tuần.
 
+### 22.5 Rank tie-break (LBF-1 2026-06-18)
+- Bảng xếp hạng + `/my-rank` dùng CÙNG thứ tự 3 tầng: **points DESC → questions DESC → created_at ASC** (user hoạt động nhiều hơn xếp trên khi bằng điểm; created_at là tie-break tất định cuối).
+- `/my-rank` = `countUsersAhead(points, questions, createdAt) + 1` — đếm đúng số người đứng trước theo cả 3 tầng, nên số hạng khớp vị trí thật trong bảng (trước đây chỉ đếm `points >` → lệch khi trùng điểm).
+
 ---
 
 ## 23. Tournaments

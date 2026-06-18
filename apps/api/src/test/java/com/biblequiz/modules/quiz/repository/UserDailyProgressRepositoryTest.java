@@ -96,6 +96,54 @@ class UserDailyProgressRepositoryTest {
                 "findAllTimeLeaderboard must HAVING-filter users whose summed points are 0; was:\n" + sql);
     }
 
+    // ── LBF-1 (2026-06-18): my-rank count-ahead tie-break lock ───────────────
+    // The /my-rank rank must match the board position, so countUsersAhead*
+    // must replicate the board's full tie-break (points → questions →
+    // created_at). Lock the questions + created_at OR-clauses so a refactor
+    // cannot silently regress my-rank back to points-only counting.
+
+    @Test
+    void countUsersAheadAllTime_includesQuestionsAndCreatedAtTieBreak() throws Exception {
+        String sql = getQuery("countUsersAheadAllTime",
+                int.class, int.class, java.time.LocalDateTime.class);
+        assertCountAheadTieBreak(sql, "countUsersAheadAllTime");
+    }
+
+    @Test
+    void countUsersAheadInDateRange_includesQuestionsAndCreatedAtTieBreak() throws Exception {
+        String sql = getQuery("countUsersAheadInDateRange",
+                java.time.LocalDate.class, java.time.LocalDate.class,
+                int.class, int.class, java.time.LocalDateTime.class);
+        assertCountAheadTieBreak(sql, "countUsersAheadInDateRange");
+    }
+
+    @Test
+    void countUsersAheadInMonth_includesQuestionsAndCreatedAtTieBreak() throws Exception {
+        String sql = getQuery("countUsersAheadInMonth",
+                java.time.LocalDate.class, java.time.LocalDate.class,
+                int.class, int.class, java.time.LocalDateTime.class);
+        assertCountAheadTieBreak(sql, "countUsersAheadInMonth");
+    }
+
+    @Test
+    void countUsersAheadOnDate_includesQuestionsAndCreatedAtTieBreak() throws Exception {
+        String sql = getQuery("countUsersAheadOnDate",
+                java.time.LocalDate.class, int.class, int.class, java.time.LocalDateTime.class);
+        String n = normalize(sql);
+        assertTrue(n.contains("> :questions"),
+                "countUsersAheadOnDate must tie-break on questions; was:\n" + sql);
+        assertTrue(n.contains("createdAt < :createdAt"),
+                "countUsersAheadOnDate must tie-break on created_at; was:\n" + sql);
+    }
+
+    private void assertCountAheadTieBreak(String sql, String name) {
+        String n = normalize(sql);
+        assertTrue(n.contains("tq > :questions"),
+                name + " must tie-break on summed questions; was:\n" + sql);
+        assertTrue(n.contains("u.created_at < :createdAt"),
+                name + " must tie-break on created_at; was:\n" + sql);
+    }
+
     private String normalize(String sql) {
         return sql.replaceAll("\\s+", " ");
     }

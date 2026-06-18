@@ -200,13 +200,14 @@ public class LeaderboardController {
         }
 
         int points = udp.getPointsCounted() != null ? udp.getPointsCounted() : 0;
-        int rank = (int) udpRepository.countUsersAheadOnDate(targetDate, points) + 1;
+        int questions = udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0;
+        int rank = (int) udpRepository.countUsersAheadOnDate(targetDate, points, questions, user.getCreatedAt()) + 1;
 
         Map<String, Object> result = new HashMap<>();
         result.put("userId", user.getId());
         result.put("name", user.getName());
         result.put("points", points);
-        result.put("questions", udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0);
+        result.put("questions", questions);
         result.put("rank", rank);
         return ResponseEntity.ok(result);
     }
@@ -227,8 +228,8 @@ public class LeaderboardController {
         LocalDate end = GameClock.today();
         LocalDate weekStart = GameClock.weekStart(end);
 
-        int myPoints = udpRepository.findByUserIdAndDateBetween(user.getId(), weekStart, end)
-                .stream()
+        List<UserDailyProgress> rows = udpRepository.findByUserIdAndDateBetween(user.getId(), weekStart, end);
+        int myPoints = rows.stream()
                 .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
                 .sum();
 
@@ -236,7 +237,10 @@ public class LeaderboardController {
             return ResponseEntity.ok(null);
         }
 
-        int rank = (int) udpRepository.countUsersAheadInDateRange(weekStart, end, myPoints) + 1;
+        int myQuestions = rows.stream()
+                .mapToInt(udp -> udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0)
+                .sum();
+        int rank = (int) udpRepository.countUsersAheadInDateRange(weekStart, end, myPoints, myQuestions, user.getCreatedAt()) + 1;
 
         Map<String, Object> result = new HashMap<>();
         result.put("userId", user.getId());
@@ -262,8 +266,8 @@ public class LeaderboardController {
         LocalDate end = GameClock.today();
         LocalDate monthStart = end.withDayOfMonth(1);
 
-        int myPoints = udpRepository.findByUserIdAndDateBetween(user.getId(), monthStart, end)
-                .stream()
+        List<UserDailyProgress> rows = udpRepository.findByUserIdAndDateBetween(user.getId(), monthStart, end);
+        int myPoints = rows.stream()
                 .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
                 .sum();
 
@@ -271,7 +275,10 @@ public class LeaderboardController {
             return ResponseEntity.ok(null);
         }
 
-        int rank = (int) udpRepository.countUsersAheadInMonth(monthStart, end, myPoints) + 1;
+        int myQuestions = rows.stream()
+                .mapToInt(udp -> udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0)
+                .sum();
+        int rank = (int) udpRepository.countUsersAheadInMonth(monthStart, end, myPoints, myQuestions, user.getCreatedAt()) + 1;
 
         Map<String, Object> result = new HashMap<>();
         result.put("userId", user.getId());
@@ -303,8 +310,8 @@ public class LeaderboardController {
         LocalDate end = today.isBefore(s.getEndDate()) ? today : s.getEndDate();
         LocalDate start = s.getStartDate();
 
-        int myPoints = udpRepository.findByUserIdAndDateBetween(user.getId(), start, end)
-                .stream()
+        List<UserDailyProgress> rows = udpRepository.findByUserIdAndDateBetween(user.getId(), start, end);
+        int myPoints = rows.stream()
                 .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
                 .sum();
 
@@ -312,7 +319,10 @@ public class LeaderboardController {
             return ResponseEntity.ok(null);
         }
 
-        int rank = (int) udpRepository.countUsersAheadInDateRange(start, end, myPoints) + 1;
+        int myQuestions = rows.stream()
+                .mapToInt(udp -> udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0)
+                .sum();
+        int rank = (int) udpRepository.countUsersAheadInDateRange(start, end, myPoints, myQuestions, user.getCreatedAt()) + 1;
 
         Map<String, Object> result = new HashMap<>();
         result.put("userId", user.getId());
@@ -335,8 +345,8 @@ public class LeaderboardController {
             return ResponseEntity.ok(null);
         }
 
-        int myPoints = udpRepository.findByUserIdOrderByDateDesc(user.getId())
-                .stream()
+        List<UserDailyProgress> rows = udpRepository.findByUserIdOrderByDateDesc(user.getId());
+        int myPoints = rows.stream()
                 .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
                 .sum();
 
@@ -344,7 +354,10 @@ public class LeaderboardController {
             return ResponseEntity.ok(null);
         }
 
-        int rank = (int) udpRepository.countUsersAheadAllTime(myPoints) + 1;
+        int myQuestions = rows.stream()
+                .mapToInt(udp -> udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0)
+                .sum();
+        int rank = (int) udpRepository.countUsersAheadAllTime(myPoints, myQuestions, user.getCreatedAt()) + 1;
 
         Map<String, Object> result = new HashMap<>();
         result.put("userId", user.getId());

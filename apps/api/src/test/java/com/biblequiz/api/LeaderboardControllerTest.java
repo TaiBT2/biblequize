@@ -177,7 +177,7 @@ class LeaderboardControllerTest extends BaseControllerTest {
         udp.setPointsCounted(800);
         when(udpRepository.findByUserIdAndDateBetween(eq("user-1"), any(LocalDate.class), any(LocalDate.class)))
                 .thenReturn(List.of(udp));
-        when(udpRepository.countUsersAheadInDateRange(any(), any(), eq(800))).thenReturn(4L);
+        when(udpRepository.countUsersAheadInDateRange(any(), any(), eq(800), anyInt(), any())).thenReturn(4L);
 
         mockMvc.perform(get("/api/leaderboard/season/my-rank"))
                 .andExpect(status().isOk())
@@ -221,7 +221,7 @@ class LeaderboardControllerTest extends BaseControllerTest {
 
         when(udpRepository.findByUserIdAndDate(eq("user-1"), any(LocalDate.class)))
                 .thenReturn(Optional.of(udp));
-        when(udpRepository.countUsersAheadOnDate(any(LocalDate.class), eq(200))).thenReturn(2L);
+        when(udpRepository.countUsersAheadOnDate(any(LocalDate.class), eq(200), anyInt(), any())).thenReturn(2L);
 
         mockMvc.perform(get("/api/leaderboard/daily/my-rank"))
                 .andExpect(status().isOk())
@@ -240,7 +240,7 @@ class LeaderboardControllerTest extends BaseControllerTest {
 
         when(udpRepository.findByUserIdAndDateBetween(eq("user-1"), any(LocalDate.class), any(LocalDate.class)))
                 .thenReturn(List.of(udp));
-        when(udpRepository.countUsersAheadInDateRange(any(), any(), eq(100))).thenReturn(0L);
+        when(udpRepository.countUsersAheadInDateRange(any(), any(), eq(100), anyInt(), any())).thenReturn(0L);
 
         mockMvc.perform(get("/api/leaderboard/weekly/my-rank"))
                 .andExpect(status().isOk())
@@ -256,7 +256,7 @@ class LeaderboardControllerTest extends BaseControllerTest {
         udp.setPointsCounted(500);
 
         when(udpRepository.findByUserIdOrderByDateDesc("user-1")).thenReturn(List.of(udp));
-        when(udpRepository.countUsersAheadAllTime(500)).thenReturn(5L);
+        when(udpRepository.countUsersAheadAllTime(eq(500), anyInt(), any())).thenReturn(5L);
 
         mockMvc.perform(get("/api/leaderboard/all-time/my-rank"))
                 .andExpect(status().isOk())
