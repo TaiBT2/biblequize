@@ -370,7 +370,7 @@ function LeaderboardPreview() {
                     <div
                       className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs sm:text-base flex-shrink-0 ${
                         entry.top
-                          ? 'bg-bq-amber text-white'
+                          ? 'bg-bq-amberd text-white'
                           : 'bg-bq-sapphire/10 text-bq-sapphire'
                       }`}
                     >
