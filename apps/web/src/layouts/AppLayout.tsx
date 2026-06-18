@@ -11,9 +11,11 @@ import MobileBottomTabs from './components/MobileBottomTabs'
 const navItems = [
   { path: '/', labelKey: 'nav.home' },
   { path: '/leaderboard', labelKey: 'nav.leaderboard' },
-  { path: '/groups', labelKey: 'nav.groups' },
-  { path: '/multiplayer', labelKey: 'gameModes.rooms' },
-  { path: '/profile', labelKey: 'nav.profile' },
+  // `auth: true` = chỉ hiện khi đã đăng nhập. Guest vào route public
+  // (vd /leaderboard) không thấy link dẫn tới trang RequireAuth.
+  { path: '/groups', labelKey: 'nav.groups', auth: true },
+  { path: '/multiplayer', labelKey: 'gameModes.rooms', auth: true },
+  { path: '/profile', labelKey: 'nav.profile', auth: true },
 ]
 
 /**
@@ -27,7 +29,10 @@ const navItems = [
 export default function AppLayout() {
   const { t } = useTranslation()
   const location = useLocation()
-  const { user } = useAuthStore()
+  const { user, isAuthenticated } = useAuthStore()
+
+  // Guest (route public như /leaderboard) chỉ thấy link không cần auth.
+  const visibleNavItems = navItems.filter(item => isAuthenticated || !item.auth)
 
   const isActive = (path: string) =>
     path === '/'
@@ -63,7 +68,7 @@ export default function AppLayout() {
 
           {/* Nav links */}
           <nav className="hidden md:flex items-center gap-0.5 ml-1.5">
-            {navItems.map(item => (
+            {visibleNavItems.map(item => (
               <Link
                 key={item.path}
                 to={item.path}
@@ -76,20 +81,33 @@ export default function AppLayout() {
             ))}
           </nav>
 
-          {/* Right: admin + bell + avatar (per-user stats live in the Home hero) */}
+          {/* Right: admin + bell + avatar (per-user stats live in the Home hero).
+              Guest (route public) thấy nút Đăng nhập thay vì bell + avatar giả. */}
           <div className="ml-auto flex items-center gap-4">
-            {isAdmin && (
+            {isAuthenticated ? (
+              <>
+                {isAdmin && (
+                  <Link
+                    to="/admin"
+                    data-testid="topnav-admin-link"
+                    className="hidden sm:inline-flex items-center gap-1.5 text-[13px] font-semibold text-bq-amberd bg-bq-amber/10 border border-bq-amber/30 px-3 py-1.5 rounded-full hover:bg-bq-amber/20 transition-colors"
+                  >
+                    <span className="material-symbols-outlined text-lg">admin_panel_settings</span>
+                    <span className="hidden lg:inline">{t('nav.adminPanel', { defaultValue: 'Quản trị' })}</span>
+                  </Link>
+                )}
+                <NotificationBell />
+                <UserDropdown align="right" trigger="compact" />
+              </>
+            ) : (
               <Link
-                to="/admin"
-                data-testid="topnav-admin-link"
-                className="hidden sm:inline-flex items-center gap-1.5 text-[13px] font-semibold text-bq-amberd bg-bq-amber/10 border border-bq-amber/30 px-3 py-1.5 rounded-full hover:bg-bq-amber/20 transition-colors"
+                to="/login"
+                data-testid="topnav-login-link"
+                className="inline-flex items-center text-[13.5px] font-semibold px-4 py-2 rounded-full bg-bq-ink text-white hover:bg-bq-ink/90 transition-colors"
               >
-                <span className="material-symbols-outlined text-lg">admin_panel_settings</span>
-                <span className="hidden lg:inline">{t('nav.adminPanel', { defaultValue: 'Quản trị' })}</span>
+                {t('auth.login')}
               </Link>
             )}
-            <NotificationBell />
-            <UserDropdown align="right" trigger="compact" />
           </div>
         </div>
       </header>
