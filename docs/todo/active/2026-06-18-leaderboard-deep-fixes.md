@@ -100,10 +100,11 @@ P0 (correctness): LBF-1, LBF-2 · P1: LBF-11 (launch-blocking presentation), LBF
 - LBF-11 (P1) FE: chiến lược "né con số" giai đoạn đầu (low-data presentation) — gộp LBF-6
   - Status: [ ] TODO · Files: `Leaderboard.tsx`, `LeaderboardRankWidget.tsx`, `LeaderboardSeasonWidget.tsx`, `EmptyLeaderboardCTA.tsx`, tests · Test: Vitest (low-data states)
   - **Ngưỡng chốt 2026-06-18: N = 10** (board có < 10 người-có-điểm → coi là "đang khởi động", bật chế độ né số). Scope = cả 4 mục dưới (user chọn hết).
-  - Detail: Giai đoạn đầu chưa có user → tránh phơi con số yếu khiến sản phẩm trông vắng. Phạm vi (tất cả ✅ chốt):
-    - [x] **Board thưa → màn mời gọi**: khi < N người, thay bảng 1–2 dòng + "0đ" bằng seed-state khích lệ ("Bảng đang khởi động — chơi để mở hàng"). Gồm luôn fix dead-zone 1–2 người (LBF-6, hết màn trắng).
-    - [x] **Giấu mẫu số rank "x/y"**: bỏ "/N người" — chỉ hiện thứ hạng tuyệt đối ("Hạng 3"), không lộ tổng số người chơi ít.
-    - [x] **Giấu đếm người chơi**: bỏ participant count nhỏ ("5 người đang thi") trên board + widget khi < N.
-    - [x] **Widget Home không show rank yếu**: `LeaderboardRankWidget`/`LeaderboardSeasonWidget` khi data < N → thay rank "#2" bằng CTA mời chơi.
+  - Status: [~] board surface DONE (commit a81fb0a8) · Home surfaces = follow-up (cần user chốt, xem dưới)
+  - Detail: Giai đoạn đầu chưa có user → tránh phơi con số yếu. Kết quả khảo sát từng item:
+    - [x] **Board /leaderboard thưa → seed-state** (commit a81fb0a8): < 10 người → "Bảng đang khởi động" numberless + CTA thay podium/list. Gồm fix dead-zone 1–2 người (LBF-6). FE 1335 pass.
+    - [x] **Giấu mẫu số "x/y"**: KHÔNG cần làm gì — denominators duy nhất là `weeklyRank.total` (Home:338/438) nhưng BE `getMyWeeklyRank` KHÔNG trả `total` → đã inert, không bao giờ render. ✅ by absence.
+    - [x] **Giấu đếm người chơi**: KHÔNG có active surface nào hiện participant count (chỉ SeasonCard cũ — đã ẩn LBF-12). ✅ by absence.
+    - [!] **Widget Home rank yếu — FOLLOW-UP**: `LeaderboardRankWidget`/`LeaderboardSeasonWidget` là **dead code (mount ở đâu cũng không)**. Surface live = Home `home-weekly-leaderboard` card (fetch top-5, đã có empty-state "hãy là người đầu tiên") + `#wRank` ở hero (Home:338) + ModeCard (Home:438). Gate N=10 ở đây cần: (a) đổi fetch size 5→10 để biết population, (b) gate card + hero + ModeCard. **Home.tsx đang mid-redesign ("Home Redesign Modern Spiritual" IN PROGRESS)** → tách follow-up để tránh đụng độ; chờ user chốt có làm ngay không.
   - **Spec impact**: [x] None (presentation, no business-rule change) · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: chốt scope · impl từng phần <100 LOC · Tầng 3 FE · commit
