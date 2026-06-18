@@ -9,12 +9,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
@@ -106,5 +109,25 @@ class GroupCollectiveGrowthServiceTest {
         assertEquals(1L, perSet.get(0).get("completions"));
         assertEquals(60, perSet.get(0).get("avgMasteryPct"));
         assertEquals(25, perSet.get(1).get("avgMasteryPct"));
+    }
+
+    @Test
+    void qaGuard_noDailyProgressOrLeaderboardDependency() {
+        // Q-A SAFE invariant: collective-growth must NEVER read/write UserDailyProgress
+        // or any group leaderboard. Lock it structurally so future wiring can't break it.
+        for (Constructor<?> c : GroupCollectiveGrowthService.class.getDeclaredConstructors()) {
+            for (Class<?> p : c.getParameterTypes()) assertNotQaViolating(p);
+        }
+        for (Field f : GroupCollectiveGrowthService.class.getDeclaredFields()) {
+            assertNotQaViolating(f.getType());
+        }
+    }
+
+    private static void assertNotQaViolating(Class<?> type) {
+        String n = type.getName().toLowerCase();
+        assertFalse(n.contains("dailyprogress"),
+                "Q-A SAFE violated: depends on UserDailyProgress (" + type.getName() + ")");
+        assertFalse(n.contains("leaderboard"),
+                "Q-A SAFE violated: depends on leaderboard (" + type.getName() + ")");
     }
 }

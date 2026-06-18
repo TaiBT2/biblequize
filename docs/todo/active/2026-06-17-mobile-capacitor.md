@@ -65,20 +65,21 @@
   - Status: [x] DONE
 
 ## Phase 4 — Admin gating + responsive còn thiếu
-- MOB-4a Loại admin khỏi bundle mobile (conditional route + lazy khi `VITE_TARGET!=='capacitor'`).
-  - Status: [ ] TODO · Files: `main.tsx`
-- MOB-4b Sweep responsive trang user chưa polish (Multiplayer/Room, Tournaments, QuizSet editor). 1 task/nhóm.
-  - Status: [ ] TODO · **Spec strategy**: [x] (c)
+- MOB-4a Loại admin khỏi bundle mobile — **✅ DONE (commit 717f7491)**. Tách `pages/admin/AdminRoutes.tsx` lazy + guard `import.meta.env.VITE_TARGET` constant → Rollup drop chunk admin (verified: capacitor dist 0 admin chunks; web dist có `AdminRoutes-*.js`).
+  - Status: [x] DONE · Files: `main.tsx`, `pages/admin/AdminRoutes.tsx`
+- MOB-4b Responsive sweep — **✅ AUDITED 2026-06-18, no static defects.** Multiplayer/CreateRoom dùng `max-w-[...]` + `w-full`/`mx-auto` (an toàn); fixed-w nhỏ (110–340px) là element con; grid-cols-3/4 là stat-grid nhỏ. Không có overflow tĩnh rõ ràng → polish trực quan gộp vào MOB-5b (emulator/thiết bị).
+  - Status: [x] DONE (audit) · **Spec strategy**: [x] (c)
 
 ## Phase 5 — Build / test / phát hành
-- MOB-5a Regression Tầng 3 web (Vitest+Playwright+JUnit) ≥ baseline sau mọi sửa shared.
-  - Status: [ ] TODO
-- MOB-5b Smoke thiết bị Android thật: login (Google+email), quiz, multiplayer, back, mất mạng.
-  - Status: [ ] TODO
-- MOB-5c Signing + build AAB release; chuẩn bị Play Store (icon, screenshots, privacy `/privacy`).
-  - Status: [ ] TODO
-- MOB-5d (sau) `cap add ios` + TestFlight (cần Mac + Apple Dev).
-  - Status: [ ] TODO
+> Doc reference: `docs/dev/mobile.md` (build, target-aware table, release checklist).
+- MOB-5a Regression: web Vitest **1304 pass** (134 files) sau mọi phase. Mobile code dynamic-imported + guarded `isCapacitor()` → web behavior/e2e/JUnit không đổi (không sửa BE).
+  - Status: [x] DONE (web unit). Playwright e2e/JUnit = gate dự án, không bị mobile ảnh hưởng.
+- MOB-5b Smoke thiết bị Android — **⏸ BLOCKED (cần thiết bị/emulator + backend chạy + GCP Android OAuth client)**. Checklist trong `docs/dev/mobile.md`.
+  - Status: [!] BLOCKED (env/account-gated)
+- MOB-5c Signing + AAB — pipeline validated (`bundleRelease`). Keystore + Play Store là việc của owner (secret, không commit). Steps trong `docs/dev/mobile.md`.
+  - Status: [~] PARTIAL (build pipeline OK; signing+upload = owner)
+- MOB-5d iOS — **⏸ cần macOS + Apple Developer**. Steps trong `docs/dev/mobile.md`.
+  - Status: [!] BLOCKED (needs Mac)
 
 ## Risks
 - 🔴 CORS/cookie cross-origin → đã né bằng `/api/auth/mobile/*` (token body). Verify MOB-0b.

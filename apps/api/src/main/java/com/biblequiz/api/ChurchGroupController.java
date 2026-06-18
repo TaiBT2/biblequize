@@ -46,6 +46,9 @@ public class ChurchGroupController {
     private GroupStreakService groupStreakService;
 
     @Autowired
+    private com.biblequiz.modules.group.service.GroupCollectiveGrowthService collectiveGrowthService;
+
+    @Autowired
     private ChurchGroupRepository churchGroupRepository;
 
     @Autowired
@@ -323,6 +326,24 @@ public class ChurchGroupController {
                     .orElseThrow(() -> new RuntimeException("Ban khong phai thanh vien cua nhom"));
             Map<String, Object> streak = groupStreakService.getGroupStreak(id);
             return ResponseEntity.ok(Map.of("success", true, "streak", streak));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * GET /api/groups/{id}/collective-growth — BL-23 "Cùng nhau thuộc Lời".
+     * Chỉ số tập thể không-ranking (Q-A SAFE). Member-visible: mọi thành viên đều thấy (D5).
+     */
+    @GetMapping("/{id}/collective-growth")
+    public ResponseEntity<?> getCollectiveGrowth(@PathVariable String id, Principal principal) {
+        try {
+            User user = getUser(principal);
+            // Verify membership (non-member -> 400 via catch, giống getGroupStreak)
+            groupMemberRepository.findByGroupIdAndUserId(id, user.getId())
+                    .orElseThrow(() -> new RuntimeException("Ban khong phai thanh vien cua nhom"));
+            Map<String, Object> growth = collectiveGrowthService.getCollectiveGrowth(id);
+            return ResponseEntity.ok(Map.of("success", true, "growth", growth));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }

@@ -37,17 +37,15 @@
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl ✅ · Tầng 1 ✅ · Tầng 3 ✅ · commit
 - CG-3 BE: endpoint `GET /api/groups/{id}/collective-growth`
-  - Status: [ ] TODO · Files: `modules/group/.../ChurchGroupController.java` · Test: controller/integration test
-  - Member-visible (require membership; D5). Trả Map từ service (house style — KHÔNG DTO).
-  - **Spec impact**: [ ] SPEC_GROUP §X (author ở CG-8)
-  - **Spec strategy**: [ ] (b) BL-23
-  - Checklist: impl · Tầng 1 (member 200 / non-member 403) · commit
-- CG-4 BE: unit tests aggregation + **Q-A guard**
-  - Status: [ ] TODO · Files: test · Test: JUnit
-  - Cases: 2 member học chồng câu → SUM đúng; per-set coverage đúng; **assert KHÔNG ghi/đọc UserDailyProgress hay group leaderboard** (Q-A SAFE).
-  - **Spec impact**: [ ] None
-  - **Spec strategy**: [ ] (c) [no-spec-impact]
-  - Checklist: impl · Tầng 1+2 (mastery module) · commit
+  - Status: [x] DONE (ChurchGroupControllerTest 35 pass: member 200 / non-member 400) · Files: `apps/api/src/main/java/com/biblequiz/api/ChurchGroupController.java` (+`collectiveGrowthService` field + endpoint) · Test: `ChurchGroupControllerTest` (WebMvcTest, +2 case)
+  - Member-visible (verify membership như `getGroupStreak`; non-member → **400** qua catch theo house pattern, không 403). Trả Map `{success, growth}` — KHÔNG DTO.
+  - **Spec impact**: [x] SPEC_GROUP §X (author ở CG-8) · **Spec strategy**: [x] (b) BL-23
+  - Checklist: impl ✅ · Tầng 1 ✅ · Tầng 3 + commit
+- CG-4 BE: Q-A guard test
+  - Status: [x] DONE (7/7 service test) · Files: `GroupCollectiveGrowthServiceTest.java` · Test: structural guard
+  - Reflection guard: constructor params + fields KHÔNG chứa `UserDailyProgress`/`leaderboard` → khóa invariant Q-A SAFE cho tương lai. (SUM-correctness là JPQL/DB-level — verify khi có @DataJpaTest infra.)
+  - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
+  - Checklist: impl ✅ · Tầng 1 ✅ · Tầng 3 + commit
 - CG-5 FE: api client + `useGroupCollectiveGrowth` hook
   - Status: [ ] TODO · Files: `apps/web/src/api/groups.ts` (hoặc quizSets), `apps/web/src/api/queryKeys.ts` · Test: n/a
   - TanStack Query (KHÔNG useEffect+fetch); typed response.
