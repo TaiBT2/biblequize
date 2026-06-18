@@ -74,7 +74,7 @@ P0 (correctness): LBF-1, LBF-2 · P1: LBF-11 (launch-blocking presentation), LBF
 > **OUT OF SCOPE (KHÔNG đụng)**: `modules/coverage/**`, `LiturgicalSeasonService`, `ScoringService.isInSeasonBook` ×1.5, `FeatureFlagService`. Để flag `liturgical-coverage.enabled=false`.
 
 - LBF-9 (P2) FE: ẩn tab "Mùa" khỏi leaderboard (A)
-  - Status: [ ] TODO · Files: `Leaderboard.tsx` (bỏ tab `season` khỏi `tabs[]` + countdown header + `?period=season` deep-link), `Leaderboard.test.tsx` · Test: Vitest (chỉ còn 2 tab all_time/weekly)
+  - Status: [x] DONE · Files: `Leaderboard.tsx`, `Leaderboard.test.tsx`, `SPEC_USER §22.1/22.2`, `DECISIONS.md` · Test: Vitest full 1334 pass · audit.sh exit 0
   - Detail: Bỏ entry `{ key: 'season' }` khỏi `tabs`; mặc định `all_time`. Ẩn `seasonCountdown` header. Giữ code BE `/season` + `/api/seasons/active` ngủ (không gọi từ FE). Xử lý deep-link cũ `?period=season` → fallback all_time.
   - **Spec impact**: [x] SPEC_USER §22.1/§22.2 · **Spec strategy**: [ ] (a) update inline (đánh dấu season tab ẩn giai đoạn đầu)
   - Checklist: impl · Tầng 3 FE · spec §22 cập nhật + DECISIONS.md entry · `audit.sh` · commit

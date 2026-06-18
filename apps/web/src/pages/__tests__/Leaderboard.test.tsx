@@ -71,15 +71,14 @@ describe('Leaderboard', () => {
     await waitFor(() => { expect(screen.getAllByText('Bạn').length).toBeGreaterThan(0) })
   })
 
-  it('LB-2.2: renders 3 tab buttons — no Daily, generic "Mùa" label', () => {
+  it('LBF-9: renders 2 tab buttons — no Daily, no Mùa (season tab hidden for early launch)', () => {
     renderLeaderboard()
     // Daily tab REMOVED in LB-2 (decision 2026-05-01)
     expect(screen.queryByText('Hàng ngày')).not.toBeInTheDocument()
+    // Competitive "Mùa" tab hidden in LBF-9 (decision 2026-06-18) — only
+    // all-time + weekly remain. BE season endpoint stays dormant.
+    expect(screen.queryByText('Mùa')).not.toBeInTheDocument()
     expect(screen.getByText('Hàng tuần')).toBeInTheDocument()
-    // Tab "Mùa" label is the generic i18n string (Bui decision 2026-05-02
-    // revision: dynamic season name caused ugly tabs when test data leaked
-    // long auto-generated names like "Season E2E Test 1776471648641").
-    expect(screen.getByText('Mùa')).toBeInTheDocument()
     expect(screen.getByText('Tất cả')).toBeInTheDocument()
   })
 
@@ -117,10 +116,7 @@ describe('Leaderboard', () => {
     })
   })
 
-  it('renders season countdown', async () => {
-    renderLeaderboard()
-    await waitFor(() => { expect(screen.getByText(/Mùa kết thúc sau/i)).toBeInTheDocument() })
-  })
+  // LBF-9 (2026-06-18): season countdown header removed with the "Mùa" tab.
 
   it('shows empty state when no data', async () => {
     mockApiGet.mockImplementation((url: string) => {
@@ -158,21 +154,6 @@ describe('Leaderboard', () => {
     })
   })
 
-  it('LB-2.2: tab "Mùa" falls back to generic "Mùa" when no active season (regression guard)', async () => {
-    mockApiGet.mockImplementation((url: string) => {
-      if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 5, points: 4520 } })
-      if (url.includes('/leaderboard/')) return Promise.resolve({ data: MOCK_ENTRIES })
-      // Simulate no active season (BE returns active: false)
-      if (url.includes('/seasons/active')) return Promise.resolve({ data: { active: false } })
-      if (url.includes('/api/me/tier-progress')) return Promise.resolve({ data: { totalPoints: 4520 } })
-      return Promise.reject(new Error('Not found'))
-    })
-    renderLeaderboard()
-    // Tab label should be generic "Mùa" (uppercased by CSS), NOT outdated "Mùa Xuân"
-    await waitFor(() => { expect(screen.getByText('Mùa')).toBeInTheDocument() })
-    expect(screen.queryByText(/Mùa Xuân/)).not.toBeInTheDocument()
-  })
-
   // LB-1.5 — Row enrichment per mockup
   it('LB-1.5: list rows show tier name below username', async () => {
     renderLeaderboard()
@@ -207,15 +188,9 @@ describe('Leaderboard', () => {
     })
   })
 
-  it('LB-1.3 + LB-2.2: clicking Season tab fetches /api/leaderboard/season', async () => {
-    renderLeaderboard()
-    // Generic "Mùa" label per Bui decision 2026-05-02 revision.
-    await waitFor(() => { expect(screen.getByText('Mùa')).toBeInTheDocument() })
-    fireEvent.click(screen.getByText('Mùa'))
-    await waitFor(() => {
-      expect(mockApiGet).toHaveBeenCalledWith(expect.stringContaining('/leaderboard/season'))
-    })
-  })
+  // LBF-9 (2026-06-18): "Mùa" competitive tab hidden for early launch — the
+  // season tab + its /leaderboard/season fetch test were removed. BE endpoint
+  // stays dormant.
 
   // LB-1.2 — duplicate row prevention (regression guard)
   it('LB-1.2: dedupes user appearing twice in BE response', async () => {

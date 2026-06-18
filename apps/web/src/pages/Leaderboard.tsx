@@ -61,15 +61,14 @@ export default function Leaderboard() {
     enabled: isAuthenticated,
   })
 
-  // Tab "Mùa" label is always the generic "Mùa" string (Bui decision 2026-05-02
-  // revision of LB-2 1A). The dynamic season-name approach broke down when test
-  // data produced names like "Season E2E Test 1776471648641" — the tab visually
-  // ballooned and looked unprofessional. The current season name is still
-  // surfaced via the countdown header + sidebar widget on the page itself, so
-  // information isn't lost — only the tab label stays compact.
+  // LBF-9 (2026-06-18): the "Mùa" (competitive season) tab is hidden for the
+  // early-launch phase — a 3-month window-sum board duplicated the sparse
+  // all-time data and exposed weak numbers. BE `/leaderboard/season` +
+  // `/api/seasons/active` stay live (dormant); only the tab is removed. The
+  // liturgical season (×1.5 focus bonus + coverage) is unaffected — see
+  // docs/todo/active/2026-06-18-leaderboard-deep-fixes.md.
   const tabs: { key: Tab; label: string }[] = [
     { key: 'all_time', label: t('leaderboard.allTime') },
-    { key: 'season', label: t('leaderboard.season') },
     { key: 'weekly', label: t('leaderboard.weekly') },
   ]
 
@@ -100,34 +99,14 @@ export default function Leaderboard() {
   const isCurrentUserInList = myUserId != null && list.some((e: any) => e.userId === myUserId)
   const showMyRankSticky = myRank != null && !isCurrentUserInList
 
-  const seasonCountdown = season?.endDate
-    ? (() => {
-        const diff = new Date(season.endDate).getTime() - Date.now()
-        if (diff <= 0) return t('leaderboard.seasonEnded')
-        const d = Math.floor(diff / 86400000)
-        const h = Math.floor((diff % 86400000) / 3600000)
-        const m = Math.floor((diff % 3600000) / 60000)
-        return `${String(d).padStart(2, '0')} ${t('common.days')} : ${String(h).padStart(2, '0')} ${t('common.hours')} : ${String(m).padStart(2, '0')} ${t('common.minutes')}`
-      })()
-    : null
-
   return (
     <div className="max-w-5xl mx-auto py-6">
-      {/* Header & Countdown */}
+      {/* Header */}
       <header className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
         <div>
           <h1 className="text-3xl font-display font-black tracking-tight text-bq-ink mb-2">{t('leaderboard.title')}</h1>
           <p className="text-bq-ink2 text-sm">{t('leaderboard.description')}</p>
         </div>
-        {seasonCountdown && (
-          <div className="flex items-center gap-3 bg-bq-white px-4 py-3 rounded-xl border border-bq-hair border-l-4 border-l-bq-amber shadow-bq-soft">
-            <span className="material-symbols-outlined text-bq-amberd" style={{ fontVariationSettings: "'FILL' 1" }}>timer</span>
-            <div>
-              <p className="text-[10px] text-bq-ink2 font-bold uppercase tracking-widest">{t('leaderboard.seasonEndsIn')}</p>
-              <p className="text-bq-amberd font-bold font-mono">{seasonCountdown}</p>
-            </div>
-          </div>
-        )}
       </header>
 
       {/* Top 3 Podium */}

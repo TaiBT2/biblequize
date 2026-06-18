@@ -2022,12 +2022,12 @@ Grid layout, locked = grayscale + lock icon. Click → modal hiện điều ki�
 | `GET /api/leaderboard/weekly` | Tuần này |
 | `GET /api/leaderboard/monthly` | Tháng này |
 | `GET /api/leaderboard/all-time` | Toàn thời gian |
-| `GET /api/leaderboard/season/{seasonId}` | Mùa hiện tại / chỉ định |
+| `GET /api/leaderboard/season` | Mùa hiện tại (window-sum UDP) — **BE-only, tab ẩn** |
 
-### 22.2 Season leaderboard
-- Mùa = 3 tháng (4 mùa / năm) — entity `Season` (V7).
-- Reset điểm season về 0 đầu mỗi mùa; tier season tách biệt tier all-time.
-- Top 3 mỗi tier nhận badge "Vinh Quang Mùa N".
+### 22.2 Season leaderboard — **tab thi đua ẩn giai đoạn đầu (LBF-9, DECISIONS 2026-06-18)**
+- **Trạng thái:** tab "Mùa" trên `/leaderboard` + SeasonCard trên trang Ranked **ẩn** cho giai đoạn early-launch (board 3 tháng trùng lặp dữ liệu thưa của all-time + phơi con số yếu). Endpoint `GET /api/leaderboard/season` + `/api/seasons/active` giữ **ngủ** (không drop).
+- **Thực tế code:** "mùa thi đua" = `SUM(points_counted)` của `UserDailyProgress` trong khoảng `[season.start, today]` (dùng lại `findWeeklyLeaderboard`). KHÔNG có ledger reset riêng / tier-season tách biệt / badge "Vinh Quang Mùa N" — các mục đó **chưa từng được build** (intent cũ, gỡ khỏi spec). Bảng `season_rankings` từng double-write nay ngừng ghi (LBF-13).
+- **KHÔNG nhầm với "mùa phụng vụ"** (Liturgical Coverage §7.10.3 + ×1.5 focus bonus): đó là hệ riêng, flag-gated, vẫn giữ — xem §7.10.
 
 ### 22.3 Around-me
 `GET /api/leaderboard/around-me` → 5 trên + bạn + 5 dưới.
