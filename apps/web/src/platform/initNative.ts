@@ -20,12 +20,8 @@ export function initNative(): void {
     })
     .catch(() => {})
 
-  // Resize the WebView when the keyboard opens so inputs stay visible.
-  import('@capacitor/keyboard')
-    .then(({ Keyboard, KeyboardResize }) => {
-      Keyboard.setResizeMode({ mode: KeyboardResize.Native }).catch(() => {})
-    })
-    .catch(() => {})
+  // (Keyboard resize: Android already defaults to native resize; the explicit
+  // setResizeMode call is unimplemented on this plugin version, so it's omitted.)
 
   // Hide the splash screen once the web app has booted.
   import('@capacitor/splash-screen')
