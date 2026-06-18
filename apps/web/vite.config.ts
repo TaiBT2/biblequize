@@ -33,6 +33,9 @@ export default defineConfig(({ mode }) => {
     preview: {
       headers: {
         ...securityHeaders,
+        // script-src needs no 'unsafe-inline': fonts swap via /load-fonts.js
+        // (external), and JSON-LD <script type="application/ld+json"> is data,
+        // not executed. This mirrors the hardened prod target (see CSP-2 task).
         'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' http://localhost:* ws://localhost:*;",
         'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
       },
@@ -57,9 +60,24 @@ export default defineConfig(({ mode }) => {
       sourcemap: true,
       rollupOptions: {
         output: {
-          manualChunks: {
-            vendor: ['react', 'react-dom'],
-            router: ['react-router-dom']
+          // Split shared deps out of the entry monolith so it parses faster and
+          // each group caches independently (a code change won't bust the React
+          // runtime or the translation bundles). Lazy route chunks are emitted
+          // automatically by the React.lazy() imports in main.tsx.
+          manualChunks(id) {
+            // NB: translation JSON is intentionally NOT bucketed here — each
+            // locale is a dynamic import() in src/i18n, so Rollup emits one
+            // chunk per language and only the active one loads on first paint.
+            if (id.includes('node_modules')) {
+              if (id.includes('react-router')) return 'router'
+              if (/[\\/]react(-dom)?[\\/]|[\\/]scheduler[\\/]/.test(id)) return 'react-vendor'
+              if (id.includes('@tanstack')) return 'query'
+              if (id.includes('i18next') || id.includes('react-i18next')) return 'i18n-vendor'
+              // Realtime libs are only imported by lazy multiplayer/room pages,
+              // so this chunk loads on demand with them — never on first paint.
+              if (id.includes('@stomp') || id.includes('sockjs')) return 'realtime'
+              return 'vendor'
+            }
           }
         }
       }

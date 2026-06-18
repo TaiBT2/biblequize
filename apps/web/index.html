@@ -12,11 +12,14 @@
   <meta name="author" content="BibleQuiz" />
   <meta name="theme-color" content="#11131e" />
 
-  <!-- Canonical + Language Alternates -->
-  <!-- Canonical set per-page via react-helmet-async PageMeta -->
-  <link rel="alternate" hreflang="vi" href="https://forbible.org" />
-  <link rel="alternate" hreflang="el" href="https://forbible.org/el" />
-  <link rel="alternate" hreflang="x-default" href="https://forbible.org" />
+  <!--
+    Canonical is set per-page via react-helmet-async (PageMeta) — no static
+    <link rel="canonical"> here, or it would conflict with the per-page tag.
+    No hreflang link annotations: the app serves both vi + en at the SAME URL
+    (i18next language-detector, no per-locale URL routing). hreflang REQUIRES
+    distinct per-language URLs, so emitting them would point crawlers at 404s.
+    Re-add hreflang once locale-prefixed routes (/en, /vi) exist.
+  -->
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -26,7 +29,7 @@
   <meta property="og:url" content="https://forbible.org" />
   <meta property="og:site_name" content="BibleQuiz" />
   <meta property="og:locale" content="vi_VN" />
-  <meta property="og:locale:alternate" content="el_GR" />
+  <meta property="og:locale:alternate" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -48,23 +51,26 @@
   <!-- LCP Preload — hero image -->
   <link rel="preload" as="image" href="https://lh3.googleusercontent.com/aida-public/AB6AXuBpEFLF4HdAAZtQmV6p7ZFtq-07HGD2UVS1ZVgbPxSev4YKp18Amt4MdHqCFGh2JrRl5z8UyUtxx7O5an0EGofE1Kkzf-lnCx_fHn2-S1-sdjas2YKfjghtOoVc-9_Vb69hY_f1Kee_27xarqfLFbHwfQelEbTOKW_ouxi_PqBWzhBFPVaR7BQBwYz9FkBO6DlHAdNGeKKuOutu3XwrKIR75hoWBmThBK6KGHpGo8uO9ZNvkcSIwpmItnWjnMcoahC_NJDQhMWkspM" />
 
-  <!-- Fonts — non-blocking with media swap -->
+  <!-- Fonts — non-blocking with media swap.
+       Sheets ship media="print" + data-font-swap; /load-fonts.js flips them to
+       media="all" once parsed (CSP-safe; no inline onload → no unsafe-inline). -->
+  <script src="/load-fonts.js" defer></script>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" media="print" data-font-swap />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" /></noscript>
 
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" media="print" data-font-swap />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" /></noscript>
 
   <!-- Cormorant Garamond italic — used ONLY for verse text + drop cap (HR-1) -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap" media="print" data-font-swap />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap" /></noscript>
 
   <!-- "Khung Sáng" fonts — Bricolage Grotesque (display) + Literata (verse) (KS W0-1) -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,600;1,7..72,500;1,7..72,600&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,600;1,7..72,500;1,7..72,600&display=swap" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,600;1,7..72,500;1,7..72,600&display=swap" media="print" data-font-swap />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,600;1,7..72,500;1,7..72,600&display=swap" /></noscript>
 
   <!-- Schema.org Structured Data -->
@@ -76,7 +82,7 @@
       "description": "Nen tang hoc Kinh Thanh qua gamification — trac nghiem, thi dau, nhom hoi thanh",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Web",
-      "inLanguage": ["vi", "el"],
+      "inLanguage": ["vi", "en"],
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -86,6 +92,30 @@
         "@type": "Organization",
         "name": "BibleQuiz"
       }
+    }
+  </script>
+
+  <!-- Organization + WebSite graph (linked via @id) for richer entity results -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://forbible.org/#organization",
+          "name": "BibleQuiz",
+          "url": "https://forbible.org",
+          "logo": "https://forbible.org/android-chrome-512x512.png"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://forbible.org/#website",
+          "name": "BibleQuiz",
+          "url": "https://forbible.org",
+          "inLanguage": ["vi", "en"],
+          "publisher": { "@id": "https://forbible.org/#organization" }
+        }
+      ]
     }
   </script>
 </head>

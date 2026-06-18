@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 import { FAQ_CATEGORIES, FAQ_ITEMS, type FaqCategory } from '../data/faqData'
+import PageMeta from '../components/PageMeta'
 
 /**
  * /help — FAQ / self-service support page.
@@ -23,7 +24,7 @@ import { FAQ_CATEGORIES, FAQ_ITEMS, type FaqCategory } from '../data/faqData'
  * </ul>
  */
 export default function Help() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const location = useLocation()
 
   const [activeCategory, setActiveCategory] = useState<FaqCategory | 'all'>('all')
@@ -57,6 +58,15 @@ export default function Help() {
 
   return (
     <div data-testid="help-page" className="space-y-8">
+      <PageMeta
+        title={i18n.language === 'vi' ? 'Trợ giúp & Câu hỏi thường gặp' : 'Help & FAQ'}
+        description={
+          i18n.language === 'vi'
+            ? 'Câu hỏi thường gặp và hướng dẫn sử dụng BibleQuiz.'
+            : 'Frequently asked questions and guides for BibleQuiz.'
+        }
+        canonicalPath="/help"
+      />
       {/* ── Hero ── */}
       <section>
         <h1 className="font-display text-3xl md:text-4xl font-black tracking-tight text-bq-ink mb-2">

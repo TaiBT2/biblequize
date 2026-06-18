@@ -3,13 +3,18 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (75)
+## Active (79)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
-| 2026-06-17 | Mobile app (Capacitor wrap web) — chỉ trang User (MOB-0..5; code DONE, AAB built; device smoke/store/iOS owner-gated) | IN PROGRESS | [detail](docs/todo/active/2026-06-17-mobile-capacitor.md) |
+| 2026-06-17 | Mobile app (Capacitor wrap web) — chỉ trang User (MOB-0..5; code DONE, AAB built, emulator smoke OK; store/iOS owner-gated) | IN PROGRESS | [detail](docs/todo/active/2026-06-17-mobile-capacitor.md) |
 | 2026-06-17 | Group Collective Growth "Cùng nhau thuộc Lời" — differentiator (BL-23, CG-1 DONE, CG-2..8) | IN PROGRESS | [detail](docs/todo/active/2026-06-17-group-collective-growth.md) |
-| 2026-06-17 | SEO audit fixes forbible.org (og-image vỡ, locale `el`→`en`, sitemap/robots, PageMeta, JSON-LD) (SEO-1..7) | TODO | [detail](docs/todo/active/2026-06-17-seo-audit-fixes.md) |
+| 2026-06-18 | i18n locale-dedup: chỉ load ngôn ngữ active (vi-user bỏ ~35kB gz en chunk) (ILD-1) | DONE | [detail](docs/todo/active/2026-06-18-i18n-locale-dedup.md) |
+| 2026-06-18 | CSP-safe font loading (bỏ inline onload → external /load-fonts.js; gỡ phụ thuộc unsafe-inline) (CSP-1..2) | DONE | [detail](docs/todo/active/2026-06-18-csp-safe-font-loading.md) |
+| 2026-06-18 | Bundle vendor + locale chunk splitting (entry 651kB → 125kB) (BVC-1) | DONE | [detail](docs/todo/active/2026-06-18-bundle-vendor-chunk-splitting.md) |
+| 2026-06-17 | Route-level code splitting (lazy-load pages) giảm LCP/FCP — bundle 1.55MB → per-route chunks (RCS-1..2) | DONE | [detail](docs/todo/active/2026-06-17-route-code-splitting.md) |
+| 2026-06-17 | SEO audit fixes forbible.org (og-image vỡ, locale `el`→`en`, sitemap/robots, PageMeta, JSON-LD) (SEO-1..7) | DONE | [detail](docs/todo/active/2026-06-17-seo-audit-fixes.md) |
+| 2026-06-18 | SEO prerender public routes (puppeteer build-time, /landing+/privacy+/terms+/help+/daily) (PRE-1..5) | DONE | [detail](docs/todo/active/2026-06-17-seo-prerender-public-routes.md) |
 | 2026-06-17 | Fix avatar không đồng bộ sau khi sửa hồ sơ (header/sidebar) (ASE-1..2) | DONE | [detail](docs/todo/active/2026-06-17-avatar-sync-after-edit.md) |
 | 2026-06-17 | Ranked selector follow-ups: meta-query merge + dependency inversion (RSO-1..2) | DONE | [archive](docs/todo/archive/2026-06-17-ranked-selector-followups.md) |
 | 2026-06-17 | Ranked selector: gộp history load + bỏ N+1 query (RSH-1..2) | DONE | [archive](docs/todo/archive/2026-06-17-ranked-selector-history-query-optimization.md) |
