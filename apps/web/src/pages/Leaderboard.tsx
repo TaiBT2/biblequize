@@ -251,8 +251,6 @@ export default function Leaderboard() {
                   name={entry.name}
                   points={entry.points}
                   avatarUrl={entry.avatarUrl}
-                  streak={entry.streak}
-                  trend={entry.trend}
                   isMe={isMe}
                 />
               )
@@ -268,8 +266,6 @@ export default function Leaderboard() {
                 // Sticky row is always the current user; /my-rank doesn't return
                 // avatarUrl, so use authStore.user.avatar (kept in sync on edit).
                 avatarUrl={myRank.avatarUrl ?? user?.avatar}
-                streak={myRank.streak}
-                trend={myRank.trend}
                 isMe
               />
             )}
@@ -339,7 +335,7 @@ export default function Leaderboard() {
   )
 }
 
-/** One leaderboard list row. Avatar + name + tier badge + optional streak/trend + points.
+/** One leaderboard list row. Avatar + name + tier badge + points.
  *  Highlight gold + "BẠN" badge when {@code isMe}. Used for both rest list rows
  *  and the sticky my-rank row (around-me pattern). */
 interface LeaderboardListRowProps {
@@ -347,15 +343,11 @@ interface LeaderboardListRowProps {
   name: string
   points: number
   avatarUrl?: string
-  /** Optional — backend currently does not populate; FE hides when missing. */
-  streak?: number
-  /** Optional — positive = up, negative = down, 0/undefined = no change. */
-  trend?: number
   isMe?: boolean
   testId?: string
 }
 
-function LeaderboardListRow({ rank, name, points, avatarUrl, streak, trend, isMe, testId }: LeaderboardListRowProps) {
+function LeaderboardListRow({ rank, name, points, avatarUrl, isMe, testId }: LeaderboardListRowProps) {
   const { t } = useTranslation()
   const tier = getTierByPoints(points)
   const tierColor = tier.colorHex
@@ -387,14 +379,8 @@ function LeaderboardListRow({ rank, name, points, avatarUrl, streak, trend, isMe
           </div>
           <div className="flex items-center gap-2 mt-0.5 text-[10px] md:text-[11px] text-bq-ink2">
             <span>{tierName}</span>
-            {streak != null && streak > 0 && <span>🔥 {streak}</span>}
           </div>
         </div>
-        {trend != null && trend !== 0 && (
-          <div className="text-[10px] md:text-xs text-bq-ink2 font-bold">
-            {trend > 0 ? `▲ ${trend}` : `▼ ${Math.abs(trend)}`}
-          </div>
-        )}
         <div className="text-right">
           <p className="text-bq-ink font-black text-base md:text-lg">{points.toLocaleString()}</p>
           <p className="text-[9px] md:text-[10px] uppercase text-bq-ink2 font-bold">{t('leaderboard.points')}</p>
@@ -416,14 +402,8 @@ function LeaderboardListRow({ rank, name, points, avatarUrl, streak, trend, isMe
         <h3 className="font-bold text-xs md:text-sm text-bq-ink truncate">{name}</h3>
         <div className="flex items-center gap-2 mt-0.5 text-[10px] md:text-[11px]">
           <span style={{ color: tierColor }}>{tierName}</span>
-          {streak != null && streak > 0 && <span className="text-bq-ember">🔥 {streak}</span>}
         </div>
       </div>
-      {trend != null && trend !== 0 && (
-        <div className={`text-[10px] md:text-xs font-bold ${trend > 0 ? 'text-bq-sapphire' : 'text-bq-ruby'}`}>
-          {trend > 0 ? `▲ ${trend}` : `▼ ${Math.abs(trend)}`}
-        </div>
-      )}
       <div className="text-right">
         <p className="text-bq-ink font-black text-sm">{points.toLocaleString()}</p>
         <p className="text-[9px] md:text-[10px] uppercase text-bq-ink2">{t('leaderboard.points')}</p>
