@@ -16,12 +16,21 @@ vi.mock('../../store/authStore', () => ({
 
 import Leaderboard from '../Leaderboard'
 
+// ≥ SEED_THRESHOLD (10) entries so the board renders (below the threshold the
+// page shows the LBF-11 low-data seed-state instead of the podium/list).
 const MOCK_ENTRIES = [
   { userId: 'u2', name: 'Player 1', points: 15820, avatarUrl: null },
   { userId: 'u3', name: 'Player 2', points: 12450, avatarUrl: null },
   { userId: 'u4', name: 'Player 3', points: 11200, avatarUrl: null },
   { userId: 'u5', name: 'Player 4', points: 9840, avatarUrl: null },
   { userId: 'u1', name: 'Test User', points: 4520, avatarUrl: null },
+  { userId: 'u6', name: 'Player 6', points: 4000, avatarUrl: null },
+  { userId: 'u7', name: 'Player 7', points: 3500, avatarUrl: null },
+  { userId: 'u8', name: 'Player 8', points: 3000, avatarUrl: null },
+  { userId: 'u9', name: 'Player 9', points: 2500, avatarUrl: null },
+  { userId: 'u10', name: 'Player 10', points: 2000, avatarUrl: null },
+  { userId: 'u11', name: 'Player 11', points: 1500, avatarUrl: null },
+  { userId: 'u12', name: 'Player 12', points: 1000, avatarUrl: null },
 ]
 
 function renderLeaderboard() {
@@ -118,7 +127,7 @@ describe('Leaderboard', () => {
 
   // LBF-9 (2026-06-18): season countdown header removed with the "Mùa" tab.
 
-  it('shows empty state when no data', async () => {
+  it('LBF-11: shows seed-state (not a bare board) when no data', async () => {
     mockApiGet.mockImplementation((url: string) => {
       if (url.includes('/leaderboard/')) return Promise.resolve({ data: [] })
       if (url.includes('/my-rank')) return Promise.resolve({ data: null })
@@ -126,7 +135,31 @@ describe('Leaderboard', () => {
       return Promise.reject(new Error('Not found'))
     })
     renderLeaderboard()
-    await waitFor(() => { expect(screen.getByText(/Chưa có dữ liệu/)).toBeInTheDocument() })
+    await waitFor(() => { expect(screen.getByTestId('leaderboard-seed-state')).toBeInTheDocument() })
+    // No podium, no weak numbers
+    expect(screen.queryByTestId('leaderboard-podium')).not.toBeInTheDocument()
+  })
+
+  it('LBF-11: shows seed-state when fewer than 10 players (né con số)', async () => {
+    const FEW = MOCK_ENTRIES.slice(0, 5) // 5 players → below SEED_THRESHOLD
+    mockApiGet.mockImplementation((url: string) => {
+      if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 5, points: 4520 } })
+      if (url.includes('/leaderboard/')) return Promise.resolve({ data: FEW })
+      if (url.includes('/seasons')) return Promise.resolve({ data: null })
+      if (url.includes('/api/me/tier-progress')) return Promise.resolve({ data: { totalPoints: 4520 } })
+      return Promise.reject(new Error('Not found'))
+    })
+    renderLeaderboard()
+    await waitFor(() => { expect(screen.getByTestId('leaderboard-seed-state')).toBeInTheDocument() })
+    // Board hidden so the sparse 5-row list + any "0đ" never shows
+    expect(screen.queryByTestId('leaderboard-podium')).not.toBeInTheDocument()
+    expect(screen.queryByText('Player 1')).not.toBeInTheDocument()
+  })
+
+  it('LBF-11: shows the board (no seed-state) when 10+ players', async () => {
+    renderLeaderboard() // default mock = 12 entries
+    await waitFor(() => { expect(screen.getByTestId('leaderboard-podium')).toBeInTheDocument() })
+    expect(screen.queryByTestId('leaderboard-seed-state')).not.toBeInTheDocument()
   })
 
   it('shows skeleton during loading', () => {
@@ -204,12 +237,9 @@ describe('Leaderboard', () => {
   })
 
   it('LB-1.2: shows sticky my-rank row when current user NOT in list', async () => {
-    const ENTRIES_WITHOUT_ME = [
-      { userId: 'u2', name: 'Player 1', points: 15820, avatarUrl: null },
-      { userId: 'u3', name: 'Player 2', points: 12450, avatarUrl: null },
-      { userId: 'u4', name: 'Player 3', points: 11200, avatarUrl: null },
-      { userId: 'u5', name: 'Player 4', points: 9840, avatarUrl: null },
-    ]
+    // 11 players, none of them the current user (u1) → board renders (≥10) and
+    // the around-me sticky row appears for the off-board current user.
+    const ENTRIES_WITHOUT_ME = MOCK_ENTRIES.filter((e) => e.userId !== 'u1')
     mockApiGet.mockImplementation((url: string) => {
       if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 50, points: 100 } })
       if (url.includes('/leaderboard/')) return Promise.resolve({ data: ENTRIES_WITHOUT_ME })
@@ -224,12 +254,9 @@ describe('Leaderboard', () => {
 
   it('sticky my-rank row renders current user avatar from authStore (sync after edit)', async () => {
     authState.user = { name: 'Test User', email: 'a@b.com', avatar: 'https://example.com/me.png' } as any
-    const ENTRIES_WITHOUT_ME = [
-      { userId: 'u2', name: 'Player 1', points: 15820, avatarUrl: null },
-      { userId: 'u3', name: 'Player 2', points: 12450, avatarUrl: null },
-      { userId: 'u4', name: 'Player 3', points: 11200, avatarUrl: null },
-      { userId: 'u5', name: 'Player 4', points: 9840, avatarUrl: null },
-    ]
+    // 11 players, none of them the current user (u1) → board renders (≥10) and
+    // the around-me sticky row appears for the off-board current user.
+    const ENTRIES_WITHOUT_ME = MOCK_ENTRIES.filter((e) => e.userId !== 'u1')
     mockApiGet.mockImplementation((url: string) => {
       if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 23, points: 1131 } })
       if (url.includes('/leaderboard/')) return Promise.resolve({ data: ENTRIES_WITHOUT_ME })

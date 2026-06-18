@@ -24,6 +24,14 @@ const TAB_TO_API_PATH: Record<Tab, string> = {
   all_time: 'all-time',
 }
 
+// LBF-11 (2026-06-18): "né con số" — when fewer than this many players have
+// points, the board is too sparse to show without exposing weak numbers
+// (1–2 rows, "0đ"). Below the threshold we render an encouraging seed-state
+// instead of the podium/list. The board page size is 20 (> threshold), so
+// `list.length < SEED_THRESHOLD` reliably means "fewer than N real players",
+// not a truncated page.
+const SEED_THRESHOLD = 10
+
 export default function Leaderboard() {
   const { t } = useTranslation()
   const [activeTab, setActiveTab] = useState<Tab>('all_time')
@@ -92,6 +100,8 @@ export default function Leaderboard() {
   // should now surface loudly (React duplicate-key warning) as a schema/query
   // regression rather than being silently swallowed.
   const list: any[] = Array.isArray(entries) ? entries : []
+  // Low-data seed-state gate (LBF-11). Empty + 1..9-player boards both fall here.
+  const lowData = !isLoading && list.length < SEED_THRESHOLD
   const top3 = list.slice(0, 3)
   const rest = list.slice(3)
   const podiumOrder = [top3[1], top3[0], top3[2]].filter(Boolean) // 2, 1, 3
@@ -122,7 +132,7 @@ export default function Leaderboard() {
             </div>
           ))}
         </div>
-      ) : top3.length >= 3 ? (
+      ) : !lowData && top3.length >= 3 ? (
         <section data-testid="leaderboard-podium" className="grid grid-cols-3 gap-2 md:gap-6 items-end mb-16">
           {podiumOrder.map((player, idx) => {
             const layout = PODIUM_LAYOUT[idx]
@@ -197,11 +207,6 @@ export default function Leaderboard() {
             )
           })}
         </section>
-      ) : list.length === 0 ? (
-        <div className="text-center py-16 mb-16">
-          <span className="material-symbols-outlined text-5xl text-bq-ink3 mb-4">leaderboard</span>
-          <p className="text-bq-ink2 text-sm">{t('leaderboard.noData')}</p>
-        </div>
       ) : null}
 
       {/* Tabs */}
@@ -216,11 +221,26 @@ export default function Leaderboard() {
         ))}
       </nav>
 
-      {/* Table List */}
+      {/* Table List (or low-data seed-state — LBF-11) */}
       <div className={`space-y-4 mb-16 transition-opacity ${isFetching ? 'opacity-50' : ''}`}>
         {isLoading ? (
           [1, 2, 3, 4].map(i => <div key={i} className="h-16 bg-bq-inset rounded-2xl animate-pulse" />)
-        ) : rest.length === 0 && list.length <= 3 ? null : (
+        ) : lowData ? (
+          <div data-testid="leaderboard-seed-state" className="flex flex-col items-center text-center gap-3 py-14">
+            <div className="w-14 h-14 rounded-full bg-bq-amber/10 flex items-center justify-center">
+              <span className="material-symbols-outlined text-bq-amberd text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>rocket_launch</span>
+            </div>
+            <p className="text-base font-bold text-bq-ink">{t('leaderboard.seedTitle')}</p>
+            <p className="text-sm text-bq-ink2 max-w-sm leading-relaxed">{t('leaderboard.seedBody')}</p>
+            <Link
+              to="/practice"
+              data-testid="leaderboard-seed-cta"
+              className="inline-flex items-center gap-2 mt-2 px-5 py-2 rounded-xl bg-bq-amber text-white text-xs font-black uppercase tracking-widest active:scale-95 transition-transform"
+            >
+              {t('leaderboard.seedCta')} →
+            </Link>
+          </div>
+        ) : (
           <>
             {rest.map((entry: any, idx: number) => {
               const rank = idx + 4
