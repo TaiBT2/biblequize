@@ -73,7 +73,7 @@ export default function Login() {
     <main className="flex min-h-screen bg-bq-paper">
       <PageMeta title={t('auth.login')} canonicalPath="/login" />
       {/* Left Side: Hero Section (60%) */}
-      <section className="hidden lg:flex lg:w-[60%] relative overflow-hidden bg-bq-paper">
+      <section className="hidden md:flex md:w-[55%] lg:w-[60%] relative overflow-hidden bg-bq-paper">
         <div className="absolute inset-0 z-0">
           {/* Light-well glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-bq-amber/10 rounded-full blur-[120px]" />
@@ -111,7 +111,7 @@ export default function Login() {
       </section>
 
       {/* Right Side: Login Form (40%) */}
-      <section className="w-full lg:w-[40%] flex flex-col justify-center items-center px-5 sm:px-12 md:px-24 py-12 lg:py-0 bg-bq-paper relative">
+      <section className="w-full md:w-[45%] lg:w-[40%] flex flex-col justify-center items-center px-5 sm:px-12 lg:px-24 py-12 md:py-0 bg-bq-paper relative">
         <div className="w-full max-w-md space-y-6 sm:space-y-8 bg-bq-white border border-bq-hair shadow-bq-soft rounded-bq p-8 sm:p-10">
           {/* Brand Anchor */}
           <div className="flex flex-col items-center mb-10">

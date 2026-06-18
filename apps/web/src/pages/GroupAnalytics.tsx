@@ -279,7 +279,7 @@ const GroupAnalytics: React.FC = () => {
         </div>
 
         {/* KPI grid (4 cards) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 mb-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 mb-4">
           <KpiCard
             testId="kpi-active-week"
             label={t('groups.kpiActiveWeek')}
@@ -438,7 +438,7 @@ const GroupAnalytics: React.FC = () => {
       {/* ── Quick Actions panel ── */}
       <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl p-3.5 sm:p-5">
         <div className="text-bq-ink text-[13px] font-medium mb-3">⚡ {t('groups.quickActions')}</div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
           <Link
             to={`/groups/${id}?tab=quizsets`}
             className="bg-bq-amber/[0.08] border-[0.5px] border-bq-amber/25 rounded-lg px-2 py-3 cursor-pointer flex flex-col items-center gap-1 hover:brightness-105 transition-all"
