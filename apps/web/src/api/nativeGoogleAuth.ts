@@ -18,9 +18,12 @@ export async function nativeGoogleIdToken(): Promise<string> {
     initialized = true
   }
 
+  // No custom `scopes` here: the idToken flow returns email/profile by default,
+  // and passing scopes would require overriding MainActivity.onActivityResult
+  // (plugin throws "You CANNOT use scopes without modifying the main activity").
   const res = (await SocialLogin.login({
     provider: 'google',
-    options: { scopes: ['email', 'profile'] },
+    options: {},
   })) as { result?: { idToken?: string | null } }
 
   const idToken = res?.result?.idToken
