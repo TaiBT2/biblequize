@@ -392,11 +392,11 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
           <SuddenDeathView sd={sd} myUsername={myUsername} />
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr_320px] gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] lg:grid-cols-[280px_1fr_320px] gap-5">
           {/* ── LEFT: Scoreboard (lg only — same content as the trailing
                 mobile block; on lg+ it's a sticky sidebar) ── */}
           <aside
-            className="hidden lg:block self-start lg:sticky lg:top-20 bg-bq-white rounded-2xl border border-bq-hair shadow-bq-soft p-4"
+            className="hidden md:block self-start md:sticky md:top-20 bg-bq-white rounded-2xl border border-bq-hair shadow-bq-soft p-4"
             data-testid="quiz-scoreboard-left"
           >
             <div className="text-[10px] font-bold uppercase tracking-[0.1em] text-bq-ink2 mb-4 flex items-center gap-1.5">
@@ -464,7 +464,7 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
                 (still choosing) indicator. Hidden on lg+ where the
                 LEFT scoreboard sidebar covers the same info. */}
             {!isSequential && scores.length > 0 && (
-              <div className="lg:hidden -mx-4 px-4 pb-1 overflow-x-auto" data-testid="quiz-mobile-chip-strip">
+              <div className="md:hidden -mx-4 px-4 pb-1 overflow-x-auto" data-testid="quiz-mobile-chip-strip">
                 <div className="flex items-center gap-2 w-max">
                   {scores.map((s, idx) => {
                     const isMe = s.playerId === myUserId;
@@ -682,7 +682,7 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
           </aside>
 
           {/* ── Leaderboard / Side Panel (mobile only — desktop uses LEFT) ── */}
-          <div className="lg:hidden bg-bq-white rounded-2xl border border-bq-hair shadow-bq-soft p-4 self-start">
+          <div className="md:hidden bg-bq-white rounded-2xl border border-bq-hair shadow-bq-soft p-4 self-start">
             <div className="text-[10px] font-bold uppercase tracking-[0.1em] text-bq-ink2 mb-4 flex items-center gap-1.5">
               <span className="material-symbols-outlined text-bq-emerald text-sm" style={FILL_STYLE}>
                 {isBattleRoyale ? 'swords' :
