@@ -15,9 +15,11 @@ Performance **93** · Accessibility **96** · Best-Practices **100** · SEO **92
   - Files: `i18n/{vi,en}.json` (startNow + xoá ctaAria), `pages/LandingPage.tsx` (2 CTA bỏ aria-label).
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
-### Báo cáo — KHÔNG tự sửa (cần quyết định / địa hạt khác)
-- **A11y contrast (96)**: token thương hiệu `bq-amberd` (#d97f06) trên nền sáng = contrast **2.87 < 4.5**
-  (logo, pill, highlight h1...). Đổi = sửa **brand color design-token**, blast radius lớn → CẦN user duyệt.
+### Báo cáo
+- **A11y contrast → DONE (A11y 96→100)**: user duyệt làm đậm brand color. `bq-amber-deep` #D97F06 → **#A84A05**
+  (WCAG AA >=4.5 trên mọi nền sáng paper/white/sunk; app light-theme đồng nhất nên an toàn toàn cục). Thêm
+  badge top-rank leaderboard `bg-bq-amber`→`bg-bq-amberd` (white text 2.14→5.8). Lighthouse: A11y 100, SEO 100,
+  color-contrast PASS. Deployed `329f60a3`. (BP 96 chỉ là artifact local khi API không reachable; prod=100.)
 - **Perf (93)**: render-blocking fonts (~150ms), unused JS (~72KB), unused CSS (~28KB) — **địa hạt process
   song song** đang làm bundle/font splitting. Để họ.
 - **#6 self-host ảnh**: Lighthouse KHÔNG flag (Best-Practices 100) → không gấp.
