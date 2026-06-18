@@ -3,10 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (76)
+## Active (77)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-18 | i18n locale-dedup: chỉ load ngôn ngữ active (vi-user bỏ ~35kB gz en chunk) (ILD-1) | DONE | [detail](docs/todo/active/2026-06-18-i18n-locale-dedup.md) |
 | 2026-06-18 | CSP-safe font loading (bỏ inline onload → external /load-fonts.js; gỡ phụ thuộc unsafe-inline) (CSP-1..2) | DONE | [detail](docs/todo/active/2026-06-18-csp-safe-font-loading.md) |
 | 2026-06-18 | Bundle vendor + locale chunk splitting (entry 651kB → 125kB) (BVC-1) | DONE | [detail](docs/todo/active/2026-06-18-bundle-vendor-chunk-splitting.md) |
 | 2026-06-17 | Route-level code splitting (lazy-load pages) giảm LCP/FCP — bundle 1.55MB → per-route chunks (RCS-1..2) | DONE | [detail](docs/todo/active/2026-06-17-route-code-splitting.md) |
