@@ -26,6 +26,7 @@ public class TestSecurityConfig {
                                 "/api/auth/**",
                                 "/api/me/bootstrap-admin",
                                 "/api/daily-challenge",
+                                "/api/public/**",
                                 "/health/**")
                         .permitAll()
                         .anyRequest().authenticated())

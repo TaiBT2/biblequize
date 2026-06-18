@@ -3,13 +3,14 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (83)
+## Active (84)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
 | 2026-06-18 | Homepage `/` cho khách thấy LandingPage giàu chữ (thay Onboarding rỗng) + prerender / (HLG-1..2) | DONE | [detail](docs/todo/active/2026-06-18-homepage-landing-for-guests.md) |
 | 2026-06-18 | Lighthouse audit prod (Perf 93/A11y 96/BP 100/SEO 92): aria-label CTA + báo cáo contrast/perf (LH-1) | DONE | [detail](docs/todo/active/2026-06-18-lighthouse-seo-a11y.md) |
-| 2026-06-18 | Guest-aware AppLayout chrome: route public (leaderboard…) khách thấy nav login giả → nút Đăng nhập + ẩn nav cần auth (GAC-1..2) | TODO | [detail](docs/todo/active/2026-06-18-guest-aware-applayout-chrome.md) |
+| 2026-06-18 | Public leaderboard endpoint + guest UX: /api/public/leaderboard + Leaderboard guest-aware + Landing scroll-to/real data (LBG-1..4) | TODO | [detail](docs/todo/active/2026-06-18-public-leaderboard-endpoint-guest.md) |
+| 2026-06-18 | Guest-aware AppLayout chrome: route public (leaderboard…) khách thấy nav login giả → nút Đăng nhập + ẩn nav cần auth (GAC-1..2) | DONE | [detail](docs/todo/active/2026-06-18-guest-aware-applayout-chrome.md) |
 | 2026-06-18 | SEO round 2: FAQPage schema /help + bỏ LCP preload rác + alt/desc + footer link (SR2-1..3) | DONE | [detail](docs/todo/active/2026-06-18-seo-round2-faq-lcp-links.md) |
 | 2026-06-18 | h1 SEO keywords: Landing exact-match "trắc nghiệm Kinh Thánh" + Daily thêm h1 (HSE-1..2) | DONE | [detail](docs/todo/active/2026-06-18-h1-seo-keywords.md) |
 | 2026-06-18 | i18n locale-dedup: chỉ load ngôn ngữ active (vi-user bỏ ~35kB gz en chunk) (ILD-1) | DONE | [detail](docs/todo/active/2026-06-18-i18n-locale-dedup.md) |
