@@ -31,7 +31,7 @@ describe('LandingPage', () => {
 
   it('renders hero section with headline', () => {
     renderLanding()
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Học Kinh Thánh|Learn the Bible/i)
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Trắc nghiệm Kinh Thánh|Bible quizzes/i)
   })
 
   it('renders CTA button', () => {

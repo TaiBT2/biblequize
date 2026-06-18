@@ -166,7 +166,8 @@
     "achievements": "Achievements",
     "settings": "Settings",
     "help": "Help",
-    "adminPanel": "Admin Panel"
+    "adminPanel": "Admin Panel",
+    "userMenu": "User menu"
   },
   "admin": {
     "backToApp": "Back to app",
@@ -1058,9 +1059,9 @@
   },
   "landing": {
     "tagline": "NEXT-GEN BIBLE LEARNING APP",
-    "heroTitle1": "Learn the Bible daily through fun ",
-    "heroHighlight": "quizzes",
-    "heroTitle2": " and challenges",
+    "heroTitle1": "Fun ",
+    "heroHighlight": "Bible quizzes",
+    "heroTitle2": " every day",
     "heroDesc": "Bible Quiz — interactive trivia, multiplayer battles, church groups, and track your Bible learning journey. Completely free.",
     "heroImageAlt": "Open Bible radiating light with a four-option quiz card",
     "tryNow": "Try Now",
@@ -1348,6 +1349,7 @@
     "joinedOn": "Joined",
     "soundAndHapticsTitle": "Sound & Haptics",
     "soundEffectsLabel": "Sound effects",
+    "volumeLabel": "Volume",
     "hapticsLabel": "Haptic feedback",
     "prestigeTitle": "Prestige",
     "prestigeHint": "Reach Tier 6 (Apostle) and stay for 30 days to unlock Prestige.",
@@ -2307,6 +2309,7 @@
   },
   "daily": {
     "title": "Daily Challenge",
+    "heading": "Daily Bible Challenge",
     "today": "Today",
     "last7Days": "LAST 7 DAYS",
     "questionCount": "{{count}} questions",

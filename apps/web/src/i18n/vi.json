@@ -166,7 +166,8 @@
     "achievements": "Thành tích",
     "settings": "Cài đặt",
     "help": "Trợ giúp",
-    "adminPanel": "Quản trị"
+    "adminPanel": "Quản trị",
+    "userMenu": "Menu người dùng"
   },
   "admin": {
     "backToApp": "Về trang chính",
@@ -1058,9 +1059,9 @@
   },
   "landing": {
     "tagline": "ỨNG DỤNG HỌC KINH THÁNH THẾ HỆ MỚI",
-    "heroTitle1": "Học Kinh Thánh mỗi ngày qua những ",
-    "heroHighlight": "trắc nghiệm",
-    "heroTitle2": " thú vị",
+    "heroTitle1": "Trắc nghiệm ",
+    "heroHighlight": "Kinh Thánh",
+    "heroTitle2": " thú vị mỗi ngày",
     "heroDesc": "Quiz Kinh Thánh tiếng Việt — trắc nghiệm tương tác, thi đấu multiplayer cùng cộng đồng, nhóm hội thánh và theo dõi tiến trình học Kinh Thánh online của bạn.",
     "heroImageAlt": "Kinh Thánh mở toả ánh sáng cùng thẻ trắc nghiệm bốn đáp án",
     "tryNow": "Chơi Thử Ngay",
@@ -1348,6 +1349,7 @@
     "joinedOn": "Tham gia",
     "soundAndHapticsTitle": "Âm thanh & Rung",
     "soundEffectsLabel": "Âm thanh hiệu ứng",
+    "volumeLabel": "Âm lượng",
     "hapticsLabel": "Rung phản hồi",
     "prestigeTitle": "Prestige",
     "prestigeHint": "Đạt Tier 6 (Sứ Đồ) và ở đó 30 ngày để mở khóa Prestige.",
@@ -2307,6 +2309,7 @@
   },
   "daily": {
     "title": "Thử Thách Hàng Ngày",
+    "heading": "Thử Thách Kinh Thánh Hàng Ngày",
     "today": "Hôm nay",
     "last7Days": "7 NGÀY GẦN ĐÂY",
     "questionCount": "{{count}} câu hỏi",
