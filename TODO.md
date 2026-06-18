@@ -3,10 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (79)
+## Active (80)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-18 | SEO round 2: FAQPage schema /help + bỏ LCP preload rác + alt/desc + footer link (SR2-1..3) | DONE | [detail](docs/todo/active/2026-06-18-seo-round2-faq-lcp-links.md) |
 | 2026-06-18 | h1 SEO keywords: Landing exact-match "trắc nghiệm Kinh Thánh" + Daily thêm h1 (HSE-1..2) | DONE | [detail](docs/todo/active/2026-06-18-h1-seo-keywords.md) |
 | 2026-06-18 | i18n locale-dedup: chỉ load ngôn ngữ active (vi-user bỏ ~35kB gz en chunk) (ILD-1) | DONE | [detail](docs/todo/active/2026-06-18-i18n-locale-dedup.md) |
 | 2026-06-18 | CSP-safe font loading (bỏ inline onload → external /load-fonts.js; gỡ phụ thuộc unsafe-inline) (CSP-1..2) | DONE | [detail](docs/todo/active/2026-06-18-csp-safe-font-loading.md) |
