@@ -29,25 +29,16 @@ import Ranked from './pages/Ranked'
 import BasicQuiz from './pages/BasicQuiz'
 import Rooms from './pages/Rooms'
 import AuthCallback from './pages/AuthCallback'
-import AdminLayout from './layouts/AdminLayout'
 import AppLayout from './layouts/AppLayout'
 import CapacitorBackButton from './platform/CapacitorBackButton'
 import { initNative } from './platform/initNative'
-import AIQuestionGenerator from './pages/admin/AIQuestionGenerator'
-import ReviewQueue from './pages/admin/ReviewQueue'
-import QuestionsAdmin from './pages/admin/Questions'
-import QuestionEditPage from './pages/admin/QuestionEditPage'
-import UsersAdmin from './pages/admin/Users'
-import RankingsAdmin from './pages/admin/Rankings'
-import EventsAdmin from './pages/admin/Events'
-import FeedbackAdmin from './pages/admin/Feedback'
-import AdminDashboard from './pages/admin/Dashboard'
-import GroupsAdmin from './pages/admin/Groups'
-import NotificationsAdmin from './pages/admin/Notifications'
-import QuestionQuality from './pages/admin/QuestionQuality'
-import EarlyUnlockMetrics from './pages/admin/EarlyUnlockMetrics'
-import TestPanel from './pages/admin/TestPanel'
-import RequireAdmin from './contexts/RequireAdmin'
+// Admin is lazy + build-time gated: the mobile (Capacitor) build ships user
+// pages only, so the constant VITE_TARGET check lets Rollup drop the whole
+// admin chunk from the app bundle. The web build code-splits it as usual.
+const AdminRoutes =
+  import.meta.env.VITE_TARGET === 'capacitor'
+    ? null
+    : React.lazy(() => import('./pages/admin/AdminRoutes'))
 import Review from './pages/Review'
 import Achievements from './pages/Achievements'
 import Leaderboard from './pages/Leaderboard'
@@ -197,24 +188,17 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Route path="/room/:roomId/host" element={<RequireAuth><RoomQuizHost /></RequireAuth>} />
                 <Route path="/room/:roomId/analytics" element={<RequireAuth><RoomAnalytics /></RequireAuth>} />
 
-                {/* Admin */}
-                <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
-                  <Route index element={<AdminDashboard />} />
-                  <Route path="users" element={<UsersAdmin />} />
-                  <Route path="questions" element={<QuestionsAdmin />} />
-                  <Route path="questions/new" element={<QuestionEditPage />} />
-                  <Route path="questions/:id/edit" element={<QuestionEditPage />} />
-                  <Route path="feedback" element={<FeedbackAdmin />} />
-                  <Route path="rankings" element={<RankingsAdmin />} />
-                  <Route path="events" element={<EventsAdmin />} />
-                  <Route path="ai-generator" element={<AIQuestionGenerator />} />
-                  <Route path="review-queue" element={<ReviewQueue />} />
-                  <Route path="groups" element={<GroupsAdmin />} />
-                  <Route path="notifications" element={<NotificationsAdmin />} />
-                  <Route path="question-quality" element={<QuestionQuality />} />
-                  <Route path="metrics/early-unlock" element={<EarlyUnlockMetrics />} />
-                  <Route path="test" element={<TestPanel />} />
-                </Route>
+                {/* Admin — web only; excluded from the mobile app bundle. */}
+                {AdminRoutes && (
+                  <Route
+                    path="/admin/*"
+                    element={
+                      <React.Suspense fallback={null}>
+                        <AdminRoutes />
+                      </React.Suspense>
+                    }
+                  />
+                )}
 
                 {/* Catch-all 404 */}
                 <Route path="*" element={<NotFound />} />
