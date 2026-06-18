@@ -111,15 +111,21 @@ function getLast7Days(t: (key: string) => string, completedDates: Set<string>) {
 
 // ─── Loading Skeleton ───────────────────────────────────────────────────────
 function LoadingSkeleton() {
+  const { t } = useTranslation()
+  // Render the real header (h1) above the placeholders so the page always has
+  // its <h1> — including in the prerendered snapshot, which is captured while
+  // the daily query is still loading.
   return (
-    <div className="max-w-5xl mx-auto p-2 space-y-6 animate-pulse">
-      <div className="h-16 bg-bq-inset rounded-xl" />
-      <div className="h-80 bg-bq-inset rounded-2xl" />
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-5">
-        <div className="h-96 bg-bq-inset rounded-2xl" />
-        <div className="h-96 bg-bq-inset rounded-2xl" />
+    <div className="max-w-5xl mx-auto p-2 space-y-6">
+      <PageHeader todayLabel={getTodayLabel(t)} />
+      <div className="space-y-6 animate-pulse">
+        <div className="h-80 bg-bq-inset rounded-2xl" />
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-5">
+          <div className="h-96 bg-bq-inset rounded-2xl" />
+          <div className="h-96 bg-bq-inset rounded-2xl" />
+        </div>
+        <div className="h-40 bg-bq-inset rounded-2xl" />
       </div>
-      <div className="h-40 bg-bq-inset rounded-2xl" />
     </div>
   )
 }
