@@ -17,4 +17,8 @@
 
 ### Note
 - Highlight (gold) rơi vào "Kinh Thánh"/"Bible quizzes" để tránh giá trị i18n rỗng (test parity cấm empty).
-- Deploy lại FE image (worktree sạch) sau khi xong.
+- HSE-2 follow-up: LoadingSkeleton render PageHeader (h1) để loading state cũng có h1.
+- **Bỏ /daily khỏi prerender**: trang data-gated → prerender ra empty state "no questions" + sai title.
+  h1 vẫn đúng live (users + Googlebot JS-render). 4 route tĩnh (landing/privacy/terms/help) prerender OK.
+- **DONE + deployed** (image ff18f1d5). Prod: `/landing` h1 = "Fun Bible quizzes every day" (EN) /
+  "Trắc nghiệm Kinh Thánh thú vị mỗi ngày" (VN). Mỗi prerendered page đúng 1 h1 + per-page title.
