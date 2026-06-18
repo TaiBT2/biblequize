@@ -3,10 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (82)
+## Active (83)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-18 | Homepage `/` cho khách thấy LandingPage giàu chữ (thay Onboarding rỗng) + prerender / (HLG-1..2) | DONE | [detail](docs/todo/active/2026-06-18-homepage-landing-for-guests.md) |
 | 2026-06-18 | Lighthouse audit prod (Perf 93/A11y 96/BP 100/SEO 92): aria-label CTA + báo cáo contrast/perf (LH-1) | DONE | [detail](docs/todo/active/2026-06-18-lighthouse-seo-a11y.md) |
 | 2026-06-18 | Guest-aware AppLayout chrome: route public (leaderboard…) khách thấy nav login giả → nút Đăng nhập + ẩn nav cần auth (GAC-1..2) | TODO | [detail](docs/todo/active/2026-06-18-guest-aware-applayout-chrome.md) |
 | 2026-06-18 | SEO round 2: FAQPage schema /help + bỏ LCP preload rác + alt/desc + footer link (SR2-1..3) | DONE | [detail](docs/todo/active/2026-06-18-seo-round2-faq-lcp-links.md) |
