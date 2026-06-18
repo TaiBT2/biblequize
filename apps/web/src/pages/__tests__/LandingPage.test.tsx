@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const mockNavigate = vi.fn()
 vi.mock('react-router-dom', async () => {
@@ -13,13 +14,19 @@ vi.mock('../../store/authStore', () => ({
   useAuthStore: (selector?: (s: any) => any) => selector ? selector(authState) : authState,
 }))
 
+const mockApiGet = vi.fn()
+vi.mock('../../api/client', () => ({ api: { get: (...a: any[]) => mockApiGet(...a) } }))
+
 import LandingPage from '../LandingPage'
 
 function renderLanding() {
+  const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } })
   return render(
-    <MemoryRouter>
-      <LandingPage />
-    </MemoryRouter>
+    <QueryClientProvider client={qc}>
+      <MemoryRouter>
+        <LandingPage />
+      </MemoryRouter>
+    </QueryClientProvider>
   )
 }
 
@@ -27,6 +34,8 @@ describe('LandingPage', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     authState = { isAuthenticated: false, isLoading: false, user: null }
+    // Default: public board empty → preview shows the curated fallback.
+    mockApiGet.mockResolvedValue({ data: [] })
   })
 
   it('renders hero section with headline', () => {
@@ -55,6 +64,30 @@ describe('LandingPage', () => {
   it('renders leaderboard preview section', () => {
     renderLanding()
     expect(screen.getByText(/Bảng Xếp Hạng Toàn Quốc|National Leaderboard/i)).toBeInTheDocument()
+  })
+
+  it('nav "Xếp hạng" scrolls in-page (anchor #leaderboard), not a route to /leaderboard', () => {
+    renderLanding()
+    const anchor = document.querySelector('a[href="#leaderboard"]')
+    expect(anchor).not.toBeNull()
+    // The preview section is the scroll target.
+    expect(document.getElementById('leaderboard')).not.toBeNull()
+  })
+
+  it('preview has a "view full board" link to /leaderboard', () => {
+    renderLanding()
+    expect(document.querySelector('a[href="/leaderboard"]')).not.toBeNull()
+  })
+
+  it('preview shows live board data from the public endpoint when available', async () => {
+    mockApiGet.mockResolvedValue({ data: [
+      { userId: 'u1', name: 'Sống Động', points: 99999, avatarUrl: null },
+    ] })
+    renderLanding()
+    await waitFor(() => { expect(screen.getByText('Sống Động')).toBeInTheDocument() })
+    expect(mockApiGet).toHaveBeenCalledWith(expect.stringContaining('/api/public/leaderboard'))
+    // Hardcoded sample name should NOT appear once live data is present.
+    expect(screen.queryByText('Nguyễn Văn An')).not.toBeInTheDocument()
   })
 
   it('renders daily verse section', () => {

@@ -1,7 +1,10 @@
 import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useQuery } from '@tanstack/react-query'
 import { useAuthStore } from '../store/authStore'
+import { api } from '../api/client'
+import { getTierByPoints } from '../data/tiers'
 import PageMeta from '../components/PageMeta'
 import QuizLanguageSelect from '../components/QuizLanguageSelect'
 import HeroIllustration from '../components/HeroIllustration'
@@ -10,6 +13,12 @@ import HeroIllustration from '../components/HeroIllustration'
 
 function GuestHeader() {
   const { t } = useTranslation()
+  // Smooth-scroll to an on-page section instead of routing away — the
+  // leaderboard preview lives lower on this same landing page.
+  const scrollTo = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault()
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
   return (
     <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 bg-bq-white/90 backdrop-blur border-b border-bq-hair shadow-bq-soft">
       <div className="flex items-center gap-4 sm:gap-8 max-w-7xl mx-auto w-full">
@@ -18,12 +27,13 @@ function GuestHeader() {
           <a className="font-body tracking-tight text-bq-amberd border-b-2 border-bq-amber pb-1" href="#">
             {t('nav.home')}
           </a>
-          <Link
-            to="/leaderboard"
+          <a
+            href="#leaderboard"
+            onClick={scrollTo('leaderboard')}
             className="font-body tracking-tight text-bq-ink2 hover:text-bq-ink transition-colors duration-300"
           >
             {t('nav.leaderboard')}
-          </Link>
+          </a>
           <a className="font-body tracking-tight text-bq-ink2 hover:text-bq-ink transition-colors duration-300" href="#">
             {t('landing.about')}
           </a>
@@ -249,7 +259,9 @@ function TryNowSection() {
 
 /* ────────────────────────────── Leaderboard Preview ─────────────────────── */
 
-// Tier keys: OLD religious naming per DECISIONS.md 2026-04-19 (audience-driven)
+// Hardcoded fallback — shown only while the live board loads or when it's
+// empty (also keeps the SEO-prerendered HTML non-blank). Tier keys: OLD
+// religious naming per DECISIONS.md 2026-04-19 (audience-driven).
 const leaderboardData = [
   { rank: '01', initials: 'AN', name: 'Nguyễn Văn An', xp: '24,500', titleKey: 'tiers.apostle', top: true },
   { rank: '02', initials: 'LH', name: 'Lê Hồng Hạnh', xp: '21,200', titleKey: 'tiers.prophet', top: false },
@@ -257,10 +269,37 @@ const leaderboardData = [
   { rank: '10', initials: 'DP', name: 'Đặng Phương', xp: '12,400', titleKey: 'tiers.disciple', top: false },
 ]
 
+/** First letter of first + last name word (e.g. "Nguyễn Văn An" → "NA"). */
+function initialsOf(name: string): string {
+  const parts = (name || '').trim().split(/\s+/).filter(Boolean)
+  if (parts.length === 0) return '?'
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase()
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+}
+
 function LeaderboardPreview() {
   const { t } = useTranslation()
+  // Real top-10 national board from the no-auth public endpoint. Falls back to
+  // the curated sample while loading / on error so the section never looks broken.
+  const { data } = useQuery({
+    queryKey: ['public-leaderboard', 'all-time', 10],
+    queryFn: () => api.get('/api/public/leaderboard?period=all-time&size=10').then(r => r.data).catch(() => null),
+    staleTime: 60_000,
+  })
+  const live = Array.isArray(data) ? data : []
+  const isLive = live.length > 0
+  const rows = isLive
+    ? live.slice(0, 10).map((e: any, i: number) => ({
+        rank: String(i + 1).padStart(2, '0'),
+        initials: initialsOf(e.name),
+        name: e.name || 'An danh',
+        xp: (e.points ?? 0).toLocaleString(),
+        titleKey: getTierByPoints(e.points ?? 0).nameKey,
+        top: i === 0,
+      }))
+    : leaderboardData
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-bq-paper" aria-label="Bảng xếp hạng">
+    <section id="leaderboard" className="scroll-mt-24 py-16 sm:py-24 px-4 sm:px-6 bg-bq-paper" aria-label="Bảng xếp hạng">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-block px-6 py-2 rounded-full bg-bq-action text-white shadow-bq-action font-extrabold text-lg mb-6">
@@ -279,7 +318,7 @@ function LeaderboardPreview() {
           </div>
 
           <div className="divide-y divide-bq-hair">
-            {leaderboardData.map((entry, idx) => (
+            {rows.map((entry, idx) => (
               <div key={entry.rank}>
                 <div
                   className={`grid grid-cols-12 px-4 sm:px-8 py-3 sm:py-5 items-center gap-2 ${
@@ -313,13 +352,24 @@ function LeaderboardPreview() {
                   </div>
                 </div>
 
-                {/* Ellipsis between rank 03 and rank 10 */}
-                {entry.rank === '03' && (
+                {/* Ellipsis between rank 03 and rank 10 — fallback sample only
+                    (it jumps 03→10); the live board is contiguous top-N. */}
+                {!isLive && entry.rank === '03' && (
                   <div className="text-center py-4 text-bq-ink3">&bull;&bull;&bull;</div>
                 )}
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="text-center mt-8">
+          <Link
+            to="/leaderboard"
+            className="inline-flex items-center gap-1.5 text-bq-amberd font-bold hover:underline"
+          >
+            {t('leaderboard.viewFullBoard')}
+            <span className="material-symbols-outlined text-lg">arrow_forward</span>
+          </Link>
         </div>
       </div>
     </section>
