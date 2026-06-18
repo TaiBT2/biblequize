@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -332,5 +332,48 @@ describe('Leaderboard', () => {
     expect(img?.getAttribute('src')).toBe('https://example.com/me.png')
     // Reset shared mock state for other tests.
     authState.user = { name: 'Test User', email: 'a@b.com' } as any
+  })
+})
+
+describe('Leaderboard — guest (logged-out)', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    ;(authState as any).isAuthenticated = false
+    ;(authState as any).user = null
+    mockApiGet.mockImplementation((url: string) => {
+      // Guests read via the public endpoint only.
+      if (url.includes('/api/public/leaderboard')) return Promise.resolve({ data: MOCK_ENTRIES })
+      return Promise.reject(new Error('Not found'))
+    })
+  })
+
+  afterEach(() => {
+    // Restore shared authState for the other describe blocks.
+    ;(authState as any).isAuthenticated = true
+    ;(authState as any).user = { name: 'Test User', email: 'a@b.com' }
+  })
+
+  it('fetches the board from the public endpoint, not the authed one', async () => {
+    renderLeaderboard()
+    await waitFor(() => { expect(screen.getByText('Player 1')).toBeInTheDocument() })
+    expect(mockApiGet).toHaveBeenCalledWith(expect.stringContaining('/api/public/leaderboard'))
+    const authedCalls = mockApiGet.mock.calls.filter((c) => /\/api\/leaderboard\//.test(String(c[0])))
+    expect(authedCalls).toHaveLength(0)
+  })
+
+  it('does NOT call per-user endpoints (my-rank / tier-progress / seasons)', async () => {
+    renderLeaderboard()
+    await waitFor(() => { expect(screen.getByText('Player 1')).toBeInTheDocument() })
+    const perUser = mockApiGet.mock.calls.filter((c) => /my-rank|tier-progress|\/seasons/.test(String(c[0])))
+    expect(perUser).toHaveLength(0)
+  })
+
+  it('shows a login CTA and no "current tier" highlight in the ladder', async () => {
+    renderLeaderboard()
+    await waitFor(() => { expect(screen.getByText('Player 1')).toBeInTheDocument() })
+    expect(screen.getByTestId('leaderboard-guest-rank-cta')).toBeInTheDocument()
+    // No tier card flagged as the guest's current tier.
+    const tierSection = screen.getByTestId('leaderboard-tier-section')
+    expect(tierSection.querySelector('.border-bq-amber')).toBeNull()
   })
 })

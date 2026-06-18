@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
@@ -27,24 +28,37 @@ export default function Leaderboard() {
   const { t } = useTranslation()
   const [activeTab, setActiveTab] = useState<Tab>('all_time')
   const user = useAuthStore(s => s.user)
+  const isAuthenticated = useAuthStore(s => s.isAuthenticated)
   const apiPath = TAB_TO_API_PATH[activeTab]
 
+  // Guests read the board via the no-auth public endpoint so they don't 401
+  // (which would also trigger the session-expiry refresh/logout storm). Authed
+  // users keep the richer authenticated board.
   const { data: entries, isLoading, isFetching } = useQuery({
-    queryKey: ['leaderboard', activeTab],
-    queryFn: () => api.get(`/api/leaderboard/${apiPath}?size=20`).then(r => r.data),
+    queryKey: ['leaderboard', activeTab, isAuthenticated],
+    queryFn: () => {
+      const url = isAuthenticated
+        ? `/api/leaderboard/${apiPath}?size=20`
+        : `/api/public/leaderboard?period=${apiPath}&size=20`
+      return api.get(url).then(r => r.data)
+    },
     staleTime: 30_000,
     keepPreviousData: true,
   })
 
+  // Per-user queries only make sense when logged in — gating them avoids guest
+  // 401s and the fake "Me / New Believer / 0 pts" marker on the tier ladder.
   const { data: myRank } = useQuery({
     queryKey: ['leaderboard', 'my-rank', activeTab],
     queryFn: () => api.get(`/api/leaderboard/${apiPath}/my-rank`).then(r => r.data).catch(() => null),
+    enabled: isAuthenticated,
   })
 
   const { data: season } = useQuery({
     queryKey: ['season', 'active'],
     queryFn: () => api.get('/api/seasons/active').then(r => r.data).catch(() => null),
     staleTime: 300_000,
+    enabled: isAuthenticated,
   })
 
   // Tab "Mùa" label is always the generic "Mùa" string (Bui decision 2026-05-02
@@ -63,10 +77,13 @@ export default function Leaderboard() {
     queryKey: ['me-tier-progress'],
     queryFn: () => api.get('/api/me/tier-progress').then(r => r.data).catch(() => null),
     staleTime: 60_000,
+    enabled: isAuthenticated,
   })
 
   const userPoints = tierData?.totalPoints ?? 0
-  const userTierId = getTierByPoints(userPoints).id
+  // Only mark a "current tier" for logged-in users — otherwise a guest's
+  // 0 points would falsely flag the lowest tier as theirs.
+  const userTierId = isAuthenticated ? getTierByPoints(userPoints).id : null
 
   const rawList: any[] = Array.isArray(entries) ? entries : []
   // Defensive dedup: if BE returns duplicate rows for same userId, keep first occurrence.
@@ -272,6 +289,14 @@ export default function Leaderboard() {
               ? t('leaderboard.tierSeasonSubtitle', { seasonName: season.name })
               : t('leaderboard.tierSeasonSubtitleFallback')}
           </p>
+          {!isAuthenticated && (
+            <p className="text-xs text-bq-ink2 mt-2" data-testid="leaderboard-guest-rank-cta">
+              <Link to="/login" className="text-bq-amberd font-semibold hover:underline">
+                {t('auth.login')}
+              </Link>{' '}
+              {t('leaderboard.loginForRank')}
+            </p>
+          )}
         </header>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
           {TIERS.map((tier) => {
