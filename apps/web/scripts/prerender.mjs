@@ -28,14 +28,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const distDir = resolve(__dirname, '..', 'dist')
 const ORIGIN = 'https://forbible.org'
 
-// Deterministic public pages + their canonical path. `/` is auth/onboarding-
-// dependent so it's excluded; LandingPage canonicalises /landing to /.
+// Deterministic, static-content public pages + their canonical path.
+// Excluded: `/` (auth/onboarding-dependent) and `/daily` (data-gated — without a
+// backend it prerenders to a "no questions" empty state with the wrong title, so
+// it's left to client render where the API is available). LandingPage
+// canonicalises /landing to /.
 const ROUTES = [
   { path: '/landing', canonical: '/' },
   { path: '/privacy', canonical: '/privacy' },
   { path: '/terms', canonical: '/terms' },
   { path: '/help', canonical: '/help' },
-  { path: '/daily', canonical: '/daily' },
 ]
 
 async function main() {
