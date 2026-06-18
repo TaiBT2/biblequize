@@ -84,6 +84,7 @@ function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               to="/practice"
+              aria-label={t('landing.ctaAria')}
               className="bg-bq-action px-8 py-4 rounded-xl text-white font-bold text-lg shadow-bq-action active:scale-95 transition-transform text-center"
             >
               {t('landing.tryNow')}
@@ -236,6 +237,7 @@ function TryNowSection() {
             </p>
             <Link
               to="/practice"
+              aria-label={t('landing.ctaAria')}
               className="block w-full py-3 sm:py-4 rounded-xl border border-bq-sapphire text-bq-sapphire font-bold hover:bg-bq-sapphire/10 transition-all active:scale-95 text-center"
             >
               {t('common.startNow')}
