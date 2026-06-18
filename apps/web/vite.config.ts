@@ -33,6 +33,9 @@ export default defineConfig(({ mode }) => {
     preview: {
       headers: {
         ...securityHeaders,
+        // script-src needs no 'unsafe-inline': fonts swap via /load-fonts.js
+        // (external), and JSON-LD <script type="application/ld+json"> is data,
+        // not executed. This mirrors the hardened prod target (see CSP-2 task).
         'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' http://localhost:* ws://localhost:*;",
         'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
       },

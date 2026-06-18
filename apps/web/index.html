@@ -51,23 +51,26 @@
   <!-- LCP Preload — hero image -->
   <link rel="preload" as="image" href="https://lh3.googleusercontent.com/aida-public/AB6AXuBpEFLF4HdAAZtQmV6p7ZFtq-07HGD2UVS1ZVgbPxSev4YKp18Amt4MdHqCFGh2JrRl5z8UyUtxx7O5an0EGofE1Kkzf-lnCx_fHn2-S1-sdjas2YKfjghtOoVc-9_Vb69hY_f1Kee_27xarqfLFbHwfQelEbTOKW_ouxi_PqBWzhBFPVaR7BQBwYz9FkBO6DlHAdNGeKKuOutu3XwrKIR75hoWBmThBK6KGHpGo8uO9ZNvkcSIwpmItnWjnMcoahC_NJDQhMWkspM" />
 
-  <!-- Fonts — non-blocking with media swap -->
+  <!-- Fonts — non-blocking with media swap.
+       Sheets ship media="print" + data-font-swap; /load-fonts.js flips them to
+       media="all" once parsed (CSP-safe; no inline onload → no unsafe-inline). -->
+  <script src="/load-fonts.js" defer></script>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" media="print" data-font-swap />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" /></noscript>
 
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" media="print" data-font-swap />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" /></noscript>
 
   <!-- Cormorant Garamond italic — used ONLY for verse text + drop cap (HR-1) -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap" media="print" data-font-swap />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap" /></noscript>
 
   <!-- "Khung Sáng" fonts — Bricolage Grotesque (display) + Literata (verse) (KS W0-1) -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,600;1,7..72,500;1,7..72,600&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,600;1,7..72,500;1,7..72,600&display=swap" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,600;1,7..72,500;1,7..72,600&display=swap" media="print" data-font-swap />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,600;1,7..72,500;1,7..72,600&display=swap" /></noscript>
 
   <!-- Schema.org Structured Data -->
