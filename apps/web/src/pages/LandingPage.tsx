@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@tanstack/react-query'
@@ -13,28 +13,53 @@ import HeroIllustration from '../components/HeroIllustration'
 
 function GuestHeader() {
   const { t } = useTranslation()
-  // Smooth-scroll to an on-page section instead of routing away — the
-  // leaderboard preview lives lower on this same landing page.
-  const scrollTo = (id: string) => (e: React.MouseEvent) => {
+  // Scroll-spy: highlight "Trang chủ" at the top, "Xếp hạng" once the
+  // leaderboard preview occupies the middle of the viewport.
+  const [active, setActive] = useState<'home' | 'leaderboard'>('home')
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return
+    const el = document.getElementById('leaderboard')
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => setActive(entry.isIntersecting ? 'leaderboard' : 'home'),
+      { rootMargin: '-45% 0px -45% 0px' },
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+  // Smooth-scroll to an on-page section (no id = back to top) instead of
+  // routing away — the leaderboard preview lives lower on this same page.
+  const scrollTo = (id?: string) => (e: React.MouseEvent) => {
     e.preventDefault()
+    if (!id) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
+  const navBase = 'font-body tracking-tight transition-colors duration-300'
+  const navActive = 'text-bq-amberd border-b-2 border-bq-amber pb-1'
+  const navIdle = 'text-bq-ink2 hover:text-bq-ink'
   return (
     <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 bg-bq-white/90 backdrop-blur border-b border-bq-hair shadow-bq-soft">
       <div className="flex items-center gap-4 sm:gap-8 max-w-7xl mx-auto w-full">
         <div className="text-xl sm:text-2xl font-bold tracking-tighter text-bq-amberd font-display">BibleQuiz</div>
         <div className="hidden md:flex gap-6 items-center flex-1">
-          <a className="font-body tracking-tight text-bq-amberd border-b-2 border-bq-amber pb-1" href="#">
+          <a
+            href="#"
+            onClick={scrollTo()}
+            className={`${navBase} ${active === 'home' ? navActive : navIdle}`}
+          >
             {t('nav.home')}
           </a>
           <a
             href="#leaderboard"
             onClick={scrollTo('leaderboard')}
-            className="font-body tracking-tight text-bq-ink2 hover:text-bq-ink transition-colors duration-300"
+            className={`${navBase} ${active === 'leaderboard' ? navActive : navIdle}`}
           >
             {t('nav.leaderboard')}
           </a>
-          <a className="font-body tracking-tight text-bq-ink2 hover:text-bq-ink transition-colors duration-300" href="#">
+          <a className={`${navBase} ${navIdle}`} href="#">
             {t('landing.about')}
           </a>
         </div>
@@ -520,6 +545,9 @@ function Footer() {
         </p>
       </div>
       <div className="flex gap-8">
+        <a className="font-body text-sm text-bq-ink2 hover:text-bq-amberd transition-colors" href="/cau-do-kinh-thanh">
+          Câu đố Kinh Thánh
+        </a>
         <a className="font-body text-sm text-bq-ink2 hover:text-bq-amberd transition-colors" href="/help">
           {t('nav.help')}
         </a>

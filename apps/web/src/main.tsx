@@ -81,6 +81,7 @@ const TournamentMatch = lazy(() => import('./pages/TournamentMatch'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
 const TermsOfService = lazy(() => import('./pages/TermsOfService'))
+const CauDoKinhThanh = lazy(() => import('./pages/CauDoKinhThanh'))
 const OnboardingTryQuiz = lazy(() => import('./pages/OnboardingTryQuiz'))
 const Journey = lazy(() => import('./pages/Journey'))
 const Help = lazy(() => import('./pages/Help'))
@@ -185,6 +186,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 {/* Public pages (no auth) */}
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsOfService />} />
+                <Route path="/cau-do-kinh-thanh" element={<CauDoKinhThanh />} />
                 <Route path="/onboarding" element={<Onboarding />} />
                 <Route path="/onboarding/try" element={<OnboardingTryQuiz />} />
 

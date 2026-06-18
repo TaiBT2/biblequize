@@ -39,6 +39,7 @@ const ROUTES = [
   { path: '/privacy', canonical: '/privacy' },
   { path: '/terms', canonical: '/terms' },
   { path: '/help', canonical: '/help' },
+  { path: '/cau-do-kinh-thanh', canonical: '/cau-do-kinh-thanh' },
 ]
 
 async function main() {
