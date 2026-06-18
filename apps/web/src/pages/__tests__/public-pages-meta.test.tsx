@@ -26,3 +26,23 @@ describe('public pages set a per-page canonical', () => {
     expect(canonical()).toBe(`https://forbible.org${path}`)
   })
 })
+
+describe('Help page FAQPage structured data', () => {
+  it('emits valid FAQPage JSON-LD matching the FAQ registry', () => {
+    const { container } = render(
+      <MemoryRouter initialEntries={['/help']}>
+        <Help />
+      </MemoryRouter>,
+    )
+    const script = container.querySelector('script[type="application/ld+json"]')
+    expect(script).not.toBeNull()
+    const data = JSON.parse(script!.textContent!)
+    expect(data['@type']).toBe('FAQPage')
+    expect(Array.isArray(data.mainEntity)).toBe(true)
+    expect(data.mainEntity.length).toBeGreaterThanOrEqual(10)
+    expect(data.mainEntity[0]['@type']).toBe('Question')
+    expect(data.mainEntity[0].name).toBeTruthy()
+    expect(data.mainEntity[0].acceptedAnswer['@type']).toBe('Answer')
+    expect(data.mainEntity[0].acceptedAnswer.text).toBeTruthy()
+  })
+})

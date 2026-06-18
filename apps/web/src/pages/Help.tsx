@@ -56,6 +56,22 @@ export default function Help() {
     [activeCategory],
   )
 
+  // FAQPage structured data built from the same FAQ registry the page renders,
+  // so the schema always matches the visible Q&A (rich-result requirement).
+  const faqSchema = useMemo(
+    () =>
+      JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: FAQ_ITEMS.map((item) => ({
+          '@type': 'Question',
+          name: t(`help.items.${item.id}.q`),
+          acceptedAnswer: { '@type': 'Answer', text: t(`help.items.${item.id}.a`) },
+        })),
+      }),
+    [t],
+  )
+
   return (
     <div data-testid="help-page" className="space-y-8">
       <PageMeta
@@ -67,6 +83,7 @@ export default function Help() {
         }
         canonicalPath="/help"
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqSchema }} />
       {/* ── Hero ── */}
       <section>
         <h1 className="font-display text-3xl md:text-4xl font-black tracking-tight text-bq-ink mb-2">
