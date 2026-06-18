@@ -74,8 +74,8 @@
 > Doc reference: `docs/dev/mobile.md` (build, target-aware table, release checklist).
 - MOB-5a Regression: web Vitest **1304 pass** (134 files) sau mọi phase. Mobile code dynamic-imported + guarded `isCapacitor()` → web behavior/e2e/JUnit không đổi (không sửa BE).
   - Status: [x] DONE (web unit). Playwright e2e/JUnit = gate dự án, không bị mobile ảnh hưởng.
-- MOB-5b Smoke thiết bị Android — **⏸ BLOCKED (cần thiết bị/emulator + backend chạy + GCP Android OAuth client)**. Checklist trong `docs/dev/mobile.md`.
-  - Status: [!] BLOCKED (env/account-gated)
+- MOB-5b Smoke thiết bị Android — **✅ PARTIAL trên emulator Pixel_7_Pro (2026-06-18)**. Verified: cài+launch OK; splash tắt; Onboarding→Landing→Login→AppLayout render đẹp; MobileTopBar+BottomTabs+safe-area (status bar không đè) OK; bottom-nav active state + điều hướng OK; **hardware back (MOB-2b) đi history không kill app** OK; data fetch từ be.quize.top OK. **Bug found+fixed**: scopes native Google (commit e395cd38). Còn lại: Google full cần GCP Android client (SHA-1); email login cần tài khoản prod.
+  - Status: [~] PARTIAL (core UX verified; Google/email full = owner-gated)
 - MOB-5c Signing + AAB — pipeline validated (`bundleRelease`). Keystore + Play Store là việc của owner (secret, không commit). Steps trong `docs/dev/mobile.md`.
   - Status: [~] PARTIAL (build pipeline OK; signing+upload = owner)
 - MOB-5d iOS — **⏸ cần macOS + Apple Developer**. Steps trong `docs/dev/mobile.md`.
