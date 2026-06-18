@@ -57,9 +57,24 @@ export default defineConfig(({ mode }) => {
       sourcemap: true,
       rollupOptions: {
         output: {
-          manualChunks: {
-            vendor: ['react', 'react-dom'],
-            router: ['react-router-dom']
+          // Split shared deps out of the entry monolith so it parses faster and
+          // each group caches independently (a code change won't bust the React
+          // runtime or the translation bundles). Lazy route chunks are emitted
+          // automatically by the React.lazy() imports in main.tsx.
+          manualChunks(id) {
+            // Translation JSON (vi 143kB + en 127kB) — eager via i18n init, but
+            // kept out of the entry JS and cached on its own (rarely changes).
+            if (id.includes('/src/i18n/') && id.endsWith('.json')) return 'locales'
+            if (id.includes('node_modules')) {
+              if (id.includes('react-router')) return 'router'
+              if (/[\\/]react(-dom)?[\\/]|[\\/]scheduler[\\/]/.test(id)) return 'react-vendor'
+              if (id.includes('@tanstack')) return 'query'
+              if (id.includes('i18next') || id.includes('react-i18next')) return 'i18n-vendor'
+              // Realtime libs are only imported by lazy multiplayer/room pages,
+              // so this chunk loads on demand with them — never on first paint.
+              if (id.includes('@stomp') || id.includes('sockjs')) return 'realtime'
+              return 'vendor'
+            }
           }
         }
       }
