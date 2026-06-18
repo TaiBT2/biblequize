@@ -82,6 +82,12 @@ describe('LandingPage', () => {
     expect(board?.className).not.toContain('border-bq-amber')
   })
 
+  it('nav "Giới thiệu" scrolls in-page to the features section (#features)', () => {
+    renderLanding()
+    expect(document.querySelector('a[href="#features"]')).not.toBeNull()
+    expect(document.getElementById('features')).not.toBeNull()
+  })
+
   it('preview has a "view full board" link to /leaderboard', () => {
     renderLanding()
     expect(document.querySelector('a[href="/leaderboard"]')).not.toBeNull()

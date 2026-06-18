@@ -13,18 +13,27 @@ import HeroIllustration from '../components/HeroIllustration'
 
 function GuestHeader() {
   const { t } = useTranslation()
-  // Scroll-spy: highlight "Trang chủ" at the top, "Xếp hạng" once the
-  // leaderboard preview occupies the middle of the viewport.
-  const [active, setActive] = useState<'home' | 'leaderboard'>('home')
+  // Scroll-spy: highlight the nav item for whichever section holds the
+  // viewport's vertical center. "Trang chủ" wins at the top (hero), "Giới
+  // thiệu" over the features grid, "Xếp hạng" over the leaderboard preview.
+  const [active, setActive] = useState<'home' | 'features' | 'leaderboard'>('home')
   useEffect(() => {
     if (typeof IntersectionObserver === 'undefined') return
-    const el = document.getElementById('leaderboard')
-    if (!el) return
+    const els = ['features', 'leaderboard']
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el != null)
+    if (els.length === 0) return
+    const visible: Record<string, boolean> = {}
     const obs = new IntersectionObserver(
-      ([entry]) => setActive(entry.isIntersecting ? 'leaderboard' : 'home'),
+      (entries) => {
+        for (const e of entries) visible[e.target.id] = e.isIntersecting
+        setActive(visible.leaderboard ? 'leaderboard' : visible.features ? 'features' : 'home')
+      },
+      // A thin band around the viewport's vertical center. (A zero-height
+      // "-50%/-50%" line makes isIntersecting flaky — zero-area intersection.)
       { rootMargin: '-45% 0px -45% 0px' },
     )
-    obs.observe(el)
+    els.forEach((el) => obs.observe(el))
     return () => obs.disconnect()
   }, [])
   // Smooth-scroll to an on-page section (no id = back to top) instead of
@@ -59,7 +68,11 @@ function GuestHeader() {
           >
             {t('nav.leaderboard')}
           </a>
-          <a className={`${navBase} ${navIdle}`} href="#">
+          <a
+            href="#features"
+            onClick={scrollTo('features')}
+            className={`${navBase} ${active === 'features' ? navActive : navIdle}`}
+          >
             {t('landing.about')}
           </a>
         </div>
@@ -172,7 +185,7 @@ const featureKeys = [
 function FeaturesGrid() {
   const { t } = useTranslation()
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-bq-paper" aria-label={t('landing.features')}>
+    <section id="features" className="scroll-mt-24 py-16 sm:py-24 px-4 sm:px-6 bg-bq-paper" aria-label={t('landing.features')}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-display text-3xl font-bold mb-4 text-bq-ink">{t('landing.features')}</h2>

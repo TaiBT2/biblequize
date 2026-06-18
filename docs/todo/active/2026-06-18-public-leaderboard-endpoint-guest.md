@@ -34,3 +34,9 @@
   - Detail: IntersectionObserver theo dõi `#leaderboard` → highlight "Xếp hạng" khi cuộn tới, "Trang chủ" khi ở đầu trang; "Trang chủ" click → scroll top. Guard `typeof IntersectionObserver` tránh crash test.
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · Tầng 3 full FE · commit
+
+- LBG-6 FE: "Giới thiệu" scroll tới Features + scroll-spy 3 mục
+  - Status: [x] DONE · Files: `apps/web/src/pages/LandingPage.tsx`, `LandingPage.test.tsx` · Test: Vitest
+  - Detail: thêm `id="features"` cho FeaturesGrid; "Giới thiệu" → smooth-scroll tới đó. Observer theo dõi cả `#features` + `#leaderboard` (band `-45%` center, không dùng `-50%` zero-area flaky) → highlight home/features/leaderboard theo vị trí cuộn. Verified live: cuộn tới board giữ `board=true` ổn định.
+  - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
+  - Checklist: impl · Tầng 3 full FE · commit
