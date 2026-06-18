@@ -9,7 +9,10 @@ Performance **93** · Accessibility **96** · Best-Practices **100** · SEO **92
 ### Tasks
 
 - LH-1 SEO: link "Start"→/practice thiếu text mô tả → thêm `aria-label` (key `landing.ctaAria`)
-  - Status: [x] DONE · Files: `i18n/{vi,en}.json`, `pages/LandingPage.tsx` (2 CTA) · Mục tiêu SEO 92→100
+  - Status: [x] DONE (a11y win) — nhưng SEO vẫn 92: Lighthouse link-text chấm theo **visible text**,
+    "Start" nằm blocklist generic-text. aria-label thêm rồi (accessible name cho screen reader/crawler) nhưng
+    để SEO 92→100 phải đổi **chữ hiển thị** nút (vd "Start"→"Chơi ngay") = quyết định product/copy → defer hỏi user.
+  - Files: `i18n/{vi,en}.json` (key ctaAria), `pages/LandingPage.tsx` (2 CTA). Deployed `84a433ed`.
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
 ### Báo cáo — KHÔNG tự sửa (cần quyết định / địa hạt khác)
