@@ -26,6 +26,14 @@ const FAQ = [
     q: 'Có cần tải ứng dụng không?',
     a: 'Không bắt buộc. Bạn chơi ngay trên trình duyệt máy tính hay điện thoại. Ngoài ra BibleQuiz cũng có ứng dụng di động cho trải nghiệm mượt hơn.',
   },
+  {
+    q: 'Trắc nghiệm Kinh Thánh Tin Lành khác gì với Công Giáo?',
+    a: 'BibleQuiz xây dựng trên bộ Kinh Thánh Tin Lành 66 sách (Protestant), không gồm 7 sách Đệ Nhị Kinh điển của Công Giáo. Câu hỏi và câu gốc theo bản dịch Truyền Thống Hiệu Đính (BTTHĐ 2011) quen thuộc với hội thánh Tin Lành Việt Nam.',
+  },
+  {
+    q: 'Có thể đố Kinh Thánh online theo từng sách không?',
+    a: 'Có. Bạn chọn riêng từng sách (Sáng Thế Ký, Thi Thiên, Phúc Âm, thư tín…) để luyện trắc nghiệm Kinh Thánh đúng phần mình muốn ôn, kèm độ khó tùy chỉnh.',
+  },
 ]
 
 const SAMPLE = [
@@ -67,8 +75,8 @@ export default function CauDoKinhThanh() {
   return (
     <div className="min-h-screen bg-bq-paper text-bq-ink">
       <PageMeta
-        title="Câu Đố Kinh Thánh & Trắc Nghiệm Kinh Thánh Online Miễn Phí"
-        description="Chơi câu đố Kinh Thánh, trắc nghiệm Kinh Thánh online miễn phí cho người Tin Lành Việt Nam — hàng nghìn câu hỏi từ 66 sách, thi đấu cùng nhóm hội thánh."
+        title="Câu Đố Kinh Thánh Tin Lành – Trắc Nghiệm Kinh Thánh Online Miễn Phí"
+        description="Chơi câu đố Kinh Thánh & trắc nghiệm Kinh Thánh Tin Lành online miễn phí — hàng nghìn câu hỏi từ 66 sách (BTTHĐ), đố Kinh Thánh theo từng sách, thi đấu cùng nhóm hội thánh Việt Nam."
         canonicalPath="/cau-do-kinh-thanh"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqSchema }} />
@@ -90,13 +98,13 @@ export default function CauDoKinhThanh() {
       <main className="max-w-3xl mx-auto px-6 py-12 space-y-10">
         <div className="space-y-4">
           <h1 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-bq-ink">
-            Câu Đố Kinh Thánh – Trắc Nghiệm Kinh Thánh Online
+            Câu Đố Kinh Thánh Tin Lành – Trắc Nghiệm Kinh Thánh Online
           </h1>
           <p className="text-lg text-bq-ink2 leading-relaxed">
-            <strong className="text-bq-ink">BibleQuiz</strong> là nền tảng <strong>câu đố Kinh Thánh</strong> (
-            <strong>trắc nghiệm Kinh Thánh</strong>) trực tuyến miễn phí dành cho người Tin Lành Việt Nam.
-            Học và ôn Lời Chúa qua hàng nghìn câu hỏi trắc nghiệm từ trọn bộ 66 sách Kinh Thánh, thi đấu cùng
-            cộng đồng và nhóm hội thánh của bạn — mọi lúc, mọi nơi, ngay trên trình duyệt.
+            <strong className="text-bq-ink">BibleQuiz</strong> là nền tảng <strong>câu đố Kinh Thánh</strong> /{' '}
+            <strong>trắc nghiệm Kinh Thánh Tin Lành</strong> trực tuyến miễn phí dành cho người Tin Lành
+            Việt Nam. Học và ôn Lời Chúa qua hàng nghìn câu hỏi đố Kinh Thánh online từ trọn bộ 66 sách,
+            thi đấu cùng cộng đồng và nhóm hội thánh của bạn — mọi lúc, mọi nơi, ngay trên trình duyệt.
           </p>
         </div>
 
@@ -143,6 +151,15 @@ export default function CauDoKinhThanh() {
               đặc biệt qua <Link to="/daily" className="text-bq-sapphire hover:underline">thử thách Kinh Thánh hàng ngày</Link>.
               Với nhóm hội thánh, BibleQuiz giúp gắn kết qua các trận thi đấu trực tiếp, đặt lịch quiz và bảng
               xếp hạng riêng — rất hợp cho trường Chúa Nhật, nhóm thanh niên và nhóm nhỏ.
+            </p>
+          </Section>
+
+          <Section title="Trắc nghiệm Kinh Thánh Tin Lành theo từng sách">
+            <p>
+              Bạn có thể đố Kinh Thánh online theo riêng từng sách trong 66 sách Tin Lành — từ Ngũ Kinh,
+              Lịch sử, Thi ca (Thi Thiên, Châm Ngôn) đến các sách Tiên tri, bốn sách Phúc Âm, Công Vụ và
+              các thư tín. Cách này giúp tín hữu ôn sâu đúng phần đang học trong giờ tĩnh nguyện hay lớp
+              trường Chúa Nhật.
             </p>
           </Section>
 
