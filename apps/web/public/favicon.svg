@@ -1,14 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#f4d178"/>
-      <stop offset="55%" stop-color="#e8a832"/>
-      <stop offset="100%" stop-color="#7a5818"/>
-    </linearGradient>
+    <radialGradient id="g" cx="0.36" cy="0.30" r="0.85">
+      <stop offset="0" stop-color="#f7d98a"/>
+      <stop offset="0.52" stop-color="#e8a832"/>
+      <stop offset="1" stop-color="#c0820f"/>
+    </radialGradient>
   </defs>
-  <rect width="32" height="32" rx="6" fill="#11131e"/>
-  <!-- Chunky Latin cross — 8px wide bars so it stays legible when the
-       browser scales the favicon down to 16×16 in the tab. Vertical bar
-       (x 12..20, y 3..29) + horizontal crossbar (x 6..26, y 10..18). -->
-  <path d="M12 3h8v7h6v8h-6v11h-8V18H6v-8h6z" fill="url(#g)"/>
+  <!-- Gold "coin" badge + open-book glyph — matches the in-app logo mark
+       (SidebarHeader.tsx). Hairline rim defines the coin on white tabs; bold
+       strokes keep the book legible when scaled to 16x16 in a browser tab. -->
+  <circle cx="16" cy="16" r="15" fill="url(#g)" stroke="#a86f12" stroke-width="0.6"/>
+  <g transform="translate(4.6,5.4) scale(0.95)" fill="none" stroke="#1a1208"
+     stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4v16c0-1.1.9-2 2-2h14V2H6c-1.1 0-2 .9-2 2z"/>
+    <path d="M9 8h6M9 12h4"/>
+  </g>
 </svg>
