@@ -18,6 +18,7 @@ public class UserResponse {
     private Integer practiceCorrectCount;
     private Integer practiceTotalCount;
     private LocalDateTime earlyRankedUnlockedAt;
+    private Boolean leaderboardVisible;
 
     public UserResponse() {}
 
@@ -35,7 +36,11 @@ public class UserResponse {
         this.practiceCorrectCount = user.getPracticeCorrectCount();
         this.practiceTotalCount = user.getPracticeTotalCount();
         this.earlyRankedUnlockedAt = user.getEarlyRankedUnlockedAt();
+        this.leaderboardVisible = user.isLeaderboardVisible();
     }
+
+    public Boolean getLeaderboardVisible() { return leaderboardVisible; }
+    public void setLeaderboardVisible(Boolean leaderboardVisible) { this.leaderboardVisible = leaderboardVisible; }
     
     // Getters and Setters
     public String getId() { return id; }

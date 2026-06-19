@@ -142,6 +142,11 @@ public class User {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    // LBF-5 (SPEC_USER §21 privacy): when false, the user is excluded from the
+    // public leaderboard (board display + rank counting). Default true.
+    @Column(name = "leaderboard_visible", nullable = false)
+    private Boolean leaderboardVisible = true;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<AuthIdentity> authIdentities = new ArrayList<>();
 
@@ -248,6 +253,19 @@ public class User {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    /** LBF-5: true (default) when the user appears on the public leaderboard. */
+    public boolean isLeaderboardVisible() {
+        return leaderboardVisible == null || leaderboardVisible;
+    }
+
+    public Boolean getLeaderboardVisible() {
+        return leaderboardVisible;
+    }
+
+    public void setLeaderboardVisible(Boolean leaderboardVisible) {
+        this.leaderboardVisible = leaderboardVisible;
     }
 
     public LocalDateTime getUpdatedAt() {
