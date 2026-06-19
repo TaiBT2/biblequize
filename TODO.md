@@ -3,10 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (85)
+## Active (86)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-18 | Leaderboard deep-dive fixes: rank tie-break bug + dedup root-cause + scalability ZSET + around-me + privacy + low-data "né con số" + dẹp mùa thi đua (LBF-1..13) | TODO | [detail](docs/todo/active/2026-06-18-leaderboard-deep-fixes.md) |
 | 2026-06-18 | SEO pillar page /cau-do-kinh-thanh (content VN ngách Tin Lành + FAQPage + prerender + sitemap) (PIL-1..2) | DONE | [detail](docs/todo/active/2026-06-18-pillar-page-cau-do-kinh-thanh.md) |
 | 2026-06-18 | Homepage `/` cho khách thấy LandingPage giàu chữ (thay Onboarding rỗng) + prerender / (HLG-1..2) | DONE | [detail](docs/todo/active/2026-06-18-homepage-landing-for-guests.md) |
 | 2026-06-18 | Lighthouse prod (BP100/SEO 92→100 sau đổi CTA "Play Now"/A11y 96/Perf 93): CTA text + báo cáo contrast/perf (LH-1) | DONE | [detail](docs/todo/active/2026-06-18-lighthouse-seo-a11y.md) |
@@ -97,7 +98,7 @@
 | 2026-05-18 | Profile Sprint 4: Edit Profile modal (wire dead button) | TODO | [detail](docs/todo/active/2026-05-18-profile-sprint-4-edit-modal.md) |
 | 2026-05-18 | Fix Daily Challenge question card clipped on mobile | DONE | [detail](docs/todo/active/2026-05-18-fix-daily-challenge-question-clipped-mobile.md) |
 | 2026-05-18 | Fix MobileTopBar broken avatar alt-text overflow | DONE | [detail](docs/todo/active/2026-05-18-fix-mobile-topbar-broken-avatar-alt-overflow.md) |
-| 2026-05-13 | Home Redesign Modern Spiritual | IN PROGRESS | [detail](docs/todo/active/2026-05-13-home-redesign-modern-spiritual.md) |
+| 2026-05-13 | Home Redesign Modern Spiritual | DONE | [detail](docs/todo/active/2026-05-13-home-redesign-modern-spiritual.md) |
 | 2026-05-13 | Disable test data seed on prod + harden guard | TODO | [detail](docs/todo/active/2026-05-13-disable-seed-on-prod-and-harden-guard.md) |
 | 2026-05-13 | Code Quality Audit follow-up (BE + FE Web) | PARTIALLY DONE | [detail](docs/todo/active/2026-05-13-code-quality-audit-follow-up-be-fe-web.md) |
 | 2026-05-10 | Quiz Set card: thêm action buttons (Chơi cùng nhau / Đặt lịch) | TODO | [detail](docs/todo/active/2026-05-10-quiz-set-card-them-action-buttons-choi-cung-nhau-dat-lich.md) |
