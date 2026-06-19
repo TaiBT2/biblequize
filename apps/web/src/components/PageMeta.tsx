@@ -5,12 +5,14 @@ interface PageMetaProps {
   description?: string
   ogImage?: string
   canonicalPath?: string
+  /** Emit <meta robots="noindex, follow"> — for error/utility pages (e.g. 404). */
+  noindex?: boolean
 }
 
 const BASE_URL = 'https://forbible.org'
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`
 
-export default function PageMeta({ title, description, ogImage, canonicalPath }: PageMetaProps) {
+export default function PageMeta({ title, description, ogImage, canonicalPath, noindex }: PageMetaProps) {
   const fullTitle = `${title} — BibleQuiz`
   const image = ogImage ?? DEFAULT_OG_IMAGE
   const url = canonicalPath ? `${BASE_URL}${canonicalPath}` : undefined
@@ -18,6 +20,7 @@ export default function PageMeta({ title, description, ogImage, canonicalPath }:
   return (
     <Helmet>
       <title>{fullTitle}</title>
+      {noindex && <meta name="robots" content="noindex, follow" />}
       {description && <meta name="description" content={description} />}
 
       {/* Open Graph — overrides the site-wide defaults in index.html per page */}
