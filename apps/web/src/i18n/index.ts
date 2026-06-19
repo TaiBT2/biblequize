@@ -13,16 +13,17 @@ const loaders: Record<Lng, () => Promise<{ default: Record<string, unknown> }>> 
   en: () => import('./en.json'),
 }
 
-// Mirror the detector order (localStorage 'quizLanguage' → navigator) so we
-// know which chunk to fetch BEFORE init — init needs its resources ready, and
-// pre-loading avoids any flash of raw translation keys.
+// VN-first language choice. Only an explicit user pick (localStorage) overrides
+// Vietnamese — NOT navigator.language. Deliberate for SEO: Googlebot crawls with
+// navigator.language "en", so a navigator default would make it index the English
+// UI despite the Vietnamese keyword target. English-preferring users switch via
+// QuizLanguageSelect (persisted to localStorage 'quizLanguage').
 function detectInitial(): Lng {
   try {
     const stored = typeof localStorage !== 'undefined' ? localStorage.getItem('quizLanguage') : null
     if (stored === 'vi' || stored === 'en') return stored
   } catch { /* localStorage may be blocked (private mode) */ }
-  const nav = typeof navigator !== 'undefined' ? navigator.language : ''
-  return nav.toLowerCase().startsWith('en') ? 'en' : 'vi'
+  return 'vi'
 }
 
 async function loadBundle(lng: Lng): Promise<void> {
@@ -67,7 +68,8 @@ export const i18nReady: Promise<typeof i18n> = (async () => {
       fallbackLng: 'vi',
       interpolation: { escapeValue: false },
       detection: {
-        order: ['localStorage', 'navigator'],
+        // localStorage only — no 'navigator' (VN-first; see detectInitial).
+        order: ['localStorage'],
         lookupLocalStorage: 'quizLanguage',
         caches: ['localStorage'],
       },
