@@ -1898,6 +1898,16 @@
       "leaderOnly": "Chỉ Leader",
       "placeholder": "Cell Group Pulse — chỉ số tổng hợp về nhịp sinh hoạt nhóm dựa trên active rate, live rooms, và content mới. Sẽ ra mắt Sprint tới với cập nhật hàng ngày."
     },
+    "growth": {
+      "title": "Cùng Nhau Thuộc Lời",
+      "versesUnit": "câu Lời Chúa",
+      "subtitle": "Cả nhóm cùng nhau ghi nhớ Kinh Thánh",
+      "milestone": "Còn {{remaining}} câu nữa đến mốc {{target}}",
+      "contributors": "thành viên đóng góp",
+      "completions": "lượt thuộc trọn bộ",
+      "empty": "Chưa ai ôn bộ câu hỏi nào — hãy bắt đầu cùng nhau! 📖",
+      "error": "Chưa tải được tiến độ nhóm"
+    },
     "viewFullPage": "Xem trang đầy đủ",
     "onboarding": {
       "title": "Bắt đầu với nhóm mới",

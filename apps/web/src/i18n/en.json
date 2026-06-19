@@ -1898,6 +1898,16 @@
       "leaderOnly": "Leader only",
       "placeholder": "Cell Group Pulse — composite signal of group activity based on active rate, live rooms, and new content. Ships next sprint with daily updates."
     },
+    "growth": {
+      "title": "Growing Together",
+      "versesUnit": "verses of the Word",
+      "subtitle": "The whole group memorizing Scripture together",
+      "milestone": "{{remaining}} more to reach {{target}}",
+      "contributors": "contributors",
+      "completions": "full-set masteries",
+      "empty": "No one has practiced a quiz set yet — start together! 📖",
+      "error": "Couldn't load group progress"
+    },
     "viewFullPage": "View full page",
     "onboarding": {
       "title": "Get your new group going",

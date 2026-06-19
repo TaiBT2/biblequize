@@ -47,19 +47,19 @@
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl ✅ · Tầng 1 ✅ · Tầng 3 + commit
 - CG-5 FE: api client + `useGroupCollectiveGrowth` hook
-  - Status: [ ] TODO · Files: `apps/web/src/api/groups.ts` (hoặc quizSets), `apps/web/src/api/queryKeys.ts` · Test: n/a
-  - TanStack Query (KHÔNG useEffect+fetch); typed response.
-  - **Spec impact**: [ ] None · **Spec strategy**: [ ] (c) [no-spec-impact]
-  - Checklist: impl · tsc · commit
+  - Status: [x] DONE · Files: `api/groups.ts` (getCollectiveGrowth + `CollectiveGrowth` types), `api/queryKeys.ts` (groups domain), `hooks/useGroupCollectiveGrowth.ts` (new) · Test: covered bởi CG-6 card test
+  - TanStack Query (useQuery, staleTime 60s) theo CLAUDE.md rule (GroupAnalyticsTab cũ dùng useEffect — legacy).
+  - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
+  - Checklist: impl ✅ · tsc (my files clean) ✅ · commit
 - CG-6 FE: `CollectiveGrowthCard` component (Khung Sáng tokens)
-  - Status: [ ] TODO · Files: `apps/web/src/components/group/CollectiveGrowthCard.tsx` (new) · Test: component test
-  - Hero number + progress bar + milestone badge + per-set mini-list. 3 states (skeleton/error+retry/empty="chưa ai ôn"). Theo `docs/dev/design-system.md` + Khung Sáng (KHÔNG inline style, KHÔNG hardcode màu).
-  - **Spec impact**: [ ] None · **Spec strategy**: [ ] (c) [no-spec-impact]
-  - Checklist: impl · Tầng 1 · commit
+  - Status: [x] DONE (4/4 component test) · Files: `components/group/CollectiveGrowthCard.tsx` + test · Test: Vitest loading/error/empty/success
+  - Hero SUM + milestone progress bar + contributors/completions + per-set list. 3 states. Emerald GD-12 palette; bq-* tokens.
+  - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
+  - Checklist: impl ✅ · Tầng 1 ✅ · commit
 - CG-7 FE: wire vào `GroupActivityTab` + i18n vi/en (D3)
-  - Status: [ ] TODO · Files: `apps/web/src/components/group/GroupActivityTab.tsx`, `apps/web/src/i18n/vi.json` + `en.json` · Test: component test
-  - **Spec impact**: [ ] None · **Spec strategy**: [ ] (c) [no-spec-impact]
-  - Checklist: impl · Tầng 2 (Group screen) · `npm run validate:i18n` không tăng debt · commit
+  - Status: [x] DONE · Files: `GroupActivityTab.tsx` (card sau LiveNowBanner, mọi member), `i18n/vi.json`+`en.json` (groups.growth.* 8 keys) · Test: FE Tầng 3 1331 pass
+  - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
+  - Checklist: impl ✅ · Tầng 3 (FE 1331 ≥ baseline 1297) ✅ · validate:i18n no new debt ✅ · commit
 - CG-8 Spec + full regression
   - Status: [ ] TODO · Files: `docs/spec/SPEC_GROUP_v1.3.md` (§X Collective Growth), `docs/spec/BACKLOG.md` (BL-23 → DONE) · Test: `bash tools/spec-audit/audit.sh`
   - **Spec impact**: [x] SPEC_GROUP §X new · **Spec strategy**: [x] (a) update inline (khi ship)
