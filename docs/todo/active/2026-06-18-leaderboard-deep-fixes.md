@@ -92,7 +92,7 @@ P0 (correctness): LBF-1, LBF-2 · P1: LBF-11 (launch-blocking presentation), LBF
   - Checklist: impl · Tầng 1+2+3 BE (RankedController sensitive — chạy full) · commit
 
 - LBF-10 (P3) BE: `my-rank` dùng SELECT SUM thay vì sum trong JVM
-  - Status: [ ] TODO · Files: `LeaderboardController.java`, `UserDailyProgressRepository.java` · Test: JUnit (kết quả không đổi)
+  - Status: [x] DONE · Files: `UserDailyProgressRepository.java` (+2 `sumPointsAndQuestions*`), `LeaderboardController.java` (4 my-rank methods + `intAt` helper), test · Test: BE api+service 864 (context load = JPQL valid)
   - Detail: `getMyAllTimeRank`/`getMyWeeklyRank`/... nạp toàn bộ UDP rows về app rồi `.stream().sum()`. Thay bằng `SELECT SUM(points_counted)` trong DB. Có thể gộp vào LBF-3 nếu chuyển ZSET (khi đó bỏ luôn). Làm độc lập nếu LBF-3 defer.
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · Tầng 3 BE · commit

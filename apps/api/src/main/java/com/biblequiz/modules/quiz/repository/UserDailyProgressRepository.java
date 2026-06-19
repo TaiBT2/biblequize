@@ -34,6 +34,19 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
     List<UserDailyProgress> findByUserIdAndDateBetween(@Param("userId") String userId,
             @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
+    // LBF-10 (2026-06-18): sum points + questions for a user in ONE DB
+    // round-trip instead of loading every UDP row into the app and summing in
+    // Java (the /my-rank hot path). Returns [points, questions]; COALESCE means
+    // a user with no rows yields [0, 0].
+    @Query("SELECT COALESCE(SUM(udp.pointsCounted), 0), COALESCE(SUM(udp.questionsCounted), 0) "
+            + "FROM UserDailyProgress udp WHERE udp.user.id = :userId")
+    Object[] sumPointsAndQuestionsAllTime(@Param("userId") String userId);
+
+    @Query("SELECT COALESCE(SUM(udp.pointsCounted), 0), COALESCE(SUM(udp.questionsCounted), 0) "
+            + "FROM UserDailyProgress udp WHERE udp.user.id = :userId AND udp.date BETWEEN :startDate AND :endDate")
+    Object[] sumPointsAndQuestionsBetween(@Param("userId") String userId,
+            @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+
     // Count users strictly AHEAD on a given date (for daily rank).
     // LBF-1 (2026-06-18): mirror the board tie-break (points DESC, questions
     // DESC, created_at ASC) so /my-rank matches the user's real board position.

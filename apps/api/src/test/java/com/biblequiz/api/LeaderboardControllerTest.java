@@ -173,10 +173,8 @@ class LeaderboardControllerTest extends BaseControllerTest {
                 LocalDate.of(2026, 1, 1), LocalDate.of(2026, 12, 31));
         when(seasonService.getActiveSeason()).thenReturn(Optional.of(activeSeason));
 
-        UserDailyProgress udp = new UserDailyProgress();
-        udp.setPointsCounted(800);
-        when(udpRepository.findByUserIdAndDateBetween(eq("user-1"), any(LocalDate.class), any(LocalDate.class)))
-                .thenReturn(List.of(udp));
+        when(udpRepository.sumPointsAndQuestionsBetween(eq("user-1"), any(LocalDate.class), any(LocalDate.class)))
+                .thenReturn(new Object[]{800, 0});
         when(udpRepository.countUsersAheadInDateRange(any(), any(), eq(800), anyInt(), any())).thenReturn(4L);
 
         mockMvc.perform(get("/api/leaderboard/season/my-rank"))
@@ -194,7 +192,7 @@ class LeaderboardControllerTest extends BaseControllerTest {
         mockMvc.perform(get("/api/leaderboard/season/my-rank"))
                 .andExpect(status().isOk());
         // Body should be null/empty when no active season
-        verify(udpRepository, never()).findByUserIdAndDateBetween(anyString(), any(), any());
+        verify(udpRepository, never()).sumPointsAndQuestionsBetween(anyString(), any(), any());
     }
 
     // ── GET /api/leaderboard/all-time ────────────────────────────────────────
@@ -235,11 +233,8 @@ class LeaderboardControllerTest extends BaseControllerTest {
     @Test
     @WithMockUser(username = "test@example.com")
     void getMyWeeklyRank_withPoints_shouldReturn200() throws Exception {
-        UserDailyProgress udp = new UserDailyProgress();
-        udp.setPointsCounted(100);
-
-        when(udpRepository.findByUserIdAndDateBetween(eq("user-1"), any(LocalDate.class), any(LocalDate.class)))
-                .thenReturn(List.of(udp));
+        when(udpRepository.sumPointsAndQuestionsBetween(eq("user-1"), any(LocalDate.class), any(LocalDate.class)))
+                .thenReturn(new Object[]{100, 0});
         when(udpRepository.countUsersAheadInDateRange(any(), any(), eq(100), anyInt(), any())).thenReturn(0L);
 
         mockMvc.perform(get("/api/leaderboard/weekly/my-rank"))
@@ -252,10 +247,7 @@ class LeaderboardControllerTest extends BaseControllerTest {
     @Test
     @WithMockUser(username = "test@example.com")
     void getMyAllTimeRank_shouldReturn200() throws Exception {
-        UserDailyProgress udp = new UserDailyProgress();
-        udp.setPointsCounted(500);
-
-        when(udpRepository.findByUserIdOrderByDateDesc("user-1")).thenReturn(List.of(udp));
+        when(udpRepository.sumPointsAndQuestionsAllTime("user-1")).thenReturn(new Object[]{500, 0});
         when(udpRepository.countUsersAheadAllTime(eq(500), anyInt(), any())).thenReturn(5L);
 
         mockMvc.perform(get("/api/leaderboard/all-time/my-rank"))
