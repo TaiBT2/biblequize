@@ -167,8 +167,8 @@ function LeaderboardRow({ rank, name, points, me }: { rank: number; name: string
     </div>
   )
 }
-function LeaderboardCard({ entries, myUserId, me, seasonLabel }: {
-  entries: LbEntry[]; myUserId?: string; me: { name: string; points: number; rank?: number }; seasonLabel: string
+function LeaderboardCard({ entries, myUserId, me, seasonLabel, lowData }: {
+  entries: LbEntry[]; myUserId?: string; me: { name: string; points: number; rank?: number }; seasonLabel: string; lowData: boolean
 }) {
   const { t } = useTranslation()
   const inList = !!myUserId && entries.some(e => e.userId === myUserId)
@@ -178,15 +178,17 @@ function LeaderboardCard({ entries, myUserId, me, seasonLabel }: {
         <h4 className="font-display text-[15px] font-bold text-bq-ink">{t('home.lb.title', 'Top điểm tuần')}</h4>
         <Link to="/leaderboard" className="text-[11.5px] font-bold text-bq-ink2 hover:text-bq-ink">{t('home.lb.full', 'Bảng đầy đủ')} →</Link>
       </div>
-      {entries.length > 0 ? (
+      {/* LBF-11: below SEED_THRESHOLD players, show the encouraging message
+          instead of a sparse 1–2 row board + "0đ". */}
+      {!lowData && entries.length > 0 ? (
         entries.map((e, i) => (
           <LeaderboardRow key={e.userId || i} rank={e.rank ?? i + 1} name={e.name || '—'} points={e.points || 0} me={!!myUserId && e.userId === myUserId} />
         ))
       ) : (
         <p className="py-3 text-[12.5px] text-bq-ink2 text-center">{t('home.lb.empty', 'Chưa có ai ghi điểm tuần này — hãy là người đầu tiên!')}</p>
       )}
-      {/* Sticky "me" row when the user isn't in the visible top list. */}
-      {me.rank != null && !inList && (
+      {/* Sticky "me" row when the user isn't in the visible top list (hidden in low-data). */}
+      {!lowData && me.rank != null && !inList && (
         <>
           <div className="my-1 border-t border-dashed border-bq-hair" />
           <LeaderboardRow rank={me.rank} name={me.name} points={me.points} me />
@@ -230,8 +232,10 @@ export default function Home() {
     staleTime: 60_000,
   })
   const { data: weeklyTop } = useQuery<{ userId?: string; name?: string; points?: number; avatarUrl?: string }[]>({
-    queryKey: ['leaderboard', 'weekly', 'top5'],
-    queryFn: () => api.get('/api/leaderboard/weekly?size=5').then(r => r.data).catch(() => []),
+    // LBF-11: fetch 10 (display 5) so we can tell whether ≥ SEED_THRESHOLD
+    // players exist — below that the board is too sparse to show (né con số).
+    queryKey: ['leaderboard', 'weekly', 'top10'],
+    queryFn: () => api.get('/api/leaderboard/weekly?size=10').then(r => r.data).catch(() => []),
     staleTime: 60_000,
   })
   const { data: dcData } = useQuery<{ alreadyCompleted?: boolean; totalQuestions?: number }>({
@@ -281,6 +285,13 @@ export default function Home() {
   const missions = missionsData?.missions ?? []
   const missionsDone = missions.filter(m => m.completed).length
   const topEntries = Array.isArray(weeklyTop) ? weeklyTop.slice(0, 5) : []
+  // LBF-11 "né con số": until we know ≥10 players have weekly points, treat the
+  // board as low-data — hide the sparse top list + the weak "#rank" numbers
+  // (hero + ranked ModeCard) and show an encouraging message instead. Defaulting
+  // to hidden (while loading) avoids flashing a weak rank then yanking it.
+  const SEED_THRESHOLD = 10
+  const lbLowData = !Array.isArray(weeklyTop) || weeklyTop.length < SEED_THRESHOLD
+  const showWeeklyRank = !lbLowData && wRank != null
   const myUserId = weeklyRank?.userId
   const top3Pts = topEntries[2]?.points
   const myWeekPts = weeklyRank?.points
@@ -332,10 +343,10 @@ export default function Home() {
               <b className="text-bq-ink">{tier.next && t(tier.next.nameKey)}</b>
             </span>
           )}
-          {wRank != null && (
+          {showWeeklyRank && (
             <>
               <span className="text-bq-ink3">·</span>
-              <span>{t('home.hero.weeklyRank', 'Hạng tuần')} <b className="text-bq-ink">#{wRank}</b>{weeklyRank?.total ? ` / ${weeklyRank.total.toLocaleString()}` : ''}</span>
+              <span>{t('home.hero.weeklyRank', 'Hạng tuần')} <b className="text-bq-ink">#{wRank}</b></span>
             </>
           )}
         </div>
@@ -431,11 +442,11 @@ export default function Home() {
           ) : t('home.mode.studyInner', 'Tự do · không tính XP · luyện theo từng sách')} />
 
         <ModeCard variant="ranked" title={t('gameModes.ranked', 'Đấu Hạng')} desc={t('home.mode.rankedDesc', 'Cạnh tranh bảng xếp hạng theo mùa.')}
-          cta={wRank != null && wRank > 1 ? `${t('home.mode.climbTo', 'Vượt lên hạng')} ${wRank - 1}` : t('home.mode.rankedCta', 'Vào trận')}
+          cta={showWeeklyRank && wRank > 1 ? `${t('home.mode.climbTo', 'Vượt lên hạng')} ${wRank - 1}` : t('home.mode.rankedCta', 'Vào trận')}
           onClick={() => navigate('/ranked')}
-          inner={wRank != null ? (
+          inner={showWeeklyRank ? (
             <div>
-              <div>🏅 {t('home.mode.rankYouAt', 'Bạn đang hạng')} <b className="text-bq-ruby">#{wRank}</b>{weeklyRank?.total ? ` / ${weeklyRank.total} ${t('home.mode.members', 'thành viên')}` : ''}</div>
+              <div>🏅 {t('home.mode.rankYouAt', 'Bạn đang hạng')} <b className="text-bq-ruby">#{wRank}</b></div>
               {gapToTop3 ? <div className="mt-2">{t('home.mode.gapTop3Lead', 'Kém top 3 chỉ')} <b className="text-bq-ink">{gapToTop3.toLocaleString()}đ</b> — {t('home.mode.pushUp', 'ráng một ván là vượt')}</div> : null}
             </div>
           ) : <span>{t('home.mode.rankedInner', 'Năng lượng')} · <b className="text-bq-ink">{energy}</b></span>} />
@@ -482,6 +493,7 @@ export default function Home() {
           myUserId={myUserId}
           me={{ name: userName, points: myWeekPts ?? 0, rank: weeklyRank?.rank }}
           seasonLabel={seasonLabel}
+          lowData={lbLowData}
         />
       </div>
 
