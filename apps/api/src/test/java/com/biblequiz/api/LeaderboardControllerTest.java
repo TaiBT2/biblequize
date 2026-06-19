@@ -254,4 +254,39 @@ class LeaderboardControllerTest extends BaseControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.rank").value(6));
     }
+
+    // ── GET /api/leaderboard/around-me (LBF-4) ───────────────────────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void aroundMe_allTime_returnsWindowWithOffsetBasedRanks() throws Exception {
+        // rank 10 → offset = max(0, 10-5-1) = 4, limit = 11. Window's first row
+        // therefore has absolute rank 5.
+        when(udpRepository.sumPointsAndQuestionsAllTime("user-1")).thenReturn(new Object[]{500, 8});
+        when(udpRepository.countUsersAheadAllTime(eq(500), anyInt(), any())).thenReturn(9L);
+        when(udpRepository.findAllTimeLeaderboard(eq(11), eq(4))).thenReturn(List.of(
+                new Object[]{"u-a", "Above", null, 600, 12},
+                new Object[]{"user-1", "Me", null, 500, 8},
+                new Object[]{"u-b", "Below", null, 400, 5}));
+
+        mockMvc.perform(get("/api/leaderboard/around-me?period=all-time"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(3)))
+                .andExpect(jsonPath("$[0].rank").value(5))
+                .andExpect(jsonPath("$[0].userId").value("u-a"))
+                .andExpect(jsonPath("$[1].rank").value(6))
+                .andExpect(jsonPath("$[1].userId").value("user-1"))
+                .andExpect(jsonPath("$[2].rank").value(7));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void aroundMe_zeroPoints_returnsEmptyList() throws Exception {
+        when(udpRepository.sumPointsAndQuestionsAllTime("user-1")).thenReturn(new Object[]{0, 0});
+
+        mockMvc.perform(get("/api/leaderboard/around-me?period=all-time"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(0)));
+        verify(udpRepository, never()).findAllTimeLeaderboard(anyInt(), anyInt());
+    }
 }

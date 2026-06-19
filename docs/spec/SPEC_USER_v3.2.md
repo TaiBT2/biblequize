@@ -2031,8 +2031,8 @@ Grid layout, locked = grayscale + lock icon. Click → modal hiện điều ki�
 - **Thực tế code:** "mùa thi đua" = `SUM(points_counted)` của `UserDailyProgress` trong khoảng `[season.start, today]` (dùng lại `findWeeklyLeaderboard`). KHÔNG có ledger reset riêng / tier-season tách biệt / badge "Vinh Quang Mùa N" — các mục đó **chưa từng được build** (intent cũ, gỡ khỏi spec). Bảng `season_rankings` từng double-write nay ngừng ghi (LBF-13).
 - **KHÔNG nhầm với "mùa phụng vụ"** (Liturgical Coverage §7.10.3 + ×1.5 focus bonus): đó là hệ riêng, flag-gated, vẫn giữ — xem §7.10.
 
-### 22.3 Around-me
-`GET /api/leaderboard/around-me` → 5 trên + bạn + 5 dưới.
+### 22.3 Around-me (LBF-4 2026-06-18 — implemented)
+`GET /api/leaderboard/around-me?period=weekly|all-time&radius=5` → `radius` người trên + bạn + `radius` dưới, mỗi row có `rank` tuyệt đối. Dùng lại board query (cùng tie-break §22.5) với `offset = rank - radius - 1`. Rỗng khi chưa đăng nhập / 0 điểm. FE: thay dòng sticky 1-dòng bằng cửa sổ này khi user ngoài top hiển thị (fallback về sticky nếu rỗng).
 
 ### 22.4 UI widgets
 - `LeaderboardRankWidget` — rank hiện tại trên Home.

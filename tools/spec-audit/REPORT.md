@@ -1,6 +1,6 @@
 # Spec Audit Report
 
-**Generated:** 2026-06-19T01:17:30Z
+**Generated:** 2026-06-19T01:37:02Z
 **Specs scanned:** 8 files in `docs/spec/`
 
 ## Summary

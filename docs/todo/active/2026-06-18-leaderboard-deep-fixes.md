@@ -38,7 +38,7 @@ P0 (correctness): LBF-1, LBF-2 · P1: LBF-11 (launch-blocking presentation), LBF
   - Checklist: design doc · impl từng phần <100 LOC · Tầng 3 BE · benchmark before/after · commit từng phần
 
 - LBF-4 (P1) BE+FE: implement `GET /api/leaderboard/around-me` (spec §22.3)
-  - Status: [ ] TODO · Files: `LeaderboardController.java`, repo, `Leaderboard.tsx`, test · Test: JUnit (5 trên + me + 5 dưới) + Vitest
+  - Status: [x] DONE · Files: `LeaderboardController.java` (+`/around-me` reuse board query, offset=rank-radius-1), `Leaderboard.tsx` (window thay sticky + fallback), i18n, tests, `SPEC_USER §22.3` · Test: BE api+service 866 + FE 1338 pass
   - Detail: Spec §22.3 hứa around-me (5 trên + bạn + 5 dưới) nhưng endpoint KHÔNG tồn tại; FE chỉ có 1 dòng sticky. Implement endpoint + thay sticky bằng around-me window khi user ngoài top-20. Phụ thuộc LBF-3 nếu chuyển ZSET (around-me gần như free). Nếu làm trước LBF-3: viết query window theo rank.
   - **Spec impact**: [x] SPEC_USER §22.3 (catch-up) · **Spec strategy**: [ ] (a) update inline (mark implemented)
   - Checklist: impl · Tầng 3 (BE+FE) · spec §22.3 cập nhật · commit

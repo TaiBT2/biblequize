@@ -252,6 +252,32 @@ describe('Leaderboard', () => {
     expect(screen.getByTestId('leaderboard-my-rank-sticky')).toBeInTheDocument()
   })
 
+  it('LBF-4: renders around-me window (neighbours + me) when user is off the top list', async () => {
+    const AROUND = [
+      { userId: 'u20', name: 'Above A', points: 900, rank: 45 },
+      { userId: 'u21', name: 'Above B', points: 880, rank: 46 },
+      { userId: 'u1', name: 'Test User', points: 850, rank: 47 },
+      { userId: 'u22', name: 'Below A', points: 820, rank: 48 },
+      { userId: 'u23', name: 'Below B', points: 800, rank: 49 },
+    ]
+    mockApiGet.mockImplementation((url: string) => {
+      // around-me URL also contains '/leaderboard/', so match it FIRST
+      if (url.includes('/around-me')) return Promise.resolve({ data: AROUND })
+      if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 47, points: 850 } })
+      if (url.includes('/leaderboard/')) return Promise.resolve({ data: MOCK_ENTRIES.filter((e) => e.userId !== 'u1') })
+      if (url.includes('/seasons')) return Promise.resolve({ data: null })
+      if (url.includes('/api/me/tier-progress')) return Promise.resolve({ data: { totalPoints: 850 } })
+      return Promise.reject(new Error('Not found'))
+    })
+    renderLeaderboard()
+    await waitFor(() => { expect(screen.getByTestId('leaderboard-around-me')).toBeInTheDocument() })
+    // 5 neighbours above + below render (not just a lonely sticky row)
+    expect(screen.getByText('Above A')).toBeInTheDocument()
+    expect(screen.getByText('Below B')).toBeInTheDocument()
+    // The current-user row inside the window keeps the sticky testid
+    expect(screen.getByTestId('leaderboard-my-rank-sticky')).toBeInTheDocument()
+  })
+
   it('sticky my-rank row renders current user avatar from authStore (sync after edit)', async () => {
     authState.user = { name: 'Test User', email: 'a@b.com', avatar: 'https://example.com/me.png' } as any
     // 11 players, none of them the current user (u1) → board renders (≥10) and

@@ -6,6 +6,7 @@ import { api } from '../api/client'
 import { useAuthStore } from '../store/authStore'
 import { TIERS, getTierByPoints } from '../data/tiers'
 import { resolveAvatar } from '../utils/avatar'
+import PageMeta from '../components/PageMeta'
 
 type Tab = 'weekly' | 'season' | 'all_time'
 
@@ -111,8 +112,29 @@ export default function Leaderboard() {
   const isCurrentUserInList = myUserId != null && list.some((e: any) => e.userId === myUserId)
   const showMyRankSticky = myRank != null && !isCurrentUserInList
 
+  // LBF-4 (2026-06-18): around-me window — the 5 players above + you + 5 below,
+  // so an off-board user sees who to overtake / who's chasing instead of a lone
+  // sticky row. Only fetched when the user is outside the displayed top list.
+  // Falls back to the single sticky row if the endpoint returns nothing.
+  const { data: aroundMe } = useQuery({
+    queryKey: ['leaderboard', 'around-me', activeTab],
+    queryFn: () => api.get(`/api/leaderboard/around-me?period=${apiPath}&radius=5`).then(r => r.data).catch(() => null),
+    enabled: isAuthenticated && showMyRankSticky,
+    staleTime: 30_000,
+  })
+  // Drop window rows already shown in the main top list (user sitting just past
+  // the cut, e.g. rank 21, would otherwise duplicate ranks 16–20).
+  const aroundRows: any[] = Array.isArray(aroundMe)
+    ? aroundMe.filter((r: any) => !list.some((e: any) => e.userId === r.userId))
+    : []
+
   return (
     <div className="max-w-5xl mx-auto py-6">
+      <PageMeta
+        title="Bảng Xếp Hạng – Trắc Nghiệm Kinh Thánh"
+        description="Bảng xếp hạng người chơi trắc nghiệm Kinh Thánh trên BibleQuiz — thi đua điểm số cùng cộng đồng Tin Lành Việt Nam."
+        canonicalPath="/leaderboard"
+      />
       {/* Header */}
       <header className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
         <div>
@@ -257,18 +279,40 @@ export default function Leaderboard() {
               )
             })}
 
-            {/* My rank sticky — only when current user NOT in displayed list (around-me pattern) */}
+            {/* Around-me — current user NOT in displayed top list. Renders the
+                neighbourhood window (LBF-4) or, as a fallback, a single sticky row. */}
             {showMyRankSticky && (
-              <LeaderboardListRow
-                testId="leaderboard-my-rank-sticky"
-                rank={myRank.rank ?? 0}
-                name={myRank.name ?? user?.name ?? '?'}
-                points={myRank.points ?? 0}
-                // Sticky row is always the current user; /my-rank doesn't return
-                // avatarUrl, so use authStore.user.avatar (kept in sync on edit).
-                avatarUrl={myRank.avatarUrl ?? user?.avatar}
-                isMe
-              />
+              aroundRows.length > 0 ? (
+                <div data-testid="leaderboard-around-me" className="space-y-4 mt-2 pt-5 border-t border-dashed border-bq-hair">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-bq-ink2 mb-1">{t('leaderboard.aroundMe')}</p>
+                  {aroundRows.map((r: any) => {
+                    const me = myUserId != null && r.userId === myUserId
+                    return (
+                      <LeaderboardListRow
+                        key={r.userId || r.rank}
+                        testId={me ? 'leaderboard-my-rank-sticky' : undefined}
+                        rank={r.rank}
+                        name={r.name}
+                        points={r.points}
+                        // /around-me doesn't return avatarUrl for the current user;
+                        // use authStore.user.avatar (kept in sync on edit).
+                        avatarUrl={me ? (r.avatarUrl ?? user?.avatar) : r.avatarUrl}
+                        isMe={me}
+                      />
+                    )
+                  })}
+                </div>
+              ) : (
+                <LeaderboardListRow
+                  testId="leaderboard-my-rank-sticky"
+                  rank={myRank.rank ?? 0}
+                  name={myRank.name ?? user?.name ?? '?'}
+                  points={myRank.points ?? 0}
+                  // /my-rank doesn't return avatarUrl; use authStore.user.avatar.
+                  avatarUrl={myRank.avatarUrl ?? user?.avatar}
+                  isMe
+                />
+              )
             )}
           </>
         )}
