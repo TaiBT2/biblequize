@@ -14,10 +14,10 @@ soft-404 (URL không tồn tại trả 200 + NotFound không noindex) và /leade
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
 - CRW-2 canonical /leaderboard
-  - Status: [!] STAGED (chưa commit) · Files: `pages/Leaderboard.tsx` (thêm PageMeta canonicalPath="/leaderboard")
-  - **BLOCKER**: Leaderboard.tsx đang bị **automation song song rewrite** (LBF-4 around-me, uncommitted WIP).
-    `git add` cả file sẽ ship feature dở của họ → để staged trong working tree; sẽ deploy khi LBF commit.
-    Canonical là client-side (JS-render, /leaderboard không prerender) nên delay không mất SEO.
+  - Status: [x] DONE + deployed `8df34b08` · Files: `pages/Leaderboard.tsx` (PageMeta canonicalPath="/leaderboard")
+  - Resolved tự nhiên: process song song commit `936cf238 (LBF-4)` đã cuốn luôn canonical của tôi (whole-file add).
+    Deploy HEAD kèm leaderboard work đã-commit của họ (verified Playwright: canonical=https://forbible.org/leaderboard,
+    render sạch, 8 console-error chỉ là 502 API do smoke không có backend — prod API=200 OK).
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
 ### Note
