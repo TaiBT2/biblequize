@@ -50,8 +50,10 @@ class PublicLeaderboardControllerTest extends BaseControllerTest {
         mockMvc.perform(get("/api/public/leaderboard"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].userId").value("user-1"))
-                .andExpect(jsonPath("$[0].points").value(24500));
+                .andExpect(jsonPath("$[0].name").value("Test User"))
+                .andExpect(jsonPath("$[0].points").value(24500))
+                // LBF-5: guest endpoint must NOT leak the internal userId
+                .andExpect(jsonPath("$[0].userId").doesNotExist());
     }
 
     @Test

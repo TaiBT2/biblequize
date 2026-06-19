@@ -104,11 +104,17 @@ public class PublicLeaderboardController {
         return result;
     }
 
-    /** Maps native query rows [userId, name, avatarUrl, points, questions] to response maps. */
+    /**
+     * Maps native query rows [userId, name, avatarUrl, points, questions] to
+     * response maps. LBF-5: the raw {@code userId} (UUID) is deliberately NOT
+     * exposed on this guest endpoint — anonymous visitors only need
+     * name/avatar/points/questions, and leaking internal ids is needless. The
+     * authenticated {@link LeaderboardController} still returns userId (the FE
+     * needs it to highlight the current user).
+     */
     private List<Map<String, Object>> mapLeaderboardRows(List<Object[]> rows) {
         return rows.stream().map(row -> {
             Map<String, Object> m = new HashMap<>();
-            m.put("userId", row[0]);
             m.put("name", row[1] != null ? row[1] : "An danh");
             m.put("avatarUrl", row[2]);
             m.put("points", row[3] != null ? ((Number) row[3]).intValue() : 0);
