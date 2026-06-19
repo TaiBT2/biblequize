@@ -23,7 +23,11 @@
 ### Tasks
 
 - GP-1 Guest branch trong Practice.startQuiz + gate logged-in-only queries
-  - Status: [ ] TODO · Files: `pages/Practice.tsx`, `pages/__tests__/Practice.test.tsx`
+  - Status: [x] DONE + deployed `af67d2da` · Files: `pages/Practice.tsx`, `pages/__tests__/Practice.test.tsx`
+  - **Verified prod (Playwright, guest no-localStorage)**: /practice load sạch (hết banner "Unauthorized");
+    Bắt Đầu → /quiz render câu thật "Sô-phô-ni 2:3" (4 đáp án, 1/10); trả lời → "Chính xác! +52 Điểm"
+    (chấm client-side); **0 console errors** (hết 401 storm); network chỉ `GET /api/books` + `GET /api/questions`
+    (200), KHÔNG có `POST /api/sessions`. Backend `/api/questions` guest = HTTP 200, shape khớp Quiz interface.
   - Impl: đọc `isAuthenticated` (authStore). Khi guest → `GET /api/questions` với filter hiện tại →
     `navigate('/quiz', { state: { questions, mode:'practice', ...settings } })` (KHÔNG sessionId);
     empty → errorMsg. Khi authed → giữ nguyên `POST /api/sessions`. Gate `practice/recent` +
