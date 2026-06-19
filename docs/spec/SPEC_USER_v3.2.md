@@ -2016,13 +2016,15 @@ Grid layout, locked = grayscale + lock icon. Click → modal hiện điều ki�
 > **Source:** `LeaderboardController`; web `pages/Leaderboard.tsx`.
 
 ### 22.1 Periods
-| Endpoint | Scope |
-|---|---|
-| `GET /api/leaderboard/daily` | Hôm nay (UTC) |
-| `GET /api/leaderboard/weekly` | Tuần này |
-| `GET /api/leaderboard/monthly` | Tháng này |
-| `GET /api/leaderboard/all-time` | Toàn thời gian |
-| `GET /api/leaderboard/season` | Mùa hiện tại (window-sum UDP) — **BE-only, tab ẩn** |
+| Endpoint | Scope | UI |
+|---|---|---|
+| `GET /api/leaderboard/daily` | Hôm nay (ICT) | **BE-only** (LBF-8) — không có tab |
+| `GET /api/leaderboard/weekly` | Tuần này | ✅ tab "Hàng tuần" |
+| `GET /api/leaderboard/monthly` | Tháng này | **BE-only** (LBF-8) — không có tab |
+| `GET /api/leaderboard/all-time` | Toàn thời gian | ✅ tab "Tất cả" (mặc định) |
+| `GET /api/leaderboard/season` | Mùa hiện tại (window-sum UDP) | **BE-only**, tab ẩn (LBF-9) |
+
+> **LBF-8 (DECISIONS 2026-06-18):** FE chỉ surface 2 tab **all-time + weekly**. `daily`/`monthly` (+ `*/my-rank`) giữ live ở BE nhưng **chưa lên UI giai đoạn đầu** — board chu kỳ ngắn càng thưa, con số nhỏ phản tác dụng (xem `DECISIONS.md` 2026-06-18 "né con số" + LBF-11). KHÔNG xoá endpoint.
 
 ### 22.2 Season leaderboard — **tab thi đua ẩn giai đoạn đầu (LBF-9, DECISIONS 2026-06-18)**
 - **Trạng thái:** tab "Mùa" trên `/leaderboard` + SeasonCard trên trang Ranked **ẩn** cho giai đoạn early-launch (board 3 tháng trùng lặp dữ liệu thưa của all-time + phơi con số yếu). Endpoint `GET /api/leaderboard/season` + `/api/seasons/active` giữ **ngủ** (không drop).

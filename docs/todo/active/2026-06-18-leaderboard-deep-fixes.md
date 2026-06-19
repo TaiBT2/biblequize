@@ -62,7 +62,7 @@ P0 (correctness): LBF-1, LBF-2 · P1: LBF-11 (launch-blocking presentation), LBF
   - Checklist: impl · Tầng 3 FE · commit
 
 - LBF-8 (P2) Spec: daily/monthly = BE-only, KHÔNG thêm tab — **decision 2026-06-18: KHÔNG làm**
-  - Status: [ ] TODO · Files: `SPEC_USER §22.1` · Test: n/a (spec) + `audit.sh`
+  - Status: [x] DONE · Files: `SPEC_USER §22.1` (cột UI + note BE-only) · Test: audit.sh broken=100 (no NEW)
   - Detail: **Quyết định: KHÔNG thêm tab daily/monthly.** Lý do: giai đoạn đầu ít user → board daily/monthly thưa, con số nhỏ phản tác dụng (xem LBF-11). FE giữ 3 tab all_time/season/weekly. Cập nhật `SPEC_USER §22.1` đánh dấu `/daily` + `/monthly` là **BE-only (chưa surface UI giai đoạn đầu)** — KHÔNG xoá endpoint.
   - **Spec impact**: [x] SPEC_USER §22.1 · **Spec strategy**: [ ] (a) update inline
   - Checklist: spec cập nhật · `audit.sh` no NEW broken · commit
