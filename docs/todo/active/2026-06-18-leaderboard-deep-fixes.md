@@ -32,7 +32,7 @@ P0 (correctness): LBF-1, LBF-2 · P1: LBF-11 (launch-blocking presentation), LBF
   - Checklist: impl · Tầng 1+2+3 (BE+FE) pass · commit
 
 - LBF-3 (P1) BE: aggregate/ZSET thay full-table scan (scalability)
-  - Status: [ ] TODO · Files: TBD — design trước (CacheService/Redis ZSET hoặc bảng `user_leaderboard_stats` + Flyway V{n}), `SessionService.completeSession` hook · Test: JUnit + load assertion
+  - Status: [~] DEFER (user 2026-06-19: "bỏ qua đã, sẽ làm sau") — giá trị thấp giai đoạn đầu (ít row → full-scan vẫn nhanh); đụng `SessionService` đường ghi điểm nóng → cần design doc + backfill + rollback, để session riêng. Khuyến nghị hướng: **bảng tổng hợp `user_leaderboard_stats`** (giữ tie-break 3 tầng dễ hơn ZSET). · Files: TBD · Test: JUnit + load assertion
   - Detail: all-time/season chạy `SUM ... GROUP BY user_id` toàn bảng mỗi cache-miss (60s); `my-rank` all-time nạp hết UDP user vào JVM rồi sum + thêm 1 full-scan count. Sẽ chậm tuyến tính theo (users×days). Đề xuất: Redis Sorted Set per-period (`ZREVRANGE` top-N, `ZREVRANK` my-rank O(log n), around-me = `ZRANGE` quanh rank) — giải quyết luôn LBF-1 (rank nhất quán) + LBF-4 (around-me). HOẶC bảng denormalized cập nhật tại completeSession. **Task lớn — chia nhỏ khi vào làm; cần design doc + user review trước khi đụng `SessionService` (sensitive).**
   - **Spec impact**: [x] None (perf, no behavior change nếu giữ ngữ nghĩa) · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: design doc · impl từng phần <100 LOC · Tầng 3 BE · benchmark before/after · commit từng phần
@@ -53,7 +53,7 @@ P0 (correctness): LBF-1, LBF-2 · P1: LBF-11 (launch-blocking presentation), LBF
   - Checklist: impl · migration clean DB trống · Tầng 3 BE · spec cập nhật · commit
 
 - LBF-6 (P2) FE: fix dead-zone bảng 1–2 người  — **gộp thực thi vào LBF-11**
-  - Status: [ ] TODO (làm cùng LBF-11) · Files: `Leaderboard.tsx`, test · Test: Vitest (list.length 1 và 2 → không trắng)
+  - Status: [x] DONE (cùng LBF-11 board `a81fb0a8` — seed-state khi <10 người bao trùm dead-zone 1–2) · Files: `Leaderboard.tsx`, test
   - Detail: Podium chỉ render khi `top3.length>=3`; với 1–2 user, nhánh `noData` bị bỏ (list.length!==0) và list cũng null (`rest.length===0 && list.length<=3`) → **màn hình trắng**. Sửa: fallback render list thường khi <3 người (hoặc podium linh hoạt 1–2 chỗ). Là 1 mặt của chiến lược low-data → triển khai trong LBF-11.
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl · Tầng 3 FE · commit

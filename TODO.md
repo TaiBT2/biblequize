@@ -7,7 +7,7 @@
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
-| 2026-06-18 | Leaderboard deep-dive fixes: rank tie-break bug + dedup root-cause + scalability ZSET + around-me + privacy + low-data "né con số" + dẹp mùa thi đua (LBF-1..13) | TODO | [detail](docs/todo/active/2026-06-18-leaderboard-deep-fixes.md) |
+| 2026-06-18 | Leaderboard deep-dive fixes: rank tie-break + dedup + around-me + privacy + low-data "né con số" + dẹp mùa thi đua (LBF-1..13; LBF-3 ZSET defer) | DONE (12/13, LBF-3 defer) | [detail](docs/todo/active/2026-06-18-leaderboard-deep-fixes.md) |
 | 2026-06-18 | SEO pillar page /cau-do-kinh-thanh (content VN ngách Tin Lành + FAQPage + prerender + sitemap) (PIL-1..2) | DONE | [detail](docs/todo/active/2026-06-18-pillar-page-cau-do-kinh-thanh.md) |
 | 2026-06-18 | Homepage `/` cho khách thấy LandingPage giàu chữ (thay Onboarding rỗng) + prerender / (HLG-1..2) | DONE | [detail](docs/todo/active/2026-06-18-homepage-landing-for-guests.md) |
 | 2026-06-18 | Lighthouse prod (BP100/SEO 92→100 sau đổi CTA "Play Now"/A11y 96/Perf 93): CTA text + báo cáo contrast/perf (LH-1) | DONE | [detail](docs/todo/active/2026-06-18-lighthouse-seo-a11y.md) |
