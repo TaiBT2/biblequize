@@ -2034,6 +2034,11 @@ Grid layout, locked = grayscale + lock icon. Click → modal hiện điều ki�
 ### 22.3 Around-me (LBF-4 2026-06-18 — implemented)
 `GET /api/leaderboard/around-me?period=weekly|all-time&radius=5` → `radius` người trên + bạn + `radius` dưới, mỗi row có `rank` tuyệt đối. Dùng lại board query (cùng tie-break §22.5) với `offset = rank - radius - 1`. Rỗng khi chưa đăng nhập / 0 điểm. FE: thay dòng sticky 1-dòng bằng cửa sổ này khi user ngoài top hiển thị (fallback về sticky nếu rỗng).
 
+### 22.6 Privacy opt-out (LBF-5 2026-06-19)
+- `users.leaderboard_visible` (V69, default TRUE). Toggle ở Profile → Quyền riêng tư ("Hiển thị tôi trên bảng xếp hạng") qua `PATCH /api/me { leaderboardVisible }`.
+- Khi FALSE: user bị loại khỏi **cả hiển thị board lẫn đếm hạng** (6 native + 1 JPQL query filter `leaderboard_visible = TRUE`) → ẩn mình không làm xê dịch hạng người khác; vẫn tự xem được hạng riêng.
+- `/api/public/leaderboard` (guest) KHÔNG trả `userId` (chống lộ UUID nội bộ).
+
 ### 22.4 UI widgets
 - `LeaderboardRankWidget` — rank hiện tại trên Home.
 - `LeaderboardSeasonWidget` — season standing.
