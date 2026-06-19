@@ -8,7 +8,7 @@
 | Date | Title | Status | Detail |
 |---|---|---|---|
 | 2026-06-17 | Mobile app (Capacitor wrap web) — chỉ trang User (MOB-0..5; code DONE, AAB built, emulator smoke OK; store/iOS owner-gated) | IN PROGRESS | [detail](docs/todo/active/2026-06-17-mobile-capacitor.md) |
-| 2026-06-17 | Group Collective Growth "Cùng nhau thuộc Lời" — differentiator (BL-23, CG-1 DONE, CG-2..8) | IN PROGRESS | [detail](docs/todo/active/2026-06-17-group-collective-growth.md) |
+| 2026-06-17 | Group Collective Growth "Cùng nhau thuộc Lời" — differentiator (BL-23, CG-1..8) | DONE | [archive](docs/todo/archive/2026-06-17-group-collective-growth.md) |
 | 2026-06-18 | i18n locale-dedup: chỉ load ngôn ngữ active (vi-user bỏ ~35kB gz en chunk) (ILD-1) | DONE | [detail](docs/todo/active/2026-06-18-i18n-locale-dedup.md) |
 | 2026-06-18 | CSP-safe font loading (bỏ inline onload → external /load-fonts.js; gỡ phụ thuộc unsafe-inline) (CSP-1..2) | DONE | [detail](docs/todo/active/2026-06-18-csp-safe-font-loading.md) |
 | 2026-06-18 | Bundle vendor + locale chunk splitting (entry 651kB → 125kB) (BVC-1) | DONE | [detail](docs/todo/active/2026-06-18-bundle-vendor-chunk-splitting.md) |
