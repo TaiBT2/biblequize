@@ -61,9 +61,9 @@
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: impl ✅ · Tầng 3 (FE 1331 ≥ baseline 1297) ✅ · validate:i18n no new debt ✅ · commit
 - CG-8 Spec + full regression
-  - Status: [ ] TODO · Files: `docs/spec/SPEC_GROUP_v1.3.md` (§X Collective Growth), `docs/spec/BACKLOG.md` (BL-23 → DONE) · Test: `bash tools/spec-audit/audit.sh`
-  - **Spec impact**: [x] SPEC_GROUP §X new · **Spec strategy**: [x] (a) update inline (khi ship)
-  - Checklist: author §X · BL-23 DONE · `audit.sh` no NEW broken · **Tầng 3 full regression (Vitest + JUnit ≥ baseline)** · commit
+  - Status: [x] DONE · Files: `docs/spec/SPEC_GROUP_v1.3.md` (§18 Collective Growth + §15.7 endpoint + §19 cross-ref renumber + v1.5 changelog), `docs/spec/BACKLOG.md` (BL-23 → DONE) · Test: `bash tools/spec-audit/audit.sh`
+  - **Spec impact**: [x] SPEC_GROUP §18 new · **Spec strategy**: [x] (a) update inline
+  - Checklist: author §18 ✅ · BL-23 DONE ✅ · `audit.sh` exit 0 (no NEW broken) ✅ · Tầng 3 (BE 1075 + FE 1331 ≥ baseline) ✅ · commit
 
 ### Definition of Done
 - Tầng 3 pass (số test ≥ baseline) · không tsc/Java error · audit.sh no new broken
