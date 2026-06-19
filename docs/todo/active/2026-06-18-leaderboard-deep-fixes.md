@@ -43,8 +43,11 @@ P0 (correctness): LBF-1, LBF-2 · P1: LBF-11 (launch-blocking presentation), LBF
   - **Spec impact**: [x] SPEC_USER §22.3 (catch-up) · **Spec strategy**: [ ] (a) update inline (mark implemented)
   - Checklist: impl · Tầng 3 (BE+FE) · spec §22.3 cập nhật · commit
 
-- LBF-5 (P1) BE: privacy — leaderboard visibility opt-out + bỏ userId khỏi public response
-  - Status: [ ] TODO · Files: User entity/settings, leaderboard queries, `PublicLeaderboardController.java`, Flyway V{n} · Test: JUnit (opted-out user không xuất hiện)
+- LBF-5 (P1) BE+FE: privacy — leaderboard visibility opt-out + bỏ userId khỏi public response
+  - Status: [x] DONE (4 commit: 5a userId / 5b migration+endpoint / 5c query filter / 5d FE toggle)
+  - 5a `492eab18` bỏ userId khỏi `/api/public/leaderboard`. 5b `7f181c90` V69 `leaderboard_visible` + PATCH/GET /api/me. 5c `ca974f14` filter 6 native + 1 JPQL query (display + count → ranks nhất quán). 5d FE toggle `PrivacySettings.tsx` ở Profile + i18n + test.
+  - Ngữ nghĩa: opt-out = lọc khỏi CẢ hiển thị lẫn đếm hạng → hidden user không làm xê dịch hạng người khác; vẫn tự xem được hạng mình.
+  - Test: BE 883 · FE 1342 pass
   - Detail: `SPEC_USER §21` hứa "leaderboard visibility" nhưng KHÔNG implement — mọi user >0 điểm đều hiện. Thêm flag `leaderboardVisible` (default true) + filter trong query. Đồng thời `PublicLeaderboardController` đang trả raw `userId` (UUID) cho guest vô danh → bỏ field này khỏi response public (chỉ name+avatar+points+questions).
   - **Spec impact**: [x] SPEC_USER §21 + §22 · **Spec strategy**: [ ] (a) update inline
   - Checklist: impl · migration clean DB trống · Tầng 3 BE · spec cập nhật · commit
