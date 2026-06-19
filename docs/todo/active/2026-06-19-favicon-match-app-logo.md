@@ -7,7 +7,9 @@
 ### Tasks
 
 - FAV-1 Thay favicon → gold-coin + open-book (đúng logo app) + regenerate cả bộ icon
-  - Status: [ ] TODO · Files: `public/favicon.svg` (variant A: radial gold coin + sách glyph
+  - Status: [x] DONE + deployed `ed3975da` · Verified prod: served favicon.svg = `<circle>`+`radialGradient`
+    (hết path thập tự), favicon.ico = 3072B mới, build+1346 test pass.
+  - Files: `public/favicon.svg` (variant A: radial gold coin + sách glyph
     của `SidebarHeader.tsx`), `scripts/gen-favicons.mjs` (sharp regen, no new dep),
     `public/{favicon-16x16,favicon-32x32,apple-touch-icon,android-chrome-192x192,android-chrome-512x512}.png`,
     `public/favicon.ico` (PNG-in-ICO 16+32), `index.html` (sửa comment "cross"→ book)
