@@ -19,6 +19,18 @@ vi.mock('../../api/client', () => ({
   },
 }))
 
+// Auth state is toggled per-test. Default = logged in (authed path: POST
+// /api/sessions). Guest tests flip this to false to exercise the local
+// no-session path (GET /api/questions).
+let mockIsAuthenticated = true
+vi.mock('../../store/authStore', () => ({
+  useAuthStore: (selector?: (s: any) => any) => {
+    const state = { isAuthenticated: mockIsAuthenticated, user: null, isLoading: false, isAdmin: false }
+    return selector ? selector(state) : state
+  },
+  useAuth: () => ({ isAuthenticated: mockIsAuthenticated }),
+}))
+
 import Practice from '../Practice'
 
 function renderPractice() {
@@ -35,6 +47,7 @@ function renderPractice() {
 describe('Practice Mode', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockIsAuthenticated = true
     mockApiGet.mockImplementation((url: string) => {
       if (url === '/api/books' || url.endsWith('/books'))
         return Promise.resolve({ data: [
@@ -201,5 +214,68 @@ describe('Practice Mode', () => {
     renderPractice()
     const vFrom = screen.getByTestId('practice-verse-from') as HTMLInputElement
     expect(vFrom).toBeDisabled()
+  })
+
+  // ── Guest (logged-out) local practice — SPEC_USER §5.1 "guest có thể chơi" ──
+  const SAMPLE_Q = {
+    id: 'q1', book: 'Genesis', chapter: 1, difficulty: 'easy',
+    type: 'multiple_choice_single', content: 'Câu hỏi?',
+    options: ['A', 'B', 'C', 'D'], correctAnswer: [0], explanation: '',
+  }
+
+  function mockGuestApi(questions: any[]) {
+    mockApiGet.mockImplementation((url: string) => {
+      if (url === '/api/books' || url.endsWith('/books'))
+        return Promise.resolve({ data: [
+          { id: '1', name: 'Genesis', nameVi: 'Sáng Thế Ký', testament: 'OT', orderIndex: 1 },
+        ] })
+      if (url === '/api/questions') return Promise.resolve({ data: questions })
+      return Promise.reject(new Error('Not found'))
+    })
+  }
+
+  it('guest starts a local no-session quiz via /api/questions (not POST /api/sessions)', async () => {
+    mockIsAuthenticated = false
+    mockGuestApi([SAMPLE_Q])
+    renderPractice()
+    const user = userEvent.setup()
+    await waitFor(() => expect(screen.getByText(/Bắt Đầu Luyện Tập/)).toBeInTheDocument())
+    await user.click(screen.getByText(/Bắt Đầu Luyện Tập/).closest('button')!)
+
+    await waitFor(() => {
+      expect(mockApiGet).toHaveBeenCalledWith('/api/questions', expect.objectContaining({
+        params: expect.objectContaining({ limit: 10 }),
+      }))
+    })
+    // No server session is created for guests
+    expect(mockApiPost).not.toHaveBeenCalledWith('/api/sessions', expect.anything())
+    // Navigates to /quiz with questions but NO sessionId (Quiz.tsx local mode)
+    const navCall = mockNavigate.mock.calls.find((c: any[]) => c[0] === '/quiz')
+    expect(navCall).toBeTruthy()
+    expect(navCall![1].state.mode).toBe('practice')
+    expect(navCall![1].state.questions).toHaveLength(1)
+    expect(navCall![1].state.sessionId).toBeUndefined()
+  })
+
+  it('guest does not fire logged-in-only history queries (practice/recent + wrong-count)', async () => {
+    mockIsAuthenticated = false
+    mockGuestApi([SAMPLE_Q])
+    renderPractice()
+    await waitFor(() => expect(screen.getByText(/Bắt Đầu Luyện Tập/)).toBeInTheDocument())
+    expect(mockApiGet).not.toHaveBeenCalledWith('/api/sessions/practice/recent', expect.anything())
+    expect(mockApiGet).not.toHaveBeenCalledWith('/api/sessions/practice/wrong-questions/count')
+  })
+
+  it('guest shows error when no questions match the filters', async () => {
+    mockIsAuthenticated = false
+    mockGuestApi([])
+    renderPractice()
+    const user = userEvent.setup()
+    await waitFor(() => expect(screen.getByText(/Bắt Đầu Luyện Tập/)).toBeInTheDocument())
+    await user.click(screen.getByText(/Bắt Đầu Luyện Tập/).closest('button')!)
+    await waitFor(() => {
+      expect(screen.getByText(/Không tạo được phiên luyện tập/)).toBeInTheDocument()
+    })
+    expect(mockNavigate).not.toHaveBeenCalledWith('/quiz', expect.anything())
   })
 })

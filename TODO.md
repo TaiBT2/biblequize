@@ -3,10 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (86)
+## Active (87)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-19 | Guest practice play (no-session local mode) — fix `POST /api/sessions` 401 cho khách, chơi client-side qua `/api/questions` (GP-1) | TODO | [detail](docs/todo/active/2026-06-19-guest-practice-no-session.md) |
 | 2026-06-18 | Leaderboard deep-dive fixes: rank tie-break + dedup + around-me + privacy + low-data "né con số" + dẹp mùa thi đua (LBF-1..13; LBF-3 ZSET defer) | DONE (12/13, LBF-3 defer) | [detail](docs/todo/active/2026-06-18-leaderboard-deep-fixes.md) |
 | 2026-06-18 | SEO pillar page /cau-do-kinh-thanh (content VN ngách Tin Lành + FAQPage + prerender + sitemap) (PIL-1..2) | DONE | [detail](docs/todo/active/2026-06-18-pillar-page-cau-do-kinh-thanh.md) |
 | 2026-06-18 | Homepage `/` cho khách thấy LandingPage giàu chữ (thay Onboarding rỗng) + prerender / (HLG-1..2) | DONE | [detail](docs/todo/active/2026-06-18-homepage-landing-for-guests.md) |
