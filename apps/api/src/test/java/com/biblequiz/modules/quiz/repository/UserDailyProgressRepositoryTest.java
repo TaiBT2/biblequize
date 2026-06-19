@@ -136,6 +136,47 @@ class UserDailyProgressRepositoryTest {
                 "countUsersAheadOnDate must tie-break on created_at; was:\n" + sql);
     }
 
+    // ── LBF-5 (2026-06-19): leaderboard_visible privacy filter lock ──────────
+    // Hidden users (opted out via Settings) must be excluded from BOTH the
+    // board display and the rank counting, else hiding yourself would shift or
+    // mismatch everyone's ranks.
+
+    @Test
+    void findDailyLeaderboard_filtersHiddenUsers() throws Exception {
+        assertTrue(normalize(getQuery("findDailyLeaderboard",
+                java.time.LocalDate.class, int.class, int.class)).contains("leaderboard_visible = TRUE"),
+                "daily board must exclude leaderboard_visible = FALSE users");
+    }
+
+    @Test
+    void findWeeklyLeaderboard_filtersHiddenUsers() throws Exception {
+        assertTrue(normalize(getQuery("findWeeklyLeaderboard",
+                java.time.LocalDate.class, java.time.LocalDate.class, int.class, int.class))
+                .contains("leaderboard_visible = TRUE"),
+                "weekly board must exclude hidden users");
+    }
+
+    @Test
+    void findAllTimeLeaderboard_filtersHiddenUsers() throws Exception {
+        assertTrue(normalize(getQuery("findAllTimeLeaderboard", int.class, int.class))
+                .contains("leaderboard_visible = TRUE"), "all-time board must exclude hidden users");
+    }
+
+    @Test
+    void countUsersAheadAllTime_filtersHiddenUsers() throws Exception {
+        assertTrue(normalize(getQuery("countUsersAheadAllTime",
+                int.class, int.class, java.time.LocalDateTime.class)).contains("leaderboard_visible = TRUE"),
+                "all-time rank count must exclude hidden users");
+    }
+
+    @Test
+    void countUsersAheadOnDate_filtersHiddenUsers() throws Exception {
+        assertTrue(normalize(getQuery("countUsersAheadOnDate",
+                java.time.LocalDate.class, int.class, int.class, java.time.LocalDateTime.class))
+                .contains("leaderboardVisible = TRUE"),
+                "daily rank count must exclude hidden users");
+    }
+
     private void assertCountAheadTieBreak(String sql, String name) {
         String n = normalize(sql);
         assertTrue(n.contains("tq > :questions"),

@@ -52,7 +52,8 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
     // DESC, created_at ASC) so /my-rank matches the user's real board position.
     // Without the questions/created_at tiers, equal-point users all collapsed
     // to the same rank, which disagreed with the sequential board ordering.
-    @Query("SELECT COUNT(DISTINCT udp.user.id) FROM UserDailyProgress udp WHERE udp.date = :date AND ("
+    @Query("SELECT COUNT(DISTINCT udp.user.id) FROM UserDailyProgress udp WHERE udp.date = :date "
+            + "AND udp.user.leaderboardVisible = TRUE AND ("
             + "COALESCE(udp.pointsCounted, 0) > :points "
             + "OR (COALESCE(udp.pointsCounted, 0) = :points AND COALESCE(udp.questionsCounted, 0) > :questions) "
             + "OR (COALESCE(udp.pointsCounted, 0) = :points AND COALESCE(udp.questionsCounted, 0) = :questions "
@@ -66,6 +67,7 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
             + "SELECT SUM(COALESCE(udp.points_counted, 0)) AS total, "
             + "SUM(COALESCE(udp.questions_counted, 0)) AS tq, u.created_at AS cat "
             + "FROM user_daily_progress udp JOIN users u ON udp.user_id = u.id "
+            + "AND u.leaderboard_visible = TRUE "
             + "WHERE udp.date BETWEEN :startDate AND :endDate "
             + "GROUP BY udp.user_id, u.created_at "
             + "HAVING total > :points "
@@ -80,6 +82,7 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
             + "SELECT SUM(COALESCE(udp.points_counted, 0)) AS total, "
             + "SUM(COALESCE(udp.questions_counted, 0)) AS tq, u.created_at AS cat "
             + "FROM user_daily_progress udp JOIN users u ON udp.user_id = u.id "
+            + "AND u.leaderboard_visible = TRUE "
             + "GROUP BY udp.user_id, u.created_at "
             + "HAVING total > :points "
             + "OR (total = :points AND tq > :questions) "
@@ -97,6 +100,7 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
     @Query(value = "SELECT u.id AS userId, u.name AS name, u.avatar_url AS avatarUrl, "
             + "COALESCE(udp.points_counted, 0) AS points, COALESCE(udp.questions_counted, 0) AS questions "
             + "FROM user_daily_progress udp JOIN users u ON udp.user_id = u.id "
+            + "AND u.leaderboard_visible = TRUE "
             + "WHERE udp.date = :date AND COALESCE(udp.points_counted, 0) > 0 "
             + "ORDER BY points DESC, questions DESC, u.created_at ASC "
             + "LIMIT :limit OFFSET :offset", nativeQuery = true)
@@ -111,6 +115,7 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
     @Query(value = "SELECT u.id AS userId, u.name AS name, u.avatar_url AS avatarUrl, "
             + "SUM(COALESCE(udp.points_counted, 0)) AS points, SUM(COALESCE(udp.questions_counted, 0)) AS questions "
             + "FROM user_daily_progress udp JOIN users u ON udp.user_id = u.id "
+            + "AND u.leaderboard_visible = TRUE "
             + "WHERE udp.date BETWEEN :startDate AND :endDate "
             + "GROUP BY u.id, u.name, u.avatar_url, u.created_at "
             + "HAVING SUM(COALESCE(udp.points_counted, 0)) > 0 "
@@ -125,6 +130,7 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
     @Query(value = "SELECT u.id AS userId, u.name AS name, u.avatar_url AS avatarUrl, "
             + "SUM(COALESCE(udp.points_counted, 0)) AS points, SUM(COALESCE(udp.questions_counted, 0)) AS questions "
             + "FROM user_daily_progress udp JOIN users u ON udp.user_id = u.id "
+            + "AND u.leaderboard_visible = TRUE "
             + "GROUP BY u.id, u.name, u.avatar_url, u.created_at "
             + "HAVING SUM(COALESCE(udp.points_counted, 0)) > 0 "
             + "ORDER BY points DESC, questions DESC, u.created_at ASC "
@@ -137,6 +143,7 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
             + "SELECT SUM(COALESCE(udp.points_counted, 0)) AS total, "
             + "SUM(COALESCE(udp.questions_counted, 0)) AS tq, u.created_at AS cat "
             + "FROM user_daily_progress udp JOIN users u ON udp.user_id = u.id "
+            + "AND u.leaderboard_visible = TRUE "
             + "WHERE udp.date BETWEEN :startDate AND :endDate "
             + "GROUP BY udp.user_id, u.created_at "
             + "HAVING total > :points "
