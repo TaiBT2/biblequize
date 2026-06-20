@@ -29,8 +29,8 @@
   - Checklist: impl · Tầng 1+2 pass · Tầng 3 trước commit · commit
 
 - MRO-4 Tách subcomponent đưa QuizEndScreen < 300 LOC
-  - Status: [ ] TODO · Files: `QuizEndScreen.tsx` (+ file con mới trong `components/multiplayer/`) · Test: existing tests pass
-  - Detail: Tách `HeroCard`, `RankingList`, action panels. Mục tiêu < 300 LOC theo convention.
+  - Status: [x] DONE · Files: `QuizEndScreen.tsx` (413→248 LOC) + `quizEnd/quizEndParts.tsx` (Stat/ActionButton) + `quizEnd/PlayerHeroCard.tsx` + `quizEnd/EndRankingList.tsx` · Test: Tầng 3 1369 pass
+  - Detail: Tách hero card, ranking list, atoms ra file riêng. QuizEndScreen = 248 LOC < 300.
   - **Spec impact**: [x] None
   - **Spec strategy**: [x] (c) `[no-spec-impact]`
   - Checklist: impl · Tầng 1+2 pass · Tầng 3 trước commit · commit

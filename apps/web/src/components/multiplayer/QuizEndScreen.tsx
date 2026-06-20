@@ -1,6 +1,9 @@
 import { useMemo, useRef } from 'react';
 import Podium from './Podium';
 import ConfettiBurst from './ConfettiBurst';
+import { Stat, ActionButton } from './quizEnd/quizEndParts';
+import PlayerHeroCard from './quizEnd/PlayerHeroCard';
+import EndRankingList from './quizEnd/EndRankingList';
 import type { PlayerScore } from '../../pages/room/RoomOverlays';
 
 interface Props {
@@ -21,8 +24,6 @@ interface Props {
   onHome: () => void;
   onAnalytics?: () => void;
 }
-
-const FILL_STYLE = { fontVariationSettings: "'FILL' 1" } as const;
 
 function formatDuration(ms: number | null | undefined): string {
   if (!ms || ms <= 0) return '—';
@@ -150,77 +151,7 @@ export function QuizEndScreen({
 
           {/* Player view: personal hero card sits between title and podium */}
           {!isHost && me && (
-            <div className="pt-4 pb-2">
-              <div
-                data-testid="end-hero-card"
-                className="mx-auto rounded-2xl p-5 relative overflow-hidden"
-                style={{
-                  maxWidth: 720,
-                  background: 'rgba(50,52,64,0.78)',
-                  backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(232,168,50,0.3)',
-                }}
-              >
-                <div className="grid grid-cols-[auto_1fr] gap-4 lg:gap-5 items-center">
-                  <div className="relative shrink-0">
-                    <div
-                      className="rounded-full grid place-items-center font-bold text-white"
-                      style={{
-                        width: 80, height: 80,
-                        background: 'linear-gradient(135deg, #4ade80 0%, #047857 100%)',
-                        fontSize: 28,
-                      }}
-                    >
-                      {(me.username?.[0] ?? myUsername?.[0] ?? '?').toUpperCase()}
-                    </div>
-                    {myRank && (
-                      <div
-                        className="absolute -bottom-1 -right-1 grid place-items-center font-black"
-                        style={{
-                          width: 36, height: 36,
-                          borderRadius: '50%',
-                          background: myRank === 1
-                            ? 'linear-gradient(135deg, #f4c560 0%, #e8a832 100%)'
-                            : myRank === 2
-                            ? 'linear-gradient(135deg, #f3f4f6 0%, #9ca3af 100%)'
-                            : myRank === 3
-                            ? 'linear-gradient(135deg, #cd7f32 0%, #8b5a2b 100%)'
-                            : 'rgba(50,52,64,0.9)',
-                          color: '#11131e',
-                          border: '2px solid #11131e',
-                        }}
-                      >
-                        {myRank}
-                      </div>
-                    )}
-                  </div>
-                  <div className="min-w-0">
-                    <div
-                      className="text-xs font-bold uppercase tracking-wider mb-1"
-                      style={{ color: '#9ca3af' }}
-                    >
-                      Bạn về thứ
-                    </div>
-                    <div
-                      className="font-black text-2xl lg:text-4xl text-white tracking-tight"
-                      style={{ lineHeight: 1.1 }}
-                    >
-                      {myRank ? `Hạng ${myRank}` : 'Chưa xếp hạng'}
-                    </div>
-                    <div className="text-sm" style={{ color: '#d1d5db' }}>
-                      {me.username ?? myUsername}{me.score != null ? ` · ${me.score} điểm` : ''}
-                    </div>
-                    <div className="grid grid-cols-3 gap-3 mt-3 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-                      <Stat label="Đúng" value={`${me.correctAnswers ?? 0}/${me.totalAnswered ?? totalQuestions}`} color="#4ade80" />
-                      {/* BE returns accuracy as 0-100 already (RoomPlayer.getAccuracy
-                          multiplies by 100). Don't double-scale. */}
-                      <Stat label="Chính xác" value={`${Math.round(me.accuracy ?? 0)}%`} color="#e8a832" />
-                      <Stat label="Tổng câu" value={`${totalQuestions}`} color="#d1d5db" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <PlayerHeroCard me={me} myUsername={myUsername} myRank={myRank} totalQuestions={totalQuestions} />
           )}
 
           <Podium results={results} compact={!isHost} />
@@ -307,114 +238,11 @@ export function QuizEndScreen({
           )}
 
           {/* Quick rankings — host gets a longer list, player gets a peek */}
-          <div
-            className="rounded-2xl p-4 mt-3"
-            style={{
-              // Secondary panel — opaque bg instead of backdrop blur (see
-              // match-stats note above) to keep the result screen smooth.
-              background: 'rgba(40,42,54,0.92)',
-              border: '1px solid rgba(255,255,255,0.06)',
-              animation: 'fadeIn 0.6s ease-out 0.5s backwards',
-            }}
-          >
-            <div
-              className="text-[10px] font-bold uppercase tracking-wider mb-3"
-              style={{ color: '#9ca3af' }}
-            >
-              Bảng xếp hạng
-            </div>
-            <div className="space-y-2 max-h-64 overflow-y-auto">
-              {ranked
-                .map((r, i) => {
-                  const isMe = myUserId ? r.playerId === myUserId : r.username === myUsername;
-                  const rank = r.finalRank ?? i + 1;
-                  return (
-                    <div
-                      key={r.playerId}
-                      className="flex items-center gap-2 py-1"
-                      style={isMe ? {
-                        background: 'rgba(232,168,50,0.08)',
-                        border: '1px solid rgba(232,168,50,0.25)',
-                        borderRadius: 8,
-                        padding: '4px 8px',
-                      } : undefined}
-                    >
-                      <span
-                        className="font-bold text-sm w-5"
-                        style={{
-                          color: rank === 1 ? '#e8a832' : rank === 2 ? '#d1d5db' : rank === 3 ? '#cd7f32' : '#9ca3af',
-                        }}
-                      >
-                        {rank}.
-                      </span>
-                      <span className="text-xs font-semibold text-white flex-1 truncate">
-                        {r.username}{rank === 1 ? ' 👑' : ''}{isMe ? ' (bạn)' : ''}
-                      </span>
-                      <span
-                        className="font-bold text-xs"
-                        style={{ color: rank === 1 ? '#e8a832' : '#fff' }}
-                      >
-                        {r.score}
-                      </span>
-                    </div>
-                  );
-                })}
-            </div>
-          </div>
+          <EndRankingList ranked={ranked} myUsername={myUsername} myUserId={myUserId} />
         </aside>
       </div>
     </div>
   );
 }
-
-const Stat: React.FC<{ label: string; value: string; color?: string; border?: boolean }> = ({ label, value, color = '#fff', border }) => (
-  <div className={border ? 'border-x' : ''} style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-    <div className="text-[10px] uppercase tracking-wider" style={{ color: '#9ca3af' }}>
-      {label}
-    </div>
-    <div className="font-bold text-base lg:text-lg mt-0.5" style={{ color }}>
-      {value}
-    </div>
-  </div>
-);
-
-const ActionButton: React.FC<{
-  primary?: boolean;
-  small?: boolean;
-  danger?: boolean;
-  icon: string;
-  label: string;
-  onClick: () => void;
-  testId?: string;
-}> = ({ primary, small, danger, icon, label, onClick, testId }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    data-testid={testId}
-    className={`w-full inline-flex items-center justify-center gap-2 rounded-xl font-bold ${small ? 'py-2.5 text-xs' : 'py-3 text-sm'}`}
-    style={
-      primary
-        ? {
-            background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
-            color: '#11131e',
-            boxShadow: '0 6px 20px rgba(232,168,50,0.3)',
-          }
-        : danger
-        ? {
-            background: 'rgba(248,113,113,0.08)',
-            color: '#f87171',
-            border: '1px solid rgba(248,113,113,0.25)',
-          }
-        : {
-            background: 'rgba(50,52,64,0.55)',
-            color: '#fff',
-            border: '1px solid rgba(255,255,255,0.06)',
-          }
-    }
-  >
-    <span className="material-symbols-outlined text-base" style={FILL_STYLE}>{icon}</span>
-    <span>{label}</span>
-  </button>
-);
 
 export default QuizEndScreen;
