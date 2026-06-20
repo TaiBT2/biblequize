@@ -56,11 +56,15 @@ export function QuizEndScreen({
     () => results.reduce((sum, r) => sum + (r.score ?? 0), 0),
     [results]
   );
-  const matchDuration = startedAtMs ? Date.now() - startedAtMs : null;
+  // Freeze "now" at mount — this screen keeps re-rendering as late STOMP
+  // events arrive, and reading Date.now() in the render body made the
+  // "Thời gian" stat tick upward on every re-render. Capture once.
+  const shownAtRef = useRef(Date.now());
+  const matchDuration = startedAtMs ? shownAtRef.current - startedAtMs : null;
 
   // Mockup spec: 40 confetti pieces for host, 25 for player.
   // Render once per mount (key off the ref so a remount re-spawns).
-  const confettiKeyRef = useRef(Date.now());
+  const confettiKeyRef = useRef(shownAtRef.current);
 
   return (
     <div
@@ -167,7 +171,7 @@ export function QuizEndScreen({
                         fontSize: 28,
                       }}
                     >
-                      {(myUsername?.[0] ?? '?').toUpperCase()}
+                      {(me.username?.[0] ?? myUsername?.[0] ?? '?').toUpperCase()}
                     </div>
                     {myRank && (
                       <div
@@ -204,7 +208,7 @@ export function QuizEndScreen({
                       {myRank ? `Hạng ${myRank}` : 'Chưa xếp hạng'}
                     </div>
                     <div className="text-sm" style={{ color: '#d1d5db' }}>
-                      {myUsername}{me.score ? ` · ${me.score} điểm` : ''}
+                      {me.username ?? myUsername}{me.score != null ? ` · ${me.score} điểm` : ''}
                     </div>
                     <div className="grid grid-cols-3 gap-3 mt-3 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
                       <Stat label="Đúng" value={`${me.correctAnswers ?? 0}/${me.totalAnswered ?? totalQuestions}`} color="#4ade80" />

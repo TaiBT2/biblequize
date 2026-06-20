@@ -3,10 +3,12 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (94)
+## Active (96)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-20 | Hành Trình Nhóm (Group Journey) — group differentiator (BL-25, GJ-1..8; design locked) | TODO | [detail](docs/todo/active/2026-06-20-group-journey.md) |
+| 2026-06-20 | Multiplayer result screen optimize (freeze duration + blur perf + dedup sort + split <300 LOC) (MRO-1..4) | TODO | [detail](docs/todo/active/2026-06-20-multiplayer-result-screen-optimize.md) |
 | 2026-06-20 | Quick Match: cho chọn max players (chips 10/20/50/100, bỏ hardcode 10) (QMP-1..2) | DONE | [detail](docs/todo/active/2026-06-20-quickmatch-max-players-selector.md) |
 | 2026-06-20 | Fix avatar lỗi ở Lobby multiplayer (preset/URL hỏng hiện alt text) (LAV-1) | DONE | [detail](docs/todo/active/2026-06-20-fix-lobby-avatar-broken-img.md) |
 | 2026-06-20 | Multiplayer: đa dạng chọn sách (nhóm chủ đề + 66 sách riêng lẻ; fix OT/NT/Gospels no-op) (MBV-1..4) | DONE | [detail](docs/todo/active/2026-06-20-multiplayer-book-scope-variety.md) |

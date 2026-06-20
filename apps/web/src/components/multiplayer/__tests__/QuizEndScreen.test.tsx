@@ -114,4 +114,22 @@ describe('QuizEndScreen', () => {
     render(<QuizEndScreen {...baseProps} myUsername="An" isHost={false} />)
     expect(screen.getByText(/An.*\(bạn\)/)).toBeInTheDocument()
   })
+
+  it('hero card shows "· 0 điểm" for a zero-score player (not swallowed by falsy check)', () => {
+    const zero: PlayerScore[] = [
+      { playerId: 'a', username: 'An', score: 100, correctAnswers: 5, totalAnswered: 10, accuracy: 0.5, finalRank: 1 },
+      { playerId: 'z', username: 'Zo', score: 0,   correctAnswers: 0, totalAnswered: 10, accuracy: 0,   finalRank: 2 },
+    ]
+    render(<QuizEndScreen {...baseProps} results={zero} myUsername="Zo" isHost={false} />)
+    expect(screen.getByTestId('end-hero-card')).toHaveTextContent(/Zo · 0 điểm/)
+  })
+
+  it('hero card avatar/name uses the server username when localStorage name drifted', () => {
+    render(
+      <QuizEndScreen {...baseProps} myUsername="stale-old-name" myUserId="b" isHost={false} />,
+    )
+    // resolved player b = Bui; hero must show the server name, not the stale one
+    expect(screen.getByTestId('end-hero-card')).toHaveTextContent(/Bui/)
+    expect(screen.getByTestId('end-hero-card')).not.toHaveTextContent(/stale-old-name/)
+  })
 })
