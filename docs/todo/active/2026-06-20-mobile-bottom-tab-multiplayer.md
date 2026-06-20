@@ -20,3 +20,9 @@
   - `min-h-[52px]`→`min-h-[44px]`, icon `text-[22px]`→`text-[20px]`. Cập nhật `--mobile-nav-h` base 72→62px cho khớp (nav mới = 44+4+8 = 56px non-notch).
   - Status: [x] DONE · Files: `MobileBottomTabs.tsx`, `styles/global.css` · Test: Tầng 3 FE **1361 pass** + build exit 0
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`
+
+- MBT-3 Cap safe-area padding (bar 96px → ~60px trên máy 3-nút)
+  - Chẩn đoán qua DevTools trên S21 thật: bar cao 96.8px do `env(safe-area-inset-bottom)=48px` (thanh 3 nút) bị cộng full vào paddingBottom, dù WebView KHÔNG nằm dưới thanh hệ thống (đo `innerHeight` không gồm vùng nav) → 48px là dải cream trống. Slim min-h trước đó bị 48px này che.
+  - Fix: cap inset `max(8px, min(env(safe-area-inset-bottom,0px), 12px))` ở nav paddingBottom + `--mobile-nav-h` base 54. Floor 8px giữ an toàn máy không-inset; cap 12px vẫn đủ cho gesture/notch.
+  - Status: [x] DONE · Files: `MobileBottomTabs.tsx`, `styles/global.css` · Test: Tầng 3 FE **1364 pass** + build exit 0
+  - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`

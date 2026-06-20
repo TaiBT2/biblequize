@@ -53,7 +53,7 @@ export default function MobileBottomTabs() {
     <nav
       data-testid="mobile-bottom-tabs"
       className="md:hidden fixed bottom-0 left-0 w-full z-40 flex items-stretch justify-between px-1 pt-1 bg-bq-paper/90 backdrop-blur-xl border-t border-bq-hair"
-      style={{ paddingBottom: 'max(8px, env(safe-area-inset-bottom))' }}
+      style={{ paddingBottom: 'max(8px, min(env(safe-area-inset-bottom, 0px), 12px))' }}
     >
       {visibleTabs.map(tab => {
         const active = isActivePath(location.pathname, tab.path)
