@@ -118,12 +118,14 @@ describe('NotificationPanel', () => {
       makeNotif({ id: 'b', type: 'tier_up' }),
       makeNotif({ id: 'c', type: 'daily_reminder' }),
       makeNotif({ id: 'd', type: 'group_invite' }),
+      makeNotif({ id: 'e', type: 'group_announcement' }),
     ]
-    render(<Harness notifications={notifs} unreadCount={4} />)
+    render(<Harness notifications={notifs} unreadCount={5} />)
     expect(screen.getByText('🔥')).toBeInTheDocument()
     expect(screen.getByText('🏆')).toBeInTheDocument()
     expect(screen.getByText('📖')).toBeInTheDocument()
     expect(screen.getByText('👥')).toBeInTheDocument()
+    expect(screen.getByText('📢')).toBeInTheDocument()
   })
 
   it('falls back to bell emoji for unknown type', () => {

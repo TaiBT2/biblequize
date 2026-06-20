@@ -940,13 +940,13 @@ For each:
 
 ## 12. Announcements
 
-**Endpoint**: `POST /api/groups/{id}/announcements { title, content }` (LEADER/MOD).
+**Endpoint**: `POST /api/groups/{id}/announcements { content }` (LEADER/MOD, ≤500 ký tự).
 
 **Behavior**:
-- Push noti tất cả member.
-- Hiện banner trên Group Detail header 7 ngày.
-- Pin: max 3 pinned, hiện đầu list.
-- Auto-create khi scheduled quiz end (winner announcement).
+- **In-app notification** tới mọi member (trừ tác giả) khi đăng — ✅ **BL-24** (2026-06-20): reuse `NotificationService`, type `group_announcement`; best-effort (noti lỗi KHÔNG chặn việc đăng). Push/FCM → defer Q-K.
+- Auto-create khi scheduled quiz end (winner announcement) — ✅ shipped (`ScheduledQuizScheduler`).
+- Hiện banner trên Group Detail header 7 ngày — ⬜ chưa ship.
+- Pin: max 3 pinned, hiện đầu list — ⬜ chưa ship.
 
 ---
 

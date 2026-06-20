@@ -617,6 +617,21 @@
 
 ---
 
+## Added 2026-06-20 (Group engagement — announcement notifications)
+
+### BL-24 — Group announcement → notify members (Q-K increment 1)
+- **Source:** 2026-06-20 — user hỏi mục đích tab "Thông báo"; phát hiện `ChurchGroupService.createAnnouncement` chỉ lưu DB, KHÔNG gọi `NotificationService` → member không nhận noti khi leader/mod đăng (UI "🔔 Bạn sẽ nhận thông báo khi có bài mới" là lời hứa chưa nối dây). Auto-noti hiện chỉ chạy ở scheduled-quiz-end.
+- **Concept:** đăng thông báo → in-app notification cho mọi member (trừ tác giả), reuse `NotificationService.createNotification(...)` (pattern `scheduled_quiz_ended`). Là increment **đầu** của Q-K (11 push events — locked nhưng defer).
+- **Delivered:** GAN-1 BE — `ChurchGroupService.createAnnouncement` inject `NotificationService`, loop `findByGroupId`, `createNotification(u, "group_announcement", "Thông báo mới · {group}", content≤140, {groupId,announcementId})` cho mọi member ≠ author, try/catch best-effort; +2 Mockito test. GAN-2 FE — `NotificationPanel` TYPE_STYLE +`group_announcement` 📢 (panel vốn render generic; deep-link defer — cần plumb `metadata`). GAN-3 — SPEC_GROUP §12 (endpoint `{content}`, noti = shipped, banner/pin marked chưa ship).
+- **Decisions (locked default 2026-06-20):** D1 in-app only (push/FCM defer Q-K) · D2 mọi member trừ tác giả · D3 chỉ event "đăng thông báo".
+- **Effort:** S. No migration (reuse `notifications` table).
+- **Deferred:** click-to-group deep-link (PanelNotification thiếu metadata) · banner 7d + pin (§12) · Q-K events còn lại (member join, live room, scheduled-quiz-created…) + push/FCM transport.
+- **Status:** ✅ DONE 2026-06-20.
+- **Spec impact:** [SPEC_GROUP_v1.3.md §12](SPEC_GROUP_v1.3.md) (author khi ship). Related: Q-K (push events), BL-17 (Activity Feed — sự kiện phong phú hơn).
+- **Ref:** task `docs/todo/active/2026-06-20-group-announcement-notifications.md`.
+
+---
+
 ## Cross-references
 - Canonical specs: [SPEC_USER_v3.2.md](SPEC_USER_v3.2.md), [SPEC_MULTIPLAYER.md](SPEC_MULTIPLAYER.md), [SPEC_ADMIN_v3.1.md](SPEC_ADMIN_v3.1.md), [SPEC_GROUP_v1.3.md](SPEC_GROUP_v1.3.md) (Sprint 5)
 - Roadmap (defer features): [SPEC_ROADMAP.md](SPEC_ROADMAP.md)

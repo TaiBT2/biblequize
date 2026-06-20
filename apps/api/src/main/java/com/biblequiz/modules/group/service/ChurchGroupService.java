@@ -17,6 +17,7 @@ import com.biblequiz.modules.group.repository.ScheduledQuizRepository;
 import com.biblequiz.modules.quiz.entity.UserDailyProgress;
 import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.user.entity.User;
+import com.biblequiz.modules.notification.service.NotificationService;
 import com.biblequiz.modules.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,9 @@ public class ChurchGroupService {
 
     @Autowired
     private GroupAnnouncementRepository groupAnnouncementRepository;
+
+    @Autowired
+    private NotificationService notificationService;
 
     @Autowired
     private GroupQuizSetRepository groupQuizSetRepository;
@@ -1163,6 +1167,22 @@ public class ChurchGroupService {
         announcement.setAuthor(member.getUser());
         announcement.setContent(content);
         groupAnnouncementRepository.save(announcement);
+
+        // BL-24: notify every member except the author (in-app, best-effort).
+        try {
+            String authorId = member.getUser().getId();
+            String title = "Thông báo mới · " + group.getName();
+            String body = content.length() > 140 ? content.substring(0, 140) + "…" : content;
+            String metadata = "{\"groupId\":\"" + groupId + "\",\"announcementId\":\"" + announcement.getId() + "\"}";
+            for (GroupMember m : groupMemberRepository.findByGroupId(groupId)) {
+                User u = m.getUser();
+                if (u != null && !u.getId().equals(authorId)) {
+                    notificationService.createNotification(u, "group_announcement", title, body, metadata);
+                }
+            }
+        } catch (Exception ignored) {
+            // Notification is best-effort — never fail announcement creation.
+        }
 
         Map<String, Object> result = new LinkedHashMap<>();
         result.put("id", announcement.getId());

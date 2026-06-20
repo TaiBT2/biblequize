@@ -33,6 +33,7 @@ const TYPE_STYLE: Record<string, { emoji: string; bg: string }> = {
   tier_up: { emoji: '🏆', bg: 'bg-[rgba(232,168,50,0.18)]' },
   daily_reminder: { emoji: '📖', bg: 'bg-[rgba(127,184,232,0.15)]' },
   group_invite: { emoji: '👥', bg: 'bg-[rgba(141,179,139,0.15)]' },
+  group_announcement: { emoji: '📢', bg: 'bg-[rgba(232,168,50,0.15)]' },
   friend_overtake: { emoji: '⚔️', bg: 'bg-[rgba(239,107,94,0.15)]' },
   tournament_start: { emoji: '🏟️', bg: 'bg-[rgba(127,184,232,0.15)]' },
 }

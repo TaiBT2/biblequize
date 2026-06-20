@@ -15,6 +15,7 @@ import com.biblequiz.modules.group.entity.GroupReport;
 import com.biblequiz.modules.group.service.ChurchGroupService;
 import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.user.entity.User;
+import com.biblequiz.modules.notification.service.NotificationService;
 import com.biblequiz.modules.user.repository.UserRepository;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -60,6 +61,9 @@ class ChurchGroupServiceTest {
     @Mock
     private GroupReportRepository groupReportRepository;
 
+    @Mock
+    private NotificationService notificationService;
+
     @InjectMocks
     private ChurchGroupService churchGroupService;
 
@@ -86,6 +90,48 @@ class ChurchGroupServiceTest {
         testGroup.setLeader(leaderUser);
         testGroup.setMemberCount(1);
         testGroup.setMaxMembers(200);
+    }
+
+    // ── BL-24: announcement → notify members ─────────────────────────────────
+
+    private GroupMember mem(GroupMember.GroupRole role, User u) {
+        GroupMember m = new GroupMember();
+        m.setRole(role);
+        m.setUser(u);
+        return m;
+    }
+
+    @Test
+    void createAnnouncement_asLeader_notifiesEveryMemberExceptAuthor() {
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "leader-1"))
+                .thenReturn(Optional.of(mem(GroupMember.GroupRole.LEADER, leaderUser)));
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+        when(groupMemberRepository.findByGroupId("group-1"))
+                .thenReturn(List.of(mem(GroupMember.GroupRole.LEADER, leaderUser),
+                                    mem(GroupMember.GroupRole.MEMBER, memberUser)));
+
+        churchGroupService.createAnnouncement("group-1", "leader-1", "Họp lúc 7h tối nay");
+
+        verify(notificationService).createNotification(eq(memberUser), eq("group_announcement"),
+                anyString(), anyString(), anyString());
+        verify(notificationService, never()).createNotification(eq(leaderUser),
+                anyString(), anyString(), anyString(), anyString());
+    }
+
+    @Test
+    void createAnnouncement_notificationFailure_stillCreatesAnnouncement() {
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "leader-1"))
+                .thenReturn(Optional.of(mem(GroupMember.GroupRole.LEADER, leaderUser)));
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+        when(groupMemberRepository.findByGroupId("group-1"))
+                .thenReturn(List.of(mem(GroupMember.GroupRole.MEMBER, memberUser)));
+        when(notificationService.createNotification(any(), anyString(), anyString(), anyString(), anyString()))
+                .thenThrow(new RuntimeException("noti down"));
+
+        Map<String, Object> result = churchGroupService.createAnnouncement("group-1", "leader-1", "Test");
+
+        assertNotNull(result.get("id"));
+        verify(groupAnnouncementRepository).save(any(GroupAnnouncement.class));
     }
 
     // ── createGroup (TC-GROUP-001) ───────────────────────────────────────────
