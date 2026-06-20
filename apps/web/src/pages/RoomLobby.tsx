@@ -6,6 +6,7 @@ import { api } from '../api/client';
 import { QRCodeSVG } from 'qrcode.react';
 import { soundManager } from '../services/soundManager';
 import { haptic } from '../utils/haptics';
+import { resolveAvatar } from '../utils/avatar';
 import SequentialLobbyView from './room/SequentialLobbyView';
 import InviteShareModal from '../components/room/InviteShareModal';
 import type { RoomDetails, RoomEvent, RoomPlayer } from '../types/room';
@@ -1192,6 +1193,12 @@ const PlayerSlot: React.FC<{
   const variant: 'host' | 'ready' | 'waiting' =
     isHost ? 'host' : (isReady ? 'ready' : 'waiting');
 
+  // Avatar: route through resolveAvatar so emoji presets ("preset:<id>") render
+  // as emojis and a broken OAuth URL (404) falls back to the initial, instead of
+  // the browser showing the alt text over the gradient (raw <img> bug).
+  const avatar = resolveAvatar(player.avatarUrl, player.username);
+  const [avatarBroken, setAvatarBroken] = useState(false);
+
   const colors = {
     host:    { border: 'color-mix(in srgb, var(--bq-amber) 40%, transparent)', avatarBg: 'linear-gradient(135deg, var(--bq-amber-lt) 0%, var(--bq-amber-deep) 100%)', avatarText: 'var(--bq-ink)', avatarBorder: 'var(--bq-amber)', statusBg: 'color-mix(in srgb, var(--bq-amber) 15%, transparent)', statusText: 'var(--bq-amber-deep)', statusLabel: 'Chủ phòng' },
     ready:   { border: 'color-mix(in srgb, var(--bq-emerald) 40%, transparent)',  avatarBg: 'linear-gradient(135deg, var(--bq-emerald-lt) 0%, var(--bq-emerald) 100%)', avatarText: '#fff', avatarBorder: 'var(--bq-emerald)', statusBg: 'color-mix(in srgb, var(--bq-emerald) 12%, transparent)', statusText: 'var(--bq-emerald)', statusLabel: 'Sẵn sàng' },
@@ -1254,9 +1261,13 @@ const PlayerSlot: React.FC<{
           border: `2px solid ${colors.avatarBorder}`,
         }}
       >
-        {player.avatarUrl
-          ? <img src={player.avatarUrl} alt={player.username} className="w-full h-full rounded-full object-cover" />
-          : (player.username?.[0]?.toUpperCase() ?? 'U')}
+        {avatar.kind === 'img' && !avatarBroken
+          ? <img src={avatar.src} alt={player.username} onError={() => setAvatarBroken(true)}
+              className="w-full h-full rounded-full object-cover" />
+          : avatar.kind === 'preset'
+          ? <div className="w-full h-full rounded-full grid place-items-center text-2xl leading-none"
+              style={{ background: avatar.preset.bg }} aria-hidden>{avatar.preset.emoji}</div>
+          : (avatar.kind === 'initial' ? avatar.initial : (player.username?.[0]?.toUpperCase() ?? 'U'))}
       </div>
 
       <div className="text-xs font-bold mb-0.5 truncate text-bq-ink">

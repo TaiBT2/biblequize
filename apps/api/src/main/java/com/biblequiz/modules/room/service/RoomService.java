@@ -150,7 +150,7 @@ public class RoomService {
      * </ul>
      */
     public Room createQuickMatchRoom(User host, Room.RoomMode mode, String bookScope,
-                                      Integer questionCount, Integer timePerQuestion,
+                                      Integer questionCount, Integer timePerQuestion, Integer maxPlayers,
                                       Room.QuestionSource source,
                                       List<String> preselectedIds, String aiPayloadJson) {
         String roomId = UUID.randomUUID().toString();
@@ -164,7 +164,9 @@ public class RoomService {
         room.setRoomCode(roomCode);
         room.setRoomName("Phòng Đấu Nhanh của " + host.getName());
         room.setHost(host);
-        room.setMaxPlayers(10);
+        // QMP-1: host-selectable cap (default 10), clamped to the same 2–100 range
+        // as normal rooms. The join cap is enforced via room.isFull() on this field.
+        room.setMaxPlayers(maxPlayers != null ? Math.max(2, Math.min(maxPlayers, 100)) : 10);
         room.setQuestionCount(questionCount != null ? questionCount : 10);
         room.setTimePerQuestion(timePerQuestion != null ? timePerQuestion : 30);
         room.setStatus(Room.RoomStatus.LOBBY);

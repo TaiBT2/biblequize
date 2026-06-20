@@ -149,10 +149,12 @@ public class RoomController {
             String bookScope = body.get("bookScope") instanceof String s && !s.isBlank() ? s : "ALL";
             int questionCount = body.get("questionCount") instanceof Number n ? n.intValue() : 10;
             int timePerQuestion = body.get("timePerQuestion") instanceof Number n ? n.intValue() : 30;
+            int maxPlayers = body.get("maxPlayers") instanceof Number n ? n.intValue() : 10;
             String sourceStr = body.get("source") instanceof String s ? s : "DATABASE";
 
             if (questionCount < 5 || questionCount > 20) questionCount = 10;
             if (timePerQuestion < 10 || timePerQuestion > 60) timePerQuestion = 30;
+            if (maxPlayers < 2 || maxPlayers > 100) maxPlayers = 10;
 
             Room.RoomMode mode;
             try { mode = Room.RoomMode.valueOf(modeStr.toUpperCase()); }
@@ -183,9 +185,14 @@ public class RoomController {
                 int chapterTo   = body.get("chapterTo")   instanceof Number n ? n.intValue() : Math.max(chapterFrom, 50);
                 int verseFrom   = body.get("verseFrom")   instanceof Number n ? n.intValue() : 1;
                 int verseTo     = body.get("verseTo")     instanceof Number n ? n.intValue() : 50;
+                // AI generation targets ONE book; resolve a group sentinel (e.g.
+                // PENTATEUCH) or ALL to a concrete representative book so the prompt
+                // never receives a non-book scope literal. null → generateAiPayload
+                // defaults to Genesis.
+                String aiBook = com.biblequiz.infrastructure.bible.BookScopes.firstBook(bookScope);
                 try {
                     aiPayload = quickMatchQuestionSource.generateAiPayload(
-                            bookScope, chapterFrom, chapterTo, verseFrom, verseTo, questionCount, language);
+                            aiBook, chapterFrom, chapterTo, verseFrom, verseTo, questionCount, language);
                 } catch (Exception e) {
                     return ResponseEntity.unprocessableEntity().body(Map.of(
                             "success", false,
@@ -198,7 +205,7 @@ public class RoomController {
 
             // Create room + increment counter (atomic-ish; on save failure counter stays unincremented)
             Room room = roomService.createQuickMatchRoom(user, mode, bookScope, questionCount, timePerQuestion,
-                    source, preselectedIds, aiPayload);
+                    maxPlayers, source, preselectedIds, aiPayload);
             dailyQuickMatchCounter.increment(user.getId());
 
             RoomService.RoomDetailsDTO details = roomService.getRoomDetails(room.getId());

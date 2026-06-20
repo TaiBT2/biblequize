@@ -119,6 +119,20 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
                                                                     @Param("excludeIds") List<String> excludeIds,
                                                                     Pageable pageable);
 
+    // MBV-2: multi-book scope (e.g. Pentateuch, Old Testament) — filter by a set of books.
+    @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.language = :language AND q.book IN :books AND q.id NOT IN :excludeIds ORDER BY RAND()")
+    List<Question> findRandomQuestionsByLanguageAndBooksExcludingIds(@Param("language") String language,
+                                                                     @Param("books") List<String> books,
+                                                                     @Param("excludeIds") List<String> excludeIds,
+                                                                     Pageable pageable);
+
+    @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.language = :language AND q.book IN :books AND q.difficulty = :difficulty AND q.id NOT IN :excludeIds ORDER BY RAND()")
+    List<Question> findRandomQuestionsByLanguageAndBooksAndDifficultyExcludingIds(@Param("language") String language,
+                                                                                  @Param("books") List<String> books,
+                                                                                  @Param("difficulty") Question.Difficulty difficulty,
+                                                                                  @Param("excludeIds") List<String> excludeIds,
+                                                                                  Pageable pageable);
+
     // Performance optimization: Get question count by filters
     @Query("SELECT COUNT(q) FROM Question q WHERE q.isActive = true AND " +
            "(:book IS NULL OR q.book = :book) AND " +

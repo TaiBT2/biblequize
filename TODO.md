@@ -7,6 +7,8 @@
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-20 | Quick Match: cho chọn max players (chips 10/20/50/100, bỏ hardcode 10) (QMP-1..2) | DONE | [detail](docs/todo/active/2026-06-20-quickmatch-max-players-selector.md) |
+| 2026-06-20 | Fix avatar lỗi ở Lobby multiplayer (preset/URL hỏng hiện alt text) (LAV-1) | DONE | [detail](docs/todo/active/2026-06-20-fix-lobby-avatar-broken-img.md) |
 | 2026-06-20 | Multiplayer: đa dạng chọn sách (nhóm chủ đề + 66 sách riêng lẻ; fix OT/NT/Gospels no-op) (MBV-1..4) | DONE | [detail](docs/todo/active/2026-06-20-multiplayer-book-scope-variety.md) |
 | 2026-06-20 | Group announcement → notify members (BL-24, Q-K increment; GAN-1..3) | TODO | [detail](docs/todo/active/2026-06-20-group-announcement-notifications.md) |
 | 2026-06-20 | AI Generator: option "Tất cả sách" (toàn Kinh Thánh theo chủ đề) + disable Chương/Câu (ABO-1..2) | DONE | [detail](docs/todo/active/2026-06-20-ai-generator-all-books-option.md) |

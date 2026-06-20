@@ -2,6 +2,7 @@ package com.biblequiz.modules.room.service;
 
 import com.biblequiz.api.websocket.RoomWebSocketController;
 import com.biblequiz.api.websocket.WebSocketMessage;
+import com.biblequiz.infrastructure.bible.BookScopes;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.room.entity.Room;
@@ -288,17 +289,24 @@ public class RoomQuizService {
         PageRequest page = PageRequest.of(0, questionCount);
         List<String> empty = List.of();
 
-        boolean isSpecificBook = !"ALL".equals(scope) && !scope.endsWith("_TESTAMENT") && !"GOSPELS".equals(scope);
+        // MBV-2: expand scope (group sentinel / single book) to a concrete book list.
+        // Empty = no filter. A filtered query that returns nothing falls back to the
+        // whole pool so a sparsely-covered scope never yields an empty room.
+        List<String> books = BookScopes.expand(scope);
 
         if (diff != Room.RoomDifficulty.MIXED) {
             Question.Difficulty qDiff = Question.Difficulty.valueOf(diff.name());
-            if (isSpecificBook) {
-                return questionRepository.findRandomQuestionsByLanguageAndBookAndDifficultyExcludingIds(lang, scope, qDiff, empty, page);
+            if (!books.isEmpty()) {
+                List<Question> scoped = questionRepository
+                        .findRandomQuestionsByLanguageAndBooksAndDifficultyExcludingIds(lang, books, qDiff, empty, page);
+                if (!scoped.isEmpty()) return scoped;
             }
             return questionRepository.findRandomQuestionsByLanguageAndDifficultyExcludingIds(lang, qDiff, empty, page);
         }
-        if (isSpecificBook) {
-            return questionRepository.findRandomQuestionsByLanguageAndBookExcludingIds(lang, scope, empty, page);
+        if (!books.isEmpty()) {
+            List<Question> scoped = questionRepository
+                    .findRandomQuestionsByLanguageAndBooksExcludingIds(lang, books, empty, page);
+            if (!scoped.isEmpty()) return scoped;
         }
         return questionRepository.findRandomQuestionsByLanguageExcludingIds(lang, empty, page);
     }

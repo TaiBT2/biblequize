@@ -12,6 +12,7 @@ import { getQuizLanguage } from '../utils/quizLanguage'
 import { useAuth } from '../store/authStore'
 import { api } from '../api/client'
 import PreviewPanel from './create-room/PreviewPanel'
+import BookScopeOptions, { useBookScopeLabel } from './create-room/BookScopeOptions'
 import { MODE_DEFAULTS, MODE_LIST, MODE_META, type RoomModeId } from './create-room/modeMeta'
 
 const QUESTION_COUNTS = [10, 15, 20, 30]
@@ -23,19 +24,13 @@ const DIFFICULTY_OPTIONS = [
   { value: 'MIXED',  labelKey: 'practice.mixed' },
 ] as const
 
-const BOOK_SCOPE_OPTIONS = [
-  { value: 'ALL',           label: 'Tất cả 66 sách' },
-  { value: 'OLD_TESTAMENT', label: 'Cựu Ước (39 sách)' },
-  { value: 'NEW_TESTAMENT', label: 'Tân Ước (27 sách)' },
-  { value: 'GOSPELS',       label: '4 Phúc Âm' },
-]
-
 const CARD_CLASS = 'bg-bq-white border border-bq-hair shadow-bq-soft rounded-[18px]'
 
 export default function CreateRoom() {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { isAuthenticated } = useAuth()
+  const resolveScopeLabel = useBookScopeLabel()
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -97,7 +92,7 @@ export default function CreateRoom() {
 
   const selectedMode = MODE_META[formData.mode]
   const difficultyLabel = t(DIFFICULTY_OPTIONS.find(d => d.value === formData.difficulty)?.labelKey ?? 'practice.mixed')
-  const bookScopeLabel = BOOK_SCOPE_OPTIONS.find(o => o.value === formData.bookScope)?.label ?? 'Tất cả 66 sách'
+  const bookScopeLabel = resolveScopeLabel(formData.bookScope)
   const canSubmit = !(formData.questionSource === 'CUSTOM' && !formData.questionSetId)
 
   return (
@@ -374,7 +369,7 @@ export default function CreateRoom() {
                       onChange={e => setFormData(prev => ({ ...prev, bookScope: e.target.value }))}
                       className="w-full px-3.5 py-2.5 rounded-[10px] text-sm bg-bq-white border border-bq-hair text-bq-ink appearance-none outline-none cursor-pointer pr-9 focus:ring-2 focus:ring-bq-sapphire"
                     >
-                      {BOOK_SCOPE_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                      <BookScopeOptions />
                     </select>
                     <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-bq-ink3" style={{ fontSize: 18 }}>
                       expand_more

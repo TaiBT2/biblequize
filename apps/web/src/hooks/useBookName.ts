@@ -34,7 +34,9 @@ export function useBookName() {
   })
 
   const map = useMemo(
-    () => new Map(books.map(b => [b.name, b.nameVi])),
+    // Defensive: tolerate a non-array payload (e.g. an error/empty shape) so a
+    // bad /api/books response degrades to English keys instead of crashing.
+    () => new Map((Array.isArray(books) ? books : []).map(b => [b.name, b.nameVi])),
     [books],
   )
 

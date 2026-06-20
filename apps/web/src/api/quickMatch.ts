@@ -14,6 +14,7 @@ export interface QuickMatchConfig {
   bookScope: string         // 'ALL' | 'OLD_TESTAMENT' | 'NEW_TESTAMENT' | 'GOSPELS' | book name
   questionCount: number     // 5–20
   timePerQuestion: number   // 10–60
+  maxPlayers?: number       // 2–100 (default 10); host cap for the lobby
   source: QuickMatchSource
   // AI source optional scope fields — only used when source = AI_GENERATED
   chapterFrom?: number

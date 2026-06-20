@@ -56,7 +56,7 @@ const baseRoom = {
   ],
 }
 
-function withPlayers(extra: Array<Partial<typeof baseRoom.players[number]>>) {
+function withPlayers(extra: Array<Partial<typeof baseRoom.players[number]> & { avatarUrl?: string }>) {
   const players = [
     ...baseRoom.players,
     ...extra.map((p, i) => ({
@@ -350,5 +350,31 @@ describe('RoomLobby — Sprint 4 host-organizer mode', () => {
       },
     })
     expect(await screen.findByTestId('lobby-organizer-badge')).toBeInTheDocument()
+  })
+})
+
+// LAV-1: avatar must route through resolveAvatar so emoji presets render as
+// emojis and broken/unknown values fall back to the initial — never a broken
+// <img> showing alt text over the gradient.
+describe('RoomLobby — player avatar', () => {
+  it('renders an emoji preset avatar instead of a broken <img>', async () => {
+    await renderLobby(withPlayers([{ avatarUrl: 'preset:king', username: 'KingUser' }]))
+    const slot = await screen.findByTestId('lobby-slot-u2')
+    expect(slot.textContent).toContain('🤴')
+    // No <img> should be rendered for a preset avatar (the raw-img bug).
+    expect(slot.querySelector('img')).toBeNull()
+  })
+
+  it('falls back to the initial when avatarUrl is not a URL or preset', async () => {
+    await renderLobby(withPlayers([{ avatarUrl: 'garbage-value', username: 'Zoe' }]))
+    const slot = await screen.findByTestId('lobby-slot-u2')
+    expect(slot.querySelector('img')).toBeNull()
+    expect(slot.textContent).toContain('Z')
+  })
+
+  it('renders an <img> for a real avatar URL', async () => {
+    await renderLobby(withPlayers([{ avatarUrl: 'https://example.com/a.png', username: 'Urly' }]))
+    const slot = await screen.findByTestId('lobby-slot-u2')
+    expect(slot.querySelector('img')?.getAttribute('src')).toBe('https://example.com/a.png')
   })
 })

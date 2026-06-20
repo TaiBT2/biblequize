@@ -9,19 +9,15 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { MODE_LIST, MODE_META, type RoomModeId } from '../create-room/modeMeta'
+import BookScopeOptions from '../create-room/BookScopeOptions'
 import {
   describeQuickMatchError, triggerQuickMatch,
   type QuickMatchConfig, type QuickMatchSource,
 } from '../../api/quickMatch'
 
-const BOOK_SCOPE_OPTIONS = [
-  { value: 'ALL',           labelKey: 'multiplayer.config.scopeAll' },
-  { value: 'OLD_TESTAMENT', labelKey: 'multiplayer.config.scopeOldTestament' },
-  { value: 'NEW_TESTAMENT', labelKey: 'multiplayer.config.scopeNewTestament' },
-  { value: 'GOSPELS',       labelKey: 'multiplayer.config.scopeGospels' },
-]
 const COUNT_OPTIONS = [5, 10, 15, 20]
 const TIME_OPTIONS = [15, 20, 30]
+const MAX_PLAYER_OPTIONS = [10, 20, 50, 100]
 const INDIGO = '#2D46C8'
 
 interface Props {
@@ -38,6 +34,7 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
   const [bookScope, setBookScope] = useState('ALL')
   const [count, setCount] = useState(10)
   const [time, setTime] = useState(30)
+  const [maxPlayers, setMaxPlayers] = useState(10)
   const [language, setLanguage] = useState<'vi' | 'en'>('vi')
   const [source, setSource] = useState<QuickMatchSource>('DATABASE')
   const [submitting, setSubmitting] = useState(false)
@@ -61,6 +58,7 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
         mode, bookScope,
         questionCount: count,
         timePerQuestion: time,
+        maxPlayers,
         source: aiUnlocked ? source : 'DATABASE',
         language,
       }
@@ -148,7 +146,7 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
                   border: '1px solid #E7E4DA',
                 }}
               >
-                {BOOK_SCOPE_OPTIONS.map(o => <option key={o.value} value={o.value}>{t(o.labelKey)}</option>)}
+                <BookScopeOptions />
               </select>
             </Section>
             <Section label={t('multiplayer.config.sectionLanguage')}>
@@ -172,6 +170,11 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
               <ChipGroup options={TIME_OPTIONS.map(s => ({ value: s, label: `${s}s` }))} value={time} onChange={setTime} />
             </Section>
           </div>
+
+          {/* Max players */}
+          <Section label={t('multiplayer.config.sectionMaxPlayers')}>
+            <ChipGroup options={MAX_PLAYER_OPTIONS.map(n => ({ value: n, label: String(n) }))} value={maxPlayers} onChange={setMaxPlayers} />
+          </Section>
 
           {/* Source */}
           <Section label={t('multiplayer.config.sectionSource')}>

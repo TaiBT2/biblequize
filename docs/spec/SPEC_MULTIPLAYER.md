@@ -51,7 +51,7 @@ Bonus entity (cùng package, ngoài scope spec này): `Challenge` (peer-challeng
 | `status` | `RoomStatus` enum | `LOBBY` | Xem 2.2. |
 | `mode` | `RoomMode` enum | `SPEED_RACE` | Xem 2.3 + section 3. |
 | `difficulty` | `RoomDifficulty` enum | `MIXED` | EASY / MEDIUM / HARD / MIXED. |
-| `bookScope` | `String(100)` | `"ALL"` | Hoặc CSV codes (`GEN,EXO`), hoặc `OT` / `NT`. |
+| `bookScope` | `String(100)` | `"ALL"` | Group sentinel **hoặc** 1 tên sách English (`"Genesis"`). Groups (MBV, 2026-06-20): `ALL` / `OLD_TESTAMENT` / `NEW_TESTAMENT` / `PENTATEUCH` / `HISTORY` / `WISDOM` / `PROPHETS` / `GOSPELS` / `EPISTLES`. Server expand qua `BookScopes.expand()` → `q.book IN (...)`; rỗng = no filter. Query scoped rỗng → fallback pool chung (không để phòng thiếu câu). |
 | `questionSource` | `QuestionSource` enum | `DATABASE` | Xem 2.4. |
 | `questionSetId` | `String(36)` nullable | — | Khi `questionSource=CUSTOM` từ Question Set của user. |
 | `groupQuizSetId` | `String(36)` nullable | — | Khi room spawn từ Group Quiz Set. Dùng để derive `groupId` cho FE "Back to group" (`RoomService.getRoomDetails:484-488`). |
@@ -653,7 +653,7 @@ Form tạo room. Fields:
 - Question count (slider 5–50).
 - Time per question (slider 10–60s).
 - Difficulty (Easy/Medium/Hard/Mixed).
-- Book scope (multi-select 66 books, ALL/OT/NT shortcuts).
+- Book scope (single `<select>`: 9 nhóm chủ đề `ALL`/OT/NT/Ngũ Kinh/Lịch Sử/Thi Ca/Tiên Tri/Phúc Âm/Thư Tín + 66 sách riêng lẻ, optgroup OT/NT). Shared component `BookScopeOptions` dùng chung CreateRoom + QuickMatch (MBV-4).
 - Question source (DATABASE / CUSTOM Question Set / Group Quiz Set).
 - isPublic toggle.
 
@@ -788,7 +788,7 @@ QUIZ_END → navigate `/room/:id/results-host` (different end screen — xem 7.6
 | Method | Endpoint | Auth | Mô tả |
 |---|---|---|---|
 | POST | `/api/rooms` | Bearer | Create room. Body: `{ roomName, mode, maxPlayers, questionCount, timePerQuestion, difficulty, bookScope, isPublic, questionSource, questionSetId }`. Returns `{ success, room: RoomDetailsDTO, viewerUserId }`. |
-| POST | `/api/rooms/quick-match` | Bearer | **Đấu Nhanh** — server-orchestrated quick match (no Quản trò). Body: `{ mode, bookScope, questionCount (5-20), timePerQuestion (10-60), source (DATABASE\|AI_GENERATED), language, chapterFrom?, chapterTo?, verseFrom?, verseTo? }`. Out-of-range count/time coerced to defaults (10/30). All 4 modes supported (SPEED_RACE / BATTLE_ROYALE / TEAM_VS_TEAM / SUDDEN_DEATH). Returns `{ success, room, viewerUserId, quickMatch: true, remainingToday }` (200) hoặc `{ success: false, error, message, ... }` (422) với `error ∈ { DAILY_CAP_REACHED, AI_TIER_LOCKED, AI_GENERATION_INSUFFICIENT }`. Soft-host: `hostPlaysGame=true`, Quản trò controls reject. Daily cap 3/user/day reset 0h UTC. AI source require Tier 4+. |
+| POST | `/api/rooms/quick-match` | Bearer | **Đấu Nhanh** — server-orchestrated quick match (no Quản trò). Body: `{ mode, bookScope, questionCount (5-20), timePerQuestion (10-60), maxPlayers? (2-100, default 10; clamp), source (DATABASE\|AI_GENERATED), language, chapterFrom?, chapterTo?, verseFrom?, verseTo? }`. Out-of-range count/time coerced to defaults (10/30). All 4 modes supported (SPEED_RACE / BATTLE_ROYALE / TEAM_VS_TEAM / SUDDEN_DEATH). Returns `{ success, room, viewerUserId, quickMatch: true, remainingToday }` (200) hoặc `{ success: false, error, message, ... }` (422) với `error ∈ { DAILY_CAP_REACHED, AI_TIER_LOCKED, AI_GENERATION_INSUFFICIENT }`. Soft-host: `hostPlaysGame=true`, Quản trò controls reject. Daily cap 3/user/day reset 0h UTC. AI source require Tier 4+. |
 | GET | `/api/rooms/public` | Optional | List public LOBBY+IN_PROGRESS rooms. Viewer-aware `joinable` field. Returns `{ success, rooms: PublicRoomDTO[] }`. |
 | GET | `/api/rooms/{id}` | Optional | Room details. Returns `{ success, room: RoomDetailsDTO, viewerUserId }`. `viewerUserId` is the caller's id (null if unauthenticated) and lives **outside** the room DTO so the same DTO can be safely multicast as a `ROOM_STATE` WS event. The DTO itself carries `groupId` (nullable) but no per-viewer field. |
 | POST | `/api/rooms/join` | Bearer | Join by code. Body: `{ roomCode }`. Returns `{ success, room, viewerUserId }`. 422 với code `ALREADY_IN_ANOTHER_ROOM` nếu user đang trong room khác. |

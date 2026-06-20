@@ -3,6 +3,7 @@ package com.biblequiz.modules.room.service;
 import com.biblequiz.modules.adminai.provider.AIGenerationContext;
 import com.biblequiz.modules.adminai.provider.AIGenerationResult;
 import com.biblequiz.modules.adminai.provider.AIProviderRouter;
+import com.biblequiz.infrastructure.bible.BookScopes;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -79,10 +80,15 @@ public class QuickMatchQuestionSourceService {
         if (count <= 0) return List.of();
         PageRequest pr = PageRequest.of(0, count);
         List<String> excludeNone = List.of("__none__");
-        if (book == null || book.isBlank() || "ALL".equalsIgnoreCase(book)) {
-            return questionRepository.findRandomQuestionsByLanguageAndDifficultyExcludingIds(language, diff, excludeNone, pr);
+        // MBV-3: expand scope (group sentinel / single book) to a book set; empty = no
+        // filter. A scoped query that returns nothing falls back to the whole pool.
+        List<String> books = BookScopes.expand(book);
+        if (!books.isEmpty()) {
+            List<Question> scoped = questionRepository
+                    .findRandomQuestionsByLanguageAndBooksAndDifficultyExcludingIds(language, books, diff, excludeNone, pr);
+            if (!scoped.isEmpty()) return scoped;
         }
-        return questionRepository.findRandomQuestionsByLanguageAndBookAndDifficultyExcludingIds(language, book, diff, excludeNone, pr);
+        return questionRepository.findRandomQuestionsByLanguageAndDifficultyExcludingIds(language, diff, excludeNone, pr);
     }
 
     /**
