@@ -292,11 +292,11 @@
 :root {
   color-scheme: dark;
   /* MFP-1: single source of truth for the mobile bottom-tab clearance.
-     MobileBottomTabs nav height = 52px (min-h) + 4px (pt-1) + max(8px, safe-area-inset-bottom)
-     = 64px on non-notch, up to ~90px on notched devices. Base 72px guarantees the spacer
-     always clears the bar (≥64 floor) and keeps an ~8px breathing gap; env() adds the notch.
+     MobileBottomTabs nav height = 44px (min-h) + 4px (pt-1) + max(8px, safe-area-inset-bottom)
+     = 56px on non-notch, up to ~82px on notched devices. Base 62px guarantees the spacer
+     always clears the bar (≥56 floor) and keeps an ~6px breathing gap; env() adds the notch.
      Pages must clear this var instead of hardcoding 72px/80px offsets. */
-  --mobile-nav-h: calc(72px + env(safe-area-inset-bottom, 0px));
+  --mobile-nav-h: calc(62px + env(safe-area-inset-bottom, 0px));
 }
 
 /* ── HR-1 Modern Spiritual atmosphere ──

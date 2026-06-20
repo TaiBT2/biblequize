@@ -65,14 +65,14 @@ export default function MobileBottomTabs() {
             data-active={active ? 'true' : 'false'}
             aria-label={t(tab.labelKey) as string}
             aria-current={active ? 'page' : undefined}
-            className={`relative flex-1 flex flex-col items-center justify-center gap-0.5 min-h-[52px] px-1 transition-colors duration-200 ease-out ${
+            className={`relative flex-1 flex flex-col items-center justify-center gap-0.5 min-h-[44px] px-1 transition-colors duration-200 ease-out ${
               active
                 ? 'text-bq-amberd'
                 : 'text-bq-ink3 hover:text-bq-ink2'
             }`}
           >
             <span
-              className="material-symbols-outlined text-[22px]"
+              className="material-symbols-outlined text-[20px]"
               style={active ? { fontVariationSettings: "'FILL' 1" } : undefined}
               aria-hidden="true"
             >
