@@ -34,8 +34,8 @@ Cả MRF (per-page) lẫn TBL (tablet) không xử lý 4 thứ sau, đều ảnh
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`
 
 - MFP-3 **Touch feedback cho global.css `:hover`**
-  - Bọc các `:hover` *trang trí* (glow/scale/translate, KHÔNG phải nav-link cơ bản) trong `@media (hover:hover)` để không "dính" trạng thái hover sau tap trên cảm ứng; thêm `:active` tương đương cho control quan trọng (`.neon-btn`, `.cta-button`, `.answer-hover`).
-  - Status: [ ] TODO · Files: `styles/global.css` (~55 `:hover`) · Test: Tầng 3 + screenshot tap state mobile
+  - Giải pháp chọn: **1 block append** `@media (hover: none) { ...:hover { transform: none !important } }` reset các transform lift/scale bị "kẹt" sau tap — KHÔNG sửa 58 rule cũ (low-risk), trị đúng triệu chứng. Selectors: `.neon-card`, `.card-hover-effect`, `.featured-warm-card`, `.featured-daily-warm`, `.qs-quiz-card`, `.qs-mode-card`, `.answer-hover`, `.answer-btn`. `!important` để thắng rule `!important` gốc. Color/shadow hover để nguyên (vô hại).
+  - Status: [x] DONE · Files: `styles/global.css` (block cuối file) · Test: Tầng 3 FE **1357 pass** + build exit 0
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`
 
 - MFP-4 **`group-hover:` → thêm `group-active:` / gate hover** cho card CTA chính

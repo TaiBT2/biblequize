@@ -3002,3 +3002,23 @@ html.capacitor .select-text {
   -webkit-user-select: text;
   user-select: text;
 }
+
+/* MFP-3: neutralize "sticky" lift/scale hover transforms on touch devices.
+   On touch screens :hover persists after a tap until the user taps elsewhere,
+   leaving cards/answers visually lifted. Reset only the transform on
+   hover:none pointers; desktop (hover:hover) keeps its lift. Colour/shadow
+   hover changes are left as-is (harmless if briefly stuck). !important wins
+   over the rules that themselves use !important (.card-hover-effect, .answer-btn). */
+@media (hover: none) {
+  .neon-card:hover,
+  .card-hover-effect:hover,
+  .featured-warm-card:hover,
+  .featured-daily-warm:hover,
+  .qs-quiz-card:hover,
+  .qs-mode-card:hover,
+  .answer-hover:hover,
+  .answer-btn:hover,
+  .answer-btn:hover:not(:disabled) {
+    transform: none !important;
+  }
+}
