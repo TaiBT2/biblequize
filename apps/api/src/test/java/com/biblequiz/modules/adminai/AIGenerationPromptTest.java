@@ -49,6 +49,28 @@ class AIGenerationPromptTest {
     }
 
     @Test
+    void allBooks_vi_buildsWholeBiblePrompt() {
+        String p = service.buildQuestionPrompt(
+                "ALL", 1, 1, 1,
+                "medium", "multiple_choice_single", "vi", 3, null, null);
+        assertTrue(p.contains("toàn bộ Kinh Thánh"), "whole-Bible ref missing");
+        assertTrue(p.contains("NHIỀU sách khác nhau"), "diversity instruction missing");
+        assertTrue(p.contains("tự khai báo"), "self-declare reference instruction missing");
+        // No single fixed reference like "ALL 1:1" should leak into the prompt.
+        assertFalse(p.contains("ALL 1"), "ALL sentinel must not appear as a literal reference");
+    }
+
+    @Test
+    void allBooks_en_buildsWholeBiblePrompt() {
+        String p = service.buildQuestionPrompt(
+                "ALL", 1, 1, 1,
+                "easy", "multiple_choice_single", "en", 2, null, null);
+        assertTrue(p.contains("the whole Bible"), "whole-Bible ref missing (en)");
+        assertTrue(p.contains("MANY different books"), "diversity instruction missing (en)");
+        assertTrue(p.contains("self-declare"), "self-declare reference instruction missing (en)");
+    }
+
+    @Test
     void nonMcq_skipsDistractorRules() {
         String tf = service.buildQuestionPrompt(
                 "Genesis", 1, 1, 1,

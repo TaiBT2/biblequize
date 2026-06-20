@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
@@ -66,6 +66,23 @@ describe('AIQuestionGenerator — Phase C', () => {
     await waitFor(() => expect(screen.getByTestId('ai-provider-deepseek')).toBeTruthy())
     expect(screen.getByTestId('ai-provider-deepseek').className).toMatch(/active/)
     expect(screen.getByTestId('ai-provider-gemini').className).not.toMatch(/\bactive\b/)
+  })
+
+  it('offers an "all books" option that disables the chapter selector', async () => {
+    renderPage()
+    await waitFor(() => expect(screen.getByTestId('ai-provider-deepseek')).toBeTruthy())
+
+    // The book <select> is the first combobox in the scripture selector.
+    const bookSelect = screen.getByTestId('ai-scripture-selector').querySelector('select') as HTMLSelectElement
+    const allOption = Array.from(bookSelect.options).find(o => o.value === 'ALL')
+    expect(allOption).toBeTruthy()
+
+    // Chapter select is disabled until a real book is chosen; after picking ALL it stays disabled.
+    fireEvent.change(bookSelect, { target: { value: 'ALL' } })
+    const selects = screen.getByTestId('ai-scripture-selector').querySelectorAll('select')
+    // selects[1] = chapter, selects[2] = chapterEnd — both must be disabled in all-books mode.
+    expect((selects[1] as HTMLSelectElement).disabled).toBe(true)
+    expect((selects[2] as HTMLSelectElement).disabled).toBe(true)
   })
 
   it('falls back gracefully when /info omits deepseek (backwards compat)', async () => {

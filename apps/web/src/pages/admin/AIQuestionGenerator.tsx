@@ -23,6 +23,10 @@ const BOOKS = [
   'James','1 Peter','2 Peter','1 John','2 John','3 John','Jude','Revelation',
 ]
 
+// Sentinel for the "all books" option: AI draws from the whole Bible (topic-driven),
+// each generated question self-declares its own book/chapter/verse.
+const ALL_BOOKS = 'ALL'
+
 const DEFAULT_PROMPT =
 `Tạo {count} câu hỏi trắc nghiệm ({type}) về đoạn Kinh Thánh sau:
 Sách: {book}, Chương {chapter}, Câu {verseStart}-{verseEnd}
@@ -84,10 +88,11 @@ export default function AIQuestionGenerator() {
     saveDraftsToStorage(drafts)
   }, [drafts])
 
-  const totalChapters = book ? getChapterCount(book) : 0
-  const maxVerseStart = book && chapter    ? getVerseCount(book, chapter)    : 30
-  const maxVerseEnd   = book && chapterEnd ? getVerseCount(book, chapterEnd) : 30
-  const isRange       = chapterEnd > chapter
+  const isAllBooks    = book === ALL_BOOKS
+  const totalChapters = book && !isAllBooks ? getChapterCount(book) : 0
+  const maxVerseStart = book && !isAllBooks && chapter    ? getVerseCount(book, chapter)    : 30
+  const maxVerseEnd   = book && !isAllBooks && chapterEnd ? getVerseCount(book, chapterEnd) : 30
+  const isRange       = !isAllBooks && chapterEnd > chapter
 
   const onBookChange = (b: string) => {
     setBook(b); setChapter(1); setChapterEnd(1); setVerseStart(1); setVerseEnd(1)
@@ -129,10 +134,10 @@ export default function AIQuestionGenerator() {
       const res = await aiApi.post('/api/admin/ai/generate', {
         scripture: {
           book,
-          chapter,
-          chapterEnd: isRange ? chapterEnd : undefined,
-          verseStart: isRange ? 1 : verseStart,
-          verseEnd:   isRange ? maxVerseEnd : verseEnd,
+          chapter:    isAllBooks ? 1 : chapter,
+          chapterEnd: (!isAllBooks && isRange) ? chapterEnd : undefined,
+          verseStart: isAllBooks ? 1 : (isRange ? 1 : verseStart),
+          verseEnd:   isAllBooks ? 1 : (isRange ? maxVerseEnd : verseEnd),
           text: scriptureText || undefined,
         },
         prompt: customPromptToSend,
@@ -147,10 +152,12 @@ export default function AIQuestionGenerator() {
       const newDrafts: DraftQuestion[] = raw.map((q, i) => ({
         id:            `draft-${Date.now()}-${i}`,
         status:        'pending',
-        book,
-        chapter,
-        verseStart,
-        verseEnd,
+        // In all-books mode each question self-declares its reference — trust the
+        // AI's per-question book/chapter/verse instead of the (placeholder) form values.
+        book:          isAllBooks ? (q.book ?? '') : book,
+        chapter:       isAllBooks ? (Number(q.chapter) || 1) : chapter,
+        verseStart:    isAllBooks ? (Number(q.verseStart) || 1) : verseStart,
+        verseEnd:      isAllBooks ? (Number(q.verseEnd ?? q.verseStart) || 1) : verseEnd,
         difficulty:    (q.difficulty ?? difficulty) as Difficulty,
         type:          normalizeType(q.type ?? qType),
         language:      q.language ?? language,
@@ -310,6 +317,7 @@ export default function AIQuestionGenerator() {
                 <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">{t('admin.aiGenerator.bookLabel')}</label>
                 <select value={book} onChange={e => onBookChange(e.target.value)} className="form-select">
                   <option value="">{t('admin.aiGenerator.bookPlaceholder')}</option>
+                  <option value={ALL_BOOKS}>{t('admin.aiGenerator.allBooksOption')}</option>
                   <optgroup label={t('admin.aiGenerator.oldTestament')}>
                     {BOOKS.slice(0, 39).map(b => <option key={b} value={b}>{getBookName(b, bookLang)}</option>)}
                   </optgroup>
@@ -324,13 +332,13 @@ export default function AIQuestionGenerator() {
                 </label>
                 <div className="flex items-center gap-1.5">
                   <select value={chapter} onChange={e => onChapterChange(Number(e.target.value))}
-                    disabled={!book} className="form-select flex-1">
+                    disabled={!book || isAllBooks} className="form-select flex-1">
                     {Array.from({length: totalChapters}, (_, i) => i + 1).map(c =>
                       <option key={c} value={c}>{c}</option>)}
                   </select>
                   <span className="text-[#d5c4af] text-xs font-bold">{t('admin.aiGenerator.chapterTo')}</span>
                   <select value={chapterEnd} onChange={e => onChapterEndChange(Number(e.target.value))}
-                    disabled={!book} className="form-select flex-1">
+                    disabled={!book || isAllBooks} className="form-select flex-1">
                     {Array.from({length: totalChapters}, (_, i) => i + 1)
                       .filter(c => c >= chapter)
                       .map(c => <option key={c} value={c}>{c}</option>)}
@@ -338,6 +346,9 @@ export default function AIQuestionGenerator() {
                 </div>
               </div>
             </div>
+            {isAllBooks && (
+              <p className="text-xs text-[#e8a832]/80 mb-3 -mt-1">{t('admin.aiGenerator.allBooksHint')}</p>
+            )}
             {!isRange && (
             <div className="grid grid-cols-2 gap-3 mb-3">
               <div>
@@ -345,7 +356,7 @@ export default function AIQuestionGenerator() {
                   {t('admin.aiGenerator.verseStartLabel')} <span className="text-[#d5c4af]/50 normal-case font-normal">{t('admin.aiGenerator.verseStartMax', { count: maxVerseStart })}</span>
                 </label>
                 <select value={verseStart} onChange={e => { const v = Number(e.target.value); setVerseStart(v); if (verseEnd < v) setVerseEnd(v) }}
-                  disabled={!book} className="form-select">
+                  disabled={!book || isAllBooks} className="form-select">
                   {Array.from({length: maxVerseStart}, (_, i) => i + 1).map(v =>
                     <option key={v} value={v}>{v}</option>)}
                 </select>
@@ -355,7 +366,7 @@ export default function AIQuestionGenerator() {
                   {t('admin.aiGenerator.verseEndLabel')} <span className="text-[#d5c4af]/50 normal-case font-normal">{t('admin.aiGenerator.verseStartMax', { count: maxVerseEnd })}</span>
                 </label>
                 <select value={verseEnd} onChange={e => setVerseEnd(Number(e.target.value))}
-                  disabled={!book} className="form-select">
+                  disabled={!book || isAllBooks} className="form-select">
                   {Array.from({length: maxVerseEnd}, (_, i) => i + 1)
                     .filter(v => v >= verseStart)
                     .map(v => <option key={v} value={v}>{v}</option>)}

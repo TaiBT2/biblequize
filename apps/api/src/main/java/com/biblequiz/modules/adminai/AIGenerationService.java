@@ -327,11 +327,16 @@ public class AIGenerationService {
                                 String difficulty, String type, String language, int count,
                                 String scriptureText, String customPrompt) {
         boolean isVi = "vi".equals(language);
-        boolean isRange = chapterEnd > chapter;
-        String ref = isRange
-                ? book + " " + chapter + "-" + chapterEnd
-                : book + " " + chapter + ":" + verseStart
-                    + (verseEnd != verseStart ? "-" + verseEnd : "");
+        // "ALL" sentinel = generate across the whole Bible (topic-driven), each
+        // question self-declares its own book/chapter/verse.
+        boolean isAllBooks = "ALL".equalsIgnoreCase(book);
+        boolean isRange = !isAllBooks && chapterEnd > chapter;
+        String ref = isAllBooks
+                ? (isVi ? "toàn bộ Kinh Thánh (66 sách Tin Lành)" : "the whole Bible (66 Protestant books)")
+                : isRange
+                    ? book + " " + chapter + "-" + chapterEnd
+                    : book + " " + chapter + ":" + verseStart
+                        + (verseEnd != verseStart ? "-" + verseEnd : "");
         String langName = isVi ? "Vietnamese (Tiếng Việt)" : "English";
 
         String typeInstruction = switch (type) {
@@ -362,7 +367,14 @@ public class AIGenerationService {
 
         sb.append("Bạn là chuyên gia tạo câu hỏi trắc nghiệm Kinh Thánh. ");
         sb.append("Hãy tạo đúng ").append(count).append(" câu hỏi dựa trên ").append(ref).append(".\n");
-        if (isRange) {
+        if (isAllBooks) {
+            sb.append(isVi
+                ? "Phạm vi là TOÀN BỘ Kinh Thánh — chọn câu hỏi từ NHIỀU sách khác nhau, đa dạng cả Cựu Ước lẫn Tân Ước, KHÔNG dồn vào một sách duy nhất. Nếu có chủ đề/yêu cầu bên dưới, bám sát chủ đề đó (vd: một nhân vật có thể xuất hiện ở nhiều sách).\n"
+                : "The scope is the WHOLE Bible — draw questions from MANY different books, spanning both Old and New Testament, do NOT cluster in a single book. If a topic/requirement is given below, follow it (e.g. a figure may appear across several books).\n");
+            sb.append(isVi
+                ? "BẮT BUỘC: mỗi câu hỏi PHẢI tự khai báo chính xác sách (book — tên tiếng Anh trong 66 sách Tin Lành), chapter, verseStart, verseEnd của riêng câu đó.\n"
+                : "REQUIRED: each question MUST self-declare its exact book (English name among the 66 Protestant books), chapter, verseStart, verseEnd.\n");
+        } else if (isRange) {
             sb.append("Phạm vi là MỘT KHOẢNG CHƯƠNG (").append(chapter).append("-").append(chapterEnd)
               .append("). Phân bố câu hỏi đều giữa các chương, không dồn vào một chương duy nhất. ")
               .append("Mỗi câu hỏi có thể trích từ bất kỳ chương nào trong khoảng này — ưu tiên đa dạng.\n");
@@ -453,12 +465,16 @@ public class AIGenerationService {
               .append("{\"index\": 1, \"errorType\": \"wrong_detail\", \"almostRight\": true}, ")
               .append("{\"index\": 3, \"errorType\": \"true_but_off\", \"almostRight\": false}],\n");
         }
-        sb.append("    \"book\": \"").append(book).append("\",\n");
-        sb.append("    \"chapter\": ").append(chapter).append(",\n");
+        // In all-books mode the book/chapter are placeholders — the model fills the
+        // real reference per question; show a concrete sample so the JSON shape is clear.
+        String tplBook = isAllBooks ? "Psalms" : book;
+        int    tplChapter = isAllBooks ? 23 : chapter;
+        sb.append("    \"book\": \"").append(tplBook).append("\",\n");
+        sb.append("    \"chapter\": ").append(tplChapter).append(",\n");
         sb.append("    \"verseStart\": ").append(verseStart).append(",\n");
         sb.append("    \"verseEnd\": ").append(verseEnd).append(",\n");
-        sb.append("    \"tags\": [\"").append(book.toLowerCase().replace(" ", ""))
-          .append("\", \"chapter").append(chapter).append("\"],\n");
+        sb.append("    \"tags\": [\"").append(tplBook.toLowerCase().replace(" ", ""))
+          .append("\", \"chapter").append(tplChapter).append("\"],\n");
         sb.append("    \"source\": \"").append(isVi ? "Kinh Thánh" : "Holy Bible").append("\"\n");
         sb.append("  }\n]\n\n");
         sb.append("Quan trọng: mỗi câu hỏi phải chính xác về mặt Kinh Thánh, dựa trên nội dung thực của ").append(ref).append(".");
