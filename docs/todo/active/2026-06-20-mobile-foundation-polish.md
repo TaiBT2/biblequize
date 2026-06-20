@@ -39,8 +39,9 @@ Cả MRF (per-page) lẫn TBL (tablet) không xử lý 4 thứ sau, đều ảnh
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`
 
 - MFP-4 **`group-hover:` → thêm `group-active:` / gate hover** cho card CTA chính
-  - Ưu tiên card tương tác cốt lõi: `Home.tsx` (featured cards), `components/HeroRankedCard.tsx`, `RankedStandardCard.tsx`, `components/ranked/SeasonCard.tsx`. Thêm `group-active:` (feedback khi chạm) cho glow/scale/mũi tên; LandingPage/Onboarding (marketing) có thể defer.
-  - Status: [ ] TODO · Files: 13 file có `group-hover:` (ưu tiên 4 file trên) · Test: Tầng 3 + manual tap feedback
+  - Thêm `group-active:` (nudge khi chạm) cho mũi tên CTA: `Home.tsx:149`, `HeroRankedCard.tsx:201`, `RankedStandardCard.tsx:90`, `SeasonCard.tsx:216` (`translate-x`) + `TierPerksTeaser.tsx:101` (`underline`).
+  - LOẠI `QuizSetList.tsx:570` (`opacity-0 group-hover:opacity-100`): action ẩn desktop-row, mobile có toolbar riêng → không phải nudge CTA. LandingPage/Onboarding marketing defer.
+  - Status: [x] DONE · Files: 5 file trên · Test: Tầng 3 FE **1357 pass** + build exit 0 (`group-active` generated trong CSS)
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`
 
 - MFP-5 **`100vh` → dynamic viewport** cho full-screen page (mobile web)

@@ -98,7 +98,7 @@ export default function TierPerksTeaser({ userTier, totalPoints }: TierPerksTeas
       </div>
 
       {/* Link */}
-      <p className="text-xs font-bold text-bq-amberd uppercase tracking-widest group-hover:underline">
+      <p className="text-xs font-bold text-bq-amberd uppercase tracking-widest group-hover:underline group-active:underline">
         {t('home.tierPerks.linkText')}
       </p>
     </Link>

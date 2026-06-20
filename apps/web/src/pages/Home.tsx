@@ -146,7 +146,7 @@ function ModeCard({ variant, title, desc, inner, cta, onClick }: {
       <p className="text-[12.5px] text-bq-ink2 leading-relaxed">{desc}</p>
       <div className="mt-auto border border-bq-hair bg-bq-paper rounded-2xl px-3.5 py-3 text-xs text-bq-ink2">{inner}</div>
       <div className={`flex justify-between items-center mt-3.5 text-sm font-extrabold ${m.accent}`}>
-        <span>{cta}</span><span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+        <span>{cta}</span><span aria-hidden className="transition-transform group-hover:translate-x-1 group-active:translate-x-1">→</span>
       </div>
     </button>
   )

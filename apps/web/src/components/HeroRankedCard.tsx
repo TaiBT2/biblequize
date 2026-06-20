@@ -198,7 +198,7 @@ export default function HeroRankedCard({
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="transition-transform duration-200 group-hover:translate-x-1"
+            className="transition-transform duration-200 group-hover:translate-x-1 group-active:translate-x-1"
           >
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>

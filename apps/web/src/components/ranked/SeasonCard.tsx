@@ -213,7 +213,7 @@ export default function SeasonCard() {
           className="group flex items-center justify-end gap-1 mt-3 text-bq-amberd text-[12px] md:text-[13px] font-semibold hover:underline"
         >
           {t('ranked.seasonViewLeaderboard')}
-          <span className="material-symbols-outlined text-[15px] transition-transform group-hover:translate-x-0.5">
+          <span className="material-symbols-outlined text-[15px] transition-transform group-hover:translate-x-0.5 group-active:translate-x-0.5">
             arrow_forward
           </span>
         </Link>
