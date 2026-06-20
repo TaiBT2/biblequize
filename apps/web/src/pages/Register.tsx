@@ -57,7 +57,7 @@ export default function Register() {
       <PageMeta title={t('auth.register', { defaultValue: 'Register' })} canonicalPath="/register" />
 
       {/* Left Hero (hidden on mobile) */}
-      <section className="hidden lg:flex lg:w-[60%] relative overflow-hidden bg-bq-paper">
+      <section className="hidden md:flex md:w-[55%] lg:w-[60%] relative overflow-hidden bg-bq-paper">
         <div className="absolute inset-0 z-0">
           <div className="w-full h-full bg-gradient-to-br from-bq-amber/10 via-transparent to-bq-paper" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-bq-amber/10 rounded-full blur-[120px]" />
@@ -93,7 +93,7 @@ export default function Register() {
       </section>
 
       {/* Right Form */}
-      <section className="w-full lg:w-[40%] flex flex-col justify-center items-center px-8 sm:px-12 md:px-24 py-12 lg:py-0 bg-bq-paper relative">
+      <section className="w-full md:w-[45%] lg:w-[40%] flex flex-col justify-center items-center px-8 sm:px-12 lg:px-24 py-12 md:py-0 bg-bq-paper relative">
         <div className="w-full max-w-md space-y-8 bg-bq-white border border-bq-hair shadow-bq-soft rounded-bq p-8 sm:p-10">
           <div className="flex flex-col items-center mb-10">
             <div className="w-16 h-16 rounded-xl bg-bq-spectrum flex items-center justify-center mb-4 shadow-bq-soft">

@@ -9,9 +9,7 @@
   "scripts": {
     "web:dev": "pnpm --filter biblequiz-web dev",
     "web:build": "pnpm --filter biblequiz-web build",
-    "web:test": "pnpm --filter biblequiz-web test",
-    "mobile:start": "pnpm --filter mobile start",
-    "mobile:test": "pnpm --filter mobile test"
+    "web:test": "pnpm --filter biblequiz-web test"
   },
   "pnpm": {
     "overrides": {

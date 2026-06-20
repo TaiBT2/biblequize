@@ -17,7 +17,8 @@ export default function MobileTopBar() {
   return (
     <header
       data-testid="mobile-top-bar"
-      className="md:hidden sticky top-0 z-40 flex items-center justify-between px-3 h-12 bg-bq-paper/90 backdrop-blur-md border-b border-bq-hair"
+      className="md:hidden sticky top-0 z-40 flex items-center justify-between px-3 min-h-12 bg-bq-paper/90 backdrop-blur-md border-b border-bq-hair"
+      style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
       <Link
         to="/"

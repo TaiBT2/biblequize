@@ -278,7 +278,7 @@ export default function Practice() {
         onSubmit={e => { e.preventDefault(); if (!isDisabled) startQuiz() }}
       >
         <div className="p-6 space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
 
             {/* ── Left Column ──────────────────────────── */}
             <div className="space-y-5">

@@ -758,7 +758,7 @@ const RoomLobby: React.FC = () => {
               className="absolute inset-0 pointer-events-none"
               style={{ background: 'linear-gradient(135deg, color-mix(in srgb, var(--bq-amber) 12%, transparent) 0%, transparent 60%)' }}
             />
-            <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-4 lg:gap-6 items-center">
+            <div className="relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-6 items-center">
               <div className="min-w-0">
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
                   {room.roomName && (
@@ -826,7 +826,7 @@ const RoomLobby: React.FC = () => {
               </div>
               {/* Inline QR (desktop) */}
               <div
-                className="hidden lg:flex w-32 h-32 rounded-lg bg-white p-2 items-center justify-center flex-shrink-0"
+                className="hidden md:flex w-32 h-32 rounded-lg bg-white p-2 items-center justify-center flex-shrink-0"
                 aria-hidden="true"
                 data-testid="lobby-hero-qr"
               >
@@ -839,7 +839,7 @@ const RoomLobby: React.FC = () => {
               </div>
             </div>
             {/* Stats grid bottom */}
-            <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mt-5 pt-5 border-t border-bq-hair">
+            <div className="relative grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-5 pt-5 border-t border-bq-hair">
               <HeroStat label="Câu hỏi" value={`${room.questionCount}`} />
               <HeroStat label="Thời gian/câu" value={`${room.timePerQuestion}s`} />
               <HeroStat label="Độ khó" value={DIFFICULTY_LABEL[room.difficulty ?? ''] ?? 'Hỗn hợp'} />
@@ -888,7 +888,7 @@ const RoomLobby: React.FC = () => {
                 onInvite={() => setShowInvite(true)}
               />
             ) : (
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-2.5">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-2.5">
                 {orderedPlayers.map((p, idx) => (
                   <PlayerSlot
                     key={p.id}

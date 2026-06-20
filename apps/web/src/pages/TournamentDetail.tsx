@@ -573,7 +573,7 @@ const TournamentDetail: React.FC = () => {
       </header>
 
       {/* ── 4 Info Cards ── */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3" data-testid="tournament-rules">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3" data-testid="tournament-rules">
         <div className="rounded-xl p-3 bg-bq-white shadow-bq-soft" style={{ border: '1px solid rgba(45,70,200,0.22)' }}>
           <div className="text-[9px] tracking-wider mb-1.5" style={{ color: 'var(--bq-sapphire)' }}>SÁCH KINH THÁNH</div>
           <div className="text-sm font-medium mb-0.5" style={{ color: 'var(--bq-ink)' }}>📖 {bracket.bookScope ?? '1 + 2 Sa-mu-ên'}</div>

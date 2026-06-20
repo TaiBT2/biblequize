@@ -14,7 +14,8 @@ import { HelmetProvider } from 'react-helmet-async'
 import { initStorageSync } from './utils/localStorageClearDetector'
 import { i18nReady } from './i18n'
 import PageLoader from './components/PageLoader'
-import RequireAdmin from './contexts/RequireAdmin'
+import CapacitorBackButton from './platform/CapacitorBackButton'
+import { initNative } from './platform/initNative'
 
 // EAGER — critical / first-paint path. These render on initial load (the "/"
 // dashboard or guest landing) so they belong in the entry chunk; lazy-loading
@@ -40,21 +41,13 @@ const Ranked = lazy(() => import('./pages/Ranked'))
 const BasicQuiz = lazy(() => import('./pages/BasicQuiz'))
 const Rooms = lazy(() => import('./pages/Rooms'))
 const AuthCallback = lazy(() => import('./pages/AuthCallback'))
-const AdminLayout = lazy(() => import('./layouts/AdminLayout'))
-const AIQuestionGenerator = lazy(() => import('./pages/admin/AIQuestionGenerator'))
-const ReviewQueue = lazy(() => import('./pages/admin/ReviewQueue'))
-const QuestionsAdmin = lazy(() => import('./pages/admin/Questions'))
-const QuestionEditPage = lazy(() => import('./pages/admin/QuestionEditPage'))
-const UsersAdmin = lazy(() => import('./pages/admin/Users'))
-const RankingsAdmin = lazy(() => import('./pages/admin/Rankings'))
-const EventsAdmin = lazy(() => import('./pages/admin/Events'))
-const FeedbackAdmin = lazy(() => import('./pages/admin/Feedback'))
-const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'))
-const GroupsAdmin = lazy(() => import('./pages/admin/Groups'))
-const NotificationsAdmin = lazy(() => import('./pages/admin/Notifications'))
-const QuestionQuality = lazy(() => import('./pages/admin/QuestionQuality'))
-const EarlyUnlockMetrics = lazy(() => import('./pages/admin/EarlyUnlockMetrics'))
-const TestPanel = lazy(() => import('./pages/admin/TestPanel'))
+// Admin is lazy + build-time gated: the mobile (Capacitor) build ships user
+// pages only, so the constant VITE_TARGET check lets Rollup drop the whole
+// admin chunk from the app bundle. The web build code-splits it as usual.
+const AdminRoutes =
+  import.meta.env.VITE_TARGET === 'capacitor'
+    ? null
+    : lazy(() => import('./pages/admin/AdminRoutes'))
 const Review = lazy(() => import('./pages/Review'))
 const Achievements = lazy(() => import('./pages/Achievements'))
 const Leaderboard = lazy(() => import('./pages/Leaderboard'))
@@ -122,6 +115,9 @@ function HomeOrLanding() {
   return <AppLayout />
 }
 
+// Native shell setup (status bar, splash, keyboard) — no-op on web.
+initNative()
+
 // Wait for the active-language bundle before first paint so the UI never
 // flashes raw i18n keys (translations now load as chunks, not inlined).
 i18nReady.then(() => {
@@ -133,6 +129,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <ErrorProvider>
           <ToastProvider>
             <BrowserRouter>
+              <CapacitorBackButton />
               <Suspense fallback={<PageLoader fullScreen />}>
               <Routes>
                 {/* PREVIEW-ONLY: coded mockup of the game-vibe Home redesign (v2).
@@ -202,24 +199,17 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Route path="/room/:roomId/host" element={<RequireAuth><RoomQuizHost /></RequireAuth>} />
                 <Route path="/room/:roomId/analytics" element={<RequireAuth><RoomAnalytics /></RequireAuth>} />
 
-                {/* Admin */}
-                <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
-                  <Route index element={<AdminDashboard />} />
-                  <Route path="users" element={<UsersAdmin />} />
-                  <Route path="questions" element={<QuestionsAdmin />} />
-                  <Route path="questions/new" element={<QuestionEditPage />} />
-                  <Route path="questions/:id/edit" element={<QuestionEditPage />} />
-                  <Route path="feedback" element={<FeedbackAdmin />} />
-                  <Route path="rankings" element={<RankingsAdmin />} />
-                  <Route path="events" element={<EventsAdmin />} />
-                  <Route path="ai-generator" element={<AIQuestionGenerator />} />
-                  <Route path="review-queue" element={<ReviewQueue />} />
-                  <Route path="groups" element={<GroupsAdmin />} />
-                  <Route path="notifications" element={<NotificationsAdmin />} />
-                  <Route path="question-quality" element={<QuestionQuality />} />
-                  <Route path="metrics/early-unlock" element={<EarlyUnlockMetrics />} />
-                  <Route path="test" element={<TestPanel />} />
-                </Route>
+                {/* Admin — web only; excluded from the mobile app bundle. */}
+                {AdminRoutes && (
+                  <Route
+                    path="/admin/*"
+                    element={
+                      <React.Suspense fallback={null}>
+                        <AdminRoutes />
+                      </React.Suspense>
+                    }
+                  />
+                )}
 
                 {/* Catch-all 404 */}
                 <Route path="*" element={<NotFound />} />

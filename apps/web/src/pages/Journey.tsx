@@ -44,7 +44,7 @@ export default function Journey() {
 
   if (isLoading) {
     return (
-      <div className="space-y-6 max-w-4xl mx-auto w-full">
+      <div className="space-y-6 max-w-5xl mx-auto w-full">
         <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-6 space-y-3">
           <div className="animate-pulse bg-bq-inset h-6 w-48 rounded" />
           <div className="animate-pulse bg-bq-inset h-4 w-64 rounded" />
@@ -73,7 +73,7 @@ export default function Journey() {
   const newBooks = books.filter(b => b.testament === 'NEW')
 
   return (
-    <div className="space-y-6 max-w-4xl mx-auto w-full" data-testid="journey-page">
+    <div className="space-y-6 max-w-5xl mx-auto w-full" data-testid="journey-page">
       {/* Summary */}
       <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-6" data-testid="journey-summary-card">
         <div className="flex items-center gap-3 mb-3">
@@ -145,7 +145,7 @@ function BookSection({
   return (
     <section data-testid={testId}>
       <h2 className="text-sm font-bold text-bq-ink2 uppercase tracking-wider mb-3 px-1">{title}</h2>
-      <div className="space-y-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {books.map((book) => (
           <BookCard key={book.order} book={book} isVi={isVi} onClick={() => onBookClick(book)} t={t} />
         ))}

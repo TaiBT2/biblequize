@@ -1,7 +1,11 @@
 /**
- * Haptic feedback for web (navigator.vibrate).
- * Gracefully no-ops on unsupported browsers.
+ * Haptic feedback. On web uses navigator.vibrate (no-ops where unsupported);
+ * on the Capacitor target routes to native @capacitor/haptics for real taptic
+ * engine feedback.
  */
+
+import { isCapacitor } from '../platform/capacitor'
+import { nativeImpact, nativeNotify } from '../platform/nativeHaptics'
 
 const STORAGE_KEY = 'bq_haptics_enabled'
 
@@ -12,20 +16,26 @@ try {
 } catch { /* use default */ }
 
 function vibrate(pattern: number | number[]) {
-  if (!_enabled) return
   try {
     navigator.vibrate?.(pattern)
   } catch { /* not supported */ }
 }
 
+// Fire web vibration or its native equivalent, honoring the enabled flag.
+function fire(pattern: number | number[], native: () => void) {
+  if (!_enabled) return
+  if (isCapacitor()) native()
+  else vibrate(pattern)
+}
+
 export const haptic = {
-  correct: () => vibrate(50),
-  wrong: () => vibrate([100, 50, 100]),
-  select: () => vibrate(20),
-  combo: () => vibrate([50, 30, 50, 30, 50]),
-  tierUp: () => vibrate([100, 50, 100, 50, 200]),
-  timerWarning: () => vibrate(30),
-  tap: () => vibrate(10),
+  correct: () => fire(50, () => nativeImpact('Medium')),
+  wrong: () => fire([100, 50, 100], () => nativeNotify('Error')),
+  select: () => fire(20, () => nativeImpact('Light')),
+  combo: () => fire([50, 30, 50, 30, 50], () => nativeImpact('Medium')),
+  tierUp: () => fire([100, 50, 100, 50, 200], () => nativeImpact('Heavy')),
+  timerWarning: () => fire(30, () => nativeImpact('Light')),
+  tap: () => fire(10, () => nativeImpact('Light')),
 }
 
 export function setHapticsEnabled(enabled: boolean) {

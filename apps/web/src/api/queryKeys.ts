@@ -38,4 +38,10 @@ export const queryKeys = {
     stats: () => [...queryKeys.reviewQueue.all, 'stats'] as const,
     history: () => [...queryKeys.reviewQueue.all, 'history'] as const,
   },
+
+  groups: {
+    all: ['groups'] as const,
+    detail: (id: string) => [...queryKeys.groups.all, id] as const,
+    collectiveGrowth: (id: string) => [...queryKeys.groups.all, id, 'collective-growth'] as const,
+  },
 } as const

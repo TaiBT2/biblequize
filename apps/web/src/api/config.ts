@@ -11,6 +11,15 @@ export function getApiBaseUrl(): string {
   const envValue = import.meta.env.VITE_API_BASE_URL as string | undefined;
   if (envValue && envValue.trim().length > 0) return envValue;
 
+  // The Capacitor app has no same-origin backend — an empty base would
+  // silently resolve to `https://localhost` (the WebView origin) and every
+  // API call would 404. Fail loud at build/runtime instead.
+  if (import.meta.env.VITE_TARGET === 'capacitor') {
+    throw new Error(
+      '[config] VITE_API_BASE_URL must be an absolute URL for capacitor builds.'
+    );
+  }
+
   // Default to empty string to allow Vite proxy to add /api prefix
   return '';
 }

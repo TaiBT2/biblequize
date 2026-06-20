@@ -87,6 +87,9 @@ class ChurchGroupControllerTest extends BaseControllerTest {
     @MockBean
     private com.biblequiz.modules.group.repository.GroupQuizSetMasteryRepository masteryRepository;
 
+    @MockBean
+    private com.biblequiz.modules.group.service.GroupCollectiveGrowthService collectiveGrowthService;
+
     private User testUser;
 
     @BeforeEach
@@ -175,6 +178,38 @@ class ChurchGroupControllerTest extends BaseControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.group.id").value("group-1"));
+    }
+
+    // ── GET /api/groups/{id}/collective-growth (BL-23) ───────────────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void getCollectiveGrowth_asMember_returns200() throws Exception {
+        GroupMember member = new GroupMember();
+        member.setRole(GroupMember.GroupRole.MEMBER);
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.of(member));
+        Map<String, Object> growth = new LinkedHashMap<>();
+        growth.put("totalLearned", 120L);
+        growth.put("nextMilestone", 250L);
+        when(collectiveGrowthService.getCollectiveGrowth("group-1")).thenReturn(growth);
+
+        mockMvc.perform(get("/api/groups/group-1/collective-growth"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.growth.totalLearned").value(120))
+                .andExpect(jsonPath("$.growth.nextMilestone").value(250));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void getCollectiveGrowth_nonMember_returns400() throws Exception {
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.empty());
+
+        mockMvc.perform(get("/api/groups/group-1/collective-growth"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.success").value(false));
     }
 
     // ── GET /api/groups/me (HM-P1-1 Home live hint) ──────────────────────────

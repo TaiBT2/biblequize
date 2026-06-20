@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../store/authStore'
 import PageMeta from '../components/PageMeta'
+import { isCapacitor } from '../platform/capacitor'
 
 export default function Login() {
   const { t } = useTranslation()
@@ -42,8 +43,35 @@ export default function Login() {
     }
   }, [isAuthenticated, navigate])
 
-  const handleGoogleLogin = () => {
+  const handleGoogleLogin = async () => {
+    setError(null)
     setIsGoogleLoading(true)
+
+    // Mobile (Capacitor): native Google Sign-In → idToken → backend verify.
+    // A full-page OAuth redirect would navigate the WebView away from the app.
+    if (isCapacitor()) {
+      try {
+        const { nativeGoogleIdToken } = await import('../api/nativeGoogleAuth')
+        const { mobileGoogle } = await import('../api/mobileAuth')
+        const idToken = await nativeGoogleIdToken()
+        const result = await mobileGoogle(idToken)
+        login({
+          accessToken: result.accessToken,
+          name: result.name,
+          email: result.email,
+          avatar: result.avatar || undefined,
+          role: result.role,
+        })
+        navigate('/', { replace: true })
+      } catch (err: any) {
+        setError(err?.message || t('auth.errorOAuthFailed'))
+      } finally {
+        setIsGoogleLoading(false)
+      }
+      return
+    }
+
+    // Web: redirect to the backend's OAuth2 authorization endpoint.
     window.location.href = `${import.meta.env.VITE_API_BASE_URL || ''}/oauth2/authorization/google`
   }
 
@@ -53,6 +81,21 @@ export default function Login() {
     setIsLoading(true)
 
     try {
+      if (isCapacitor()) {
+        // Mobile: token-in-body login endpoint (persists refresh token).
+        const { mobileLogin } = await import('../api/mobileAuth')
+        const result = await mobileLogin(email.trim(), password)
+        login({
+          accessToken: result.accessToken,
+          name: result.name,
+          email: result.email,
+          avatar: result.avatar || undefined,
+          role: result.role,
+        })
+        navigate('/', { replace: true })
+        return
+      }
+
       const { api } = await import('../api/client')
       const res = await api.post('/api/auth/login', {
         email: email.trim(),
@@ -73,7 +116,7 @@ export default function Login() {
     <main className="flex min-h-screen bg-bq-paper">
       <PageMeta title={t('auth.login')} canonicalPath="/login" />
       {/* Left Side: Hero Section (60%) */}
-      <section className="hidden lg:flex lg:w-[60%] relative overflow-hidden bg-bq-paper">
+      <section className="hidden md:flex md:w-[55%] lg:w-[60%] relative overflow-hidden bg-bq-paper">
         <div className="absolute inset-0 z-0">
           {/* Light-well glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-bq-amber/10 rounded-full blur-[120px]" />
@@ -111,7 +154,7 @@ export default function Login() {
       </section>
 
       {/* Right Side: Login Form (40%) */}
-      <section className="w-full lg:w-[40%] flex flex-col justify-center items-center px-5 sm:px-12 md:px-24 py-12 lg:py-0 bg-bq-paper relative">
+      <section className="w-full md:w-[45%] lg:w-[40%] flex flex-col justify-center items-center px-5 sm:px-12 lg:px-24 py-12 md:py-0 bg-bq-paper relative">
         <div className="w-full max-w-md space-y-6 sm:space-y-8 bg-bq-white border border-bq-hair shadow-bq-soft rounded-bq p-8 sm:p-10">
           {/* Brand Anchor */}
           <div className="flex flex-col items-center mb-10">

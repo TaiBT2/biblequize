@@ -87,11 +87,11 @@ export default function QuizSetDetail() {
   }
 
   return (
-    <div className="bg-bq-paper min-h-screen lg:flex">
+    <div className="bg-bq-paper min-h-screen md:flex">
       {/* Main column (mobile + desktop LEFT) */}
-      <div className="flex-1 lg:overflow-y-auto qs-scroll-thin qs-fade-in">
+      <div className="flex-1 md:overflow-y-auto qs-scroll-thin qs-fade-in">
         {/* Desktop breadcrumb */}
-        <div className="hidden lg:flex px-8 py-4 border-b border-bq-hair items-center gap-2 text-xs">
+        <div className="hidden md:flex px-8 py-4 border-b border-bq-hair items-center gap-2 text-xs">
           <Link to={`/groups/${groupId}`} className="text-bq-ink3 hover:text-bq-ink">← Nhóm</Link>
           <span className="text-bq-ink3">/</span>
           <Link to={`/groups/${groupId}/quiz-sets`} className="text-bq-ink3 hover:text-bq-ink">Bộ câu hỏi</Link>
@@ -111,7 +111,7 @@ export default function QuizSetDetail() {
           {/* Mobile back button */}
           <button
             onClick={() => navigate(`/groups/${groupId}/quiz-sets`)}
-            className="lg:hidden absolute top-3 left-3 w-9 h-9 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white"
+            className="md:hidden absolute top-3 left-3 w-9 h-9 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white"
             aria-label={t('quizSet.detail.back')}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
@@ -133,7 +133,7 @@ export default function QuizSetDetail() {
             </div>
             <h1 className="font-display font-extrabold text-bq-ink text-xl lg:text-3xl leading-tight">{quizSet.name}</h1>
             {quizSet.coverScripture && (
-              <div className="hidden lg:flex items-center gap-2 mt-2 text-sm text-bq-ink2">
+              <div className="hidden md:flex items-center gap-2 mt-2 text-sm text-bq-ink2">
                 <span>📍</span>
                 <span>{quizSet.coverScripture}</span>
               </div>
@@ -157,7 +157,7 @@ export default function QuizSetDetail() {
           {/* Description */}
           {quizSet.description && (
             <div>
-              <div className="hidden lg:block text-xs font-semibold text-bq-ink2 uppercase tracking-wider mb-2">Mô tả</div>
+              <div className="hidden md:block text-xs font-semibold text-bq-ink2 uppercase tracking-wider mb-2">Mô tả</div>
               <p className="text-xs lg:text-sm text-bq-ink2 leading-relaxed">{quizSet.description}</p>
             </div>
           )}
@@ -171,7 +171,7 @@ export default function QuizSetDetail() {
           )}
 
           {/* Mobile: 4-stat grid + mastery + suggested mode + actions */}
-          <div className="lg:hidden space-y-4">
+          <div className="md:hidden space-y-4">
             <div className="grid grid-cols-4 gap-1.5">
               <Stat label={t('quizSet.detail.statQuestions')} value={String(quizSet.totalQuestions)} />
               <StatDifficulty label={t('quizSet.detail.statDifficulty')} diff={diff} />
@@ -220,7 +220,7 @@ export default function QuizSetDetail() {
       </div>
 
       {/* DESKTOP: Right stats sidebar 340px */}
-      <aside className="hidden lg:block w-[340px] shrink-0 border-l border-bq-hair overflow-y-auto qs-scroll-thin bg-bq-inset">
+      <aside className="hidden md:block w-[340px] shrink-0 border-l border-bq-hair overflow-y-auto qs-scroll-thin bg-bq-inset">
         <div className="p-5 space-y-5">
           <div>
             <PrimaryActions

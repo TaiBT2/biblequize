@@ -179,7 +179,7 @@ export default function RankedQuizResults({
 
   return (
     <div data-testid="ranked-result-page" className="relative min-h-screen bg-bq-paper text-bq-ink">
-      <div className="max-w-md mx-auto px-4 pt-5 pb-[180px]">
+      <div className="max-w-md md:max-w-xl mx-auto px-4 pt-5 pb-[180px]">
 
         {/* Top context bar */}
         <div className="flex items-center justify-between text-[11px] text-bq-ink3 pb-3.5 px-1">
@@ -469,7 +469,7 @@ export default function RankedQuizResults({
         className="fixed left-0 right-0 bottom-0 z-30 px-4 pt-6 pb-[88px] md:pb-6 pointer-events-none"
         style={{ background: 'linear-gradient(180deg, rgba(251,250,245,0) 0%, var(--bq-paper) 35%)' }}
       >
-        <div className="max-w-md mx-auto pointer-events-auto">
+        <div className="max-w-md md:max-w-xl mx-auto pointer-events-auto">
           {variant === 'A' && (
             <>
               <button

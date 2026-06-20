@@ -46,7 +46,7 @@ export default function Cosmetics() {
 
   if (isLoading || !data) {
     return (
-      <div className="space-y-8 max-w-3xl mx-auto animate-pulse">
+      <div className="space-y-8 max-w-4xl mx-auto animate-pulse">
         <div className="h-8 w-48 bg-bq-inset rounded-lg" />
         <div className="grid grid-cols-3 gap-4">
           {[1, 2, 3, 4, 5, 6].map(i => (
@@ -58,7 +58,7 @@ export default function Cosmetics() {
   }
 
   return (
-    <div data-testid="cosmetics-page" className="space-y-8 max-w-3xl mx-auto">
+    <div data-testid="cosmetics-page" className="space-y-8 max-w-4xl mx-auto">
       {/* Header */}
       <div className="flex items-center gap-3">
         <Link to="/profile" className="text-bq-ink2 hover:text-bq-ink transition-colors">
@@ -78,7 +78,7 @@ export default function Cosmetics() {
           </span>
           {t('gameModes.cosmeticsPage.avatarFramesSection')}
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {data.frames.map((frame) => (
             <button
               key={frame.id}
@@ -123,7 +123,7 @@ export default function Cosmetics() {
           </span>
           {t('gameModes.cosmeticsPage.quizThemesSection')}
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {data.themes.map((theme) => (
             <button
               key={theme.id}

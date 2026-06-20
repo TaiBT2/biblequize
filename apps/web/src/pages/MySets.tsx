@@ -39,7 +39,7 @@ export default function MySets() {
 
   return (
     <div className="min-h-screen bg-bq-paper">
-      <div className="max-w-4xl mx-auto px-4 py-6">
+      <div className="max-w-5xl mx-auto px-4 py-6">
 
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
@@ -64,7 +64,7 @@ export default function MySets() {
 
         {/* Sets grid */}
         {isLoading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[...Array(4)].map((_, i) => (
               <div key={i} className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl h-36 animate-pulse" />
             ))}
@@ -76,7 +76,7 @@ export default function MySets() {
             <p className="text-bq-ink3 text-xs mt-1">Tạo bộ đầu tiên để tái sử dụng cho nhiều trận</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {sets.map(set => {
               const locked = lockedIds.includes(set.id);
               const isDraft = set.publishStatus === 'DRAFT';

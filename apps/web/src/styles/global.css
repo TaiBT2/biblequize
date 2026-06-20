@@ -2974,3 +2974,25 @@ select {
   background: rgba(232, 168, 50, 0.1);
   border-left: 2px solid #e8a832;
 }
+
+/* ── Capacitor (mobile app) native webview tweaks ──────────────────────
+   Applied only when the .capacitor marker class is set on <html> (see
+   platform/initNative.ts). No effect in the browser. */
+html.capacitor,
+html.capacitor body {
+  /* Kill rubber-band overscroll/pull-to-refresh inside the app shell. */
+  overscroll-behavior: none;
+  /* Native-app feel: don't let long-press select UI chrome text. */
+  -webkit-user-select: none;
+  user-select: none;
+  /* Remove the grey tap highlight flash on touch. */
+  -webkit-tap-highlight-color: transparent;
+}
+/* Keep text selectable where it matters (inputs + opt-in content). */
+html.capacitor input,
+html.capacitor textarea,
+html.capacitor [contenteditable],
+html.capacitor .select-text {
+  -webkit-user-select: text;
+  user-select: text;
+}

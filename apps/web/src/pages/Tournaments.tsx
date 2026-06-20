@@ -107,7 +107,7 @@ const Tournaments: React.FC = () => {
 
       {/* Loading */}
       {isLoading && (
-        <div className="space-y-6" data-testid="tournaments-skeleton">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6" data-testid="tournaments-skeleton">
           <TournamentCardSkeleton />
           <TournamentCardSkeleton />
           <TournamentCardSkeleton />
@@ -149,7 +149,7 @@ const Tournaments: React.FC = () => {
 
       {/* Tournament List */}
       {!isLoading && !isError && tournaments && tournaments.length > 0 && (
-        <div className="space-y-6" data-testid="tournaments-list">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6" data-testid="tournaments-list">
           {tournaments.map((tItem) => (
             <Link
               key={tItem.id}

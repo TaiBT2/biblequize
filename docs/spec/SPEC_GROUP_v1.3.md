@@ -1,9 +1,23 @@
-# SPEC_GROUP v1.4 — Church Group Features
+# SPEC_GROUP v1.5 — Church Group Features
 
-**Last updated**: 2026-05-10 (Group Detail UX polish + architectural cleanup, GD-0..GD-12)
-**Previous version**: v1.3 (Sprint 5 Quiz Set Professional, 2026-05-09)
+**Last updated**: 2026-06-17 (Collective Growth "Cùng nhau thuộc Lời" — BL-23)
+**Previous version**: v1.4 (Group Detail UX polish + architectural cleanup, 2026-05-10)
 **Locked decisions**: Q-A through Q-O preserved
 **Mockup reference**: `docs/mockups/MOCKUP_GROUP_DETAIL_REDESIGN.html`, `docs/group-page/group_detail_redesign_*.html`
+
+---
+
+## Changelog v1.4 → v1.5 (2026-06-17)
+
+> [BL-23] **Group Collective Growth** — the anti-leaderboard engagement hook replacing the sunset Q-A leaderboard's social signal with a non-competitive "grow together" metric (fits Tin Lành culture). Shipped CG-1..7 (BE aggregate + service + endpoint, FE card in Activity tab).
+
+| # | Section | Change |
+|---|---|---|
+| 1 | §18 (NEW) | **Collective Growth — "Cùng Nhau Thuộc Lời"**. Aggregates Q-A-safe `GroupQuizSetMastery` (§3.7) into ONE non-ranking group number: "Nhóm đã cùng thuộc N câu Lời Chúa" + milestone progress + per-set breakdown. Member-visible (D5). `GET /api/groups/{id}/collective-growth`. v1 read-only (no migration). |
+| 2 | §15.7 | + endpoint `GET /api/groups/{id}/collective-growth` (member-visible aggregate). |
+| 3 | §18 Cross-references | renumbered → §19. |
+
+**Decisions locked (D1–D5, 2026-06-17 — see DECISIONS.md):** hero = `SUM(questionsLearned)` (UNION distinct → v2) · source = mastery solo only (group-play → v2) · placement = Activity-tab hero · group goal → v2 (v1 auto milestones) · visibility = all members.
 
 ---
 
@@ -93,7 +107,8 @@
 15. API Endpoints
 16. WebSocket events
 17. Known Issues
-18. Cross-references
+18. Collective Growth (Cùng nhau thuộc Lời)
+19. Cross-references
 
 ---
 
@@ -1068,6 +1083,7 @@ Cross-ref: SPEC_ADMIN.md §11 Report Moderation.
 | GET | `/api/groups/{id}/leaderboard?period=week\|month\|all` | Member | Q-A clarified (BACKLOG: query refactor) |
 | GET | `/api/groups/{id}/leaderboard/around-me?period=...` | Member | top3 + ±2 |
 | GET | `/api/groups/{id}/stats` | Leader | analytics |
+| GET | `/api/groups/{id}/collective-growth` | Member | BL-23 §18 — anti-leaderboard collective metric (Q-A safe) |
 
 ### 15.8 Announcements
 
@@ -1131,7 +1147,48 @@ Chi tiết tracking + acceptance criteria → `BACKLOG.md`.
 
 ---
 
-## 18. Cross-references
+## 18. Collective Growth — "Cùng Nhau Thuộc Lời" (BL-23, shipped 2026-06-17)
+
+**Mục đích.** Sau khi Group Leaderboard (Q-A) bị sunset (§10, v1.4 — "ranking sinh hoạt nhóm không hợp văn hóa Tin Lành"), Group thiếu một engagement hook. Collective Growth là **anti-leaderboard**: KHÔNG xếp hạng cá nhân, mà gộp tiến độ học của cả nhóm thành **một con số chung** — *"Nhóm đã cùng thuộc N câu Lời Chúa"* — để cả nhóm cùng nhìn về một đích ("cùng nhau lớn lên").
+
+**Q-A relationship — SAFE.** Build trên `GroupQuizSetMastery` (§3.7, vốn Q-A safe — solo practice, KHÔNG vào leaderboard). Aggregate thành chỉ số **tập thể không-ranking** → KHÔNG tái sinh leaderboard đã bỏ, KHÔNG đọc/ghi `UserDailyProgress` hay `ChurchGroupService.getLeaderboard` (§10.4 / BL-16). Một structural guard test khoá invariant này (`GroupCollectiveGrowthServiceTest.qaGuard_noDailyProgressOrLeaderboardDependency`).
+
+### 18.1 Metrics (v1)
+
+| Field | Nguồn | Ý nghĩa |
+|---|---|---|
+| `totalLearned` | `SUM(questionsLearned)` qua mọi bộ PUBLISHED | Hero — "lượt câu cả nhóm đã thuộc" (đếm tiến tới cột mốc, KHÔNG phải phân số trên tổng câu) |
+| `nextMilestone` / `milestoneFloor` / `milestonePct` | milestone band | Cột mốc kế + đáy band + % tiến độ trong band |
+| `contributors` | `COUNT(DISTINCT userId)` | Số thành viên đã đóng góp |
+| `memberCount` | `ChurchGroup.memberCount` | Mẫu số "X/Y thành viên" |
+| `masteryCompletions` | `COUNT(completedMastery=true)` | Lượt thuộc trọn bộ |
+| `perSet[]` | `GROUP BY` quiz set | Mỗi bộ PUBLISHED đã có người ôn: name, totalQuestions, participants, completions, avgMasteryPct |
+
+Milestone band: `50 / 100 / 250 / 500 / 1000 / 2000 / 5000 / 10000`; vượt bảng → bước 5000. `avgMasteryPct = SUM(learned)/participants/totalQuestions` (cap 100).
+
+### 18.2 Decisions (D1–D5, locked 2026-06-17 — DECISIONS.md)
+
+| # | Quyết định | v1 | Defer v2 |
+|---|---|---|---|
+| D1 | Hero metric | SUM lượt thuộc | UNION distinct câu |
+| D2 | Nguồn | chỉ mastery (solo practice) | + group-play (live room + scheduled) |
+| D3 | Vị trí | hero card trong Activity tab | (tab riêng) |
+| D4 | Group goal (leader đặt mục tiêu) | milestone tự động | leader-set goal + quest |
+| D5 | Visibility | mọi member | — |
+
+### 18.3 Implementation (CG-1..7)
+
+- **BE:** `GroupQuizSetMasteryRepository.aggregateGrowthByGroupId` + `aggregatePerSetByGroupId` (theta-join mastery ↔ `GroupQuizSet`, PUBLISHED-scoped) → `GroupCollectiveGrowthService.getCollectiveGrowth` (hero + milestone + per-set, returns `Map<String,Object>`) → `ChurchGroupController` `GET /api/groups/{id}/collective-growth` (member-visible; non-member → 400 qua catch như `getGroupStreak`). **v1 KHÔNG cần Flyway migration** (read-only).
+- **FE:** `useGroupCollectiveGrowth` (TanStack Query) + `CollectiveGrowthCard` (hero số + milestone bar + contributors/completions + per-set list; emerald GD-12; 3 states loading/error/empty) wired vào `GroupActivityTab` (sau LiveNowBanner, mọi member). i18n `groups.growth.*` (vi+en).
+- **Tests:** `GroupCollectiveGrowthServiceTest` (7, gồm Q-A guard) · `ChurchGroupControllerTest` (member 200 / non-member 400) · `CollectiveGrowthCard.test.tsx` (4: loading/error/empty/success).
+
+### 18.4 Deferred (v2)
+
+UNION distinct-verse hero (D1) · group-play sources (D2) · leader-set group goal + quest (D4) · celebration/notification khi đạt milestone · mobile RN port (theo BL-11 pattern).
+
+---
+
+## 19. Cross-references
 
 | Spec | Sections relevant |
 |---|---|

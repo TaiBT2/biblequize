@@ -23,18 +23,9 @@
 - Chart library mới (hiện dùng inline SVG)
 - Bất kỳ dependency nào chưa có trong `package.json`
 
-## Mobile (Expo) — đã có, thoải mái dùng
+## Mobile — đã gỡ (2026-06-17)
 
-- expo ~54.0.33
-- react-native 0.81.5
-- expo-haptics ~15.0.8
-- @react-navigation/* (navigation)
-
-## Mobile — CẦN HỎI trước khi thêm
-
-- Native modules cần build custom dev client
-- State libraries khác Zustand (đã align với web)
-- Animation/gesture libraries native
+> `apps/mobile` (Expo/RN) đã được remove để viết lại bản mới. Dependency list sẽ được chốt lại khi bản mobile mới khởi động — hỏi trước khi thêm bất kỳ dep mobile nào.
 
 ## Backend — đã có, thoải mái dùng
 

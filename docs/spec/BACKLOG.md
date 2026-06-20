@@ -592,6 +592,31 @@
 
 ---
 
+## Added 2026-06-17 (Group differentiator — Collective Growth)
+
+### BL-23 — Group Collective Growth ("Cùng nhau thuộc Lời") — anti-leaderboard shared progress
+- **Source:** 2026-06-17 — khảo sát + đánh giá Group ("không có điểm nổi bật": đủ cơ chế nhưng kẹt giữa pivot — leaderboard cạnh tranh đã sunset (Q-A / GD-1 / BL-16) còn hook thay thế (BL-17 Feed, BL-18 Pulse) đều defer).
+- **Concept:** *anti-leaderboard*. KHÔNG xếp hạng cá nhân — một con số chung cả nhóm cùng lấp đầy: "Nhóm đã cùng thuộc **N** câu Lời Chúa" + thanh tiến tới cột mốc + breakdown theo bộ câu hỏi. Hợp văn hóa Tin Lành "cùng nhau lớn lên".
+- **Q-A SAFE:** dùng `GroupQuizSetMastery` (solo practice), aggregate thành chỉ số tập thể *không-ranking* → KHÔNG đụng `ChurchGroupService.getLeaderboard` (BL-16). Bổ sung BL-17/BL-18, không trùng.
+- **Decisions locked (D1–D5, default 2026-06-17 — DECISIONS.md):** D1 hero = `SUM(questionsLearned)` (UNION v2) · D2 nguồn mastery-only (group-play v2) · D3 hero trong Activity tab · D4 group goal v2 (v1 milestone tự động) · D5 mọi member thấy.
+- **Implementation (idiom codebase):** repo trả `List<Object[]>` aggregate · service trả `Map<String,Object>` (như mastery/scheduled service) · test Mockito (group module không có Testcontainers/@DataJpaTest). **v1 KHÔNG cần Flyway migration** (read-only).
+- **Delivered (CG-1..8):**
+  - CG-1 repo `aggregateGrowthByGroupId` + `GroupCollectiveGrowthService.getCollectiveGrowth` (hero SUM + milestone band 50→10000).
+  - CG-2 per-set `aggregatePerSetByGroupId` + `memberCount` (ChurchGroupRepository) + `buildPerSet`.
+  - CG-3 endpoint `GET /api/groups/{id}/collective-growth` (member-visible; non-member 400) + 2 controller test.
+  - CG-4 reflection Q-A guard test (no UserDailyProgress/leaderboard dependency).
+  - CG-5 `useGroupCollectiveGrowth` (TanStack) + `getCollectiveGrowth` api + queryKeys groups domain.
+  - CG-6 `CollectiveGrowthCard` (hero + milestone bar + per-set, emerald GD-12, 3 states) + 4 test.
+  - CG-7 wired into `GroupActivityTab` (mọi member) + i18n `groups.growth.*` (vi+en).
+  - CG-8 SPEC_GROUP §18 authored (+ §15.7 endpoint, §19 cross-ref renumber) + this BACKLOG close.
+- **Tests:** BE Tầng 3 1075 pass · FE Tầng 3 1331 pass (≥ baseline). Side-fix: jsdom pinned ^26 (Node 22.11 require-ESM, unbreaks seo-dedupe) — commit `c272ad61`.
+- **Status:** ✅ DONE 2026-06-17 — commits `76ac4415` (CG-1), `a3bc110f` (CG-2), CG-3/CG-4 folded into concurrent history, `330b5403` (CG-5..7 FE), CG-8 this commit.
+- **Spec impact:** [SPEC_GROUP_v1.3.md §18](SPEC_GROUP_v1.3.md) (Collective Growth, authored). Related: BL-16, BL-17, BL-18.
+- **Deferred (v2):** UNION distinct hero (D1) · group-play sources (D2) · leader-set group goal (D4) · milestone celebration/notification · mobile RN port.
+- **Ref:** task `docs/todo/active/2026-06-17-group-collective-growth.md`.
+
+---
+
 ## Cross-references
 - Canonical specs: [SPEC_USER_v3.2.md](SPEC_USER_v3.2.md), [SPEC_MULTIPLAYER.md](SPEC_MULTIPLAYER.md), [SPEC_ADMIN_v3.1.md](SPEC_ADMIN_v3.1.md), [SPEC_GROUP_v1.3.md](SPEC_GROUP_v1.3.md) (Sprint 5)
 - Roadmap (defer features): [SPEC_ROADMAP.md](SPEC_ROADMAP.md)
