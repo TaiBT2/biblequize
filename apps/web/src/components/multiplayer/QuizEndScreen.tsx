@@ -229,8 +229,10 @@ export function QuizEndScreen({
           <div
             className="rounded-xl p-4 grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6"
             style={{
-              background: 'rgba(50,52,64,0.55)',
-              backdropFilter: 'blur(12px)',
+              // No backdrop blur on this secondary panel — stacking 4 live
+              // blur layers under animating confetti janks mid-range Android.
+              // Opaque-ish bg keeps the glass look without the compositing cost.
+              background: 'rgba(40,42,54,0.92)',
               border: '1px solid rgba(255,255,255,0.06)',
               animation: 'fadeIn 0.6s ease-out 0.4s backwards',
             }}
@@ -308,8 +310,9 @@ export function QuizEndScreen({
           <div
             className="rounded-2xl p-4 mt-3"
             style={{
-              background: 'rgba(50,52,64,0.55)',
-              backdropFilter: 'blur(12px)',
+              // Secondary panel — opaque bg instead of backdrop blur (see
+              // match-stats note above) to keep the result screen smooth.
+              background: 'rgba(40,42,54,0.92)',
               border: '1px solid rgba(255,255,255,0.06)',
               animation: 'fadeIn 0.6s ease-out 0.5s backwards',
             }}

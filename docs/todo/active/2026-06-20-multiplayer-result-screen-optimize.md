@@ -15,7 +15,7 @@
   - Checklist: impl · Tầng 1+2 pass · Tầng 3 trước commit · commit
 
 - MRO-2 Performance: giảm lớp `backdrop-filter: blur()` chồng nhau (mobile jank)
-  - Status: [ ] TODO · Files: `QuizEndScreen.tsx` · Test: visual + existing tests pass
+  - Status: [x] DONE · Files: `QuizEndScreen.tsx` · Test: Tầng 3 1369 pass. Bỏ blur ở match-stats + ranking → mỗi view còn 1 lớp blur.
   - Detail: 4 lớp blur đồng thời + confetti animate. Giữ blur cho panel chính, panel phụ dùng nền rgba đậm tĩnh (bỏ blur) để giảm jank Android.
   - **Spec impact**: [x] None
   - **Spec strategy**: [x] (c) `[no-spec-impact]`
