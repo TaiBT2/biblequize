@@ -26,3 +26,9 @@
   - Fix: cap inset `max(8px, min(env(safe-area-inset-bottom,0px), 12px))` ở nav paddingBottom + `--mobile-nav-h` base 54. Floor 8px giữ an toàn máy không-inset; cap 12px vẫn đủ cho gesture/notch.
   - Status: [x] DONE · Files: `MobileBottomTabs.tsx`, `styles/global.css` · Test: Tầng 3 FE **1364 pass** + build exit 0
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`
+  - Verified trên S21 thật: cold-restart (force-stop + reopen, KHÔNG clear cache) → bar vẫn 56.8px (không revert). "Revert" trước đó chỉ do cài đè nhiều bản cùng version 1.0 (WebView giữ cache cũ).
+
+- MBT-4 Fix vĩnh viễn cache stale: WebView tự clearCache mỗi cold start
+  - `MainActivity.onCreate` → `getBridge().getWebView().clearCache(true)`. Tránh bản cập nhật sau render bundle cũ (index.html/CSS hashed bị WebView cache giữ qua update). Cold-start-only (không chạy khi resume nền), asset local nên re-read rẻ.
+  - Status: [x] DONE · Files: `android/app/src/main/java/org/forbible/app/MainActivity.java` (native, no FE test) · Test: gradle assembleDebug exit 0 + app launch không crash trên S21
+  - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`
