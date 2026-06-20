@@ -1,7 +1,9 @@
 // Regenerate the favicon/app-icon set from public/favicon.svg.
-// Tab icons (16/32) are the transparent gold "coin"; PWA / home-screen icons
-// (180/192/512) center that coin on the brand dark square (#11131e, the
-// manifest theme_color) so there's no transparent-corner artifact on iOS.
+// The source SVG is a self-contained flame mark on a rounded indigo square.
+// Tab icons (16/32) render it as-is (rounded transparent corners are fine in a
+// browser tab); PWA / home-screen icons (180/192/512) flatten it full-bleed onto
+// the source's base indigo (#1e1b4b) so the rounded corners read as a solid
+// square (no transparent-corner artifact on iOS — the OS applies its own mask).
 // favicon.ico bundles the 16+32 PNGs (PNG-in-ICO). Run: node scripts/gen-favicons.mjs
 import sharp from 'sharp'
 import { readFileSync, writeFileSync } from 'fs'
@@ -10,17 +12,16 @@ import { dirname, join } from 'path'
 
 const PUB = join(dirname(fileURLToPath(import.meta.url)), '..', 'public')
 const svg = readFileSync(join(PUB, 'favicon.svg'))
-const DARK = { r: 0x11, g: 0x13, b: 0x1e, alpha: 1 }
-const DENSITY = 2400 // oversample the 32-unit viewBox so downscaled icons stay crisp
+const BASE = { r: 0x1e, g: 0x1b, b: 0x4b, alpha: 1 } // #1e1b4b — SVG's base indigo
+const DENSITY = 384 // oversample the 512-unit viewBox (~2730px) so icons stay crisp
 
 const tab = (size) =>
   sharp(svg, { density: DENSITY }).resize(size, size).png().toBuffer()
 
 async function appIcon(size) {
-  const inner = Math.round(size * 0.78)
-  const coin = await sharp(svg, { density: DENSITY }).resize(inner, inner).png().toBuffer()
-  return sharp({ create: { width: size, height: size, channels: 4, background: DARK } })
-    .composite([{ input: coin, gravity: 'center' }]).png().toBuffer()
+  const mark = await sharp(svg, { density: DENSITY }).resize(size, size).png().toBuffer()
+  return sharp({ create: { width: size, height: size, channels: 4, background: BASE } })
+    .composite([{ input: mark, gravity: 'center' }]).png().toBuffer()
 }
 
 function buildIco(images) {

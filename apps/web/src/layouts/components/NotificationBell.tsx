@@ -13,7 +13,26 @@ const NOTIFICATION_ROUTES: Record<string, string> = {
   daily_reminder: '/daily',
   friend_overtake: '/leaderboard',
   group_invite: '/groups',
+  group_announcement: '/groups',
   tournament_start: '/multiplayer',
+}
+
+/**
+ * Resolve where a notification click should navigate. Metadata-aware types
+ * (e.g. group_announcement → the specific group's Announcements tab via
+ * metadata.groupId) deep-link to the exact content; everything else falls
+ * back to the static per-type route. Returns null when no route applies.
+ */
+export function resolveNotificationTarget(n: { type: string; metadata?: string }): string | null {
+  if (n.type === 'group_announcement' && n.metadata) {
+    try {
+      const meta = JSON.parse(n.metadata) as { groupId?: string }
+      if (meta.groupId) return `/groups/${meta.groupId}?tab=announcements`
+    } catch {
+      // malformed metadata — fall through to the static route
+    }
+  }
+  return NOTIFICATION_ROUTES[n.type] ?? null
 }
 
 interface NotificationBellProps {
@@ -71,7 +90,7 @@ export default function NotificationBell({ wrapperClassName = '' }: Notification
       // ignore
     }
     setOpen(false)
-    const target = NOTIFICATION_ROUTES[n.type]
+    const target = resolveNotificationTarget(n)
     if (target) navigate(target)
   }
 

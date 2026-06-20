@@ -9,6 +9,8 @@ export interface PanelNotification {
   type: string
   isRead: boolean
   createdAt: string
+  /** Raw JSON string from BE (e.g. group_announcement → {groupId, announcementId}); used for deep-linking. */
+  metadata?: string
 }
 
 interface NotificationPanelProps {
