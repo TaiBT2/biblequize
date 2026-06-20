@@ -3,11 +3,13 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (92)
+## Active (94)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
-| 2026-06-20 | Mobile foundation polish (cross-cutting: safe-area var + touch-feedback + dvh + keyboard; gap sau MRF/TBL) (MFP-1..6) | TODO | [detail](docs/todo/active/2026-06-20-mobile-foundation-polish.md) |
+| 2026-06-20 | Group announcement → notify members (BL-24, Q-K increment; GAN-1..3) | TODO | [detail](docs/todo/active/2026-06-20-group-announcement-notifications.md) |
+| 2026-06-20 | AI Generator: option "Tất cả sách" (toàn Kinh Thánh theo chủ đề) + disable Chương/Câu (ABO-1..2) | DONE | [detail](docs/todo/active/2026-06-20-ai-generator-all-books-option.md) |
+| 2026-06-20 | Mobile foundation polish (cross-cutting: safe-area var + touch-feedback + dvh + keyboard; gap sau MRF/TBL) (MFP-1..6) | DONE | [archive](docs/todo/archive/2026-06-20-mobile-foundation-polish.md) |
 | 2026-06-19 | Favicon match in-app logo (gold-coin + sách, bỏ thập tự) + regenerate icon set (FAV-1) | TODO | [detail](docs/todo/active/2026-06-19-favicon-match-app-logo.md) |
 | 2026-06-19 | Wire online presence (OnlineService) — biết user đang online: nối dây Redis presence chưa được gọi + quyết định show/né con số (ONL-1..4) | TODO | [detail](docs/todo/active/2026-06-19-wire-online-presence.md) |
 | 2026-06-19 | Guest practice play (no-session local mode) — fix `POST /api/sessions` 401 cho khách, chơi client-side qua `/api/questions` (GP-1) | TODO | [detail](docs/todo/active/2026-06-19-guest-practice-no-session.md) |
