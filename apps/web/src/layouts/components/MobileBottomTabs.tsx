@@ -17,14 +17,16 @@ interface TabConfig {
  * active-only pill which hid 3 of 4 labels and made the bar feel
  * empty on mobile.
  *
- * Tabs match the existing AppLayout {@code navItems} list one-to-one
- * so the bottom-nav refactor is a pure style change — no item drift,
- * no route changes.
+ * Tab order mirrors AppLayout {@code navItems} (Home · Leaderboard · Groups ·
+ * Multiplayer · Profile). The "Phòng Chơi" (Multiplayer) tab brings the bottom
+ * nav toward the SPEC_USER 5-tab set; it reuses the desktop {@code gameModes.rooms}
+ * label so both navs stay in sync.
  */
 const TABS: TabConfig[] = [
   { path: '/', labelKey: 'nav.home', icon: 'home' },
   { path: '/leaderboard', labelKey: 'nav.leaderboard', icon: 'leaderboard' },
   { path: '/groups', labelKey: 'nav.groups', icon: 'groups', auth: true },
+  { path: '/multiplayer', labelKey: 'gameModes.rooms', icon: 'sports_esports', auth: true },
   { path: '/profile', labelKey: 'nav.profile', icon: 'person', auth: true },
 ]
 

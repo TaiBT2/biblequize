@@ -7,6 +7,7 @@
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-20 | Multiplayer: đa dạng chọn sách (nhóm chủ đề + 66 sách riêng lẻ; fix OT/NT/Gospels no-op) (MBV-1..4) | DONE | [detail](docs/todo/active/2026-06-20-multiplayer-book-scope-variety.md) |
 | 2026-06-20 | Group announcement → notify members (BL-24, Q-K increment; GAN-1..3) | TODO | [detail](docs/todo/active/2026-06-20-group-announcement-notifications.md) |
 | 2026-06-20 | AI Generator: option "Tất cả sách" (toàn Kinh Thánh theo chủ đề) + disable Chương/Câu (ABO-1..2) | DONE | [detail](docs/todo/active/2026-06-20-ai-generator-all-books-option.md) |
 | 2026-06-20 | Mobile foundation polish (cross-cutting: safe-area var + touch-feedback + dvh + keyboard; gap sau MRF/TBL) (MFP-1..6) | DONE | [archive](docs/todo/archive/2026-06-20-mobile-foundation-polish.md) |
