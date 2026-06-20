@@ -37,7 +37,7 @@ export default function Onboarding() {
   /* ── Screen 1: Language Selection ── */
   if (step === 0) {
     return (
-      <div className="bq-lightwell min-h-screen bg-bq-paper flex flex-col">
+      <div className="bq-lightwell min-h-dvh bg-bq-paper flex flex-col">
         {/* Nav */}
         <nav className="relative z-10 flex justify-between items-center w-full px-8 py-4">
           <span className="text-xl font-bold text-bq-amberd uppercase tracking-[0.05em] font-display">BibleQuiz</span>
@@ -143,7 +143,7 @@ export default function Onboarding() {
 
   /* ── Screens 2-4: Welcome Slides ── */
   return (
-    <div className="bq-lightwell min-h-screen bg-bq-paper flex flex-col">
+    <div className="bq-lightwell min-h-dvh bg-bq-paper flex flex-col">
       {/* Nav */}
       <nav className="flex justify-between items-center w-full px-8 py-4 fixed top-0 z-50 bg-bq-paper">
         <span className="text-xl font-bold text-bq-amberd uppercase tracking-[0.05em] font-display">BibleQuiz</span>

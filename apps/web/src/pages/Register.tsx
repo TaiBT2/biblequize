@@ -53,7 +53,7 @@ export default function Register() {
   }
 
   return (
-    <main className="flex min-h-screen bg-bq-paper">
+    <main className="flex min-h-dvh bg-bq-paper">
       <PageMeta title={t('auth.register', { defaultValue: 'Register' })} canonicalPath="/register" />
 
       {/* Left Hero (hidden on mobile) */}

@@ -110,7 +110,7 @@ describe('Quiz Gameplay', () => {
     it('renders page container with quiz layout', () => {
       renderQuiz()
       // Quiz page always renders a root container regardless of loading state
-      const container = document.querySelector('.min-h-screen') || document.querySelector('[class*="bg-surface"]')
+      const container = document.querySelector('.min-h-dvh, .min-h-screen') || document.querySelector('[class*="bg-surface"]')
       expect(container).toBeTruthy()
     })
   })

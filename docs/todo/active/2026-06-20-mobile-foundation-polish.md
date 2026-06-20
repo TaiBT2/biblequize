@@ -45,8 +45,10 @@ Cả MRF (per-page) lẫn TBL (tablet) không xử lý 4 thứ sau, đều ảnh
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`
 
 - MFP-5 **`100vh` → dynamic viewport** cho full-screen page (mobile web)
-  - `min-h-screen`/`h-screen` → `min-h-[100dvh]` ở các trang full-screen: `Login`, `Register`, `LandingPage`, `Onboarding`, `OnboardingTryQuiz`, `DailyChallenge` immersive + 3 chỗ `100vh` trong `global.css`. Kiểm Tailwind version hỗ trợ `dvh` (nếu chưa, dùng arbitrary `[100dvh]` — đã an toàn). Fallback desktop tự về 100vh.
-  - Status: [ ] TODO · Files: các page trên + `styles/global.css` · Test: Tầng 3 + manual iOS Safari (web) không clip
+  - `min-h-screen` → `min-h-dvh` (Tailwind 3.4 có sẵn utility) ở full-screen pages: `Login`, `Register`, `LandingPage`, `Onboarding`, `OnboardingTryQuiz`, `Quiz` (immersive, `overflow-hidden` → quan trọng nhất vì 100vh + clip cắt nội dung dưới address bar trên web).
+  - DailyChallenge KHÔNG còn `min-h-screen` (MRF-8 đã refactor) → loại. Cập nhật `Quiz.test.tsx:113` selector `.min-h-screen`→`.min-h-dvh, .min-h-screen` (rename có chủ đích, không disable).
+  - **Defer**: 3 chỗ `100vh` trong `global.css` (body min-height + 2 nơi) — file nhạy cảm, `min-height:100vh` cho body vẫn grow đúng → để follow-up nếu cần.
+  - Status: [x] DONE · Files: 6 page + `Quiz.test.tsx` · Test: Tầng 3 FE **1358 pass** + build exit 0 (`100dvh` trong CSS output)
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`
 
 - MFP-6 **Android keyboard: scroll focused input vào tầm nhìn** (Capacitor-only)

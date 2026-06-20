@@ -602,7 +602,7 @@ export default function LandingPage() {
   if (isLoading) return null
 
   return (
-    <div data-testid="landing-page" className="bg-bq-paper font-body text-bq-ink selection:bg-bq-amber selection:text-white min-h-screen">
+    <div data-testid="landing-page" className="bg-bq-paper font-body text-bq-ink selection:bg-bq-amber selection:text-white min-h-dvh">
       <PageMeta
         title="Trắc Nghiệm Kinh Thánh – Câu Đố Kinh Thánh Online"
         description="Trắc nghiệm Kinh Thánh & câu đố Kinh Thánh Tin Lành online miễn phí — học Lời Chúa qua quiz tương tác, thi đấu cùng cộng đồng và nhóm hội thánh Việt Nam."

@@ -113,7 +113,7 @@ export default function Login() {
   }
 
   return (
-    <main className="flex min-h-screen bg-bq-paper">
+    <main className="flex min-h-dvh bg-bq-paper">
       <PageMeta title={t('auth.login')} canonicalPath="/login" />
       {/* Left Side: Hero Section (60%) */}
       <section className="hidden md:flex md:w-[55%] lg:w-[60%] relative overflow-hidden bg-bq-paper">

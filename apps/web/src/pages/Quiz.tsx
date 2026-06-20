@@ -631,7 +631,7 @@ const Quiz: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-bq-paper flex items-center justify-center">
+      <div className="min-h-dvh bg-bq-paper flex items-center justify-center">
         <div className="bg-bq-white p-8 text-center max-w-xs w-full rounded-3xl border border-bq-hair shadow-bq-soft">
           <div className="text-xl font-bold mb-4 text-bq-ink">{t('quiz.loading')}</div>
           <div className="animate-spin w-8 h-8 border-4 border-bq-amberd border-t-transparent rounded-full mx-auto"></div>
@@ -761,7 +761,7 @@ const Quiz: React.FC = () => {
 
   if (!currentQuestion) {
     return (
-      <div className="min-h-screen bg-bq-paper flex items-center justify-center">
+      <div className="min-h-dvh bg-bq-paper flex items-center justify-center">
         <div className="bg-bq-white p-8 text-center max-w-sm w-full rounded-3xl border border-bq-hair shadow-bq-soft">
           <div className="text-2xl font-bold mb-4 text-bq-ink font-display">{t('quiz.noQuestions')}</div>
           <button
@@ -776,7 +776,7 @@ const Quiz: React.FC = () => {
   }
 
   return (
-    <div data-testid="quiz-page" className="min-h-screen bg-bq-paper font-body text-bq-ink overflow-hidden relative">
+    <div data-testid="quiz-page" className="min-h-dvh bg-bq-paper font-body text-bq-ink overflow-hidden relative">
       {/* Background Decorative Elements */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-bq-amber/5 blur-[120px] rounded-full"></div>
@@ -858,7 +858,7 @@ const Quiz: React.FC = () => {
           so the answer grid scrolls clear of the dock instead of being
           covered by it (the dock was floating at `bottom-48` and overlapping
           answer D on short mobile viewports — fix 2026-05-20). */}
-      <main className={`relative min-h-screen pt-24 px-6 flex flex-col items-center justify-center max-w-5xl mx-auto ${showResult ? 'pb-56 sm:pb-44' : 'pb-12'}`}>
+      <main className={`relative min-h-dvh pt-24 px-6 flex flex-col items-center justify-center max-w-5xl mx-auto ${showResult ? 'pb-56 sm:pb-44' : 'pb-12'}`}>
         {/* Mobile-only HUD strip — 3 pills (energy/combo/score) per QM-2 mockup.
             Replaces desktop "Top Stats Row" on small screens. */}
         <div

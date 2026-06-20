@@ -48,7 +48,7 @@ export default function OnboardingTryQuiz() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-bq-paper flex items-center justify-center">
+      <div className="min-h-dvh bg-bq-paper flex items-center justify-center">
         <div className="animate-pulse text-bq-ink2">{t('common.loading')}</div>
       </div>
     )
@@ -86,7 +86,7 @@ export default function OnboardingTryQuiz() {
     }
 
     return (
-      <div data-testid="try-quiz-results" className="bq-lightwell min-h-screen bg-bq-paper flex flex-col">
+      <div data-testid="try-quiz-results" className="bq-lightwell min-h-dvh bg-bq-paper flex flex-col">
         {/* Nav */}
         <nav className="flex justify-between items-center w-full px-8 py-4 sticky top-0 z-50 bg-bq-paper">
           <span className="text-xl font-bold text-bq-amberd uppercase tracking-[0.05em] font-display">BibleQuiz</span>
@@ -211,7 +211,7 @@ export default function OnboardingTryQuiz() {
   const LETTERS = ['A', 'B', 'C', 'D']
 
   return (
-    <div className="bq-lightwell min-h-screen bg-bq-paper flex flex-col">
+    <div className="bq-lightwell min-h-dvh bg-bq-paper flex flex-col">
       {/* Nav */}
       <nav className="flex justify-between items-center w-full px-8 py-4 sticky top-0 z-50 bg-bq-paper">
         <span className="text-xl font-bold text-bq-amberd uppercase tracking-[0.05em] font-display">BibleQuiz</span>
