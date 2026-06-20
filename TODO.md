@@ -3,10 +3,21 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (79)
+## Active (91)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-19 | Favicon match in-app logo (gold-coin + sách, bỏ thập tự) + regenerate icon set (FAV-1) | TODO | [detail](docs/todo/active/2026-06-19-favicon-match-app-logo.md) |
+| 2026-06-19 | Wire online presence (OnlineService) — biết user đang online: nối dây Redis presence chưa được gọi + quyết định show/né con số (ONL-1..4) | TODO | [detail](docs/todo/active/2026-06-19-wire-online-presence.md) |
+| 2026-06-19 | Guest practice play (no-session local mode) — fix `POST /api/sessions` 401 cho khách, chơi client-side qua `/api/questions` (GP-1) | TODO | [detail](docs/todo/active/2026-06-19-guest-practice-no-session.md) |
+| 2026-06-18 | Leaderboard deep-dive fixes: rank tie-break + dedup + around-me + privacy + low-data "né con số" + dẹp mùa thi đua (LBF-1..13; LBF-3 ZSET defer) | DONE (12/13, LBF-3 defer) | [detail](docs/todo/active/2026-06-18-leaderboard-deep-fixes.md) |
+| 2026-06-18 | SEO pillar page /cau-do-kinh-thanh (content VN ngách Tin Lành + FAQPage + prerender + sitemap) (PIL-1..2) | DONE | [detail](docs/todo/active/2026-06-18-pillar-page-cau-do-kinh-thanh.md) |
+| 2026-06-18 | Homepage `/` cho khách thấy LandingPage giàu chữ (thay Onboarding rỗng) + prerender / (HLG-1..2) | DONE | [detail](docs/todo/active/2026-06-18-homepage-landing-for-guests.md) |
+| 2026-06-18 | Lighthouse prod (BP100/SEO 92→100 sau đổi CTA "Play Now"/A11y 96/Perf 93): CTA text + báo cáo contrast/perf (LH-1) | DONE | [detail](docs/todo/active/2026-06-18-lighthouse-seo-a11y.md) |
+| 2026-06-18 | Public leaderboard endpoint + guest UX: /api/public/leaderboard + Leaderboard guest-aware + Landing scroll-to/real data (LBG-1..4) | DONE | [detail](docs/todo/active/2026-06-18-public-leaderboard-endpoint-guest.md) |
+| 2026-06-18 | Guest-aware AppLayout chrome: route public (leaderboard…) khách thấy nav login giả → nút Đăng nhập + ẩn nav cần auth (GAC-1..2) | DONE | [detail](docs/todo/active/2026-06-18-guest-aware-applayout-chrome.md) |
+| 2026-06-18 | SEO round 2: FAQPage schema /help + bỏ LCP preload rác + alt/desc + footer link (SR2-1..3) | DONE | [detail](docs/todo/active/2026-06-18-seo-round2-faq-lcp-links.md) |
+| 2026-06-18 | h1 SEO keywords: Landing exact-match "trắc nghiệm Kinh Thánh" + Daily thêm h1 (HSE-1..2) | DONE | [detail](docs/todo/active/2026-06-18-h1-seo-keywords.md) |
 | 2026-06-17 | Mobile app (Capacitor wrap web) — chỉ trang User (MOB-0..5; code DONE, AAB built, emulator smoke OK; store/iOS owner-gated) | IN PROGRESS | [detail](docs/todo/active/2026-06-17-mobile-capacitor.md) |
 | 2026-06-17 | Group Collective Growth "Cùng nhau thuộc Lời" — differentiator (BL-23, CG-1..8) | DONE | [archive](docs/todo/archive/2026-06-17-group-collective-growth.md) |
 | 2026-06-18 | i18n locale-dedup: chỉ load ngôn ngữ active (vi-user bỏ ~35kB gz en chunk) (ILD-1) | DONE | [detail](docs/todo/active/2026-06-18-i18n-locale-dedup.md) |
@@ -74,7 +85,7 @@
 | 2026-05-18 | Profile Sprint 4: Edit Profile modal (wire dead button) | TODO | [detail](docs/todo/active/2026-05-18-profile-sprint-4-edit-modal.md) |
 | 2026-05-18 | Fix Daily Challenge question card clipped on mobile | DONE | [detail](docs/todo/active/2026-05-18-fix-daily-challenge-question-clipped-mobile.md) |
 | 2026-05-18 | Fix MobileTopBar broken avatar alt-text overflow | DONE | [detail](docs/todo/active/2026-05-18-fix-mobile-topbar-broken-avatar-alt-overflow.md) |
-| 2026-05-13 | Home Redesign Modern Spiritual | IN PROGRESS | [detail](docs/todo/active/2026-05-13-home-redesign-modern-spiritual.md) |
+| 2026-05-13 | Home Redesign Modern Spiritual | DONE | [detail](docs/todo/active/2026-05-13-home-redesign-modern-spiritual.md) |
 | 2026-05-13 | Disable test data seed on prod + harden guard | TODO | [detail](docs/todo/active/2026-05-13-disable-seed-on-prod-and-harden-guard.md) |
 | 2026-05-13 | Code Quality Audit follow-up (BE + FE Web) | PARTIALLY DONE | [detail](docs/todo/active/2026-05-13-code-quality-audit-follow-up-be-fe-web.md) |
 | 2026-05-10 | Quiz Set card: thêm action buttons (Chơi cùng nhau / Đặt lịch) | TODO | [detail](docs/todo/active/2026-05-10-quiz-set-card-them-action-buttons-choi-cung-nhau-dat-lich.md) |

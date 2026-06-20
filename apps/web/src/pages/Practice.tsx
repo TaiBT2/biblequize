@@ -7,6 +7,7 @@ import QuizLanguageSelect from '../components/QuizLanguageSelect'
 import { getQuizLanguage, type QuizLanguage } from '../utils/quizLanguage'
 import { getChapterCount, getVerseCount } from '../data/bibleData'
 import { useTranslation } from 'react-i18next'
+import { useAuthStore } from '../store/authStore'
 
 interface Book {
   id: string
@@ -67,6 +68,7 @@ function clampInt(v: number, min: number, max: number): number {
 export default function Practice() {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const isAuthenticated = useAuthStore(s => s.isAuthenticated)
   const [books, setBooks] = useState<Book[]>([])
   const [selectedBook, setSelectedBook] = useState('')
   const [selectedDifficulty, setSelectedDifficulty] = useState('all')
@@ -89,12 +91,16 @@ export default function Practice() {
     },
   })
 
+  // Recent sessions + wrong-question retry are logged-in-only (per-user history).
+  // Gate the queries on auth so guests don't fire requests that 401 — guest
+  // practice is a fresh client-side run with no server history.
   const { data: recentSessions } = useQuery({
     queryKey: ['practice-recent'],
     queryFn: async () => {
       const res = await api.get('/api/sessions/practice/recent', { params: { limit: 3 } })
       return res.data as RecentSession[]
     },
+    enabled: isAuthenticated,
   })
 
   const { data: wrongCount } = useQuery({
@@ -103,6 +109,7 @@ export default function Practice() {
       const res = await api.get('/api/sessions/practice/wrong-questions/count')
       return (res.data as { count: number }).count
     },
+    enabled: isAuthenticated,
   })
 
   useEffect(() => {
@@ -158,6 +165,42 @@ export default function Practice() {
     try {
       setIsLoading(true)
       setErrorMsg('')
+
+      // Guest (not logged in): SPEC_USER §5.1 — Luyện Tập is "mixed (guest có
+      // thể chơi, không lưu tier)". Run a local, no-session quiz: pull questions
+      // from the public /api/questions endpoint and let Quiz.tsx score them
+      // client-side (its sessionId-less path already handles scoring, skips the
+      // answer/complete POSTs, and disables the lifeline). This avoids the 401
+      // that POST /api/sessions returns for anonymous users.
+      if (!isAuthenticated) {
+        const params: Record<string, unknown> = { language: quizLang, limit: questionCount }
+        if (selectedBook) params.book = selectedBook
+        if (selectedDifficulty && selectedDifficulty !== 'all') params.difficulty = selectedDifficulty
+        if (chapterFrom !== '') params.chapterFrom = chapterFrom
+        if (chapterTo !== '')   params.chapterTo   = chapterTo
+        if (verseFrom !== '')   params.verseFrom   = verseFrom
+        if (verseTo !== '')     params.verseTo     = verseTo
+
+        const res = await api.get('/api/questions', { params })
+        const questions = res.data
+        if (!Array.isArray(questions) || questions.length === 0) {
+          setErrorMsg(t('practice.errorCreate'))
+          return
+        }
+        navigate('/quiz', {
+          state: {
+            questions,
+            mode: 'practice',
+            book: selectedBook,
+            difficulty: selectedDifficulty,
+            questionCount,
+            showExplanation,
+            timePerQuestion,
+          },
+        })
+        return
+      }
+
       const payload: Record<string, unknown> = {
         mode: 'practice',
         book: selectedBook,

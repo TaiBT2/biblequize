@@ -38,6 +38,8 @@ interface MockOpts {
   totalPoints?: number
   currentStreak?: number
   dailyDone?: boolean
+  /** LBF-11: fewer than 10 weekly players → Home shows the low-data message. */
+  lowWeekly?: boolean
 }
 
 function setupApi(opts: MockOpts = {}) {
@@ -68,11 +70,24 @@ function setupApi(opts: MockOpts = {}) {
     if (url.includes('/api/leaderboard/weekly/my-rank'))
       return Promise.resolve({ data: { rank: 4, total: 7, userId: 'me' } })
     if (url.includes('/api/leaderboard/weekly'))
+      // ≥ SEED_THRESHOLD (10) entries so the Home weekly card renders the board
+      // (below the threshold it shows the LBF-11 low-data encouraging message).
       return Promise.resolve({
-        data: [
+        data: opts.lowWeekly ? [
           { userId: 'm', name: 'Minh Anh', points: 1240 },
           { userId: 'k', name: 'Khôi Nguyên', points: 1080 },
           { userId: 'me', name: 'Tai Thanh', points: 820 },
+        ] : [
+          { userId: 'm', name: 'Minh Anh', points: 1240 },
+          { userId: 'k', name: 'Khôi Nguyên', points: 1080 },
+          { userId: 'me', name: 'Tai Thanh', points: 820 },
+          { userId: 'p4', name: 'Player 4', points: 700 },
+          { userId: 'p5', name: 'Player 5', points: 600 },
+          { userId: 'p6', name: 'Player 6', points: 500 },
+          { userId: 'p7', name: 'Player 7', points: 400 },
+          { userId: 'p8', name: 'Player 8', points: 300 },
+          { userId: 'p9', name: 'Player 9', points: 200 },
+          { userId: 'p10', name: 'Player 10', points: 100 },
         ],
       })
     if (url.includes('/api/daily-challenge/result'))
@@ -169,6 +184,17 @@ describe('Home Dashboard (Khung Sáng IA)', () => {
       const lb = screen.getByTestId('home-weekly-leaderboard')
       expect(lb).toHaveTextContent('Minh Anh')
       expect(lb).toHaveTextContent('Tai Thanh')
+    })
+
+    it('LBF-11: hides the sparse board + weak #rank when < 10 weekly players', async () => {
+      setupApi({ lowWeekly: true })
+      renderHome()
+      await waitFor(() => expect(screen.getByTestId('home-weekly-leaderboard')).toBeInTheDocument())
+      const lb = screen.getByTestId('home-weekly-leaderboard')
+      // Sparse rows replaced by the encouraging low-data message
+      expect(lb).not.toHaveTextContent('Minh Anh')
+      // The weak "Hạng tuần #4" / ranked "#4" numbers must not surface
+      expect(screen.queryByText(/Hạng tuần/)).not.toBeInTheDocument()
     })
   })
 

@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 import { useAuthStore } from '../store/authStore'
 import { TIERS, getTierByPoints } from '../data/tiers'
 import { resolveAvatar } from '../utils/avatar'
+import PageMeta from '../components/PageMeta'
 
 type Tab = 'weekly' | 'season' | 'all_time'
 
@@ -23,39 +25,59 @@ const TAB_TO_API_PATH: Record<Tab, string> = {
   all_time: 'all-time',
 }
 
+// LBF-11 (2026-06-18): "né con số" — when fewer than this many players have
+// points, the board is too sparse to show without exposing weak numbers
+// (1–2 rows, "0đ"). Below the threshold we render an encouraging seed-state
+// instead of the podium/list. The board page size is 20 (> threshold), so
+// `list.length < SEED_THRESHOLD` reliably means "fewer than N real players",
+// not a truncated page.
+const SEED_THRESHOLD = 10
+
 export default function Leaderboard() {
   const { t } = useTranslation()
   const [activeTab, setActiveTab] = useState<Tab>('all_time')
   const user = useAuthStore(s => s.user)
+  const isAuthenticated = useAuthStore(s => s.isAuthenticated)
   const apiPath = TAB_TO_API_PATH[activeTab]
 
+  // Guests read the board via the no-auth public endpoint so they don't 401
+  // (which would also trigger the session-expiry refresh/logout storm). Authed
+  // users keep the richer authenticated board.
   const { data: entries, isLoading, isFetching } = useQuery({
-    queryKey: ['leaderboard', activeTab],
-    queryFn: () => api.get(`/api/leaderboard/${apiPath}?size=20`).then(r => r.data),
+    queryKey: ['leaderboard', activeTab, isAuthenticated],
+    queryFn: () => {
+      const url = isAuthenticated
+        ? `/api/leaderboard/${apiPath}?size=20`
+        : `/api/public/leaderboard?period=${apiPath}&size=20`
+      return api.get(url).then(r => r.data)
+    },
     staleTime: 30_000,
     keepPreviousData: true,
   })
 
+  // Per-user queries only make sense when logged in — gating them avoids guest
+  // 401s and the fake "Me / New Believer / 0 pts" marker on the tier ladder.
   const { data: myRank } = useQuery({
     queryKey: ['leaderboard', 'my-rank', activeTab],
     queryFn: () => api.get(`/api/leaderboard/${apiPath}/my-rank`).then(r => r.data).catch(() => null),
+    enabled: isAuthenticated,
   })
 
   const { data: season } = useQuery({
     queryKey: ['season', 'active'],
     queryFn: () => api.get('/api/seasons/active').then(r => r.data).catch(() => null),
     staleTime: 300_000,
+    enabled: isAuthenticated,
   })
 
-  // Tab "Mùa" label is always the generic "Mùa" string (Bui decision 2026-05-02
-  // revision of LB-2 1A). The dynamic season-name approach broke down when test
-  // data produced names like "Season E2E Test 1776471648641" — the tab visually
-  // ballooned and looked unprofessional. The current season name is still
-  // surfaced via the countdown header + sidebar widget on the page itself, so
-  // information isn't lost — only the tab label stays compact.
+  // LBF-9 (2026-06-18): the "Mùa" (competitive season) tab is hidden for the
+  // early-launch phase — a 3-month window-sum board duplicated the sparse
+  // all-time data and exposed weak numbers. BE `/leaderboard/season` +
+  // `/api/seasons/active` stay live (dormant); only the tab is removed. The
+  // liturgical season (×1.5 focus bonus + coverage) is unaffected — see
+  // docs/todo/active/2026-06-18-leaderboard-deep-fixes.md.
   const tabs: { key: Tab; label: string }[] = [
     { key: 'all_time', label: t('leaderboard.allTime') },
-    { key: 'season', label: t('leaderboard.season') },
     { key: 'weekly', label: t('leaderboard.weekly') },
   ]
 
@@ -63,17 +85,24 @@ export default function Leaderboard() {
     queryKey: ['me-tier-progress'],
     queryFn: () => api.get('/api/me/tier-progress').then(r => r.data).catch(() => null),
     staleTime: 60_000,
+    enabled: isAuthenticated,
   })
 
   const userPoints = tierData?.totalPoints ?? 0
-  const userTierId = getTierByPoints(userPoints).id
+  // Only mark a "current tier" for logged-in users — otherwise a guest's
+  // 0 points would falsely flag the lowest tier as theirs.
+  const userTierId = isAuthenticated ? getTierByPoints(userPoints).id : null
 
-  const rawList: any[] = Array.isArray(entries) ? entries : []
-  // Defensive dedup: if BE returns duplicate rows for same userId, keep first occurrence.
-  // Root-cause investigation pending — see TODO LB-1.2 for backend follow-up.
-  const list = rawList.filter(
-    (row, idx, arr) => arr.findIndex((r) => r.userId === row.userId) === idx,
-  )
+  // LBF-2 (2026-06-18): no FE dedup. Investigation conclusion — the board
+  // cannot return a userId twice: `user_daily_progress` has
+  // UNIQUE(user_id, date) so the daily query yields one row per user, and
+  // weekly/all-time GROUP BY u.id (the PK). The old "defensive dedup +
+  // investigation pending" guard masked an impossible state; a real duplicate
+  // should now surface loudly (React duplicate-key warning) as a schema/query
+  // regression rather than being silently swallowed.
+  const list: any[] = Array.isArray(entries) ? entries : []
+  // Low-data seed-state gate (LBF-11). Empty + 1..9-player boards both fall here.
+  const lowData = !isLoading && list.length < SEED_THRESHOLD
   const top3 = list.slice(0, 3)
   const rest = list.slice(3)
   const podiumOrder = [top3[1], top3[0], top3[2]].filter(Boolean) // 2, 1, 3
@@ -83,34 +112,35 @@ export default function Leaderboard() {
   const isCurrentUserInList = myUserId != null && list.some((e: any) => e.userId === myUserId)
   const showMyRankSticky = myRank != null && !isCurrentUserInList
 
-  const seasonCountdown = season?.endDate
-    ? (() => {
-        const diff = new Date(season.endDate).getTime() - Date.now()
-        if (diff <= 0) return t('leaderboard.seasonEnded')
-        const d = Math.floor(diff / 86400000)
-        const h = Math.floor((diff % 86400000) / 3600000)
-        const m = Math.floor((diff % 3600000) / 60000)
-        return `${String(d).padStart(2, '0')} ${t('common.days')} : ${String(h).padStart(2, '0')} ${t('common.hours')} : ${String(m).padStart(2, '0')} ${t('common.minutes')}`
-      })()
-    : null
+  // LBF-4 (2026-06-18): around-me window — the 5 players above + you + 5 below,
+  // so an off-board user sees who to overtake / who's chasing instead of a lone
+  // sticky row. Only fetched when the user is outside the displayed top list.
+  // Falls back to the single sticky row if the endpoint returns nothing.
+  const { data: aroundMe } = useQuery({
+    queryKey: ['leaderboard', 'around-me', activeTab],
+    queryFn: () => api.get(`/api/leaderboard/around-me?period=${apiPath}&radius=5`).then(r => r.data).catch(() => null),
+    enabled: isAuthenticated && showMyRankSticky,
+    staleTime: 30_000,
+  })
+  // Drop window rows already shown in the main top list (user sitting just past
+  // the cut, e.g. rank 21, would otherwise duplicate ranks 16–20).
+  const aroundRows: any[] = Array.isArray(aroundMe)
+    ? aroundMe.filter((r: any) => !list.some((e: any) => e.userId === r.userId))
+    : []
 
   return (
     <div className="max-w-5xl mx-auto py-6">
-      {/* Header & Countdown */}
+      <PageMeta
+        title="Bảng Xếp Hạng – Trắc Nghiệm Kinh Thánh"
+        description="Bảng xếp hạng người chơi trắc nghiệm Kinh Thánh trên BibleQuiz — thi đua điểm số cùng cộng đồng Tin Lành Việt Nam."
+        canonicalPath="/leaderboard"
+      />
+      {/* Header */}
       <header className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
         <div>
           <h1 className="text-3xl font-display font-black tracking-tight text-bq-ink mb-2">{t('leaderboard.title')}</h1>
           <p className="text-bq-ink2 text-sm">{t('leaderboard.description')}</p>
         </div>
-        {seasonCountdown && (
-          <div className="flex items-center gap-3 bg-bq-white px-4 py-3 rounded-xl border border-bq-hair border-l-4 border-l-bq-amber shadow-bq-soft">
-            <span className="material-symbols-outlined text-bq-amberd" style={{ fontVariationSettings: "'FILL' 1" }}>timer</span>
-            <div>
-              <p className="text-[10px] text-bq-ink2 font-bold uppercase tracking-widest">{t('leaderboard.seasonEndsIn')}</p>
-              <p className="text-bq-amberd font-bold font-mono">{seasonCountdown}</p>
-            </div>
-          </div>
-        )}
       </header>
 
       {/* Top 3 Podium */}
@@ -124,7 +154,7 @@ export default function Leaderboard() {
             </div>
           ))}
         </div>
-      ) : top3.length >= 3 ? (
+      ) : !lowData && top3.length >= 3 ? (
         <section data-testid="leaderboard-podium" className="grid grid-cols-3 gap-2 md:gap-6 items-end mb-16">
           {podiumOrder.map((player, idx) => {
             const layout = PODIUM_LAYOUT[idx]
@@ -199,11 +229,6 @@ export default function Leaderboard() {
             )
           })}
         </section>
-      ) : list.length === 0 ? (
-        <div className="text-center py-16 mb-16">
-          <span className="material-symbols-outlined text-5xl text-bq-ink3 mb-4">leaderboard</span>
-          <p className="text-bq-ink2 text-sm">{t('leaderboard.noData')}</p>
-        </div>
       ) : null}
 
       {/* Tabs */}
@@ -218,11 +243,26 @@ export default function Leaderboard() {
         ))}
       </nav>
 
-      {/* Table List */}
+      {/* Table List (or low-data seed-state — LBF-11) */}
       <div className={`space-y-4 mb-16 transition-opacity ${isFetching ? 'opacity-50' : ''}`}>
         {isLoading ? (
           [1, 2, 3, 4].map(i => <div key={i} className="h-16 bg-bq-inset rounded-2xl animate-pulse" />)
-        ) : rest.length === 0 && list.length <= 3 ? null : (
+        ) : lowData ? (
+          <div data-testid="leaderboard-seed-state" className="flex flex-col items-center text-center gap-3 py-14">
+            <div className="w-14 h-14 rounded-full bg-bq-amber/10 flex items-center justify-center">
+              <span className="material-symbols-outlined text-bq-amberd text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>rocket_launch</span>
+            </div>
+            <p className="text-base font-bold text-bq-ink">{t('leaderboard.seedTitle')}</p>
+            <p className="text-sm text-bq-ink2 max-w-sm leading-relaxed">{t('leaderboard.seedBody')}</p>
+            <Link
+              to="/practice"
+              data-testid="leaderboard-seed-cta"
+              className="inline-flex items-center gap-2 mt-2 px-5 py-2 rounded-xl bg-bq-amber text-white text-xs font-black uppercase tracking-widest active:scale-95 transition-transform"
+            >
+              {t('leaderboard.seedCta')} →
+            </Link>
+          </div>
+        ) : (
           <>
             {rest.map((entry: any, idx: number) => {
               const rank = idx + 4
@@ -234,27 +274,45 @@ export default function Leaderboard() {
                   name={entry.name}
                   points={entry.points}
                   avatarUrl={entry.avatarUrl}
-                  streak={entry.streak}
-                  trend={entry.trend}
                   isMe={isMe}
                 />
               )
             })}
 
-            {/* My rank sticky — only when current user NOT in displayed list (around-me pattern) */}
+            {/* Around-me — current user NOT in displayed top list. Renders the
+                neighbourhood window (LBF-4) or, as a fallback, a single sticky row. */}
             {showMyRankSticky && (
-              <LeaderboardListRow
-                testId="leaderboard-my-rank-sticky"
-                rank={myRank.rank ?? 0}
-                name={myRank.name ?? user?.name ?? '?'}
-                points={myRank.points ?? 0}
-                // Sticky row is always the current user; /my-rank doesn't return
-                // avatarUrl, so use authStore.user.avatar (kept in sync on edit).
-                avatarUrl={myRank.avatarUrl ?? user?.avatar}
-                streak={myRank.streak}
-                trend={myRank.trend}
-                isMe
-              />
+              aroundRows.length > 0 ? (
+                <div data-testid="leaderboard-around-me" className="space-y-4 mt-2 pt-5 border-t border-dashed border-bq-hair">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-bq-ink2 mb-1">{t('leaderboard.aroundMe')}</p>
+                  {aroundRows.map((r: any) => {
+                    const me = myUserId != null && r.userId === myUserId
+                    return (
+                      <LeaderboardListRow
+                        key={r.userId || r.rank}
+                        testId={me ? 'leaderboard-my-rank-sticky' : undefined}
+                        rank={r.rank}
+                        name={r.name}
+                        points={r.points}
+                        // /around-me doesn't return avatarUrl for the current user;
+                        // use authStore.user.avatar (kept in sync on edit).
+                        avatarUrl={me ? (r.avatarUrl ?? user?.avatar) : r.avatarUrl}
+                        isMe={me}
+                      />
+                    )
+                  })}
+                </div>
+              ) : (
+                <LeaderboardListRow
+                  testId="leaderboard-my-rank-sticky"
+                  rank={myRank.rank ?? 0}
+                  name={myRank.name ?? user?.name ?? '?'}
+                  points={myRank.points ?? 0}
+                  // /my-rank doesn't return avatarUrl; use authStore.user.avatar.
+                  avatarUrl={myRank.avatarUrl ?? user?.avatar}
+                  isMe
+                />
+              )
             )}
           </>
         )}
@@ -272,6 +330,14 @@ export default function Leaderboard() {
               ? t('leaderboard.tierSeasonSubtitle', { seasonName: season.name })
               : t('leaderboard.tierSeasonSubtitleFallback')}
           </p>
+          {!isAuthenticated && (
+            <p className="text-xs text-bq-ink2 mt-2" data-testid="leaderboard-guest-rank-cta">
+              <Link to="/login" className="text-bq-amberd font-semibold hover:underline">
+                {t('auth.login')}
+              </Link>{' '}
+              {t('leaderboard.loginForRank')}
+            </p>
+          )}
         </header>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
           {TIERS.map((tier) => {
@@ -314,7 +380,7 @@ export default function Leaderboard() {
   )
 }
 
-/** One leaderboard list row. Avatar + name + tier badge + optional streak/trend + points.
+/** One leaderboard list row. Avatar + name + tier badge + points.
  *  Highlight gold + "BẠN" badge when {@code isMe}. Used for both rest list rows
  *  and the sticky my-rank row (around-me pattern). */
 interface LeaderboardListRowProps {
@@ -322,15 +388,11 @@ interface LeaderboardListRowProps {
   name: string
   points: number
   avatarUrl?: string
-  /** Optional — backend currently does not populate; FE hides when missing. */
-  streak?: number
-  /** Optional — positive = up, negative = down, 0/undefined = no change. */
-  trend?: number
   isMe?: boolean
   testId?: string
 }
 
-function LeaderboardListRow({ rank, name, points, avatarUrl, streak, trend, isMe, testId }: LeaderboardListRowProps) {
+function LeaderboardListRow({ rank, name, points, avatarUrl, isMe, testId }: LeaderboardListRowProps) {
   const { t } = useTranslation()
   const tier = getTierByPoints(points)
   const tierColor = tier.colorHex
@@ -362,14 +424,8 @@ function LeaderboardListRow({ rank, name, points, avatarUrl, streak, trend, isMe
           </div>
           <div className="flex items-center gap-2 mt-0.5 text-[10px] md:text-[11px] text-bq-ink2">
             <span>{tierName}</span>
-            {streak != null && streak > 0 && <span>🔥 {streak}</span>}
           </div>
         </div>
-        {trend != null && trend !== 0 && (
-          <div className="text-[10px] md:text-xs text-bq-ink2 font-bold">
-            {trend > 0 ? `▲ ${trend}` : `▼ ${Math.abs(trend)}`}
-          </div>
-        )}
         <div className="text-right">
           <p className="text-bq-ink font-black text-base md:text-lg">{points.toLocaleString()}</p>
           <p className="text-[9px] md:text-[10px] uppercase text-bq-ink2 font-bold">{t('leaderboard.points')}</p>
@@ -391,14 +447,8 @@ function LeaderboardListRow({ rank, name, points, avatarUrl, streak, trend, isMe
         <h3 className="font-bold text-xs md:text-sm text-bq-ink truncate">{name}</h3>
         <div className="flex items-center gap-2 mt-0.5 text-[10px] md:text-[11px]">
           <span style={{ color: tierColor }}>{tierName}</span>
-          {streak != null && streak > 0 && <span className="text-bq-ember">🔥 {streak}</span>}
         </div>
       </div>
-      {trend != null && trend !== 0 && (
-        <div className={`text-[10px] md:text-xs font-bold ${trend > 0 ? 'text-bq-sapphire' : 'text-bq-ruby'}`}>
-          {trend > 0 ? `▲ ${trend}` : `▼ ${Math.abs(trend)}`}
-        </div>
-      )}
       <div className="text-right">
         <p className="text-bq-ink font-black text-sm">{points.toLocaleString()}</p>
         <p className="text-[9px] md:text-[10px] uppercase text-bq-ink2">{t('leaderboard.points')}</p>

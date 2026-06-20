@@ -626,3 +626,9 @@
 - Lý do: Luật 2-of-N yêu cầu 2 reviewer riêng biệt (không được tự duyệt câu mình review). Team hiện ~1 admin → ngưỡng 2 không bao giờ đạt → mọi câu import/AI-generated kẹt PENDING vĩnh viễn, không bao giờ vào pool. Đây là blocker "dở dang" lớn nhất của admin panel.
 - Trade-off: Mất dual-control chống sai sót nội dung. Chấp nhận được ở quy mô hiện tại; nâng lại constant khi pool reviewer ≥2 người active. FE đọc `approvalsRequired` từ BE nên label "x/N" tự cập nhật.
 - SPEC_ADMIN §8 updated. KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-06-18 — Dẹp "mùa thi đua" giai đoạn đầu; giữ "mùa phụng vụ" (LBF-9/12/13)
+- Quyết định: Có 2 nghĩa "mùa" tách biệt. (A) **Mùa thi đua** — tab "Mùa" trên /leaderboard + SeasonCard trang Ranked + ledger `season_rankings` → ẩn UI + ngừng double-write `SeasonService.addPoints` (RankedController), GIỮ table/endpoint ngủ (không drop, đảo ngược dễ). (B) **Mùa phụng vụ** — Liturgical Coverage (`modules/coverage/**`) + ×1.5 `ScoringService.isInSeasonBook` focus bonus + badge "Vinh Quang Mùa" → GIỮ NGUYÊN, flag `liturgical-coverage.enabled=false` (đang OFF/inert). KHÔNG đụng.
+- Lý do: Giai đoạn early-launch chưa có user → board mùa 3 tháng chỉ là biến thể chậm của all-time trên cùng data thưa, phơi con số yếu ("Hạng mùa #N / Điểm mùa N / còn X đến 1000đ"). `season_rankings` là double-accounting thừa — ranked điểm đã vào `UserDailyProgress`; tab mùa thực ra đọc window-sum UDP chứ không đọc bảng này. Các tính năng spec cũ (reset season, tier-season tách biệt, badge "Vinh Quang Mùa N") chưa từng được build.
+- Trade-off: Mất bảng thi đua theo mùa (chấp nhận — sẽ làm lại kiểu Duolingo weekly-league + division khi đủ user, không phải mùa 3 tháng phẳng). Cơ chế TÍNH ĐIỂM không đổi (chỉ mùa phụng vụ ×1.5 chạm điểm, và nó đang flag OFF). SPEC_USER §22.1/§22.2 updated.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới

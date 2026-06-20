@@ -7,6 +7,8 @@ export interface UserProfile {
   longestStreak: number
   role: string
   createdAt?: string
+  /** LBF-5: false = opted out of the public leaderboard. */
+  leaderboardVisible?: boolean
 }
 
 export interface Achievement {

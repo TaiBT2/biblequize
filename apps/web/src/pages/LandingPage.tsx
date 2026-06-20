@@ -1,7 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useQuery } from '@tanstack/react-query'
 import { useAuthStore } from '../store/authStore'
+import { api } from '../api/client'
+import { getTierByPoints } from '../data/tiers'
 import PageMeta from '../components/PageMeta'
 import QuizLanguageSelect from '../components/QuizLanguageSelect'
 import HeroIllustration from '../components/HeroIllustration'
@@ -10,21 +13,66 @@ import HeroIllustration from '../components/HeroIllustration'
 
 function GuestHeader() {
   const { t } = useTranslation()
+  // Scroll-spy: highlight the nav item for whichever section holds the
+  // viewport's vertical center. "Trang chủ" wins at the top (hero), "Giới
+  // thiệu" over the features grid, "Xếp hạng" over the leaderboard preview.
+  const [active, setActive] = useState<'home' | 'features' | 'leaderboard'>('home')
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return
+    const els = ['features', 'leaderboard']
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el != null)
+    if (els.length === 0) return
+    const visible: Record<string, boolean> = {}
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) visible[e.target.id] = e.isIntersecting
+        setActive(visible.leaderboard ? 'leaderboard' : visible.features ? 'features' : 'home')
+      },
+      // A thin band around the viewport's vertical center. (A zero-height
+      // "-50%/-50%" line makes isIntersecting flaky — zero-area intersection.)
+      { rootMargin: '-45% 0px -45% 0px' },
+    )
+    els.forEach((el) => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+  // Smooth-scroll to an on-page section (no id = back to top) instead of
+  // routing away — the leaderboard preview lives lower on this same page.
+  const scrollTo = (id?: string) => (e: React.MouseEvent) => {
+    e.preventDefault()
+    if (!id) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
+  const navBase = 'font-body tracking-tight transition-colors duration-300'
+  const navActive = 'text-bq-amberd border-b-2 border-bq-amber pb-1'
+  const navIdle = 'text-bq-ink2 hover:text-bq-ink'
   return (
     <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 bg-bq-white/90 backdrop-blur border-b border-bq-hair shadow-bq-soft">
       <div className="flex items-center gap-4 sm:gap-8 max-w-7xl mx-auto w-full">
         <div className="text-xl sm:text-2xl font-bold tracking-tighter text-bq-amberd font-display">BibleQuiz</div>
         <div className="hidden md:flex gap-6 items-center flex-1">
-          <a className="font-body tracking-tight text-bq-amberd border-b-2 border-bq-amber pb-1" href="#">
+          <a
+            href="#"
+            onClick={scrollTo()}
+            className={`${navBase} ${active === 'home' ? navActive : navIdle}`}
+          >
             {t('nav.home')}
           </a>
-          <Link
-            to="/leaderboard"
-            className="font-body tracking-tight text-bq-ink2 hover:text-bq-ink transition-colors duration-300"
+          <a
+            href="#leaderboard"
+            onClick={scrollTo('leaderboard')}
+            className={`${navBase} ${active === 'leaderboard' ? navActive : navIdle}`}
           >
             {t('nav.leaderboard')}
-          </Link>
-          <a className="font-body tracking-tight text-bq-ink2 hover:text-bq-ink transition-colors duration-300" href="#">
+          </a>
+          <a
+            href="#features"
+            onClick={scrollTo('features')}
+            className={`${navBase} ${active === 'features' ? navActive : navIdle}`}
+          >
             {t('landing.about')}
           </a>
         </div>
@@ -137,7 +185,7 @@ const featureKeys = [
 function FeaturesGrid() {
   const { t } = useTranslation()
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-bq-paper" aria-label={t('landing.features')}>
+    <section id="features" className="scroll-mt-24 py-16 sm:py-24 px-4 sm:px-6 bg-bq-paper" aria-label={t('landing.features')}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-display text-3xl font-bold mb-4 text-bq-ink">{t('landing.features')}</h2>
@@ -249,7 +297,9 @@ function TryNowSection() {
 
 /* ────────────────────────────── Leaderboard Preview ─────────────────────── */
 
-// Tier keys: OLD religious naming per DECISIONS.md 2026-04-19 (audience-driven)
+// Hardcoded fallback — shown only while the live board loads or when it's
+// empty (also keeps the SEO-prerendered HTML non-blank). Tier keys: OLD
+// religious naming per DECISIONS.md 2026-04-19 (audience-driven).
 const leaderboardData = [
   { rank: '01', initials: 'AN', name: 'Nguyễn Văn An', xp: '24,500', titleKey: 'tiers.apostle', top: true },
   { rank: '02', initials: 'LH', name: 'Lê Hồng Hạnh', xp: '21,200', titleKey: 'tiers.prophet', top: false },
@@ -257,10 +307,37 @@ const leaderboardData = [
   { rank: '10', initials: 'DP', name: 'Đặng Phương', xp: '12,400', titleKey: 'tiers.disciple', top: false },
 ]
 
+/** First letter of first + last name word (e.g. "Nguyễn Văn An" → "NA"). */
+function initialsOf(name: string): string {
+  const parts = (name || '').trim().split(/\s+/).filter(Boolean)
+  if (parts.length === 0) return '?'
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase()
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+}
+
 function LeaderboardPreview() {
   const { t } = useTranslation()
+  // Real top-10 national board from the no-auth public endpoint. Falls back to
+  // the curated sample while loading / on error so the section never looks broken.
+  const { data } = useQuery({
+    queryKey: ['public-leaderboard', 'all-time', 10],
+    queryFn: () => api.get('/api/public/leaderboard?period=all-time&size=10').then(r => r.data).catch(() => null),
+    staleTime: 60_000,
+  })
+  const live = Array.isArray(data) ? data : []
+  const isLive = live.length > 0
+  const rows = isLive
+    ? live.slice(0, 10).map((e: any, i: number) => ({
+        rank: String(i + 1).padStart(2, '0'),
+        initials: initialsOf(e.name),
+        name: e.name || 'An danh',
+        xp: (e.points ?? 0).toLocaleString(),
+        titleKey: getTierByPoints(e.points ?? 0).nameKey,
+        top: i === 0,
+      }))
+    : leaderboardData
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-bq-paper" aria-label="Bảng xếp hạng">
+    <section id="leaderboard" className="scroll-mt-24 py-16 sm:py-24 px-4 sm:px-6 bg-bq-paper" aria-label="Bảng xếp hạng">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-block px-6 py-2 rounded-full bg-bq-action text-white shadow-bq-action font-extrabold text-lg mb-6">
@@ -279,7 +356,7 @@ function LeaderboardPreview() {
           </div>
 
           <div className="divide-y divide-bq-hair">
-            {leaderboardData.map((entry, idx) => (
+            {rows.map((entry, idx) => (
               <div key={entry.rank}>
                 <div
                   className={`grid grid-cols-12 px-4 sm:px-8 py-3 sm:py-5 items-center gap-2 ${
@@ -293,7 +370,7 @@ function LeaderboardPreview() {
                     <div
                       className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs sm:text-base flex-shrink-0 ${
                         entry.top
-                          ? 'bg-bq-amber text-white'
+                          ? 'bg-bq-amberd text-white'
                           : 'bg-bq-sapphire/10 text-bq-sapphire'
                       }`}
                     >
@@ -313,13 +390,27 @@ function LeaderboardPreview() {
                   </div>
                 </div>
 
-                {/* Ellipsis between rank 03 and rank 10 */}
-                {entry.rank === '03' && (
+                {/* Ellipsis between rank 03 and rank 10 — fallback sample only
+                    (it jumps 03→10); the live board is contiguous top-N. */}
+                {!isLive && entry.rank === '03' && (
                   <div className="text-center py-4 text-bq-ink3">&bull;&bull;&bull;</div>
                 )}
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="text-center mt-8">
+          {/* Guests see only the public teaser; the full board (with "your rank",
+              tiers, seasons) needs an account, so funnel them to login rather
+              than the bare guest /leaderboard view. */}
+          <Link
+            to="/login"
+            className="inline-flex items-center gap-1.5 text-bq-amberd font-bold hover:underline"
+          >
+            {t('leaderboard.loginToViewBoard')}
+            <span className="material-symbols-outlined text-lg">arrow_forward</span>
+          </Link>
         </div>
       </div>
     </section>
@@ -337,7 +428,7 @@ function ChurchGroupShowcase() {
         <div className="order-2 lg:order-1 relative">
           <div className="absolute -inset-10 bg-bq-emerald/10 rounded-full blur-[100px]" />
           <img
-            alt="Group studying together"
+            alt="Nhóm bạn trẻ học Kinh Thánh qua trắc nghiệm"
             width={600}
             height={400}
             loading="lazy"
@@ -470,6 +561,12 @@ function Footer() {
         </p>
       </div>
       <div className="flex gap-8">
+        <a className="font-body text-sm text-bq-ink2 hover:text-bq-amberd transition-colors" href="/cau-do-kinh-thanh">
+          Câu đố Kinh Thánh
+        </a>
+        <a className="font-body text-sm text-bq-ink2 hover:text-bq-amberd transition-colors" href="/help">
+          {t('nav.help')}
+        </a>
         <a className="font-body text-sm text-bq-ink2 hover:text-bq-amberd transition-colors" href="/privacy">
           {t('landing.privacy')}
         </a>
@@ -507,8 +604,8 @@ export default function LandingPage() {
   return (
     <div data-testid="landing-page" className="bg-bq-paper font-body text-bq-ink selection:bg-bq-amber selection:text-white min-h-screen">
       <PageMeta
-        title="Học Kinh Thánh qua Quiz & Thi đấu"
-        description="Quiz Kinh Thánh tiếng Việt — trắc nghiệm tương tác, thi đấu multiplayer, nhóm hội thánh. Hoàn toàn miễn phí."
+        title="Trắc Nghiệm Kinh Thánh – Câu Đố Kinh Thánh Online"
+        description="Trắc nghiệm Kinh Thánh & câu đố Kinh Thánh Tin Lành online miễn phí — học Lời Chúa qua quiz tương tác, thi đấu cùng cộng đồng và nhóm hội thánh Việt Nam."
         canonicalPath="/"
       />
       <GuestHeader />

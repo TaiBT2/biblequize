@@ -96,6 +96,95 @@ class UserDailyProgressRepositoryTest {
                 "findAllTimeLeaderboard must HAVING-filter users whose summed points are 0; was:\n" + sql);
     }
 
+    // ── LBF-1 (2026-06-18): my-rank count-ahead tie-break lock ───────────────
+    // The /my-rank rank must match the board position, so countUsersAhead*
+    // must replicate the board's full tie-break (points → questions →
+    // created_at). Lock the questions + created_at OR-clauses so a refactor
+    // cannot silently regress my-rank back to points-only counting.
+
+    @Test
+    void countUsersAheadAllTime_includesQuestionsAndCreatedAtTieBreak() throws Exception {
+        String sql = getQuery("countUsersAheadAllTime",
+                int.class, int.class, java.time.LocalDateTime.class);
+        assertCountAheadTieBreak(sql, "countUsersAheadAllTime");
+    }
+
+    @Test
+    void countUsersAheadInDateRange_includesQuestionsAndCreatedAtTieBreak() throws Exception {
+        String sql = getQuery("countUsersAheadInDateRange",
+                java.time.LocalDate.class, java.time.LocalDate.class,
+                int.class, int.class, java.time.LocalDateTime.class);
+        assertCountAheadTieBreak(sql, "countUsersAheadInDateRange");
+    }
+
+    @Test
+    void countUsersAheadInMonth_includesQuestionsAndCreatedAtTieBreak() throws Exception {
+        String sql = getQuery("countUsersAheadInMonth",
+                java.time.LocalDate.class, java.time.LocalDate.class,
+                int.class, int.class, java.time.LocalDateTime.class);
+        assertCountAheadTieBreak(sql, "countUsersAheadInMonth");
+    }
+
+    @Test
+    void countUsersAheadOnDate_includesQuestionsAndCreatedAtTieBreak() throws Exception {
+        String sql = getQuery("countUsersAheadOnDate",
+                java.time.LocalDate.class, int.class, int.class, java.time.LocalDateTime.class);
+        String n = normalize(sql);
+        assertTrue(n.contains("> :questions"),
+                "countUsersAheadOnDate must tie-break on questions; was:\n" + sql);
+        assertTrue(n.contains("createdAt < :createdAt"),
+                "countUsersAheadOnDate must tie-break on created_at; was:\n" + sql);
+    }
+
+    // ── LBF-5 (2026-06-19): leaderboard_visible privacy filter lock ──────────
+    // Hidden users (opted out via Settings) must be excluded from BOTH the
+    // board display and the rank counting, else hiding yourself would shift or
+    // mismatch everyone's ranks.
+
+    @Test
+    void findDailyLeaderboard_filtersHiddenUsers() throws Exception {
+        assertTrue(normalize(getQuery("findDailyLeaderboard",
+                java.time.LocalDate.class, int.class, int.class)).contains("leaderboard_visible = TRUE"),
+                "daily board must exclude leaderboard_visible = FALSE users");
+    }
+
+    @Test
+    void findWeeklyLeaderboard_filtersHiddenUsers() throws Exception {
+        assertTrue(normalize(getQuery("findWeeklyLeaderboard",
+                java.time.LocalDate.class, java.time.LocalDate.class, int.class, int.class))
+                .contains("leaderboard_visible = TRUE"),
+                "weekly board must exclude hidden users");
+    }
+
+    @Test
+    void findAllTimeLeaderboard_filtersHiddenUsers() throws Exception {
+        assertTrue(normalize(getQuery("findAllTimeLeaderboard", int.class, int.class))
+                .contains("leaderboard_visible = TRUE"), "all-time board must exclude hidden users");
+    }
+
+    @Test
+    void countUsersAheadAllTime_filtersHiddenUsers() throws Exception {
+        assertTrue(normalize(getQuery("countUsersAheadAllTime",
+                int.class, int.class, java.time.LocalDateTime.class)).contains("leaderboard_visible = TRUE"),
+                "all-time rank count must exclude hidden users");
+    }
+
+    @Test
+    void countUsersAheadOnDate_filtersHiddenUsers() throws Exception {
+        assertTrue(normalize(getQuery("countUsersAheadOnDate",
+                java.time.LocalDate.class, int.class, int.class, java.time.LocalDateTime.class))
+                .contains("leaderboardVisible = TRUE"),
+                "daily rank count must exclude hidden users");
+    }
+
+    private void assertCountAheadTieBreak(String sql, String name) {
+        String n = normalize(sql);
+        assertTrue(n.contains("tq > :questions"),
+                name + " must tie-break on summed questions; was:\n" + sql);
+        assertTrue(n.contains("u.created_at < :createdAt"),
+                name + " must tie-break on created_at; was:\n" + sql);
+    }
+
     private String normalize(String sql) {
         return sql.replaceAll("\\s+", " ");
     }

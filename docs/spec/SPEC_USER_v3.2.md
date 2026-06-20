@@ -2016,26 +2016,37 @@ Grid layout, locked = grayscale + lock icon. Click → modal hiện điều ki�
 > **Source:** `LeaderboardController`; web `pages/Leaderboard.tsx`.
 
 ### 22.1 Periods
-| Endpoint | Scope |
-|---|---|
-| `GET /api/leaderboard/daily` | Hôm nay (UTC) |
-| `GET /api/leaderboard/weekly` | Tuần này |
-| `GET /api/leaderboard/monthly` | Tháng này |
-| `GET /api/leaderboard/all-time` | Toàn thời gian |
-| `GET /api/leaderboard/season/{seasonId}` | Mùa hiện tại / chỉ định |
+| Endpoint | Scope | UI |
+|---|---|---|
+| `GET /api/leaderboard/daily` | Hôm nay (ICT) | **BE-only** (LBF-8) — không có tab |
+| `GET /api/leaderboard/weekly` | Tuần này | ✅ tab "Hàng tuần" |
+| `GET /api/leaderboard/monthly` | Tháng này | **BE-only** (LBF-8) — không có tab |
+| `GET /api/leaderboard/all-time` | Toàn thời gian | ✅ tab "Tất cả" (mặc định) |
+| `GET /api/leaderboard/season` | Mùa hiện tại (window-sum UDP) | **BE-only**, tab ẩn (LBF-9) |
 
-### 22.2 Season leaderboard
-- Mùa = 3 tháng (4 mùa / năm) — entity `Season` (V7).
-- Reset điểm season về 0 đầu mỗi mùa; tier season tách biệt tier all-time.
-- Top 3 mỗi tier nhận badge "Vinh Quang Mùa N".
+> **LBF-8 (DECISIONS 2026-06-18):** FE chỉ surface 2 tab **all-time + weekly**. `daily`/`monthly` (+ `*/my-rank`) giữ live ở BE nhưng **chưa lên UI giai đoạn đầu** — board chu kỳ ngắn càng thưa, con số nhỏ phản tác dụng (xem `DECISIONS.md` 2026-06-18 "né con số" + LBF-11). KHÔNG xoá endpoint.
 
-### 22.3 Around-me
-`GET /api/leaderboard/around-me` → 5 trên + bạn + 5 dưới.
+### 22.2 Season leaderboard — **tab thi đua ẩn giai đoạn đầu (LBF-9, DECISIONS 2026-06-18)**
+- **Trạng thái:** tab "Mùa" trên `/leaderboard` + SeasonCard trên trang Ranked **ẩn** cho giai đoạn early-launch (board 3 tháng trùng lặp dữ liệu thưa của all-time + phơi con số yếu). Endpoint `GET /api/leaderboard/season` + `/api/seasons/active` giữ **ngủ** (không drop).
+- **Thực tế code:** "mùa thi đua" = `SUM(points_counted)` của `UserDailyProgress` trong khoảng `[season.start, today]` (dùng lại `findWeeklyLeaderboard`). KHÔNG có ledger reset riêng / tier-season tách biệt / badge "Vinh Quang Mùa N" — các mục đó **chưa từng được build** (intent cũ, gỡ khỏi spec). Bảng `season_rankings` từng double-write nay ngừng ghi (LBF-13).
+- **KHÔNG nhầm với "mùa phụng vụ"** (Liturgical Coverage §7.10.3 + ×1.5 focus bonus): đó là hệ riêng, flag-gated, vẫn giữ — xem §7.10.
+
+### 22.3 Around-me (LBF-4 2026-06-18 — implemented)
+`GET /api/leaderboard/around-me?period=weekly|all-time&radius=5` → `radius` người trên + bạn + `radius` dưới, mỗi row có `rank` tuyệt đối. Dùng lại board query (cùng tie-break §22.5) với `offset = rank - radius - 1`. Rỗng khi chưa đăng nhập / 0 điểm. FE: thay dòng sticky 1-dòng bằng cửa sổ này khi user ngoài top hiển thị (fallback về sticky nếu rỗng).
+
+### 22.6 Privacy opt-out (LBF-5 2026-06-19)
+- `users.leaderboard_visible` (V69, default TRUE). Toggle ở Profile → Quyền riêng tư ("Hiển thị tôi trên bảng xếp hạng") qua `PATCH /api/me { leaderboardVisible }`.
+- Khi FALSE: user bị loại khỏi **cả hiển thị board lẫn đếm hạng** (6 native + 1 JPQL query filter `leaderboard_visible = TRUE`) → ẩn mình không làm xê dịch hạng người khác; vẫn tự xem được hạng riêng.
+- `/api/public/leaderboard` (guest) KHÔNG trả `userId` (chống lộ UUID nội bộ).
 
 ### 22.4 UI widgets
 - `LeaderboardRankWidget` — rank hiện tại trên Home.
 - `LeaderboardSeasonWidget` — season standing.
 - `EmptyLeaderboardCTA` — khi user chưa có điểm tuần.
+
+### 22.5 Rank tie-break (LBF-1 2026-06-18)
+- Bảng xếp hạng + `/my-rank` dùng CÙNG thứ tự 3 tầng: **points DESC → questions DESC → created_at ASC** (user hoạt động nhiều hơn xếp trên khi bằng điểm; created_at là tie-break tất định cuối).
+- `/my-rank` = `countUsersAhead(points, questions, createdAt) + 1` — đếm đúng số người đứng trước theo cả 3 tầng, nên số hạng khớp vị trí thật trong bảng (trước đây chỉ đếm `points >` → lệch khi trùng điểm).
 
 ---
 

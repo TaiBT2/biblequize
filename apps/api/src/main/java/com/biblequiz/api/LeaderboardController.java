@@ -178,6 +178,11 @@ public class LeaderboardController {
         }).collect(Collectors.toList());
     }
 
+    /** Null-safe int extraction from a [points, questions] aggregate row (LBF-10). */
+    private static int intAt(Object[] row, int i) {
+        return row != null && row.length > i && row[i] != null ? ((Number) row[i]).intValue() : 0;
+    }
+
     @GetMapping("/daily/my-rank")
     public ResponseEntity<Map<String, Object>> getMyDailyRank(
             Authentication authentication,
@@ -200,13 +205,14 @@ public class LeaderboardController {
         }
 
         int points = udp.getPointsCounted() != null ? udp.getPointsCounted() : 0;
-        int rank = (int) udpRepository.countUsersAheadOnDate(targetDate, points) + 1;
+        int questions = udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0;
+        int rank = (int) udpRepository.countUsersAheadOnDate(targetDate, points, questions, user.getCreatedAt()) + 1;
 
         Map<String, Object> result = new HashMap<>();
         result.put("userId", user.getId());
         result.put("name", user.getName());
         result.put("points", points);
-        result.put("questions", udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0);
+        result.put("questions", questions);
         result.put("rank", rank);
         return ResponseEntity.ok(result);
     }
@@ -227,16 +233,15 @@ public class LeaderboardController {
         LocalDate end = GameClock.today();
         LocalDate weekStart = GameClock.weekStart(end);
 
-        int myPoints = udpRepository.findByUserIdAndDateBetween(user.getId(), weekStart, end)
-                .stream()
-                .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
-                .sum();
+        Object[] sums = udpRepository.sumPointsAndQuestionsBetween(user.getId(), weekStart, end);
+        int myPoints = intAt(sums, 0);
 
         if (myPoints == 0) {
             return ResponseEntity.ok(null);
         }
 
-        int rank = (int) udpRepository.countUsersAheadInDateRange(weekStart, end, myPoints) + 1;
+        int myQuestions = intAt(sums, 1);
+        int rank = (int) udpRepository.countUsersAheadInDateRange(weekStart, end, myPoints, myQuestions, user.getCreatedAt()) + 1;
 
         Map<String, Object> result = new HashMap<>();
         result.put("userId", user.getId());
@@ -262,16 +267,15 @@ public class LeaderboardController {
         LocalDate end = GameClock.today();
         LocalDate monthStart = end.withDayOfMonth(1);
 
-        int myPoints = udpRepository.findByUserIdAndDateBetween(user.getId(), monthStart, end)
-                .stream()
-                .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
-                .sum();
+        Object[] sums = udpRepository.sumPointsAndQuestionsBetween(user.getId(), monthStart, end);
+        int myPoints = intAt(sums, 0);
 
         if (myPoints == 0) {
             return ResponseEntity.ok(null);
         }
 
-        int rank = (int) udpRepository.countUsersAheadInMonth(monthStart, end, myPoints) + 1;
+        int myQuestions = intAt(sums, 1);
+        int rank = (int) udpRepository.countUsersAheadInMonth(monthStart, end, myPoints, myQuestions, user.getCreatedAt()) + 1;
 
         Map<String, Object> result = new HashMap<>();
         result.put("userId", user.getId());
@@ -303,16 +307,15 @@ public class LeaderboardController {
         LocalDate end = today.isBefore(s.getEndDate()) ? today : s.getEndDate();
         LocalDate start = s.getStartDate();
 
-        int myPoints = udpRepository.findByUserIdAndDateBetween(user.getId(), start, end)
-                .stream()
-                .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
-                .sum();
+        Object[] sums = udpRepository.sumPointsAndQuestionsBetween(user.getId(), start, end);
+        int myPoints = intAt(sums, 0);
 
         if (myPoints == 0) {
             return ResponseEntity.ok(null);
         }
 
-        int rank = (int) udpRepository.countUsersAheadInDateRange(start, end, myPoints) + 1;
+        int myQuestions = intAt(sums, 1);
+        int rank = (int) udpRepository.countUsersAheadInDateRange(start, end, myPoints, myQuestions, user.getCreatedAt()) + 1;
 
         Map<String, Object> result = new HashMap<>();
         result.put("userId", user.getId());
@@ -335,16 +338,15 @@ public class LeaderboardController {
             return ResponseEntity.ok(null);
         }
 
-        int myPoints = udpRepository.findByUserIdOrderByDateDesc(user.getId())
-                .stream()
-                .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
-                .sum();
+        Object[] sums = udpRepository.sumPointsAndQuestionsAllTime(user.getId());
+        int myPoints = intAt(sums, 0);
 
         if (myPoints == 0) {
             return ResponseEntity.ok(null);
         }
 
-        int rank = (int) udpRepository.countUsersAheadAllTime(myPoints) + 1;
+        int myQuestions = intAt(sums, 1);
+        int rank = (int) udpRepository.countUsersAheadAllTime(myPoints, myQuestions, user.getCreatedAt()) + 1;
 
         Map<String, Object> result = new HashMap<>();
         result.put("userId", user.getId());
@@ -352,5 +354,78 @@ public class LeaderboardController {
         result.put("points", myPoints);
         result.put("rank", rank);
         return ResponseEntity.ok(result);
+    }
+
+    /**
+     * Around-me window (SPEC_USER §22.3, LBF-4): the {@code radius} players
+     * ranked just above the caller + the caller + {@code radius} just below,
+     * for the given period. Reuses the board queries (same tie-break) so the
+     * window is consistent with the main board, and the caller's rank comes
+     * from the same countUsersAhead* path as {@code /my-rank} (offset =
+     * rank-1). Returns an empty list when unauthenticated, user unknown, or the
+     * caller has 0 points in the period. Only {@code weekly} + {@code all-time}
+     * are surfaced (the two live tabs); any other period falls back to all-time.
+     */
+    @GetMapping("/around-me")
+    public ResponseEntity<List<Map<String, Object>>> aroundMe(
+            Authentication authentication,
+            @RequestParam(value = "period", defaultValue = "all-time") String period,
+            @RequestParam(value = "radius", defaultValue = "5") int radius) {
+        if (authentication == null) {
+            return ResponseEntity.ok(Collections.emptyList());
+        }
+        User user = userRepository.findByEmail(resolveEmail(authentication)).orElse(null);
+        if (user == null) {
+            return ResponseEntity.ok(Collections.emptyList());
+        }
+        int safeRadius = (radius < 1 || radius > 20) ? 5 : radius;
+        String p = period == null ? "all-time" : period.toLowerCase().replace('_', '-');
+
+        if ("weekly".equals(p)) {
+            LocalDate end = GameClock.today();
+            return aroundMeRange(user, GameClock.weekStart(end), end, safeRadius);
+        }
+
+        // all-time (default)
+        Object[] sums = udpRepository.sumPointsAndQuestionsAllTime(user.getId());
+        int myPoints = intAt(sums, 0);
+        if (myPoints == 0) {
+            return ResponseEntity.ok(Collections.emptyList());
+        }
+        int myQuestions = intAt(sums, 1);
+        int rank = (int) udpRepository.countUsersAheadAllTime(myPoints, myQuestions, user.getCreatedAt()) + 1;
+        int offset = Math.max(0, rank - safeRadius - 1);
+        int limit = safeRadius * 2 + 1;
+        return ResponseEntity.ok(mapAroundRows(udpRepository.findAllTimeLeaderboard(limit, offset), offset));
+    }
+
+    private ResponseEntity<List<Map<String, Object>>> aroundMeRange(User user, LocalDate start, LocalDate end, int radius) {
+        Object[] sums = udpRepository.sumPointsAndQuestionsBetween(user.getId(), start, end);
+        int myPoints = intAt(sums, 0);
+        if (myPoints == 0) {
+            return ResponseEntity.ok(Collections.emptyList());
+        }
+        int myQuestions = intAt(sums, 1);
+        int rank = (int) udpRepository.countUsersAheadInDateRange(start, end, myPoints, myQuestions, user.getCreatedAt()) + 1;
+        int offset = Math.max(0, rank - radius - 1);
+        int limit = radius * 2 + 1;
+        return ResponseEntity.ok(mapAroundRows(udpRepository.findWeeklyLeaderboard(start, end, limit, offset), offset));
+    }
+
+    /** Maps board rows to response maps, adding an absolute offset-based {@code rank}. */
+    private List<Map<String, Object>> mapAroundRows(List<Object[]> rows, int offset) {
+        List<Map<String, Object>> result = new java.util.ArrayList<>();
+        for (int i = 0; i < rows.size(); i++) {
+            Object[] row = rows.get(i);
+            Map<String, Object> m = new HashMap<>();
+            m.put("userId", row[0]);
+            m.put("name", row[1] != null ? row[1] : "An danh");
+            m.put("avatarUrl", row[2]);
+            m.put("points", row[3] != null ? ((Number) row[3]).intValue() : 0);
+            m.put("questions", row[4] != null ? ((Number) row[4]).intValue() : 0);
+            m.put("rank", offset + i + 1);
+            result.add(m);
+        }
+        return result;
     }
 }

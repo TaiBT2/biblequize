@@ -44,4 +44,14 @@ describe('PageMeta', () => {
     expect(find(container, 'link[rel="canonical"]')).toBeNull()
     expect(find(container, 'meta[property="og:url"]')).toBeNull()
   })
+
+  it('emits robots noindex when the noindex prop is set', () => {
+    const { container } = render(<PageMeta title="X" noindex />)
+    expect(content(container, 'meta[name="robots"]')).toBe('noindex, follow')
+  })
+
+  it('omits robots meta by default', () => {
+    const { container } = render(<PageMeta title="Y" />)
+    expect(find(container, 'meta[name="robots"]')).toBeNull()
+  })
 })

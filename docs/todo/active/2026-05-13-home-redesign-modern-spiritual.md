@@ -2,7 +2,7 @@
 
 > **Source**: `docs/designs/PROMPT_HOME_REDESIGN.md` + mockup `docs/designs/home_modern.html`
 > **Scope**: Refactor `apps/web/src/pages/Home.tsx` theo direction "Modern Spiritual" — atmosphere (noise + gold radial gradient) + Be Vietnam Pro 800 sport-app numbers + Cormorant Garamond italic chỉ ở verse + Dynamic Hierarchy 2 states (Daily todo / Daily done). Frontend-only, 5+ components mới. Phase 1 Audit STOP trước Phase 2.
-> **Status**: IN PROGRESS
+> **Status**: DONE (2026-06-19)
 
 ### Tasks
 

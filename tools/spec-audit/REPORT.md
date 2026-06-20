@@ -1,28 +1,28 @@
 # Spec Audit Report
 
-**Generated:** 2026-05-19T03:21:03Z
-**Specs scanned:** 6 files in `docs/spec/`
+**Generated:** 2026-06-19T02:12:45Z
+**Specs scanned:** 8 files in `docs/spec/`
 
 ## Summary
 
 | Metric | Count |
 |---|---|
-| Total spec sections | 463 |
-| Sections with code refs | 137 |
-| Total code refs | 333 |
-| Unique code files referenced | 189 |
-| **Broken refs (HIGH)** | **68** |
-| Orphan sections (MEDIUM) | 326 |
-| Undocumented business files (MEDIUM) | 219 |
+| Total spec sections | 674 |
+| Sections with code refs | 190 |
+| Total code refs | 426 |
+| Unique code files referenced | 199 |
+| **Broken refs (HIGH)** | **100** |
+| Orphan sections (MEDIUM) | 484 |
+| Undocumented business files (MEDIUM) | 233 |
 
 ## Stats — file-level coverage
 
 | Concern | Files in scope | Files referenced | Coverage |
 |---|---|---|---|
-| BE Controller | 37 | 2 | 5% |
-| BE Service | 55 | 4 | 7% |
-| FE User Page | 113 | 11 | 10% |
-| FE Admin Page | 36 | 5 | 14% |
+| BE Controller | 40 | 2 | 5% |
+| BE Service | 59 | 4 | 7% |
+| FE User Page | 124 | 12 | 10% |
+| FE Admin Page | 31 | 3 | 10% |
 
 ## Broken Refs (HIGH)
 
@@ -55,11 +55,16 @@
 | BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `api/quizSets.ts` | (no line) | 407 | file_not_found |
 | BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `CreateQuizSetModal.tsx` | (no line) | 410 | bare_filename_not_found |
 | BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `QuizSetCreate.tsx` | (no line) | 410 | bare_filename_not_found |
-| BACKLOG.md | BL-MP-QM — Quick Match (Đấu Nhanh) — 🚧 ACTIVE SPRINT (2026-05-15) | `SoloArenaEntryCard.tsx` | (no line) | 437 | bare_filename_not_found |
-| BACKLOG.md | BL-MP-QM — Quick Match (Đấu Nhanh) — 🚧 ACTIVE SPRINT (2026-05-15) | `SoloArenaPlaceholder.tsx` | (no line) | 439 | bare_filename_not_found |
-| BACKLOG.md | BL-MP-QM — Quick Match (Đấu Nhanh) — 🚧 ACTIVE SPRINT (2026-05-15) | `api/rooms.ts` | (no line) | 444 | file_not_found |
+| BACKLOG.md | BL-MP-QM — Quick Match (Đấu Nhanh) — 🚧 ACTIVE SPRINT (2026-05-15) | `SoloArenaEntryCard.tsx` | (no line) | 452 | bare_filename_not_found |
+| BACKLOG.md | BL-MP-QM — Quick Match (Đấu Nhanh) — 🚧 ACTIVE SPRINT (2026-05-15) | `SoloArenaPlaceholder.tsx` | (no line) | 454 | bare_filename_not_found |
+| BACKLOG.md | BL-MP-QM — Quick Match (Đấu Nhanh) — 🚧 ACTIVE SPRINT (2026-05-15) | `api/rooms.ts` | (no line) | 459 | file_not_found |
+| BACKLOG.md | BL-MOBILE-COMPONENT-TEST-INFRA — RN component-test infrastructure | `RankedScreen.test.tsx` | (no line) | 524 | bare_filename_not_found |
 | SPEC_ADMIN_v3.1.md | 2. Admin Panel Routes | `Groups.tsx` | (no line) | 76 | bare_filename_ambiguous_(2_matches) |
-| SPEC_ADMIN_v3.1.md | 14.2 Schema (`audit_events` V4) | `infrastructure/audit/AuditEvent.java` | (no line) | 513 | file_not_found |
+| SPEC_ADMIN_v3.1.md | 2. Admin Panel Routes | `Configuration.tsx` | (no line) | 78 | bare_filename_not_found |
+| SPEC_ADMIN_v3.1.md | 2. Admin Panel Routes | `ExportCenter.tsx` | (no line) | 79 | bare_filename_not_found |
+| SPEC_ADMIN_v3.1.md | 13.2 Status — UI shell only | `apps/web/src/pages/admin/Configuration.tsx` | (no line) | 474 | file_not_found |
+| SPEC_ADMIN_v3.1.md | 14.2 Schema (`audit_events` V4) | `infrastructure/audit/AuditEvent.java` | (no line) | 517 | file_not_found |
+| SPEC_ADMIN_v3.1.md | 16.1 Status — UI stub | `apps/web/src/pages/admin/ExportCenter.tsx` | (no line) | 572 | file_not_found |
 | SPEC_GROUP_v1.3.md | 6.B Quiz Set Editor Page (BL-AD-8, 2026-05-13) | `apps/web/src/components/group/CreateQuizSetModal.tsx` | (no line) | 698 | file_not_found |
 | SPEC_GROUP_v1.3.md | 6.B Quiz Set Editor Page (BL-AD-8, 2026-05-13) | `QuizSetCreate.tsx` | (no line) | 699 | bare_filename_not_found |
 | SPEC_MULTIPLAYER.md | 5.1 Connection | `useWebSocket.ts` | (no line) | 500 | bare_filename_not_found |
@@ -68,36 +73,63 @@
 | SPEC_MULTIPLAYER.md | 7.4 RoomLobby (`pages/RoomLobby.tsx`) — mode-aware + role-aware | `pages/RoomLobby.tsx` | (no line) | 674 | file_not_found |
 | SPEC_MULTIPLAYER.md | 7.5 RoomQuiz — split routes (Sprint 4) | `pages/RoomQuiz.tsx` | (no line) | 723 | file_not_found |
 | SPEC_MULTIPLAYER.md | 7.5 RoomQuiz — split routes (Sprint 4) | `pages/RoomQuizHost.tsx` | (no line) | 743 | file_not_found |
-| SPEC_MULTIPLAYER.md | 10. Known Issues | `useWebSocket.ts` | (no line) | 864 | bare_filename_not_found |
-| SPEC_MULTIPLAYER.md | Appendix B — Resolved questions (2026-05-09) | `useWebSocket.ts` | (no line) | 1121 | bare_filename_not_found |
+| SPEC_MULTIPLAYER.md | 10. Known Issues | `useWebSocket.ts` | (no line) | 865 | bare_filename_not_found |
+| SPEC_MULTIPLAYER.md | Appendix B — Resolved questions (2026-05-09) | `useWebSocket.ts` | (no line) | 1122 | bare_filename_not_found |
 | SPEC_ROADMAP.md | 2.9 Sentry monitoring (PARTIALLY SHIPPED — mobile only) | `App.tsx` | (no line) | 91 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 3.5 Basic Quiz gate (catechism → unlock Ranked) | `add_basic_quiz_unlock.sql` | (no line) | 155 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 4.7 Milestone Burst (XP surge) | `add_xp_surge_to_users.sql` | (no line) | 236 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 5.3 Daily Challenge | `add_daily_completions.sql` | (no line) | 295 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 5.4 Variety Modes | `pages/MysteryMode.tsx` | (no line) | 318 | file_not_found |
-| SPEC_USER_v3.1.md | 5.4 Variety Modes | `pages/SpeedRound.tsx` | (no line) | 328 | file_not_found |
-| SPEC_USER_v3.1.md | 5.4 Variety Modes | `pages/WeeklyQuiz.tsx` | (no line) | 337 | file_not_found |
-| SPEC_USER_v3.1.md | 5.6 Liturgical Seasons (4 mùa canonical) | `DailyThemeService.java` | (no line) | 356 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 6.3 UI | `pages/Journey.tsx` | (no line) | 391 | file_not_found |
-| SPEC_USER_v3.1.md | 6.3 UI | `components/BibleJourneyCard.tsx` | (no line) | 391 | file_not_found |
-| SPEC_USER_v3.1.md | 8.1 Sound effects | `apps/web/src/lib/soundManager.ts` | (no line) | 462 | file_not_found |
-| SPEC_USER_v3.1.md | 9. Lifeline System | `add_lifeline_system.sql` | (no line) | 512 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 10. Cosmetics — Frames + Themes | `add_user_cosmetics_table.sql` | (no line) | 559 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 10. Cosmetics — Frames + Themes | `pages/Cosmetics.tsx` | (no line) | 559 | file_not_found |
-| SPEC_USER_v3.1.md | 11. Prestige System | `add_prestige_fields_to_users.sql` | (no line) | 588 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 12. Comeback Bridge | `add_comeback_fields_to_users.sql` | (no line) | 617 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 13. Daily Mission | `add_daily_mission_table.sql` | (no line) | 646 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 13. Daily Mission | `DailyMissionsWidget.tsx` | (no line) | 646 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 17.1 Activity Feed | `components/ActivityFeed.tsx` | (no line) | 767 | file_not_found |
-| SPEC_USER_v3.1.md | 17.2 Daily Verse banner | `components/DailyVerseBanner.tsx` | (no line) | 775 | file_not_found |
-| SPEC_USER_v3.1.md | 17.2 Daily Verse banner | `DailyThemeService.java` | (no line) | 775 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 18. Tutorial Overlay | `components/TutorialOverlay.tsx` | (no line) | 785 | file_not_found |
-| SPEC_USER_v3.1.md | 19. Question Sets (user-created) | `question_sets.sql` | (no line) | 810 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 20. Achievements | `pages/Achievements.tsx` | (no line) | 843 | file_not_found |
-| SPEC_USER_v3.1.md | 21. Profile & Stats | `pages/Profile.tsx` | (no line) | 866 | file_not_found |
-| SPEC_USER_v3.1.md | 22. Leaderboard | `pages/Leaderboard.tsx` | (no line) | 903 | file_not_found |
-| SPEC_USER_v3.1.md | 25.4 Bible book names | `apps/web/src/data/bookNames.ts` | (no line) | 1054 | file_not_found |
-| SPEC_USER_v3.1.md | 25.5 Validator | `apps/web/scripts/validate-i18n.ts` | (no line) | 1061 | file_not_found |
+| SPEC_USER_v3.1.md | 3.5 Basic Quiz gate (catechism → unlock Ranked) | `add_basic_quiz_unlock.sql` | (no line) | 157 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 4.7 Milestone Burst (XP surge) | `add_xp_surge_to_users.sql` | (no line) | 238 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 5.3 Daily Challenge | `add_daily_completions.sql` | (no line) | 297 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 5.4 Variety Modes | `pages/MysteryMode.tsx` | (no line) | 320 | file_not_found |
+| SPEC_USER_v3.1.md | 5.4 Variety Modes | `pages/SpeedRound.tsx` | (no line) | 330 | file_not_found |
+| SPEC_USER_v3.1.md | 5.4 Variety Modes | `pages/WeeklyQuiz.tsx` | (no line) | 339 | file_not_found |
+| SPEC_USER_v3.1.md | 5.6 Liturgical Seasons (4 mùa canonical) | `DailyThemeService.java` | (no line) | 358 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 6.3 UI | `pages/Journey.tsx` | (no line) | 393 | file_not_found |
+| SPEC_USER_v3.1.md | 6.3 UI | `components/BibleJourneyCard.tsx` | (no line) | 393 | file_not_found |
+| SPEC_USER_v3.1.md | 8.1 Sound effects | `apps/web/src/lib/soundManager.ts` | (no line) | 464 | file_not_found |
+| SPEC_USER_v3.1.md | 9. Lifeline System | `add_lifeline_system.sql` | (no line) | 514 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 10. Cosmetics — Frames + Themes | `add_user_cosmetics_table.sql` | (no line) | 561 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 10. Cosmetics — Frames + Themes | `pages/Cosmetics.tsx` | (no line) | 561 | file_not_found |
+| SPEC_USER_v3.1.md | 11. Prestige System | `add_prestige_fields_to_users.sql` | (no line) | 590 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 12. Comeback Bridge | `add_comeback_fields_to_users.sql` | (no line) | 619 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 13. Daily Mission | `add_daily_mission_table.sql` | (no line) | 648 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 13. Daily Mission | `DailyMissionsWidget.tsx` | (no line) | 648 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 17.1 Activity Feed | `components/ActivityFeed.tsx` | (no line) | 769 | file_not_found |
+| SPEC_USER_v3.1.md | 17.2 Daily Verse banner | `components/DailyVerseBanner.tsx` | (no line) | 777 | file_not_found |
+| SPEC_USER_v3.1.md | 17.2 Daily Verse banner | `DailyThemeService.java` | (no line) | 777 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 18. Tutorial Overlay | `components/TutorialOverlay.tsx` | (no line) | 787 | file_not_found |
+| SPEC_USER_v3.1.md | 19. Question Sets (user-created) | `question_sets.sql` | (no line) | 812 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 20. Achievements | `pages/Achievements.tsx` | (no line) | 845 | file_not_found |
+| SPEC_USER_v3.1.md | 21. Profile & Stats | `pages/Profile.tsx` | (no line) | 868 | file_not_found |
+| SPEC_USER_v3.1.md | 22. Leaderboard | `pages/Leaderboard.tsx` | (no line) | 905 | file_not_found |
+| SPEC_USER_v3.1.md | 25.4 Bible book names | `apps/web/src/data/bookNames.ts` | (no line) | 1065 | file_not_found |
+| SPEC_USER_v3.1.md | 25.5 Validator | `apps/web/scripts/validate-i18n.ts` | (no line) | 1072 | file_not_found |
+| SPEC_USER_v3.2.md | 3.5 Basic Quiz gate (catechism → unlock Ranked) | `add_basic_quiz_unlock.sql` | (no line) | 157 | bare_filename_not_found |
+| SPEC_USER_v3.2.md | 4.7 Milestone Burst (XP surge) | `add_xp_surge_to_users.sql` | (no line) | 238 | bare_filename_not_found |
+| SPEC_USER_v3.2.md | 5.3 Daily Challenge | `add_daily_completions.sql` | (no line) | 297 | bare_filename_not_found |
+| SPEC_USER_v3.2.md | 5.4 Variety Modes | `pages/MysteryMode.tsx` | (no line) | 331 | file_not_found |
+| SPEC_USER_v3.2.md | 5.4 Variety Modes | `pages/SpeedRound.tsx` | (no line) | 341 | file_not_found |
+| SPEC_USER_v3.2.md | 5.4 Variety Modes | `pages/WeeklyQuiz.tsx` | (no line) | 350 | file_not_found |
+| SPEC_USER_v3.2.md | 5.6 Liturgical Seasons (4 mùa canonical) | `DailyThemeService.java` | (no line) | 369 | bare_filename_not_found |
+| SPEC_USER_v3.2.md | 6.3 UI | `pages/Journey.tsx` | (no line) | 404 | file_not_found |
+| SPEC_USER_v3.2.md | 6.3 UI | `components/BibleJourneyCard.tsx` | (no line) | 404 | file_not_found |
+| SPEC_USER_v3.2.md | 8.1 Sound effects | `apps/web/src/lib/soundManager.ts` | (no line) | 1575 | file_not_found |
+| SPEC_USER_v3.2.md | 9. Lifeline System | `add_lifeline_system.sql` | (no line) | 1625 | bare_filename_not_found |
+| SPEC_USER_v3.2.md | 10. Cosmetics — Frames + Themes | `add_user_cosmetics_table.sql` | (no line) | 1672 | bare_filename_not_found |
+| SPEC_USER_v3.2.md | 10. Cosmetics — Frames + Themes | `pages/Cosmetics.tsx` | (no line) | 1672 | file_not_found |
+| SPEC_USER_v3.2.md | 11. Prestige System | `add_prestige_fields_to_users.sql` | (no line) | 1701 | bare_filename_not_found |
+| SPEC_USER_v3.2.md | 12. Comeback Bridge | `add_comeback_fields_to_users.sql` | (no line) | 1730 | bare_filename_not_found |
+| SPEC_USER_v3.2.md | 13. Daily Mission | `add_daily_mission_table.sql` | (no line) | 1759 | bare_filename_not_found |
+| SPEC_USER_v3.2.md | 13. Daily Mission | `DailyMissionsWidget.tsx` | (no line) | 1759 | bare_filename_not_found |
+| SPEC_USER_v3.2.md | 17.1 Activity Feed | `components/ActivityFeed.tsx` | (no line) | 1880 | file_not_found |
+| SPEC_USER_v3.2.md | 17.2 Daily Verse banner | `components/DailyVerseBanner.tsx` | (no line) | 1888 | file_not_found |
+| SPEC_USER_v3.2.md | 17.2 Daily Verse banner | `DailyThemeService.java` | (no line) | 1888 | bare_filename_not_found |
+| SPEC_USER_v3.2.md | 18. Tutorial Overlay | `components/TutorialOverlay.tsx` | (no line) | 1898 | file_not_found |
+| SPEC_USER_v3.2.md | 19. Question Sets (user-created) | `question_sets.sql` | (no line) | 1923 | bare_filename_not_found |
+| SPEC_USER_v3.2.md | 20. Achievements | `pages/Achievements.tsx` | (no line) | 1956 | file_not_found |
+| SPEC_USER_v3.2.md | 21. Profile & Stats | `pages/Profile.tsx` | (no line) | 1979 | file_not_found |
+| SPEC_USER_v3.2.md | 22. Leaderboard | `pages/Leaderboard.tsx` | (no line) | 2016 | file_not_found |
+| SPEC_USER_v3.2.md | 25.4 Bible book names | `apps/web/src/data/bookNames.ts` | (no line) | 2178 | file_not_found |
+| SPEC_USER_v3.2.md | 25.5 Validator | `apps/web/scripts/validate-i18n.ts` | (no line) | 2185 | file_not_found |
 
 ## Orphan Sections (MEDIUM)
 
@@ -153,12 +185,14 @@ _(Showing first 30 — full list via `node parse-spec-refs.js --undocumented`.)_
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/AdminMetricsController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/AdminQuestionController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/AdminSeasonController.java` |
+| BE Controller | `apps/api/src/main/java/com/biblequiz/api/AdminSeasonPairingController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/AdminUserController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/AuthController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/BasicQuizController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/BookController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/ChallengeController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/ChurchGroupController.java` |
+| BE Controller | `apps/api/src/main/java/com/biblequiz/api/CoverageController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/DailyChallengeController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/FeedbackController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/HealthController.java` |
@@ -166,6 +200,7 @@ _(Showing first 30 — full list via `node parse-spec-refs.js --undocumented`.)_
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/MobileAuthController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/NotificationController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/PublicController.java` |
+| BE Controller | `apps/api/src/main/java/com/biblequiz/api/PublicLeaderboardController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/QuestionController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/QuestionSetController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/RankedController.java` |
@@ -173,9 +208,6 @@ _(Showing first 30 — full list via `node parse-spec-refs.js --undocumented`.)_
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/ScheduledQuizController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/SeasonController.java` |
 | BE Controller | `apps/api/src/main/java/com/biblequiz/api/SessionController.java` |
-| BE Controller | `apps/api/src/main/java/com/biblequiz/api/SessionLifelineController.java` |
-| BE Controller | `apps/api/src/main/java/com/biblequiz/api/ShareCardController.java` |
-| BE Controller | `apps/api/src/main/java/com/biblequiz/api/TestDataSeedController.java` |
 
 ---
 

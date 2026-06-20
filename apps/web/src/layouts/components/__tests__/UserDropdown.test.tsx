@@ -39,6 +39,14 @@ describe('UserDropdown avatar', () => {
     expect(screen.queryByTestId('user-dropdown-avatar-initial')).toBeNull()
   })
 
+  // Lighthouse a11y guard: the compact icon trigger's avatar is aria-hidden,
+  // so the button needs its own accessible name.
+  it('gives the compact trigger an accessible name', () => {
+    authState.user = { name: 'Tai', email: 'a@b.com', avatar: 'preset:angel' }
+    renderDropdown()
+    expect(screen.getByRole('button', { name: 'Menu người dùng' })).toBeInTheDocument()
+  })
+
   it('renders an <img> when avatar is an http(s) URL', () => {
     authState.user = { name: 'Tai', email: 'a@b.com', avatar: 'https://lh3.googleusercontent.com/a/foo=s96-c' }
     renderDropdown()

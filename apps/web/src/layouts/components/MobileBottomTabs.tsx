@@ -1,10 +1,13 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useAuthStore } from '../../store/authStore'
 
 interface TabConfig {
   path: string
   labelKey: string
   icon: string
+  /** `true` = tab dẫn tới trang RequireAuth → ẩn với guest. */
+  auth?: boolean
 }
 
 /**
@@ -21,8 +24,8 @@ interface TabConfig {
 const TABS: TabConfig[] = [
   { path: '/', labelKey: 'nav.home', icon: 'home' },
   { path: '/leaderboard', labelKey: 'nav.leaderboard', icon: 'leaderboard' },
-  { path: '/groups', labelKey: 'nav.groups', icon: 'groups' },
-  { path: '/profile', labelKey: 'nav.profile', icon: 'person' },
+  { path: '/groups', labelKey: 'nav.groups', icon: 'groups', auth: true },
+  { path: '/profile', labelKey: 'nav.profile', icon: 'person', auth: true },
 ]
 
 /**
@@ -39,6 +42,10 @@ function isActivePath(pathname: string, tabPath: string): boolean {
 export default function MobileBottomTabs() {
   const { t } = useTranslation()
   const location = useLocation()
+  const { isAuthenticated } = useAuthStore()
+
+  // Guest (route public) chỉ thấy tab không cần auth (Home + Xếp hạng).
+  const visibleTabs = TABS.filter(tab => isAuthenticated || !tab.auth)
 
   return (
     <nav
@@ -46,7 +53,7 @@ export default function MobileBottomTabs() {
       className="md:hidden fixed bottom-0 left-0 w-full z-40 flex items-stretch justify-between px-1 pt-1 bg-bq-paper/90 backdrop-blur-xl border-t border-bq-hair"
       style={{ paddingBottom: 'max(8px, env(safe-area-inset-bottom))' }}
     >
-      {TABS.map(tab => {
+      {visibleTabs.map(tab => {
         const active = isActivePath(location.pathname, tab.path)
         return (
           <Link

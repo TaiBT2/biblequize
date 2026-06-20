@@ -16,6 +16,7 @@ import { BadgeCollection } from '../components/profile/BadgeCollection'
 import { AnalyticsCard } from '../components/profile/AnalyticsCard'
 import { PrestigeSection } from '../components/profile/PrestigeSection'
 import { SoundHapticsSettings } from '../components/profile/SoundHapticsSettings'
+import { PrivacySettings } from '../components/profile/PrivacySettings'
 import { DeleteAccountSection } from '../components/profile/DeleteAccountSection'
 
 function ProfileSkeleton() {
@@ -177,6 +178,8 @@ const Profile: React.FC = () => {
       <PrestigeSection />
 
       <SoundHapticsSettings />
+
+      <PrivacySettings initialVisible={profile?.leaderboardVisible ?? true} />
 
       <DeleteAccountSection />
     </div>

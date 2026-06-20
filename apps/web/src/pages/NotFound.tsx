@@ -8,7 +8,7 @@ export default function NotFound() {
 
   return (
     <div className="relative min-h-screen bg-bq-paper flex items-center justify-center overflow-hidden px-4">
-      <PageMeta title="Trang khong tim thay" />
+      <PageMeta title="Trang không tìm thấy" noindex />
       {/* Decorative blur circles */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-bq-amber/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-bq-sapphire/5 blur-3xl pointer-events-none" />

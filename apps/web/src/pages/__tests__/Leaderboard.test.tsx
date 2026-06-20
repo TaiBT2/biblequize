@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -16,12 +16,21 @@ vi.mock('../../store/authStore', () => ({
 
 import Leaderboard from '../Leaderboard'
 
+// ≥ SEED_THRESHOLD (10) entries so the board renders (below the threshold the
+// page shows the LBF-11 low-data seed-state instead of the podium/list).
 const MOCK_ENTRIES = [
   { userId: 'u2', name: 'Player 1', points: 15820, avatarUrl: null },
   { userId: 'u3', name: 'Player 2', points: 12450, avatarUrl: null },
   { userId: 'u4', name: 'Player 3', points: 11200, avatarUrl: null },
   { userId: 'u5', name: 'Player 4', points: 9840, avatarUrl: null },
   { userId: 'u1', name: 'Test User', points: 4520, avatarUrl: null },
+  { userId: 'u6', name: 'Player 6', points: 4000, avatarUrl: null },
+  { userId: 'u7', name: 'Player 7', points: 3500, avatarUrl: null },
+  { userId: 'u8', name: 'Player 8', points: 3000, avatarUrl: null },
+  { userId: 'u9', name: 'Player 9', points: 2500, avatarUrl: null },
+  { userId: 'u10', name: 'Player 10', points: 2000, avatarUrl: null },
+  { userId: 'u11', name: 'Player 11', points: 1500, avatarUrl: null },
+  { userId: 'u12', name: 'Player 12', points: 1000, avatarUrl: null },
 ]
 
 function renderLeaderboard() {
@@ -71,15 +80,14 @@ describe('Leaderboard', () => {
     await waitFor(() => { expect(screen.getAllByText('Bạn').length).toBeGreaterThan(0) })
   })
 
-  it('LB-2.2: renders 3 tab buttons — no Daily, generic "Mùa" label', () => {
+  it('LBF-9: renders 2 tab buttons — no Daily, no Mùa (season tab hidden for early launch)', () => {
     renderLeaderboard()
     // Daily tab REMOVED in LB-2 (decision 2026-05-01)
     expect(screen.queryByText('Hàng ngày')).not.toBeInTheDocument()
+    // Competitive "Mùa" tab hidden in LBF-9 (decision 2026-06-18) — only
+    // all-time + weekly remain. BE season endpoint stays dormant.
+    expect(screen.queryByText('Mùa')).not.toBeInTheDocument()
     expect(screen.getByText('Hàng tuần')).toBeInTheDocument()
-    // Tab "Mùa" label is the generic i18n string (Bui decision 2026-05-02
-    // revision: dynamic season name caused ugly tabs when test data leaked
-    // long auto-generated names like "Season E2E Test 1776471648641").
-    expect(screen.getByText('Mùa')).toBeInTheDocument()
     expect(screen.getByText('Tất cả')).toBeInTheDocument()
   })
 
@@ -117,12 +125,9 @@ describe('Leaderboard', () => {
     })
   })
 
-  it('renders season countdown', async () => {
-    renderLeaderboard()
-    await waitFor(() => { expect(screen.getByText(/Mùa kết thúc sau/i)).toBeInTheDocument() })
-  })
+  // LBF-9 (2026-06-18): season countdown header removed with the "Mùa" tab.
 
-  it('shows empty state when no data', async () => {
+  it('LBF-11: shows seed-state (not a bare board) when no data', async () => {
     mockApiGet.mockImplementation((url: string) => {
       if (url.includes('/leaderboard/')) return Promise.resolve({ data: [] })
       if (url.includes('/my-rank')) return Promise.resolve({ data: null })
@@ -130,7 +135,31 @@ describe('Leaderboard', () => {
       return Promise.reject(new Error('Not found'))
     })
     renderLeaderboard()
-    await waitFor(() => { expect(screen.getByText(/Chưa có dữ liệu/)).toBeInTheDocument() })
+    await waitFor(() => { expect(screen.getByTestId('leaderboard-seed-state')).toBeInTheDocument() })
+    // No podium, no weak numbers
+    expect(screen.queryByTestId('leaderboard-podium')).not.toBeInTheDocument()
+  })
+
+  it('LBF-11: shows seed-state when fewer than 10 players (né con số)', async () => {
+    const FEW = MOCK_ENTRIES.slice(0, 5) // 5 players → below SEED_THRESHOLD
+    mockApiGet.mockImplementation((url: string) => {
+      if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 5, points: 4520 } })
+      if (url.includes('/leaderboard/')) return Promise.resolve({ data: FEW })
+      if (url.includes('/seasons')) return Promise.resolve({ data: null })
+      if (url.includes('/api/me/tier-progress')) return Promise.resolve({ data: { totalPoints: 4520 } })
+      return Promise.reject(new Error('Not found'))
+    })
+    renderLeaderboard()
+    await waitFor(() => { expect(screen.getByTestId('leaderboard-seed-state')).toBeInTheDocument() })
+    // Board hidden so the sparse 5-row list + any "0đ" never shows
+    expect(screen.queryByTestId('leaderboard-podium')).not.toBeInTheDocument()
+    expect(screen.queryByText('Player 1')).not.toBeInTheDocument()
+  })
+
+  it('LBF-11: shows the board (no seed-state) when 10+ players', async () => {
+    renderLeaderboard() // default mock = 12 entries
+    await waitFor(() => { expect(screen.getByTestId('leaderboard-podium')).toBeInTheDocument() })
+    expect(screen.queryByTestId('leaderboard-seed-state')).not.toBeInTheDocument()
   })
 
   it('shows skeleton during loading', () => {
@@ -158,21 +187,6 @@ describe('Leaderboard', () => {
     })
   })
 
-  it('LB-2.2: tab "Mùa" falls back to generic "Mùa" when no active season (regression guard)', async () => {
-    mockApiGet.mockImplementation((url: string) => {
-      if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 5, points: 4520 } })
-      if (url.includes('/leaderboard/')) return Promise.resolve({ data: MOCK_ENTRIES })
-      // Simulate no active season (BE returns active: false)
-      if (url.includes('/seasons/active')) return Promise.resolve({ data: { active: false } })
-      if (url.includes('/api/me/tier-progress')) return Promise.resolve({ data: { totalPoints: 4520 } })
-      return Promise.reject(new Error('Not found'))
-    })
-    renderLeaderboard()
-    // Tab label should be generic "Mùa" (uppercased by CSS), NOT outdated "Mùa Xuân"
-    await waitFor(() => { expect(screen.getByText('Mùa')).toBeInTheDocument() })
-    expect(screen.queryByText(/Mùa Xuân/)).not.toBeInTheDocument()
-  })
-
   // LB-1.5 — Row enrichment per mockup
   it('LB-1.5: list rows show tier name below username', async () => {
     renderLeaderboard()
@@ -182,53 +196,8 @@ describe('Leaderboard', () => {
     expect(screen.getAllByText('Môn Đồ').length).toBeGreaterThanOrEqual(2)
   })
 
-  it('LB-1.5: list row shows streak when entry.streak > 0', async () => {
-    const ENTRIES_WITH_STREAK = [
-      { userId: 'u2', name: 'Player A', points: 15820, avatarUrl: null, streak: 7 },
-      { userId: 'u3', name: 'Player B', points: 12450, avatarUrl: null, streak: 0 }, // no streak
-      { userId: 'u4', name: 'Player C', points: 11200, avatarUrl: null }, // missing field
-      { userId: 'u5', name: 'Player D', points: 9840, avatarUrl: null, streak: 12 },
-    ]
-    mockApiGet.mockImplementation((url: string) => {
-      if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 99 } })
-      if (url.includes('/leaderboard/')) return Promise.resolve({ data: ENTRIES_WITH_STREAK })
-      if (url.includes('/seasons')) return Promise.resolve({ data: null })
-      if (url.includes('/api/me/tier-progress')) return Promise.resolve({ data: { totalPoints: 100 } })
-      return Promise.reject(new Error('Not found'))
-    })
-    renderLeaderboard()
-    await waitFor(() => { expect(screen.getByText('Player D')).toBeInTheDocument() })
-    // Player D has streak 12 → fire emoji
-    expect(screen.getByText(/🔥 12/)).toBeInTheDocument()
-    // Player B has streak 0 → no fire emoji for them
-    expect(screen.queryByText(/🔥 0/)).not.toBeInTheDocument()
-  })
-
-  it('LB-1.5: list row shows trend ▲▼ when entry.trend non-zero', async () => {
-    // 3 podium entries + 4 list rows so trends render below podium (LeaderboardListRow)
-    const ENTRIES_WITH_TREND = [
-      { userId: 'u_top1', name: 'Top 1', points: 50000, avatarUrl: null },
-      { userId: 'u_top2', name: 'Top 2', points: 40000, avatarUrl: null },
-      { userId: 'u_top3', name: 'Top 3', points: 30000, avatarUrl: null },
-      { userId: 'u2', name: 'Player A', points: 15820, avatarUrl: null, trend: 3 },
-      { userId: 'u3', name: 'Player B', points: 12450, avatarUrl: null, trend: -1 },
-      { userId: 'u4', name: 'Player C', points: 11200, avatarUrl: null, trend: 0 },
-      { userId: 'u5', name: 'Player D', points: 9840, avatarUrl: null },
-    ]
-    mockApiGet.mockImplementation((url: string) => {
-      if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 99 } })
-      if (url.includes('/leaderboard/')) return Promise.resolve({ data: ENTRIES_WITH_TREND })
-      if (url.includes('/seasons')) return Promise.resolve({ data: null })
-      if (url.includes('/api/me/tier-progress')) return Promise.resolve({ data: { totalPoints: 100 } })
-      return Promise.reject(new Error('Not found'))
-    })
-    renderLeaderboard()
-    await waitFor(() => { expect(screen.getByText('Player D')).toBeInTheDocument() })
-    // Player A: ▲ 3
-    expect(screen.getByText(/▲ 3/)).toBeInTheDocument()
-    // Player B: ▼ 1
-    expect(screen.getByText(/▼ 1/)).toBeInTheDocument()
-  })
+  // LBF-7 (2026-06-18): streak/trend rendering removed — BE never populated
+  // these fields so the 🔥/▲▼ affordances never showed. Tests deleted with the UI.
 
   // LB-1.4 — Podium redesign per mockup
   it('LB-1.4: podium renders 3 ranks with Arabic numerals (no La Mã)', async () => {
@@ -252,37 +221,13 @@ describe('Leaderboard', () => {
     })
   })
 
-  it('LB-1.3 + LB-2.2: clicking Season tab fetches /api/leaderboard/season', async () => {
-    renderLeaderboard()
-    // Generic "Mùa" label per Bui decision 2026-05-02 revision.
-    await waitFor(() => { expect(screen.getByText('Mùa')).toBeInTheDocument() })
-    fireEvent.click(screen.getByText('Mùa'))
-    await waitFor(() => {
-      expect(mockApiGet).toHaveBeenCalledWith(expect.stringContaining('/leaderboard/season'))
-    })
-  })
+  // LBF-9 (2026-06-18): "Mùa" competitive tab hidden for early launch — the
+  // season tab + its /leaderboard/season fetch test were removed. BE endpoint
+  // stays dormant.
 
-  // LB-1.2 — duplicate row prevention (regression guard)
-  it('LB-1.2: dedupes user appearing twice in BE response', async () => {
-    const DUPLICATE_ENTRIES = [
-      { userId: 'u2', name: 'Player 1', points: 15820, avatarUrl: null },
-      { userId: 'u3', name: 'Player 2', points: 12450, avatarUrl: null },
-      { userId: 'u1', name: 'Test User', points: 4520, avatarUrl: null }, // duplicate #1
-      { userId: 'u1', name: 'Test User', points: 4520, avatarUrl: null }, // duplicate #2
-      { userId: 'u4', name: 'Player 3', points: 3000, avatarUrl: null },
-    ]
-    mockApiGet.mockImplementation((url: string) => {
-      if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 3, points: 4520 } })
-      if (url.includes('/leaderboard/')) return Promise.resolve({ data: DUPLICATE_ENTRIES })
-      if (url.includes('/seasons')) return Promise.resolve({ data: null })
-      if (url.includes('/api/me/tier-progress')) return Promise.resolve({ data: { totalPoints: 4520 } })
-      return Promise.reject(new Error('Not found'))
-    })
-    renderLeaderboard()
-    await waitFor(() => { expect(screen.getByText('Player 3')).toBeInTheDocument() })
-    // Test User name should appear exactly once (FE defensive dedup)
-    expect(screen.getAllByText('Test User')).toHaveLength(1)
-  })
+  // LBF-2 (2026-06-18): the "dedupes duplicate BE rows" test was removed with
+  // the dead FE dedup guard — UNIQUE(user_id, date) + GROUP BY u.id make a
+  // repeated userId impossible, so the test simulated a state the BE can't emit.
 
   it('LB-1.2: hides sticky my-rank row when current user IS in displayed list', async () => {
     // Test User (u1) is in MOCK_ENTRIES at idx 4 (rank 5) → no sticky needed
@@ -292,12 +237,9 @@ describe('Leaderboard', () => {
   })
 
   it('LB-1.2: shows sticky my-rank row when current user NOT in list', async () => {
-    const ENTRIES_WITHOUT_ME = [
-      { userId: 'u2', name: 'Player 1', points: 15820, avatarUrl: null },
-      { userId: 'u3', name: 'Player 2', points: 12450, avatarUrl: null },
-      { userId: 'u4', name: 'Player 3', points: 11200, avatarUrl: null },
-      { userId: 'u5', name: 'Player 4', points: 9840, avatarUrl: null },
-    ]
+    // 11 players, none of them the current user (u1) → board renders (≥10) and
+    // the around-me sticky row appears for the off-board current user.
+    const ENTRIES_WITHOUT_ME = MOCK_ENTRIES.filter((e) => e.userId !== 'u1')
     mockApiGet.mockImplementation((url: string) => {
       if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 50, points: 100 } })
       if (url.includes('/leaderboard/')) return Promise.resolve({ data: ENTRIES_WITHOUT_ME })
@@ -310,14 +252,37 @@ describe('Leaderboard', () => {
     expect(screen.getByTestId('leaderboard-my-rank-sticky')).toBeInTheDocument()
   })
 
+  it('LBF-4: renders around-me window (neighbours + me) when user is off the top list', async () => {
+    const AROUND = [
+      { userId: 'u20', name: 'Above A', points: 900, rank: 45 },
+      { userId: 'u21', name: 'Above B', points: 880, rank: 46 },
+      { userId: 'u1', name: 'Test User', points: 850, rank: 47 },
+      { userId: 'u22', name: 'Below A', points: 820, rank: 48 },
+      { userId: 'u23', name: 'Below B', points: 800, rank: 49 },
+    ]
+    mockApiGet.mockImplementation((url: string) => {
+      // around-me URL also contains '/leaderboard/', so match it FIRST
+      if (url.includes('/around-me')) return Promise.resolve({ data: AROUND })
+      if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 47, points: 850 } })
+      if (url.includes('/leaderboard/')) return Promise.resolve({ data: MOCK_ENTRIES.filter((e) => e.userId !== 'u1') })
+      if (url.includes('/seasons')) return Promise.resolve({ data: null })
+      if (url.includes('/api/me/tier-progress')) return Promise.resolve({ data: { totalPoints: 850 } })
+      return Promise.reject(new Error('Not found'))
+    })
+    renderLeaderboard()
+    await waitFor(() => { expect(screen.getByTestId('leaderboard-around-me')).toBeInTheDocument() })
+    // 5 neighbours above + below render (not just a lonely sticky row)
+    expect(screen.getByText('Above A')).toBeInTheDocument()
+    expect(screen.getByText('Below B')).toBeInTheDocument()
+    // The current-user row inside the window keeps the sticky testid
+    expect(screen.getByTestId('leaderboard-my-rank-sticky')).toBeInTheDocument()
+  })
+
   it('sticky my-rank row renders current user avatar from authStore (sync after edit)', async () => {
     authState.user = { name: 'Test User', email: 'a@b.com', avatar: 'https://example.com/me.png' } as any
-    const ENTRIES_WITHOUT_ME = [
-      { userId: 'u2', name: 'Player 1', points: 15820, avatarUrl: null },
-      { userId: 'u3', name: 'Player 2', points: 12450, avatarUrl: null },
-      { userId: 'u4', name: 'Player 3', points: 11200, avatarUrl: null },
-      { userId: 'u5', name: 'Player 4', points: 9840, avatarUrl: null },
-    ]
+    // 11 players, none of them the current user (u1) → board renders (≥10) and
+    // the around-me sticky row appears for the off-board current user.
+    const ENTRIES_WITHOUT_ME = MOCK_ENTRIES.filter((e) => e.userId !== 'u1')
     mockApiGet.mockImplementation((url: string) => {
       if (url.includes('/my-rank')) return Promise.resolve({ data: { userId: 'u1', name: 'Test User', rank: 23, points: 1131 } })
       if (url.includes('/leaderboard/')) return Promise.resolve({ data: ENTRIES_WITHOUT_ME })
@@ -332,5 +297,48 @@ describe('Leaderboard', () => {
     expect(img?.getAttribute('src')).toBe('https://example.com/me.png')
     // Reset shared mock state for other tests.
     authState.user = { name: 'Test User', email: 'a@b.com' } as any
+  })
+})
+
+describe('Leaderboard — guest (logged-out)', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    ;(authState as any).isAuthenticated = false
+    ;(authState as any).user = null
+    mockApiGet.mockImplementation((url: string) => {
+      // Guests read via the public endpoint only.
+      if (url.includes('/api/public/leaderboard')) return Promise.resolve({ data: MOCK_ENTRIES })
+      return Promise.reject(new Error('Not found'))
+    })
+  })
+
+  afterEach(() => {
+    // Restore shared authState for the other describe blocks.
+    ;(authState as any).isAuthenticated = true
+    ;(authState as any).user = { name: 'Test User', email: 'a@b.com' }
+  })
+
+  it('fetches the board from the public endpoint, not the authed one', async () => {
+    renderLeaderboard()
+    await waitFor(() => { expect(screen.getByText('Player 1')).toBeInTheDocument() })
+    expect(mockApiGet).toHaveBeenCalledWith(expect.stringContaining('/api/public/leaderboard'))
+    const authedCalls = mockApiGet.mock.calls.filter((c) => /\/api\/leaderboard\//.test(String(c[0])))
+    expect(authedCalls).toHaveLength(0)
+  })
+
+  it('does NOT call per-user endpoints (my-rank / tier-progress / seasons)', async () => {
+    renderLeaderboard()
+    await waitFor(() => { expect(screen.getByText('Player 1')).toBeInTheDocument() })
+    const perUser = mockApiGet.mock.calls.filter((c) => /my-rank|tier-progress|\/seasons/.test(String(c[0])))
+    expect(perUser).toHaveLength(0)
+  })
+
+  it('shows a login CTA and no "current tier" highlight in the ladder', async () => {
+    renderLeaderboard()
+    await waitFor(() => { expect(screen.getByText('Player 1')).toBeInTheDocument() })
+    expect(screen.getByTestId('leaderboard-guest-rank-cta')).toBeInTheDocument()
+    // No tier card flagged as the guest's current tier.
+    const tierSection = screen.getByTestId('leaderboard-tier-section')
+    expect(tierSection.querySelector('.border-bq-amber')).toBeNull()
   })
 })

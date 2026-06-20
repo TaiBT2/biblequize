@@ -24,7 +24,6 @@ import AppLayout from './layouts/AppLayout'
 import Home from './pages/Home'
 import LandingPage from './pages/LandingPage'
 import Onboarding from './pages/Onboarding'
-import { useOnboardingStore } from './store/onboardingStore'
 
 // LAZY — every other route is split into its own chunk (loaded on navigation).
 // This shrinks the entry bundle from ~1.5 MB (all pages) to just the shell.
@@ -75,6 +74,7 @@ const TournamentMatch = lazy(() => import('./pages/TournamentMatch'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
 const TermsOfService = lazy(() => import('./pages/TermsOfService'))
+const CauDoKinhThanh = lazy(() => import('./pages/CauDoKinhThanh'))
 const OnboardingTryQuiz = lazy(() => import('./pages/OnboardingTryQuiz'))
 const Journey = lazy(() => import('./pages/Journey'))
 const Help = lazy(() => import('./pages/Help'))
@@ -104,16 +104,14 @@ installSessionExpiryHandler()
 // Initialize auth state on app startup (replaces AuthProvider useEffect)
 useAuthStore.getState().checkAuth()
 
-/** Show LandingPage for guests, Home (inside AppLayout) for authenticated users.
- *  First-time visitors go to Onboarding instead of LandingPage. */
+/** Show the content-rich LandingPage for guests (good for SEO + first paint),
+ *  Home (inside AppLayout) for authenticated users. Onboarding is no longer a
+ *  blocking gate at "/": UI language is auto-detected (i18n) and switchable on
+ *  the landing header; the guided flow stays reachable at /onboarding. */
 function HomeOrLanding() {
   const { isAuthenticated, isLoading } = useAuthStore()
-  const hasSeenOnboarding = useOnboardingStore(s => s.hasSeenOnboarding)
   if (isLoading) return null // wait for auth check
-  if (!isAuthenticated) {
-    if (!hasSeenOnboarding) return <Onboarding />
-    return <LandingPage />
-  }
+  if (!isAuthenticated) return <LandingPage />
   return <AppLayout />
 }
 
@@ -185,6 +183,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 {/* Public pages (no auth) */}
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsOfService />} />
+                <Route path="/cau-do-kinh-thanh" element={<CauDoKinhThanh />} />
                 <Route path="/onboarding" element={<Onboarding />} />
                 <Route path="/onboarding/try" element={<OnboardingTryQuiz />} />
 

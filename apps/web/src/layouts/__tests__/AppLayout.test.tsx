@@ -122,6 +122,39 @@ describe('AppLayout — Logout', () => {
   })
 })
 
+describe('AppLayout — Guest (logged-out) chrome', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    // Guest: route public (vd /leaderboard) render AppLayout không có user.
+    authState = { user: null, isAuthenticated: false, logout: mockLogout }
+  })
+
+  it('shows a "Đăng nhập" CTA instead of the user dropdown', () => {
+    renderAppLayout()
+    expect(screen.getByTestId('topnav-login-link')).toBeInTheDocument()
+    expect(screen.queryByTestId('user-dropdown-toggle')).not.toBeInTheDocument()
+  })
+
+  it('does NOT render the notification bell for guests', () => {
+    renderAppLayout()
+    expect(screen.queryByTestId('notification-bell')).not.toBeInTheDocument()
+  })
+
+  it('hides auth-only nav links (Nhóm / Phòng Chơi / Cá nhân) in the top nav', () => {
+    renderAppLayout()
+    const topnav = screen.getByTestId('app-topnav')
+    for (const path of ['/groups', '/multiplayer', '/profile']) {
+      expect(topnav.querySelectorAll(`a[href="${path}"]`).length).toBe(0)
+    }
+  })
+
+  it('keeps public nav links (Trang chủ + Xếp hạng) for guests', () => {
+    renderAppLayout()
+    const topnav = screen.getByTestId('app-topnav')
+    expect(topnav.querySelectorAll('a[href="/leaderboard"]').length).toBe(1)
+  })
+})
+
 describe('AppLayout — User menu click-outside', () => {
   beforeEach(() => {
     vi.clearAllMocks()

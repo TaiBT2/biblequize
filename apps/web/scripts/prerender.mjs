@@ -28,14 +28,18 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const distDir = resolve(__dirname, '..', 'dist')
 const ORIGIN = 'https://forbible.org'
 
-// Deterministic public pages + their canonical path. `/` is auth/onboarding-
-// dependent so it's excluded; LandingPage canonicalises /landing to /.
+// Deterministic, static-content public pages + their canonical path. `/` renders
+// the guest LandingPage (checkAuth short-circuits without a session) and is
+// written to home.html, served by nginx for exactly `/` so the SPA shell stays
+// clean for fallback. Excluded: `/daily` (data-gated — without a backend it
+// prerenders to a "no questions" empty state). LandingPage canonicalises /landing to /.
 const ROUTES = [
+  { path: '/', canonical: '/', out: 'home.html' },
   { path: '/landing', canonical: '/' },
   { path: '/privacy', canonical: '/privacy' },
   { path: '/terms', canonical: '/terms' },
   { path: '/help', canonical: '/help' },
-  { path: '/daily', canonical: '/daily' },
+  { path: '/cau-do-kinh-thanh', canonical: '/cau-do-kinh-thanh' },
 ]
 
 async function main() {
@@ -61,7 +65,7 @@ async function main() {
   await prerenderer.initialize()
 
   let ok = 0
-  for (const { path: route, canonical } of ROUTES) {
+  for (const { path: route, canonical, out } of ROUTES) {
     try {
       const [rendered] = await prerenderer.renderRoutes([route])
       const html = (rendered?.html || '').trim()
@@ -69,11 +73,13 @@ async function main() {
         throw new Error('empty #root — app did not render')
       }
       const finalHtml = dedupeHead(html, defaults, `${ORIGIN}${canonical}`)
-      const outDir = join(distDir, route)
-      await mkdir(outDir, { recursive: true })
-      await writeFile(join(outDir, 'index.html'), finalHtml)
+      // `out` writes a named file (home.html for `/`) so the SPA shell stays clean;
+      // other routes write dist/<route>/index.html, served at the clean URL by nginx.
+      const outPath = out ? join(distDir, out) : join(distDir, route, 'index.html')
+      await mkdir(dirname(outPath), { recursive: true })
+      await writeFile(outPath, finalHtml)
       ok++
-      console.log(`[prerender] OK ${route} (${Math.round(finalHtml.length / 1024)} KB)`)
+      console.log(`[prerender] OK ${route} -> ${out || `${route}/index.html`} (${Math.round(finalHtml.length / 1024)} KB)`)
     } catch (err) {
       console.warn(`[prerender] FAIL ${route}: ${err.message}`)
     }

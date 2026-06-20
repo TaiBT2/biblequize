@@ -26,7 +26,7 @@
   --bq-emerald:      #0E8A6B;
   --bq-emerald-lt:   #46C89A;
   --bq-amber:        #F59E0B;
-  --bq-amber-deep:   #D97F06;   /* amber an toàn contrast trên nền sáng */
+  --bq-amber-deep:   #A84A05;   /* amber-text: WCAG AA (>=4.5) trên mọi nền sáng (paper/white/sunk) */
   --bq-amber-lt:     #FFE08A;
   --bq-ruby:         #E0354B;
   --bq-ruby-lt:      #FF7A5A;

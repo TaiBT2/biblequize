@@ -173,11 +173,9 @@ class LeaderboardControllerTest extends BaseControllerTest {
                 LocalDate.of(2026, 1, 1), LocalDate.of(2026, 12, 31));
         when(seasonService.getActiveSeason()).thenReturn(Optional.of(activeSeason));
 
-        UserDailyProgress udp = new UserDailyProgress();
-        udp.setPointsCounted(800);
-        when(udpRepository.findByUserIdAndDateBetween(eq("user-1"), any(LocalDate.class), any(LocalDate.class)))
-                .thenReturn(List.of(udp));
-        when(udpRepository.countUsersAheadInDateRange(any(), any(), eq(800))).thenReturn(4L);
+        when(udpRepository.sumPointsAndQuestionsBetween(eq("user-1"), any(LocalDate.class), any(LocalDate.class)))
+                .thenReturn(new Object[]{800, 0});
+        when(udpRepository.countUsersAheadInDateRange(any(), any(), eq(800), anyInt(), any())).thenReturn(4L);
 
         mockMvc.perform(get("/api/leaderboard/season/my-rank"))
                 .andExpect(status().isOk())
@@ -194,7 +192,7 @@ class LeaderboardControllerTest extends BaseControllerTest {
         mockMvc.perform(get("/api/leaderboard/season/my-rank"))
                 .andExpect(status().isOk());
         // Body should be null/empty when no active season
-        verify(udpRepository, never()).findByUserIdAndDateBetween(anyString(), any(), any());
+        verify(udpRepository, never()).sumPointsAndQuestionsBetween(anyString(), any(), any());
     }
 
     // ── GET /api/leaderboard/all-time ────────────────────────────────────────
@@ -221,7 +219,7 @@ class LeaderboardControllerTest extends BaseControllerTest {
 
         when(udpRepository.findByUserIdAndDate(eq("user-1"), any(LocalDate.class)))
                 .thenReturn(Optional.of(udp));
-        when(udpRepository.countUsersAheadOnDate(any(LocalDate.class), eq(200))).thenReturn(2L);
+        when(udpRepository.countUsersAheadOnDate(any(LocalDate.class), eq(200), anyInt(), any())).thenReturn(2L);
 
         mockMvc.perform(get("/api/leaderboard/daily/my-rank"))
                 .andExpect(status().isOk())
@@ -235,12 +233,9 @@ class LeaderboardControllerTest extends BaseControllerTest {
     @Test
     @WithMockUser(username = "test@example.com")
     void getMyWeeklyRank_withPoints_shouldReturn200() throws Exception {
-        UserDailyProgress udp = new UserDailyProgress();
-        udp.setPointsCounted(100);
-
-        when(udpRepository.findByUserIdAndDateBetween(eq("user-1"), any(LocalDate.class), any(LocalDate.class)))
-                .thenReturn(List.of(udp));
-        when(udpRepository.countUsersAheadInDateRange(any(), any(), eq(100))).thenReturn(0L);
+        when(udpRepository.sumPointsAndQuestionsBetween(eq("user-1"), any(LocalDate.class), any(LocalDate.class)))
+                .thenReturn(new Object[]{100, 0});
+        when(udpRepository.countUsersAheadInDateRange(any(), any(), eq(100), anyInt(), any())).thenReturn(0L);
 
         mockMvc.perform(get("/api/leaderboard/weekly/my-rank"))
                 .andExpect(status().isOk())
@@ -252,14 +247,46 @@ class LeaderboardControllerTest extends BaseControllerTest {
     @Test
     @WithMockUser(username = "test@example.com")
     void getMyAllTimeRank_shouldReturn200() throws Exception {
-        UserDailyProgress udp = new UserDailyProgress();
-        udp.setPointsCounted(500);
-
-        when(udpRepository.findByUserIdOrderByDateDesc("user-1")).thenReturn(List.of(udp));
-        when(udpRepository.countUsersAheadAllTime(500)).thenReturn(5L);
+        when(udpRepository.sumPointsAndQuestionsAllTime("user-1")).thenReturn(new Object[]{500, 0});
+        when(udpRepository.countUsersAheadAllTime(eq(500), anyInt(), any())).thenReturn(5L);
 
         mockMvc.perform(get("/api/leaderboard/all-time/my-rank"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.rank").value(6));
+    }
+
+    // ── GET /api/leaderboard/around-me (LBF-4) ───────────────────────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void aroundMe_allTime_returnsWindowWithOffsetBasedRanks() throws Exception {
+        // rank 10 → offset = max(0, 10-5-1) = 4, limit = 11. Window's first row
+        // therefore has absolute rank 5.
+        when(udpRepository.sumPointsAndQuestionsAllTime("user-1")).thenReturn(new Object[]{500, 8});
+        when(udpRepository.countUsersAheadAllTime(eq(500), anyInt(), any())).thenReturn(9L);
+        when(udpRepository.findAllTimeLeaderboard(eq(11), eq(4))).thenReturn(List.of(
+                new Object[]{"u-a", "Above", null, 600, 12},
+                new Object[]{"user-1", "Me", null, 500, 8},
+                new Object[]{"u-b", "Below", null, 400, 5}));
+
+        mockMvc.perform(get("/api/leaderboard/around-me?period=all-time"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(3)))
+                .andExpect(jsonPath("$[0].rank").value(5))
+                .andExpect(jsonPath("$[0].userId").value("u-a"))
+                .andExpect(jsonPath("$[1].rank").value(6))
+                .andExpect(jsonPath("$[1].userId").value("user-1"))
+                .andExpect(jsonPath("$[2].rank").value(7));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void aroundMe_zeroPoints_returnsEmptyList() throws Exception {
+        when(udpRepository.sumPointsAndQuestionsAllTime("user-1")).thenReturn(new Object[]{0, 0});
+
+        mockMvc.perform(get("/api/leaderboard/around-me?period=all-time"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(0)));
+        verify(udpRepository, never()).findAllTimeLeaderboard(anyInt(), anyInt());
     }
 }

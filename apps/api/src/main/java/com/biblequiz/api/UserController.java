@@ -186,6 +186,10 @@ public class UserController {
         if (updates.containsKey("avatarUrl")) {
             user.setAvatarUrl(updates.get("avatarUrl"));
         }
+        // LBF-5: privacy opt-out from the public leaderboard.
+        if (updates.containsKey("leaderboardVisible")) {
+            user.setLeaderboardVisible(Boolean.parseBoolean(updates.get("leaderboardVisible")));
+        }
 
         user = userRepository.save(user);
 
@@ -195,6 +199,7 @@ public class UserController {
         response.put("email", user.getEmail());
         response.put("avatarUrl", user.getAvatarUrl());
         response.put("role", user.getRole());
+        response.put("leaderboardVisible", user.isLeaderboardVisible());
         response.put("updatedAt", user.getUpdatedAt());
 
         return ResponseEntity.ok(response);
