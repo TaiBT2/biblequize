@@ -104,7 +104,7 @@ export default function RankedActionFooter({
   return (
     <div
       data-testid="ranked-sticky-cta"
-      className="fixed bottom-20 md:bottom-0 left-0 md:left-72 right-0 z-30 pointer-events-none"
+      className="fixed bottom-[var(--mobile-nav-h)] md:bottom-0 left-0 md:left-72 right-0 z-30 pointer-events-none"
       style={{ paddingBottom: 'max(0px, env(safe-area-inset-bottom))' }}
     >
       {/* Gradient fade — softens the page → sticky CTA seam so the

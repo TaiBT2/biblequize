@@ -26,9 +26,11 @@ Cả MRF (per-page) lẫn TBL (tablet) không xử lý 4 thứ sau, đều ảnh
   - Note: var base 72px (≥64 floor để luôn clear nav 52+pt-1+max(8px,safe-area)) + `env(safe-area-inset-bottom)`.
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`
 
-- MFP-2 **Migrate 3 offset hardcode → `--mobile-nav-h`**
-  - `DailyChallenge.tsx:~571` `bottom-[calc(72px+env(safe-area-inset-bottom))]`, `room/RoomQuizShell.tsx:~195` `calc(env(...)+16px)`, `components/ranked/RankedActionFooter.tsx:~107` `bottom-20` → tham chiếu var chung (giữ nguyên hành vi, chỉ bỏ magic number). Mỗi chỗ đối chiếu kỹ vì là fixed overlay trên gameplay.
-  - Status: [ ] TODO · Files: 3 file trên · Test: Tầng 3 + manual: dock "Câu tiếp theo" (Daily), action footer (Ranked), Room quiz không đè `MobileBottomTabs`/home-indicator
+- MFP-2 **Migrate offset hardcode → `--mobile-nav-h`** (chỉ trang TRONG AppLayout)
+  - `DailyChallenge.tsx:577` `bottom-[calc(72px+env(...))]` → `bottom-[var(--mobile-nav-h)]` (khớp chính xác, zero behavior change).
+  - `components/ranked/RankedActionFooter.tsx:107` `bottom-20` (80px **phẳng, thiếu env**) → `bottom-[var(--mobile-nav-h)]`. Đồng thời FIX audit #7: cũ under-clear `MobileBottomTabs` (64+env) trên máy notch vì 80px không cộng env; giữ `paddingBottom` inline (desktop env=0 → no-op).
+  - **LOẠI `room/RoomQuizShell.tsx`**: route `/room/:roomId/quiz` là **full-screen, KHÔNG render trong AppLayout** (main.tsx:197) → không có `MobileBottomTabs`. `calc(env(...)+16px)` là safe-area thuần, KHÔNG phải tab-clearance → migrate sẽ thừa 72px. Để nguyên.
+  - Status: [x] DONE · Files: `DailyChallenge.tsx`, `RankedActionFooter.tsx` · Test: Tầng 3 FE **1357 pass** + build exit 0
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`
 
 - MFP-3 **Touch feedback cho global.css `:hover`**

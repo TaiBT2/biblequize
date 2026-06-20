@@ -574,7 +574,7 @@ const DailyChallenge: React.FC = () => {
             pad-bottom on the wrapper above guarantees the last answer row
             scrolls clear of this dock. */}
         {answered && isCorrect !== null && (
-          <div className="fixed bottom-[calc(72px+env(safe-area-inset-bottom))] md:bottom-10 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)] max-w-lg flex flex-col items-center gap-2">
+          <div className="fixed bottom-[var(--mobile-nav-h)] md:bottom-10 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)] max-w-lg flex flex-col items-center gap-2">
             {(!isCorrect || currentExplanation) && (
               explanationCollapsed ? (
                 <button
