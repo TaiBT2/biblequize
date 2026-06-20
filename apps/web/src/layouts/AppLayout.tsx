@@ -116,7 +116,7 @@ export default function AppLayout() {
         <Suspense fallback={<PageLoader />}>
           <Outlet />
         </Suspense>
-        <div className="h-20 md:hidden" />
+        <div className="h-[var(--mobile-nav-h)] md:hidden" />
       </main>
 
       <MobileBottomTabs />
