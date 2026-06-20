@@ -52,9 +52,9 @@ Cả MRF (per-page) lẫn TBL (tablet) không xử lý 4 thứ sau, đều ảnh
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`
 
 - MFP-6 **Android keyboard: scroll focused input vào tầm nhìn** (Capacitor-only)
-  - Listener `keyboardWillShow` → `document.activeElement.scrollIntoView({block:'center'})` trong `initNative.ts` (hoặc hook nhỏ). Kiểm input code-entry JoinRoom / QuizSetEditor không bị keyboard che.
-  - **BLOCKED-pending-dep**: cần xác nhận `@capacitor/keyboard` đã có trong deps chưa — nếu chưa, HỎI trước khi thêm (CLAUDE.md §dependencies). Grep `apps/web/package.json` trước.
-  - Status: [!] BLOCKED (dep check) · Files: `platform/initNative.ts` · Test: emulator Android Pixel — tap input không bị che
+  - Listener `keyboardDidShow` → `document.activeElement.scrollIntoView({block:'center'})` trong `initNative.ts`, dynamic-import + swallow như các plugin khác. Dùng `keyboardDidShow` (sau khi keyboard hiện + resize xong) cho đáng tin.
+  - **UNBLOCKED**: `@capacitor/keyboard@^8.0.5` đã khai báo sẵn trong `package.json` + resolve được → KHÔNG phải dep mới, không cần hỏi.
+  - Status: [x] DONE · Files: `platform/initNative.ts` · Test: Tầng 3 FE **1358 pass** (Capacitor-gated, không chạy trong test) + web & capacitor build exit 0. **Owner-gated**: smoke thực tế trên emulator Android (tap input cuối trang JoinRoom/QuizSetEditor).
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) `[no-spec-impact]`
 
 ## Out of scope (đã xử lý / không phải gap)

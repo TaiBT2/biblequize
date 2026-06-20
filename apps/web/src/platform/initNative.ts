@@ -20,8 +20,20 @@ export function initNative(): void {
     })
     .catch(() => {})
 
-  // (Keyboard resize: Android already defaults to native resize; the explicit
-  // setResizeMode call is unimplemented on this plugin version, so it's omitted.)
+  // Keyboard: the native resize doesn't always scroll a focused input clear of
+  // the keyboard (notably code/text fields low on the page). Once the keyboard
+  // is fully shown, nudge the active element into view. Best-effort; swallowed
+  // if the plugin is missing.
+  import('@capacitor/keyboard')
+    .then(({ Keyboard }) => {
+      Keyboard.addListener('keyboardDidShow', () => {
+        const el = document.activeElement as HTMLElement | null
+        if (el && typeof el.scrollIntoView === 'function') {
+          el.scrollIntoView({ block: 'center', behavior: 'smooth' })
+        }
+      }).catch(() => {})
+    })
+    .catch(() => {})
 
   // Hide the splash screen once the web app has booted.
   import('@capacitor/splash-screen')
