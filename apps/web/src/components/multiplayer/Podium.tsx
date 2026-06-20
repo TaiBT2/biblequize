@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import type { PlayerScore } from '../../pages/room/RoomOverlays';
 
 interface Props {
@@ -16,17 +17,18 @@ interface Props {
  * missing.
  */
 export function Podium({ results, compact = false }: Props) {
-  const top3 = (() => {
-    const ranked = results
+  // Display order: 2nd, 1st, 3rd — so 1st sits in the middle and visually
+  // taller. Memoized so the two sorts don't re-run on every re-render the
+  // result screen triggers from late STOMP events.
+  const blocks = useMemo(() => {
+    const byRank = results
       .filter(r => r.finalRank && r.finalRank <= 3)
       .sort((a, b) => (a.finalRank ?? 99) - (b.finalRank ?? 99));
-    if (ranked.length > 0) return ranked;
-    return [...results].sort((a, b) => b.score - a.score).slice(0, 3);
-  })();
-
-  // Display order: 2nd, 1st, 3rd — so 1st sits in the middle and visually
-  // taller. `pos` is 0 = 2nd, 1 = 1st, 2 = 3rd.
-  const blocks = [top3[1], top3[0], top3[2]];
+    const top3 = byRank.length > 0
+      ? byRank
+      : [...results].sort((a, b) => b.score - a.score).slice(0, 3);
+    return [top3[1], top3[0], top3[2]];
+  }, [results]);
 
   // Step heights per position. Compact variant ≈ half the host heights.
   const blockHeight = (rank: number) => {

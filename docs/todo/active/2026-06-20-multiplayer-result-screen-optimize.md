@@ -21,8 +21,8 @@
   - **Spec strategy**: [x] (c) `[no-spec-impact]`
   - Checklist: impl · Tầng 1+2 pass · Tầng 3 trước commit · commit
 
-- MRO-3 Dedup sort: truyền `ranked` đã sort xuống Podium + memoize
-  - Status: [ ] TODO · Files: `QuizEndScreen.tsx`, `Podium.tsx` · Test: `QuizEndScreen.test.tsx` (podium vẫn render đúng top3)
+- MRO-3 Dedup sort: memoize Podium top3/blocks
+  - Status: [x] DONE · Files: `Podium.tsx` · Test: Tầng 3 1369 pass. Chỉ QuizEndScreen import Podium → memoize nội bộ an toàn (không đổi API).
   - Detail: `Podium.top3` recompute + re-sort mỗi render. Nhận `ranked` đã sort hoặc memoize nội bộ.
   - **Spec impact**: [x] None
   - **Spec strategy**: [x] (c) `[no-spec-impact]`
