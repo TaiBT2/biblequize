@@ -64,6 +64,8 @@ interface Props {
   sessionId?: string
   /** §7.1.5 — set when this session's final answer completed a Liturgical week. */
   weekCompletion?: { completedWeek: number; nextWeekBooks: string[] } | null
+  /** BL-26 B — end-of-match accuracy bonus (null until /match-complete resolves). */
+  matchBonus?: { bonusPoints: number; bonusPercent: number; accuracy: number } | null
   onPlayAgain: () => void
   onBackToHome: () => void
 }
@@ -90,6 +92,7 @@ export default function RankedQuizResults({
   livesRemaining,
   resetTimeLeft,
   weekCompletion,
+  matchBonus,
   onPlayAgain,
   onBackToHome,
 }: Props) {
@@ -304,6 +307,20 @@ export default function RankedQuizResults({
                   ? t('ranked.result.xpDetailTierUp', 'Vượt ngưỡng — chính thức lên hạng!')
                   : t('ranked.result.xpDetailDefault', 'Tính theo thời gian & độ khó mỗi câu đúng')}
               </p>
+              {matchBonus && matchBonus.bonusPoints > 0 && (
+                <div
+                  data-testid="ranked-result-accuracy-bonus"
+                  className="inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 rounded-full text-[12px] font-bold text-bq-amberd"
+                  style={{ background: 'rgba(245,158,11,0.12)' }}
+                >
+                  <span className="material-symbols-outlined text-[16px]" aria-hidden>target</span>
+                  {t('ranked.result.accuracyBonus', {
+                    defaultValue: 'Thưởng chính xác {{pct}}%: +{{pts}} XP',
+                    pct: matchBonus.bonusPercent,
+                    pts: matchBonus.bonusPoints,
+                  })}
+                </div>
+              )}
             </div>
           </div>
 

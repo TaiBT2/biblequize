@@ -136,6 +136,61 @@ public class ScoringService {
                 base.comboMultiplierPercent, base.isDailyFirst);
     }
 
+    /**
+     * BL-26 (LOCKED 2026-06-22) — new Ranked scoring formula. Replaces the
+     * multiplicative {@link #calculateWithTier} chain for the Ranked path.
+     *
+     * <p>{@code earned = round(core × situational × tierMult × (dailyFirst?2:1))} where:
+     * <ul>
+     *   <li>{@code core = base + speedBonus}, speedBonus over the REAL question
+     *       timer ({@code timeLimitMs}, 90s for Ranked) — fixes the old 30s
+     *       window that zeroed the bonus for answers in 30–90s (BL-26 P1).</li>
+     *   <li>{@code situational = min(2.0, 1 + comboBonus + surge + season + comeback)}
+     *       — additive, capped, so timing (surge/season) no longer overwhelms
+     *       skill (BL-26 P4). combo +0.2 (streak≥5) / +0.35 (≥10); surge +0.5;
+     *       season +0.3; comeback +0.2 (LD2/LD3).</li>
+     *   <li>tier multiplier stays a separate factor (1.0–2.0), the progression
+     *       reward (LD2).</li>
+     *   <li>dailyFirst ×2 applied last (LD: SPEC §4.4, wired for Ranked — P2).</li>
+     * </ul>
+     * The session-accuracy bonus (B / LD1) is awarded separately at match end,
+     * not here.
+     *
+     * @param timeLimitMs the actual per-question timer in ms (Ranked passes 90_000)
+     */
+    public ScoreResult calculateRanked(Question.Difficulty difficulty, int clientElapsedMs,
+                                       int timeLimitMs, int currentStreak, boolean isDailyFirst,
+                                       int tierLevel, boolean xpSurgeActive, boolean isInSeasonBook,
+                                       boolean comebackActive) {
+        int base = getBaseScore(difficulty);
+
+        // Speed bonus over the real timer. Clamp elapsed to [0, timeLimitMs] so a
+        // forged negative value can't push the ratio above 1 (F-api-5 carry-over).
+        int safeLimit = timeLimitMs > 0 ? timeLimitMs : TIME_LIMIT_MS;
+        int clampedElapsedMs = Math.max(0, Math.min(clientElapsedMs, safeLimit));
+        double speedRatio = (double) (safeLimit - clampedElapsedMs) / safeLimit;
+        int speedBonus = (int) Math.floor(base * 0.5 * speedRatio * speedRatio);
+        int core = base + speedBonus;
+
+        // Additive situational, capped at 2.0.
+        double comboBonus = currentStreak >= 10 ? 0.35 : currentStreak >= 5 ? 0.20 : 0.0;
+        double situational = 1.0 + comboBonus
+                + (xpSurgeActive ? 0.5 : 0.0)
+                + (isInSeasonBook ? 0.3 : 0.0)
+                + (comebackActive ? 0.2 : 0.0);
+        situational = Math.min(2.0, situational);
+
+        double tierMult = tierRewardsConfig.getRewards(tierLevel).xpMultiplier();
+
+        double earned = core * situational * tierMult;
+        if (isDailyFirst) {
+            earned *= 2;
+        }
+
+        int comboPercent = (int) Math.round((1.0 + comboBonus) * 100);
+        return new ScoreResult((int) Math.round(earned), base, speedBonus, comboPercent, isDailyFirst);
+    }
+
     private int getBaseScore(Question.Difficulty difficulty) {
         if (difficulty == null) return 8;
         return switch (difficulty) {

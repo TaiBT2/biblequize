@@ -400,4 +400,101 @@ class ScoringServiceTest {
         assertEquals(9,  scoringService.calculate(Question.Difficulty.easy, 30000, 9).earned);  // still 120%
         assertEquals(12, scoringService.calculate(Question.Difficulty.easy, 30000, 10).earned); // ×1.50
     }
+
+    // ── BL-26 (LOCKED 2026-06-22): calculateRanked — additive situational ─────
+    //
+    // earned = round(core × situational × tierMult × (dailyFirst?2:1))
+    //   core = base + floor(base × 0.5 × speedRatio²), speedRatio over REAL timer
+    //   situational = min(2.0, 1 + combo + surge(.5) + season(.3) + comeback(.2))
+    //   combo: +.2 (streak≥5) / +.35 (≥10); tier mult separate (1.0..2.0)
+
+    @Test
+    void calculateRanked_speedBonusUses90sTimer_notLegacy30s() {
+        // easy, 45s elapsed of a 90s timer → ratio 0.5 → bonus floor(8×0.5×0.25)=1.
+        // (Legacy 30s window gave 0 for any answer ≥30s — BL-26 P1.)
+        ScoreResult r = scoringService.calculateRanked(
+                Question.Difficulty.easy, 45000, 90000, 1, false, 1, false, false, false);
+        assertEquals(1, r.speedBonus);
+        assertEquals(9, r.earned); // core 9 × 1.0 × 1.0
+    }
+
+    @Test
+    void calculateRanked_instant_maxSpeedBonus() {
+        ScoreResult r = scoringService.calculateRanked(
+                Question.Difficulty.easy, 0, 90000, 1, false, 1, false, false, false);
+        assertEquals(4, r.speedBonus); // floor(8×0.5×1)
+        assertEquals(12, r.earned);
+    }
+
+    @Test
+    void calculateRanked_forgedNegativeElapsed_clampsToInstantMax() {
+        ScoreResult r = scoringService.calculateRanked(
+                Question.Difficulty.easy, -100000, 90000, 1, false, 1, false, false, false);
+        assertEquals(4, r.speedBonus);
+    }
+
+    @Test
+    void calculateRanked_comboAdditive_5and10() {
+        // no speed (elapsed = timer), tier 1
+        ScoreResult s4 = scoringService.calculateRanked(
+                Question.Difficulty.easy, 90000, 90000, 4, false, 1, false, false, false);
+        ScoreResult s5 = scoringService.calculateRanked(
+                Question.Difficulty.easy, 90000, 90000, 5, false, 1, false, false, false);
+        ScoreResult s10 = scoringService.calculateRanked(
+                Question.Difficulty.easy, 90000, 90000, 10, false, 1, false, false, false);
+        assertEquals(8, s4.earned);                    // ×1.0
+        assertEquals(120, s5.comboMultiplierPercent);
+        assertEquals(10, s5.earned);                   // round(8×1.2)=round(9.6)
+        assertEquals(135, s10.comboMultiplierPercent);
+        assertEquals(11, s10.earned);                  // round(8×1.35)=round(10.8)
+    }
+
+    @Test
+    void calculateRanked_surgeSeasonComeback_additiveNotMultiplicative() {
+        ScoreResult surge = scoringService.calculateRanked(
+                Question.Difficulty.easy, 90000, 90000, 1, false, 1, true, false, false);
+        ScoreResult season = scoringService.calculateRanked(
+                Question.Difficulty.easy, 90000, 90000, 1, false, 1, false, true, false);
+        ScoreResult comeback = scoringService.calculateRanked(
+                Question.Difficulty.easy, 90000, 90000, 1, false, 1, false, false, true);
+        assertEquals(12, surge.earned);    // 8 × 1.5
+        assertEquals(10, season.earned);   // round(8 × 1.3)
+        assertEquals(10, comeback.earned); // round(8 × 1.2)
+    }
+
+    @Test
+    void calculateRanked_situationalCappedAt2() {
+        // combo .35 + surge .5 + season .3 + comeback .2 = 2.35 → cap 2.0
+        ScoreResult r = scoringService.calculateRanked(
+                Question.Difficulty.easy, 90000, 90000, 10, false, 1, true, true, true);
+        assertEquals(16, r.earned); // 8 × 2.0 (not 8 × 2.35 = 19)
+    }
+
+    @Test
+    void calculateRanked_tierMultiplierStaysSeparate() {
+        // tier 6 ×2.0 nhân riêng, ngoài cap situational
+        ScoreResult t6 = scoringService.calculateRanked(
+                Question.Difficulty.easy, 90000, 90000, 1, false, 6, false, false, false);
+        ScoreResult t6surge = scoringService.calculateRanked(
+                Question.Difficulty.easy, 90000, 90000, 1, false, 6, true, false, false);
+        assertEquals(16, t6.earned);      // 8 × 1.0 × 2.0
+        assertEquals(24, t6surge.earned); // 8 × 1.5 × 2.0
+    }
+
+    @Test
+    void calculateRanked_dailyFirstDoublesLast() {
+        ScoreResult r = scoringService.calculateRanked(
+                Question.Difficulty.easy, 90000, 90000, 1, true, 1, false, false, false);
+        assertTrue(r.isDailyFirst);
+        assertEquals(16, r.earned); // 8 × 1.0 × 1.0 × 2
+    }
+
+    @Test
+    void calculateRanked_hardMaxStack_noDailyFirst() {
+        // hard 18 instant → core 27; situational capped 2.0; tier6 ×2.0
+        ScoreResult r = scoringService.calculateRanked(
+                Question.Difficulty.hard, 0, 90000, 10, false, 6, true, true, true);
+        assertEquals(9, r.speedBonus);
+        assertEquals(108, r.earned); // round(27 × 2.0 × 2.0)
+    }
 }

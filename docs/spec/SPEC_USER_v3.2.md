@@ -189,7 +189,7 @@ UI: Locked card + dòng "Đạt [tier name] để mở khóa".
 
 ### 4.2 Speed bonus (quadratic)
 
-> **Source:** `ScoringService.calculate()` `:53-55`. Constant `TIME_LIMIT_MS = 30_000`.
+> **Source:** `ScoringService.calculate()` `:53-55`. Legacy const `TIME_LIMIT_MS = 30_000`; Ranked (`calculateRanked()`) dùng timer THẬT 90s (BL-26 A1, xem §4.5).
 
 ```
 speedRatio = max(0, (TIME_LIMIT_MS - clientElapsedMs) / TIME_LIMIT_MS)
@@ -218,7 +218,18 @@ Ví dụ medium (12 điểm), trả lời trong 6s → ratio=0.8 → bonus = flo
 
 > **Source:** `ScoringService.calculateWithTier()` `:102-113` × `TierRewardsConfig.getRewards().xpMultiplier()`.
 
-Kết quả cuối: `final = round(base × tier.xpMultiplier × (xpSurgeActive ? 1.5 : 1))`.
+Kết quả cuối — **2 path** (BL-26 LOCKED 2026-06-22, xem [DECISIONS.md](../../DECISIONS.md)):
+
+- **Legacy `calculate()` / `calculateWithTier()`** (non-ranked, vẫn dùng): `final = round(base × combo × tier.xpMultiplier × (surge?1.5) × (season?1.5) × (dailyFirst?2))` — multiplicative, timer 30s.
+- **Ranked `calculateRanked()`** (canonical cho Đấu Hạng):
+  ```
+  core        = base + floor(base × 0.5 × speedRatio²)   // speedRatio theo timer THẬT 90s
+  situational = min(2.0, 1 + combo + surge(+.5) + season(+.3) + comeback(+.2))
+                combo = +.2 (streak≥5) / +.35 (≥10)
+  earned      = round(core × situational × tier.xpMultiplier × (dailyFirst?2))
+  ```
+  Situational **cộng dồn rồi cap 2.0** (KHÔNG nhân chồng) → biên độ 1 câu ~×5 thay vì ×22. Comeback +0.2 sau 1 câu sai (gộp BL-13). Tier nhân riêng (1.0–2.0). Daily-first ×2 **đã wire cho Ranked** (trước đây dead).
+- **Accuracy bonus cuối trận (LD1):** sau trận 10 câu, `POST /api/ranked/sessions/{id}/match-complete` cộng % tổng điểm trận theo accuracy **server-recompute** (chống khai khống): ≥90% → +15%, 75–89% → +8%, <75% → 0% (không phạt âm, idempotent).
 
 ### 4.6 Energy
 

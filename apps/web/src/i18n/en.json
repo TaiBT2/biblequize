@@ -1132,6 +1132,7 @@
     "askOpinion": "Ask opinion",
     "skip": "Skip",
     "bonusPoints": "+{{points}} Bonus points",
+    "calculatingPoints": "Scoring…",
     "noPoints": "No points earned",
     "viewResults": "VIEW RESULTS",
     "nextQuestion": "NEXT QUESTION",

@@ -187,6 +187,9 @@ const Quiz: React.FC = () => {
   const [correctAnswers, setCorrectAnswers] = useState(0)
   const [timeLeft, setTimeLeft] = useState(timerLimit)
   const [isQuizCompleted, setIsQuizCompleted] = useState(false)
+  // BL-26 B: end-of-match accuracy bonus returned by /match-complete (server
+  // recomputes from its own counters and credits it once).
+  const [matchBonus, setMatchBonus] = useState<{ bonusPoints: number; bonusPercent: number; accuracy: number } | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [quizStats, setQuizStats] = useState<QuizStats>({
     totalScore: 0,
@@ -209,6 +212,11 @@ const Quiz: React.FC = () => {
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>([])
   const [questionScores, setQuestionScores] = useState<number[]>([])
   const [lastQuestionScore, setLastQuestionScore] = useState(0)
+  // Ranked XP is server-authoritative: the reveal (showResult) flips instantly
+  // on tap, but `earned` only lands after the /answer roundtrip. Without this
+  // flag the score line renders "+0" for one frame before the real value, so
+  // gate it: while pending, show a "scoring…" placeholder instead of "+0".
+  const [scorePending, setScorePending] = useState(false)
   const [showCombo, setShowCombo] = useState(false)
   const [answerAnim, setAnswerAnim] = useState<'correct' | 'wrong' | null>(null)
   const [scorePopping, setScorePopping] = useState(false)
@@ -366,11 +374,37 @@ const Quiz: React.FC = () => {
     if (settings) boot(); else navigate('/practice')
   }, [settings, navigate])
 
+  // BL-26 B: when a Ranked match ends, ask the server for the accuracy bonus.
+  // The server recomputes from its own per-match counters and credits it once
+  // (idempotent). Without this call the bonus never triggers. Best-effort —
+  // a failure just hides the bonus line on the results screen.
+  useEffect(() => {
+    if (!isQuizCompleted) return
+    const ranked = settings?.isRanked || settings?.mode === 'ranked'
+    if (!ranked || !settings?.sessionId) return
+    let cancelled = false
+    api.post(`/api/ranked/sessions/${settings.sessionId}/match-complete`)
+      .then(res => {
+        if (cancelled) return
+        const d = res.data || {}
+        setMatchBonus({
+          bonusPoints: Number(d.bonusPoints) || 0,
+          bonusPercent: Number(d.bonusPercent) || 0,
+          accuracy: Number(d.accuracy) || 0,
+        })
+      })
+      .catch(() => { /* non-critical */ })
+    return () => { cancelled = true }
+  }, [isQuizCompleted, settings?.isRanked, settings?.mode, settings?.sessionId])
+
   const handleAnswerSelect = async (answerIndex: number) => {
     if (showResult) return
 
     setSelectedAnswer(answerIndex)
     setShowResult(true)
+    // Batched with setShowResult so the very first feedback render already
+    // hides the "+0" frame until the server-side `earned` settles below.
+    setScorePending(true)
 
     const timeTaken = timerLimit - timeLeft
     let correct = answerIndex === (currentQuestion.correctAnswer?.[0] ?? -1)
@@ -537,6 +571,9 @@ const Quiz: React.FC = () => {
     }
 
     setLastQuestionScore(questionScore)
+    // Score settled (runs on every path, including the API-failure fallback
+    // above) — reveal the real value.
+    setScorePending(false)
 
     const newUserAnswers = [...userAnswers]
     newUserAnswers[currentQuestionIndex] = answerIndex
@@ -625,6 +662,7 @@ const Quiz: React.FC = () => {
       setIsCorrect(null)
       setTimeLeft(timerLimit)
       setLastQuestionScore(0)
+      setScorePending(false)
       setAnswerAnim(null)
     }
   }
@@ -742,6 +780,7 @@ const Quiz: React.FC = () => {
           resetTimeLeft={(location.state as any)?.resetTimeLeft ?? '--:--:--'}
           sessionId={location.state?.sessionId}
           weekCompletion={weekCompletion}
+          matchBonus={matchBonus}
           onPlayAgain={handlePlayAgain}
           onBackToHome={handleBackToHome}
         />
@@ -1193,7 +1232,9 @@ const Quiz: React.FC = () => {
                     {isCorrect ? t('quiz.correct') : t('quiz.incorrect')}
                   </p>
                   <p data-testid="quiz-score-delta" className={`text-xs font-medium leading-tight mt-0.5 ${isCorrect ? 'text-bq-amberd' : 'text-bq-ruby'}`}>
-                    {isCorrect ? t('quiz.bonusPoints', { points: lastQuestionScore }) : t('quiz.noPoints')}
+                    {isCorrect
+                      ? (scorePending ? t('quiz.calculatingPoints') : t('quiz.bonusPoints', { points: lastQuestionScore }))
+                      : t('quiz.noPoints')}
                   </p>
                 </div>
               </div>

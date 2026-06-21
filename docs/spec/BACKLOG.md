@@ -21,15 +21,9 @@
 - **Ref:** AUDIT_SUMMARY Q1, AUDIT_CONSTRAINTS C4
 
 ### BL-2 — Q-A scoring: filter group leaderboard by source
-- **Spec canonical (Q2):** Group leaderboard chỉ cộng điểm từ group-room + scheduled-quiz; KHÔNG cộng solo Practice/Ranked/Daily Challenge.
-- **Code reality:** `ChurchGroupService.getLeaderboard()` (lines 86-127) sums ALL `UserDailyProgress` (no source filter). Group members scope ✅ nhưng score sources ❌.
-- **Cần làm:**
-  - Thêm column `source` vào `UserDailyProgress` (ENUM: SOLO_PRACTICE/SOLO_RANKED/SOLO_DAILY/GROUP_ROOM/SCHEDULED_QUIZ) hoặc tạo bảng `group_score_contribution` riêng
-  - Migration mới (V49) để add column + backfill historical data với rule: rooms.group_quiz_set_id != null → GROUP_ROOM, scheduled_quiz_attempts → SCHEDULED_QUIZ, còn lại → SOLO_*
-  - `ChurchGroupService.getLeaderboard()` filter `source IN (GROUP_ROOM, SCHEDULED_QUIZ)`
-  - Unit test cho cả 2 trường hợp (member chơi solo + member chơi group)
-- **Status:** ⬜ TODO
-- **Ref:** AUDIT_SUMMARY Q2, AUDIT_CONSTRAINTS C8 Q-A, SPEC_GROUP_v1.2 §10.4
+- **Status:** 🪦 SUPERSEDED by BL-16 (2026-06-22). The group leaderboard endpoint was retired (410 Gone) instead of fixed — the score-source drift it described is gone with the deleted `getLeaderboard`. Building the proposed `source` ENUM + migration + backfill on the hot `UserDailyProgress` table for a 0-caller endpoint was wasted work (verified: web + mobile have no callers; Collective Growth §18 replaced the social signal in GD-1).
+- ~~**Spec canonical (Q2):** Group leaderboard chỉ cộng điểm từ group-room + scheduled-quiz~~ — moot: no leaderboard.
+- **Ref:** BL-16 (resolution), SPEC_GROUP §10 (RETIRED), AUDIT_SUMMARY Q2.
 
 ### BL-3 — Wire XP Surge bonus (Milestone Burst) — Consume
 - **Spec canonical (Q5):** Khi `user.xp_surge_until > now`, mọi điểm Ranked × 1.5.
@@ -161,8 +155,8 @@
 - **Action:** Discuss với product timeline cho mobile parity.
 
 ### BL-12 — Group Leaderboard endpoint test for Q-A fix
-- **Phụ thuộc:** BL-2
-- **Action:** E2E test: tạo group, member A play solo + member A play group room → leaderboard chỉ count group room điểm.
+- **Status:** 🪦 SUPERSEDED by BL-16 (2026-06-22) — depended on BL-2. No leaderboard to test; the endpoint now returns 410 (covered by `ChurchGroupControllerTest.getLeaderboard_isRetired_returns410WithDeprecatedCode`).
+- ~~**Phụ thuộc:** BL-2 · **Action:** E2E test group-play-only scoring.~~
 
 ---
 
@@ -234,10 +228,9 @@
 - **Spec:** [SPEC_GROUP_v1.3.md §10 (DEPRECATED in v1.4 changelog)](SPEC_GROUP_v1.3.md)
 - **Code:** `ChurchGroupController.java:272 getLeaderboard(...)` + `ChurchGroupService.getLeaderboard(...)` — backend query still sums `UserDailyProgressRepository` (Q-A drift: counts solo/ranked/daily activity, not group-play-only).
 - **Cần làm:**
-  - Sprint 6 or later: keep endpoint `200 OK` for ~2 sprints (mobile compat). Then return `410 Gone` with `{ code: "LEADERBOARD_DEPRECATED", message: "... use /activity instead" }`.
-  - When endpoint is gone, drop `ChurchGroupService.getLeaderboard` + `UserDailyProgressRepository` group-scoped queries — drift becomes irrelevant.
-  - Remove FE callers (already done in GD-1; verify after mobile catches up).
-- **Status:** ⬜ DEFER Sprint 7+ (waiting on mobile FE)
+  - ~~keep endpoint `200 OK` for ~2 sprints (mobile compat). Then `410 Gone`.~~
+  - ~~drop `ChurchGroupService.getLeaderboard`; remove FE callers.~~
+- **Status:** ✅ DONE (2026-06-22). Verified web + mobile = 0 callers (compat window from GD-1 2026-05-10 long elapsed). `GET /api/groups/{id}/leaderboard` → `410 Gone` `{ code:"LEADERBOARD_DEPRECATED" }`; `ChurchGroupService.getLeaderboard` deleted (shared `udpRepository` queries left intact — used by analytics/streak). Test `ChurchGroupControllerTest.getLeaderboard_isRetired_returns410WithDeprecatedCode`. Supersedes BL-2 + BL-12. SPEC_GROUP §10 → RETIRED + v1.6.1 changelog.
 - **Cause:** GD-1 / 2026-05-10 leaderboard sunset
 
 ### BL-17 — Group Activity Feed (Sprint 6)
@@ -645,6 +638,30 @@
 - **Status:** ✅ DONE (2026-06-21) — GJ-1..8 shipped. BE: V70 + `GroupJourney`/`GroupJourneyWeek` + `GroupJourneyService` (`openNextWeek` delegates `ScheduledQuizService.create`; progress aggregates `ScheduledQuizAttempt`) + `GroupJourneyController` (17 BE tests). FE: `apps/web/src/api/groupJourney.ts` + `useGroupJourney` hooks + `JourneyBuilder`/`JourneyView`/`JourneyHeroCard` (16 FE tests) + `groupJourney` i18n vi/en. Live co-play demoted (D4).
 - **Spec impact:** [SPEC_GROUP_v1.3.md §19 (Hành Trình Nhóm)](SPEC_GROUP_v1.3.md) + §7 demote note + v1.6 changelog. Related: §9 Scheduled Quizzes (reuse), BL-24 (noti).
 - **Ref:** task `docs/todo/active/2026-06-20-group-journey.md`.
+
+---
+
+## Added 2026-06-21 (Ranked scoring deep-dive)
+
+### BL-26 — Ranked scoring rework: công bằng theo kỹ năng + động lực
+- **Source:** 2026-06-21 deep-dive cơ chế tính điểm Ranked. Quyết định LOCKED (LD1–LD4): [DECISIONS.md 2026-06-22](../../DECISIONS.md).
+- **Status:** ✅ DONE 2026-06-22 (A+B+C) — `calculateRanked` additive cap 2.0 + timer 90s (A1) + daily-first wired (A2) + comeback (D3) + accuracy match-bonus endpoint (B/LD1). SPEC_USER v3.1/v3.2 §4 updated. D1/E (sao + rank tuần surface) DEFER. Test: ScoringServiceTest 49 + RankedControllerTest match-complete 5 + FE 1386. Sprint: `docs/todo/active/2026-06-22-ranked-scoring-rework-abc.md`.
+- **Vấn đề:**
+  - **P1 (bug):** `ScoringService.TIME_LIMIT_MS = 30_000` nhưng timer Ranked = 90s (policy 2026-05-20) → trả lời giây 31–90 mất sạch speed bonus; `clientElapsedMs` clamp 30000. Ref: `ScoringService.java:18,59-63`.
+  - **P2 (lệch SPEC §4.4):** daily-first ×2 không wire cho Ranked — `RankedController.java:546` truyền literal `isDailyFirst=false`.
+  - **P3:** tier = grind thời lượng; accuracy không thưởng (chỉ phạt gián tiếp qua energy).
+  - **P4:** multiplier nhân chồng → biên độ 1 câu ×22 (8→182); surge×season khiến timing át kỹ năng.
+  - **P5 (nhất quán):** `/me/tier` (`RankedController.java:1228`) + tier-up notification dùng raw ledger sum, lệch `UserTierService.getTotalPoints()` (prestige-aware) dùng cho scoring multiplier.
+- **Cần làm (chia nhóm A–E, chi tiết + số đề xuất trong DECISIONS):**
+  - **A** (rẻ, ít rủi ro — có thể tách task ngay): A1 speed bonus theo timer thật · A2 wire daily-first ×2.
+  - **B** thưởng accuracy cuối phiên (≥90% +15%, 75–89% +8%, không phạt âm) — lever công bằng chính.
+  - **C** ghìm variance: situational (combo/surge/season) **cộng dồn cap 2.0**, tier giữ nhân.
+  - **D** động lực: D1 surface sub-tier sao (`TierProgressService` đã build) · D2 breakdown điểm/câu · D3 wire Comeback (gộp **BL-13**) · D4 daily goal.
+  - **E** cạnh tranh ở leaderboard Tuần (đã sống) — **KHÔNG** hồi sinh season (LBF-9/13 giữ nguyên).
+  - **(kèm)** P5: `/me/tier` + tier-up dùng chung `UserTierService.getTotalPoints()`.
+- **Effort:** A nhỏ (~0.5 ngày) · B+C trung bình (đổi formula + test) · D rải nhiều task · E nhỏ (FE surface).
+- **Spec impact:** SPEC_USER_v3.x §4.1–4.6 — strategy (a) update inline **sau khi chốt số**.
+- **Related:** BL-13 (Comeback, gộp vào D3) · BL-5 (season ×1.5 — seasonBonus trong C) · BL-3 (XP surge — surgeBonus trong C).
 
 ---
 

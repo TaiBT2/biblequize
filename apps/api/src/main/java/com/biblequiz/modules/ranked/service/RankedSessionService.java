@@ -28,6 +28,18 @@ public class RankedSessionService {
         public boolean isPostCycle = false;
         public String currentDifficulty = "all";
         public int currentStreak = 0;
+        /** BL-26 D3: true if the immediately previous answer this session was
+         *  wrong — drives the comeback +0.2 situational bonus on the next
+         *  correct answer. */
+        public boolean lastAnswerWrong = false;
+        // BL-26 B (LD1): per-match (= per-session) accuracy bonus counters.
+        // Server-owned (from server-side answer validation) so the client can't
+        // inflate the end-of-match bonus. matchEarned = sum of per-question
+        // earned this session; bonus is a % of it at match-complete.
+        public int matchTotal = 0;
+        public int matchCorrect = 0;
+        public int matchEarned = 0;
+        public boolean matchBonusAwarded = false;
 
         public Progress() {}
     }

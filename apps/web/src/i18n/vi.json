@@ -1132,6 +1132,7 @@
     "askOpinion": "Hỏi ý kiến",
     "skip": "Bỏ qua",
     "bonusPoints": "+{{points}} Điểm thưởng",
+    "calculatingPoints": "Đang cộng điểm…",
     "noPoints": "Không được điểm",
     "viewResults": "XEM KẾT QUẢ",
     "nextQuestion": "CÂU TIẾP THEO",

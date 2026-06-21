@@ -2,6 +2,67 @@
 
 ---
 
+## 2026-06-21 — Ranked scoring rework: công bằng theo kỹ năng + động lực (BL-26)
+
+> **Status: 🔓 LOCKED 2026-06-22 (D1–D4 dưới).** A+B+C gộp 1 sprint → task `docs/todo/active/2026-06-22-ranked-scoring-rework-abc.md`. SPEC_USER §4 update inline khi code xong.
+
+### Quyết định chốt (LOCKED 2026-06-22)
+- **LD1 — Accuracy bonus (B):** cuối mỗi **trận Ranked (10 câu)**, accuracy ≥90% → **+15%**, 75–89% → **+8%**, <75% → 0%. KHÔNG phạt âm. BE recompute server-side (chống khai khống).
+- **LD2 — Situational additive (C):** `situational = min(2.0, 1 + comboBonus + surgeBonus + seasonBonus + comebackBonus)` với combo +0.2 (streak≥5) / +0.35 (≥10), surge +0.5, season +0.3. Tier giữ **nhân riêng** (1.0–2.0). Bỏ nhân-chồng cũ.
+- **LD3 — Comeback (D3):** sau 1 câu sai, câu đúng kế **+0.2 cộng vào `situational`** (chịu chung cap 2.0). Gộp BL-13.
+- **LD4 — Tier monotonic:** GIỮ chỉ-lên, không decay. Cạnh tranh để ở bảng Tuần (E).
+- Công thức cuối: `earned = round((base + speedBonus) × situational × tierMult × (dailyFirst?2:1))`; speedBonus tính theo **timer thật 90s** (A1).
+
+### Bối cảnh / vấn đề (đào sâu 2026-06-21)
+Cơ chế hiện tại: `earned = round((base + speedBonus) × combo × tier × surge × season)`; tier = **tổng điểm tích lũy đời** (sum mọi `UserDailyProgress.pointsCounted`, chỉ lên không xuống). Vấn đề phát hiện:
+- **P1 (bug):** speed bonus dùng `TIME_LIMIT_MS = 30_000` nhưng timer Ranked đã đổi **90s** (policy 2026-05-20) → trả lời giây 31–90 mất sạch speed bonus, `clientElapsedMs` bị clamp 30000. Vùng phân biệt tốc độ chỉ còn 1/3 giờ.
+- **P2 (lệch spec):** daily-first ×2 (SPEC_USER §4.4) **không wire** cho Ranked — `RankedController.submitRankedAnswer:546` truyền literal `isDailyFirst=false`.
+- **P3:** tier thuần thời lượng grind, **accuracy không thưởng** (chỉ phạt gián tiếp qua energy). Hai người chơi 100 câu, người 50% đúng vẫn leo, chỉ chậm hơn.
+- **P4:** multiplier nhân chồng → biên độ 1 câu **8 → 182 điểm (×22)**; surge×1.5 × season×1.5 khiến **thời điểm chơi** át kỹ năng.
+- **P5 (nhất quán):** `/me/tier` + tier-up notification dùng raw ledger sum, còn scoring multiplier dùng `UserTierService.getTotalPoints()` (trừ prestige offset) → user đã prestige thấy tier hiển thị ≠ tier dùng tính điểm.
+
+### Đề xuất (5 nhóm)
+- **A — Sửa nền (rẻ, ít rủi ro):**
+  - A1: speed bonus dùng đúng timer thật (truyền `timeLimitMs` từ caller / 90s) thay hằng số 30s. → fix P1.
+  - A2: wire daily-first ×2 đúng SPEC §4.4 cho Ranked. → fix P2.
+- **B — Thưởng accuracy (lever công bằng chính, fix P3):** bonus cuối phiên theo accuracy, **không phạt âm**:
+
+  | Accuracy phiên | Bonus trên tổng điểm phiên |
+  |---|---|
+  | ≥ 90% | +15% |
+  | 75–89% | +8% |
+  | 60–74% / < 60% | 0% |
+
+- **C — Ghìm variance (fix P4):** tách 2 nhóm multiplier. Tier giữ **nhân** (phần thưởng tiến trình). Situational chuyển **cộng dồn rồi cap 2.0**:
+  ```
+  situational = min(2.0, 1 + comboBonus + surgeBonus + seasonBonus)
+  earned = round((base + speedBonus) × situational × tierMultiplier)
+    comboBonus : 0 / +0.2 (≥5) / +0.35 (≥10)
+    surgeBonus : +0.5   ·   seasonBonus : +0.3
+  ```
+  → trần 1 câu ~×5 thay vì ×22; điểm dễ dự đoán, không bị timing-luck áp đảo.
+- **D — Động lực (tận dụng thứ đã build):**
+  - D1: surface **sub-tier "sao"** đã có sẵn (`TierProgressService` chia 5 sao/tier + thưởng +30 XP qua mỗi sao) — biến quãng tier dài thành 5 "chiến thắng nhỏ".
+  - D2: hiện **breakdown điểm mỗi câu** (`earned` đã trả về response) — animate `base +speed ×combo`.
+  - D3: wire **Comeback** (BL-13 đang treo) — sau 1 câu sai, câu đúng kế +20% để giảm cảm giác "đứt combo là toang".
+  - D4: daily goal nhẹ ("đạt N điểm hôm nay → rương energy/streak-freeze").
+- **E — Cạnh tranh ở bảng Tuần, KHÔNG hồi sinh season:** season tab đã ẩn (LBF-9) + `season_rankings` ngừng ghi (LBF-13) — **không đụng tới**. Phần "rank lên/xuống" để **leaderboard Tuần** (reset thứ Hai, window-sum UDP) đã sống đảm nhiệm; chỉ cần surface rank tuần + delta (`dailyDelta` ở `/me/ranked-status` đã tính sẵn) nổi bật hơn. Triết lý: **tier = hành trình cá nhân (chỉ lên, đúng theme đạo Tân Tín Hữu→Sứ Đồ); tuần = sân đua.**
+- **(kèm) P5:** thống nhất "total points" — `/me/tier` + tier-up notification dùng chung `UserTierService.getTotalPoints()` (prestige-aware) như scoring.
+
+### Ưu tiên đề xuất
+A → B → D1/D2 → C → E(bản tuần) → P5. Nhóm **A** có thể tách task làm ngay (ít rủi ro, không đổi cân bằng lớn). **B, C** đổi business rule → cần chốt số trước khi code.
+
+### Câu hỏi mở cần chốt khi review
+1. Số bonus accuracy (15%/8%) + ngưỡng (90/75) — giữ hay chỉnh?
+2. Cap situational 2.0 + các hệ số cộng (combo +0.2/+0.35, surge +0.5, season +0.3) — ổn chưa?
+3. Comeback +20% (D3) có chồng vào `situational` (cộng) hay nhân riêng?
+4. Có giữ tier hoàn toàn monotonic (không decay) như hiện tại không? (đề xuất: CÓ.)
+
+### Spec impact (khi lock)
+SPEC_USER_v3.x §4.1–4.6 (scoring formula) — strategy (a) update inline sau khi chốt. Tracking: **BL-26**.
+
+---
+
 ## 2026-06-17 — Group Collective Growth "Cùng nhau thuộc Lời" (BL-23): anti-leaderboard, D1–D5 locked
 - Quyết định: thêm chỉ số **tập thể không-ranking** cho Group — "Nhóm đã cùng thuộc N câu Lời Chúa" + thanh tiến tới cột mốc — làm "điểm nổi bật" thay cho leaderboard cạnh tranh đã sunset (Q-A / GD-1 / BL-16). Triết lý: hợp văn hóa Tin Lành "cùng nhau lớn lên", KHÔNG "ai thắng".
 - Nguồn: gộp `GroupQuizSetMastery` (Q-A SAFE — solo practice các bộ câu hỏi của nhóm). KHÔNG đọc/ghi UserDailyProgress hay group leaderboard → không tái sinh leaderboard đã bỏ.

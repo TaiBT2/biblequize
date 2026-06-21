@@ -360,3 +360,54 @@ describe('Ranked replay (handlePlayAgain → startNextRankedMatch)', () => {
     expect(postUrls.some((u) => u.includes('/api/ranked/questions/select'))).toBe(true)
   })
 })
+
+// ── SDF-1 — Ranked score-delta must not flash "+0" before server XP settles ──
+//
+// Ranked XP is server-authoritative: the reveal flips instantly on tap but
+// `earned` only lands after the /answer roundtrip. Regression guard: while the
+// POST is in flight the score line shows a "scoring…" placeholder (NOT "+0"),
+// then the real value once it resolves. Uses a manually-resolved promise to
+// freeze the pending frame.
+describe('Ranked score-delta pending (SDF-1)', () => {
+  it('shows a scoring placeholder while /answer is pending, then the earned value', async () => {
+    mockLocation.state = {
+      mode: 'ranked',
+      isRanked: true,
+      sessionId: 's-1',
+      questions: [{
+        id: 'q1',
+        content: 'Câu?',
+        options: ['A', 'B', 'C', 'D'],
+        book: 'Genesis',
+        chapter: 1,
+        difficulty: 'easy',
+        type: 'multiple_choice_single',
+        correctAnswer: [0],
+        explanation: '',
+      }],
+      timePerQuestion: 90,
+    }
+    let resolveAnswer: (v: unknown) => void = () => {}
+    const answerPromise = new Promise((res) => { resolveAnswer = res })
+    mockApiGet.mockResolvedValue({ data: [] })
+    mockApiPost.mockImplementation((url: string) => {
+      if (url.includes('/api/ranked/sessions/s-1/answer')) return answerPromise
+      return Promise.resolve({ data: {} })
+    })
+
+    renderQuiz()
+    const opt0 = await screen.findByTestId('quiz-answer-0', {}, { timeout: 3000 })
+    fireEvent.click(opt0)
+
+    // Pending frame: placeholder shown, never the "+0" flash.
+    const delta = await screen.findByTestId('quiz-score-delta', {}, { timeout: 3000 })
+    expect(delta.textContent).toContain('Đang cộng điểm')
+    expect(delta.textContent).not.toContain('+0')
+
+    // Server XP lands → real value replaces the placeholder.
+    resolveAnswer({ data: { earned: 8, livesRemaining: 100, questionsCounted: 1, isCorrect: true, correctAnswer: [0], explanation: '' } })
+    await waitFor(() => {
+      expect(screen.getByTestId('quiz-score-delta').textContent).toContain('+8')
+    }, { timeout: 3000 })
+  })
+})

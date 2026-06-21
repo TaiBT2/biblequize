@@ -134,6 +134,9 @@ public class RankedController {
     private static final int ENERGY_REGEN_PER_HOUR = 20;
     private static final int ENERGY_COST_WRONG = 5;
     private static final int DAILY_QUESTION_CAP = 100;
+    // BL-26 A1: Ranked uses a flat 90s/question timer (policy 2026-05-20). The
+    // speed bonus window must match it, not the legacy 30s ScoringService const.
+    private static final int RANKED_TIMER_MS = 90_000;
 
     /**
      * Read the season-leaderboard score at rank N with a 60s Redis cache.
@@ -501,6 +504,8 @@ public class RankedController {
                 p.currentStreak = 0;
             }
             p.questionsCounted = Math.min(DAILY_QUESTION_CAP, p.questionsCounted + 1);
+            // BL-26 B: count this answer toward the per-match accuracy bonus.
+            p.matchTotal += 1;
 
             // Update book-specific progress
             p.questionsInCurrentBook += 1;
@@ -540,18 +545,33 @@ public class RankedController {
                             .isInSeasonFocus(GameClock.today(), currentQ.getBook());
                 }
 
+                // BL-26 (LOCKED 2026-06-22): new additive Ranked formula.
+                //  - dailyFirst (A2/P2): first scoring answer today → ×2. pointsToday
+                //    is still the pre-answer accumulation here (added below), so == 0
+                //    means no points earned yet today.
+                //  - comeback (D3): previous answer this session was wrong → +0.2.
+                //  - speed bonus over the real 90s Ranked timer (A1/P1).
+                boolean dailyFirst = p.pointsToday == 0;
+                boolean comebackActive = p.lastAnswerWrong;
                 com.biblequiz.modules.ranked.service.ScoringService.ScoreResult score =
-                        scoringService.calculateWithTier(
+                        scoringService.calculateRanked(
                                 currentQ != null ? currentQ.getDifficulty() : null,
-                                clientElapsedMs, p.currentStreak, false, tierLevel, xpSurgeActive,
-                                isInSeasonBook);
+                                clientElapsedMs, RANKED_TIMER_MS, p.currentStreak, dailyFirst,
+                                tierLevel, xpSurgeActive, isInSeasonBook, comebackActive);
                 earned = score.earned;
                 p.pointsToday += earned;
+                // BL-26 B: accumulate match correctness + base earned for the
+                // end-of-match accuracy bonus (% of matchEarned).
+                p.matchCorrect += 1;
+                p.matchEarned += earned;
 
                 // SPEC-v2: energy system — no streak lives bonus (regen handles recovery)
             } else {
                 p.currentStreak = 0;
             }
+            // BL-26 D3: record this answer's correctness for the next question's
+            // comeback check (runs on both correct and wrong paths).
+            p.lastAnswerWrong = !isCorrect;
 
             log.debug("Points: earned={} total={} streak={}", earned, p.pointsToday, p.currentStreak);
 
@@ -825,6 +845,84 @@ public class RankedController {
             errorResp.put("error", e.getMessage());
             return ResponseEntity.status(500).body(errorResp);
         }
+    }
+
+    /**
+     * BL-26 B (LD1 2026-06-22) — award the end-of-match accuracy bonus.
+     *
+     * <p>Called by the FE when a Ranked match (the 10-question batch tied to
+     * this {@code sessionId}) ends. Bonus = a % of {@code matchEarned} (sum of
+     * this match's per-question points) by accuracy computed from SERVER-side
+     * counters ({@code matchCorrect}/{@code matchTotal}) — the client cannot
+     * inflate it. Thresholds (LD1): acc ≥90% → +15%, 75–89% → +8%, else 0
+     * (never negative). Idempotent via {@code matchBonusAwarded}: a second call
+     * returns {@code bonusPoints:0}.</p>
+     */
+    @PostMapping("/ranked/sessions/{id}/match-complete")
+    public ResponseEntity<Map<String, Object>> completeRankedMatch(
+            @PathVariable("id") String sessionId, Authentication authentication) {
+        Progress p = rankedSessionService.get(sessionId);
+        if (p == null) {
+            Map<String, Object> none = new HashMap<>();
+            none.put("bonusPoints", 0);
+            none.put("awarded", false);
+            return ResponseEntity.ok(none);
+        }
+        // Ownership check (mirror submit) — legacy null-userId sessions bypass.
+        if (p.userId != null && authentication != null) {
+            String authEmail = resolveEmail(authentication);
+            User authUser = authEmail != null ? userRepository.findByEmail(authEmail).orElse(null) : null;
+            if (authUser == null || !p.userId.equals(authUser.getId())) {
+                return ResponseEntity.status(403).body(Map.of(
+                        "error", "SESSION_OWNERSHIP",
+                        "message", "Session belongs to a different user"));
+            }
+        }
+
+        double accuracy = p.matchTotal > 0 ? (double) p.matchCorrect / p.matchTotal : 0.0;
+        int bonusPercent = 0;
+        if (p.matchTotal > 0) {
+            if (accuracy >= 0.90) bonusPercent = 15;
+            else if (accuracy >= 0.75) bonusPercent = 8;
+        }
+        int bonusPoints = (int) Math.round(p.matchEarned * bonusPercent / 100.0);
+
+        boolean firstTime = !p.matchBonusAwarded;
+        boolean awarded = false;
+        if (firstTime) {
+            p.matchBonusAwarded = true; // mark processed even when bonus is 0
+            if (bonusPoints > 0) {
+                p.pointsToday += bonusPoints;
+                awarded = true;
+                // Persist to today's UDP so the bonus lands in tier + leaderboard.
+                try {
+                    String email = resolveEmail(authentication);
+                    User user = email != null ? userRepository.findByEmail(email).orElse(null) : null;
+                    if (user != null) {
+                        UserDailyProgress udp = udpRepository
+                                .findByUserIdAndDate(user.getId(), GameClock.today()).orElse(null);
+                        if (udp != null) {
+                            udp.setPointsCounted(p.pointsToday);
+                            udpRepository.save(udp);
+                            cacheService.invalidateLeaderboards();
+                        }
+                    }
+                } catch (Exception e) {
+                    log.warn("match-complete bonus persist failed: {}", e.getMessage());
+                }
+            }
+        }
+        rankedSessionService.save(sessionId, p);
+
+        Map<String, Object> resp = new HashMap<>();
+        resp.put("bonusPoints", firstTime ? bonusPoints : 0);
+        resp.put("bonusPercent", bonusPercent);
+        resp.put("accuracy", accuracy);
+        resp.put("correct", p.matchCorrect);
+        resp.put("total", p.matchTotal);
+        resp.put("pointsToday", p.pointsToday);
+        resp.put("awarded", awarded);
+        return ResponseEntity.ok(resp);
     }
 
     /**

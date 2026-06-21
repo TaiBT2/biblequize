@@ -178,7 +178,7 @@ class RankedControllerTest extends BaseControllerTest {
         when(scoringService.validateMultipleChoiceSingle(any(), any())).thenReturn(true);
 
         ScoringService.ScoreResult scoreResult = new ScoringService.ScoreResult(10, 8, 2, 100, false);
-        when(scoringService.calculateWithTier(any(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean())).thenReturn(scoreResult);
+        when(scoringService.calculateRanked(any(), anyInt(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean(), anyBoolean())).thenReturn(scoreResult);
 
         when(bookProgressionService.shouldAdvanceToNextBook(anyString(), anyInt(), anyInt())).thenReturn(false);
 
@@ -216,7 +216,7 @@ class RankedControllerTest extends BaseControllerTest {
 
         // Server computes earned=10; client claims 99999 → server's value must win.
         ScoringService.ScoreResult scoreResult = new ScoringService.ScoreResult(10, 8, 2, 100, false);
-        when(scoringService.calculateWithTier(any(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean()))
+        when(scoringService.calculateRanked(any(), anyInt(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean(), anyBoolean()))
                 .thenReturn(scoreResult);
         when(bookProgressionService.shouldAdvanceToNextBook(anyString(), anyInt(), anyInt())).thenReturn(false);
 
@@ -827,7 +827,7 @@ class RankedControllerTest extends BaseControllerTest {
         when(scoringService.validateMultipleChoiceSingle(any(), any())).thenReturn(true);
 
         ScoringService.ScoreResult scoreResult = new ScoringService.ScoreResult(24, 12, 0, 100, false);
-        when(scoringService.calculateWithTier(any(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean())).thenReturn(scoreResult);
+        when(scoringService.calculateRanked(any(), anyInt(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean(), anyBoolean())).thenReturn(scoreResult);
         when(bookProgressionService.shouldAdvanceToNextBook(anyString(), anyInt(), anyInt())).thenReturn(false);
 
         // Mock DB persistence: user with existing points
@@ -875,7 +875,7 @@ class RankedControllerTest extends BaseControllerTest {
         when(scoringService.validateMultipleChoiceSingle(any(), any())).thenReturn(true);
 
         ScoringService.ScoreResult scoreResult = new ScoringService.ScoreResult(10, 8, 2, 100, false);
-        when(scoringService.calculateWithTier(any(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean())).thenReturn(scoreResult);
+        when(scoringService.calculateRanked(any(), anyInt(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean(), anyBoolean())).thenReturn(scoreResult);
         when(bookProgressionService.shouldAdvanceToNextBook(anyString(), anyInt(), anyInt())).thenReturn(false);
 
         // Set up UDP with q-dup already in askedQuestionIds
@@ -976,7 +976,7 @@ class RankedControllerTest extends BaseControllerTest {
         question.setCorrectAnswer(List.of(0));
         when(questionRepository.findById("q-adv")).thenReturn(Optional.of(question));
         when(scoringService.validateMultipleChoiceSingle(any(), any())).thenReturn(true);
-        when(scoringService.calculateWithTier(any(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean()))
+        when(scoringService.calculateRanked(any(), anyInt(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean(), anyBoolean()))
                 .thenReturn(new ScoringService.ScoreResult(10, 8, 2, 100, false));
 
         // After this answer: 50 questions, 31 correct → should advance
@@ -1014,7 +1014,7 @@ class RankedControllerTest extends BaseControllerTest {
         question.setCorrectAnswer(List.of(0));
         when(questionRepository.findById("q-rev")).thenReturn(Optional.of(question));
         when(scoringService.validateMultipleChoiceSingle(any(), any())).thenReturn(true);
-        when(scoringService.calculateWithTier(any(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean()))
+        when(scoringService.calculateRanked(any(), anyInt(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean(), anyBoolean()))
                 .thenReturn(new ScoringService.ScoreResult(10, 8, 2, 100, false));
 
         // At Revelation, shouldAdvance returns true but getNextBook returns null
@@ -1275,5 +1275,84 @@ class RankedControllerTest extends BaseControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.blocked").value(true))
                 .andExpect(jsonPath("$.questionsCounted").value(100));
+    }
+
+    // ── BL-26 B (LD1): POST /ranked/sessions/{id}/match-complete ──────────────
+    // Accuracy bonus from SERVER counters (matchCorrect/matchTotal), % of
+    // matchEarned: ≥90% → +15%, 75–89% → +8%, else 0. Idempotent.
+
+    private RankedSessionService.Progress matchProgress(int total, int correct, int earned) {
+        RankedSessionService.Progress p = new RankedSessionService.Progress();
+        p.userId = "user-1";
+        p.matchTotal = total;
+        p.matchCorrect = correct;
+        p.matchEarned = earned;
+        p.pointsToday = earned;
+        return p;
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void completeRankedMatch_accuracy90_awards15Percent() throws Exception {
+        when(rankedSessionService.get("s-hi")).thenReturn(matchProgress(10, 10, 200));
+        when(udpRepository.findByUserIdAndDate(anyString(), any())).thenReturn(Optional.empty());
+
+        mockMvc.perform(post("/api/ranked/sessions/s-hi/match-complete"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.bonusPercent").value(15))
+                .andExpect(jsonPath("$.bonusPoints").value(30))   // round(200 × 0.15)
+                .andExpect(jsonPath("$.awarded").value(true))
+                .andExpect(jsonPath("$.pointsToday").value(230));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void completeRankedMatch_accuracy80_awards8Percent() throws Exception {
+        when(rankedSessionService.get("s-mid")).thenReturn(matchProgress(10, 8, 200));
+        when(udpRepository.findByUserIdAndDate(anyString(), any())).thenReturn(Optional.empty());
+
+        mockMvc.perform(post("/api/ranked/sessions/s-mid/match-complete"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.bonusPercent").value(8))
+                .andExpect(jsonPath("$.bonusPoints").value(16))   // round(200 × 0.08)
+                .andExpect(jsonPath("$.awarded").value(true))
+                .andExpect(jsonPath("$.pointsToday").value(216));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void completeRankedMatch_accuracyBelow75_noBonus() throws Exception {
+        when(rankedSessionService.get("s-lo")).thenReturn(matchProgress(10, 7, 200));
+
+        mockMvc.perform(post("/api/ranked/sessions/s-lo/match-complete"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.bonusPercent").value(0))
+                .andExpect(jsonPath("$.bonusPoints").value(0))
+                .andExpect(jsonPath("$.awarded").value(false))
+                .andExpect(jsonPath("$.pointsToday").value(200)); // unchanged
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void completeRankedMatch_idempotent_secondCallAwardsZero() throws Exception {
+        RankedSessionService.Progress p = matchProgress(10, 10, 200);
+        p.matchBonusAwarded = true; // already credited on a prior call
+        when(rankedSessionService.get("s-dup")).thenReturn(p);
+
+        mockMvc.perform(post("/api/ranked/sessions/s-dup/match-complete"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.bonusPoints").value(0))
+                .andExpect(jsonPath("$.awarded").value(false))
+                .andExpect(jsonPath("$.pointsToday").value(200)); // not double-credited
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void completeRankedMatch_unknownSession_returnsZero() throws Exception {
+        // rankedSessionService.get(...) unstubbed → null → graceful 0.
+        mockMvc.perform(post("/api/ranked/sessions/s-missing/match-complete"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.bonusPoints").value(0))
+                .andExpect(jsonPath("$.awarded").value(false));
     }
 }
