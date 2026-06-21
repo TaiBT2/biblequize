@@ -293,6 +293,7 @@ Chia 2 đội A/B. Đội nào tổng điểm cao hơn thắng. Có Perfect Roun
 - Per-question: dùng `SpeedRaceScoringService` (kế thừa speed bonus).
 - Per-round: `PERFECT_ROUND_BONUS = 50` cộng cho từng player của đội perfect.
 - Final: `calculateTeamScores` sum `RoomPlayer.score` theo `team`. Đội score cao hơn thắng.
+- **Tie-break** khi 2 đội bằng tổng điểm (`determineWinnerWithTieBreak`, wire tại `TeamVsTeamStrategy.finishGame`): (1) tổng điểm cao hơn → (2) **số Perfect Round nhiều hơn** (đếm lũy kế per đội trong `afterRound` qua `GameLoopContext.modeState`) → (3) **tổng thời gian phản hồi nhanh hơn** → vẫn bằng thì `teamWinner = "TIE"` thật. `reason` ∈ {`SCORE`, `PERFECT_ROUNDS`, `SPEED`, `TIE`} chỉ để log, KHÔNG vào payload QUIZ_END.
 
 #### Edge cases
 - Player odd-out (5 vs 4) — chấp nhận; FE warn.

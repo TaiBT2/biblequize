@@ -58,6 +58,11 @@ public class TeamVsTeamStrategy implements RoomModeStrategy {
 
     @Override
     public boolean beforeLoop(GameLoopContext ctx) {
+        // Per-run perfect-round tally [teamA, teamB] — feeds the end-game
+        // tie-break. Scratch slot is per-game (one loop thread), so a plain
+        // int[] is safe here.
+        ctx.setModeState(new int[]{0, 0});
+
         // Broadcast team assignments
         List<RoomPlayer> allPlayers = ctx.roomPlayerRepository.findByRoomId(ctx.roomId);
         List<WebSocketMessage.TeamAssignmentData.TeamPlayerInfo> teamInfo = allPlayers.stream()
@@ -78,6 +83,13 @@ public class TeamVsTeamStrategy implements RoomModeStrategy {
             ctx.ws.broadcastPerfectRound(ctx.roomId, perfect.teamAPerfect, perfect.teamBPerfect);
         }
 
+        // Accumulate per-team perfect-round counts for the end-game tie-break.
+        int[] perfectCounts = ctx.modeState();
+        if (perfectCounts != null) {
+            if (perfect.teamAPerfect) perfectCounts[0]++;
+            if (perfect.teamBPerfect) perfectCounts[1]++;
+        }
+
         // Team score update
         TeamScoringService.TeamScores scores = teamScoringService.calculateTeamScores(ctx.roomId);
         ctx.ws.broadcastTeamScoreUpdate(ctx.roomId, scores.teamA, scores.teamB);
@@ -86,19 +98,25 @@ public class TeamVsTeamStrategy implements RoomModeStrategy {
 
     @Override
     public void finishGame(GameLoopContext ctx) {
-        TeamScoringService.TeamScores finalScores = teamScoringService.calculateTeamScores(ctx.roomId);
-        String winner = teamScoringService.determineWinner(finalScores);
+        // Resolve the winner with the full tie-break chain: total score →
+        // perfect-round count → aggregate response time → genuine TIE.
+        int[] perfectCounts = ctx.modeState();
+        int perfectA = perfectCounts != null ? perfectCounts[0] : 0;
+        int perfectB = perfectCounts != null ? perfectCounts[1] : 0;
+        TeamScoringService.TeamResult result =
+                teamScoringService.determineWinnerWithTieBreak(ctx.roomId, perfectA, perfectB);
 
         List<RoomService.LeaderboardEntryDTO> finalResults =
                 ctx.roomService.buildLeaderboard(ctx.roomId, leaderboardComparator());
         Map<String, Object> endData = Map.of(
-                "teamWinner", winner,
-                "scoreA", finalScores.teamA,
-                "scoreB", finalScores.teamB,
+                "teamWinner", result.winningTeam,
+                "scoreA", result.scores.teamA,
+                "scoreB", result.scores.teamB,
                 "leaderboard", finalResults);
 
         ctx.roomService.endRoom(ctx.roomId);
         ctx.ws.broadcastQuizEnd(ctx.roomId, endData);
-        log.info("Team vs Team kết thúc cho phòng {} | winner=Team{}", ctx.roomId, winner);
+        log.info("Team vs Team kết thúc cho phòng {} | winner=Team{} ({})",
+                ctx.roomId, result.winningTeam, result.reason);
     }
 }
