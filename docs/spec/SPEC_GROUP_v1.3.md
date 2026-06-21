@@ -1,9 +1,20 @@
-# SPEC_GROUP v1.6 — Church Group Features
+# SPEC_GROUP v1.6.1 — Church Group Features
 
-**Last updated**: 2026-06-21 (Hành Trình Nhóm "Group Journey" — BL-25)
-**Previous version**: v1.5 (Collective Growth "Cùng nhau thuộc Lời" — BL-23, 2026-06-17)
+**Last updated**: 2026-06-22 (Group leaderboard retired → 410 Gone — BL-16)
+**Previous version**: v1.6 (Hành Trình Nhóm "Group Journey" — BL-25, 2026-06-21)
 **Locked decisions**: Q-A through Q-O preserved
 **Mockup reference**: `docs/mockups/MOCKUP_GROUP_DETAIL_REDESIGN.html`, `docs/group-page/group_detail_redesign_*.html`
+
+---
+
+## Changelog v1.6 → v1.6.1 (2026-06-22)
+
+> [BL-16] **Group leaderboard retired (Q-A sunset).** The endpoint summed all `UserDailyProgress` (solo/ranked/daily drift) and had 0 callers (web + mobile) since GD-1; Collective Growth (§18) already carries the social signal. Rather than build the BL-2 "filter by source" machinery on the hot `UserDailyProgress` table, the dead code was removed.
+
+| # | Section | Change |
+|---|---|---|
+| 1 | §10 | Marked **RETIRED**. `GET /api/groups/{id}/leaderboard` → `410 Gone` `{ code:"LEADERBOARD_DEPRECATED" }`; `ChurchGroupService.getLeaderboard` deleted. §10.4 rewritten as resolution. |
+| 2 | BACKLOG | **BL-16 → DONE**; **BL-2 + BL-12 → SUPERSEDED by BL-16** (the scoring drift is gone with the method). |
 
 ---
 
@@ -892,7 +903,9 @@ For each:
 
 ---
 
-## 10. Group Leaderboard (Q-A clarified: group-play-only)
+## 10. Group Leaderboard (RETIRED — Q-A sunset)
+
+> **🪦 RETIRED (BL-16, 2026-06-22).** The group leaderboard was sunset in v1.4 (GD-1, 2026-05-10) and its social signal replaced by **Collective Growth (§18)** — an anti-leaderboard "grow together" metric that fits Tin Lành culture. FE callers were removed in GD-1; web + mobile now have **0 callers**. As of 2026-06-22 `GET /api/groups/{id}/leaderboard` returns **`410 Gone`** `{ success:false, code:"LEADERBOARD_DEPRECATED", message }` and `ChurchGroupService.getLeaderboard` was deleted. The §10.2–10.4 below are **historical** (kept for the Q-A rationale); they no longer describe shipped behaviour. **BL-2 / BL-12** (the never-built "filter leaderboard by source" fix) are **SUPERSEDED by BL-16** — the scoring drift is gone with the method.
 
 ### 10.1 Scope
 
@@ -918,17 +931,11 @@ For each:
 
 **Around-me pattern**: Top 3 + 2 trên + me + 2 dưới. "Xem tất cả" → full paginated.
 
-### 10.4 Known Issue: code currently sums all UserDailyProgress
+### 10.4 Resolution: endpoint retired (BL-16)
 
-**Reality**: `ChurchGroupService.java:227,511,518,523,572,578,582` đang query `UserDailyProgressRepository` — sum **tất cả** activity (kể cả solo Practice/Ranked/Daily). KHÔNG match Q-A lock.
+**Was**: `ChurchGroupService.getLeaderboard` summed **all** `UserDailyProgress` (solo Practice/Ranked/Daily included) — a Q-A drift that never matched the group-play-only lock above.
 
-**Required refactor (BACKLOG)**:
-1. Tạo bảng `group_live_room_score` (denormalized): `(group_id, user_id, room_id, score, played_at)`. Insert khi room ENDED.
-2. Tạo query mới: aggregate từ `group_live_room_score` + `scheduled_quiz_attempt` only (filter by period).
-3. Replace `UserDailyProgressRepository` calls trong `getGroupLeaderboard()`, `getMemberStats()`, `getAroundMe()`.
-4. Migration: backfill từ existing room/attempt history.
-
-→ Tracked trong `BACKLOG.md` (item: "Refactor Group Leaderboard query — Q-A compliance").
+**Resolution (BL-16, 2026-06-22)**: rather than building the "filter by source" machinery (BL-2: a `source` ENUM column on the hot `UserDailyProgress` table + migration + backfill), the dead endpoint was retired. With **0 callers** (web + mobile) and Collective Growth (§18) already carrying the social signal, `getLeaderboard` was deleted and the endpoint returns `410 Gone`. The drift is gone with the code; **BL-2 / BL-12 are SUPERSEDED**.
 
 ---
 

@@ -251,18 +251,15 @@ class ChurchGroupControllerTest extends BaseControllerTest {
                 .andExpect(status().isUnauthorized());
     }
 
-    // ── GET /api/groups/{id}/leaderboard ─────────────────────────────────────
+    // ── GET /api/groups/{id}/leaderboard (BL-16: retired → 410 Gone) ─────────
 
     @Test
     @WithMockUser(username = "test@example.com")
-    void getLeaderboard_shouldReturn200() throws Exception {
-        when(churchGroupService.getLeaderboard("group-1", "weekly"))
-                .thenReturn(List.of());
-
+    void getLeaderboard_isRetired_returns410WithDeprecatedCode() throws Exception {
         mockMvc.perform(get("/api/groups/group-1/leaderboard"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.success").value(true))
-                .andExpect(jsonPath("$.leaderboard").isArray());
+                .andExpect(status().isGone())
+                .andExpect(jsonPath("$.success").value(false))
+                .andExpect(jsonPath("$.code").value("LEADERBOARD_DEPRECATED"));
     }
 
     // ── Auth ─────────────────────────────────────────────────────────────────

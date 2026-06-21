@@ -288,15 +288,19 @@ public class ChurchGroupController {
     /**
      * GET /api/groups/{id}/leaderboard - Bang xep hang nhom
      */
+    /**
+     * BL-16 (Q-A sunset): the group leaderboard was retired in v1.4 (GD-1) and
+     * replaced by Collective Growth (§18). The old impl summed ALL
+     * UserDailyProgress (solo/ranked/daily drift) — never group-play-only. With
+     * no remaining callers, the endpoint now returns 410 Gone.
+     */
     @GetMapping("/{id}/leaderboard")
     public ResponseEntity<?> getLeaderboard(@PathVariable String id,
                                             @RequestParam(defaultValue = "weekly") String period) {
-        try {
-            List<Map<String, Object>> leaderboard = churchGroupService.getLeaderboard(id, period);
-            return ResponseEntity.ok(Map.of("success", true, "leaderboard", leaderboard));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
-        }
+        return ResponseEntity.status(410).body(Map.of(
+                "success", false,
+                "code", "LEADERBOARD_DEPRECATED",
+                "message", "Bang xep hang nhom da ngung. Hay dung Collective Growth (cung-nhau-thuoc-Loi)."));
     }
 
     /**

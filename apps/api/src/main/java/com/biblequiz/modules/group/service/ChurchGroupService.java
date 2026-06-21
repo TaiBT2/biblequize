@@ -517,48 +517,13 @@ public class ChurchGroupService {
         return result;
     }
 
-    public List<Map<String, Object>> getLeaderboard(String groupId, String period) {
-        List<GroupMember> members = groupMemberRepository.findByGroupId(groupId);
-        LocalDate today = LocalDate.now(ZoneOffset.UTC);
-
-        List<Map<String, Object>> entries = members.stream().map(m -> {
-            String userId = m.getUser().getId();
-            int score = 0;
-            int questionsAnswered = 0;
-
-            if ("daily".equalsIgnoreCase(period)) {
-                Optional<UserDailyProgress> udp = udpRepository.findByUserIdAndDate(userId, today);
-                if (udp.isPresent()) {
-                    score = udp.get().getPointsCounted() != null ? udp.get().getPointsCounted() : 0;
-                    questionsAnswered = udp.get().getQuestionsCounted() != null ? udp.get().getQuestionsCounted() : 0;
-                }
-            } else if ("weekly".equalsIgnoreCase(period)) {
-                LocalDate weekStart = today.minusDays(6);
-                List<UserDailyProgress> udps = udpRepository.findByUserIdAndDateBetween(userId, weekStart, today);
-                score = udps.stream().mapToInt(u -> u.getPointsCounted() != null ? u.getPointsCounted() : 0).sum();
-                questionsAnswered = udps.stream().mapToInt(u -> u.getQuestionsCounted() != null ? u.getQuestionsCounted() : 0).sum();
-            } else {
-                // all_time
-                List<UserDailyProgress> all = udpRepository.findByUserIdOrderByDateDesc(userId);
-                score = all.stream().mapToInt(u -> u.getPointsCounted() != null ? u.getPointsCounted() : 0).sum();
-                questionsAnswered = all.stream().mapToInt(u -> u.getQuestionsCounted() != null ? u.getQuestionsCounted() : 0).sum();
-            }
-
-            Map<String, Object> entry = new LinkedHashMap<>();
-            entry.put("userId", userId);
-            entry.put("name", m.getUser().getName());
-            entry.put("avatarUrl", m.getUser().getAvatarUrl());
-            entry.put("role", m.getRole().name());
-            entry.put("period", period);
-            entry.put("score", score);
-            entry.put("questionsAnswered", questionsAnswered);
-            return entry;
-        }).collect(Collectors.toList());
-
-        // Sort by score descending
-        entries.sort((a, b) -> Integer.compare((int) b.get("score"), (int) a.get("score")));
-        return entries;
-    }
+    // BL-16: getLeaderboard removed (2026-06-22). The group leaderboard was
+    // sunset in v1.4 (GD-1) — Q-A locks group scoring to group-play-only, but
+    // this method summed ALL UserDailyProgress (solo/ranked/daily drift). With
+    // 0 callers (web + mobile) the endpoint now returns 410 Gone
+    // (ChurchGroupController) and Collective Growth (§18) carries the social
+    // signal instead. BL-2/BL-12 (the never-built "filter by source" fix) are
+    // superseded — the drift is gone with the method.
 
     public Map<String, Object> getAnalytics(String groupId, String requesterId) {
         GroupMember requester = groupMemberRepository.findByGroupIdAndUserId(groupId, requesterId)
