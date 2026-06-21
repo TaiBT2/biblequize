@@ -15,6 +15,7 @@ import ActivityFeedPlaceholder from './ActivityFeedPlaceholder';
 import NewGroupOnboarding from './NewGroupOnboarding';
 import CellGroupPulseCard from './CellGroupPulseCard';
 import CollectiveGrowthCard from './CollectiveGrowthCard';
+import JourneyHeroCard from './JourneyHeroCard';
 
 interface Props {
   groupId: string;
@@ -58,6 +59,10 @@ export default function GroupActivityTab(props: Props) {
       />
 
       <LiveNowBanner groupId={props.groupId} />
+
+      {/* BL-25 Group Journey — the group's lead affordance (D3: journey is the
+          protagonist). Sits above the collective-growth card. */}
+      <JourneyHeroCard groupId={props.groupId} isLeaderOrMod={props.isLeaderOrMod} />
 
       {/* BL-23 "Cùng nhau thuộc Lời" — collective growth, visible to all members (D5). */}
       <CollectiveGrowthCard groupId={props.groupId} />

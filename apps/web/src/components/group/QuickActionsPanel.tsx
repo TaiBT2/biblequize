@@ -80,11 +80,13 @@ export default function QuickActionsPanel(props: QuickActionsPanelProps) {
             onClick={props.onCreateQuizSet}
             testId="qa-create-quizset"
           />
+          {/* BL-25 D4: live co-play demoted to a secondary shortcut — the
+              Journey hero (JourneyHeroCard) now owns the spotlight, so this
+              card drops its emerald `highlight`. */}
           <ActionCard
             icon="🎮"
             label={t('groups.action.startLive')}
             hint={t('groups.action.startLive.hint')}
-            highlight
             onClick={props.onSwitchToQuizSets}
             testId="qa-start-live"
           />
