@@ -633,6 +633,21 @@
 
 ---
 
+## Added 2026-06-20 (Group differentiator — Hành Trình Nhóm)
+
+### BL-25 — Hành Trình Nhóm (Group Journey) — async/persistent/ministry differentiator
+- **Source:** 2026-06-20 — user chốt: live "Chơi cùng nhau" trùng multiplayer → group thiếu lý do tồn tại. Hướng A: dồn vào trục **bất đồng bộ + bền bỉ + có người dẫn** (multiplayer không nhái được).
+- **Concept:** cả nhóm cùng đi qua 1 sách/chủ đề trong N **chặng**; mỗi người tự học theo nhịp, có **tiến độ chung + checkpoint mỗi chặng**. Mỗi **chặng = 1 `ScheduledQuiz`**; tiến độ suy từ `ScheduledQuizAttempt`.
+- **✅ Data source verified LIVE:** scheduled-quiz flow wired end-to-end (FE Create/Detail/Play + BE `submitAttempt` save attempt) → KHÔNG rỗng như Collective Growth (vốn dựa solo-practice đã chết).
+- **Decisions (LOCKED 2026-06-20):** D1 leader tự mở từng chặng (auto-weekly→v2) · D2 hoàn thành = chỉ cần làm (no %-gate) · D3 Hành trình = hero, Quiz tuần lẻ giữ ad-hoc · D4 hạ live co-play xuống shortcut.
+- **Cần làm (GJ-1..8):** entities+migration · service (openNextWeek delegate ScheduledQuizService + progress aggregate) · endpoints · FE api/hooks · leader builder · journey view · hero+demote-live+i18n · SPEC §X + Tầng 3.
+- **Effort:** L (multi-day). Reuse: ScheduledQuiz, GroupQuizSet+AI, GroupAnnouncement+noti (BL-24).
+- **Status:** ✅ DONE (2026-06-21) — GJ-1..8 shipped. BE: V70 + `GroupJourney`/`GroupJourneyWeek` + `GroupJourneyService` (`openNextWeek` delegates `ScheduledQuizService.create`; progress aggregates `ScheduledQuizAttempt`) + `GroupJourneyController` (17 BE tests). FE: `apps/web/src/api/groupJourney.ts` + `useGroupJourney` hooks + `JourneyBuilder`/`JourneyView`/`JourneyHeroCard` (16 FE tests) + `groupJourney` i18n vi/en. Live co-play demoted (D4).
+- **Spec impact:** [SPEC_GROUP_v1.3.md §19 (Hành Trình Nhóm)](SPEC_GROUP_v1.3.md) + §7 demote note + v1.6 changelog. Related: §9 Scheduled Quizzes (reuse), BL-24 (noti).
+- **Ref:** task `docs/todo/active/2026-06-20-group-journey.md`.
+
+---
+
 ## Cross-references
 - Canonical specs: [SPEC_USER_v3.2.md](SPEC_USER_v3.2.md), [SPEC_MULTIPLAYER.md](SPEC_MULTIPLAYER.md), [SPEC_ADMIN_v3.1.md](SPEC_ADMIN_v3.1.md), [SPEC_GROUP_v1.3.md](SPEC_GROUP_v1.3.md) (Sprint 5)
 - Roadmap (defer features): [SPEC_ROADMAP.md](SPEC_ROADMAP.md)

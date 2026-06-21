@@ -1,9 +1,23 @@
-# SPEC_GROUP v1.5 — Church Group Features
+# SPEC_GROUP v1.6 — Church Group Features
 
-**Last updated**: 2026-06-17 (Collective Growth "Cùng nhau thuộc Lời" — BL-23)
-**Previous version**: v1.4 (Group Detail UX polish + architectural cleanup, 2026-05-10)
+**Last updated**: 2026-06-21 (Hành Trình Nhóm "Group Journey" — BL-25)
+**Previous version**: v1.5 (Collective Growth "Cùng nhau thuộc Lời" — BL-23, 2026-06-17)
 **Locked decisions**: Q-A through Q-O preserved
 **Mockup reference**: `docs/mockups/MOCKUP_GROUP_DETAIL_REDESIGN.html`, `docs/group-page/group_detail_redesign_*.html`
+
+---
+
+## Changelog v1.5 → v1.6 (2026-06-21)
+
+> [BL-25] **Hành Trình Nhóm (Group Journey)** — the async + persistent + leader-guided differentiator multiplayer can't copy. The group walks through one book/topic across N weeks (chặng); each week's checkpoint is a ScheduledQuiz (§9) and progress aggregates from `ScheduledQuizAttempt`. Shipped GJ-1..8 (BE entities + migration V70 + service + endpoints; FE builder + view + Activity-tab hero + i18n).
+
+| # | Section | Change |
+|---|---|---|
+| 1 | §19 (NEW) | **Hành Trình Nhóm (Group Journey)**. `GroupJourney` + `GroupJourneyWeek` (V70). Leader builds → opens each week (→ creates a ScheduledQuiz). Progress = aggregate `ScheduledQuizAttempt` (stage k/N, per-week done X/Y, no separate progress table). Endpoints `/api/groups/{id}/journeys`. |
+| 2 | §7 | Live "Chơi cùng nhau" **demoted** to a secondary shortcut (D4) — the journey hero now owns the group's spotlight. |
+| 3 | §19 Cross-references | renumbered → §20. |
+
+**Decisions locked (D1–D4, 2026-06-20 — see task `docs/todo/active/2026-06-20-group-journey.md`):** D1 leader opens each week manually (deadline = ScheduledQuiz deadline; auto-weekly → v2) · D2 "done" = an attempt exists, no %-gate (score shown for encouragement) · D3 journey = protagonist; ad-hoc scheduled quizzes still supported on the same infra · D4 demote live co-play.
 
 ---
 
@@ -108,7 +122,8 @@
 16. WebSocket events
 17. Known Issues
 18. Collective Growth (Cùng nhau thuộc Lời)
-19. Cross-references
+19. Hành Trình Nhóm (Group Journey — BL-25)
+20. Cross-references
 
 ---
 
@@ -731,6 +746,8 @@ Thay thế modal 2-tab "AI tạo / Tự soạn" cũ. Mọi việc create/edit c�
 
 ## 7. Live Rooms (Q-N + Sprint 5 multi-mode)
 
+> **BL-25 D4 demote (2026-06-21):** live "Chơi cùng nhau" is now a **secondary shortcut**, not the group's primary affordance — it overlapped with plain multiplayer and crowded out the group's reason to exist. The **Hành Trình Nhóm hero** (§19) owns the spotlight; the FE drops the emerald `highlight` on the leader's "Bắt đầu Live" quick-action (`QuickActionsPanel.tsx`). The live-room mechanics below are unchanged.
+
 **Endpoint**: `/api/groups/{id}/live-rooms` (Q-N: rename từ `/live-quiz` đã ship, `ChurchGroupController.java:677,741`).
 
 ### 7.1 Create live room (LEADER/MOD only) — Sprint 5 multi-mode
@@ -1188,7 +1205,48 @@ UNION distinct-verse hero (D1) · group-play sources (D2) · leader-set group go
 
 ---
 
-## 19. Cross-references
+## 19. Hành Trình Nhóm (Group Journey) — BL-25 (shipped 2026-06-21)
+
+> The async + persistent + leader-guided differentiator (Hướng A). The whole group walks through one book/topic across N **weeks** (chặng); each member learns at their own pace with a shared progress bar + a per-week checkpoint. Distinct from multiplayer (one match then gone): a durable, guided journey.
+
+### 19.1 Model (V70)
+- **GroupJourney** (`apps/api/src/main/java/com/biblequiz/modules/group/entity/GroupJourney.java`): `id, groupId, title, description, status (DRAFT/ACTIVE/COMPLETED), createdBy, createdAt, startedAt, completedAt`.
+- **GroupJourneyWeek** (`apps/api/src/main/java/com/biblequiz/modules/group/entity/GroupJourneyWeek.java`): `id, journeyId, weekNumber, title, quizSetId, scheduledQuizId (null → set when opened), status (LOCKED/OPEN/ENDED)`.
+- Service `apps/api/src/main/java/com/biblequiz/modules/group/service/GroupJourneyService.java`; controller `apps/api/src/main/java/com/biblequiz/api/GroupJourneyController.java`; migration `apps/api/src/main/resources/db/migration/V70__group_journey.sql`.
+- **No per-user progress table** (v1): progress is aggregated from `ScheduledQuizAttempt` (§3.6) via each week's `scheduledQuizId`. (Lesson from BL-23 Collective Growth: build only on a verified-live source, never a removed one — scheduled-quiz submit was re-verified live before build.)
+
+### 19.2 Lifecycle
+1. Leader/mod **creates** a journey (DRAFT) → **adds weeks** (each = a title + a `GroupQuizSet`) → **starts** it (DRAFT → ACTIVE; needs ≥ 1 week). Weeks can be removed while still LOCKED.
+2. Leader **opens the next LOCKED week** (D1) with a deadline → delegates to `ScheduledQuizService.create` (§9.1): snapshots questions + notifies members (PN-1). The week pins the returned `scheduledQuizId`, status → OPEN. (Deadline = the ScheduledQuiz deadline.)
+3. Members **do the week** = play its ScheduledQuiz (§9.2, full reuse of create/play/submit). "Done" = an attempt exists (D2 — score/% surfaced for encouragement, **not** a gate).
+4. **Progress** (`getJourneyWithProgress`): overall **stage k/N** (weeks opened), per-week **X/Y done** + the viewer's personal done state; leader/mod additionally sees the **not-done roster** per open week.
+
+### 19.3 Roles
+- **Write** (create / edit / add+remove week / start / open-next): **LEADER/MOD only** → `IllegalArgumentException` → **403**.
+- **Read** (list + progress): any **member** → non-member **400** (same convention as §14 streak / §18 growth).
+
+### 19.4 API (`GroupJourneyController`)
+| Method | Path | Who |
+|---|---|---|
+| POST | `/api/groups/{id}/journeys` | leader/mod |
+| GET | `/api/groups/{id}/journeys` | member |
+| GET | `/api/groups/{id}/journeys/{jid}` | member (with progress) |
+| PATCH | `/api/groups/{id}/journeys/{jid}` | leader/mod |
+| POST | `/api/groups/{id}/journeys/{jid}/weeks` | leader/mod |
+| DELETE | `/api/groups/{id}/journeys/{jid}/weeks/{wid}` | leader/mod (LOCKED only) |
+| POST | `/api/groups/{id}/journeys/{jid}/start` | leader/mod |
+| POST | `/api/groups/{id}/journeys/{jid}/open-next` | leader/mod (body: `deadline`) |
+
+### 19.5 FE
+- **Hero** in the Activity tab (`JourneyHeroCard`) — the group's lead affordance (D3), placed above Collective Growth; live co-play demoted (§7, D4). Leader sees a "create" CTA when none exists; members see nothing until a journey is ACTIVE.
+- `JourneyBuilder` (create + build weeks + start), `JourneyView` (progress bar + per-week "Làm chặng này" → ScheduledQuiz flow + leader open-next with deadline preset). i18n namespace `groupJourney` (vi/en).
+
+### 19.6 Deferred → v2
+Completion badge · journey templates ("Tân Ước 90 ngày") · auto weekly open · auto leader reminders · per-user UNION-distinct progress table (if score-weighting is ever needed).
+
+---
+
+## 20. Cross-references
 
 | Spec | Sections relevant |
 |---|---|
