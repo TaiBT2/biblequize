@@ -44,4 +44,11 @@ export const queryKeys = {
     detail: (id: string) => [...queryKeys.groups.all, id] as const,
     collectiveGrowth: (id: string) => [...queryKeys.groups.all, id, 'collective-growth'] as const,
   },
+
+  groupJourney: {
+    all: ['groupJourney'] as const,
+    list: (groupId: string) => [...queryKeys.groupJourney.all, groupId, 'list'] as const,
+    detail: (groupId: string, journeyId: string) =>
+      [...queryKeys.groupJourney.all, groupId, 'detail', journeyId] as const,
+  },
 } as const
