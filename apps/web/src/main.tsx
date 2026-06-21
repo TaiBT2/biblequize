@@ -64,6 +64,8 @@ const GroupDetail = lazy(() => import('./pages/GroupDetail'))
 const ScheduledQuizCreate = lazy(() => import('./pages/ScheduledQuizCreate'))
 const ScheduledQuizDetail = lazy(() => import('./pages/ScheduledQuizDetail'))
 const ScheduledQuizPlay = lazy(() => import('./pages/ScheduledQuizPlay'))
+const JourneyBuilder = lazy(() => import('./pages/JourneyBuilder'))
+const JourneyView = lazy(() => import('./pages/JourneyView'))
 const GroupAnalytics = lazy(() => import('./pages/GroupAnalytics'))
 const QuizSetList = lazy(() => import('./pages/group/QuizSetList'))
 const QuizSetEditor = lazy(() => import('./pages/group/GroupQuizSetEditor'))
@@ -154,6 +156,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="/groups/:id/scheduled-quizzes/new" element={<RequireAuth><ScheduledQuizCreate /></RequireAuth>} />
                   <Route path="/groups/:id/scheduled-quizzes/:quizId" element={<RequireAuth><ScheduledQuizDetail /></RequireAuth>} />
                   <Route path="/groups/:id/scheduled-quizzes/:quizId/play" element={<RequireAuth><ScheduledQuizPlay /></RequireAuth>} />
+                  <Route path="/groups/:id/journey/new" element={<RequireAuth><JourneyBuilder /></RequireAuth>} />
+                  <Route path="/groups/:id/journey/:journeyId/edit" element={<RequireAuth><JourneyBuilder /></RequireAuth>} />
+                  <Route path="/groups/:id/journey/:journeyId" element={<RequireAuth><JourneyView /></RequireAuth>} />
                   <Route path="/tournaments" element={<RequireAuth><Tournaments /></RequireAuth>} />
                   <Route path="/tournaments/:id" element={<RequireAuth><TournamentDetail /></RequireAuth>} />
                   <Route path="/tournaments/:id/match/:matchId" element={<RequireAuth><TournamentMatch /></RequireAuth>} />
