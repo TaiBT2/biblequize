@@ -4,6 +4,7 @@ import ExplanationPanel from '../../components/multiplayer/ExplanationPanel';
 import ComboBanner from '../../components/multiplayer/ComboBanner';
 import RevealStatsCard from '../../components/multiplayer/RevealStatsCard';
 import ReactionBar from '../../components/ReactionBar';
+import DifficultyBadge from '../../components/DifficultyBadge';
 import { AnswerButton, type AnswerState } from '../../components/quiz/AnswerButton';
 import { RoundScoreboard } from './RoomOverlays';
 import { ANSWER_LETTERS, FILL_STYLE, type CoreGameState } from './roomQuizCore';
@@ -538,6 +539,8 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
                 {/* Question Card (Stitch design — non-sequential modes) */}
                 <div className="relative w-full flex flex-col items-center justify-center text-center p-8 md:p-10 bg-bq-white rounded-[2rem] border border-bq-hair shadow-bq-soft overflow-hidden min-h-[140px]">
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-24 bg-bq-amber rounded-r-full" />
+                  {/* DTAG-2: per-question difficulty badge (hidden when unknown). */}
+                  <DifficultyBadge difficulty={question?.difficulty} className="mb-3" />
                   <h2 className="font-display text-xl md:text-3xl font-extrabold tracking-tight leading-snug max-w-3xl text-bq-ink">
                     {question?.content || t('room.quiz.waitingQuestion')}
                   </h2>

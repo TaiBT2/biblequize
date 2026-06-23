@@ -544,7 +544,7 @@ Topic: `/topic/room/{roomId}`. Mọi message wrap bởi `WebSocketMessage.Messag
 | `type` | `data` shape | Trigger |
 |---|---|---|
 | `GAME_STARTING` | (defined nhưng emit ít gặp; FE nghe ROOM_STARTING là chủ yếu) | — |
-| `QUESTION_START` | `QuestionStartData { questionIndex, totalQuestions, question, timeLimit, startedAtMs }` | Mỗi câu mới. `startedAtMs` = epoch ms server, FE compute remaining = `timeLimit - (now - startedAtMs)`. Cũng cache vào Redis qua `RoomStateService.setCurrentQuestion`. **Anti-spoiler (2026-05-23 fix `fb3ecfad`)**: `question` DTO **KHÔNG chứa `correctAnswer` / `correctIndex`** — Quản trò subscribe cùng `/topic/room/{id}` nên đáp án phải đợi `ROUND_END.correctIndex` / `QUESTION_REVEALED.correctIndex`. Server-side scoring dùng `Question` entity trực tiếp, không cần leak qua WS. |
+| `QUESTION_START` | `QuestionStartData { questionIndex, totalQuestions, question, timeLimit, startedAtMs }` | Mỗi câu mới. `startedAtMs` = epoch ms server, FE compute remaining = `timeLimit - (now - startedAtMs)`. Cũng cache vào Redis qua `RoomStateService.setCurrentQuestion`. **Anti-spoiler (2026-05-23 fix `fb3ecfad`)**: `question` DTO **KHÔNG chứa `correctAnswer` / `correctIndex`** — Quản trò subscribe cùng `/topic/room/{id}` nên đáp án phải đợi `ROUND_END.correctIndex` / `QUESTION_REVEALED.correctIndex`. Server-side scoring dùng `Question` entity trực tiếp, không cần leak qua WS. **DTAG (2026-06-24)**: `question` DTO thêm `difficulty` (easy/medium/hard) để FE hiển thị badge độ khó mỗi câu (đồng nhất với Luyện Tập / Daily / Đấu Hạng). |
 | `ANSWER_SUBMITTED` | `{ playerId, username, questionIndex, answerIndex, reactionTimeMs, isCorrect, pointsEarned }` | Mỗi player submit. **Sequential mode**: `isCorrect=false` + `pointsEarned=0` để không spoiler (`RoomWebSocketController:268`). |
 | `ROUND_END` | `RoundEndData { correctIndex, leaderboard }` | Hết timer câu (Speed Race / BR / TvT). |
 | `QUESTION_END` | (alias-like; defined trong enum) | — |
@@ -942,6 +942,7 @@ Frame envelope: `WebSocketMessage.Message { type, data, timestamp }`. JSON shape
       "id": "q_001",
       "content": "Ai là vua đầu tiên của Israel?",
       "options": ["Saul", "David", "Solomon", "Samuel"],
+      "difficulty": "medium",
       "language": "vi"
     },
     "timeLimit": 30,

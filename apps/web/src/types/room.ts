@@ -20,6 +20,9 @@ export type RoomQuestion = {
   content: string
   options: string[]
   explanation?: string
+  /** DTAG-1: per-question difficulty (easy/medium/hard) from QUESTION_START.
+   *  Optional — AI/custom questions may omit it. */
+  difficulty?: string
 }
 
 /** One scoreboard row. `playerId` == server-side User.id (identity fix

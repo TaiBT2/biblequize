@@ -343,6 +343,9 @@ public class RoomQuizService {
         dto.put("type", q.getType() != null ? q.getType().name() : "multiple_choice_single");
         dto.put("book", q.getBook());
         dto.put("chapter", q.getChapter());
+        // DTAG-1: per-question difficulty (easy/medium/hard) so the FE can show
+        // a difficulty badge — meaningful in MIXED rooms where each câu varies.
+        dto.put("difficulty", q.getDifficulty() != null ? q.getDifficulty().name() : null);
         // INTENTIONAL: no "correctAnswer" — see method javadoc.
         return dto;
     }

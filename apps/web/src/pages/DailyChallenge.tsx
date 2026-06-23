@@ -5,6 +5,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { api } from '../api/client'
 import ShareCard from '../components/ShareCard'
 import PageMeta from '../components/PageMeta'
+import DifficultyBadge from '../components/DifficultyBadge'
 import { getQuizLanguage } from '../utils/quizLanguage'
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton'
 import { wrapProperNouns, formatVerseRef, getQuestionLengthClass } from '../utils/textHelpers'
@@ -24,6 +25,8 @@ interface Question {
   options: string[]
   correctAnswer: number[]
   explanation: string
+  /** DTAG-2: easy/medium/hard (BE already serializes it). Optional for safety. */
+  difficulty?: string
 }
 
 interface DailyChallengeData {
@@ -515,11 +518,15 @@ const DailyChallenge: React.FC = () => {
                 className="relative w-full aspect-auto min-h-[160px] md:aspect-[21/7] md:min-h-0 flex flex-col items-center justify-center text-center p-5 md:p-10 bg-bq-white rounded-2xl md:rounded-[2.5rem] border border-bq-hair shadow-bq-soft overflow-hidden"
               >
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 md:w-2 h-20 md:h-32 bg-bq-amber rounded-r-full" />
-                <div className="inline-flex items-center gap-1.5 bg-bq-amber/10 border border-bq-amber/20 rounded-full px-3 py-1 mb-3 md:mb-4">
-                  <span className="material-symbols-outlined text-bq-amberd text-xs">menu_book</span>
-                  <span className="text-bq-amberd text-[11px] font-medium tracking-wider">
-                    {formatVerseRef({ book: question.book, chapter: question.chapter })}
-                  </span>
+                {/* Verse badge + DTAG-2 difficulty badge. */}
+                <div className="flex items-center justify-center flex-wrap gap-2 mb-3 md:mb-4">
+                  <div className="inline-flex items-center gap-1.5 bg-bq-amber/10 border border-bq-amber/20 rounded-full px-3 py-1">
+                    <span className="material-symbols-outlined text-bq-amberd text-xs">menu_book</span>
+                    <span className="text-bq-amberd text-[11px] font-medium tracking-wider">
+                      {formatVerseRef({ book: question.book, chapter: question.chapter })}
+                    </span>
+                  </div>
+                  <DifficultyBadge difficulty={question.difficulty} />
                 </div>
                 <h2
                   data-testid="daily-question-text"

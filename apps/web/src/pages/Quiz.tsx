@@ -8,6 +8,7 @@ import { haptic } from '../utils/haptics'
 import { useLifeline } from '../hooks/useLifeline'
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton'
 import { CircularTimer } from '../components/quiz/CircularTimer'
+import DifficultyBadge from '../components/DifficultyBadge'
 import { wrapProperNouns, formatVerseRef, getQuestionLengthClass } from '../utils/textHelpers'
 import { getQuizLanguage } from '../utils/quizLanguage'
 import { useToast } from '../hooks/useToast'
@@ -1018,15 +1019,18 @@ const Quiz: React.FC = () => {
               >
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 md:w-2 h-20 md:h-32 bg-bq-amber rounded-r-full"></div>
 
-                {/* Verse badge — pill at the top of the card. */}
-                <div
-                  data-testid="quiz-verse-badge"
-                  className="inline-flex items-center gap-1.5 bg-bq-inset border border-bq-hair rounded-full px-3 py-1 mb-3 md:mb-4"
-                >
-                  <span className="material-symbols-outlined text-bq-amberd text-xs">menu_book</span>
-                  <span className="text-bq-amberd text-[11px] font-medium tracking-wider">
-                    {formatVerseRef(currentQuestion)}
-                  </span>
+                {/* Verse badge + DTAG-2 difficulty badge — pills at the top of the card. */}
+                <div className="flex items-center justify-center flex-wrap gap-2 mb-3 md:mb-4">
+                  <div
+                    data-testid="quiz-verse-badge"
+                    className="inline-flex items-center gap-1.5 bg-bq-inset border border-bq-hair rounded-full px-3 py-1"
+                  >
+                    <span className="material-symbols-outlined text-bq-amberd text-xs">menu_book</span>
+                    <span className="text-bq-amberd text-[11px] font-medium tracking-wider">
+                      {formatVerseRef(currentQuestion)}
+                    </span>
+                  </div>
+                  <DifficultyBadge difficulty={currentQuestion.difficulty} />
                 </div>
 
                 <h2
