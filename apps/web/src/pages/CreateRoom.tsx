@@ -45,6 +45,10 @@ export default function CreateRoom() {
     bookScope: 'ALL',
     questionSource: 'DATABASE' as 'DATABASE' | 'CUSTOM',
     questionSetId: null as string | null,
+    // HPT-1: opt-in host-plays. Default false = Quản trò (host điều phối, không
+    // chơi) — giữ nguyên hành vi luồng đa người chơi hiện tại. Khi true →
+    // backend thêm host làm RoomPlayer (RoomController đọc body.hostPlaysGame).
+    hostPlaysGame: false,
   })
 
   const { data: setsData } = useQuery({
@@ -110,14 +114,19 @@ export default function CreateRoom() {
           </Link>
           <div
             data-testid="create-room-organizer-hint"
-            className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full text-[13px] font-medium text-bq-amberd"
-            style={{
+            className={`inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full text-[13px] font-medium ${formData.hostPlaysGame ? 'text-bq-sapphire' : 'text-bq-amberd'}`}
+            style={formData.hostPlaysGame ? {
+              background: 'linear-gradient(135deg, rgba(37,99,235,0.16), rgba(37,99,235,0.05))',
+              border: '1px solid rgba(37,99,235,0.30)',
+            } : {
               background: 'linear-gradient(135deg, rgba(245,158,11,0.18), rgba(245,158,11,0.06))',
               border: '1px solid rgba(245,158,11,0.32)',
             }}
           >
-            <span className="material-symbols-outlined text-bq-amber" style={{ fontSize: 16 }}>workspace_premium</span>
-            <span><strong className="text-bq-amberd font-bold">Quản trò</strong> · bạn điều phối, không chơi</span>
+            <span className={`material-symbols-outlined ${formData.hostPlaysGame ? 'text-bq-sapphire' : 'text-bq-amber'}`} style={{ fontSize: 16 }}>
+              {formData.hostPlaysGame ? 'sports_esports' : 'workspace_premium'}
+            </span>
+            <span>{formData.hostPlaysGame ? t('createRoom.hostPlaysHint') : t('createRoom.organizerHint')}</span>
           </div>
         </div>
 
@@ -447,6 +456,43 @@ export default function CreateRoom() {
                     style={{
                       left: 2,
                       transform: formData.isPublic ? 'translateX(22px)' : 'translateX(0)',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.3)',
+                    }}
+                  />
+                </button>
+              </div>
+
+              {/* HPT-2: host-plays opt-in. Default off = Quản trò (không chơi). */}
+              <div className="mt-[18px] pt-[18px] border-t border-bq-hair flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span
+                    className={`inline-flex items-center justify-center rounded-[9px] ${formData.hostPlaysGame ? 'text-bq-sapphire' : 'text-bq-amber'}`}
+                    style={{ width: 36, height: 36, background: formData.hostPlaysGame ? 'rgba(37,99,235,0.12)' : 'rgba(245,158,11,0.14)' }}
+                  >
+                    <span className="material-symbols-outlined" style={{ fontSize: 18, fontVariationSettings: "'FILL' 1" }}>
+                      {formData.hostPlaysGame ? 'sports_esports' : 'workspace_premium'}
+                    </span>
+                  </span>
+                  <div>
+                    <div className="text-sm font-semibold text-bq-ink">{t('createRoom.hostPlaysTitle')}</div>
+                    <div className="text-xs text-bq-ink2 mt-0.5">
+                      {formData.hostPlaysGame ? t('createRoom.hostPlaysDescOn') : t('createRoom.hostPlaysDescOff')}
+                    </div>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  data-testid="create-room-host-plays-toggle"
+                  onClick={() => setFormData(prev => ({ ...prev, hostPlaysGame: !prev.hostPlaysGame }))}
+                  className={`relative rounded-full w-12 h-6 transition-colors flex-shrink-0 ${formData.hostPlaysGame ? 'bg-bq-action' : 'bg-bq-inset'}`}
+                  aria-pressed={formData.hostPlaysGame}
+                  aria-label={t('createRoom.hostPlaysTitle')}
+                >
+                  <span
+                    className="absolute top-0.5 w-5 h-5 rounded-full bg-white transition-transform"
+                    style={{
+                      left: 2,
+                      transform: formData.hostPlaysGame ? 'translateX(22px)' : 'translateX(0)',
                       boxShadow: '0 1px 3px rgba(0,0,0,0.3)',
                     }}
                   />

@@ -2328,6 +2328,11 @@
     "isPrivate": "Riêng tư",
     "publicDesc": "Mọi người đều có thể tìm và tham gia phòng",
     "privateDesc": "Chỉ người có mã phòng mới vào được",
+    "hostPlaysTitle": "Tôi cũng chơi",
+    "hostPlaysDescOn": "Bạn vừa điều phối vừa tham gia, được tính điểm như người chơi",
+    "hostPlaysDescOff": "Quản trò: bạn điều phối, không tham gia tính điểm",
+    "organizerHint": "Quản trò · bạn điều phối, không chơi",
+    "hostPlaysHint": "Bạn cũng chơi · được tính điểm",
     "creating": "Đang tạo...",
     "create": "Tạo Phòng",
     "modeDesc": {

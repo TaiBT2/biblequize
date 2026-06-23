@@ -189,4 +189,35 @@ describe('CreateRoom', () => {
     const submitBtn = document.querySelector('button[type="submit"]') as HTMLButtonElement
     expect(submitBtn).toBeDisabled()
   })
+
+  // 16. HPT-1: default payload keeps Quản trò (hostPlaysGame: false)
+  it('defaults hostPlaysGame=false (Quản trò) in submit payload', async () => {
+    mockApiPost.mockResolvedValue({ data: { success: true, room: { id: 'r1', roomCode: 'AAA111' } } })
+    renderCreateRoom()
+    fireEvent.click(document.querySelector('button[type="submit"]')!)
+    await waitFor(() => {
+      expect(mockApiPost).toHaveBeenCalledWith('/api/rooms', expect.objectContaining({
+        hostPlaysGame: false,
+      }))
+    })
+  })
+
+  // 17. HPT-2: toggle on → payload sends hostPlaysGame: true + chip flips
+  it('host-plays toggle on sends hostPlaysGame=true and updates hint chip', async () => {
+    mockApiPost.mockResolvedValue({ data: { success: true, room: { id: 'r2', roomCode: 'BBB222' } } })
+    renderCreateRoom()
+    const toggle = screen.getByTestId('create-room-host-plays-toggle')
+    expect(toggle).toHaveAttribute('aria-pressed', 'false')
+    fireEvent.click(toggle)
+    expect(toggle).toHaveAttribute('aria-pressed', 'true')
+    // top hint chip switches from organizer → host-plays copy
+    expect(screen.getByTestId('create-room-organizer-hint').textContent).toMatch(/cũng chơi/i)
+
+    fireEvent.click(document.querySelector('button[type="submit"]')!)
+    await waitFor(() => {
+      expect(mockApiPost).toHaveBeenCalledWith('/api/rooms', expect.objectContaining({
+        hostPlaysGame: true,
+      }))
+    })
+  })
 })

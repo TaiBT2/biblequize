@@ -205,11 +205,11 @@ if (playerCount < 2) {
 - Rooms tạo trước Sprint 4 deploy: `host_plays_game = TRUE` (legacy behavior preserved).
 - Rooms tạo sau Sprint 4 deploy: `host_plays_game = FALSE` (Quản trò default).
 - KHÔNG migrate retroactive — let legacy rooms ENDED tự nhiên qua R3 retention 24h.
-- Body `POST /api/rooms` có optional field `hostPlaysGame` để override default (chủ yếu cho test).
+- Body `POST /api/rooms` có optional field `hostPlaysGame` để override default. **Create Room UI (2026-06-23)** expose toggle "Tôi cũng chơi" (default OFF = Quản trò) → host opt-in gửi `hostPlaysGame=true` để vừa điều phối vừa chơi.
 
 #### Edge cases
 
-- **Host muốn tự chơi 1 mình:** không thể tạo room multiplayer trong Quản trò mode. Chuyển sang Practice mode (single-player).
+- **Host muốn vừa điều phối vừa chơi:** bật toggle "Tôi cũng chơi" ở Create Room → `hostPlaysGame=true`, host là RoomPlayer, min players = 1 non-host (host + 1 = 2 người). Default vẫn Quản trò (không chơi).
 - **Host disconnect (R4):** promote next-joined ACTIVE non-host player thành host. Player đó **dừng chơi**, score đến hiện tại được giữ lại nhưng không tính ranking. Status flips sang "host-now-organizer" — không thể quay lại làm player. (Edge case "host được promote không muốn làm" — defer Sprint 5, BACKLOG MP-9.)
 - **Phòng còn 1 player giữa game:** game tiếp tục solo, host có thể bấm "Kết thúc sớm" qua `/host/end-early`.
 - **Tournament organizer:** **KHÔNG áp dụng** Quản trò mode. Tournament organizer vẫn chơi như cũ (architectural change scope chỉ cho Multiplayer Room).

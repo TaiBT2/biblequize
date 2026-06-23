@@ -2328,6 +2328,11 @@
     "isPrivate": "Private",
     "publicDesc": "Anyone can find and join this room",
     "privateDesc": "Only people with the room code can join",
+    "hostPlaysTitle": "I play too",
+    "hostPlaysDescOn": "You both host and play, scored like a player",
+    "hostPlaysDescOff": "Organizer: you run the game, not scored",
+    "organizerHint": "Organizer · you run it, don't play",
+    "hostPlaysHint": "You play too · scored",
     "creating": "Creating...",
     "create": "Create Room",
     "modeDesc": {
