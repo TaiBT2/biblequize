@@ -134,6 +134,24 @@ describe('RoomQuizHost', () => {
     expect(screen.getByTestId('end-host-replay')).toBeInTheDocument()
   })
 
+  it('renders head-to-head (not podium) and hides the redundant list for 2 players', async () => {
+    await renderHost()
+    lastOnMessage!({
+      type: 'QUIZ_END',
+      data: [
+        { playerId: 'u1', username: 'An', score: 266, correctAnswers: 2, totalAnswered: 5 },
+        { playerId: 'u2', username: 'Bui', score: 0, correctAnswers: 0, totalAnswered: 5 },
+      ],
+    })
+    expect(await screen.findByTestId('quiz-end-host-page')).toBeInTheDocument()
+    const winner = screen.getByTestId('end-host-winner')
+    expect(winner).toContainElement(screen.getByTestId('head-to-head'))
+    expect(screen.queryByTestId('podium-block')).not.toBeInTheDocument()
+    // side ranking list is redundant with the duel → hidden for ≤2
+    expect(screen.queryByTestId('end-host-rankings')).not.toBeInTheDocument()
+    expect(screen.getByTestId('end-host-replay')).toBeInTheDocument()
+  })
+
   it('live-answer list updates on ANSWER_SUBMITTED', async () => {
     await renderHost()
     lastOnMessage!({

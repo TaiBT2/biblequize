@@ -1,10 +1,24 @@
 import { useMemo } from 'react';
-import type { PlayerScore } from '../../pages/room/RoomOverlays';
+
+/** Minimal shape HeadToHead needs — loose (all optional) so both the player
+ *  PlayerScore and the host's FinalRanking rows are accepted. */
+export type H2HPlayer = {
+  playerId?: string;
+  username?: string;
+  score?: number;
+  correctAnswers?: number;
+  totalAnswered?: number;
+  finalRank?: number;
+};
 
 interface Props {
-  results: PlayerScore[];
+  results: H2HPlayer[];
   /** Compact variant for player view (smaller avatars), matching Podium. */
   compact?: boolean;
+  /** Light theme for the host/cast wrap-up screen (dark text on paper bg). */
+  light?: boolean;
+  /** Primary number override (e.g. Battle Royale shows "X/Y đúng", not score). */
+  metric?: (p: H2HPlayer) => string;
 }
 
 // Distinct avatar gradients keyed by playerId so the two finalists never look
@@ -25,11 +39,12 @@ const colorFor = (id: string) => {
 
 /**
  * RES — duel layout for the end screen when only 1–2 players finished. The
- * 3-step Podium looks lopsided + empty with two people (the bronze slot is
+ * 3-step podium looks lopsided + empty with two people (the bronze slot is
  * blank and #1 drifts off-centre), so ≤2 players get a symmetric winner-vs-
- * runner-up card with a "Hoà điểm" badge when their scores tie.
+ * runner-up card with a "Hoà điểm" badge when their scores tie. Used by both
+ * the player view (dark) and the host wrap-up (light).
  */
-export function HeadToHead({ results, compact = false }: Props) {
+export function HeadToHead({ results, compact = false, light = false, metric }: Props) {
   const ranked = useMemo(
     () => results.slice().sort((a, b) =>
       (a.finalRank ?? 99) !== (b.finalRank ?? 99)
@@ -39,13 +54,15 @@ export function HeadToHead({ results, compact = false }: Props) {
   );
   const winner = ranked[0];
   const runnerUp = ranked[1];
-  const tie = !!runnerUp && winner?.score === runnerUp.score;
+  const tie = !!runnerUp && (winner?.score ?? 0) === (runnerUp.score ?? 0);
 
   if (!winner) return null;
 
   const avatar = compact ? 84 : 112;
+  const nameColor = light ? 'text-bq-ink' : 'text-white';
+  const secondaryColor = light ? '#6b7280' : '#9ca3af';
 
-  const Card = ({ p, place }: { p: PlayerScore; place: 1 | 2 }) => {
+  const Card = ({ p, place, idx }: { p: H2HPlayer; place: 1 | 2; idx: number }) => {
     const isWinner = place === 1;
     const ring = isWinner ? '#e8a832' : '#9ca3af';
     return (
@@ -72,7 +89,7 @@ export function HeadToHead({ results, compact = false }: Props) {
             className={`grid place-items-center font-black ${isWinner ? 'pulse-glow' : ''}`}
             style={{
               width: '100%', height: '100%', borderRadius: '50%',
-              background: colorFor(p.playerId), color: '#fff',
+              background: colorFor(p.playerId || `slot-${idx}`), color: '#fff',
               fontSize: compact ? 30 : 42, border: `3px solid ${ring}`,
               boxShadow: isWinner ? '0 0 44px rgba(232,168,50,0.35)' : 'none',
             }}
@@ -80,18 +97,20 @@ export function HeadToHead({ results, compact = false }: Props) {
             {(p.username?.[0] ?? '?').toUpperCase()}
           </div>
         </div>
-        <div className={`${compact ? 'text-sm' : 'text-lg'} font-bold text-white truncate w-full text-center`}>
-          {p.username}
+        <div className={`${compact ? 'text-sm' : 'text-lg'} font-bold ${nameColor} truncate w-full text-center`}>
+          {p.username ?? '—'}
         </div>
         <div
           className={`${compact ? 'text-base' : 'text-2xl'} font-black`}
           style={{ color: ring }}
         >
-          {p.score} điểm
+          {metric ? metric(p) : `${p.score ?? 0} điểm`}
         </div>
-        <div className="text-xs mt-0.5" style={{ color: '#9ca3af' }}>
-          ✓ {p.correctAnswers}/{p.totalAnswered} đúng
-        </div>
+        {!metric && (
+          <div className="text-xs mt-0.5" style={{ color: secondaryColor }}>
+            ✓ {p.correctAnswers ?? 0}/{p.totalAnswered ?? 0} đúng
+          </div>
+        )}
         <div
           className="mt-2 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider"
           style={{
@@ -121,17 +140,17 @@ export function HeadToHead({ results, compact = false }: Props) {
         </div>
       )}
       <div className="flex items-start justify-center gap-3 lg:gap-6 w-full">
-        <Card p={winner} place={1} />
+        <Card p={winner} place={1} idx={0} />
         {runnerUp && (
           <>
             <div
               className="self-center font-black select-none"
-              style={{ color: '#6b7280', fontSize: compact ? 18 : 26, paddingTop: compact ? 28 : 40 }}
+              style={{ color: '#9ca3af', fontSize: compact ? 18 : 26, paddingTop: compact ? 28 : 40 }}
               aria-hidden="true"
             >
               VS
             </div>
-            <Card p={runnerUp} place={2} />
+            <Card p={runnerUp} place={2} idx={1} />
           </>
         )}
       </div>

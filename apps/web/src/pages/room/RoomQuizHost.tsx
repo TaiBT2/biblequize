@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { fetchCurrentQuestion, useRoomChannel } from '../../hooks/useRoomChannel';
 import { api } from '../../api/client';
 import { PodiumBlock } from './RoomOverlays';
+import HeadToHead from '../../components/multiplayer/HeadToHead';
 import type { QuestionStartData, RoomEvent, RoomQuestion } from '../../types/room';
 
 /**
@@ -349,7 +350,10 @@ const RoomQuizHost: React.FC = () => {
               (replaces the old winner hero card, which duplicated rank #1) */}
           {winner && (
             <div className="mb-8" data-testid="end-host-winner">
-              <PodiumBlock results={finalRanks} metric={isBattleRoyale ? brMetric : undefined} />
+              {/* HRP: ≤2 người → duel cân đối (light) thay podium 3 bậc lệch. */}
+              {finalRanks.length <= 2
+                ? <HeadToHead results={finalRanks} light metric={isBattleRoyale ? brMetric : undefined} />
+                : <PodiumBlock results={finalRanks} metric={isBattleRoyale ? brMetric : undefined} />}
             </div>
           )}
 
@@ -366,7 +370,8 @@ const RoomQuizHost: React.FC = () => {
             </div>
           </div>
 
-          {/* Final rankings — medal accents top 3 + correct-ratio mini bar */}
+          {/* Final rankings — hidden for ≤2 (head-to-head already shows both). */}
+          {finalRanks.length > 2 && (
           <div className="mb-8">
             <div className="text-[10px] uppercase tracking-wider font-bold mb-2" style={{ color: '#6C6A62' }}>
               🏆 Xếp hạng cuối cùng
@@ -440,6 +445,7 @@ const RoomQuizHost: React.FC = () => {
               })}
             </ul>
           </div>
+          )}
 
           {/* Actions — primary gold CTA + ghost secondary row */}
           <div>

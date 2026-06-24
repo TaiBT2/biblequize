@@ -9,7 +9,7 @@
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
-| 2026-06-24 | Result screen: head-to-head layout ≤2 người + badge hòa điểm (RES-1..2) | DONE | [detail](docs/todo/active/2026-06-24-results-head-to-head.md) |
+| 2026-06-24 | Result screen head-to-head ≤2 người + parity host Quản trò (RES-1..3, HRP-1..2) | DONE | [detail](docs/todo/active/2026-06-24-results-head-to-head.md) |
 | 2026-06-24 | Multiplayer: chat ở màn kết quả + giữ lịch sử lobby (MPC-1..9) | DONE | [detail](docs/todo/active/2026-06-24-multiplayer-results-chat.md) |
 | 2026-06-24 | Quiz: badge độ khó theo câu — tất cả chế độ (Luyện Tập/Daily/Ranked/Multiplayer) (DTAG-1..2) | DONE | [detail](docs/todo/active/2026-06-24-room-quiz-difficulty-badge.md) |
 | 2026-06-23 | Create Room: toggle "Tôi cũng chơi" (host plays) — opt-in, default Quản trò không chơi (HPT-1..2) | DONE | [detail](docs/todo/active/2026-06-23-host-plays-toggle-create-room.md) |
