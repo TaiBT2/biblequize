@@ -62,6 +62,22 @@ describe('QuizEndScreen', () => {
     expect(screen.getByTestId('h2h-tie-badge')).toBeInTheDocument()
   })
 
+  it('hides the redundant side ranking list for 2 players', () => {
+    const two: PlayerScore[] = [
+      { playerId: 'a', username: 'An',  score: 200, correctAnswers: 3, totalAnswered: 5, accuracy: 0.6, finalRank: 1 },
+      { playerId: 'b', username: 'Bui', score: 100, correctAnswers: 1, totalAnswered: 5, accuracy: 0.2, finalRank: 2 },
+    ]
+    render(<QuizEndScreen {...baseProps} results={two} myUsername="An" isHost={false} />)
+    // EndRankingList tags the viewer with "(bạn)"; head-to-head does not.
+    expect(screen.queryByText(/\(bạn\)/)).not.toBeInTheDocument()
+  })
+
+  it('omits the "Thời gian" stat when match start was not captured', () => {
+    render(<QuizEndScreen {...baseProps} startedAtMs={null} myUsername="An" isHost={false} />)
+    expect(screen.queryByText('Thời gian')).not.toBeInTheDocument()
+    expect(screen.queryByText('—')).not.toBeInTheDocument()
+  })
+
   it('derives rank from score order when the mode never assigns finalRank (Speed Race)', () => {
     // Regression: winner used to see "Chưa xếp hạng" because myRank read
     // finalRank only — Speed Race results carry no finalRank at all.

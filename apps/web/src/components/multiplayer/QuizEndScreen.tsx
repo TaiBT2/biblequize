@@ -161,23 +161,34 @@ export function QuizEndScreen({
             ? <HeadToHead results={results} compact={!isHost} />
             : <Podium results={results} compact={!isHost} />}
 
-          {/* Match stats — 4 cells */}
-          <div
-            className="rounded-xl p-4 grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6"
-            style={{
-              // No backdrop blur on this secondary panel — stacking 4 live
-              // blur layers under animating confetti janks mid-range Android.
-              // Opaque-ish bg keeps the glass look without the compositing cost.
-              background: 'rgba(40,42,54,0.92)',
-              border: '1px solid rgba(255,255,255,0.06)',
-              animation: 'fadeIn 0.6s ease-out 0.4s backwards',
-            }}
-          >
-            <Stat label="Câu hỏi" value={`${totalQuestions}`} color="#fff" />
-            <Stat label="Thời gian" value={formatDuration(matchDuration)} color="#fff" border />
-            <Stat label="Người chơi" value={`${results.length}`} color="#fff" border />
-            <Stat label="Tổng điểm" value={`${totalScore}`} color="#fff" />
-          </div>
+          {/* Match stats — drop "Thời gian" when the match start wasn't
+              captured (reload / late join) so it never shows a bare "—". */}
+          {(() => {
+            const cells = [
+              { label: 'Câu hỏi', value: `${totalQuestions}` },
+              ...(matchDuration != null
+                ? [{ label: 'Thời gian', value: formatDuration(matchDuration) }]
+                : []),
+              { label: 'Người chơi', value: `${results.length}` },
+              { label: 'Tổng điểm', value: `${totalScore}` },
+            ];
+            return (
+              <div
+                className={`rounded-xl p-4 grid grid-cols-2 ${cells.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'} gap-3 mt-6`}
+                style={{
+                  // No backdrop blur on this secondary panel — stacking live
+                  // blur layers under animating confetti janks mid-range Android.
+                  background: 'rgba(40,42,54,0.92)',
+                  border: '1px solid rgba(255,255,255,0.06)',
+                  animation: 'fadeIn 0.6s ease-out 0.4s backwards',
+                }}
+              >
+                {cells.map((c, i) => (
+                  <Stat key={c.label} label={c.label} value={c.value} color="#fff" border={i > 0} />
+                ))}
+              </div>
+            );
+          })()}
         </div>
 
         {/* Actions panel */}
@@ -242,8 +253,12 @@ export function QuizEndScreen({
             </>
           )}
 
-          {/* Quick rankings — host gets a longer list, player gets a peek */}
-          <EndRankingList ranked={ranked} myUsername={myUsername} myUserId={myUserId} />
+          {/* Quick rankings — host gets a longer list, player gets a peek.
+              Hidden for ≤2 players: the head-to-head duel already shows both,
+              so the side list would just repeat it. */}
+          {results.length > 2 && (
+            <EndRankingList ranked={ranked} myUsername={myUsername} myUserId={myUserId} />
+          )}
         </aside>
       </div>
     </div>

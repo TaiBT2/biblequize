@@ -15,6 +15,9 @@
   - **Spec impact**: [ ] None · **Spec strategy**: [x] (c)
   - Checklist: impl · Tầng 3 FE pass · commit
 
+### Cleanup follow-up (RES-3)
+- RES-3 (2026-06-24): ≤2 người → ẩn `EndRankingList` bên phải (lặp head-to-head); ô "Thời gian" chỉ hiện khi `matchDuration != null` (bỏ "—"), grid cột co theo số ô (3↔4). Test: QuizEndScreen +2 (hide ranking, omit time). Status: [x] DONE.
+
 ### Notes
 - PlayerScore có: score, correctAnswers, accuracy, finalRank. KHÔNG có avatarUrl / reactionTime → avatar màu hash playerId; tie-break secondary = correctAnswers.
 - Giữ compact variant (player view nhỏ hơn host view) như Podium.
