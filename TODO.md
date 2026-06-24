@@ -3,12 +3,15 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (24)
+## Active (25)
 
 > Dọn 2026-06-22: 23 task ghi "TODO/DONE" nhưng đã verify hoàn thành → archive (xem git log + Archive bên dưới). Bảng này giờ chỉ còn việc THỰC SỰ đang mở.
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-24 | Soạn 100 câu Dân Số Ký mới + bản EN (Haladyna × Bloom) qua skill bible-quiz-authoring (N100-1..4) | DONE | [detail](docs/todo/active/2026-06-24-numbers-100-questions.md) |
+| 2026-06-24 | Soạn 100 câu/sách cho 12 sách Lịch Sử (Giô-suê…Ê-xơ-tê) qua skill bible-quiz-authoring (HB-1..12) | IN PROGRESS | [detail](docs/todo/active/2026-06-24-historical-books-100-questions.md) |
+| 2026-06-24 | Soạn 100 câu Phục Truyền Luật Lệ Ký mới (Haladyna × Bloom) qua skill bible-quiz-authoring (D100-1..FINAL) | IN PROGRESS | [detail](docs/todo/active/2026-06-24-deuteronomy-100-questions.md) |
 | 2026-06-24 | Soạn 100 câu Lê-vi Ký mới (Haladyna × Bloom) qua skill bible-quiz-authoring (L100-1..FINAL) | IN PROGRESS | [detail](docs/todo/active/2026-06-24-leviticus-100-questions.md) |
 | 2026-06-24 | Soạn 100 câu Xuất Ê-díp-tô Ký mới (Haladyna × Bloom) qua skill bible-quiz-authoring (EX100-1..FINAL) | IN PROGRESS | [detail](docs/todo/active/2026-06-24-exodus-100-questions.md) |
 | 2026-06-24 | Soạn 100 câu Sáng Thế Ký mới (Haladyna × Bloom) qua skill bible-quiz-authoring (G100-1..10) | IN PROGRESS | [detail](docs/todo/active/2026-06-24-genesis-100-questions.md) |
