@@ -11,4 +11,11 @@
   - Status: [x] DONE — bỏ dead `shouldAdvanceToNextBook` + post-cycle; currentBook = sách câu vừa trả lời; UBP key theo `currentQ.getBook()` (stat đúng), bỏ advance.
 - RWP-4 Test BE + regression
   - Status: [x] DONE — RankedControllerTest 57/57 (2 test cũ viết lại theo design mới + 1 test whole-pool/exclude); ScoringServiceTest 49; FE build + vitest 1415/1415.
-- **Spec impact**: [x] SPEC_USER §3.2/§6 (book progression) — strategy (a) inline note Ranked dùng whole-pool history-aware thay vì sequential book funnel.
+- **Spec impact**: [x] SPEC_USER §3.2/§6 (book progression) — strategy (a) inline note.
+
+### Addendum — Option C (hybrid, user chốt 2026-06-24)
+> Sau khi ship whole-pool (RWP, commit `b2a2687d`), user muốn GIỮ cảm giác "đi xuyên Kinh Thánh theo sách". Đổi sang **hybrid**: ~70% câu sách hiện tại + ~30% toàn pool; sách tiến đều theo sample-target.
+- C-1 select hybrid 70/30 (current book + whole pool), cross-day exclude giữ nguyên — Status: [x] DONE (`RANKED_CURRENT_BOOK_RATIO=0.7`, LinkedHashMap dedup, whole-pool fill khi sách hiện tại cạn).
+- C-2 advance gate hoạt động: `answeredCount(currentBook) ≥ min(20, countByBookAndLang)` → sang sách kế. currentBook ổn định (không track câu vừa trả lời) — Status: [x] DONE.
+- C-3 FE re-add `book: currentBook` (Ranked.tsx + Quiz.tsx) — Status: [x] DONE.
+- C-4 Test: RankedControllerTest 57/57 (hybrid select 2-call + advance-gate reached/below) — Status: [x] DONE. SPEC §3.2 updated → hybrid.

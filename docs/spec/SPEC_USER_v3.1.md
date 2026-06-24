@@ -118,7 +118,7 @@ SPEC_USER v3.1 mô tả **các tính năng đã ship** đang phục vụ user th
 
 Áp dụng cho Ranked + Practice (qua `SmartQuestionSelector.selectQuestions()` `:36-76` khi caller không chỉ định difficulty cụ thể).
 
-> **RWP (2026-06-24):** Ranked rút câu từ **toàn pool 66 sách** (history-aware unseen→review→long-ago→recent), KHÔNG còn phễu 1-sách `currentBook`. Cross-day exclude loại ~80 câu gần nhất theo `UserQuestionHistory.lastSeenAt`. Gate tiến-sách tuần tự (`BookProgressionService.shouldAdvanceToNextBook` ≥50/session) đã bỏ — vốn dead (mỗi trận = session riêng, reset về 0). `currentBook` giờ chỉ là chỉ báo "sách câu vừa trả lời". Lý do: phễu cũ khoá user trong Genesis + lặp nhiều (pool 150 câu).
+> **RWP + Option C (2026-06-24):** Ranked dùng **draw lai (hybrid)** mỗi trận: ~**70% câu từ sách hành trình hiện tại** (`currentBook`) + ~**30% câu ngẫu nhiên toàn 66 sách** (đa dạng/ôn). Cả hai history-aware (unseen first) + cross-day exclude ~80 câu gần nhất (`UserQuestionHistory.lastSeenAt`). **Sách hành trình tiến** khi đã trả lời ≥ **20 câu distinct** của sách đó (hoặc hết câu của sách nhỏ) → sang sách kế canon. Gỡ 2 gate cũ: ≥50/session (dead — mỗi trận = session riêng reset 0) + 100-unique (không bao giờ đạt). Lý do: phễu 100%-1-sách cũ khoá user trong Genesis + lặp nhiều (pool 150). `RANKED_CURRENT_BOOK_RATIO=0.7`, `RANKED_BOOK_SAMPLE_TARGET=20`.
 
 **Timer:** 90s/câu flat cho Ranked (policy 2026-05-20 — user request "tối đa 90s"). Câu hỏi Bible có scripture reference dài + cần đọc kỹ → 30s quá ngắn. FE-controlled via `Ranked.tsx` truyền `timePerQuestion: 90` xuống Quiz.tsx. BE `TierDifficultyConfig.timerSeconds` còn lại (giá trị legacy 30→18) chỉ dùng cho `SessionService.startSession` (Practice smart selection path) — không ảnh hưởng Ranked.
 

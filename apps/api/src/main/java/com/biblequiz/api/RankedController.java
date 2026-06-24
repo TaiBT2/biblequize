@@ -140,6 +140,12 @@ public class RankedController {
     // RWP-2: how many recently-seen questions to exclude from the whole-pool draw
     // (cross-day repeat avoidance). 80 << pool size (~3.3k) so never starves.
     private static final int RANKED_RECENT_EXCLUDE = 80;
+    // Option C: hybrid journey — fraction of each match drawn from the current
+    // book (rest from the whole pool for variety). 0.7 → ~7/10 questions.
+    private static final double RANKED_CURRENT_BOOK_RATIO = 0.7;
+    // Advance to the next book once this many DISTINCT questions of the current
+    // book have been answered (or the whole book is exhausted, for small books).
+    private static final int RANKED_BOOK_SAMPLE_TARGET = 20;
 
     /**
      * Read the season-leaderboard score at rank N with a 60s Redis cache.
@@ -298,65 +304,65 @@ public class RankedController {
             }
         }
 
-        QuestionFilter filter;
-        if (coverageBooks != null) {
-            filter = new QuestionFilter(coverageBooks,
-                    (difficulty != null && !difficulty.isBlank() && !"all".equalsIgnoreCase(difficulty)) ? difficulty : null,
-                    language);
-        } else {
-            // RWP-1 (2026-06-24): Ranked draws from the WHOLE 66-book pool, not a
-            // single currentBook. The legacy book funnel locked users in Genesis
-            // until a 100-unique mastery gate (which also never fired via the dead
-            // per-session gate) and amplified repeats in a 150-question pool. The
-            // tier-difficulty distribution + history-aware ordering in
-            // SmartQuestionSelector already give a good spread across scripture.
-            filter = new QuestionFilter(
-                    (String) null,
-                    (difficulty != null && !difficulty.isBlank() && !"all".equalsIgnoreCase(difficulty)) ? difficulty : null,
-                    language);
-        }
-
         List<Question> picked;
         boolean poolExhausted = false;
-        if (userId != null) {
-            // Overfetch so post-filter still has enough after dropping excluded IDs.
+
+        if (coverageBooks != null && userId != null) {
+            // §7 Liturgical Coverage path — the week's active book pool.
+            QuestionFilter filter = new QuestionFilter(coverageBooks,
+                    (difficulty != null && !difficulty.isBlank() && !"all".equalsIgnoreCase(difficulty)) ? difficulty : null,
+                    language);
             int overfetch = limit + excludeSet.size() + 5;
             picked = pickFromSelector(userId, overfetch, limit, filter, excludeSet);
-
-            if (coverageBooks != null) {
-                // §7.11.4 Liturgical pool exhaustion fallback chain
-                int week = currentWeekFor(userId);
-                int tier = userTierService.getTierLevel(userId);
-                if (picked.size() < limit) {
-                    // Fallback 1: drop same-day exclusion (allow repeats within day)
-                    coverageAnalytics.poolExhaustionFallback(userId, 1, week, tier, language);
-                    picked = pickFromSelector(userId, overfetch, limit, filter, java.util.Set.of());
-                }
-                if (picked.size() < limit && filter.difficulty() != null) {
-                    // Fallback 2: drop difficulty filter (mix tier distribution)
-                    coverageAnalytics.poolExhaustionFallback(userId, 2, week, tier, language);
-                    QuestionFilter noDiff = new QuestionFilter(coverageBooks, null, language);
-                    picked = pickFromSelector(userId, overfetch, limit, noDiff, java.util.Set.of());
-                }
-                if (picked.isEmpty()) {
-                    // Fallback 3: pool exhausted — signal client to unlock next week
-                    coverageAnalytics.poolExhaustionFallback(userId, 3, week, tier, language);
-                    poolExhausted = true;
-                }
-            } else if (picked.size() < limit && filter.book() != null) {
-                // Legacy fallback: if book filter starved the pool, retry without book.
-                QuestionFilter relaxed = new QuestionFilter((String) null, filter.difficulty(), language);
-                List<Question> more = smartQuestionSelector.selectQuestions(userId, overfetch, relaxed);
-                Set<String> have = new HashSet<>();
-                for (Question q : picked) have.add(q.getId());
-                for (Question q : more) {
-                    if (picked.size() >= limit) break;
-                    if (q == null || q.getId() == null) continue;
-                    if (have.contains(q.getId()) || excludeSet.contains(q.getId())) continue;
-                    picked.add(q);
-                    have.add(q.getId());
+            int week = currentWeekFor(userId);
+            int tier = userTierService.getTierLevel(userId);
+            if (picked.size() < limit) {
+                // Fallback 1: drop same-day exclusion (allow repeats within day)
+                coverageAnalytics.poolExhaustionFallback(userId, 1, week, tier, language);
+                picked = pickFromSelector(userId, overfetch, limit, filter, java.util.Set.of());
+            }
+            if (picked.size() < limit && filter.difficulty() != null) {
+                // Fallback 2: drop difficulty filter (mix tier distribution)
+                coverageAnalytics.poolExhaustionFallback(userId, 2, week, tier, language);
+                QuestionFilter noDiff = new QuestionFilter(coverageBooks, null, language);
+                picked = pickFromSelector(userId, overfetch, limit, noDiff, java.util.Set.of());
+            }
+            if (picked.isEmpty()) {
+                // Fallback 3: pool exhausted — signal client to unlock next week
+                coverageAnalytics.poolExhaustionFallback(userId, 3, week, tier, language);
+                poolExhausted = true;
+            }
+        } else if (userId != null) {
+            // Option C (2026-06-24): HYBRID journey draw — ~70% from the current
+            // book (sequential "đi xuyên Kinh Thánh" feel) + ~30% from the whole
+            // pool (variety / review). Both portions are history-aware (unseen
+            // first) and honour excludeSet (today's asked + RWP-2 recent-seen),
+            // so the journey progresses without the old Genesis lock or repeats.
+            // If the current book is starved of unseen questions, the whole-pool
+            // portion fills the remainder up to `limit`.
+            String diffFilter = (difficulty != null && !difficulty.isBlank()
+                    && !"all".equalsIgnoreCase(difficulty)) ? difficulty : null;
+            int curCount = (int) Math.round(limit * RANKED_CURRENT_BOOK_RATIO);
+            java.util.LinkedHashMap<String, Question> merged = new java.util.LinkedHashMap<>();
+            if (book != null && !book.isBlank() && curCount > 0) {
+                QuestionFilter curFilter = new QuestionFilter(book, diffFilter, language);
+                for (Question q : pickFromSelector(userId, curCount + excludeSet.size() + 5,
+                        curCount, curFilter, excludeSet)) {
+                    if (q != null && q.getId() != null) merged.putIfAbsent(q.getId(), q);
                 }
             }
+            int remaining = limit - merged.size();
+            if (remaining > 0) {
+                Set<String> exclude2 = new HashSet<>(excludeSet);
+                exclude2.addAll(merged.keySet());
+                QuestionFilter poolFilter = new QuestionFilter((String) null, diffFilter, language);
+                for (Question q : pickFromSelector(userId, remaining + exclude2.size() + 5,
+                        remaining, poolFilter, exclude2)) {
+                    if (merged.size() >= limit) break;
+                    if (q != null && q.getId() != null) merged.putIfAbsent(q.getId(), q);
+                }
+            }
+            picked = new java.util.ArrayList<>(merged.values());
         } else {
             // Guest path — uniform random, no history awareness. /ranked
             // is auth-gated by AppLayout but keep this branch defensive
@@ -625,17 +631,11 @@ public class RankedController {
                 log.warn("Coverage tick failed (non-fatal): {}", coverageErr.getMessage());
             }
 
-            // RWP-3 (2026-06-24): the legacy sequential book-advancement gate
-            // (≥50 questions in the current book per session) was DEAD — each
-            // Ranked match is its own session with questionsInCurrentBook reset
-            // to 0, so it never reached 50 and the book never advanced this way.
-            // Ranked now draws from the whole pool (RWP-1) so a single "current
-            // book" funnel no longer applies. Display "currentBook" simply tracks
-            // the last answered question's book.
-            if (currentQ != null && currentQ.getBook() != null) {
-                p.currentBook = currentQ.getBook();
-                p.currentBookIndex = bookProgressionService.getBookProgress(currentQ.getBook()).currentIndex - 1;
-            }
+            // Option C (2026-06-24): currentBook is the STABLE journey book (≈70%
+            // of each match comes from it). It advances via the sample-target gate
+            // in the per-book stats block below — NOT per answered question. The
+            // dead legacy ≥50/session gate and the never-reached 100-unique gate
+            // are both gone.
 
             // Persist to DB per user/day if authenticated
             try {
@@ -788,8 +788,33 @@ public class RankedController {
                             if (isCorrect)
                                 ubp.setCorrectCount((ubp.getCorrectCount() == null ? 0 : ubp.getCorrectCount()) + 1);
                             userBookProgressRepository.save(ubp);
-                            // RWP-3: no more book auto-advance gate here. Ranked
-                            // is whole-pool; UBP rows are pure per-book stats now.
+
+                            // Option C journey advance: when the user has sampled
+                            // enough DISTINCT questions of the CURRENT journey book
+                            // (RANKED_BOOK_SAMPLE_TARGET, or the whole book for small
+                            // books), move to the next canonical book. Only the
+                            // current book's own answers count — the ~30% whole-pool
+                            // questions (other books) don't push the journey forward.
+                            if (answeredBook.equals(p.currentBook)
+                                    && ubp.getAnsweredCount() != null) {
+                                String lang = (currentQ != null && currentQ.getLanguage() != null)
+                                        ? currentQ.getLanguage() : "vi";
+                                long bookTotal = questionRepository
+                                        .countByBookAndLanguageAndIsActiveTrue(p.currentBook, lang);
+                                int target = (int) Math.min(RANKED_BOOK_SAMPLE_TARGET,
+                                        bookTotal > 0 ? bookTotal : RANKED_BOOK_SAMPLE_TARGET);
+                                if (ubp.getAnsweredCount() >= target) {
+                                    String nextBook = bookProgressionService.getNextBook(p.currentBook);
+                                    if (nextBook != null) {
+                                        p.currentBook = nextBook;
+                                        p.currentBookIndex = bookProgressionService
+                                                .getBookProgress(nextBook).currentIndex - 1;
+                                        udp.setCurrentBook(nextBook);
+                                        udp.setCurrentBookIndex(p.currentBookIndex);
+                                        udpRepository.save(udp);
+                                    }
+                                }
+                            }
                         }
                     }
                 }

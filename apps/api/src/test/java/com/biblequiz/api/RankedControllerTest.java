@@ -4,6 +4,7 @@ import com.biblequiz.infrastructure.service.CacheService;
 import com.biblequiz.modules.achievement.service.AchievementService;
 import com.biblequiz.modules.notification.service.NotificationService;
 import com.biblequiz.modules.quiz.entity.Question;
+import com.biblequiz.modules.quiz.entity.UserBookProgress;
 import com.biblequiz.modules.quiz.entity.UserDailyProgress;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.repository.UserBookProgressRepository;
@@ -955,69 +956,82 @@ class RankedControllerTest extends BaseControllerTest {
                 .andExpect(jsonPath("$.currentBook").value("Genesis"));
     }
 
-    // ── RWP-3 (2026-06-24): whole-pool — currentBook tracks the answered ──────
-    // question's book; the legacy sequential book-advance gate is gone.
+    // ── Option C (2026-06-24): journey book advances at the sample-target gate ──
 
     @Test
     @WithMockUser(username = "test@example.com")
-    void submitRankedAnswer_currentBookTracksAnsweredQuestionBook() throws Exception {
+    void submitRankedAnswer_advancesJourneyBook_whenSampleTargetReached() throws Exception {
         RankedSessionService.Progress progress = new RankedSessionService.Progress();
         progress.livesRemaining = 100;
-        progress.questionsCounted = 49;
-        progress.pointsToday = 500;
-        progress.currentBook = "Genesis"; // session started in Genesis...
-
+        progress.questionsCounted = 20;
+        progress.pointsToday = 200;
+        progress.currentBook = "Genesis";
         when(rankedSessionService.getOrCreate(anyString())).thenReturn(progress);
 
         com.biblequiz.modules.quiz.entity.Question question = new com.biblequiz.modules.quiz.entity.Question();
-        question.setId("q-adv");
-        question.setBook("Exodus"); // ...but the served question is from Exodus (whole pool)
+        question.setId("q-g20");
+        question.setBook("Genesis");
+        question.setLanguage("vi");
         question.setType(com.biblequiz.modules.quiz.entity.Question.Type.multiple_choice_single);
         question.setCorrectAnswer(List.of(0));
-        when(questionRepository.findById("q-adv")).thenReturn(Optional.of(question));
+        when(questionRepository.findById("q-g20")).thenReturn(Optional.of(question));
         when(scoringService.validateMultipleChoiceSingle(any(), any())).thenReturn(true);
         when(scoringService.calculateRanked(any(), anyInt(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean(), anyBoolean()))
                 .thenReturn(new ScoringService.ScoreResult(10, 8, 2, 100, false));
-        BookProgressionService.BookProgress exodusProgress = new BookProgressionService.BookProgress(
-                2, 66, "Exodus", "Leviticus", false, 3.0);
-        when(bookProgressionService.getBookProgress("Exodus")).thenReturn(exodusProgress);
 
-        mockMvc.perform(post("/api/ranked/sessions/ranked-adv/answer")
+        // Genesis UBP already at 19 distinct; this new question makes 20 == target.
+        UserBookProgress ubp = new UserBookProgress("ubp-g", testUser, "Genesis");
+        ubp.setAnsweredCount(19);
+        ubp.setCorrectCount(19);
+        ubp.setUniqueQuestionIds(new java.util.ArrayList<>());
+        when(userBookProgressRepository.findByUserIdAndBook("user-1", "Genesis"))
+                .thenReturn(Optional.of(ubp));
+        when(questionRepository.countByBookAndLanguageAndIsActiveTrue("Genesis", "vi")).thenReturn(150L);
+        when(bookProgressionService.getNextBook("Genesis")).thenReturn("Exodus");
+        when(bookProgressionService.getBookProgress("Exodus")).thenReturn(
+                new BookProgressionService.BookProgress(2, 66, "Exodus", "Leviticus", false, 3.0));
+
+        mockMvc.perform(post("/api/ranked/sessions/ranked-j1/answer")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"questionId\":\"q-adv\",\"answer\":0,\"clientElapsedMs\":5000}"))
+                        .content("{\"questionId\":\"q-g20\",\"answer\":0,\"clientElapsedMs\":5000}"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.currentBook").value("Exodus"));
+                .andExpect(jsonPath("$.currentBook").value("Exodus")); // advanced
     }
 
     @Test
     @WithMockUser(username = "test@example.com")
-    void submitRankedAnswer_noPostCycleMode_anymore() throws Exception {
-        // RWP-3: post-cycle (switch to hard-only after Revelation) was part of the
-        // removed book funnel. A Revelation question no longer flips isPostCycle.
+    void submitRankedAnswer_journeyBookStays_belowSampleTarget() throws Exception {
         RankedSessionService.Progress progress = new RankedSessionService.Progress();
         progress.livesRemaining = 100;
-        progress.questionsCounted = 49;
-        progress.pointsToday = 500;
+        progress.questionsCounted = 5;
+        progress.pointsToday = 50;
         progress.currentBook = "Genesis";
-
         when(rankedSessionService.getOrCreate(anyString())).thenReturn(progress);
 
         com.biblequiz.modules.quiz.entity.Question question = new com.biblequiz.modules.quiz.entity.Question();
-        question.setId("q-rev");
-        question.setBook("Revelation");
+        question.setId("q-g6");
+        question.setBook("Genesis");
+        question.setLanguage("vi");
         question.setType(com.biblequiz.modules.quiz.entity.Question.Type.multiple_choice_single);
         question.setCorrectAnswer(List.of(0));
-        when(questionRepository.findById("q-rev")).thenReturn(Optional.of(question));
+        when(questionRepository.findById("q-g6")).thenReturn(Optional.of(question));
         when(scoringService.validateMultipleChoiceSingle(any(), any())).thenReturn(true);
         when(scoringService.calculateRanked(any(), anyInt(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean(), anyBoolean()))
                 .thenReturn(new ScoringService.ScoreResult(10, 8, 2, 100, false));
 
-        mockMvc.perform(post("/api/ranked/sessions/ranked-rev/answer")
+        UserBookProgress ubp = new UserBookProgress("ubp-g", testUser, "Genesis");
+        ubp.setAnsweredCount(5);
+        ubp.setCorrectCount(5);
+        ubp.setUniqueQuestionIds(new java.util.ArrayList<>());
+        when(userBookProgressRepository.findByUserIdAndBook("user-1", "Genesis"))
+                .thenReturn(Optional.of(ubp));
+        when(questionRepository.countByBookAndLanguageAndIsActiveTrue("Genesis", "vi")).thenReturn(150L);
+
+        mockMvc.perform(post("/api/ranked/sessions/ranked-j2/answer")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"questionId\":\"q-rev\",\"answer\":0,\"clientElapsedMs\":5000}"))
+                        .content("{\"questionId\":\"q-g6\",\"answer\":0,\"clientElapsedMs\":5000}"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.currentBook").value("Revelation"))
-                .andExpect(jsonPath("$.isPostCycle").value(false));
+                .andExpect(jsonPath("$.currentBook").value("Genesis")); // stays — only 6/20
     }
 
     // ── TC-RANK-005: Energy deduction on wrong answer ─────────────────────────
@@ -1130,11 +1144,11 @@ class RankedControllerTest extends BaseControllerTest {
         org.junit.jupiter.api.Assertions.assertFalse(body.contains("hibernateLazyInitializer"));
     }
 
-    // ── RWP-1 + RWP-2 (2026-06-24): whole-pool select + cross-day exclude ─────
+    // ── Option C + RWP-2 (2026-06-24): hybrid select + cross-day exclude ─────
 
     @Test
     @WithMockUser(username = "test@example.com")
-    void selectRankedQuestions_ignoresBookFilter_andExcludesRecentlySeen() throws Exception {
+    void selectRankedQuestions_hybridCurrentBookPlusWholePool_andExcludesRecentlySeen() throws Exception {
         when(featureFlagService.isLiturgicalCoverageEnabled(anyString())).thenReturn(false);
         // RWP-2: recently-seen ids come from history and must be excluded.
         when(userQuestionHistoryRepository.findRecentSeenQuestionIds(eq("user-1"), any()))
@@ -1142,7 +1156,7 @@ class RankedControllerTest extends BaseControllerTest {
 
         Question keep = new Question();
         keep.setId("q-keep");
-        keep.setBook("Psalms");
+        keep.setBook("Genesis");
         keep.setType(Question.Type.multiple_choice_single);
         keep.setCorrectAnswer(java.util.List.of(0));
         Question recent = new Question();
@@ -1157,7 +1171,6 @@ class RankedControllerTest extends BaseControllerTest {
         when(smartQuestionSelector.selectQuestions(eq("user-1"), anyInt(), filterCap.capture()))
                 .thenReturn(java.util.List.of(keep, recent));
 
-        // Request DOES send a book — the endpoint must ignore it (whole pool).
         mockMvc.perform(post("/api/ranked/questions/select")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"limit\":10,\"excludeIds\":[],\"book\":\"Genesis\",\"language\":\"vi\"}"))
@@ -1165,9 +1178,14 @@ class RankedControllerTest extends BaseControllerTest {
                 .andExpect(jsonPath("$.questions[0].id").value("q-keep"))
                 .andExpect(jsonPath("$.questions[1]").doesNotExist()); // q-recent excluded (RWP-2)
 
-        // RWP-1: the selector was called with NO book filter (whole 66-book pool).
-        org.junit.jupiter.api.Assertions.assertTrue(filterCap.getValue().books().isEmpty(),
-                "Ranked select must not funnel by a single book");
+        // Option C: the selector is called twice — once with the current book
+        // (the ~70% portion) and once with NO book (the ~30% whole-pool portion).
+        java.util.List<com.biblequiz.modules.quiz.service.SmartQuestionSelector.QuestionFilter> filters =
+                filterCap.getAllValues();
+        boolean hasCurrentBook = filters.stream().anyMatch(f -> f.books().contains("Genesis"));
+        boolean hasWholePool = filters.stream().anyMatch(f -> f.books().isEmpty());
+        org.junit.jupiter.api.Assertions.assertTrue(hasCurrentBook, "expected a current-book draw");
+        org.junit.jupiter.api.Assertions.assertTrue(hasWholePool, "expected a whole-pool draw");
     }
 
     // ── LCT-1..3: Liturgical Coverage pool-exhaustion fallback chain ────────
