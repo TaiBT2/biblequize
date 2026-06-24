@@ -4016,23 +4016,23 @@
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "correctAnswer": [
-      2
+      0
     ],
     "verseEnd": 7,
-    "content": "Ex 34:6-7 (ESV) — what is the precise verse balancing God's MERCY with JUSTICE?",
-    "explanation": "Ex 34:6-7 — 'The LORD, the LORD, a God merciful and gracious, slow to anger, and abounding in steadfast love and faithfulness, keeping steadfast love for thousands, forgiving iniquity and transgression and sin, but who will by no means clear the guilty, visiting the iniquity of the fathers on the children and the children's children, to the third and the fourth generation'. ASYMMETRY: MERCY 'thousands' generations vs PUNISHMENT '3-4' generations — showing mercy vastly outweighs, BUT JUSTICE is NOT skipped. Ezekiel 18 refines: each individual bears own sin, not children — further development.",
+    "content": "Ex 34:6-7 (ESV) — which is the precise verse that proclaims God's MERCY yet also His JUSTICE?",
+    "explanation": "The CORRECT ANSWER quotes Exodus 34:6-7 (ESV) in full, declaring both God's mercy (merciful, gracious, slow to anger, abounding in steadfast love and faithfulness, forgiving sin) and His justice (by no means clearing the guilty, visiting iniquity on the children to the third and fourth generation).\n- Distractor 1 (wrong_detail — number): wrong because it alters the scope of justice, reading 'to the seventh generation' instead of the biblical 'to the third and the fourth generation'.\n- Distractor 2 (wrong_scope — incomplete): it omits the opening proclamation ('The LORD, the LORD') and the closing clause about visiting iniquity on the children, so it does not fully convey the two verses in question.\n- Distractor 3 (near_passage — missing word): nearly correct but drops 'faithfulness' from the list of attributes, reflecting an inaccurate citation or confusion with other passages describing God.",
     "language": "en",
     "options": [
-      "'God is infinitely merciful, never judges sin'",
-      "'God is merciful only to Israelites'",
-      "'The LORD... slow to anger, abounding in steadfast love and faithfulness, keeping steadfast love to THOUSANDS, forgiving iniquity... BUT WHO will by no means CLEAR the GUILTY, visiting the iniquity of fathers on children to the THIRD and FOURTH generation'",
-      "'God only judges Egyptians'"
+      "'The LORD, the LORD, a God merciful and gracious, slow to anger, and abounding in steadfast love and faithfulness, keeping steadfast love for thousands, forgiving iniquity and transgression and sin, but who will by no means clear the guilty, visiting the iniquity of the fathers on the children to the third and the fourth generation'",
+      "'The LORD, the LORD, a God merciful and gracious, slow to anger, and abounding in steadfast love and faithfulness, keeping steadfast love for thousands, forgiving iniquity and transgression and sin, but who will by no means clear the guilty, visiting the iniquity of the fathers on the children to the seventh generation'",
+      "'A God merciful and gracious, slow to anger, and abounding in steadfast love and faithfulness, keeping steadfast love for thousands, forgiving iniquity and transgression and sin, but who will by no means clear the guilty'",
+      "'The LORD, a God merciful and gracious, slow to anger, and abounding in steadfast love, keeping steadfast love for thousands, forgiving iniquity and transgression and sin, but who will by no means clear the guilty, visiting the iniquity of the fathers on the children to the third and the fourth generation'"
     ],
     "tags": [
       "Old Testament",
       "Exodus",
       "Pentateuch",
-      "Mercy and Justice",
+      "God — merciful and just",
       "Advanced"
     ]
   },
@@ -4061,6 +4061,2534 @@
       "Pentateuch",
       "Closing Verse",
       "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 1,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Exodus 1:5, what was the total number of descendants of Jacob who went down to Egypt?",
+    "options": [
+      "Six hundred people",
+      "Seventy people",
+      "Twelve people",
+      "Four hundred people"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 1:5 states: 'All the descendants of Jacob were seventy persons.' The correct answer is 'Seventy people'. - 'Twelve people' refers to the number of Jacob's sons, not the total number of descendants (wrong_scope). - 'Six hundred people' is confused with the approximately 600,000 men who left during the Exodus (near_passage, Exodus 12:37). - 'Four hundred people' is confused with the 400 years of sojourning foretold to Abraham (true_but_off, Genesis 15:13).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 1,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "The Israelites were forced to build two store cities for Pharaoh. What were the names of these two cities?",
+    "options": [
+      "Sodom and Gomorrah",
+      "Jericho and Ai",
+      "Nineveh and Babylon",
+      "Pithom and Raamses"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 1:11 records that the Israelites built for Pharaoh 'store cities, Pithom and Raamses'. - 'Sodom and Gomorrah' were the two cities destroyed in the time of Abraham and have no connection to Egypt (wrong_scope). - 'Jericho and Ai' were cities in Canaan conquered later (near_passage, the book of Joshua). - 'Nineveh and Babylon' were cities of later empires (common_misconception about ancient place names).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 1,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After the midwives disobeyed his orders, what final command did Pharaoh give to all his people concerning Hebrew baby boys?",
+    "options": [
+      "Throw every newborn boy into the Nile",
+      "Take every boy into the palace as a soldier",
+      "Sell every boy as a slave to foreign nations",
+      "Exile every boy out of the land of Egypt"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 1:22 (ESV): Pharaoh commanded, 'Every son that is born to the Hebrews you shall cast into the Nile.' - 'Sell them as slaves to foreign nations' is not in this command; all the people were already enslaved (true_but_off). - 'Take into the palace as soldiers' confuses Pharaoh's use of the people as forced laborers to build store cities (wrong_detail). - 'Exile from the land' is the opposite of Pharaoh's intent: he wanted to control and reduce the Hebrew population, not drive them away (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 2,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When Moses first arrived in the land of Midian, whom did he help at a well?",
+    "options": [
+      "The shepherds of Pharaoh",
+      "The seven daughters of the priest of Midian",
+      "A caravan of Ishmaelite traders",
+      "Two messengers from the land of Canaan"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 2:16–17 (ESV): Moses defended 'seven daughters' of the priest of Midian when shepherds drove them away, and drew water for their flock. - 'A caravan of Ishmaelite traders' confuses them with the traders who bought Joseph (near_passage, Gen 37). - 'The shepherds of Pharaoh' reverses the roles: it was the shepherds whom Moses stood against (wrong_scope). - 'Two messengers from Canaan' do not appear anywhere in this narrative (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 2,
+    "verseStart": 18,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "In Exodus 2:18, by what name is the father of the girls Moses helped — who later became his father-in-law — called?",
+    "options": [
+      "Laban",
+      "Reuel",
+      "Bethuel",
+      "Jethro"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 2:18 (ESV) calls Moses' father-in-law 'Reuel'; he is later called Jethro (Exod 3:1). Since the question asks for the name recorded in 2:18, the answer is 'Reuel.' - 'Jethro' refers to the same man but is the name used in a different passage, not the name written in 2:18 (true_but_off). - 'Laban' was Jacob's father-in-law, not Moses' (near_passage, Gen 29). - 'Bethuel' was Rebekah's father (wrong_scope, Gen 24).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 2,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Moses named his firstborn son Gershom; what did that name reflect about his circumstances?",
+    "options": [
+      "He would return to Egypt",
+      "He was rescued from the water",
+      "He was a sojourner in a foreign land",
+      "God had blessed him"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 2:22 (ESV): Moses named his son Gershom, saying, 'I have been a sojourner in a foreign land.' - 'Rescued from the water' is the meaning behind the name Moses, not Gershom (near_passage, Exod 2:10). - 'God has blessed him' is the meaning of Eliezer, Moses' second son (wrong_detail, Exod 18:4). - 'He would return to Egypt' has no connection to the meaning of the name (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 2,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Exodus 2:23, what event caused the people of Israel to cry out to God?",
+    "options": [
+      "Enemies from the north came and invaded",
+      "The king of Egypt died and the burden of slavery remained heavy",
+      "A great famine spread throughout the land of Egypt",
+      "The Nile dried up, causing the harvest to fail"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 2:23 (ESV): 'the king of Egypt died,' yet the people 'groaned because of their slavery' and their cry rose up to God. - 'A great famine' confuses this event with the famine in Joseph's time (near_passage, Gen 41). - 'Enemies from the north invading' is not mentioned anywhere in this passage (wrong_detail). - 'The Nile drying up' is a detail from the later plagues, not the cause of the people's cry here (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 3,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "At the burning bush, what did God tell Moses to do before approaching?",
+    "options": [
+      "Offer a lamb as a sacrifice",
+      "Kneel down and cover his face",
+      "Remove the staff from his hand",
+      "Take off his sandals, for it was holy ground"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exod. 3:5 (ESV): 'Take your sandals off your feet, for the place on which you are standing is holy ground.' - 'Kneel down and cover his face' — Moses did hide his face (3:6), but that was not this first command (true_but_off). - 'Offer a lamb' was not instructed here (wrong_detail). - 'Remove the staff from his hand' confuses this with the later sign of the staff turning into a snake (near_passage, Exod. 4:2-3).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 3,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "God promised to bring the Israelites up to a good and spacious land — how was that land described?",
+    "options": [
+      "Free from all enemies",
+      "Full of gold and silver",
+      "Flowing with milk and honey",
+      "Abundant with springs and forests"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exod. 3:8 (ESV): God promised to bring the people up to 'a good and broad land, a land flowing with milk and honey.' - 'Full of gold and silver' confuses this with the Egyptian jewelry given to the Israelites at their departure (near_passage, Exod. 12:35). - 'Abundant with springs and forests' is an invented description not found in the text (wrong_detail). - 'Free from all enemies' is incorrect because the land was still inhabited by many peoples whom God would drive out (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 3,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "God foretold that when leaving Egypt the Israelites would not go empty-handed — what would they do to the Egyptians?",
+    "options": [
+      "Force the Egyptians to carry their baggage",
+      "Make a peace covenant with the Egyptians",
+      "Burn down the houses of the Egyptians",
+      "Ask for articles of silver, gold, and clothing"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exod. 3:22 (ESV): Each woman would 'ask her neighbor and any woman who lives in her house for silver and gold jewelry, and for clothing,' so that the people would not leave empty-handed. - 'Force the Egyptians to carry their baggage' reverses the slave roles (wrong_scope). - 'Burn down the houses' is not part of this promise (wrong_detail). - 'Make a peace covenant' contradicts the context of deliverance through judgment (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 4,
+    "verseStart": 6,
+    "verseEnd": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What was the second sign God gave Moses to convince the people — what happened to his hand?",
+    "options": [
+      "His hand turned to pure, shining gold",
+      "His hand shot out fire but was not burned",
+      "His hand withered and then grew back",
+      "His hand became leprous and was then restored"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exod. 4:6-7 (ESV): Moses put his hand inside his cloak, and when he drew it out his hand was 'leprous like snow'; when he put it back inside, it was restored like the rest of his flesh. - 'Turned to pure gold' is not found in the text (wrong_detail). - 'Withered and then grew back' confuses this with the judgment on Jeroboam's hand later (near_passage, 1 Kings 13:4). - 'Shot out fire but was not burned' blends this with the burning bush that was not consumed (wrong_scope, Exod. 3:2).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 4,
+    "verseStart": 22,
+    "verseEnd": 23,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "God told Moses to declare to Pharaoh that Israel was what to Him — the basis for the warning about the firstborn?",
+    "options": [
+      "The flock of the Shepherd",
+      "God's own special possession",
+      "The firstborn son of the LORD",
+      "The chosen people among all nations"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exod. 4:22-23 (ESV): 'Israel is my firstborn son'; because Pharaoh refused to let God's son go, God would kill Pharaoh's firstborn son. The image of 'firstborn son' is precisely the foundation for the tenth plague. - 'The chosen people among all nations' is theologically true but is not the image used here (true_but_off, Deut. 7:6). - 'The flock of the Shepherd' is a metaphor found elsewhere (wrong_scope, Ps. 100:3). - 'God's own special possession' is also generally true but misses the specific firstborn-son reasoning in this passage (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 4,
+    "verseStart": 24,
+    "verseEnd": 26,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "On the way back to Egypt, when the LORD sought to kill Moses, what did Zipporah do to save her husband?",
+    "options": [
+      "Offered a lamb as an atoning sacrifice",
+      "Prayed to God throughout the night",
+      "Returned to her father's house in Midian",
+      "Circumcised her son with a flint knife"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 4:24-26 (ESV): Zipporah took a flint and cut off her son's foreskin, then touched Moses' feet with it and called him 'a bridegroom of blood,' so the LORD let him go. - 'Offered a lamb as an atoning sacrifice' is not mentioned in this account (wrong_detail). - 'Prayed throughout the night' is not the recorded action (wrong_scope). - 'Returned to her father's house in Midian' contradicts the fact that they were already on their way to Egypt (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 5,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When Moses and Aaron delivered the LORD's command for the first time, how did Pharaoh respond?",
+    "options": [
+      "Demanded to see a sign first as proof",
+      "Asked, 'Who is the LORD, that I should obey his voice?'",
+      "Summoned the Egyptian priests to consult",
+      "Promised to let the people go after a three-day journey"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 5:2 (ESV): Pharaoh replied, 'Who is the LORD, that I should obey his voice and let Israel go? I do not know the LORD.' - 'Promised to let the people go after a three-day journey' confuses this with Pharaoh's later false concessions during the plagues (near_passage). - 'Demanded to see a sign first' is what occurred at a later encounter (wrong_detail, Exodus 7:9). - 'Summoned the Egyptian priests' confuses this with his later summoning of the sorcerers (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 5,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "As punishment following Moses' request, what change did Pharaoh order regarding the Israelites' brick-making?",
+    "options": [
+      "Only a few people would be allowed to make bricks",
+      "No more straw would be provided, but the quota would remain the same",
+      "The number of bricks required each week would be doubled",
+      "They would be forced to make bricks on the Sabbath as well"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 5:7-8 (ESV): Pharaoh commanded, 'You shall no longer give the people straw to make bricks,' requiring them to gather their own straw, but 'the number of bricks that they made in the past you shall impose on them.' - 'Doubled the brick quota' is incorrect: the quota remained unchanged; only the straw supply was cut off (wrong_detail). - 'Making bricks on the Sabbath' is a concept not yet introduced at this point (wrong_scope). - 'Only a few people allowed to make bricks' contradicts the fact that the entire people faced heavier oppression (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 6,
+    "verseStart": 6,
+    "verseEnd": 8,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "In the promise of deliverance in Exodus 6:6-8, which of the following is NOT among the 'I will' commitments that God declared?",
+    "options": [
+      "I will take you to be my people",
+      "I will give you a king",
+      "I will free you from their yoke",
+      "I will bring you into the land I swore to give"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 6:6-8 (ESV) lists the 'I will' promises: bring out from slavery, redeem with an outstretched arm, take as his own people, and bring into the land he swore to give. 'I will give you a king' is NOT found here — kingship would not emerge until centuries later (common_misconception). The other three options are genuine statements in the passage and serve as traps for inattentive readers: 'I will free you from their yoke' (near_passage, 6:6), 'I will take you to be my people' (near_passage, 6:7), 'I will bring you into the land I swore to give' (near_passage, 6:8).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 6,
+    "verseStart": 23,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to the genealogy in Exodus 6, whom did Aaron marry?",
+    "options": [
+      "Miriam, his sister",
+      "Elisheba, the daughter of Amminadab",
+      "Zipporah, the daughter of Jethro",
+      "Jochebed, the daughter of Levi"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 6:23 (ESV): 'Aaron took as his wife Elisheba, the daughter of Amminadab, the sister of Nahshon.' - 'Jochebed, the daughter of Levi' was Aaron's mother, not his wife (near_passage, Exodus 6:20). - 'Miriam' was Aaron's sister, not his wife (wrong_scope). - 'Zipporah' was Moses' wife, not Aaron's (wrong_detail, Exodus 2:21).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 7,
+    "verseStart": 3,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "For what theological purpose did God declare He would harden Pharaoh's heart?",
+    "options": [
+      "So that Pharaoh would repent at the first plague",
+      "So that the Egyptians would voluntarily follow Israel out",
+      "To shorten the time the people spent in the wilderness",
+      "To multiply His signs and wonders in the land of Egypt"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 7:3 (ESV): 'But I will harden Pharaoh's heart, and though I multiply my signs and wonders in the land of Egypt' — to reveal His power and judgment (7:5). - 'So that Pharaoh would repent immediately' contradicts the stated purpose in the verse (common_misconception). - 'So that the Egyptians would follow Israel out' is not the purpose of hardening Pharaoh's heart (wrong_scope). - 'To shorten the time in the wilderness' is completely removed from the Egyptian context (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 7,
+    "verseStart": 11,
+    "verseEnd": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When the Egyptian magicians also turned their staffs into snakes, what happened to demonstrate God's supremacy?",
+    "options": [
+      "Aaron's staff turned into a great dragon",
+      "The magicians' snakes immediately all died",
+      "The magicians fled from the palace",
+      "Aaron's staff swallowed the magicians' staffs"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 7:11-12 (ESV): the magicians also turned their staffs into snakes, 'but Aaron's staff swallowed up their staffs.' - 'The magicians' snakes all died' is a wrong detail: they were swallowed, not killed on the spot (wrong_detail). - 'Turned into a great dragon' adds something not present in the text (wrong_scope). - 'The magicians fled' is an imagined reaction not recorded in the passage (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 7,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Exodus 7:7, how old was Aaron when the two brothers appeared before Pharaoh?",
+    "options": [
+      "Forty years old",
+      "Seventy years old",
+      "One hundred and twenty years old",
+      "Eighty-three years old"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 7:7 (ESV): 'Now Moses was eighty years old, and Aaron eighty-three years old, when they spoke to Pharaoh.' The question asks about Aaron, so the answer is 'Eighty-three years old.' - 'Seventy years old' confuses this with the seventy members of Jacob's household (near_passage, Exod. 1:5). - 'One hundred and twenty years old' was Moses' age at his death (wrong_scope, Deut. 34:7). - 'Forty years old' was Moses' age when he fled Egypt, not Aaron's age at this time (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 8,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "During the plague of gnats, the magicians could not replicate it; what did they say to Pharaoh?",
+    "options": [
+      "'This is the finger of God'",
+      "'We need more time to call upon our gods'",
+      "'The gods of Egypt have forsaken us'",
+      "'Let the Hebrew people go'"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 8:19 (ESV): the magicians said to Pharaoh, 'This is the finger of God,' but Pharaoh's heart remained hardened. - 'We need more time to call upon our gods' is not found in their words (wrong_detail). - 'Let the Hebrew people go' is what Moses demanded, not what the magicians said (wrong_scope). - 'The gods of Egypt have forsaken us' is a theological inference not present in the text (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 8,
+    "verseStart": 22,
+    "verseEnd": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Beginning with the plague of flies (swarms), what did God do to distinguish His people from the Egyptians?",
+    "options": [
+      "He placed a mark on the foreheads of the Israelites",
+      "He set apart the land of Goshen from the plague",
+      "He caused only the Egyptians to be struck blind",
+      "He gave His people an abundance of food"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 8:22-23 (ESV): the LORD 'will set apart the land of Goshen, where my people dwell, so that no swarms of flies shall be there,' establishing a distinction between His people and the Egyptians. - 'A mark on the foreheads' confuses this with other imagery found elsewhere in Scripture, not here (common_misconception). - 'Only the Egyptians were struck blind' is not the content of this plague (wrong_detail). - 'An abundance of food' misses the distinguishing point stated in the text (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 8,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What was the fourth plague brought upon the land of Egypt?",
+    "options": [
+      "Frogs overran the land",
+      "Locusts devastated the crops",
+      "A dense swarm of flies",
+      "Boils on people and animals"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 8:24 (ESV): 'there came great swarms of flies... throughout all the land of Egypt the land was ruined by the flies.' This was the fourth plague. - 'Locusts' were the eighth plague (near_passage, Exodus 10). - 'Boils' were the sixth plague (near_passage, Exodus 9). - 'Frogs' were the second plague (wrong_detail, Exodus 8:6).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 9,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "During the plague on livestock, what was the clear distinction between the Egyptians and the Israelites?",
+    "options": [
+      "Both sides lost all their livestock",
+      "Half of Israel's livestock died",
+      "Not one of Israel's livestock died",
+      "Only Israel's sheep were spared"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 9:6 (ESV): 'all the livestock of Egypt died, but not one of the livestock of the people of Israel died.' - 'Half died' is incorrect about the number: not one died (wrong_detail). - 'Both sides lost all their livestock' contradicts the distinction stated in the text (common_misconception). - 'Only the sheep were spared' wrongly narrows the scope: all of Israel's livestock survived (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 9,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "During the plague of boils, what happened to the Egyptian magicians?",
+    "options": [
+      "They fled to another land to escape the boils",
+      "They were able to replicate the plague upon the Hebrews",
+      "They could not stand before Moses because they too were covered with boils",
+      "They advised Pharaoh to let the Hebrew people go"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 9:11 (ESV): 'the magicians could not stand before Moses because of the boils, for the boils came upon the magicians and upon all the Egyptians.' - 'They were able to replicate the plague' is false: they had already been powerless since the plague of gnats (wrong_detail). - 'They advised Pharaoh to release the people' is not the action recorded here (wrong_scope). - 'They fled to another land' is an invented detail (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 9,
+    "verseStart": 26,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "During the plague of hail, there was one place where no hail fell at all. Where was it?",
+    "options": [
+      "The land of Goshen, where the Israelites lived",
+      "The temples of the Egyptian gods",
+      "The banks of the Nile River",
+      "Pharaoh's palace"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 9:26 (ESV): 'Only in the land of Goshen, where the people of Israel were, was there no hail.' - 'Pharaoh's palace' was not exempted according to the text (wrong_detail). - 'The temples of the Egyptian gods' is an inference not found in the verse (common_misconception). - 'The banks of the Nile' confuses this setting with the water-to-blood plague (near_passage, Exodus 7).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 10,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What natural means did God use to bring the locusts upon the land of Egypt?",
+    "options": [
+      "A great flood from the Nile River",
+      "An east wind that blew all day and all night",
+      "An earthquake that shook the ground",
+      "A thick cloud that covered the face of the sun"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 10:13 (ESV): 'the LORD brought an east wind upon the land all that day and all that night. When it was morning, the east wind had brought the locusts.' - 'A flood from the Nile River' is unrelated to the locust plague (wrong_detail). - 'A thick cloud covering the sun' confuses this with the subsequent plague of darkness (near_passage, Exodus 10:21). - 'An earthquake' does not appear among the ten plagues (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 10,
+    "verseStart": 22,
+    "verseEnd": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "While thick darkness covered Egypt, what was happening with the Israelites?",
+    "options": [
+      "They were also plunged into darkness like the Egyptians",
+      "They had to stay inside their homes for three days",
+      "They were given torches of fire from heaven",
+      "There was light where they lived"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 10:23 (ESV): the Egyptians 'did not see one another' for three days, 'but all the people of Israel had light where they lived.' - 'Also plunged into darkness' contradicts the distinction explicitly made (common_misconception). - 'Given torches of fire from heaven' adds a detail not present in the text (wrong_detail). - 'Had to stay inside their homes for three days' confuses this event with the Passover night instructions (near_passage, Exodus 12:22).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 10,
+    "verseStart": 24,
+    "verseEnd": 26,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Pharaoh agreed to let the people go but demanded they leave one thing behind; what condition did Moses firmly refuse?",
+    "options": [
+      "Leave Aaron behind in Egypt",
+      "Leave the children of the people behind",
+      "Leave the silver and gold they had asked for",
+      "Leave the flocks and herds of the people behind"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 10:24-26 (ESV): Pharaoh allowed them to go but said 'only let your flocks and your herds remain behind'; Moses replied 'not a hoof shall be left behind,' because they needed the animals for sacrifices. - 'Leave the children behind' was the condition Pharaoh stated on a previous occasion, not this one (near_passage, Exodus 10:10-11). - 'Leave the silver and gold' is not the condition stated here (wrong_detail). - 'Leave Aaron behind' is never mentioned anywhere in this passage (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 11,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Before the final plague, what did God tell the Israelites to do with the Egyptians, and why were they able to succeed?",
+    "options": [
+      "Demand compensation for their labor, because the law permitted it",
+      "Borrow food, because the Egyptians pitied them",
+      "Buy back their land, because they had accumulated much money",
+      "Ask for articles of silver and gold, because the people had found favor in the sight of the Egyptians"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 11:2-3 (ESV): each person was to 'ask his neighbor for silver and gold jewelry,' because 'the LORD had given the people favor in the sight of the Egyptians.' - 'Borrow food because the Egyptians pitied them' changes both the object and the reason (wrong_detail). - 'Buy back their land' is not mentioned anywhere in the text (wrong_scope). - 'Demand compensation for labor according to law' is a modern-day inference, not the content of the passage (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 11,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "The tenth plague would strike every firstborn, from the highest to the lowest; how is that range described?",
+    "options": [
+      "Only the firstborn inside Pharaoh's palace",
+      "From the children of officials to the children of soldiers",
+      "From the firstborn of Pharaoh to the firstborn of the slave girl who is behind the mill",
+      "Only the firstborn of the Egyptian priests"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 11:5 (ESV): 'every firstborn in the land of Egypt shall die, from the firstborn of Pharaoh...to the firstborn of the slave girl who is behind the handmill,' along with all the firstborn of the livestock. - 'Only inside Pharaoh's palace' wrongly narrows the scope (wrong_scope). - 'Only the firstborn of the priests' misidentifies the subjects entirely (wrong_detail). - 'From officials to soldiers' omits the two extreme endpoints explicitly stated in the text (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 12,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "At the Passover meal, the lamb was to be eaten together with which two things?",
+    "options": [
+      "Leavened bread and salt",
+      "Unleavened bread and bitter herbs",
+      "Olives and oil",
+      "Honey and wine"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 12:8 (ESV): 'They shall eat the flesh...with unleavened bread and bitter herbs.' - 'Honey and wine' were not part of the Passover meal (wrong_detail). - 'Olives and oil' confuses this with materials used for the lampstand later in the narrative (near_passage, Exodus 27:20). - 'Leavened bread' directly contradicts the explicit command to eat UNleavened bread (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 12,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How many days does the Festival of Unleavened Bread, associated with Passover, last?",
+    "options": [
+      "Forty days",
+      "One day",
+      "Seven days",
+      "Three days"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exod 12:15 (ESV): 'Seven days you shall eat unleavened bread,' and all leaven must be removed from the house. — 'Three days' confuses this with the three-day journey into the wilderness the people requested (near_passage, Exod 5:3). — 'Forty days' conflates this with the time Moses spent on the mountain (wrong_scope, Exod 24:18). — 'One day' is plainly wrong on the number (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 12,
+    "verseStart": 46,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "A regulation about the Passover lamb — 'you shall not break any of its bones' — was later connected to what in the New Testament?",
+    "options": [
+      "The fact that Jesus's bones were not broken on the cross",
+      "Jesus healing a paralyzed man",
+      "Jesus breaking bread at the Lord's Supper",
+      "The burial of Jesus's body in the tomb"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exod 12:46 (ESV): not a bone of the Passover lamb 'shall you break'; John 19:36 applies these words to Jesus when the soldiers did not break His legs. — 'Breaking bread at the Lord's Supper' is a different image and is not the text being cited here (true_but_off). — 'Burial in the tomb' has no connection to the bone regulation (wrong_scope). — 'Healing a paralyzed man' is completely unrelated to this context (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 13,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After leaving Egypt, what did God command the Israelites to consecrate to Him?",
+    "options": [
+      "A tenth of all produce harvested each year",
+      "Every firstborn of man and of livestock",
+      "The first lamb born of each flock",
+      "The firstfruits of vineyard and orchard"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exod 13:2 (ESV): 'Consecrate to me all the firstborn' among the people of Israel, both human and animal. — 'A tenth of all produce' is a different law (near_passage, Lev 27). — 'The first lamb born of each flock' incorrectly narrows the command: it covers all firstborn, not just lambs (wrong_scope). — 'Firstfruits of vineyard and orchard' confuses this with the firstfruits offering (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 13,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When leaving Egypt, what did Moses take with him to honor an ancient oath?",
+    "options": [
+      "Aaron's staff",
+      "The bones of Joseph",
+      "The two stone tablets of the covenant",
+      "The Ark of the Covenant"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exod 13:19 (ESV): 'Moses took the bones of Joseph with him, for Joseph had made the sons of Israel solemnly swear... that they would carry up his bones with them' (Gen 50:25). — 'Aaron's staff' was not the object carried in fulfillment of this oath (wrong_detail). — 'The two stone tablets of the covenant' did not yet exist at this point in the narrative (wrong_scope, Exod 24). — 'The Ark of the Covenant' had not yet been made either (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 14,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When Pharaoh pursued the Israelites toward the Red Sea, what force did he lead with?",
+    "options": [
+      "Three hundred skilled archers",
+      "Six hundred chosen chariots",
+      "One thousand elite infantry soldiers",
+      "All the warships on the Nile"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exod 14:7 (ESV): Pharaoh 'took six hundred chosen chariots and all the other chariots of Egypt.' — 'One thousand infantry soldiers' is wrong in both number and type of force (wrong_detail). — 'Warships on the Nile' makes no sense in the context of an overland pursuit (wrong_scope). — 'Three hundred archers' confuses this with Gideon's three hundred men later in Israel's history (near_passage, Judg 7).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 14,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When the people were terrified before the Red Sea and the Egyptian army, how did Moses reassure them?",
+    "options": [
+      "'Go back to Egypt and seek peace'",
+      "'Scatter and hide in the mountains'",
+      "'Take up weapons and fight the enemy'",
+      "'The LORD will fight for you'"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 14:14 (ESV): 'The LORD will fight for you, and you have only to be silent.' - 'Take up weapons and fight' contradicts the command to 'be silent' (common_misconception). - 'Go back to Egypt and seek peace' was what the people complained about, not what Moses said (near_passage, Exodus 14:12). - 'Scatter and hide in the mountains' does not appear in the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 14,
+    "verseStart": 19,
+    "verseEnd": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "On the night of crossing the Red Sea, what special role did the pillar of cloud play between the two camps?",
+    "options": [
+      "It rose high up so both sides could see it",
+      "It became a wall of fire to burn the Egyptian army",
+      "It moved to the rear, bringing darkness to Egypt and giving light to Israel",
+      "It disappeared entirely so Moses could part the sea"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 14:19-20 (ESV): the pillar of cloud 'moved and went behind them,' standing between the camp of Egypt and the camp of Israel; 'there was the cloud and the darkness. And it lit up the night,' keeping one side from the other all night. - 'Became a wall of fire to burn them' adds a detail not in the text (wrong_detail). - 'Rose high so both sides could see it' contradicts its purpose of separation (common_misconception). - 'Disappeared entirely' is wrong: the pillar remained present throughout the night (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 15,
+    "verseStart": 27,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After Marah, the people came to Elim — a resting place described by which detail?",
+    "options": [
+      "A green meadow with a river flowing through it",
+      "Twelve springs of water and seventy palm trees",
+      "A deep well in the middle of the desert",
+      "A deserted fortress"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 15:27 (ESV): at Elim 'there were twelve springs of water and seventy palm trees, and they encamped there by the water.' - 'A deep well' gives the wrong detail regarding the number of springs (wrong_detail). - 'A meadow with a river' does not match the description of springs and palm trees (wrong_scope). - 'A deserted fortress' is an image that does not appear in the text at all (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 16,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When the people gathered manna and measured it by the omer, what remarkable result demonstrated God's fair provision?",
+    "options": [
+      "Whoever gathered much had nothing left over, and whoever gathered little had no lack",
+      "The manna of the greedy turned to stone",
+      "Whoever gathered more found the surplus turned to gold",
+      "Those who gathered little had an angel supply the rest"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 16:18 (ESV): when measured by the omer, 'whoever gathered much had nothing left over, and whoever gathered little had no lack; each of them gathered as much as he could eat.' - 'Turned to stone' does not appear in the text (wrong_detail). - 'The surplus turned to gold' is a false addition (wrong_scope). - 'An angel supplying the rest' is not the mechanism described (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 16,
+    "verseStart": 22,
+    "verseEnd": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "On the sixth day, what was unusual about the manna in connection with the Sabbath?",
+    "options": [
+      "The people had to fast to prepare for the Sabbath",
+      "The people gathered twice the usual portion, to set aside for the Sabbath",
+      "The manna fell in large heaps",
+      "The manna that day was sweeter than usual"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 16:22-23 (ESV): on the sixth day the people gathered 'twice as much bread, two omers each,' because the seventh day was a Sabbath rest, and the portion kept overnight did not spoil. - 'Sweeter than usual' is not a characteristic associated with the sixth day's manna (wrong_detail). - 'Fell in large heaps' adds a detail not in the text (wrong_scope). - 'Had to fast to prepare for the Sabbath' contradicts the act of setting aside food to eat on the Sabbath (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 16,
+    "verseStart": 33,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "What did God command that some manna be kept in a jar for future generations?",
+    "options": [
+      "As a memorial of how He fed the people in the wilderness",
+      "As a grain offering to be presented annually at the temple",
+      "To exchange for food when the people reached the promised land",
+      "To use as medicine to heal the people's diseases"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 16:33 (ESV): Aaron placed 'a full omer of manna' in a jar and kept it before the LORD 'throughout your generations' as a memorial of God's provision in the wilderness. - 'As medicine to heal diseases' was not its purpose (wrong_detail). - 'As an annual grain offering' confuses it with other offerings (wrong_scope). - 'To exchange for food' is an unreasonable inference (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 17,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After the victory over Amalek, what did God command Moses to do to preserve the memory of this declaration?",
+    "options": [
+      "Erect a memorial stone pillar at the battlefield",
+      "Engrave the words on the cliff of Horeb",
+      "Write it in a book and read it aloud to Joshua",
+      "Build an altar of twelve stones"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 17:14 (ESV): 'Write this as a memorial in a book and recite it in the ears of Joshua,' concerning the LORD's intention to blot out the memory of Amalek. - 'An altar of twelve stones' confuses this with the later covenant-making ceremony (near_passage, Exodus 24:4). - 'Engraving on the cliff of Horeb' does not appear in the passage (wrong_detail). - 'A memorial stone pillar' is a different action found elsewhere in Scripture (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 17,
+    "verseStart": 15,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "After defeating Amalek, Moses built an altar — what name did he give it?",
+    "options": [
+      "Jehovah-Nissi (the LORD is my banner)",
+      "Jehovah-Shalom (the LORD is peace)",
+      "Jehovah-Jireh (the LORD will provide)",
+      "Jehovah-Rapha (the LORD who heals)"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 17:15 (ESV): 'Moses built an altar and called the name of it, The LORD Is My Banner' (Jehovah-Nissi). - 'Jehovah-Jireh' is the name Abraham gave the place where he offered Isaac (near_passage, Genesis 22:14). - 'Jehovah-Shalom' is the name Gideon gave his altar (wrong_scope, Judges 6:24). - 'Jehovah-Rapha' is associated with the healing title given at Marah, not this altar (true_but_off, Exodus 15:26).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 18,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When Jethro came to visit, what did he observe Moses doing that moved him to speak up with counsel?",
+    "options": [
+      "Sitting alone to judge the people from morning until evening",
+      "Standing alone in prayer through the night on the mountain",
+      "Building the entire Tabernacle with his own hands",
+      "Leading the people into battle against the Amalekites"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 18:13 (ESV): 'Moses sat to judge the people, and the people stood around Moses from morning till evening.' Jethro saw this burden and advised him to appoint others to help judge. - 'Building the entire Tabernacle' came later and involved many craftsmen (wrong_scope). - 'Leading the people against Amalek' was the event of the previous chapter (near_passage, Exodus 17). - 'Standing in prayer through the night on the mountain' was not what Jethro witnessed (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 18,
+    "verseStart": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Moses's second son was named Eliezer; what did that name commemorate?",
+    "options": [
+      "He had been a sojourner in a foreign land far away",
+      "God had given him great wisdom",
+      "He was drawn out of the waters of the Nile",
+      "God had helped and delivered him from Pharaoh's sword"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 18:4 (ESV): the name Eliezer means 'the God of my father was my help, and delivered me from the sword of Pharaoh.' - 'Being a sojourner in a foreign land' is the meaning of Gershom, the firstborn son (near_passage, Exodus 2:22). - 'Given great wisdom' is not the meaning of this name (wrong_detail). - 'Drawn out of the water' is the meaning of the name Moses (wrong_scope, Exodus 2:10).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 19,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "At Sinai, what image did God use to describe how He brought the people out of Egypt to Himself?",
+    "options": [
+      "Carried them as on a boat",
+      "Led them like a shepherd leads a flock",
+      "Carried them as a father carries a young child",
+      "Carried them on eagles' wings"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 19:4 (ESV): 'I bore you on eagles' wings and brought you to myself.' — 'Led like a shepherd' is a true metaphor but found elsewhere, not in this verse (true_but_off, Ps 77:20). — 'Carried as a father carries a young child' is an image from Deuteronomy, not here (near_passage, Deut 1:31). — 'As on a boat' is not a biblical image used here (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 19,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "To prepare to meet God at Sinai, what were the people required to do during the two days before the 'third day'?",
+    "options": [
+      "Consecrate themselves and wash their garments",
+      "March around the mountain seven times",
+      "Fast and put ashes on their heads",
+      "Offer burnt offerings continually"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 19:10-11 (ESV): The LORD told Moses to have the people 'consecrate themselves... and let them wash their garments' to be ready for the third day when He would come down. — 'Fasting and putting ashes on their heads' is a mourning ritual found elsewhere (wrong_scope). — 'Offering burnt offerings continually' is not required in this preparation (wrong_detail). — 'Marching around the mountain seven times' confuses this with the siege of Jericho (near_passage, Joshua 6).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 19,
+    "verseStart": 12,
+    "verseEnd": 13,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "God set a boundary around Mount Sinai; what was the consequence for anyone who touched the foot of the mountain?",
+    "options": [
+      "They must offer a bull as a sin offering",
+      "They must be stoned or shot with arrows until dead",
+      "They must kneel and confess their sins publicly",
+      "They must leave the camp for seven days"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 19:12-13 (ESV): Whoever touches the mountain 'shall be put to death... either stoned or shot,' and no hand shall touch him. — 'Offering a bull as a sin offering' is not the penalty stated here (wrong_detail). — 'Leaving the camp for seven days' confuses this with the laws on uncleanness (near_passage, Numbers). — 'Kneeling and publicly confessing sin' is an inference not found in the text (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 20,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What does the second of the Ten Commandments forbid the Israelites from doing?",
+    "options": [
+      "Taking God's name in a false oath",
+      "Coveting a neighbor's possessions",
+      "Making a carved image or any likeness to bow down to",
+      "Doing heavy work on the Sabbath"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 20:4-5 (ESV): 'You shall not make for yourself a carved image, or any likeness... you shall not bow down to them.' This is the second commandment. — 'Taking God's name falsely' is the third commandment (near_passage, Exod 20:7). — 'Working on the Sabbath' is the fourth commandment (wrong_detail, Exod 20:8). — 'Coveting possessions' is the tenth commandment (wrong_scope, Exod 20:17).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 20,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What does the third commandment warn against regarding the name of God?",
+    "options": [
+      "Not carving His name on stone idols",
+      "Not taking His name in vain (using it carelessly)",
+      "Not speaking His name on the Sabbath",
+      "Not spreading His name among foreign nations"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 20:7 (ESV): 'You shall not take the name of the LORD your God in vain.' — 'Carving His name on stone idols' confuses this with the commandment against idols (near_passage, Exod 20:4). — 'Not speaking His name on the Sabbath' is an invented rule (wrong_detail). — 'Not spreading His name among the nations' contradicts the call to witness (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 20,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "How does the tenth commandment differ from commandments about outward behavior, through the command 'you shall not covet'?",
+    "options": [
+      "It only concerns coveting gold and silver",
+      "It forbids the desire of the heart, not just outward behavior",
+      "It permits coveting as long as one does not act to take",
+      "It applies exclusively to the priests"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 20:17 (ESV): 'You shall not covet your neighbor's house... you shall not covet your neighbor's wife, or his male servant, or his female servant, or his ox, or his donkey, or anything that is your neighbor's.' This commandment reaches to the heart, not just outward actions. - 'Applies only to priests' incorrectly narrows the intended audience (wrong_scope). - 'Permits coveting as long as one does not take' contradicts the plain command 'you shall not covet' (common_misconception). - 'Only about gold and silver' omits the broad list that is enumerated (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 20,
+    "verseStart": 24,
+    "verseEnd": 26,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "After the Ten Commandments, the LORD gave instructions about altars; which regulation was specified to preserve holiness and humility?",
+    "options": [
+      "The altar must be built in a perfect circular shape",
+      "The entire altar must be overlaid with pure gold",
+      "No tool may dress the stones, and no steps may be built",
+      "The altar must be placed on a high mountaintop"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 20:25–26 (ESV): if an altar of stone is built, 'you shall not build it with dressed stones, for if you wield your tool on it you profane it'; also, 'you shall not go up by steps to my altar, that your nakedness be not exposed on it.' - 'Must be overlaid with pure gold' confuses this with the specifications for the incense altar described later (near_passage, Exodus 30:3). - 'Placed on a high mountaintop' is not found in this regulation (wrong_detail). - 'Built in a circular shape' is a fabricated detail (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 21,
+    "verseStart": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "If a Hebrew servant wished to remain with his master permanently rather than go free, what ritual was to be performed?",
+    "options": [
+      "His master was to pierce his ear with an awl at the door",
+      "Both parties were to sign a contract before the priest",
+      "He was to cut a lock of his hair and present it to his master",
+      "He was to be branded on his forehead"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 21:6 (ESV): the master was to bring the servant 'to the door or the doorpost. And his master shall bore his ear through with an awl,' marking him as a servant for life. - 'Branded on his forehead' is an image found elsewhere in Scripture, not in this law (common_misconception). - 'Cut a lock of hair and present it to his master' confuses this with the Nazirite vow (near_passage, Numbers 6). - 'Sign a contract before the priest' is a modern inference not found in the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 21,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In the laws of the Book of the Covenant, what punishment was prescribed for one who kidnaps a person and sells them?",
+    "options": [
+      "He must pay fourfold restitution",
+      "He must be banished from the land",
+      "He must be put to death",
+      "He must serve as a slave for seven years"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 21:16 (ESV): 'Whoever steals a man and sells him, and anyone found in possession of him, shall be put to death.' - 'Fourfold restitution' is the penalty for stealing a sheep, not for kidnapping (near_passage, Exodus 22:1). - 'Serve as a slave for seven years' confuses this with the law of the Hebrew servant (wrong_detail, Exodus 21:2). - 'Banished from the land' is not the punishment stated in this verse (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 21,
+    "verseStart": 28,
+    "verseEnd": 29,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to the law of the goring ox, what was to happen if an ox gored a person to death?",
+    "options": [
+      "The owner of the ox must replace it with another ox for the victim's family",
+      "The owner must pay a fine and may keep the ox",
+      "The ox was to be brought and offered as a burnt offering",
+      "The ox shall be stoned to death, and its flesh shall not be eaten"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 21:28 (ESV): if an ox gores a man or woman to death, 'the ox shall be stoned, and its flesh shall not be eaten, but the owner of the ox shall not be liable' if the ox had no prior habit of goring. - 'Pay a fine and keep the ox' overlooks the requirement that the ox must be stoned (wrong_detail). - 'Offered as a burnt offering' contradicts the prohibition on eating its flesh (common_misconception). - 'Replace it with another ox for the victim's family' is not the regulation specified here (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 22,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to the law of restitution, how many oxen must a thief repay if he steals and then kills or sells an ox?",
+    "options": [
+      "Two oxen for one ox",
+      "Five oxen for one ox",
+      "The exact ox that was stolen",
+      "Three oxen for one ox"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 22:1 (ESV): 'If a man steals an ox or a sheep, and kills it or sells it, he shall pay five oxen for an ox,' and four sheep for a sheep. - 'Two oxen' is the restitution rate when the stolen animal is found alive in the thief's possession (near_passage, Exodus 22:4). - 'Three oxen' is not a number specified anywhere in the law (wrong_detail). - 'The exact ox that was stolen' ignores the principle of multiple restitution (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 22,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "The Book of the Covenant gives a severe commandment concerning which category of person?",
+    "options": [
+      "Do not allow foreigners into the camp",
+      "Do not allow debtors to go free",
+      "Do not allow a sorceress to live",
+      "Do not allow those with a skin disease to dwell among the community"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 22:18 (ESV): 'You shall not permit a sorceress to live.' - 'Foreigners into the camp' contradicts the law requiring kind treatment of foreigners (common_misconception, Exodus 22:21). - 'Those with a skin disease dwelling among the community' is a regulation about uncleanness found in a different book (near_passage, Leviticus 13). - 'Debtors going free' confuses this passage with the law of the Year of Jubilee (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 23,
+    "verseStart": 19,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "The Book of the Covenant contains a distinctive commandment about food preparation. What is it?",
+    "options": [
+      "Do not sow your field with two kinds of seed",
+      "Do not eat meat with blood still in it",
+      "Do not boil a young goat in its mother's milk",
+      "Do not eat leavened bread during the festival"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 23:19 (ESV): 'You shall not boil a young goat in its mother's milk.' - 'Eating meat with blood still in it' is a separate law concerning blood (near_passage, Leviticus 17). - 'Sowing a field with two kinds of seed' belongs to the laws of distinction found elsewhere (wrong_scope, Leviticus 19). - 'Eating leavened bread during the festival' confuses this with the Feast of Unleavened Bread (wrong_detail, Exodus 12).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 23,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "God promised to send whom before the people to guard them on the way and bring them to the place He had prepared?",
+    "options": [
+      "The priest Aaron",
+      "The armies of allied nations",
+      "His angel",
+      "The prophet Moses"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 23:20 (ESV): 'Behold, I send an angel before you to guard you on the way and to bring you to the place that I have prepared.' - 'The prophet Moses' was the visible human leader, but not the one sent as described in this verse (true_but_off). - 'The armies of allied nations' contradicts the fact that God Himself would drive out the nations (common_misconception). - 'The priest Aaron' is not the one promised to be sent ahead in this passage (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 23,
+    "verseStart": 28,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "What surprising means did God promise to use to drive the Canaanites out before the Israelites?",
+    "options": [
+      "He would split the ground open to swallow them",
+      "He would send a plague to destroy them",
+      "He would send hornets to drive them out",
+      "He would send fire from heaven to burn them"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 23:28 (ESV): 'And I will send hornets before you, which shall drive out the Hivites, the Canaanites, and the Hittites from before you.' - 'Fire from heaven' confuses this with the judgment on Sodom or the account of Elijah (near_passage). - 'The ground splitting open to swallow them' confuses this with the fate of Korah and his company (wrong_scope, Numbers 16). - 'A plague to destroy them' is not the means specified in this verse (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 24,
+    "verseStart": 1,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "When establishing the covenant, besides Moses and Aaron, who else was called up the mountain along with the seventy elders?",
+    "options": [
+      "Joshua and Caleb",
+      "Bezalel and Oholiab",
+      "Hophni and Phinehas",
+      "Nadab and Abihu"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 24:1 (ESV): The LORD said to Moses, 'Come up to the LORD, you and Aaron, Nadab, and Abihu, and seventy of the elders of Israel.' — 'Bezalel and Oholiab' were craftsmen for the Tabernacle, not the group called up the mountain (near_passage, Exodus 31). — 'Joshua and Caleb' were the two faithful spies; they are not mentioned here (wrong_scope, Numbers 14). — 'Hophni and Phinehas' were sons of Eli, from a much later period (wrong_detail, 1 Samuel 1).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 24,
+    "verseStart": 9,
+    "verseEnd": 10,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "When the elders went up the mountain and 'saw God,' what was described as being under His feet?",
+    "options": [
+      "Like a brilliant rainbow encircling the throne",
+      "Like a swirling cloud of roaring red fire",
+      "Like a sea of crystal sparkling with golden light",
+      "Like a pavement of sapphire stone, clear as the sky"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 24:10 (ESV): they saw the God of Israel, and 'there was under his feet as it were a pavement of sapphire stone, like the very heaven for clearness.' — 'Sea of crystal' appears in John's vision, not here (near_passage, Rev 4:6). — 'Swirling cloud of fire' is confused with the description of God's presence on the mountaintop (wrong_detail, Exodus 24:17). — 'Rainbow encircling the throne' belongs to a different vision altogether (wrong_scope, Rev 4:3).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 25,
+    "verseStart": 31,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "How was the lampstand in the Tabernacle to be made?",
+    "options": [
+      "Assembled from multiple acacia-wood planks overlaid with gold",
+      "Hammered from a single piece of pure gold",
+      "Cast in bronze then plated with silver",
+      "Woven from alternating strands of gold and silver wire"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 25:31 (ESV): 'You shall make a lampstand of pure gold. The lampstand shall be made of hammered work: its base, its stem...' — 'Acacia wood overlaid with gold' is the material used for the ark and the table, not the lampstand (near_passage, Exodus 25:10, 23). — 'Cast bronze plated with silver' is confused with objects belonging to the courtyard (wrong_detail). — 'Woven from gold and silver wire' is a fabricated detail with no scriptural basis (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 25,
+    "verseStart": 37,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "How many lamps did the lampstand in the Tabernacle have?",
+    "options": [
+      "Twelve lamps",
+      "Three lamps",
+      "Ten lamps",
+      "Seven lamps"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 25:37 (ESV): 'You shall make its seven lamps, and they shall set up the lamps so that they give light on the space in front of it.' — 'Twelve' is confused with the number of tribes reflected in other Tabernacle furnishings (near_passage). — 'Three' is simply the wrong number (wrong_detail). — 'Ten' is confused with the ten lampstands found in Solomon's temple at a later time (wrong_scope, 1 Kings 7:49).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 25,
+    "verseStart": 40,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "When commanding Moses to make the Tabernacle furnishings, what principle did God stress to ensure accuracy?",
+    "options": [
+      "Follow the customs of Egyptian temples",
+      "Make them exactly according to the pattern shown to Moses on the mountain",
+      "Copy from the temples of the patriarchs",
+      "Let each craftsman freely create according to his own design"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 25:40 (ESV): 'And see that you make them after the pattern for them, which is being shown you on the mountain.' Hebrews 8:5 cites this verse to explain that the Tabernacle is a shadow and type. — 'Following Egyptian temple customs' contradicts the divine revelation given on the mountain (common_misconception). — 'Each craftsman freely creating' directly contradicts the command to follow the pattern exactly (wrong_detail). — 'Copying from the patriarchs' temples' is incorrect because no such temple had existed before (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 26,
+    "verseStart": 31,
+    "verseEnd": 33,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In the Tabernacle, what was the special function of the veil (the curtain)?",
+    "options": [
+      "Cover the entrance to the court of the Tabernacle",
+      "Spread over the lid of the Ark of the Covenant",
+      "Surround the altar of burnt offering",
+      "Separate the Holy Place from the Most Holy Place"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 26:33 (ESV): 'the veil shall separate for you the Holy Place from the Most Holy.' — 'Covering the entrance to the court' refers to the screen at the gate, which is a different piece (near_passage, Exod 27:16). — 'Spread over the lid of the Ark' confuses this with the mercy seat and the cherubim (wrong_detail, Exod 25:20). — 'Surrounding the altar of burnt offering' belongs to the outer court, not this inner veil (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 26,
+    "verseStart": 33,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to the command, where was the Ark of the Covenant (the Ark of the Testimony) to be placed in the Tabernacle?",
+    "options": [
+      "Inside the veil, in the Most Holy Place",
+      "In the middle of the outer court beside the altar of burnt offering",
+      "Right at the entrance of the Tabernacle for the people to see",
+      "Beside the altar of incense in the Holy Place"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 26:33 (ESV): 'bring the ark of the testimony in there within the veil,' that is, in the Most Holy Place. — 'Right at the entrance for the people to see' contradicts the exclusivity that surrounded the Ark (common_misconception). — 'Beside the altar of incense in the Holy Place' places it in the wrong room (near_passage, Exod 30:6). — 'In the middle of the outer court' places it in entirely the wrong area (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 27,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What kind of oil were the people required to bring for the lamp in the Tabernacle to keep it burning continually?",
+    "options": [
+      "Pure beaten olive oil, clear and refined",
+      "Fragrant oil blended with precious frankincense",
+      "Fat from rams rendered by boiling",
+      "Grape seed oil pressed from the first pressing"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 27:20 (ESV): the people were to bring 'pure beaten olive oil for the light, that a lamp may regularly be set up to burn.' — 'Fragrant oil blended with frankincense' is the anointing oil, used for an entirely different purpose (near_passage, Exod 30:23). — 'Fat from rams rendered by boiling' is used in sacrificial offerings, not for lighting lamps (wrong_detail). — 'Grape seed oil' is not the type of oil specified in this command (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 27,
+    "verseStart": 21,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Who was responsible for tending the lamp in the Tabernacle to keep it burning, and during what period of time?",
+    "options": [
+      "The elders took turns keeping the lamp burning during the day",
+      "Bezalel kept the lamp burning day and night",
+      "All the Levites took turns each week",
+      "Aaron and his sons tended the lamp from evening until morning"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 27:21 (ESV): 'Aaron and his sons shall tend it from evening to morning before the LORD,' as a statute forever. — 'The elders keeping the lamp during the day' is wrong both in person and in time (wrong_detail). — 'Bezalel keeping the lamp' confuses roles: he was the craftsman who built the furnishings, not the one appointed to tend the lamp (wrong_scope). — 'All the Levites taking turns each week' is a fabricated regulation not found in the text (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 28,
+    "verseStart": 30,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Two objects were placed in the breastpiece of the high priest for seeking the LORD's will; what were they?",
+    "options": [
+      "Two small stone tablets",
+      "Two rubies",
+      "The Urim and the Thummim",
+      "A jar of manna and Aaron's staff"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 28:30 (ESV): 'in the breastpiece of judgment you shall put the Urim and the Thummim,' for Aaron to carry when seeking the LORD's judgment. — 'Two rubies' confuses them with the precious stones set into the breastpiece itself (near_passage, Exod 28:17). — 'A jar of manna and Aaron's staff' are items kept inside the Ark, not in the breastpiece (wrong_scope, Heb 9:4). — 'Two small stone tablets' confuses them with the tablets of the testimony placed in the Ark (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 28,
+    "verseStart": 33,
+    "verseEnd": 34,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "What two items alternated to decorate the hem of the high priest's robe?",
+    "options": [
+      "Lilies and blue gemstones",
+      "Pomegranates and small golden bells",
+      "Grapes and golden beads",
+      "Olive branches and silver bells"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 28:33-34: the hem of the robe had 'pomegranates' of colored yarn alternating with 'golden bells', so that the sound could be heard when Aaron entered the Holy Place. - 'Lilies and blue gemstones' are confused with temple decorations and the breastpiece (near_passage). - 'Olive branches and silver bells' are wrong on both items (wrong_detail). - 'Grapes and golden beads' are fabricated details (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 28,
+    "verseStart": 9,
+    "verseEnd": 12,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "What was engraved on the two onyx stones mounted on the shoulder straps of the ephod?",
+    "options": [
+      "The names of Aaron and his sons",
+      "An abbreviated form of the Ten Commandments",
+      "The names of the patriarchs Abraham, Isaac, and Jacob",
+      "The names of the twelve tribes of Israel"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 28:9-12: the two onyx stones were engraved with 'the names of the sons of Israel' (the twelve tribes), mounted on the shoulder straps of the ephod as stones of remembrance before the LORD. - 'An abbreviated Ten Commandments' was not engraved on the shoulder stones (wrong_detail). - 'The names of the three patriarchs' is wrong about who was engraved (wrong_scope). - 'The names of Aaron and his sons' is not the content on the stones (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 29,
+    "verseStart": 45,
+    "verseEnd": 46,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Exodus 29:45-46, what was the ultimate purpose of establishing the Tabernacle and the priesthood?",
+    "options": [
+      "To distinguish the rich from the poor",
+      "To give the people a place to store their offerings",
+      "So that God would dwell among the people and be their God",
+      "To attract foreign nations to bring tribute"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 29:45-46: 'I will dwell among the people of Israel and will be their God', and they shall know that He is the LORD their God who brought them out of Egypt so that He might dwell among them. - 'A place to store offerings' turns the Tabernacle into a treasury, missing its true purpose (common_misconception). - 'Distinguishing rich from poor' is wholly irrelevant (wrong_scope). - 'Attracting foreign nations to bring tribute' is a misguided inference about the passage's focus (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 30,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What was the bronze basin (laver) placed between the Tabernacle and the altar used for?",
+    "options": [
+      "To hold drinking water for the people",
+      "To mix the holy anointing oil for the priests",
+      "For Aaron and his sons to wash their hands and feet when serving",
+      "To collect the blood of the sacrificial animals"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 30:18-19: the bronze basin was for 'Aaron and his sons to wash their hands and feet' when they entered the tent of meeting or approached the altar. - 'Holding drinking water for the people' is wrong about its use (wrong_detail). - 'Collecting the blood of sacrifices' confuses it with the function of the altar (wrong_scope). - 'Mixing the holy anointing oil' is a different matter in the same chapter (near_passage, Exod 30:25).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 30,
+    "verseStart": 32,
+    "verseEnd": 37,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Regarding the holy anointing oil and the holy incense, what did God strictly forbid?",
+    "options": [
+      "Making the same formula for personal use",
+      "Placing them in the Most Holy Place",
+      "Making them from pure gold",
+      "Offering them on the altar of burnt offering"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 30:32-33, 37-38: no one was to 'make any like it' nor compound incense 'like it' for personal enjoyment; whoever did so would be cut off from the people. - 'Not offering on the altar of burnt offering' is not the prohibition stated here (wrong_detail). - 'Not placing in the Most Holy Place' confuses it with regulations about placing holy objects (wrong_scope). - 'Not making from pure gold' strays from the content about the formula (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 31,
+    "verseStart": 14,
+    "verseEnd": 15,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "To emphasize the holiness of the Sabbath as a covenant sign, what penalty was specified for anyone who worked on that day?",
+    "options": [
+      "That person must offer a bull as a sin offering",
+      "That person would be fined double the yield",
+      "That person would be banned from the Tabernacle for one year",
+      "That person must be put to death"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 31:14-15 (ESV): 'Whoever does any work on it (the Sabbath) shall be put to death... shall be cut off from among his people.' - 'Offering a bull as a sin offering' confuses this with the laws on sin offerings (near_passage, Leviticus 4). - 'Fined double the yield' confuses this with the laws on property restitution (wrong_scope, Exodus 22). - 'Banned from the Tabernacle for one year' is a fabricated punishment (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 4,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When returning to Egypt, what object did Moses carry that was called 'the staff of God'?",
+    "options": [
+      "A piece of wood from the burning bush",
+      "A golden scepter from Pharaoh's palace",
+      "Aaron's rod that had budded",
+      "The staff he had used when shepherding sheep"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 4:20 (ESV): Moses 'took the staff of God in his hand' as he returned to Egypt — this was the very shepherd's staff that had turned into a serpent earlier (4:2–4). - 'A golden scepter from Pharaoh's palace' is not found in the text (wrong_detail). - 'Aaron's rod that had budded' is a later event (near_passage, Numbers 17). - 'A piece of wood from the burning bush' is a fabricated detail (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 12,
+    "verseStart": 31,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "After the tenth plague struck, how did Pharaoh respond that very night?",
+    "options": [
+      "He summoned his army to immediately drive the people out",
+      "He ordered the borders closed to keep the people in",
+      "He summoned Moses and Aaron and urged the Israelites to leave",
+      "He declared that he would worship the LORD"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 12:31 (ESV): that night Pharaoh 'summoned Moses and Aaron and said, \"Up, go out from among my people, both you and the people of Israel.\"' - 'Closing the borders to keep the people in' contradicts the king's urgency for them to leave (common_misconception). - 'Summoning the army to pursue them' is what happened later, after the king changed his mind (near_passage, Exodus 14:5–9). - 'Declaring that he would worship the LORD' was not the king's response (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 16,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "The Israelites arrived at the wilderness of Sin — where they grumbled for meat and bread — where was this place located?",
+    "options": [
+      "Between Elim and Sinai",
+      "Right on the border of Egypt",
+      "In the plains of Moab",
+      "On the banks of the Jordan River"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 16:1 (ESV): the whole congregation came to 'the wilderness of Sin, which is between Elim and Sinai', on the fifteenth day of the second month after leaving Egypt. - 'Right on the border of Egypt' is geographically incorrect (wrong_detail). - 'On the banks of the Jordan River' is the location at the very end of the journey, not here (wrong_scope, Joshua 3). - 'The plains of Moab' is the stage just before entering the Promised Land, much later (near_passage, Numbers 22).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 24,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When Moses went up Mount Sinai to receive the two stone tablets, who was the servant that accompanied him?",
+    "options": [
+      "Aaron",
+      "Hur",
+      "Caleb",
+      "Joshua"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 24:13 (ESV): 'Moses rose with his assistant Joshua, and Moses went up into the mountain of God.' - 'Aaron' was left behind with Hur to handle the people's affairs (near_passage, Exodus 24:14). - 'Hur' also stayed with Aaron and did not go up the mountain (wrong_detail). - 'Caleb' was the faithful spy from a later time and was not present here (wrong_scope, Numbers 13).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 28,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What was the stated purpose of the holy garments made for Aaron?",
+    "options": [
+      "To keep warm while serving at night",
+      "To distinguish the rich from the poor among the priests",
+      "To conceal the identity of the priest",
+      "For glory and for beauty"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 28:2 (ESV): 'And you shall make holy garments for Aaron your brother, for glory and for beauty.' - 'To conceal the identity' is contrary to the purpose of honoring the priestly office (common_misconception). - 'To keep warm while serving at night' is a pragmatic inference not found in the text (wrong_detail). - 'To distinguish the rich from the poor' completely misses the sacred meaning (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 32,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "After breaking the two stone tablets, how did Moses deal with the golden calf?",
+    "options": [
+      "Melted the idol and recast it as the Ark of the Covenant",
+      "Threw the golden calf into the Red Sea",
+      "Buried the golden calf at the foot of Mount Sinai",
+      "Burned it, ground it to powder, and scattered it on the water"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 32:20 (ESV): Moses 'took the calf that they had made and burned it with fire and ground it to powder and scattered it on the water and made the people of Israel drink it.' - 'Threw it into the Red Sea' is wrong: the people were at Sinai, far from the Red Sea (wrong_detail). - 'Buried at the foot of the mountain' does not match the recorded action (common_misconception). - 'Melted and recast as the Ark' is contrary to the destruction of the idol (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 32,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When Moses confronted him, what excuse did Aaron give for making the golden calf?",
+    "options": [
+      "The people had forced him by physical violence",
+      "God had commanded him to do so",
+      "He threw the gold into the fire and 'out came this calf'",
+      "A stranger had cast the idol and then left"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 32:24 (ESV): Aaron said the people gave him their gold, 'So I threw it into the fire, and out came this calf' — a deflection of personal responsibility. - 'The people forced him by physical violence' is not what Aaron said (wrong_detail). - 'God commanded him to do so' is completely contrary to the truth (common_misconception). - 'A stranger cast the idol and left' is a fabricated detail (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 32,
+    "verseStart": 26,
+    "verseEnd": 28,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When Moses called out 'Whoever is on the LORD's side, come to me,' which tribe responded and carried out the judgment?",
+    "options": [
+      "The tribe of Reuben, causing about five thousand people to die",
+      "The tribe of Benjamin, causing about two thousand people to die",
+      "The tribe of Judah, causing about one thousand people to die",
+      "The tribe of Levi, causing about three thousand people to fall dead"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 32:26-28 (ESV): 'All the sons of Levi gathered around' Moses; that day 'about three thousand men of the people fell.' - 'The tribe of Judah, one thousand people' is wrong in both the tribe and the number (wrong_detail). - 'The tribe of Reuben, five thousand' names the wrong tribe and exaggerates the number (wrong_scope). - 'The tribe of Benjamin, two thousand' is also wrong in both details (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 32,
+    "verseStart": 35,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "After the golden calf incident, what did God do to the people?",
+    "options": [
+      "Struck the people with a plague",
+      "Commanded the camp to move immediately that night",
+      "Immediately forgave them and did not punish them at all",
+      "Sent fire to burn the entire camp"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 32:35 (ESV): 'Then the LORD sent a plague on the people, because they made the calf, the one that Aaron made.' - 'Immediately forgave them and did not punish them' is directly contrary to this verse (common_misconception). - 'Sent fire to burn the entire camp' confuses this with a judgment recorded elsewhere (near_passage, Numbers 11:1). - 'Commanded the camp to move immediately that night' is not the content of this verse (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 33,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After the sin of the golden calf, why did God say He would not go up personally with the people?",
+    "options": [
+      "Because the road to the promised land was too far and dangerous",
+      "Because the people had not yet finished building the Tabernacle",
+      "Because Moses had asked Him to remain on the mountain",
+      "Because the people were stiff-necked, lest He destroy them along the way"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 33:3 (ESV): The LORD declared He would not go up among the people, 'for you are a stiff-necked people, lest I consume you on the way.' — 'The road to the promised land being too far and dangerous' is not the reason given (wrong_detail). — 'Moses asked Him to remain on the mountain' is the opposite of Moses pleading for God to accompany them (common_misconception, Exod 33:15). — 'The people had not yet finished the Tabernacle' strays from the stated reason (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 33,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "After hearing God's rebuke following the sin of the golden calf, what did the Israelites do as a sign of repentance at Mount Horeb?",
+    "options": [
+      "Offered all their firstborn as sacrifices",
+      "Stripped off their ornaments",
+      "Built a stone altar",
+      "Fasted for forty days"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 33:6 (ESV): 'the people of Israel stripped themselves of their ornaments, from Mount Horeb onward.' — 'Fasting for forty days' was Moses's action on the mountain, not the people's (near_passage, Exod 34:28). — 'Building a stone altar' is not the action described here (wrong_detail). — 'Offering all the firstborn' confuses this with the law consecrating the firstborn (wrong_scope, Exod 13:2).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 34,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When warning against worshiping other gods, by what name did God refer to Himself to emphasize His uniqueness?",
+    "options": [
+      "The compassionate and gracious God",
+      "The Almighty God (El Shaddai)",
+      "The Jealous God (a jealous God)",
+      "The Everlasting God"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 34:14 (ESV): 'for the LORD, whose name is Jealous, is a jealous God.' — 'Almighty' (El Shaddai) is a true name of God but not the one emphasized here (true_but_off, Exod 6:3). — 'Compassionate and gracious' belongs to God's self-proclamation of mercy in the same passage (near_passage, Exod 34:6). — 'Everlasting' (I AM WHO I AM) was revealed at the burning bush, not here (wrong_scope, Exod 3:14).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 34,
+    "verseStart": 21,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "The Sabbath law in Exodus 34:21 emphasizes that rest must be observed even during which seasons?",
+    "options": [
+      "Both spring and winter",
+      "Both plowing season and harvest season",
+      "Both rainy season and dry season",
+      "Both festival season and wartime"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 34:21 (ESV): 'Six days you shall work, but on the seventh day you shall rest. In plowing time and in harvest you shall rest.' — 'Rainy season and dry season' is not how the verse is worded (wrong_detail). — 'Festival season and wartime' is an invented pairing not found in the text (common_misconception). — 'Spring and winter' strays from the agricultural terms used in the original verse (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 34,
+    "verseStart": 33,
+    "verseEnd": 35,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Because Moses's face was radiant after being with the LORD, what did he do each time he finished speaking to the people?",
+    "options": [
+      "Put a veil over his face",
+      "Put a golden crown on his head",
+      "Withdrew into the Tabernacle",
+      "Washed his face with holy water"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 34:33–35 (ESV): when Moses finished speaking to the people, 'he would put a veil over his face,' then remove it when he went in to speak with the LORD. — 'Putting on a golden crown' confuses this with the high priest's turban or plate, not Moses (near_passage, Exod 28:36). — 'Withdrawing into the Tabernacle' is not the action described here (wrong_detail). — 'Washing his face with holy water' is a fabricated detail with no scriptural basis (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 35,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What specific regulation concerning the Sabbath is mentioned in Exodus 35:3?",
+    "options": [
+      "You must not speak loudly on the Sabbath",
+      "You must not kindle a fire in any of your dwelling places on the Sabbath",
+      "You must not wear new clothes on the Sabbath",
+      "You must not go out of the camp on the Sabbath"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 35:3 (ESV): \"You shall kindle no fire in all your dwelling places on the Sabbath day.\" - \"Not going out of the camp\" is a later rabbinic tradition, not found in this verse (common_misconception). - \"Not speaking loudly\" is a fabricated regulation (wrong_detail). - \"Not wearing new clothes\" has no connection to Sabbath law (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 35,
+    "verseStart": 25,
+    "verseEnd": 26,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "In the contributions for building the Tabernacle, how did the skilled women participate?",
+    "options": [
+      "They cut acacia wood planks to make the frames",
+      "They cast utensils of gold and bronze",
+      "They engraved precious stones for the ephod",
+      "They spun yarn with their own hands and wove various threads to offer"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exodus 35:25-26 (ESV): \"every skillful woman spun with her hands\" — blue, purple, and scarlet yarns and fine twined linen — to offer for the work. - \"Casting utensils of gold and bronze\" was the work of craftsmen such as Bezalel (near_passage). - \"Engraving precious stones\" also belonged to skilled specialists (wrong_detail). - \"Cutting acacia planks for the frames\" is not mentioned as women's contribution (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 36,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What material did the craftsmen use to weave the curtains of the tent placed over the Tabernacle?",
+    "options": [
+      "Ram skins dyed red",
+      "Woven golden thread",
+      "Goats' hair",
+      "Fine twined linen"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 36:14 (ESV): \"He also made curtains of goats' hair for a tent over the tabernacle.\" - \"Fine twined linen\" was the material for the inner curtains, not this outer tent layer (near_passage, Exodus 36:8). - \"Ram skins dyed red\" was a different outer covering (wrong_detail, Exodus 36:19). - \"Woven golden thread\" was not a material used for these curtains (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 39,
+    "verseStart": 43,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When all the work of the Tabernacle was completed, what did Moses do after inspecting everything?",
+    "options": [
+      "He ordered the people to dismantle it for re-inspection",
+      "He blessed the people because they had done everything just as the LORD commanded",
+      "He immediately offered the first burnt offering",
+      "He selected additional skilled craftsmen to correct the errors"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 39:43 (ESV): \"And Moses saw all the work, and behold, they had done it; as the LORD had commanded, so had they done it. Then Moses blessed them.\" - \"Immediately offering the burnt offering\" occurred later when the Tabernacle was erected (near_passage, Exodus 40). - \"Ordering them to dismantle it for re-inspection\" contradicts Moses' satisfaction (common_misconception). - \"Selecting more craftsmen to correct errors\" is wrong because everything had been done correctly (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 40,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When erecting the Tabernacle, what was Moses commanded to use the anointing oil for?",
+    "options": [
+      "To apply it to the doorposts of the Tabernacle as on the Passover night",
+      "To mix it into the water of the bronze basin",
+      "To anoint the Tabernacle and all its furnishings to consecrate them",
+      "To fill all the lamps with oil to keep them burning"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 40:9 (ESV): \"You shall take the anointing oil and anoint the tabernacle and all that is in it, and consecrate it and all its furniture, so that it may become holy.\" - \"Filling the lamps with oil\" confuses this with lamp oil, which serves a different purpose (near_passage, Exodus 27:20). - \"Applying it to the doorposts as on Passover night\" referred to blood, not oil (wrong_detail, Exodus 12:7). - \"Mixing oil into the water of the basin\" is not part of the command (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 40,
+    "verseStart": 12,
+    "verseEnd": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "In the ordination ritual for Aaron as priest, what was Moses commanded to do for him first?",
+    "options": [
+      "Hand him the staff of power",
+      "Place a golden crown on his head",
+      "Wash Aaron with water and then dress him in the holy garments",
+      "Lead him into the Most Holy Place"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exodus 40:12-13 (ESV): 'bring Aaron and his sons to the entrance of the tent of meeting and wash them with water,' then clothe Aaron in the holy garments and anoint him to serve as priest. - 'Place a golden crown on his head' confuses priestly ordination with royal authority (common_misconception). - 'Hand him the staff of power' is not part of this ceremony (wrong_detail). - 'Lead him into the Most Holy Place' is incorrect: only the high priest enters once a year; this is not a step in the ordination ritual (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 40,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When the Tabernacle was set up, what did Moses place inside the Ark of the Covenant?",
+    "options": [
+      "The tablets of the testimony (two stone tablets)",
+      "The Book of the Covenant",
+      "Aaron's staff that budded",
+      "A jar of manna"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exodus 40:20 (ESV): 'He took the testimony and put it into the ark, and put the poles on the ark and set the mercy seat above on the ark.' - 'A jar of manna' was later placed before or beside the Ark, but at the dedication of the Tabernacle it was the tablets of the testimony that were placed inside (true_but_off, Heb 9:4). - 'Aaron's staff that budded' was also added later, not at this occasion (near_passage, Numbers 17). - 'The Book of the Covenant' was placed beside the ark, not inside it (wrong_detail, Deut 31:26).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 32,
+    "verseStart": 15,
+    "verseEnd": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What characteristic did the two tablets of the testimony that Moses carried down the mountain have, according to Exodus 32:15-16?",
+    "options": [
+      "Made of pure gold beaten into sheets",
+      "Written on both sides, made by God",
+      "Carefully wrapped in fine linen cloth",
+      "Engraved on only one side by Moses himself"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exodus 32:15-16 (ESV): the two stone tablets were 'written on both sides; on the front and on the back they were written,' and 'the tablets were the work of God, and the writing was the writing of God, engraved on the tablets.' - 'Made of pure gold beaten into sheets' confuses this with the material used for the lampstand (near_passage, Exod 25:31). - 'Engraved on only one side by Moses himself' is wrong about both the number of sides and who did the engraving (wrong_detail). - 'Carefully wrapped in fine linen cloth' is a fabricated detail with no scriptural basis (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Exodus",
+      "Pentateuch",
+      "Basic"
     ]
   }
 ]
