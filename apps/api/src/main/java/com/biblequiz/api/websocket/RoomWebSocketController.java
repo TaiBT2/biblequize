@@ -336,6 +336,12 @@ public class RoomWebSocketController {
                 "isSystem", true);
         messagingTemplate.convertAndSend("/topic/room/" + roomId,
                 new WebSocketMessage.Message(WebSocketMessage.MessageTypes.CHAT_MESSAGE, data));
+        // MPC-7: persist system lines too so reload shows join/leave context.
+        roomStateService.appendChat(roomId, Map.of(
+                "sender", "SYSTEM",
+                "text", text,
+                "isSystem", true,
+                "ts", System.currentTimeMillis()));
     }
 
     /**
@@ -538,6 +544,13 @@ public class RoomWebSocketController {
                     "text", text);
             sendToRoom(roomId, new WebSocketMessage.Message(
                     WebSocketMessage.MessageTypes.CHAT_MESSAGE, data));
+            // MPC-7: persist so reload / late-join replays the conversation.
+            roomStateService.appendChat(roomId, Map.of(
+                    "sender", user.getName(),
+                    "senderId", user.getId(),
+                    "text", text,
+                    "isSystem", false,
+                    "ts", System.currentTimeMillis()));
         } catch (Exception e) {
             // Chat is best-effort — don't error-frame on missing user etc.
         }

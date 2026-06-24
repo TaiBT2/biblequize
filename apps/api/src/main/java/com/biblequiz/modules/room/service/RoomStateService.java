@@ -8,6 +8,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -19,7 +20,13 @@ public class RoomStateService {
     private static final String KEY_SD_QUEUE_PREFIX = "room:state:sd_queue:";
     private static final String KEY_SD_CHAMPION_PREFIX = "room:state:sd_champion:";
     private static final String KEY_SD_CHALLENGER_PREFIX = "room:state:sd_challenger:";
+    private static final String KEY_CHAT_PREFIX = "room:chat:";
     private static final Duration STATE_TTL = Duration.ofHours(2);
+    // MPC-7: chat history outlives the in-game state (clearRoomState on QUIZ_END
+    // must NOT wipe it) so the results screen + a page reload still show the
+    // conversation. Bounded by size + TTL to keep Redis tidy.
+    private static final Duration CHAT_TTL = Duration.ofHours(12);
+    private static final long CHAT_MAX = 200;
 
     public RoomStateService(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
@@ -98,6 +105,25 @@ public class RoomStateService {
     @SuppressWarnings("null")
     public void clearSdChallenger(String roomId) {
         redisTemplate.delete(KEY_SD_CHALLENGER_PREFIX + roomId);
+    }
+
+    // ── Chat history (MPC-7) ──
+
+    /** Append one chat message (user or system) to the room's bounded history. */
+    @SuppressWarnings("null")
+    public void appendChat(String roomId, Map<String, Object> message) {
+        String key = KEY_CHAT_PREFIX + roomId;
+        redisTemplate.opsForList().rightPush(key, message);
+        // Keep only the most recent CHAT_MAX entries.
+        redisTemplate.opsForList().trim(key, -CHAT_MAX, -1);
+        redisTemplate.expire(key, CHAT_TTL);
+    }
+
+    /** Full chat history (oldest → newest); empty list if none/expired. */
+    @SuppressWarnings("null")
+    public List<Object> getChatHistory(String roomId) {
+        List<Object> list = redisTemplate.opsForList().range(KEY_CHAT_PREFIX + roomId, 0, -1);
+        return list != null ? list : new ArrayList<>();
     }
 
     // ── Clear all room state ──

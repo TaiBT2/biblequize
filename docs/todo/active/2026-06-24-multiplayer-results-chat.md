@@ -28,6 +28,16 @@
 ### Fix follow-up
 - MPC-6 (2026-06-24): nút chat FAB bị che — QuizEndScreen là `fixed inset-0 z-50`, FAB cũ z-40 → nâng FAB lên `z-[60]`. Drawer (z-50, render sau QuizEndScreen) hiện đúng nhờ DOM order.
 
+### Persist (reload không mất chat) — user chọn "Redis bền nhất"
+- MPC-7 BE: lưu chat vào Redis + endpoint replay
+  - Status: [x] DONE · Files: `RoomStateService` (appendChat/getChatHistory, key `room:chat:`, cap 200, TTL 12h, KHÔNG xóa ở clearRoomState), `RoomWebSocketController` (persist trong handleChat + broadcastSystemChat), `RoomController` (`GET /api/rooms/{id}/chat`)
+  - **Spec impact**: [x] SPEC_MULTIPLAYER · **Spec strategy**: [x] (a)
+- MPC-8 FE: hydrate store từ server khi mount/reload
+  - Status: [x] DONE · Files: `store/roomChatStore.ts` (setMessages), `hooks/useRoomChatHistory.ts` (mới), `pages/RoomLobby.tsx` (đọc store thay local state + welcome; gọi hook), `pages/RoomQuiz.tsx` (gọi hook)
+  - **Spec impact**: [x] (cover MPC-7) · **Spec strategy**: [x] (c)
+- MPC-9 Tests: roomChatStore.setMessages + useRoomChatHistory + Tầng 3 (1406 pass clean run)
+  - Status: [x] DONE
+
 ### Notes
 - Send qua STOMP của RoomQuiz: `send('/app/room/{roomId}/chat', { text })` (giống lobby handleSendChat).
 - onSend dùng chung cho cả emoji reactions + input (lobby pattern).

@@ -9,6 +9,7 @@ import { haptic } from '../utils/haptics';
 import QuizEndScreen from '../components/multiplayer/QuizEndScreen';
 import ResultsChat from '../components/multiplayer/ResultsChat';
 import { useRoomChatStore } from '../store/roomChatStore';
+import { useRoomChatHistory } from '../hooks/useRoomChatHistory';
 import { EliminationScreen, TeamWinScreen } from './room/RoomOverlays';
 import SequentialFinalView from './room/SequentialFinalView';
 import RoomQuizShell, { type FeedEntry } from './room/RoomQuizShell';
@@ -155,6 +156,8 @@ const RoomQuiz: React.FC = () => {
   // MPC-4: mirror chat into the shared store so the end-game results screen
   // can replay the lobby + post-match conversation.
   const appendChatToStore = useRoomChatStore(s => s.appendMessage);
+  // MPC-7: replay server-persisted chat on mount/reload (survives F5 on results).
+  useRoomChatHistory(roomId, hostNameFromState);
 
   // FMR-2/FMR-5: typed event dispatcher. Handles core + social + host-echo
   // events, then routes every event through the per-mode hooks (each ignores

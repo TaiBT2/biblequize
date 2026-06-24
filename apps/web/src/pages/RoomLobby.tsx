@@ -10,7 +10,8 @@ import { resolveAvatar } from '../utils/avatar';
 import SequentialLobbyView from './room/SequentialLobbyView';
 import InviteShareModal from '../components/room/InviteShareModal';
 import { ChatPanel, ChatDrawer, type ChatMessage } from '../components/multiplayer/RoomChat';
-import { useRoomChatStore } from '../store/roomChatStore';
+import { useRoomChatStore, selectRoomMessages } from '../store/roomChatStore';
+import { useRoomChatHistory } from '../hooks/useRoomChatHistory';
 import type { RoomDetails, RoomEvent, RoomPlayer } from '../types/room';
 
 // Canonical shapes moved to src/types/room.ts (FMR-1) — local aliases keep
@@ -93,12 +94,9 @@ const RoomLobby: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [countdown, setCountdown] = useState<number | null>(null);
   const [switchingTeam, setSwitchingTeam] = useState(false);
-  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([{
-    sender: 'SYSTEM',
-    text: 'Phòng đã được tạo. Đang chờ người chơi tham gia...',
-    isSystem: true,
-    time: nowTime(),
-  }]);
+  // MPC-7: chat history lives in the shared store (survives reload via the
+  // server replay below + Lobby→Quiz→Results navigation).
+  const chatMessages = useRoomChatStore(selectRoomMessages(roomId));
   const [activity, setActivity] = useState<ActivityEntry[]>([
     { text: 'Phòng được tạo', time: nowTime(), tone: 'info' },
   ]);
@@ -106,6 +104,8 @@ const RoomLobby: React.FC = () => {
     setActivity(prev => [...prev, { text, time: nowTime(), tone }]);
   const [chatInput, setChatInput] = useState('');
   const appendChatToStore = useRoomChatStore(s => s.appendMessage);
+  // MPC-7: replay server-persisted chat on mount/reload.
+  useRoomChatHistory(roomId, room?.hostName);
   const chatEndRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024);
   const [chatOpen, setChatOpen] = useState(false);
@@ -184,9 +184,8 @@ const RoomLobby: React.FC = () => {
             isSystem: d.isSystem === true,
             time: nowTime(),
           };
-          setChatMessages(prev => [...prev, chatMsg]);
-          // MPC-3: mirror into the shared store so the end-game results screen
-          // (RoomQuiz, separate component tree) can replay this conversation.
+          // MPC-3/7: store is the single source of truth for room chat; the
+          // results screen (RoomQuiz, separate tree) replays the same history.
           if (roomId) appendChatToStore(roomId, chatMsg);
           if (isMobile && !chatOpen && !d.isSystem) setUnreadChat(c => c + 1);
           break;

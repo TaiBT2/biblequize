@@ -27,6 +27,7 @@ const EMPTY: RoomChatMessage[] = []
 interface RoomChatState {
   messagesByRoom: Record<string, RoomChatMessage[]>
   appendMessage: (roomId: string, msg: RoomChatMessage) => void
+  setMessages: (roomId: string, msgs: RoomChatMessage[]) => void
   resetRoom: (roomId: string) => void
 }
 
@@ -38,6 +39,12 @@ export const useRoomChatStore = create<RoomChatState>((set) => ({
       const prev = state.messagesByRoom[roomId] ?? EMPTY
       const next = [...prev, msg].slice(-MAX_MESSAGES)
       return { messagesByRoom: { ...state.messagesByRoom, [roomId]: next } }
+    }),
+  // MPC-7: replace a room's history wholesale (server replay on mount/reload).
+  setMessages: (roomId, msgs) =>
+    set((state) => {
+      if (!roomId) return state
+      return { messagesByRoom: { ...state.messagesByRoom, [roomId]: msgs.slice(-MAX_MESSAGES) } }
     }),
   resetRoom: (roomId) =>
     set((state) => {

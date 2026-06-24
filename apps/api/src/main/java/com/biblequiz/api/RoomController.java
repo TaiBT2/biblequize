@@ -370,6 +370,16 @@ public class RoomController {
     }
 
     /**
+     * GET /api/rooms/{id}/chat — MPC-7: replay the room's chat history (from
+     * Redis) so a reload / late-join on the lobby or results screen recovers
+     * the conversation. Returns oldest → newest; empty list if none/expired.
+     */
+    @GetMapping("/{id}/chat")
+    public ResponseEntity<?> getChatHistory(@PathVariable String id) {
+        return ResponseEntity.ok(Map.of("success", true, "messages", roomStateService.getChatHistory(id)));
+    }
+
+    /**
      * GET /api/rooms/public - Danh sách phòng công khai đang lobby.
      * Viewer-aware: PublicRoomDTO.joinable computes true only when the
      * caller can actually take the click action (capacity for LOBBY,

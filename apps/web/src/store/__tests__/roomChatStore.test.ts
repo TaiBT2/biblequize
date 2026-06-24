@@ -38,6 +38,20 @@ describe('roomChatStore', () => {
     expect(msgs[199].text).toBe('m249')
   })
 
+  it('setMessages replaces a room history wholesale (capped)', () => {
+    const { appendMessage, setMessages } = useRoomChatStore.getState()
+    appendMessage('A', { sender: 'u', text: 'old' })
+    setMessages('A', [
+      { sender: 'h', text: 'history1' },
+      { sender: 'h', text: 'history2' },
+    ])
+    const msgs = selectRoomMessages('A')(useRoomChatStore.getState())
+    expect(msgs.map(m => m.text)).toEqual(['history1', 'history2'])
+
+    setMessages('A', Array.from({ length: 250 }, (_, i) => ({ sender: 'u', text: `m${i}` })))
+    expect(selectRoomMessages('A')(useRoomChatStore.getState())).toHaveLength(200)
+  })
+
   it('resetRoom clears one room only', () => {
     const { appendMessage, resetRoom } = useRoomChatStore.getState()
     appendMessage('A', { sender: 'u', text: 'a' })
