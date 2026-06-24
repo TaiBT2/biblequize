@@ -4063,5 +4063,2533 @@
       "Câu kết Xuất",
       "Nâng cao"
     ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 1,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Xuất 1:5, tổng số người thuộc dòng dõi Gia-cốp khi xuống Ai Cập là bao nhiêu?",
+    "options": [
+      "Sáu trăm người",
+      "Bảy mươi người",
+      "Mười hai người",
+      "Bốn trăm người"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 1:5 (RVV11) ghi: 'Tất cả con cháu của Gia-cốp là bảy mươi người.' Đáp án đúng là 'Bảy mươi người'. - 'Mười hai người' là số các con trai Gia-cốp, không phải tổng dòng dõi (wrong_scope). - 'Sáu trăm người' nhầm với khoảng 600.000 đàn ông lúc xuất hành (near_passage, Xuất 12:37). - 'Bốn trăm người' nhầm với 400 năm kiều ngụ được báo trước (true_but_off, Sáng 15:13).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 1,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Dân Y-sơ-ra-ên bị bắt xây hai thành dùng làm kho tàng cho Pha-ra-ôn; đó là hai thành nào?",
+    "options": [
+      "Sô-đôm và Gô-mô-rơ",
+      "Giê-ri-cô và A-hi",
+      "Ni-ni-ve và Ba-by-lôn",
+      "Phi-thom và Ram-se"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 1:11 (RVV11): dân Y-sơ-ra-ên xây cho Pha-ra-ôn 'các thành làm kho tàng là Phi-thom và Ram-se'. - 'Sô-đôm và Gô-mô-rơ' là hai thành bị hủy diệt thời Áp-ra-ham, không liên quan Ai Cập (wrong_scope). - 'Giê-ri-cô và A-hi' là thành xứ Ca-na-an bị chiếm sau này (near_passage, sách Giô-suê). - 'Ni-ni-ve và Ba-by-lôn' là đô thị các đế quốc về sau (common_misconception về địa danh cổ).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 1,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau khi các bà mụ không tuân lệnh, Pha-ra-ôn ra mệnh lệnh cuối cùng nào cho cả dân chúng về các bé trai Hê-bơ-rơ?",
+    "options": [
+      "Ném mọi bé trai mới sinh xuống sông Nin",
+      "Bắt mọi bé trai vào cung làm lính",
+      "Bán mọi bé trai làm nô lệ ngoại bang",
+      "Đày mọi bé trai ra khỏi xứ Ai Cập"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 1:22 (RVV11): Pha-ra-ôn truyền 'Phàm con trai mới sinh của người Hê-bơ-rơ, hãy ném xuống sông.' - 'Bán làm nô lệ ngoại bang' không có trong lệnh này; cả dân đã là nô lệ (true_but_off). - 'Bắt vào cung làm lính' nhầm với cách Pha-ra-ôn dùng dân làm phu xây thành (wrong_detail). - 'Đày ra khỏi xứ' trái nghịch: Pha-ra-ôn muốn giữ và giảm dân, không đuổi đi (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 2,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi mới đến xứ Ma-đi-an, Môi-se đã giúp đỡ nhóm người nào tại một cái giếng?",
+    "options": [
+      "Các người chăn chiên của Pha-ra-ôn",
+      "Bảy con gái của thầy tế lễ Ma-đi-an",
+      "Một đoàn lái buôn Ích-ma-ên",
+      "Hai sứ giả từ xứ Ca-na-an"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 2:16-17 (RVV11): Môi-se bênh vực 'bảy con gái' của thầy tế lễ Ma-đi-an khi các kẻ chăn chiên xua đuổi họ, rồi múc nước cho bầy chiên. - 'Đoàn lái buôn Ích-ma-ên' nhầm với những kẻ mua Giô-sép (near_passage, Sáng 37). - 'Người chăn chiên của Pha-ra-ôn' đảo vai: chính bọn chăn chiên là kẻ Môi-se chống lại (wrong_scope). - 'Hai sứ giả từ Ca-na-an' không có trong trình thuật này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 2,
+    "verseStart": 18,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong Xuất 2:18, người cha của các cô gái mà Môi-se giúp — về sau là cha vợ ông — được gọi bằng tên nào?",
+    "options": [
+      "La-ban",
+      "Rê-u-ên",
+      "Bê-tu-ên",
+      "Giê-trô"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 2:18 (RVV11) gọi cha vợ Môi-se là 'Rê-u-ên'; về sau ông được gọi là Giê-trô (Xuất 3:1). Câu này hỏi tên trong 2:18 nên đáp án là 'Rê-u-ên'. - 'Giê-trô' là cùng một người nhưng là tên dùng ở phân đoạn khác, không phải tên ghi trong 2:18 (true_but_off). - 'La-ban' là cha vợ Gia-cốp, không phải Môi-se (near_passage, Sáng 29). - 'Bê-tu-ên' là cha Rê-bê-ca (wrong_scope, Sáng 24).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 2,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Môi-se đặt tên con trai đầu là Ghẹt-sôn; tên đó phản ánh điều gì về hoàn cảnh của ông?",
+    "options": [
+      "Ông sẽ trở về Ai Cập",
+      "Ông được giải cứu khỏi nước",
+      "Ông làm kiều dân nơi đất khách",
+      "Đức Chúa Trời đã ban phước cho ông"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 2:22 (RVV11): Môi-se đặt tên con là Ghẹt-sôn, vì nói 'Tôi đã làm khách lạ nơi đất ngoại bang.' - 'Được giải cứu khỏi nước' là ý nghĩa tên Môi-se, không phải Ghẹt-sôn (near_passage, Xuất 2:10). - 'Đức Chúa Trời ban phước' là ý nghĩa tên Ê-li-ê-se, con thứ (wrong_detail, Xuất 18:4). - 'Sẽ trở về Ai Cập' không phải nghĩa của tên (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 2,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Xuất 2:23, điều gì xảy ra khiến dân Y-sơ-ra-ên kêu than thấu đến Đức Chúa Trời?",
+    "options": [
+      "Quân thù từ phương bắc kéo đến xâm lăng",
+      "Vua Ai Cập băng hà và ách nô lệ vẫn nặng nề",
+      "Một nạn đói lớn tràn khắp xứ Ai Cập",
+      "Sông Nin khô cạn khiến mùa màng thất bát"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 2:23 (RVV11): 'vua Ai Cập băng hà' nhưng dân vẫn 'than thở vì ách nô lệ' và tiếng kêu thấu đến Đức Chúa Trời. - 'Nạn đói lớn' nhầm với nạn đói thời Giô-sép (near_passage, Sáng 41). - 'Quân thù phương bắc xâm lăng' không có trong đoạn này (wrong_detail). - 'Sông Nin khô cạn' là chi tiết của tai vạ về sau, không phải nguyên cớ tiếng kêu than (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 3,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tại bụi gai cháy, Đức Chúa Trời bảo Môi-se làm gì trước khi đến gần?",
+    "options": [
+      "Dâng một con chiên làm của lễ",
+      "Quỳ xuống và che mặt lại",
+      "Tháo cây gậy khỏi tay mình",
+      "Cởi giày ra vì đó là đất thánh"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 3:5 (RVV11): 'Hãy cởi giày khỏi chân, vì chỗ ngươi đang đứng là đất thánh.' - 'Quỳ xuống và che mặt' — Môi-se có giấu mặt (3:6) nhưng đó không phải mệnh lệnh đầu tiên này (true_but_off). - 'Dâng một con chiên' không được truyền tại đây (wrong_detail). - 'Tháo cây gậy khỏi tay' nhầm với dấu lạ gậy hóa rắn sau đó (near_passage, Xuất 4:2-3).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 3,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời hứa đem dân Y-sơ-ra-ên lên một xứ tốt tươi và rộng rãi, được mô tả là vùng đất thế nào?",
+    "options": [
+      "Không hề có kẻ thù",
+      "Đầy vàng và bạc",
+      "Đượm sữa và mật",
+      "Có nhiều suối và rừng"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 3:8 (RVV11): Chúa hứa đưa dân lên 'một xứ tốt tươi, rộng rãi, đượm sữa và mật.' - 'Đầy vàng và bạc' nhầm với của cải dân Ai Cập trao lúc ra đi (near_passage, Xuất 12:35). - 'Có nhiều suối và rừng' là mô tả tự nghĩ thêm, không đúng nguyên văn (wrong_detail). - 'Không hề có kẻ thù' sai vì xứ ấy còn nhiều dân bản địa Chúa sẽ đuổi đi (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 3,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời báo trước rằng khi rời Ai Cập, dân Y-sơ-ra-ên sẽ không đi tay không, mà sẽ làm gì với người Ai Cập?",
+    "options": [
+      "Bắt người Ai Cập làm phu khuân vác",
+      "Lập giao ước hòa bình với người Ai Cập",
+      "Đốt sạch nhà cửa của người Ai Cập",
+      "Xin đồ bằng vàng, bạc và áo xống"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 3:22 (RVV11): mỗi phụ nữ sẽ 'xin người Ai Cập những đồ bằng bạc, bằng vàng và áo xống', làm cho dân ra đi không tay không. - 'Bắt người Ai Cập làm phu khuân vác' đảo ngược vai trò nô lệ (wrong_scope). - 'Đốt sạch nhà cửa' không có trong lời hứa này (wrong_detail). - 'Lập giao ước hòa bình' trái với bối cảnh giải cứu bằng phán xét (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 4,
+    "verseStart": 6,
+    "verseEnd": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Dấu lạ thứ hai Đức Chúa Trời ban cho Môi-se để thuyết phục dân liên quan đến điều gì xảy ra với tay ông?",
+    "options": [
+      "Tay hóa thành vàng ròng sáng chói",
+      "Tay phát ra lửa nhưng không bị cháy",
+      "Tay khô héo rồi mọc lại như cũ",
+      "Tay hóa phong hủi rồi được phục hồi"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 4:6-7 (RVV11): Môi-se đặt tay vào ngực, rút ra thì tay 'nổi phung trắng như tuyết', rồi đặt lại thì tay lành như cũ. - 'Hóa thành vàng ròng' không có trong bản văn (wrong_detail). - 'Khô héo rồi mọc lại' nhầm với hình phạt tay Giê-rô-bô-am về sau (near_passage, 1 Vua 13:4). - 'Phát ra lửa nhưng không cháy' lẫn với bụi gai cháy mà không tàn (wrong_scope, Xuất 3:2).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 4,
+    "verseStart": 22,
+    "verseEnd": 23,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời bảo Môi-se nói với Pha-ra-ôn rằng Y-sơ-ra-ên là gì đối với Ngài, làm nền cho lời cảnh cáo về con đầu lòng?",
+    "options": [
+      "Bầy chiên của Đấng chăn giữ",
+      "Cơ nghiệp riêng của Đức Chúa Trời",
+      "Con trưởng nam của Đức Giê-hô-va",
+      "Dân được chọn giữa muôn dân"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 4:22-23 (RVV11): 'Y-sơ-ra-ên là con Ta, tức con trưởng nam của Ta'; vì Pha-ra-ôn không cho con Ngài đi, Chúa sẽ giết con trưởng nam của Pha-ra-ôn. Hình ảnh 'con trưởng nam' chính là nền cho tai vạ thứ mười. - 'Dân được chọn giữa muôn dân' đúng về thần học nhưng không phải hình ảnh dùng ở đây (true_but_off, Phục 7:6). - 'Bầy chiên của Đấng chăn giữ' là ẩn dụ nơi khác (wrong_scope, Thi 100:3). - 'Cơ nghiệp riêng' cũng đúng tổng quát nhưng lạc khỏi lý do về con trưởng nam (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 4,
+    "verseStart": 24,
+    "verseEnd": 26,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trên đường về Ai Cập, khi Đức Giê-hô-va tìm giết Môi-se, Sê-phô-ra đã làm gì để cứu chồng?",
+    "options": [
+      "Dâng một con chiên làm của lễ chuộc",
+      "Cầu xin Đức Chúa Trời suốt đêm",
+      "Quay trở lại nhà cha mình ở Ma-đi-an",
+      "Cắt bì cho con trai bằng con dao đá"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 4:24-26 (RVV11): Sê-phô-ra 'lấy con dao bằng đá cắt dương bì của con mình', rồi gọi Môi-se là 'chàng rể huyết', nên Chúa tha. - 'Dâng một con chiên làm của lễ chuộc' không có trong trình thuật này (wrong_detail). - 'Cầu xin suốt đêm' không phải hành động được ghi (wrong_scope). - 'Quay về nhà cha ở Ma-đi-an' trái với việc họ đang đi đến Ai Cập (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 5,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi Môi-se và A-rôn truyền lệnh Chúa lần đầu, Pha-ra-ôn đáp lại bằng thái độ nào?",
+    "options": [
+      "Đòi xem trước một dấu lạ để chứng tỏ",
+      "Hỏi 'Giê-hô-va là ai mà ta phải vâng lời?'",
+      "Triệu tập các thầy tế lễ Ai Cập để cầu hỏi",
+      "Hứa sẽ thả dân đi sau ba ngày đường"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 5:2 (RVV11): Pha-ra-ôn đáp 'Giê-hô-va là ai mà ta phải vâng lời để cho Y-sơ-ra-ên đi? Ta chẳng biết Giê-hô-va.' - 'Hứa thả dân sau ba ngày' nhầm với những lần nhượng bộ giả về sau giữa các tai vạ (near_passage). - 'Đòi xem một dấu lạ trước' là điều xảy ra ở lần gặp sau (wrong_detail, Xuất 7:9). - 'Triệu tập các thầy tế lễ' lẫn với việc gọi thuật sĩ về sau (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 5,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Để trừng phạt sau yêu cầu của Môi-se, Pha-ra-ôn ra lệnh thay đổi gì về việc làm gạch của dân?",
+    "options": [
+      "Chỉ cho phép vài người được làm gạch",
+      "Không phát rơm nữa nhưng giữ nguyên định mức",
+      "Tăng gấp đôi số gạch mỗi tuần",
+      "Bắt làm gạch suốt cả ngày Sa-bát"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 5:7-8 (RVV11): Pha-ra-ôn truyền 'đừng phát rơm cho dân làm gạch như trước nữa', để chúng tự đi lượm, nhưng 'số gạch... vẫn bắt nộp y như cũ'. - 'Tăng gấp đôi số gạch' sai chi tiết: định mức giữ nguyên, chỉ rơm bị cắt (wrong_detail). - 'Làm gạch cả ngày Sa-bát' là khái niệm chưa xuất hiện ở đây (wrong_scope). - 'Chỉ vài người được làm' trái với việc cả dân bị áp bức nặng hơn (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 6,
+    "verseStart": 6,
+    "verseEnd": 8,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong lời hứa giải cứu ở Xuất 6:6-8, điều nào KHÔNG nằm trong chuỗi cam kết 'Ta sẽ' mà Đức Chúa Trời phán?",
+    "options": [
+      "Ta sẽ nhận các ngươi làm dân Ta",
+      "Ta sẽ ban cho các ngươi một vị vua",
+      "Ta sẽ giải thoát các ngươi khỏi ách",
+      "Ta sẽ đem các ngươi vào xứ đã thề ban"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 6:6-8 (RVV11) liệt kê các lời 'Ta sẽ': giải thoát khỏi ách nô lệ, chuộc lại, nhận làm dân Ngài, và đem vào xứ đã thề ban. Việc 'ban cho một vị vua' KHÔNG có ở đây — vương quyền chỉ xuất hiện nhiều thế kỷ sau (common_misconception). Ba phương án còn lại đều thực sự nằm trong phân đoạn nên là bẫy gài người đọc lướt: 'giải thoát khỏi ách' (near_passage, 6:6), 'nhận làm dân Ta' (near_passage, 6:7), 'đem vào xứ đã thề ban' (near_passage, 6:8).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 6,
+    "verseStart": 23,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo gia phả trong Xuất 6, A-rôn cưới ai làm vợ?",
+    "options": [
+      "Mi-ri-am, chị của ông",
+      "Ê-li-sê-ba, con gái A-mi-na-đáp",
+      "Sê-phô-ra, con gái Giê-trô",
+      "Giô-kê-bết, con gái Lê-vi"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 6:23 (RVV11): 'A-rôn cưới Ê-li-sê-ba, con gái của A-mi-na-đáp, em gái Na-ha-sôn.' - 'Giô-kê-bết, con gái Lê-vi' là mẹ của A-rôn, không phải vợ (near_passage, Xuất 6:20). - 'Mi-ri-am' là chị của A-rôn, không thể là vợ (wrong_scope). - 'Sê-phô-ra' là vợ của Môi-se, không phải A-rôn (wrong_detail, Xuất 2:21).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 7,
+    "verseStart": 3,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời báo trước Ngài sẽ làm cứng lòng Pha-ra-ôn với mục đích thần học nào?",
+    "options": [
+      "Để Pha-ra-ôn ăn năn ngay từ tai vạ thứ nhất",
+      "Để dân Ai Cập tự nguyện theo Y-sơ-ra-ên ra đi",
+      "Để rút ngắn thời gian dân ở trong hoang mạc",
+      "Để Ngài nhân thêm dấu lạ và phép mầu trên xứ Ai Cập"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 7:3 (RVV11): 'Ta sẽ làm cho Pha-ra-ôn cứng lòng, và thêm nhiều dấu lạ phép mầu của Ta trong xứ Ai Cập' — để bày tỏ quyền năng và phán xét (7:5). - 'Để Pha-ra-ôn ăn năn ngay' trái với mục đích nêu trong câu (common_misconception). - 'Để dân Ai Cập theo Y-sơ-ra-ên ra đi' không phải mục đích của việc làm cứng lòng (wrong_scope). - 'Rút ngắn thời gian trong hoang mạc' lạc hoàn toàn khỏi bối cảnh Ai Cập (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 7,
+    "verseStart": 11,
+    "verseEnd": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi các thuật sĩ Ai Cập cũng biến gậy thành rắn, điều gì đã xảy ra để bày tỏ ưu thế của Đức Chúa Trời?",
+    "options": [
+      "Gậy A-rôn hóa thành rồng lớn",
+      "Rắn của thuật sĩ lập tức chết hết",
+      "Các thuật sĩ bỏ chạy khỏi cung điện",
+      "Gậy của A-rôn nuốt gậy của các thuật sĩ"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 7:11-12 (RVV11): các thuật sĩ cũng làm gậy hóa rắn, 'nhưng gậy của A-rôn nuốt các gậy của họ.' - 'Rắn của thuật sĩ chết hết' sai chi tiết: chúng bị nuốt, không phải chết tại chỗ (wrong_detail). - 'Hóa thành rồng lớn' thêm thắt không có trong bản văn (wrong_scope). - 'Các thuật sĩ bỏ chạy' là phản ứng tưởng tượng, không được ghi (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 7,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Xuất 7:7, A-rôn bao nhiêu tuổi khi hai anh em đến tâu cùng Pha-ra-ôn?",
+    "options": [
+      "Bốn mươi tuổi",
+      "Bảy mươi tuổi",
+      "Một trăm hai mươi tuổi",
+      "Tám mươi ba tuổi"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 7:7 (RVV11): 'Vả, khi hai người tâu cùng Pha-ra-ôn, thì Môi-se tuổi tám mươi, còn A-rôn tám mươi ba.' Câu hỏi về A-rôn nên đáp án là 'Tám mươi ba tuổi'. - 'Bảy mươi tuổi' nhầm với số bảy mươi người nhà Gia-cốp (near_passage, Xuất 1:5). - 'Một trăm hai mươi tuổi' là tuổi Môi-se lúc qua đời (wrong_scope, Phục 34:7). - 'Bốn mươi tuổi' là tuổi Môi-se lúc trốn khỏi Ai Cập, không phải A-rôn lúc này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 8,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đến tai vạ muỗi (chí), các thuật sĩ không sao bắt chước được; họ thưa với Pha-ra-ôn điều gì?",
+    "options": [
+      "'Ấy là ngón tay của Đức Chúa Trời'",
+      "'Chúng tôi cần thêm thời gian cầu khẩn'",
+      "'Các thần Ai Cập đã bỏ chúng ta'",
+      "'Hãy thả dân Hê-bơ-rơ ra đi'"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 8:19 (RVV11): các thuật sĩ tâu cùng Pha-ra-ôn 'Ấy là ngón tay của Đức Chúa Trời', nhưng lòng vua vẫn cứng cỏi. - 'Cần thêm thời gian cầu khẩn' không có trong lời họ (wrong_detail). - 'Hãy thả dân Hê-bơ-rơ' là điều Môi-se đòi, không phải lời thuật sĩ (wrong_scope). - 'Các thần Ai Cập đã bỏ chúng ta' là suy diễn thần học không có trong câu (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 8,
+    "verseStart": 22,
+    "verseEnd": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Bắt đầu từ tai vạ ruồi mòng, Đức Chúa Trời thêm điều gì để phân biệt dân Ngài với người Ai Cập?",
+    "options": [
+      "Cho dân Y-sơ-ra-ên một dấu trên trán",
+      "Biệt riêng xứ Gô-sen khỏi tai vạ",
+      "Khiến chỉ người Ai Cập bị mù lòa",
+      "Ban cho dân Ngài lương thực dư dật"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 8:22-23 (RVV11): Chúa 'phân biệt xứ Gô-sen là nơi dân Ta ở, hầu cho tại đó không có ruồi mòng', đặt sự khác biệt giữa dân Ngài và dân Ai Cập. - 'Một dấu trên trán' nhầm với hình ảnh khác trong Kinh Thánh, không phải ở đây (common_misconception). - 'Chỉ người Ai Cập bị mù lòa' không phải nội dung tai vạ này (wrong_detail). - 'Lương thực dư dật' lạc khỏi điểm phân biệt được nêu (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 8,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tai vạ thứ tư giáng trên xứ Ai Cập là gì?",
+    "options": [
+      "Ếch nhái tràn ngập",
+      "Châu chấu phá mùa màng",
+      "Ruồi mòng dày đặc",
+      "Ung nhọt trên người và vật"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 8:24 (RVV11): 'ruồi mòng bu đến vô số... khắp cả xứ Ai Cập đều bị hại.' Đây là tai vạ thứ tư. - 'Châu chấu' là tai vạ thứ tám (near_passage, Xuất 10). - 'Ung nhọt' là tai vạ thứ sáu (near_passage, Xuất 9). - 'Ếch nhái' là tai vạ thứ hai (wrong_detail, Xuất 8:6).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 9,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong tai vạ dịch lệ trên súc vật, điểm khác biệt rõ ràng giữa dân Ai Cập và dân Y-sơ-ra-ên là gì?",
+    "options": [
+      "Cả hai bên đều mất hết súc vật",
+      "Súc vật của Y-sơ-ra-ên chết phân nửa",
+      "Súc vật của Y-sơ-ra-ên không một con nào chết",
+      "Chỉ chiên cừu Y-sơ-ra-ên được sống"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 9:6 (RVV11): 'các súc vật của người Ai Cập đều chết hết, nhưng của dân Y-sơ-ra-ên chẳng chết một con nào.' - 'Chết phân nửa' sai con số: không con nào chết (wrong_detail). - 'Cả hai bên đều mất hết' trái với sự phân biệt được nêu (common_misconception). - 'Chỉ chiên cừu được sống' thu hẹp sai phạm vi: mọi súc vật của họ đều sống (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 9,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đến tai vạ ung nhọt, tình cảnh của các thuật sĩ Ai Cập ra sao?",
+    "options": [
+      "Họ chạy trốn sang xứ khác để lánh nạn ghẻ chốc",
+      "Họ bắt chước được tai vạ trên dân Hê-bơ-rơ",
+      "Không đứng nổi trước Môi-se vì cũng bị ghẻ chốc",
+      "Họ khuyên Pha-ra-ôn nên thả dân Hê-bơ-rơ ra đi"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 9:11 (RVV11): 'các thuật sĩ không đứng nổi trước mặt Môi-se, vì cớ ghẻ chốc; ghẻ chốc cũng phát ra trên mình họ.' - 'Bắt chước được tai vạ' sai: từ tai vạ muỗi họ đã bất lực (wrong_detail). - 'Khuyên Pha-ra-ôn thả dân' không phải hành động ghi ở đây (wrong_scope). - 'Chạy trốn sang xứ khác' là tình tiết thêm thắt (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 9,
+    "verseStart": 26,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong tai vạ mưa đá, có một nơi duy nhất không hề bị mưa đá rơi xuống; đó là đâu?",
+    "options": [
+      "Xứ Gô-sen, nơi dân Y-sơ-ra-ên ở",
+      "Đền thờ các thần Ai Cập",
+      "Bờ sông Nin",
+      "Cung điện của Pha-ra-ôn"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 9:26 (RVV11): 'Chỉ đất Gô-sen, là nơi dân Y-sơ-ra-ên ở, chẳng có mưa đá mà thôi.' - 'Cung điện Pha-ra-ôn' không được miễn trừ trong bản văn (wrong_detail). - 'Đền thờ các thần Ai Cập' là suy diễn, không có trong câu (common_misconception). - 'Bờ sông Nin' lẫn với bối cảnh tai vạ nước hóa máu (near_passage, Xuất 7).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 10,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời đã dùng phương tiện tự nhiên nào để đem châu chấu đến trên xứ Ai Cập?",
+    "options": [
+      "Một cơn lũ lớn từ sông Nin",
+      "Một trận gió đông thổi suốt ngày đêm",
+      "Một trận động đất rung chuyển đất",
+      "Một đám mây dày che kín mặt trời"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 10:13 (RVV11): 'Đức Giê-hô-va khiến ngọn gió đông thổi trên xứ suốt ngày và đêm đó; đến sáng thì gió đông đã đem cào cào đến.' - 'Cơn lũ từ sông Nin' không liên quan tai vạ châu chấu (wrong_detail). - 'Đám mây che mặt trời' nhầm với tai vạ bóng tối kế tiếp (near_passage, Xuất 10:21). - 'Động đất' không xuất hiện trong các tai vạ (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 10,
+    "verseStart": 22,
+    "verseEnd": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong khi bóng tối dày đặc bao trùm Ai Cập, dân Y-sơ-ra-ên thì sao?",
+    "options": [
+      "Cũng chìm trong bóng tối như người Ai Cập",
+      "Phải trốn trong nhà suốt ba ngày",
+      "Được ban đuốc lửa từ trời",
+      "Có ánh sáng tại nơi họ ở"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 10:23 (RVV11): người Ai Cập 'không thấy nhau' suốt ba ngày, 'nhưng nơi nào dân Y-sơ-ra-ên ở thì có ánh sáng.' - 'Cũng chìm trong bóng tối' trái với sự phân biệt được nêu (common_misconception). - 'Được ban đuốc lửa từ trời' thêm chi tiết không có (wrong_detail). - 'Phải trốn trong nhà ba ngày' lẫn với chỉ dẫn đêm Vượt Qua (near_passage, Xuất 12:22).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 10,
+    "verseStart": 24,
+    "verseEnd": 26,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Pha-ra-ôn nhượng bộ cho dân đi nhưng đòi giữ lại một thứ; Môi-se kiên quyết từ chối điều kiện nào?",
+    "options": [
+      "Để lại A-rôn ở lại Ai Cập",
+      "Để lại các trẻ con của dân",
+      "Để lại vàng bạc đã xin được",
+      "Để lại bầy chiên, bò của dân"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 10:24-26 (RVV11): Pha-ra-ôn cho đi nhưng 'chỉ để bầy chiên và bò ở lại'; Môi-se đáp 'một móng cũng không để lại', vì cần súc vật để dâng tế lễ. - 'Để lại trẻ con' là điều kiện Pha-ra-ôn nêu ở lần trước, không phải lần này (near_passage, Xuất 10:10-11). - 'Để lại vàng bạc' không phải điều kiện ở đây (wrong_detail). - 'Để lại A-rôn' không hề được nhắc (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 11,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trước tai vạ cuối, Đức Chúa Trời bảo dân Y-sơ-ra-ên làm gì với người Ai Cập, và vì sao họ được toại nguyện?",
+    "options": [
+      "Đòi bồi thường công lao, vì luật pháp cho phép",
+      "Vay mượn lương thực, vì người Ai Cập thương hại họ",
+      "Mua lại đất đai, vì họ đã có nhiều tiền",
+      "Xin đồ bằng vàng bạc, vì dân được ơn trước mặt người Ai Cập"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 11:2-3 (RVV11): mỗi người 'xin kẻ lân cận mình những đồ bằng bạc và bằng vàng', vì 'Đức Giê-hô-va làm cho dân... được ơn trước mặt người Ai Cập.' - 'Vay mượn lương thực vì thương hại' đổi sai vật và sai lý do (wrong_detail). - 'Mua lại đất đai' không có trong bản văn (wrong_scope). - 'Đòi bồi thường công lao theo luật pháp' là suy diễn hiện đại, không phải nội dung câu (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 11,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tai vạ thứ mười sẽ chạm đến mọi con đầu lòng, từ cao nhất đến thấp nhất; phạm vi đó được mô tả thế nào?",
+    "options": [
+      "Chỉ con đầu lòng trong cung điện Pha-ra-ôn",
+      "Từ con của quan lại đến con của binh lính",
+      "Từ con của Pha-ra-ôn đến con của đứa tớ gái sau cối xay",
+      "Chỉ con đầu lòng của các thầy tế lễ Ai Cập"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 11:5 (RVV11): 'hết thảy con trưởng nam... từ con trưởng nam của Pha-ra-ôn... cho đến con trưởng nam của đứa đòi sau cối xay', cùng các con đầu lòng của súc vật. - 'Chỉ trong cung điện Pha-ra-ôn' thu hẹp sai phạm vi (wrong_scope). - 'Chỉ con các thầy tế lễ' không đúng đối tượng (wrong_detail). - 'Từ quan lại đến binh lính' bỏ sót hai cực được nêu trong bản văn (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 12,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong bữa ăn Vượt Qua, thịt chiên phải được ăn kèm với hai thứ nào?",
+    "options": [
+      "Bánh có men và muối",
+      "Bánh không men và rau đắng",
+      "Trái ô-liu và dầu",
+      "Mật ong và rượu nho"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 12:8 (RVV11): 'phải ăn thịt... với bánh không men và rau đắng.' - 'Mật ong và rượu nho' không thuộc bữa Vượt Qua (wrong_detail). - 'Trái ô-liu và dầu' lẫn với vật liệu thắp đèn về sau (near_passage, Xuất 27:20). - 'Bánh có men' trái thẳng với lệnh ăn bánh KHÔNG men (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 12,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lễ Bánh Không Men gắn liền với Vượt Qua kéo dài trong bao nhiêu ngày?",
+    "options": [
+      "Bốn mươi ngày",
+      "Một ngày",
+      "Bảy ngày",
+      "Ba ngày"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 12:15 (RVV11): 'Trong bảy ngày, các ngươi phải ăn bánh không men', và phải dẹp hết men khỏi nhà. - 'Ba ngày' nhầm với hành trình ba ngày dân xin đi (near_passage, Xuất 5:3). - 'Bốn mươi ngày' lẫn với thời gian Môi-se ở trên núi (wrong_scope, Xuất 24:18). - 'Một ngày' sai con số rõ rệt (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 12,
+    "verseStart": 46,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Một quy định về con chiên Vượt Qua — 'chẳng nên bẻ gãy một cái xương nào' — về sau được Tân Ước nối kết với điều gì?",
+    "options": [
+      "Việc xương Chúa Jêsus không bị bẻ gãy trên thập tự",
+      "Việc Chúa Jêsus chữa lành người bại",
+      "Việc Chúa Jêsus bẻ bánh trong Tiệc Thánh",
+      "Việc chôn cất thân thể Chúa Jêsus trong mộ"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 12:46 (RVV11): chiên Vượt Qua 'không nên bẻ gãy một cái xương nào'; Giăng 19:36 áp dụng lời này cho Chúa Jêsus khi quân lính không đánh gãy ống chân Ngài. - 'Bẻ bánh trong Tiệc Thánh' là hình ảnh khác, không phải lời trích này (true_but_off). - 'Chôn cất trong mộ' không liên quan quy định về xương (wrong_scope). - 'Chữa lành người bại' lạc hoàn toàn khỏi bối cảnh (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 13,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau khi ra khỏi Ai Cập, Đức Chúa Trời truyền dân Y-sơ-ra-ên biệt riêng điều gì cho Ngài?",
+    "options": [
+      "Một phần mười mọi hoa lợi thu được mỗi năm",
+      "Mọi con đầu lòng của người và của súc vật",
+      "Con chiên đầu tiên sinh ra của mỗi bầy",
+      "Trái đầu mùa của ruộng nho và vườn cây"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 13:2 (RVV11): 'Trong vòng dân Y-sơ-ra-ên... hãy vì Ta biệt riêng ra thánh mọi con đầu lòng', cả người lẫn vật. - 'Một phần mười hoa lợi' là luật khác (near_passage, Lê-vi Ký 27). - 'Con chiên đầu tiên của mỗi bầy' thu hẹp sai: lệnh nói mọi con đầu lòng (wrong_scope). - 'Trái đầu mùa ruộng nho' lẫn với của lễ đầu mùa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 13,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi rời Ai Cập, Môi-se đã đem theo điều gì để giữ trọn lời thề năm xưa?",
+    "options": [
+      "Cây gậy của A-rôn",
+      "Hài cốt của Giô-sép",
+      "Hai bảng đá giao ước",
+      "Hòm Giao Ước"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 13:19 (RVV11): 'Môi-se dời hài cốt Giô-sép theo mình', vì Giô-sép đã buộc dân Y-sơ-ra-ên thề sẽ đem xương ông ra khỏi Ai Cập (Sáng 50:25). - 'Cây gậy của A-rôn' không phải vật được đem theo vì lời thề này (wrong_detail). - 'Hai bảng đá giao ước' chưa tồn tại lúc này (wrong_scope, Xuất 24). - 'Hòm Giao Ước' cũng chưa được làm ra (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 14,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi đuổi theo dân Y-sơ-ra-ên ra Biển Đỏ, Pha-ra-ôn huy động lực lượng nào dẫn đầu?",
+    "options": [
+      "Ba trăm cung thủ thiện xạ",
+      "Sáu trăm cỗ xe ngựa chọn lọc",
+      "Một ngàn lính bộ binh tinh nhuệ",
+      "Toàn bộ thuyền chiến trên sông Nin"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 14:7 (RVV11): Pha-ra-ôn 'đem sáu trăm cỗ xe thượng hạng và hết thảy xe trong xứ Ai Cập.' - 'Một ngàn lính bộ binh' sai con số và binh chủng (wrong_detail). - 'Thuyền chiến trên sông Nin' vô lý ở bối cảnh đuổi theo trên bộ (wrong_scope). - 'Ba trăm cung thủ' lẫn với con số của Ghê-đê-ôn về sau (near_passage, Các Quan Xét 7).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 14,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi dân sợ hãi trước Biển Đỏ và quân Ai Cập, Môi-se trấn an họ bằng lời nào?",
+    "options": [
+      "'Hãy quay lại Ai Cập mà cầu hòa'",
+      "'Hãy tản ra trốn trong các núi'",
+      "'Hãy cầm khí giới mà chống cự quân thù'",
+      "'Đức Giê-hô-va sẽ chiến đấu cho các ngươi'"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 14:14 (RVV11): 'Đức Giê-hô-va sẽ chiến cự cho, còn các ngươi cứ yên lặng.' - 'Cầm khí giới chống cự' trái với lời 'cứ yên lặng' (common_misconception). - 'Quay lại Ai Cập cầu hòa' là điều dân than thở, không phải lời Môi-se (near_passage, Xuất 14:12). - 'Tản ra trốn trong núi' không có trong bản văn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 14,
+    "verseStart": 19,
+    "verseEnd": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đêm vượt Biển Đỏ, trụ mây có vai trò gì đặc biệt giữa hai trại quân?",
+    "options": [
+      "Bay vọt lên cao để cả hai bên đều cùng thấy",
+      "Biến thành tường lửa thiêu cháy quân Ai Cập",
+      "Dời ra sau, làm tối cho Ai Cập, soi sáng Y-sơ-ra-ên",
+      "Tan biến hẳn đi để Môi-se có thể rẽ biển"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 14:19-20 (RVV11): trụ mây 'dời ra sau', đứng giữa trại Ai Cập và Y-sơ-ra-ên; 'bên kia thì tối tăm, bên này lại soi sáng ban đêm', khiến hai bên không đến gần nhau. - 'Biến thành tường lửa thiêu cháy' thêm chi tiết không có (wrong_detail). - 'Bay lên cao cho cả hai bên cùng thấy' trái mục đích ngăn cách (common_misconception). - 'Tan biến hẳn' sai: trụ mây vẫn hiện diện cả đêm (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 15,
+    "verseStart": 27,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau Ma-ra, dân đến Ê-lim — một nơi nghỉ ngơi được mô tả bằng chi tiết nào?",
+    "options": [
+      "Một đồng cỏ xanh có sông chảy qua",
+      "Mười hai suối nước và bảy mươi cây chà là",
+      "Một giếng nước sâu giữa sa mạc",
+      "Một thành lũy kiên cố bỏ hoang"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 15:27 (RVV11): tại Ê-lim 'có mười hai suối nước và bảy mươi cây chà là', dân hạ trại gần nước. - 'Một giếng nước sâu' sai chi tiết về số suối (wrong_detail). - 'Đồng cỏ có sông chảy qua' không khớp mô tả suối và chà là (wrong_scope). - 'Thành lũy kiên cố bỏ hoang' là hình ảnh không hề có (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 16,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi dân lượm ma-na rồi đong bằng ô-me, kết quả lạ lùng nào cho thấy sự chu cấp công bằng của Chúa?",
+    "options": [
+      "Người lượm nhiều chẳng dư, người lượm ít chẳng thiếu",
+      "Ma-na của người tham lam liền hóa thành đá",
+      "Ai lượm nhiều thì phần dư hóa thành vàng",
+      "Người lượm ít được thiên sứ bù thêm"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 16:18 (RVV11): khi đong bằng ô-me, 'kẻ lượm nhiều chẳng được trội, kẻ lượm ít cũng chẳng thiếu', mỗi người vừa đủ sức ăn. - 'Hóa thành đá' không có trong bản văn (wrong_detail). - 'Phần dư hóa thành vàng' là thêm thắt sai (wrong_scope). - 'Thiên sứ bù thêm' không phải cơ chế được mô tả (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 16,
+    "verseStart": 22,
+    "verseEnd": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vào ngày thứ sáu, có điều gì khác thường về ma-na liên quan đến ngày Sa-bát?",
+    "options": [
+      "Dân phải nhịn ăn để chuẩn bị Sa-bát",
+      "Dân lượm gấp đôi phần, để dành cho ngày Sa-bát",
+      "Ma-na rơi xuống thành từng đống lớn",
+      "Ma-na ngày đó có vị ngọt hơn thường lệ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 16:22-23 (RVV11): ngày thứ sáu dân lượm 'gấp đôi', vì ngày thứ bảy là Sa-bát nghỉ ngơi, phần để dành không bị hư. - 'Có vị ngọt hơn' không phải đặc điểm của ngày thứ sáu (wrong_detail). - 'Rơi thành từng đống lớn' thêm chi tiết không có (wrong_scope). - 'Phải nhịn ăn chuẩn bị Sa-bát' trái với việc để dành phần ăn cho Sa-bát (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 16,
+    "verseStart": 33,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời truyền giữ lại một phần ma-na trong một cái bình để làm gì cho các thế hệ sau?",
+    "options": [
+      "Làm kỷ niệm về cách Ngài nuôi dân trong hoang mạc",
+      "Làm của lễ chay dâng hằng năm tại đền thờ",
+      "Đổi lấy lương thực khi dân đến được đất hứa",
+      "Dùng làm thuốc chữa bệnh tật cho dân chúng"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 16:33 (RVV11): A-rôn để 'một ô-me ma-na' trong bình, giữ trước mặt Đức Giê-hô-va 'cho các đời sau' làm kỷ niệm về sự chu cấp trong hoang mạc. - 'Làm thuốc chữa bệnh' không phải mục đích (wrong_detail). - 'Của lễ dâng hằng năm' lẫn với các lễ vật khác (wrong_scope). - 'Đổi lấy lương thực' là suy diễn vô lý (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 17,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau trận thắng A-ma-léc, Đức Chúa Trời truyền Môi-se làm gì để ghi nhớ lời tuyên phán?",
+    "options": [
+      "Lập một cây cột đá kỷ niệm tại chiến trường",
+      "Khắc lời ấy lên vách núi Hô-rếp",
+      "Chép vào sách và đọc cho Giô-suê nghe",
+      "Dựng một bàn thờ bằng mười hai tảng đá"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 17:14 (RVV11): 'Hãy chép điều nầy vào sách làm kỷ niệm, và hãy đọc cho Giô-suê nghe', về việc Chúa sẽ xóa kỷ niệm A-ma-léc. - 'Bàn thờ mười hai tảng đá' lẫn với việc lập giao ước sau này (near_passage, Xuất 24:4). - 'Khắc lên vách núi Hô-rếp' không có trong câu (wrong_detail). - 'Cây cột đá kỷ niệm' là hành động khác trong Kinh Thánh (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 17,
+    "verseStart": 15,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Sau khi thắng A-ma-léc, Môi-se lập một bàn thờ và đặt tên là gì?",
+    "options": [
+      "Giê-hô-va Ni-si (Đức Giê-hô-va là cờ xí của tôi)",
+      "Giê-hô-va Sa-lôm (Đức Giê-hô-va bình an)",
+      "Giê-hô-va Di-rê (Đức Giê-hô-va sắm sẵn)",
+      "Giê-hô-va Ra-pha (Đức Giê-hô-va chữa lành)"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 17:15 (RVV11): 'Môi-se lập lên một bàn thờ, đặt tên là Giê-hô-va Ni-si' (Đức Giê-hô-va là cờ xí của tôi). - 'Giê-hô-va Di-rê' là tên Áp-ra-ham đặt nơi dâng Y-sác (near_passage, Sáng 22:14). - 'Giê-hô-va Sa-lôm' là tên Ghê-đê-ôn đặt (wrong_scope, Các Quan Xét 6:24). - 'Giê-hô-va Ra-pha' gắn với danh hiệu chữa lành tại Ma-ra, không phải bàn thờ này (true_but_off, Xuất 15:26).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 18,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Giê-trô đến thăm, ông thấy Môi-se làm gì khiến ông phải lên tiếng khuyên can?",
+    "options": [
+      "Một mình ngồi xét xử dân từ sáng đến chiều",
+      "Đứng cầu nguyện một mình suốt đêm trên núi",
+      "Tự tay mình dựng nên cả Đền Tạm",
+      "Dẫn dân ra trận để đánh quân A-ma-léc"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 18:13 (RVV11): 'Môi-se ra ngồi xét đoán dân; dân đứng chầu... từ sớm mai đến chiều.' Giê-trô thấy gánh nặng đó mà khuyên ông lập thêm người giúp xét xử. - 'Dựng cả Đền Tạm' thuộc về sau và do nhiều thợ (wrong_scope). - 'Dẫn dân đánh A-ma-léc' là biến cố chương trước (near_passage, Xuất 17). - 'Cầu nguyện suốt đêm trên núi' không phải điều Giê-trô chứng kiến (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 18,
+    "verseStart": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Con trai thứ của Môi-se tên Ê-li-ê-se; tên đó kỷ niệm điều gì?",
+    "options": [
+      "Ông từng làm khách lạ nơi đất ngoại bang xa xôi",
+      "Đức Chúa Trời đã ban cho ông sự khôn ngoan lớn",
+      "Ông được kéo ra khỏi dòng nước sông Nin",
+      "Đức Chúa Trời đã giúp đỡ và cứu ông khỏi gươm Pha-ra-ôn"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 18:4 (RVV11): tên Ê-li-ê-se nghĩa 'Đức Chúa Trời của tổ phụ tôi đã giúp tôi, giải cứu tôi khỏi gươm của Pha-ra-ôn.' - 'Làm khách lạ nơi đất ngoại bang' là nghĩa tên Ghẹt-sôn, con đầu (near_passage, Xuất 2:22). - 'Ban cho sự khôn ngoan' không phải nghĩa của tên (wrong_detail). - 'Được kéo ra khỏi dòng nước' là nghĩa tên Môi-se (wrong_scope, Xuất 2:10).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 19,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tại Si-na-i, Đức Chúa Trời dùng hình ảnh nào để mô tả cách Ngài đã đem dân ra khỏi Ai Cập đến với Ngài?",
+    "options": [
+      "Đưa họ qua như trên chiếc thuyền",
+      "Dắt họ như người chăn dắt bầy",
+      "Bồng họ như cha bồng con thơ",
+      "Chở họ trên cánh chim đại bàng"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 19:4 (RVV11): 'Ta đã chở các ngươi trên cánh chim ưng (đại bàng), đem các ngươi đến cùng Ta.' - 'Dắt như người chăn bầy' là ẩn dụ đúng nhưng nơi khác, không phải câu này (true_but_off, Thi 77:20). - 'Bồng như cha bồng con thơ' là hình ảnh trong Phục Truyền, không ở đây (near_passage, Phục 1:31). - 'Như trên chiếc thuyền' không phải hình ảnh Kinh Thánh dùng (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 19,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Để chuẩn bị gặp Đức Chúa Trời tại Si-na-i, dân phải làm gì trong hai ngày trước 'ngày thứ ba'?",
+    "options": [
+      "Nên thánh và giặt sạch áo xống",
+      "Đi vòng quanh núi bảy lần",
+      "Kiêng ăn và xức tro lên đầu",
+      "Dâng tế lễ thiêu liên tục"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 19:10-11 (RVV11): Chúa bảo Môi-se khiến dân 'nên thánh... và giặt áo xống mình' để sẵn sàng cho ngày thứ ba khi Ngài ngự xuống. - 'Kiêng ăn và xức tro' là nghi thức than khóc nơi khác (wrong_scope). - 'Dâng tế lễ thiêu liên tục' không phải yêu cầu chuẩn bị này (wrong_detail). - 'Đi vòng quanh núi bảy lần' lẫn với việc vây thành Giê-ri-cô (near_passage, Giô-suê 6).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 19,
+    "verseStart": 12,
+    "verseEnd": 13,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời đặt giới hạn quanh núi Si-na-i; hậu quả cho ai chạm đến chân núi là gì?",
+    "options": [
+      "Phải dâng một con bò làm lễ chuộc tội",
+      "Phải bị ném đá hoặc bị bắn tên cho chết",
+      "Phải quỳ lạy và xưng tội công khai",
+      "Phải rời khỏi trại trong bảy ngày"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 19:12-13 (RVV11): ai đụng đến núi 'hẳn phải bị xử tử... hoặc bị ném đá hay là bắn tên', và không bàn tay nào được chạm vào kẻ đó. - 'Dâng một con bò chuộc tội' không phải hình phạt nêu ở đây (wrong_detail). - 'Rời khỏi trại bảy ngày' lẫn với luật về sự ô uế (near_passage, Dân Số Ký). - 'Quỳ lạy và xưng tội công khai' là suy diễn, không có trong câu (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 20,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Điều răn thứ hai trong Mười Điều Răn cấm dân Y-sơ-ra-ên làm điều gì?",
+    "options": [
+      "Lấy danh Đức Chúa Trời mà thề dối trá",
+      "Thèm muốn tài sản của người lân cận mình",
+      "Làm hình tượng chạm trổ hay tượng nào để thờ lạy",
+      "Làm việc nặng nhọc trong ngày Sa-bát"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 20:4-5 (RVV11): 'Ngươi chớ làm tượng chạm cho mình, cũng chớ làm hình nào... mà quỳ lạy.' Đây là điều răn thứ hai. - 'Lấy danh Chúa nói dối' là điều răn thứ ba (near_passage, Xuất 20:7). - 'Làm việc ngày Sa-bát' là điều răn thứ tư (wrong_detail, Xuất 20:8). - 'Thèm muốn tài sản' là điều răn thứ mười (wrong_scope, Xuất 20:17).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 20,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Điều răn thứ ba cảnh báo về việc gì liên quan đến danh của Đức Chúa Trời?",
+    "options": [
+      "Không khắc danh Ngài lên tượng đá",
+      "Không lấy danh Ngài mà làm chơi (cách vô ích)",
+      "Không nói danh Ngài trong ngày Sa-bát",
+      "Không truyền danh Ngài cho dân ngoại"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 20:7 (RVV11): 'Ngươi chớ lấy danh Giê-hô-va Đức Chúa Trời ngươi mà làm chơi (cách vô ích).' - 'Khắc danh Ngài lên tượng đá' lẫn với điều răn cấm hình tượng (near_passage, Xuất 20:4). - 'Không nói danh Ngài trong Sa-bát' là quy định bịa thêm (wrong_detail). - 'Không truyền danh Ngài cho dân ngoại' trái với sứ mạng làm chứng (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 20,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Điều răn thứ mười khác các điều răn về hành vi ở điểm nào, qua mệnh lệnh 'chớ tham'?",
+    "options": [
+      "Nó chỉ nói về việc tham muốn vàng và bạc",
+      "Nó cấm cả lòng ham muốn, không chỉ hành vi",
+      "Nó cho phép tham muốn miễn là không ra tay lấy",
+      "Nó chỉ áp dụng riêng cho các thầy tế lễ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 20:17 (RVV11): 'Ngươi chớ tham nhà kẻ lân cận... chớ tham vợ, tôi trai tớ gái, bò, lừa, hay vật chi thuộc về kẻ lân cận.' Điều răn này chạm đến tấm lòng, không chỉ hành vi. - 'Chỉ áp dụng cho thầy tế lễ' thu hẹp sai đối tượng (wrong_scope). - 'Cho phép tham muốn nếu không lấy' trái với chính chữ 'chớ tham' (common_misconception). - 'Chỉ nói về vàng bạc' bỏ sót danh sách rộng được liệt kê (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 20,
+    "verseStart": 24,
+    "verseEnd": 26,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Sau Mười Điều Răn, Chúa dạy về bàn thờ; quy định nào được nêu để giữ sự thánh khiết và khiêm nhường?",
+    "options": [
+      "Phải xây bàn thờ có hình tròn hoàn chỉnh",
+      "Phải dát vàng ròng cho toàn bộ bàn thờ",
+      "Không dùng đồ chạm đục lên đá, không làm bậc thang",
+      "Phải đặt bàn thờ trên một đỉnh núi cao"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 20:25-26 (RVV11): nếu làm bàn thờ bằng đá thì 'chớ dùng đá chạm', vì đưa đồ đục vào sẽ làm ô uế; cũng 'chớ đi từng cấp (bậc thang)' để khỏi lộ sự trần truồng. - 'Phải dát vàng toàn bộ' lẫn với quy cách bàn thờ hương về sau (near_passage, Xuất 30:3). - 'Đặt trên đỉnh núi cao' không có trong quy định này (wrong_detail). - 'Xây hình tròn' là chi tiết bịa thêm (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 21,
+    "verseStart": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Nếu một đầy tớ Hê-bơ-rơ muốn ở lại với chủ mãi mãi thay vì được tự do, nghi thức nào được thực hiện?",
+    "options": [
+      "Chủ lấy dùi xỏ tai người ấy nơi cánh cửa",
+      "Hai bên ký một khế ước trước thầy tế lễ",
+      "Người ấy cắt một lọn tóc dâng cho chủ",
+      "Người ấy phải đóng dấu trên trán"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 21:6 (RVV11): chủ dẫn đầy tớ 'lại gần cửa hay là cột, rồi lấy mũi dùi xỏ tai', đánh dấu người ấy phục vụ chủ trọn đời. - 'Đóng dấu trên trán' là hình ảnh nơi khác, không phải luật này (common_misconception). - 'Cắt lọn tóc dâng cho chủ' lẫn với lời thề Na-xi-rê (near_passage, Dân Số Ký 6). - 'Ký khế ước trước thầy tế lễ' là suy diễn hiện đại, không có trong câu (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 21,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong các luật của Sách Giao Ước, hình phạt nào dành cho kẻ bắt cóc người đem bán?",
+    "options": [
+      "Phải đền gấp bốn lần",
+      "Phải bị đuổi khỏi xứ",
+      "Phải bị xử tử",
+      "Phải làm nô lệ bảy năm"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 21:16 (RVV11): 'Kẻ nào bắt người và bán, hoặc giữ lại trong tay mình, sẽ bị xử tử.' - 'Đền gấp bốn lần' là luật về trộm chiên, không phải bắt người (near_passage, Xuất 22:1). - 'Làm nô lệ bảy năm' lẫn với luật đầy tớ Hê-bơ-rơ (wrong_detail, Xuất 21:2). - 'Bị đuổi khỏi xứ' không phải hình phạt nêu trong câu (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 21,
+    "verseStart": 28,
+    "verseEnd": 29,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo luật về con bò hay húc, điều gì xảy ra nếu một con bò húc chết người?",
+    "options": [
+      "Chủ bò phải đổi con bò khác cho nạn nhân",
+      "Chủ bò phải nộp phạt rồi giữ lại con bò",
+      "Con bò bị đem dâng làm của lễ thiêu",
+      "Con bò bị ném đá chết, và không được ăn thịt nó"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 21:28 (RVV11): nếu bò húc chết người thì 'bò đó sẽ bị ném đá chết, người ta không nên ăn thịt nó', còn chủ bò vô can nếu trước đó bò không có tật húc. - 'Nộp phạt rồi giữ lại con bò' bỏ qua việc bò phải bị ném đá (wrong_detail). - 'Dâng làm của lễ thiêu' trái với lệnh không ăn thịt nó (common_misconception). - 'Đổi con bò khác cho nạn nhân' không phải quy định ở đây (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 22,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo luật bồi thường, kẻ trộm rồi giết hoặc bán một con bò phải đền lại bao nhiêu?",
+    "options": [
+      "Hai con bò cho một con bò",
+      "Năm con bò cho một con bò",
+      "Đúng một con bò như đã trộm",
+      "Ba con bò cho một con bò"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 22:1 (RVV11): 'Ví ai bắt trộm bò... rồi giết hoặc bán đi, thì phải thường năm con bò cho một con bò', và bốn con chiên cho một con chiên. - 'Hai con bò' là mức đền khi vật trộm còn sống trong tay (near_passage, Xuất 22:4). - 'Ba con bò' không phải con số nào trong luật (wrong_detail). - 'Đúng một con như đã trộm' bỏ qua nguyên tắc đền bội phần (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 22,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sách Giao Ước nêu một mệnh lệnh nghiêm khắc về hạng người nào?",
+    "options": [
+      "Chớ cho người ngoại bang vào trại",
+      "Chớ để kẻ nợ nần được tự do",
+      "Chớ để cho đồng bóng (phù thủy) được sống",
+      "Chớ để người mắc bệnh phung ở chung"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 22:18 (RVV11): 'Ngươi chớ để cho đồng bóng (phù thủy) sống.' - 'Người ngoại bang vào trại' trái với luật đối đãi tử tế với ngoại kiều (common_misconception, Xuất 22:21). - 'Người mắc bệnh phung ở chung' là quy định về sự ô uế trong sách khác (near_passage, Lê-vi Ký 13). - 'Kẻ nợ nần được tự do' lẫn với luật năm hân hỉ (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 23,
+    "verseStart": 19,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Sách Giao Ước có một mệnh lệnh độc đáo về cách chế biến thức ăn; đó là gì?",
+    "options": [
+      "Chớ trộn hai loại hạt giống khi gieo",
+      "Chớ ăn thịt còn dính huyết",
+      "Chớ nấu dê con trong sữa của mẹ nó",
+      "Chớ ăn bánh có men trong kỳ lễ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 23:19 (RVV11): 'Ngươi chớ nấu dê con trong sữa mẹ nó.' - 'Ăn thịt còn dính huyết' là luật khác về huyết (near_passage, Lê-vi Ký 17). - 'Trộn hai loại hạt giống' thuộc các luật phân biệt nơi khác (wrong_scope, Lê-vi Ký 19). - 'Ăn bánh có men trong kỳ lễ' lẫn với luật Bánh Không Men (wrong_detail, Xuất 12).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 23,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời hứa sai ai đi trước dân để gìn giữ họ trên đường và đưa vào nơi đã sắm sẵn?",
+    "options": [
+      "Thầy tế lễ A-rôn",
+      "Đạo binh các nước đồng minh",
+      "Một thiên sứ của Ngài",
+      "Tiên tri Môi-se"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 23:20 (RVV11): 'Đây nầy, Ta sai một thiên sứ đi trước mặt ngươi, đặng phù hộ ngươi trong lúc đi đường, dẫn ngươi vào nơi Ta đã dự bị.' - 'Tiên tri Môi-se' là người lãnh đạo hữu hình, không phải đấng được sai theo câu này (true_but_off). - 'Đạo binh các nước đồng minh' trái với việc Chúa sẽ đuổi các dân (common_misconception). - 'Thầy tế lễ A-rôn' không phải đối tượng được hứa sai đi trước (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 23,
+    "verseStart": 28,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời hứa dùng phương tiện bất ngờ nào để đuổi dân Ca-na-an khỏi trước mặt dân Y-sơ-ra-ên?",
+    "options": [
+      "Khiến đất nứt ra nuốt chúng",
+      "Gửi dịch lệ tiêu diệt chúng",
+      "Sai ong vò vẽ đến đuổi chúng đi",
+      "Sai lửa từ trời thiêu đốt chúng"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 23:28 (RVV11): 'Ta sẽ sai ong lỗ (ong vò vẽ) bay đi trước ngươi mà đuổi' dân Ca-na-an. - 'Lửa từ trời' lẫn với phán xét trên Sô-đôm hay Ê-li (near_passage). - 'Đất nứt nuốt chúng' nhầm với số phận Cô-rê (wrong_scope, Dân Số Ký 16). - 'Dịch lệ tiêu diệt' không phải phương tiện nêu trong câu này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 24,
+    "verseStart": 1,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi lập giao ước, ngoài Môi-se và A-rôn, những ai được gọi lên núi cùng bảy mươi trưởng lão?",
+    "options": [
+      "Giô-suê và Ca-lép",
+      "Bết-sa-lê-ên và Ô-hô-li-áp",
+      "Hốp-ni và Phi-nê-a",
+      "Na-đáp và A-bi-hu"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 24:1 (RVV11): Chúa phán 'Ngươi và A-rôn, Na-đáp và A-bi-hu cùng bảy mươi trưởng lão... hãy lên cùng Đức Giê-hô-va.' - 'Bết-sa-lê-ên và Ô-hô-li-áp' là các thợ xây Đền Tạm, không phải nhóm lên núi (near_passage, Xuất 31). - 'Giô-suê và Ca-lép' là hai thám tử trung tín, không nêu ở đây (wrong_scope, Dân Số Ký 14). - 'Hốp-ni và Phi-nê-a' là con của Hê-li, thời sau này (wrong_detail, 1 Sa-mu-ên 1).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 24,
+    "verseStart": 9,
+    "verseEnd": 10,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi các trưởng lão lên núi 'thấy Đức Chúa Trời', dưới chân Ngài được mô tả giống vật gì?",
+    "options": [
+      "Như chiếc cầu vồng rực rỡ bao quanh ngai",
+      "Như một đám mây lửa đỏ cuồn cuộn",
+      "Như mặt biển pha lê lấp lánh ánh vàng",
+      "Như một vật bằng ngọc bích trong như trời xanh"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 24:10 (RVV11): họ thấy 'dưới chân Ngài có một vật giống bích ngọc trong ngần, khác nào sắc trời thanh quang.' - 'Biển pha lê' là khải tượng của Giăng, không phải đây (near_passage, Khải 4:6). - 'Đám mây lửa cuồn cuộn' lẫn với mô tả sự hiện diện trên đỉnh núi (wrong_detail, Xuất 24:17). - 'Cầu vồng bao quanh ngai' thuộc khải tượng khác (wrong_scope, Khải 4:3).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 25,
+    "verseStart": 31,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chân đèn (giá đèn) trong Đền Tạm phải được chế tạo theo cách nào?",
+    "options": [
+      "Ghép từ nhiều thanh gỗ si-tim bọc vàng",
+      "Đánh dát nguyên khối bằng vàng ròng",
+      "Đúc bằng đồng rồi mạ bạc",
+      "Đan bằng dây vàng và bạc xen kẽ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 25:31 (RVV11): 'Ngươi cũng hãy làm chân đèn bằng vàng ròng; cái chân, cái thân... đều đánh dát.' - 'Gỗ si-tim bọc vàng' là chất liệu của hòm và bàn, không phải chân đèn (near_passage, Xuất 25:10,23). - 'Đúc đồng mạ bạc' lẫn với các vật nơi sân (wrong_detail). - 'Đan bằng dây vàng bạc' là chi tiết bịa thêm (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 25,
+    "verseStart": 37,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chân đèn trong Đền Tạm có bao nhiêu ngọn đèn?",
+    "options": [
+      "Mười hai ngọn",
+      "Ba ngọn",
+      "Mười ngọn",
+      "Bảy ngọn"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 25:37 (RVV11): 'Hãy làm bảy cái đèn của chân đèn', để soi sáng phía trước. - 'Mười hai ngọn' nhầm với số chi phái phản ánh trên các vật khác (near_passage). - 'Ba ngọn' sai con số rõ rệt (wrong_detail). - 'Mười ngọn' lẫn với mười chân đèn trong đền thờ Sa-lô-môn về sau (wrong_scope, 1 Vua 7:49).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 25,
+    "verseStart": 40,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi truyền làm các vật trong Đền Tạm, Chúa nhấn mạnh nguyên tắc nào để bảo đảm sự chính xác?",
+    "options": [
+      "Làm theo phong tục các đền thờ Ai Cập",
+      "Làm y theo kiểu mẫu đã chỉ cho Môi-se trên núi",
+      "Sao chép từ đền thờ của các tổ phụ",
+      "Để mỗi thợ tự do sáng tạo theo ý mình"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 25:40 (RVV11): 'Hãy xem mà làm y như kiểu đã chỉ cho ngươi trên núi.' Thư Hê-bơ-rơ 8:5 dẫn lại để nói Đền Tạm là hình bóng. - 'Theo phong tục đền thờ Ai Cập' trái với mặc khải từ trên núi (common_misconception). - 'Mỗi thợ tự do sáng tạo' trái với lệnh làm 'y như kiểu' (wrong_detail). - 'Sao chép từ đền thờ các tổ phụ' sai vì chưa có đền thờ nào trước đó (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 26,
+    "verseStart": 31,
+    "verseEnd": 33,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong Đền Tạm, bức màn (cái màn) đặc biệt có chức năng gì?",
+    "options": [
+      "Che kín lối vào sân Đền Tạm",
+      "Phủ trên nắp Hòm Giao Ước",
+      "Bao quanh bàn thờ dâng của lễ thiêu",
+      "Ngăn cách Nơi Thánh với Nơi Chí Thánh"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 26:33 (RVV11): 'cái màn đó dùng phân biệt cho các ngươi Nơi Thánh và Nơi Chí Thánh.' - 'Che lối vào sân' là tấm bình phong nơi cửa, khác bức màn này (near_passage, Xuất 27:16). - 'Phủ trên nắp Hòm Giao Ước' lẫn với nắp thi ân và chê-ru-bim (wrong_detail, Xuất 25:20). - 'Bao quanh bàn thờ của lễ thiêu' thuộc về sân ngoài, không phải bức màn trong (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 26,
+    "verseStart": 33,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo lệnh, Hòm Giao Ước (Hòm Chứng cớ) phải được đặt ở đâu trong Đền Tạm?",
+    "options": [
+      "Phía trong bức màn, tại Nơi Chí Thánh",
+      "Giữa sân ngoài cạnh bàn thờ của lễ thiêu",
+      "Ngay tại cửa Đền Tạm cho dân thấy",
+      "Bên cạnh bàn thờ xông hương ở Nơi Thánh"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 26:33 (RVV11): 'để Hòm bảng chứng (Giao Ước) ở sau bức màn', tức tại Nơi Chí Thánh. - 'Ngay tại cửa cho dân thấy' trái với tính biệt riêng của Hòm (common_misconception). - 'Bên cạnh bàn thờ xông hương ở Nơi Thánh' đặt sai phòng (near_passage, Xuất 30:6). - 'Giữa sân ngoài' đặt sai hẳn khu vực (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 27,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Dân phải đem loại dầu nào để thắp đèn trong Đền Tạm cho cháy liên tục?",
+    "options": [
+      "Dầu ô-liu nguyên chất, ép tinh khiết",
+      "Dầu thơm pha với trầm hương quý",
+      "Mỡ của chiên đực đem nấu cho chảy",
+      "Dầu hạt nho được ép ra từ lần đầu"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 27:20 (RVV11): dân phải đem 'dầu ô-liu ép, trong sạch, đặng thắp đèn cho đèn cháy luôn luôn.' - 'Dầu thơm pha trầm hương' là dầu xức thánh, công dụng khác (near_passage, Xuất 30:23). - 'Mỡ chiên đực nấu chảy' dùng trong tế lễ, không phải để thắp đèn (wrong_detail). - 'Dầu hạt nho' không phải loại dầu được chỉ định (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 27,
+    "verseStart": 21,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Ai có trách nhiệm chăm sóc đèn trong Đền Tạm để giữ cho nó cháy, và vào khoảng thời gian nào?",
+    "options": [
+      "Các trưởng lão thay phiên giữ đèn ban ngày",
+      "Bết-sa-lê-ên giữ đèn suốt ngày đêm",
+      "Mọi người Lê-vi luân phiên mỗi tuần",
+      "A-rôn và các con coi sóc đèn từ chiều tối đến sáng"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 27:21 (RVV11): 'A-rôn cùng các con trai người sẽ lo sửa soạn đèn đó... từ chiều tối đến sáng' trước mặt Đức Giê-hô-va, làm luật đời đời. - 'Các trưởng lão giữ đèn ban ngày' sai cả người lẫn thời gian (wrong_detail). - 'Bết-sa-lê-ên giữ đèn' nhầm vai: ông là thợ chế tác, không phải người coi đèn (wrong_scope). - 'Mọi người Lê-vi luân phiên mỗi tuần' là quy định bịa thêm (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 28,
+    "verseStart": 30,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong bảng đeo ngực của thầy tế lễ thượng phẩm có đặt hai vật dùng để cầu hỏi ý Chúa; đó là gì?",
+    "options": [
+      "Hai bảng đá nhỏ",
+      "Hai viên hồng ngọc",
+      "U-rim và Thu-mim",
+      "Bình ma-na và gậy A-rôn"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 28:30 (RVV11): 'Trên bảng đeo ngực... ngươi hãy để U-rim và Thu-mim', để A-rôn mang khi cầu hỏi ý Đức Giê-hô-va. - 'Hai viên hồng ngọc' lẫn với các viên đá quý gắn trên bảng (near_passage, Xuất 28:17). - 'Bình ma-na và gậy A-rôn' là vật để trong Hòm, không phải bảng đeo ngực (wrong_scope, Hê 9:4). - 'Hai bảng đá nhỏ' nhầm với bảng chứng trong Hòm (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 28,
+    "verseStart": 33,
+    "verseEnd": 34,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Viền dưới của áo dài thầy tế lễ thượng phẩm được trang trí xen kẽ bằng hai vật nào?",
+    "options": [
+      "Hoa huệ và viên ngọc lam",
+      "Trái lựu và chuông vàng nhỏ",
+      "Quả nho và hạt vàng",
+      "Cành ô-liu và lục lạc bạc"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 28:33-34 (RVV11): nơi viền áo có 'trái lựu' bằng chỉ màu xen kẽ với 'chuông vàng', để nghe tiếng khi A-rôn vào Nơi Thánh. - 'Hoa huệ và ngọc lam' lẫn với trang trí đền thờ và bảng đeo ngực (near_passage). - 'Cành ô-liu và lục lạc bạc' sai cả hai vật (wrong_detail). - 'Quả nho và hạt vàng' là chi tiết bịa thêm (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 28,
+    "verseStart": 9,
+    "verseEnd": 12,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trên hai vai ê-phót của thầy tế lễ có gắn hai viên đá mã não khắc điều gì?",
+    "options": [
+      "Tên của A-rôn và các con trai",
+      "Mười Điều Răn rút gọn",
+      "Danh các tổ phụ Áp-ra-ham, Y-sác, Gia-cốp",
+      "Tên mười hai chi phái Y-sơ-ra-ên"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 28:9-12 (RVV11): hai viên mã não khắc 'tên các con trai Y-sơ-ra-ên' (mười hai chi phái), gắn trên hai vai ê-phót làm kỷ niệm trước mặt Chúa. - 'Mười Điều Răn rút gọn' không khắc trên đá vai (wrong_detail). - 'Danh ba tổ phụ' sai đối tượng được khắc (wrong_scope). - 'Tên A-rôn và các con' không phải nội dung trên đá (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 29,
+    "verseStart": 45,
+    "verseEnd": 46,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Mục đích tối hậu của việc lập Đền Tạm và chức tế lễ, theo Xuất 29:45-46, là gì?",
+    "options": [
+      "Để phân biệt người giàu với người nghèo",
+      "Để dân có nơi cất giữ của cải dâng hiến",
+      "Để Đức Chúa Trời ngự giữa dân và làm Chúa của họ",
+      "Để thu hút các dân ngoại đến triều cống"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 29:45-46 (RVV11): 'Ta sẽ ở giữa dân Y-sơ-ra-ên, làm Đức Chúa Trời của dân ấy', và họ sẽ biết Ngài là Đấng đã đem họ ra khỏi Ai Cập để ngự giữa họ. - 'Nơi cất giữ của cải' biến Đền Tạm thành kho, lạc mục đích (common_misconception). - 'Phân biệt giàu nghèo' không liên quan (wrong_scope). - 'Thu hút dân ngoại triều cống' là suy diễn sai trọng tâm (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 30,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Cái bồn (thùng) bằng đồng đặt giữa Đền Tạm và bàn thờ dùng để làm gì?",
+    "options": [
+      "Để chứa nước uống cho dân chúng",
+      "Để pha trộn dầu xức thánh cho thầy tế lễ",
+      "Để A-rôn và các con rửa tay chân khi phục vụ",
+      "Để hứng lấy huyết của các con sinh tế"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 30:18-19 (RVV11): cái thùng bằng đồng để 'A-rôn cùng các con trai rửa tay và chân' khi vào Hội Mạc hay đến gần bàn thờ. - 'Chứa nước uống cho dân' sai công dụng (wrong_detail). - 'Hứng huyết các sinh tế' lẫn với chức năng bàn thờ (wrong_scope). - 'Pha trộn dầu xức thánh' là việc khác trong cùng chương (near_passage, Xuất 30:25).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 30,
+    "verseStart": 32,
+    "verseEnd": 37,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Về dầu xức thánh và hương thánh, Đức Chúa Trời ra lệnh nghiêm cấm điều gì?",
+    "options": [
+      "Không được pha chế giống vậy để dùng cho việc riêng",
+      "Không được để chúng trong Nơi Chí Thánh",
+      "Không được làm chúng bằng vàng ròng",
+      "Không được dâng chúng trên bàn thờ của lễ thiêu"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 30:32-33,37-38 (RVV11): không ai được 'pha một dầu nào giống như vậy' hay làm hương 'theo phép ngần ấy mà dùng' cho mình; kẻ làm để hưởng riêng sẽ bị truất khỏi dân. - 'Không dâng trên bàn thờ của lễ thiêu' không phải điều cấm nêu ở đây (wrong_detail). - 'Không để trong Nơi Chí Thánh' lẫn với quy định đặt vật thánh (wrong_scope). - 'Không làm bằng vàng ròng' lạc khỏi nội dung về pha chế (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 31,
+    "verseStart": 14,
+    "verseEnd": 15,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Để nhấn mạnh tính thánh của ngày Sa-bát làm dấu giao ước, hình phạt nào được nêu cho kẻ làm việc trong ngày đó?",
+    "options": [
+      "Người ấy phải dâng một con bò chuộc lỗi",
+      "Người ấy bị phạt vạ gấp đôi hoa lợi",
+      "Người ấy bị cấm vào Đền Tạm một năm",
+      "Người ấy phải bị xử tử"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 31:14-15 (RVV11): 'ai phạm đến ngày đó (làm công việc) sẽ bị xử tử... sẽ bị truất khỏi vòng dân sự.' - 'Dâng một con bò chuộc lỗi' lẫn với các luật về của lễ chuộc tội (near_passage, Lê-vi Ký 4). - 'Phạt vạ gấp đôi hoa lợi' nhầm với luật bồi thường tài sản (wrong_scope, Xuất 22). - 'Cấm vào Đền Tạm một năm' là hình phạt bịa thêm (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 4,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi trở về Ai Cập, Môi-se cầm theo vật gì được gọi là 'gậy của Đức Chúa Trời'?",
+    "options": [
+      "Một thanh gỗ từ bụi gai cháy",
+      "Một cây trượng vàng từ cung Pha-ra-ôn",
+      "Cây gậy của A-rôn nở hoa",
+      "Cây gậy ông từng dùng khi chăn chiên"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 4:20 (RVV11): Môi-se 'cầm cây gậy của Đức Chúa Trời trong tay' trở về Ai Cập — chính cây gậy chăn chiên đã hóa rắn trước đó (4:2-4). - 'Trượng vàng từ cung Pha-ra-ôn' không có trong bản văn (wrong_detail). - 'Gậy của A-rôn nở hoa' là biến cố về sau (near_passage, Dân Số Ký 17). - 'Thanh gỗ từ bụi gai cháy' là chi tiết bịa thêm (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 12,
+    "verseStart": 31,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau khi tai vạ thứ mười xảy ra, Pha-ra-ôn phản ứng thế nào trong đêm đó?",
+    "options": [
+      "Triệu tập quân đội đuổi dân ngay tức khắc",
+      "Ra lệnh đóng cửa biên giới giữ dân lại",
+      "Gọi Môi-se và A-rôn, giục dân Y-sơ-ra-ên ra đi",
+      "Tuyên bố thờ phượng Đức Giê-hô-va"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 12:31 (RVV11): ban đêm Pha-ra-ôn 'đòi Môi-se và A-rôn mà rằng: Hai ngươi và dân Y-sơ-ra-ên hãy chỗi dậy, đi ra khỏi giữa vòng dân ta.' - 'Đóng cửa biên giới giữ dân lại' trái với việc vua giục họ đi (common_misconception). - 'Triệu tập quân đội đuổi theo' là việc xảy ra sau, khi vua đổi ý (near_passage, Xuất 14:5-9). - 'Tuyên bố thờ phượng Đức Giê-hô-va' không phải phản ứng của vua (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 16,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Dân Y-sơ-ra-ên đến hoang mạc Sin — nơi họ lằm bằm đòi thịt và bánh — nằm ở vị trí nào?",
+    "options": [
+      "Giữa Ê-lim và Si-na-i",
+      "Ngay sát biên giới Ai Cập",
+      "Trong vùng đồng bằng Mô-áp",
+      "Bên bờ sông Giô-đanh"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 16:1 (RVV11): cả hội chúng đi đến 'đồng vắng Sin, nằm về giữa khoảng Ê-lim và Si-na-i', vào ngày mười lăm tháng hai sau khi ra khỏi Ai Cập. - 'Sát biên giới Ai Cập' sai vị trí địa lý (wrong_detail). - 'Bên bờ sông Giô-đanh' là nơi cuối hành trình, không phải đây (wrong_scope, Giô-suê 3). - 'Đồng bằng Mô-áp' là chặng trước khi vào đất hứa, rất sau này (near_passage, Dân Số Ký 22).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 24,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Môi-se lên núi Si-na-i để nhận hai bảng đá, ai là người hầu cùng đi với ông?",
+    "options": [
+      "A-rôn",
+      "Hu-rơ",
+      "Ca-lép",
+      "Giô-suê"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 24:13 (RVV11): 'Môi-se bèn chỗi dậy cùng Giô-suê, kẻ hầu mình', rồi lên núi Đức Chúa Trời. - 'A-rôn' được để lại cùng Hu-rơ để xử việc dân (near_passage, Xuất 24:14). - 'Hu-rơ' cũng ở lại với A-rôn, không lên núi (wrong_detail). - 'Ca-lép' là thám tử trung tín thời sau, không có mặt ở đây (wrong_scope, Dân Số Ký 13).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 28,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Mục đích của bộ áo thánh may cho A-rôn được nêu ra là gì?",
+    "options": [
+      "Để giữ ấm khi phục vụ ban đêm",
+      "Để phân biệt giàu nghèo giữa các thầy tế lễ",
+      "Để che giấu thân phận của thầy tế lễ",
+      "Cho được sang trọng và đẹp đẽ (vinh hiển)"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 28:2 (RVV11): hãy làm áo thánh cho A-rôn 'để dùng cho được sang trọng và đẹp đẽ (vinh hiển)'. - 'Che giấu thân phận' trái với mục đích tôn vinh chức tế lễ (common_misconception). - 'Giữ ấm khi phục vụ ban đêm' là suy diễn thực dụng, không có trong câu (wrong_detail). - 'Phân biệt giàu nghèo' lạc hoàn toàn khỏi ý nghĩa thánh (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 32,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau khi đập vỡ hai bảng đá, Môi-se đã xử lý tượng bò vàng như thế nào?",
+    "options": [
+      "Nấu chảy tượng rồi đúc lại thành Hòm Giao Ước",
+      "Ném tượng bò vàng xuống lòng Biển Đỏ",
+      "Chôn tượng bò vàng dưới chân núi Si-na-i",
+      "Thiêu đốt, nghiền thành bột rồi rải trên nước"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 32:20 (RVV11): Môi-se 'lấy bò con... đốt trong lửa, rồi nghiền cho đến thành ra bụi, rải trên mặt nước, và cho dân Y-sơ-ra-ên uống.' - 'Ném xuống Biển Đỏ' sai: dân đang ở Si-na-i, xa Biển Đỏ (wrong_detail). - 'Chôn dưới chân núi' không khớp hành động được ghi (common_misconception). - 'Nấu chảy đúc lại thành Hòm' trái với việc hủy diệt tượng (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 32,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Môi-se chất vấn, A-rôn biện hộ cho việc làm bò vàng bằng lời nào?",
+    "options": [
+      "Dân đã ép buộc ông bằng vũ lực",
+      "Đức Chúa Trời đã truyền ông làm vậy",
+      "Ông ném vàng vào lửa thì 'bèn ra con bò này'",
+      "Một người lạ đã đúc tượng rồi bỏ đi"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 32:24 (RVV11): A-rôn nói dân đưa vàng, 'tôi bỏ vàng vào lửa, và bởi đó thành ra bò con nầy' — một lời chối tránh trách nhiệm. - 'Dân ép buộc bằng vũ lực' không phải lời A-rôn nói (wrong_detail). - 'Đức Chúa Trời truyền làm vậy' trái nghịch hoàn toàn (common_misconception). - 'Một người lạ đúc tượng' là tình tiết bịa thêm (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 32,
+    "verseStart": 26,
+    "verseEnd": 28,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi Môi-se kêu gọi 'ai thuộc về Đức Giê-hô-va, hãy đến', chi phái nào đáp lại và thi hành sự phán xét?",
+    "options": [
+      "Chi phái Ru-bên, khiến khoảng năm ngàn người chết",
+      "Chi phái Bên-gia-min, khiến khoảng hai ngàn người chết",
+      "Chi phái Giu-đa, khiến khoảng một ngàn người chết",
+      "Chi phái Lê-vi, khiến khoảng ba ngàn người ngã chết"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 32:26-28 (RVV11): 'hết thảy con cháu Lê-vi đều nhóm lại' bên Môi-se; ngày đó 'có chừng ba ngàn người bị chết.' - 'Chi phái Giu-đa, một ngàn người' sai cả chi phái lẫn con số (wrong_detail). - 'Chi phái Ru-bên, năm ngàn' sai chi phái và phóng đại con số (wrong_scope). - 'Chi phái Bên-gia-min, hai ngàn' cũng sai cả hai chi tiết (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 32,
+    "verseStart": 35,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau biến cố bò vàng, Đức Chúa Trời đã làm gì với dân chúng?",
+    "options": [
+      "Giáng một tai vạ trên dân",
+      "Truyền dời trại đi ngay trong đêm",
+      "Lập tức tha thứ và không hề trách phạt",
+      "Sai lửa thiêu rụi cả trại quân"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 32:35 (RVV11): 'Đức Giê-hô-va hành hại dân sự, vì dân sự là gốc phạm về tượng bò vàng mà A-rôn đã làm ra' — tức giáng tai vạ trên họ. - 'Tha thứ và không trách phạt' trái với câu này (common_misconception). - 'Lửa thiêu rụi cả trại quân' lẫn với phán xét nơi khác (near_passage, Dân Số Ký 11:1). - 'Dời trại đi ngay trong đêm' không phải nội dung câu (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 33,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau tội bò vàng, Đức Chúa Trời nói Ngài sẽ không đích thân cùng đi với dân vì lý do nào?",
+    "options": [
+      "Vì con đường đến đất hứa quá xa xôi hiểm trở",
+      "Vì dân chưa hoàn tất việc xây dựng Đền Tạm",
+      "Vì Môi-se đã cầu xin Ngài ở lại trên núi",
+      "Vì dân là dân cứng cổ, e Ngài tiêu diệt họ dọc đường"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 33:3 (RVV11): Chúa phán Ngài sẽ không lên giữa dân, 'vì ngươi là dân cứng cổ, e Ta diệt ngươi dọc đường chăng.' - 'Đường đến đất hứa quá xa' không phải lý do nêu (wrong_detail). - 'Môi-se cầu xin Ngài ở lại núi' trái với việc Môi-se nài xin Chúa cùng đi (common_misconception, Xuất 33:15). - 'Dân chưa hoàn tất Đền Tạm' lạc khỏi lý do được nêu (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 33,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Nghe lời quở trách của Chúa sau tội bò vàng, dân Y-sơ-ra-ên đã làm gì tỏ dấu ăn năn tại núi Hô-rếp?",
+    "options": [
+      "Dâng mọi con đầu lòng làm của lễ",
+      "Lột bỏ đồ trang sức khỏi mình",
+      "Xây một bàn thờ bằng đá",
+      "Kiêng ăn trong bốn mươi ngày"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 33:6 (RVV11): 'dân Y-sơ-ra-ên bèn lột các đồ trang sức mình' từ khi rời núi Hô-rếp. - 'Kiêng ăn bốn mươi ngày' là việc của Môi-se trên núi, không phải dân (near_passage, Xuất 34:28). - 'Xây bàn thờ bằng đá' không phải hành động ở đây (wrong_detail). - 'Dâng mọi con đầu lòng' lẫn với luật biệt riêng con đầu lòng (wrong_scope, Xuất 13:2).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 34,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi cảnh báo chớ thờ thần khác, Đức Chúa Trời tự xưng bằng danh hiệu nào nhấn mạnh sự độc nhất của Ngài?",
+    "options": [
+      "Đức Chúa Trời nhân từ và thương xót",
+      "Đức Chúa Trời toàn năng (El Shaddai)",
+      "Đức Chúa Trời kỵ tà (hay ghen tương)",
+      "Đức Chúa Trời hằng hữu đời đời"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 34:14 (RVV11): 'vì Đức Giê-hô-va... danh là Đấng kỵ tà, vốn là một Đức Chúa Trời hay ghen tương.' - 'Toàn năng' (El Shaddai) là danh đúng nhưng không phải danh nhấn mạnh ở đây (true_but_off, Xuất 6:3). - 'Nhân từ' thuộc lời tự khải về lòng thương xót (near_passage, Xuất 34:6). - 'Hằng hữu' (Đấng Tự Hữu) là tên mặc khải tại bụi gai, không phải ở đây (wrong_scope, Xuất 3:14).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 34,
+    "verseStart": 21,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Luật về ngày Sa-bát trong Xuất 34:21 nhấn mạnh phải nghỉ ngơi ngay cả trong những mùa nào?",
+    "options": [
+      "Cả mùa xuân lẫn mùa đông",
+      "Cả mùa cày lẫn mùa gặt",
+      "Cả mùa mưa lẫn mùa khô",
+      "Cả mùa lễ lẫn mùa chiến tranh"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 34:21 (RVV11): 'Trong sáu ngày ngươi hãy làm công việc, nhưng qua ngày thứ bảy hãy nghỉ, dầu mùa cày hay mùa gặt cũng vậy.' - 'Mùa mưa lẫn mùa khô' không phải cách diễn đạt của câu (wrong_detail). - 'Mùa lễ lẫn mùa chiến tranh' là cặp bịa thêm (common_misconception). - 'Mùa xuân lẫn mùa đông' lạc khỏi nguyên văn về nông vụ (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 34,
+    "verseStart": 33,
+    "verseEnd": 35,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Vì mặt Môi-se sáng láng sau khi ở với Chúa, ông đã làm gì mỗi khi nói xong với dân?",
+    "options": [
+      "Lấy một tấm màn che mặt lại",
+      "Đội một chiếc mũ vàng lên đầu",
+      "Rút lui vào trong Đền Tạm",
+      "Rửa mặt bằng nước thánh"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 34:33-35 (RVV11): nói xong với dân, Môi-se 'lấy màn che mặt mình lại', rồi mở ra khi vào hầu chuyện cùng Chúa. - 'Đội mũ vàng' lẫn với mũ của thầy tế lễ, không phải Môi-se (near_passage, Xuất 28:36). - 'Rút lui vào Đền Tạm' không phải hành động được mô tả (wrong_detail). - 'Rửa mặt bằng nước thánh' là chi tiết bịa thêm (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 35,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Một quy định cụ thể về ngày Sa-bát được nhắc trong Xuất 35:3 là gì?",
+    "options": [
+      "Không được nói chuyện lớn tiếng trong ngày Sa-bát",
+      "Không được nhóm lửa trong nơi ở vào ngày Sa-bát",
+      "Không được mặc áo mới trong ngày Sa-bát",
+      "Không được ra khỏi trại trong ngày Sa-bát"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 35:3 (RVV11): 'Nhằm ngày Sa-bát chớ nên nhóm lửa trong nhà nào của các ngươi.' - 'Không ra khỏi trại' là cách diễn giải về sau của truyền thống, không phải câu này (common_misconception). - 'Không nói lớn tiếng' là quy định bịa thêm (wrong_detail). - 'Không mặc áo mới' không liên quan luật Sa-bát (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 35,
+    "verseStart": 25,
+    "verseEnd": 26,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong việc dâng hiến xây Đền Tạm, các phụ nữ khéo léo đã đóng góp bằng cách nào?",
+    "options": [
+      "Đẽo các tấm gỗ si-tim để làm khung",
+      "Đúc các vật dụng bằng vàng và bằng đồng",
+      "Chạm khắc các viên đá quý cho ê-phót",
+      "Tự tay kéo chỉ và dệt các loại sợi để dâng"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất 35:25-26 (RVV11): 'phàm người đàn bà khéo thì chính tay mình kéo chỉ' — chỉ tím, đỏ điều, đỏ sặm và vải gai mịn — để dâng cho công việc. - 'Đúc vật bằng vàng và đồng' là việc của thợ kim hoàn như Bết-sa-lê-ên (near_passage). - 'Chạm khắc đá quý' cũng thuộc thợ chuyên môn (wrong_detail). - 'Đẽo gỗ si-tim làm khung' không phải phần đóng góp được nêu của phụ nữ (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 36,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Để làm trại (lều) phủ bên trên Đền Tạm, các thợ đã dệt những bức màn bằng chất liệu gì?",
+    "options": [
+      "Da chiên nhuộm đỏ",
+      "Chỉ vàng dệt",
+      "Lông dê",
+      "Vải gai mịn"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 36:14 (RVV11): 'Đoạn, họ dùng lông dê kết mười một bức màn, để làm bong (trại) phủ trên Đền Tạm.' - 'Vải gai mịn' là chất liệu các bức trướng lớp trong, không phải lớp trại này (near_passage, Xuất 36:8). - 'Da chiên nhuộm đỏ' là một lớp phủ khác bên ngoài (wrong_detail, Xuất 36:19). - 'Chỉ vàng dệt' không phải vật liệu của các bức màn này (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 39,
+    "verseStart": 43,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi mọi công việc Đền Tạm hoàn tất, Môi-se đã làm gì sau khi xem xét tất cả?",
+    "options": [
+      "Truyền dân tháo dỡ ra để kiểm tra lại",
+      "Chúc phước cho dân vì họ đã làm y theo lệnh Chúa",
+      "Lập tức đứng dâng của lễ thiêu đầu tiên",
+      "Chọn thêm thợ khéo để sửa các chỗ sai"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 39:43 (RVV11): 'Môi-se xem các công việc... thấy họ đều làm y như lời Đức Giê-hô-va đã phán dặn; Môi-se bèn chúc phước cho họ.' - 'Lập tức dâng của lễ thiêu' xảy ra về sau khi Đền Tạm được dựng (near_passage, Xuất 40). - 'Truyền tháo dỡ kiểm tra lại' trái với sự hài lòng của Môi-se (common_misconception). - 'Chọn thêm thợ sửa chỗ sai' sai vì mọi việc đã làm đúng (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 40,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi dựng Đền Tạm, Môi-se được truyền dùng dầu xức để làm gì?",
+    "options": [
+      "Bôi dầu lên khung cửa Đền Tạm như đêm Vượt Qua",
+      "Pha dầu vào trong nước của bồn rửa bằng đồng",
+      "Xức Đền Tạm cùng mọi đồ đạc để biệt riêng ra thánh",
+      "Đổ dầu cho đầy các đèn để thắp sáng luôn"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 40:9 (RVV11): 'Hãy lấy dầu xức mà xức Đền Tạm và các đồ thuộc về đó, biệt riêng ra thánh.' - 'Đổ dầu đầy các đèn' nhầm với dầu thắp đèn, công dụng khác (near_passage, Xuất 27:20). - 'Bôi lên cửa như đêm Vượt Qua' là việc bôi huyết, không phải dầu (wrong_detail, Xuất 12:7). - 'Pha dầu vào nước trong bồn' không có trong lệnh (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 40,
+    "verseStart": 12,
+    "verseEnd": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong nghi thức lập A-rôn làm thầy tế lễ, Môi-se được truyền làm gì cho ông trước tiên?",
+    "options": [
+      "Trao cây gậy quyền năng vào tay ông",
+      "Đặt mão triều thiên bằng vàng lên đầu ông",
+      "Tắm A-rôn bằng nước rồi mặc áo thánh cho ông",
+      "Dẫn ông vào Nơi Chí Thánh"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất 40:12-13 (RVV11): 'dẫn A-rôn và các con trai... lấy nước tắm cho', rồi mặc áo thánh và xức dầu cho A-rôn để làm chức tế lễ. - 'Đặt mão triều thiên bằng vàng' nhầm với vương quyền, không phải chức tế lễ (common_misconception). - 'Trao cây gậy quyền năng' không có trong nghi thức này (wrong_detail). - 'Dẫn vào Nơi Chí Thánh' sai: chỉ thầy tế lễ thượng phẩm vào đó mỗi năm một lần, không phải bước lập chức này (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 40,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi dựng xong Đền Tạm, Môi-se đặt vật gì vào bên trong Hòm Giao Ước?",
+    "options": [
+      "Bảng chứng (hai bảng đá)",
+      "Sách Giao Ước",
+      "Cây gậy A-rôn trổ hoa",
+      "Bình ma-na"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất 40:20 (RVV11): 'Người cũng lấy bảng chứng, để trong hòm, xỏ đòn khiêng vào, để nắp thi ân lên trên hòm.' - 'Bình ma-na' về sau được để trước/bên Hòm, nhưng lúc dựng Đền Tạm chính bảng chứng được đặt vào (true_but_off, Hê 9:4). - 'Cây gậy A-rôn trổ hoa' cũng là vật về sau, không phải lúc này (near_passage, Dân Số Ký 17). - 'Sách Giao Ước' được để bên hòm chứ không trong hòm (wrong_detail, Phục 31:26).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 32,
+    "verseStart": 15,
+    "verseEnd": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hai bảng chứng Môi-se cầm khi xuống núi có đặc điểm nào theo Xuất 32:15-16?",
+    "options": [
+      "Được làm bằng vàng ròng đem đánh dát",
+      "Được viết trên cả hai mặt, do Đức Chúa Trời làm ra",
+      "Được bọc cẩn thận trong vải gai mịn",
+      "Chỉ khắc trên một mặt bằng chính tay Môi-se"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất 32:15-16 (RVV11): hai bảng đá 'có viết hai bên... mặt nầy và mặt kia', và 'bảng đó là công việc của Đức Chúa Trời, chữ cũng là chữ của Đức Chúa Trời khắc trên bảng.' - 'Bằng vàng ròng đánh dát' lẫn với chất liệu chân đèn (near_passage, Xuất 25:31). - 'Chỉ khắc một mặt bằng tay Môi-se' sai cả mặt lẫn người khắc (wrong_detail). - 'Bọc trong vải gai mịn' là chi tiết bịa thêm (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
   }
 ]
