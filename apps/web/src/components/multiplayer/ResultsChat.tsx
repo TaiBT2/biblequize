@@ -51,7 +51,7 @@ export default function ResultsChat({
           onClick={() => setOpen(true)}
           aria-label="Mở trò chuyện"
           data-testid="results-chat-fab"
-          className="fixed right-4 lg:right-6 bottom-20 lg:bottom-24 w-12 h-12 grid place-items-center rounded-full z-40 bg-bq-white border border-bq-amber/30 text-bq-amberd shadow-bq-soft"
+          className="fixed right-4 lg:right-6 bottom-20 lg:bottom-24 w-12 h-12 grid place-items-center rounded-full z-[60] bg-bq-white border border-bq-amber/30 text-bq-amberd shadow-bq-soft"
         >
           <span className="material-symbols-outlined">chat_bubble</span>
           {unread > 0 && (

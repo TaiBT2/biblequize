@@ -25,6 +25,9 @@
 - MPC-5 Tests + Tầng 3 regression
   - Status: [x] DONE · Test: store + ResultsChat + full web vitest ≥ baseline
 
+### Fix follow-up
+- MPC-6 (2026-06-24): nút chat FAB bị che — QuizEndScreen là `fixed inset-0 z-50`, FAB cũ z-40 → nâng FAB lên `z-[60]`. Drawer (z-50, render sau QuizEndScreen) hiện đúng nhờ DOM order.
+
 ### Notes
 - Send qua STOMP của RoomQuiz: `send('/app/room/{roomId}/chat', { text })` (giống lobby handleSendChat).
 - onSend dùng chung cho cả emoji reactions + input (lobby pattern).
