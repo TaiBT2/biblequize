@@ -50,8 +50,10 @@ interface VerseRef {
  * Book is upper-cased here (the badge always reads in caps in the
  * design); callers don't need to upper-case ahead of time.
  */
-export function formatVerseRef(ref: VerseRef): string {
-  const book = ref.book.toUpperCase()
+export function formatVerseRef(ref: VerseRef, bookName?: string): string {
+  // bookName lets callers pass a localized label (e.g. "Xuất Ê-díp-tô Ký");
+  // falls back to the English key in ref.book.
+  const book = (bookName ?? ref.book).toUpperCase()
   if (!ref.chapter) return book
   if (!ref.verseStart) return `${book} ${ref.chapter}`
   if (ref.verseEnd && ref.verseEnd !== ref.verseStart) {

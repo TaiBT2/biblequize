@@ -12,6 +12,7 @@ import DifficultyBadge from '../components/DifficultyBadge'
 import { wrapProperNouns, formatVerseRef, getQuestionLengthClass } from '../utils/textHelpers'
 import { getQuizLanguage } from '../utils/quizLanguage'
 import { useToast } from '../hooks/useToast'
+import { useBookName } from '../hooks/useBookName'
 import QuizResults from './QuizResults'
 import RankedQuizResults from './RankedQuizResults'
 
@@ -88,6 +89,10 @@ const Quiz: React.FC = () => {
   const { t } = useTranslation()
   const { showToast } = useToast()
   const queryClient = useQueryClient()
+  // Localize Bible book names (English keys → Vietnamese display, e.g.
+  // "Exodus" → "Xuất Ê-díp-tô Ký"). Falls back to the English key.
+  const getBookName = useBookName()
+  const bookLang = getQuizLanguage()
   const settings = location.state as QuizPageSettings | null
   const timerLimit = settings?.timePerQuestion ?? DEFAULT_TIMER
   // Practice is for-fun: no energy / lives gauge. Energy only relevant for
@@ -844,7 +849,7 @@ const Quiz: React.FC = () => {
               {t('quiz.question', { current: currentQuestionIndex + 1, total: questions.length })}
             </span>
             <span className="font-display font-bold text-sm tracking-tight">
-              {currentQuestion.book}{currentQuestion.chapter ? `: ${t('quiz.chapter', { chapter: currentQuestion.chapter })}` : ''}
+              {getBookName(currentQuestion.book, bookLang)}{currentQuestion.chapter ? `: ${t('quiz.chapter', { chapter: currentQuestion.chapter })}` : ''}
             </span>
           </div>
         </div>
@@ -1028,7 +1033,7 @@ const Quiz: React.FC = () => {
                   >
                     <span className="material-symbols-outlined text-bq-amberd text-xs">menu_book</span>
                     <span className="text-bq-amberd text-[11px] font-medium tracking-wider">
-                      {formatVerseRef(currentQuestion)}
+                      {formatVerseRef(currentQuestion, getBookName(currentQuestion.book, bookLang))}
                     </span>
                   </div>
                   <DifficultyBadge difficulty={currentQuestion.difficulty} />
@@ -1044,7 +1049,7 @@ const Quiz: React.FC = () => {
                 <div className="hidden md:flex mt-8 items-center gap-2 text-bq-ink3">
                   <span className="material-symbols-outlined text-sm">menu_book</span>
                   <span data-testid="quiz-question-book" className="text-xs font-bold uppercase tracking-widest">
-                    {currentQuestion.book}{currentQuestion.chapter ? ` - ${t('quiz.chapter', { chapter: currentQuestion.chapter })}` : ''}
+                    {getBookName(currentQuestion.book, bookLang)}{currentQuestion.chapter ? ` - ${t('quiz.chapter', { chapter: currentQuestion.chapter })}` : ''}
                   </span>
                 </div>
               </div>
@@ -1195,7 +1200,7 @@ const Quiz: React.FC = () => {
                     {hasWrongExp && currentQuestion.verseStart && (
                       <p className="text-bq-amberd text-sm font-medium flex items-center gap-1.5">
                         <span className="material-symbols-outlined text-sm">menu_book</span>
-                        {currentQuestion.book} {currentQuestion.chapter}:{currentQuestion.verseStart}
+                        {getBookName(currentQuestion.book, bookLang)} {currentQuestion.chapter}:{currentQuestion.verseStart}
                         {currentQuestion.verseEnd && currentQuestion.verseEnd !== currentQuestion.verseStart
                           ? `–${currentQuestion.verseEnd}` : ''}
                       </p>

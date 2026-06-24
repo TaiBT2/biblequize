@@ -131,6 +131,14 @@ describe('formatVerseRef', () => {
     expect(formatVerseRef({ book: 'Ru-tơ' })).toBe('RU-TƠ')
   })
 
+  it('bookName override localizes the label (English key → VN display)', () => {
+    expect(formatVerseRef({ book: 'Exodus', chapter: 34, verseStart: 1 }, 'Xuất Ê-díp-tô Ký'))
+      .toBe('XUẤT Ê-DÍP-TÔ KÝ 34:1')
+    // falls back to the English key when no override is given
+    expect(formatVerseRef({ book: 'Exodus', chapter: 34, verseStart: 1 }))
+      .toBe('EXODUS 34:1')
+  })
+
   it('verseStart === verseEnd is rendered as single verse (no "16-16")', () => {
     expect(formatVerseRef({
       book: 'Mác', chapter: 1, verseStart: 16, verseEnd: 16,
