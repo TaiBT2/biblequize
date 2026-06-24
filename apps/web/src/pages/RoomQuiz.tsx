@@ -7,6 +7,8 @@ import { api } from '../api/client';
 import { soundManager } from '../services/soundManager';
 import { haptic } from '../utils/haptics';
 import QuizEndScreen from '../components/multiplayer/QuizEndScreen';
+import ResultsChat from '../components/multiplayer/ResultsChat';
+import { useRoomChatStore } from '../store/roomChatStore';
 import { EliminationScreen, TeamWinScreen } from './room/RoomOverlays';
 import SequentialFinalView from './room/SequentialFinalView';
 import RoomQuizShell, { type FeedEntry } from './room/RoomQuizShell';
@@ -150,6 +152,10 @@ const RoomQuiz: React.FC = () => {
     setRoundAnswered(new Set());
   };
 
+  // MPC-4: mirror chat into the shared store so the end-game results screen
+  // can replay the lobby + post-match conversation.
+  const appendChatToStore = useRoomChatStore(s => s.appendMessage);
+
   // FMR-2/FMR-5: typed event dispatcher. Handles core + social + host-echo
   // events, then routes every event through the per-mode hooks (each ignores
   // what it doesn't own — same semantics as the pre-split single switch).
@@ -157,6 +163,18 @@ const RoomQuiz: React.FC = () => {
     switch (msg.type) {
       case 'QUESTION_START': {
         applyQuestionStart(msg.data);
+        break;
+      }
+      case 'CHAT_MESSAGE': {
+        const d = msg.data;
+        if (roomId) {
+          appendChatToStore(roomId, {
+            sender: d.sender, text: d.text,
+            isHost: d.sender === hostNameFromState,
+            isSystem: d.isSystem === true,
+            time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
+          });
+        }
         break;
       }
       case 'QUESTION_REVEALED': {
@@ -493,34 +511,44 @@ const RoomQuiz: React.FC = () => {
   // ── Overlays ──
   if (core.showPodium) {
     const exitTo = state?.fromGroupId ? `/groups/${state.fromGroupId}` : '/multiplayer';
+    // MPC-4: keep chatting on the results screen, with the prior conversation.
+    const resultsChat = roomId ? (
+      <ResultsChat roomId={roomId} onSend={(text) => send(`/app/room/${roomId}/chat`, { text })} />
+    ) : null;
     if (isSequential) {
       return (
-        <SequentialFinalView
-          roomName={`Quiz ${roomId?.slice(-4) ?? ''}`}
-          results={core.finalResults}
-          myUsername={myUsername}
-          isHost={isHost}
-          totalQuestions={core.totalQuestions}
-          onClose={() => navigate(exitTo, { replace: true })}
-          onCreateNew={() => navigate(exitTo, { replace: true })}
-        />
+        <>
+          <SequentialFinalView
+            roomName={`Quiz ${roomId?.slice(-4) ?? ''}`}
+            results={core.finalResults}
+            myUsername={myUsername}
+            isHost={isHost}
+            totalQuestions={core.totalQuestions}
+            onClose={() => navigate(exitTo, { replace: true })}
+            onCreateNew={() => navigate(exitTo, { replace: true })}
+          />
+          {resultsChat}
+        </>
       );
     }
     return (
-      <QuizEndScreen
-        results={core.finalResults}
-        myUsername={myUsername}
-        myUserId={myUserId || undefined}
-        isHost={isHost}
-        totalQuestions={core.totalQuestions}
-        startedAtMs={matchStartedAtRef.current}
-        onReplay={() => navigate(exitTo, { replace: true })}
-        onClose={() => navigate(exitTo, { replace: true })}
-        onShare={() => navigate(exitTo, { replace: true })}
-        onNewRoom={() => navigate('/room/create', { replace: true })}
-        onHome={() => navigate('/', { replace: true })}
-        onAnalytics={() => navigate(`/room/${roomId}/analytics`)}
-      />
+      <>
+        <QuizEndScreen
+          results={core.finalResults}
+          myUsername={myUsername}
+          myUserId={myUserId || undefined}
+          isHost={isHost}
+          totalQuestions={core.totalQuestions}
+          startedAtMs={matchStartedAtRef.current}
+          onReplay={() => navigate(exitTo, { replace: true })}
+          onClose={() => navigate(exitTo, { replace: true })}
+          onShare={() => navigate(exitTo, { replace: true })}
+          onNewRoom={() => navigate('/room/create', { replace: true })}
+          onHome={() => navigate('/', { replace: true })}
+          onAnalytics={() => navigate(`/room/${roomId}/analytics`)}
+        />
+        {resultsChat}
+      </>
     );
   }
   if (isTeamVsTeam && team.state.teamWinner !== null) {

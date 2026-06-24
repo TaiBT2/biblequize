@@ -3,12 +3,13 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (21)
+## Active (22)
 
 > Dọn 2026-06-22: 23 task ghi "TODO/DONE" nhưng đã verify hoàn thành → archive (xem git log + Archive bên dưới). Bảng này giờ chỉ còn việc THỰC SỰ đang mở.
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-24 | Multiplayer: chat ở màn kết quả + giữ lịch sử lobby (MPC-1..5) | DONE | [detail](docs/todo/active/2026-06-24-multiplayer-results-chat.md) |
 | 2026-06-24 | Quiz: badge độ khó theo câu — tất cả chế độ (Luyện Tập/Daily/Ranked/Multiplayer) (DTAG-1..2) | DONE | [detail](docs/todo/active/2026-06-24-room-quiz-difficulty-badge.md) |
 | 2026-06-23 | Create Room: toggle "Tôi cũng chơi" (host plays) — opt-in, default Quản trò không chơi (HPT-1..2) | DONE | [detail](docs/todo/active/2026-06-23-host-plays-toggle-create-room.md) |
 | 2026-06-22 | Ranked scoring rework A+B+C (BL-26, LOCKED): additive situational cap 2.0 + accuracy bonus + speed timer 90s + comeback (ABC-1..7) | IN PROGRESS | [detail](docs/todo/active/2026-06-22-ranked-scoring-rework-abc.md) |

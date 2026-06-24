@@ -517,7 +517,7 @@ Tất cả route qua `RoomWebSocketController` với prefix `/app/`:
 | `/app/room/{roomId}/answer` | `handleAnswerSubmission` | `{ questionIndex, answerIndex, reactionTimeMs }` | Submit đáp án. Server validate, score, lưu `RoomAnswer`, broadcast `ANSWER_SUBMITTED` + `SCORE_UPDATE`. **Quản trò mode**: server reject với `BadRequestException("Quản trò không trả lời câu hỏi")` nếu sender = host. |
 | `/app/room/{roomId}/advance` | `handleSequentialAdvance` | `{}` | **Chỉ GROUP_LIVE_SEQUENTIAL** + chỉ host. Release latch để chuyển câu. |
 | `/app/room/{roomId}/reaction` | `handleReaction` | `ReactionData { reaction: string }` | Emoji reaction. Rate limited 3/10s. |
-| `/app/room/{roomId}/chat` | `handleChat` | `{ text: string }` | Free-form chat trong room. Trim 500 chars; empty drop. |
+| `/app/room/{roomId}/chat` | `handleChat` | `{ text: string }` | Free-form chat trong room. Trim 500 chars; empty drop. **MPC (2026-06-24)**: FE giữ lịch sử chat trong `roomChatStore` (Zustand keyed theo roomId) sống xuyên Lobby→Quiz→Results; màn kết quả (QuizEndScreen / SequentialFinalView) có chat drawer (ResultsChat) để tiếp tục thảo luận với nguyên cuộc trò chuyện trước đó. Chat KHÔNG khả dụng trong lúc đang chơi (chỉ Lobby + Results). Backend vẫn ephemeral (không lưu lịch sử). |
 
 > **Note (Sprint 4):** Host control actions (pause/resume/skip/broadcast/end-early) sử dụng REST endpoints chứ KHÔNG qua WS — xem section 8. Lý do: REST cho idempotency + audit log dễ hơn STOMP. WS broadcast-out các events `GAME_PAUSED` / `GAME_RESUMED` / `QUESTION_SKIPPED` / `HOST_BROADCAST` (xem 5.3).
 
