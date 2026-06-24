@@ -140,7 +140,7 @@ const Quiz: React.FC = () => {
       const pickRes = await api.post('/api/ranked/questions/select', {
         limit: 10,
         excludeIds,
-        book: status?.currentBook,
+        // RWP-1: whole-pool draw — no per-book funnel.
         difficulty: status?.currentDifficulty,
         language,
       })

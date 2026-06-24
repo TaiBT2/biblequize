@@ -137,6 +137,9 @@ public class RankedController {
     // BL-26 A1: Ranked uses a flat 90s/question timer (policy 2026-05-20). The
     // speed bonus window must match it, not the legacy 30s ScoringService const.
     private static final int RANKED_TIMER_MS = 90_000;
+    // RWP-2: how many recently-seen questions to exclude from the whole-pool draw
+    // (cross-day repeat avoidance). 80 << pool size (~3.3k) so never starves.
+    private static final int RANKED_RECENT_EXCLUDE = 80;
 
     /**
      * Read the season-leaderboard score at rank N with a 60s Redis cache.
@@ -281,14 +284,34 @@ public class RankedController {
             coverageBooks = resolveCoverageWeekBooks(userId, language);
         }
 
+        // RWP-2 (2026-06-24): cross-day repeat avoidance. The legacy excludeSet
+        // only carried today's asked ids (UTC), so across days the whole-pool
+        // draw could re-serve a question seen a day or two ago. Augment with the
+        // user's most-recently-seen ids from UserQuestionHistory. Only on the
+        // whole-pool (non-coverage) path — coverage manages its own pool.
+        if (coverageBooks == null && userId != null) {
+            try {
+                excludeSet.addAll(userQuestionHistoryRepository.findRecentSeenQuestionIds(
+                        userId, org.springframework.data.domain.PageRequest.of(0, RANKED_RECENT_EXCLUDE)));
+            } catch (Exception e) {
+                log.warn("recent-seen exclude lookup failed (non-fatal): {}", e.getMessage());
+            }
+        }
+
         QuestionFilter filter;
         if (coverageBooks != null) {
             filter = new QuestionFilter(coverageBooks,
                     (difficulty != null && !difficulty.isBlank() && !"all".equalsIgnoreCase(difficulty)) ? difficulty : null,
                     language);
         } else {
+            // RWP-1 (2026-06-24): Ranked draws from the WHOLE 66-book pool, not a
+            // single currentBook. The legacy book funnel locked users in Genesis
+            // until a 100-unique mastery gate (which also never fired via the dead
+            // per-session gate) and amplified repeats in a 150-question pool. The
+            // tier-difficulty distribution + history-aware ordering in
+            // SmartQuestionSelector already give a good spread across scripture.
             filter = new QuestionFilter(
-                    (book != null && !book.isBlank()) ? book : null,
+                    (String) null,
                     (difficulty != null && !difficulty.isBlank() && !"all".equalsIgnoreCase(difficulty)) ? difficulty : null,
                     language);
         }
@@ -602,23 +625,16 @@ public class RankedController {
                 log.warn("Coverage tick failed (non-fatal): {}", coverageErr.getMessage());
             }
 
-            // Legacy: sequential book advancement gate. @Deprecated — removed in Phase 4.
-            boolean shouldAdvance = bookProgressionService.shouldAdvanceToNextBook(
-                    p.currentBook, p.questionsInCurrentBook, p.correctAnswersInCurrentBook);
-
-            if (shouldAdvance) {
-                String nextBook = bookProgressionService.getNextBook(p.currentBook);
-                if (nextBook != null) {
-                    log.debug("Advancing from {} to {}", p.currentBook, nextBook);
-                    p.currentBook = nextBook;
-                    p.currentBookIndex = bookProgressionService.getBookProgress(nextBook).currentIndex - 1;
-                    p.questionsInCurrentBook = 0;
-                    p.correctAnswersInCurrentBook = 0;
-                } else {
-                    log.info("User completed all books! Switching to post-cycle mode.");
-                    p.isPostCycle = true;
-                    p.currentDifficulty = "hard"; // Switch to hard questions after completing all books
-                }
+            // RWP-3 (2026-06-24): the legacy sequential book-advancement gate
+            // (≥50 questions in the current book per session) was DEAD — each
+            // Ranked match is its own session with questionsInCurrentBook reset
+            // to 0, so it never reached 50 and the book never advanced this way.
+            // Ranked now draws from the whole pool (RWP-1) so a single "current
+            // book" funnel no longer applies. Display "currentBook" simply tracks
+            // the last answered question's book.
+            if (currentQ != null && currentQ.getBook() != null) {
+                p.currentBook = currentQ.getBook();
+                p.currentBookIndex = bookProgressionService.getBookProgress(currentQ.getBook()).currentIndex - 1;
             }
 
             // Persist to DB per user/day if authenticated
@@ -747,12 +763,17 @@ public class RankedController {
                             log.debug("Achievement check failed: {}", ex.getMessage());
                         }
 
-                        // Per-book mastery tracking
+                        // Per-book stats tracking (Profile + history). RWP-3:
+                        // key by the ANSWERED question's actual book, not the
+                        // session's currentBook — questions now span the whole
+                        // pool, so crediting p.currentBook would mis-attribute.
                         if (questionId != null) {
+                            String answeredBook = (currentQ != null && currentQ.getBook() != null)
+                                    ? currentQ.getBook() : p.currentBook;
                             UserBookProgress ubp = userBookProgressRepository
-                                    .findByUserIdAndBook(user.getId(), p.currentBook)
+                                    .findByUserIdAndBook(user.getId(), answeredBook)
                                     .orElse(new UserBookProgress(java.util.UUID.randomUUID().toString(), user,
-                                            p.currentBook));
+                                            answeredBook));
                             java.util.List<String> uniques = ubp.getUniqueQuestionIds();
                             if (uniques == null)
                                 uniques = new java.util.ArrayList<>();
@@ -767,22 +788,8 @@ public class RankedController {
                             if (isCorrect)
                                 ubp.setCorrectCount((ubp.getCorrectCount() == null ? 0 : ubp.getCorrectCount()) + 1);
                             userBookProgressRepository.save(ubp);
-
-                            // Mastery check
-                            if ((ubp.getAnsweredCount() != null && ubp.getAnsweredCount() >= 100) &&
-                                    (ubp.getCorrectCount() != null && ubp.getCorrectCount() >= 70)) {
-                                String nextBook = bookProgressionService.getNextBook(p.currentBook);
-                                if (nextBook != null) {
-                                    p.currentBook = nextBook;
-                                    p.currentBookIndex = bookProgressionService.getBookProgress(nextBook).currentIndex
-                                            - 1;
-                                    p.questionsInCurrentBook = 0;
-                                    p.correctAnswersInCurrentBook = 0;
-                                    udp.setCurrentBook(nextBook);
-                                    udp.setCurrentBookIndex(p.currentBookIndex);
-                                    udpRepository.save(udp);
-                                }
-                            }
+                            // RWP-3: no more book auto-advance gate here. Ranked
+                            // is whole-pool; UBP rows are pure per-book stats now.
                         }
                     }
                 }

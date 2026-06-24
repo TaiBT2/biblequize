@@ -16,6 +16,18 @@ public interface UserQuestionHistoryRepository extends JpaRepository<UserQuestio
     @Query("SELECT h.question.id FROM UserQuestionHistory h WHERE h.user.id = :userId")
     List<String> findQuestionIdsByUserId(@Param("userId") String userId);
 
+    /**
+     * BL-26 follow-up (RWP-2) — the N most-recently-seen question ids, newest
+     * first. Used by Ranked select to exclude recently-served questions across
+     * days (not just today's asked set) so the whole-pool draw doesn't re-serve
+     * a question the user saw a day or two ago. Bounded via {@code Pageable}.
+     */
+    @Query("SELECT h.question.id FROM UserQuestionHistory h " +
+           "WHERE h.user.id = :userId AND h.lastSeenAt IS NOT NULL " +
+           "ORDER BY h.lastSeenAt DESC")
+    List<String> findRecentSeenQuestionIds(@Param("userId") String userId,
+                                           org.springframework.data.domain.Pageable pageable);
+
     @Query("SELECT h.question.id FROM UserQuestionHistory h " +
            "WHERE h.user.id = :userId " +
            "AND h.timesWrong > h.timesCorrect " +

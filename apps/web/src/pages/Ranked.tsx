@@ -98,7 +98,7 @@ export default function Ranked() {
       const pickRes = await api.post('/api/ranked/questions/select', {
         limit: 10,
         excludeIds,
-        book: rankedStatus.currentBook,
+        // RWP-1: Ranked draws from the whole 66-book pool — no per-book funnel.
         difficulty: rankedStatus.currentDifficulty,
         language: getQuizLanguage(),
       })
