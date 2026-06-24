@@ -44,9 +44,22 @@ describe('QuizEndScreen', () => {
     expect(screen.queryByTestId('end-host-replay')).not.toBeInTheDocument()
   })
 
-  it('renders the podium', () => {
+  it('renders the podium for 3+ players', () => {
     render(<QuizEndScreen {...baseProps} myUsername="An" isHost={false} />)
     expect(screen.getByTestId('podium')).toBeInTheDocument()
+    expect(screen.queryByTestId('head-to-head')).not.toBeInTheDocument()
+  })
+
+  it('renders the head-to-head duel (not podium) for 2 players', () => {
+    const two: PlayerScore[] = [
+      { playerId: 'a', username: 'An',  score: 147, correctAnswers: 1, totalAnswered: 5, accuracy: 0.2, finalRank: 2 },
+      { playerId: 'b', username: 'Bui', score: 147, correctAnswers: 1, totalAnswered: 5, accuracy: 0.2, finalRank: 1 },
+    ]
+    render(<QuizEndScreen {...baseProps} results={two} myUsername="An" isHost />)
+    expect(screen.getByTestId('head-to-head')).toBeInTheDocument()
+    expect(screen.queryByTestId('podium')).not.toBeInTheDocument()
+    // equal scores → tie badge surfaces the tie-break
+    expect(screen.getByTestId('h2h-tie-badge')).toBeInTheDocument()
   })
 
   it('derives rank from score order when the mode never assigns finalRank (Speed Race)', () => {

@@ -1,5 +1,6 @@
 import { useMemo, useRef } from 'react';
 import Podium from './Podium';
+import HeadToHead from './HeadToHead';
 import ConfettiBurst from './ConfettiBurst';
 import { Stat, ActionButton } from './quizEnd/quizEndParts';
 import PlayerHeroCard from './quizEnd/PlayerHeroCard';
@@ -154,7 +155,11 @@ export function QuizEndScreen({
             <PlayerHeroCard me={me} myUsername={myUsername} myRank={myRank} totalQuestions={totalQuestions} />
           )}
 
-          <Podium results={results} compact={!isHost} />
+          {/* RES: ≤2 players get a balanced duel layout; the 3-step podium
+              looks lopsided + empty with two people. */}
+          {results.length <= 2
+            ? <HeadToHead results={results} compact={!isHost} />
+            : <Podium results={results} compact={!isHost} />}
 
           {/* Match stats — 4 cells */}
           <div
