@@ -422,15 +422,15 @@ class ScoringServiceTest {
     void calculateRanked_instant_maxSpeedBonus() {
         ScoreResult r = scoringService.calculateRanked(
                 Question.Difficulty.easy, 0, 90000, 1, false, 1, false, false, false);
-        assertEquals(4, r.speedBonus); // floor(8×0.5×1)
-        assertEquals(12, r.earned);
+        assertEquals(6, r.speedBonus); // floor(8×0.75×1) — weight raised 0.5→0.75
+        assertEquals(14, r.earned);    // 8 + 6
     }
 
     @Test
     void calculateRanked_forgedNegativeElapsed_clampsToInstantMax() {
         ScoreResult r = scoringService.calculateRanked(
                 Question.Difficulty.easy, -100000, 90000, 1, false, 1, false, false, false);
-        assertEquals(4, r.speedBonus);
+        assertEquals(6, r.speedBonus);
     }
 
     @Test
@@ -491,10 +491,11 @@ class ScoringServiceTest {
 
     @Test
     void calculateRanked_hardMaxStack_noDailyFirst() {
-        // hard 18 instant → core 27; situational capped 2.0; tier6 ×2.0
+        // hard 18 instant → speedBonus floor(18×0.75)=13, core 31; situational
+        // capped 2.0; tier6 ×2.0
         ScoreResult r = scoringService.calculateRanked(
                 Question.Difficulty.hard, 0, 90000, 10, false, 6, true, true, true);
-        assertEquals(9, r.speedBonus);
-        assertEquals(108, r.earned); // round(27 × 2.0 × 2.0)
+        assertEquals(13, r.speedBonus);
+        assertEquals(124, r.earned); // round(31 × 2.0 × 2.0)
     }
 }

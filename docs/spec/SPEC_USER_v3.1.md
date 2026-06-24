@@ -225,7 +225,7 @@ Kết quả cuối — **2 path** (BL-26 LOCKED 2026-06-22, xem [DECISIONS.md](.
 - **Legacy `calculate()` / `calculateWithTier()`** (non-ranked, vẫn dùng): `final = round(base × combo × tier.xpMultiplier × (surge?1.5) × (season?1.5) × (dailyFirst?2))` — multiplicative, timer 30s.
 - **Ranked `calculateRanked()`** (canonical cho Đấu Hạng):
   ```
-  core        = base + floor(base × 0.5 × speedRatio²)   // speedRatio theo timer THẬT 90s
+  core        = base + floor(base × 0.75 × speedRatio²)  // weight 0.75 (2026-06-24); speedRatio theo timer THẬT 90s
   situational = min(2.0, 1 + combo + surge(+.5) + season(+.3) + comeback(+.2))
                 combo = +.2 (streak≥5) / +.35 (≥10)
   earned      = round(core × situational × tier.xpMultiplier × (dailyFirst?2))

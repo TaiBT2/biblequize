@@ -16,6 +16,12 @@ import org.springframework.stereotype.Service;
 public class ScoringService {
 
     private static final int TIME_LIMIT_MS = 30_000;
+    // BL-26 follow-up (2026-06-24): Ranked speed-bonus weight. Raised 0.5 → 0.75
+    // so a fast-correct answer is meaningfully (~+46% fast-vs-slow) better than a
+    // slow one — speed expresses recall mastery and only applies to CORRECT
+    // answers, so it doesn't reward reckless guessing. Base (knowledge) still
+    // outweighs speed (12 base vs up to 9 speed for a medium question).
+    private static final double RANKED_SPEED_BONUS_WEIGHT = 0.75;
     private final TierRewardsConfig tierRewardsConfig;
 
     public ScoringService(TierRewardsConfig tierRewardsConfig) {
@@ -169,7 +175,7 @@ public class ScoringService {
         int safeLimit = timeLimitMs > 0 ? timeLimitMs : TIME_LIMIT_MS;
         int clampedElapsedMs = Math.max(0, Math.min(clientElapsedMs, safeLimit));
         double speedRatio = (double) (safeLimit - clampedElapsedMs) / safeLimit;
-        int speedBonus = (int) Math.floor(base * 0.5 * speedRatio * speedRatio);
+        int speedBonus = (int) Math.floor(base * RANKED_SPEED_BONUS_WEIGHT * speedRatio * speedRatio);
         int core = base + speedBonus;
 
         // Additive situational, capped at 2.0.
