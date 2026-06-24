@@ -16,6 +16,6 @@
 ### Addendum — Option C (hybrid, user chốt 2026-06-24)
 > Sau khi ship whole-pool (RWP, commit `b2a2687d`), user muốn GIỮ cảm giác "đi xuyên Kinh Thánh theo sách". Đổi sang **hybrid**: ~70% câu sách hiện tại + ~30% toàn pool; sách tiến đều theo sample-target.
 - C-1 select hybrid 70/30 (current book + whole pool), cross-day exclude giữ nguyên — Status: [x] DONE (`RANKED_CURRENT_BOOK_RATIO=0.7`, LinkedHashMap dedup, whole-pool fill khi sách hiện tại cạn).
-- C-2 advance gate hoạt động: `answeredCount(currentBook) ≥ min(20, countByBookAndLang)` → sang sách kế. currentBook ổn định (không track câu vừa trả lời) — Status: [x] DONE.
+- C-2 advance gate hoạt động: `answeredCount(currentBook) ≥ rankedBookSampleTarget = clamp(round(bookTotal×0.25),12,40)` → sang sách kế. Tỷ lệ 25% (user chốt 2026-06-24, hợp tinh thần dưỡng linh — tôn trọng sách giàu). currentBook ổn định — Status: [x] DONE.
 - C-3 FE re-add `book: currentBook` (Ranked.tsx + Quiz.tsx) — Status: [x] DONE.
 - C-4 Test: RankedControllerTest 57/57 (hybrid select 2-call + advance-gate reached/below) — Status: [x] DONE. SPEC §3.2 updated → hybrid.

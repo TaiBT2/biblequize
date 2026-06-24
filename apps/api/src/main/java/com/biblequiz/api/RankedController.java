@@ -143,9 +143,24 @@ public class RankedController {
     // Option C: hybrid journey — fraction of each match drawn from the current
     // book (rest from the whole pool for variety). 0.7 → ~7/10 questions.
     private static final double RANKED_CURRENT_BOOK_RATIO = 0.7;
-    // Advance to the next book once this many DISTINCT questions of the current
-    // book have been answered (or the whole book is exhausted, for small books).
-    private static final int RANKED_BOOK_SAMPLE_TARGET = 20;
+    // Advance to the next journey book once the user has answered ~25% of the
+    // current book's DISTINCT questions — proportional so rich/central books
+    // (Psalms, the Gospels, which the seed authored most heavily) get more time
+    // than short epistles. Clamped to [12, 40] so no book is a glance or a slog,
+    // and never more than the book actually has (small books advance when seen
+    // in full). See rankedBookSampleTarget().
+    private static final double RANKED_BOOK_SAMPLE_RATIO = 0.25;
+    private static final int RANKED_BOOK_SAMPLE_FLOOR = 12;
+    private static final int RANKED_BOOK_SAMPLE_CAP = 40;
+
+    /** Option C journey gate: # of DISTINCT current-book answers before advancing.
+     *  {@code clamp(round(bookTotal × 0.25), 12, 40)}, never exceeding bookTotal. */
+    static int rankedBookSampleTarget(long bookTotal) {
+        if (bookTotal <= 0) return RANKED_BOOK_SAMPLE_FLOOR;
+        int proportional = (int) Math.round(bookTotal * RANKED_BOOK_SAMPLE_RATIO);
+        int clamped = Math.max(RANKED_BOOK_SAMPLE_FLOOR, Math.min(RANKED_BOOK_SAMPLE_CAP, proportional));
+        return (int) Math.min(clamped, bookTotal);
+    }
 
     /**
      * Read the season-leaderboard score at rank N with a 60s Redis cache.
@@ -801,8 +816,7 @@ public class RankedController {
                                         ? currentQ.getLanguage() : "vi";
                                 long bookTotal = questionRepository
                                         .countByBookAndLanguageAndIsActiveTrue(p.currentBook, lang);
-                                int target = (int) Math.min(RANKED_BOOK_SAMPLE_TARGET,
-                                        bookTotal > 0 ? bookTotal : RANKED_BOOK_SAMPLE_TARGET);
+                                int target = rankedBookSampleTarget(bookTotal);
                                 if (ubp.getAnsweredCount() >= target) {
                                     String nextBook = bookProgressionService.getNextBook(p.currentBook);
                                     if (nextBook != null) {

@@ -979,10 +979,11 @@ class RankedControllerTest extends BaseControllerTest {
         when(scoringService.calculateRanked(any(), anyInt(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean(), anyBoolean()))
                 .thenReturn(new ScoringService.ScoreResult(10, 8, 2, 100, false));
 
-        // Genesis UBP already at 19 distinct; this new question makes 20 == target.
+        // Genesis has 150 questions → target = clamp(round(150×0.25),12,40) = 38.
+        // UBP already at 37 distinct; this new question makes 38 == target → advance.
         UserBookProgress ubp = new UserBookProgress("ubp-g", testUser, "Genesis");
-        ubp.setAnsweredCount(19);
-        ubp.setCorrectCount(19);
+        ubp.setAnsweredCount(37);
+        ubp.setCorrectCount(37);
         ubp.setUniqueQuestionIds(new java.util.ArrayList<>());
         when(userBookProgressRepository.findByUserIdAndBook("user-1", "Genesis"))
                 .thenReturn(Optional.of(ubp));
@@ -1031,7 +1032,21 @@ class RankedControllerTest extends BaseControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"questionId\":\"q-g6\",\"answer\":0,\"clientElapsedMs\":5000}"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.currentBook").value("Genesis")); // stays — only 6/20
+                .andExpect(jsonPath("$.currentBook").value("Genesis")); // stays — only 6/38
+    }
+
+    // ── Option C: proportional sample-target formula (25%, clamp 12..40) ──────
+
+    @Test
+    void rankedBookSampleTarget_proportionalWithFloorAndCap() {
+        // ~25% of the book, clamped to [12, 40], never exceeding the book size.
+        org.junit.jupiter.api.Assertions.assertEquals(40, RankedController.rankedBookSampleTarget(181)); // Psalms → cap
+        org.junit.jupiter.api.Assertions.assertEquals(38, RankedController.rankedBookSampleTarget(150)); // Genesis → 37.5→38
+        org.junit.jupiter.api.Assertions.assertEquals(12, RankedController.rankedBookSampleTarget(49));  // mid → 12.25→12 (floor)
+        org.junit.jupiter.api.Assertions.assertEquals(12, RankedController.rankedBookSampleTarget(20));  // small → floor 12
+        org.junit.jupiter.api.Assertions.assertEquals(10, RankedController.rankedBookSampleTarget(10));  // tiny → see all 10
+        org.junit.jupiter.api.Assertions.assertEquals(5,  RankedController.rankedBookSampleTarget(5));   // garbled/tiny → all 5
+        org.junit.jupiter.api.Assertions.assertEquals(12, RankedController.rankedBookSampleTarget(0));   // unknown count → floor
     }
 
     // ── TC-RANK-005: Energy deduction on wrong answer ─────────────────────────
