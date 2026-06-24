@@ -1972,5 +1972,2640 @@
       "Pentateuch",
       "Basic"
     ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 1,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When presenting a burnt offering, what must the offerer do to the animal before slaughtering it?",
+    "options": [
+      "Lay his hand on the head of the animal",
+      "Sprinkle the animal's blood on himself",
+      "Anoint the animal's head with oil",
+      "Place the animal on the altar"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 1:4 (ESV): 'He shall lay his hand on the head of the burnt offering, and it shall be accepted for him to make atonement for him.' The correct answer is to lay his hand on the head of the animal. (1) 'Sprinkle the animal's blood on himself' is wrong because the handling of blood is the priest's task after the slaughter, not the offerer's action before killing (near_passage 1:5). (2) 'Anoint the animal's head with oil' is wrong because anointing with oil is for persons and sacred objects, not for burnt offerings (wrong_detail). (3) 'Place the animal on the altar' is wrong because only the slaughtered and cut-up parts are placed on the altar, not the living animal (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 1,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to the law of the burnt offering, how is the food offering made by fire described in relation to the LORD?",
+    "options": [
+      "A reminder of sin",
+      "A complete vow",
+      "A full sin offering",
+      "A pleasing aroma to Him"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 1:9 (ESV) describes the burnt offering as 'a food offering with a pleasing aroma to the LORD.' The correct answer is a pleasing aroma to Him. (1) 'A reminder of sin' is wrong because that expression is associated with the jealousy offering elsewhere, not the burnt offering (wrong_scope). (2) 'A full sin offering' is wrong because 'sin offering' is the name of a distinct type of offering (chapters 5–6), not a description of the burnt offering here (near_passage). (3) 'A complete vow' is wrong because vows are associated with the peace offering, not with the pleasing aroma of the burnt offering (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 1,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In the burnt offering of a bull, what did the sons of Aaron (the priests) do with the animal's blood?",
+    "options": [
+      "Pour all the blood at the foot of the altar",
+      "Put the blood on the horns of the altar of incense",
+      "Throw the blood against all sides of the altar at the entrance of the Tent",
+      "Bring the blood into the holy place and sprinkle it seven times"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 1:5 (ESV): 'Aaron's sons the priests shall throw the blood against the sides of the altar that is at the entrance of the tent of meeting.' The correct answer is to throw the blood against all sides of the altar at the entrance of the Tent. (1) 'Pour all the blood at the foot of the altar' is wrong because that is how the remaining blood is disposed of in the sin offering, not the burnt offering (near_passage 4:7). (2) 'Put the blood on the horns of the altar of incense' is wrong because anointing the horns is done in the sin offering of the anointed priest (near_passage 4:7). (3) 'Bring the blood into the holy place and sprinkle it seven times' is wrong because bringing blood into the holy place to sprinkle seven times belongs to the higher-grade sin offering, not the ordinary burnt offering (near_passage 4:6).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 1,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "For the bull used as a burnt offering, what must the offerer do with its entrails and legs before burning?",
+    "options": [
+      "Discard them outside the camp",
+      "Wash them with water",
+      "Give them to the priest to eat",
+      "Burn them separately on the ground"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 1:9 (ESV): 'its entrails and its legs he shall wash with water,' and the priest shall burn the whole on the altar. The correct answer is to wash them with water. (1) 'Discard them outside the camp' is wrong because carrying things outside the camp applies to the hide and dung in the sin offering, not the entrails of the burnt offering (near_passage 4:11-12). (2) 'Give them to the priest to eat' is wrong because the burnt offering is burned entirely — no portion is set aside to be eaten (wrong_scope). (3) 'Burn them separately on the ground' is wrong because the whole animal is burned on the altar, not burned separately on the ground (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 2,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Besides fine flour and oil, what else must accompany a grain offering?",
+    "options": [
+      "Frankincense",
+      "A little leaven",
+      "Honey",
+      "Wine"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 2:1-2 (ESV): the offerer shall 'pour oil on it and put frankincense on it,' and the priest shall take a handful of the flour and oil and 'all of its frankincense' to burn. The correct answer is frankincense. (1) 'A little leaven' is wrong because the law explicitly forbids leaven in grain offerings (wrong_detail 2:11). (2) 'Honey' is wrong because honey is likewise forbidden from being burned on the altar (common_misconception 2:11). (3) 'Wine' is wrong because wine belongs to the drink offering that accompanies other offerings, not to the ingredients of the grain offering itself (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 2,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After burning the memorial portion of the grain offering, who does the remainder belong to?",
+    "options": [
+      "The one who presented the grain offering",
+      "Distributed to the entire congregation",
+      "The Levites serving in the camp",
+      "Aaron and his sons"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 2:3 (ESV): 'But the rest of the grain offering shall be for Aaron and his sons; it is a most holy part of the LORD's food offerings.' The correct answer is Aaron and his sons. (1) 'The one who presented the grain offering' is incorrect because the person who brought the offering did not retain any portion of this most holy offering (wrong_scope). (2) 'The Levites serving in the camp' is incorrect because the right to eat this portion was reserved exclusively for the Aaronic priestly line, not all Levites (wrong_detail). (3) 'Distributed to the entire congregation' is incorrect because the most holy things were reserved for the priests alone and were not shared with the congregation (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Offerings and Rituals",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 2,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "If the grain offering is baked in an oven, what condition must the bread meet?",
+    "options": [
+      "Leavened bread, mixed with honey",
+      "Unleavened bread, sprinkled with salt and leaven",
+      "Unleavened bread, mixed or spread with oil",
+      "Bread baked together with frankincense inside"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 2:4 (ESV): grain offerings baked in an oven must be 'unleavened loaves of fine flour mixed with oil or unleavened wafers smeared with oil.' The correct answer is unleavened bread, mixed or spread with oil. (1) 'Leavened bread, mixed with honey' is incorrect because both leaven and honey are forbidden in grain offerings presented as a food offering by fire (wrong_detail 2:11). (2) 'Unleavened bread, sprinkled with salt and leaven' is incorrect because although 'unleavened' is correct and salt is to be added, the bread cannot be both unleavened and have leaven added (wrong_detail). (3) 'Bread baked together with frankincense inside' is incorrect because frankincense is sprinkled on top of the flour-based grain offering, not kneaded into oven-baked bread (near_passage 2:1).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Offerings and Rituals",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 2,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In what form of grain is the grain offering of firstfruits prepared?",
+    "options": [
+      "Finely ground wheat flour mixed with leaven",
+      "Fresh heads of grain roasted with fire, crushed",
+      "Unleavened bread baked on a griddle",
+      "Grain kernels boiled in water"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 2:14 (ESV): the grain offering of firstfruits is 'fresh ears, roasted with fire, crushed new grain.' The correct answer is fresh grain, roasted with fire and crushed. (1) 'Finely ground wheat flour mixed with leaven' is incorrect because leaven is forbidden and firstfruits use fresh grain, not flour mixed with leaven (wrong_detail). (2) 'Unleavened bread baked on a griddle' is incorrect because that describes a different type of grain offering from an earlier verse, not the firstfruits offering (near_passage 2:5). (3) 'Grain kernels boiled in water' is incorrect because the text specifies roasting with fire, not boiling in water (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Offerings and Rituals",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 3,
+    "verseStart": 3,
+    "verseEnd": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In a peace offering, which portion of the animal is burned on the altar as an offering to the LORD?",
+    "options": [
+      "The fat covering the entrails along with the two kidneys",
+      "The breast and the right thigh",
+      "The hide and all the lean meat",
+      "The head and the legs after washing"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 3:3–4 (ESV) specifies burning 'the fat covering the entrails and all the fat that is on the entrails, and the two kidneys with the fat that is on them... and the long lobe of the liver' as an offering to the LORD. The correct answer is the fat covering the entrails along with the two kidneys. (1) 'The breast and the right thigh' is incorrect because these portions belong to the priest as a wave offering and are not burned (true_but_off 7:31–34). (2) 'The hide and all the lean meat' is incorrect because the lean meat is for the worshiper and the priest to eat and is not burned (wrong_scope). (3) 'The head and the legs after washing' is incorrect because washing the legs and burning the whole animal belongs to the burnt offering, not the peace offering (near_passage 1:9).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Offerings and Rituals",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 3,
+    "verseStart": 7,
+    "verseEnd": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When offering a lamb as a peace offering, what special part of the lamb, besides the fat, is also offered?",
+    "options": [
+      "The whole hide intact",
+      "The front shoulder meat",
+      "The two horns",
+      "The entire fat tail"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 3:9 (ESV): the offerer must remove 'the fat tail entire, removed close to the backbone' of the lamb for the peace offering. The correct answer is the entire fat tail. (1) 'The whole hide intact' is incorrect because the hide of the burnt offering belongs to the priest and is not itself offered by burning (near_passage 7:8). (2) 'The two horns' is incorrect because the horns are not a presented portion in any sacrificial offering (wrong_detail). (3) 'The front shoulder meat' is incorrect because the shoulder (thigh) is the portion set apart for the priest to receive, not the special portion burned from the lamb (true_but_off 7:32).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Offerings and Rituals",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 3,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "In the peace offering, after the offerer lays his hand on the head of the animal and slaughters it, how is the blood handled?",
+    "options": [
+      "Pour it on the ground and cover it up",
+      "Smear it on the forehead of the offerer",
+      "Throw it against the sides of the altar",
+      "Keep it in a basin"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 3:2 (ESV): after the animal is slaughtered, 'Aaron's sons the priests shall throw the blood against the sides of the altar.' The correct answer is to throw it against the sides of the altar. (1) 'Pour it on the ground and cover it up' is incorrect because pouring blood on the ground and covering it applies to game taken in hunting, not to the peace offering (near_passage 17:13). (2) 'Smear it on the forehead of the offerer' is incorrect because blood was never applied to the person of the offerer (wrong_detail). (3) 'Keep it in a basin' is incorrect because the blood had to be thrown against the altar immediately and not retained (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 4,
+    "verseStart": 13,
+    "verseEnd": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When the whole congregation of Israel sins unintentionally without knowing it, what animal must they bring as a sin offering?",
+    "options": [
+      "A male goat",
+      "A young bull",
+      "A female goat",
+      "A female lamb"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 4:13-14 (ESV): when the whole congregation sins unintentionally, 'the assembly shall offer a bull from the herd for a sin offering.' The correct answer is a young bull. (1) 'A male goat' is incorrect because a male goat is the sin offering for a leader, not for the whole congregation (near_passage 4:23). (2) 'A female goat' is incorrect because a female goat is used when an ordinary person sins (near_passage 4:28). (3) 'A female lamb' is incorrect because a female lamb is an option for an ordinary person, not for the congregation (near_passage 4:32).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 4,
+    "verseStart": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "What distinguishes the blood ritual in the sin offering of the anointed priest from that of the ordinary burnt offering?",
+    "options": [
+      "The blood is sprinkled seven times before the veil of the sanctuary",
+      "The blood is poured out entirely at the base of the altar of burnt offering",
+      "The blood is applied to the horns of the altar of burnt offering",
+      "The blood is carried outside the camp to be poured out"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 4:6 (ESV): the priest 'shall dip his finger in the blood and sprinkle part of the blood seven times before the LORD in front of the veil of the sanctuary' — this is markedly different from the ordinary burnt offering, where blood is only thrown against the sides of the outer altar. The correct answer is sprinkling seven times before the veil of the sanctuary. (1) 'The blood is poured out entirely at the base of the altar of burnt offering' is incorrect because pouring the remaining blood at the base is only the final step, not the distinguishing feature (true_but_off 4:7). (2) 'The blood is applied to the horns of the altar of burnt offering' is incorrect because verse 4:7 specifies applying blood to the horns of the altar of incense, not the altar of burnt offering (wrong_detail 4:7). (3) 'The blood is carried outside the camp to be poured out' is incorrect because what is carried outside the camp is the body of the bull to be burned, not the blood (near_passage 4:11-12).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 4,
+    "verseStart": 11,
+    "verseEnd": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Where is the hide, flesh, and dung of the bull for the priest's sin offering to be disposed of?",
+    "options": [
+      "Burned on the altar together with the fat",
+      "Given to the priests to eat",
+      "Buried at the base of the altar of burnt offering",
+      "Carried outside the camp to be burned"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 4:11-12 (ESV): the hide, flesh, head, legs, entrails, and dung of the bull 'he shall carry outside the camp to a clean place...and shall burn it up on a fire of wood.' The correct answer is to carry it outside the camp to be burned. (1) 'Burned on the altar together with the fat' is incorrect because only the fat portions are burned on the altar; the rest is carried outside (wrong_detail 4:8-10). (2) 'Buried at the base of the altar of burnt offering' is incorrect because this portion is burned, not buried (wrong_detail). (3) 'Given to the priests to eat' is incorrect because a sin offering whose blood is brought into the sanctuary must not be eaten; it must be burned (true_but_off 6:30).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 5,
+    "verseStart": 1,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Which of the following is NOT listed in Leviticus 5 as a sin requiring a sin offering?",
+    "options": [
+      "Hearing a public oath and failing to testify after witnessing it",
+      "Touching the carcass of an unclean animal",
+      "Accidentally spilling the blood of a sacrificial animal on the ground",
+      "Uttering a rash oath without thinking"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 5:1-4 (ESV) lists cases of sin: failing to testify after hearing a public oath (v. 1), touching an unclean animal carcass (v. 2), and uttering a rash oath (v. 4). Accidentally spilling the blood of a sacrificial animal on the ground does NOT appear in this list, making it the correct answer. (1) 'Hearing a public oath and failing to testify after witnessing it' is incorrect (meaning it IS listed) according to verse 1 (true_but_off). (2) 'Touching the carcass of an unclean animal' is incorrect because this is explicitly listed in verse 2 (true_but_off). (3) 'Uttering a rash oath without thinking' is incorrect because it is listed in verse 4 (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 5,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "If a person cannot afford to bring a lamb as a sin offering, what are they permitted to bring instead?",
+    "options": [
+      "A tenth of an ephah of fine flour",
+      "Two turtledoves or two young pigeons",
+      "An unblemished male goat",
+      "A young bull"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 5:7 (ESV): 'But if he cannot afford a lamb, then he shall bring to the LORD as his compensation for the sin that he has committed two turtledoves or two pigeons.' The correct answer is two turtledoves or two young pigeons. (1) 'A tenth of an ephah of fine flour' is incorrect because fine flour was only for those too poor to afford even birds — it is the next step down (near_passage 5:11). (2) 'An unblemished male goat' is incorrect because a male goat was associated with the offering of a leader, not a cheaper substitute for a lamb (wrong_scope 4:23). (3) 'A young bull' is incorrect because a young bull was the large offering for the priest or the congregation, not a less expensive alternative (wrong_scope 4:3).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 5,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Before bringing a sin offering for one of the offenses described, what must the guilty person first do?",
+    "options": [
+      "Confess what they have sinned",
+      "Fast for seven days",
+      "Bathe and wash their clothes",
+      "Pay one-fifth of the value of the offense"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 5:5 (ESV): 'when he realizes his guilt in any of these... he shall confess the sin he has committed.' The correct answer is to confess what they have sinned. (1) 'Fast for seven days' is incorrect because there is no requirement to fast for seven days in connection with this sin offering (wrong_detail). (2) 'Bathe and wash their clothes' is incorrect because bathing and washing garments pertains to the laws of bodily uncleanness, not to the preparatory step before this sin offering (near_passage). (3) 'Pay one-fifth of the value of the offense' is incorrect because the one-fifth addition applies specifically to the guilt offering for holy things or property, not to every case (true_but_off 5:16).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 6,
+    "verseStart": 12,
+    "verseEnd": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Every morning, what must the priest do to keep the fire burning on the altar of burnt offering?",
+    "options": [
+      "Pour fresh oil on the coals",
+      "Replace the coals entirely with new ones",
+      "Sprinkle holy water around the altar",
+      "Add wood to the fire"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 6:12 (ESV): 'The priest shall burn wood on it every morning' to keep the fire burning continually. The correct answer is to add wood to the fire. (1) 'Pour fresh oil on the coals' is incorrect because oil was used for grain offerings and lamps, not for fueling the altar fire (wrong_detail). (2) 'Sprinkle holy water around the altar' is incorrect because sprinkling water would extinguish the fire, which is the opposite of the command to keep it burning (common_misconception). (3) 'Replace the coals entirely with new ones' is incorrect because the command was to keep the fire burning continually without letting it go out, which required adding wood, not a complete replacement (wrong_detail 6:13).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 6,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When collecting the ashes of the burnt offering to carry them to a clean place outside the camp, what must the priest do with his garments?",
+    "options": [
+      "Put on ordinary clothes before carrying the ashes outside",
+      "Wash his linen garments clean right before gathering the ashes",
+      "Take off his linen garments and put on other garments to carry the ashes outside the camp",
+      "Leave his linen garments in the holy place throughout the service"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 6:10-11 (ESV): the priest puts on his linen garments to take up the ashes and set them beside the altar, then 'he shall take off his garments and put on other garments and carry the ashes outside the camp.' The correct answer is to take off his linen garments and put on other garments to carry the ashes outside the camp. (1) 'Put on ordinary clothes before carrying the ashes outside' is incorrect because the priest was required to wear his linen garments first when gathering the ashes — ordinary clothes were not worn from the outset (wrong_detail). (2) 'Wash his linen garments clean right before gathering the ashes' is incorrect because the regulation specifies changing into other garments, not washing the linen garments on the spot (wrong_detail). (3) 'Leave his linen garments in the holy place throughout the service' is incorrect because the text clearly states he must change into other garments to go outside, not simply leave his vestments behind (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 6,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "When a person defrauds his neighbor of property, what offering must he bring to the priest as a guilt offering?",
+    "options": [
+      "An unblemished young bull according to the valuation",
+      "An unblemished ram according to the valuation",
+      "An unblemished female goat according to the valuation",
+      "Two turtledoves or young pigeons"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 6:6 (ESV): the person 'shall bring to the priest as his compensation to the LORD an unblemished ram from the flock, according to the valuation, for a guilt offering.' The correct answer is an unblemished ram according to the valuation. (1) 'An unblemished young bull according to the valuation' is incorrect because a young bull was the sin offering for the priest or the congregation, not this particular guilt offering (near_passage 4:3). (2) 'An unblemished female goat according to the valuation' is incorrect because a female goat belonged to the sin offering of a common person, not a guilt offering (near_passage 4:28). (3) 'Two turtledoves or young pigeons' is incorrect because birds were the provision for the poor within sin offerings and do not apply to this guilt offering (near_passage 5:7).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrifices and Rituals",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 6,
+    "verseStart": 22,
+    "verseEnd": 23,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "How does the grain offering presented by a priest himself (such as at his anointing) differ from a regular grain offering?",
+    "options": [
+      "It must be burned completely — no portion may be eaten",
+      "It must be accompanied by a lamb as a burnt offering",
+      "It may only be offered on the weekly Sabbath",
+      "Leaven may be mixed into the flour"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 6:23 (ESV): 'Every grain offering of a priest shall be wholly burned. It shall not be eaten.' This is the key distinction: a regular grain offering leaves a portion for the priest to eat (2:3), but a grain offering presented by the priest himself must be burned entirely. The correct answer is that it must be burned completely — no portion may be eaten. (1) 'It must be accompanied by a lamb as a burnt offering' is incorrect because no rule requires a lamb to accompany this grain offering (wrong_detail). (2) 'It may only be offered on the weekly Sabbath' is incorrect because the text specifies this offering is made on the day the priest is anointed, not limited to the Sabbath (wrong_detail 6:20). (3) 'Leaven may be mixed into the flour' is incorrect because leaven is always forbidden in any grain offering that is burned (common_misconception 2:11).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Offerings and Rituals",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 7,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Compared to the thanksgiving peace offering, within what time frame may a vowed or freewill peace offering be eaten?",
+    "options": [
+      "Only on the day it is offered — none may remain until the next morning",
+      "At any time as long as the meat is still good",
+      "Within seven days from the day of offering",
+      "On the day of offering and also the following day"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 7:16–17 (ESV): for a vowed or freewill offering, it may be eaten 'on the day that he offers his sacrifice, and on the next day what remains of it shall be eaten,' but whatever is left on the third day must be burned. The correct answer is on the day of offering and also the following day. (1) 'Only on the day it is offered — none may remain until the next morning' is incorrect because that rule applies to the thanksgiving offering (7:15), not to vowed or freewill offerings (near_passage). (2) 'Within seven days from the day of offering' is incorrect because the maximum limit is through the following day; by the third day it must be burned (wrong_detail). (3) 'At any time as long as the meat is still good' is incorrect because the law sets a clear time limit regardless of the condition of the meat (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Offerings and Rituals",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 7,
+    "verseStart": 31,
+    "verseEnd": 34,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In the peace offering, which two portions of the animal were set apart as the share belonging to Aaron and his sons?",
+    "options": [
+      "The fat tail and the fat covering the entrails",
+      "The two kidneys and the lobe of the liver",
+      "The breast (waved as a wave offering) and the right thigh",
+      "The head and the two forelegs"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 7:31–34 (ESV): 'the breast' presented as a wave offering belongs to Aaron and his sons, while 'the right thigh' presented as a contribution belongs to the priest who offers it. The correct answer is the breast and the right thigh. (1) 'The two kidneys and the lobe of the liver' is incorrect because these are among the fat portions burned on the altar, not given to the priest (near_passage 3:4). (2) 'The fat tail and the fat covering the entrails' is incorrect because the fat tail and fat are the portions burned as an offering, not the priest's share (near_passage 3:9). (3) 'The head and the two forelegs' is incorrect because the head and legs are associated with the handling of the burnt offering, not the portions assigned to the priest in the peace offering (wrong_scope 1:8–9).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Offerings and Rituals",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 7,
+    "verseStart": 23,
+    "verseEnd": 25,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to the law, which part of an ox, sheep, or goat were the Israelites forbidden to eat?",
+    "options": [
+      "The lean meat of the thigh",
+      "The fat",
+      "The meat of the breast",
+      "The tendons and bones"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 7:23–25 (ESV): 'You shall eat no fat, of ox or sheep or goat... For every person who eats of the fat of an animal of which a food offering is made to the LORD shall be cut off from his people.' The correct answer is the fat. (1) 'The lean meat of the thigh' is incorrect because thigh meat is permitted — the right thigh is even designated as the priest's portion (wrong_detail 7:32). (2) 'The meat of the breast' is incorrect because the breast is an edible portion reserved for the priest (wrong_detail 7:31). (3) 'The tendons and bones' is incorrect because no general prohibition on tendons appears here; the prohibitions concern fat and blood (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Offerings and Rituals",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 5,
+    "verseStart": 12,
+    "verseEnd": 13,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "How does the flour sin offering brought by a poor person differ from a regular grain offering — which ingredient must be absent from the flour?",
+    "options": [
+      "Both oil and frankincense must be absent from the flour",
+      "Salt must be absent from the offering",
+      "The portion of flour left for the priest must be absent",
+      "The handful of flour set aside as the memorial portion must be absent"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 5:11 (ESV) stipulates that a person who cannot afford two turtledoves shall bring a tenth of an ephah of fine flour as a sin offering, but 'he shall put no oil on it and shall put no frankincense on it, for it is a sin offering' — unlike the regular grain offering, which includes both oil and frankincense (2:1). The correct answer is that both oil and frankincense must be absent. (1) 'Salt must be absent from the offering' is incorrect because salt must still be present on every offering — it is never omitted (wrong_detail 2:13). (2) 'The portion of flour left for the priest must be absent' is incorrect because the priest still receives the remainder, just as with a regular grain offering (true_but_off 5:13). (3) 'The handful of flour set aside as the memorial portion must be absent' is incorrect because the priest still takes a handful as the memorial portion to burn (true_but_off 5:12).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Offerings and Rituals",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 8,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When commanding Moses to perform the ordination ceremony, what did the LORD tell him to bring along with Aaron and his sons to the entrance of the tent of meeting?",
+    "options": [
+      "The ten curtains of the Tabernacle",
+      "The ark of the covenant and the two tablets of testimony",
+      "The bread of the Presence and the golden lampstand",
+      "The vestments, the anointing oil, and the offerings to be presented"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 8:2 (ESV): The LORD commanded Moses to take Aaron and his sons, the garments, the anointing oil, the bull for the sin offering, the two rams, and the basket of unleavened bread. (1) 'The ark of the covenant and the two tablets of testimony' are objects kept in the Most Holy Place, unrelated to the ordination ceremony (wrong_scope). (2) 'The bread of the Presence and the golden lampstand' are furnishings in the Holy Place, not items presented for ordination (wrong_scope). (3) 'The ten curtains of the Tabernacle' are part of the Tabernacle's structure, not ordination offerings (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Ordination",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 8,
+    "verseStart": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "During the ordination ceremony, Moses took the blood of the ram of ordination and put it on which parts of Aaron's body?",
+    "options": [
+      "The middle of the forehead, on the lip, and on the right eye",
+      "On his head, both hands, and both feet",
+      "The lobe of the right ear, the thumb of the right hand, and the big toe of the right foot",
+      "On both shoulders and around the waist"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 8:23–24 (ESV): Moses took some of its blood and put it on the lobe of Aaron's right ear and on the thumb of his right hand and on the big toe of his right foot (then did the same for Aaron's sons). (1) 'The forehead, lip, and right eye' are fabricated details not found in the ordination rite (wrong_detail). (2) 'His head, both hands, and both feet' sounds close but gives the wrong locations — blood was applied only to the right side, and it was oil, not blood, that was placed on the head (wrong_detail, almost-right). (3) 'Both shoulders and the waist' confuses the wearing of the priestly vestments with the places where blood was applied (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Ordination",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 8,
+    "verseStart": 35,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Why did Moses command Aaron and his sons to remain at the entrance of the tent of meeting throughout the seven days of ordination?",
+    "options": [
+      "To wait until the people had brought enough freewill offerings",
+      "To keep the charge of the LORD so that they would not die",
+      "To memorize all the laws concerning sacrifices",
+      "To be anointed by the Israelites as king"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 8:35 (ESV): They were to remain at the entrance of the tent of meeting day and night for seven days, keeping the LORD's charge so that they would not die — for this was the commandment given. (1) is correct. (2) 'Waiting until the people brought enough freewill offerings' is not the reason — the ordination offerings had already been specified (true_but_off). (3) 'Memorizing all the laws concerning sacrifices' is a reasonable inference but not the reason the text gives (true_but_off). (4) 'Being anointed by the Israelites as king' is wrong in scope — this was a priestly ordination, not a royal ceremony (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Ordination",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 9,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "On the eighth day after the ordination, what animal did Moses tell Aaron to offer as a sin offering for himself?",
+    "options": [
+      "A bull calf",
+      "A male goat",
+      "A female lamb",
+      "A young bull"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 9:2 (ESV): Moses told Aaron to take a bull calf for a sin offering and a ram for a burnt offering, both for himself. (1) 'A young bull' was the animal used in Aaron's ordination in the preceding chapter (ch. 8), not on the eighth day (near_passage). (2) 'A male goat' was the sin offering for the people, not for Aaron (wrong_scope). (3) 'A female lamb' does not appear in Aaron's eighth-day offerings (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Offerings",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 9,
+    "verseStart": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "After completing all the offerings on the eighth day, what did Aaron do for the people before stepping down?",
+    "options": [
+      "Read aloud the Ten Commandments",
+      "Blew the trumpet to summon the elders",
+      "Sprinkled holy water on all the people",
+      "Lifted his hands toward the people and blessed them"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 9:22 (ESV): Then Aaron lifted his hands toward the people and blessed them, and he came down from offering the sin offering and the burnt offering and the peace offerings. (1) 'Reading aloud the Ten Commandments' was Moses' act at Sinai, not part of this ceremony (wrong_scope). (3) 'Sprinkling holy water on all the people' is not found in this passage — blood and oil were used, not water (wrong_detail). (4) 'Blowing the trumpet to summon the elders' does not appear in this scene (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Offerings",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 9,
+    "verseStart": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What does the text indicate about the fire that came out from before the LORD and consumed the burnt offering on the altar on the eighth day?",
+    "options": [
+      "The altar had been defiled and therefore had to be purified by fire",
+      "The LORD was angry and rebuked Aaron for the way he offered sacrifices",
+      "The LORD accepted the offering and revealed His glory to all the people",
+      "The people needed to bring many more offerings before it would be considered sufficient"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 9:23-24 (ESV): The glory of the LORD appeared to all the people, and fire came out from before the LORD and consumed the burnt offering — a sign of divine acceptance. (2) 'The LORD was angry with Aaron' is a misunderstanding — the consuming fire of wrath occurred in ch. 10 with Nadab and Abihu, not here (near_passage, almost-right). (3) 'The altar was defiled' is incorrect — the fire accepted the offering rather than cleansing a defiled altar (wrong_detail). (4) 'More offerings were needed' misses the point — the fire signified complete acceptance (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Offerings",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 10,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After the death of Nadab and Abihu, what did Moses forbid Aaron and his two remaining sons from doing as an expression of mourning?",
+    "options": [
+      "They were not to leave the Tent of Meeting for thirty days",
+      "They were not to uncover their heads or tear their garments",
+      "They were not to offer any sacrifice for seven days",
+      "They were not to speak with anyone among the people"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 10:6 (ESV): Moses said to Aaron and to Eleazar and Ithamar his sons, 'Do not let the hair of your heads hang loose, and do not tear your clothes, lest you die, and wrath come upon all the congregation.' (1) 'Not leaving the Tent for thirty days' confuses this with a different time-period rule, not this command (wrong_detail). (2) 'Not offering sacrifices for seven days' confuses this with the seven-day ordination period that preceded (near_passage, almost-right). (4) 'Not speaking with anyone' is a fabricated detail not found in the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Nadab and Abihu",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 10,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What did the LORD tell Aaron that the priests must not drink when entering the Tent of Meeting, lest they die?",
+    "options": [
+      "Wine or strong drink",
+      "Water from the well outside the camp",
+      "Milk from the flocks and herds",
+      "Fresh grape juice that has not fermented"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 10:9 (ESV): 'Drink no wine or strong drink, you or your sons with you, when you go into the tent of meeting, lest you die.' (1) 'Water from the well' is not prohibited — it is an ordinary drink (wrong_detail). (3) 'Milk from the flocks and herds' is not prohibited (wrong_detail). (4) 'Fresh unfermented grape juice' is a plausible-sounding answer, but the prohibition targets fermented drink, not unfermented juice (wrong_detail, almost-right).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Priestly Law",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 10,
+    "verseStart": 16,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "When Moses was angry because Aaron's sons had burned the goat of the sin offering instead of eating it in the holy place, what defense did Aaron offer?",
+    "options": [
+      "That the people had gathered in such large numbers that there was not enough meat left for the priests to eat",
+      "That the goat offered as the sin offering had been defiled and could therefore no longer be eaten in the holy place",
+      "That the LORD Himself had given him a separate command to burn the goat completely",
+      "That on a day when such a calamity had befallen him, if he had eaten the sin offering, would the LORD have approved?"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 10:19 (ESV): Aaron said to Moses, 'Behold, today they have offered their sin offering... and yet such things as these have happened to me! If I had eaten the sin offering today, would the LORD have approved?' And Moses heard it, and it was good in his eyes. (2) 'The goat had been defiled' sounds legally plausible but is not what Aaron said (wrong_detail, almost-right). (3) 'The LORD commanded him to burn it' contradicts the text — they were in fact supposed to eat it (wrong_detail, almost-right). (4) 'Not enough meat for the priests' is an off-target inference, not Aaron's mourning-based defense (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacrificial Law",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 11,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Why does the camel fall into the category of unclean animals under the law of Leviticus, even though it chews the cud?",
+    "options": [
+      "Because it lives in the desert and drinks little water",
+      "Because it has split hooves but does not chew the cud",
+      "Because it chews the cud but its hooves are not split",
+      "Because the Egyptians worshiped it as a god"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 11:4 (ESV): 'Nevertheless, among those that chew the cud or part the hoof, you shall not eat these: The camel, because it chews the cud but does not part the hoof, is unclean to you.' (2) 'Has split hooves but does not chew the cud' exactly reverses the two criteria — that is the condition of the pig, not the camel (wrong_detail, almost-right). (3) 'Lives in the desert and drinks little water' is not a classification criterion in the law (true_but_off). (4) 'The Egyptians worshiped it as a god' is a fabricated detail; it is not the reason given in the law (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Clean and Unclean Animals",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 11,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus chapter 11, which of the following birds is listed as detestable and must not be eaten?",
+    "options": [
+      "Quail",
+      "Eagle",
+      "Dove",
+      "Sparrow"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 11:13 (RVV11): Among the birds, you shall regard as detestable the eagle, the vulture, and the osprey — you shall not eat them. (1) 'Quail' is the bird the LORD provided for the people to eat in the wilderness and was not forbidden (wrong_scope). (2) 'Dove' was used as a sacrifice and was permitted to eat (wrong_detail). (4) 'Sparrow' does not appear on the forbidden list in this chapter (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Clean and Unclean Animals",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 11,
+    "verseStart": 32,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "The law in Leviticus treats a wooden object and a clay pot differently when the carcass of an unclean creature falls on them. What is the essential difference?",
+    "options": [
+      "A wooden object is soaked in water to become clean, but a clay pot must be broken and thrown away",
+      "Both need only be soaked in water until evening",
+      "A wooden object must be broken, but a clay pot is soaked in water to become clean",
+      "Both must be brought to the priest for inspection and a sacrifice offered"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 11:32-33 (RVV11): A wooden, cloth, or leather object must be soaked in water and remains unclean until evening, then it becomes clean; but a clay pot into which the carcass falls makes everything inside it unclean and the pot must be broken — because fired clay absorbs impurity and cannot be washed clean. (2) 'Both need only be soaked in water' omits the rule about breaking the clay pot (wrong_detail, almost-right). (3) 'A wooden object must be broken, clay is soaked' reverses exactly the two rules (wrong_detail, almost-right). (4) 'Both brought to the priest and a sacrifice offered' confuses this with purification procedures for people, not vessels (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Clean and Unclean Animals",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 11,
+    "verseStart": 44,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "What fundamental reason does the LORD give for the people of Israel to observe the law distinguishing between clean and unclean animals?",
+    "options": [
+      "To protect their health from diseases caused by raw meat",
+      "To distinguish Israelites from the Moabites",
+      "Because unclean animals are more expensive and harder to raise",
+      "Because 'I am holy,' so the people must be holy and set apart for Him"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 11:44-45 (RVV11): 'For I am the LORD your God… be holy, for I am holy' — the foundation is the holiness of God. (1) 'Protecting health from disease' is a common modern interpretation but is not the reason the text gives (common_misconception, almost-right). (3) 'Unclean animals are more expensive' is an unfounded inference (wrong_detail). (4) 'Distinguishing from the Moabites' sounds close in terms of being set apart, but the text speaks of being set apart for God and does not specifically name the Moabites (true_but_off, almost-right).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Holiness",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 12,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 12, during her days of purification, what must the new mother not touch, and which place must she not enter?",
+    "options": [
+      "The house of her own parents",
+      "The marketplace in the city",
+      "The sanctuary",
+      "The eastern gate of the city"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 12:4 (RVV11): The mother shall not touch any holy thing, nor come into the sanctuary until the days of her purification are completed. (1) 'The house of her own parents' is a fabricated detail that is not forbidden (wrong_detail). (3) 'The marketplace' is not mentioned in this law (wrong_detail). (4) 'The eastern gate of the city' is a fabricated detail confused with later descriptions of the Temple (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Purification after Childbirth",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 12,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When her days of purification are complete, what must the mother bring as a burnt offering, and which animal as a sin offering?",
+    "options": [
+      "A young bull that has never been yoked",
+      "A young pigeon or a turtledove",
+      "A male goat from the flock",
+      "A female lamb without blemish"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 12:6 (RVV11): The mother shall bring a year-old lamb as a burnt offering, and a young pigeon or a turtledove as a sin offering. (1) 'A young bull' is the offering of the priest in other passages, not here (wrong_scope). (2) 'A female lamb' does not appear in this law (wrong_detail). (3) 'A male goat' is a sin offering in a different context, not for the new mother (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Purification after Childbirth",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 12,
+    "verseStart": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What provision does Leviticus 12 make for a poor mother who cannot afford to offer a lamb?",
+    "options": [
+      "She may offer two turtledoves or two young pigeons",
+      "She may offer one-tenth of an ephah of fine flour",
+      "She is completely exempt from bringing an offering",
+      "She may bring the offering the following year when she has sufficient means"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 12:8 (ESV): 'And if she cannot afford a lamb, then she shall take two turtledoves or two pigeons, one for a burnt offering and the other for a sin offering.' (2) 'One-tenth of an ephah of fine flour' is the substitute provision for a sin offering in Leviticus 5, not this law for a mother after childbirth (near_passage, almost-right). (3) 'Completely exempt' contradicts the text—she must still bring an offering, only a less costly one (wrong_detail). (4) 'Bring the offering the following year' is a fabricated detail not found in the law (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Purification after Childbirth",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 13,
+    "verseStart": 12,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to the leprosy laws in Leviticus 13, why would a person whose disease has turned completely white over their entire body—from head to foot—be declared clean by the priest?",
+    "options": [
+      "Because full-body whiteness was a sign specially chosen by the LORD",
+      "Because the person had completed the required forty days of isolation prescribed by law",
+      "Because the person had brought all the required sin offerings at the entrance of the tent of meeting",
+      "Because the skin had turned completely white, leaving no sign of the disease still spreading"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 13:12-13 (ESV): 'And if the leprous disease breaks out in the skin, so that the leprous disease covers all the skin of the diseased person from head to foot... the priest shall look, and if the leprous disease has covered all his body, he shall pronounce him clean of the disease; it has all turned white, and he is clean.' (2) 'Completed forty days of isolation' is a fabricated number—the law prescribes seven days, not forty (wrong_detail, almost-right). (3) 'Brought all the sin offerings' confuses this with the purification rituals in ch. 14, which is not the basis for declaring him clean here (near_passage, almost-right). (4) 'A sign specially chosen by the LORD' is a theological misunderstanding not found in the text (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Skin Disease",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 13,
+    "verseStart": 46,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 13:46, where must a person confirmed to have leprosy live for the duration of their disease?",
+    "options": [
+      "In the priest's house to be monitored",
+      "In a designated area within the camp for the sick",
+      "Alone outside the camp",
+      "At the entrance of the tent of meeting"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 13:46 (ESV): 'He shall remain unclean as long as he has the disease. He is unclean. He shall live alone. His dwelling shall be outside the camp.' (1) 'In the priest's house' contradicts the text—the diseased person is isolated from the community (wrong_detail). (3) 'In a designated area within the camp' contradicts the command to live outside the camp (wrong_detail, almost-right). (4) 'At the entrance of the tent of meeting' is a place for ritual, not a dwelling for the unclean (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Skin Disease",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 13,
+    "verseStart": 47,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "The latter part of Leviticus chapter 13 extends the 'leprosy' laws to apply to what objects beyond human beings?",
+    "options": [
+      "Livestock animals kept in the camp",
+      "Garments made of wool, linen, or leather",
+      "Utensils made of gold or silver",
+      "Drinking water and stored food supplies"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 13:47-49 (ESV): 'When there is a case of leprous disease in a garment, whether a woolen or a linen garment... or in any article made of leather—if the disease is greenish or reddish in the garment... it shall be shown to the priest.' (1) 'Livestock animals' are not covered under this mildew law (wrong_scope). (2) 'Utensils made of gold or silver' is a fabricated detail—the law targets absorbent materials such as cloth and leather (wrong_detail). (4) 'Drinking water and stored food' confuses this with the food uncleanness laws in ch. 11, not mildew on objects (near_passage, almost-right).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Skin Disease",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 14,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In the cleansing ritual for a leprous person, after the priest sprinkles blood seven times on the one being cleansed, what does the priest do with the living bird?",
+    "options": [
+      "Release it to fly away into the open field",
+      "Offer it as a burnt offering on the altar",
+      "Give it to the cleansed person to keep",
+      "Kill it over the clay vessel containing water"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 14:7 (ESV): 'And he shall sprinkle it seven times on him who is to be cleansed of the leprous disease. Then he shall pronounce him clean and shall let the living bird go into the open field.' (1) 'Offer it as a burnt offering' contradicts the text—the living bird is set free, not killed (wrong_detail, almost-right). (3) 'Give it to the cleansed person to keep' is a fabricated detail (wrong_detail). (4) 'Kill it over the clay vessel containing water' is what was done with the FIRST bird, not the living one (near_passage, almost-right).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Cleansing of a Leper",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 14,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 14, after a person cleansed of their skin disease washes their clothes, shaves off all their hair, and bathes, how many more days must they remain outside their tent?",
+    "options": [
+      "One day",
+      "Thirty days",
+      "Fourteen days",
+      "Seven days"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 14:8 (ESV): The person to be cleansed shall wash his clothes and shave off all his hair and bathe himself in water, and he shall be clean. And after that he may come into the camp, but live outside his tent seven days. (1) 'One day' is too short per the regulation (wrong_detail). (3) 'Fourteen days' is double the correct number and easy to confuse (wrong_detail, almost-right). (4) 'Thirty days' is confused with the purification period for a woman after childbirth in ch. 12 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Cleansing of the Leper",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 14,
+    "verseStart": 45,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 14, if the mildew spreads throughout the house after the stones have been replaced and it has been replastered, how must that house be dealt with?",
+    "options": [
+      "Leave the house empty for seven years",
+      "Burn the entire house to ashes",
+      "Tear it down and carry the stones, timber, and plaster to an unclean place outside the city",
+      "Give the house to the priest as a holy offering"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 14:45 (ESV): He shall break down the house, its stones and timber and all the plaster of the house, and he shall carry them out of the city to an unclean place. (1) 'Leave empty for seven years' is a fabricated figure not found in the law (wrong_detail). (3) 'Burn to ashes' is confused with the treatment of garments with mildew in ch. 13, which does not apply to houses (near_passage, almost-right). (4) 'Give to the priest as a holy offering' contradicts the text — an unclean house is torn down, not presented as an offering (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Mildew in the House",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 15,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 15, what must a person who touches the bed of a man with a discharge do to become clean?",
+    "options": [
+      "Only avoid the sick person until evening",
+      "Wash their clothes, bathe in water, and be unclean until evening",
+      "Immediately offer a lamb as a sin offering",
+      "Shave all the hair from their entire body"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 15:5 (ESV): Anyone who touches his bed shall wash his clothes and bathe himself in water and be unclean until the evening. (1) 'Only avoid the sick person until evening' omits the required washing of clothes and bathing (wrong_detail, almost-right). (3) 'Immediately offer a lamb' is the sacrifice required for the diseased person himself after his recovery (vv. 13–15), not for someone who merely touched his bed (near_passage). (4) 'Shave all the hair from the entire body' is confused with the ritual for the leper in ch. 14 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Unclean Discharges",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 15,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 15, how long does a woman's uncleanness last during her menstrual period, and what happens to anyone who touches her?",
+    "options": [
+      "Seven days, and whoever touches her is unclean until evening",
+      "Three days, and whoever touches her must offer a sacrifice",
+      "Fourteen days, and whoever touches her is also unclean for seven days",
+      "One day, and no one becomes unclean from her"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 15:19 (ESV): When a woman has a discharge, and the discharge in her body is blood, she shall be in her menstrual impurity for seven days, and whoever touches her shall be unclean until the evening. (2) 'Three days, must offer a sacrifice' is wrong on both the duration and the consequence (wrong_detail). (3) 'Fourteen days, whoever touches her is unclean for seven days' exaggerates the period — seven days applies to her; whoever touches her is only unclean until evening (wrong_detail, almost-right). (4) 'One day, no one becomes unclean' contradicts the text on both the duration and the transmission of uncleanness (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Unclean Discharges",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 15,
+    "verseStart": 14,
+    "verseEnd": 15,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "In Leviticus 15, after waiting the required number of days from when his discharge stopped, the man offers sacrifices for complete purification. What is the key difference between this and the case of someone who merely touches an unclean object?",
+    "options": [
+      "The person who touched the unclean object must remain isolated outside the camp, while the healed man may remain inside the camp",
+      "The person who touched the unclean object must bring a lamb as a sin offering, while the healed man only needs to bathe in water",
+      "Both the person who touched the unclean object and the healed man must bring two turtledoves or young pigeons to the priest",
+      "The healed man must bring an offering to the priest, while the person who merely touched an unclean object only needs to wash their clothes and bathe to be clean"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 15:14–15 compared with 15:5–11 (ESV): The man healed of his discharge shall on the eighth day take two turtledoves or two pigeons and come before the LORD and give them to the priest to offer as a sin offering and a burnt offering; but the person who merely touches an unclean object need only wash his clothes, bathe in water, and be unclean until the evening — no sacrifice is required. (1) 'The person who touched the unclean object must be isolated outside the camp' is confused with the laws for the leper in ch. 13, not for discharges (near_passage, almost-right). (2) reverses the roles — it is the healed man who brings the birds, not the person who touched the unclean object (wrong_detail, almost-right). (3) 'Both must bring birds' is wrong because the person who touched the unclean object is not required to offer any sacrifice (wrong_scope, almost-right).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Unclean Discharges",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 16,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "On the Day of Atonement, for whom did Aaron first offer a bull as a sin offering?",
+    "options": [
+      "For the whole congregation of Israel",
+      "For the Levites serving in the tabernacle",
+      "For himself and his household",
+      "For the other high priests"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 16:6 (ESV): 'Aaron shall offer the bull as a sin offering for himself and shall make atonement for himself and for his house.' The correct answer is 'For himself and his household' because the priest had to be cleansed before making atonement for the people. (1) 'For the whole congregation of Israel' is wrong because the atonement for the people came later, using the goat rather than this bull (wrong_detail). (2) 'For the Levites serving in the tabernacle' is wrong because the text does not single out this group separately (wrong_scope). (3) 'For the other high priests' is wrong because there was only one high priest; the bull was for Aaron and his own household (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Day of Atonement",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 16,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When Aaron entered the Most Holy Place, he had to make a cloud of incense rise to cover what object so that he would not die?",
+    "options": [
+      "The altar of burnt offering",
+      "The mercy seat on the Ark of the Covenant",
+      "The veil separating the two holy places",
+      "The table of showbread"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 16:13 (ESV): Aaron put incense on the fire so that 'the cloud of the incense may cover the mercy seat that is over the testimony, so that he does not die.' The correct answer is 'The mercy seat on the Ark of the Covenant.' (1) 'The altar of burnt offering' is wrong because that altar stood in the outer court, not inside the Most Holy Place (near_passage). (2) 'The veil separating the two holy places' is wrong because Aaron had already passed through the veil before burning the incense on the inside (wrong_detail, almost-right). (3) 'The table of showbread' is wrong because that table was located in the Holy Place and was not the object covered by the incense cloud (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Day of Atonement",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 16,
+    "verseStart": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "After carrying the sins of the people, where was the scapegoat (the goat for Azazel) sent?",
+    "options": [
+      "Into a remote wilderness",
+      "Down into a deep mountain ravine",
+      "Into a neighboring foreign land",
+      "Outside the camp to be burned"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 16:22 (ESV): the goat 'shall bear all their iniquities on itself to a remote area, and he shall let the goat go free in the wilderness.' The correct answer is 'Into a remote wilderness.' (1) 'Down into a deep mountain ravine' reflects a later Jewish tradition but is not what the text states (common_misconception). (2) 'Into a neighboring foreign land' is wrong because the text says wilderness, not a foreign land (wrong_detail). (3) 'Outside the camp to be burned' is wrong because that was the fate of the bull and the sin-offering goat (16:27), not the scapegoat (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Day of Atonement",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 17,
+    "verseStart": 3,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 17, if an Israelite slaughtered an ox or a sheep without bringing it to the entrance of the tent of meeting, what was he considered guilty of?",
+    "options": [
+      "Forbidden from eating the meat of the animal he slaughtered",
+      "Required to pay a penalty by offering another animal",
+      "Considered unclean until evening that day",
+      "Considered guilty of shedding blood; that person shall be cut off"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 17:3-4 (ESV): anyone who slaughters an animal without bringing it to the tent of meeting 'bloodguilt shall be imputed to that man... that man shall be cut off from among his people.' The correct answer states both consequences: being held guilty of shedding blood and being cut off. (1) 'Required to pay a penalty by offering another animal' is wrong because the text prescribes no such substitute penalty (wrong_detail). (2) 'Considered unclean until evening' is wrong because that formula belongs to a different category of purity law and does not apply here (near_passage). (3) 'Forbidden from eating the meat of the animal he slaughtered' is partly true in spirit but is not the penalty this verse states (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Blood and Life",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 17,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Leviticus 17:7 gives a reason why the Israelites must bring their sacrifices to the tent of meeting — so that they would no longer offer sacrifices to whom?",
+    "options": [
+      "To the golden idols they had cast",
+      "To the kings of Egypt",
+      "To goat demons whom they had whored after",
+      "To the spirits of their deceased ancestors"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 17:7 (ESV): 'So they shall no more sacrifice their sacrifices to goat demons, after whom they whore.' The correct answer is 'To goat demons whom they had whored after.' (1) 'To the golden idols they had cast' recalls the golden calf (Exodus 32) but is not the subject of this verse (near_passage). (2) 'To the kings of Egypt' is wrong because the verse speaks of worshiping goat demons, not human rulers (wrong_detail). (3) 'To the spirits of their deceased ancestors' is a misunderstanding rooted in ancestor veneration practices; it is not what this verse addresses (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Blood and Life",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 17,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When an Israelite hunts a wild animal or a bird that may be eaten, what must he do with its blood?",
+    "options": [
+      "Sprinkle the blood on the altar first",
+      "Pour out the blood and cover it with earth",
+      "Bring the blood to the priest",
+      "Let the blood congeal before eating"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 17:13 (ESV): anyone who hunts an animal or bird that may be eaten 'shall pour out its blood and cover it with earth.' The correct answer is 'Pour out the blood and cover it with earth.' (1) 'Sprinkle the blood on the altar first' is incorrect because that is a sacrificial rite and does not apply to hunted game (wrong_scope). (2) 'Bring the blood to the priest' is incorrect because the text specifically commands covering the blood with earth (wrong_detail). (3) 'Let the blood congeal before eating' contradicts the prohibition against consuming blood (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Blood and Life",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 18,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What does Leviticus 18:5 say will happen to the one who keeps God's statutes and rules?",
+    "options": [
+      "He shall live by them",
+      "He will be given abundant wealth",
+      "He will triumph over his enemies",
+      "He will have many children and grandchildren"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 18:5 (ESV): 'You shall therefore keep my statutes and my rules; if a person does them, he shall live by them.' The correct answer is 'He shall live by them.' (1) 'Be given abundant wealth' is a blessing often associated with obedience but is not what this verse states (true_but_off). (2) 'Triumph over his enemies' refers to blessings found elsewhere (e.g., Lev. 26), not this verse (near_passage). (3) 'Have many children and grandchildren' is a different covenant blessing, not the content of 18:5 (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Moral Law",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 18,
+    "verseStart": 25,
+    "verseEnd": 28,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "In Leviticus 18, why were the peoples of Canaan driven out, and what would happen if Israel committed the same sins?",
+    "options": [
+      "Those peoples were too numerous, so God drove them out; if Israel sinned, they would be scattered",
+      "Those peoples worshiped other gods, so they were destroyed; if Israel sinned, they would suffer plague",
+      "Those peoples oppressed the poor, so they were driven out; if Israel sinned, they would lose their harvests",
+      "The land had become defiled, so the land 'vomited out' its inhabitants; if Israel sinned, the land would vomit them out too"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 18:25-28 (ESV): 'the land became unclean... so that the land vomited out its inhabitants,' and warns that if Israel defiles the land, 'the land will vomit you out as it vomited out the nation that was before you.' The correct answer captures both halves: the land vomited out the Canaanites and will vomit out Israel. (1) 'Worshiped other gods... plague' is broadly true about the sin but wrong about the specific consequence the text emphasizes — the land 'vomiting them out' (wrong_detail, almost-right). (2) 'Oppressed the poor... lost harvests' reflects a spirit of justice but is not the reason or consequence stated here (true_but_off). (3) 'Too numerous... scattered' is wrong on both the reason and the consequence stated in the text (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Moral Law",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 18,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What general principle does the opening verse of the incest laws in Leviticus 18 establish?",
+    "options": [
+      "No one may marry a person from a foreign nation",
+      "No one may marry before reaching adulthood",
+      "No one may approach a close relative to have sexual relations",
+      "No one may take multiple wives at the same time"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 18:6 (ESV): 'None of you shall approach any one of his close relatives to uncover nakedness.' This is the overarching principle governing all the specific prohibitions that follow. The correct answer is 'No one may approach a close relative to have sexual relations.' (1) 'Not marry someone from a foreign nation' is a different law (e.g., Deut. 7) and not the principle of this verse (near_passage). (2) 'Not yet of age' is not found in the text (wrong_detail). (3) 'Not take multiple wives' is not the content of 18:6 (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Moral Law",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 19:13, the wages of a hired worker must not be kept beyond what point in time?",
+    "options": [
+      "Until the end of the week",
+      "Until the next morning",
+      "Until the Sabbath day",
+      "Until the next harvest season"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 19:13 (ESV): 'The wages of a hired worker shall not remain with you all night until the morning.' The correct answer is 'Until the next morning.' (1) 'End of the week' gives the wrong deadline (wrong_detail). (2) 'The Sabbath day' evokes other time-related laws but does not fit this verse (near_passage). (3) 'The next harvest season' extends the deadline far beyond the overnight limit stated in the verse (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Holiness Code",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What two categories of vulnerable people does Leviticus 19:14 prohibit the people from harming?",
+    "options": [
+      "The deaf and the blind",
+      "The poor and the widow",
+      "The orphan and the stranger",
+      "The lame and the leper"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 19:14 (ESV): 'You shall not curse the deaf or put a stumbling block before the blind.' The correct answer is 'The deaf and the blind.' (1) 'The poor and the widow' are groups protected by other verses and laws (wrong_detail, almost-right). (2) 'The orphan and the stranger' are also protected by the Law but are not the two groups specified in 19:14 (near_passage). (3) 'The lame and the leper' are not the subjects of this verse (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Holiness Code",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Which of the following does Leviticus 19:19 prohibit the Israelites from doing?",
+    "options": [
+      "Wearing clothing borrowed from the dead",
+      "Wearing clothing dyed with colors used by foreigners",
+      "Wearing clothing embroidered with images of idols",
+      "Wearing clothing woven from two different kinds of material"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 19:19 (ESV) prohibits crossbreeding animals of different kinds, sowing a field with two kinds of seed, and 'wearing a garment of cloth made of two kinds of material.' The correct answer is 'Wearing clothing woven from two different kinds of material.' (1) 'Dyed with colors used by foreigners' does not appear in the text (wrong_detail). (2) 'Embroidered with images of idols' relates to laws against idol worship but is not the subject of this verse (near_passage). (3) 'Borrowed from the dead' evokes laws concerning corpse impurity, not this passage (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Holiness Code",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 32,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What attitude does Leviticus 19:32 command the people to have toward the elderly with gray hair?",
+    "options": [
+      "You shall invite them to sit in the seat of honor",
+      "You shall provide food for them",
+      "You shall stand up and honor them",
+      "You shall let them adjudicate legal disputes"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 19:32 (ESV): 'You shall stand up before the gray head and honor the face of an old man, and you shall fear your God.' The correct answer is 'You shall stand up and honor them.' (1) 'Provide food' is a kind deed but is not the command given in this verse (true_but_off). (2) 'Invite them to sit in the seat of honor' does not appear in the text (wrong_detail). (3) 'Let them adjudicate disputes' is confused with the role of elders as judges found in other laws (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Holiness Code",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 33,
+    "verseEnd": 34,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 19:33-34, how are the people commanded to treat the foreigners living among them, and what reason is given?",
+    "options": [
+      "Lend to them, because God blesses generosity",
+      "Love them as yourselves, because you were once strangers in Egypt",
+      "Distribute land to them, because the land belongs to the LORD",
+      "Teach them the law, because they do not yet know God's ways"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 19:33-34 (ESV): 'You shall love him as yourself, for you were strangers in the land of Egypt.' The correct answer captures both the command (love as yourself) and the reason (you were once strangers in Egypt). (1) 'Lend to them' is an act of kindness but misrepresents both the command and the reason of this verse (true_but_off). (2) 'Distribute land' is confused with the law of Jubilee and land ownership (near_passage). (3) 'Teach them the law' is not the content of this verse (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Holiness Code",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 20,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 20:9, what consequence must anyone who curses his father or mother face?",
+    "options": [
+      "He shall be put to death",
+      "He shall be driven out of the household",
+      "He shall bring a sin offering",
+      "He shall be publicly flogged"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 20:9 (ESV): 'For anyone who curses his father or his mother shall surely be put to death; he has cursed his father or his mother; his blood is upon him.' The correct answer is 'He shall be put to death.' (1) 'Driven out of the household' is far milder than the death penalty stated in the text (wrong_detail). (2) 'Bring a sin offering' applies to unintentional sins, not this offense (wrong_scope). (3) 'Publicly flogged' is the punishment prescribed in a different law, not this verse (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Penalties",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 20,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Which type of person does Leviticus 20:6 warn the people not to seek out and follow after?",
+    "options": [
+      "False prophets among the people",
+      "Kings of foreign nations",
+      "Foreign merchants",
+      "Mediums and spiritists"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 20:6 (ESV): whoever \"turns to mediums and necromancers, whoring after them,\" the LORD will cut that person off from among his people. The correct answer is 'Mediums and spiritists.' (1) 'Kings of foreign nations' are not the subject of this verse (wrong_detail). (2) 'Foreign merchants' are irrelevant to this command (wrong_scope). (3) 'False prophets' are warned against elsewhere (e.g., Deut. 13) but not mediums as addressed in this verse (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Punishment",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 20,
+    "verseStart": 24,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "In Leviticus 20:24-26, God connects the requirement for the Israelites to distinguish between clean and unclean animals with what reality about Israel itself?",
+    "options": [
+      "The LORD will make them as numerous as the stars in the sky",
+      "The LORD will give them a land flowing with milk and honey",
+      "The LORD has set them apart from all peoples as His own",
+      "The LORD delivered them from slavery in Egypt"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 20:24-26 (ESV): 'I am the LORD your God, who has separated you from the peoples,' and therefore they must 'make a distinction between the clean animal and the unclean'; the dietary distinction mirrors God's setting apart of His people. The correct answer is that the LORD has separated them from all peoples. (1) 'A land flowing with milk and honey' is a promise mentioned in the same passage (20:24) but is not the reason tied to distinguishing clean animals (true_but_off, almost-right). (2) 'As numerous as the stars in the sky' is the promise to Abraham, not the rationale given in this verse (near_passage). (3) 'Delivered from slavery in Egypt' is the true covenantal foundation but is not the direct reason this passage gives for distinguishing clean and unclean animals (true_but_off, almost-right).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Punishment",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 21,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What does Leviticus 21:1 prohibit ordinary priests from defiling themselves on account of?",
+    "options": [
+      "On account of touching a dead animal",
+      "On account of a dead person among his people",
+      "On account of eating unclean food",
+      "On account of entering the house of a leper"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 21:1 (ESV): 'No one shall make himself unclean for the dead among his people,' except for his closest relatives. The correct answer is 'On account of a dead person.' (1) 'Touching a dead animal' also causes uncleanness under the general law but is not what verse 21:1 specifically restricts for priests (near_passage). (2) 'Eating unclean food' belongs to the dietary laws, which is the wrong scope (wrong_scope). (3) 'Entering a leper's house' confuses this with the laws concerning skin disease, which is not addressed in this verse (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Priests",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 21,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 21:9, what punishment must a priest's daughter bear if she becomes a prostitute?",
+    "options": [
+      "She must be burned with fire",
+      "She must be driven out from her father's house",
+      "She must be stoned outside the city gate",
+      "She must be barred from the holy offerings"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 21:9 (ESV): the daughter of a priest who profanes herself by whoring 'profanes her father; she shall be burned with fire.' The correct answer is 'She must be burned with fire.' (1) 'Driven out from her father's house' is a far lighter penalty than what the text prescribes (wrong_detail). (2) 'Stoned outside the city gate' is the form of execution for other offenses, not the burning specified in this verse (near_passage). (3) 'Barred from the holy offerings' confuses this with the laws governing the right to eat holy things (ch. 22), which is the wrong scope (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Priests",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 21,
+    "verseStart": 13,
+    "verseEnd": 14,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 21:13-14, what type of woman alone may the high priest take as his wife?",
+    "options": [
+      "A virgin from the tribe of Levi",
+      "A widow of another priest",
+      "A divorced woman who has no children",
+      "A virgin from his own people"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 21:13-14 (ESV): the high priest 'shall take as his wife a virgin' and must not marry a widow, a divorced woman, or a prostitute; he must marry 'a virgin of his own people.' The correct answer is 'A virgin from his own people.' (1) 'A widow of another priest' is explicitly forbidden because she is a widow (wrong_detail, almost-right). (2) 'A divorced woman' is also forbidden even if she has no children (wrong_detail). (3) 'A virgin from the tribe of Levi' is correct as to 'virgin' but the text says 'from his own people,' not restricted to the tribe of Levi (wrong_scope, almost-right).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Priests",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 22,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 22:4, what is a priest descended from Aaron who has leprosy or a discharge forbidden to do?",
+    "options": [
+      "He may not wear the priestly garments",
+      "He may no longer enter the court of the tent of meeting",
+      "He may not eat the holy things until he is clean",
+      "He may not pronounce the blessing over the congregation"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 22:4 states that a priest descended from Aaron who has leprosy or a discharge 'shall not eat of the holy things until he is clean.' The correct answer is 'He may not eat the holy things until he is clean.' (1) 'Entering the court of the tent of meeting' fits the spirit of ritual separation but is not the specific prohibition stated in this verse (true_but_off). (2) 'Wearing priestly garments' is not the subject of this verse (wrong_detail). (3) 'Pronouncing the blessing over the congregation' confuses this with a different priestly function and is outside the scope of this verse (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Holy Offerings",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 22,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 22:10, who is NOT permitted to eat the holy things offered to the LORD?",
+    "options": [
+      "The children of the priest",
+      "A stranger and a hired worker of the priest",
+      "A slave the priest has purchased with money",
+      "A woman born in the priest's household"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 22:10–11 states: 'No outsider shall eat of a holy thing; a sojourner of the priest's or a hired worker shall not eat of a holy thing,' but a slave bought with money and one born in the household may eat. The correct answer is 'A stranger and a hired worker.' (1) 'The children of the priest' are permitted to eat, so they do not answer the question (true_but_off). (2) 'A slave purchased with money' is permitted to eat (22:11) (wrong_detail). (3) 'A woman born in the household' is also permitted to eat (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Holy Offerings",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 22,
+    "verseStart": 14,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 22:14, what must a person do if he eats a holy thing unintentionally?",
+    "options": [
+      "He must repay the holy thing and add a fifth of its value",
+      "He must offer a ram as a guilt offering",
+      "He must be excluded from his people until evening of that day",
+      "He must fast all day and tear his garment as a sign of repentance"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 22:14 states that whoever eats a holy thing unintentionally 'shall add the fifth of its value to it and give the holy thing to the priest.' The correct answer is 'He must repay the holy thing and add a fifth of its value.' (1) 'Offering a ram as a guilt offering' is the remedy for profaning holy things in Leviticus 5:15–16, but Leviticus 22:14 specifies restitution plus a fifth without mentioning a ram (near_passage, almost-right). (2) 'Being excluded until evening' conflates this with the ordinary uncleanness formula and is incorrect (wrong_detail). (3) 'Fasting and tearing one's garment' are general gestures of repentance, not the requirement specified in this verse (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Holy Offerings",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 22,
+    "verseStart": 21,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 22:21, what characteristic must an animal offered as a peace offering have in order to be accepted?",
+    "options": [
+      "It must be a uniformly colored animal",
+      "It must be a young animal",
+      "It must be a firstborn animal",
+      "It must be an animal without blemish"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 22:21 states that a peace offering 'must be perfect to be accepted; there shall be no blemish in it.' The correct answer is 'It must be an animal without blemish.' (1) 'Young' is not a requirement stated in this verse (wrong_detail). (2) 'Firstborn' confuses this with the law of the firstborn offering and is outside the scope of this verse (wrong_scope). (3) 'Uniformly colored' confuses this with the red heifer in Numbers 19 and does not apply here (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Holy Offerings",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 16,
+    "verseStart": 15,
+    "verseEnd": 22,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "On the Day of Atonement, what were the different roles of the two goats: the one that was slaughtered and the one that was sent away alive?",
+    "options": [
+      "The one slaughtered was offered for the Gentiles; the living one was offered to the LORD",
+      "The one slaughtered was used to feed the priests; the living one was kept for breeding",
+      "The one slaughtered had its blood used to make atonement for the holy place; the living one carried the sins away into the wilderness",
+      "The one slaughtered made atonement for the priest; the living one made atonement for the king"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 16:15–22 describes how the first goat was slaughtered and its blood was used to 'make atonement for the Holy Place'; the live goat had Aaron lay both hands on it, confess the sins of the people over it, and then send it away 'into the wilderness' to carry away the iniquities of the people. The correct answer correctly distinguishes the two roles: the blood atones for the holy place, and the live goat bears the sins into the wilderness. (1) 'Feeding the priests / breeding the flock' is entirely wrong as a description of these ritual functions (wrong_detail). (2) 'Offered for the Gentiles' is incorrect because both goats relate to the LORD and to Israel's atonement, not to the Gentiles (wrong_scope). (3) 'Atonement for the priest / for the king' is incorrect because both goats atone for the sins of all Israel, not divided between priest and king (near_passage, almost-right).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Day of Atonement",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 23:3, on what cycle does the holy Sabbath rest recur?",
+    "options": [
+      "On the first day of each month",
+      "Every seventh day",
+      "Once every ten days",
+      "Once every forty days"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 23:3 (ESV): 'Six days shall work be done, but on the seventh day is a Sabbath of solemn rest, a holy convocation' — thus the Sabbath is observed weekly, on the seventh day. (1) 'On the first day of each month' confuses this with the New Moon/trumpet feast (near_passage). (2) 'Once every ten days' is a fabricated number not found in Sabbath law (wrong_detail). (3) 'Once every forty days' evokes various '40' numbers in the Bible but is unrelated to the Sabbath (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Feasts",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "In the feast of the firstfruits offering, on which day was the priest to wave the sheaf before the LORD?",
+    "options": [
+      "The day after the Sabbath",
+      "The first day of the first month",
+      "The seventh day of the week",
+      "The tenth day of the seventh month"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 23:11 (ESV): 'he shall wave the sheaf before the LORD... on the day after the Sabbath the priest shall wave it.' (1) 'The first day of the first month' is not the appointed marker for this feast (wrong_detail). (2) 'The seventh day of the week' is the Sabbath itself, the opposite of 'the day after' the Sabbath (near_passage). (3) 'The tenth day of the seventh month' is the Day of Atonement, a different feast entirely (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Feasts",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 27,
+    "verseEnd": 32,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "On the Day of Atonement (the tenth day of the seventh month), what were the Israelites commanded to do?",
+    "options": [
+      "Offer their firstborn as a burnt offering",
+      "Eat unleavened bread for seven days",
+      "Dwell in booths made of branches for seven days",
+      "Afflict themselves (fast) and do no work"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 23:27-32 (ESV): 'you shall afflict yourselves... you shall not do any work.' This was a day of self-denial and fasting. (1) 'Offer their firstborn as a burnt offering' is not prescribed for the Day of Atonement (wrong_detail). (2) 'Eat unleavened bread for seven days' belongs to the Feast of Unleavened Bread (near_passage). (3) 'Dwell in booths for seven days' belongs to the Feast of Booths (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Feasts",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 24,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 24:2, what kind of oil were the Israelites to bring to keep the lamp burning continually in the Tabernacle?",
+    "options": [
+      "Fragrant oil blended with many spices",
+      "Rendered fat from rams",
+      "Pure olive oil, beaten",
+      "Wine oil pressed from grapes"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 24:2 (ESV): 'Command the people of Israel to bring you pure oil from beaten olives for the light, that a lamp may be kept burning regularly.' (1) 'Fragrant oil blended with spices' confuses this with the anointing oil of Exodus 30 (near_passage). (2) 'Rendered fat from rams' was not used for lamps (wrong_detail). (3) 'Wine oil pressed from grapes' does not exist as lamp fuel (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Tabernacle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 24,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 24:7, what were the Israelites to place on each row of the showbread as a memorial?",
+    "options": [
+      "Salt of the covenant",
+      "Pure frankincense",
+      "Honey and fine flour",
+      "Blood of a lamb"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 24:7 (ESV): 'And you shall put pure frankincense on each row, that it may go with the bread as a memorial portion as a food offering to the LORD.' (1) 'Salt of the covenant' accompanies other grain offerings (near_passage). (2) 'Honey and fine flour' — honey was forbidden on the altar (common_misconception). (3) 'Blood of a lamb' was not placed on the showbread (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Tabernacle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 25:5, what were the Israelites forbidden to do with the naturally grown produce during the Sabbath year of the land?",
+    "options": [
+      "Harvest and collect it as in a normal season",
+      "Offer a portion of it as a grain offering",
+      "Leave it for the poor and the animals of the field",
+      "Sell it to neighboring foreign peoples"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 25:5 (ESV): 'You shall not reap what grows of itself in your Sabbath year, and you shall not gather the grapes of your undressed vine. It shall be a year of solemn rest for the land.' Naturally grown produce may not be harvested as in a normal season. (1) 'Leave it for the poor and the animals of the field' is actually what IS permitted (Exodus 23:11), so it is not the forbidden action (true_but_off). (2) 'Offer a portion of it as a grain offering' is unrelated to the Sabbath year law for the land (wrong_detail). (3) 'Sell it to neighboring foreign peoples' is a fabricated option (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sabbath Year",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 25:23, why could the land of Israel not be sold in perpetuity?",
+    "options": [
+      "Because the land was too little for the twelve tribes",
+      "Because the people were not yet permitted to own land",
+      "Because the land had been promised to the Levites",
+      "Because the land belongs to the LORD"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 25:23 (ESV): 'The land shall not be sold in perpetuity, for the land is mine. For you are strangers and sojourners with me.' (1) 'Because the land was too little' is a pragmatic reason invented by the reader, not the theological reason the text states (wrong_detail). (2) 'Because the people were not yet permitted to own land' is incorrect, since they did receive an inheritance that was divided among them (wrong_detail). (3) 'Because the land had been promised to the Levites' — the Levites did not receive a land inheritance (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Year of Jubilee",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "At the opening of the covenant stipulations (Leviticus 26:1), what did God forbid the Israelites from doing?",
+    "options": [
+      "Marrying close relatives",
+      "Eating pork and unclean animals",
+      "Making idols and worshiping carved standing stones",
+      "Lending money at high interest"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 26:1 (ESV): 'You shall not make idols for yourselves or erect an image or pillar, and you shall not set up a figured stone in your land to bow down to it, for I am the LORD your God.' (1) 'Eating pork and unclean animals' belongs to the purity laws in chapter 11 (near_passage). (2) 'Marrying close relatives' belongs to the laws against incest in chapter 18 (near_passage). (3) 'Lending money at high interest' relates to chapter 25 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Covenant",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 26:6, one of the blessings for obedience is that God will grant what to the land?",
+    "options": [
+      "Gold and silver filling the storehouses",
+      "Peace, with no one to make them afraid",
+      "A magnificent temple built of precious stones",
+      "A lifespan exceeding one hundred years"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 26:6 (ESV): 'I will give peace in the land, and you shall lie down, and none shall make you afraid.' (1) 'Gold and silver filling the storehouses' does not appear in this covenant blessing list (wrong_detail). (2) 'A magnificent temple built of precious stones' is a later image not found here (true_but_off). (3) 'A lifespan exceeding one hundred years' is not among the blessings listed (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Covenant",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 27,
+    "verseStart": 32,
+    "verseEnd": 33,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 27:32, how is the tithe of herds and flocks determined?",
+    "options": [
+      "Every tenth animal that passes under the herdsman's staff",
+      "By casting lots among the entire flock",
+      "By taking the firstborn of each female animal",
+      "By selecting the best and fattest animal in the flock"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 27:32 (ESV): 'And every tithe of herds and flocks, every tenth animal of all that pass under the herdsman's staff, shall be holy to the LORD.' (1) 'Selecting the best and fattest animal' contradicts the law that no distinction may be made between good and bad (v. 33) (wrong_detail). (2) 'Casting lots' is not the method used to count the tithe (wrong_detail). (3) 'The firstborn of each female animal' confuses this with the law of firstborn offerings, a different type of dedication (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Tithe",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 23:14, why were the Israelites not allowed to eat bread or roasted grain from the new harvest until a certain point?",
+    "options": [
+      "Because the new harvest had to be reserved entirely for the Year of Jubilee",
+      "Because the new grain was still unclean and not yet purified",
+      "Because they had to wait for the priest to taste it before the whole people",
+      "The firstfruits sheaf offering had to be brought to God first"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 23:14 (ESV): 'And you shall eat neither bread nor grain parched or fresh until this same day, until you have brought the offering of your God.' The firstfruits of the new harvest belong to God first; the people may only enjoy them after presenting the offering. (1) 'The grain is still unclean' is a misunderstanding — the reason is presenting the offering first, not ritual uncleanness (common_misconception). (2) 'Waiting for the priest to taste it' is a fabricated detail (wrong_detail). (3) 'Reserving it for the Year of Jubilee' confuses this with the Jubilee law in chapter 25 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacred Seasons",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Leviticus 23:22 commands that the corners of the field must not be reaped to the edge and fallen grain must not be gleaned. This law is placed among the appointed feasts — what is its purpose?",
+    "options": [
+      "To set that grain aside as the morning grain offering",
+      "To protect the land from being over-harvested to exhaustion",
+      "To leave a portion of the harvest for the poor and the sojourner",
+      "For the priest to collect the corner grain as his provision"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 23:22 (ESV): 'And when you reap the harvest of your land, you shall not reap your field right up to its edge... You shall leave them for the poor and for the sojourner.' Compassion for the needy is woven into the rhythm of the festival calendar. (1) 'As the morning grain offering' confuses this with offerings presented at the Tabernacle (near_passage). (2) 'Protecting the land from over-harvesting' is the reason behind the Sabbath year for the land, not this law (true_but_off). (3) 'The priest collecting it as provision' misidentifies the recipient — that portion belongs to the poor (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sacred Seasons",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 24,
+    "verseStart": 10,
+    "verseEnd": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In the case of the blasphemer (Leviticus 24:10–12), what did Moses do when it was not yet clear how the man should be judged?",
+    "options": [
+      "Immediately ordered him to be stoned on the spot",
+      "Kept him in custody to await the LORD's ruling",
+      "Handed him over to his parents to deal with",
+      "Drove him out of the camp for seven days"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 24:12 (ESV): 'They put him in custody, until the will of the LORD should be clear to them.' Moses waited for God's word before determining the punishment. (1) 'Immediately stoning him' reverses the sequence — the verdict came only after the LORD spoke (wrong_detail). (2) 'Driving him out of the camp for seven days' confuses this with the laws governing uncleanness and skin disease (near_passage). (3) 'Handing him over to his parents' has no basis in the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Blasphemy",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 24,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Leviticus 24:22 emphasizes what principle regarding the application of the law among different groups of people?",
+    "options": [
+      "The same law applies to both the sojourner and the native",
+      "Sojourners bear heavier penalties than natives",
+      "Natives are exempt from certain penalties",
+      "Only the Levites are subject to judgment under this law"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 24:22 (ESV): 'You shall have the same rule for the sojourner and for the native, for I am the LORD your God.' (1) 'Sojourners bear heavier penalties' contradicts the principle of equal law just stated (wrong_detail). (2) 'Natives are exempt from certain penalties' also contradicts the one-law principle (wrong_detail). (3) 'Only the Levites are subject to judgment' incorrectly narrows the scope of application (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Blasphemy",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 25,
+    "verseEnd": 28,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 25:25–28, when a poor Israelite must sell his land, who has the primary right and responsibility to redeem it?",
+    "options": [
+      "The incumbent high priest",
+      "The buyer must voluntarily return it",
+      "The elder of the city where the man lives",
+      "The nearest relative of the man"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 25:25 (ESV): 'If your brother becomes poor and sells part of his property, then his nearest redeemer shall come and redeem what his brother has sold.' This is the role of the kinsman-redeemer (go'el). (1) 'The high priest' has no such role in this law (wrong_scope). (2) 'The elder of the city' is not the land redeemer (wrong_detail). (3) 'The buyer must voluntarily return it' is incorrect — the land automatically reverts at the Year of Jubilee without requiring any voluntary act (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Year of Jubilee",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 29,
+    "verseEnd": 31,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "How does Leviticus 25:29-31 distinguish between a house in a walled city and a house in an unwalled village regarding the right of redemption?",
+    "options": [
+      "Both types of houses may be redeemed at any time within seven years after the sale",
+      "A house in a walled city may be redeemed permanently; a house in a village can never be redeemed",
+      "A house in a walled city may only be redeemed within one year; a house in a village is returned at the Year of Jubilee",
+      "Neither type of house may ever be redeemed after it has been sold outright to the buyer"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 25:29-31: a house in a walled city that is not redeemed within one year belongs permanently to the buyer and does not revert at the Year of Jubilee; a house in an unwalled village, however, is treated like open land — it may be redeemed and does revert at the Year of Jubilee. Option (1) 'both redeemable at any time within seven years' is a fabricated figure (wrong_detail). Option (2) reverses the rules that apply to the two types of houses (wrong_detail). Option (4) 'neither may ever be redeemed' directly contradicts the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Year of Jubilee",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 18,
+    "verseEnd": 21,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In the covenant warnings of Leviticus 26:18-21, if the people still refuse to obey after being disciplined, by what measure does God declare He will increase their punishment?",
+    "options": [
+      "Double for each successive year",
+      "Sevenfold for their sins",
+      "Tenfold, like the ten plagues",
+      "Threefold for each generation"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 26:18: 'I will discipline you again sevenfold for your sins' — the phrase 'sevenfold' recurs multiple times throughout the chapter. Option (1) 'double each year' is a fabricated figure (wrong_detail). Option (3) 'tenfold like the ten plagues' conflates this passage with the plagues of Egypt, which is a different context (near_passage). Option (4) 'threefold for each generation' does not appear in the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Covenant",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 34,
+    "verseEnd": 35,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 26:34-35, when the people of Israel are driven into exile, what will finally be made up for during the time the land lies desolate?",
+    "options": [
+      "The land will enjoy its Sabbath rest to compensate for all the Sabbath years that were not observed",
+      "All the shrines and altars of false gods will be leveled to the ground",
+      "The foreign nations will cultivate the land in place of Israel",
+      "The twelve tribes will have their inheritance redistributed anew"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 26:34-35: 'Then the land shall enjoy its Sabbaths as long as it lies desolate... the land shall rest and enjoy its Sabbaths.' The exile compensates for all the Sabbath years of rest the land was denied. Option (2) 'shrines of false gods being leveled' is a detail from verse 30, not what is being made up for during the desolation (true_but_off). Option (3) 'foreign nations cultivating in Israel's place' contradicts the picture of the land lying desolate and resting (wrong_detail). Option (4) 'redistributing the inheritance anew' does not appear in the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Covenant",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 27,
+    "verseStart": 9,
+    "verseEnd": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 27:9-13, when a person wishes to redeem an unclean animal that was vowed to the LORD, how much must he add to the priest's assessed value?",
+    "options": [
+      "One-tenth of the assessed value",
+      "Double the assessed value",
+      "One-third of the assessed value",
+      "One-fifth of the assessed value"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 27:13: 'But if he wishes to redeem it, he shall add a fifth to the valuation.' The one-fifth surcharge (20%) is the standard redemption premium throughout this chapter. Option (1) 'one-tenth' confuses this with the tithe discussed later in the chapter (near_passage). Option (2) 'double the assessed value' is the restitution rate for theft, which belongs to a different context (near_passage). Option (3) 'one-third' is a fabricated figure (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Vows",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 27,
+    "verseStart": 16,
+    "verseEnd": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 27:16-18, when a field that has been vowed to the LORD is to be valued, on what basis is its worth calculated?",
+    "options": [
+      "The number of fruit trees and water sources on the field",
+      "The field's distance from the Tabernacle at Shiloh",
+      "The amount of seed required to sow it and the number of years remaining until the Year of Jubilee",
+      "The number of livestock the field can support"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 27:16-18: the value of a field is calculated according to the amount of seed needed to sow it, and if it is vowed after a Jubilee the priest prorates the value according to the number of years remaining until the next Year of Jubilee, reducing it accordingly. Option (1) 'number of fruit trees and water sources' is not among the criteria stated in the text (wrong_detail). Option (2) 'distance from the Tabernacle at Shiloh' is a fabricated detail and is historically anachronistic (wrong_detail). Option (4) 'number of livestock the field can support' is unrelated to the valuation method described (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Vows",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 39,
+    "verseEnd": 43,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 25:39-43, how does the treatment of a poor Israelite who sells himself differ from the treatment of foreign slaves (25:44-46) in its core aspect?",
+    "options": [
+      "The Israelite must do twice as heavy labor as foreign slaves to repay the debt faster",
+      "The Israelite must be treated like a hired worker and released at the Year of Jubilee",
+      "The Israelite receives no wages at all, while foreign slaves always receive payment",
+      "The sold Israelite is also passed on as a permanent inheritance to the master's descendants"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 25:39-43 (RVV11): 'You shall not make him serve as a slave; treat him as a hired worker... at the Year of Jubilee he and his children shall go free'; whereas foreign slaves (vv. 44-46) may be passed on as a permanent inheritance. (2) 'Twice as heavy labor' contradicts the command not to rule over him harshly (wrong_detail). (3) 'Receives no wages' reverses it — it is the Israelite who is to be treated like a hired worker (wrong_detail). (4) 'Passed on as an inheritance to the master's descendants' is the regulation for foreign slaves, wrongly attributed to the Israelite (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Year of Jubilee",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 42,
+    "verseEnd": 45,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "In the promise of restoration (Leviticus 26:42-45), what is the foundation that causes God not to completely abandon the people of Israel even when they are in exile?",
+    "options": [
+      "The covenant He made with Abraham, Isaac, and Jacob",
+      "The merits of the priests in offering sin offerings",
+      "The complete and total repentance of the people",
+      "The oath of the people when they stood at Mount Sinai"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Leviticus 26:42 (RVV11): 'I will remember my covenant with Jacob, and I will remember my covenant with Isaac and my covenant with Abraham, and I will remember the land.' The foundation is the covenant with the patriarchs, initiated by God. (2) 'Complete repentance' — although confession (v. 40) is required, the ultimate foundation is the covenant God remembers, not the people's merit (true_but_off). (3) 'The merits of the priests' are not mentioned as the foundation here (wrong_detail). (4) 'The oath at Sinai' is the covenant the people failed to keep; the foundation for restoration points back to the earlier patriarchal covenant (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Covenant",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 20,
+    "verseEnd": 22,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Leviticus 25:20-22 answers the question, 'What will we eat in the seventh year if we do not sow or reap?' What does the answer reveal about how God provides?",
+    "options": [
+      "He will cause bread to fall from heaven like manna every morning",
+      "He permits the purchase of food from neighboring peoples",
+      "He exempts the Sabbath year of the land if the harvest is insufficient",
+      "He blesses the sixth year's harvest to yield enough for three years"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Leviticus 25:21-22 (RVV11): 'I will command my blessing on you in the sixth year, so that it will produce a crop sufficient for three years.' The provision comes through an abundant sixth-year harvest, requiring prior faith. (2) 'Manna from heaven every morning' confuses this with Exodus 16, wrong context for settled agricultural life (near_passage). (3) 'Buying food from neighboring peoples' is not the solution the text presents (wrong_detail). (4) 'Exempting the Sabbath year of the land if insufficient' contradicts the mandatory observance of the Sabbath year (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Sabbath Year",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 40,
+    "verseEnd": 43,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Leviticus 23:40-43 commands the people to take branches of beautiful trees, palm fronds, boughs of leafy trees, and willows, and dwell in booths for seven days. What meaning does dwelling in booths carry according to the text itself?",
+    "options": [
+      "To express mourning for those who died in the wilderness",
+      "To commemorate the forty days Moses spent on Mount Sinai",
+      "To remind future generations that the LORD made Israel dwell in booths when He brought them out of Egypt",
+      "To celebrate the completion of the Tabernacle in the wilderness"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Leviticus 23:43 (RVV11): 'So that your generations may know that I made the people of Israel dwell in booths when I brought them out of the land of Egypt.' The meaning is a commemoration of the journey out of Egypt. (2) 'Moses' forty days on the mountain' is a different event, not the reason for this feast (true_but_off). (3) 'Mourning for those who died in the wilderness' is not in the text (wrong_detail). (4) 'Celebrating the completion of the Tabernacle' refers to the event in Exodus 40, not the meaning of the Feast of Booths (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Feasts",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 24,
+    "verseStart": 18,
+    "verseEnd": 21,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to Leviticus 24:18-21, how does the law distinguish between one who kills an animal and one who kills a person?",
+    "options": [
+      "In both cases, only monetary compensation according to a set price is required",
+      "One who kills an animal must make restitution with an animal, but one who kills a person shall be put to death",
+      "One who kills an animal shall be put to death, while one who kills a person only needs to pay compensation",
+      "Both cases result in seven days of banishment from the community"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Leviticus 24:18, 21 (RVV11): 'Whoever kills an animal shall make it good, life for life... whoever kills an animal shall make it good, but whoever kills a person shall be put to death.' The value of human life is categorically different from that of an animal. (2) 'Both cases require only monetary compensation' erases the core life-for-life distinction that applies to a person (wrong_detail). (3) Reverses the two penalties (wrong_detail). (4) 'Seven days of banishment' confuses this with purity laws, wrong context (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Leviticus",
+      "Pentateuch",
+      "Blasphemy",
+      "Advanced"
+    ]
   }
 ]

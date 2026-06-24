@@ -3,12 +3,15 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (23)
+## Active (24)
 
 > Dọn 2026-06-22: 23 task ghi "TODO/DONE" nhưng đã verify hoàn thành → archive (xem git log + Archive bên dưới). Bảng này giờ chỉ còn việc THỰC SỰ đang mở.
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-24 | Soạn 100 câu Lê-vi Ký mới (Haladyna × Bloom) qua skill bible-quiz-authoring (L100-1..FINAL) | IN PROGRESS | [detail](docs/todo/active/2026-06-24-leviticus-100-questions.md) |
+| 2026-06-24 | Soạn 100 câu Xuất Ê-díp-tô Ký mới (Haladyna × Bloom) qua skill bible-quiz-authoring (EX100-1..FINAL) | IN PROGRESS | [detail](docs/todo/active/2026-06-24-exodus-100-questions.md) |
+| 2026-06-24 | Soạn 100 câu Sáng Thế Ký mới (Haladyna × Bloom) qua skill bible-quiz-authoring (G100-1..10) | IN PROGRESS | [detail](docs/todo/active/2026-06-24-genesis-100-questions.md) |
 | 2026-06-24 | Ranked: bỏ phễu 1-sách → rút toàn 66 sách + cross-day exclude + bỏ gate tiến-sách chết (RWP-1..4) | DONE | [detail](docs/todo/active/2026-06-24-ranked-whole-pool-question-selection.md) |
 | 2026-06-24 | Result screen head-to-head ≤2 người + parity host Quản trò (RES-1..3, HRP-1..2) | DONE | [detail](docs/todo/active/2026-06-24-results-head-to-head.md) |
 | 2026-06-24 | Multiplayer: chat ở màn kết quả + giữ lịch sử lobby (MPC-1..9) | DONE | [detail](docs/todo/active/2026-06-24-multiplayer-results-chat.md) |

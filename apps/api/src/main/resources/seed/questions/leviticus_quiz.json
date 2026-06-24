@@ -1971,5 +1971,2640 @@
       "Ngũ Kinh",
       "Cơ bản"
     ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 1,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi dâng tế lễ thiêu, người dâng phải làm gì với con vật trước khi giết nó?",
+    "options": [
+      "Đặt tay trên đầu con vật",
+      "Rảy huyết con vật lên mình",
+      "Xức dầu trên đầu con vật",
+      "Đặt con vật trên bàn thờ"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 1:4 (RVV11): 'Người sẽ đặt tay trên đầu con sinh tế thiêu, và nó sẽ được nhậm thay cho người để chuộc tội cho người.' Đáp án đúng là đặt tay trên đầu con vật. (1) 'Rảy huyết con vật lên mình' sai vì việc xử lý huyết là phần của thầy tế lễ làm sau khi giết, không phải hành động của người dâng trước khi giết (near_passage 1:5). (2) 'Xức dầu trên đầu con vật' sai vì dầu xức dành cho người và vật thánh chứ không cho con sinh tế thiêu (wrong_detail). (3) 'Đặt con vật trên bàn thờ' sai vì chỉ các phần đã giết và xẻ mới được đặt trên bàn thờ, không phải con vật sống (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 1,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo luật tế lễ thiêu, của lễ dâng bằng lửa được mô tả là gì đối với Đức Giê-hô-va?",
+    "options": [
+      "Một sự nhắc nhở về tội lỗi",
+      "Một lời thề nguyện trọn vẹn",
+      "Một của lễ chuộc lỗi đầy đủ",
+      "Một mùi thơm đẹp lòng Ngài"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 1:9 (RVV11) gọi tế lễ thiêu là 'của lễ dùng lửa dâng lên, có mùi thơm đẹp lòng Đức Giê-hô-va.' Đáp án đúng là một mùi thơm đẹp lòng Ngài. (1) 'Một sự nhắc nhở về tội lỗi' sai vì cách diễn đạt đó gắn với tế lễ ghen tương sau này chứ không phải tế lễ thiêu (wrong_scope). (2) 'Một của lễ chuộc lỗi đầy đủ' sai vì 'chuộc lỗi' là tên một loại tế lễ khác (chương 5-6), không phải mô tả của tế lễ thiêu ở đây (near_passage). (3) 'Một lời thề nguyện trọn vẹn' sai vì lời thề nguyện liên quan đến tế lễ bình an chứ không phải mô tả mùi thơm của tế lễ thiêu (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 1,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong tế lễ thiêu bằng bò, các con trai A-rôn (thầy tế lễ) làm gì với huyết của con vật?",
+    "options": [
+      "Đổ hết huyết dưới chân bàn thờ",
+      "Bôi huyết trên các sừng bàn thờ xông hương",
+      "Rảy huyết chung quanh trên bàn thờ tại cửa Lều",
+      "Đem huyết vào trong nơi thánh mà rảy bảy lần"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 1:5 (RVV11): 'các con trai A-rôn... sẽ rảy huyết chung quanh trên bàn thờ tại cửa Lều Hội Kiến.' Đáp án đúng là rảy huyết chung quanh trên bàn thờ tại cửa Lều. (1) 'Đổ hết huyết dưới chân bàn thờ' sai vì đó là cách xử lý phần huyết còn lại trong tế lễ chuộc tội, không phải tế lễ thiêu (near_passage 4:7). (2) 'Bôi huyết trên các sừng bàn thờ xông hương' sai vì hành động bôi sừng dành cho tế lễ chuộc tội của thầy tế lễ được xức dầu (near_passage 4:7). (3) 'Đem huyết vào trong nơi thánh mà rảy bảy lần' sai vì việc đem huyết vào nơi thánh rảy bảy lần thuộc tế lễ chuộc tội cấp cao, không phải tế lễ thiêu thường (near_passage 4:6).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 1,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đối với con bò làm tế lễ thiêu, người dâng phải làm gì với bộ lòng và giò trước khi thiêu?",
+    "options": [
+      "Bỏ chúng đi ngoài trại quân",
+      "Rửa sạch chúng bằng nước",
+      "Đem chúng cho thầy tế lễ ăn",
+      "Đốt riêng chúng trên đất"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 1:9 (RVV11): 'Còn bộ lòng và giò thì người ấy phải rửa bằng nước', rồi thầy tế lễ thiêu cả con trên bàn thờ. Đáp án đúng là rửa sạch chúng bằng nước. (1) 'Bỏ chúng đi ngoài trại quân' sai vì việc đem ra ngoài trại quân áp dụng cho da và phân trong tế lễ chuộc tội, không phải bộ lòng tế lễ thiêu (near_passage 4:11-12). (2) 'Đem chúng cho thầy tế lễ ăn' sai vì tế lễ thiêu được thiêu trọn, không phần nào để ăn (wrong_scope). (3) 'Đốt riêng chúng trên đất' sai vì toàn bộ con vật được thiêu trên bàn thờ chứ không đốt riêng dưới đất (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 2,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ngoài bột lọc và dầu, tế lễ chay còn phải dâng kèm thứ gì?",
+    "options": [
+      "Nhũ hương",
+      "Một ít men",
+      "Mật ong",
+      "Rượu nho"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 2:1-2 (RVV11): người dâng phải 'chế dầu trên đó và để nhũ hương lên trên', rồi thầy tế lễ lấy một nắm bột, dầu và 'tất cả nhũ hương' đem thiêu. Đáp án đúng là nhũ hương. (1) 'Một ít men' sai vì luật cấm dâng men trong tế lễ chay (wrong_detail 2:11). (2) 'Mật ong' sai vì mật ong cũng bị cấm thiêu trên bàn thờ (common_misconception 2:11). (3) 'Rượu nho' sai vì rượu thuộc lễ quán dâng kèm tế lễ khác chứ không phải thành phần của tế lễ chay ở đây (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 2,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau khi đốt phần kỷ niệm của tế lễ chay, phần còn lại thuộc về ai?",
+    "options": [
+      "Người đã dâng tế lễ chay",
+      "Đem chia cho cả hội chúng",
+      "Người Lê-vi phục vụ trong trại",
+      "A-rôn và các con trai người"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 2:3 (RVV11): 'Phần còn lại của tế lễ chay sẽ thuộc về A-rôn và các con trai người; đó là vật chí thánh trong các của lễ dùng lửa dâng lên Đức Giê-hô-va.' Đáp án đúng là A-rôn và các con trai người. (1) 'Người đã dâng tế lễ chay' sai vì người dâng không giữ lại phần của lễ chí thánh này (wrong_scope). (2) 'Người Lê-vi phục vụ trong trại' sai vì quyền ăn phần này dành riêng cho dòng tế lễ A-rôn, không phải mọi người Lê-vi (wrong_detail). (3) 'Đem chia cho cả hội chúng' sai vì vật chí thánh chỉ dành cho thầy tế lễ chứ không chia cho hội chúng (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 2,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Nếu dâng tế lễ chay là bánh nướng trong lò, bánh đó phải đáp ứng điều kiện nào?",
+    "options": [
+      "Bánh có men, nhồi với mật ong",
+      "Bánh không men, rắc muối và men",
+      "Bánh không men, nhồi hoặc phết dầu",
+      "Bánh nướng cùng nhũ hương bên trong"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 2:4 (RVV11): bánh nướng trong lò phải là 'bánh không men nhồi với dầu, hoặc bánh kẹp không men có phết dầu.' Đáp án đúng là bánh không men, nhồi hoặc phết dầu. (1) 'Bánh có men, nhồi với mật ong' sai vì cả men lẫn mật ong đều bị cấm trong của lễ thiêu dâng lên (wrong_detail 2:11). (2) 'Bánh không men, rắc muối và men' sai vì tuy đúng 'không men' và muối được thêm, nhưng không thể vừa không men vừa thêm men (wrong_detail). (3) 'Bánh nướng cùng nhũ hương bên trong' sai vì nhũ hương được rắc lên tế lễ chay loại bột, không nhồi vào bánh nướng (near_passage 2:1).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 2,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tế lễ chay bằng hoa quả đầu mùa được chuẩn bị từ ngũ cốc ở dạng nào?",
+    "options": [
+      "Bột mì xay mịn trộn men",
+      "Hạt còn tươi rang lửa, giã ra",
+      "Bánh không men nướng trên vỉ",
+      "Hạt lúa luộc chín trong nước"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 2:14 (RVV11): tế lễ chay bằng sản vật đầu mùa là 'gié lúa còn tươi rang trên lửa, hoặc hạt lúa mới giã ra.' Đáp án đúng là hạt còn tươi rang lửa, giã ra. (1) 'Bột mì xay mịn trộn men' sai vì men bị cấm và hoa quả đầu mùa dùng hạt tươi chứ không phải bột trộn men (wrong_detail). (2) 'Bánh không men nướng trên vỉ' sai vì đó là cách làm tế lễ chay loại bánh ở câu trên, không phải đầu mùa (near_passage 2:5). (3) 'Hạt lúa luộc chín trong nước' sai vì câu quy định rang trên lửa chứ không luộc trong nước (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 3,
+    "verseStart": 3,
+    "verseEnd": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong tế lễ bình an, phần nào của con vật được đốt trên bàn thờ dâng lên Đức Giê-hô-va?",
+    "options": [
+      "Mỡ bọc bộ lòng cùng hai trái cật",
+      "Cái ức và cái đùi bên phải",
+      "Da và toàn bộ phần thịt nạc",
+      "Đầu và các giò sau khi rửa sạch"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 3:3-4 (RVV11) quy định đốt 'mỡ bọc bộ lòng... hai trái cật với mỡ trên chúng... và tấm màng che gan' dâng lên Đức Giê-hô-va. Đáp án đúng là mỡ bọc bộ lòng cùng hai trái cật. (1) 'Cái ức và cái đùi bên phải' sai vì hai phần này thuộc về thầy tế lễ làm của lễ đưa qua đưa lại, không bị đốt (true_but_off 7:31-34). (2) 'Da và toàn bộ phần thịt nạc' sai vì thịt nạc dành cho người dâng và thầy tế lễ ăn, không đốt (wrong_scope). (3) 'Đầu và các giò sau khi rửa sạch' sai vì việc rửa giò và thiêu cả con thuộc tế lễ thiêu, không phải bình an (near_passage 1:9).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 3,
+    "verseStart": 7,
+    "verseEnd": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi dâng một con chiên làm tế lễ bình an, ngoài mỡ, phần đặc biệt nào của con chiên cũng được dâng?",
+    "options": [
+      "Bộ da còn nguyên",
+      "Phần thịt vai trước",
+      "Hai cái sừng",
+      "Cả cái đuôi mập"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 3:9 (RVV11): người dâng phải lấy 'mỡ và trọn cái đuôi mập cắt gần xương sống' của con chiên làm tế lễ bình an. Đáp án đúng là cả cái đuôi mập. (1) 'Bộ da còn nguyên' sai vì da con sinh tế thuộc về thầy tế lễ trong tế lễ thiêu, không được dâng đốt (near_passage 7:8). (2) 'Hai cái sừng' sai vì sừng không phải phần được dâng trong bất kỳ tế lễ nào (wrong_detail). (3) 'Phần thịt vai trước' sai vì thịt vai (đùi) là phần biệt riêng cho thầy tế lễ, không phải phần đốt đặc biệt của con chiên (true_but_off 7:32).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 3,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong tế lễ bình an, sau khi người dâng đặt tay trên đầu con vật và giết nó, huyết được xử lý thế nào?",
+    "options": [
+      "Đổ trên đất rồi lấp lại",
+      "Bôi trên trán người dâng",
+      "Rảy chung quanh trên bàn thờ",
+      "Giữ lại trong một cái chậu"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 3:2 (RVV11): sau khi giết con vật, 'các con trai A-rôn sẽ rảy huyết chung quanh trên bàn thờ.' Đáp án đúng là rảy chung quanh trên bàn thờ. (1) 'Đổ trên đất rồi lấp lại' sai vì việc đổ huyết ra đất và lấp lại áp dụng cho thú săn được, không phải tế lễ bình an (near_passage 17:13). (2) 'Bôi trên trán người dâng' sai vì huyết không bao giờ được bôi trên người dâng (wrong_detail). (3) 'Giữ lại trong một cái chậu' sai vì huyết phải được rảy ngay trên bàn thờ chứ không giữ lại (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 4,
+    "verseStart": 13,
+    "verseEnd": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi cả hội chúng Y-sơ-ra-ên phạm tội mà không biết, họ phải dâng con vật gì làm tế lễ chuộc tội?",
+    "options": [
+      "Một con dê đực",
+      "Một con bò đực tơ",
+      "Một con dê cái",
+      "Một con chiên cái"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 4:13-14 (RVV11): khi cả hội chúng phạm tội lầm lỡ, 'hội chúng phải dâng một con bò đực tơ làm tế lễ chuộc tội.' Đáp án đúng là một con bò đực tơ. (1) 'Một con dê đực' sai vì dê đực là lễ vật chuộc tội cho nhà lãnh đạo, không phải cả hội chúng (near_passage 4:23). (2) 'Một con dê cái' sai vì dê cái dùng cho thường dân phạm tội (near_passage 4:28). (3) 'Một con chiên cái' sai vì chiên cái là lựa chọn cho thường dân, không phải hội chúng (near_passage 4:32).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 4,
+    "verseStart": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Điều gì phân biệt cách xử lý huyết trong tế lễ chuộc tội của thầy tế lễ được xức dầu với tế lễ thiêu thông thường?",
+    "options": [
+      "Huyết được rảy bảy lần trước bức màn nơi thánh",
+      "Huyết được đổ hết dưới chân bàn thờ thiêu",
+      "Huyết được bôi trên các sừng bàn thờ thiêu",
+      "Huyết được đem ra ngoài trại quân để đổ"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 4:6 (RVV11): thầy tế lễ 'nhúng ngón tay vào huyết, rảy bảy lần trước mặt Đức Giê-hô-va, đối ngang bức màn nơi thánh' — điều này khác hẳn tế lễ thiêu chỉ rảy huyết chung quanh bàn thờ ngoài. Đáp án đúng là rảy bảy lần trước bức màn nơi thánh. (1) 'Huyết được đổ hết dưới chân bàn thờ thiêu' sai vì đổ phần huyết còn lại chỉ là bước cuối, không phải nét đặc biệt phân biệt (true_but_off 4:7). (2) 'Huyết được bôi trên các sừng bàn thờ thiêu' sai vì câu này quy định bôi trên sừng bàn thờ xông hương, không phải bàn thờ thiêu (wrong_detail 4:7). (3) 'Huyết được đem ra ngoài trại quân để đổ' sai vì phần đem ra ngoài trại quân là thân con bò để thiêu, không phải huyết (near_passage 4:11-12).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 4,
+    "verseStart": 11,
+    "verseEnd": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đối với con bò tế lễ chuộc tội của thầy tế lễ, phần da, thịt và phân được xử lý ở đâu?",
+    "options": [
+      "Đốt trên bàn thờ chung với mỡ",
+      "Giao cho các thầy tế lễ ăn",
+      "Chôn dưới chân bàn thờ thiêu",
+      "Đem ra ngoài trại quân mà thiêu"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 4:11-12 (RVV11): da, thịt, đầu, giò, bộ lòng và phân của con bò 'phải đem ra ngoài trại quân, đến một nơi tinh sạch... mà thiêu trên củi.' Đáp án đúng là đem ra ngoài trại quân mà thiêu. (1) 'Đốt trên bàn thờ chung với mỡ' sai vì chỉ phần mỡ được đốt trên bàn thờ, còn lại đem ra ngoài (wrong_detail 4:8-10). (2) 'Chôn dưới chân bàn thờ thiêu' sai vì phần này được thiêu chứ không chôn (wrong_detail). (3) 'Giao cho các thầy tế lễ ăn' sai vì tế lễ chuộc tội mà huyết đem vào nơi thánh thì không được ăn, phải thiêu (true_but_off 6:30).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 5,
+    "verseStart": 1,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trường hợp nào sau đây KHÔNG được Lê-vi Ký 5 nêu là phạm tội cần dâng tế lễ chuộc tội?",
+    "options": [
+      "Nghe lời thề mà làm chứng nhưng giấu không khai",
+      "Đụng vào xác chết của loài vật ô uế",
+      "Vô ý làm đổ huyết của con sinh tế trên đất",
+      "Buột miệng thề thốt cách dại dột mà không suy nghĩ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 5:1-4 (RVV11) liệt kê các trường hợp phạm tội: làm chứng mà giấu không khai (c.1), đụng vật ô uế (c.2), và thề thốt dại dột (c.4). Việc làm đổ huyết con sinh tế trên đất KHÔNG nằm trong danh sách này nên là đáp án đúng. (1) 'Nghe lời thề mà làm chứng nhưng giấu không khai' sai (tức là CÓ được nêu) theo câu 1 (true_but_off). (2) 'Đụng vào xác chết của loài vật ô uế' sai vì điều này được nêu rõ ở câu 2 (true_but_off). (3) 'Buột miệng thề thốt cách dại dột' sai vì được nêu ở câu 4 (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 5,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Nếu một người không đủ sức dâng một con chiên làm tế lễ chuộc tội, người ấy được phép dâng gì thay thế?",
+    "options": [
+      "Một phần mười ê-pha bột mịn",
+      "Hai con chim cu hoặc hai bồ câu con",
+      "Một con dê đực không tì vết",
+      "Một con bò đực tơ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 5:7 (RVV11): 'Nếu không đủ sức dâng một con chiên, người ấy phải đem... hai con chim gáy hoặc hai con bồ câu con.' Đáp án đúng là hai con chim cu hoặc hai bồ câu con. (1) 'Một phần mười ê-pha bột mịn' sai vì bột mịn chỉ dành cho người quá nghèo đến cả chim cũng không dâng nổi, là bước kế tiếp (near_passage 5:11). (2) 'Một con dê đực không tì vết' sai vì dê đực gắn với lễ vật của nhà lãnh đạo chứ không phải lựa chọn nghèo hơn chiên (wrong_scope 4:23). (3) 'Một con bò đực tơ' sai vì bò đực tơ là lễ vật lớn của thầy tế lễ hoặc hội chúng, không phải lựa chọn rẻ hơn (wrong_scope 4:3).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 5,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trước khi dâng tế lễ chuộc tội cho một trong các lỗi đã nêu, người phạm tội phải làm điều gì?",
+    "options": [
+      "Xưng nhận điều mình đã phạm",
+      "Kiêng ăn trong bảy ngày",
+      "Tắm rửa và giặt áo xống",
+      "Nộp một phần năm giá trị tội đó"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 5:5 (RVV11): 'khi nào ai phạm một trong các tội ấy, thì phải xưng ra điều mình đã phạm.' Đáp án đúng là xưng nhận điều mình đã phạm. (1) 'Kiêng ăn trong bảy ngày' sai vì không có quy định kiêng ăn bảy ngày cho tế lễ chuộc tội này (wrong_detail). (2) 'Tắm rửa và giặt áo xống' sai vì việc tắm rửa giặt áo gắn với các luật về ô uế thân thể, không phải bước trước tế lễ chuộc tội ở đây (near_passage). (3) 'Nộp một phần năm giá trị tội đó' sai vì khoản một phần năm chỉ áp dụng cho tế lễ chuộc lỗi về vật thánh hoặc tài sản, không phải mọi trường hợp (true_but_off 5:16).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 6,
+    "verseStart": 12,
+    "verseEnd": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Mỗi buổi sáng, thầy tế lễ phải làm gì để duy trì lửa trên bàn thờ tế lễ thiêu?",
+    "options": [
+      "Đổ dầu mới lên đống than",
+      "Thay than mới hoàn toàn",
+      "Rảy nước thánh quanh bàn thờ",
+      "Chất thêm củi lên lửa"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 6:12 (RVV11): 'Mỗi buổi sáng thầy tế lễ phải chất củi lên lửa' để giữ lửa cháy luôn. Đáp án đúng là chất thêm củi lên lửa. (1) 'Đổ dầu mới lên đống than' sai vì dầu dùng cho tế lễ chay và đèn, không phải để nuôi lửa bàn thờ (wrong_detail). (2) 'Rảy nước thánh quanh bàn thờ' sai vì rảy nước sẽ làm tắt lửa, trái với mục đích giữ lửa (common_misconception). (3) 'Thay than mới hoàn toàn' sai vì lệnh là giữ lửa cháy liên tục không tắt, nên không thay mới mà chỉ thêm củi (wrong_detail 6:13).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 6,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi hốt tro tế lễ thiêu để đem ra nơi tinh sạch ngoài trại quân, thầy tế lễ phải làm gì với y phục?",
+    "options": [
+      "Mặc thường phục rồi mới đem tro ra ngoài",
+      "Giặt sạch áo lễ ngay trước khi hốt tro",
+      "Cởi áo lễ, mặc bộ khác để mang tro ra ngoài",
+      "Để áo lễ lại trong nơi thánh suốt buổi"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 6:10-11 (RVV11): thầy tế lễ mặc áo lễ vải gai để hốt tro đặt cạnh bàn thờ, rồi 'phải cởi bộ áo nầy, mặc bộ khác, đem tro ra ngoài trại quân.' Đáp án đúng là cởi áo lễ, mặc bộ khác để mang tro ra ngoài. (1) 'Mặc thường phục rồi mới đem tro ra ngoài' sai vì thầy tế lễ phải mặc áo lễ vải gai khi hốt tro trước, không phải thường phục từ đầu (wrong_detail). (2) 'Giặt sạch áo lễ ngay trước khi hốt tro' sai vì luật quy định thay áo khác chứ không giặt áo lễ tại chỗ (wrong_detail). (3) 'Để áo lễ lại trong nơi thánh suốt buổi' sai vì câu nói rõ phải thay sang bộ khác để ra ngoài, không phải để áo lại (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 6,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi một người gian lận tài sản người lân cận, lễ vật người ấy phải đem đến cho thầy tế lễ làm tế lễ chuộc lỗi là gì?",
+    "options": [
+      "Một con bò đực tơ không tì vết theo giá",
+      "Một con chiên đực không tì vết theo giá",
+      "Một con dê cái không tì vết theo giá",
+      "Hai con chim gáy hoặc bồ câu con non"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 6:6 (RVV11): người ấy phải đem 'một con chiên đực không tì vết bắt trong bầy, theo giá đã định, làm tế lễ chuộc lỗi' cho thầy tế lễ. Đáp án đúng là một con chiên đực không tì vết theo giá. (1) 'Một con bò đực tơ không tì vết theo giá' sai vì bò đực tơ là lễ vật chuộc tội của thầy tế lễ hay hội chúng, không phải tế lễ chuộc lỗi này (near_passage 4:3). (2) 'Một con dê cái không tì vết theo giá' sai vì dê cái thuộc tế lễ chuộc tội của thường dân, không phải chuộc lỗi (near_passage 4:28). (3) 'Hai con chim gáy hoặc bồ câu con non' sai vì chim là lựa chọn cho người nghèo trong tế lễ chuộc tội, không áp dụng cho tế lễ chuộc lỗi này (near_passage 5:7).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 6,
+    "verseStart": 22,
+    "verseEnd": 23,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Tế lễ chay do chính thầy tế lễ dâng (như khi được xức dầu) khác với tế lễ chay thông thường ở điểm nào?",
+    "options": [
+      "Phải thiêu trọn vẹn, không được ăn phần nào",
+      "Phải dâng kèm một con chiên làm của lễ thiêu",
+      "Chỉ được dâng vào ngày Sa-bát hằng tuần",
+      "Được phép pha thêm men vào bột"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 6:23 (RVV11): 'Mọi tế lễ chay của thầy tế lễ sẽ thiêu trọn, không được ăn.' Đây là điểm khác biệt: tế lễ chay thường để lại phần cho thầy tế lễ ăn (2:3), còn tế lễ chay của chính thầy tế lễ phải thiêu hết. Đáp án đúng là phải thiêu trọn vẹn, không được ăn phần nào. (1) 'Phải dâng kèm một con chiên làm của lễ thiêu' sai vì không có quy định bắt buộc kèm chiên cho tế lễ chay này (wrong_detail). (2) 'Chỉ được dâng vào ngày Sa-bát hằng tuần' sai vì câu nói tế lễ này dâng vào ngày thầy tế lễ được xức dầu, không giới hạn ở Sa-bát (wrong_detail 6:20). (3) 'Được phép pha thêm men vào bột' sai vì men luôn bị cấm trong mọi tế lễ chay thiêu lên (common_misconception 2:11).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 7,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "So với tế lễ bình an dạng tạ ơn, tế lễ bình an dâng do khấn nguyện hoặc tự nguyện được phép ăn trong thời hạn nào?",
+    "options": [
+      "Chỉ trong chính ngày dâng, không để qua đêm",
+      "Bất cứ lúc nào miễn là thịt còn tốt",
+      "Trong vòng bảy ngày kể từ ngày dâng",
+      "Trong ngày dâng và cả ngày hôm sau"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 7:16-17 (RVV11): với của lễ khấn nguyện hay tự nguyện, được ăn 'trong ngày dâng' và 'phần còn lại được ăn ngày hôm sau', nhưng đến ngày thứ ba thì phải thiêu. Đáp án đúng là trong ngày dâng và cả ngày hôm sau. (1) 'Chỉ trong chính ngày dâng, không để qua đêm' sai vì đó là quy định cho của lễ tạ ơn (7:15), khác với khấn nguyện/tự nguyện (near_passage). (2) 'Trong vòng bảy ngày kể từ ngày dâng' sai vì thời hạn tối đa là đến hết ngày hôm sau, sang ngày thứ ba phải thiêu (wrong_detail). (3) 'Bất cứ lúc nào miễn là thịt còn tốt' sai vì luật ấn định mốc thời gian rõ ràng bất kể tình trạng thịt (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 7,
+    "verseStart": 31,
+    "verseEnd": 34,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong tế lễ bình an, hai phần nào của con vật được dành riêng làm phần của A-rôn và các con trai người?",
+    "options": [
+      "Cái đuôi mập và lớp mỡ bộ lòng",
+      "Hai trái cật và tấm màng che gan",
+      "Cái ức (đưa qua đưa lại) và cái đùi phải",
+      "Cái đầu và hai cái giò trước"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 7:31-34 (RVV11): 'cái ức' làm của lễ đưa qua đưa lại thuộc về A-rôn và các con trai, còn 'cái đùi phải' làm của lễ nâng dâng cho thầy tế lễ hành lễ. Đáp án đúng là cái ức và cái đùi phải. (1) 'Hai trái cật và tấm màng che gan' sai vì những phần này nằm trong số mỡ được đốt trên bàn thờ, không dành cho thầy tế lễ (near_passage 3:4). (2) 'Cái đuôi mập và lớp mỡ bộ lòng' sai vì đuôi và mỡ thuộc phần đốt dâng lên, không phải phần của thầy tế lễ (near_passage 3:9). (3) 'Cái đầu và hai cái giò trước' sai vì đầu và giò gắn với cách xử lý tế lễ thiêu, không phải phần ban cho thầy tế lễ trong tế lễ bình an (wrong_scope 1:8-9).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 7,
+    "verseStart": 23,
+    "verseEnd": 25,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo luật, dân Y-sơ-ra-ên bị cấm ăn phần nào của bò, chiên hoặc dê?",
+    "options": [
+      "Phần thịt nạc ở đùi",
+      "Phần mỡ",
+      "Phần thịt ở ức",
+      "Phần gân và xương"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 7:23-25 (RVV11): 'Các ngươi chớ ăn mỡ của bò, chiên hay dê... ai ăn mỡ của loài vật dùng dâng của lễ dùng lửa cho Đức Giê-hô-va thì sẽ bị truất khỏi dân.' Đáp án đúng là phần mỡ. (1) 'Phần thịt nạc ở đùi' sai vì thịt đùi được phép ăn, thậm chí đùi phải còn dành cho thầy tế lễ (wrong_detail 7:32). (2) 'Phần thịt ở ức' sai vì cái ức là phần ăn được, dành cho thầy tế lễ (wrong_detail 7:31). (3) 'Phần gân và xương' sai vì không có lệnh cấm chung về gân ở đây; điều cấm là mỡ và huyết (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 5,
+    "verseStart": 12,
+    "verseEnd": 13,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Tế lễ chuộc tội bằng bột của người nghèo khác với tế lễ chay thông thường ở chỗ bột đó phải thiếu thành phần nào?",
+    "options": [
+      "Phải thiếu cả dầu lẫn nhũ hương trên bột",
+      "Phải thiếu muối nêm trên lễ vật",
+      "Phải thiếu phần bột để lại cho thầy tế lễ",
+      "Phải thiếu phần nắm bột làm kỷ niệm"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 5:11 (RVV11) quy định người quá nghèo dâng một phần mười ê-pha bột làm tế lễ chuộc tội nhưng 'không chế dầu, cũng không để nhũ hương lên trên, vì là tế lễ chuộc tội' — khác hẳn tế lễ chay thường vốn có cả dầu và nhũ hương (2:1). Đáp án đúng là phải thiếu cả dầu lẫn nhũ hương. (1) 'Phải thiếu muối nêm trên lễ vật' sai vì muối vẫn phải có trên mọi lễ vật, không bị bỏ (wrong_detail 2:13). (2) 'Phải thiếu phần bột để lại cho thầy tế lễ' sai vì thầy tế lễ vẫn nhận phần còn lại như tế lễ chay (true_but_off 5:13). (3) 'Phải thiếu phần nắm bột làm kỷ niệm' sai vì thầy tế lễ vẫn bốc một nắm làm phần kỷ niệm đem đốt (true_but_off 5:12).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 8,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi truyền cho Môi-se cử hành lễ phong chức, Đức Giê-hô-va bảo đem A-rôn và các con trai cùng với những thứ nào đến cửa Trại Hội Kiến?",
+    "options": [
+      "Mười tấm màn của Đền Tạm",
+      "Hòm giao ước và hai bảng chứng cớ",
+      "Bánh trần thiết và chân đèn bằng vàng",
+      "Lễ phục, dầu xức, và các sinh tế để dâng"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 8:2 (RVV11): Đức Giê-hô-va bảo Môi-se đem A-rôn cùng các con trai người, lễ phục, dầu xức, bò đực tơ làm tế lễ chuộc tội, hai con chiên đực và giỏ bánh không men. (1) 'Hòm giao ước và hai bảng chứng cớ' là vật trong Nơi Chí Thánh, không liên quan lễ phong chức (wrong_scope). (2) 'Bánh trần thiết và chân đèn bằng vàng' là đồ vật trong Nơi Thánh chứ không phải vật dâng phong chức (wrong_scope). (3) 'Mười tấm màn của Đền Tạm' thuộc cấu trúc Đền Tạm, không phải lễ vật phong chức (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Lễ phong chức",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 8,
+    "verseStart": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong lễ phong chức, Môi-se lấy huyết con chiên đực dâng làm lễ tấn phong bôi lên những phần nào trên thân thể A-rôn?",
+    "options": [
+      "Giữa trán, trên môi và nơi mắt bên phải",
+      "Trên đầu, cả hai bàn tay và cả hai bàn chân",
+      "Trái tai phải, ngón cái tay phải và ngón cái chân phải",
+      "Trên hai bên vai và quanh phần thắt lưng"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 8:23-24 (RVV11): Môi-se lấy huyết bôi trên trái tai phải, ngón cái bàn tay phải và ngón cái bàn chân phải của A-rôn (rồi cũng làm vậy cho các con trai). (1) 'Trán, môi và mắt phải' là chi tiết bịa, không có trong nghi thức (wrong_detail). (2) 'Trên đầu, hai bàn tay và hai bàn chân' nghe gần đúng nhưng sai vị trí — chỉ bôi trên một bên phải và đầu được xức dầu chứ không bôi huyết (wrong_detail, almost-right). (3) 'Hai vai và phần thắt lưng' lẫn với việc mang lễ phục chứ không phải nơi bôi huyết (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Lễ phong chức",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 8,
+    "verseStart": 35,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vì sao Môi-se truyền cho A-rôn và các con trai phải ở tại cửa Trại Hội Kiến suốt bảy ngày phong chức?",
+    "options": [
+      "Để chờ dân chúng mang lễ vật tự nguyện đến đủ số",
+      "Để giữ điều Đức Giê-hô-va truyền dạy hầu khỏi phải chết",
+      "Để học thuộc lòng toàn bộ luật về tế lễ",
+      "Để được dân Y-sơ-ra-ên xức dầu tôn làm vua"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 8:35 (RVV11): Họ phải ở tại cửa Trại Hội Kiến ngày và đêm trong bảy ngày, giữ điều Đức Giê-hô-va dặn bảo để khỏi chết, vì đó là mệnh lệnh đã truyền. (1-trong-options) đúng. (2) 'Chờ dân mang lễ vật tự nguyện' không phải lý do — lễ vật phong chức đã được chỉ định sẵn (true_but_off). (3) 'Học thuộc luật tế lễ' là suy diễn hợp lý nhưng không phải lý do bản văn nêu (true_but_off). (4) 'Được xức dầu tôn làm vua' sai phạm vi — chức tế lễ chứ không phải vương quyền (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Lễ phong chức",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 9,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Vào ngày thứ tám sau lễ phong chức, Môi-se bảo A-rôn dâng con vật nào làm tế lễ chuộc tội cho chính mình?",
+    "options": [
+      "Một con bê đực",
+      "Một con dê đực",
+      "Một con chiên cái",
+      "Một con bò đực tơ"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 9:2 (RVV11): Môi-se bảo A-rôn bắt một con bê đực làm tế lễ chuộc tội và một con chiên đực làm tế lễ thiêu cho chính mình. (1) 'Một con bò đực tơ' là con vật A-rôn dùng trong lễ phong chức trước đó (ch.8), không phải ngày thứ tám (near_passage). (2) 'Một con dê đực' là tế lễ chuộc tội dâng cho dân chúng, không phải cho A-rôn (wrong_scope). (3) 'Một con chiên cái' không xuất hiện trong lễ ngày thứ tám của A-rôn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 9,
+    "verseStart": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau khi dâng xong các tế lễ trong ngày thứ tám, A-rôn đã làm gì cho dân chúng trước khi bước xuống?",
+    "options": [
+      "Đọc lớn tiếng mười điều răn",
+      "Thổi kèn triệu tập các trưởng lão",
+      "Rảy nước thánh trên toàn dân",
+      "Giơ tay hướng về dân chúng và chúc phước"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 9:22 (RVV11): A-rôn giơ tay về phía dân chúng và chúc phước cho họ, rồi bước xuống sau khi đã dâng xong các tế lễ. (1) 'Đọc mười điều răn' là việc của Môi-se ở Si-na-i, không phải nghi thức này (wrong_scope). (3) 'Rảy nước thánh trên toàn dân' không có trong phân đoạn này — huyết và dầu được dùng, không phải nước (wrong_detail). (4) 'Thổi kèn triệu tập trưởng lão' không xuất hiện trong cảnh này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 9,
+    "verseStart": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Việc lửa từ trước mặt Đức Giê-hô-va thiêu đốt của lễ thiêu trên bàn thờ trong ngày thứ tám cho thấy điều gì theo bản văn?",
+    "options": [
+      "Bàn thờ đã bị ô uế nên buộc phải dùng lửa thiêu cho sạch lại",
+      "Đức Giê-hô-va nổi giận và quở trách cách dâng tế lễ của A-rôn",
+      "Đức Giê-hô-va chấp nhận và bày tỏ vinh quang Ngài cho cả dân",
+      "Dân chúng cần phải dâng thêm nhiều tế lễ nữa mới cho là đủ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 9:23-24 (RVV11): Vinh quang Đức Giê-hô-va hiện ra cùng cả dân, rồi lửa từ trước mặt Ngài thiêu của lễ — dấu chỉ sự chấp nhận thiêng liêng. (2) 'Nổi giận với A-rôn' là hiểu lầm — sự nổi giận thiêu đốt xảy ra ở ch.10 với Na-đáp và A-bi-hu, không phải đây (near_passage, almost-right). (3) 'Bàn thờ bị ô uế' sai — lửa chấp nhận của lễ chứ không thanh tẩy bàn thờ ô uế (wrong_detail). (4) 'Cần dâng thêm tế lễ' lạc trọng tâm — lửa biểu thị sự chấp nhận trọn vẹn (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 10,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau cái chết của Na-đáp và A-bi-hu, Môi-se cấm A-rôn và hai con trai còn lại không được làm điều gì để bày tỏ tang chế?",
+    "options": [
+      "Không được rời khỏi Trại Hội Kiến trong ba mươi ngày",
+      "Không được để đầu tóc rối và xé áo mình",
+      "Không được dâng bất kỳ tế lễ nào trong bảy ngày",
+      "Không được nói chuyện với bất kỳ ai trong dân"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 10:6 (RVV11): Môi-se bảo A-rôn, Ê-lê-a-sa và Y-tha-ma chớ để đầu tóc rối và đừng xé áo mình, kẻo phải chết và Đức Giê-hô-va nổi giận cùng cả hội chúng. (1) 'Không rời Trại trong ba mươi ngày' lẫn với luật về thời gian khác, không phải lệnh này (wrong_detail). (2) 'Không được dâng tế lễ trong bảy ngày' nhầm với lễ phong chức bảy ngày trước đó (near_passage, almost-right). (4) 'Không được nói chuyện với ai' là chi tiết bịa, không có trong bản văn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Na-đáp và A-bi-hu",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 10,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Giê-hô-va phán với A-rôn rằng các thầy tế lễ không được uống thứ gì khi vào Trại Hội Kiến, kẻo phải chết?",
+    "options": [
+      "Rượu hay thức uống có men",
+      "Nước của giếng ngoài trại",
+      "Sữa của bầy chiên dê",
+      "Nước nho ép chưa lên men"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 10:9 (RVV11): Đức Giê-hô-va phán với A-rôn rằng khi vào Trại Hội Kiến, người và các con trai chớ uống rượu hay thức uống có men, kẻo phải chết. (1) 'Nước giếng' không bị cấm — đó là điều bình thường (wrong_detail). (3) 'Sữa của bầy chiên dê' không bị cấm uống (wrong_detail). (4) 'Nước nho ép chưa lên men' là chi tiết gần đúng nhưng lệnh cấm nhắm vào thức có men, không phải nước nho chưa lên men (wrong_detail, almost-right).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Luật thầy tế lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 10,
+    "verseStart": 16,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi Môi-se nổi giận vì các con trai A-rôn đã đốt con dê tế lễ chuộc tội thay vì ăn nó trong nơi thánh, A-rôn biện minh bằng lý lẽ nào?",
+    "options": [
+      "Rằng dân chúng nhóm họp quá đông nên chẳng còn đủ phần thịt để chia cho các thầy tế lễ ăn",
+      "Rằng con dê dâng làm lễ vật ấy đã bị ô uế nên không còn có thể ăn trong nơi thánh được nữa",
+      "Rằng chính Đức Giê-hô-va đã truyền riêng mệnh lệnh cho người là phải đốt con dê ấy đi cho hết",
+      "Rằng vừa gặp tai họa như vậy, nếu người ăn lễ vật chuộc tội thì liệu Đức Giê-hô-va có đẹp lòng chăng"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 10:19 (RVV11): A-rôn thưa rằng trong ngày tai họa con cái mình vừa chết, nếu người ăn lễ vật chuộc tội thì liệu Đức Giê-hô-va có đẹp lòng không? Môi-se nghe vậy thì lấy làm phải. (2) 'Con dê đã bị ô uế' là lý do nghe hợp lý về luật nhưng không phải lời A-rôn nói (wrong_detail, almost-right). (3) 'Đức Giê-hô-va truyền riêng phải thiêu' trái với bản văn — đúng ra phải ăn (wrong_detail, almost-right). (4) 'Dân đông không đủ phần thịt' là suy diễn lạc trọng tâm, không phải lời biện minh về tang chế (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Luật tế lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 11,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vì sao con lạc đà bị luật Lê-vi Ký xếp vào loài ô uế dù nó nhai lại?",
+    "options": [
+      "Vì nó sống ngoài sa mạc và uống ít nước",
+      "Vì nó có móng chẻ đôi nhưng không nhai lại",
+      "Vì nó nhai lại nhưng móng không chẻ đôi",
+      "Vì người Ai Cập thờ nó như thần"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 11:4 (RVV11): Con lạc đà tuy nhai lại nhưng móng không chẻ ra, nên các ngươi phải xem nó là ô uế. (2) 'Có móng chẻ đôi nhưng không nhai lại' đảo ngược chính xác hai tiêu chuẩn — đó là tình trạng của con heo, không phải lạc đà (wrong_detail, almost-right). (3) 'Sống ngoài sa mạc và uống ít nước' không phải tiêu chuẩn phân loại của luật (true_but_off). (4) 'Người Ai Cập thờ nó như thần' là chi tiết bịa, không phải lý do trong luật (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Thú tinh sạch và ô uế",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 11,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký chương 11, loài chim nào sau đây bị liệt vào loại đáng gớm ghiếc, không được ăn?",
+    "options": [
+      "Chim cút",
+      "Chim đại bàng",
+      "Chim bồ câu",
+      "Chim sẻ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 11:13 (RVV11): Trong các loài chim, các ngươi phải gớm ghiếc chim đại bàng, chim ngạc và ó biển — không được ăn chúng. (1) 'Chim cút' là loài Đức Giê-hô-va ban cho dân ăn trong sa mạc, không bị cấm (wrong_scope). (2) 'Chim bồ câu' được dùng làm tế lễ và được phép ăn (wrong_detail). (4) 'Chim sẻ' không nằm trong danh sách bị cấm của chương này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Thú tinh sạch và ô uế",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 11,
+    "verseStart": 32,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Luật Lê-vi Ký xử lý khác nhau giữa một vật bằng gỗ và một nồi bằng đất khi xác loài ô uế rơi nhằm. Sự khác biệt cốt lõi đó là gì?",
+    "options": [
+      "Vật bằng gỗ thì ngâm nước cho sạch, còn nồi đất thì phải đập vỡ bỏ đi",
+      "Cả hai đều chỉ cần ngâm trong nước đến chiều tối",
+      "Vật bằng gỗ phải đập vỡ, còn nồi đất thì ngâm nước cho sạch",
+      "Cả hai đều phải đem cho thầy tế lễ xét và dâng tế lễ"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 11:32-33 (RVV11): Vật bằng gỗ, vải, da phải ngâm trong nước và bị ô uế đến chiều rồi được sạch; nhưng nồi đất mà xác rơi vào thì mọi vật trong đó bị ô uế và phải đập vỡ nồi — vì đất nung thấm ô uế không rửa sạch được. (2) 'Cả hai chỉ cần ngâm nước' bỏ sót quy định đập vỡ nồi đất (wrong_detail, almost-right). (3) 'Gỗ phải đập, đất thì ngâm' đảo ngược chính xác hai quy định (wrong_detail, almost-right). (4) 'Cả hai đem cho thầy tế lễ và dâng tế lễ' lẫn với thủ tục thanh tẩy người, không phải vật dụng (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Thú tinh sạch và ô uế",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 11,
+    "verseStart": 44,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Đức Giê-hô-va nêu lý do nền tảng nào để dân Y-sơ-ra-ên giữ luật phân biệt thú tinh sạch và ô uế?",
+    "options": [
+      "Vì để bảo vệ sức khỏe khỏi bệnh tật do thịt sống",
+      "Vì để phân biệt người Y-sơ-ra-ên với dân Mô-áp",
+      "Vì các loài ô uế đắt tiền và khó nuôi hơn",
+      "Vì 'Ta là thánh' nên dân phải nên thánh và biệt riêng cho Ngài"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 11:44-45 (RVV11): 'Vì Ta là Giê-hô-va Đức Chúa Trời các ngươi… hãy nên thánh, vì Ta là thánh' — nền tảng là sự thánh khiết của Đức Chúa Trời. (1) 'Bảo vệ sức khỏe khỏi bệnh' là cách giải thích phổ biến hiện đại nhưng không phải lý do bản văn nêu (common_misconception, almost-right). (3) 'Các loài ô uế đắt tiền' là suy diễn vô căn cứ (wrong_detail). (4) 'Phân biệt với dân Mô-áp' nghe gần đúng về tính biệt riêng nhưng bản văn nói biệt riêng cho Đức Chúa Trời, không nêu dân Mô-áp cụ thể (true_but_off, almost-right).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Thánh khiết",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 12,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 12, trong thời gian được tẩy sạch huyết, người mẹ mới sinh không được đụng đến vật thánh hay vào nơi nào?",
+    "options": [
+      "Nhà của cha mẹ ruột mình",
+      "Chợ buôn bán trong thành",
+      "Nơi thánh",
+      "Cổng thành phía đông"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 12:4 (RVV11): Người mẹ chớ đụng vật thánh nào và chớ vào nơi thánh cho đến khi mãn những ngày được tẩy sạch. (1) 'Nhà của cha mẹ ruột' là chi tiết bịa, không bị cấm (wrong_detail). (3) 'Chợ buôn bán' không nằm trong luật này (wrong_detail). (4) 'Cổng thành phía đông' là chi tiết bịa, lẫn với mô tả Đền Thờ về sau (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Thanh tẩy sản phụ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 12,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi mãn thời gian được tẩy sạch, người mẹ phải đem con chiên một tuổi để làm tế lễ thiêu và con vật nào để làm tế lễ chuộc tội?",
+    "options": [
+      "Một con bò đực tơ chưa từng mang ách",
+      "Một con bồ câu con hoặc chim gáy",
+      "Một con dê đực trong bầy",
+      "Một con chiên cái không tì vết"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 12:6 (RVV11): Người mẹ đem một con chiên một tuổi làm tế lễ thiêu, và một con bồ câu con hoặc chim gáy làm tế lễ chuộc tội. (1) 'Một con bò đực tơ' là tế lễ của thầy tế lễ ở các phân đoạn khác, không phải đây (wrong_scope). (2) 'Một con chiên cái' không xuất hiện trong luật này (wrong_detail). (3) 'Một con dê đực' là tế lễ chuộc tội trong bối cảnh khác chứ không phải của sản phụ (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Thanh tẩy sản phụ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 12,
+    "verseStart": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Luật Lê-vi Ký 12 mở lối nào cho người mẹ nghèo không đủ sức dâng một con chiên?",
+    "options": [
+      "Được dâng hai chim gáy hoặc hai bồ câu con",
+      "Được dâng một phần mười ê-pha bột mịn",
+      "Được miễn hoàn toàn việc dâng tế lễ",
+      "Được dâng tế lễ vào năm sau khi có đủ"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 12:8 (RVV11): Nếu người mẹ không đủ sức dâng một con chiên, thì đem hai chim gáy hoặc hai bồ câu con, một con làm tế lễ thiêu, một con làm tế lễ chuộc tội. (2) 'Một phần mười ê-pha bột mịn' là quy định nhân nhượng cho tế lễ chuộc tội ở Lê-vi Ký 5, không phải luật sản phụ này (near_passage, almost-right). (3) 'Được miễn hoàn toàn' trái bản văn — vẫn phải dâng, chỉ là lễ vật rẻ hơn (wrong_detail). (4) 'Dâng vào năm sau' là chi tiết bịa, không có trong luật (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Thanh tẩy sản phụ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 13,
+    "verseStart": 12,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo luật về bệnh phong trong Lê-vi Ký 13, vì sao một người mà bệnh đã phủ trắng khắp toàn thân từ đầu đến chân lại được thầy tế lễ tuyên bố là tinh sạch?",
+    "options": [
+      "Vì bệnh trắng toàn thân vốn là dấu hiệu được Đức Giê-hô-va đặc biệt chọn",
+      "Vì người ấy đã chịu cách ly cho đủ trọn bốn mươi ngày như luật định",
+      "Vì người ấy đã dâng đủ các tế lễ chuộc tội tại cửa Trại Hội Kiến",
+      "Vì da đã hóa trắng hết nên không còn dấu hiệu của bệnh đang tiến triển"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 13:12-13 (RVV11): Nếu bệnh phủ khắp da từ đầu đến chân, thầy tế lễ xét thấy phủ cả mình thì tuyên bố tinh sạch, vì người ấy đã hóa trắng cả — không còn dấu vết thịt sống đang lở loét. (2) 'Đã cách ly đủ bốn mươi ngày' là con số bịa — luật quy định bảy ngày, không phải bốn mươi (wrong_detail, almost-right). (3) 'Đã dâng đủ tế lễ chuộc tội' lẫn với nghi thức thanh tẩy ở ch.14, không phải lý do tuyên bố sạch tại đây (near_passage, almost-right). (4) 'Dấu hiệu được Đức Giê-hô-va chọn' là hiểu lầm thần học, không có trong bản văn (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Bệnh phong",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 13,
+    "verseStart": 46,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 13:46, người đã bị xác nhận mắc bệnh phong phải sống ở đâu trong thời gian mang bệnh?",
+    "options": [
+      "Trong nhà thầy tế lễ để được theo dõi",
+      "Trong khu riêng giữa trại dành cho người bệnh",
+      "Một mình ở ngoài trại quân",
+      "Tại cửa Trại Hội Kiến"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 13:46 (RVV11): Trọn thời gian mang bệnh, người ấy bị ô uế, phải ở một mình và nơi ở của người phải ở ngoài trại quân. (1) 'Trong nhà thầy tế lễ' trái bản văn — người bệnh bị cách ly khỏi cộng đồng (wrong_detail). (3) 'Khu riêng giữa trại' mâu thuẫn với lệnh ở ngoài trại (wrong_detail, almost-right). (4) 'Tại cửa Trại Hội Kiến' là nơi dành cho nghi thức, không phải nơi ở của người ô uế (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Bệnh phong",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 13,
+    "verseStart": 47,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phần cuối Lê-vi Ký chương 13 mở rộng luật về 'bệnh phong' để áp dụng cho đối tượng nào ngoài con người?",
+    "options": [
+      "Trên các loài thú nuôi trong trại",
+      "Trên áo xống bằng len, vải gai hay da",
+      "Trên vật dụng làm bằng vàng bạc",
+      "Trên nước uống và thực phẩm dự trữ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 13:47-49 (RVV11): Khi một cái áo bằng len, vải gai, hay đồ bằng da có vết phong (mốc) màu xanh hoặc đỏ, thì phải đem cho thầy tế lễ xem. (1) 'Các loài thú nuôi' không nằm trong luật vết mốc này (wrong_scope). (2) 'Vật dụng vàng bạc' là chi tiết bịa — luật nhắm vào vật liệu thấm như vải và da (wrong_detail). (4) 'Nước uống và thực phẩm' lẫn với luật ô uế của thức ăn ở ch.11, không phải vết mốc trên đồ vật (near_passage, almost-right).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Bệnh phong",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 14,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong nghi thức thanh tẩy người phong, sau khi rảy huyết bảy lần trên người được sạch, thầy tế lễ làm gì với con chim còn sống?",
+    "options": [
+      "Thả nó bay ra ngoài đồng trống",
+      "Dâng nó làm tế lễ thiêu trên bàn thờ",
+      "Trao nó cho người được sạch nuôi giữ",
+      "Giết nó trên chậu sành đựng nước"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 14:7 (RVV11): Thầy tế lễ rảy huyết bảy lần trên người được sạch khỏi phong, tuyên bố người ấy tinh sạch, rồi thả con chim còn sống bay ra ngoài đồng. (1) 'Dâng nó làm tế lễ thiêu' trái bản văn — con chim được thả tự do, không bị giết (wrong_detail, almost-right). (3) 'Trao cho người được sạch nuôi giữ' là chi tiết bịa (wrong_detail). (4) 'Giết nó trên chậu sành đựng nước' là việc làm với con chim THỨ NHẤT, không phải con còn sống (near_passage, almost-right).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Thanh tẩy người phong",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 14,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 14, người được sạch khỏi bệnh phong sau khi giặt áo, cạo sạch lông và tắm thì còn phải ở ngoài trại mình bao lâu nữa?",
+    "options": [
+      "Một ngày",
+      "Ba mươi ngày",
+      "Mười bốn ngày",
+      "Bảy ngày"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 14:8 (RVV11): Người được sạch phải giặt áo, cạo hết lông, tắm trong nước, rồi được vào trại nhưng phải ở ngoài trại mình trong bảy ngày. (1) 'Một ngày' quá ngắn so với quy định (wrong_detail). (3) 'Mười bốn ngày' là gấp đôi con số đúng, dễ nhầm (wrong_detail, almost-right). (4) 'Ba mươi ngày' lẫn với thời gian thanh tẩy của sản phụ ở ch.12 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Thanh tẩy người phong",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 14,
+    "verseStart": 45,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 14, nếu sau khi thay đá và trát lại mà vết mốc vẫn lan ra trong căn nhà, thì phải xử lý căn nhà ấy thế nào?",
+    "options": [
+      "Bỏ trống căn nhà trong bảy năm",
+      "Đốt cháy toàn bộ căn nhà thành tro",
+      "Phá dỡ và đem đá, gỗ, vữa ra nơi ô uế ngoài thành",
+      "Dâng căn nhà cho thầy tế lễ làm của thánh"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 14:45 (RVV11): Nếu vết mốc vẫn lan, phải phá dỡ căn nhà — đá, gỗ và hồ vữa — rồi đem ra ngoài thành đổ vào nơi ô uế. (1) 'Bỏ trống bảy năm' là con số bịa, không có trong luật (wrong_detail). (3) 'Đốt cháy thành tro' lẫn với cách xử lý áo xống bị mốc ở ch.13, không phải nhà (near_passage, almost-right). (4) 'Dâng cho thầy tế lễ làm của thánh' trái bản văn — nhà ô uế bị phá bỏ, không được dâng (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Vết mốc trong nhà",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 15,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 15, người đụng đến giường của người nam bị chứng ra mủ thì phải làm gì để được sạch?",
+    "options": [
+      "Chỉ cần tránh xa người bệnh đến chiều tối",
+      "Giặt áo, tắm trong nước, và bị ô uế đến chiều tối",
+      "Dâng một con chiên làm tế lễ chuộc tội ngay",
+      "Cạo sạch lông trên toàn thân mình"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 15:5 (RVV11): Ai đụng đến giường người bị chứng ra mủ phải giặt áo xống mình, tắm trong nước, và bị ô uế đến chiều tối. (1) 'Chỉ cần tránh xa đến chiều tối' thiếu việc giặt áo và tắm mà luật đòi hỏi (wrong_detail, almost-right). (3) 'Dâng một con chiên ngay' là tế lễ dành cho chính người bệnh sau khi lành (c.13-15), không phải người chỉ đụng giường (near_passage). (4) 'Cạo sạch lông toàn thân' lẫn với nghi thức người phong ở ch.14 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tiết dịch ô uế",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 15,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 15, khi một người nữ có kinh nguyệt thì sự ô uế kéo dài bao lâu, và ai đụng đến nàng sẽ ra sao?",
+    "options": [
+      "Bảy ngày, và ai đụng đến nàng bị ô uế đến chiều tối",
+      "Ba ngày, và ai đụng đến nàng phải dâng tế lễ",
+      "Mười bốn ngày, và ai đụng đến nàng cũng ô uế bảy ngày",
+      "Một ngày, và không ai bị lây ô uế cả"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 15:19 (RVV11): Người nữ có kinh nguyệt bị ô uế bảy ngày, và ai đụng đến nàng sẽ bị ô uế đến chiều tối. (2) 'Ba ngày, phải dâng tế lễ' sai cả số ngày lẫn hậu quả (wrong_detail). (3) 'Mười bốn ngày, người đụng ô uế bảy ngày' phóng đại thời gian — bảy ngày là cho nàng, người đụng chỉ đến chiều tối (wrong_detail, almost-right). (4) 'Một ngày, không ai bị lây' trái bản văn về cả thời gian lẫn sự lây ô uế (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tiết dịch ô uế",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 15,
+    "verseStart": 14,
+    "verseEnd": 15,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong Lê-vi Ký 15, sau khi đợi đủ số ngày kể từ lúc hết chứng ra mủ, người nam dâng lễ vật để được thanh tẩy hoàn toàn. Điều này khác với người chỉ đụng nhằm vật ô uế ở điểm cốt lõi nào?",
+    "options": [
+      "Người đụng nhằm phải chịu cách ly ở ngoài trại quân, còn người bệnh đã lành thì được ở luôn trong trại",
+      "Người đụng nhằm phải đem dâng một con chiên làm lễ chuộc tội, còn người bệnh đã lành chỉ cần tắm trong nước",
+      "Cả người đụng nhằm lẫn người bệnh đã lành đều phải đem hai chim gáy hoặc bồ câu con đến cho thầy tế lễ dâng",
+      "Người bệnh đã lành phải dâng tế lễ cho thầy tế lễ, còn người đụng nhằm chỉ cần giặt áo và tắm là sạch"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 15:14-15 so với 15:5-11 (RVV11): Người nam đã hết chứng ra mủ, sau bảy ngày, đem hai chim gáy hoặc hai bồ câu con đến cho thầy tế lễ dâng làm tế lễ chuộc tội và tế lễ thiêu; còn người chỉ đụng nhằm vật ô uế thì giặt áo, tắm nước và ô uế đến chiều tối là sạch, không cần dâng tế lễ. (1) 'Người đụng nhằm phải cách ly ngoài trại' lẫn với luật người phong ở ch.13, không phải tiết dịch (near_passage, almost-right). (2) đảo ngược vai trò — chính người bệnh dâng chim, không phải người đụng nhằm (wrong_detail, almost-right). (3) 'Cả hai đều dâng chim' sai vì người đụng nhằm không phải dâng tế lễ (wrong_scope, almost-right).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tiết dịch ô uế",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 16,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Vào Ngày Lễ Chuộc Tội, A-rôn trước hết dâng con bò tơ làm tế lễ chuộc tội cho ai?",
+    "options": [
+      "Cho cả hội chúng Y-sơ-ra-ên",
+      "Cho người Lê-vi phục vụ trong đền",
+      "Cho chính mình và nhà mình",
+      "Cho các thầy tế lễ thượng phẩm khác"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 16:6 (RVV11): 'A-rôn phải dâng con bò tơ làm tế lễ chuộc tội cho chính mình, để chuộc tội cho mình và cho nhà mình.' Đáp án đúng là 'Cho chính mình và nhà mình' vì thầy tế lễ phải được sạch trước khi chuộc tội cho dân. (1) 'Cho cả hội chúng Y-sơ-ra-ên' sai vì việc chuộc tội cho dân thực hiện sau, bằng con dê chứ không phải con bò tơ này (wrong_detail). (2) 'Cho người Lê-vi phục vụ trong đền' sai vì văn bản không tách riêng nhóm này (wrong_scope). (3) 'Cho các thầy tế lễ thượng phẩm khác' sai vì chỉ có một thầy tế lễ thượng phẩm; con bò là cho A-rôn và nhà mình (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Ngày Lễ Chuộc Tội",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 16,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi A-rôn vào Nơi Chí Thánh, ông phải làm khói hương bốc lên che phủ vật gì để khỏi phải chết?",
+    "options": [
+      "Bàn thờ dâng của lễ thiêu",
+      "Nắp thi ân trên Hòm Giao Ước",
+      "Cái màn ngăn giữa hai nơi thánh",
+      "Bàn để bánh trần thiết"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 16:13 (RVV11): A-rôn bỏ hương vào lửa để 'khói hương bao phủ nắp thi ân ở trên Hòm Giao Ước, để A-rôn khỏi chết.' Đáp án đúng là 'Nắp thi ân trên Hòm Giao Ước'. (1) 'Bàn thờ dâng của lễ thiêu' sai vì bàn thờ này ở sân ngoài, không trong Nơi Chí Thánh (near_passage). (2) 'Cái màn ngăn giữa hai nơi thánh' sai vì A-rôn đi qua màn rồi mới xông hương phía trong (wrong_detail, almost-right). (3) 'Bàn để bánh trần thiết' sai vì bàn bánh đặt trong Nơi Thánh, không phải vật khói hương che phủ (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Ngày Lễ Chuộc Tội",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 16,
+    "verseStart": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau khi mang tội của dân, con dê gánh tội (dê A-xa-sên) được thả đi đâu?",
+    "options": [
+      "Vào nơi hoang mạc vắng vẻ",
+      "Xuống một vực sâu trong núi",
+      "Sang một xứ dân ngoại lân cận",
+      "Ra ngoài trại để thiêu đốt"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 16:22 (RVV11): con dê 'gánh trên mình mọi tội lỗi của họ đến một nơi hoang vắng; rồi người ấy thả nó vào hoang mạc.' Đáp án đúng là 'Vào nơi hoang mạc vắng vẻ'. (1) 'Xuống một vực sâu trong núi' phản ánh truyền thống Do Thái về sau nhưng không phải lời văn bản (common_misconception). (2) 'Sang một xứ dân ngoại lân cận' sai vì văn bản nói hoang mạc, không nói xứ dân ngoại (wrong_detail). (3) 'Ra ngoài trại để thiêu đốt' sai vì đó là số phận con bò và con dê chuộc tội kia (16:27), không phải dê gánh tội (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Ngày Lễ Chuộc Tội",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 17,
+    "verseStart": 3,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 17, người Y-sơ-ra-ên giết một con bò hay chiên mà không đem đến cửa Lều Hội Kiến thì bị kể là phạm điều gì?",
+    "options": [
+      "Bị cấm ăn thịt con vật mình đã giết",
+      "Bị phạt nộp một con vật khác để chuộc lỗi",
+      "Bị xem là ô uế đến chiều tối hôm đó",
+      "Bị kể là đã làm đổ huyết, người ấy phải bị khai trừ"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 17:3-4 (RVV11): ai giết sinh tế mà không đem đến cửa Lều Hội Kiến thì 'sẽ bị kể là kẻ làm đổ huyết... người ấy sẽ bị khai trừ khỏi dân mình.' Đáp án đúng nêu cả hai: kể là làm đổ huyết và bị khai trừ. (1) 'Bị phạt nộp một con vật khác' sai vì văn bản không quy định khoản phạt thay thế (wrong_detail). (2) 'Bị xem là ô uế đến chiều tối' sai vì đó là công thức của luật ô uế khác, không áp dụng ở đây (near_passage). (3) 'Bị cấm ăn thịt con vật mình đã giết' đúng phần nào về tinh thần nhưng không phải hình phạt câu này nêu (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Huyết và sự sống",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 17,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 17:7 cho biết một lý do dân Y-sơ-ra-ên phải đem sinh tế đến Lều Hội Kiến là để họ thôi không còn dâng tế lễ cho ai nữa?",
+    "options": [
+      "Cho các thần tượng bằng vàng họ đúc ra",
+      "Cho các vua chúa nước Ai Cập",
+      "Cho các quỷ dữ (hình dê) mà họ hành dâm theo",
+      "Cho linh hồn tổ phụ đã khuất của họ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 17:7 (RVV11): 'Họ không được dâng sinh tế cho các quỷ dữ (ma quái hình dê) mà họ đã hành dâm theo.' Đáp án đúng là 'Cho các quỷ dữ (hình dê)'. (1) 'Cho các thần tượng bằng vàng' gợi nhớ bò vàng (Xuất 32) nhưng không phải đối tượng câu này (near_passage). (2) 'Cho các vua chúa Ai Cập' sai vì câu nói về thờ lạy quỷ dữ, không phải vua người (wrong_detail). (3) 'Cho linh hồn tổ phụ đã khuất' là một hiểu lầm về thờ cúng tổ tiên, không phải nội dung câu này (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Huyết và sự sống",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 17,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi săn bắt được thú hay chim ăn được, người Y-sơ-ra-ên phải làm gì với huyết của nó?",
+    "options": [
+      "Rảy huyết lên bàn thờ trước",
+      "Đổ huyết ra rồi lấy bụi đất lấp lại",
+      "Đem huyết dâng cho thầy tế lễ",
+      "Để huyết đông lại rồi mới ăn"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 17:13 (RVV11): ai săn được thú hoặc chim ăn được thì 'phải đổ huyết nó ra rồi lấy bụi đất lấp lại.' Đáp án đúng là 'Đổ huyết ra rồi lấy bụi đất lấp lại'. (1) 'Rảy huyết lên bàn thờ trước' sai vì đó là nghi thức tế lễ, không áp dụng cho thú săn (wrong_scope). (2) 'Đem huyết dâng cho thầy tế lễ' sai vì văn bản chỉ định lấp huyết bằng đất (wrong_detail). (3) 'Để huyết đông lại rồi mới ăn' trái ngược lệnh cấm ăn huyết (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Huyết và sự sống",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 18,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 18:5 nói ai vâng giữ các luật lệ và mệnh lệnh của Đức Chúa Trời thì sẽ được gì?",
+    "options": [
+      "Sẽ nhờ đó mà được sống",
+      "Sẽ được thêm nhiều của cải",
+      "Sẽ được thắng trận trước kẻ thù",
+      "Sẽ được đông con nhiều cháu"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 18:5 (RVV11): 'Vậy hãy giữ luật lệ và mệnh lệnh Ta; ai làm theo thì nhờ đó mà được sống.' Đáp án đúng là 'Sẽ nhờ đó mà được sống'. (1) 'Được thêm nhiều của cải' là phước thường được liên tưởng nhưng không phải lời câu này (true_but_off). (2) 'Được thắng trận trước kẻ thù' thuộc các phước nơi khác (vd Lê 26), không phải câu này (near_passage). (3) 'Được đông con nhiều cháu' là phước giao ước khác, không phải nội dung 18:5 (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Luật luân lý",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 18,
+    "verseStart": 25,
+    "verseEnd": 28,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong Lê-vi Ký 18, vì sao dân các xứ Ca-na-an bị đuổi đi, và điều gì sẽ xảy ra nếu Y-sơ-ra-ên phạm cùng các tội ấy?",
+    "options": [
+      "Dân đó đông quá nên Chúa đuổi đi; Y-sơ-ra-ên phạm thì bị phân tán",
+      "Dân đó thờ thần khác nên bị diệt; Y-sơ-ra-ên phạm thì sẽ bị bệnh dịch",
+      "Dân đó hà hiếp người nghèo nên bị đuổi; Y-sơ-ra-ên phạm thì mất mùa màng",
+      "Đất đã bị ô uế nên đất 'mửa' dân nó ra; Y-sơ-ra-ên phạm thì cũng bị đất mửa ra"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 18:25-28 (RVV11): 'Đất đã bị ô uế... nên đất mửa dân cư nó ra,' và cảnh cáo rằng nếu Y-sơ-ra-ên làm ô uế đất thì 'đất sẽ mửa các ngươi ra' như đã mửa dân trước. Đáp án đúng nắm cả hai vế: đất mửa dân Ca-na-an và sẽ mửa Y-sơ-ra-ên. (1) 'Thờ thần khác... bệnh dịch' đúng tổng quát về tội nhưng sai chi tiết hậu quả 'đất mửa ra' câu này nhấn mạnh (wrong_detail, almost-right). (2) 'Hà hiếp người nghèo... mất mùa' đúng tinh thần công bằng nhưng không phải lý do và hậu quả nêu ở đây (true_but_off). (3) 'Dân đó đông quá... bị phân tán' sai cả lý do lẫn hậu quả văn bản nêu (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Luật luân lý",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 18,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lời mở đầu cho loạt luật cấm loạn luân ở Lê-vi Ký 18 nêu nguyên tắc chung nào?",
+    "options": [
+      "Không ai được kết hôn với người thuộc dân ngoại bang",
+      "Không ai được cưới vợ trước khi đủ tuổi trưởng thành",
+      "Không ai được đến gần thân nhân ruột thịt mà ăn ở",
+      "Không ai được lấy nhiều vợ trong cùng một thời gian"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 18:6 (RVV11): 'Không ai được đến gần một người bà con ruột thịt để ăn ở với người ấy.' Đây là nguyên tắc bao trùm các luật cấm cụ thể theo sau. Đáp án đúng là 'Không ai được đến gần thân nhân ruột thịt'. (1) 'Không kết hôn người ngoại bang' là một luật khác (vd Phục 7) chứ không phải nguyên tắc câu này (near_passage). (2) 'Chưa đủ tuổi' không có trong văn bản (wrong_detail). (3) 'Không lấy nhiều vợ' không phải nội dung 18:6 (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Luật luân lý",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 19:13, tiền công của người làm thuê không được giữ lại qua thời điểm nào?",
+    "options": [
+      "Qua đến cuối tuần lễ",
+      "Qua đến sáng mai",
+      "Qua đến ngày Sa-bát",
+      "Qua đến mùa gặt sau"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 19:13 (RVV11): 'Tiền công của người làm thuê, con không được giữ lại qua đêm cho đến sáng mai.' Đáp án đúng là 'Qua đến sáng mai'. (1) 'Cuối tuần lễ' sai chi tiết thời hạn (wrong_detail). (2) 'Ngày Sa-bát' gợi luật khác về thời gian nhưng không đúng câu này (near_passage). (3) 'Mùa gặt sau' kéo dài sai hẳn so với 'qua đêm' câu nêu (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Luật nên thánh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 19:14 cấm dân chúng không được làm hại hai hạng người yếu thế nào?",
+    "options": [
+      "Người điếc và người mù",
+      "Người nghèo và người góa bụa",
+      "Trẻ mồ côi và khách lạ",
+      "Người què và người phong hủi"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 19:14 (RVV11): 'Đừng rủa sả người điếc, cũng đừng để vật chướng ngại trước mặt người mù.' Đáp án đúng là 'Người điếc và người mù'. (1) 'Người nghèo và người góa bụa' là hạng được bảo vệ ở những câu/luật khác (wrong_detail, almost-right). (2) 'Trẻ mồ côi và khách lạ' cũng được Luật pháp bảo vệ nhưng không phải hai hạng nêu ở 19:14 (near_passage). (3) 'Người què và người phong hủi' không phải đối tượng câu này (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Luật nên thánh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 19:19 cấm dân Y-sơ-ra-ên làm điều nào sau đây?",
+    "options": [
+      "Mặc áo vay mượn của người chết",
+      "Mặc áo nhuộm bằng màu của dân ngoại",
+      "Mặc áo có thêu hình các thần tượng",
+      "Mặc áo dệt pha hai thứ chỉ khác nhau"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 19:19 (RVV11): cấm cho thú giao phối khác giống, gieo ruộng hai thứ giống, và 'đừng mặc áo bằng hai thứ chỉ pha nhau.' Đáp án đúng là 'Mặc áo dệt pha hai thứ chỉ khác nhau'. (1) 'Nhuộm màu dân ngoại' không có trong văn bản (wrong_detail). (2) 'Thêu hình thần tượng' liên quan luật chống thờ hình tượng nhưng không phải câu này (near_passage). (3) 'Vay mượn của người chết' gợi luật ô uế xác chết, không phải nội dung này (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Luật nên thánh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 32,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 19:32 dạy dân phải có thái độ nào đối với người già cả tóc bạc?",
+    "options": [
+      "Phải mời họ ngồi vào chỗ nhất",
+      "Phải chu cấp lương thực cho họ",
+      "Phải đứng dậy và tôn kính họ",
+      "Phải để họ xét xử các vụ kiện"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 19:32 (RVV11): 'Hãy đứng dậy trước người tóc bạc, kính trọng người già cả, và kính sợ Đức Chúa Trời.' Đáp án đúng là 'Phải đứng dậy và tôn kính họ'. (1) 'Chu cấp lương thực' là việc lành nhưng không phải lệnh câu này (true_but_off). (2) 'Mời ngồi chỗ nhất' không có trong văn bản (wrong_detail). (3) 'Để họ xét xử' nhầm với vai trò trưởng lão xét xử ở luật khác (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Luật nên thánh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 33,
+    "verseEnd": 34,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 19:33-34 truyền dân phải đối xử với khách lạ kiều ngụ giữa họ như thế nào, và viện lý do gì?",
+    "options": [
+      "Cho họ vay mượn, vì Chúa ban phước cho lòng rộng rãi",
+      "Yêu họ như chính mình, vì họ từng làm khách lạ ở Ai Cập",
+      "Phân chia đất cho họ, vì đất thuộc về Đức Giê-hô-va",
+      "Dạy họ luật pháp, vì họ chưa biết đường lối Chúa"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 19:33-34 (RVV11): 'Hãy yêu thương họ như chính mình, vì các con đã từng làm khách lạ trong đất Ai Cập.' Đáp án đúng nắm cả mệnh lệnh (yêu như chính mình) và lý do (từng làm khách lạ ở Ai Cập). (1) 'Cho vay mượn' là việc nhân từ nhưng sai mệnh lệnh và lý do câu này (true_but_off). (2) 'Phân chia đất' nhầm với luật năm hân hỉ/sở hữu đất (near_passage). (3) 'Dạy họ luật pháp' không phải nội dung câu này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Luật nên thánh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 20,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 20:9, người rủa sả cha hoặc mẹ mình phải chịu hậu quả gì?",
+    "options": [
+      "Phải bị xử tử",
+      "Phải bị đuổi khỏi nhà",
+      "Phải nộp của lễ chuộc tội",
+      "Phải bị đánh đòn công khai"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 20:9 (RVV11): 'Bất cứ ai rủa sả cha mẹ mình đều phải bị xử tử... huyết người ấy đổ lại trên mình người.' Đáp án đúng là 'Phải bị xử tử'. (1) 'Bị đuổi khỏi nhà' nhẹ hơn hẳn so với án tử văn bản nêu (wrong_detail). (2) 'Nộp của lễ chuộc tội' áp dụng cho tội vô ý, không phải tội này (wrong_scope). (3) 'Bị đánh đòn công khai' là hình phạt của luật khác, không phải câu này (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Hình phạt",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 20,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 20:6 cảnh cáo dân không được tìm đến hạng người nào để theo họ?",
+    "options": [
+      "Các tiên tri giả trong dân",
+      "Các vua chúa của dân ngoại",
+      "Các thương buôn nước ngoài",
+      "Các thầy đồng bóng và thầy bói"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 20:6 (RVV11): ai 'tìm đến đồng bóng và thầy bói để hành dâm theo chúng' thì Chúa sẽ trừ diệt khỏi dân. Đáp án đúng là 'Các thầy đồng bóng và thầy bói'. (1) 'Vua chúa dân ngoại' không phải đối tượng câu này (wrong_detail). (2) 'Thương buôn nước ngoài' không liên quan (wrong_scope). (3) 'Tiên tri giả' là vấn đề được cảnh báo nơi khác (vd Phục 13) chứ không phải đồng bóng ở câu này (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Hình phạt",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 20,
+    "verseStart": 24,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong Lê-vi Ký 20:24-26, Đức Chúa Trời liên kết việc dân phải phân biệt thú sạch với thú ô uế với một thực tại nào về chính dân Y-sơ-ra-ên?",
+    "options": [
+      "Chúa sẽ làm cho họ ra đông đảo như sao trên trời",
+      "Chúa sẽ ban cho họ một đất đượm sữa và mật ngọt",
+      "Chúa đã phân rẽ họ khỏi muôn dân làm dân riêng",
+      "Chúa đã giải cứu họ ra khỏi ách nô lệ tại Ai Cập"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 20:24-26 (RVV11): 'Ta là Đức Giê-hô-va... đã phân rẽ các con khỏi các dân tộc khác,' nên 'phải phân biệt thú vật tinh sạch với ô uế'; việc phân biệt thức ăn phản chiếu việc Chúa biệt riêng dân Ngài. Đáp án đúng là việc Chúa phân rẽ họ khỏi muôn dân. (1) 'Đất đượm sữa và mật' là lời hứa được nhắc trong cùng đoạn (20:24) nhưng không phải lý do gắn với phân biệt thú sạch (true_but_off, almost-right). (2) 'Đông như sao trên trời' là lời hứa với Áp-ra-ham, không phải lý lẽ câu này (near_passage). (3) 'Giải cứu khỏi Ai Cập' là nền tảng giao ước thật nhưng không phải lý do trực tiếp câu này nêu cho việc phân biệt thú (true_but_off, almost-right).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Hình phạt",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 21,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 21:1 quy định thầy tế lễ thường không được làm cho mình ra ô uế vì cớ điều gì?",
+    "options": [
+      "Vì cớ chạm vào con vật chết",
+      "Vì cớ một người chết trong dân",
+      "Vì cớ ăn nhằm thức ăn ô uế",
+      "Vì cớ vào nhà người mắc bệnh phong"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 21:1 (RVV11): 'Thầy tế lễ chớ vì một người chết trong dân mà làm cho mình bị ô uế,' trừ thân nhân gần. Đáp án đúng là 'Vì cớ một người chết'. (1) 'Chạm vào con vật chết' cũng gây ô uế theo luật chung nhưng không phải điều câu 21:1 cấm thầy tế lễ (near_passage). (2) 'Ăn nhằm thức ăn ô uế' thuộc luật ăn uống, sai phạm vi (wrong_scope). (3) 'Vào nhà người phong' nhầm với luật về bệnh phong, không phải câu này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Thầy tế lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 21,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 21:9, nếu con gái của một thầy tế lễ làm điếm thì phải chịu hình phạt nào?",
+    "options": [
+      "Phải bị thiêu trong lửa",
+      "Phải bị đuổi khỏi nhà cha mình",
+      "Phải bị ném đá ngoài cổng thành",
+      "Phải bị cấm dự lễ vật thánh"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 21:9 (RVV11): con gái thầy tế lễ làm điếm thì 'làm nhục cha mình; nó phải bị thiêu trong lửa.' Đáp án đúng là 'Phải bị thiêu trong lửa'. (1) 'Bị đuổi khỏi nhà cha' nhẹ hơn hình phạt văn bản nêu (wrong_detail). (2) 'Bị ném đá ngoài cổng thành' là hình thức xử tử cho các tội khác, không phải hình phạt 'thiêu' câu này (near_passage). (3) 'Bị cấm dự lễ vật thánh' nhầm với luật về quyền ăn vật thánh (ch 22), sai phạm vi (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Thầy tế lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 21,
+    "verseStart": 13,
+    "verseEnd": 14,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 21:13-14 quy định thầy tế lễ thượng phẩm chỉ được cưới hạng phụ nữ nào làm vợ?",
+    "options": [
+      "Một trinh nữ thuộc chi phái Lê-vi",
+      "Một góa phụ của thầy tế lễ khác",
+      "Một phụ nữ đã ly dị nhưng không con",
+      "Một trinh nữ trong dân mình"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 21:13-14 (RVV11): thầy tế lễ thượng phẩm 'phải cưới một trinh nữ' và không được lấy đàn bà góa, bị ly dị, hay kỹ nữ; phải cưới 'một trinh nữ trong dân mình.' Đáp án đúng là 'Một trinh nữ trong dân mình'. (1) 'Góa phụ của thầy tế lễ khác' bị cấm rõ vì là góa phụ (wrong_detail, almost-right). (2) 'Phụ nữ đã ly dị' cũng bị cấm dù không con (wrong_detail). (3) 'Trinh nữ thuộc chi phái Lê-vi' đúng phần 'trinh nữ' nhưng văn bản nói 'trong dân mình' chứ không giới hạn chi phái Lê-vi (wrong_scope, almost-right).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Thầy tế lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 22,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 22:4 quy định một thầy tế lễ đang mắc bệnh phong hay bệnh di tinh thì không được làm gì?",
+    "options": [
+      "Không được mặc lễ phục thầy tế lễ",
+      "Không được bước vào sân Lều Hội Kiến nữa",
+      "Không được ăn các vật thánh cho đến khi được sạch",
+      "Không được chúc phước cho hội chúng"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 22:4 (RVV11): thầy tế lễ con cháu A-rôn mắc bệnh phong hoặc di tinh thì 'không được ăn vật thánh cho đến khi được tinh sạch.' Đáp án đúng là 'Không được ăn các vật thánh cho đến khi được sạch'. (1) 'Bước vào sân Lều Hội Kiến' đúng tinh thần cách ly nhưng không phải điều cụ thể câu này cấm (true_but_off). (2) 'Mặc lễ phục' không phải nội dung câu này (wrong_detail). (3) 'Chúc phước cho hội chúng' nhầm với chức năng tế lễ khác, sai phạm vi (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Lễ vật thánh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 22,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 22:10, ai KHÔNG được phép ăn vật thánh dâng cho Đức Giê-hô-va?",
+    "options": [
+      "Con cái của thầy tế lễ",
+      "Khách lạ và người làm thuê của thầy tế lễ",
+      "Người nô lệ thầy tế lễ mua bằng tiền",
+      "Người nữ sinh ra trong nhà thầy tế lễ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 22:10-11 (RVV11): 'Không một người ngoài (khách lạ) nào được ăn vật thánh; khách của thầy tế lễ hay người làm thuê cũng không được ăn,' nhưng nô lệ mua bằng tiền và người sinh trong nhà thì được ăn. Đáp án đúng là 'Khách lạ và người làm thuê'. (1) 'Con cái thầy tế lễ' được phép ăn nên không đúng câu hỏi (true_but_off). (2) 'Nô lệ mua bằng tiền' được phép ăn (22:11) (wrong_detail). (3) 'Người nữ sinh trong nhà' cũng được ăn (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Lễ vật thánh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 22,
+    "verseStart": 14,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 22:14 quy định nếu một người vô tình ăn nhằm vật thánh thì phải làm gì?",
+    "options": [
+      "Đền lại vật thánh đó và phụ thêm một phần năm giá trị",
+      "Dâng lên một con chiên đực để làm tế lễ chuộc lỗi mình",
+      "Bị khai trừ khỏi dân sự mình cho đến tận chiều tối hôm đó",
+      "Kiêng ăn cả ngày và tự xé rách áo mình để tỏ lòng ăn năn"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 22:14 (RVV11): ai vô tình ăn vật thánh thì 'phải đền lại vật thánh đó cho thầy tế lễ và phụ thêm một phần năm.' Đáp án đúng là 'Đền lại... và phụ thêm một phần năm'. (1) 'Dâng chiên đực làm tế lễ chuộc lỗi' là cách đền cho tội phạm vào vật thánh ở Lê 5:15-16 nhưng câu 22:14 quy định bồi hoàn cộng một phần năm chứ không nêu con chiên (near_passage, almost-right). (2) 'Bị khai trừ đến chiều tối' lẫn công thức ô uế thường, sai (wrong_detail). (3) 'Kiêng ăn và xé áo' là cử chỉ ăn năn chung, không phải quy định câu này (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Lễ vật thánh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 22,
+    "verseStart": 21,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 22:21 dạy con vật dâng làm tế lễ bình an phải có đặc điểm gì để được nhậm?",
+    "options": [
+      "Phải là con vật màu lông tuyền",
+      "Phải là con vật còn non",
+      "Phải là con vật đầu lòng",
+      "Phải là con vật không tì vết"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 22:21 (RVV11): của lễ bình an 'phải là con vật không tì vết mới được nhậm; không được có khuyết tật nào.' Đáp án đúng là 'Phải là con vật không tì vết'. (1) 'Còn non' không phải yêu cầu câu này (wrong_detail). (2) 'Đầu lòng' nhầm với luật dâng con đầu lòng, sai phạm vi (wrong_scope). (3) 'Màu lông tuyền' nhầm với con bò tơ sắc hoe ở Dân Số Ký 19, không phải câu này (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Lễ vật thánh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 16,
+    "verseStart": 15,
+    "verseEnd": 22,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong Ngày Lễ Chuộc Tội, hai con dê có vai trò khác nhau thế nào: con bị giết và con được thả sống?",
+    "options": [
+      "Con bị giết dâng cho dân ngoại; con sống dâng cho Đức Giê-hô-va",
+      "Con bị giết để nuôi thầy tế lễ; con sống để sinh sản cho bầy",
+      "Con bị giết lấy huyết chuộc tội nơi thánh; con sống mang tội đi vào hoang mạc",
+      "Con bị giết chuộc tội thầy tế lễ; con sống chuộc tội cho vua"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 16:15-22 (RVV11): con dê thứ nhất bị giết, huyết nó dùng để 'chuộc tội cho Nơi Thánh'; con dê còn sống thì A-rôn đặt tay xưng tội rồi 'thả vào hoang mạc' để nó mang tội lỗi dân đi. Đáp án đúng phân biệt đúng hai vai trò: huyết chuộc tội nơi thánh và mang tội vào hoang mạc. (1) 'Nuôi thầy tế lễ / sinh sản' sai hoàn toàn chức năng nghi lễ (wrong_detail). (2) 'Dâng cho dân ngoại' sai vì hai con dê đều liên hệ với Đức Giê-hô-va và việc chuộc tội, không dâng cho dân ngoại (wrong_scope). (3) 'Chuộc tội thầy tế lễ / cho vua' sai vì cả hai con dê là cho tội của toàn dân Y-sơ-ra-ên, không chia theo thầy tế lễ và vua (near_passage, almost-right).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Ngày Lễ Chuộc Tội",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 23:3, ngày Sa-bát nghỉ ngơi thánh được lặp lại theo chu kỳ nào?",
+    "options": [
+      "Mỗi ngày mồng một mỗi tháng",
+      "Mỗi ngày thứ bảy",
+      "Mỗi mười ngày một lần",
+      "Mỗi bốn mươi ngày một lần"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 23:3 (RVV11): 'Sáu ngày các con sẽ làm công việc mình, nhưng ngày thứ bảy là ngày Sa-bát, ngày nghỉ ngơi, một sự nhóm họp thánh' — vậy Sa-bát giữ mỗi tuần, vào ngày thứ bảy. (1) 'Mỗi ngày mồng một mỗi tháng' lẫn với lễ trăng mới/thổi kèn (near_passage). (2) 'Mỗi mười ngày' là con số bịa, không có trong luật Sa-bát (wrong_detail). (3) 'Mỗi bốn mươi ngày' gợi nhớ những con số 40 khác trong Kinh Thánh nhưng không liên quan Sa-bát (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Các kỳ lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong lễ dâng bó lúa đầu mùa, thầy tế lễ phải dâng đưa qua đưa lại bó lúa vào ngày nào?",
+    "options": [
+      "Ngày sau ngày Sa-bát",
+      "Ngày mồng một tháng giêng",
+      "Ngày thứ bảy của tuần lễ",
+      "Ngày mười tháng bảy"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 23:11 (RVV11): 'Thầy tế lễ sẽ dâng bó lúa đưa qua đưa lại trước mặt Đức Giê-hô-va... vào ngày sau ngày Sa-bát.' (1) 'Ngày mồng một tháng giêng' không phải mốc của lễ này (wrong_detail). (2) 'Ngày thứ bảy của tuần lễ' chính là ngày Sa-bát, ngược với 'ngày sau' Sa-bát (near_passage). (3) 'Ngày mười tháng bảy' là Ngày Chuộc Tội, một lễ khác (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Các kỳ lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 27,
+    "verseEnd": 32,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Vào Ngày Đại Lễ Chuộc Tội (mồng mười tháng bảy), dân Y-sơ-ra-ên được lệnh phải làm gì?",
+    "options": [
+      "Dâng con đầu lòng làm của lễ thiêu",
+      "Ăn bánh không men suốt bảy ngày",
+      "Ở trong lều bằng nhánh cây bảy ngày",
+      "Ép linh hồn (kiêng ăn) và không làm việc gì"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 23:27-32 (RVV11): 'Các con phải ép linh hồn mình... chẳng nên làm một công việc nào.' Đây là ngày khắc khổ, kiêng ăn. (1) 'Dâng con đầu lòng làm của lễ thiêu' không phải luật Ngày Chuộc Tội (wrong_detail). (2) 'Ăn bánh không men suốt bảy ngày' thuộc Lễ Bánh Không Men (near_passage). (3) 'Ở trong lều bảy ngày' thuộc Lễ Lều Tạm (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Các kỳ lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 24,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 24:2, dân Y-sơ-ra-ên phải đem loại dầu nào để thắp đèn cháy luôn trong Đền Tạm?",
+    "options": [
+      "Dầu thơm pha trộn nhiều hương liệu",
+      "Mỡ chiên đực nấu chảy",
+      "Dầu ô-li-ve nguyên chất ép ra",
+      "Dầu nho ép từ trái nho"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 24:2 (RVV11): 'Hãy đem dầu ô-li-ve nguyên chất, ép ra, để thắp đèn cho đèn cháy luôn.' (1) 'Dầu thơm pha hương liệu' lẫn với dầu xức thánh trong Xuất 30 (near_passage). (2) 'Mỡ chiên đực nấu chảy' không dùng để thắp đèn (wrong_detail). (3) 'Dầu nho ép từ trái nho' không tồn tại như nhiên liệu đèn (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Đền Tạm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 24,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 24:7, dân Y-sơ-ra-ên phải để vật gì trên mỗi hàng bánh trần thiết để làm kỷ niệm?",
+    "options": [
+      "Muối của giao ước",
+      "Nhũ hương tinh khiết",
+      "Mật ong và bột mịn",
+      "Huyết của chiên con"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 24:7 (RVV11): 'Con cũng phải để nhũ hương tinh khiết trên mỗi hàng bánh, dùng làm kỷ niệm... một lễ vật dùng lửa dâng lên Đức Giê-hô-va.' (1) 'Muối của giao ước' đi với của lễ chay khác (near_passage). (2) 'Mật ong và bột mịn' — mật ong bị cấm trên bàn thờ (common_misconception). (3) 'Huyết của chiên con' không đặt trên bánh trần thiết (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Đền Tạm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 25:5, trong năm Sa-bát của đất, dân Y-sơ-ra-ên không được làm gì với hoa lợi mọc tự nhiên?",
+    "options": [
+      "Gặt hái và thu hoạch như mùa thường",
+      "Dâng một phần làm của lễ chay",
+      "Để cho người nghèo và thú đồng ăn",
+      "Bán cho dân ngoại bang lân cận"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 25:5 (RVV11): 'Con đừng gặt lại những gì đã mọc lên từ chỗ gieo... đó là một năm nghỉ ngơi cho đất.' Hoa lợi tự mọc không được thu hoạch như mùa thường. (1) 'Để cho người nghèo và thú đồng ăn' chính là điều ĐƯỢC phép (Xuất 23:11) nên không phải điều bị cấm (true_but_off). (2) 'Dâng làm của lễ chay' không liên quan luật năm Sa-bát đất (wrong_detail). (3) 'Bán cho dân ngoại bang' là điều bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Năm Sa-bát",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 25:23, lý do đất đai của Y-sơ-ra-ên không được bán đứt vĩnh viễn là gì?",
+    "options": [
+      "Vì đất quá ít cho mười hai chi phái",
+      "Vì dân chưa được phép sở hữu đất",
+      "Vì đất đã hứa cho người Lê-vi",
+      "Vì đất thuộc về Đức Giê-hô-va"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 25:23 (RVV11): 'Đất không được bán đứt, vì đất thuộc về Ta; các con chỉ là khách lạ và kiều dân ở với Ta.' (1) 'Vì đất quá ít' là lý do thực dụng bịa, không phải lý do thần học bản văn nêu (wrong_detail). (2) 'Vì dân chưa được phép sở hữu' sai vì họ có sản nghiệp được phân chia (wrong_detail). (3) 'Vì đất đã hứa cho người Lê-vi' — người Lê-vi không nhận sản nghiệp đất (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Năm Hân Hỉ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Mở đầu các điều khoản giao ước (Lê-vi Ký 26:1), Đức Chúa Trời cấm dân Y-sơ-ra-ên làm điều gì?",
+    "options": [
+      "Cưới vợ trong vòng bà con gần",
+      "Ăn thịt heo và loài vật ô uế",
+      "Làm hình tượng và thờ trụ đá chạm",
+      "Vay mượn tiền bạc lấy lãi nặng"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 26:1 (RVV11): 'Các con chớ làm hình tượng, chớ dựng tượng chạm hay trụ đá, cũng đừng đặt tảng đá chạm trổ trong xứ mình để quỳ lạy.' (1) 'Ăn thịt heo và loài vật ô uế' là luật ô uế chương 11 (near_passage). (2) 'Cưới vợ bà con gần' là luật loạn luân chương 18 (near_passage). (3) 'Vay mượn lấy lãi nặng' liên quan chương 25 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Giao ước",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 26:6, một trong các phước lành khi vâng lời là Đức Chúa Trời sẽ ban điều gì cho xứ?",
+    "options": [
+      "Vàng bạc đầy dẫy trong kho tàng",
+      "Sự bình an, không ai làm cho sợ hãi",
+      "Đền thờ nguy nga bằng đá quý",
+      "Tuổi thọ vượt quá một trăm năm"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 26:6 (RVV11): 'Ta sẽ ban hòa bình cho xứ; các con sẽ nằm ngủ mà chẳng sợ ai làm cho mình kinh hãi.' (1) 'Vàng bạc đầy dẫy' không nằm trong danh sách phước giao ước này (wrong_detail). (2) 'Đền thờ nguy nga bằng đá quý' là hình ảnh thời sau, không có ở đây (true_but_off). (3) 'Tuổi thọ vượt một trăm năm' không phải phước được nêu (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Giao ước",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 27,
+    "verseStart": 32,
+    "verseEnd": 33,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 27:32, phần mười của bầy bò và chiên được xác định bằng cách nào?",
+    "options": [
+      "Cứ con thứ mười qua dưới gậy chăn",
+      "Bắt thăm giữa toàn bộ bầy súc vật",
+      "Lấy con đầu lòng của mỗi con cái",
+      "Chọn con béo tốt nhất trong bầy"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 27:32 (RVV11): 'Còn phần mười của bầy bò và chiên... cứ con thứ mười khi đi qua dưới gậy thì sẽ là vật thánh dâng cho Đức Giê-hô-va.' (1) 'Chọn con béo tốt nhất' trái với luật không được phân biệt tốt xấu (c.33) (wrong_detail). (2) 'Bắt thăm' không phải cách đếm phần mười (wrong_detail). (3) 'Con đầu lòng của mỗi con cái' lẫn với luật của-đầu-lòng, một loại dâng khác (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Phần mười",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 23:14, vì sao dân Y-sơ-ra-ên không được ăn bánh hay hột rang từ mùa gặt mới cho đến một thời điểm nhất định?",
+    "options": [
+      "Vì mùa gặt mới phải để nguyên cho năm Hân Hỉ",
+      "Vì hột lúa mới còn ô uế chưa được tẩy sạch",
+      "Vì phải chờ thầy tế lễ nếm thử trước toàn dân",
+      "Phải dâng lễ vật bó lúa đầu mùa cho Đức Chúa Trời trước đã"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 23:14 (RVV11): 'Các con chớ ăn bánh, hột rang hay hột tươi... cho đến chính ngày các con đem dâng lễ vật cho Đức Chúa Trời mình.' Hoa lợi mới thuộc về Chúa trước, dân chỉ hưởng sau khi dâng. (1) 'Hột lúa còn ô uế' là hiểu lầm — lý do là dâng hiến trước, không phải ô uế (common_misconception). (2) 'Chờ thầy tế lễ nếm thử' là chi tiết bịa (wrong_detail). (3) 'Để nguyên cho năm Hân Hỉ' lẫn luật năm Hân Hỉ chương 25 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Các kỳ lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 23:22 lệnh không gặt sạch góc ruộng và không mót lúa rơi. Điều luật này đặt giữa các kỳ lễ nhằm mục đích gì?",
+    "options": [
+      "Để dành phần lúa ấy làm của lễ chay buổi sáng",
+      "Để bảo vệ đất khỏi bị gặt quá mức kiệt sức",
+      "Để chừa phần hoa lợi cho người nghèo và khách lạ",
+      "Để thầy tế lễ thu phần lúa góc ruộng làm lương"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 23:22 (RVV11): 'Khi gặt lúa trong xứ, con chớ gặt đến tận góc ruộng... hãy chừa lại cho người nghèo và khách lạ.' Lòng nhân ái gắn vào nhịp lễ hội. (1) 'Làm của lễ chay buổi sáng' lẫn với của lễ trong Đền Tạm (near_passage). (2) 'Bảo vệ đất khỏi gặt kiệt sức' là lý do năm Sa-bát đất, không phải điều luật này (true_but_off). (3) 'Thầy tế lễ thu làm lương' sai đối tượng hưởng — phần ấy dành cho người nghèo (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Các kỳ lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 24,
+    "verseStart": 10,
+    "verseEnd": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong vụ kẻ phạm thượng (Lê-vi Ký 24:10-12), Môi-se đã làm gì khi chưa rõ phải xử người đó thế nào?",
+    "options": [
+      "Lập tức ra lệnh ném đá người ấy ngay lập tức",
+      "Giam giữ người ấy để chờ Đức Giê-hô-va phán định",
+      "Giao người ấy cho cha mẹ tự xử lý",
+      "Đuổi người ấy ra khỏi trại quân bảy ngày"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 24:12 (RVV11): 'Họ giam người ấy lại cho đến khi ý muốn của Đức Giê-hô-va được tỏ ra.' Môi-se chờ lời phán trước khi định hình phạt. (1) 'Lập tức ném đá' sai trình tự — bản án đến sau khi Chúa phán (wrong_detail). (2) 'Đuổi ra khỏi trại bảy ngày' lẫn với luật ô uế/phung (near_passage). (3) 'Giao cho cha mẹ tự xử' không có trong bản văn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Phạm thượng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 24,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 24:22 nhấn mạnh nguyên tắc nào về việc áp dụng luật pháp giữa các nhóm dân?",
+    "options": [
+      "Cùng một luật cho cả khách lạ lẫn người bản xứ",
+      "Khách lạ chịu hình phạt nặng hơn người bản xứ",
+      "Người bản xứ được miễn một số hình phạt",
+      "Chỉ người Lê-vi mới bị xét xử theo luật này"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 24:22 (RVV11): 'Các con sẽ có một luật pháp như nhau cho khách lạ cũng như cho người bản xứ; vì Ta là Giê-hô-va Đức Chúa Trời của các con.' (1) 'Khách lạ chịu nặng hơn' trái với nguyên tắc bình đẳng vừa nêu (wrong_detail). (2) 'Người bản xứ được miễn' cũng trái nguyên tắc một luật (wrong_detail). (3) 'Chỉ người Lê-vi bị xét xử' thu hẹp sai phạm vi áp dụng (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Phạm thượng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 25,
+    "verseEnd": 28,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 25:25-28, khi một người Y-sơ-ra-ên nghèo phải bán đất, ai có quyền và trách nhiệm trước hết để chuộc lại đất ấy?",
+    "options": [
+      "Thầy tế lễ thượng phẩm đương nhiệm",
+      "Người mua đất phải tự nguyện trả lại",
+      "Trưởng lão của thành nơi người ấy ở",
+      "Người bà con gần nhất của người ấy"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 25:25 (RVV11): 'Nếu anh em con trở nên nghèo và phải bán một phần sản nghiệp mình thì người bà con gần nhất sẽ đến chuộc lại phần đất anh em mình đã bán.' Đây là vai trò người chuộc (go'el). (1) 'Thầy tế lễ thượng phẩm' không có vai trò này (wrong_scope). (2) 'Trưởng lão của thành' không phải người chuộc đất (wrong_detail). (3) 'Người mua phải tự nguyện trả' sai — đất tự động hoàn lại vào năm Hân Hỉ, không cần tự nguyện (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Năm Hân Hỉ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 29,
+    "verseEnd": 31,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 25:29-31 phân biệt nhà trong thành có tường với nhà ở làng không tường về quyền chuộc lại như thế nào?",
+    "options": [
+      "Cả hai loại nhà đều được chuộc lại bất cứ lúc nào trong vòng bảy năm sau khi bán",
+      "Nhà trong thành có tường được chuộc mãi mãi; còn nhà ở làng thì không bao giờ chuộc được",
+      "Nhà trong thành có tường chỉ chuộc được trong một năm; nhà ở làng thì hoàn lại vào năm Hân Hỉ",
+      "Cả hai loại nhà đều không bao giờ được chuộc lại sau khi đã bán đứt cho người mua"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 25:29-31 (RVV11): nhà trong thành có tường nếu không chuộc trong một năm thì thuộc người mua vĩnh viễn, không hoàn lại năm Hân Hỉ; còn nhà ở làng không tường được xem như ruộng đất, chuộc lại được và hoàn lại vào năm Hân Hỉ. (2) 'Cả hai chuộc bất cứ lúc nào trong bảy năm' là con số bịa (wrong_detail). (3) Đảo ngược quy định hai loại nhà (wrong_detail). (4) 'Cả hai không được chuộc' trái hẳn bản văn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Năm Hân Hỉ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 18,
+    "verseEnd": 21,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong các lời cảnh cáo giao ước (Lê-vi Ký 26:18-21), nếu dân vẫn không vâng lời sau khi bị sửa phạt, Đức Chúa Trời tuyên bố sẽ tăng hình phạt theo mức độ nào?",
+    "options": [
+      "Gấp đôi mỗi năm liên tiếp",
+      "Gấp bảy lần vì tội lỗi của họ",
+      "Gấp mười lần như mười tai vạ",
+      "Gấp ba lần cho mỗi thế hệ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 26:18 (RVV11): 'Ta sẽ phạt các con gấp bảy lần hơn vì tội lỗi các con' — cụm 'gấp bảy lần' lặp lại nhiều lần trong chương. (1) 'Gấp đôi mỗi năm' là con số bịa (wrong_detail). (2) 'Gấp mười lần như mười tai vạ' lẫn với mười tai vạ Ai Cập, sai bối cảnh (near_passage). (3) 'Gấp ba lần cho mỗi thế hệ' không có trong bản văn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Giao ước",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 34,
+    "verseEnd": 35,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 26:34-35, khi dân Y-sơ-ra-ên bị lưu đày khỏi xứ, điều gì cuối cùng sẽ được bù lại trong thời gian đất bỏ hoang?",
+    "options": [
+      "Đất sẽ được nghỉ bù những năm Sa-bát đã không được giữ",
+      "Các đền miếu thờ tà thần sẽ bị san bằng hết",
+      "Dân ngoại bang sẽ canh tác đất thay cho Y-sơ-ra-ên",
+      "Mười hai chi phái sẽ được chia lại sản nghiệp mới"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 26:34-35 (RVV11): 'Bấy giờ đất sẽ được nghỉ bù những năm Sa-bát suốt thời gian bỏ hoang... đất sẽ nghỉ ngơi bù lại những năm Sa-bát mà nó chưa được nghỉ.' Lưu đày bù lại các năm Sa-bát đất bị bỏ bê. (1) 'Đền miếu tà thần bị san bằng' là chi tiết câu 30, không phải điều bù lại khi bỏ hoang (true_but_off). (2) 'Dân ngoại canh tác thay' trái với việc đất nghỉ, hoang vu (wrong_detail). (3) 'Chia lại sản nghiệp mới' không có trong bản văn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Giao ước",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 27,
+    "verseStart": 9,
+    "verseEnd": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 27:9-13, khi một người muốn chuộc lại con vật ô uế đã hứa nguyện dâng, người ấy phải trả thêm bao nhiêu so với giá định của thầy tế lễ?",
+    "options": [
+      "Thêm một phần mười vào giá định",
+      "Thêm gấp đôi giá định",
+      "Thêm một phần ba vào giá định",
+      "Thêm một phần năm vào giá định"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 27:13 (RVV11): 'Nhưng nếu muốn chuộc lại con vật đó thì phải thêm một phần năm vào giá đã định.' Phần năm (20%) là mức phụ thu chuẩn cho việc chuộc trong chương này. (1) 'Một phần mười' lẫn với phần mười (tithe) ở cuối chương (near_passage). (2) 'Gấp đôi giá định' là mức bồi thường trộm cắp, sai bối cảnh (near_passage). (3) 'Một phần ba' là con số bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Lời hứa nguyện",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 27,
+    "verseStart": 16,
+    "verseEnd": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 27:16-18, khi định giá một thửa ruộng được hứa nguyện dâng, giá trị được tính dựa trên yếu tố nào?",
+    "options": [
+      "Số cây ăn trái và nguồn nước có trong ruộng",
+      "Khoảng cách từ ruộng đến Đền Tạm tại Si-lô",
+      "Lượng hột giống gieo và số năm còn lại đến năm Hân Hỉ",
+      "Số gia súc mà ruộng đó có thể nuôi được"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 27:16-18 (RVV11): giá ruộng tính theo lượng hột giống gieo trên đó, và nếu dâng sau năm Hân Hỉ thì thầy tế lễ tính theo số năm còn lại đến năm Hân Hỉ rồi giảm giá tương ứng. (1) 'Số cây ăn trái và nguồn nước' không phải tiêu chí bản văn nêu (wrong_detail). (2) 'Khoảng cách đến Đền Tạm tại Si-lô' là chi tiết bịa, sai thời điểm (wrong_detail). (3) 'Số gia súc nuôi được' không liên quan cách định giá ruộng (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Lời hứa nguyện",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 39,
+    "verseEnd": 43,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 25:39-43, cách đối xử với người Y-sơ-ra-ên nghèo bán mình khác với cách đối xử với nô lệ ngoại bang (25:44-46) ở điểm cốt lõi nào?",
+    "options": [
+      "Người Y-sơ-ra-ên phải làm việc nặng gấp đôi nô lệ ngoại bang để trả nợ nhanh hơn",
+      "Người Y-sơ-ra-ên phải được đãi như người làm thuê và được giải phóng vào năm Hân Hỉ",
+      "Người Y-sơ-ra-ên không được trả công gì cả, còn nô lệ ngoại bang thì luôn có công",
+      "Người Y-sơ-ra-ên bị bán cũng bị truyền làm sản nghiệp đời đời cho con cháu của chủ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 25:39-43 (RVV11): 'Đừng bắt người ấy làm công việc của nô lệ, mà hãy đãi như người làm thuê... đến năm Hân Hỉ người ấy và con cái sẽ được tự do'; còn nô lệ ngoại bang (c.44-46) có thể làm sản nghiệp truyền đời. (2) 'Làm việc nặng gấp đôi' trái lệnh không cai trị cách hà khắc (wrong_detail). (3) 'Không được trả công' đảo ngược — chính người Y-sơ-ra-ên được đãi như người làm thuê (wrong_detail). (4) 'Truyền làm sản nghiệp cho con cháu chủ' là quy định cho nô lệ ngoại bang, gán nhầm cho người Y-sơ-ra-ên (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Năm Hân Hỉ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 42,
+    "verseEnd": 45,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong lời hứa phục hồi (Lê-vi Ký 26:42-45), nền tảng khiến Đức Chúa Trời không từ bỏ hẳn dân Y-sơ-ra-ên dù họ bị lưu đày là gì?",
+    "options": [
+      "Giao ước Ngài đã lập với Áp-ra-ham, Y-sác và Gia-cốp",
+      "Công đức của các thầy tế lễ dâng tế lễ chuộc tội",
+      "Sự ăn năn hoàn toàn và trọn vẹn của dân chúng",
+      "Lời thề của dân khi đứng tại núi Si-na-i"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 26:42 (RVV11): 'Ta sẽ nhớ lại giao ước Ta đã lập với Gia-cốp, Y-sác và Áp-ra-ham, và Ta sẽ nhớ đến đất nầy.' Nền tảng là giao ước với các tổ phụ, do Chúa khởi xướng. (2) 'Sự ăn năn hoàn toàn' — dù xưng tội (c.40) là cần, nền tảng cuối cùng vẫn là giao ước Chúa nhớ lại, không phải công của dân (true_but_off). (3) 'Công đức thầy tế lễ' không được nêu làm nền tảng ở đây (wrong_detail). (4) 'Lời thề tại Si-na-i' là giao ước dân giữ lại không trọn; nền tảng phục hồi trỏ về giao ước tổ phụ trước đó (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Giao ước",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 20,
+    "verseEnd": 22,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 25:20-22 trả lời câu hỏi 'Chúng tôi sẽ ăn gì trong năm thứ bảy nếu không gieo gặt?'. Lời giải đáp cho thấy điều gì về cách Đức Chúa Trời chu cấp?",
+    "options": [
+      "Ngài sẽ làm bánh từ trời rơi xuống như ma-na mỗi sáng",
+      "Ngài cho phép mua lương thực từ các dân lân cận",
+      "Ngài miễn năm Sa-bát đất nếu mùa màng không đủ",
+      "Ngài ban phước cho mùa thứ sáu sinh hoa lợi đủ dùng cho ba năm"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 25:21-22 (RVV11): 'Ta sẽ ban phước cho các con trong năm thứ sáu, và năm ấy sẽ sinh hoa lợi đủ dùng cho ba năm.' Sự chu cấp đến qua mùa thứ sáu dư dật, đòi đức tin tin trước. (2) 'Ma-na từ trời mỗi sáng' lẫn với Xuất 16, sai bối cảnh đời sống định cư (near_passage). (3) 'Mua lương thực từ dân lân cận' không phải giải pháp bản văn nêu (wrong_detail). (4) 'Miễn năm Sa-bát đất nếu không đủ' trái với luật buộc giữ năm Sa-bát (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Năm Sa-bát",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 40,
+    "verseEnd": 43,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lê-vi Ký 23:40-43 truyền dân cầm nhánh cây đẹp, lá kè, nhánh sum sê và liễu, rồi ở trong lều bảy ngày. Việc ở trong lều mang ý nghĩa nào theo chính bản văn?",
+    "options": [
+      "Bày tỏ tang chế cho những người đã chết trong sa mạc",
+      "Tưởng niệm bốn mươi ngày Môi-se ở trên núi Si-na-i",
+      "Nhắc các thế hệ sau nhớ Chúa cho tổ phụ ở lều khi ra khỏi Ai Cập",
+      "Mừng việc xây xong Đền Tạm tại đồng vắng"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 23:43 (RVV11): 'Để dòng dõi các con biết rằng Ta đã cho dân Y-sơ-ra-ên ở trong lều khi Ta đem họ ra khỏi đất Ai Cập.' Ý nghĩa là tưởng niệm hành trình ra khỏi Ai Cập. (2) 'Bốn mươi ngày Môi-se trên núi' là sự kiện khác, không phải lý do lễ (true_but_off). (3) 'Tang chế cho người chết trong sa mạc' không có trong bản văn (wrong_detail). (4) 'Mừng xây xong Đền Tạm' là sự kiện Xuất 40, không phải ý nghĩa Lễ Lều Tạm (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Các kỳ lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 24,
+    "verseStart": 18,
+    "verseEnd": 21,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo Lê-vi Ký 24:18-21, luật phân biệt thế nào giữa kẻ đánh chết một con vật và kẻ đánh chết một con người?",
+    "options": [
+      "Cả hai trường hợp đều chỉ phải bồi thường bằng tiền theo giá định",
+      "Kẻ giết con vật phải bồi thường một con vật, còn kẻ giết người thì bị xử tử",
+      "Kẻ giết con vật bị xử tử, còn kẻ giết người chỉ phải bồi thường",
+      "Cả hai trường hợp đều bị trục xuất khỏi cộng đồng bảy ngày"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 24:18,21 (RVV11): 'Ai đánh chết một con vật phải bồi thường, mạng đền mạng... ai đánh chết một con vật phải bồi thường, nhưng ai giết người thì phải bị xử tử.' Giá trị mạng người khác hẳn mạng thú. (2) 'Cả hai chỉ bồi thường bằng tiền' xóa mất sự khác biệt cốt lõi mạng-đền-mạng cho người (wrong_detail). (3) Đảo ngược hai hình phạt (wrong_detail). (4) 'Trục xuất bảy ngày' lẫn với luật ô uế, sai bối cảnh (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Phạm thượng",
+      "Nâng cao"
+    ]
   }
 ]
