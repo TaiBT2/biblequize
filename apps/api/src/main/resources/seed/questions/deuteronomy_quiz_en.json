@@ -1439,16 +1439,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "correctAnswer": [
-      3
+      0
     ],
-    "content": "According to Deuteronomy 11:13-14, IF Israel LOVES God wholeheartedly — God promises what?",
-    "explanation": "Deuteronomy 11:13-14 — 'And if you will indeed obey my commandments that I command you today, to love the LORD your God, and to serve him with all your heart and with all your soul, he will give the rain for your land in its season, the early rain and the later rain, that you may gather in your grain and your wine and your oil.' RAIN = the greatest blessing in Canaan (a dry land). 2 rains: EARLY (yoreh, Oct-Nov) + LATTER (malqosh, Mar-Apr). James 5:7 cites this.",
+    "content": "According to Deuteronomy 11:13-14, IF Israel LOVES God with all their heart and soul, what does God promise to GIVE?",
+    "explanation": "The correct answer rests directly on Deuteronomy 11:13-14, where God promises to give 'the rain for your land in its season, the early rain and the later rain, that you may gather in your grain and your wine and your oil' — part of the covenant blessing for obedience. Distractor 1 (wrong_detail) is wrong because it changes the rainy seasons ('winter and summer'), even though the resulting harvest blessing matches the correct answer. Distractor 2 (wrong_scope) is wrong because it broadens the promise to 'peace and prosperity in every town,' which this passage does not mention. Distractor 3 (common_misconception) is wrong because it imports a promise of military victory and territorial expansion into a context that specifically speaks of agricultural blessing.",
     "language": "en",
     "options": [
-      "Much gold + silver",
-      "Strong army",
-      "Wise king",
-      "RAIN in season — EARLY rain + LATER rain for land — gather GRAIN + new WINE + OIL"
+      "Autumn (early) rain and spring (later) rain in their season — you will gather grain, new wine, and oil",
+      "Winter rain and summer rain in their season — you will gather grain, new wine, and oil",
+      "Peace and prosperity in every town — you will gather grain, new wine, and oil",
+      "Victory over every enemy and the widening of your borders — you will have plenty of grain, new wine, and oil"
     ],
     "tags": [
       "Old Testament",
@@ -1872,6 +1872,2659 @@
       "Pentateuch",
       "No nation like Israel",
       "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 1,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 1:2, how many days did the journey from Horeb to Kadesh-barnea (by the way of Mount Seir) take?",
+    "options": [
+      "Seven days",
+      "Forty days",
+      "Eleven days",
+      "Three days"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "ESV Deut 1:2: 'It is eleven days' journey from Horeb by the way of Mount Seir to Kadesh-barnea.' (1) 'Forty days' confuses the number with the forty years of wandering in the wilderness (wrong_detail). (2) 'Seven days' is a familiar biblical number but is not the number of days referenced here (wrong_detail). (3) 'Three days' recalls a different three-day journey elsewhere in the Pentateuch, wrong scope (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Wilderness Journey",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 1,
+    "verseStart": 15,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 1:13-15, on what criteria did Moses base his selection of leaders for the people?",
+    "options": [
+      "Strong, courageous, and skilled in warfare",
+      "Wise, understanding, and reputable",
+      "Old in age, wealthy, and with many descendants",
+      "Of priestly lineage and knowledgeable in offering sacrifices"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "ESV Deut 1:13-15: Moses told the people to choose 'wise, understanding, and experienced men' from their tribes, and he appointed them as heads over the people. (1) 'Strong, courageous, and skilled in warfare' sounds plausible for leaders but is not the criteria the text specifies (wrong_detail). (2) 'Old in age, wealthy, and with many descendants' reflects common cultural notions of honor but does not match the stated criteria (common_misconception). (3) 'Of priestly lineage and knowledgeable in offering sacrifices' confuses the role of the Levitical priests with the role of civil leaders and judges (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Civil Organization",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 1,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 1:15, what ranks of leaders did Moses appoint to govern the people?",
+    "options": [
+      "Leaders of thousands, five hundreds, hundreds, and fifties",
+      "Leaders of ten thousands, thousands, hundreds, and tens",
+      "Leaders of hundreds, fifties, twenties, and tens",
+      "Leaders of thousands, hundreds, fifties, and tens"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "ESV Deut 1:15: Moses set them 'as commanders over you, commanders of thousands, commanders of hundreds, commanders of fifties, commanders of tens, and officers for your tribes.' (1) 'Ten thousands' does not appear among the listed ranks (wrong_detail). (2) The set 'hundreds, fifties, twenties, tens' is wrong because it omits the rank of thousands and adds a rank of twenties (wrong_detail). (3) The set 'thousands, five hundreds, hundreds, fifties' inserts the rank of five hundreds, which is not in the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Civil Organization",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 1,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 1:23, how many men did Moses choose to spy out the land, and how were they allocated?",
+    "options": [
+      "Twelve men, one from each tribe",
+      "Ten men, chosen from among the elders",
+      "Seventy men, the elders of the people",
+      "Two men, sent secretly to spy"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "ESV Deut 1:23: 'And I took twelve men from you, one man from each tribe.' (1) 'Ten men, the elders' is wrong in both the number and the method of selection (wrong_detail). (2) 'Seventy elders' is confused with the seventy elders appointed to assist Moses at a different point in the narrative (near_passage). (3) 'Two men sent secretly' refers to the spying of Jericho in the time of Joshua, which is the wrong scope (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Spying out the Promised Land",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 2,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 2:4-5, why did the LORD forbid the Israelites from making war against the descendants of Esau at Mount Seir?",
+    "options": [
+      "Because it was time to return to Horeb and not yet time to take the land",
+      "Because the Edomites were too numerous and powerful for Israel to defeat",
+      "Because Israel was still bound by a peace treaty previously made with Esau",
+      "Because He had given Mount Seir to the descendants of Esau as their possession"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "ESV Deut 2:5: 'Do not contend with them, for I will not give you any of their land, no, not so much as for the sole of the foot to tread on, because I have given Mount Seir to Esau as a possession.' (1) 'The Edomites were too numerous and powerful' sounds plausible, but the reason the text gives is God's grant of ownership, not the enemy's military strength (true_but_off). (2) 'A peace treaty previously made with Esau' invents a covenant not found in this passage (wrong_detail). (3) 'It was time to return to Horeb' is confused with the earlier command to leave Horeb, which is the wrong scope (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Edom and Seir",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 2,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 2:9, why did the LORD forbid Israel from seizing the land of Moab?",
+    "options": [
+      "Because Moab was a blood brother sharing the same father as Israel",
+      "Because He had given Ar to the descendants of Lot as their possession",
+      "Because the Moabites had allowed Israel to pass through their land in peace",
+      "Because the land of Moab was entirely rugged mountains unfit for cultivation"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "ESV Deut 2:9: 'Do not harass Moab or contend with them in battle, for I will not give you any of their land for a possession, because I have given Ar to the people of Lot for a possession.' (1) 'Blood brother sharing the same father' is wrong: Moab descends from Lot (Abraham's nephew), not from Esau who was Jacob's own brother (wrong_detail, almost-right since there is a family relationship, but the nature of that relationship is wrong). (2) 'Moab allowed them to pass through in peace' contradicts the broader narrative and is not the reason given in the text (true_but_off). (3) 'The land is entirely rugged mountains' fabricates a geographical reason that does not appear in the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Moab and Ammon",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 2,
+    "verseStart": 11,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 2:10-12, what characteristic do the ancient peoples the Emim, the Horites, and the Anakim share as noted in the text?",
+    "options": [
+      "They were large peoples counted as Rephaim who had previously dwelt in the land before being displaced by other peoples",
+      "They were all descendants of Lot who settled around the Dead Sea before Israel",
+      "They were Amorite kings defeated by Israel east of the Jordan River",
+      "They were peoples whom God forbade Israel to touch because they were Esau's possession"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "ESV Deut 2:10-12: The Emim 'were a people great and many, and tall as the Anakim... Like the Anakim they are counted as Rephaim'; the Horites formerly lived in Seir but were driven out and replaced by the descendants of Esau. (1) 'Descendants of Lot around the Dead Sea' confuses the Emim with the Moabites/Ammonites who replaced them, not the peoples themselves (wrong_scope, almost-right). (2) 'Amorite kings east of the Jordan' crosses into the account of Sihon and Og in the following chapter (near_passage, almost-right). (3) 'Peoples forbidden to be touched because they were Esau's possession' wrongly applies the reason given specifically for Seir to the entire group (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "The Rephaim Giants",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 2,
+    "verseStart": 14,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 2:14, the period from leaving Kadesh-barnea until crossing the Wadi Zered was associated with which event involving the older generation?",
+    "options": [
+      "Seven years, the time the people waited until they reached the bank of the Wadi Zered",
+      "A full forty years, corresponding to one year for each day the land was spied out",
+      "Thirty-eight years, until the entire generation of warriors had perished from the camp",
+      "One generation, until both Moses and Aaron died outside the promised land"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deut 2:14 (ESV): 'And the time from our leaving Kadesh-barnea until we crossed the brook Zered was thirty-eight years, until the entire generation, that is, the men of war, had perished from the camp.' (1) 'Forty years, one year for each day of spying' is a real counting principle found in Numbers, but the number stated in this specific passage is thirty-eight years for this particular stretch (true_but_off, almost-right). (2) 'Seven years waiting to reach the bank of the wadi' invents a number not found in the text (wrong_detail). (3) 'Until Moses and Aaron both died' is incorrect because the text's milestone is the death of the entire warrior generation, not the two leaders (wrong_scope, almost-right).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Wilderness Generation",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 2,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 2:19, when Israel drew near to the Ammonites, what did the LORD instruct them?",
+    "options": [
+      "Do not enter their land, because the Ammonites worshiped the detestable god Molech",
+      "Take possession of the land of Ammon, for it is the portion the LORD promised to Israel",
+      "Buy food and water from them with silver and then pass through",
+      "Do not harass or provoke them to war, for that land has been given to the descendants of Lot"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deut 2:19 (ESV): 'And when you approach the territory of the people of Ammon, do not harass them or contend with them, for I will not give you any of the land of the people of Ammon as a possession, because I have given it to the sons of Lot for a possession.' (1) 'Take possession because it is the LORD's promised portion' directly contradicts the command (wrong_detail). (2) 'Buy food and water with silver and pass through' is the instruction given for passing through Esau's territory in Deut 2:6, not for Ammon (near_passage, almost-right). (3) 'Because they worship Molech' is a historically accurate detail found elsewhere but is not the reason stated in this passage (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Moab and Ammon",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 2,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 2:24, after crossing the Wadi Arnon, whom did the LORD tell Israel to begin fighting?",
+    "options": [
+      "Arad, the Canaanite king of the Negeb",
+      "Og, king of Bashan, one of the Rephaim",
+      "Balak, king of Moab",
+      "Sihon, king of Heshbon, the Amorite"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deut 2:24 (ESV): 'Rise up, set out on your journey and cross the Wadi Arnon. Behold, I have given into your hand Sihon the Amorite, king of Heshbon, and his land.' (1) 'Og, king of Bashan' is the king defeated later in chapter 3, not at the Wadi Arnon (near_passage). (2) 'Balak, king of Moab' is confused with the figure who hired Balaam; moreover, Moab was commanded not to be attacked (wrong_scope). (3) 'Arad, the Canaanite king of the Negeb' is a king from a different part of the journey and the wrong region (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Defeat of Sihon",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 3,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 3, at which city did the Israelites engage and defeat Og king of Bashan?",
+    "options": [
+      "Heshbon",
+      "Edrei",
+      "Jabbok",
+      "Salecah"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deut 3:1 (ESV): 'Then we turned and went up the way to Bashan. And Og the king of Bashan came out against us, he and all his people, to battle at Edrei.' The battle with Og therefore took place at Edrei. (1) 'Heshbon' is the capital of Sihon the Amorite king from chapter 2, not Og (near_passage). (2) 'Jabbok' is the boundary stream marking the edge of Sihon's territory, not a battle city (wrong_detail). (3) 'Salecah' is a city within Bashan that was captured afterward, not the site of the battle (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Conquest of Bashan",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 3,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 3, how many cities did the Israelites capture in the region of Argob, the kingdom of Og in Bashan?",
+    "options": [
+      "Thirty cities",
+      "Twelve cities",
+      "Sixty cities",
+      "One hundred cities"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deut 3:4 (ESV): 'And we took all his cities at that time—there was not a city that we did not take from them—sixty cities, the whole region of Argob, the kingdom of Og in Bashan.' The correct number is therefore sixty. (1) 'Thirty cities' is an incorrect number (wrong_detail). (2) 'Twelve cities' does not match the text (wrong_detail). (3) 'One hundred cities' overstates the number (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Conquest of Bashan",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 3,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 3, what name did the Sidonians give to Mount Hermon?",
+    "options": [
+      "Pisgah",
+      "Sirion",
+      "Argob",
+      "Senir"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 3:9 (ESV): 'the Sidonians call Hermon Sirion, while the Amorites call it Senir.' So the name used by the Sidonians is Sirion. (1) 'Pisgah' is the mountain peak from which Moses viewed the promised land and has no connection to Hermon (wrong_scope). (2) 'Argob' is a region of Bashan, not a name for this mountain (wrong_scope). (3) 'Senir' is the name the Amorites used, not the Sidonians (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Place Names",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 4,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 4, what did God write on the two stone tablets and command the Israelites to observe?",
+    "options": [
+      "The Ten Commandments",
+      "The list of cities of refuge",
+      "The laws concerning offerings",
+      "The Song of Moses"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 4:13 (ESV): 'And he declared to you his covenant, which he commanded you to perform, that is, the Ten Commandments, and he wrote them on two tablets of stone.' So what was inscribed on the two stone tablets is the Ten Commandments. (1) 'The Song of Moses' appears in chapter 32 and was not written on stone tablets (near_passage). (2) 'The list of cities of refuge' appears later in chapter 4 but is not the content of the two stone tablets (true_but_off). (3) 'The laws concerning offerings' belong to other legal portions of Scripture, not the two stone tablets (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Horeb Covenant",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 3,
+    "verseStart": 18,
+    "verseEnd": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 3, what did Moses require of the fighting men from the two and a half tribes who had received their land east of the Jordan, before they were permitted to return to their inheritance?",
+    "options": [
+      "To take up arms and cross the river, marching in the vanguard before their brothers until they too had found rest in the land",
+      "To remain and guard the land of Bashan until the conquest on the western side of the river was complete",
+      "To give a tenth of the plunder taken from Sihon and Og to the priests",
+      "To immediately build fortified cities to protect their wives and children from the remaining Rephaim"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 3:18–20 (ESV): Moses commanded 'all the men of valor shall cross over armed before your brothers' until the LORD gave rest to their brothers across the river, after which they could return to their inheritance. So the condition was to cross over armed as the vanguard. (1) 'Remaining to guard the land of Bashan' is the opposite of the command to march ahead as the vanguard (wrong_detail). (2) 'Giving a tenth of the plunder' is not mentioned anywhere in this passage (wrong_scope). (3) 'Immediately building fortified cities' confuses the prior provision of leaving wives and children in already-established towns with the condition for returning — it is not the command given here (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Allotment to the Two and a Half Tribes",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 4,
+    "verseStart": 15,
+    "verseEnd": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 4, what reason did Moses give for warning the Israelites not to make carved images in any form?",
+    "options": [
+      "The surrounding nations that worshiped idols had been destroyed by God from the face of the earth",
+      "On the day God spoke from the midst of the fire at Horeb, they saw no form whatsoever",
+      "Carved images would decay and could not accompany them into the promised land",
+      "Only priests were permitted to make sacred objects for use in worship"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 4:15–16 (ESV): 'Since you saw no form on the day that the LORD spoke to you at Horeb out of the midst of the fire, beware lest you act corruptly by making a carved image for yourselves, in the form of any figure.' So the core reason is that they saw no form. (1) 'Idol-worshiping nations being destroyed' is a valid general argument but is not the reason Moses gives at this point (true_but_off). (2) 'Carved images will decay' does not appear in the text (wrong_detail). (3) 'Only priests may make sacred objects' shifts to priestly law and misses the point entirely (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Prohibition Against Idols",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 3,
+    "verseStart": 26,
+    "verseEnd": 28,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 3, after the LORD refused to let Moses enter the promised land, what did He tell Moses to do instead?",
+    "options": [
+      "Return to Horeb and offer a sin offering so that God might change His mind",
+      "Choose twelve men to spy out the land from across the Jordan River",
+      "Go up to the top of Pisgah, view the land with his own eyes, then commission and encourage Joshua",
+      "Immediately divide the promised land among the remaining nine and a half tribes by casting lots"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 3:27–28 (ESV): 'Go up to the top of Pisgah and lift up your eyes westward and northward and southward and eastward, and look at it with your eyes... And commission Joshua, and encourage and strengthen him.' So God told Moses to view the land from Pisgah and to entrust the task to Joshua. (1) 'Returning to Horeb to offer a sacrifice so God would change His mind' contradicts the text, which states that God firmly refused to listen to Moses' plea (wrong_detail). (2) 'Choosing twelve spies' confuses this with the earlier event at Kadesh (near_passage). (3) 'Immediately dividing the land among the nine and a half tribes by lot' was Joshua's task later — it was not the command given to Moses at this moment (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Moses Forbidden from Entering the Land",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 4,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 4, what image does Moses use to describe Egypt, from which the LORD brought Israel out?",
+    "options": [
+      "A lion's pit",
+      "An iron furnace",
+      "A dry wilderness",
+      "A bronze prison"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 4:20 (ESV): 'But the LORD has taken you and brought you out of the iron furnace, out of Egypt, to be a people of his own inheritance.' The correct image is an iron furnace. (1) 'A lion's pit' is a metaphor for trouble found in other books, not a description of Egypt in this passage (wrong_scope). (2) 'A dry wilderness' describes the journey after leaving Egypt, not Egypt itself (near_passage). (3) 'A bronze prison' sounds plausible but uses the wrong material and image from the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Exodus from Egypt",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 4,
+    "verseStart": 41,
+    "verseEnd": 43,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Deuteronomy 4 records that Moses set apart three cities of refuge east of the Jordan River. Which of the following correctly matches each city to its tribe?",
+    "options": [
+      "Bezer for Reuben, Ramoth for Gad, Golan for Manasseh",
+      "Ramoth for Reuben, Golan for Gad, Bezer for Manasseh",
+      "Bezer for Gad, Ramoth for Manasseh, Golan for Reuben",
+      "Golan for Reuben, Bezer for Manasseh, Ramoth for Gad"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 4:43 (ESV): 'Bezer in the wilderness on the tableland belonging to the Reubenites; Ramoth in Gilead belonging to the Gadites; and Golan in Bashan belonging to the Manassites.' The correct pairings are Bezer–Reuben, Ramoth–Gad, Golan–Manasseh. (1) This option swaps Bezer to Gad and Golan to Reuben (wrong_detail). (2) This option assigns Ramoth to Reuben and Bezer to Manasseh, getting all positions wrong (wrong_detail). (3) This option scrambles all three pairings, placing Golan with Reuben (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Cities of Refuge",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 3,
+    "verseStart": 12,
+    "verseEnd": 16,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 3, how was the land of Gilead and all of Bashan, the kingdom of Og, divided?",
+    "options": [
+      "All of Gilead to Gad, and all of Bashan divided equally between Reuben and Manasseh",
+      "Both Gilead and Bashan belonged entirely to the half-tribe of Manasseh because they had the largest army",
+      "Half the hill country of Gilead to Reuben and Gad, and the rest of Gilead together with all of Bashan to the half-tribe of Manasseh",
+      "Reuben received all of Bashan, Gad received all of Gilead, and Manasseh received the region of Argob"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 3:12-13 (ESV): 'I gave to the Reubenites and the Gadites... half the hill country of Gilead with its cities. The rest of Gilead, and all Bashan, the kingdom of Og... I gave to the half-tribe of Manasseh.' So Reuben and Gad received half the hill country of Gilead, while the half-tribe of Manasseh received the remaining part of Gilead and all of Bashan. (1) 'All of Gilead to Gad, and Bashan divided equally between Reuben and Manasseh' gives an incorrect division (wrong_detail). (2) 'Both Gilead and Bashan belonged entirely to Manasseh' omits the portions given to Reuben and Gad (wrong_scope). (3) 'Reuben received all of Bashan, Gad received all of Gilead' reverses the land allocations from the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Land Division of the Two-and-a-Half Tribes",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 5,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 5:15, what must the people of Israel remember as the reason for keeping the Sabbath?",
+    "options": [
+      "They were once slaves in Egypt and God delivered them",
+      "God created the heavens and the earth in six days",
+      "They wandered forty years in the wilderness",
+      "Their ancestors made a covenant at Mount Moriah"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 5:15 (ESV): 'You shall remember that you were a slave in the land of Egypt, and the LORD your God brought you out from there with a mighty hand and an outstretched arm. Therefore the LORD your God commanded you to keep the Sabbath day.' The reason given in Deuteronomy is deliverance from slavery in Egypt. (1) 'God created the heavens and the earth in six days' is the reason given in Exodus 20:11, NOT in Deuteronomy 5 (near_passage, confused with Exod 20). (2) 'They wandered forty years in the wilderness' is a true detail found in the book but is not the stated reason for keeping the Sabbath here (true_but_off). (3) 'Their ancestors made a covenant at Mount Moriah' is incorrect; Moriah is associated with the offering of Isaac, not the Sabbath (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Ten Commandments",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 6,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 6:8, where on the body must the people bind God's words as a sign?",
+    "options": [
+      "On the forehead and around the neck",
+      "On the chest and both shoulders",
+      "On the lips and the palms of the hands",
+      "On the hand and between the eyes"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 6:8 (ESV): 'You shall bind them as a sign on your hand, and they shall be as frontlets between your eyes.' The correct answer is 'on the hand and between the eyes.' (1) 'On the forehead and around the neck' is incorrect; the text says 'between your eyes,' not around the neck (wrong_detail). (2) 'On the chest and both shoulders' is where the priestly ephod was fastened (Exod 28), not what is commanded here (near_passage). (3) 'On the lips and the palms of the hands' does not appear in this verse (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Shema",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 6,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 6:9, where were the people to write the words of the LORD?",
+    "options": [
+      "On stone tablets placed at the altar",
+      "On a scroll entrusted to the priests",
+      "On a stone pillar erected in the middle of the city",
+      "On the doorposts of your house and on your gates"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "ESV Deuteronomy 6:9 reads: 'You shall write them on the doorposts of your house and on your gates.' The correct answer is 'on the doorposts of your house and on your gates.' (1) 'Stone tablets placed at the altar' conflates the tablets of testimony or altar references in other passages, not this verse (near_passage). (2) 'A scroll entrusted to the priests' suggests the king's act of copying the law (Deut 17:18), not this passage (near_passage). (3) 'A stone pillar erected in the middle of the city' is a wrong detail — the text speaks of the doorposts and gates of each individual household (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Shema",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 5,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 5:16, what promise accompanies the commandment to honor your father and mother?",
+    "options": [
+      "That you may overcome all your enemies",
+      "That your descendants may be as numerous as the stars in the sky",
+      "That your days may be long and that it may go well with you in the land",
+      "That the LORD may send timely rain on your fields"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "ESV Deuteronomy 5:16 reads: 'Honor your father and your mother, as the LORD your God commanded you, that your days may be long, and that it may go well with you in the land that the LORD your God is giving you.' The promise is to live long and fare well in the land. (1) 'Descendants as numerous as the stars' is the promise to Abraham (Genesis 15), not attached to this commandment (near_passage). (2) 'Overcome all your enemies' is not the content of the promise in the commandment to honor parents (wrong_detail). (3) 'Timely rain on your fields' is a real blessing found in Deuteronomy 11 but is not attached to this commandment (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Ten Commandments",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 5,
+    "verseStart": 24,
+    "verseEnd": 27,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 5:24-27, why did the Israelites ask Moses to stand as a mediator and hear the words of the LORD on their behalf?",
+    "options": [
+      "Because they could not understand the voice speaking from the mountain",
+      "Because they feared they would die from the great fire if they continued to hear the voice of the LORD",
+      "Because they were in a hurry to advance and take possession of Canaan",
+      "Because the elders had been chosen to represent the whole people"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "ESV Deuteronomy 5:25 records the people saying: 'Now therefore why should we die? For this great fire will consume us. If we hear the voice of the LORD our God any more, we shall die.' The reason was the fear of dying from the fire when hearing the LORD's voice directly. (1) 'Could not understand the voice speaking' is wrong: the people heard and understood — the issue was fear of death, not incomprehension (wrong_detail). (2) 'In a hurry to advance and take Canaan' is irrelevant; that time had not yet come (true_but_off / wrong context). (3) 'The elders had been chosen to represent the people' confuses this with the appointment of the seventy elders (Numbers 11), which is not the reason given here (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Moses as mediator",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 6,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 6:7, how were parents to teach the words of the LORD to their children?",
+    "options": [
+      "Diligently, talking about them when sitting at home, walking by the way, lying down, and rising",
+      "Only solemnly on the Sabbath at the place of assembly",
+      "By entrusting the priests and Levites to teach in their place at the temple",
+      "Only once a year during the major appointed feasts"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "ESV Deuteronomy 6:7 reads: 'You shall teach them diligently to your children, and shall talk of them when you sit in your house, and when you walk by the way, and when you lie down, and when you rise.' The teaching must be continuous, woven into every aspect of daily life. (1) 'Only on the Sabbath at the place of assembly' wrongly limits the scope, contrary to the command's expectation of teaching at all times and in all places (wrong_scope). (2) 'Entrusting the priests and Levites to teach in their place' shifts responsibility to the wrong party — the text addresses parents directly (wrong_scope). (3) 'Once a year during the appointed feasts' misrepresents the frequency; the command requires continual, daily teaching (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Teaching children",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 6,
+    "verseStart": 10,
+    "verseEnd": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 6:10-12, what danger did Moses warn the people about when they entered a land full of fine houses, cisterns, and vineyards they had not built?",
+    "options": [
+      "They would forget the LORD who brought them out of the house of slavery",
+      "They would return to being slaves to the Canaanite peoples",
+      "They would become proud and despise the poor in the land",
+      "They would quarrel over inheritances among the tribes"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "ESV Deuteronomy 6:12 reads: 'then take care lest you forget the LORD, who brought you out of the land of Egypt, out of the house of slavery.' The danger Moses warned about was forgetting God once the people were well-fed and settled in the land. (1) 'Quarreling over inheritances among the tribes' is not the content of this warning (wrong_detail). (2) 'Returning to being slaves to the Canaanite peoples' confuses the reference to the 'house of slavery' in Egypt in the verse and misidentifies the party (wrong_detail). (3) 'Becoming proud and despising the poor' is a real warning found elsewhere in Scripture but is not the focus of this passage (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Do not forget the LORD",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 6,
+    "verseStart": 20,
+    "verseEnd": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 6:20–23, when children ask about the meaning of the laws, what must parents give as the foundational answer?",
+    "options": [
+      "Describe the majesty of Mount Sinai when the law was given",
+      "Recount how the LORD delivered them from the hand of Pharaoh in Egypt",
+      "List the full Ten Commandments in exact order",
+      "Tell the story of the patriarch Abraham being called to leave Ur"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "ESV Deuteronomy 6:21 records the answer parents must give: 'We were Pharaoh's slaves in Egypt. And the LORD brought us out of Egypt with a mighty hand.' The foundational answer is to recount the deliverance from Egypt. (1) 'Describing the majesty of Mount Sinai' is a real detail in the book but is not the answer taught here (true_but_off). (2) 'Listing the full Ten Commandments in order' is not the content of this reply (wrong_detail). (3) 'Telling the story of Abraham leaving Ur' crosses over into Genesis and is not the designated answer (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Teaching children",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 5,
+    "verseStart": 15,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "In what core way does the reason for keeping the Sabbath in the Ten Commandments of Deuteronomy 5 differ from the version in Exodus 20?",
+    "options": [
+      "Deuteronomy moves the rest day to the first day, while Exodus 20 keeps the seventh day",
+      "Deuteronomy forbids all work, while Exodus 20 only prohibits trading",
+      "Deuteronomy emphasizes deliverance from slavery, while Exodus 20 emphasizes the work of creation",
+      "Deuteronomy only requires the head of household to rest, while Exodus 20 requires servants to rest as well"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 5:15 gives the reason: 'You shall remember that you were a slave in the land of Egypt, and the LORD your God brought you out from there with a mighty hand and an outstretched arm. Therefore the LORD your God commanded you to keep the Sabbath day' — linking the Sabbath to deliverance from slavery. Exodus 20:11, by contrast, gives the reason: 'For in six days the LORD made heaven and earth, the sea, and all that is in them, and rested on the seventh day. Therefore the LORD blessed the Sabbath day and made it holy' — linking it to the work of creation. (1) 'Forbids all work vs. only prohibits trading' is wrong; both versions prohibit work in general (wrong_detail). (2) 'Moves to the first day' is wrong; both versions keep the seventh day (common_misconception). (3) 'Only the head of household rests vs. servants must also rest' is wrong; both versions require servants and animals to rest — Deuteronomy 5:14 makes this especially explicit (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Sabbath",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 5,
+    "verseStart": 16,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "In the Ten Commandments of Deuteronomy 5, which commandment is accompanied by an explicit promise of reward?",
+    "options": [
+      "The commandment against murder",
+      "The commandment to remember the Sabbath day to keep it holy",
+      "The commandment against coveting your neighbor's possessions",
+      "The commandment to honor your father and mother"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "ESV Deuteronomy 5:16 is the only commandment in this list accompanied by a promise: 'Honor your father and your mother, as the LORD your God commanded you, that your days may be long, and that it may go well with you in the land that the LORD your God is giving you.' (1) 'Do not murder' (5:17) is stated plainly, with no accompanying promise (wrong_detail). (2) 'Remember the Sabbath' (5:12–15) includes a reason (slavery in Egypt) rather than a promise of reward to the one who keeps it — easy to confuse because of its lengthy explanation, but that is a reason, not a promise (true_but_off). (3) 'Do not covet your neighbor's possessions' (5:21) also carries no promise (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Ten Commandments",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 7,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 7:16, after God delivers the nations into Israel's hand, what attitude must they have toward the gods of those nations?",
+    "options": [
+      "Hand those gods over to the Levites to be stored in the sanctuary",
+      "Place those gods in the temple as a witness to their victory",
+      "Offer sacrifices to those gods once a year to maintain peaceful relations",
+      "Not serve those gods, for they would be a snare to them"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "ESV Deuteronomy 7:16 states: '...your eye shall not pity them, neither shall you serve their gods, for that would be a snare to you.' The correct answer is therefore 'Do not serve those gods, for they would be a snare.' (1) 'Place in the temple as a witness' completely reverses the command — the gods were to be utterly destroyed, not put on display (wrong_detail). (2) 'Offer sacrifices once a year' is absolutely forbidden — a misconception about religious accommodation (common_misconception). (3) 'Hand over to the Levites to store in the sanctuary' confuses the role of guarding holy objects with the wrong subject — foreign gods were to be destroyed, not preserved (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Idols",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 8,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 8:4, what happened — or rather, did NOT happen — to the people of Israel during their 40 years in the wilderness?",
+    "options": [
+      "Their food supply ran out and they went hungry for many days",
+      "Their weapons rusted so they could not fight",
+      "Their clothing did not wear out and their feet did not swell",
+      "Their tents were torn apart one by one by the desert winds"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "ESV Deuteronomy 8:4 records: 'Your clothing did not wear out on you and your foot did not swell these forty years.' This is a sign of God's supernatural care. (1) 'Food ran out and they went hungry' contradicts the LORD's regular provision of manna (wrong_detail). (2) 'Weapons rusted' is a detail not found in the text — a false inference (wrong_detail). (3) 'Tents torn apart by desert winds' contradicts the theme of preservation in this verse (true_but_off — the harshness of the wilderness is real, but the verse speaks of God's preservation).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Wilderness",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 7,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 7:20, what did God say He would send to drive out those who remain and hide themselves from Israel?",
+    "options": [
+      "A great earthquake to swallow up the cities",
+      "Fire from heaven to consume their hiding places",
+      "Hornets among them",
+      "Hailstones to destroy their fields"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "ESV Deuteronomy 7:20 reads: 'Moreover, the LORD your God will send hornets among them, until those who are left and hide themselves from you are destroyed.' So the correct answer is 'hornets.' (1) 'Earthquake' is not mentioned here — it assigns a wrong instrument of judgment (wrong_detail). (2) 'Fire from heaven' evokes Sodom rather than this passage (near_passage). (3) 'Hailstones' evoke the plagues of Egypt (Exodus 9) rather than the instrument for driving out the Canaanites (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Conquest",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 8,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 8:5, what image did Moses use to describe how God disciplines the people of Israel?",
+    "options": [
+      "As a shepherd disciplines his flock",
+      "As a master trains his servant",
+      "As a king judges his subjects",
+      "As a father disciplines his son"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "ESV Deuteronomy 8:5 reads: 'Know then in your heart that, as a man disciplines his son, the LORD your God disciplines you.' The image is a father with his son. (1) 'A shepherd with his flock' is a common biblical metaphor but not the image used here (true_but_off). (2) 'A king with his subjects' captures the covenant relationship correctly but misses the specific metaphor of the verse (true_but_off). (3) 'A master with his servant' reflects the earlier imagery of Egyptian slavery rather than a father-son relationship (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Discipline",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 7,
+    "verseStart": 3,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Deuteronomy 7:3-4 forbids Israel from intermarrying with the Canaanite peoples. According to the text, what is the core reason for this prohibition?",
+    "options": [
+      "Because those peoples would turn the children of Israel away from the LORD to serve other gods",
+      "Because those peoples are of a cursed lineage whose bloodlines must not be mixed",
+      "Because marriage to foreigners causes ritual impurity and requires a sin offering",
+      "Because those peoples are poor and would gradually deplete Israel's inheritance"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "ESV Deuteronomy 7:4 states the reason plainly: '...for they would turn away your sons from following me, to serve other gods. Then the anger of the LORD would be kindled against you, and he would destroy you quickly.' So the reason is a spiritual danger — being led into worshiping other gods. (1) 'Cursed lineage, mixing bloodlines' is a racial argument — the text is grounded not in bloodline but in faithfulness to the LORD (common_misconception). (2) 'Ritual impurity requiring a sin offering' sounds plausible within purity law but is not the reason stated here (true_but_off). (3) 'Poor peoples depleting the inheritance' is an economic concern entirely off the spiritual focus of the text (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Covenant Marriage",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 7,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 7:22, God said He would drive out the Canaanite peoples 'little by little' rather than all at once. What reason does the text give for this approach?",
+    "options": [
+      "So that Israel would have time to learn the languages and customs of those peoples",
+      "Lest the wild beasts of the field multiply too greatly against Israel",
+      "To test whether Israel would remain patient and obedient to the end",
+      "Lest neighboring nations see the empty land and come to occupy it first"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "ESV Deuteronomy 7:22 reads: 'The LORD your God will clear away these nations before you little by little. You may not make an end of them at once, lest the wild beasts grow too numerous for you.' The reason is ecological — if the land is emptied too quickly, wild animals would multiply. (1) 'Learn their language and customs' directly contradicts the command to avoid the influence of foreign peoples (wrong_detail). (2) 'Testing patient obedience' is a genuine theme in the book (8:2) but is not the reason given in this verse (near_passage). (3) 'Neighboring nations coming to occupy the land' is a strategic inference not found in the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Conquest",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 8,
+    "verseStart": 11,
+    "verseEnd": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In Deuteronomy 8:11-14, Moses warns the people about a particular danger that would come WHEN in their lives?",
+    "options": [
+      "When they were still wandering hungry and thirsty in the wilderness and prone to grumbling",
+      "When they were besieged by neighboring peoples and feared and wanted to return to Egypt",
+      "When they had eaten and were full, built fine houses, and their herds, silver, and gold had multiplied",
+      "When they had just crossed the Jordan River and had not yet had time to build an altar for the LORD"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "ESV Deuteronomy 8:12-14 reads: 'lest, when you have eaten and are full and have built good houses and live in them, and when your herds and flocks multiply and your silver and gold is multiplied and all that you have is multiplied, then your heart be lifted up, and you forget the LORD your God...' The danger comes in times of prosperity, not in hardship. (1) 'Hungry and thirsty in the wilderness' reverses the circumstances — the text warns of fullness and abundance, not scarcity (wrong_detail). (2) 'Besieged and wanting to return to Egypt' is a real temptation found elsewhere in the Pentateuch but is off the mark for this particular warning (true_but_off). (3) 'Just crossed the Jordan, not yet built an altar' misplaces the timing — the danger comes after Israel has settled, built, and grown wealthy (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Warning Against Pride",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 8,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 8:19, if Israel forgot God and went after other gods to serve and worship them, what consequence did Moses solemnly warn would come upon them?",
+    "options": [
+      "They would be exiled for seventy years and then allowed to return to the land",
+      "They would be enslaved by neighboring nations but still retain the land",
+      "They would suffer crop failure and famine for seven consecutive years",
+      "They would surely perish"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 8:19 (ESV) states: '...if you forget the LORD your God and go after other gods and serve them and worship them, I solemnly warn you today that you shall surely perish.' The consequence is total destruction. (1) 'Exile for seventy years' is Jeremiah's prophecy concerning Babylon, not this passage (near_passage). (2) 'Crop failure and famine for seven years' is a different type of covenant curse found in Leviticus, not the statement here (near_passage). (3) 'Enslaved but still retaining the land' softens the punishment — the text says 'surely perish,' not that they would keep the land (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Warning Against Apostasy",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 8,
+    "verseStart": 19,
+    "verseEnd": 20,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Deuteronomy 8:20 uses a comparison to emphasize the fate awaiting Israel if they do not obey the Lord. That fate is likened to what?",
+    "options": [
+      "The same as Sodom and Gomorrah being destroyed by fire",
+      "The same as the generation that fell dead in the wilderness for their unbelief",
+      "The same as the nations the LORD is destroying before them",
+      "The same as Pharaoh and the Egyptian army buried beneath the Red Sea"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 8:20 (ESV) states: 'Like the nations that the LORD makes to perish before you, so shall you perish, because you would not obey the voice of the LORD your God.' The comparison is 'like those nations' destroyed by the LORD — specifically the Canaanite peoples. This is the bitter irony: if they disobey, Israel will suffer the exact fate of the nations they have just driven out. (1) 'The generation that fell dead in the wilderness' is a real judgment event (Numbers 14) and is therefore very attractive, but it is not the comparison used in this verse (near_passage, almost-right). (2) 'Sodom and Gomorrah' is a classic symbol of judgment used elsewhere, but not the image invoked here (near_passage, almost-right). (3) 'Pharaoh under the Red Sea' reverses the roles — that event was Israel's redemption, not a model for their own destruction (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Warning Against Apostasy",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 7,
+    "verseStart": 22,
+    "verseEnd": 24,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Deuteronomy 7:1–2 commands the 'utter destruction' of the Canaanite peoples, yet 7:22 says God will drive them out 'little by little' and not 'quickly.' Reading the text carefully, which interpretation best explains this apparent tension?",
+    "options": [
+      "The ultimate goal remains total destruction; 'little by little' addresses only the pace for practical reasons",
+      "The command for utter destruction applies only to the kings of those nations; the common people are to be driven out gradually",
+      "Verse 7:2 is merely conditional; verse 7:22 actually cancels the destruction command and replaces it with gradual expulsion",
+      "Utter destruction applies when Israel wins battles; gradual expulsion applies when they lose"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 7:22 (ESV) states: 'you may not make an end of them at once, lest the wild beasts grow too numerous for you,' and 7:24 still affirms 'you shall make their name perish from under heaven.' The ultimate goal (total destruction) is therefore unchanged; 'little by little' adjusts only the PACE for practical reasons — occupying the land too quickly would leave it desolate and allow wild animals to multiply and endanger the people. (1) 'Destroy only the kings, drive out the commoners gradually' is a distinction not found in the text (wrong_detail, almost-right). (2) '7:22 cancels the destruction command' misreads the passage — 7:24 shows the command remains fully in force; only the timeline is extended (wrong_detail, almost-right). (3) 'Destroy when victorious, drive out when losing' invents a win-or-lose condition that is not present; the text gives an ecological reason, not a battle-outcome condition (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Conquest of the Land",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 9,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 9:6, how does Moses describe the people of Israel?",
+    "options": [
+      "A stubborn people",
+      "A holy people",
+      "A people as numerous as the stars of heaven",
+      "A people fewer in number than all peoples"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 9:6 (ESV): 'Know, therefore, that the LORD your God is not giving you this good land to possess because of your righteousness, for you are a stubborn people.' The correct answer is 'A stubborn people.' (1) 'A holy people' is drawn from a description found elsewhere (Deut 7:6) and incorrectly assigned to this verse (true_but_off). (2) 'A people as numerous as the stars of heaven' refers to Israel's great numbers in Deut 10:22, not the character trait being rebuked here (near_passage). (3) 'A people fewer in number than all peoples' draws from the idea in Deut 7:7 that Israel was originally small, which misses the focus of this verse (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Stubborn People",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 9,
+    "verseStart": 9,
+    "verseEnd": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 9:9–11, how long was Moses on Mount Horeb when he received the two stone tablets of the covenant, eating no bread and drinking no water?",
+    "options": [
+      "Forty days and forty nights",
+      "Seven days and seven nights",
+      "Three days and three nights",
+      "Six days, until the seventh day"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 9:9 (ESV): 'When I went up the mountain to receive the tablets of stone, the tablets of the covenant that the LORD made with you, I remained on the mountain forty days and forty nights. I neither ate bread nor drank water.' The correct answer is 'Forty days and forty nights.' (1) 'Seven days and seven nights' is simply an incorrect number (wrong_detail). (2) 'Three days and three nights' is also an incorrect number (wrong_detail), pointing to a different cycle found elsewhere in Scripture. (3) 'Six days, until the seventh day' is drawn from the pattern of the cloud covering Mount Sinai in Exodus 24:16, which is a different passage and off-topic here (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Two Stone Tablets",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 9,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 9:16-17, when Moses came down from the mountain and saw that the people had made a cast idol of a calf, what did he do with the two stone tablets?",
+    "options": [
+      "He hid the two stone tablets in a wooden ark",
+      "He threw the two stone tablets down and broke them before the eyes of the people",
+      "He handed the two stone tablets to Aaron to keep",
+      "He carried the two stone tablets back up the mountain to the LORD"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 9:17 (ESV): 'And I took hold of the two tablets and threw them out of my two hands and broke them before your eyes.' The correct answer is 'He threw the two stone tablets down and broke them before the eyes of the people.' (1) 'Hid them in a wooden ark' borrows the detail of the NEW tablets being placed in the ark in Deut 10:5, misplacing the timeline of the question (near_passage). (2) 'Handed them to Aaron to keep' confuses Aaron's role — he was the one who made the calf idol, not someone who kept the tablets (wrong_scope). (3) 'Carried them back up the mountain to the LORD' is a plausible action but not what the text records (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Breaking the Stone Tablets",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 9,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 9:20, why did Moses also have to intercede for Aaron at that time?",
+    "options": [
+      "Because Aaron had seized the inheritance of the tribe of Levi",
+      "Because Aaron had refused to lead the people into the promised land",
+      "Because the LORD was so angry with Aaron that he was ready to destroy him",
+      "Because Aaron spoke against Moses in front of the people"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 9:20 (ESV): 'And the LORD was so angry with Aaron that he was ready to destroy him. And I prayed for Aaron also at the same time.' The correct answer is 'Because the LORD was so angry with Aaron that he was ready to destroy him.' (1) 'Refused to lead the people into the promised land' is not found in the text (wrong_detail). (2) 'Seized the inheritance of the tribe of Levi' reverses the truth — the tribe of Levi has NO inheritance (Deut 10:9), making this off-topic here (true_but_off). (3) 'Spoke against Moses' confuses this event with the incident involving Miriam and Aaron in Numbers 12 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Interceding for Aaron",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 10,
+    "verseStart": 1,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 10:1-3, after cutting two new stone tablets, what did God command Moses to make in order to hold them?",
+    "options": [
+      "A chest of gold",
+      "An ark of wood",
+      "An altar of stone",
+      "A tent of animal skins"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 10:1 (ESV): 'Carve out two tablets of stone like the first, and come up to me on the mountain and make an ark of wood.' The correct answer is 'An ark of wood.' (1) 'A chest of gold' confuses this with the ark of the covenant overlaid with gold described in Exodus 25, applying the wrong material to what is stated here (wrong_detail). (2) 'An altar of stone' draws on the command in Deut 27:5-6 about the stone altar at Mount Ebal, which is off-topic (near_passage). (3) 'A tent of animal skins' confuses this with the coverings of the Tabernacle in Exodus 26 (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Wooden Ark",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 10,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 10:9, why does the tribe of Levi have no portion or inheritance like the other tribes?",
+    "options": [
+      "Because they made the golden calf at Horeb",
+      "Because the LORD is their inheritance",
+      "Because they are the smallest tribe",
+      "Because they stayed on the other side of the Jordan River"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 10:9 (ESV): 'Therefore Levi has no portion or inheritance with his brothers. The LORD is his inheritance, as the LORD your God said to him.' The correct answer is 'Because the LORD is their inheritance.' (1) 'Made the golden calf' is a misconception — the tribe of Levi actually stood with Moses after the golden calf incident (Exodus 32:26), so this is exactly backwards (common_misconception). (2) 'The smallest tribe' is a fabricated reason not found in the text (wrong_detail). (3) 'Stayed on the other side of the Jordan' confuses this with the tribes of Reuben, Gad, and half of Manasseh in Numbers 32 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Tribe of Levi",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 10,
+    "verseStart": 17,
+    "verseEnd": 18,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 10:17-18, which of the following characteristics is stated about God in how He deals with people?",
+    "options": [
+      "He shows no partiality and takes no bribe",
+      "He only blesses the wealthy",
+      "He only hears the prayers of priests",
+      "He changes according to the offerings presented to Him"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 10:17 (ESV): '...the great, the mighty, and the awesome God, who is not partial and takes no bribe.' The correct answer is 'He shows no partiality and takes no bribe.' The remaining three options all contradict this very verse: (1) 'Only blesses the wealthy' contradicts verse 18, which states that He executes justice for the fatherless and the widow (wrong_detail). (2) 'Only hears the prayers of priests' applies a scope far narrower than what the text affirms (wrong_scope). (3) 'Changes according to offerings' is precisely the notion denied by the phrase 'takes no bribe' (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Righteous God",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 10,
+    "verseStart": 19,
+    "verseEnd": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Deuteronomy 10:19 commands the people to love the stranger. According to this verse, what reason is given?",
+    "options": [
+      "Because the strangers would help them conquer the land of Canaan",
+      "Because the strangers are also descendants of Abraham",
+      "Because they themselves were once strangers in the land of Egypt",
+      "Because the law requires strangers to pay tithes"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 10:19 (ESV): 'Love the sojourner, therefore, for you were sojourners in the land of Egypt.' The correct answer is 'Because they themselves were once strangers in the land of Egypt.' (1) 'Descendants of Abraham' is wrong in scope — strangers are outsiders, not of Abraham's lineage (wrong_scope). (2) 'Help them conquer the land' is a fabricated pragmatic reason not found in the text (wrong_detail). (3) 'Pay tithes' confuses this with the law providing for strangers, orphans, and widows in Deuteronomy 14:29, straying from the question (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Love for Strangers",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 11,
+    "verseStart": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Deuteronomy 11:2-6 reminds the people of the mighty acts they witnessed with their own eyes. Among these, what happened to Dathan and Abiram?",
+    "options": [
+      "They were struck with severe leprosy and driven out of the camp",
+      "Fire from heaven consumed them before the entrance of the Tabernacle",
+      "The earth opened its mouth and swallowed them along with their households and tents",
+      "The sea waters closed over them and buried them along with all their chariots"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 11:6 (ESV): '...and what he did to Dathan and Abiram the sons of Eliab, son of Reuben, how the earth opened its mouth and swallowed them up, with their households, their tents, and every living thing that followed them, in the midst of all Israel.' The correct answer is 'The earth opened its mouth and swallowed them along with their households and tents.' (1) 'Fire from heaven consumed them' confuses this with the fate of the 250 men who offered incense during the same Korah incident (Numbers 16:35) — a related event but a different manner of death from Dathan and Abiram (near_passage). (2) 'Struck with leprosy and driven out' confuses this with Miriam in Numbers 12 (wrong_detail). (3) 'The sea waters closed over them' confuses this with the Egyptian army at the Red Sea (Exodus 14), another miracle also mentioned in Deuteronomy 11:4 (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Dathan and Abiram",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 11,
+    "verseStart": 10,
+    "verseEnd": 12,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Deuteronomy 11:10-12 contrasts the land of Canaan with the land of Egypt. According to the text, what is the core difference in how the land is watered?",
+    "options": [
+      "Canaan drinks rainwater from heaven, unlike Egypt which had to be irrigated by foot like a vegetable garden",
+      "Canaan is watered by great rivers, while Egypt relies only on rain",
+      "Both lands depend on rain from heaven, but Canaan receives more",
+      "Canaan requires digging deep wells, while Egypt has natural springs"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 11:10-11 (ESV): 'For the land that you are entering to take possession of it is not like the land of Egypt, from which you have come, where you sowed your seed and irrigated it, like a garden of vegetables. But the land that you are going over to possess... drinks water by the rain from heaven.' The correct answer is 'Canaan drinks rainwater from heaven, unlike Egypt which had to be irrigated by foot like a vegetable garden.' (1) The option saying Canaan relies on rivers while Egypt relies on rain REVERSES what the text actually says (wrong_detail, almost-right). (2) 'Both depend on rain from heaven' erases the very contrast the passage is making (true_but_off). (3) 'Digging deep wells... natural springs' is a fabricated detail not found in the passage (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Land of Rain from Heaven",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 12,
+    "verseStart": 16,
+    "verseEnd": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 12:16, when slaughtering an animal to eat its meat, how must the Israelites handle the blood of the animal?",
+    "options": [
+      "Pour the blood out on the ground like water",
+      "Sprinkle the blood on the altar before eating",
+      "Keep the blood to use as a sin offering",
+      "Mix the blood with salt before eating"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 12:16 (ESV): 'Only you shall not eat the blood; you shall pour it out on the earth like water.' The correct answer is 'Pour the blood out on the ground like water.' (1) 'Sprinkle the blood on the altar' confuses this with sacrificial rituals at the sanctuary, which do not apply to meat slaughtered for eating in the towns (near_passage). (2) 'Keep the blood to use as a sin offering' gets the detail wrong: the blood must be poured out, not kept (wrong_detail). (3) 'Mix the blood with salt before eating' directly contradicts the prohibition on consuming blood (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Law of Blood",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 12,
+    "verseStart": 32,
+    "verseEnd": 32,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 12:32, what are the Israelites commanded to do regarding everything God has commanded them?",
+    "options": [
+      "Be careful to do it; do not add to it or take from it",
+      "Write it down to pass it on to future generations",
+      "Read it aloud once a year",
+      "Do it, but you may adjust it as the times change"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 12:32 (ESV): 'Everything that I command you, you shall be careful to do. You shall not add to it or take from it.' The correct answer is 'Be careful to do it; do not add to it or take from it.' (1) 'Write it down to pass it on to future generations' is true within the broader law but is not what this verse emphasizes (true_but_off). (2) 'Read it aloud once a year' confuses this with the command to read the law in Deuteronomy 31, not this verse (near_passage). (3) 'May adjust it as the times change' directly contradicts the command 'you shall not add to it or take from it' (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Faithfulness to the Law",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 14,
+    "verseStart": 6,
+    "verseEnd": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 14:6, which animals are considered clean and permitted to eat?",
+    "options": [
+      "Animals that have a split hoof but do not chew the cud",
+      "Animals that both have a split hoof and chew the cud",
+      "Animals that chew the cud but do not have a split hoof",
+      "Animals that live both on land and in water"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 14:6 (ESV): 'Every animal that parts the hoof and has the hoof split in two and chews the cud, among the animals, you may eat.' BOTH signs must be present. The correct answer is 'Animals that both have a split hoof and chew the cud.' (1) 'Animals that have a split hoof but do not chew the cud' satisfies only one condition (e.g., the pig) and is therefore forbidden (wrong_detail). (2) 'Animals that chew the cud but do not have a split hoof' also satisfies only one condition (e.g., the hare) and is therefore forbidden (wrong_detail). (3) 'Animals that live both on land and in water' is not a criterion for distinguishing clean animals in this verse (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Clean food laws",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 14,
+    "verseStart": 9,
+    "verseEnd": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 14:9-10, what characteristics must a water creature have in order to be permitted to eat?",
+    "options": [
+      "Hard scales covering its entire body",
+      "Fins but no claws",
+      "Living in flowing water rather than still water",
+      "Fins and scales"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 14:9-10 (ESV): 'Of all that are in the waters you may eat these: whatever has fins and scales you may eat. And whatever does not have fins and scales you shall not eat.' The correct answer is 'Fins and scales.' (1) 'Hard scales covering its entire body' omits the condition of fins and adds a detail not found in the text (wrong_detail). (2) 'Living in flowing water rather than still water' is not a criterion stated anywhere in this law (common_misconception). (3) 'Fins but no claws' lacks the condition of scales and introduces the irrelevant detail of claws (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Clean food laws",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 12,
+    "verseStart": 6,
+    "verseEnd": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 12:6-7, where were the Israelites required to bring their burnt offerings, tithes, vow offerings, and freewill offerings?",
+    "options": [
+      "To the house of the nearest Levite in their town",
+      "To any high place where their ancestors had worshiped",
+      "To the place the LORD would choose to put his name",
+      "To the city gate for the elders to distribute"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 12:6 (ESV): 'And there you shall bring your burnt offerings and your sacrifices, your tithes and the contribution that you present, your vow offerings...' — 'there' refers back to 'the place that the LORD your God will choose... to put his name' (v. 5). The correct answer is 'To the place the LORD would choose to put his name.' (1) 'To the house of the nearest Levite' confuses this with the third-year tithe law (14:28-29), which does not apply to these offerings (near_passage). (2) 'To any high place where their ancestors had worshiped' contradicts the command to demolish the high places and centralize worship (wrong_detail). (3) 'To the city gate for the elders to distribute' confuses this with judicial proceedings at the gate, which are unrelated to offerings (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Central place of worship",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 13,
+    "verseStart": 16,
+    "verseEnd": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 13:12-16, what fate must befall an Israelite city that has been led astray to worship other gods?",
+    "options": [
+      "It must pay double taxes to the central sanctuary",
+      "It must be completely burned and left a ruin forever",
+      "Its inhabitants must be expelled from the land and exiled among the nations",
+      "Its altars must be torn down and a sin offering presented"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 13:16 (ESV): 'You shall gather all its spoil into the midst of its open square and burn the city and all its spoil with fire... It shall be a heap forever. It shall not be built again.' The correct answer is 'It must be completely burned and left a ruin forever.' (1) 'It must pay double taxes' has no basis in the text and is far too lenient compared to the sentence of destruction (wrong_detail). (2) 'Its inhabitants must be expelled and exiled' confuses this with the later punishment of national exile, not the judgment for an apostate city (near_passage). (3) 'Its altars must be torn down and a sin offering presented' is a lenient resolution nowhere mentioned — the city must be utterly destroyed (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Apostate city",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 14,
+    "verseStart": 1,
+    "verseEnd": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 14:1-2, because they are a holy people belonging to God, what mourning practice were the Israelites forbidden to do for the dead?",
+    "options": [
+      "Bury the dead outside the camp",
+      "Wear sackcloth or tear their garments",
+      "Fast for more than three days",
+      "Cut themselves or shave the front of their heads above their eyes"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 14:1 (ESV): 'You are the sons of the LORD your God. You shall not cut yourselves or make any baldness on your foreheads for the dead.' These were pagan mourning customs. The correct answer is 'Cut themselves or shave the front of their heads above their eyes.' (1) 'Wear sackcloth or tear their garments' — tearing one's garments was in fact practiced by godly people in the Old Testament (true_but_off). (2) 'Fast for more than three days' — the specific number of three days does not appear in the text (wrong_detail). (3) 'Bury the dead outside the camp' confuses this with the purity laws concerning the camp, which are unrelated to mourning rites here (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Holy people",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 14,
+    "verseStart": 28,
+    "verseEnd": 29,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 14:28-29, the tithe set aside at the end of every third year was designated to provide for whom?",
+    "options": [
+      "For the priests serving at the central sanctuary",
+      "For the Levites, the poor, and released prisoners",
+      "For soldiers and those who guard the city gates",
+      "For the Levites, the sojourner, the fatherless, and the widow"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 14:28-29 (ESV): 'At the end of every three years... the Levite... and the sojourner, the fatherless, and the widow, who are within your towns, shall come and eat and be filled.' The correct answer is 'For the Levites, the sojourner, the fatherless, and the widow.' (1) 'For the priests at the sanctuary' wrongly narrows the recipients — this tithe was for the vulnerable within the towns (wrong_scope). (2) 'For soldiers and those who guard the city gates' is not mentioned in the text (wrong_detail). (3) 'Levites, the poor, and released prisoners' correctly names the Levites but substitutes the other two groups incorrectly (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Third-Year Tithe",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 12,
+    "verseStart": 30,
+    "verseEnd": 31,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Deuteronomy 12:30-31 warns the Israelites not to inquire about how the surrounding nations worship their gods in order to imitate them. What core reason does the text give for why such worship is an abomination to the LORD?",
+    "options": [
+      "Because those nations offered precious metals such as gold and silver to their idols",
+      "Because they burned their sons and daughters in the fire as sacrifices to their gods",
+      "Because they worshiped on the high places instead of in the low places of the land",
+      "Because they mixed the worship of the LORD with the worship of other gods"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 12:31 (ESV): 'for every abominable thing that the LORD hates they have done for their gods, for they even burn their sons and their daughters in the fire to their gods.' The text identifies the burning of children in fire as the pinnacle of the abomination. The correct answer is the option stating they 'burned their sons and daughters.' (1) 'Offering precious metals such as gold and silver to idols' misidentifies the core sin — the offense does not lie in the monetary value of the offering (wrong_detail). (2) 'Worshiping on the high places rather than in the low places of the land' confuses the location issue raised in 12:2 with the reason the ritual itself is abominable in nature (near_passage). (3) 'Mixing the worship of the LORD with other gods' is a real danger warned against in v.30 but is not the 'abomination' the text names in v.31 (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Prohibition Against Imitating the Nations",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 13,
+    "verseStart": 17,
+    "verseEnd": 17,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Regarding the plunder of an apostate Israelite city (Deuteronomy 13:16-17), what notable rule does the text prescribe that differs from the ordinary treatment of war plunder?",
+    "options": [
+      "A portion of the plunder must be given to the priests, and the rest may be kept",
+      "The plunder is to be divided equally among all the tribes of Israel",
+      "Nothing under the ban may touch their hands; everything must be burned completely",
+      "Gold and silver are kept for the treasury of the LORD, and the rest is burned"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 13:16-17 (ESV): 'You shall gather all its spoil into the midst of its open square and burn the city and all its spoil with fire... None of the devoted things shall stick to your hand.' Unlike ordinary plunder, which could be kept, everything here must be utterly destroyed. The correct answer is 'Nothing under the ban may touch their hands; everything must be burned completely.' (1) 'A portion for the priests, and the rest kept' wrongly applies the ordinary rules of plunder from Numbers 31 to this special case (near_passage). (2) 'Divided equally among all the tribes' is likewise how ordinary plunder was distributed and does not apply here (wrong_scope). (3) 'Gold and silver kept for the LORD's treasury' conflates this law with the conquest of Jericho in Joshua 6; in this passage everything must be burned (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Apostate City",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 15,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 15:12, in what year must an owner release a Hebrew slave who was sold into service?",
+    "options": [
+      "The fifth year",
+      "The sixth year",
+      "The seventh year",
+      "The fiftieth year"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 15:12 (ESV): 'If your brother, a Hebrew man or a Hebrew woman, is sold to you, he shall serve you six years, and in the seventh year you shall let him go free from you.' The correct answer is 'The seventh year.' (1) 'The sixth year' gets the detail wrong (wrong_detail): the sixth year is the final year of service; the release takes place in the seventh year. (2) 'The fifth year' states an incorrect number (wrong_detail). (3) 'The fiftieth year' refers to the Year of Jubilee in Leviticus 25, a different release law altogether (true_but_off), not the Hebrew slave law addressed here.",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Slave Law",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 15,
+    "verseStart": 13,
+    "verseEnd": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 15:13-14, when a Hebrew slave is released in the seventh year, what must the owner do for that person?",
+    "options": [
+      "Let the person go empty-handed, since he has already benefited from six years of provision",
+      "Pay the person six years of wages in silver",
+      "Provide generously from the flock, the threshing floor, and the winepress",
+      "Retain the person's wife and children as compensation for the owner's labor"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 15:13-14 (ESV): 'And when you let him go free from you, you shall not let him go empty-handed. You shall furnish him liberally out of your flock, out of your threshing floor, and out of your winepress.' The correct answer is to provide generously from the flock, the threshing floor, and the winepress. (1) 'Let the person go empty-handed' directly contradicts verse 13, which forbids this (wrong_detail, almost-right because the reasoning sounds plausible but opposes the text). (2) 'Pay six years of wages in silver' is a logical inference based on labor rendered, but the text prescribes giving goods from one's estate, not paying a wage (true_but_off). (3) 'Retain the wife and children' borrows a detail from another scenario in verses 16-17 and Exodus 21:4 (near_passage), which is not what this law prescribes.",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Slave Law",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 15,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 15:16-17, if a slave loves his master and wishes to remain as a servant forever, what mark must the master make on him?",
+    "options": [
+      "Pierce his ear with an awl against the door",
+      "Lay hands on his head and bless him",
+      "Brand a mark on his forehead with a hot iron",
+      "Cut off a corner of his garment to keep as a witness"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 15:17 (ESV): 'then you shall take an awl, and put it through his ear into the door, and he shall be your slave forever.' The correct answer is 'Pierce his ear with an awl against the door.' (1) 'Laying on of hands in blessing' is a genuine biblical ceremony but used in other contexts, not as the mark of a voluntary slave (true_but_off). (2) 'Branding a mark on the forehead with a hot iron' is a slave punishment found in foreign cultures, not in Deuteronomy law (common_misconception). (3) 'Cutting off a corner of the garment to keep as a witness' draws on the motif from David and Saul (near_passage), and is unrelated to this law.",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Slave law",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 15,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 15:19, what must the Israelites do with the firstborn males of their herds and flocks?",
+    "options": [
+      "Sell them for silver to contribute to the temple treasury",
+      "Hand them over to the Levites as a substitute for the tithe",
+      "Set them apart as holy to the LORD your God",
+      "Keep them for breeding to grow the flock larger"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 15:19 (ESV): 'All the firstborn males that are born of your herd and flock you shall dedicate to the LORD your God.' The correct answer is 'Set them apart as holy to the LORD.' (1) 'Selling them for silver' contradicts verse 19, which forbids using the firstborn for personal gain — one must not work the firstborn ox or shear the firstborn sheep (wrong_detail). (2) 'Handing them over to the Levites as a substitute for the tithe' confuses this with the tithe-for-Levites system (wrong_scope). (3) 'Keeping them for breeding' is an economic practice but contradicts the command to set them apart as holy (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Firstborn",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 16,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 16:1, in which month must the Israelites observe the Passover for the LORD, and to remember what event?",
+    "options": [
+      "In the month of Abib, because in that month the LORD gave the Ten Commandments at Sinai",
+      "In the seventh month, because in that month they entered the Promised Land",
+      "In the month of Abib, because in that month the LORD brought them out of Egypt by night",
+      "In the third month, because in that month the LORD made a covenant with Abraham"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 16:1 (ESV): 'Observe the month of Abib and keep the Passover to the LORD your God, for in the month of Abib the LORD your God brought you out of Egypt by night.' The correct answer is 'In the month of Abib … brought out of Egypt by night.' (1) 'The seventh month … entered the Promised Land' is wrong on both the month and the reason (wrong_detail). (2) 'The month of Abib … gave the Ten Commandments' has the right month but assigns the wrong event — the giving of the law at Sinai belongs to the Feast of Weeks (true_but_off). (3) 'The third month … covenant with Abraham' is wrong on both the month and the event (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Three Pilgrimage Feasts",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 16,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 16:16, three times a year all males must appear before the LORD at which three festivals?",
+    "options": [
+      "The Feast of Passover, the Day of Atonement, and the Feast of Trumpets",
+      "The Feast of Unleavened Bread, the Feast of Firstfruits, and the Day of Atonement",
+      "The New Moon festival, the Sabbath, and the Feast of Booths",
+      "The Feast of Unleavened Bread, the Feast of Weeks, and the Feast of Booths"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 16:16 (ESV): 'Three times a year all your males shall appear before the LORD your God at the place that he will choose: at the Feast of Unleavened Bread, at the Feast of Weeks, and at the Feast of Booths.' The correct answer is 'The Feast of Unleavened Bread, the Feast of Weeks, and the Feast of Booths.' (1) 'Passover, Day of Atonement, Feast of Trumpets' lists real feasts from the sacred calendar (Leviticus 23) but not the three pilgrimage feasts specified here (true_but_off). (2) 'New Moon, Sabbath, Feast of Booths' mixes periodic holy days with one correct pilgrimage feast (wrong_scope). (3) 'Unleavened Bread, Firstfruits, Day of Atonement' gets one right and two wrong (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Three Pilgrimage Feasts",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 16,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 16:16-17, when the men appear before the LORD at the three festivals, by what principle must they bring an offering?",
+    "options": [
+      "Each person must bring an equal amount to maintain fairness",
+      "No one shall appear empty-handed; each shall give as he is able, according to the blessing the LORD has given him",
+      "Only the wealthy are required to bring an offering; the poor are exempt",
+      "Each person must bring exactly a tenth of his produce"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 16:16-17 (ESV): 'None shall appear before the LORD empty-handed. Every man shall give as he is able, according to the blessing of the LORD your God that he has given you.' The correct answer is 'No one shall appear empty-handed; each shall give as he is able, according to the LORD's blessing.' (1) 'Bringing an equal amount' contradicts the principle of giving according to one's ability (wrong_detail). (2) 'Only the wealthy are required to give' contradicts verse 16, which requires all males without exception (wrong_detail). (3) 'Exactly a tenth of produce' applies the tithe law (Deuteronomy 14) to the pilgrimage feasts (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Three Pilgrimage Feasts",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 16,
+    "verseStart": 21,
+    "verseEnd": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 16:21-22, what were the Israelites forbidden to set up beside the altar of the LORD their God?",
+    "options": [
+      "An Asherah pole or any wooden pillar as an idol",
+      "A second altar for burnt offerings",
+      "A stone chest inscribed with the names of the patriarchs",
+      "A tall tree to hang lamps to light the sanctuary"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 16:21-22 (ESV): 'You shall not plant any tree as an Asherah beside the altar of the LORD your God that you shall make. And you shall not set up a pillar, which the LORD your God hates.' The correct answer is 'an Asherah pole or wooden pillar as an idol.' (1) 'A second altar for burnt offerings' is a worship violation but is not the prohibition stated here (true_but_off). (2) 'A stone chest inscribed with the names of the patriarchs' is not the forbidden object in this passage (wrong_detail). (3) 'A tall tree to hang lamps' misunderstands the nature of the Asherah tree as an object of pagan worship (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Pure Worship",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 17,
+    "verseStart": 6,
+    "verseEnd": 7,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 17:6-7, what requirements does the text set regarding witnesses and the carrying out of execution for someone guilty of worshiping other gods?",
+    "options": [
+      "At least two or three witnesses are required, and all the people must act together at once, no one going first",
+      "Only one credible witness is needed, and the priest must strike first",
+      "At least two or three witnesses are required, and the witnesses must cast the first stone",
+      "A confession from the accused is required, and the judge must strike first"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 17:6-7 (ESV): 'On the evidence of two witnesses or of three witnesses the one who is to die shall be put to death... The hand of the witnesses shall be first against him to put him to death, and afterward the hand of all the people.' The correct answer combines both details accurately. (1) 'Only one witness... the priest strikes first' is wrong both in number (v.6 requires two or three) and in who strikes first (wrong_detail, almost-right). (2) 'Two or three witnesses... all the people act together at once' gets the witness count right but reverses the order — the text requires the witnesses to strike FIRST, then the rest of the people follow (wrong_detail, almost-right). (3) 'A confession from the accused' imports a modern procedural concept that directly contradicts the witness principle (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Law of Witnesses",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 17,
+    "verseStart": 18,
+    "verseEnd": 20,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 17:18-20, why must the king of Israel copy out the law for himself and read it all the days of his life?",
+    "options": [
+      "So that the king may have a long life and expand his territory by knowing the law",
+      "So that the king may have authority to amend the law to fit the needs of his era",
+      "So that the king may teach the law to the judges and priests of the land",
+      "So that the king may fear the LORD, keep the law, and not be proud above his brothers"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 17:19-20 (ESV): the king must read the law all his days 'that he may learn to fear the LORD his God by keeping all the words of this law and these statutes, and doing them, that his heart may not be lifted up above his brothers, and that he may not turn aside from the commandment, either to the right hand or to the left.' The correct answer captures the core purpose: fearing the LORD, keeping the law, and not being lifted up above his brothers. (1) 'Long life and expanded territory' takes a secondary promise (v.20 does promise a long reign) as the core purpose, inverting the order of priorities (true_but_off, almost-right). (2) 'Teaching the law to judges and priests' is a worthy action but is not the purpose stated in the text (wrong_scope). (3) 'Authority to amend the law' directly contradicts the command not to 'turn aside from the commandment, either to the right hand or to the left' (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Law of the King",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 18,
+    "verseStart": 1,
+    "verseEnd": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 18:1-2, why does the tribe of Levi receive no inheritance of land like the other tribes?",
+    "options": [
+      "Because the LORD himself is their inheritance",
+      "Because they must be scattered among the tribes to teach the law",
+      "Because they sinned and were stripped of the right to an inheritance",
+      "Because they receive only the cities of refuge in place of farmland"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 18:1-2 (ESV) states: 'The Levitical priests, all the tribe of Levi, shall have no portion or inheritance with Israel... They shall have no inheritance among their brothers; the LORD is their inheritance, as he promised them.' Therefore the correct answer is 'the LORD himself is their inheritance.'\n- 'Because they sinned and were stripped of the right to an inheritance' reflects a common misconception (common_misconception): having no territorial inheritance was a privilege of being set apart for the LORD, not a punishment.\n- 'Because they must be scattered among the tribes to teach the law' is true of the Levites elsewhere but is not the reason given in this text (true_but_off): verse 2 states the reason directly — the LORD is their inheritance.\n- 'Because they receive only the cities of refuge' confuses details: the cities of refuge belong to a different law (ch. 19) and are not described as the Levites' portion in place of an inheritance (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Tribe of Levi",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 18,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 18:3, when the people offer an ox or a sheep as a sacrifice, which portions are given to the priest?",
+    "options": [
+      "The right thigh and the fat surrounding the entrails",
+      "The shoulder, the two cheeks, and the stomach (maw)",
+      "The hide and all the blood of the sacrificial animal",
+      "The breast that is waved before the LORD"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 18:3 (ESV) specifies the priests' due from the people when they offer an ox or a sheep: 'they shall give to the priest the shoulder and the two cheeks and the stomach.' That is the correct answer.\n- 'The right thigh and the fat surrounding the entrails' are details from the sacrificial laws in Leviticus (e.g., Lev. 7) and are not the portions listed in Deuteronomy 18:3 (near_passage).\n- 'The hide and all the blood' is wrong in detail: the blood must be poured out to the LORD and does not belong to the priest (wrong_detail).\n- 'The breast that is waved' is a different portion in the offering ritual (Lev. 7:30-31), not the three portions enumerated in Deuteronomy 18:3 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Priestly Portions",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 18,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In the list of Canaanite abominations prohibited in Deuteronomy 18:10-11, which practice involves children?",
+    "options": [
+      "Forcing one's son to serve for life in a pagan temple",
+      "Making one's son or daughter pass through fire",
+      "Selling children to foreigners in exchange for idols",
+      "Offering the firstborn as a grain offering to Baal"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 18:10 opens the list of prohibitions: 'There shall not be found among you anyone who burns his son or his daughter as an offering...' followed by divination, sorcery, mediums, and necromancers. Therefore the practice involving children is 'making one's son or daughter pass through fire.'\n- 'Forcing one's son to serve for life in a pagan temple' is a fabricated detail not found in the list (wrong_detail).\n- 'Offering the firstborn as a grain offering to Baal' mixes elements of grain offerings (which involve grain, not people) with a different deity's name — incorrect detail (wrong_detail).\n- 'Selling children to foreigners in exchange for idols' is a practice not mentioned in this passage (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Canaanite Abominations",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 18,
+    "verseStart": 10,
+    "verseEnd": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 18:14-15, why were the Israelites not to follow diviners and mediums as the other nations did?",
+    "options": [
+      "Because those diviners were deceivers who never told the truth",
+      "Because only the priests were permitted to cast the Urim and Thummim",
+      "Because consulting the future has no effect whatsoever",
+      "Because the LORD would raise up a prophet for them to reveal His will"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 18:14-15: 'the nations...listen to fortune-tellers and to diviners. But as for you, the LORD your God has not allowed you to do this. The LORD your God will raise up for you a prophet like me from among you, from your brothers — it is to him you shall listen.' The reason stated in the text is that the LORD will raise up a prophet to reveal His will, so the people have no need for diviners.\n- 'Because the diviners are deceivers' is morally true in general but is not the reason stated in this text (true_but_off).\n- 'Only priests may cast the Urim and Thummim' is a true detail from another law (Exodus 28) but is not the reason given in this passage (near_passage).\n- 'Consulting the future has no effect' reflects a modern argument rather than the theological reason of verse 15 (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Prophet",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 19,
+    "verseStart": 4,
+    "verseEnd": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What example does Deuteronomy 19:5 use to illustrate the case of a manslayer who may flee to a city of refuge?",
+    "options": [
+      "A man who goes into the forest to cut wood with his neighbor, and the axe head slips from the handle and strikes his neighbor dead",
+      "A shepherd who swings his staff to drive away a wild animal but accidentally strikes another shepherd",
+      "A farmer whose ox gores a passerby to death without his knowledge",
+      "A man who climbs onto a roof to make repairs and falls, crushing the person below"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 19:5 gives the example of a manslayer: 'as when someone goes into the forest with his neighbor to cut wood, and his hand swings the axe to cut down a tree, and the head slips from the handle and strikes his neighbor so that he dies...' That is the correct answer.\n- 'Swinging a staff to drive away a wild animal' is a fabricated scenario not found in the text (wrong_detail).\n- 'An ox goring someone to death' belongs to a different law about a goring ox (Exodus 21:28-29), not the example given here (near_passage).\n- 'Climbing a roof and falling' is confused with the law requiring a parapet on a roof (Deuteronomy 22:8), not the axe-head example (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Cities of Refuge",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 19,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 19:6, why did the law require the cities of refuge to be close enough for a manslayer to reach in time?",
+    "options": [
+      "So that the elders of the city could investigate the case before nightfall",
+      "So that the victim's family would have time to calm their anger and forgive",
+      "So that the priest could offer an atoning sacrifice for the manslayer",
+      "So that the avenger of blood, in his anger, could not overtake and kill an innocent person"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 19:6: '...lest the avenger of blood in hot anger pursue the manslayer and overtake him, because the way is long, and strike him fatally, though the man did not deserve to die...' The reason is so that the avenger of blood cannot overtake and kill an innocent person. That is the correct answer.\n- 'So the elders can investigate before nightfall' adds a time detail not found in the text (wrong_detail).\n- 'So the victim's family can calm down and forgive' sounds reasonable but is not the reason stated in verse 6 (true_but_off).\n- 'So the priest can offer an atoning sacrifice' misapplies the scope: the city of refuge is a legal sanctuary, not connected to atoning sacrifices here (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Avenger of Blood",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 19,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What does Deuteronomy 19:14 prohibit the Israelites from doing regarding their neighbor's land boundary?",
+    "options": [
+      "Buying back land from the poor during the Sabbath year",
+      "Plowing right up to the edge so that the neighbor's land erodes",
+      "Renting out ancestral land to foreigners",
+      "Moving the boundary marker that their ancestors had set"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 19:14: 'You shall not move your neighbor's landmark, which the men of old have set, in the inheritance that you will hold...' The correct answer is 'moving the boundary marker that their ancestors had set.'\n- 'Buying back land from the poor during the Sabbath year' is confused with the law of the jubilee and land redemption (Leviticus 25), not the prohibition here (near_passage).\n- 'Renting out ancestral land to foreigners' is a detail not present in this verse (wrong_scope).\n- 'Plowing right up to the edge causing erosion' sounds related to boundaries but is not the prohibited act in the text (the prohibition is MOVING the marker) (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Boundary Markers",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 19,
+    "verseStart": 18,
+    "verseEnd": 19,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "When a witness is examined and found to have testified falsely, what principle does Deuteronomy 19:18-19 prescribe as punishment?",
+    "options": [
+      "Must pay double the damages that the false testimony caused to the defendant",
+      "Must be expelled from the community and barred from entering the assembly of the LORD",
+      "Must bring a guilt offering and then publicly apologize before the elders",
+      "Must suffer the very punishment he intended to impose on his brother"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 19:18-19 (ESV): 'if the witness is a false witness… then you shall do to him as he had meant to do to his brother. So you shall purge the evil from your midst.' The principle is that the false witness must suffer the very punishment he intended to impose on another (connected to 'eye for eye' in verse 21). That is the correct answer.\n- 'Pay double the damages' is the principle of restitution in theft law (Exodus 22), not the penalty for false testimony (near_passage); this is an almost-right distractor because it is also an Old Testament legal principle.\n- 'Expelled from the community and barred from the assembly' sounds proportionately severe but is not the punishment the text specifies (wrong_detail); almost-right because it seems to match the gravity of the offense.\n- 'Bring a guilt offering and apologize' misapplies the scope: false testimony is handled by the law of proportional retribution, not by voluntary offerings (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "False witness",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 20,
+    "verseStart": 5,
+    "verseEnd": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 20:5-7, which category of person did the officers permit to return home before going to battle?",
+    "options": [
+      "A man who had just been chosen as an elder but had not yet taken office",
+      "A man who was betrothed but had not yet held the wedding ceremony",
+      "A man who had just built a new house but had not yet dedicated it",
+      "A man who had just purchased a herd of livestock but had not yet counted them"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 20:5-7 (ESV) lists those the officers send home: (v. 5) the man who has built a new house and has not dedicated it; (v. 6) the man who has planted a vineyard and has not yet enjoyed its fruit; (v. 7) the man who has betrothed a wife and has not yet taken her. The correct answer is 'a man who had just built a new house but had not yet dedicated it.'\n- 'A man who had just purchased livestock' is not among the three cases listed (wrong_detail).\n- 'A man who was betrothed but had not yet married' IS actually in verse 7 — this is a very tricky almost-right distractor; but the question asks for the person matching the description 'just built a new house and not yet dedicated it,' so the 'built a new house' option (the correct answer) is the true focus, while 'betrothed' is true but phrased here as 'held the wedding ceremony,' placed beside the correct answer to test careful readers (true_but_off relative to the new house description).\n- 'A man who had just been chosen as an elder' is a fabricated detail, not found in the list (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Military exemptions",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 20,
+    "verseStart": 19,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "When besieging a city for a long time, what kind of tree does Deuteronomy 20:19 forbid the Israelites from cutting down, and what reason does it give?",
+    "options": [
+      "Grapevines, because wine belongs to the drink offerings poured out to the LORD",
+      "Olive trees, because their oil is used to anoint kings and priests",
+      "Fruit trees, because the trees of the field are not men to be besieged",
+      "Cedar trees, because that wood is reserved exclusively for building the temple"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 20:19 (ESV): 'When you besiege a city… you shall not destroy its trees by wielding an axe against them. You may eat from them, but you shall not cut them down. Are the trees in the field human, that they should be besieged by you?' The prohibition targets FRUIT trees, with the reason that a tree is not an enemy to be besieged. That is the correct answer.\n- 'Olive trees, because oil is used to anoint kings and priests' names a specific tree and gives a different reason (anointing) that is not the reason stated in verse 19; this is almost-right because olive trees are also fruit trees (wrong_detail).\n- 'Grapevines, because wine belongs to the drink offerings' are also truly fruit-bearing but the drink-offering reason is not the reason given in the text (true_but_off); almost-right.\n- 'Cedar trees for building the temple' is out of scope: cedar is not a fruit tree and the temple reason has nothing to do with verse 19 (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Siege law",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 21,
+    "verseStart": 15,
+    "verseEnd": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 21:15-17, if a man has two wives and the firstborn son belongs to the unloved wife, how must the man distribute his inheritance?",
+    "options": [
+      "Give the firstborn slightly more than the other sons",
+      "Divide the inheritance equally among all sons, without regard to birth order",
+      "Transfer the firstborn's rights to the son of the beloved wife",
+      "Acknowledge that firstborn son and give him a double portion of his estate"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 21:17 (ESV): '…he shall acknowledge the firstborn, the son of the unloved, by giving him a double portion of all that he has, for he is the firstfruits of his strength.' (1) 'Divide equally among all sons' gets the detail wrong — the law affirms the firstborn's right to a double portion (wrong_detail). (2) 'Transfer the right to the son of the beloved wife' reverses the very thing the law forbids: a man may not, out of favoritism, deprive the true firstborn of his rights (wrong_detail). (3) 'Slightly more' vaguely softens the specific figure 'double portion' (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Birthright",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 22,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 22:8, when building a new house, what must an Israelite do for the roof?",
+    "options": [
+      "Plant shade trees so the roof will not crack from the sun",
+      "Build a parapet around the roof",
+      "Erect a small altar to offer firstfruits offerings",
+      "Coat it with white lime to mark the house as set apart"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 22:8 (ESV): 'When you build a new house, you shall make a parapet for your roof, that you may not bring the guilt of blood upon your house, if anyone should fall from it.' The parapet is to prevent fatal accidents. (1) 'Plant shade trees' completely misses the safety purpose (wrong_detail). (2) 'Erect an altar on the roof' is an idolatrous practice condemned elsewhere in the law, not this command (wrong_scope). (3) 'Coat it with white lime' has no basis in the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Community safety",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 25,
+    "verseStart": 1,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 25:1-3, when a guilty person is sentenced to be flogged, what is the maximum number of lashes permitted?",
+    "options": [
+      "Seven lashes",
+      "Ten lashes for each offense committed",
+      "At the judge's discretion, with no limit",
+      "Forty lashes"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 25:3: 'Forty lashes may be given him, but not more, lest, if one should go on to beat him with more stripes than these, your brother be degraded in your sight.' The limit was designed to protect the dignity of the one being punished. (1) 'Seven lashes' gives the wrong number (wrong_detail). (2) 'Ten lashes per offense' introduces a multiplying mechanism not found in the law (wrong_detail). (3) 'No limit' denies the very purpose of the law, which was to set a maximum (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Punishment",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 25,
+    "verseStart": 13,
+    "verseEnd": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 25:13-16, what is 'an abomination to the LORD' concerning trade and commerce?",
+    "options": [
+      "Trading with the foreign nations living around their borders",
+      "Selling goods and grain on the Sabbath set apart as holy",
+      "Lending money at interest to a poor brother in need",
+      "Having in your bag two kinds of weights and two kinds of measures, both large and small"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 25:13-16 forbids having 'two kinds of weights... two kinds of measures' in your bag, and verse 16 declares that 'all who act dishonestly are an abomination to the LORD your God.' This concerns fraudulent measurement. (1) 'Trading with foreign nations' is not what is prohibited in this passage (wrong_detail). (2) 'Lending at interest' belongs to a different law (23:19-20), not this passage (near_passage). (3) 'Selling on the Sabbath' shifts to Sabbath law and does not belong to the weights-and-measures passage (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Commercial Justice",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 21,
+    "verseStart": 1,
+    "verseEnd": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 21:1-9, when a slain body is found in the open country and the killer is unknown, what must the elders of the nearest city do to make atonement for the bloodshed?",
+    "options": [
+      "Offer a male lamb as a sin offering at the place where the body was found",
+      "Cast lots among the neighboring towns to determine who bears responsibility for the bloodshed",
+      "Break the neck of a heifer that has never been worked at a valley with running water, then wash their hands and declare their innocence",
+      "Bring the body back to the city and bury it with a communal mourning ritual for seven days"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 21:4-7: the elders brought 'a heifer that has never been worked... to a valley with running water... and shall break the heifer's neck there,' then washed their hands over the heifer and declared, 'Our hands did not shed this blood.' (1) 'A male lamb as a sin offering' substitutes the wrong animal and the wrong rite — the text specifies a heifer whose neck is broken, not a regular sacrifice (wrong_detail). (2) 'Casting lots to find the perpetrator' has no place in this ritual; the purpose is communal atonement when the killer is unknown (wrong_detail). (3) 'Seven days of mourning' imports details from a different law and does not belong to the heifer rite (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Unsolved Murder",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 21,
+    "verseStart": 10,
+    "verseEnd": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 21:10-13, if a man desires to marry a beautiful captive woman, what must she first be allowed to do?",
+    "options": [
+      "Offer a burnt offering to be cleansed from the defilement of foreign peoples",
+      "Shave her head, pare her nails, and mourn her father and mother for a full month",
+      "Learn the law of Israel for seven days before the marriage",
+      "Return to visit her family one last time before the wedding"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 21:12-13: '...she shall shave her head and pare her nails. And she shall take off the clothes she captured in... and she shall lament her father and her mother a full month. After that you may go in to her and be her husband, and she shall be your wife.' (1) 'Offer a burnt offering for cleansing' is not found in this passage; the rite is a transitional mourning period, not a sacrifice (wrong_detail). (2) 'Learn the law for seven days' is a fabricated detail, wrong in both content and duration — the text specifies one month, not seven days (wrong_detail). (3) 'Return to visit her family' is contradictory — she is mourning her own parents while already in her husband's household (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Female Captive",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 23,
+    "verseStart": 15,
+    "verseEnd": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 23:15-16, when a slave escapes from his master and seeks refuge, how must an Israelite treat him?",
+    "options": [
+      "Keep him as their own slave until the Year of Jubilee",
+      "Return him to his former master to maintain social order",
+      "Bring him before the elders to judge his act of running away",
+      "Do not hand him over to his master; let him dwell wherever he chooses among you, and do not oppress him"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Deuteronomy 23:15-16: 'You shall not give up to his master a slave who has escaped from his master to you. He shall dwell with you, in your midst, in the place that he shall choose... You shall not wrong him.' The law protects the one who has fled. (1) 'Keep him as a slave until the Year of Jubilee' turns the place of refuge into a new form of servitude, contrary to the spirit of the law (wrong_detail). (2) 'Return him to his former master' is precisely what the law explicitly forbids (common_misconception — a natural 'social order' reflex). (3) 'Bring him before the elders for judgment' adds a procedure not found in the text and implies the fugitive is guilty (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Protection of the Fugitive",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 24,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 24:6, why does the law forbid taking a millstone (or its upper stone) as a pledge?",
+    "options": [
+      "Because doing so is like taking a person's very life",
+      "Because the millstone is a sacred object used only for grain offerings",
+      "Because the millstone is too heavy to carry as a valid pledge",
+      "Because the millstone belongs to the whole family, not to one individual"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 24:6: 'No one shall take a mill or an upper millstone in pledge, for that would be taking a life in pledge.' The millstone was the means of making daily bread; seizing it strips away a neighbor's livelihood. (1) 'A sacred object for grain offerings' sounds plausible but the text gives a humanitarian reason, not a ceremonial one (true_but_off). (2) 'Too heavy to carry' is a practical reason that does not match the text's stated rationale (wrong_detail). (3) 'Belongs to the whole family' invents a collective-ownership reason not found in the verse (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Humane pledge law",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 23,
+    "verseStart": 3,
+    "verseEnd": 8,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 23:3–8, how does the law distinguish between the Ammonites/Moabites and the Edomites/Egyptians regarding entry into the assembly of the LORD?",
+    "options": [
+      "Ammonites and Moabites are excluded until the tenth generation; Edomites and Egyptians may be admitted from the third generation",
+      "All four nations are excluded forever, with no exceptions",
+      "Ammonites and Moabites may be admitted from the third generation; Edomites and Egyptians are excluded until the tenth generation",
+      "Ammonites and Moabites are excluded forever; Edomites and Egyptians may be admitted from the tenth generation"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 23:3 excludes Ammonites and Moabites 'to the tenth generation... forever' (because they did not meet Israel with bread and water and hired Balaam against them), while 23:7–8 says 'You shall not abhor an Edomite... You shall not abhor an Egyptian... Children born to them in the third generation may enter the assembly of the LORD.' (1) 'All four nations excluded forever' erases the core distinction of the passage (wrong_scope). (2) Reverses the two groups — assigns the third generation to Ammon/Moab (wrong_detail, almost-right). (3) Assigns the tenth generation to Edom/Egypt — the right number applied to the wrong group (wrong_detail, almost-right).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Entry into the assembly",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 21,
+    "verseStart": 18,
+    "verseEnd": 21,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "In the law about a rebellious son in Deuteronomy 21:18–21, who brings him before the elders, and what is the ultimate purpose of the punishment?",
+    "options": [
+      "The city judge arrests him, and the purpose is to require him to make restitution for all harm done to the community",
+      "The priest leads him away, and the purpose is to offer him as a sacrifice to atone for the sins of his parents' household",
+      "Both father and mother bring him out, and the purpose is to 'purge the evil from your midst' so that all Israel will hear and fear",
+      "The father alone accuses him, and the purpose is to strip him of his entire inheritance"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Deuteronomy 21:19–21: 'his father and his mother shall take hold of him and bring him out to the elders of his city,' the men of the city shall stone him to death, 'so you shall purge the evil from your midst, and all Israel shall hear, and fear.' Both parents must testify, and the purpose is collective deterrence. (1) 'The city judge arrests him... restitution' is wrong on both the agent and the purpose — the penalty is death, not financial restitution (wrong_detail). (2) 'The priest leads him away... atoning sacrifice' turns a judicial execution into a cultic rite (wrong_scope). (3) 'The father alone... strip inheritance' is half right about the father's role but omits the mother and reduces the death penalty to mere forfeiture of property (wrong_detail, almost-right).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Rebellious son",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 26,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 26:12, the tithe of the third year (the year of tithing) is set aside to provide for whom?",
+    "options": [
+      "The priests serving at the temple",
+      "The Levites, sojourners, orphans, and widows",
+      "The elders and judges of the city",
+      "The soldiers going out to battle to defend the people"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 26:12 teaches that in the third year, the year of tithing, the people must give to 'the Levite, the sojourner, the fatherless, and the widow' so that they may eat their fill in your towns — the correct answer is option 0. (1) 'The priests serving at the temple' is wrong in detail: the third-year tithe is stored in the towns for the poor, not directed specifically to the priests (wrong_detail). (2) 'The elders and judges' are not among those named — they are administrators of justice, not beneficiaries (wrong_scope). (3) 'Soldiers going out to battle' is a detail entirely foreign to this tithing law (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Tithes & the poor",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 26,
+    "verseStart": 18,
+    "verseEnd": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In Deuteronomy 26:17–19, what does the 'today' declaration between the LORD and Israel confirm about their relationship?",
+    "options": [
+      "Israel promises to offer all firstfruits, and the LORD promises to send rain and favorable weather",
+      "Israel declares the LORD to be their God, and the LORD declares them to be his treasured people",
+      "The LORD appoints Moses as king, and the people promise to obey all his commands",
+      "The LORD promises to forgive all sins committed in the wilderness if the people agree to be circumcised"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 26:17–19: the people 'have declared today that the LORD is your God,' and the LORD declares today that Israel is 'his treasured possession' and that he will set them high above all nations — the correct answer is option 0. (1) 'Offer firstfruits... rain and favorable weather' blends in nearby content (26:1–11 on firstfruits) but is not the focus of this covenant declaration (near_passage). (2) 'Appointing Moses as king' misidentifies the scope: the covenant is between the LORD and the people, and no king is installed here (wrong_scope). (3) 'Forgive sins if circumcised' is a fabricated detail not found in this declaration (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Covenant & treasured people",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 27,
+    "verseStart": 2,
+    "verseEnd": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 27:2-4, after crossing the Jordan River into the promised land, the people were required to set up large stones and do what with them?",
+    "options": [
+      "Engrave the names of the twelve tribes of Israel on each stone",
+      "Pour oil on them as memorial pillars to commemorate the crossing of the Jordan",
+      "Stack them into twelve heaps corresponding to the number of days the people marched around",
+      "Plaster them with plaster and write on them all the words of this law"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Deuteronomy 27:2-4: the people were to set up large stones, 'plaster them with plaster' and 'write on them all the words of this law' — the correct answer is option 0. (1) 'Engrave the names of the twelve tribes' is an incorrect detail: the stones were for writing the law, not for engraving tribal names (wrong_detail). (2) 'Pour oil as memorial pillars' confuses this with actions of the patriarchs (such as Jacob at Bethel), not the command given here (near_passage). (3) 'Twelve heaps corresponding to the number of days of marching' mixes in the later account in Joshua at Jericho, which is not this command (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Stone inscription of the law",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 27,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Deuteronomy 27:5-6 specifies that the altar built for the LORD must be made of what kind of stone, and where is the reason found?",
+    "options": [
+      "Dressed stones, precisely cut and fitted together so the altar would be sturdy",
+      "Whole stones, untouched by any iron tool",
+      "Stones overlaid with pure gold to be worthy of offering to God",
+      "White stones taken from the bed of the Jordan River they had just crossed"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "RVV11 Deuteronomy 27:5-6: 'You shall not wield an iron tool on them'; the altar must be built of 'whole stones' — the correct answer is option 0. (1) 'Dressed stones, precisely cut' is almost right but directly contradicts the command: the altar must use stones that have not been cut or dressed (wrong_detail). (2) 'White stones taken from the bed of the Jordan' mixes in details about the stones taken from the Jordan, not the material for the altar (near_passage). (3) 'Stones overlaid with gold' confuses this with the ornamentation of the tabernacle and temple, which does not apply to this stone altar (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Altar of whole stones",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 28,
+    "verseStart": 23,
+    "verseEnd": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In the series of curses in Deuteronomy 28:23-24, if the people are disobedient, what will the sky above them and the earth beneath them become?",
+    "options": [
+      "The sky will be pitch dark all day, and the earth will crack open and swallow the harvest",
+      "The sky will rain hail and fire, and the earth will produce thorns instead of wheat",
+      "The sky will be like bronze and the earth like iron; the rain will turn to dust and powder",
+      "The sky will blot out the sun, the earth will tremble, and houses will collapse"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "RVV11 Deuteronomy 28:23-24: 'And the heavens over your head shall be bronze, and the earth under you shall be iron'; the LORD will make the rain of your land become 'powder and dust' — the correct answer is option 0. (1) 'The sky pitch dark… the earth cracking open' sounds fitting for a curse context but is not the language used here (wrong_detail). (2) 'Hail and fire… thorns' mixes imagery from the plagues of Egypt and Genesis 3, not this verse (near_passage). (3) 'Blotting out the sun… trembling' is the imagery of the day of judgment in the prophetic books, out of context for this curse passage (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Blessings & curses",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 28,
+    "verseStart": 68,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Deuteronomy 28:68 describes the climax of the curses when the people are scattered: the LORD will bring them back to Egypt by ship, and there they will offer to sell themselves as what — and what will be the outcome?",
+    "options": [
+      "Sell themselves as slaves, and be forced to labor building cities for Pharaoh",
+      "Sell their children as slaves in order to buy back their own freedom",
+      "Sell themselves as mercenary soldiers, and die in a foreign land",
+      "Offer themselves for sale as slaves, but no one will buy them"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Deuteronomy 28:68: the LORD will bring the people back to Egypt by ship, and there 'you shall offer yourselves for sale to your enemies as male and female slaves, but there will be no buyer' — the correct answer is option 0; the tragedy is that even the status of a slave is something no one will purchase. (1) 'Labor building cities for Pharaoh' evokes the initial bondage in Exodus, not the language here (near_passage). (2) 'Sell their children to buy back their own freedom' reverses the meaning: they themselves offer to sell themselves and find no buyer — it is not about selling children (wrong_detail). (3) 'Sell themselves as mercenary soldiers' is a fabricated detail not found in this verse (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Curses of exile",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 29,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "In Deuteronomy 29:5, Moses reminds the people of what sign that demonstrated God's care for them throughout forty years in the wilderness?",
+    "options": [
+      "The hair on their heads never turned gray despite the passing of years",
+      "Their clothing did not wear out and the sandals on their feet did not wear out",
+      "The food in their storehouses never ran out",
+      "Their weapons never rusted or were damaged"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "RVV11 Deuteronomy 29:5: 'Your clothes have not worn out on you, and your sandals have not worn off your feet' throughout forty years — the correct answer is option 0. (1) 'Hair never turning gray' is a fabricated sign not found in this verse (wrong_detail). (2) 'Food in the storehouses never running out' confuses this with the miracle of manna (Exodus 16), not the language here (near_passage). (3) 'Weapons never rusting' is a detail not mentioned at all (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Covenant at Moab",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 31,
+    "verseStart": 9,
+    "verseEnd": 13,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Deuteronomy 31:9-13: Moses wrote down the law and commanded that it be read aloud to all the people. At what interval and on what feast was this to occur?",
+    "options": [
+      "At the end of every seven years, in the year of release, at the Feast of Booths",
+      "At the end of every seven years, in the Year of Jubilee, at the Feast of Passover",
+      "On the first of every month, on the day of the new moon, before the ark of the covenant",
+      "Once every year, on the great Day of Atonement at the sanctuary"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 31:10-11: 'at the end of every seven years, at the set time in the year of release, at the Feast of Booths,' this law is to be read before all Israel — the correct answer is option 0. (1) 'Every year… Day of Atonement' is wrong in both the cycle and the feast: the interval is seven years and the feast is Booths (wrong_detail). (2) 'Year of Jubilee… Feast of Passover' preserves the seven-year cycle but changes both the name of the year and the feast (Passover instead of Booths) — almost correct but wrong on two key details (wrong_detail). (3) 'Every month… new moon' is a fabricated detail that confuses this passage with other periodic liturgical rites (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Reading the law every seven years",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 32,
+    "verseStart": 35,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In the Song of Moses (Deuteronomy 32:35), what does the LORD declare belongs to Him concerning the enemies of His people?",
+    "options": [
+      "The judgment of all nations belongs to Me, for I made all things",
+      "Vengeance is Mine, and recompense; their foot shall slip in due time",
+      "The redemption of My people belongs to Me, not by sword or spear of man",
+      "Forgiveness and mercy belong to Me forever"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Deuteronomy 32:35: 'Vengeance is mine, and recompense, for the time when their foot shall slip' — the correct answer is option 1. (1) 'The judgment of all nations… I made all things' is true of God in general but is not what is declared in this verse (true_but_off). (2) 'Redemption… not by sword or spear' reflects a theme found elsewhere in the Song and in the Psalms, straying from verse 35 (near_passage). (3) 'Forgiveness and mercy' inverts the focus: this verse speaks of retribution against enemies, not mercy (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Song of Moses",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 34,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Deuteronomy 34:9, why did the people of Israel obey Joshua after the death of Moses?",
+    "options": [
+      "Because Joshua was full of the spirit of wisdom, for Moses had laid his hands on him",
+      "Because Joshua was the only one still alive who had come out of Egypt with Moses",
+      "Because the LORD appeared in a pillar of cloud and appointed Joshua before the whole congregation",
+      "Because Joshua was from the tribe of Levi and therefore had the right to succeed as leader of the people"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Deuteronomy 34:9: Joshua 'was full of the spirit of wisdom, for Moses had laid his hands on him,' so the people obeyed him — the correct answer is option 0. (1) 'The only one still alive who came out of Egypt' is wrong: Caleb also survived, and the verse does not give this as the reason (wrong_detail). (2) 'The LORD appeared in a pillar of cloud' confuses this with the commissioning of Joshua in 31:14-15, not verse 34:9 (near_passage). (3) 'From the tribe of Levi' is factually wrong: Joshua was from the tribe of Ephraim, not Levi (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Deuteronomy",
+      "Pentateuch",
+      "Joshua succeeds Moses",
+      "Basic"
     ]
   }
 ]

@@ -1874,5 +1874,2658 @@
       "Không có dân nào giống Y-sơ-ra-ên",
       "Nâng cao"
     ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 1,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền Luật Lệ Ký 1:2, hành trình từ Hô-rếp đến Ca-đe Ba-nê-a (theo đường núi Sê-i-rơ) mất bao nhiêu ngày?",
+    "options": [
+      "Bảy ngày",
+      "Bốn mươi ngày",
+      "Mười một ngày",
+      "Ba ngày"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "RVV11 Phục 1:2: 'Từ Hô-rếp đi theo đường núi Sê-i-rơ đến Ca-đe Ba-nê-a mất mười một ngày đường.' (1) 'Bốn mươi ngày' lẫn với bốn mươi năm lưu lạc trong đồng vắng (wrong_detail). (2) 'Bảy ngày' là con số quen thuộc trong Kinh Thánh nhưng không phải số ngày ở đây (wrong_detail). (3) 'Ba ngày' nhắc tới hành trình ba ngày đường khác trong Ngũ Kinh, sai phạm vi (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Hành trình đồng vắng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 1,
+    "verseStart": 15,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền Luật Lệ Ký 1:13-15, Môi-se chọn những người làm thủ lĩnh dân chúng dựa trên tiêu chuẩn nào?",
+    "options": [
+      "Mạnh mẽ, can đảm và thạo việc binh đao",
+      "Khôn ngoan, thông sáng và có danh tiếng",
+      "Lớn tuổi, giàu có và đông con cháu",
+      "Thuộc dòng dõi tế lễ và biết dâng của lễ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "RVV11 Phục 1:13-15: Môi-se bảo dân chọn 'những người khôn ngoan, thông sáng và có tiếng' trong các bộ tộc rồi lập họ làm thủ lĩnh. (1) 'Mạnh mẽ, can đảm, thạo binh đao' nghe hợp lý cho thủ lĩnh nhưng không phải tiêu chuẩn bản văn nêu (wrong_detail). (2) 'Lớn tuổi, giàu có, đông con cháu' phản ánh quan niệm trọng vọng thường thấy nhưng không khớp tiêu chuẩn (common_misconception). (3) 'Dòng tế lễ, biết dâng của lễ' lẫn vai trò thầy tế lễ Lê-vi sang vai trò thủ lĩnh xét xử (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Tổ chức dân sự",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 1,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền Luật Lệ Ký 1:15, Môi-se lập các thủ lĩnh cai trị dân theo những cấp bậc nào?",
+    "options": [
+      "Ngàn người, năm trăm người, trăm người và năm mươi người",
+      "Vạn người, ngàn người, trăm người và mười người",
+      "Trăm người, năm mươi người, hai mươi người và mười người",
+      "Ngàn người, trăm người, năm mươi người và mười người"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Phục 1:15: Môi-se lập họ 'làm thủ lĩnh cai trị các ngươi: người chỉ huy một ngàn, một trăm, năm mươi và mười người.' (1) 'Vạn người' không có trong các cấp được liệt kê (wrong_detail). (2) Bộ 'trăm, năm mươi, hai mươi, mười' sai vì thiếu cấp ngàn và thêm cấp hai mươi (wrong_detail). (3) Bộ 'ngàn, năm trăm, trăm, năm mươi' chèn cấp năm trăm không có trong bản văn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Tổ chức dân sự",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 1,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền Luật Lệ Ký 1:23, Môi-se chọn bao nhiêu người để đi do thám đất, và theo cách phân bổ nào?",
+    "options": [
+      "Mười hai người, mỗi bộ tộc một người",
+      "Mười người, chọn từ những người lớn tuổi",
+      "Bảy mươi người, các trưởng lão của dân",
+      "Hai người, kín đáo sai đi do thám"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "RVV11 Phục 1:23: 'Ta chọn trong các ngươi mười hai người, mỗi bộ tộc một người.' (1) 'Mười người, người lớn tuổi' sai cả số lẫn cách chọn (wrong_detail). (2) 'Bảy mươi trưởng lão' lẫn với bảy mươi trưởng lão được lập để giúp Môi-se ở chỗ khác (near_passage). (3) 'Hai người kín đáo' là chuyện do thám Giê-ri-cô thời Giô-suê, sai phạm vi (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Do thám đất hứa",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 2,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền Luật Lệ Ký 2:4-5, vì sao Đức Giê-hô-va cấm dân Y-sơ-ra-ên gây chiến với con cháu Ê-sau ở núi Sê-i-rơ?",
+    "options": [
+      "Vì đã đến lúc trở lại Hô-rếp chứ chưa phải lúc chiếm đất",
+      "Vì dân Ê-sau quá đông và hùng mạnh khiến Y-sơ-ra-ên không thắng nổi",
+      "Vì Y-sơ-ra-ên còn mắc lời thề hòa bình đã lập với Ê-sau từ trước",
+      "Vì Ngài đã ban núi Sê-i-rơ cho con cháu Ê-sau làm sản nghiệp"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Phục 2:5: 'Đừng gây sự với chúng, vì Ta sẽ không ban cho các con đất của chúng, dù một bàn chân, bởi Ta đã ban núi Sê-i-rơ cho Ê-sau làm sản nghiệp.' (1) 'Dân Ê-sau quá đông, hùng mạnh' nghe hợp lý nhưng lý do bản văn nêu là quyền sở hữu Chúa đã ban, không phải sức mạnh đối phương (true_but_off). (2) 'Lời thề hòa bình lập từ trước' bịa thêm giao ước không có trong đoạn này (wrong_detail). (3) 'Đã đến lúc trở lại Hô-rếp' lẫn với mệnh lệnh trước đó về việc rời Hô-rếp, sai phạm vi (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Ê-đôm và Sê-i-rơ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 2,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền Luật Lệ Ký 2:9, Đức Giê-hô-va cấm Y-sơ-ra-ên chiếm đất của dân Mô-áp với lý do gì?",
+    "options": [
+      "Vì Mô-áp là anh em ruột thịt cùng cha với Y-sơ-ra-ên",
+      "Vì Ngài đã ban thành A-rơ cho con cháu Lót làm sản nghiệp",
+      "Vì dân Mô-áp đã cho Y-sơ-ra-ên đi qua đất mình bình an",
+      "Vì đất Mô-áp chỉ toàn núi non hiểm trở không trồng trọt được"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "RVV11 Phục 2:9: 'Đừng quấy nhiễu Mô-áp... vì Ta sẽ không ban cho con phần đất nào của chúng, bởi Ta đã ban A-rơ cho con cháu Lót làm sản nghiệp.' (1) 'Anh em ruột thịt cùng cha' sai: Mô-áp là con cháu Lót (cháu Áp-ra-ham) chứ không phải dòng Ê-sau anh em Gia-cốp (wrong_detail, almost-right vì có quan hệ họ hàng nhưng sai bản chất). (2) 'Mô-áp cho đi qua bình an' trái với diễn biến và không phải lý do bản văn (true_but_off). (3) 'Đất chỉ toàn núi non' bịa lý do địa lý không có trong văn bản (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Mô-áp và Am-môn",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 2,
+    "verseStart": 11,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền Luật Lệ Ký 2:10-12, các dân tộc cổ Em-im, Hô-rít và A-na-kim có điểm chung nào được bản văn nêu lên?",
+    "options": [
+      "Họ là dân cao lớn được kể vào hạng Rê-pha-im, từng cư ngụ trước khi bị dân khác thay thế",
+      "Họ đều là con cháu Lót định cư quanh Biển Chết trước Y-sơ-ra-ên",
+      "Họ là các vua A-mô-rít bị Y-sơ-ra-ên đánh bại phía đông sông Giô-đanh",
+      "Họ là những dân được Chúa cấm Y-sơ-ra-ên đụng đến vì là sản nghiệp Ê-sau"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "RVV11 Phục 2:10-12: dân Em-im 'cao lớn... được kể vào hàng Rê-pha-im như dân A-na-kim'; Hô-rít trước ở Sê-i-rơ rồi bị con cháu Ê-sau đuổi và thay thế. (1) 'Con cháu Lót quanh Biển Chết' lẫn Em-im với dân Mô-áp/Am-môn là kẻ thay thế họ chứ không phải chính họ (wrong_scope, almost-right). (2) 'Các vua A-mô-rít phía đông Giô-đanh' lẫn sang Si-hôn và Óc ở chương sau (near_passage, almost-right). (3) 'Dân được cấm đụng đến vì sản nghiệp Ê-sau' áp lý do của Sê-i-rơ cho cả nhóm cách sai lệch (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Dân khổng lồ Rê-pha-im",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 2,
+    "verseStart": 14,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền Luật Lệ Ký 2:14, khoảng thời gian từ khi rời Ca-đe Ba-nê-a đến khi vượt qua khe Xê-rết gắn với biến cố nào của thế hệ cũ?",
+    "options": [
+      "Bảy năm, là thời gian dân chờ đến khi tới được bờ khe Xê-rết",
+      "Bốn mươi năm trọn, ứng với mỗi ngày do thám đất tính thành một năm",
+      "Ba mươi tám năm, cho đến khi cả thế hệ chiến sĩ ấy chết hết khỏi trại quân",
+      "Một thế hệ, cho đến khi Môi-se và A-rôn cùng qua đời ngoài đất hứa"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "RVV11 Phục 2:14: 'Từ Ca-đe Ba-nê-a đến lúc qua khe Xê-rết là ba mươi tám năm, cho đến khi cả thế hệ chiến sĩ ấy chết hết khỏi trại quân.' (1) 'Bốn mươi năm, mỗi ngày một năm' là nguyên tắc đếm có thật (Dân-số Ký) nhưng con số đoạn này nêu là ba mươi tám năm tính riêng quãng đó (true_but_off, almost-right). (2) 'Bảy năm chờ tới bờ khe' bịa con số không có trong văn bản (wrong_detail). (3) 'Cho đến khi Môi-se và A-rôn qua đời' sai vì mốc bản văn là thế hệ chiến sĩ chết hết, không phải hai lãnh tụ (wrong_scope, almost-right).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Thế hệ đồng vắng",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 2,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền Luật Lệ Ký 2:19, khi Y-sơ-ra-ên đến gần con cháu Am-môn, Đức Giê-hô-va dặn họ điều gì?",
+    "options": [
+      "Chớ vào đất họ vì dân Am-môn thờ thần Mô-lóc đáng ghê tởm",
+      "Hãy chiếm lấy đất Am-môn vì đó là phần Chúa hứa ban cho Y-sơ-ra-ên",
+      "Hãy mua lương thực và nước của họ bằng bạc rồi đi qua",
+      "Chớ quấy nhiễu hay gây chiến, vì đất ấy đã ban cho con cháu Lót"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Phục 2:19: 'Khi đến gần con cháu Am-môn, chớ quấy nhiễu hay gây sự với chúng, vì Ta sẽ không ban cho con đất của con cháu Am-môn... bởi Ta đã ban đất ấy cho con cháu Lót làm sản nghiệp.' (1) 'Hãy chiếm lấy vì là phần Chúa hứa' trái hẳn mệnh lệnh (wrong_detail). (2) 'Mua lương thực và nước bằng bạc' là lệnh dành cho việc đi qua đất Ê-sau ở Phục 2:6, không phải Am-môn (near_passage, almost-right). (3) 'Vì họ thờ Mô-lóc' là chi tiết đúng về sau nhưng không phải lý do bản văn nêu ở đây (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Mô-áp và Am-môn",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 2,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền Luật Lệ Ký 2:24, sau khi vượt qua khe Ạt-nôn, Đức Giê-hô-va bảo Y-sơ-ra-ên khởi chiến với ai?",
+    "options": [
+      "A-rát, vua Ca-na-an ở Nê-ghép",
+      "Óc, vua Ba-san, người Rê-pha-im",
+      "Ba-lác, vua Mô-áp",
+      "Si-hôn, vua Hết-bôn, người A-mô-rít"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Phục 2:24: 'Hãy đứng dậy lên đường, vượt qua khe Ạt-nôn! Kìa, Ta đã phó Si-hôn, vua Hết-bôn, người A-mô-rít, cùng đất nó vào tay con.' (1) 'Óc, vua Ba-san' là vua bị đánh bại sau đó ở chương 3, không phải tại khe Ạt-nôn (near_passage). (2) 'Ba-lác, vua Mô-áp' lẫn với nhân vật thuê Ba-la-am, và Mô-áp lại được lệnh chớ đụng đến (wrong_scope). (3) 'A-rát, vua Ca-na-an ở Nê-ghép' là vua ở vùng khác trong hành trình, sai phạm vi (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Đánh bại Si-hôn",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 3,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 3, dân Israel đã giao chiến và đánh bại vua Óc của Ba-san tại thành nào?",
+    "options": [
+      "Hết-bôn",
+      "Ết-rê-i",
+      "Gia-bốc",
+      "Sa-lê-ca"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 3:1 (RVV11): 'Óc, vua Ba-san, cùng toàn dân mình kéo ra nghênh chiến chúng ta tại Ết-rê-i.' Vậy nơi giao chiến với Óc là Ết-rê-i. (1) 'Hết-bôn' là kinh đô của Si-hôn vua A-mô-rít ở chương 2, không phải Óc (near_passage). (2) 'Gia-bốc' là khe ranh giới đất Si-hôn, không phải thành đánh trận (wrong_detail). (3) 'Sa-lê-ca' là một thành thuộc xứ Ba-san sau khi chiếm được, không phải nơi giao tranh (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Chinh phục Ba-san",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 3,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 3, dân Israel đã chiếm được bao nhiêu thành trong vùng Ạt-gốp, vương quốc của Óc tại Ba-san?",
+    "options": [
+      "Ba mươi thành",
+      "Mười hai thành",
+      "Sáu mươi thành",
+      "Một trăm thành"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 3:4 (RVV11): 'Chúng ta chiếm tất cả thành của vua ấy... sáu mươi thành, tức là toàn miền Ạt-gốp.' Vậy con số đúng là sáu mươi. (1) 'Ba mươi thành' là con số sai (wrong_detail). (2) 'Mười hai thành' không khớp bản văn (wrong_detail). (3) 'Một trăm thành' phóng đại sai con số (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Chinh phục Ba-san",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 3,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 3, người Si-đôn gọi núi Hẹt-môn bằng tên nào?",
+    "options": [
+      "Pít-ga",
+      "Si-ri-ôn",
+      "Ạt-gốp",
+      "Sê-nia"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 3:9 (RVV11): 'người Si-đôn gọi núi Hẹt-môn là Si-ri-ôn, còn dân A-mô-rít gọi là Sê-nia.' Vậy tên người Si-đôn dùng là Si-ri-ôn. (1) 'Pít-ga' là đỉnh núi nơi Môi-se ngắm đất hứa, không liên quan Hẹt-môn (wrong_scope). (2) 'Ạt-gốp' là một miền thuộc Ba-san, không phải tên núi (wrong_scope). (3) 'Sê-nia' là tên dân A-mô-rít gọi, không phải người Si-đôn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Địa danh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 4,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 4, Đức Chúa Trời đã chép điều gì trên hai bảng đá và truyền cho dân Israel làm theo?",
+    "options": [
+      "Mười điều răn",
+      "Danh sách các thành ẩn náu",
+      "Các luật về của lễ",
+      "Bài ca của Môi-se"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 4:13 (RVV11): 'Ngài công bố cho anh em giao ước của Ngài... tức là Mười Điều Răn, rồi Ngài chép các điều ấy trên hai bảng đá.' Vậy điều chép trên hai bảng đá là Mười điều răn. (1) 'Bài ca của Môi-se' xuất hiện ở chương 32, không chép trên bảng đá (near_passage). (2) 'Danh sách các thành ẩn náu' nằm cuối chương 4 nhưng không phải nội dung hai bảng đá (true_but_off). (3) 'Các luật về của lễ' thuộc các sách luật khác, không phải hai bảng đá (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Giao ước Hô-rếp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 3,
+    "verseStart": 18,
+    "verseEnd": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 3, Môi-se đòi các chiến binh của hai chi phái rưỡi đã nhận đất bên kia Giô-đanh phải làm gì trước khi được trở về sản nghiệp mình?",
+    "options": [
+      "Cầm vũ khí vượt sông đi đầu anh em cho đến khi họ cũng được an nghỉ trong đất",
+      "Ở lại canh giữ đất Ba-san cho đến khi cuộc chinh phục bên kia sông hoàn tất",
+      "Dâng một phần mười chiến lợi phẩm thu được từ Si-hôn và Óc cho thầy tế lễ",
+      "Lập tức xây các thành kiên cố để bảo vệ vợ con khỏi dân Rê-pha-im còn sót"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 3:18-20 (RVV11): Môi-se truyền 'tất cả những dũng sĩ phải cầm vũ khí đi tiên phong trước anh em mình' cho đến khi Đức Giê-hô-va ban sự an nghỉ cho anh em họ bên kia sông, rồi mới được trở về sản nghiệp đã chia. Vậy điều kiện là cầm vũ khí vượt sông đi đầu. (1) 'Ở lại canh giữ đất Ba-san' ngược với mệnh lệnh phải đi tiên phong (wrong_detail). (2) 'Dâng một phần mười chiến lợi phẩm' không được nêu trong đoạn này (wrong_scope). (3) 'Lập tức xây thành kiên cố' nhầm với việc để lại vợ con trong thành đã có, không phải điều kiện được trở về (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Chia đất hai chi phái rưỡi",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 4,
+    "verseStart": 15,
+    "verseEnd": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 4, lý do Môi-se nêu ra để cảnh báo dân Israel chớ làm tượng chạm theo bất kỳ hình dạng nào là gì?",
+    "options": [
+      "Các dân chung quanh thờ tượng nên đã bị Chúa tiêu diệt khỏi mặt đất",
+      "Trong ngày Chúa phán từ giữa lửa tại Hô-rếp, họ chẳng thấy một hình dạng nào",
+      "Tượng chạm sẽ bị mục nát và không thể đi theo họ vào đất hứa",
+      "Chỉ thầy tế lễ mới được phép làm các vật thánh trong nơi thờ phượng"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 4:15-16 (RVV11): 'Trong ngày Đức Giê-hô-va phán với anh em từ giữa đám lửa tại Hô-rếp, anh em chẳng thấy một hình dạng nào cả, vậy hãy cẩn thận... đừng làm tượng chạm cho mình theo bất cứ hình dạng nào.' Vậy lý do cốt lõi là họ không thấy hình dạng nào. (1) 'Các dân thờ tượng bị tiêu diệt' là lập luận đúng tổng quát nhưng không phải lý do Môi-se nêu ở đây (true_but_off). (2) 'Tượng sẽ mục nát' không có trong bản văn (wrong_detail). (3) 'Chỉ thầy tế lễ mới được làm vật thánh' nhầm sang luật chức tế lễ, lạc trọng tâm (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cấm tạc tượng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 3,
+    "verseStart": 26,
+    "verseEnd": 28,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 3, sau khi Đức Giê-hô-va từ chối cho Môi-se vào đất hứa, Ngài bảo ông làm gì thay vào đó?",
+    "options": [
+      "Trở về Hô-rếp dâng của lễ chuộc tội để được Chúa đổi ý",
+      "Chọn mười hai người đi do thám đất từ bên kia sông Giô-đanh",
+      "Lên đỉnh Pít-ga ngắm xem đất bằng mắt và truyền lệnh, khích lệ Giô-suê",
+      "Lập tức chia đất hứa cho chín chi phái rưỡi còn lại bằng cách bắt thăm"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 3:27-28 (RVV11): 'Hãy lên đỉnh Pít-ga, ngước mắt nhìn... và ngắm xem đất ấy bằng mắt mình... Hãy truyền lệnh cho Giô-suê, khích lệ và làm cho người vững mạnh.' Vậy Chúa bảo Môi-se ngắm đất từ Pít-ga và ủy thác Giô-suê. (1) 'Trở về Hô-rếp dâng của lễ để Chúa đổi ý' trái với việc Chúa dứt khoát không nghe lời nài xin (wrong_detail). (2) 'Chọn mười hai người do thám' nhầm với sự kiện trước đó ở Ca-đe (near_passage). (3) 'Lập tức chia đất cho chín chi phái rưỡi bằng bắt thăm' là việc của Giô-suê sau này, không phải lệnh cho Môi-se lúc này (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Môi-se không được vào đất",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 4,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 4, Môi-se dùng hình ảnh nào để mô tả xứ Ai Cập mà Đức Giê-hô-va đã đem dân Israel ra khỏi?",
+    "options": [
+      "Hố sư tử",
+      "Lò luyện sắt",
+      "Đồng vắng khô hạn",
+      "Nhà tù bằng đồng"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 4:20 (RVV11): 'Đức Giê-hô-va đã chọn anh em và đem anh em ra khỏi lò luyện sắt, là Ai Cập, để anh em trở thành dân thuộc riêng về Ngài.' Vậy hình ảnh đúng là lò luyện sắt. (1) 'Hố sư tử' là ẩn dụ về hoạn nạn ở các sách khác, không phải Ai Cập trong đoạn này (wrong_scope). (2) 'Đồng vắng khô hạn' mô tả hành trình sau khi ra khỏi Ai Cập, không phải chính Ai Cập (near_passage). (3) 'Nhà tù bằng đồng' nghe gần đúng nhưng sai chất liệu và hình ảnh bản văn dùng (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Ra khỏi Ai Cập",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 4,
+    "verseStart": 41,
+    "verseEnd": 43,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 4 chép Môi-se biệt riêng ba thành ẩn náu ở phía đông sông Giô-đanh. Cách ghép thành với chi phái nào sau đây đúng với bản văn?",
+    "options": [
+      "Bết-se cho người Ru-bên, Ra-mốt cho người Gát, Gô-lan cho người Ma-na-se",
+      "Ra-mốt cho người Ru-bên, Gô-lan cho người Gát, Bết-se cho người Ma-na-se",
+      "Bết-se cho người Gát, Ra-mốt cho người Ma-na-se, Gô-lan cho người Ru-bên",
+      "Gô-lan cho người Ru-bên, Bết-se cho người Ma-na-se, Ra-mốt cho người Gát"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 4:43 (RVV11): 'Bết-se trong đồng vắng... cho người Ru-bên; Ra-mốt trong Ga-la-át cho người Gát; và Gô-lan trong Ba-san cho người Ma-na-se.' Vậy ghép đúng là Bết-se–Ru-bên, Ra-mốt–Gát, Gô-lan–Ma-na-se. (1) Phương án đảo Bết-se sang Gát và Gô-lan sang Ru-bên (wrong_detail). (2) Phương án gán Ra-mốt cho Ru-bên và Bết-se cho Ma-na-se, sai vị trí hoàn toàn (wrong_detail). (3) Phương án xáo trộn cả ba cặp ghép, đưa Gô-lan sang Ru-bên (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Thành ẩn náu",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 3,
+    "verseStart": 12,
+    "verseEnd": 16,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 3, phần đất Ga-la-át và toàn xứ Ba-san của vua Óc được phân chia cho ai?",
+    "options": [
+      "Toàn xứ Ga-la-át cho Gát, còn toàn xứ Ba-san chia đều cho Ru-bên và Ma-na-se",
+      "Cả Ga-la-át lẫn Ba-san đều thuộc về nửa chi phái Ma-na-se vì họ đông quân nhất",
+      "Nửa núi Ga-la-át cho Ru-bên và Gát, phần còn lại của Ga-la-át và cả Ba-san cho nửa chi phái Ma-na-se",
+      "Ru-bên nhận trọn Ba-san, Gát nhận trọn Ga-la-át, còn Ma-na-se nhận vùng Ạt-gốp"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 3:12-13 (RVV11): 'Tôi ban cho người Ru-bên và người Gát... nửa núi Ga-la-át với các thành; phần còn lại của Ga-la-át và toàn xứ Ba-san, vương quốc của Óc, thì tôi ban cho nửa chi phái Ma-na-se.' Vậy Ru-bên và Gát nhận nửa Ga-la-át, còn nửa Ma-na-se nhận phần Ga-la-át còn lại cùng cả Ba-san. (1) 'Toàn xứ Ga-la-át cho Gát, Ba-san chia đều cho Ru-bên và Ma-na-se' sai cách phân chia (wrong_detail). (2) 'Cả Ga-la-át lẫn Ba-san đều thuộc Ma-na-se' bỏ sót phần của Ru-bên và Gát (wrong_scope). (3) 'Ru-bên nhận trọn Ba-san, Gát trọn Ga-la-át' đảo lộn các phần đất so với bản văn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Chia đất hai chi phái rưỡi",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 5,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 5:15, dân Y-sơ-ra-ên phải nhớ điều gì làm lý do giữ ngày Sa-bát?",
+    "options": [
+      "Họ từng làm nô lệ tại Ai Cập và được Chúa giải cứu",
+      "Đức Chúa Trời đã dựng nên trời đất trong sáu ngày",
+      "Họ đã lang thang bốn mươi năm trong đồng vắng",
+      "Tổ phụ họ đã lập giao ước tại núi Mô-ri-a"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "RVV11 Phục Truyền 5:15 chép: 'Khá nhớ rằng ngươi đã làm tôi mọi nơi xứ Ê-díp-tô, và Giê-hô-va Đức Chúa Trời ngươi dùng tay quyền năng giương ra đem ngươi ra khỏi đó; bởi cớ ấy cho nên Ngài dặn biểu ngươi phải giữ ngày nghỉ.' Lý do nêu trong Phục Truyền là việc được giải cứu khỏi ách nô lệ Ai Cập. (1) 'dựng nên trời đất trong sáu ngày' là lý do của Xuất Ê-díp-tô Ký 20:11 chứ KHÔNG phải Phục Truyền 5 (near_passage, sai vì lẫn với bản Xuất 20). (2) 'lang thang bốn mươi năm trong đồng vắng' là chi tiết có thật trong sách nhưng không phải lý do giữ Sa-bát ở đây (true_but_off). (3) 'lập giao ước tại núi Mô-ri-a' sai chi tiết, Mô-ri-a gắn với việc dâng Y-sác chứ không phải Sa-bát (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Mười Điều Răn",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 6,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 6:8, dân sự phải buộc các lời của Chúa làm dấu nơi đâu trên thân thể?",
+    "options": [
+      "Trên trán và quanh cổ",
+      "Trên ngực và hai vai",
+      "Trên môi và lòng bàn tay",
+      "Trên tay và giữa hai con mắt"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Phục Truyền 6:8 chép: 'Khá buộc nó trên tay mình như một dấu, và nó sẽ ở giữa hai con mắt ngươi như ấn chí.' Đáp án đúng là 'trên tay và giữa hai con mắt'. (1) 'trên trán và quanh cổ' sai chi tiết: bản văn nói 'giữa hai con mắt' chứ không phải cổ (wrong_detail). (2) 'trên ngực và hai vai' là chỗ gắn ê-phót của thầy tế lễ (Xuất 28), không phải lệnh ở đây (near_passage). (3) 'trên môi và lòng bàn tay' không có trong câu này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Shema",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 6,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 6:9, dân sự phải viết các lời của Chúa ở những nơi nào?",
+    "options": [
+      "Trên bảng đá đặt nơi bàn thờ",
+      "Trên cuộn sách giao cho thầy tế lễ",
+      "Trên trụ đá dựng giữa thành",
+      "Trên cột nhà và trên cửa"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Phục Truyền 6:9 chép: 'Cũng phải viết các lời đó trên cột nhà ngươi và trên cửa ngươi.' Đáp án đúng là 'trên cột nhà và trên cửa'. (1) 'bảng đá đặt nơi bàn thờ' lẫn với các bảng chứng cớ / bàn thờ chỗ khác, không phải câu này (near_passage). (2) 'cuộn sách giao cho thầy tế lễ' gợi việc chép luật của vua (PTr 17:18) chứ không phải đây (near_passage). (3) 'trụ đá dựng giữa thành' sai chi tiết, bản văn nói cột nhà và cửa của mỗi gia đình (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Shema",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 5,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 5:16, điều răn hiếu kính cha mẹ kèm theo lời hứa gì?",
+    "options": [
+      "Để ngươi thắng hơn mọi kẻ thù nghịch",
+      "Để dòng dõi ngươi đông như sao trên trời",
+      "Để ngươi được sống lâu và được phước trong xứ",
+      "Để Chúa ban mưa thuận cho ruộng đất ngươi"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "RVV11 Phục Truyền 5:16 chép: 'Hãy hiếu kính cha mẹ ngươi... hầu cho ngươi được sống lâu và lấy làm phước trên đất mà Giê-hô-va Đức Chúa Trời ngươi ban cho.' Lời hứa là được sống lâu và được phước trong xứ. (1) 'dòng dõi đông như sao' là lời hứa cho Áp-ra-ham (Sáng 15), không gắn điều răn này (near_passage). (2) 'thắng hơn mọi kẻ thù nghịch' không phải nội dung lời hứa của điều răn hiếu kính (wrong_detail). (3) 'mưa thuận cho ruộng đất' là phước có thật trong PTr 11 nhưng không gắn với điều răn này (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Mười Điều Răn",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 5,
+    "verseStart": 24,
+    "verseEnd": 27,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 5:24-27, vì sao dân Y-sơ-ra-ên xin Môi-se đứng làm trung gian nghe lời Chúa thay cho họ?",
+    "options": [
+      "Vì họ không hiểu được tiếng phán ra từ trên núi",
+      "Vì họ sợ chết bởi ngọn lửa lớn nếu cứ tiếp tục nghe tiếng Chúa",
+      "Vì họ đang vội tiến vào chiếm xứ Ca-na-an",
+      "Vì các trưởng lão đã được chọn để thay mặt toàn dân"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "RVV11 Phục Truyền 5:25 chép dân nói: 'Nhưng bây giờ, cớ sao chúng tôi phải chết? Vì đám lửa lớn này sẽ thiêu nuốt chúng tôi hết. Ví bằng chúng tôi còn nghe tiếng của Giê-hô-va Đức Chúa Trời chúng tôi nữa, thì chúng tôi sẽ chết.' Lý do là nỗi sợ chết bởi ngọn lửa khi nghe trực tiếp tiếng Chúa. (1) 'không hiểu được tiếng phán' sai: dân nghe và hiểu, vấn đề là sợ chết chứ không phải khó hiểu (wrong_detail). (2) 'đang vội tiến vào chiếm xứ' không liên quan, chưa phải lúc đó (true_but_off / sai bối cảnh). (3) 'các trưởng lão đã được chọn thay mặt' lẫn với việc lập bảy mươi trưởng lão (Dân số 11), không phải lý do ở đây (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Môi-se trung gian",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 6,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 6:7, cha mẹ phải dạy các lời của Chúa cho con cái theo cách nào?",
+    "options": [
+      "Ân cần dạy dỗ và nói đến khi ngồi nhà, đi đường, nằm, dậy",
+      "Chỉ dạy cách long trọng vào ngày Sa-bát tại nơi nhóm họp",
+      "Giao cho thầy tế lễ và người Lê-vi dạy thay tại đền thờ",
+      "Chỉ dạy mỗi năm một lần trong các kỳ lễ trọng thể lớn"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "RVV11 Phục Truyền 6:7 chép: 'khá ân cần dạy dỗ con cái ngươi, và phải nói đến, hoặc khi ngươi ngồi trong nhà, hoặc khi đi ngoài đường, hoặc lúc ngươi nằm, hay là khi chỗi dậy.' Việc dạy phải liên tục, trong mọi sinh hoạt thường ngày. (1) 'chỉ dạy vào ngày Sa-bát tại nơi nhóm họp' giới hạn sai phạm vi, trái với 'mọi lúc mọi nơi' (wrong_scope). (2) 'giao cho thầy tế lễ và người Lê-vi dạy thay' chuyển trách nhiệm sai đối tượng, bản văn nhắm vào cha mẹ (wrong_scope). (3) 'mỗi năm một lần trong kỳ lễ' sai tần suất, lệnh đòi sự dạy dỗ thường xuyên (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Dạy con cái",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 6,
+    "verseStart": 10,
+    "verseEnd": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 6:10-12, Môi-se cảnh báo dân sự về nguy cơ nào khi vào xứ đầy nhà tốt, giếng và vườn họ không phải tạo lập?",
+    "options": [
+      "Sẽ quên Đức Giê-hô-va, Đấng đem họ ra khỏi nhà nô lệ",
+      "Sẽ trở lại làm tôi mọi cho các dân Ca-na-an",
+      "Sẽ kiêu ngạo mà khinh dể những người nghèo trong xứ",
+      "Sẽ tranh giành sản nghiệp với nhau giữa các chi phái"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "RVV11 Phục Truyền 6:12 chép: 'thì khá giữ lấy mình, kẻo ngươi quên Đức Giê-hô-va, là Đấng đã đem ngươi ra khỏi xứ Ê-díp-tô, tức khỏi nhà nô lệ.' Nguy cơ Môi-se cảnh báo là quên Chúa khi đã no đủ trong xứ. (1) 'tranh giành sản nghiệp giữa các chi phái' không phải nội dung cảnh báo này (wrong_detail). (2) 'trở lại làm tôi mọi cho dân Ca-na-an' lẫn ngược với 'nhà nô lệ' Ai Cập trong câu, sai đối tượng (wrong_detail). (3) 'kiêu ngạo khinh dể người nghèo' là cảnh báo có thật ở chỗ khác nhưng không phải trọng tâm đoạn này (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Chớ quên Chúa",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 6,
+    "verseStart": 20,
+    "verseEnd": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 6:20-23, khi con cái hỏi về ý nghĩa các luật lệ, cha mẹ phải lấy điều gì làm câu trả lời nền tảng?",
+    "options": [
+      "Mô tả vẻ uy nghi của núi Si-na-i lúc ban luật pháp",
+      "Thuật lại việc Chúa giải cứu họ khỏi tay Pha-ra-ôn tại Ai Cập",
+      "Liệt kê đầy đủ mười điều răn theo đúng thứ tự",
+      "Kể chuyện tổ phụ Áp-ra-ham được kêu gọi rời U-rơ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "RVV11 Phục Truyền 6:21 chép câu cha mẹ phải đáp: 'Chúng ta đã làm tôi mọi cho Pha-ra-ôn tại xứ Ê-díp-tô, nhưng Đức Giê-hô-va dùng tay quyền năng đem chúng ta ra khỏi xứ ấy.' Câu trả lời nền tảng là thuật lại sự giải cứu khỏi Ai Cập. (1) 'mô tả vẻ uy nghi núi Si-na-i' là chi tiết có thật trong sách nhưng không phải câu đáp được dạy ở đây (true_but_off). (2) 'liệt kê đủ mười điều răn theo thứ tự' không phải nội dung lời đáp này (wrong_detail). (3) 'kể chuyện Áp-ra-ham rời U-rơ' lẫn sang Sáng Thế Ký, không phải câu trả lời được chỉ định (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Dạy con cái",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 5,
+    "verseStart": 15,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lý do giữ ngày Sa-bát trong bản Mười Điều Răn ở Phục Truyền 5 khác với bản ở Xuất Ê-díp-tô Ký 20 ở điểm cốt lõi nào?",
+    "options": [
+      "Phục Truyền dời ngày nghỉ sang ngày thứ nhất, còn Xuất 20 giữ ngày thứ bảy",
+      "Phục Truyền cấm mọi việc làm, còn Xuất 20 chỉ cấm buôn bán",
+      "Phục Truyền nhấn đến việc được giải cứu khỏi nô lệ, còn Xuất 20 nhấn đến công cuộc sáng tạo",
+      "Phục Truyền chỉ buộc chủ nhà nghỉ, còn Xuất 20 buộc cả tôi tớ cùng nghỉ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 5:15 nêu lý do: 'Khá nhớ rằng ngươi đã làm tôi mọi nơi xứ Ê-díp-tô... bởi cớ ấy... Ngài dặn biểu ngươi phải giữ ngày nghỉ' — gắn Sa-bát với sự giải cứu khỏi ách nô lệ. Trong khi Xuất Ê-díp-tô Ký 20:11 nêu lý do: 'vì trong sáu ngày Đức Giê-hô-va đã dựng nên trời, đất... nên Ngài ban phước cho ngày nghỉ' — gắn với công cuộc sáng tạo. (1) 'cấm mọi việc làm vs chỉ cấm buôn bán' sai, cả hai bản đều cấm làm công việc nói chung (wrong_detail). (2) 'dời sang ngày thứ nhất' sai, cả hai đều giữ ngày thứ bảy (common_misconception). (3) 'chỉ chủ nhà nghỉ vs cả tôi tớ' sai, cả hai bản đều buộc tôi tớ và súc vật cùng nghỉ — Phục Truyền 5:14 còn nêu rõ điều này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Sa-bát",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 5,
+    "verseStart": 16,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong bản Mười Điều Răn ở Phục Truyền 5, điều răn nào được nêu kèm một lời hứa rõ ràng về phần thưởng?",
+    "options": [
+      "Điều răn chớ giết người",
+      "Điều răn nhớ ngày Sa-bát để nên thánh",
+      "Điều răn chớ tham của kẻ lân cận",
+      "Điều răn hiếu kính cha mẹ"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Phục Truyền 5:16 là điều răn duy nhất trong loạt này kèm lời hứa: 'Hãy hiếu kính cha mẹ ngươi... hầu cho ngươi được sống lâu và lấy làm phước trên đất mà Giê-hô-va Đức Chúa Trời ngươi ban cho.' (1) 'chớ giết người' (5:17) được nêu cộc lốc, không kèm lời hứa (wrong_detail). (2) 'nhớ ngày Sa-bát' (5:12-15) kèm lý do (đã làm nô lệ) chứ không phải một lời hứa phần thưởng cho người giữ — dễ nhầm vì có phần giải thích dài, nhưng đó là lý do, không phải lời hứa (true_but_off). (3) 'chớ tham của kẻ lân cận' (5:21) cũng không kèm lời hứa nào (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Mười Điều Răn",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 7,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 7:16, sau khi Đức Chúa Trời phó các dân cho Y-sơ-ra-ên, họ phải có thái độ nào đối với các thần của những dân đó?",
+    "options": [
+      "Giao các thần ấy cho người Lê-vi cất giữ trong nơi thánh",
+      "Đặt các thần ấy trong đền thờ để làm chứng cho chiến thắng",
+      "Dâng tế cho các thần ấy mỗi năm một lần để giữ hòa khí",
+      "Không hầu việc các thần ấy, vì đó là cái bẫy cho họ"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Phục Truyền 7:16 chép: '...con mắt ngươi chớ thương tiếc chúng. Ngươi đừng hầu việc các thần của chúng, vì đó sẽ là cái bẫy cho ngươi.' Vậy đáp án đúng là 'Không hầu việc các thần ấy, vì đó là cái bẫy.' (1) 'Đặt trong đền thờ làm chứng' đảo ngược hoàn toàn mệnh lệnh — phải tận diệt chứ không trưng bày (wrong_detail). (2) 'Dâng tế mỗi năm một lần' là điều bị cấm tuyệt đối, một hiểu lầm về dung hòa tôn giáo (common_misconception). (3) 'Giao cho người Lê-vi cất giữ' trộn vai trò gìn giữ vật thánh sang đối tượng sai — thần ngoại bang phải bị hủy, không cất giữ (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Hình tượng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 8,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 8:4, điều gì đã xảy ra (hay đúng hơn là KHÔNG xảy ra) với dân Y-sơ-ra-ên suốt 40 năm trong đồng vắng?",
+    "options": [
+      "Lương thực của họ cạn kiệt và họ phải nhịn đói nhiều ngày",
+      "Vũ khí của họ rỉ sét nên không thể chiến đấu",
+      "Áo xống không cũ rách và chân họ không phù lên",
+      "Lều trại của họ bị gió đồng vắng xé tan từng cái"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "RVV11 Phục Truyền 8:4 chép: 'Trong bốn mươi năm nầy, áo xống ngươi không hư mòn, chân ngươi chẳng phù lên.' Đây là dấu hiệu Chúa chăm sóc siêu nhiên. (1) 'Lương thực cạn kiệt, nhịn đói' trái với việc Chúa ban ma-na đều đặn (wrong_detail). (2) 'Vũ khí rỉ sét' là chi tiết không có trong bản văn, suy diễn sai (wrong_detail). (3) 'Lều trại bị xé tan' trái với chủ đề bảo tồn của câu này (true_but_off — đồng vắng khắc nghiệt là thật, nhưng câu nói về sự gìn giữ).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Đồng vắng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 7,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 7:20, Đức Chúa Trời sẽ sai điều gì đến để đuổi những kẻ còn sót và ẩn núp trốn khỏi mặt Y-sơ-ra-ên?",
+    "options": [
+      "Một trận động đất lớn nuốt chửng các thành",
+      "Lửa từ trời thiêu hủy nơi ẩn náu của chúng",
+      "Ong vò vẽ giữa vòng chúng nó",
+      "Mưa đá tàn phá ruộng đồng của chúng"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "RVV11 Phục Truyền 7:20 chép: 'Vả lại, Giê-hô-va Đức Chúa Trời ngươi sẽ sai những ong vò vẽ đến giữa chúng nó, cho đến chừng nào những kẻ đã sống sót và trốn núp khỏi trước mặt ngươi đều bị tiêu diệt.' Vậy đáp án đúng là 'ong vò vẽ.' (1) 'Động đất' không được nêu ở đây — gán sai phương tiện đoán phạt (wrong_detail). (2) 'Lửa từ trời' gợi nhớ Sô-đôm chứ không phải đoạn này (near_passage). (3) 'Mưa đá' gợi tai vạ Ai Cập (Xuất 9) chứ không phải khí cụ đuổi dân Ca-na-an (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Chiếm xứ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 8,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 8:5, Môi-se dùng hình ảnh nào để mô tả cách Đức Chúa Trời sửa phạt dân Y-sơ-ra-ên?",
+    "options": [
+      "Như người chăn sửa dạy bầy chiên của mình",
+      "Như chủ rèn luyện đầy tớ của mình",
+      "Như vua xét xử thần dân của mình",
+      "Như người cha sửa phạt con mình"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Phục Truyền 8:5 chép: 'Vậy, khá nhận biết trong lòng rằng Giê-hô-va Đức Chúa Trời ngươi sửa phạt ngươi như một người sửa phạt con mình vậy.' Hình ảnh là người cha với con. (1) 'Người chăn với bầy chiên' là ẩn dụ Kinh Thánh phổ biến nhưng không phải hình ảnh dùng ở đây (true_but_off). (2) 'Vua với thần dân' đúng quan hệ giao ước nhưng sai ẩn dụ cụ thể của câu (true_but_off). (3) 'Chủ với đầy tớ' phản ánh hình ảnh nô lệ Ai Cập trước đó chứ không phải tình phụ tử (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Kỷ luật",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 7,
+    "verseStart": 3,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 7:3-4 cấm Y-sơ-ra-ên kết thông gia với các dân Ca-na-an. Theo bản văn, lý do cốt lõi cho lệnh cấm này là gì?",
+    "options": [
+      "Vì các dân ấy sẽ làm con cái Y-sơ-ra-ên xây bỏ Chúa mà hầu việc các thần khác",
+      "Vì các dân ấy thuộc dòng dõi bị rủa sả không được phép pha trộn huyết thống",
+      "Vì hôn nhân với người ngoại làm ô uế nghi lễ và phải dâng của lễ chuộc tội",
+      "Vì các dân ấy nghèo khó sẽ khiến gia sản Y-sơ-ra-ên bị tiêu hao dần"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "RVV11 Phục Truyền 7:4 nêu rõ lý do: '...vì sẽ làm cho con trai ngươi lìa bỏ ta mà phục sự các thần khác, thì cơn thạnh nộ của Đức Giê-hô-va nổi lên cùng ngươi, diệt ngươi cách vội vàng.' Vậy lý do là nguy cơ thuộc linh — bị dẫn dụ thờ thần khác. (1) 'Dòng dõi bị rủa sả, pha trộn huyết thống' là lý do chủng tộc — bản văn không dựa trên huyết thống mà trên đức tin (common_misconception). (2) 'Ô uế nghi lễ, dâng của lễ chuộc tội' nghe hợp lý theo luật thanh sạch nhưng không phải lý do nêu ở đây (true_but_off). (3) 'Các dân nghèo làm tiêu hao gia sản' là lo lắng kinh tế hoàn toàn lạc khỏi trọng tâm thuộc linh (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Hôn nhân giao ước",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 7,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 7:22, Đức Chúa Trời cho biết Ngài sẽ đuổi các dân Ca-na-an 'từ từ', chứ không tận diệt 'một lần'. Lý do bản văn đưa ra cho cách làm này là gì?",
+    "options": [
+      "Để Y-sơ-ra-ên có thời gian học tiếng và phong tục của các dân ấy",
+      "Kẻo thú rừng giữa đồng sẽ sinh sôi nhiều quá cho Y-sơ-ra-ên",
+      "Để thử xem Y-sơ-ra-ên có kiên nhẫn vâng lời cho đến cuối không",
+      "Kẻo các dân lân cận thấy đất trống mà kéo đến chiếm trước"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "RVV11 Phục Truyền 7:22 chép: 'Giê-hô-va Đức Chúa Trời ngươi sẽ lần lần đuổi các dân tộc nầy khỏi trước mặt ngươi; ngươi không thể diệt chúng nó mau, e những thú rừng thêm nhiều lên mà hại ngươi chăng.' Lý do là sinh thái — đất bỏ trống quá nhanh thì thú rừng sinh sôi. (1) 'Học tiếng và phong tục' mâu thuẫn với lệnh tránh ảnh hưởng dân ngoại (wrong_detail). (2) 'Thử kiên nhẫn vâng lời' là chủ đề thử lòng có thật trong sách (8:2) nhưng không phải lý do nêu ở câu này (near_passage). (3) 'Dân lân cận kéo đến chiếm' là suy diễn chiến lược không có trong bản văn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Chiếm xứ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 8,
+    "verseStart": 11,
+    "verseEnd": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong Phục Truyền 8:11-14, Môi-se cảnh báo dân về một mối nguy đặc biệt sẽ đến KHI nào trong đời sống của họ?",
+    "options": [
+      "Khi họ còn lang thang đói khát giữa đồng vắng và dễ lằm bằm",
+      "Khi họ bị các dân lân cận vây hãm và sợ hãi muốn quay về Ai Cập",
+      "Khi họ đã ăn no, cất nhà đẹp, bầy súc vật và bạc vàng gia tăng",
+      "Khi họ vừa vượt sông Giô-đanh và chưa kịp lập bàn thờ cho Chúa"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "RVV11 Phục Truyền 8:12-14 chép: 'Khi ngươi đã ăn no nê, cất nhà tốt đặng ở, thấy bò chiên của mình thêm nhiều lên, bạc, vàng, và mọi tài sản mình dư dật rồi, thì bấy giờ lòng ngươi tự cao, quên Giê-hô-va Đức Chúa Trời ngươi...' Mối nguy đến lúc sung túc, không phải lúc khốn khó. (1) 'Đói khát giữa đồng vắng' đảo ngược hoàn cảnh — bản văn cảnh báo lúc no đủ chứ không phải lúc thiếu thốn (wrong_detail). (2) 'Bị vây hãm muốn về Ai Cập' là cám dỗ có thật ở chỗ khác nhưng lạc khỏi cảnh báo của câu này (true_but_off). (3) 'Vừa vượt Giô-đanh chưa lập bàn thờ' đặt sai thời điểm — nguy cơ đến sau khi đã định cư và giàu có (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cảnh báo kiêu ngạo",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 8,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 8:19, nếu Y-sơ-ra-ên quên Đức Chúa Trời mà đi theo và thờ lạy các thần khác, Môi-se long trọng cảnh báo hậu quả nào sẽ đến với họ?",
+    "options": [
+      "Họ sẽ bị lưu đày bảy mươi năm rồi mới được trở về xứ",
+      "Họ sẽ bị các dân lân cận bắt làm tôi mọi nhưng vẫn còn xứ",
+      "Họ sẽ bị mất mùa và đói kém trong bảy năm liền",
+      "Họ chắc chắn sẽ bị diệt vong"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Phục Truyền 8:19 chép: '...nếu ngươi quên Giê-hô-va Đức Chúa Trời ngươi mà theo các thần khác, hầu việc và quì lạy trước các thần ấy, thì ngày nay ta cáo quyết rằng các ngươi hẳn sẽ bị diệt mất.' Hậu quả là bị diệt vong. (1) 'Lưu đày bảy mươi năm' là lời tiên tri của Giê-rê-mi về Ba-by-lôn, không phải câu này (near_passage). (2) 'Mất mùa, đói kém bảy năm' là loại tai vạ giao ước khác (Lê-vi Ký) không phải lời ở đây (near_passage). (3) 'Bị bắt làm tôi mọi nhưng vẫn còn xứ' làm nhẹ đi hình phạt — bản văn nói 'diệt mất' chứ không phải còn xứ (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cảnh báo bội nghịch",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 8,
+    "verseStart": 19,
+    "verseEnd": 20,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 8:20 dùng một phép so sánh để nhấn mạnh số phận của Y-sơ-ra-ên nếu họ không vâng lời Chúa. Số phận ấy được ví ngang với điều gì?",
+    "options": [
+      "Ngang với thành Sô-đôm và Gô-mô-rơ bị lửa thiêu hủy",
+      "Ngang với thế hệ đã ngã chết trong đồng vắng vì không tin",
+      "Ngang với các dân mà Đức Giê-hô-va đang diệt trước mặt họ",
+      "Ngang với Pha-ra-ôn và quân Ai Cập bị chôn vùi dưới Biển Đỏ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "RVV11 Phục Truyền 8:20 chép: 'Các ngươi sẽ bị diệt như các dân tộc kia mà Đức Giê-hô-va tuyệt diệt trước mặt các ngươi, bởi vì không nghe theo tiếng Giê-hô-va Đức Chúa Trời các ngươi.' Phép so sánh là 'như các dân tộc' bị Chúa diệt — chính các dân Ca-na-an. Đây là điểm trớ trêu: nếu bất tuân, Y-sơ-ra-ên sẽ chịu đúng số phận của những dân họ vừa đánh đuổi. (1) 'Thế hệ ngã chết trong đồng vắng' là một sự đoán phạt có thật (Dân Số Ký 14) nên rất hấp dẫn, nhưng không phải phép so sánh của câu này (near_passage, almost-right). (2) 'Sô-đôm và Gô-mô-rơ' là biểu tượng đoán phạt kinh điển được dùng nơi khác, nhưng không phải hình ảnh ở đây (near_passage, almost-right). (3) 'Pha-ra-ôn dưới Biển Đỏ' đảo vai trò — đó là sự cứu chuộc Y-sơ-ra-ên chứ không phải hình mẫu hủy diệt họ (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cảnh báo bội nghịch",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 7,
+    "verseStart": 22,
+    "verseEnd": 24,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 7:1-2 ra lệnh 'tận diệt' các dân Ca-na-an, nhưng 7:22 lại nói Chúa sẽ đuổi chúng 'lần lần' chứ không 'mau'. Đọc kỹ bản văn, cách nào giải thích đúng nhất sự khác biệt rõ ràng này?",
+    "options": [
+      "Mục tiêu cuối vẫn là tận diệt; 'lần lần' chỉ nói về nhịp độ vì lý do thực tế",
+      "Lệnh tận diệt chỉ áp dụng cho vua chúa các dân, còn dân thường thì đuổi đi từ từ",
+      "Câu 7:2 chỉ là điều kiện; còn 7:22 đã hủy bỏ lệnh tận diệt mà thay bằng đuổi dần",
+      "Tận diệt áp dụng cho lúc Y-sơ-ra-ên thắng trận, còn đuổi dần là cho lúc họ thua"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "RVV11 Phục Truyền 7:22 chép: 'ngươi không thể diệt chúng nó mau, e những thú rừng thêm nhiều lên mà hại ngươi chăng' và 7:24 vẫn khẳng định 'ngươi sẽ diệt danh chúng nó khỏi dưới trời.' Vậy mục tiêu cuối cùng (tận diệt) không đổi; 'lần lần' chỉ điều chỉnh NHỊP ĐỘ vì lý do thực tế — đất chiếm quá nhanh sẽ hoang vu, thú rừng sinh sôi gây nguy. (1) 'Chỉ tận diệt vua, dân thường đuổi dần' là phân biệt không có trong bản văn (wrong_detail, almost-right). (2) '7:22 hủy bỏ lệnh tận diệt' hiểu sai — 7:24 cho thấy lệnh vẫn còn nguyên, chỉ là tiến trình kéo dài (wrong_detail, almost-right). (3) 'Tận diệt khi thắng, đuổi dần khi thua' bịa ra điều kiện thắng-thua không hề có; bản văn nói lý do là sinh thái, không phải kết cục trận đánh (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Chiếm xứ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 9,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 9:6, Môi-se mô tả dân Y-sơ-ra-ên là một dân tộc như thế nào?",
+    "options": [
+      "Một dân cứng cổ",
+      "Một dân thánh khiết",
+      "Một dân đông như sao trời",
+      "Một dân ít hơn mọi dân"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 9:6 (RVV11): '...Đức Giê-hô-va, Đức Chúa Trời của anh em, không ban cho anh em xứ tốt tươi này để chiếm hữu vì sự công chính của anh em đâu, vì anh em là một dân cứng cổ.' Đáp án đúng là 'Một dân cứng cổ'. (1) 'Một dân thánh khiết' lấy từ mô tả ở chỗ khác (PTr 7:6) gán nhầm vào câu này (true_but_off). (2) 'Một dân đông như sao trời' là lời nói về số đông dân ở PTr 10:22, không phải đặc tính bị quở ở đây (near_passage). (3) 'Một dân ít hơn mọi dân' lấy ý PTr 7:7 về việc dân vốn ít, lạc trọng tâm câu hỏi (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Dân cứng cổ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 9,
+    "verseStart": 9,
+    "verseEnd": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 9:9-11, Môi-se ở trên núi Hô-rếp bao lâu khi nhận hai bảng đá giao ước, không ăn bánh và không uống nước?",
+    "options": [
+      "Bốn mươi ngày và bốn mươi đêm",
+      "Bảy ngày và bảy đêm",
+      "Ba ngày và ba đêm",
+      "Sáu ngày, đến ngày thứ bảy"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 9:9 (RVV11): 'Khi tôi lên núi để nhận hai bảng đá... tôi ở trên núi bốn mươi ngày và bốn mươi đêm, không ăn bánh, không uống nước.' Đáp án đúng là 'Bốn mươi ngày và bốn mươi đêm'. (1) 'Bảy ngày và bảy đêm' là con số sai chi tiết (wrong_detail). (2) 'Ba ngày và ba đêm' cũng là con số sai (wrong_detail), trỏ tới chu kỳ khác trong Kinh Thánh. (3) 'Sáu ngày, đến ngày thứ bảy' lấy nhịp đám mây phủ núi Si-na-i ở Xuất 24:16, lạc câu hỏi (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Hai bảng đá",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 9,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 9:16-17, khi từ trên núi xuống và thấy dân đã đúc tượng bò con, Môi-se đã làm gì với hai bảng đá?",
+    "options": [
+      "Ông giấu hai bảng đá trong hòm gỗ",
+      "Ông ném hai bảng đá xuống và đập vỡ trước mắt dân",
+      "Ông trao hai bảng đá lại cho A-rôn giữ",
+      "Ông mang hai bảng đá trở lên núi cho Chúa"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 9:17 (RVV11): 'Tôi nắm lấy hai bảng đá, ném ra khỏi tay tôi và đập vỡ trước mắt anh em.' Đáp án đúng là 'Ông ném hai bảng đá xuống và đập vỡ trước mắt dân'. (1) 'Giấu trong hòm gỗ' lấy chi tiết hai bảng MỚI được đặt vào hòm ở PTr 10:5, lạc thời điểm câu hỏi (near_passage). (2) 'Trao lại cho A-rôn giữ' nhầm vai A-rôn — người đã làm tượng bò chứ không giữ bảng đá (wrong_scope). (3) 'Mang trở lên núi cho Chúa' là hành động hợp lý nhưng không phải điều bản văn ghi (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Đập bảng đá",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 9,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 9:20, vì sao Môi-se cũng phải cầu thay cho A-rôn lúc bấy giờ?",
+    "options": [
+      "Vì A-rôn đã chiếm phần sản nghiệp của chi phái Lê-vi",
+      "Vì A-rôn đã từ chối dẫn dân vào đất hứa",
+      "Vì Đức Giê-hô-va nổi giận cùng A-rôn, muốn diệt người",
+      "Vì A-rôn nói nghịch cùng Môi-se trước mặt dân"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 9:20 (RVV11): 'Đức Giê-hô-va cũng nổi giận cùng A-rôn đến nỗi muốn diệt người, nên lúc ấy tôi cũng cầu thay cho A-rôn.' Đáp án đúng là 'Vì Đức Giê-hô-va nổi giận cùng A-rôn, muốn diệt người'. (1) 'Từ chối dẫn dân vào đất hứa' không có trong bản văn (wrong_detail). (2) 'Chiếm phần sản nghiệp của chi phái Lê-vi' đảo ngược sự thật — chi phái Lê-vi KHÔNG có phần sản nghiệp (PTr 10:9), lạc câu hỏi (true_but_off). (3) 'Nói nghịch cùng Môi-se' nhầm sang biến cố Mi-ri-am và A-rôn ở Dân Số Ký 12 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cầu thay A-rôn",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 10,
+    "verseStart": 1,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 10:1-3, sau khi đẽo hai bảng đá mới, Đức Chúa Trời truyền Môi-se phải đóng thêm vật gì để đựng chúng?",
+    "options": [
+      "Một cái rương bằng vàng",
+      "Một cái hòm bằng gỗ",
+      "Một bàn thờ bằng đá",
+      "Một cái lều bằng da"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 10:1 (RVV11): 'Hãy đẽo hai bảng đá giống như hai bảng trước... và đóng một cái hòm bằng gỗ.' Đáp án đúng là 'Một cái hòm bằng gỗ'. (1) 'Rương bằng vàng' nhầm với hòm giao ước bọc vàng mô tả ở Xuất 25, sai chất liệu được nêu tại đây (wrong_detail). (2) 'Bàn thờ bằng đá' lấy lệnh ở PTr 27:5-6 về bàn thờ đá ở Ê-banh, lạc câu hỏi (near_passage). (3) 'Lều bằng da' nhầm sang lớp phủ Đền Tạm ở Xuất 26 (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Hòm gỗ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 10,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 10:9, vì sao chi phái Lê-vi không có phần chia hay sản nghiệp như các chi phái khác?",
+    "options": [
+      "Vì họ đã đúc tượng bò con tại Hô-rếp",
+      "Vì Đức Giê-hô-va là phần sản nghiệp của họ",
+      "Vì họ là chi phái ít người nhất",
+      "Vì họ đã ở lại bên kia sông Giô-đanh"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 10:9 (RVV11): 'Bởi cớ đó, Lê-vi không có phần, cũng không có sản nghiệp chung với anh em mình; chính Đức Giê-hô-va là sản nghiệp của người.' Đáp án đúng là 'Vì Đức Giê-hô-va là phần sản nghiệp của họ'. (1) 'Đúc tượng bò con' nhầm — chính chi phái Lê-vi đứng về phía Môi-se sau vụ bò vàng (Xuất 32:26), nên đây là hiểu lầm (common_misconception). (2) 'Ít người nhất' là lý do bịa, không có trong bản văn (wrong_detail). (3) 'Ở lại bên kia sông Giô-đanh' nhầm sang Ru-bên, Gát và nửa Ma-na-se ở Dân Số 32 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Chi phái Lê-vi",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 10,
+    "verseStart": 17,
+    "verseEnd": 18,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 10:17-18, đặc tính nào sau đây được nêu về Đức Chúa Trời trong cách Ngài đối xử với con người?",
+    "options": [
+      "Ngài không thiên vị ai và không nhận hối lộ",
+      "Ngài chỉ ban phước cho người giàu có",
+      "Ngài chỉ nghe lời cầu xin của thầy tế lễ",
+      "Ngài thay đổi tùy theo của lễ dâng lên"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 10:17 (RVV11): '...Đức Chúa Trời vĩ đại... Ngài không thiên vị ai, cũng không nhận hối lộ.' Đáp án đúng là 'Ngài không thiên vị ai và không nhận hối lộ'. Ba phương án còn lại đều mâu thuẫn với chính câu này: (1) 'Chỉ ban phước cho người giàu' trái với câu 18 nói Ngài bênh vực kẻ mồ côi, góa bụa (wrong_detail). (2) 'Chỉ nghe thầy tế lễ' là phạm vi sai, hẹp hơn bản văn (wrong_scope). (3) 'Thay đổi tùy của lễ' chính là điều bị phủ nhận khi nói Ngài 'không nhận hối lộ' (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Chúa công chính",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 10,
+    "verseStart": 19,
+    "verseEnd": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 10:19 truyền dân phải yêu thương kẻ khách lạ. Theo câu này, lý do được nêu là gì?",
+    "options": [
+      "Vì khách lạ sẽ giúp họ chiếm đất Ca-na-an",
+      "Vì khách lạ cũng là dòng dõi Áp-ra-ham",
+      "Vì chính họ đã từng là khách lạ trong xứ Ai Cập",
+      "Vì luật buộc khách lạ phải nộp phần mười"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 10:19 (RVV11): 'Anh em phải yêu thương người khách lạ, vì anh em đã từng là khách lạ trong xứ Ai Cập.' Đáp án đúng là 'Vì chính họ đã từng là khách lạ trong xứ Ai Cập'. (1) 'Dòng dõi Áp-ra-ham' sai phạm vi — khách lạ là người ngoài, không thuộc dòng dõi (wrong_scope). (2) 'Giúp họ chiếm đất' là lý do thực dụng bịa, không có trong bản văn (wrong_detail). (3) 'Nộp phần mười' nhầm sang luật chu cấp cho khách lạ, mồ côi, góa bụa ở PTr 14:29, lạc câu hỏi (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Yêu khách lạ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 11,
+    "verseStart": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 11:2-6 nhắc dân nhớ các phép lạ chính mắt họ đã thấy. Trong số đó, điều gì đã xảy ra cho Đa-than và A-bi-ram?",
+    "options": [
+      "Họ bị bệnh phung nặng và bị đuổi khỏi trại quân",
+      "Lửa từ trời thiêu nuốt họ trước cửa Đền Tạm",
+      "Đất hả miệng nuốt họ cùng gia quyến và lều trại",
+      "Nước biển ập lại chôn vùi họ cùng cả đoàn xe ngựa"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 11:6 (RVV11): '...đất hả miệng nuốt họ, gia quyến, lều trại và mọi vật theo họ ở giữa cả Y-sơ-ra-ên.' Đáp án đúng là 'Đất hả miệng nuốt họ...'. (1) 'Lửa từ trời thiêu nuốt' nhầm sang số phận 250 người dâng hương trong cùng biến cố Cô-rê (Dân Số 16:35) — gần nhưng khác cách chết của Đa-than, A-bi-ram (near_passage). (2) 'Bệnh phung và bị đuổi' nhầm sang Mi-ri-am ở Dân Số 12 (wrong_detail). (3) 'Nước biển ập lại' nhầm sang quân Ai Cập tại Biển Đỏ (Xuất 14), một phép lạ khác cũng được nhắc trong PTr 11:4 (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Đa-than A-bi-ram",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 11,
+    "verseStart": 10,
+    "verseEnd": 12,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 11:10-12 đối chiếu xứ Ca-na-an với xứ Ai Cập. Theo bản văn, sự khác biệt cốt lõi về cách đất được tưới là gì?",
+    "options": [
+      "Ca-na-an uống nước mưa từ trời, khác Ai Cập phải tưới bằng chân như vườn rau",
+      "Ca-na-an được tưới bởi sông lớn, còn Ai Cập chỉ trông cậy mưa",
+      "Cả hai xứ đều nhờ mưa trời nhưng Ca-na-an mưa nhiều hơn",
+      "Ca-na-an phải đào giếng sâu, còn Ai Cập có suối tự nhiên"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 11:10-11 (RVV11): 'Vì xứ mà anh em sắp vào nhận không giống xứ Ai Cập... nơi anh em gieo giống và phải dùng chân mà tưới như tưới vườn rau. Nhưng xứ mà anh em sắp vào... uống nước mưa từ trời.' Đáp án đúng là 'Ca-na-an uống nước mưa từ trời, khác Ai Cập phải tưới bằng chân như vườn rau'. (1) Phương án nói Ca-na-an nhờ sông còn Ai Cập nhờ mưa là ĐẢO NGƯỢC sự thật bản văn (wrong_detail, almost-right). (2) 'Cả hai đều nhờ mưa trời' xóa mất chính điểm tương phản mà câu nhấn mạnh (true_but_off). (3) 'Đào giếng sâu... suối tự nhiên' là chi tiết bịa, không có trong đoạn (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Xứ mưa trời",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 12,
+    "verseStart": 16,
+    "verseEnd": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 12:16, khi giết thú để ăn thịt, dân Y-sơ-ra-ên phải xử lý huyết của con vật như thế nào?",
+    "options": [
+      "Đổ huyết trên đất như nước",
+      "Rưới huyết lên bàn thờ trước khi ăn",
+      "Giữ huyết lại để làm của lễ chuộc tội",
+      "Pha huyết với muối rồi mới ăn"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 12:16 (RVV11): 'Nhưng các con không được ăn huyết; phải đổ huyết trên đất như nước.' Đáp án đúng là 'Đổ huyết trên đất như nước'. (1) 'Rưới huyết lên bàn thờ' lẫn với nghi thức tế lễ tại nơi thánh, không áp dụng cho thịt giết ăn trong các thành (near_passage). (2) 'Giữ huyết lại để làm của lễ chuộc tội' sai chi tiết: huyết phải bị đổ bỏ, không được giữ (wrong_detail). (3) 'Pha huyết với muối rồi mới ăn' đi ngược hẳn lệnh cấm ăn huyết (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Luật về huyết",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 12,
+    "verseStart": 32,
+    "verseEnd": 32,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 12:32, dân Y-sơ-ra-ên được dặn phải làm gì đối với mọi điều Đức Chúa Trời truyền dạy?",
+    "options": [
+      "Phải làm theo, không được thêm vào cũng không được bớt đi",
+      "Phải ghi chép lại để truyền cho đời sau",
+      "Phải đọc lớn tiếng mỗi năm một lần",
+      "Phải làm theo, nhưng được phép điều chỉnh cho hợp thời"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 12:32 (RVV11): 'Mọi điều ta truyền cho các con, các con phải cẩn thận làm theo; không được thêm vào, cũng không được bớt đi.' Đáp án đúng là 'Phải làm theo, không được thêm vào cũng không được bớt đi'. (1) 'Phải ghi chép lại để truyền cho đời sau' là việc đúng trong tổng thể luật pháp nhưng không phải điều câu này nhấn mạnh (true_but_off). (2) 'Phải đọc lớn tiếng mỗi năm một lần' lẫn với lệnh đọc luật pháp ở Phục Truyền 31, không phải câu này (near_passage). (3) 'Được phép điều chỉnh cho hợp thời' đi ngược trực tiếp lệnh 'không được thêm, không được bớt' (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Trung thành với luật pháp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 14,
+    "verseStart": 6,
+    "verseEnd": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 14:6, loài thú nào được kể là sạch và được phép ăn?",
+    "options": [
+      "Loài có móng chẻ hai nhưng không nhai lại",
+      "Loài vừa có móng chẻ hai vừa nhai lại",
+      "Loài nhai lại nhưng móng không chẻ",
+      "Loài sống cả trên cạn lẫn dưới nước"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 14:6 (RVV11): 'Trong các loài vật, các con được ăn con nào có móng chẻ làm hai và nhai lại.' Phải hội đủ CẢ HAI dấu hiệu. Đáp án đúng là 'Loài vừa có móng chẻ hai vừa nhai lại'. (1) 'Có móng chẻ nhưng không nhai lại' chỉ thỏa một điều kiện (vd heo) nên bị cấm (wrong_detail). (2) 'Nhai lại nhưng móng không chẻ' cũng chỉ thỏa một điều kiện (vd thỏ rừng) nên bị cấm (wrong_detail). (3) 'Sống cả trên cạn lẫn dưới nước' không phải tiêu chuẩn phân biệt thú sạch trong câu này (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Luật về thức ăn sạch",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 14,
+    "verseStart": 9,
+    "verseEnd": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 14:9-10, loài vật sống dưới nước phải có đặc điểm gì thì mới được phép ăn?",
+    "options": [
+      "Có vảy cứng bao phủ toàn thân",
+      "Có vây nhưng không có càng",
+      "Sống ở vùng nước chảy chứ không nước đọng",
+      "Có vây và có vảy"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 14:9-10 (RVV11): 'Trong các loài sống dưới nước, các con được ăn những loài nào có vây và có vảy. Còn loài nào không có vây và vảy thì không được ăn.' Đáp án đúng là 'Có vây và có vảy'. (1) 'Có vảy cứng bao phủ toàn thân' bỏ mất điều kiện 'vây' và thêm chi tiết không có trong bản văn (wrong_detail). (2) 'Sống ở vùng nước chảy chứ không nước đọng' không phải tiêu chuẩn nào trong luật (common_misconception). (3) 'Có vây nhưng không có càng' thiếu điều kiện 'vảy' và thêm 'càng' không liên quan (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Luật về thức ăn sạch",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 12,
+    "verseStart": 6,
+    "verseEnd": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 12:6-7, các của lễ thiêu, phần mười, lễ vật khấn nguyện và các vật biệt riêng của dân Y-sơ-ra-ên phải được đem đến đâu?",
+    "options": [
+      "Đến nhà người Lê-vi gần nhất trong thành mình",
+      "Đến bất cứ nơi cao nào mà tổ phụ từng thờ phượng",
+      "Đến nơi Đức Giê-hô-va sẽ chọn để đặt danh Ngài",
+      "Đến cổng thành để các trưởng lão phân chia"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 12:6 (RVV11): 'Hãy đem đến đó những của lễ thiêu, các sinh tế, các phần mười, lễ vật quyên góp... lễ vật khấn nguyện...' — 'đó' chỉ về 'nơi Đức Giê-hô-va... chọn để đặt danh Ngài' (c.5). Đáp án đúng là 'Đến nơi Đức Giê-hô-va sẽ chọn để đặt danh Ngài'. (1) 'Đến nhà người Lê-vi gần nhất' lẫn với luật phần mười năm thứ ba (14:28-29), không phải các của lễ này (near_passage). (2) 'Đến bất cứ nơi cao nào' đi ngược lệnh phá bỏ nơi cao và tập trung thờ phượng (wrong_detail). (3) 'Đến cổng thành để trưởng lão phân chia' lẫn với thủ tục xét xử nơi cổng thành, không liên quan của lễ (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Nơi thờ phượng trung tâm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 13,
+    "verseStart": 16,
+    "verseEnd": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 13:12-16, một thành Y-sơ-ra-ên đã bị dụ đi thờ các thần khác phải chịu kết cục nào?",
+    "options": [
+      "Bị nộp thuế gấp đôi cho đền thờ trung ương",
+      "Bị thiêu hủy hoàn toàn và trở thành đống hoang tàn đời đời",
+      "Bị trục xuất khỏi xứ và phát lưu sang dân ngoại",
+      "Bị buộc phá bỏ bàn thờ rồi dâng tế lễ chuộc tội"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 13:16 (RVV11): 'Phải gom tất cả chiến lợi phẩm... rồi dùng lửa thiêu đốt cả thành... Thành đó sẽ trở thành một đống hoang tàn đời đời, không được xây dựng lại.' Đáp án đúng là 'Bị thiêu hủy hoàn toàn và trở thành đống hoang tàn đời đời'. (1) 'Bị nộp thuế gấp đôi' không có trong bản văn và quá nhẹ so với án diệt (wrong_detail). (2) 'Bị trục xuất và phát lưu' lẫn với hình phạt lưu đày của cả dân tộc về sau, không phải án cho thành bội đạo (near_passage). (3) 'Phá bàn thờ rồi dâng tế lễ chuộc tội' là giải pháp khoan dung không hề được nêu — thành phải bị diệt sạch (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Thành bội đạo",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 14,
+    "verseStart": 1,
+    "verseEnd": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 14:1-2, vì là dân thánh thuộc về Đức Chúa Trời, dân Y-sơ-ra-ên không được làm gì để than khóc người chết?",
+    "options": [
+      "Không được chôn người chết bên ngoài trại quân",
+      "Không được mặc áo tang hay xé áo mình",
+      "Không được kiêng ăn quá ba ngày",
+      "Không được rạch mình hay cạo trán phía trên mắt"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 14:1 (RVV11): 'Anh em là con cái của Giê-hô-va Đức Chúa Trời. Vì người chết, anh em chớ rạch mình hay cạo phần tóc phía trên trán.' Đó là tập tục tang chế của dân ngoại. Đáp án đúng là 'Không được rạch mình hay cạo trán phía trên mắt'. (1) 'Không được mặc áo tang hay xé áo' — việc xé áo thật ra được người tin kính làm (true_but_off). (2) 'Không được kiêng ăn quá ba ngày' là con số không có trong bản văn (wrong_detail). (3) 'Không được chôn người chết ngoài trại quân' lẫn với luật về sự ô uế trong trại quân, không phải tang chế ở đây (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Dân thánh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 14,
+    "verseStart": 28,
+    "verseEnd": 29,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 14:28-29, phần mười dồn lại cứ mỗi cuối năm thứ ba được dành để cấp dưỡng cho những ai?",
+    "options": [
+      "Cho các thầy tế lễ phục vụ tại đền thờ trung ương",
+      "Cho người Lê-vi, người nghèo và các tù nhân được tha",
+      "Cho binh lính và những người canh giữ cổng thành",
+      "Cho người Lê-vi, khách lạ, kẻ mồ côi và người góa bụa"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 14:28-29 (RVV11): 'Cuối mỗi ba năm... người Lê-vi... cùng với khách lạ, kẻ mồ côi, người góa bụa ở trong thành sẽ đến ăn cho no nê.' Đáp án đúng là 'Cho người Lê-vi, khách lạ, kẻ mồ côi và người góa bụa'. (1) 'Cho các thầy tế lễ tại đền thờ' thu hẹp sai đối tượng — phần mười này dành cho nhóm dễ tổn thương ngay trong thành (wrong_scope). (2) 'Cho binh lính và người canh cổng' không có trong bản văn (wrong_detail). (3) 'Người Lê-vi, người nghèo và tù nhân được tha' đúng người Lê-vi nhưng thay sai hai nhóm còn lại (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Phần mười năm thứ ba",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 12,
+    "verseStart": 30,
+    "verseEnd": 31,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 12:30-31 cảnh báo dân Y-sơ-ra-ên chớ dò hỏi cách các dân ngoại thờ thần của họ để bắt chước. Lý do cốt lõi nào được bản văn nêu khiến cách thờ phượng đó là điều ghê tởm đối với Đức Giê-hô-va?",
+    "options": [
+      "Vì các dân ấy dâng cho thần tượng những kim loại quý như vàng và bạc",
+      "Vì họ thiêu cả con trai con gái mình trong lửa để tế các thần của họ",
+      "Vì họ thờ phượng trên các nơi cao thay vì tại những nơi thấp trong xứ",
+      "Vì họ trộn lẫn việc thờ Đức Giê-hô-va với việc thờ lạy các thần khác"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 12:31 (RVV11): 'Vì mọi điều ghê tởm mà Đức Giê-hô-va ghét, họ đều làm cho các thần của họ; thậm chí họ còn thiêu cả con trai con gái mình trong lửa để tế các thần.' Bản văn chỉ rõ tột đỉnh sự ghê tởm là tế con cái bằng lửa. Đáp án đúng là phương án nêu việc 'thiêu cả con trai con gái'. (1) 'Dâng thần tượng bằng vàng bạc đắt giá' là chi tiết sai trọng tâm — tội không nằm ở giá trị vật chất (wrong_detail). (2) 'Thờ trên nơi cao thay vì nơi thấp' lẫn vấn đề địa điểm (12:2) với lý do ghê tởm về bản chất nghi thức (near_passage). (3) 'Trộn lẫn việc thờ Đức Giê-hô-va với thần khác' là một nguy cơ có thật được cảnh báo (c.30) nhưng không phải lý do 'ghê tởm' mà c.31 nêu (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cấm bắt chước dân ngoại",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 13,
+    "verseStart": 17,
+    "verseEnd": 17,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Đối với chiến lợi phẩm của một thành Y-sơ-ra-ên bội đạo (Phục Truyền 13:16-17), bản văn quy định điều khác biệt nổi bật nào so với cách thông thường người ta giữ chiến lợi phẩm sau chiến trận?",
+    "options": [
+      "Một phần chiến lợi phẩm phải dâng cho thầy tế lễ, phần còn lại được giữ",
+      "Chiến lợi phẩm được chia đều cho mọi chi phái Y-sơ-ra-ên",
+      "Không một vật bị nguyền rủa nào được dính vào tay, tất cả phải bị thiêu trọn",
+      "Vàng bạc được giữ lại cho kho của Đức Giê-hô-va, còn lại thì thiêu"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 13:16-17 (RVV11): 'Phải gom tất cả chiến lợi phẩm... thiêu đốt cả thành lẫn mọi chiến lợi phẩm... Đừng để vật đáng bị tận diệt nào dính vào tay anh em.' Khác với chiến lợi phẩm thường được phép giữ, mọi thứ ở đây đều bị tận diệt. Đáp án đúng là 'Không một vật bị nguyền rủa nào được dính vào tay, tất cả phải bị thiêu trọn'. (1) 'Một phần dâng thầy tế lễ, phần còn lại được giữ' áp dụng sai luật chiến lợi phẩm thông thường (Dân Số Ký 31) vào trường hợp đặc biệt này (near_passage). (2) 'Chia đều cho mọi chi phái' cũng là cách phân chia thông thường, không áp dụng ở đây (wrong_scope). (3) 'Vàng bạc giữ lại cho kho Đức Giê-hô-va' lẫn với luật chiếm Giê-ri-cô ở Giô-suê 6, còn ở đây mọi vật đều phải bị thiêu (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Thành bội đạo",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 15,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 15:12, một người Hê-bơ-rơ bị bán làm nô lệ phải được chủ phóng thích vào năm nào?",
+    "options": [
+      "Năm thứ năm",
+      "Năm thứ sáu",
+      "Năm thứ bảy",
+      "Năm thứ năm mươi"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 15:12 (RVV11): 'Nếu một người trong anh em, là người Hê-bơ-rơ... bị bán cho con thì sẽ phục dịch con sáu năm, nhưng đến năm thứ bảy, con phải để người ấy được tự do.' Đáp án đúng là 'Năm thứ bảy'. (1) 'Năm thứ sáu' sai chi tiết (wrong_detail): năm thứ sáu là năm phục dịch cuối, sự phóng thích diễn ra vào năm thứ bảy. (2) 'Năm thứ năm' sai chi tiết về con số (wrong_detail). (3) 'Năm thứ năm mươi' là năm hân hỉ (Năm Hỉ) trong Lê-vi Ký 25, một luật phóng thích khác (true_but_off), không phải luật nô lệ Hê-bơ-rơ ở đây.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Luật nô lệ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 15,
+    "verseStart": 13,
+    "verseEnd": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 15:13-14, khi phóng thích một nô lệ Hê-bơ-rơ vào năm thứ bảy, người chủ phải làm gì cho người ấy?",
+    "options": [
+      "Để người ấy đi ra tay không vì người ấy đã được hưởng sáu năm nuôi nấng",
+      "Trả cho người ấy tiền công sáu năm đã phục dịch bằng bạc",
+      "Cấp rộng rãi cho người ấy từ bầy chiên, sân lúa và hầm ép rượu",
+      "Giữ lại vợ con của người ấy để bù cho công lao của chủ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 15:13-14 (RVV11): 'Khi con để người ấy được tự do, đừng để người ra đi tay không. Hãy rộng rãi cấp cho người ấy chiên trong bầy, lúa nơi sân đập và rượu nơi hầm ép.' Đáp án đúng là cấp rộng rãi từ bầy chiên, sân lúa và hầm ép rượu. (1) 'Để người ấy đi ra tay không' trái trực tiếp với câu 13 cấm điều đó (wrong_detail, almost-right vì lập luận nghe hợp lý nhưng nghịch bản văn). (2) 'Trả tiền công bằng bạc' là cách suy diễn theo công lao nhưng bản văn quy định cấp hiện vật từ sản nghiệp, không phải trả lương (true_but_off). (3) 'Giữ lại vợ con' lấy chi tiết từ trường hợp khác trong câu 16-17 và Xuất 21:4 (near_passage), không phải điều luật dạy ở đây.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Luật nô lệ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 15,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 15:16-17, nếu một nô lệ vì yêu mến chủ mà muốn ở lại làm tôi mọi đời đời, người chủ phải làm dấu gì trên người ấy?",
+    "options": [
+      "Lấy dùi xỏ tai người ấy vào cánh cửa",
+      "Đặt tay lên đầu người ấy mà chúc phước",
+      "Khắc dấu trên trán người ấy bằng sắt nung",
+      "Cắt một phần vạt áo người ấy giữ làm chứng"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 15:17 (RVV11): 'thì con sẽ lấy một cái dùi đâm thủng tai người ấy vào cánh cửa, người sẽ làm tôi mọi con đời đời.' Đáp án đúng là 'Lấy dùi xỏ tai người ấy vào cánh cửa'. (1) 'Đặt tay chúc phước' là một nghi thức Kinh Thánh có thật nhưng dùng cho trường hợp khác, không phải dấu nô lệ tự nguyện (true_but_off). (2) 'Khắc dấu trên trán bằng sắt nung' là hình phạt nô lệ ở văn hóa ngoại bang, không phải luật Phục Truyền (common_misconception). (3) 'Cắt vạt áo giữ làm chứng' lấy mô-típ từ chuyện Đa-vít và Sau-lơ (near_passage), không liên quan luật này.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Luật nô lệ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 15,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 15:19, dân Y-sơ-ra-ên phải biệt riêng con đầu lòng đực của bò và chiên để làm gì?",
+    "options": [
+      "Đem bán lấy bạc dâng vào kho của đền thờ",
+      "Giao cho người Lê-vi nuôi thay cho phần mười",
+      "Biệt riêng ra thánh cho Giê-hô-va Đức Chúa Trời",
+      "Để dành làm giống gây dựng bầy đàn lớn hơn"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 15:19 (RVV11): 'Mọi con đầu lòng đực trong bầy bò và chiên của con, con phải biệt riêng ra thánh cho Giê-hô-va Đức Chúa Trời.' Đáp án đúng là 'Biệt riêng ra thánh cho Giê-hô-va'. (1) 'Đem bán lấy bạc' nghịch câu 19 vốn cấm dùng con đầu lòng vào việc lợi riêng — không được làm việc với bò đầu lòng hay hớt lông chiên đầu lòng (wrong_detail). (2) 'Giao cho người Lê-vi nuôi thay phần mười' lẫn lộn với chế độ phần mười cho Lê-vi (wrong_scope). (3) 'Để dành làm giống' là việc làm kinh tế nhưng nghịch lệnh biệt riêng ra thánh (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Con đầu lòng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 16,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 16:1, dân Y-sơ-ra-ên phải giữ lễ Vượt Qua cho Giê-hô-va trong tháng nào, để nhớ điều gì?",
+    "options": [
+      "Tháng A-bíp, vì trong tháng đó Chúa ban Mười Điều Răn tại Si-na-i",
+      "Tháng thứ bảy, vì trong tháng đó họ vào Đất Hứa",
+      "Tháng A-bíp, vì trong tháng đó Chúa đem họ ra khỏi Ai Cập ban đêm",
+      "Tháng thứ ba, vì trong tháng đó Chúa lập giao ước với Áp-ra-ham"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 16:1 (RVV11): 'Hãy giữ tháng A-bíp và làm lễ Vượt Qua cho Giê-hô-va Đức Chúa Trời, vì trong tháng A-bíp, ban đêm, Giê-hô-va Đức Chúa Trời con đã đem con ra khỏi Ai Cập.' Đáp án đúng là 'Tháng A-bíp... ra khỏi Ai Cập ban đêm'. (1) 'Tháng thứ bảy... vào Đất Hứa' sai cả tháng lẫn lý do (wrong_detail). (2) 'Tháng A-bíp... ban Mười Điều Răn' đúng tháng nhưng gán sai biến cố — việc ban luật ở Si-na-i thuộc lễ Bảy Tuần (true_but_off). (3) 'Tháng thứ ba... giao ước Áp-ra-ham' sai cả tháng lẫn sự kiện (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Ba kỳ lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 16,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 16:16, mỗi năm ba lần mọi người nam phải đến ra mắt Chúa nhân ba kỳ lễ nào?",
+    "options": [
+      "Lễ Vượt Qua, lễ Chuộc Tội và lễ Thổi Kèn",
+      "Lễ Bánh Không Men, lễ Dâng Bó Lúa Đầu Mùa và lễ Chuộc Tội",
+      "Lễ Trăng Mới, lễ Sa-bát và lễ Lều Tạm",
+      "Lễ Bánh Không Men, lễ Các Tuần và lễ Lều Tạm"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 16:16 (RVV11): 'Mỗi năm ba lần, tất cả người nam phải ra mắt Giê-hô-va Đức Chúa Trời con tại nơi Ngài chọn: vào lễ Bánh Không Men, lễ Các Tuần và lễ Lều Tạm.' Đáp án đúng là 'Lễ Bánh Không Men, lễ Các Tuần và lễ Lều Tạm'. (1) 'Vượt Qua, Chuộc Tội, Thổi Kèn' liệt các kỳ lễ có thật trong lịch (Lê-vi 23) nhưng không phải ba kỳ hành hương được kể ở đây (true_but_off). (2) 'Trăng Mới, Sa-bát, Lều Tạm' trộn các ngày thánh định kỳ với một kỳ lễ đúng (wrong_scope). (3) 'Bánh Không Men, Dâng Bó Lúa, Chuộc Tội' đúng một, sai hai (wrong_detail, almost-right).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Ba kỳ lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 16,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 16:16-17, khi người nam đến ra mắt Chúa trong ba kỳ lễ, họ phải dâng theo nguyên tắc nào?",
+    "options": [
+      "Mỗi người dâng một lượng bằng nhau để giữ sự công bằng",
+      "Không ai được đến tay không, mỗi người dâng tùy theo phước Chúa ban",
+      "Chỉ người giàu mới buộc phải dâng, người nghèo được miễn",
+      "Mỗi người dâng đúng một phần mười hoa lợi của mình"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 16:16-17 (RVV11): 'Không ai được đến ra mắt Đức Giê-hô-va tay không. Mỗi người sẽ dâng tùy theo khả năng, tùy theo phước lành mà Giê-hô-va Đức Chúa Trời ban cho.' Đáp án đúng là 'Không ai đến tay không, dâng tùy theo phước Chúa ban'. (1) 'Dâng một lượng bằng nhau' nghịch nguyên tắc tùy khả năng (wrong_detail). (2) 'Chỉ người giàu mới buộc dâng' nghịch câu 16 vốn buộc mọi người nam, không miễn ai (wrong_detail). (3) 'Đúng một phần mười' áp luật phần mười (Phục 14) vào lễ hành hương (near_passage, almost-right).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Ba kỳ lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 16,
+    "verseStart": 21,
+    "verseEnd": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 16:21-22, dân Y-sơ-ra-ên bị cấm dựng vật gì bên cạnh bàn thờ của Giê-hô-va Đức Chúa Trời?",
+    "options": [
+      "Một trụ thờ hoặc cây cột nào để làm tượng A-sê-ra",
+      "Một bàn thờ thứ hai để dâng của lễ thiêu",
+      "Một hòm bia đá ghi tên các tổ phụ",
+      "Một cây cao để treo đèn soi sáng đền thờ"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 16:21-22 (RVV11): 'Con chớ trồng cây làm trụ thờ A-sê-ra bên cạnh bàn thờ mà con sẽ lập cho Giê-hô-va Đức Chúa Trời, cũng đừng dựng lên trụ đá nào, là vật Giê-hô-va Đức Chúa Trời con ghét.' Đáp án đúng là 'trụ thờ hoặc cây cột làm tượng A-sê-ra'. (1) 'Bàn thờ thứ hai dâng lễ thiêu' là một vi phạm thờ phượng nhưng không phải điều cấm nêu ở đây (true_but_off). (2) 'Hòm bia đá ghi tên tổ phụ' không phải vật bị cấm trong câu này (wrong_detail). (3) 'Cây cao treo đèn' hiểu sai bản chất 'cây A-sê-ra' là vật thờ thần ngoại (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Thờ phượng tinh sạch",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 17,
+    "verseStart": 6,
+    "verseEnd": 7,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 17:6-7, để xử tử một người phạm tội thờ thần khác, bản văn đặt ra yêu cầu nào về nhân chứng và việc thi hành?",
+    "options": [
+      "Cần ít nhất hai hoặc ba nhân chứng, và toàn dân cùng ra tay một lúc, không ai trước",
+      "Chỉ cần một nhân chứng đáng tin, và thầy tế lễ phải ra tay trước nhất",
+      "Cần ít nhất hai hoặc ba nhân chứng, và tay nhân chứng phải ra tay ném đá trước nhất",
+      "Cần lời thú nhận của chính bị cáo, và quan xét phải ra tay trước nhất"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 17:6-7 (RVV11): 'Cứ theo lời của hai hoặc ba nhân chứng mà người ấy bị xử tử... Tay các nhân chứng phải ra tay trên người ấy trước tiên để giết, rồi tay toàn dân tiếp theo sau.' Đáp án đúng kết hợp đúng cả hai chi tiết. (1) 'Chỉ một nhân chứng... thầy tế lễ ra tay trước' sai cả con số (câu 6 đòi hai-ba) lẫn người ra tay (wrong_detail, almost-right). (2) 'Hai-ba nhân chứng... toàn dân cùng ra tay một lúc' đúng số nhân chứng nhưng đảo thứ tự — bản văn buộc nhân chứng ra tay TRƯỚC, rồi mới đến toàn dân (wrong_detail, almost-right). (3) 'Lời thú nhận của bị cáo' áp khái niệm tố tụng hiện đại, nghịch nguyên tắc nhân chứng (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Công lý nhân chứng",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 17,
+    "verseStart": 18,
+    "verseEnd": 20,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 17:18-20, vua Y-sơ-ra-ên phải tự chép một bản luật pháp và đọc trọn đời mình nhằm mục đích cốt lõi nào?",
+    "options": [
+      "Để vua được trường thọ và mở rộng bờ cõi nhờ thuộc luật pháp",
+      "Để vua có quyền sửa đổi luật pháp cho hợp với thời thế của mình",
+      "Để vua dạy luật pháp lại cho các quan xét và thầy tế lễ trong nước",
+      "Để vua kính sợ Chúa, giữ luật, và lòng không kiêu ngạo trên anh em mình"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 17:19-20 (RVV11): vua phải đọc luật pháp trọn đời 'để tập kính sợ Giê-hô-va Đức Chúa Trời mình, cẩn thận làm theo mọi lời của luật pháp... hầu cho lòng vua không kiêu ngạo đối với anh em mình, không xây bỏ điều răn qua bên phải hoặc bên trái.' Đáp án đúng nắm trọng tâm: kính sợ Chúa, giữ luật, lòng không kiêu ngạo. (1) 'Trường thọ và mở rộng bờ cõi' lấy phần thưởng phụ (câu 20 có hứa được trị vì lâu dài) làm mục đích cốt lõi, đảo thứ tự ưu tiên (true_but_off, almost-right). (2) 'Dạy luật lại cho quan xét và thầy tế lễ' là việc tốt nhưng không phải mục đích nêu trong bản văn (wrong_scope). (3) 'Có quyền sửa đổi luật pháp' nghịch trực tiếp lệnh 'không xây bỏ điều răn' (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Luật về vua",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 18,
+    "verseStart": 1,
+    "verseEnd": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 18:1-2, vì sao chi phái Lê-vi không được chia phần sản nghiệp đất đai như các chi phái khác?",
+    "options": [
+      "Vì chính Đức Giê-hô-va là sản nghiệp của họ",
+      "Vì họ phải sống rải rác giữa các chi phái để dạy luật pháp",
+      "Vì họ đã phạm tội nên bị tước quyền hưởng sản nghiệp",
+      "Vì họ chỉ được hưởng các thành ẩn náu thay cho đất ruộng"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 18:1-2 (RVV11) chép: 'Những thầy tế lễ dòng Lê-vi... sẽ không có phần hay sản nghiệp chung với Y-sơ-ra-ên... Họ sẽ không có sản nghiệp giữa anh em mình; chính Đức Giê-hô-va là sản nghiệp của họ, như Ngài đã phán.' Vì vậy đáp án đúng là 'chính Đức Giê-hô-va là sản nghiệp của họ'.\n- 'Vì họ đã phạm tội nên bị tước quyền' phản ánh hiểu lầm phổ biến (common_misconception): việc không có sản nghiệp là đặc ân được biệt riêng cho Chúa, không phải hình phạt.\n- 'Vì họ phải sống rải rác để dạy luật pháp' đúng về sau (Lê-vi sống rải rác) nhưng không phải lý do bản văn nêu ở đây (true_but_off): câu 2 nêu thẳng lý do là Đức Giê-hô-va.\n- 'Vì họ chỉ được hưởng các thành ẩn náu' lẫn lộn chi tiết: thành ẩn náu thuộc luật khác (ch.19) và không phải phần thay cho sản nghiệp Lê-vi (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Chi phái Lê-vi",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 18,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 18:3, khi dân chúng dâng bò hoặc chiên làm sinh tế, phần nào được dành cho thầy tế lễ?",
+    "options": [
+      "Cái đùi phải và phần mỡ bọc quanh ruột",
+      "Cái vai, hai má và cái bụng (dạ dày)",
+      "Tấm da và toàn bộ huyết của con sinh tế",
+      "Cái ức được đưa qua đưa lại trước mặt Chúa"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 18:3 (RVV11) quy định phần dành cho thầy tế lễ từ bò hay chiên dân dâng là: 'cái vai, hai cái má và cái bụng (dạ dày).' Đó là đáp án đúng.\n- 'Cái đùi phải và mỡ bọc quanh ruột' là chi tiết thuộc luật tế lễ ở Lê-vi Ký (vd Lê-vi 7) chứ không phải phần nêu trong Phục Truyền 18:3 (near_passage).\n- 'Tấm da và toàn bộ huyết' sai chi tiết: huyết phải đổ ra cho Chúa chứ không thuộc phần thầy tế lễ (wrong_detail).\n- 'Cái ức đưa qua đưa lại' là phần khác trong nghi lễ dâng (Lê-vi 7:30-31), không phải ba phần liệt kê ở Phục Truyền 18:3 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Phần thầy tế lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 18,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong danh sách những điều gớm ghiếc của dân Ca-na-an bị cấm ở Phục Truyền 18:10-11, hành vi nào liên quan đến việc dâng con cái?",
+    "options": [
+      "Bắt con trai mình phục dịch suốt đời trong đền thờ tà thần",
+      "Đưa con trai hay con gái mình qua lửa",
+      "Bán con cái cho dân ngoại để đổi lấy thần tượng",
+      "Dâng con đầu lòng làm của lễ chay cho thần Ba-anh"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 18:10 (RVV11) mở đầu danh sách cấm: 'Giữa anh em, không ai được đưa con trai hay con gái mình qua lửa...' rồi tiếp đến bói khoa, thầy pháp, đồng cốt, cầu vong. Vậy hành vi liên quan đến con cái là 'đưa con trai hay con gái mình qua lửa'.\n- 'Bắt con trai phục dịch trong đền thờ tà thần' là chi tiết bịa, không có trong danh sách (wrong_detail).\n- 'Dâng con đầu lòng làm của lễ chay cho Ba-anh' trộn lẫn yếu tố của lễ chay (vốn là ngũ cốc, không phải con người) và tên thần khác, sai chi tiết (wrong_detail).\n- 'Bán con cái cho dân ngoại đổi thần tượng' là hành vi không được nêu trong phân đoạn này (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Điều gớm ghiếc Ca-na-an",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 18,
+    "verseStart": 10,
+    "verseEnd": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 18:14-15, vì sao Y-sơ-ra-ên không được nghe theo thầy bói và đồng cốt như các dân tộc kia?",
+    "options": [
+      "Vì những thầy bói đó đều là kẻ lừa gạt không bao giờ nói thật",
+      "Vì chỉ có thầy tế lễ mới được phép gieo quẻ U-rim và Thu-mim",
+      "Vì việc cầu hỏi tương lai vốn không hề có hiệu quả gì cả",
+      "Vì Chúa sẽ ban cho họ một Đấng tiên tri để bày tỏ ý muốn Ngài"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 18:14-15 (RVV11): 'các dân tộc... nghe theo thầy bói và thầy pháp, nhưng riêng anh em thì Giê-hô-va Đức Chúa Trời không cho phép làm như vậy. Từ giữa anh em... Giê-hô-va Đức Chúa Trời sẽ dấy lên một Đấng tiên tri như tôi; anh em phải nghe theo Đấng ấy.' Lý do bản văn nêu là Chúa sẽ ban Đấng tiên tri để bày tỏ ý muốn Ngài, nên dân không cần đến thầy bói.\n- 'Vì thầy bói đều là kẻ lừa gạt' đúng về mặt đạo đức nói chung nhưng không phải lý do bản văn nêu ở đây (true_but_off).\n- 'Chỉ thầy tế lễ mới được gieo U-rim và Thu-mim' là chi tiết có thật trong luật khác (Xuất 28) nhưng không phải lý do trong phân đoạn này (near_passage).\n- 'Việc cầu hỏi tương lai không có hiệu quả' phản ánh lập luận hiện đại chứ không phải lý do thần học của câu 15 (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Đấng tiên tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 19,
+    "verseStart": 4,
+    "verseEnd": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 19:5 dùng ví dụ nào để minh họa cho trường hợp kẻ ngộ sát được chạy vào thành ẩn náu?",
+    "options": [
+      "Người vào rừng đốn củi, lưỡi rìu sút khỏi cán văng trúng làm chết người bạn",
+      "Người chăn chiên vung gậy đuổi thú dữ nhưng lỡ đánh trúng người chăn khác",
+      "Người cày ruộng để bò húc chết kẻ qua đường mà mình không hay biết",
+      "Người leo lên mái nhà sửa chữa rồi sẩy chân rơi xuống đè chết người dưới đất"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 19:5 (RVV11) nêu ví dụ kẻ ngộ sát: 'như khi một người vào rừng đốn củi với người lân cận mình, tay vung rìu đốn cây, lưỡi rìu sút khỏi cán trúng nhằm người lân cận làm cho người ấy chết...' Đó là đáp án đúng.\n- 'Vung gậy đuổi thú dữ' là tình huống bịa, không có trong bản văn (wrong_detail).\n- 'Để bò húc chết người' thuộc luật khác về con bò hay húc (Xuất 21:28-29), không phải ví dụ ở đây (near_passage).\n- 'Leo mái nhà sẩy chân' lẫn lộn với luật làm lan can mái nhà (Phục Truyền 22:8), không phải ví dụ rìu sút cán (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Thành ẩn náu",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 19,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 19:6, vì sao luật truyền lập các thành ẩn náu đủ gần để kẻ ngộ sát chạy đến kịp?",
+    "options": [
+      "Để các trưởng lão trong thành kịp điều tra vụ án trước khi trời tối",
+      "Để gia đình nạn nhân có thời gian nguôi cơn giận mà tha thứ",
+      "Để thầy tế lễ kịp dâng của lễ chuộc tội cho kẻ ngộ sát",
+      "Để kẻ báo thù huyết đang nóng giận không đuổi kịp và giết người vô tội"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 19:6 (RVV11): 'kẻo kẻ báo thù huyết đang nóng giận đuổi theo kẻ sát nhân, và nếu đường quá xa thì đuổi kịp mà giết người đó, dù người ấy không đáng chết...' Lý do là để kẻ báo thù huyết không đuổi kịp giết người vô tội. Đó là đáp án đúng.\n- 'Để trưởng lão kịp điều tra trước khi trời tối' thêm chi tiết thời gian không có trong bản văn (wrong_detail).\n- 'Để gia đình nạn nhân nguôi giận mà tha thứ' nghe hợp lý nhưng không phải lý do câu 6 nêu (true_but_off).\n- 'Để thầy tế lễ kịp dâng của lễ chuộc tội' áp dụng sai phạm vi: thành ẩn náu là nơi trú ẩn pháp lý, không gắn với của lễ chuộc tội ở đây (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Kẻ báo thù huyết",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 19,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 19:14 cấm dân Y-sơ-ra-ên làm điều gì đối với ranh giới đất đai của người lân cận?",
+    "options": [
+      "Mua lại đất của người nghèo trong năm Sa-bát",
+      "Cày ruộng sát mé khiến đất của người bên cạnh bị xói mòn",
+      "Cho người ngoại bang thuê phần đất hương hỏa",
+      "Dời cột mốc ranh giới mà tổ tiên đã cắm"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 19:14 (RVV11): 'Trong sản nghiệp mà anh em sẽ hưởng... đừng dời cột ranh giới của người lân cận mà tổ tiên đã cắm.' Đáp án đúng là 'dời cột mốc ranh giới mà tổ tiên đã cắm'.\n- 'Mua lại đất của người nghèo trong năm Sa-bát' lẫn với luật năm hân hỉ/chuộc đất (Lê-vi 25), không phải lệnh cấm ở đây (near_passage).\n- 'Cho người ngoại bang thuê đất hương hỏa' là chi tiết không có trong câu này (wrong_scope).\n- 'Cày ruộng sát mé gây xói mòn' nghe gần với chủ đề ranh giới nhưng không phải hành vi bị cấm trong bản văn (cấm là DỜI cột mốc) (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cột mốc ranh giới",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 19,
+    "verseStart": 18,
+    "verseEnd": 19,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi một nhân chứng bị tra xét và xác định là làm chứng gian dối, Phục Truyền 19:18-19 ấn định hình phạt theo nguyên tắc nào?",
+    "options": [
+      "Phải bồi thường gấp đôi thiệt hại mà lời chứng gian gây ra cho bị cáo",
+      "Phải bị đuổi khỏi cộng đồng và cấm bước vào hội chúng của Chúa",
+      "Phải dâng của lễ chuộc lỗi rồi công khai xin lỗi trước các trưởng lão",
+      "Phải chịu chính hình phạt mà hắn định gieo cho anh em mình"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 19:18-19 (RVV11): 'nếu chứng đó là chứng dối... thì anh em phải xử với nó như nó đã tính làm cho anh em mình. Như vậy, anh em sẽ diệt trừ điều ác khỏi giữa mình.' Nguyên tắc là kẻ làm chứng gian phải chịu chính hình phạt hắn định gieo cho người khác (gắn với 'mắt đền mắt' câu 21). Đó là đáp án đúng.\n- 'Bồi thường gấp đôi thiệt hại' là nguyên tắc của luật bồi thường trộm cắp (Xuất 22), không phải án dành cho chứng gian (near_passage); đây là distractor almost-right vì cũng là một nguyên tắc luật pháp Cựu Ước.\n- 'Bị đuổi khỏi cộng đồng và cấm vào hội chúng' nghe nghiêm khắc tương xứng nhưng không phải hình phạt bản văn nêu (wrong_detail); almost-right vì có vẻ hợp với mức độ tội.\n- 'Dâng của lễ chuộc lỗi rồi xin lỗi' áp dụng sai phạm vi: chứng gian bị xử theo luật báo phục tương xứng, không phải bằng của lễ tự nguyện (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Nhân chứng gian",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 20,
+    "verseStart": 5,
+    "verseEnd": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 20:5-7, các quan trưởng cho phép hạng người nào sau đây trở về nhà trước khi ra trận?",
+    "options": [
+      "Người vừa được bầu làm trưởng lão nhưng chưa nhậm chức",
+      "Người đã đính hôn nhưng chưa cử hành lễ cưới phần đời",
+      "Người vừa cất nhà mới mà chưa khánh thành nó",
+      "Người vừa mua một đàn gia súc nhưng chưa kịp đếm"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 20:5-7 (RVV11) liệt kê các quan trưởng cho về: (câu 5) người đã cất nhà mới mà chưa khánh thành; (câu 6) người đã trồng vườn nho mà chưa hái trái; (câu 7) người đã hứa hôn (đính hôn) với vợ mà chưa cưới. Đáp án đúng là 'người vừa cất nhà mới mà chưa khánh thành nó'.\n- 'Người vừa mua đàn gia súc' không nằm trong ba trường hợp được nêu (wrong_detail).\n- 'Người đã đính hôn nhưng chưa cưới' THỰC SỰ có trong câu 7 — đây là distractor almost-right rất gài; nhưng câu hỏi đòi chọn hạng người KHỚP với mô tả 'vừa cất nhà mới chưa khánh thành', nên phương án 'cất nhà mới' (đáp án đúng) mới đúng trọng tâm, còn 'đính hôn' tuy thật nhưng diễn đạt ở đây là 'cử hành lễ cưới' đặt cạnh đáp án đúng để thử người đọc kỹ (true_but_off so với mô tả nhà mới).\n- 'Người vừa được bầu làm trưởng lão' là chi tiết bịa, không có trong danh sách (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Miễn ra trận",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 20,
+    "verseStart": 19,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi vây hãm một thành lâu ngày, Phục Truyền 20:19 cấm quân Y-sơ-ra-ên đốn loại cây nào, và nêu lý do gì?",
+    "options": [
+      "Cây nho, vì rượu nho thuộc về của lễ quán dâng cho Đức Giê-hô-va",
+      "Cây ô-li-ve, vì dầu của nó dùng để xức cho các vua và thầy tế lễ",
+      "Cây ăn trái, vì cây ngoài đồng đâu phải là người mà bị vây hãm",
+      "Cây bá hương, vì gỗ ấy chỉ được dành riêng để xây cất đền thờ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 20:19 (RVV11): 'Khi vây hãm một thành... đừng dùng rìu đốn các cây của thành đó, vì anh em có thể ăn trái nó... Cây ngoài đồng đâu phải là người mà bị anh em vây hãm?' Lệnh cấm nhắm vào cây ĂN TRÁI, với lý do cây không phải là kẻ thù để bị vây hãm. Đó là đáp án đúng.\n- 'Cây ô-li-ve, vì dầu xức cho vua và thầy tế lễ' chỉ một loại cây cụ thể và đưa ra lý do khác (việc xức dầu) không phải lý do câu 19 nêu; đây là almost-right vì ô-li-ve cũng là cây ăn trái (wrong_detail).\n- 'Cây nho, vì rượu thuộc của lễ quán' cũng là cây ăn trái thật nhưng lý do của lễ quán không phải lý do bản văn (true_but_off); almost-right.\n- 'Cây bá hương để xây đền thờ' sai phạm vi: bá hương không phải cây ăn trái và lý do đền thờ không liên quan câu 19 (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Luật vây thành",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 21,
+    "verseStart": 15,
+    "verseEnd": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 21:15-17, nếu một người có hai vợ và con đầu lòng thuộc về người vợ bị ghét, người ấy phải chia gia tài thế nào?",
+    "options": [
+      "Cho con đầu lòng một phần lớn hơn các con khác một chút",
+      "Chia đều gia tài cho mọi con trai, không phân biệt thứ tự",
+      "Dành quyền con đầu lòng cho con của người vợ được yêu",
+      "Nhìn nhận con đầu lòng đó và cho nó hai phần của cải mình"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 21:17 dạy: '...phải nhận con trưởng nam của người bị ghét làm trưởng nam, cho nó phần bằng hai trong gia tài mình; vì nó là con đầu lòng...'. (1) 'Chia đều cho mọi con trai' sai chi tiết — luật khẳng định quyền trưởng nam được phần gấp đôi (wrong_detail). (2) 'Dành quyền cho con người vợ được yêu' đảo ngược chính điều luật cấm: không được vì thiên vị mà tước quyền con đầu lòng thật (wrong_detail). (3) 'Lớn hơn một chút' mơ hồ hóa con số xác định 'phần bằng hai' (gấp đôi) (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Quyền trưởng nam",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 22,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 22:8, khi xây một ngôi nhà mới, người Y-sơ-ra-ên phải làm gì cho mái nhà?",
+    "options": [
+      "Trồng cây che bóng để mái không bị nứt vì nắng",
+      "Làm một lan can chung quanh mái nhà",
+      "Dựng một bàn thờ nhỏ để dâng của lễ đầu mùa",
+      "Phết vôi trắng để đánh dấu nhà đã được biệt riêng"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 22:8: 'Khi ngươi cất một cái nhà mới, thì phải làm câu lơn (lan can) nơi mái nhà, kẻo nếu người nào ở trên đó té xuống, ngươi gây cho nhà mình can án đổ huyết chăng.' Lan can là để ngăn tai nạn chết người. (1) 'Trồng cây che bóng' lạc hoàn toàn mục đích an toàn (wrong_detail). (2) 'Dựng bàn thờ trên mái' là tập tục thờ thần tượng mà luật khác lên án, không phải lệnh này (wrong_scope). (3) 'Phết vôi trắng' không có trong bản văn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "An toàn cộng đồng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 25,
+    "verseStart": 1,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 25:1-3, khi một kẻ có tội bị xử đánh đòn, số roi tối đa được phép đánh là bao nhiêu?",
+    "options": [
+      "Bảy roi",
+      "Mười roi cho mỗi tội đã phạm",
+      "Tùy theo quan xét định, không có giới hạn",
+      "Bốn mươi roi"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 25:3: 'Quan án khiến đánh đòn người đến bốn mươi roi mà thôi, kẻo nếu đánh hơn... thì anh em ngươi vì cớ hình phạt thái quá kia phải ra hèn trước mặt ngươi chăng.' Giới hạn nhằm bảo vệ phẩm giá người bị phạt. (1) 'Bảy roi' sai con số (wrong_detail). (2) 'Mười roi mỗi tội' đặt ra cơ chế nhân lên không có trong luật (wrong_detail). (3) 'Không có giới hạn' phủ nhận chính trọng tâm của điều luật là đặt mức trần (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Hình phạt",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 25,
+    "verseStart": 13,
+    "verseEnd": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 25:13-16, điều gì là 'gớm ghiếc cho Đức Giê-hô-va' liên quan đến việc mua bán?",
+    "options": [
+      "Buôn bán với các dân ngoại bang sống chung quanh bờ cõi",
+      "Bán hàng hóa và ngũ cốc trong ngày Sa-bát biệt riêng nên thánh",
+      "Cho vay lấy lãi nặng đối với người anh em đang nghèo túng",
+      "Có trong bao hai thứ trái cân và hai thứ lường không công bình"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 25:13-16 cấm 'trong bao ngươi chớ có hai thứ trái cân... hai thứ lường', và câu 16 nói 'phàm ai làm các điều này... lấy làm gớm ghiếc cho Giê-hô-va Đức Chúa Trời ngươi.' Đây là gian lận đo lường. (1) 'Buôn bán với dân ngoại' không phải điều bị cấm ở đây (wrong_detail). (2) 'Cho vay lấy lãi' là một luật khác (23:19-20), không phải đoạn này (near_passage). (3) 'Bán ngày Sa-bát' lạc sang luật Sa-bát, không thuộc đoạn cân lường (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Công bình thương mại",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 21,
+    "verseStart": 1,
+    "verseEnd": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 21:1-9, khi tìm thấy một xác chết ngoài đồng mà không biết ai giết, các trưởng lão của thành gần nhất phải làm gì để chuộc tội đổ huyết?",
+    "options": [
+      "Dâng một con chiên đực làm của lễ chuộc tội ngay tại nơi tìm thấy xác chết",
+      "Bắt thăm giữa các thành lân cận để tìm ra kẻ phải chịu trách nhiệm đổ huyết",
+      "Vặn cổ một con bò cái tơ chưa làm việc tại khe nước, rồi rửa tay tuyên bố vô can",
+      "Mang xác về thành rồi chôn cất theo nghi thức để tang chung trong bảy ngày"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 21:4-7: các trưởng lão dẫn 'một con bò cái tơ chưa làm việc... đến khe nước... vặn cổ nó', rồi rửa tay trên con bò và nói 'Tay chúng tôi chẳng đổ huyết này.' (1) 'Chiên đực làm của lễ chuộc tội' đổi sai con sinh tế và nghi lễ — bản văn dùng bò cái tơ bị vặn cổ, không phải tế lễ thường (wrong_detail). (2) 'Bắt thăm tìm thủ phạm' không có trong nghi lễ này; mục đích là chuộc tội tập thể khi vô danh thủ phạm (wrong_detail). (3) 'Để tang bảy ngày' nhập chi tiết từ luật khác, không thuộc nghi lễ bò cái tơ (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Án mạng vô danh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 21,
+    "verseStart": 10,
+    "verseEnd": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 21:10-13, người nam muốn cưới một nữ tù binh đẹp làm vợ thì trước hết phải để nàng làm gì?",
+    "options": [
+      "Dâng một của lễ thiêu để được tẩy uế khỏi sự ô uế của dân ngoại",
+      "Cạo đầu, cắt móng tay và để tang cha mẹ nàng trọn một tháng",
+      "Học thuộc luật pháp Y-sơ-ra-ên trong bảy ngày trước khi thành hôn",
+      "Trở về thăm gia đình một lần cuối rồi mới được cưới"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 21:12-13: '...nàng sẽ cạo đầu mình, cắt móng tay; lột áo tù-rạc... khóc cha mẹ mình trong một tháng; kế ấy ngươi sẽ đến cùng nàng, làm chồng nàng, và nàng làm vợ ngươi.' (1) 'Dâng của lễ thiêu tẩy uế' không có trong đoạn này; nghi thức là để tang chuyển tiếp, không phải tế lễ (wrong_detail). (2) 'Học luật bảy ngày' là chi tiết bịa, sai cả nội dung lẫn thời hạn (một tháng, không phải bảy ngày) (wrong_detail). (3) 'Về thăm gia đình' mâu thuẫn — nàng đang để tang chính cha mẹ mình tại nhà chồng (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Nữ tù binh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 23,
+    "verseStart": 15,
+    "verseEnd": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 23:15-16, khi một đầy tớ trốn chủ chạy đến nương náu, người Y-sơ-ra-ên phải đối xử với nó thế nào?",
+    "options": [
+      "Giữ nó lại làm nô lệ của mình cho đến năm hân hỉ",
+      "Trao trả nó về cho chủ cũ để giữ trật tự xã hội",
+      "Đem nó đến trước các trưởng lão để xét xử việc nó bỏ trốn",
+      "Chớ nộp nó lại cho chủ, cho nó ở chỗ nào nó chọn và chớ hà hiếp nó"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 23:15-16: 'Khi tôi-tớ trốn khỏi chủ mình chạy đến nhà ngươi, chớ nộp nó lại cho chủ; nó sẽ ở với ngươi tại nơi nào nó chọn... chớ hà hiếp nó.' Luật bảo vệ kẻ trốn chạy. (1) 'Giữ làm nô lệ đến năm hân hỉ' biến nơi nương náu thành nô dịch mới, trái tinh thần luật (wrong_detail). (2) 'Trao trả về chủ cũ' chính là điều luật cấm dứt khoát (common_misconception — phản xạ 'trật tự xã hội' thông thường). (3) 'Đem đến trưởng lão xét xử' thêm thủ tục không có và ngụ ý kết tội kẻ trốn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Bảo vệ kẻ trốn",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 24,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 24:6, vì sao luật cấm lấy cối xay (hoặc thớt trên của cối) làm của cầm?",
+    "options": [
+      "Vì làm như vậy chẳng khác nào cầm sự sống của người ta",
+      "Vì cối xay là vật thánh chỉ dùng cho việc dâng của lễ chay",
+      "Vì cối xay quá nặng, không thể mang đi như một của cầm hợp lệ",
+      "Vì cối xay thuộc về cả dòng họ chứ không phải của riêng một người"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 24:6: 'Chớ chịu cầm cái thớt cối dưới hay là trên; vì ấy là chịu cầm sự sống của kẻ lân cận mình.' Cối xay là phương tiện làm bánh ăn hằng ngày, lấy nó là tước kế sinh nhai. (1) 'Vật thánh cho của lễ chay' nghe có lý nhưng bản văn nêu lý do nhân đạo, không phải nghi lễ (true_but_off). (2) 'Quá nặng không mang đi' lý do thực dụng sai, không khớp lý do bản văn (wrong_detail). (3) 'Thuộc về cả dòng họ' bịa một lý do sở hữu tập thể không có trong câu (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Của cầm nhân đạo",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 23,
+    "verseStart": 3,
+    "verseEnd": 8,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 23:3-8, luật phân biệt thế nào giữa dân Am-môn/Mô-áp và dân Ê-đôm/Ai Cập về việc gia nhập hội Đức Giê-hô-va?",
+    "options": [
+      "Am-môn và Mô-áp bị cấm đến đời thứ mười; Ê-đôm và Ai Cập được nhận từ đời thứ ba",
+      "Cả bốn dân đều bị cấm đời đời, không có ngoại lệ nào",
+      "Am-môn và Mô-áp được nhận đời thứ ba; Ê-đôm và Ai Cập bị cấm đến đời thứ mười",
+      "Am-môn và Mô-áp bị cấm đời đời; Ê-đôm và Ai Cập được nhận từ đời thứ mười"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 23:3 cấm Am-môn và Mô-áp 'đến đời thứ mười... đời đời chẳng hề được vào hội của Đức Giê-hô-va' (vì không tiếp đón Y-sơ-ra-ên và thuê Ba-la-am), còn 23:7-8 dạy 'chớ lấy làm gớm ghiếc người Ê-đôm... người Ê-díp-tô (Ai Cập)... con cháu họ sanh về đời thứ ba sẽ được phép vào hội.' (1) 'Cả bốn đều cấm đời đời' xóa mất sự phân biệt cốt lõi của đoạn (wrong_scope). (2) Đảo ngược hai nhóm — gán đời thứ ba cho Am-môn/Mô-áp (wrong_detail, almost-right). (3) Gán đời thứ mười cho Ê-đôm/Ai Cập — đúng con số nhưng sai đối tượng (wrong_detail, almost-right).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Gia nhập hội",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 21,
+    "verseStart": 18,
+    "verseEnd": 21,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong luật về đứa con ngỗ nghịch ở Phục Truyền 21:18-21, ai là người đưa nó ra trước các trưởng lão, và mục đích cuối cùng của hình phạt là gì?",
+    "options": [
+      "Quan xét của thành bắt nó, và mục đích là buộc nó bồi thường mọi thiệt hại đã gây cho cộng đồng",
+      "Thầy tế lễ điệu nó đi, và mục đích là dâng nó lên làm của lễ để chuộc tội cho cả nhà cha mẹ nó",
+      "Cả cha lẫn mẹ dẫn nó ra, và mục đích là 'cất sự ác khỏi giữa ngươi' để cả Y-sơ-ra-ên nghe mà bắt sợ",
+      "Một mình người cha đứng ra tố cáo nó, và mục đích là tước bỏ trọn quyền thừa kế gia tài của nó"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 21:19-21: 'cha mẹ phải bắt nó dẫn đến trước mặt các trưởng lão của thành mình', dân thành ném đá cho chết, 'như vậy ngươi sẽ cất sự ác khỏi giữa mình, và cả Y-sơ-ra-ên sẽ hay điều đó mà bắt sợ.' Phải có cả hai cha mẹ làm chứng, và mục đích là răn đe tập thể. (1) 'Quan xét bắt... bồi thường' sai cả tác nhân lẫn mục đích (hình phạt là tử hình, không phải bồi thường) (wrong_detail). (2) 'Thầy tế lễ... dâng chuộc tội' biến tử hình tư pháp thành tế lễ (wrong_scope). (3) 'Một mình người cha... tước quyền thừa kế' đúng một nửa về quyền của cha nhưng bỏ vai trò người mẹ và hạ nhẹ hình phạt tử thành mất gia tài (wrong_detail, almost-right).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Con ngỗ nghịch",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 26,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 26:12, tiền một phần mười của năm thứ ba (năm dâng phần mười) được dành để cấp dưỡng cho những ai?",
+    "options": [
+      "Các thầy tế lễ phục vụ tại đền thờ",
+      "Người Lê-vi, ngoại bang, mồ côi và góa bụa",
+      "Các trưởng lão và quan xét trong thành",
+      "Những chiến binh ra trận bảo vệ dân sự"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "RVV11 Phục Truyền 26:12 dạy đến năm thứ ba, năm dâng phần mười, dân phải đem cho 'người Lê-vi, ngoại bang, kẻ mồ côi và người góa bụa' để họ ăn no trong thành — đáp án đúng là phương án 0. (1) 'Các thầy tế lễ tại đền thờ' là sai chi tiết: phần mười năm thứ ba để lại trong thành cho người nghèo, không đem riêng cho thầy tế lễ (wrong_detail). (2) 'Trưởng lão và quan xét' không phải đối tượng được nêu — họ là người xét xử, không phải người thụ hưởng (wrong_scope). (3) 'Chiến binh ra trận' là chi tiết hoàn toàn lạc khỏi luật phần mười này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Phần mười & người nghèo",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 26,
+    "verseStart": 18,
+    "verseEnd": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong Phục Truyền 26:17-19, lời tuyên bố 'hôm nay' giữa Đức Giê-hô-va và Y-sơ-ra-ên xác nhận điều gì về mối quan hệ hai bên?",
+    "options": [
+      "Y-sơ-ra-ên hứa dâng mọi trái đầu mùa, và Chúa hứa ban mưa thuận gió hòa",
+      "Y-sơ-ra-ên nhận Chúa làm Đức Chúa Trời, và Chúa nhận họ làm dân riêng của Ngài",
+      "Chúa lập Môi-se làm vua, và dân hứa vâng phục mọi mệnh lệnh của ông",
+      "Chúa hứa tha mọi tội đã phạm trong đồng vắng nếu dân chịu cắt bì"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "RVV11 Phục Truyền 26:17-19: dân 'nhận Đức Giê-hô-va làm Đức Chúa Trời', còn Chúa tuyên bố hôm nay Y-sơ-ra-ên 'là dân riêng (báu vật) của Ngài' và đặt họ cao hơn các dân — đáp án đúng là phương án 0. (1) 'Dâng trái đầu mùa... mưa thuận gió hòa' trộn nội dung gần đó (26:1-11 trái đầu mùa) nhưng không phải tâm điểm tuyên bố giao ước này (near_passage). (2) 'Lập Môi-se làm vua' sai phạm vi: giao ước là giữa Chúa và dân, không có việc lập vua (wrong_scope). (3) 'Tha tội nếu chịu cắt bì' là chi tiết bịa, không thuộc lời tuyên bố này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Giao ước & dân riêng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 27,
+    "verseStart": 2,
+    "verseEnd": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 27:2-4, sau khi qua sông Giô-đanh vào đất hứa, dân phải dựng những tảng đá lớn và làm gì với chúng?",
+    "options": [
+      "Khắc tên mười hai chi phái Y-sơ-ra-ên lên từng tảng đá",
+      "Đổ dầu lên làm trụ thờ kỷ niệm việc qua sông Giô-đanh",
+      "Xếp thành mười hai đống đá theo số ngày dân đi vòng quanh",
+      "Trét vôi lên rồi chép mọi lời của luật pháp này trên đó"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Phục Truyền 27:2-4: dân phải dựng đá lớn, 'trét vôi' lên và 'chép trên đó mọi lời của luật pháp này' — đáp án đúng là phương án 0. (1) 'Khắc tên mười hai chi phái' là sai chi tiết: đá để chép luật pháp, không phải khắc tên chi phái (wrong_detail). (2) 'Đổ dầu làm trụ thờ' lẫn với hành động của các tổ phụ (như Gia-cốp ở Bê-tên), không phải lệnh ở đây (near_passage). (3) 'Mười hai đống đá theo số ngày đi vòng' trộn lẫn chuyện về sau ở Giô-suê và Giê-ri-cô, không phải lệnh này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Đá khắc luật pháp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 27,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 27:5-6 quy định bàn thờ dâng cho Đức Giê-hô-va phải xây bằng loại đá nào, và lý do nằm ở đâu?",
+    "options": [
+      "Đá đã đẽo vuông vức, ghép khít để bàn thờ vững chắc",
+      "Đá nguyên khối, không đụng đến bằng dụng cụ bằng sắt",
+      "Đá phủ vàng ròng để xứng đáng dâng cho Đức Chúa Trời",
+      "Đá trắng lấy từ lòng sông Giô-đanh vừa mới qua"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "RVV11 Phục Truyền 27:5-6: 'Chớ dùng đồ bằng sắt mà đục đá'; phải lập bàn thờ bằng 'đá nguyên khối' — đáp án đúng là phương án 0. (1) 'Đá đẽo vuông vức' là almost-right nhưng trái hẳn lệnh: bàn thờ phải dùng đá không bị đục đẽo (wrong_detail). (2) 'Đá trắng lấy từ lòng sông' trộn với chi tiết những tảng đá ở Giô-đanh, không phải vật liệu bàn thờ (near_passage). (3) 'Đá phủ vàng' lẫn với cách trang trí đền tạm/đền thờ, không áp dụng cho bàn thờ đá này (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Bàn thờ đá nguyên khối",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 28,
+    "verseStart": 23,
+    "verseEnd": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong chuỗi rủa sả ở Phục Truyền 28:23-24, nếu dân bất tuân thì bầu trời và đất trên đầu họ sẽ trở nên như thế nào?",
+    "options": [
+      "Trời tối đen suốt ngày, đất nứt nẻ nuốt mất mùa màng",
+      "Trời đổ mưa đá lửa, đất sinh gai gốc thay cho lúa mì",
+      "Trời như đồng, đất như sắt; mưa hóa thành bụi và tro",
+      "Trời che khuất mặt trời, đất rung chuyển và nhà cửa sụp đổ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "RVV11 Phục Truyền 28:23-24: 'Bầu trời trên đầu con sẽ như đồng, và đất dưới chân con sẽ như sắt'; Chúa khiến mưa của xứ 'biến thành bụi và tro' — đáp án đúng là phương án 0. (1) 'Trời tối đen... đất nứt nẻ' nghe hợp cảnh rủa sả nhưng không phải lời văn ở đây (wrong_detail). (2) 'Mưa đá lửa... gai gốc' trộn hình ảnh tai vạ Ai Cập và Sáng Thế Ký 3, không phải câu này (near_passage). (3) 'Che khuất mặt trời... rung chuyển' là cảnh ngày phán xét trong sách tiên tri, lạc khỏi văn mạch rủa sả này (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Phước lành & rủa sả",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 28,
+    "verseStart": 68,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 28:68 mô tả đỉnh điểm của rủa sả khi dân bị tản lạc: Chúa sẽ đưa họ về Ai Cập bằng tàu, tại đó họ sẽ rao bán mình làm gì — và kết cục ra sao?",
+    "options": [
+      "Bán mình làm nô lệ, và bị bắt làm phu xây thành cho Pha-ra-ôn",
+      "Bán con cái làm nô lệ để chuộc lấy tự do cho chính mình",
+      "Bán mình làm lính đánh thuê, rồi chết nơi đất khách",
+      "Bán mình làm nô lệ, nhưng chẳng có ai chịu mua"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "RVV11 Phục Truyền 28:68: Chúa đưa dân trở lại Ai Cập bằng tàu, ở đó họ 'sẽ bán mình làm tôi trai tớ gái cho kẻ thù, nhưng không ai mua' — đáp án đúng là phương án 0; bi kịch nằm ở chỗ ngay cả thân phận nô lệ cũng không ai thèm mua. (1) 'Làm phu xây thành cho Pha-ra-ôn' gợi cảnh nô dịch ban đầu trong Xuất Ê-díp-tô Ký, không phải lời ở đây (near_passage). (2) 'Bán con cái để chuộc tự do' đảo ngược ý: chính họ tự bán mình mà không ai mua, không phải bán con (wrong_detail). (3) 'Làm lính đánh thuê' là chi tiết bịa, không có trong câu (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Rủa sả tản lạc",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 29,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong Phục Truyền 29:5, Môi-se nhắc dân về dấu chứng nào cho thấy Chúa chăm sóc họ suốt bốn mươi năm trong đồng vắng?",
+    "options": [
+      "Tóc trên đầu họ không hề bạc dù năm tháng trôi qua",
+      "Áo xống không cũ rách và giày không mòn nơi chân họ",
+      "Lương thực trong kho không bao giờ vơi cạn đi",
+      "Vũ khí của họ không hề gỉ sét hay sứt mẻ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "RVV11 Phục Truyền 29:5: 'Áo xống các con không cũ rách, giày nơi chân các con không mòn' trong suốt bốn mươi năm — đáp án đúng là phương án 0. (1) 'Tóc không bạc' là dấu chứng bịa, không có trong câu (wrong_detail). (2) 'Lương thực trong kho không vơi' lẫn với phép lạ bánh ma-na (Xuất 16) chứ không phải lời ở đây (near_passage). (3) 'Vũ khí không gỉ sét' là chi tiết hoàn toàn không được nêu (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Giao ước tại Mô-áp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 31,
+    "verseStart": 9,
+    "verseEnd": 13,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 31:9-13: Môi-se chép luật pháp và truyền phải đọc lớn tiếng cho toàn dân theo định kỳ nào, vào dịp lễ nào?",
+    "options": [
+      "Cuối mỗi bảy năm, vào năm tha nợ, nhằm kỳ Lễ Lều Tạm",
+      "Cuối mỗi bảy năm, vào Năm Hân Hỉ, nhằm kỳ Lễ Vượt Qua",
+      "Mỗi tháng đầu, vào ngày trăng mới, trước hòm giao ước",
+      "Mỗi năm một lần, vào ngày đại lễ Chuộc Tội tại nơi thánh"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "RVV11 Phục Truyền 31:10-11: 'cuối mỗi bảy năm, vào năm tha nợ, nhằm kỳ Lễ Lều Tạm', phải đọc luật pháp này cho cả Y-sơ-ra-ên nghe — đáp án đúng là phương án 0. (1) 'Mỗi năm... Lễ Chuộc Tội' sai cả chu kỳ lẫn lễ: định kỳ là bảy năm, lễ là Lều Tạm (wrong_detail). (2) 'Năm Hân Hỉ... Lễ Vượt Qua' giữ đúng chu kỳ bảy năm nhưng đổi tên năm và đổi lễ (Vượt Qua thay vì Lều Tạm) — almost-right sai hai chi tiết then chốt (wrong_detail). (3) 'Mỗi tháng... ngày trăng mới' là chi tiết bịa, lẫn nghi thức tế lễ định kỳ khác (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Đọc luật pháp mỗi 7 năm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 32,
+    "verseStart": 35,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong Bài ca Môi-se (Phục Truyền 32:35), Đức Giê-hô-va tuyên bố điều gì thuộc về chính Ngài đối với kẻ thù của dân Ngài?",
+    "options": [
+      "Sự xét đoán mọi dân tộc thuộc về Ta, vì Ta dựng nên muôn vật",
+      "Sự báo thù và sự báo trả thuộc về Ta; đến kỳ chân chúng sẽ trượt ngã",
+      "Sự cứu chuộc dân Ta thuộc về Ta, không bởi cung kiếm loài người",
+      "Sự tha thứ và lòng thương xót thuộc về Ta cho đến ngàn đời"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "RVV11 Phục Truyền 32:35: 'Sự báo thù và báo trả thuộc về Ta; đến kỳ chân chúng sẽ trượt ngã' — đáp án đúng là phương án 0. (1) 'Sự xét đoán mọi dân... dựng nên muôn vật' đúng về Chúa nói chung nhưng không phải lời được tuyên bố ở câu này (true_but_off). (2) 'Sự cứu chuộc... không bởi cung kiếm' phản ánh ý từ chỗ khác trong Bài ca và Thi Thiên, lạc khỏi câu 35 (near_passage). (3) 'Sự tha thứ và thương xót' đảo ngược trọng tâm: câu này nói về sự báo trả trên kẻ thù, không phải lòng thương xót (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Bài ca Môi-se",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 34,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục Truyền 34:9, sau khi Môi-se qua đời, vì sao dân Y-sơ-ra-ên vâng phục Giô-suê?",
+    "options": [
+      "Vì Giô-suê được đầy dẫy thần trí khôn ngoan, bởi Môi-se đã đặt tay trên ông",
+      "Vì Giô-suê là người duy nhất còn sống đã ra khỏi Ai Cập cùng Môi-se",
+      "Vì Chúa hiện ra trong trụ mây và lập Giô-suê trước mặt cả hội chúng",
+      "Vì Giô-suê thuộc chi phái Lê-vi nên có quyền kế vị lãnh đạo dân sự"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "RVV11 Phục Truyền 34:9: Giô-suê 'được đầy dẫy thần trí khôn ngoan, vì Môi-se đã đặt tay trên ông', nên dân vâng phục — đáp án đúng là phương án 0. (1) 'Người duy nhất còn sống ra khỏi Ai Cập' sai: cả Ca-lép cũng còn sống, và câu không nêu lý do này (wrong_detail). (2) 'Chúa hiện ra trong trụ mây' lẫn với cảnh truyền chức Giô-suê ở 31:14-15, không phải câu 34:9 (near_passage). (3) 'Thuộc chi phái Lê-vi' sai phạm vi: Giô-suê thuộc chi phái Ép-ra-im, không phải Lê-vi (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Giô-suê kế vị Môi-se",
+      "Cơ bản"
+    ]
   }
 ]
