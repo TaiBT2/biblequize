@@ -2,7 +2,12 @@
 
 > **Source**: User prompt — "dùng skill bible-quiz-authoring tạo 100 câu cho mỗi sách: Giô-suê, Các Quan Xét, Ru-tơ, I-II Sa-mu-ên, I-II Các Vua, I-II Sử Ký, E-xơ-ra, Nê-hê-mi, Ê-xơ-tê".
 > **Scope**: seed VN `apps/api/src/main/resources/seed/questions/{book}_quiz.json` → mỗi sách +100 câu mới. Skill `.claude/skills/bible-quiz-authoring`. Bản dịch RVV11/BTTHĐ 2011. EN gen sau.
-> **Status**: DONE (2026-06-25) — 12 sách × 100 câu = 1200 câu VI đã append + commit (1 commit/sách). Validator 0 ERROR / 0 length-bias / 0 trùng. Bản EN gen sau.
+> **Status**: DONE (2026-06-25) — 12 sách × 100 câu = 1200 câu VI + 1200 câu EN đã append + commit (1 commit/sách/ngôn ngữ). Validator 0 ERROR / 0 length-bias / 0 trùng. EN parity: len + ch/verse + correctAnswer khớp toàn bộ câu MỚI.
+
+### Bản EN (translate-quiz-en, claude -p / Max)
+- Dịch xong cả 12 sách (1200 câu EN), commit 1 file/sách. Spot-check: English tự nhiên, trích ESV, giữ tag error_type, language="en".
+- Bài học: chạy //song song nhiều process `claude` (>3-4) → rate-limit `claude exited 1`; kill job nền để lại orphan vẫn append → DUP. Cách an toàn: **tuần tự 1 process/file**; nếu kill phải `taskkill /T` cả cây claude con.
+- 2 lỗi TỒN TẠI TỪ TRƯỚC trong 20 câu EN cũ (không phải câu mới, chưa sửa — chờ user): 1kings idx2 lệch thứ tự ch/verse (correctAnswer vẫn đúng); esther idx5 (ch3:7) EN correctAnswer=[2] vs VI=[1].
 
 ### Quyết định
 - Phân bổ mỗi sách: **40 easy / 40 medium / 20 hard** (như Genesis/Exodus/Leviticus).
