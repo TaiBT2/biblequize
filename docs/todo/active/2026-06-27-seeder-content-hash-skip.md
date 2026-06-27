@@ -13,5 +13,7 @@
 - SCH-3 Unit test `QuestionSeederContentHashTest` (property: 2 biến thể chỉ khác dấu câu → cùng hash)
   - Status: [x] DONE
 - SCH-4 Rebuild BE + redeploy + re-seed prod + verify 12 sách Lịch Sử = 120/120 và 215 dup được skip (không abort)
-  - Status: [ ] TODO
+  - Status: [x] DONE — seeder log: `inserted=3328, updated=6553, skipped=215, invalid=0, staleDeleted=0`. 12 sách Lịch Sử đủ 120/120 (1Chr/2Chr/Ezra 125, 1Sam 119). Health 200. Sau seed đã set `QUESTION_SEEDING_ENABLED=false` lại (one-shot pattern).
   - **Spec impact**: [x] (c) `[no-spec-impact]` (seeder robustness, không đổi business rule)
+
+> **Status**: DONE (2026-06-27)
