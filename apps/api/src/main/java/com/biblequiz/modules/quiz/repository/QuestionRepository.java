@@ -293,6 +293,14 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
                                         @Param("lang") String language,
                                         @Param("keepIds") Collection<String> keepIds);
 
+    // All existing content_hash values (generated column, V68). Used by the
+    // JSON seeder to skip inserting a question whose logical-identity hash
+    // already exists — the deterministic seed ID keeps punctuation while
+    // content_hash strips it, so punctuation-variants would otherwise slip
+    // past the id-based dedup and violate uq_questions_content_hash.
+    @Query(value = "SELECT content_hash FROM questions", nativeQuery = true)
+    List<String> findAllContentHashes();
+
     // When the JSON file shrinks to zero questions for a (book, language)
     // group we still need to clear out everything seeded under that group
     // (the IN-clause variant fails with empty list on most DBs).

@@ -20,9 +20,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.HexFormat;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -160,8 +163,14 @@ public class QuestionSeeder {
         // them after all files are processed.
         Map<String, Set<String>> seenIdsByGroup = new HashMap<>();
 
+        // Preload every existing content_hash so we can skip inserts that would
+        // violate uq_questions_content_hash (V68). The id-based dedup misses
+        // punctuation-variants (id keeps punctuation, content_hash strips it),
+        // and a single violation would abort the whole seeding transaction.
+        Set<String> knownContentHashes = new HashSet<>(questionRepository.findAllContentHashes());
+
         for (Resource file : files) {
-            seedFile(file, stats, seenIdsByGroup);
+            seedFile(file, stats, seenIdsByGroup, knownContentHashes);
         }
 
         if (syncStale) {
@@ -171,12 +180,13 @@ public class QuestionSeeder {
     }
 
     private void seedFile(Resource file, SeedStats stats,
-                          Map<String, Set<String>> seenIdsByGroup) {
+                          Map<String, Set<String>> seenIdsByGroup,
+                          Set<String> knownContentHashes) {
         String filename = file.getFilename() != null ? file.getFilename() : "<unknown>";
         List<SeedQuestion> questions = parseFile(file, filename);
         if (questions == null) return; // parse error — already logged
 
-        int fileInserted = 0, fileUpdated = 0, fileSkipped = 0, fileInvalid = 0;
+        int fileInserted = 0, fileUpdated = 0, fileSkipped = 0, fileInvalid = 0, fileDupHash = 0;
         for (SeedQuestion sq : questions) {
             stats.total++;
             if (!isValid(sq, filename)) {
@@ -196,6 +206,15 @@ public class QuestionSeeder {
             Question fresh = toEntity(sq, id);
             Question existing = questionRepository.findById(id).orElse(null);
             if (existing == null) {
+                // Skip inserts whose logical-identity hash already exists — a
+                // punctuation-variant of an existing question. Inserting would
+                // violate uq_questions_content_hash and abort the transaction.
+                String contentHash = computeContentHash(sq);
+                if (!knownContentHashes.add(contentHash)) {
+                    fileDupHash++;
+                    stats.skipped++;
+                    continue;
+                }
                 questionRepository.save(fresh);
                 fileInserted++;
                 stats.inserted++;
@@ -225,8 +244,43 @@ public class QuestionSeeder {
                 stats.skipped++;
             }
         }
-        log.info("  {} → inserted={}, updated={}, skipped={}, invalid={}",
-                filename, fileInserted, fileUpdated, fileSkipped, fileInvalid);
+        log.info("  {} → inserted={}, updated={}, skipped={}, dupHash={}, invalid={}",
+                filename, fileInserted, fileUpdated, fileSkipped, fileDupHash, fileInvalid);
+    }
+
+    /** Punctuation stripped by the SQL content_hash generated column (V68). */
+    private static final char[] HASH_STRIP =
+            {'?', '!', '.', ',', ';', ':', '"', '\'', '(', ')', '[', ']', '{', '}'};
+
+    /**
+     * Recompute the DB's {@code content_hash} generated column (V68) in Java so
+     * the seeder can pre-check for collisions before issuing an INSERT.
+     * Must match the SQL exactly:
+     * {@code SHA2(book|chapter|verse_start|verse_end|language|normalized, 256)}
+     * where normalized = lowercase, strip 14 punctuation chars, collapse
+     * whitespace, trim. Mirrors {@code toEntity}: content is trimmed and
+     * language defaults to {@code "vi"}.
+     */
+    static String computeContentHash(SeedQuestion sq) {
+        String norm = sq.content == null ? "" : sq.content.toLowerCase(Locale.ROOT);
+        for (char c : HASH_STRIP) {
+            norm = norm.replace(String.valueOf(c), "");
+        }
+        norm = norm.replaceAll("\\s+", " ").trim();
+        String lang = sq.language != null ? sq.language : "vi";
+        String key = safe(sq.book) + "|"
+                + (sq.chapter == null ? "" : sq.chapter) + "|"
+                + (sq.verseStart == null ? "" : sq.verseStart) + "|"
+                + (sq.verseEnd == null ? "" : sq.verseEnd) + "|"
+                + lang + "|"
+                + norm;
+        try {
+            byte[] digest = MessageDigest.getInstance("SHA-256")
+                    .digest(key.getBytes(StandardCharsets.UTF_8));
+            return HexFormat.of().formatHex(digest);
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException("SHA-256 unavailable", e);
+        }
     }
 
     /**
