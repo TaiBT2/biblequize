@@ -4010,5 +4010,2642 @@
       "Joseph's Final Word",
       "Intermediate"
     ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 2,
+    "verseStart": 19,
+    "verseEnd": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Genesis 2, God brought the beasts of the field and the birds of the heavens before Adam for him to do what?",
+    "options": [
+      "Drive the animals out of the Garden of Eden",
+      "Give a name to each creature",
+      "Divide the animals into clean and unclean",
+      "Offer the animals as burnt offerings"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 2:19-20 (ESV) records that God brought the creatures to the man \"to see what he would call them,\" and \"the man gave names to all livestock and to the birds of the heavens and to every beast of the field.\" The correct answer is \"Give a name to each creature.\" (1) \"Drive the animals out of the garden\" is a fabricated detail not found in the text (wrong_detail). (2) \"Divide the animals into clean and unclean\" confuses this passage with Noah loading the ark by clean and unclean categories in Genesis 7 (near_passage). (3) \"Offer the animals as burnt offerings\" is a common misconception that attributes sacrificial worship to Adam; the first recorded offerings were those of Cain and Abel in Genesis 4 (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Creation",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 9,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "After the flood, what does Genesis record as the first occupation Noah took up?",
+    "options": [
+      "Build a second ark to guard against future floods",
+      "Lead the people to build a great city",
+      "Set up an altar and serve as the first priest",
+      "Plant a vineyard"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 9:20 (ESV): \"Noah began to be a man of the soil, and he planted a vineyard.\" The correct answer is \"Plant a vineyard.\" (1) \"Build a second ark\" is a fabricated detail not found in the text (wrong_detail). (2) \"Lead the people to build a great city\" confuses this with Nimrod and the city and tower of Babel in Genesis 10–11 (near_passage). (3) \"Set up an altar and serve as the first priest\" contains a partial truth — Noah did build an altar and offer burnt offerings after leaving the ark (Genesis 8:20) — but that is not the occupation being asked about, and \"first\" is incorrect since Cain and Abel had already brought offerings before him (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Flood",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 3,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When God confronted Adam after he ate the forbidden fruit, how did Adam respond?",
+    "options": [
+      "He immediately confessed his sin and asked for forgiveness",
+      "He blamed the woman that God had given him",
+      "He remained silent, giving no reply to the accusation",
+      "He blamed the serpent for deceiving him"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 3:12 (ESV): Adam said, 'The woman whom you gave to be with me, she gave me fruit of the tree, and I ate' — blaming Eve and indirectly implicating God himself. Correct answer: 'He blamed the woman…'. (1) 'He immediately confessed and repented' is a common misconception that imposes an idealized response onto Adam, contrary to the text (common_misconception). (2) 'He remained silent and gave no reply' is a wrong detail: Adam did in fact respond (wrong_detail). (3) 'He blamed the serpent' is actually Eve's response in the very next verse (3:13), not Adam's — a nearby-passage answer that is easy to confuse (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "The Fall",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 6,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Genesis 6, what caused God to be grieved in his heart and resolve to wipe mankind from the face of the earth?",
+    "options": [
+      "Mankind had gathered together to build a tower reaching up to the heavens",
+      "Mankind had turned to worship idols of wood and stone",
+      "The wickedness of mankind was great, and every intention of their hearts was only evil continually",
+      "Mankind refused to multiply and fill the face of the earth"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 6:5-6 (ESV): 'The LORD saw that the wickedness of man was great in the earth, and that every intention of the thoughts of his heart was only evil continually,' and so 'it grieved him to his heart.' The correct answer states the exact reason given in the text. (1) 'Building a tower to the heavens' refers to the Tower of Babel in Genesis 11, not the cause of the flood (near_passage). (2) 'Worshiping idols of wood and stone' is a common misconception that projects idol-worship as the reason — the text does not name this reason here (common_misconception). (3) 'Refusing to multiply and fill the earth' contradicts the text: Genesis 6:1 states that mankind 'began to multiply on the face of the land' (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "The Flood",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 17,
+    "verseStart": 12,
+    "verseEnd": 13,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to Genesis 17, to whom in Abraham's household must the sign of circumcision be applied?",
+    "options": [
+      "Every male in the household, including slaves born in the house and slaves bought from foreigners",
+      "Abraham alone and his son of promise, Isaac",
+      "Every male of Abraham's own bloodline, but not including servants",
+      "Both males and females born in Abraham's household"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 17:12-13 (ESV): every male must be circumcised when he is eight days old, 'whether born in your house or bought with your money from any foreigner who is not of your offspring.' The scope includes every male in the household, servants included. (1) 'Abraham and Isaac only' wrongly narrows the scope — it is true that both were circumcised, but the covenant sign was not limited to them (wrong_scope, near-correct). (2) 'Bloodline descendants only, excluding servants' is wrong on one key point: the text explicitly emphasizes that even purchased slaves must be circumcised (wrong_detail, near-correct). (3) 'Both males and females' is a common misconception: circumcision applied only to males (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Covenant",
+      "Abraham",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 4,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When God asked, 'Where is Abel your brother?', how did Cain respond?",
+    "options": [
+      "I buried him in the field; no one knows",
+      "I do not know; am I my brother's keeper?",
+      "My brother is tending his flocks in the distant pasture",
+      "You yourself have taken my brother away from me"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 4:9 (ESV): The LORD said to Cain, 'Where is Abel your brother?' He said, 'I do not know; am I my brother's keeper?' — both denying and deflecting responsibility. Correct answer: B. (1) 'I buried him in the field' is a fabricated detail; Cain did not confess (wrong_detail). (2) 'My brother is tending his flocks in the distant pasture' is also an independently fabricated answer (wrong_detail — independent of option A: ruling out one does not rule out the other). (3) 'You yourself have taken my brother away from me' reverses the blame onto God, wrong in scope (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Cain and Abel",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 4,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Before Cain killed his brother, what did God warn him about sin?",
+    "options": [
+      "Sin is crouching at the door; its desire is for you, but you must rule over it",
+      "Your sin has now been forgiven; go in peace",
+      "Offer another choice lamb and your offering will be accepted",
+      "Your brother will rule over you, and you must submit to him"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 4:7 (ESV): '…sin is crouching at the door. Its desire is contrary to you, but you must rule over it.' Correct answer: A. (1) 'Your sin has been forgiven; go in peace' directly contradicts the warning (common_misconception about cheap grace). (2) 'Offer another choice lamb and your offering will be accepted' relates to the theme of Cain and Abel's offerings (4:3-5) but God did not say this — thematically adjacent but off in content (true_but_off). (3) 'Your brother will rule over you' echoes the prophecy concerning Esau and Jacob in 25:23, not a word spoken to Cain (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Cain and Abel",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 22,
+    "verseStart": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "On the way up the mountain, when Isaac asked 'where is the lamb for a burnt offering?', how did Abraham answer?",
+    "options": [
+      "You yourself are the offering that God has already chosen",
+      "God will provide for himself the lamb for a burnt offering",
+      "There will be a ram caught by its horns in a nearby thicket",
+      "An angel from heaven will stop your hand just in time"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 22:8 (ESV): Abraham said, 'God will provide for himself the lamb for a burnt offering, my son' — a word of faith. Correct answer: B. (1) 'You yourself are the offering God has already chosen' — Abraham never disclosed this to Isaac (wrong_detail). (2) 'A ram caught by its horns in a thicket' actually happened, but MUCH LATER (22:13), not what he said at this moment (near_passage). (3) 'An angel stopped his hand' also happened afterward (22:11–12), not the answer he gave on the way up the mountain (near_passage). Both distractors C and D are near_passage but independent (two separate events).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 25,
+    "verseStart": 23,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Through the choice of Isaac over Ishmael, and then Jacob over Esau, what core principle of God's election does Genesis reveal?",
+    "options": [
+      "He chooses according to his promise and sovereign purpose, not by right of the firstborn",
+      "He always chooses the child who is more gentle and righteous than his sibling",
+      "He always chooses the firstborn son in keeping with the inheritance customs of the time",
+      "He chooses the child born to the official first wife"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "God chose Isaac — the son of promise — over Ishmael the firstborn (Gen 17:18–21), then chose Jacob over Esau (Gen 25:23); both times OVERTURNING the natural right of the firstborn. The principle: He chooses according to promise and sovereign will, not birth order. Correct answer: A. (1) 'Always chooses the one who is more gentle and righteous' is a common misconception — Jacob used deception against his father and was not 'more righteous' than Esau (common_misconception). (2) 'Always chooses the firstborn son' is the exact opposite of the evidence (wrong_detail). (3) 'Chooses the child of the first wife' holds for Isaac (Sarah) but FAILS when applied to Jacob and Esau, who shared the same mother Rebekah — the criterion is wrong in scope (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Covenant",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 15,
+    "verseStart": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to Genesis 15:6, on what basis was Abram 'counted as righteous' by the LORD?",
+    "options": [
+      "Because he put his faith in the LORD's promise",
+      "Because he obeyed and offered his son Isaac as a burnt offering",
+      "Because he received circumcision as the sign of the covenant",
+      "Because he gave a tenth of the spoils to Melchizedek"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 15:6 (ESV): 'And he believed the LORD, and he counted it to him as righteousness.' The basis is FAITH in the promise, not works. Correct answer: A. All three distractors are good deeds Abraham actually performed, but all occurred AFTER 15:6 and therefore cannot be the basis: (1) Offering Isaac (Gen 22) — many years later (near_passage; also the passage James 2 engages with). (2) Circumcision (Gen 17) — Romans 4 emphasizes that righteousness was credited BEFORE circumcision (near_passage). (3) Giving a tenth to Melchizedek (Gen 14) — a genuine act, but not the basis for being counted righteous (true_but_off). All three are near_passage but independent — each a distinct 'work'.",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Faith",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 2,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "After completing the work of creation, what did God do on the seventh day?",
+    "options": [
+      "He made the great sea creatures and the birds of the air",
+      "He rested from all his work and made that day holy",
+      "He placed humanity in the Garden of Eden to tend it",
+      "He declared that everything he had made was very good"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 2:2–3 (ESV): 'And on the seventh day God finished his work... and he rested on the seventh day from all his work... So God blessed the seventh day and made it holy.' Correct answer: B. (1) 'He made the great sea creatures and the birds of the air' is the work of day five (1:20–21) (near_passage). (2) 'He placed humanity in the garden to tend it' is 2:15, not an act of the seventh day (near_passage). (3) 'He declared everything he had made very good' is the closing statement of day six (1:31) — textually accurate but the wrong day for the question asked (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Creation",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 8,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What animal did Noah release first to check whether the floodwaters had receded?",
+    "options": [
+      "A dove",
+      "A raven",
+      "An eagle",
+      "A sparrow"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 8:6–7 (ESV): Noah 'sent forth a raven. It went to and fro until the waters were dried up from the earth.' The raven was released BEFORE the dove (8:8). Correct answer: B. (1) 'A dove' was sent out afterward (8:8–12) — an easy mix-up since the dove is the more famous bird in the story (wrong_detail). (2) 'An eagle' and (3) 'a sparrow' are invented details not found in the text (wrong_detail — independent of each other).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Flood",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 50,
+    "verseStart": 26,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "At what age did Joseph die in Egypt?",
+    "options": [
+      "One hundred and twenty years old",
+      "One hundred and ten years old",
+      "One hundred and forty-seven years old",
+      "One hundred and seventy-five years old"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 50:26 (ESV): 'So Joseph died, being 110 years old.' The correct answer is B. The other numbers are the ages of different figures in the Pentateuch, making each one wrong in scope (wrong_scope): 120 is the age of Moses (Deut. 34:7); 147 is the age of his father Jacob (47:28); 175 is the age of Abraham (25:7). Each number functions as an independent almost-right because they are all plausible lifespans for the patriarchs.",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 37,
+    "verseStart": 28,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "For how many pieces of silver did Joseph's brothers sell him to the traders?",
+    "options": [
+      "Thirty pieces of silver",
+      "Twenty pieces of silver",
+      "Fifty pieces of silver",
+      "Ten pieces of silver"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 37:28 (ESV): 'They sold Joseph to the Ishmaelites for twenty shekels of silver.' The correct answer is B. (1) 'Thirty pieces of silver' is the price set for a slave in the Law (Exod. 21:32) and recalls the price of Jesus' betrayal — an almost-right due to familiar association (wrong_detail). (2) 'Fifty' and (3) 'Ten' are invented numbers not found in the text (wrong_detail — independent of each other).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 1,
+    "verseStart": 14,
+    "verseEnd": 15,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Genesis 1:14, for what purpose did God place the lights in the expanse of the heavens?",
+    "options": [
+      "So that people would worship the sun and the moon",
+      "To separate the day from the night, and to serve as signs for seasons, days, and years",
+      "To shine light exclusively on the Garden of Eden so that plants could grow",
+      "To separate the waters above from the waters below the expanse"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 1:14–15 (ESV): the lights are 'to separate the day from the night. And let them be for signs and for seasons, and for days and years… to give light upon the earth.' The correct answer is B. (1) 'So that people would worship the sun and moon' reverses the intent — Scripture prohibits the worship of created things (common_misconception). (2) 'To shine light exclusively on the Garden of Eden' wrongly narrows the scope: the light is for the whole earth (wrong_scope). (3) 'To separate the waters above from the waters below' was the work of the second day (1:6–7), not the role of the lights (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Creation",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 16,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After the angel met Hagar in the wilderness, what name did she give to the LORD?",
+    "options": [
+      "God Almighty (El Shaddai)",
+      "The God Who Sees Me (El Roi)",
+      "The LORD Will Provide (Jehovah-Jireh)",
+      "The Everlasting God (El Olam)"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 16:13 (ESV): Hagar 'called the name of the LORD who spoke to her, \"You are a God of seeing\"' (El Roi, the God who sees me). The correct answer is B. The other three names are all genuine divine names from Genesis but were used by others in different passages — each is an independent distractor: (1) El Shaddai / God Almighty — God spoke to Abram, 17:1 (near_passage). (2) Jehovah-Jireh / The LORD Will Provide — Abraham named the place on Mount Moriah, 22:14 (near_passage). (3) El Olam / The Everlasting God — at Beersheba, 21:33 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 28,
+    "verseStart": 20,
+    "verseEnd": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "In his vow at Bethel, what did Jacob promise if God would be with him and keep him?",
+    "options": [
+      "He would offer his firstborn son as a sacrifice",
+      "He would give back to God a tenth of everything God gave him",
+      "He would build God a great temple of precious stones",
+      "He would never return to his father's house again"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 28:20–22 (ESV): Jacob vowed, 'If God will be with me and will keep me in this way that I go… then the LORD shall be my God… And of all that you give me I will give a full tenth to you.' The correct answer is B. (1) 'Offer his firstborn son as a sacrifice' misattributes a child-sacrifice custom not found anywhere in the vow (common_misconception). (2) 'Build a great temple of precious stones' gets the detail wrong: he only set up a single stone pillar as a memorial (28:18) (wrong_detail). (3) 'Never return to his father's house' contradicts the vow, in which he hoped to 'come again to my father's house in peace' (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 41,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When Pharaoh told Joseph he had heard that Joseph could interpret dreams, how did Joseph reply?",
+    "options": [
+      "Promise me a great reward first, and then I will interpret it",
+      "It is not in me; God will give Pharaoh a favorable answer",
+      "I learned the art of dream interpretation from the Egyptian magicians",
+      "You must first offer sacrifices to the gods of Egypt before it can be interpreted"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 41:16 (ESV): Joseph answered, 'It is not in me; God will give Pharaoh a favorable answer.' He gave all glory to God. Correct answer: B. (1) 'Promise a great reward first' is a fabricated detail, contrary to Joseph's humble attitude (wrong_detail). (2) 'Learned the art from the Egyptian magicians' contradicts the text: the magicians themselves were unable to interpret the dreams (41:8) (wrong_scope). (3) 'Must offer sacrifices to the gods of Egypt' is a misconception that imposes a pagan context onto the passage (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 15,
+    "verseStart": 16,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "The LORD told Abram that his descendants would return to Canaan 'in the fourth generation.' What reason does the text give for this delay?",
+    "options": [
+      "Because the iniquity of the Amorites was not yet complete",
+      "Because Abram's descendants were not yet numerous enough to take the land",
+      "Because Abram had not yet finished offering the covenant sacrifices",
+      "Because the whole land of Canaan was experiencing a prolonged famine"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 15:16 (ESV): 'And they shall come back here in the fourth generation, for the iniquity of the Amorites is not yet complete.' The reason for the delay is God's patience, waiting for the sin of the inhabitants to reach the point warranting judgment. Correct answer: A. (1) 'Descendants not yet numerous enough' sounds plausible and is partly true historically, but it is NOT the reason the text gives (true_but_off). (2) 'Had not yet finished offering the covenant sacrifices' confuses this with the covenant ritual of the divided animals in 15:9-10 (near_passage). (3) 'Canaan was experiencing a prolonged famine' borrows the detail of the famine from 12:10, which is unrelated to the reason for the delay here (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Covenant",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 38,
+    "verseStart": 26,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "When Judah recognized that the three pledges were his own, what did he say about his daughter-in-law Tamar?",
+    "options": [
+      "She is more righteous than I, since I did not give her to my son Shelah",
+      "She deserves to be burned because she committed the sin of prostitution",
+      "I will take her as my wife to make amends for my wrongdoing",
+      "This is God's punishment upon my lineage"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 38:26 (ESV): Judah identified them and said, 'She is more righteous than I, since I did not give her to my son Shelah.' And he did not know her again. Judah acknowledged that his own fault was greater than Tamar's. Correct answer: A. (1) 'She deserves to be burned' was Judah's hasty verdict before he knew the truth (38:24) — now reversed by his own admission (wrong_detail). (2) 'I will take her as my wife' contradicts the text: he 'did not know her again' (wrong_detail). (3) 'God's punishment upon my lineage' sounds pious but is not what Judah said here (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Judah and Tamar",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 2,
+    "verseStart": 10,
+    "verseEnd": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Genesis 2, the river that flowed out of Eden divided into how many branches?",
+    "options": [
+      "Two branches",
+      "Seven branches",
+      "Four branches",
+      "Twelve branches"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 2:10 (ESV): 'A river flowed out of Eden to water the garden, and there it divided and became four rivers' — the Pishon, the Gihon, the Tigris, and the Euphrates. Correct answer: 'Four branches.' (1) 'Two branches' is an incorrect number (wrong_detail). (2) 'Seven branches' is a misconception arising from associating the passage with the familiar symbolic number seven (common_misconception). (3) 'Twelve branches' is a mistaken association with the twelve tribes of Israel mentioned later in Scripture (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Creation",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 3,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Adam named his wife Eve because she was what?",
+    "options": [
+      "The first woman on earth",
+      "The mother of all living",
+      "The one formed from his rib",
+      "The one who would give birth to the Savior"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 3:20 (ESV): 'The man called his wife's name Eve, because she was the mother of all living.' Correct answer: 'The mother of all living.' (1) 'The first woman on earth' is true as a fact but is not the reason the text gives for the name (true_but_off). (2) 'The one formed from his rib' is the true detail from 2:22, but it is not the meaning behind the name Eve (true_but_off). (3) 'The one who would give birth to the Savior' is an inference drawn from 3:15, not the explanation of the name given in 3:20 (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "The Fall",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 5,
+    "verseStart": 32,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What were the names of Noah's three sons?",
+    "options": [
+      "Shem, Ham, and Japheth",
+      "Cain, Abel, and Seth",
+      "Shem, Abraham, and Lot",
+      "Japheth, Nimrod, and Canaan"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 5:32: 'Noah fathered Shem, Ham, and Japheth.' Correct answer: 'Shem, Ham, and Japheth'. (1) 'Cain, Abel, and Seth' are the three sons of Adam, not Noah (wrong_scope). (2) 'Shem, Abraham, and Lot' mixes characters from different generations (wrong_detail). (3) 'Japheth, Nimrod, and Canaan' are descendants within Noah's lineage but not his three direct sons (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Flood",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 6,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to God's instructions, how many decks did Noah's ark have?",
+    "options": [
+      "One deck",
+      "Five decks",
+      "Seven decks",
+      "Three decks"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 6:16: the ark had a door in its side and was divided into lower, middle, and upper decks — that is, three decks. Correct answer: 'Three decks'. (1) 'One deck' is an incorrect detail (wrong_detail). (2) 'Five decks' is a fabricated number (wrong_detail). (3) 'Seven decks' evokes the familiar number seven in the Bible (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Flood",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 3,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After humanity sinned, what punishment did God pronounce upon the woman?",
+    "options": [
+      "She would toil and sweat to have food to eat",
+      "She would suffer pain in childbearing, and her husband would rule over her",
+      "She would be driven from the garden and set to guard the tree of life",
+      "She would be struck by the serpent on her heel"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 3:16: God said to the woman, 'I will surely multiply your pain in childbearing; in pain you shall bring forth children... and your husband shall rule over you.' Correct answer: 'She would suffer pain in childbearing, and her husband would rule over her'. (1) 'Toiling and sweating to have food' is the punishment pronounced over Adam in 3:17–19, not the woman (wrong_scope). (2) 'Being driven from the garden to guard the tree of life' describes the role of the cherubim after the expulsion in 3:24 (wrong_scope). (3) 'Being struck by the serpent on her heel' distorts the curse pronounced on the serpent in 3:15 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "The Fall",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 2,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What did God warn would happen if Adam ate from the tree of the knowledge of good and evil?",
+    "options": [
+      "He would be immediately driven out of the Garden of Eden",
+      "He would become like a wild animal",
+      "He would surely die",
+      "He would lose the right to name all living creatures"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 2:17: 'but of the tree of the knowledge of good and evil you shall not eat, for in the day that you eat of it you shall surely die.' Correct answer: 'He would surely die'. (1) 'Being immediately driven from the garden' is a consequence that came later in 3:23–24, not the warning given in 2:17 (true_but_off). (2) 'Becoming like a wild animal' is not in the text — on the contrary, the serpent promised they would become 'like God', 3:5 (wrong_detail). (3) 'Losing the right to name all living creatures' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "The Fall",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 8,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "How does Genesis 8:1 describe the turning point that caused the floodwaters to begin receding?",
+    "options": [
+      "God remembered Noah and made a wind blow over the earth",
+      "Noah prayed for forty days, asking for the waters to recede",
+      "The ark came to rest on Mount Ararat, causing the floodwaters to disperse",
+      "The angels opened the windows of heaven to let the floodwaters escape"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 8:1: 'God remembered Noah... And God made a wind blow over the earth, and the waters subsided.' 'Remembered' does not mean God had forgotten; it marks the beginning of his saving action. Correct answer: 'God remembered Noah and made a wind blow over the earth'. (1) 'Noah praying for forty days' is a fabricated detail; the forty days refers to the duration of rain in 7:12 (near_passage). (2) 'The ark landing on Ararat caused the waters to disperse' reverses cause and effect: the ark came to rest because the waters had already receded, 8:4 (wrong_detail). (3) 'Angels opening the windows of heaven' distorts the text: the 'windows of heaven' are the source of the floodwaters in 7:11, not an exit for them (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Flood",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 8,
+    "verseStart": 21,
+    "verseEnd": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After Noah offered a sacrifice, what did the LORD promise about the natural order?",
+    "options": [
+      "There will never be heavy rain on the earth again",
+      "As long as the earth endures, seedtime and harvest will not cease",
+      "A rainbow will always appear whenever it rains",
+      "People will live to nine hundred years as before"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 8:21-22 (ESV): 'While the earth remains, seedtime and harvest, cold and heat, summer and winter, day and night, shall not cease.' Correct answer: 'As long as the earth endures, seedtime and harvest will not cease.' (1) 'There will never be heavy rain again' misrepresents the promise: God swore not to destroy the earth by flood again, 9:11 (wrong_detail). (2) 'A rainbow will always appear when it rains' confuses this with the rainbow as a covenant sign in 9:13-16 (near_passage). (3) 'People living to nine hundred years' is unrelated to this promise (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "The Flood",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 7,
+    "verseStart": 11,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "According to Genesis 7:11, what were the sources of the water in the great flood?",
+    "options": [
+      "Only from the heavy rain that lasted forty days and nights",
+      "From the Euphrates and Tigris rivers overflowing their banks",
+      "From all the springs of the great deep bursting open and the windows of the heavens being opened",
+      "From the sea rising to submerge all dry land"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 7:11 (ESV): 'all the fountains of the great deep burst forth, and the windows of the heavens were opened' — water came from BOTH sources: below (the great deep) and above (the windows of heaven), not rain alone. Correct answer: 'From all the springs of the great deep bursting open and the windows of the heavens being opened.' (1) 'Only from rain for 40 days,' 7:12, is partly correct but omits the source from the great deep (wrong_detail). (2) 'The Euphrates and Tigris overflowing their banks' borrows river names from the Garden of Eden, 2:14 (near_passage). (3) 'The sea rising to submerge all dry land' is an invented scenario not found in the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "The Flood",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 9,
+    "verseStart": 3,
+    "verseEnd": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "After the flood, God granted humanity something new regarding food, along with one prohibition. What were they?",
+    "options": [
+      "They could eat every living creature, but must not eat flesh with its blood still in it",
+      "They could eat every fruit in the garden, except from the tree of the knowledge of good and evil",
+      "They could eat clean animals, but must abstain from unclean animals",
+      "They could eat bread and drink wine, but must give a tenth"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 9:3-4 (ESV): 'Every moving thing that lives shall be food for you... But you shall not eat flesh with its life, that is, its blood.' This is the first time humanity was permitted to eat meat, accompanied by a prohibition against consuming blood. Correct answer: 'They could eat every living creature, but must not eat flesh with its blood still in it.' (1) 'Eat every fruit except the tree of the knowledge of good and evil' refers to the command given in the Garden of Eden, 2:16-17 (near_passage). (2) 'Eat clean animals, abstain from unclean' confuses this with the Levitical purity laws that came much later (wrong_scope). (3) 'Eat bread and drink wine, give a tenth' confuses this with the episode involving Melchizedek, 14:18-20 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "The Flood",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 12,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Because of a famine in the land, where did Abram go temporarily to reside?",
+    "options": [
+      "Babylon",
+      "Egypt",
+      "Sodom",
+      "Haran"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 12:10 (ESV): 'Now there was a famine in the land. So Abram went down to Egypt to sojourn there.' Correct answer: 'Egypt.' (1) 'Babylon' confuses this with the region of Shinar/Babel, 11:2,9 (near_passage). (2) 'Sodom' is where Lot later chose to settle, 13:12 (near_passage). (3) 'Haran' is where Abram's family stopped before entering Canaan, 11:31 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 16,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What is the meaning of the name 'Ishmael' that the angel gave to Hagar's son?",
+    "options": [
+      "Laughter of the mother",
+      "Father of many nations",
+      "He who grasps the heel, the supplanter",
+      "God hears"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 16:11 (ESV): 'you shall call his name Ishmael, because the LORD has listened to your affliction.' Correct answer: 'God hears.' (1) 'Laughter' is the meaning of the name Isaac, 21:6 (wrong_scope). (2) 'Father of many nations' is the meaning of the name Abraham, 17:5 (wrong_scope). (3) 'He who grasps the heel' is the meaning of the name Jacob, 25:26 (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 23,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How much did Abraham pay to purchase the cave of Machpelah to bury Sarah?",
+    "options": [
+      "Thirty shekels of silver",
+      "Four hundred shekels of silver",
+      "One thousand shekels of gold",
+      "Fifty shekels of silver"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 23:16: Abraham weighed out for Ephron \"four hundred shekels of silver, according to the weights current among the merchants.\" Correct answer: \"Four hundred shekels of silver.\" (1) \"Thirty shekels of silver\" is the price of a slave, Exodus 21:32 (wrong_detail). (2) \"One thousand shekels of gold\" confuses this with Abimelech's gift — which was silver, not gold — in 20:16 (near_passage). (3) \"Fifty shekels\" is a fabricated figure (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 17,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When establishing the covenant, what name did God give to 'Sarai'?",
+    "options": [
+      "Rebekah",
+      "Rachel",
+      "Sarah",
+      "Eve"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 17:15: \"As for Sarai your wife, you shall not call her name Sarai, but Sarah shall be her name.\" Correct answer: \"Sarah.\" (1) \"Rebekah\" was the wife of her son Isaac, 24:67 (wrong_scope). (2) \"Rachel\" was the wife of Jacob, 29:28 (wrong_scope). (3) \"Eve\" was the first woman, 3:20 (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 15,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Before he had the child of promise, who did Abram think would be his heir?",
+    "options": [
+      "Lot, his nephew",
+      "Eliezer, his steward from Damascus",
+      "Ishmael, the son of Hagar",
+      "Isaac, the son of Sarah"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 15:2–3: Abram said, \"the heir of my house is Eliezer of Damascus... a member of my household will be my heir.\" Correct answer: \"Eliezer, his steward from Damascus.\" (1) \"Lot his nephew\" had already parted from Abram, 13:11 (near_passage). (2) \"Ishmael\" had not yet been born at the time of 15:2 — he was born in chapter 16 (wrong_detail). (3) \"Isaac\" is the promised son born later, 21:2 — the very one who superseded this expectation (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 16,
+    "verseStart": 1,
+    "verseEnd": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Why did Sarai give her servant Hagar to Abram as a wife?",
+    "options": [
+      "Because Sarai was barren and wanted to have a child through her servant, following the custom of the time",
+      "Because Hagar had been appointed by God to be the mother of the promised lineage",
+      "Because Abram demanded to take another wife in order to have an heir",
+      "Because Hagar was more beautiful and Sarai wanted to please her husband"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 16:1–3: Sarai was barren and said to Abram, \"Behold now, the LORD has prevented me from bearing children. Go in to my servant; it may be that I shall obtain children by her\" — the ancient custom of surrogate motherhood. Correct answer: \"Because Sarai was barren and wanted to have a child through her servant, following the custom of the time.\" (1) \"Hagar was appointed by God\" is wrong: God promised a child through Sarah herself, 17:19 (wrong_detail). (2) \"Abram demanded another wife\" reverses the account: it was Sarai who proposed it (wrong_detail). (3) \"Hagar was more beautiful\" is a fabricated detail not found in the text (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 22,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "To what region did God tell Abraham to take Isaac and offer him as a sacrifice?",
+    "options": [
+      "The land of Moriah, on a mountain that God would show him",
+      "Mount Sinai in the wilderness, where the Law would later be given",
+      "Mount Ararat, where Noah's ark had come to rest",
+      "The hill of Moreh near the ancient city of Shechem"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 22:2: \"Take your son... and go to the land of Moriah, and offer him there as a burnt offering on one of the mountains of which I shall tell you.\" Correct answer: \"The land of Moriah, on a mountain that God would show him.\" (1) \"Mount Sinai\" is where the Law was given later, Exodus 19 (wrong_scope). (2) \"Mount Ararat\" is where Noah's ark came to rest, 8:4 (near_passage). (3) \"The hill of Moreh near Shechem\" borrows the place-name where Abram built his first altar, 12:6 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 14,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After Melchizedek blessed him, what did Abram do in response?",
+    "options": [
+      "Offered a ram as a burnt offering",
+      "Gave all the spoils to the king of Sodom",
+      "Built an altar right there in Salem",
+      "Gave him a tenth of everything"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 14:20 (ESV): 'Abram gave him a tenth of everything.' The correct answer is: 'Gave him a tenth of everything.' (1) 'Offered a ram as a burnt offering' confuses this with a different sacrificial context (wrong_detail). (2) 'Gave all the spoils to the king of Sodom' reverses the story: Abram refused to take anything from the king of Sodom, 14:22–23 (wrong_detail). (3) 'Built an altar in Salem' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 18,
+    "verseStart": 10,
+    "verseEnd": 14,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "When promising that Sarah would bear a son, what specific timeframe did the three visitors (the LORD) give?",
+    "options": [
+      "Within the next seven years",
+      "About this time next year",
+      "When Abraham turned one hundred years old",
+      "After they returned from Egypt"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 18:10, 14 (ESV): 'I will surely return to you about this time next year, and Sarah your wife shall have a son' … 'Is anything too hard for the LORD?' The correct answer is: 'About this time next year.' (1) 'Within the next seven years' is a fabricated number that extends the timeline wrongly (wrong_detail). (2) 'When Abraham turned 100 years old' is accurate about his age, 21:5, but that is not the timeframe stated in the promise itself (true_but_off). (3) 'After they returned from Egypt' confuses this with an earlier trip to Egypt, 12:10–20 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 20,
+    "verseStart": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "In the dream, what did God tell King Abimelech about his taking Sarah?",
+    "options": [
+      "You shall surely die, for you have committed a great sin against me",
+      "I know that you did this in the integrity of your heart, and it was I who kept you from sinning",
+      "Go and kill immediately the man who deceived you",
+      "I will bless you abundantly because you have taken Sarah as your wife"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 20:6 (ESV): 'Then God said to him in the dream, \"Yes, I know that you have done this in the integrity of your heart, and it was I who kept you from sinning against me. Therefore I did not let you touch her.\"' The correct answer is: 'I know that you did this in the integrity of your heart, and it was I who kept you from sinning.' (1) 'You shall surely die' is the warning from the previous verse, 20:3, if he did not return her — verse 6 shifts the emphasis to God having already prevented his sin (wrong_detail). (2) 'Go and kill the man who deceived you' contradicts the text: God commanded Abimelech to return Sarah and have Abraham pray for him, 20:7 (wrong_detail). (3) 'I will bless you abundantly because you took Sarah' completely distorts the passage (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 25,
+    "verseStart": 25,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When Rebekah gave birth to twins, what distinctive feature of the firstborn led to his being named Esau?",
+    "options": [
+      "His skin was jet black like someone from the land of Cush",
+      "He came out red, all his body like a hairy cloak",
+      "His hand was grasping his brother's heel",
+      "He cried out without stopping for three straight days"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 25:25 (ESV): 'The first came out red, all his body like a hairy cloak, so they called his name Esau.' The correct answer is: 'He came out red, all his body like a hairy cloak.' (1) 'His skin was jet black like someone from the land of Cush' is a fabricated detail not found in the text (wrong_detail). (2) 'His hand was grasping his brother's heel' is the distinguishing feature of Jacob, who came out second, and is connected to Jacob's name, 25:26 (near_passage). (3) 'He cried out without stopping for three days' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 26,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When Isaac sowed in the land of Gerar, how much did the LORD bless him to reap?",
+    "options": [
+      "Ten times what he had sown",
+      "Just enough to survive the famine",
+      "A hundredfold what he had sown",
+      "Nothing at all because of the drought"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 26:12 (ESV): 'And Isaac sowed in that land and reaped in the same year a hundredfold. The LORD blessed him.' The correct answer is: 'A hundredfold what he had sown.' (1) 'Ten times what he had sown' is a wrong number that understates the miracle (wrong_detail). (2) 'Just enough to survive the famine' distorts the text: Isaac became very wealthy, 26:13 (wrong_detail). (3) 'Nothing at all because of the drought' is the exact opposite of what the text says (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Isaac",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 29,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When Jacob first met Rachel by the well, what did he do?",
+    "options": [
+      "Kissed Rachel and wept aloud",
+      "Knelt down and prayed to give thanks to God",
+      "Gave her a gold ring",
+      "Rolled away the large stone and immediately left"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 29:11 (ESV): 'Then Jacob kissed Rachel and wept aloud.' The correct answer is 'Kissed Rachel and wept aloud.' (1) 'Knelt down and prayed in thanksgiving' is a fabricated detail for this scene (wrong_detail). (2) 'Gave her a gold ring' confuses this with the gift Abraham's servant gave Rebekah, 24:22 (near_passage). (3) 'Rolled away the stone and immediately left' is correct about rolling the stone, 29:10, but he stayed rather than leaving immediately (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 35,
+    "verseStart": 29,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Isaac died at the age of 180; who buried him together?",
+    "options": [
+      "Jacob alone handled all the arrangements",
+      "Jacob together with his grandson Joseph",
+      "Esau and Jacob, his two sons",
+      "The servants and household workers"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 35:29 (ESV): 'And his sons Esau and Jacob buried him.' The correct answer is 'Esau and Jacob, his two sons.' (1) 'Jacob alone handled all the arrangements' omits Esau (wrong_detail). (2) 'Jacob together with his grandson Joseph' confuses the generations: Joseph was Isaac's grandson, not his son (wrong_scope). (3) 'The servants and household workers' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Isaac",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 27,
+    "verseStart": 36,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When Esau lost his blessing, what meaning did he attach to the name 'Jacob' in his complaint?",
+    "options": [
+      "The one chosen by God from the womb",
+      "The beloved son of his mother Rebekah",
+      "A gentle shepherd who dwelt in tents",
+      "The supplanter/heel-grabber, who has cheated me twice"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 27:36 (ESV): Esau said, 'Is he not rightly named Jacob? For he has cheated me these two times. He took away my birthright, and behold, now he has taken away my blessing.' The name Jacob means 'heel-grabber' or 'supplanter.' The correct answer is 'The supplanter/heel-grabber, who has cheated me twice.' (1) 'Chosen by God from the womb' is theologically true, 25:23, but is not the meaning of the name Esau is complaining about here (true_but_off). (2) 'His mother Rebekah's beloved son' is factually true, 25:28, but is not the meaning of the name (true_but_off). (3) 'A gentle shepherd who dwelt in tents' misapplies the description: 25:27 says Jacob 'dwelt in tents,' which is not the meaning of his name (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 26,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After having two wells disputed by others, Isaac dug a third well and named it Rehoboth — what meaning did he give it?",
+    "options": [
+      "The well of quarreling and contention",
+      "Now the LORD has made room for us",
+      "The well of a solemn oath",
+      "The place where water springs out of the rock"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 26:22 (ESV): Isaac dug a third well without dispute and 'called its name Rehoboth, saying, \"For now the LORD has made room for us, and we shall be fruitful in the land.\"' The correct answer is 'Now the LORD has made room for us.' (1) 'The well of quarreling and contention' reflects the meaning behind Esek and Sitnah, the two previous wells, 26:20–21 (near_passage). (2) 'The well of a solemn oath' is the meaning of Beersheba later, 26:33 (near_passage). (3) 'Water springs out of the rock' confuses this with Moses' miracle in the wilderness, Exodus 17 (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Isaac",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 31,
+    "verseStart": 41,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When confronting Laban, what did Jacob say his uncle had done to his wages during the twenty years?",
+    "options": [
+      "Withheld all his wages and paid him nothing",
+      "Paid him double out of compassion",
+      "Changed his wages ten times",
+      "Taken away both his wives"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 31:41 (ESV): Jacob said, 'These twenty years I have been in your house... you have changed my wages ten times.' The correct answer is 'Changed his wages ten times.' (1) 'Withheld all wages and paid him nothing' is an exaggeration: Laban did pay but kept changing the terms (wrong_detail). (2) 'Paid him double out of compassion' is the direct opposite of the text (wrong_scope). (3) 'Taken away both his wives' distorts the text: both wives were Laban's daughters but lawfully belonged to Jacob (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 35,
+    "verseStart": 2,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Before going up to Bethel to build an altar, what did Jacob command his household to do?",
+    "options": [
+      "Fast and pray continuously for seven days and nights",
+      "Put away the foreign idols, purify themselves, and change their garments",
+      "Offer the firstborn son of each family as a sacrifice",
+      "Build a strong fortified wall around the camp"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 35:2-4: Jacob said to his household, 'Put away the foreign gods that are among you and purify yourselves and change your garments'; they handed over their idols and he buried them under the oak at Shechem. Correct answer: 'Put away the foreign idols, purify themselves, and change their garments'. (1) 'Fast and pray for 7 days' is a fabricated detail (wrong_detail). (2) 'Offer the firstborn son' is a misconception that attributes the practice of child sacrifice to this passage (common_misconception). (3) 'Build a fortified wall around the camp' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 27,
+    "verseStart": 28,
+    "verseEnd": 29,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Isaac's blessing on Jacob (whom he believed to be Esau) centered on which blessings?",
+    "options": [
+      "Descendants as numerous as the stars of heaven and as the sand of the seashore",
+      "A land flowing with milk and honey for the twelve tribes",
+      "Eternal kingship and the Messiah from his line",
+      "Dew of heaven, fatness of the earth, abundance of grain and wine, and peoples bowing down to him"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 27:28-29: 'May God give you of the dew of heaven and of the fatness of the earth and plenty of grain and wine. Let peoples serve you, and nations bow down to you...' Correct answer: 'Dew of heaven, fatness of the earth, abundance of grain and wine, and peoples bowing down to him'. (1) 'Descendants as numerous as the stars and the sand' is the promise given to Abraham in 22:17 (near_passage). (2) 'A land flowing with milk and honey for the 12 tribes' is Promised Land language from the Exodus period (wrong_scope). (3) 'Eternal kingship and the Messiah' echoes the blessing of Judah in 49:10, not this general patriarchal blessing (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 31,
+    "verseStart": 49,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "The 'Mizpah' covenant between Jacob and Laban — 'May the LORD watch between you and me when we are out of one another's sight' — what was its actual nature?",
+    "options": [
+      "A blessing celebrating close and enduring friendship",
+      "A marriage promise between the two families",
+      "A boundary covenant between two parties who still distrusted each other",
+      "A covenant God established specifically with Jacob"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 31:49-52: Laban set up a heap of stones as a witness, saying 'May the LORD watch between you and me, when we are out of one another's sight' — accompanied by the warning, 'This heap is a witness... I will not pass over this heap to you, and you will not pass over this heap and this pillar to me, to do harm.' This is a boundary marker between two parties who still distrusted each other, not a warm expression of friendship. Correct answer: 'A boundary covenant between two parties who still distrusted each other'. (1) 'A blessing for close friendship' is the common misreading when the Mizpah quote is taken out of context (common_misconception). (2) 'A marriage promise between the two families' is a fabricated detail (wrong_detail). (3) 'A covenant God established specifically with Jacob' confuses this with the Bethel covenant in 28:13-15 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 37,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "In Joseph's first dream, what bowed down to his sheaf?",
+    "options": [
+      "Eleven stars",
+      "The sun and the moon",
+      "His brothers' sheaves",
+      "Eleven lean cows"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 37:7: 'Behold, my sheaf arose and stood upright. And behold, your sheaves gathered around it and bowed down to my sheaf.' Correct answer: 'His brothers' sheaves'. (1) 'Eleven stars' and (2) 'The sun and the moon' belong to Joseph's second dream in 37:9 (near_passage, two independent details). (3) 'Eleven lean cows' confuses this with Pharaoh's dream about cows in 41:2-3 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 41,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Before being brought to appear before Pharaoh to interpret his dreams, what did Joseph do?",
+    "options": [
+      "Shaved and changed his clothes",
+      "Fasted for three days",
+      "Urgently learned the Egyptian language",
+      "Offered sacrifices to the Egyptian gods"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 41:14: 'Then Pharaoh sent and called Joseph, and they quickly brought him out of the pit. And when he had shaved himself and changed his clothes, he came in before Pharaoh.' Shaving was an Egyptian custom. Correct answer: 'Shaved and changed his clothes'. (1) 'Fasted for three days' is a fabricated detail (wrong_detail). (2) 'Urgently learned the Egyptian language' is a fabricated detail (wrong_detail). (3) 'Offered sacrifices to the Egyptian gods' contradicts Joseph's consistent devotion to God throughout the narrative (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 37,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "The brothers threw Joseph into a pit; what does the text note about that pit?",
+    "options": [
+      "A deep pit full of snakes and scorpions",
+      "An empty pit, with no water in it",
+      "A pit dug by Joseph himself",
+      "A pit located on the bank of the Nile River"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 37:24 (ESV): \"And they took him and threw him into a pit. The pit was empty; there was no water in it.\" The detail \"no water\" underscores the peril he faced. Correct answer: \"An empty pit, with no water in it\". (1) \"Full of snakes and scorpions\" is a fabricated detail added for dramatic effect (wrong_detail). (2) \"Dug by Joseph himself\" is a fabricated detail (wrong_detail). (3) \"On the bank of the Nile\" is geographically wrong: the event took place at Dothan, in Canaan (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 50,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When Jacob died in Egypt, what did Joseph do for his father's body?",
+    "options": [
+      "Cremated the body in accordance with Egyptian custom",
+      "Buried him the same day in the region of Goshen",
+      "Commanded embalming, and the Egyptians mourned for seventy days",
+      "Brought the body directly back to Canaan within three days"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 50:2–3 (ESV): \"And Joseph commanded his servants the physicians to embalm his father... And the Egyptians wept for him seventy days.\" Correct answer: \"Commanded embalming, and the Egyptians mourned for seventy days\". (1) \"Cremation\" was not Egyptian practice in this context (wrong_detail). (2) \"Buried the same day in Goshen\" contradicts the later return to Canaan for burial recorded in 50:13 (wrong_detail). (3) \"Back to Canaan within three days\" is wrong: the funeral procession set out only after the embalming and mourning period were complete (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 37,
+    "verseStart": 34,
+    "verseEnd": 35,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Believing Joseph had been devoured by a wild animal, how did Jacob react?",
+    "options": [
+      "Immediately sent men to search for his son's body",
+      "Tore his garments, put on sackcloth, and refused to be comforted",
+      "Rebuked his sons for their negligence",
+      "Offered sacrifices to pray for his son's soul"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 37:34–35 (ESV): \"Then Jacob tore his garments and put sackcloth on his loins and mourned for his son many days... he refused to be comforted.\" Correct answer: \"Tore his garments, put on sackcloth, and refused to be comforted\". (1) \"Sent men to search for the body\" is a fabricated detail (wrong_detail). (2) \"Rebuked his sons for negligence\" is not in the text — he did not yet know the truth (wrong_detail). (3) \"Offered sacrifices for his son's soul\" assigns a ritual that has no basis in the text (common_misconception).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 46,
+    "verseStart": 3,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When Jacob was hesitant to go down to Egypt, what promise did God give to reassure him?",
+    "options": [
+      "You will never have to leave your beloved land of Canaan",
+      "You will rule all of Egypt just as Joseph does",
+      "I will make you into a great nation there, and I will also bring you back up",
+      "The famine will end immediately as soon as you arrive"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 46:3–4 (ESV): \"Do not be afraid to go down to Egypt, for there I will make you into a great nation. I myself will go down with you to Egypt, and I will also bring you up again.\" Correct answer: \"I will make you into a great nation there, and I will also bring you back up\". (1) \"Never leave Canaan\" is the opposite of what God said: he was explicitly told to go down to Egypt (wrong_scope). (2) \"Rule all of Egypt like Joseph\" is a fabricated detail (wrong_detail). (3) \"The famine will end immediately\" is fabricated; the famine continued (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 42,
+    "verseStart": 21,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When they encountered trouble in Egypt — not yet recognizing Joseph — what did the brothers say to one another?",
+    "options": [
+      "Let us put all the blame on Reuben",
+      "This official must be an Egyptian sorcerer",
+      "Our father will never forgive us",
+      "We are being punished because we treated our brother so badly"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 42:21 (ESV): \"Then they said to one another, 'In truth we are guilty concerning our brother, in that we saw the distress of his soul, when he begged us and we did not listen. That is why this distress has come upon us.'\" Their consciences were stricken more than twenty years later. Correct answer: \"We are being punished because we treated our brother so badly\". (1) \"Blame Reuben\" is the reverse of what happened: it was Reuben who reminded them he had warned them, 42:22 (wrong_detail). (2) \"This official is a sorcerer\" is a fabricated detail (wrong_detail). (3) \"Father will never forgive us\" misses the point: they were confessing guilt toward their brother, not speaking about their father (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 47,
+    "verseStart": 29,
+    "verseEnd": 31,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Near his death, what did Jacob make Joseph swear?",
+    "options": [
+      "Divide all the inheritance equally among the twelve sons",
+      "Do not bury him in Egypt, but carry him back to his fathers",
+      "Forgive all his brothers who had wronged him",
+      "Continue serving as prime minister of Egypt for the rest of his life"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 47:29-31 (ESV): Jacob said to Joseph, 'do not bury me in Egypt, but let me lie with my fathers'; Joseph swore, and Jacob was later buried in the cave of Machpelah, 49:29-31. Correct answer: 'Do not bury him in Egypt, but carry him back to his fathers'. (1) 'Divide the inheritance equally among the twelve sons' is a fabricated detail (wrong_detail). (2) 'Forgive his brothers who had wronged him' confuses this with the scene where Joseph reassured his brothers, 50:19-21 (near_passage). (3) 'Continue serving as prime minister for the rest of his life' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 41,
+    "verseStart": 34,
+    "verseEnd": 36,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "What policy did Joseph propose to Pharaoh to save Egypt from famine?",
+    "options": [
+      "Buy up all the grain from neighboring countries",
+      "Distribute the king's grain stores to the people immediately",
+      "Collect one-fifth of the harvest throughout the seven years of plenty",
+      "Force the people to fast every other day for seven years"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 41:34-36 (ESV): Joseph proposed appointing overseers to collect 'a fifth of the produce of the land of Egypt during the seven plentiful years' and store food for the seven years of famine. Correct answer: 'Collect one-fifth of the harvest throughout the seven years of plenty'. (1) 'Buy grain from neighboring countries' reverses reality: famine spread everywhere, and the nations came to Egypt to buy grain, 41:57 (wrong_scope). (2) 'Distribute the stores immediately' would undermine the entire storage plan (wrong_detail). (3) 'Force the people to fast every other day for seven years' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 48,
+    "verseStart": 5,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Before his death, what special declaration did Jacob make about Ephraim and Manasseh, the two sons of Joseph?",
+    "options": [
+      "Commanded the two grandsons to remain in Egypt and serve Pharaoh",
+      "Adopted the two grandsons as his own sons, equal to Reuben and Simeon",
+      "Gave the two grandsons double the share of their uncles",
+      "Placed the two grandsons under the rule of Judah"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 48:5 (ESV): Jacob said to Joseph, 'your two sons, who were born to you in Egypt before I came to you in Egypt, are mine; Ephraim and Manasseh shall be mine, as Reuben and Simeon are.' By adopting the two grandsons as his own sons, Joseph received a double inheritance through two tribes. Correct answer: 'Adopted the two grandsons as his own sons, equal to Reuben and Simeon'. (1) 'Remain in Egypt and serve Pharaoh' is a fabricated detail (wrong_detail). (2) 'Gave them double the share of their uncles' is imprecise: the double inheritance belonged to Joseph through his two sons, not literally twice the portion of their uncles (wrong_detail). (3) 'Placed under the rule of Judah' confuses this with Judah's leadership role, 49:10 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 1,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "On the third day of creation, what did God call the dry land and the gathered waters?",
+    "options": [
+      "Called the dry land 'Field' and the waters 'River'",
+      "Called the dry land 'Earth' and the gathered waters 'Seas'",
+      "Called the dry land 'Garden' and the waters 'Lake'",
+      "Called the dry land 'Mountain' and the waters 'Abyss'"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 1:10 (ESV): 'God called the dry land Earth, and the waters that were gathered together he called Seas. And God saw that it was good.' Correct answer: 'Called the dry land Earth and the gathered waters Seas'. (1) 'Field and River' is a fabricated pair of names (wrong_detail). (2) 'Garden and Lake' is a fabricated pair of names (wrong_detail). (3) 'Mountain and Abyss' is a fabricated pair of names (wrong_detail) — three independently wrong options.",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Creation",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 4,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "After being punished by the LORD, what land did Cain go to dwell in?",
+    "options": [
+      "The land of Goshen, to the west of Egypt",
+      "The land of Moriah, to the south of Canaan",
+      "The land of Nod, to the east of Eden",
+      "The land of Shinar, where Babel was later built"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 4:16 (ESV): 'Then Cain went away from the presence of the LORD and settled in the land of Nod, east of Eden.' Correct answer: 'The land of Nod, to the east of Eden'. (1) 'The land of Goshen' is where Jacob's family settled in Egypt, 47:11 (near_passage). (2) 'The land of Moriah' is where Abraham offered Isaac, 22:2 (near_passage). (3) 'The land of Shinar' is the region where the Tower of Babel was built, 11:2 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Cain and Abel",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 2,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Genesis 2:8, in which direction was the garden that God planted in Eden located?",
+    "options": [
+      "To the west",
+      "To the south",
+      "To the north",
+      "To the east"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 2:8 (ESV): 'And the LORD God planted a garden in Eden, in the east, and there he put the man whom he had formed.' Correct answer: 'To the east.' The three remaining directions do not match the text: 'to the west' (wrong_detail), 'to the south' (wrong_detail), 'to the north' (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Creation",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 11,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When building the city and tower on the plain of Shinar, what materials did the people use instead of stone and mortar?",
+    "options": [
+      "Cedar wood instead of stone, and clay instead of mortar",
+      "Marble instead of brick, and lime instead of tar",
+      "Fired brick instead of stone, and bitumen (tar/pitch) instead of mortar",
+      "Thin sheets of gold and silver to overlay the walls"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 11:3 (ESV): 'And they said to one another, \"Come, let us make bricks, and burn them thoroughly.\" And they had brick for stone, and bitumen for mortar.' Correct answer: 'Fired brick instead of stone, and bitumen (tar/pitch) instead of mortar.' (1) 'Cedar wood and clay' is a fabricated detail (wrong_detail). (2) 'Marble and lime' is a fabricated detail (wrong_detail). (3) 'Thin sheets of gold and silver' is a fabricated detail suggesting luxury (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Tower of Babel",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 3,
+    "verseStart": 4,
+    "verseEnd": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What lie did the serpent use to tempt Eve about eating the forbidden fruit?",
+    "options": [
+      "That fruit is only a small test — eating it will do no harm at all",
+      "You will not surely die, but will become like God, knowing good and evil",
+      "God has now changed His mind and is permitting you to eat that fruit",
+      "Just eating one tiny bite will certainly cause no harm at all"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 3:4-5 (ESV): The serpent said, 'You will not surely die. For God knows that when you eat of it your eyes will be opened, and you will be like God, knowing good and evil.' Correct answer: 'You will not surely die, but will become like God, knowing good and evil.' (1) 'Just a small test' is a fabricated statement that minimizes the sin (wrong_detail). (2) 'God has changed His mind and permits eating' is a distortion — the serpent denied God's word outright, not claimed God changed His mind (wrong_detail). (3) 'Just one tiny bite won't hurt' is a fabricated statement (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "The Fall",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 4,
+    "verseStart": 23,
+    "verseEnd": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What did Lamech boast to his two wives, revealing the escalation of violence after Cain?",
+    "options": [
+      "He had built a great city and named it after his son",
+      "He was the first person to invent musical instruments on earth",
+      "He had lived longer than all the ancestors before him",
+      "He killed a man for wounding him and would be avenged far more than Cain"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 4:23-24 (ESV): Lamech said to Adah and Zillah, 'I have killed a man for wounding me... If Cain's revenge is sevenfold, then Lamech's is seventy-sevenfold.' Correct answer: his boast of killing a man and demanding revenge far beyond Cain's. (1) 'Building a city and naming it after his son' was Cain's act, 4:17 (near_passage). (2) 'The first to invent musical instruments' was Jubal, Lamech's son, 4:21 — not Lamech himself (near_passage). (3) 'Living longer than all the ancestors' was Methuselah, 5:27 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Cain and Abel",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 1,
+    "verseStart": 29,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "At the time of creation, what did God give to humanity as food?",
+    "options": [
+      "Every animal and bird that lives on the earth",
+      "Every plant yielding seed and every tree with fruit that yields seed",
+      "Only the fruit of the trees in the garden of Eden",
+      "Bread and wine made by human hands"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 1:29 (ESV): 'Behold, I have given you every plant yielding seed that is on the face of all the earth, and every tree with seed in its fruit. You shall have them for food.' At creation, food consisted of plants. Correct answer: 'Every plant yielding seed and every tree with fruit that yields seed.' (1) 'Animals and birds' were only permitted after the flood, 9:3 (near_passage). (2) 'Only the fruit of trees in the garden of Eden' incorrectly narrows the scope — the gift extended across all the earth (wrong_scope). (3) 'Bread and wine made by human hands' is a fabricated detail for this point in time (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Creation",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 11,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Why was the city where people built the tower named Babel?",
+    "options": [
+      "Because there the LORD confused the language of all the earth",
+      "Because the tower rose so high it reached into the heavens",
+      "Because the people there worshiped the Canaanite god Baal",
+      "Because that was where Noah's ark came to rest after the flood"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 11:9 (ESV): 'Therefore its name was called Babel, because there the LORD confused the language of all the earth.' Correct answer: 'Because there the LORD confused the language of all the earth.' (1) 'The tower reaching to heaven' was the builders' stated goal, not the reason for the name (true_but_off). (2) 'Worshiping Baal' is a false association based on phonetic similarity with 'Babel' (common_misconception). (3) 'Where Noah's ark rested' confuses this with Mount Ararat, 8:4 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Tower of Babel",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 6,
+    "verseStart": 1,
+    "verseEnd": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "What does Genesis 6:1–4 describe about the state of humanity before the flood?",
+    "options": [
+      "Humanity gathered together to build a tower reaching up to the heavens",
+      "Humanity was divided into seventy nations scattered across the face of the earth",
+      "The 'sons of God' took the daughters of man as wives; in those days there were giants, the Nephilim",
+      "Humanity turned back to worship God with great fervor"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 6:1–4 (ESV): 'the sons of God saw that the daughters of man were attractive. And they took as their wives any they chose... The Nephilim were on the earth in those days.' This depicts the corruption that led to the flood. Correct answer: the option about the 'sons of God' and the giant Nephilim. (1) 'Building a tower to heaven' is the story of Babel, which comes after the flood, 11:4 (near_passage). (2) 'Divided into seventy nations' refers to the Table of Nations in chapter 10, also after the flood (near_passage). (3) 'Turned back to worship God fervently' is the opposite of the reality — this was a time of extreme wickedness, 6:5 (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "The Flood",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 4,
+    "verseStart": 20,
+    "verseEnd": 22,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Among the descendants of Lamech (of the line of Cain), who is called the father of all those who play the lyre and pipe?",
+    "options": [
+      "Jabal, the father of those who dwell in tents and have livestock",
+      "Jubal, the father of all those who play the lyre and pipe",
+      "Tubal-Cain, the forger of all instruments of bronze and iron",
+      "Enoch, who was taken up by God"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 4:20–22 (ESV): Adah bore Jabal, 'the father of those who dwell in tents and have livestock'; his brother Jubal was 'the father of all those who play the lyre and pipe'; Zillah bore Tubal-cain, 'the forger of all instruments of bronze and iron.' Correct answer: 'Jubal, the father of all those who play the lyre and pipe.' (1) 'Jabal' is the father of tent-dwellers and livestock herders, not musicians (wrong_detail). (2) 'Tubal-Cain' is the metalsmith (wrong_detail). (3) 'Enoch' belongs to the line of Seth and was taken up by God, 5:24 — a completely different person misattributed here (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Cain and Abel",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 25,
+    "verseStart": 27,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "As Isaac's two sons grew up, how did Esau and Jacob differ in occupation and character?",
+    "options": [
+      "Esau was a skillful hunter, a man of the field; Jacob was a quiet man, dwelling in tents",
+      "Esau was a shepherd in the fields; Jacob was a fisherman",
+      "Esau was a priest in the camp; Jacob was a traveling merchant",
+      "Esau preferred to stay in the tents; Jacob preferred to go hunting"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 25:27 (ESV): 'When the boys grew up, Esau was a skillful hunter, a man of the field, while Jacob was a quiet man, dwelling in tents.' Correct answer: 'Esau was a skillful hunter, a man of the field; Jacob was a quiet man, dwelling in tents.' (1) 'Shepherd and fisherman' are invented occupations for both (wrong_detail). (2) 'Priest and merchant' are invented occupations (wrong_detail). (3) 'Esau staying in the tents and Jacob going hunting' exactly reverses the two men (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 13,
+    "verseStart": 8,
+    "verseEnd": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "To avoid conflict between their herdsmen, what did Abram propose to his nephew Lot?",
+    "options": [
+      "Force Lot to leave and return to their former homeland of Haran",
+      "Let Lot choose a direction of land first, while he would go the opposite way",
+      "Divide all the livestock equally and continue living together in the same place",
+      "Drive all of Lot's servants away to another place"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 13:8–9 (ESV): Abram said to Lot, 'Let there be no strife between you and me... If you take the left hand, then I will go to the right, or if you take the right hand, then I will go to the left.' He generously let his nephew choose first. Correct answer: 'Let Lot choose a direction of land first, while he would go the opposite way.' (1) 'Forcing Lot to return to Haran' is a fabricated detail (wrong_detail). (2) 'Continuing to live together' is the opposite of the purpose, which was to separate (wrong_detail). (3) 'Driving away Lot's servants' contradicts Abram's generous spirit (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 19,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When the men of Sodom surrounded Lot's house to harm his two guests, what did the two angels do to them?",
+    "options": [
+      "Immediately turned them all into pillars of salt",
+      "Sent fire down from heaven and burned them all to death on the spot",
+      "Struck the whole crowd with blindness, so that they wore themselves out trying to find the door",
+      "Made them all fall into a deep sleep for the entire night"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 19:11 (ESV): 'And they struck with blindness the men who were at the entrance of the house, both small and great, so that they wore themselves out groping for the door.' Correct answer: 'Struck the whole crowd with blindness, so that they wore themselves out trying to find the door.' (1) 'Turned into pillars of salt' was the fate of Lot's wife later, 19:26 (near_passage). (2) 'Fire from heaven burned them to death' was the destruction of the entire city the next morning, 19:24 (near_passage). (3) 'Fell into a deep sleep all night' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Lot",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 24,
+    "verseStart": 67,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "After Rebekah was brought to him, what did Isaac do, and what did it mean for him?",
+    "options": [
+      "Sent her back to live with her uncle Laban for a few more years",
+      "Refused to marry her because she came from a distant land",
+      "Immediately set out to find himself another wife",
+      "Took her as his wife, loved her, and was comforted after his mother's death"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 24:67 (ESV): 'Then Isaac brought her into the tent of Sarah his mother and took Rebekah, and she became his wife, and he loved her. So Isaac was comforted after his mother's death.' Correct answer: 'Took her as his wife, loved her, and was comforted after his mother's death.' (1) 'Sent her back to Laban' contradicts the text (wrong_detail). (2) 'Refused to marry her because she came from a distant land' is the opposite: he married and loved her (wrong_detail). (3) 'Set out to find another wife' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Isaac",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 18,
+    "verseStart": 6,
+    "verseEnd": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When three visitors came to his tent in the heat of the day, how did Abraham receive them?",
+    "options": [
+      "Invited them inside to rest but offered only cold water",
+      "Quickly set out bread, curds, milk, and a tender calf he had prepared, and served them",
+      "Sent Sarah out to receive the guests while he himself withdrew",
+      "Refused to receive them because the heat that day was too intense"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 18:6-8 (ESV): Abraham 'hurried' and told Sarah to make cakes, ran to the herd and took a tender calf and had it quickly prepared, then took curds and milk and the meat and set it before them as he stood by them under the tree. Correct answer: 'Quickly set out bread, curds, milk, and a tender calf he had prepared, and served them.' (1) 'Offered only cold water' drastically understates the warmth of his hospitality (wrong_detail). (2) 'Withdrew and let Sarah receive them' contradicts the text: Abraham personally stood by and served them while they ate (wrong_detail). (3) 'Refused to receive them because of the heat' is the complete opposite of what happened (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 19,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When Lot lingered and was unwilling to leave Sodom, what did the two angels do, and for what reason?",
+    "options": [
+      "Left him behind in the city because he was too slow",
+      "Threatened to kill him on the spot if he did not leave at once",
+      "Seized his hand and brought his whole household out of the city, because the LORD had compassion on him",
+      "Patiently waited for him to finish gathering all his possessions before leaving"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 19:16 (ESV): 'But he lingered. So the men seized him and his wife and his two daughters by the hand, the LORD being merciful to him, and they brought him out and set him outside the city.' Correct answer: 'Seized his hand and brought his whole household out of the city, because the LORD had compassion on him.' (1) 'Left him behind in the city' is the opposite of what happened: they rescued him (wrong_detail). (2) 'Threatened to kill him if he did not leave' distorts the text: they urged him by mercy, not by threats (wrong_detail). (3) 'Waited for him to gather his possessions' contradicts the urgency of the escape (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Lot",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 21,
+    "verseStart": 31,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Why was the place where Abraham and Abimelech made a covenant called Beersheba?",
+    "options": [
+      "Because it was the place where Abraham buried Sarah",
+      "Because it was there that God gave Abraham his new name",
+      "Because it was the place where Isaac was born",
+      "Because the two of them swore an oath to each other there — it means the well of the oath"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 21:31 (ESV): 'Therefore that place was called Beersheba, because there both of them swore an oath.' Beersheba means 'well of the oath.' Correct answer: 'Because the two of them swore an oath to each other there — it means the well of the oath.' (1) 'The place where Sarah was buried' is the cave of Machpelah at Hebron, 23:19 (near_passage). (2) 'The place where God gave Abraham his new name' refers to the covenant of circumcision, 17:5 (near_passage). (3) 'The place where Isaac was born' is a fabricated detail for this location (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 24,
+    "verseStart": 2,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What did Abraham make his servant swear when sending him to find a wife for Isaac?",
+    "options": [
+      "Do not take a wife for Isaac from the daughters of Canaan, but go to my country and my kindred to find one",
+      "He must find the wealthiest woman in the land",
+      "He was only permitted to choose a wife from among the Egyptians",
+      "He must take Isaac along so that he could choose his own wife"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 24:2-4: Abraham made his servant put his hand under his thigh and swear: 'You shall not take a wife for my son from the daughters of the Canaanites... but will go to my country and to my kindred, and take a wife for my son Isaac.' Correct answer: 'Do not take a wife for Isaac from the daughters of Canaan, but go to my country and my kindred to find one.' (1) 'The wealthiest woman in the land' is a fabricated criterion (wrong_detail). (2) 'Choose from among the Egyptians' is wrong: he must return to Haran (wrong_detail). (3) 'Take Isaac along' contradicts the command 'do not take my son back there,' 24:6 (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 25,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "To secure the inheritance for Isaac, how did Abraham arrange matters with his other children at the end of his life?",
+    "options": [
+      "He divided all his wealth equally among all his sons",
+      "He gave Isaac all his possessions; he gave gifts to the sons of his concubines and sent them away to the east",
+      "He disinherited Isaac and appointed Ishmael as the chief heir",
+      "He entrusted all his possessions to his servant Eliezer to keep"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 25:5-6: 'Abraham gave all he had to Isaac. But to the sons of his concubines Abraham gave gifts, and while he was still living he sent them away from his son Isaac, eastward to the east country.' Correct answer: 'He gave Isaac all his possessions; he gave gifts to the sons of his concubines and sent them away to the east.' (1) 'Divided equally among all sons' contradicts the text: Isaac received the full inheritance (wrong_detail). (2) 'Appointed Ishmael as heir' is the opposite: Ishmael had already been removed from the line of inheritance, 21:10-12 (wrong_detail). (3) 'Entrusted everything to Eliezer' confuses this with an earlier concern before Isaac was born, 15:2 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Abraham",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 26,
+    "verseStart": 7,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "While staying in Gerar, which exact mistake of his father Abraham did Isaac repeat?",
+    "options": [
+      "He reopened all the wells that the Philistines had stopped up",
+      "He took his wife and family down to Egypt to escape the famine",
+      "He lied that Rebekah was only his sister, fearing he would be killed",
+      "He took his only son up the mountain to offer as a burnt offering"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 26:7: 'When the men of the place asked him about his wife, he said, \"She is my sister,\" for he feared to say, \"My wife,\" thinking, \"lest the men of the place should kill me because of Rebekah.\"' Isaac repeated exactly his father's strategy (12:13; 20:2). Correct answer: 'He lied that Rebekah was only his sister, fearing he would be killed.' (1) 'Reopening the wells the Philistines had stopped up' is another thing Isaac did, 26:18, not a mistake learned from his father (true_but_off). (2) 'Going down to Egypt to escape the famine' is what Abraham did, but God forbade Isaac from going to Egypt, 26:2 (wrong_detail). (3) 'Offering his only son as a burnt offering' is what Abraham did; Isaac did not repeat this (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Isaac",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 27,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When Jacob went in to receive the blessing in his brother's place, how did he lie to his father Isaac about his identity?",
+    "options": [
+      "He said he was a servant whom Esau had sent in to attend to his father",
+      "He honestly told him he was Jacob and asked his father to bless him anyway",
+      "He said he was Esau, his father's firstborn son",
+      "He said he was a messenger whom God had sent"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 27:19: 'Jacob said to his father, \"I am Esau your firstborn. I have done as you told me.\"' Correct answer: 'He said he was Esau, his father's firstborn son.' (1) 'A servant sent by Esau' is a fabricated detail (wrong_detail). (2) 'Honestly identifying himself as Jacob' contradicts the text: he pretended to be Esau (wrong_detail). (3) 'A messenger sent by God' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 29,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How does Genesis distinguish between Laban's two daughters, Leah and Rachel?",
+    "options": [
+      "Leah was beautiful, while Rachel had weak eyes",
+      "Leah had weak eyes, while Rachel was beautiful in form and appearance",
+      "Leah was the older sister, while Rachel was older than Leah",
+      "Leah herded sheep, while Rachel wove cloth"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 29:17: 'Leah's eyes were weak, but Rachel was beautiful in form and appearance.' Correct answer: 'Leah had weak eyes, while Rachel was beautiful in form and appearance.' (1) 'Leah beautiful, Rachel with weak eyes' reverses the two women (wrong_detail). (2) 'Rachel was older than Leah' is wrong: Leah was the older sister, 29:16 (wrong_detail). (3) 'Leah herded sheep, Rachel wove cloth' are fabricated occupations — it was Rachel who tended the flock, 29:9 (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 30,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Because of her barrenness and jealousy toward her sister, what did Rachel say to Jacob in her desperation?",
+    "options": [
+      "Go and take another wife so that we may have more children",
+      "Please pray to God to give me children",
+      "Allow me to return to my father Laban's house",
+      "Give me children, or else I will die"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 30:1 (ESV): 'When Rachel saw that she bore Jacob no children, she envied her sister. She said to Jacob, \"Give me children, or I shall die!\"' Correct answer: 'Give me children, or else I will die.' (1) 'Take another wife' is a fabricated detail (wrong_detail). (2) 'Pray to God' is what Jacob replied to her, not what she said, 30:2 (true_but_off). (3) 'Return to father Laban's house' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 28,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "To please his parents (who disapproved of his Canaanite wives), whom did Esau additionally marry?",
+    "options": [
+      "A daughter of Laban, his maternal uncle",
+      "A daughter of Ishmael, his uncle",
+      "A daughter of King Abimelech of Gerar",
+      "A daughter of Melchizedek, king of Salem"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 28:8-9 (ESV): 'Esau saw that the Canaanite women did not please Isaac his father, so Esau went to Ishmael and took as his wife...Mahalath the daughter of Ishmael...besides the wives he had.' Correct answer: 'A daughter of Ishmael, his uncle.' (1) 'A daughter of Laban' is whom Jacob married (Leah, Rachel), not Esau (near_passage). (2) 'A daughter of Abimelech' is a fabricated detail (wrong_detail). (3) 'A daughter of Melchizedek' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 27,
+    "verseStart": 41,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After losing the blessing, what did Esau harbor in his heart toward his brother Jacob?",
+    "options": [
+      "He immediately forgave him and ran to embrace his brother",
+      "He left home, went into exile, and never returned",
+      "He resolved to kill Jacob, but waited until after his father died",
+      "He brought Jacob to court before the king of the land"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 27:41 (ESV): 'Now Esau hated Jacob because of the blessing with which his father had blessed him, and Esau said to himself, \"The days of mourning for my father are approaching; then I will kill my brother Jacob.\"' Correct answer: 'He resolved to kill Jacob, but waited until after his father died.' (1) 'Immediately forgave and embraced him' is the reconciliation scene that happened much later, 33:4 (near_passage). (2) 'Left home and went into exile' is what Jacob did to flee, not Esau (wrong_scope). (3) 'Brought to court before the king' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 30,
+    "verseStart": 23,
+    "verseEnd": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When Rachel gave birth to Joseph, what did she say that reveals the meaning of his name?",
+    "options": [
+      "God has heard all my affliction",
+      "God has taken away my reproach; may the LORD add to me another son",
+      "I have wrestled mightily with my sister and have prevailed",
+      "This is the child of my pain as I was departing this life"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 30:23-24 (ESV): Rachel bore a son and said, 'God has taken away my reproach,' and she called his name Joseph (meaning 'may he add'), saying: 'May the LORD add to me another son!' Correct answer: 'God has taken away my reproach; may the LORD add to me another son.' (1) 'Has heard my affliction' reflects the meaning behind Leah's names for Reuben/Simeon, 29:32-33 (near_passage). (2) 'Wrestled with my sister and prevailed' is the meaning of Naphtali's name, 30:8 (near_passage). (3) 'Child of my pain' is Ben-oni, the name Rachel gave as she was dying, 35:18 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 32,
+    "verseStart": 1,
+    "verseEnd": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "On his way back to meet Esau, when the angels of God met Jacob, what did he name that place?",
+    "options": [
+      "Peniel, meaning 'the face of God'",
+      "Bethel, meaning 'the house of God'",
+      "Galeed, meaning 'the heap of witness'",
+      "Mahanaim, meaning 'the camp of God'"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 32:1-2 (ESV): 'Jacob went on his way, and the angels of God met him. And when Jacob saw them he said, \"This is God's camp!\" So he called the name of that place Mahanaim.' Correct answer: 'Mahanaim, meaning the camp of God.' (1) 'Peniel' is where he wrestled with God, 32:30 (near_passage). (2) 'Bethel' is where he saw the ladder, 28:19 (near_passage). (3) 'Galeed' is the heap of stones from the covenant with Laban, 31:47-48 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 33,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When Jacob arrived safely at the city of Shechem in the land of Canaan, he built an altar and called it what?",
+    "options": [
+      "El-Shaddai ('God Almighty, full of power')",
+      "Jehovah-Jireh ('The LORD Will Provide')",
+      "El-Elohe-Israel ('God, the God of Israel')",
+      "El-Olam ('The Everlasting God')"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 33:20 (ESV): 'There he erected an altar and called it El-Elohe-Israel' — meaning 'God, the God of Israel', acknowledging his new name. Correct answer: 'El-Elohe-Israel'. (1) 'El-Shaddai' is the name God declared to Abram, 17:1 (near_passage). (2) 'Jehovah-Jireh' is the name Abraham gave at Moriah, 22:14 (near_passage). (3) 'El-Olam' is the name at Beersheba, 21:33 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 29,
+    "verseStart": 35,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "When Leah gave birth to her fourth son and named him Judah, what did she say?",
+    "options": [
+      "This time I will praise the LORD",
+      "The LORD has looked upon my affliction",
+      "The LORD has heard that I am hated",
+      "Now my husband will be attached to me"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 29:35 (ESV): 'And she conceived again and bore a son, and said, \"This time I will praise the LORD.\" Therefore she called his name Judah.' Judah means 'praise'. Correct answer: 'This time I will praise the LORD'. (1) 'The LORD has looked upon my affliction' is the meaning of Reuben's name, 29:32 (near_passage). (2) 'The LORD has heard that I am hated' is the meaning of Simeon's name, 29:33 (near_passage). (3) 'My husband will be attached to me' is the meaning of Levi's name, 29:34 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Jacob",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 49,
+    "verseStart": 27,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "In his final blessing (Gen 49), Jacob compared the tribe of Benjamin to what animal?",
+    "options": [
+      "A young lion that crouches and springs upon its prey",
+      "A ravenous wolf: in the morning devouring the prey, in the evening dividing the plunder",
+      "A venomous serpent lying in wait by the road, biting the horse's heels",
+      "A doe set free that bears beautiful fawns"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 49:27 (ESV): 'Benjamin is a ravenous wolf, in the morning devouring the prey and at evening dividing the spoil.' Correct answer: 'A ravenous wolf: in the morning devouring the prey, in the evening dividing the plunder'. (1) 'A young lion' is the image of the tribe of Judah, 49:9 (near_passage). (2) 'A serpent biting the horse's heels' is the tribe of Dan, 49:17 (near_passage). (3) 'A doe set free' is the tribe of Naphtali, 49:21 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Blessing of the 12 Tribes",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 41,
+    "verseStart": 45,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "After promoting Joseph, Pharaoh gave him an Egyptian name and gave him whom as his wife?",
+    "options": [
+      "Named him Ben-Oni, then gave him the daughter of Potiphar",
+      "Named him Ichabod, then gave him an Egyptian princess",
+      "Named him Zaphenath-Paneah, and gave him Asenath the daughter of Potiphera priest of On",
+      "Named him Onan, then gave him the daughter of the king of the Hittites"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 41:45 (ESV): 'And Pharaoh called Joseph's name Zaphenath-paneah. And he gave him in marriage Asenath, the daughter of Potiphera priest of On.' Correct answer: 'Zaphenath-Paneah, gave Asenath the daughter of the priest of On'. (1) 'Ben-Oni' is the name Rachel gave to Benjamin, 35:18 (near_passage). (2) 'Ichabod' is a name from the time of Eli, 1 Sam 4 (wrong_scope). (3) 'Onan' is the son of Judah, 38:4 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 43,
+    "verseStart": 32,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "At the banquet Joseph hosted, why did the Egyptians sit and eat separately and not eat with the Hebrew brothers?",
+    "options": [
+      "Because Joseph's brothers were of a higher noble class",
+      "Because the Hebrews were required to abstain from all Egyptian food",
+      "Because Joseph wanted to conceal his true identity from them",
+      "Because eating with Hebrews was an abomination to the Egyptians"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 43:32 (ESV): 'They served him by himself, and them by themselves, and the Egyptians who ate with him by themselves, because the Egyptians could not eat with the Hebrews, for that is an abomination to the Egyptians.' Correct answer: 'Because eating with Hebrews was an abomination to the Egyptians'. (1) 'Brothers were of higher nobility' contradicts reality: they were shepherds who were despised (wrong_detail). (2) 'Hebrews abstained from Egyptian food' reverses the direction: it was the Egyptians who refused (wrong_detail). (3) 'Joseph was hiding his identity' is true that he was concealing himself, but that is not the reason for this custom of eating separately (true_but_off).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 45,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When sending his brothers back to bring their father, what did Joseph instruct them on the way?",
+    "options": [
+      "Do not tell their father the whole truth",
+      "Do not quarrel with one another on the way",
+      "Travel through the entire night without resting",
+      "Do not pass through the city of Sodom"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 45:24 (ESV): 'Then he sent his brothers away, and as they departed, he said to them, \"Do not quarrel on the way.\"' Correct answer: 'Do not quarrel with one another on the way.' (1) 'Do not tell their father the truth' is the opposite: Joseph explicitly sent them to tell their father everything, 45:13 (wrong_detail). (2) 'Travel all night without resting' is a fabricated detail (wrong_detail). (3) 'Do not pass through Sodom' is a fabricated detail; Sodom had already been destroyed long before (wrong_scope).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 50,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When the funeral procession mourning Jacob wept greatly at the threshing floor of Atad, what did the Canaanites name that place?",
+    "options": [
+      "Abel Mizraim ('a grievous mourning by the Egyptians')",
+      "Mahanaim ('the camp of God')",
+      "Bethel ('the house of God, the gate of heaven')",
+      "Galeed ('a heap of witness between the two parties')"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Genesis 50:11 (ESV): 'When the inhabitants of the land, the Canaanites, saw the mourning on the threshing floor of Atad, they said, \"This is a grievous mourning by the Egyptians.\" Therefore the place was named Abel Mizraim.' Correct answer: 'Abel Mizraim.' (1) 'Mahanaim' is the place where angels met Jacob, 32:2 (near_passage). (2) 'Bethel' is the place of the ladder, 28:19 (near_passage). (3) 'Galeed' is the heap of stones from the covenant with Laban, 31:48 (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 40,
+    "verseStart": 21,
+    "verseEnd": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Just as Joseph had interpreted their dreams, what was the fate of the cupbearer and the baker?",
+    "options": [
+      "Both officials were ultimately restored to their former positions by Pharaoh",
+      "Both officials were ultimately hanged by Pharaoh",
+      "The baker was released, while the cupbearer was put to death",
+      "The cupbearer was restored to his position, while the baker was hanged"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 40:21-22 (ESV): 'He restored the chief cupbearer to his position... But he hanged the chief baker, as Joseph had interpreted to them.' Correct answer: 'The cupbearer was restored to his position, while the baker was hanged.' (1) 'Both were restored to their positions' is wrong: only one was (wrong_detail). (2) 'Both were hanged' is wrong (wrong_detail). (3) 'The fates of the two are reversed' gets the key detail wrong (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 47,
+    "verseStart": 7,
+    "verseEnd": 10,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When Joseph brought his father to meet Pharaoh, what notable thing did Jacob do?",
+    "options": [
+      "Prostrated himself and presented many gifts to Pharaoh",
+      "Asked Pharaoh to grant him a title or rank",
+      "Blessed Pharaoh (the greater blessing the lesser)",
+      "Firmly refused to appear before Pharaoh"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 47:7-10 (ESV): 'Then Joseph brought in Jacob his father and stood him before Pharaoh, and Jacob blessed Pharaoh'—both when he entered and when he departed. By custom, the greater blesses the lesser (cf. Hebrews 7:7). Correct answer: 'Blessed Pharaoh.' (1) 'Prostrated himself and presented gifts' is not in the text at this point (wrong_detail). (2) 'Asked for a title' is contrary to Jacob's standing as patriarch (wrong_detail). (3) 'Refused to appear' contradicts the text: he came and stood before Pharaoh (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 46,
+    "verseStart": 33,
+    "verseEnd": 34,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What occupation did Joseph instruct his brothers to tell Pharaoh they practiced, so they could settle in the land of Goshen?",
+    "options": [
+      "That they were high-ranking officials in the Egyptian court",
+      "That they were keepers of livestock, since shepherds were detestable to Egyptians",
+      "That they were traveling merchants trading in distant lands",
+      "That they were priests serving God"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 46:33-34 (ESV): Joseph instructed them: 'When Pharaoh calls you and says, \"What is your occupation?\" you shall say, \"Your servants have been keepers of livestock from our youth even until now,\" in order that you may dwell in the land of Goshen, for every shepherd is an abomination to the Egyptians.' Correct answer: 'That they were keepers of livestock.' (1) 'High-ranking officials in the Egyptian court' is a fabricated detail (wrong_detail). (2) 'Traveling merchants in distant lands' is a fabricated detail (wrong_detail). (3) 'Priests serving God' is a fabricated detail (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 50,
+    "verseStart": 19,
+    "verseEnd": 21,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "After their father died, Joseph's brothers feared he would take revenge on them; with what spirit did he respond?",
+    "options": [
+      "He required all of them to serve as his slaves for life to atone for their past sins",
+      "He immediately drove all his brothers out of the land of Egypt",
+      "He remained completely silent, said nothing to them, and kept his distance from them",
+      "He reassured them, saying 'Am I in the place of God?', then promised to provide for them"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Genesis 50:19-21 (ESV): Joseph said, 'Do not fear, for am I in the place of God? As for you, you meant evil against me, but God meant it for good... So do not fear; I will provide for you and your little ones.' The correct answer: 'He reassured them — Am I in the place of God? — and promised to provide for them.' (1) 'Requiring them to be slaves to atone for sin' contradicts his spirit of forgiveness (wrong_detail). (2) 'Driving them out of Egypt' is the opposite: he promised to provide for them (wrong_detail). (3) 'Remaining silent and keeping his distance' contradicts the text: he comforted them and spoke kindly to them (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 44,
+    "verseStart": 2,
+    "verseEnd": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "To test his brothers, what did Joseph instruct to be hidden in Benjamin's sack before sending men to pursue them?",
+    "options": [
+      "A pouch filled with pure gold taken from the royal treasury",
+      "A small idol cast from pure silver",
+      "His silver cup, which was said to be used for divination",
+      "His signet ring together with the prime minister's finest robe"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Genesis 44:2,5 (ESV): Joseph instructed his steward, 'Put my silver cup, the silver cup, in the mouth of the sack of the youngest'; then he sent men after them who said, 'Is it not from this that my lord drinks, and by this that he practices divination?' The correct answer: 'His silver cup, said to be used for divination.' (1) 'A pouch of gold from the royal treasury' is a fabricated detail (wrong_detail). (2) 'A silver idol' confuses this with the household gods Rachel stole from Laban, 31:19 (near_passage). (3) 'The signet ring and prime minister's robe' were what Pharaoh gave Joseph, 41:42 — not the item hidden in the sack (near_passage).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 47,
+    "verseStart": 20,
+    "verseEnd": 26,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "During the years of famine, what major consequence did Joseph's policy bring about for all of Egypt?",
+    "options": [
+      "The people throughout the land revolted and overthrew Pharaoh's throne",
+      "All the land and the people became Pharaoh's possession, required to give a fifth of their produce",
+      "All the Egyptians were forced to relocate and live in the land of Canaan",
+      "Pharaoh was compelled to divide all the land equally among the people"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Genesis 47:20-26 (ESV): Because of the famine, the Egyptians sold their livestock, then their land and themselves to buy grain; 'Joseph bought all the land of Egypt for Pharaoh,' and he established a statute that the people give a fifth of their harvest to Pharaoh. The correct answer: 'All the land and the people became Pharaoh's possession, required to give a fifth.' (1) 'The people revolted and overthrew Pharaoh' contradicts the text: the people were grateful for being kept alive (wrong_detail). (2) 'Relocating to Canaan' is a fabricated detail (wrong_detail). (3) 'Dividing the land equally among the people' is the exact opposite: the land was consolidated under Pharaoh (wrong_detail).",
+    "language": "en",
+    "tags": [
+      "Old Testament",
+      "Genesis",
+      "Pentateuch",
+      "Joseph",
+      "Advanced"
+    ]
   }
 ]

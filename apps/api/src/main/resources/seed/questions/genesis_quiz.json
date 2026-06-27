@@ -4012,5 +4012,2642 @@
       "Lời cuối Giô-sép",
       "Trung cấp"
     ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 2,
+    "verseStart": 19,
+    "verseEnd": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Sáng Thế Ký 2, Đức Chúa Trời đem các loài thú đồng và chim trời đến trước mặt A-đam để ông làm gì?",
+    "options": [
+      "Lùa các loài thú ra khỏi vườn Ê-đen",
+      "Đặt tên cho từng loài",
+      "Phân chia các loài thành sạch và ô uế",
+      "Dâng các loài làm của lễ thiêu"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 2:19-20 (RVV11) chép Đức Chúa Trời đem các loài đến trước mặt A-đam 'để xem người đặt tên chúng là gì', và A-đam 'đặt tên cho tất cả gia súc, chim trời và thú đồng'. Đáp án đúng: 'Đặt tên cho từng loài'. (1) 'Lùa các loài ra khỏi vườn' là chi tiết bịa, không có trong bản văn (wrong_detail). (2) 'Phân chia sạch và ô uế' là nhầm sang việc Nô-ê đưa thú vào tàu theo loài sạch/ô uế ở Sáng 7 (near_passage). (3) 'Dâng làm của lễ thiêu' là hiểu lầm phổ biến gán việc tế lễ cho A-đam, trong khi của lễ đầu tiên được ghi là của Ca-in và A-bên ở Sáng 4 (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Sáng tạo",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 9,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau cơn hồng thủy, Sáng Thế Ký ghi lại Nô-ê khởi sự làm công việc gì?",
+    "options": [
+      "Đóng một chiếc tàu thứ hai để phòng lụt",
+      "Dẫn dắt dân chúng xây một thành lớn",
+      "Lập một bàn thờ và làm thầy tế lễ đầu tiên",
+      "Trồng một vườn nho"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 9:20 (RVV11): 'Nô-ê bắt đầu làm nghề nông và trồng một vườn nho.' Đáp án đúng: 'Trồng một vườn nho'. (1) 'Đóng chiếc tàu thứ hai' là chi tiết bịa, không có trong bản văn (wrong_detail). (2) 'Dẫn dân xây một thành lớn' là nhầm sang Nim-rốt và thành/tháp Ba-bên ở Sáng 10-11 (near_passage). (3) 'Lập bàn thờ và làm thầy tế lễ đầu tiên' có phần đúng — Nô-ê thật sự lập bàn thờ dâng tế lễ sau khi ra khỏi tàu (Sáng 8:20) — nhưng đó không phải công việc được hỏi và chữ 'đầu tiên' sai vì Ca-in, A-bên đã dâng tế trước (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Hồng thủy",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 3,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi Đức Chúa Trời chất vấn A-đam sau khi ông ăn trái cấm, A-đam phản ứng thế nào?",
+    "options": [
+      "Lập tức xưng nhận tội và cầu xin được tha thứ",
+      "Đổ lỗi cho người nữ mà Đức Chúa Trời đã ban cho mình",
+      "Im lặng, không đáp lại lời chất vấn",
+      "Đổ lỗi cho con rắn đã lừa dối mình"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 3:12 (RVV11): A-đam thưa, 'Người nữ mà Chúa đã đặt bên con đã cho con trái cây đó nên con ăn' — vừa đổ lỗi cho Ê-va, vừa gián tiếp cho Đức Chúa Trời. Đáp án đúng: 'Đổ lỗi cho người nữ…'. (1) 'Lập tức xưng tội và ăn năn' là hiểu lầm phổ biến áp đặt phản ứng 'đúng' lên A-đam, trái bản văn (common_misconception). (2) 'Im lặng không đáp' sai chi tiết: A-đam có trả lời (wrong_detail). (3) 'Đổ lỗi cho con rắn' chính là phản ứng của Ê-va ở câu kế (3:13), không phải của A-đam — đáp án gần đúng dễ nhầm (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Sa ngã",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 6,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Sáng Thế Ký 6, điều gì khiến Đức Chúa Trời đau buồn trong lòng và định xóa loài người khỏi mặt đất?",
+    "options": [
+      "Vì loài người tụ tập xây một ngọn tháp cao đến tận trời xanh",
+      "Vì loài người quay sang thờ lạy hình tượng bằng gỗ và bằng đá",
+      "Vì sự gian ác của loài người quá lớn, lòng họ chỉ toan điều ác luôn",
+      "Vì loài người không chịu sinh sản thêm cho đầy khắp mặt đất"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 6:5-6 (RVV11): 'Đức Giê-hô-va thấy sự gian ác của loài người trên mặt đất rất nhiều, tất cả ý tưởng trong lòng họ chỉ hướng về điều ác luôn' nên Ngài 'buồn rầu trong lòng'. Đáp án đúng nêu chính lý do bản văn ghi. (1) 'Xây tháp cao đến trời' là sự kiện Ba-bên ở Sáng 11, không phải nguyên nhân hồng thủy (near_passage). (2) 'Thờ hình tượng gỗ đá' là hiểu lầm phổ biến gán tội thờ thần tượng — bản văn không nêu lý do này tại đây (common_misconception). (3) 'Không sinh sản cho đầy đất' ngược với bản văn: 6:1 nói loài người 'gia tăng đông đúc' (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Hồng thủy",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 17,
+    "verseStart": 12,
+    "verseEnd": 13,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo Sáng Thế Ký 17, dấu cắt bì của giao ước phải được áp dụng cho ai trong nhà Áp-ra-ham?",
+    "options": [
+      "Mọi người nam trong nhà, kể cả nô lệ sinh trong nhà lẫn nô lệ mua từ người ngoại",
+      "Chỉ một mình Áp-ra-ham và con trai của lời hứa là Y-sác mà thôi",
+      "Mọi người nam thuộc dòng dõi ruột thịt của Áp-ra-ham, nhưng không gồm tôi tớ",
+      "Cả người nam lẫn người nữ sinh ra trong nhà của Áp-ra-ham"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 17:12-13 (RVV11): mọi bé trai phải chịu cắt bì lúc tám ngày tuổi, 'kể cả nô lệ sinh trong nhà con hoặc mua bằng bạc từ người ngoại bang không thuộc dòng dõi con'. Phạm vi gồm mọi người nam trong nhà, cả tôi tớ. (1) 'Chỉ Áp-ra-ham và Y-sác' thu hẹp sai phạm vi — đúng là hai người này có chịu cắt bì nhưng dấu giao ước không giới hạn ở họ (wrong_scope, gần đúng). (2) 'Dòng dõi ruột thịt, không gồm tôi tớ' sai đúng một chi tiết then chốt: bản văn nhấn mạnh CẢ nô lệ mua về cũng phải chịu (wrong_detail, gần đúng). (3) 'Cả nam lẫn nữ' là hiểu lầm phổ biến: dấu cắt bì chỉ áp dụng cho người nam (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giao ước",
+      "Áp-ra-ham",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 4,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Đức Chúa Trời hỏi 'A-bên em con ở đâu?', Ca-in đã đáp lại thế nào?",
+    "options": [
+      "Con đã chôn em ngoài đồng, không ai hay biết",
+      "Con không biết; con đâu phải là người giữ em con?",
+      "Em con đang chăn bầy chiên ở đồng cỏ phía xa",
+      "Chính Chúa đã cất em con đi khỏi con rồi"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 4:9 (RVV11): Đức Giê-hô-va hỏi 'A-bên, em con đâu?', Ca-in đáp 'Con không biết. Con là người giữ em con sao?' — vừa chối vừa thoái thác. Đáp án đúng: B. (1) 'Con đã chôn em ngoài đồng' là chi tiết bịa, Ca-in không thú nhận (wrong_detail). (2) 'Em con đang chăn bầy ở xa' cũng là một lời bịa độc lập khác (wrong_detail — độc lập với A: loại lời này không loại lời kia). (3) 'Chính Chúa đã cất em đi' đổ ngược trách nhiệm cho Đức Chúa Trời, sai phạm vi (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Ca-in và A-bên",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 4,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trước khi Ca-in giết em, Đức Chúa Trời cảnh báo ông điều gì về tội lỗi?",
+    "options": [
+      "Tội lỗi đang rình rập trước cửa, thèm bắt lấy con; con phải quản trị nó",
+      "Tội lỗi của con nay đã được tha thứ rồi, hãy đi trong bình an",
+      "Hãy dâng thêm một chiên con béo tốt thì lễ vật sẽ được nhậm",
+      "Rồi đây em con sẽ cai trị trên con, còn con phải phục dưới nó"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 4:7 (RVV11): '...tội lỗi đang rình rập trước cửa, nó thèm bắt lấy con, nhưng con phải quản trị nó.' Đáp án đúng: A. (1) 'Tội đã được tha, đi bình an' ngược hẳn lời cảnh báo (common_misconception về ân điển rẻ tiền). (2) 'Dâng thêm chiên thì được nhậm' gắn với chủ đề của lễ Ca-in/A-bên (4:3-5) nhưng Chúa không phán câu này — đúng chủ đề, lạc nội dung (true_but_off). (3) 'Em con sẽ cai trị con' vọng lại lời tiên tri về Ê-sau/Gia-cốp ở 25:23, không phải lời với Ca-in (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Ca-in và A-bên",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 22,
+    "verseStart": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trên đường lên núi, khi Y-sác hỏi 'chiên con đâu để làm của lễ?', Áp-ra-ham trả lời thế nào?",
+    "options": [
+      "Con chính là của lễ mà Đức Chúa Trời đã chọn sẵn rồi",
+      "Đức Chúa Trời sẽ tự sắm sẵn lấy chiên con cho của lễ",
+      "Sẽ có một chiên đực mắc sừng trong bụi rậm gần đây",
+      "Một thiên sứ trên trời sẽ ngăn tay con lại kịp lúc"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 22:8 (RVV11): Áp-ra-ham đáp, 'Con ơi, Đức Chúa Trời sẽ tự sắm sẵn lấy chiên con cho tế lễ' — một lời đức tin. Đáp án đúng: B. (1) 'Con chính là của lễ Chúa đã chọn' — Áp-ra-ham không hề tiết lộ điều này cho Y-sác (wrong_detail). (2) 'Chiên đực mắc sừng trong bụi' thật sự xảy ra nhưng MÃI SAU (22:13), không phải lời ông nói lúc này (near_passage, gần đúng). (3) 'Thiên sứ ngăn tay' cũng xảy ra sau (22:11-12), không phải câu trả lời lúc lên núi (near_passage, gần đúng). Hai distractor C, D cùng near_passage nhưng độc lập (hai sự kiện khác nhau).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 25,
+    "verseStart": 23,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Qua việc chọn Y-sác (trên Ích-ma-ên) rồi Gia-cốp (trên Ê-sau), Sáng Thế Ký cho thấy nguyên tắc cốt lõi nào trong sự lựa chọn của Đức Chúa Trời?",
+    "options": [
+      "Ngài chọn theo lời hứa và ý định tể trị của Ngài, không theo quyền trưởng nam",
+      "Ngài luôn chọn người con sống hiền lành và đạo đức hơn người anh em",
+      "Ngài luôn chọn người con trưởng nam theo đúng tục lệ thừa kế thời đó",
+      "Ngài chọn người con do người vợ chính thức (vợ cả) sinh ra"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Đức Chúa Trời chọn Y-sác — con của lời hứa — thay vì Ích-ma-ên là con trưởng (Sáng 17:18-21), rồi chọn Gia-cốp thay vì Ê-sau (Sáng 25:23); cả hai lần đều ĐẢO quyền trưởng nam tự nhiên. Nguyên tắc: Ngài chọn theo lời hứa và quyền tể trị, không theo thứ tự sinh. Đáp án đúng: A. (1) 'Luôn chọn người hiền lành đạo đức hơn' là hiểu lầm phổ biến — Gia-cốp dùng mưu lừa cha, không 'đạo đức hơn' Ê-sau (common_misconception). (2) 'Luôn chọn con trưởng nam' ngược hẳn dữ kiện (wrong_detail). (3) 'Chọn con của vợ cả' đúng với Y-sác (Sa-ra) nhưng SẬP khi xét Gia-cốp/Ê-sau cùng mẹ Rê-bê-ca — tiêu chí sai phạm vi (wrong_scope, gần đúng).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giao ước",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 15,
+    "verseStart": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo Sáng Thế Ký 15:6, Áp-ram được Đức Giê-hô-va 'kể là công chính' trên cơ sở nào?",
+    "options": [
+      "Vì ông đặt lòng tin nơi lời hứa của Đức Giê-hô-va",
+      "Vì ông vâng lời dâng Y-sác con mình làm của lễ",
+      "Vì ông đã chịu cắt bì làm dấu của giao ước",
+      "Vì ông dâng một phần mười chiến lợi phẩm cho Mên-chi-xê-đéc"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 15:6 (RVV11): 'Áp-ram tin Đức Giê-hô-va, nên Ngài kể ông là người công chính.' Cơ sở là ĐỨC TIN nơi lời hứa, không phải việc làm. Đáp án đúng: A. Ba distractor đều là việc lành Áp-ra-ham THẬT SỰ làm, nhưng đều xảy ra SAU 15:6 nên không thể là cơ sở: (1) dâng Y-sác (Sáng 22) — nhiều năm sau (near_passage, gần đúng; cũng là điểm Gia-cơ 2 bàn tới). (2) chịu cắt bì (Sáng 17) — Rô-ma 4 nhấn mạnh sự công chính được kể TRƯỚC khi cắt bì (near_passage, gần đúng). (3) dâng một phần mười cho Mên-chi-xê-đéc (Sáng 14) — là việc làm, không phải cơ sở được kể công chính (true_but_off). Cả ba cùng near_passage nhưng độc lập — mỗi cái một 'việc làm' riêng.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Đức tin",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 2,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau khi hoàn tất công cuộc sáng tạo, Đức Chúa Trời đã làm gì vào ngày thứ bảy?",
+    "options": [
+      "Dựng nên các loài cá lớn và loài chim trời",
+      "Nghỉ mọi công việc và thánh hóa ngày ấy",
+      "Đặt con người vào vườn Ê-đen để chăm sóc",
+      "Phán rằng mọi vật Ngài dựng nên là rất tốt lành"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 2:2-3 (RVV11): 'Đến ngày thứ bảy... Ngài nghỉ... Đức Chúa Trời ban phước cho ngày thứ bảy và thánh hóa ngày ấy.' Đáp án đúng: B. (1) 'Dựng cá lớn và chim trời' là việc của ngày thứ năm (1:20-21) (near_passage). (2) 'Đặt con người vào vườn chăm sóc' là 2:15, không phải việc ngày thứ bảy (near_passage). (3) 'Phán mọi vật rất tốt lành' là lời cuối ngày thứ sáu (1:31) — đúng văn bản nhưng lạc ngày được hỏi (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Sáng tạo",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 8,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Con vật nào được Nô-ê thả ra đầu tiên để dò xem nước lụt đã rút chưa?",
+    "options": [
+      "Con bồ câu",
+      "Con quạ",
+      "Con đại bàng",
+      "Con chim sẻ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 8:6-7 (RVV11): Nô-ê 'thả một con quạ ra; nó bay đi bay lại cho đến khi nước khô trên đất.' Con quạ được thả TRƯỚC con bồ câu (8:8). Đáp án đúng: B. (1) 'Con bồ câu' được thả SAU đó (8:8-12) — đáp án gần đúng dễ nhầm vì bồ câu nổi tiếng hơn trong câu chuyện (wrong_detail). (2) 'Con đại bàng' và (3) 'Con chim sẻ' là chi tiết bịa, không có trong bản văn (wrong_detail — độc lập với nhau).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Hồng thủy",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 50,
+    "verseStart": 26,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Giô-sép qua đời tại Ai-cập, hưởng thọ bao nhiêu tuổi?",
+    "options": [
+      "Một trăm hai mươi tuổi",
+      "Một trăm mười tuổi",
+      "Một trăm bốn mươi bảy tuổi",
+      "Một trăm bảy mươi lăm tuổi"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 50:26 (RVV11): 'Giô-sép qua đời, hưởng thọ một trăm mười tuổi.' Đáp án đúng: B. Các số khác là tuổi của những nhân vật khác trong Ngũ Kinh, nên đều sai phạm vi (wrong_scope): 120 là tuổi Môi-se (Phục 34:7); 147 là tuổi Gia-cốp cha ông (47:28); 175 là tuổi Áp-ra-ham (25:7). Mỗi số là một almost-right độc lập vì đều là tuổi thọ hợp lý của tổ phụ.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 37,
+    "verseStart": 28,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Các anh bán Giô-sép cho đoàn lái buôn với giá bao nhiêu miếng bạc?",
+    "options": [
+      "Ba mươi miếng bạc",
+      "Hai mươi miếng bạc",
+      "Năm mươi miếng bạc",
+      "Mười miếng bạc"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 37:28 (RVV11): 'Họ bán Giô-sép cho người Ích-ma-ên với giá hai mươi miếng bạc.' Đáp án đúng: B. (1) 'Ba mươi miếng bạc' là giá định cho một nô lệ trong Luật (Xuất 21:32) và gợi nhớ giá bán Chúa Giê-xu — almost-right do liên tưởng quen thuộc (wrong_detail). (2) 'Năm mươi' và (3) 'Mười' là các con số bịa, không khớp bản văn (wrong_detail — độc lập với nhau).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 1,
+    "verseStart": 14,
+    "verseEnd": 15,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Sáng Thế Ký 1:14, Đức Chúa Trời đặt các vì sáng trên bầu trời nhằm mục đích gì?",
+    "options": [
+      "Để cho loài người thờ lạy mặt trời và mặt trăng",
+      "Để làm dấu chỉ thì tiết, ngày, năm và phân ngày với đêm",
+      "Để soi sáng riêng cho vườn Ê-đen cho cây cối lớn lên",
+      "Để phân chia nước ở trên với nước ở dưới bầu trời"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 1:14-15 (RVV11): các vì sáng 'để phân biệt ngày với đêm, làm dấu chỉ thì tiết, ngày và năm, và soi sáng đất.' Đáp án đúng: B. (1) 'Để loài người thờ lạy mặt trời mặt trăng' ngược chủ đích — Kinh Thánh chống thờ tạo vật (common_misconception). (2) 'Soi sáng riêng cho vườn Ê-đen' thu hẹp sai phạm vi: ánh sáng cho cả đất (wrong_scope). (3) 'Phân chia nước trên với nước dưới' là việc của ngày thứ hai (1:6-7), không phải vai trò các vì sáng (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Sáng tạo",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 16,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau khi thiên sứ gặp A-ga trong đồng vắng, nàng gọi Đức Giê-hô-va bằng danh xưng nào?",
+    "options": [
+      "Đức Chúa Trời Toàn Năng (Ên Sa-đai)",
+      "Đức Chúa Trời đoái xem tôi (Đấng thấy tôi)",
+      "Đức Giê-hô-va sẽ sắm sẵn (Giê-hô-va Di-rê)",
+      "Đức Chúa Trời Hằng Hữu (Ên Ô-lam)"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 16:13 (RVV11): A-ga 'gọi danh Đức Giê-hô-va... Ngài là Đức Chúa Trời đoái xem tôi' (Ên Roi, Đấng thấy tôi). Đáp án đúng: B. Ba danh kia đều CÓ THẬT trong Sáng Thế Ký nhưng do người khác xưng ở chỗ khác — mỗi cái độc lập: (1) Ên Sa-đai/Toàn Năng — Chúa phán với Áp-ram, 17:1 (near_passage). (2) Giê-hô-va Di-rê — Áp-ra-ham đặt tại núi Mô-ri-a, 22:14 (near_passage). (3) Ên Ô-lam/Hằng Hữu — tại Bê-e-Sê-ba, 21:33 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 28,
+    "verseStart": 20,
+    "verseEnd": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong lời khấn nguyện tại Bê-tên, Gia-cốp hứa điều gì nếu Đức Chúa Trời ở cùng và gìn giữ ông?",
+    "options": [
+      "Sẽ dâng con trai đầu lòng của mình làm của lễ",
+      "Sẽ dâng lại cho Ngài một phần mười mọi vật Ngài ban",
+      "Sẽ xây cho Ngài một đền thờ lớn bằng đá quý",
+      "Sẽ không bao giờ trở lại nhà cha mình nữa"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 28:20-22 (RVV11): Gia-cốp khấn 'nếu Đức Chúa Trời ở cùng con... thì Đức Giê-hô-va sẽ là Đức Chúa Trời của con... và con sẽ dâng lại cho Ngài một phần mười mọi vật Ngài ban cho con.' Đáp án đúng: B. (1) 'Dâng con đầu lòng làm của lễ' là hiểu lầm gán tục hiến tế con trẻ, không có trong lời khấn (common_misconception). (2) 'Xây đền thờ bằng đá quý' sai chi tiết: ông chỉ dựng một trụ đá làm đài kỷ niệm (28:18) (wrong_detail). (3) 'Không trở lại nhà cha' ngược với lời khấn mong được 'trở về bình an' (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 41,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi Pha-ra-ôn nói nghe đồn Giô-sép giải được chiêm bao, Giô-sép đáp lại thế nào?",
+    "options": [
+      "Xin bệ hạ hứa ban thưởng trọng hậu trước thì tôi sẽ giải",
+      "Đó chẳng phải tự tôi; chính Đức Chúa Trời sẽ đáp lời cho Pha-ra-ôn",
+      "Tôi đã học được thuật giải mộng từ các thuật sĩ Ai-cập",
+      "Phải dâng tế lễ cho các thần Ai-cập trước thì mới giải được"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 41:16 (RVV11): Giô-sép thưa, 'Đó chẳng phải tự tôi, nhưng Đức Chúa Trời sẽ đáp lời bình an cho bệ hạ.' Ông quy mọi vinh hiển cho Đức Chúa Trời. Đáp án đúng: B. (1) 'Xin ban thưởng trước' là chi tiết bịa, trái thái độ khiêm nhường của Giô-sép (wrong_detail). (2) 'Học thuật từ thuật sĩ Ai-cập' ngược bản văn: chính các thuật sĩ đã bó tay (41:8) (wrong_scope). (3) 'Phải dâng tế thần Ai-cập' là hiểu lầm gán bối cảnh ngoại giáo (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 15,
+    "verseStart": 16,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Đức Giê-hô-va báo dòng dõi Áp-ram sẽ trở lại Ca-na-an 'đến đời thứ tư'. Bản văn nêu lý do gì cho sự trì hoãn ấy?",
+    "options": [
+      "Vì tội ác của dân A-mô-rít chưa đến mức đầy dẫy",
+      "Vì dòng dõi Áp-ram chưa đủ đông để chiếm lấy đất",
+      "Vì Áp-ram chưa hoàn tất việc dâng các sinh tế giao ước",
+      "Vì cả xứ Ca-na-an đang gặp một nạn đói kéo dài"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 15:16 (RVV11): 'Đến đời thứ tư, dòng dõi con sẽ trở lại đây, vì tội ác của dân A-mô-rít chưa đầy dẫy.' Lý do trì hoãn là sự nhịn nhục của Đức Chúa Trời, chờ tội dân bản xứ đến mức phán xét. Đáp án đúng: A. (1) 'Dòng dõi chưa đủ đông' nghe hợp lý và một phần đúng về lịch sử nhưng KHÔNG phải lý do bản văn nêu (true_but_off, gần đúng). (2) 'Chưa hoàn tất dâng sinh tế' nhầm sang nghi thức lập giao ước bằng con vật rạch đôi ở 15:9-10 (near_passage). (3) 'Ca-na-an đang có nạn đói' mượn chi tiết nạn đói 12:10, không liên quan lý do trì hoãn (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giao ước",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 38,
+    "verseStart": 26,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi nhận ra ba vật làm tin là của chính mình, Giu-đa đã nói gì về Ta-ma con dâu?",
+    "options": [
+      "Nàng công chính hơn ta, vì ta đã không giao Sê-la cho nàng",
+      "Nàng đáng bị đem ra thiêu vì đã phạm tội làm điếm",
+      "Ta sẽ cưới nàng làm vợ chính để chuộc lại lỗi lầm",
+      "Đây là hình phạt của Đức Chúa Trời giáng trên dòng dõi ta"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 38:26 (RVV11): Giu-đa nhận ba vật và nói, 'Nàng công chính hơn ta, vì ta đã không giao nàng cho Sê-la con trai ta'; và ông không ăn ở với nàng nữa. Giu-đa tự nhận lỗi mình lớn hơn lỗi Ta-ma. Đáp án đúng: A. (1) 'Nàng đáng bị thiêu' là lời phán vội của chính Giu-đa TRƯỚC khi biết sự thật (38:24) — nay đã bị đảo ngược (wrong_detail, gần đúng). (2) 'Ta sẽ cưới nàng' trái bản văn: ông 'không ăn ở với nàng nữa' (wrong_detail). (3) 'Hình phạt của Chúa trên dòng dõi ta' nghe đạo đức nhưng không phải lời Giu-đa nói ở đây (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giu-đa và Ta-ma",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 2,
+    "verseStart": 10,
+    "verseEnd": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Sáng Thế Ký 2, con sông từ Ê-đen chảy ra rồi chia thành mấy ngả?",
+    "options": [
+      "Hai ngả",
+      "Bảy ngả",
+      "Bốn ngả",
+      "Mười hai ngả"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 2:10 (RVV11): 'Một dòng sông từ Ê-đen chảy ra để tưới vườn, rồi từ đó chia thành bốn ngả' — Bi-sôn, Ghi-hôn, Hi-đê-ke và Ơ-phơ-rát. Đáp án đúng: 'Bốn ngả'. (1) 'Hai ngả' là chi tiết sai số (wrong_detail). (2) 'Bảy ngả' là hiểu lầm do gán con số 7 biểu tượng quen thuộc (common_misconception). (3) 'Mười hai ngả' liên tưởng nhầm tới 12 chi phái Y-sơ-ra-ên về sau (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Sáng tạo",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 3,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "A-đam đặt tên vợ mình là Ê-va vì nàng là gì?",
+    "options": [
+      "Người nữ đầu tiên trên đất",
+      "Mẹ của cả loài người",
+      "Người được dựng từ xương sườn",
+      "Người sẽ sinh ra Đấng Cứu Thế"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 3:20 (RVV11): 'A-đam đặt tên vợ là Ê-va, vì nàng là mẹ của cả loài người.' Đáp án đúng: 'Mẹ của cả loài người'. (1) 'Người nữ đầu tiên' đúng sự thật nhưng không phải lý do bản văn nêu cho cái tên (true_but_off). (2) 'Người được dựng từ xương sườn' là chi tiết thật ở 2:22 nhưng không phải nghĩa của tên Ê-va (true_but_off). (3) 'Người sẽ sinh ra Đấng Cứu Thế' suy diễn từ 3:15, không phải lời giải thích tên ở 3:20 (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Sa ngã",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 5,
+    "verseStart": 32,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ba người con trai của Nô-ê tên là gì?",
+    "options": [
+      "Sem, Cham và Gia-phết",
+      "Ca-in, A-bên và Sết",
+      "Sem, Áp-ra-ham và Lót",
+      "Gia-phết, Nim-rốt và Cha-na-an"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 5:32 (RVV11): 'Nô-ê sinh Sem, Cham và Gia-phết.' Đáp án đúng: 'Sem, Cham và Gia-phết'. (1) 'Ca-in, A-bên và Sết' là ba con trai của A-đam, không phải của Nô-ê (wrong_scope). (2) 'Sem, Áp-ra-ham và Lót' trộn lẫn nhân vật ở các thế hệ khác nhau (wrong_detail). (3) 'Gia-phết, Nim-rốt và Cha-na-an' là con/cháu trong dòng dõi Nô-ê nhưng không phải ba con trai trực tiếp (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Hồng thủy",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 6,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo lời Đức Chúa Trời dặn, chiếc tàu Nô-ê được đóng gồm mấy tầng?",
+    "options": [
+      "Một tầng",
+      "Năm tầng",
+      "Bảy tầng",
+      "Ba tầng"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 6:16 (RVV11): tàu có cửa bên hông và được chia làm 'tầng dưới, tầng giữa và tầng trên' — tức ba tầng. Đáp án đúng: 'Ba tầng'. (1) 'Một tầng' là chi tiết sai (wrong_detail). (2) 'Năm tầng' là con số bịa (wrong_detail). (3) 'Bảy tầng' gợi con số 7 quen thuộc trong Kinh Thánh (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Hồng thủy",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 3,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau khi loài người phạm tội, Đức Chúa Trời phán hình phạt nào dành cho người nữ?",
+    "options": [
+      "Phải lao nhọc đổ mồ hôi trán mới có miếng ăn",
+      "Phải chịu đau đớn khi sinh con, và chồng sẽ quản trị nàng",
+      "Phải lìa khỏi vườn và lo canh giữ cây sự sống",
+      "Sẽ bị con rắn cắn vào nơi gót chân của nàng"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 3:16 (RVV11): Chúa phán với người nữ, 'Ta sẽ tăng thêm nhiều đau đớn trong thai nghén; con sẽ sinh con trong đau đớn... và chồng con sẽ quản trị con.' Đáp án đúng: 'Phải chịu đau đớn khi sinh con, và chồng sẽ quản trị nàng'. (1) 'Lao nhọc đổ mồ hôi mới có ăn' là hình phạt dành cho A-đam, 3:17-19 (wrong_scope). (2) 'Lìa vườn và canh giữ cây sự sống' là việc của chê-ru-bim sau khi đuổi họ, 3:24 (wrong_scope). (3) 'Bị rắn cắn gót chân' xuyên tạc lời rủa con rắn ở 3:15 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Sa ngã",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 2,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời cảnh báo điều gì sẽ xảy ra nếu A-đam ăn trái của cây biết điều thiện và điều ác?",
+    "options": [
+      "Sẽ bị đuổi ngay khỏi vườn Ê-đen",
+      "Sẽ trở nên giống như loài thú",
+      "Chắc chắn sẽ phải chết",
+      "Sẽ mất quyền đặt tên muôn loài"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 2:17 (RVV11): 'về cây biết điều thiện và điều ác thì con không được ăn, vì ngày nào con ăn thì chắc chắn sẽ chết.' Đáp án đúng: 'Chắc chắn sẽ phải chết'. (1) 'Bị đuổi ngay khỏi vườn' là hậu quả về sau ở 3:23-24, không phải lời cảnh báo ở 2:17 (true_but_off). (2) 'Trở nên giống loài thú' không có trong bản văn — trái lại con rắn hứa họ sẽ 'như Đức Chúa Trời', 3:5 (wrong_detail). (3) 'Mất quyền đặt tên muôn loài' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Sa ngã",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 8,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Bước ngoặt khiến nước lụt bắt đầu rút được Sáng Thế Ký 8:1 mô tả thế nào?",
+    "options": [
+      "Đức Chúa Trời nhớ đến Nô-ê và khiến gió thổi qua trên đất",
+      "Nô-ê cầu nguyện suốt bốn mươi ngày để xin nước rút",
+      "Chiếc tàu chạm núi A-ra-rát khiến nước lụt tản đi",
+      "Các thiên sứ mở cửa trời cho nước lụt thoát ra ngoài"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 8:1 (RVV11): 'Đức Chúa Trời nhớ đến Nô-ê... Ngài khiến một trận gió thổi ngang qua đất, và nước bắt đầu hạ xuống.' 'Nhớ đến' không phải Chúa quên, mà là khởi đầu hành động giải cứu. Đáp án đúng: 'Đức Chúa Trời nhớ đến Nô-ê và khiến gió thổi qua trên đất'. (1) 'Nô-ê cầu nguyện 40 ngày' là chi tiết bịa; 40 ngày là thời gian mưa, 7:12 (near_passage). (2) 'Tàu chạm A-ra-rát làm nước tản' đảo nhân quả: tàu đậu lại vì nước đã rút, 8:4 (wrong_detail). (3) 'Thiên sứ mở cửa trời' xuyên tạc: 'cửa trời' là nguồn nước lụt, 7:11 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Hồng thủy",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 8,
+    "verseStart": 21,
+    "verseEnd": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau khi Nô-ê dâng tế lễ, Đức Giê-hô-va hứa điều gì về trật tự thiên nhiên?",
+    "options": [
+      "Sẽ không bao giờ có mưa lớn trên đất nữa",
+      "Hễ đất còn thì mùa gieo và mùa gặt sẽ chẳng dứt",
+      "Cầu vồng sẽ luôn hiện ra mỗi khi trời mưa",
+      "Con người sẽ sống lâu đến chín trăm tuổi như trước"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 8:21-22 (RVV11): 'Hễ đất còn, thì mùa gieo và mùa gặt, lạnh và nóng, mùa hạ và mùa đông, ngày và đêm sẽ chẳng bao giờ dứt.' Đáp án đúng: 'Hễ đất còn thì mùa gieo và mùa gặt sẽ chẳng dứt'. (1) 'Không bao giờ có mưa lớn nữa' xuyên tạc: Chúa hứa không hủy diệt đất bằng nước lụt nữa, 9:11 (wrong_detail). (2) 'Cầu vồng luôn hiện mỗi khi mưa' nhầm sang dấu giao ước cầu vồng ở 9:13-16 (near_passage). (3) 'Sống lâu chín trăm tuổi' không liên quan lời hứa này (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Hồng thủy",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 7,
+    "verseStart": 11,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo Sáng Thế Ký 7:11, nước của trận đại hồng thủy đến từ những nguồn nào?",
+    "options": [
+      "Chỉ từ trận mưa lớn suốt bốn mươi ngày và đêm",
+      "Từ hai sông Ơ-phơ-rát và Hi-đê-ke tràn khỏi bờ",
+      "Từ các nguồn của vực sâu vỡ ra và các cửa trời mở ra",
+      "Từ nước biển dâng cao lên nhấn chìm cả đất khô"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 7:11 (RVV11): 'các nguồn của vực sâu lớn đều vỡ ra, và các cửa trời mở xuống' — nước đến từ CẢ HAI nguồn: dưới (vực sâu) và trên (cửa trời), không chỉ mưa. Đáp án đúng: 'Từ các nguồn của vực sâu vỡ ra và các cửa trời mở ra'. (1) 'Chỉ từ mưa 40 ngày' đúng một phần, 7:12, nhưng bỏ sót nguồn vực sâu (wrong_detail). (2) 'Sông Ơ-phơ-rát và Hi-đê-ke tràn bờ' mượn tên sông ở vườn Ê-đen, 2:14 (near_passage). (3) 'Biển dâng nhấn chìm' là hình dung bịa, không có trong bản văn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Hồng thủy",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 9,
+    "verseStart": 3,
+    "verseEnd": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Sau hồng thủy, Đức Chúa Trời cho phép loài người một điều mới về thức ăn, kèm một điều cấm. Đó là gì?",
+    "options": [
+      "Được ăn mọi loài vật sống, nhưng không được ăn thịt còn máu",
+      "Được ăn mọi trái cây trong vườn, trừ cây biết thiện ác",
+      "Được ăn loài vật sạch, nhưng phải kiêng loài vật ô uế",
+      "Được ăn bánh và uống rượu, nhưng phải dâng một phần mười"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 9:3-4 (RVV11): 'Mọi loài vật sống và động đậy sẽ làm thức ăn cho các con... Nhưng các con không được ăn thịt mà máu, tức là sự sống, vẫn còn trong đó.' Lần đầu loài người được phép ăn thịt, kèm lệnh kiêng huyết. Đáp án đúng: 'Được ăn mọi loài vật sống, nhưng không được ăn thịt còn máu'. (1) 'Ăn mọi trái cây trừ cây biết thiện ác' là lệnh thuở vườn Ê-đen, 2:16-17 (near_passage). (2) 'Ăn loài sạch, kiêng loài ô uế' nhầm sang luật thanh sạch Lê-vi Ký về sau (wrong_scope). (3) 'Ăn bánh uống rượu, dâng phần mười' nhầm sang Mên-chi-xê-đéc, 14:18-20 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Hồng thủy",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 12,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Vì nạn đói trong xứ, Áp-ram đã tạm đi xuống đâu để cư ngụ?",
+    "options": [
+      "Ba-by-lôn",
+      "Ai-cập",
+      "Sô-đôm",
+      "Ha-ran"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 12:10 (RVV11): 'Bấy giờ trong xứ có nạn đói, nên Áp-ram xuống Ai-cập để tạm trú.' Đáp án đúng: 'Ai-cập'. (1) 'Ba-by-lôn' nhầm sang vùng Si-nê-a/Ba-bên, 11:2,9 (near_passage). (2) 'Sô-đôm' là nơi Lót chọn ở về sau, 13:12 (near_passage). (3) 'Ha-ran' là nơi gia đình Áp-ram dừng chân trước khi vào Ca-na-an, 11:31 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 16,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tên 'Ích-ma-ên' mà thiên sứ đặt cho con trai A-ga mang ý nghĩa gì?",
+    "options": [
+      "Tiếng cười của mẹ",
+      "Cha của nhiều dân tộc",
+      "Kẻ nắm gót, người tranh giành",
+      "Đức Chúa Trời nghe"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 16:11 (RVV11): 'ngươi sẽ đặt tên nó là Ích-ma-ên, vì Đức Giê-hô-va đã nghe sự khốn khổ của ngươi.' Đáp án đúng: 'Đức Chúa Trời nghe'. (1) 'Tiếng cười' là nghĩa tên Y-sác, 21:6 (wrong_scope). (2) 'Cha nhiều dân tộc' là nghĩa tên Áp-ra-ham, 17:5 (wrong_scope). (3) 'Kẻ nắm gót' là nghĩa tên Gia-cốp, 25:26 (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 23,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Áp-ra-ham mua hang Mặc-bê-la để chôn Sa-ra với giá bao nhiêu?",
+    "options": [
+      "Ba mươi siếc-lơ bạc",
+      "Bốn trăm siếc-lơ bạc",
+      "Một ngàn siếc-lơ vàng",
+      "Năm mươi siếc-lơ bạc"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 23:16 (RVV11): Áp-ra-ham cân cho Ép-rôn 'bốn trăm siếc-lơ bạc theo giá thông dụng giữa các con buôn.' Đáp án đúng: 'Bốn trăm siếc-lơ bạc'. (1) 'Ba mươi siếc-lơ bạc' là giá một nô lệ, Xuất 21:32 (wrong_detail). (2) 'Một ngàn siếc-lơ vàng' nhầm sang quà A-bi-mê-léc tặng (vốn là bạc), 20:16 (near_passage). (3) 'Năm mươi siếc-lơ' là con số bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 17,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi lập giao ước, Đức Chúa Trời đổi tên 'Sa-rai' thành tên gì?",
+    "options": [
+      "Rê-bê-ca",
+      "Ra-chên",
+      "Sa-ra",
+      "Ê-va"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 17:15 (RVV11): 'Còn Sa-rai vợ con, đừng gọi là Sa-rai nữa, nhưng tên nàng sẽ là Sa-ra.' Đáp án đúng: 'Sa-ra'. (1) 'Rê-bê-ca' là vợ của Y-sác con trai bà, 24:67 (wrong_scope). (2) 'Ra-chên' là vợ Gia-cốp, 29:28 (wrong_scope). (3) 'Ê-va' là người nữ đầu tiên, 3:20 (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 15,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trước khi có con của lời hứa, Áp-ram nghĩ ai sẽ là người thừa kế gia tài mình?",
+    "options": [
+      "Lót, cháu trai của ông",
+      "Ê-li-ê-se, người quản gia ở Đa-mách",
+      "Ích-ma-ên, con trai của A-ga",
+      "Y-sác, con trai của Sa-ra"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 15:2-3 (RVV11): Áp-ram thưa, 'kẻ thừa kế nhà con là Ê-li-ê-se, người Đa-mách... một gia nhân sinh trong nhà con sẽ kế nghiệp con.' Đáp án đúng: 'Ê-li-ê-se, người quản gia ở Đa-mách'. (1) 'Lót cháu trai' đã chia tay Áp-ram trước đó, 13:11 (near_passage). (2) 'Ích-ma-ên' chưa sinh ra ở thời điểm 15:2 (sinh ở ch16) (wrong_detail). (3) 'Y-sác' là con của lời hứa sinh về sau, 21:2 — chính là người thay thế suy nghĩ này (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 16,
+    "verseStart": 1,
+    "verseEnd": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vì sao Sa-rai trao nữ tỳ A-ga cho Áp-ram làm vợ lẽ?",
+    "options": [
+      "Vì Sa-rai son sẻ nên muốn có con qua nữ tỳ theo tục lệ thời đó",
+      "Vì A-ga được Chúa chỉ định làm mẹ của dòng dõi lời hứa",
+      "Vì Áp-ram đòi cưới thêm vợ lẽ để có người nối dõi",
+      "Vì A-ga xinh đẹp hơn và Sa-rai muốn làm đẹp lòng chồng"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 16:1-3 (RVV11): Sa-rai son sẻ, nói với Áp-ram 'Đức Giê-hô-va đã làm cho tôi không sinh con; vậy xin ông hãy đến với nữ tỳ tôi, có lẽ tôi sẽ nhờ nó mà có con' — tục đại diện thời cổ. Đáp án đúng: 'Vì Sa-rai son sẻ nên muốn có con qua nữ tỳ theo tục lệ thời đó'. (1) 'A-ga được Chúa chỉ định' sai: Chúa hứa con qua chính Sa-ra, 17:19 (wrong_detail). (2) 'Áp-ram đòi cưới thêm' đảo ngược: chính Sa-rai đề xuất (wrong_detail). (3) 'A-ga đẹp hơn' là chi tiết bịa, không có trong bản văn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 22,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời bảo Áp-ra-ham đem Y-sác đến vùng nào để dâng làm của lễ?",
+    "options": [
+      "Xứ Mô-ri-a, trên một ngọn núi Ngài chỉ cho",
+      "Núi Si-na-i trong đồng vắng, nơi sẽ ban Luật",
+      "Núi A-ra-rát, nơi chiếc tàu Nô-ê đã đậu lại",
+      "Đồi Mô-rê gần thành Si-chem cổ kính"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 22:2 (RVV11): 'Hãy đem... đi đến xứ Mô-ri-a, dâng nó làm của lễ thiêu trên một ngọn núi Ta sẽ chỉ cho con.' Đáp án đúng: 'Xứ Mô-ri-a, trên một ngọn núi Ngài chỉ cho'. (1) 'Núi Si-na-i' là nơi ban Luật về sau, Xuất 19 (wrong_scope). (2) 'Núi A-ra-rát' là nơi tàu Nô-ê đậu, 8:4 (near_passage). (3) 'Đồi Mô-rê gần Si-chem' mượn địa danh nơi Áp-ram lập bàn thờ đầu tiên, 12:6 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 14,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau khi Mên-chi-xê-đéc chúc phước, Áp-ram đã làm gì để đáp lại?",
+    "options": [
+      "Dâng một con chiên làm của lễ thiêu",
+      "Giao toàn bộ chiến lợi phẩm cho vua Sô-đôm",
+      "Lập một bàn thờ ngay tại thành Sa-lem",
+      "Dâng cho vua ấy một phần mười mọi chiến lợi phẩm"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 14:20 (RVV11): 'Áp-ram lấy một phần mười về mọi vật mà dâng cho vua ấy (Mên-chi-xê-đéc).' Đáp án đúng: 'Dâng cho vua ấy một phần mười mọi chiến lợi phẩm'. (1) 'Dâng một con chiên' nhầm sang bối cảnh tế lễ khác (wrong_detail). (2) 'Giao hết chiến lợi phẩm cho vua Sô-đôm' đảo ngược: Áp-ram từ chối lấy của vua Sô-đôm, 14:22-23 (wrong_detail). (3) 'Lập bàn thờ tại Sa-lem' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 18,
+    "verseStart": 10,
+    "verseEnd": 14,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi hứa Sa-ra sẽ sinh con, ba vị khách (Đức Giê-hô-va) xác định thời điểm cụ thể nào?",
+    "options": [
+      "Trong vòng bảy năm tới",
+      "Vào kỳ này năm sau",
+      "Khi Áp-ra-ham tròn một trăm tuổi",
+      "Sau khi họ trở về từ Ai-cập"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 18:10,14 (RVV11): 'Khoảng kỳ này năm tới, Ta chắc chắn sẽ trở lại với con, lúc đó Sa-ra vợ con sẽ có một con trai'... 'Có điều gì quá khó cho Đức Giê-hô-va chăng?' Đáp án đúng: 'Vào kỳ này năm sau'. (1) 'Bảy năm tới' là con số bịa, kéo dài sai thời điểm (wrong_detail). (2) 'Khi Áp-ra-ham tròn 100 tuổi' đúng về tuổi, 21:5, nhưng không phải mốc thời gian lời hứa nêu (true_but_off). (3) 'Sau khi trở về từ Ai-cập' nhầm sang chuyến đi Ai-cập trước đó, 12:10-20 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 20,
+    "verseStart": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong giấc chiêm bao, Đức Chúa Trời nói gì với vua A-bi-mê-léc về việc ông đem Sa-ra về?",
+    "options": [
+      "Ngươi chắc sẽ chết vì đã phạm một tội trọng cùng Ta",
+      "Ta biết ngươi làm điều này với lòng trọn vẹn nên đã ngăn ngươi",
+      "Hãy đi giết ngay người đàn ông đã lừa dối ngươi kia",
+      "Ta sẽ ban phước dư dật cho ngươi vì đã cưới lấy Sa-ra"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 20:6 (RVV11): Đức Chúa Trời phán trong chiêm bao, 'Ta biết con đã làm điều này với lòng trọn vẹn, nên Ta đã ngăn giữ con khỏi phạm tội cùng Ta; vì vậy Ta không để con đụng đến nàng.' Đáp án đúng: 'Ta biết ngươi làm điều này với lòng trọn vẹn nên đã ngăn ngươi'. (1) 'Ngươi chắc sẽ chết' là lời cảnh báo ở câu trước, 20:3, nếu không trả lại — câu 6 nhấn mạnh Chúa đã giữ ông khỏi tội (wrong_detail). (2) 'Hãy giết người lừa dối' trái bản văn: Chúa bảo trả Sa-ra và nhờ Áp-ra-ham cầu thay, 20:7 (wrong_detail). (3) 'Ban phước vì cưới Sa-ra' xuyên tạc hoàn toàn (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 25,
+    "verseStart": 25,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Rê-bê-ca sinh đôi, đứa ra trước có đặc điểm gì khiến được đặt tên Ê-sau?",
+    "options": [
+      "Da ngăm đen nhánh giống như người xứ Cút",
+      "Đỏ hồng và đầy lông như một chiếc áo lông",
+      "Tay đang nắm chặt lấy gót chân của em mình",
+      "Khóc thét lên không dứt suốt cả ba ngày liền"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 25:25 (RVV11): 'Đứa ra trước có sắc đỏ hồng, khắp mình đầy lông như một chiếc áo lông; người ta đặt tên là Ê-sau.' Đáp án đúng: 'Đỏ hồng và đầy lông như một chiếc áo lông'. (1) 'Da ngăm đen nhánh giống như người xứ Cút' là chi tiết bịa, không có trong bản văn (wrong_detail). (2) 'Tay nắm gót chân em' là đặc điểm của Gia-cốp đứa ra sau, gắn với tên Gia-cốp, 25:26 (near_passage). (3) 'Khóc lớn ba ngày' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 26,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Y-sác gieo trồng trong xứ Ghê-ra, Đức Giê-hô-va ban phước cho ông gặt được bao nhiêu?",
+    "options": [
+      "Gấp mười lần đã gieo",
+      "Vừa đủ ăn để qua nạn đói",
+      "Gấp một trăm lần đã gieo",
+      "Không thu được gì vì hạn hán"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 26:12 (RVV11): 'Y-sác gieo trồng trong xứ đó, năm ấy gặt được gấp trăm lần, vì Đức Giê-hô-va ban phước cho ông.' Đáp án đúng: 'Gấp một trăm lần đã gieo'. (1) 'Gấp mười lần' là chi tiết sai số, giảm nhẹ phép lạ (wrong_detail). (2) 'Vừa đủ ăn qua nạn đói' xuyên tạc: ông trở nên rất giàu, 26:13 (wrong_detail). (3) 'Không thu được gì vì hạn hán' ngược hẳn bản văn (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Y-sác",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 29,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lần đầu gặp Ra-chên bên giếng nước, Gia-cốp đã làm gì?",
+    "options": [
+      "Hôn Ra-chên rồi cất tiếng khóc",
+      "Quỳ xuống cầu nguyện tạ ơn Chúa",
+      "Tặng nàng một chiếc nhẫn vàng",
+      "Lăn tảng đá lớn rồi bỏ đi ngay"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 29:11 (RVV11): 'Gia-cốp hôn Ra-chên, rồi cất tiếng lên khóc.' Đáp án đúng: 'Hôn Ra-chên rồi cất tiếng khóc'. (1) 'Quỳ cầu nguyện tạ ơn' là chi tiết bịa cho cảnh này (wrong_detail). (2) 'Tặng nhẫn vàng' nhầm sang quà đầy tớ Áp-ra-ham tặng Rê-bê-ca, 24:22 (near_passage). (3) 'Lăn đá rồi bỏ đi ngay' đúng phần lăn đá, 29:10, nhưng ông ở lại chứ không bỏ đi (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 35,
+    "verseStart": 29,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Y-sác qua đời, hưởng thọ 180 tuổi; ai đã cùng nhau lo chôn cất ông?",
+    "options": [
+      "Chỉ một mình Gia-cốp lo liệu mọi việc",
+      "Gia-cốp cùng với cháu nội là Giô-sép",
+      "Ê-sau và Gia-cốp, hai con trai ông",
+      "Các đầy tớ và gia nhân ở trong nhà"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 35:29 (RVV11): 'Y-sác trút hơi thở cuối cùng và qua đời... Ê-sau và Gia-cốp, hai con trai, chôn cất ông.' Đáp án đúng: 'Ê-sau và Gia-cốp, hai con trai ông'. (1) 'Chỉ một mình Gia-cốp lo liệu mọi việc' bỏ sót Ê-sau (wrong_detail). (2) 'Gia-cốp cùng với cháu nội là Giô-sép' nhầm thế hệ: Giô-sép là cháu nội Y-sác (wrong_scope). (3) 'Các đầy tớ' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Y-sác",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 27,
+    "verseStart": 36,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi mất phước lành, Ê-sau than về cái tên 'Gia-cốp' với ý nghĩa nào?",
+    "options": [
+      "Người được Chúa chọn từ trong lòng mẹ",
+      "Đứa con yêu dấu của mẹ Rê-bê-ca",
+      "Người chăn bầy hiền lành trong trại",
+      "Kẻ chiếm đoạt/nắm gót, đã hai lần cướp của ta"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 27:36 (RVV11): Ê-sau nói, 'Có phải vì nó tên là Gia-cốp mà nó lừa con hai lần rồi chăng? Nó đã chiếm quyền trưởng nam con, nay lại chiếm phước lành của con.' Tên Gia-cốp nghĩa 'nắm gót/kẻ chiếm đoạt'. Đáp án đúng: 'Kẻ chiếm đoạt/nắm gót, đã hai lần cướp của ta'. (1) 'Được Chúa chọn từ lòng mẹ' đúng thần học, 25:23, nhưng không phải nghĩa cái tên Ê-sau than ở đây (true_but_off). (2) 'Con yêu của mẹ Rê-bê-ca' đúng sự thật, 25:28, nhưng không phải nghĩa tên (true_but_off). (3) 'Người chăn bầy hiền lành' nhầm mô tả: 25:27 nói Gia-cốp 'ở trại', không nói nghĩa tên (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 26,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau hai lần bị tranh giành giếng, Y-sác đào được giếng thứ ba và đặt tên Rê-hô-bốt với ý nghĩa gì?",
+    "options": [
+      "Giếng của sự cãi lộn và tranh giành",
+      "Nay Đức Giê-hô-va đã cho ta chỗ rộng rãi",
+      "Giếng của lời thề nguyện long trọng",
+      "Nơi nước phun chảy ra từ trong vầng đá"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 26:22 (RVV11): Y-sác đào giếng thứ ba không bị tranh giành, 'đặt tên là Rê-hô-bốt, vì nói: Bây giờ Đức Giê-hô-va đã cho chúng ta chỗ rộng rãi, và chúng ta sẽ thịnh vượng trong xứ.' Đáp án đúng: 'Nay Đức Giê-hô-va đã cho ta chỗ rộng rãi'. (1) 'Giếng của sự cãi lộn và tranh giành' là nghĩa tên Ê-séc/Sít-na, hai giếng trước, 26:20-21 (near_passage). (2) 'Giếng của lời thề' là nghĩa Bê-e-Sê-ba về sau, 26:33 (near_passage). (3) 'Nước chảy từ vầng đá' nhầm sang phép lạ Mô-i-se trong đồng vắng, Xuất 17 (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Y-sác",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 31,
+    "verseStart": 41,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi trách La-ban, Gia-cốp nói cậu mình đã làm gì với tiền công của ông trong 20 năm?",
+    "options": [
+      "Quỵt trọn tiền công, không trả gì",
+      "Trả gấp đôi vì thương ông",
+      "Đổi tiền công của ông mười lần",
+      "Lấy mất cả hai người vợ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 31:41 (RVV11): Gia-cốp nói, 'Con ở nhà cậu hai mươi năm... cậu đã thay đổi tiền công của con mười lần.' Đáp án đúng: 'Đổi tiền công của ông mười lần'. (1) 'Quỵt trọn không trả gì' phóng đại sai: La-ban có trả nhưng thay đổi liên tục (wrong_detail). (2) 'Trả gấp đôi vì thương' ngược hẳn bản văn (wrong_scope). (3) 'Lấy mất hai người vợ' xuyên tạc: hai vợ là con La-ban nhưng thuộc về Gia-cốp (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 35,
+    "verseStart": 2,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trước khi lên Bê-tên lập bàn thờ, Gia-cốp truyền cho cả nhà phải làm gì?",
+    "options": [
+      "Kiêng ăn và cầu nguyện liên tục suốt bảy ngày đêm",
+      "Dẹp bỏ các thần tượng lạ, tẩy sạch mình và thay áo",
+      "Dâng con trai đầu lòng của mỗi gia đình làm lễ",
+      "Xây một bức tường thành kiên cố bao quanh trại"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 35:2-4 (RVV11): Gia-cốp bảo người nhà, 'Hãy dẹp bỏ các thần lạ khỏi giữa các ngươi, hãy tẩy sạch mình và thay áo'; họ giao các thần tượng và ông chôn dưới cây sồi. Đáp án đúng: 'Dẹp bỏ các thần tượng lạ, tẩy sạch mình và thay áo'. (1) 'Kiêng ăn cầu nguyện 7 ngày' là chi tiết bịa (wrong_detail). (2) 'Dâng con đầu lòng' là hiểu lầm gán tục hiến tế con (common_misconception). (3) 'Xây tường thành quanh trại' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 27,
+    "verseStart": 28,
+    "verseEnd": 29,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lời chúc của Y-sác cho Gia-cốp (tưởng là Ê-sau) tập trung vào những phước nào?",
+    "options": [
+      "Dòng dõi đông như sao trời và như cát bờ biển",
+      "Một xứ đượm sữa và mật cho mười hai chi phái",
+      "Vương quyền đời đời và Đấng Mê-si-a từ dòng ngươi",
+      "Sương móc trời, đất màu mỡ, lúa rượu dư dật, muôn dân phục ngươi"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 27:28-29 (RVV11): 'Cầu Đức Chúa Trời ban cho con sương móc trên trời, sự màu mỡ của đất, dồi dào lúa mì và rượu nho. Muôn dân phải phục con, các nước phải quỳ lạy con...' Đáp án đúng: 'Sương móc trời, đất màu mỡ, lúa rượu dư dật, muôn dân phục ngươi'. (1) 'Dòng dõi đông như sao và cát' là lời hứa với Áp-ra-ham, 22:17 (near_passage). (2) 'Xứ đượm sữa và mật cho 12 chi phái' là ngôn ngữ về Đất Hứa thời Xuất Ai-cập (wrong_scope). (3) 'Vương quyền đời đời và Đấng Mê-si-a' vọng tới lời chúc Giu-đa, 49:10, không phải lời chúc tổng quát này (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 31,
+    "verseStart": 49,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Giao ước 'Mích-pa' giữa Gia-cốp và La-ban ('Cầu Đức Giê-hô-va trông chừng giữa ta và ngươi') thực chất mang tính chất gì?",
+    "options": [
+      "Một lời chúc phước cho tình bạn thân thiết keo sơn",
+      "Một lời hứa hôn nhân giữa hai gia tộc",
+      "Một giao ước cảnh giới giữa hai bên còn ngờ vực nhau",
+      "Một giao ước Đức Chúa Trời lập riêng với Gia-cốp"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 31:49-52 (RVV11): La-ban dựng đống đá làm chứng, 'Cầu Đức Giê-hô-va trông chừng giữa ta và con khi chúng ta xa cách nhau' — kèm cảnh cáo 'con chớ vượt qua đống đá này để hại ta, ta cũng vậy.' Đây là hàng rào cảnh giới giữa hai bên còn nghi kỵ, không phải lời chúc thân ái. Đáp án đúng: 'Một giao ước cảnh giới giữa hai bên còn ngờ vực nhau'. (1) 'Lời chúc tình bạn keo sơn' là cách hiểu phổ biến sai khi trích Mích-pa khỏi văn cảnh (common_misconception). (2) 'Lời hứa hôn nhân' là chi tiết bịa (wrong_detail). (3) 'Giao ước Đức Chúa Trời lập với Gia-cốp' nhầm sang giao ước Bê-tên, 28:13-15 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 37,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong giấc mơ thứ nhất của Giô-sép, vật gì quỳ lạy bó lúa của ông?",
+    "options": [
+      "Mười một ngôi sao",
+      "Mặt trời và mặt trăng",
+      "Các bó lúa của các anh",
+      "Mười một con bò gầy"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 37:7 (RVV11): 'bó lúa của tôi đứng dậy, còn các bó lúa của các anh đều vây quanh và quỳ lạy bó lúa tôi.' Đáp án đúng: 'Các bó lúa của các anh'. (1) 'Mười một ngôi sao' và (2) 'Mặt trời và mặt trăng' thuộc giấc mơ thứ hai, 37:9 (near_passage, hai chi tiết độc lập). (3) 'Mười một con bò gầy' nhầm sang giấc mơ Pha-ra-ôn về bò, 41:2-3 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 41,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trước khi được đưa vào chầu Pha-ra-ôn để giải mộng, Giô-sép đã làm gì?",
+    "options": [
+      "Cạo râu và thay áo",
+      "Kiêng ăn suốt ba ngày",
+      "Học tiếng Ai-cập cấp tốc",
+      "Dâng của lễ cho thần Ai-cập"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 41:14 (RVV11): 'Pha-ra-ôn sai gọi Giô-sép... ông cạo râu, thay áo rồi vào chầu Pha-ra-ôn.' Cạo râu là phong tục Ai-cập. Đáp án đúng: 'Cạo râu và thay áo'. (1) 'Kiêng ăn ba ngày' là chi tiết bịa (wrong_detail). (2) 'Học tiếng Ai-cập cấp tốc' là chi tiết bịa (wrong_detail). (3) 'Dâng của lễ cho thần Ai-cập' trái với lòng kính Chúa của Giô-sép (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 37,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Các anh ném Giô-sép xuống cái hố; bản văn ghi chú điều gì về cái hố ấy?",
+    "options": [
+      "Hố sâu đầy rắn rết",
+      "Hố trống, không có nước",
+      "Hố do chính Giô-sép đào",
+      "Hố nằm sát bờ sông Ni-lơ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 37:24 (RVV11): 'Họ bắt Giô-sép ném xuống hố; hố trống không, chẳng có nước.' Chi tiết 'không nước' nhấn mạnh sự hiểm nghèo. Đáp án đúng: 'Hố trống, không có nước'. (1) 'Đầy rắn rết' là chi tiết bịa thêm kịch tính (wrong_detail). (2) 'Do chính Giô-sép đào' là chi tiết bịa (wrong_detail). (3) 'Sát bờ sông Ni-lơ' sai địa lý: việc xảy ra ở Đô-than, Ca-na-an (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 50,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Gia-cốp qua đời ở Ai-cập, Giô-sép đã làm gì cho thi hài cha mình?",
+    "options": [
+      "Hỏa táng thi hài theo đúng phong tục Ai-cập",
+      "Chôn cất ngay trong ngày tại vùng Gô-sen",
+      "Truyền ướp xác, và người Ai-cập để tang 70 ngày",
+      "Đưa thẳng thi hài về Ca-na-an trong vòng ba ngày"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 50:2-3 (RVV11): 'Giô-sép truyền các thầy thuốc ướp xác cha mình... Người Ai-cập khóc thương người bảy mươi ngày.' Đáp án đúng: 'Truyền ướp xác, và người Ai-cập để tang 70 ngày'. (1) 'Hỏa táng' không phải tục Ai-cập cho việc này (wrong_detail). (2) 'Chôn ngay tại Gô-sen' trái với việc đưa về Ca-na-an chôn sau đó, 50:13 (wrong_detail). (3) 'Về Ca-na-an trong ba ngày' sai: đoàn đưa tang đi sau khi ướp xác và để tang xong (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 37,
+    "verseStart": 34,
+    "verseEnd": 35,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi tưởng Giô-sép đã bị thú dữ ăn thịt, Gia-cốp phản ứng thế nào?",
+    "options": [
+      "Lập tức sai người đi tìm xác con",
+      "Xé áo, mặc bao gai, và từ chối được an ủi",
+      "Trách mắng các con trai đã lơ là",
+      "Dâng của lễ cầu cho linh hồn con"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 37:34-35 (RVV11): 'Gia-cốp xé áo mình, lấy bao gai quấn ngang lưng, để tang con lâu ngày... ông không chịu cho ai an ủi.' Đáp án đúng: 'Xé áo, mặc bao gai, và từ chối được an ủi'. (1) 'Sai người đi tìm xác' là chi tiết bịa (wrong_detail). (2) 'Trách mắng các con' không có trong bản văn — ông chưa hề biết sự thật (wrong_detail). (3) 'Dâng của lễ cầu linh hồn' gán nghi thức không có trong bản văn (common_misconception).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 46,
+    "verseStart": 3,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi Gia-cốp do dự xuống Ai-cập, Đức Chúa Trời trấn an ông bằng lời hứa nào?",
+    "options": [
+      "Con sẽ không bao giờ phải rời khỏi xứ Ca-na-an thân yêu",
+      "Con sẽ được cai trị cả xứ Ai-cập giống như Giô-sép",
+      "Ta sẽ khiến con thành một dân lớn tại đó và sẽ đưa con trở lên",
+      "Nạn đói sẽ lập tức chấm dứt ngay khi con vừa đặt chân tới"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 46:3-4 (RVV11): 'Đừng sợ xuống Ai-cập, vì tại đó Ta sẽ khiến con thành một dân lớn. Chính Ta sẽ xuống Ai-cập với con, và Ta cũng sẽ đưa con trở lên.' Đáp án đúng: 'Ta sẽ khiến con thành một dân lớn tại đó và sẽ đưa con trở lên'. (1) 'Không bao giờ rời Ca-na-an' ngược hẳn: Chúa bảo ông cứ xuống Ai-cập (wrong_scope). (2) 'Cai trị cả Ai-cập như Giô-sép' là chi tiết bịa (wrong_detail). (3) 'Nạn đói chấm dứt ngay' là chi tiết bịa; nạn đói còn tiếp diễn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 42,
+    "verseStart": 21,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi gặp khốn khó ở Ai-cập (chưa nhận ra Giô-sép), các anh nói với nhau điều gì?",
+    "options": [
+      "Hãy đổ lỗi mọi sự cho Ru-bên",
+      "Quan này chắc hẳn là phù thủy Ai-cập",
+      "Cha sẽ không bao giờ tha thứ chúng ta",
+      "Chúng ta bị phạt vì đã đối xử ác với em mình"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 42:21 (RVV11): Họ nói với nhau, 'Quả thật chúng ta cam tội về em mình; lúc nó năn nỉ mà chúng ta chẳng nghe, nên tai họa này xảy đến.' Lương tâm cắn rứt sau hơn 20 năm. Đáp án đúng: 'Chúng ta bị phạt vì đã đối xử ác với em mình'. (1) 'Đổ lỗi cho Ru-bên' ngược lại: chính Ru-bên nhắc họ đã can ngăn, 42:22 (wrong_detail). (2) 'Quan này là phù thủy' là chi tiết bịa (wrong_detail). (3) 'Cha sẽ không tha thứ' lệch trọng tâm: họ đang nhận tội với em, không nói về cha (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 47,
+    "verseStart": 29,
+    "verseEnd": 31,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Gần qua đời, Gia-cốp bắt Giô-sép thề điều gì?",
+    "options": [
+      "Chia đều toàn bộ gia tài cho mười hai người con",
+      "Đừng chôn ông tại Ai-cập, mà đem về với tổ phụ ông",
+      "Tha thứ hết cho các anh từng hãm hại mình",
+      "Tiếp tục giữ chức tể tướng Ai-cập cho đến trọn đời"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 47:29-31 (RVV11): Gia-cốp nói với Giô-sép, 'đừng chôn ta tại Ai-cập, nhưng cho ta nằm với tổ phụ ta'; Giô-sép thề, và ông được chôn tại hang Mặc-bê-la, 49:29-31. Đáp án đúng: 'Đừng chôn ông tại Ai-cập, mà đem về với tổ phụ ông'. (1) 'Chia đều gia tài 12 con' là chi tiết bịa (wrong_detail). (2) 'Tha thứ cho các anh' nhầm sang cảnh Giô-sép trấn an anh em, 50:19-21 (near_passage). (3) 'Giữ chức tể tướng trọn đời' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 41,
+    "verseStart": 34,
+    "verseEnd": 36,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Giô-sép đề nghị Pha-ra-ôn áp dụng chính sách gì để cứu Ai-cập khỏi nạn đói?",
+    "options": [
+      "Mua hết lương thực từ các nước lân cận",
+      "Phân phát kho lúa của vua cho dân ngay lập tức",
+      "Thu trữ một phần năm hoa lợi suốt bảy năm được mùa",
+      "Bắt dân nhịn ăn cách ngày trong bảy năm"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 41:34-36 (RVV11): Giô-sép tâu nên lập các quan thu 'một phần năm hoa lợi của xứ Ai-cập trong bảy năm được mùa' để dành lương thực cho bảy năm đói. Đáp án đúng: 'Thu trữ một phần năm hoa lợi suốt bảy năm được mùa'. (1) 'Mua từ các nước lân cận' ngược thực tế: nạn đói lan khắp, các nước lại đến mua của Ai-cập, 41:57 (wrong_scope). (2) 'Phân phát ngay lập tức' phá hỏng kế dự trữ (wrong_detail). (3) 'Bắt dân nhịn ăn cách ngày' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 48,
+    "verseStart": 5,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trước khi qua đời, Gia-cốp tuyên bố điều gì đặc biệt về Ép-ra-im và Ma-na-se, hai con của Giô-sép?",
+    "options": [
+      "Truyền hai cháu phải ở lại hầu việc Pha-ra-ôn",
+      "Nhận hai cháu làm con mình, ngang hàng Ru-bên và Si-mê-ôn",
+      "Cho hai cháu gấp đôi phần của các cậu",
+      "Đặt hai cháu dưới quyền cai trị của Giu-đa"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 48:5 (RVV11): Gia-cốp nói với Giô-sép, 'hai đứa con trai con sinh tại Ai-cập trước khi cha đến... là của cha; Ép-ra-im và Ma-na-se sẽ thuộc về cha như Ru-bên và Si-mê-ôn vậy.' Ông nhận hai cháu làm con, nên Giô-sép hưởng cơ nghiệp gấp đôi qua hai chi phái. Đáp án đúng: 'Nhận hai cháu làm con mình, ngang hàng Ru-bên và Si-mê-ôn'. (1) 'Ở lại hầu Pha-ra-ôn' là chi tiết bịa (wrong_detail). (2) 'Cho gấp đôi phần các cậu' lệch: cơ nghiệp gấp đôi là của Giô-sép qua hai con, không phải 'gấp đôi các cậu' (wrong_detail). (3) 'Dưới quyền Giu-đa' nhầm sang vai trò lãnh đạo của Giu-đa, 49:10 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 1,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong ngày sáng tạo thứ ba, Đức Chúa Trời gọi chỗ đất khô và chỗ nước nhóm lại là gì?",
+    "options": [
+      "Gọi đất khô là 'Đồng' và nước là 'Sông'",
+      "Gọi đất khô là 'Đất' và nước nhóm lại là 'Biển'",
+      "Gọi đất khô là 'Vườn' và nước là 'Hồ'",
+      "Gọi đất khô là 'Núi' và nước là 'Vực'"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 1:10 (RVV11): 'Đức Chúa Trời gọi chỗ khô cạn là Đất, còn nơi nước tụ lại là Biển; Ngài thấy điều đó là tốt lành.' Đáp án đúng: 'Gọi đất khô là Đất và nước nhóm lại là Biển'. (1) 'Đồng và Sông' là cặp tên bịa (wrong_detail). (2) 'Vườn và Hồ' là cặp tên bịa (wrong_detail). (3) 'Núi và Vực' là cặp tên bịa (wrong_detail) — ba phương án sai độc lập.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Sáng tạo",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 4,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau khi bị Đức Giê-hô-va đoán phạt, Ca-in đi đến ở tại vùng đất nào?",
+    "options": [
+      "Đất Gô-sen, ở về phía tây Ai-cập",
+      "Đất Mô-ri-a, ở về phía nam Ca-na-an",
+      "Đất Nốt (Nod), ở về phía đông Ê-đen",
+      "Đất Si-nê-a, nơi sau này xây Ba-bên"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 4:16 (RVV11): 'Ca-in lui ra khỏi mặt Đức Giê-hô-va, và ở tại đất Nốt, về phía đông Ê-đen.' Đáp án đúng: 'Đất Nốt (Nod), ở về phía đông Ê-đen'. (1) 'Đất Gô-sen' là nơi gia đình Gia-cốp định cư ở Ai-cập, 47:11 (near_passage). (2) 'Đất Mô-ri-a' là nơi Áp-ra-ham dâng Y-sác, 22:2 (near_passage). (3) 'Đất Si-nê-a' là vùng xây tháp Ba-bên, 11:2 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Ca-in và A-bên",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 2,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Sáng Thế Ký 2:8, khu vườn Đức Chúa Trời lập tại Ê-đen nằm về phía nào?",
+    "options": [
+      "Về phía tây",
+      "Về phía nam",
+      "Về phía bắc",
+      "Về phía đông"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 2:8 (RVV11): 'Đức Giê-hô-va Đức Chúa Trời lập một khu vườn tại Ê-đen, ở về phía đông, và đặt người mà Ngài đã dựng nên vào đó.' Đáp án đúng: 'Về phía đông'. Ba hướng còn lại đều không khớp bản văn: 'phía tây' (wrong_detail), 'phía nam' (wrong_detail), 'phía bắc' (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Sáng tạo",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 11,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi xây thành và tháp tại đồng bằng Si-nê-a, người ta dùng vật liệu gì thay cho đá và vữa?",
+    "options": [
+      "Dùng gỗ bá hương thay đá, và đất sét thay vữa",
+      "Dùng đá cẩm thạch thay gạch, và vôi thay nhựa",
+      "Dùng gạch nung thay đá, và nhựa chai (hắc ín) thay vữa",
+      "Dùng vàng và bạc dát mỏng để ốp lên tường"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 11:3 (RVV11): 'Họ nói với nhau: Nào, chúng ta hãy làm gạch và nung trong lửa. Vậy họ dùng gạch thay đá, và nhựa chai thay vữa.' Đáp án đúng: 'Dùng gạch nung thay đá, và nhựa chai (hắc ín) thay vữa'. (1) 'Gỗ bá hương và đất sét' là chi tiết bịa (wrong_detail). (2) 'Đá cẩm thạch và vôi' là chi tiết bịa (wrong_detail). (3) 'Vàng bạc dát mỏng' là chi tiết bịa gợi sự xa hoa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Tháp Ba-bên",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 3,
+    "verseStart": 4,
+    "verseEnd": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Con rắn đã dụ dỗ Ê-va bằng lời nói dối nào về việc ăn trái cấm?",
+    "options": [
+      "Trái cây ấy chỉ là một thử thách nhỏ, ăn vào cũng chẳng sao đâu",
+      "Hai ngươi chẳng chết đâu, mà sẽ nên như Đức Chúa Trời, biết điều thiện ác",
+      "Đức Chúa Trời nay đã đổi ý và cho phép hai ngươi ăn trái ấy",
+      "Chỉ cần ăn một miếng thật nhỏ thì chắc chắn sẽ không hề gì"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 3:4-5 (RVV11): Con rắn nói, 'Hai ngươi chắc chắn không chết đâu; vì Đức Chúa Trời biết ngày nào hai ngươi ăn trái ấy thì mắt mình sẽ mở ra, và sẽ trở nên như Đức Chúa Trời, biết điều thiện và điều ác.' Đáp án đúng: 'Hai ngươi chẳng chết đâu, mà sẽ nên như Đức Chúa Trời, biết điều thiện ác'. (1) 'Chỉ là thử thách nhỏ' là lời bịa làm nhẹ tội (wrong_detail). (2) 'Chúa đã đổi ý cho phép ăn' xuyên tạc: con rắn phủ nhận lời Chúa, không nói Chúa đổi ý (wrong_detail). (3) 'Chỉ ăn một miếng nhỏ thì không sao' là lời bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Sa ngã",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 4,
+    "verseStart": 23,
+    "verseEnd": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "La-méc khoe khoang với hai vợ mình điều gì, cho thấy bạo lực gia tăng sau Ca-in?",
+    "options": [
+      "Ông đã xây một thành lớn và đặt theo tên con trai mình",
+      "Ông chính là người đầu tiên chế tạo ra nhạc cụ trên đất",
+      "Ông đã sống thọ lâu hơn hết thảy các tổ phụ đời trước",
+      "Ông giết một người vì làm ông bị thương, sẽ được báo thù gấp bội Ca-in"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 4:23-24 (RVV11): La-méc nói với A-đa và Si-la, 'Ta đã giết một người vì làm ta bị thương... Nếu Ca-in được báo thù bảy lần, thì La-méc sẽ được báo thù bảy mươi bảy lần.' Đáp án đúng: lời khoe đã giết người và đòi báo thù gấp bội Ca-in. (1) 'Xây thành đặt tên con' là việc của Ca-in, 4:17 (near_passage). (2) 'Người đầu tiên chế nhạc cụ' là Giu-banh con La-méc, 4:21, không phải chính ông (near_passage). (3) 'Sống thọ hơn mọi tổ phụ' là Mê-tu-sê-la, 5:27 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Ca-in và A-bên",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 1,
+    "verseStart": 29,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi mới sáng tạo, Đức Chúa Trời ban cho loài người thứ gì để làm thức ăn?",
+    "options": [
+      "Mọi loài thú vật và chim trời sống trên đất",
+      "Mọi thứ rau cỏ kết hạt và mọi cây có trái kết hạt",
+      "Chỉ riêng trái của các cây ở trong vườn Ê-đen",
+      "Bánh và rượu do chính tay loài người làm ra"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 1:29 (RVV11): 'Ta ban cho các con mọi thứ rau cỏ kết hạt mọc khắp đất, và mọi loài cây có trái kết hạt; ấy sẽ là thức ăn cho các con.' Lúc sáng tạo, thức ăn là thực vật. Đáp án đúng: 'Mọi thứ rau cỏ kết hạt và mọi cây có trái kết hạt'. (1) 'Thú vật và chim trời' chỉ được phép ăn sau hồng thủy, 9:3 (near_passage). (2) 'Chỉ trái cây trong vườn Ê-đen' thu hẹp sai: ban cho khắp đất (wrong_scope). (3) 'Bánh và rượu loài người làm' là chi tiết bịa cho thời điểm này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Sáng tạo",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 11,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vì sao thành nơi loài người xây tháp được đặt tên là Ba-bên?",
+    "options": [
+      "Vì tại đó Đức Giê-hô-va làm lộn xộn tiếng nói của cả đất",
+      "Vì ngọn tháp ấy cao vút lên đến tận các tầng trời xanh",
+      "Vì dân chúng tại đó thờ lạy thần Ba-anh của xứ Ca-na-an",
+      "Vì đó là nơi con tàu của Nô-ê đã dừng lại sau cơn lụt"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 11:9 (RVV11): 'Bởi đó người ta đặt tên thành là Ba-bên, vì tại đó Đức Giê-hô-va làm lộn xộn tiếng nói của cả đất.' Đáp án đúng: 'Vì tại đó Đức Giê-hô-va làm lộn xộn tiếng nói của cả đất'. (1) 'Tháp cao đến trời' là mục đích xây, không phải lý do đặt tên (true_but_off). (2) 'Thờ thần Ba-anh' là liên tưởng sai do trùng âm 'Ba' (common_misconception). (3) 'Nơi tàu Nô-ê dừng' nhầm sang núi A-ra-rát, 8:4 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Tháp Ba-bên",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 6,
+    "verseStart": 1,
+    "verseEnd": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Sáng Thế Ký 6:1-4 mô tả tình trạng nào của loài người trước cơn hồng thủy?",
+    "options": [
+      "Loài người cùng nhau tụ tập để xây một ngọn tháp thật cao lên đến tận trời",
+      "Loài người chia ra thành bảy mươi dân tộc tản lạc khắp trên mặt đất",
+      "Các 'con trai Đức Chúa Trời' cưới con gái loài người; đời ấy có người khổng lồ Nê-phi-lim",
+      "Loài người cùng quay về thờ phượng Đức Chúa Trời cách rất mực sốt sắng"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 6:1-4 (RVV11): 'các con trai Đức Chúa Trời thấy con gái loài người xinh đẹp thì cưới làm vợ... Đời đó và về sau, có những người khổng lồ (Nê-phi-lim) trên đất.' Đây là bức tranh suy đồi dẫn tới hồng thủy. Đáp án đúng: lựa chọn nói về 'con trai Đức Chúa Trời' và người khổng lồ Nê-phi-lim. (1) 'Xây tháp cao đến trời' là chuyện Ba-bên sau hồng thủy, 11:4 (near_passage). (2) 'Chia thành bảy mươi dân tộc' là Bảng Các Dân ở chương 10, sau lụt (near_passage). (3) 'Quay về thờ phượng sốt sắng' ngược hẳn: đây là thời gian gian ác cực độ, 6:5 (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Hồng thủy",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 4,
+    "verseStart": 20,
+    "verseEnd": 22,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong dòng dõi La-méc (thuộc nhà Ca-in), ai được gọi là tổ phụ của những người đánh đàn và thổi sáo?",
+    "options": [
+      "Gia-banh (Jabal), tổ phụ của dân ở lều và nuôi súc vật",
+      "Giu-banh (Jubal), tổ phụ của những người đánh đàn và thổi sáo",
+      "Tu-banh-Ca-in (Tubal-Cain), thợ rèn đồ đồng và đồ sắt",
+      "Hê-nóc (Enoch), người được Đức Chúa Trời cất lên trời"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 4:20-22 (RVV11): A-đa sinh Gia-banh 'tổ phụ của những kẻ ở lều và nuôi súc vật', em là Giu-banh 'tổ phụ của những kẻ đánh đàn và thổi sáo'; Si-la sinh Tu-banh-Ca-in 'rèn đủ thứ khí giới bằng đồng và sắt'. Đáp án đúng: 'Giu-banh, tổ phụ của những người đánh đàn và thổi sáo'. (1) 'Gia-banh' là tổ của dân ở lều và chăn nuôi, không phải nhạc công (wrong_detail). (2) 'Tu-banh-Ca-in' là thợ rèn kim khí (wrong_detail). (3) 'Hê-nóc' thuộc dòng Sết được Chúa cất lên, 5:24 — gán nhầm người khác hẳn (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Ca-in và A-bên",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 25,
+    "verseStart": 27,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi hai con trai Y-sác lớn lên, Ê-sau và Gia-cốp khác nhau thế nào về nghề nghiệp, tính cách?",
+    "options": [
+      "Ê-sau là thợ săn giỏi sống ngoài đồng; Gia-cốp điềm đạm sống trong trại",
+      "Ê-sau làm nghề chăn chiên ngoài đồng; Gia-cốp làm nghề đánh cá",
+      "Ê-sau làm thầy tế lễ trong trại; Gia-cốp làm người đi buôn bán",
+      "Ê-sau thì thích ở trong trại; còn Gia-cốp lại thích đi săn bắn"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 25:27 (RVV11): 'Hai đứa trẻ lớn lên, Ê-sau trở thành thợ săn giỏi, người của đồng ruộng; còn Gia-cốp là người điềm đạm, ưa ở trong trại.' Đáp án đúng: 'Ê-sau là thợ săn giỏi sống ngoài đồng; Gia-cốp điềm đạm sống trong trại'. (1) 'Chăn chiên và đánh cá' là nghề bịa cho cả hai (wrong_detail). (2) 'Thầy tế lễ và buôn bán' là nghề bịa (wrong_detail). (3) 'Ê-sau ở trại, Gia-cốp đi săn' đảo ngược chính xác hai người (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 13,
+    "verseStart": 8,
+    "verseEnd": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Để tránh tranh chấp giữa các đầy tớ, Áp-ram đã đề nghị gì với cháu là Lót?",
+    "options": [
+      "Bắt buộc Lót phải rời đi và quay trở về quê cũ Cha-ran",
+      "Để Lót tự chọn trước một hướng đất, còn ông sẽ đi về hướng ngược lại",
+      "Chia đôi hết đàn súc vật rồi vẫn cùng nhau ở chung một chỗ",
+      "Đuổi hết tất cả các đầy tớ của Lót đi sang nơi khác"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 13:8-9 (RVV11): Áp-ram nói với Lót, 'Đừng để có chuyện tranh chấp giữa cậu với cháu... Nếu cháu sang trái thì cậu sẽ sang phải; nếu cháu sang phải thì cậu sẽ sang trái.' Ông nhường cháu chọn trước. Đáp án đúng: 'Để Lót tự chọn trước một hướng đất, còn ông sẽ đi về hướng ngược lại'. (1) 'Bắt Lót về Cha-ran' là chi tiết bịa (wrong_detail). (2) 'Cùng ở chung một chỗ' ngược với mục đích tách ra (wrong_detail). (3) 'Đuổi đầy tớ của Lót' trái thái độ rộng lượng của Áp-ram (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 19,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi dân thành Sô-đôm vây nhà Lót để hại hai vị khách, hai thiên sứ đã làm gì với chúng?",
+    "options": [
+      "Lập tức khiến cho tất cả chúng nó hóa thành những tượng muối",
+      "Sai lửa cháy từ trên trời thiêu chết hết chúng ngay tại chỗ",
+      "Khiến cả đám người ấy bị mù lòa, đến nỗi tìm cửa không được",
+      "Khiến cho tất cả bọn chúng ngủ mê man suốt cả đêm hôm đó"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 19:11 (RVV11): 'Hai thiên sứ làm cho những người đứng ngoài cửa, từ trẻ đến già, đều bị mù lòa, đến nỗi tìm cửa mệt mà chẳng được.' Đáp án đúng: 'Khiến cả đám người ấy bị mù lòa, đến nỗi tìm cửa không được'. (1) 'Hóa thành tượng muối' là số phận vợ Lót về sau, 19:26 (near_passage). (2) 'Lửa từ trời thiêu chết' là sự hủy diệt cả thành sáng hôm sau, 19:24 (near_passage). (3) 'Ngủ mê suốt đêm' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Lót",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 24,
+    "verseStart": 67,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau khi Rê-bê-ca được đưa về, Y-sác đã làm gì, và điều đó có ý nghĩa gì với ông?",
+    "options": [
+      "Gửi nàng quay về ở với cậu La-ban thêm vài năm nữa",
+      "Từ chối không chịu cưới nàng vì nàng đến từ xứ xa",
+      "Lập tức lên đường đi tìm kiếm thêm một người vợ khác",
+      "Cưới nàng làm vợ, yêu thương nàng, và được an ủi sau khi mẹ qua đời"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 24:67 (RVV11): 'Y-sác đưa Rê-bê-ca vào trại của Sa-ra mẹ mình, cưới nàng làm vợ và yêu thương nàng. Vậy, Y-sác được an ủi sau khi mẹ qua đời.' Đáp án đúng: 'Cưới nàng làm vợ, yêu thương nàng, và được an ủi sau khi mẹ qua đời'. (1) 'Gửi nàng về với La-ban' trái bản văn (wrong_detail). (2) 'Từ chối cưới vì xứ xa' ngược lại: ông cưới và yêu nàng (wrong_detail). (3) 'Đi tìm vợ khác' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Y-sác",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 18,
+    "verseStart": 6,
+    "verseEnd": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi ba vị khách đến lều mình giữa trưa nóng, Áp-ra-ham đã tiếp đãi thế nào?",
+    "options": [
+      "Mời họ vào trong lều nghỉ nhưng chỉ dâng cho nước lạnh",
+      "Vội vàng dọn ra bánh, bơ, sữa và một con bê tơ làm thịt mời họ",
+      "Sai bảo Sa-ra ra tiếp khách còn chính mình thì lánh đi",
+      "Từ chối không tiếp đón vì trời lúc đó đang quá nóng bức"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 18:6-8 (RVV11): Áp-ra-ham 'vội vã' bảo Sa-ra làm bánh, chạy bắt một con bê tơ mềm làm thịt, rồi bưng bơ, sữa và thịt ra đãi khách dưới gốc cây. Đáp án đúng: 'Vội vàng dọn ra bánh, bơ, sữa và một con bê tơ làm thịt mời họ'. (1) 'Chỉ dâng nước lạnh' giảm nhẹ sai lòng hiếu khách nồng hậu (wrong_detail). (2) 'Lánh đi để Sa-ra tiếp' trái bản văn: ông đích thân đứng hầu (wrong_detail). (3) 'Từ chối tiếp vì nóng' ngược hẳn (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 19,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi Lót còn chần chừ chưa chịu rời Sô-đôm, hai thiên sứ đã làm gì, và vì lý do nào?",
+    "options": [
+      "Đành bỏ mặc ông lại trong thành vì ông quá chậm trễ",
+      "Dọa rằng sẽ giết chết ông ngay nếu không chịu đi liền",
+      "Nắm tay kéo cả nhà ông ra khỏi thành, vì Đức Giê-hô-va thương xót ông",
+      "Kiên nhẫn chờ ông thu xếp xong hết của cải rồi mới đi"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 19:16 (RVV11): 'Nhưng Lót chần chừ, nên hai thiên sứ nắm lấy tay ông, tay vợ và hai con gái ông, dẫn ra ngoài thành đặt tại đó, vì Đức Giê-hô-va thương xót ông.' Đáp án đúng: 'Nắm tay kéo cả nhà ông ra khỏi thành, vì Đức Giê-hô-va thương xót ông'. (1) 'Bỏ mặc ông lại' ngược hẳn: họ cứu ông (wrong_detail). (2) 'Dọa giết nếu không đi' xuyên tạc: họ giục bằng lòng thương, không hăm dọa (wrong_detail). (3) 'Chờ thu xếp của cải' trái với sự khẩn cấp phải chạy thoát (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Lót",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 21,
+    "verseStart": 31,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vì sao nơi Áp-ra-ham và A-bi-mê-léc lập giao ước được gọi là Bê-e-Sê-ba?",
+    "options": [
+      "Vì đó chính là nơi mà Áp-ra-ham đã chôn cất bà Sa-ra",
+      "Vì tại đó Đức Chúa Trời đã đổi tên mới cho Áp-ra-ham",
+      "Vì đó chính là nơi mà Y-sác đã được sinh ra trên đời",
+      "Vì tại đó hai người đã cùng thề nguyện với nhau, là giếng của lời thề"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 21:31 (RVV11): 'Bởi cớ ấy người ta gọi chỗ này là Bê-e-Sê-ba, vì tại đó hai người đều có thề nguyện với nhau.' Bê-e-Sê-ba nghĩa 'giếng của lời thề'. Đáp án đúng: 'Vì tại đó hai người đã cùng thề nguyện với nhau, là giếng của lời thề'. (1) 'Nơi chôn Sa-ra' là hang Mặc-bê-la ở Hếp-rôn, 23:19 (near_passage). (2) 'Nơi đổi tên Áp-ra-ham' là lúc lập giao ước cắt bì, 17:5 (near_passage). (3) 'Nơi Y-sác sinh ra' là chi tiết bịa cho địa danh này (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 24,
+    "verseStart": 2,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Áp-ra-ham bắt người đầy tớ thề điều gì khi sai đi tìm vợ cho Y-sác?",
+    "options": [
+      "Đừng cưới cho Y-sác người Ca-na-an, mà về quê hương bà con ông để tìm",
+      "Phải tìm cho được một người vợ giàu có nhất trong xứ",
+      "Chỉ được phép chọn vợ trong vòng dân tộc Ai-cập",
+      "Phải đưa Y-sác cùng đi để cậu tự mình chọn lấy vợ"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 24:2-4 (RVV11): Áp-ra-ham bắt đầy tớ đặt tay dưới đùi mà thề 'không cưới cho con ta một người vợ trong vòng con gái Ca-na-an... nhưng phải đi về quê hương ta, đến với bà con ta mà cưới vợ cho Y-sác.' Đáp án đúng: 'Đừng cưới cho Y-sác người Ca-na-an, mà về quê hương bà con ông để tìm'. (1) 'Vợ giàu có nhất xứ' là tiêu chí bịa (wrong_detail). (2) 'Chọn trong dân Ai-cập' sai: phải về quê Cha-ran (wrong_detail). (3) 'Đưa Y-sác cùng đi' trái lệnh 'chớ đem con ta về xứ đó', 24:6 (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 25,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Để bảo đảm cơ nghiệp cho Y-sác, lúc cuối đời Áp-ra-ham đã sắp đặt thế nào với các con khác?",
+    "options": [
+      "Đem chia đều hết gia tài cho tất cả các con trai của mình",
+      "Cho Y-sác mọi gia tài; ban quà cho các con vợ lẽ rồi cho họ về phương đông",
+      "Truất quyền của Y-sác và lập Ích-ma-ên làm con thừa kế chính",
+      "Giao phó hết tất cả của cải cho người đầy tớ Ê-li-ê-se giữ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 25:5-6 (RVV11): 'Áp-ra-ham cho Y-sác mọi tài sản mình; nhưng ông cũng ban quà cho các con của những người vợ lẽ, rồi lúc còn sống, ông cho họ rời khỏi Y-sác mà qua phương đông.' Đáp án đúng: 'Cho Y-sác mọi gia tài; ban quà cho các con vợ lẽ rồi cho họ về phương đông'. (1) 'Chia đều cho mọi con' trái bản văn: Y-sác hưởng trọn cơ nghiệp (wrong_detail). (2) 'Lập Ích-ma-ên thừa kế' ngược: Ích-ma-ên đã bị dời khỏi dòng thừa kế, 21:10-12 (wrong_detail). (3) 'Giao hết cho Ê-li-ê-se' nhầm sang nỗi lo trước khi có Y-sác, 15:2 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 26,
+    "verseStart": 7,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi ở Ghê-ra, Y-sác đã lặp lại đúng lỗi lầm nào của cha mình là Áp-ra-ham?",
+    "options": [
+      "Đem đào lại hết các giếng nước mà người Phi-li-tin đã lấp đi",
+      "Đem cả vợ con của mình xuống tận Ai-cập để lánh nạn đói",
+      "Nói dối rằng Rê-bê-ca chỉ là em gái mình, vì sợ bị người ta giết",
+      "Đem con trai một của mình lên núi mà dâng làm của lễ thiêu"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 26:7 (RVV11): 'Khi dân xứ đó hỏi thăm về vợ ông, Y-sác đáp: Nàng là em gái tôi; vì ông sợ nói vợ tôi thì e bị giết vì Rê-bê-ca.' Y-sác lặp lại đúng mưu của cha (12:13; 20:2). Đáp án đúng: 'Nói dối rằng Rê-bê-ca chỉ là em gái mình, vì sợ bị người ta giết'. (1) 'Đào lại giếng người Phi-li-tin lấp' là việc khác của Y-sác, 26:18, không phải lỗi học từ cha (true_but_off). (2) 'Xuống Ai-cập lánh đói' là điều Áp-ra-ham làm, nhưng Y-sác lại bị Chúa cấm xuống Ai-cập, 26:2 (wrong_detail). (3) 'Dâng con làm của lễ' là việc Áp-ra-ham làm, không phải Y-sác lặp lại (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Y-sác",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 27,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi vào nhận phước thay anh, Gia-cốp đã nói dối cha Y-sác thế nào về thân phận mình?",
+    "options": [
+      "Thưa con là một đầy tớ được Ê-sau sai vào hầu cha",
+      "Thật thà thưa con là Gia-cốp, xin cha cứ chúc phước",
+      "Thưa con là Ê-sau, đứa con trưởng nam của cha đây",
+      "Thưa con là một sứ giả mà Đức Chúa Trời sai đến"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 27:19 (RVV11): 'Gia-cốp thưa với cha: Con là Ê-sau, con trưởng nam của cha đây; con đã làm theo lời cha dặn.' Đáp án đúng: 'Thưa con là Ê-sau, đứa con trưởng nam của cha đây'. (1) 'Là đầy tớ được Ê-sau sai vào' là chi tiết bịa (wrong_detail). (2) 'Thật thà xưng là Gia-cốp' trái bản văn: ông giả làm Ê-sau (wrong_detail). (3) 'Là sứ giả Đức Chúa Trời sai đến' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 29,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sáng Thế Ký phân biệt hai chị em con La-ban: Lê-a và Ra-chên khác nhau ở điểm nào?",
+    "options": [
+      "Lê-a thì xinh đẹp, còn Ra-chên thì đôi mắt yếu kém",
+      "Lê-a thì mắt yếu, còn Ra-chên thì xinh đẹp dáng dấp đẹp đẽ",
+      "Lê-a là chị cả, còn Ra-chên thì lớn tuổi hơn Lê-a",
+      "Lê-a làm nghề chăn chiên, còn Ra-chên thì dệt vải"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 29:17 (RVV11): 'Mắt Lê-a thì yếu, còn Ra-chên thì có dáng dấp đẹp đẽ và nhan sắc xinh tươi.' Đáp án đúng: 'Lê-a thì mắt yếu, còn Ra-chên thì xinh đẹp'. (1) 'Lê-a xinh đẹp, Ra-chên mắt yếu' đảo ngược hai người (wrong_detail). (2) 'Ra-chên lớn tuổi hơn' sai: Lê-a là chị, 29:16 (wrong_detail). (3) 'Lê-a chăn chiên, Ra-chên dệt vải' là nghề bịa — chính Ra-chên mới chăn bầy, 29:9 (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 30,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Vì hiếm muộn và ghen với chị, Ra-chên đã nói gì với Gia-cốp trong cơn tuyệt vọng?",
+    "options": [
+      "Hãy đi cưới thêm một người vợ nữa để có thêm con cái",
+      "Hãy cầu xin Đức Chúa Trời ban cho tôi được có con",
+      "Hãy cho phép tôi trở về nhà của cha tôi là La-ban",
+      "Hãy cho tôi sinh được con, bằng không thì tôi chết mất"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 30:1 (RVV11): 'Ra-chên thấy mình không sinh con cho Gia-cốp thì ghen với chị, nói với Gia-cốp: Hãy cho tôi có con, bằng không tôi chết mất.' Đáp án đúng: 'Hãy cho tôi sinh được con, bằng không thì tôi chết mất'. (1) 'Cưới thêm vợ' là lời bịa (wrong_detail). (2) 'Cầu xin Đức Chúa Trời' là điều Gia-cốp đáp lại nàng, không phải lời nàng, 30:2 (true_but_off). (3) 'Trở về nhà cha La-ban' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 28,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Để làm vừa lòng cha mẹ (vốn không thích các vợ Ca-na-an của mình), Ê-sau đã cưới thêm ai?",
+    "options": [
+      "Một người con gái của La-ban, là cậu của mình",
+      "Một người con gái của Ích-ma-ên, là bác của mình",
+      "Một người con gái của vua A-bi-mê-léc xứ Ghê-ra",
+      "Một người con gái của Mên-chi-xê-đéc, vua Sa-lem"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 28:8-9 (RVV11): 'Ê-sau thấy các con gái Ca-na-an không đẹp lòng cha mình, nên đến với Ích-ma-ên, cưới Ma-ha-lát con gái Ích-ma-ên... làm vợ.' Đáp án đúng: 'Một con gái của Ích-ma-ên, bác mình'. (1) 'Con gái La-ban' là người Gia-cốp cưới (Lê-a, Ra-chên), không phải Ê-sau (near_passage). (2) 'Con gái A-bi-mê-léc' là chi tiết bịa (wrong_detail). (3) 'Con gái Mên-chi-xê-đéc' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 27,
+    "verseStart": 41,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau khi mất phước lành, Ê-sau nuôi lòng gì đối với em mình là Gia-cốp?",
+    "options": [
+      "Lập tức tha thứ và chạy đến ôm chầm lấy em mình",
+      "Bỏ nhà mà ra đi biệt xứ và không bao giờ trở lại",
+      "Quyết bụng sẽ giết Gia-cốp, nhưng đợi sau khi cha qua đời",
+      "Đem Gia-cốp ra kiện trước mặt vua của xứ đó"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 27:41 (RVV11): 'Ê-sau căm ghét Gia-cốp vì cớ phước lành cha đã chúc cho em, nên tự nhủ: Ngày tang chế của cha gần rồi; lúc đó ta sẽ giết Gia-cốp em ta.' Đáp án đúng: 'Quyết định giết Gia-cốp, nhưng đợi sau khi cha qua đời'. (1) 'Lập tức tha thứ ôm em' là cảnh hòa giải xảy ra mãi về sau, 33:4 (near_passage). (2) 'Bỏ nhà ra đi biệt xứ' là điều Gia-cốp làm để trốn, không phải Ê-sau (wrong_scope). (3) 'Kiện lên vua' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 30,
+    "verseStart": 23,
+    "verseEnd": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi sinh được Giô-sép, Ra-chên đã nói gì cho thấy ý nghĩa cái tên ấy?",
+    "options": [
+      "Đức Chúa Trời đã nghe thấu hết mọi nỗi khốn khổ của tôi",
+      "Đức Chúa Trời đã cất sự xấu hổ của tôi; xin thêm cho tôi một con trai nữa",
+      "Tôi đã ra sức vật lộn với chị mình và rốt cuộc đã thắng",
+      "Đây chính là đứa con của sự đau đớn trong lúc tôi lìa đời"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 30:23-24 (RVV11): Ra-chên sinh con trai, nói 'Đức Chúa Trời đã cất sự xấu hổ của tôi', và đặt tên Giô-sép (nghĩa 'xin thêm'): 'cầu Đức Giê-hô-va thêm cho tôi một con trai nữa'. Đáp án đúng: 'Đức Chúa Trời đã cất sự xấu hổ của tôi; xin thêm cho tôi một con trai nữa'. (1) 'Đã nghe nỗi khốn khổ' là ý nghĩa tên Ru-bên/Si-mê-ôn của Lê-a, 29:32-33 (near_passage). (2) 'Vật lộn với chị và đã thắng' là nghĩa tên Nép-ta-li, 30:8 (near_passage). (3) 'Con của sự đau đớn' là Bên-Ô-ni, tên Ra-chên đặt lúc lìa đời, 35:18 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 32,
+    "verseStart": 1,
+    "verseEnd": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trên đường về gặp Ê-sau, các thiên sứ của Đức Chúa Trời gặp Gia-cốp, nên ông đặt tên chỗ đó là gì?",
+    "options": [
+      "Phê-ni-ên, nghĩa là 'đối diện Đức Chúa Trời'",
+      "Bê-tên, nghĩa là 'nhà của Đức Chúa Trời'",
+      "Ga-la-át, nghĩa là 'đống đá làm chứng'",
+      "Ma-ha-na-im, nghĩa là 'trại quân của Đức Chúa Trời'"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 32:1-2 (RVV11): 'Gia-cốp cứ đi đường, có các thiên sứ Đức Chúa Trời gặp ông. Khi thấy họ, ông nói: Đây là trại quân của Đức Chúa Trời, nên đặt tên chỗ đó là Ma-ha-na-im.' Đáp án đúng: 'Ma-ha-na-im, nghĩa là trại quân của Đức Chúa Trời'. (1) 'Phê-ni-ên' là chỗ ông vật lộn với Chúa, 32:30 (near_passage). (2) 'Bê-tên' là chỗ ông thấy chiếc thang, 28:19 (near_passage). (3) 'Ga-la-át' là đống đá giao ước với La-ban, 31:47-48 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 33,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi đến bình an tại Si-chem trong xứ Ca-na-an, Gia-cốp dựng một bàn thờ và đặt tên là gì?",
+    "options": [
+      "Ên Sa-đai ('Đức Chúa Trời Toàn Năng, đầy quyền phép')",
+      "Giê-hô-va Di-rê ('Đức Giê-hô-va sẽ sắm sẵn của lễ')",
+      "Ên-Ên-lô-hê-Y-sơ-ra-ên ('Đức Chúa Trời của Y-sơ-ra-ên')",
+      "Ên Ô-lam ('Đức Chúa Trời Hằng Hữu đời đời')"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 33:20 (RVV11): 'Tại đó, Gia-cốp dựng một bàn thờ, đặt tên là Ên-Ên-lô-hê-Y-sơ-ra-ên' — nghĩa 'Đức Chúa Trời, Đức Chúa Trời của Y-sơ-ra-ên', xưng nhận danh mới của ông. Đáp án đúng: 'Ên-Ên-lô-hê-Y-sơ-ra-ên'. (1) 'Ên Sa-đai' là danh Chúa phán với Áp-ram, 17:1 (near_passage). (2) 'Giê-hô-va Di-rê' là tên Áp-ra-ham đặt ở Mô-ri-a, 22:14 (near_passage). (3) 'Ên Ô-lam' là danh tại Bê-e-Sê-ba, 21:33 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 29,
+    "verseStart": 35,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lê-a sinh người con trai thứ tư và đặt tên là Giu-đa với lời nói nào?",
+    "options": [
+      "Lần này thì tôi sẽ dâng lời ca ngợi Đức Giê-hô-va",
+      "Đức Giê-hô-va đã đoái thấy tôi bị người ta khinh rẻ",
+      "Đức Giê-hô-va đã nghe biết rằng tôi đang bị ghét bỏ",
+      "Bây giờ thì chồng tôi sẽ gắn bó keo sơn với tôi"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 29:35 (RVV11): 'Bà lại thụ thai, sinh một con trai và nói: Lần này tôi sẽ ca ngợi Đức Giê-hô-va; vì vậy bà đặt tên là Giu-đa.' Giu-đa nghĩa 'ngợi khen'. Đáp án đúng: 'Lần này tôi sẽ ca ngợi Đức Giê-hô-va'. (1) 'Đoái thấy tôi bị khinh rẻ' là nghĩa tên Ru-bên, 29:32 (near_passage). (2) 'Đã nghe tôi bị ghét bỏ' là nghĩa tên Si-mê-ôn, 29:33 (near_passage). (3) 'Chồng sẽ gắn bó với tôi' là nghĩa tên Lê-vi, 29:34 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Gia-cốp",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 49,
+    "verseStart": 27,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong lời chúc cuối đời (Sáng 49), Gia-cốp ví chi phái Bên-gia-min với hình ảnh con vật nào?",
+    "options": [
+      "Con sư tử tơ vẫn hay rình rập rồi chồm lên vồ lấy mồi",
+      "Con chó sói hay cắn xé: sáng thì nuốt mồi, chiều chia của cướp",
+      "Con rắn lục độc nằm rình bên đường mà cắn vào gót ngựa",
+      "Con nai cái được thả rông sinh ra những bầy nai con xinh"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 49:27 (RVV11): 'Bên-gia-min là một con chó sói hay cắn xé; buổi sáng nó nuốt mồi, đến chiều phân chia của cướp.' Đáp án đúng: 'Con chó sói cắn xé: sáng nuốt mồi, chiều chia của cướp'. (1) 'Sư tử con' là hình ảnh chi phái Giu-đa, 49:9 (near_passage). (2) 'Con rắn cắn gót ngựa' là chi phái Đan, 49:17 (near_passage). (3) 'Con nai cái thả rông' là chi phái Nép-ta-li, 49:21 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Lời chúc 12 chi phái",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 41,
+    "verseStart": 45,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau khi cất nhắc Giô-sép, Pha-ra-ôn ban cho ông một tên Ai-cập và gả ai làm vợ?",
+    "options": [
+      "Đặt tên là Bên-Ô-ni, rồi gả cho con gái của Pô-ti-pha",
+      "Đặt tên là Ích-ca-bốt, rồi gả cho một nàng công chúa Ai-cập",
+      "Đặt tên Xa-phơ-nát Pha-nê-ách, gả Ách-nát con gái thầy tế lễ thành Ôn",
+      "Đặt tên là Ô-nan, rồi gả con gái của vua xứ Hếch cho ông"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 41:45 (RVV11): 'Pha-ra-ôn đặt tên Giô-sép là Xa-phơ-nát Pha-nê-ách, và gả Ách-nát, con gái Phô-ti-phê-ra thầy tế lễ thành Ôn, cho ông làm vợ.' Đáp án đúng: 'Xa-phơ-nát Pha-nê-ách, gả Ách-nát con gái thầy tế lễ thành Ôn'. (1) 'Bên-Ô-ni' là tên Ra-chên đặt cho Bên-gia-min, 35:18 (near_passage). (2) 'Ích-ca-bốt' là tên ở thời Hê-li về sau, 1Sa 4 (wrong_scope). (3) 'Ô-nan' là con trai Giu-đa, 38:4 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 43,
+    "verseStart": 32,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tại bữa tiệc Giô-sép đãi, vì sao người Ai-cập ngồi ăn riêng, không ăn chung với các anh em Hê-bơ-rơ?",
+    "options": [
+      "Vì các anh em Giô-sép vốn thuộc tầng lớp quý tộc cao hơn",
+      "Vì người Hê-bơ-rơ phải kiêng cữ mọi thức ăn của người Ai-cập",
+      "Vì Giô-sép muốn giấu kín thân phận thật của mình với họ",
+      "Vì ăn chung với người Hê-bơ-rơ là điều gớm ghiếc cho dân Ai-cập"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 43:32 (RVV11): 'Người ta dọn cho Giô-sép ăn riêng, các anh em ăn riêng, người Ai-cập ăn riêng, vì người Ai-cập cho việc ăn chung với người Hê-bơ-rơ là điều gớm ghiếc.' Đáp án đúng: 'Vì ăn chung với người Hê-bơ-rơ là điều gớm ghiếc cho dân Ai-cập'. (1) 'Anh em quý tộc hơn' trái thực tế: họ là dân chăn chiên bị khinh (wrong_detail). (2) 'Hê-bơ-rơ kiêng đồ Ai-cập' đảo chiều: chính người Ai-cập mới kiêng (wrong_detail). (3) 'Giô-sép giấu thân phận' đúng là ông đang giấu mình nhưng không phải lý do của tục ăn riêng này (true_but_off).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 45,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi tiễn các anh trở về đón cha, Giô-sép dặn dò họ điều gì trên đường đi?",
+    "options": [
+      "Đừng nói cho cha biết hết sự thật",
+      "Đừng có cãi cọ nhau ở dọc đường",
+      "Hãy đi suốt cả đêm mà không nghỉ",
+      "Đừng ghé ngang qua thành Sô-đôm"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 45:24 (RVV11): 'Vậy, Giô-sép tiễn các anh em lên đường; trước khi đi, ông dặn: Xin các anh đừng cãi nhau dọc đường.' Đáp án đúng: 'Đừng cãi nhau dọc đường'. (1) 'Đừng nói cho cha sự thật' trái lại: ông sai họ về thuật hết cho cha, 45:13 (wrong_detail). (2) 'Đi suốt đêm không nghỉ' là chi tiết bịa (wrong_detail). (3) 'Đừng ghé Sô-đôm' là chi tiết bịa; Sô-đôm đã bị hủy từ lâu (wrong_scope).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 50,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi đoàn đưa tang Gia-cốp than khóc lớn tại sân đạp lúa A-tát, dân Ca-na-an đặt tên chỗ đó là gì?",
+    "options": [
+      "A-bên Mích-ra-im ('đám tang trọng thể của người Ai-cập')",
+      "Ma-ha-na-im ('doanh trại quân của Đức Chúa Trời')",
+      "Bê-tên ('nhà của Đức Chúa Trời, cửa thiên đàng')",
+      "Ga-la-át ('đống đá làm chứng giữa đôi bên')"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng Thế Ký 50:11 (RVV11): 'Dân Ca-na-an thấy lễ tang tại sân đạp lúa A-tát thì nói: Đây là đám tang trọng thể của người Ai-cập; bởi đó đặt tên chỗ là A-bên Mích-ra-im.' Đáp án đúng: 'A-bên Mích-ra-im'. (1) 'Ma-ha-na-im' là nơi thiên sứ gặp Gia-cốp, 32:2 (near_passage). (2) 'Bê-tên' là nơi chiếc thang, 28:19 (near_passage). (3) 'Ga-la-át' là đống đá giao ước với La-ban, 31:48 (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 40,
+    "verseStart": 21,
+    "verseEnd": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đúng như Giô-sép giải mộng, số phận của quan dâng rượu và quan dâng bánh ra sao?",
+    "options": [
+      "Cả hai quan rốt cuộc đều được Pha-ra-ôn phục lại chức cũ",
+      "Cả hai viên quan rốt cuộc đều bị Pha-ra-ôn xử cho treo cổ",
+      "Quan dâng bánh được tha, còn quan dâng rượu thì bị giết chết",
+      "Quan dâng rượu được phục lại chức, còn quan dâng bánh bị treo cổ"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 40:21-22 (RVV11): 'Pha-ra-ôn phục chức quan dâng rượu lại như cũ... nhưng truyền treo cổ quan dâng bánh, đúng như lời Giô-sép giải.' Đáp án đúng: 'Quan dâng rượu được phục chức, còn quan dâng bánh bị treo cổ'. (1) 'Cả hai được phục chức' sai: chỉ một người (wrong_detail). (2) 'Cả hai bị treo cổ' sai (wrong_detail). (3) 'Đảo ngược hai số phận' sai chi tiết then chốt (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 47,
+    "verseStart": 7,
+    "verseEnd": 10,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi Giô-sép đưa cha vào ra mắt Pha-ra-ôn, Gia-cốp đã làm một điều đáng chú ý nào?",
+    "options": [
+      "Quỳ rạp xuống lạy và dâng nhiều lễ vật cho Pha-ra-ôn",
+      "Mở lời xin Pha-ra-ôn ban cho mình một chức tước",
+      "Đứng ra chúc phước cho Pha-ra-ôn (người lớn chúc phước kẻ nhỏ hơn)",
+      "Nhất quyết từ chối không chịu ra mắt Pha-ra-ôn"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 47:7-10 (RVV11): 'Giô-sép đưa Gia-cốp cha mình vào yết kiến Pha-ra-ôn, và Gia-cốp chúc phước cho Pha-ra-ôn' — cả lúc vào lẫn lúc lui ra. Theo lẽ thường, kẻ nhỏ được người lớn hơn chúc phước (đối chiếu Hê 7:7). Đáp án đúng: 'Chúc phước cho Pha-ra-ôn'. (1) 'Quỳ lạy dâng lễ vật' không có trong bản văn ở đây (wrong_detail). (2) 'Xin chức tước' trái với tư cách tổ phụ của Gia-cốp (wrong_detail). (3) 'Từ chối ra mắt' trái bản văn: ông vào yết kiến (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 46,
+    "verseStart": 33,
+    "verseEnd": 34,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Giô-sép dặn các anh em khai với Pha-ra-ôn rằng mình làm nghề gì, để được cho ở vùng Gô-sen?",
+    "options": [
+      "Khai rằng mình vốn là các quan chức cao cấp trong triều đình Ai-cập",
+      "Khai mình làm nghề chăn nuôi súc vật, vì dân chăn chiên bị Ai-cập gớm ghiếc",
+      "Khai rằng mình làm nghề đi buôn bán ở các xứ phương xa xôi",
+      "Khai rằng mình là những thầy tế lễ phụng sự Đức Chúa Trời"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 46:33-34 (RVV11): Giô-sép dặn 'khi Pha-ra-ôn hỏi nghề nghiệp, các anh hãy thưa: Từ nhỏ đến giờ, tôi tớ vua vẫn nuôi súc vật... nhờ đó các anh sẽ được ở Gô-sen, vì người Ai-cập gớm ghiếc dân chăn chiên.' Đáp án đúng: 'Khai mình làm nghề chăn nuôi súc vật'. (1) 'Là quan chức triều đình' là chi tiết bịa (wrong_detail). (2) 'Buôn bán đường xa' là chi tiết bịa (wrong_detail). (3) 'Là thầy tế lễ' là chi tiết bịa (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 50,
+    "verseStart": 19,
+    "verseEnd": 21,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau khi cha qua đời, các anh sợ Giô-sép báo thù; ông đáp lại bằng tinh thần nào?",
+    "options": [
+      "Buộc tất cả họ phải làm thân tôi mọi suốt đời để chuộc lại tội lỗi cũ",
+      "Lập tức đuổi hết tất cả các anh em ra khỏi cả xứ Ai-cập ngay",
+      "Cứ lặng thinh chẳng nói với họ lời nào và xa lánh hẳn họ từ đó",
+      "Trấn an họ rằng 'tôi đâu thay được Đức Chúa Trời?', rồi hứa nuôi nấng họ"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sáng Thế Ký 50:19-21 (RVV11): Giô-sép nói, 'Đừng sợ, tôi há thay được Đức Chúa Trời sao? Các anh định hại tôi, nhưng Đức Chúa Trời lại định cho thành điều lành... Vậy đừng sợ, tôi sẽ cấp dưỡng các anh và con cái.' Đáp án đúng: 'Trấn an họ: tôi đâu thay được Đức Chúa Trời, rồi hứa nuôi nấng họ'. (1) 'Bắt làm tôi mọi chuộc tội' trái lòng tha thứ của ông (wrong_detail). (2) 'Đuổi khỏi Ai-cập' ngược: ông hứa cấp dưỡng họ (wrong_detail). (3) 'Im lặng xa lánh' trái bản văn: ông an ủi và nói dịu dàng với họ (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 44,
+    "verseStart": 2,
+    "verseEnd": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Để thử các anh, Giô-sép sai giấu vật gì vào bao của Bên-gia-min, rồi cho người đuổi theo?",
+    "options": [
+      "Một túi đầy vàng ròng lấy ra từ trong kho của vua",
+      "Một pho tượng thần nhỏ đúc bằng bạc nguyên chất",
+      "Cái chén bằng bạc của ông, vốn được nói là dùng để bói",
+      "Chiếc ấn tín cùng với áo bào quý của quan tể tướng"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng Thế Ký 44:2,5 (RVV11): Giô-sép dặn quản gia 'để cái chén bạc của ta vào miệng bao đứa nhỏ nhất'; rồi cho đuổi theo trách 'đó chẳng phải là chén chủ ta dùng uống và bói sao?'. Đáp án đúng: 'Cái chén bạc của ông, được nói là dùng để bói'. (1) 'Túi vàng từ kho vua' là chi tiết bịa (wrong_detail). (2) 'Pho tượng thần bằng bạc' nhầm sang thần tượng Ra-chên trộm của La-ban, 31:19 (near_passage). (3) 'Ấn tín và áo bào tể tướng' là vật Pha-ra-ôn ban cho Giô-sép, 41:42, không phải vật giấu trong bao (near_passage).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Genesis",
+    "chapter": 47,
+    "verseStart": 20,
+    "verseEnd": 26,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong những năm đói kém, chính sách của Giô-sép đã dẫn đến hệ quả lớn nào cho cả xứ Ai-cập?",
+    "options": [
+      "Dân chúng khắp xứ nổi loạn lật đổ ngai vàng của Pha-ra-ôn",
+      "Toàn bộ ruộng đất và dân chúng thành sở hữu của Pha-ra-ôn, phải nộp một phần năm",
+      "Toàn dân Ai-cập buộc phải dời sang sống tại xứ Ca-na-an",
+      "Pha-ra-ôn buộc phải chia đều hết ruộng đất cho mọi người dân"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng Thế Ký 47:20-26 (RVV11): Vì đói, dân Ai-cập bán gia súc, rồi bán đất và chính mình để mua lúa; 'Giô-sép mua hết ruộng đất Ai-cập cho Pha-ra-ôn', và lập luật dân nộp một phần năm hoa lợi cho vua. Đáp án đúng: 'Toàn bộ ruộng đất và dân chúng thành sở hữu của Pha-ra-ôn, phải nộp một phần năm'. (1) 'Dân nổi loạn lật đổ Pha-ra-ôn' trái bản văn: dân biết ơn vì được cứu sống (wrong_detail). (2) 'Dời sang Ca-na-an' là chi tiết bịa (wrong_detail). (3) 'Chia đều ruộng cho dân' ngược hẳn: ruộng tập trung về Pha-ra-ôn (wrong_detail).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Sáng Thế Ký",
+      "Ngũ Kinh",
+      "Giô-sép",
+      "Nâng cao"
+    ]
   }
 ]
