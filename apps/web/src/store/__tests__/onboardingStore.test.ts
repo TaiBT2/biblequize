@@ -16,18 +16,12 @@ describe('onboardingStore', () => {
   it('has correct default values', () => {
     const state = useOnboardingStore.getState()
     expect(state.hasSeenOnboarding).toBe(false)
-    expect(state.hasDoneTutorial).toBe(false)
     expect(state.preferredLanguage).toBeNull()
   })
 
   it('setHasSeenOnboarding updates state', () => {
     useOnboardingStore.getState().setHasSeenOnboarding(true)
     expect(useOnboardingStore.getState().hasSeenOnboarding).toBe(true)
-  })
-
-  it('setHasDoneTutorial updates state', () => {
-    useOnboardingStore.getState().setHasDoneTutorial(true)
-    expect(useOnboardingStore.getState().hasDoneTutorial).toBe(true)
   })
 
   it('setLanguage sets preferred language to vi', () => {
@@ -43,14 +37,12 @@ describe('onboardingStore', () => {
   it('reset restores all defaults', () => {
     const store = useOnboardingStore.getState()
     store.setHasSeenOnboarding(true)
-    store.setHasDoneTutorial(true)
     store.setLanguage('en')
 
     store.reset()
 
     const after = useOnboardingStore.getState()
     expect(after.hasSeenOnboarding).toBe(false)
-    expect(after.hasDoneTutorial).toBe(false)
     expect(after.preferredLanguage).toBeNull()
   })
 

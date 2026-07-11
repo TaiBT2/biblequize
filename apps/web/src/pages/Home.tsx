@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next'
 
 import ComebackModal from '../components/ComebackModal'
 import DailyBonusModal from '../components/DailyBonusModal'
-import TutorialOverlay from '../components/TutorialOverlay'
 import { api } from '../api/client'
 import { useAuthStore } from '../store/authStore'
 import { getTierInfo } from '../data/tiers'
@@ -313,7 +312,6 @@ export default function Home() {
     <div data-testid="home-page" className="max-w-[1180px] mx-auto w-full">
       <ComebackModal />
       <DailyBonusModal />
-      <TutorialOverlay />
 
       {/* ── HERO (centered, mockup-faithful) ── */}
       <section data-testid="home-greeting-card" className="text-center pt-2 pb-1">

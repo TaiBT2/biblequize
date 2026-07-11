@@ -9,6 +9,7 @@
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-07-11 | Bỏ Tutorial Overlay ở Home (tour giới thiệu "Đã hiểu" lần đầu) — gỡ + dọn store/i18n/test + spec §18 (RTO-1) | DONE | [detail](docs/todo/active/2026-07-11-remove-home-tutorial-overlay.md) |
 | 2026-06-24 | Soạn 100 câu Dân Số Ký mới + bản EN (Haladyna × Bloom) qua skill bible-quiz-authoring (N100-1..4) | DONE | [detail](docs/todo/active/2026-06-24-numbers-100-questions.md) |
 | 2026-06-24 | Soạn 100 câu/sách cho 12 sách Lịch Sử (Giô-suê…Ê-xơ-tê) qua skill bible-quiz-authoring (HB-1..12) | DONE | [detail](docs/todo/active/2026-06-24-historical-books-100-questions.md) |
 | 2026-06-24 | Soạn 100 câu Phục Truyền Luật Lệ Ký mới (Haladyna × Bloom) qua skill bible-quiz-authoring (D100-1..FINAL) | IN PROGRESS | [detail](docs/todo/active/2026-06-24-deuteronomy-100-questions.md) |

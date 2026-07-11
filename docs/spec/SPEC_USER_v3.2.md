@@ -1906,27 +1906,16 @@ bookmarks (id, user_id, question_id, created_at, UNIQUE(user_id, question_id))
 
 ---
 
-## 18. Tutorial Overlay
+## 18. Tutorial Overlay — ĐÃ GỠ (2026-07-11)
 
-> **Source:** `components/TutorialOverlay.tsx`, `onboardingStore.hasSeenOnboarding`.
+> **Removed 2026-07-11** (user request): tour spotlight lần đầu vào Home ("Đã hiểu!") gây confuse user mới → gỡ `components/TutorialOverlay.tsx` + flag `onboardingStore.hasDoneTutorial`. Onboarding flow đăng ký (§18.1) giữ nguyên; Home không còn overlay hướng dẫn.
 
-### 18.1 Khi nào trigger
-Sau login lần đầu. Flag `hasSeenOnboarding` lưu trong Zustand persist (localStorage).
-
-### 18.2 Steps
-3 tooltip overlay trên Home:
-1. Daily Challenge card → "Thử thách 5 phút mỗi ngày!"
-2. Streak counter → "Chơi mỗi ngày để giữ chuỗi!"
-3. Game modes → "Khám phá nhiều chế độ chơi!"
-
-User tap anywhere → next step → done.
-
-### 18.3 Onboarding flow đầy đủ
+### 18.1 Onboarding flow đầy đủ
 1. Language Selection (vi/en)
 2. Welcome Slides (3 screens swipe)
 3. Try Quiz (3 câu KHÔNG cần login) — `GET /api/public/sample-questions`
 4. Login (Google OAuth)
-5. Home + Tutorial Overlay
+5. Home (không còn Tutorial Overlay)
 6. Bình thường
 
 ---
