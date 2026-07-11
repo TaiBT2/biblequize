@@ -1,9 +1,15 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
+import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig(({ mode }) => {
   // Load env file based on `mode` in the current working directory.
   const env = loadEnv(mode, process.cwd(), '')
+
+  // PWA is a WEB-only concern. The Capacitor (native) build ships its assets
+  // inside the app package, so a service worker there would only add a stale
+  // caching layer in the WebView — skip it entirely for `--mode capacitor`.
+  const isCapacitor = mode === 'capacitor'
 
   const securityHeaders = {
     'X-Frame-Options': 'SAMEORIGIN',
@@ -14,7 +20,37 @@ export default defineConfig(({ mode }) => {
   }
 
   return {
-    plugins: [react()],
+    plugins: [
+      react(),
+      // Installable PWA + offline precache. Web build only (see isCapacitor).
+      ...(isCapacitor
+        ? []
+        : [
+            VitePWA({
+              // Ship updates without a user prompt: the new SW takes over on the
+              // next navigation (skipWaiting + clientsClaim under the hood).
+              registerType: 'autoUpdate',
+              // External /registerSW.js (not an inline script) so the hardened
+              // prod CSP `script-src 'self'` keeps holding — no 'unsafe-inline'.
+              injectRegister: 'script-defer',
+              // Keep the hand-authored public/manifest.json (already linked in
+              // index.html) as the single source of truth — don't generate one.
+              manifest: false,
+              workbox: {
+                globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+                // SPA fallback for client-routed paths; never shadow the API.
+                navigateFallback: '/index.html',
+                navigateFallbackDenylist: [/^\/api/],
+                cleanupOutdatedCaches: true,
+                // A couple of vendor chunks exceed the 2 MiB default.
+                maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
+              },
+              // No service worker in `vite dev` — avoids stale-cache surprises
+              // during development; the SW only ships in build/preview/prod.
+              devOptions: { enabled: false },
+            }),
+          ]),
+    ],
     server: {
       port: 5173,
       host: true,

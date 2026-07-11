@@ -9,6 +9,8 @@
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-07-11 | Soạn câu hỏi 5 sách Thơ Ca (Gióp/Thi Thiên/Châm Ngôn 100, Truyền Đạo 60, Nhã Ca 40) — fan-out 40 agent (PB-1..4) | DONE | [detail](docs/todo/active/2026-07-11-poetry-books-questions.md) |
+| 2026-07-11 | PWA đầy đủ: thêm Service Worker (vite-plugin-pwa) — installable + offline cache, guard bản Capacitor (PWA-1..2) | IN PROGRESS | [detail](docs/todo/active/2026-07-11-pwa-service-worker.md) |
 | 2026-07-11 | Bỏ Tutorial Overlay ở Home (tour giới thiệu "Đã hiểu" lần đầu) — gỡ + dọn store/i18n/test + spec §18 (RTO-1) | DONE | [detail](docs/todo/active/2026-07-11-remove-home-tutorial-overlay.md) |
 | 2026-06-24 | Soạn 100 câu Dân Số Ký mới + bản EN (Haladyna × Bloom) qua skill bible-quiz-authoring (N100-1..4) | DONE | [detail](docs/todo/active/2026-06-24-numbers-100-questions.md) |
 | 2026-06-24 | Soạn 100 câu/sách cho 12 sách Lịch Sử (Giô-suê…Ê-xơ-tê) qua skill bible-quiz-authoring (HB-1..12) | DONE | [detail](docs/todo/active/2026-06-24-historical-books-100-questions.md) |

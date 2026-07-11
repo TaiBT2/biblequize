@@ -74,8 +74,8 @@
 - **Tech requirements:** Stripe/PayPal integration, subscription lifecycle management, webhook handling.
 
 ### 2.7 Offline mode — full PWA (v3.0)
-- **Status hiện tại:** `OfflineBanner.tsx` + `useOnlineStatus.ts` chỉ detect `navigator.onLine`. Không có service-worker cache strategy.
-- **Mục tiêu v3.0:**
+- **Status hiện tại (2026-07-11):** PWA installable ĐÃ SHIP — `vite-plugin-pwa` (generateSW) precache app-shell (JS/CSS/HTML/icon) + `public/manifest.json` (`display: standalone`) → user cài được lên màn hình chính, app-shell mở khi offline. Bản Capacitor không bật SW (guard `mode !== 'capacitor'`). `OfflineBanner.tsx` + `useOnlineStatus.ts` vẫn detect `navigator.onLine`.
+- **CÒN LẠI cho v3.0 (data-layer offline, CHƯA ship):**
   - Pre-cache 50 questions/book khi user mở app online
   - Practice mode hoạt động offline (đọc cache local)
   - Queue answers + sync khi online lại
